@@ -1,7 +1,7 @@
 [0-course@-50,-50]
 author=Jason Katz-Brown
 borderWalls=true
-name=Easy Course\s
+name=Medium Course\s
 
 [1-ball@342,322]
 dummykey=true
@@ -9,9 +9,20 @@ dummykey=true
 [1-cup@325,52|14]
 dummykey=true
 
+[1-floater@119,226|24]
+botWallVisible=true
+endPoint=119,226
+height=10
+leftWallVisible=true
+rightWallVisible=true
+speed=5
+startPoint=11,146
+topWallVisible=true
+width=39
+
 [1-hole@-50,-50|0]
 borderWalls=true
-hasFinalLoad=false
+hasFinalLoad=true
 maxstrokes=10
 par=2
 
@@ -47,13 +58,13 @@ changeEvery=50
 changeEnabled=false
 changeEvery=50
 
-[1-slope@117,173|18]
+[1-slope@161,174|18]
 grade=2
 gradient=Diagonal
 height=214
 reversed=false
 stuckOnGround=false
-width=270
+width=227
 
 [1-slope@177,86|16]
 grade=4
@@ -197,7 +208,7 @@ startPoint=309,389
 [11-ball@36,295]
 dummykey=true
 
-[11-cup@74,369|72]
+[11-cup@74,372|72]
 dummykey=true
 
 [11-hole@-50,-50|0]
@@ -253,6 +264,14 @@ height=42
 reversed=true
 stuckOnGround=false
 width=36
+
+[11-slope@55,352|74]
+grade=4
+gradient=Elliptic
+height=40
+reversed=false
+stuckOnGround=false
+width=40
 
 [11-slope@8,153|60]
 grade=6
@@ -514,24 +533,10 @@ startPoint=100,309
 dummykey=true
 
 [12-blackhole@375,294|12]
-exit=150,43
-exitDeg=0
+exit=137,36
+exitDeg=30
 maxspeed=5
 minspeed=3
-
-[12-blackhole@56,343|10]
-exit=150,30
-exitDeg=0
-maxspeed=5
-minspeed=3
-
-[12-bridge@9,278|9]
-botWallVisible=false
-height=109
-leftWallVisible=false
-rightWallVisible=true
-topWallVisible=false
-width=134
 
 [12-bumper@189,94|17]
 dummykey=true
@@ -546,7 +551,7 @@ dummykey=true
 borderWalls=true
 hasFinalLoad=false
 maxstrokes=10
-par=3
+par=2
 
 [12-sand@260,123|16]
 changeEnabled=false
@@ -563,14 +568,6 @@ height=221
 reversed=false
 stuckOnGround=false
 width=381
-
-[12-slope@15,302|11]
-grade=4
-gradient=Elliptic
-height=81
-reversed=false
-stuckOnGround=false
-width=81
 
 [12-slope@238,7|13]
 grade=4
@@ -941,7 +938,7 @@ dummykey=true
 borderWalls=true
 hasFinalLoad=false
 maxstrokes=10
-par=5
+par=4
 
 [16-puddle@102,207|13]
 changeEnabled=false
@@ -1209,7 +1206,7 @@ dummykey=true
 borderWalls=true
 hasFinalLoad=false
 maxstrokes=10
-par=5
+par=3
 
 [17-puddle@38,50|16]
 changeEnabled=false
@@ -1323,19 +1320,15 @@ reversed=true
 stuckOnGround=false
 width=123
 
-[18-wall@0,0|4]
-endPoint=174,277
-startPoint=174,389
-
 [18-windmill@9,179|6]
 botWallVisible=false
 bottom=false
-height=96
+height=212
 leftWallVisible=false
 rightWallVisible=true
 speed=7
 topWallVisible=false
-width=172
+width=166
 
 [2-ball@68,357]
 dummykey=true
@@ -1861,7 +1854,7 @@ dummykey=true
 borderWalls=false
 hasFinalLoad=false
 maxstrokes=10
-par=4
+par=3
 
 [5-puddle@187,195|33]
 changeEnabled=false
@@ -2407,14 +2400,14 @@ dummykey=true
 [7-cup@367,355|16]
 dummykey=true
 
-[7-floater@163,338|13]
+[7-floater@163,347|13]
 botWallVisible=true
-endPoint=163,338
+endPoint=163,347
 height=41
 leftWallVisible=true
 rightWallVisible=true
-speed=2
-startPoint=157,291
+speed=6
+startPoint=158,314
 topWallVisible=true
 width=10
 
@@ -2526,7 +2519,7 @@ width=168
 borderWalls=true
 hasFinalLoad=true
 maxstrokes=10
-par=3
+par=2
 
 [8-puddle@231,297|17]
 changeEnabled=false
