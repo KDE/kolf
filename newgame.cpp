@@ -235,7 +235,7 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 	optionsPage = addPage(i18n("Options"), i18n("Game Options"));
 	QVBoxLayout *vlayout = new QVBoxLayout(optionsPage, marginHint(), spacingHint());
 
-	mode = new QCheckBox(i18n("&Strict Mode"), optionsPage);
+	mode = new QCheckBox(i18n("&Strict mode"), optionsPage);
 	vlayout->addWidget(mode);
 	mode->setChecked(config->readBoolEntry("competition", false));
 

@@ -1451,7 +1451,7 @@ SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
 
 	layout->addStretch();
 
-	QCheckBox *reversed = new QCheckBox(i18n("Reverse Direction"), this);
+	QCheckBox *reversed = new QCheckBox(i18n("Reverse direction"), this);
 	reversed->setChecked(slope->isReversed());
 	layout->addWidget(reversed);
 	connect(reversed, SIGNAL(toggled(bool)), this, SLOT(setReversed(bool)));
@@ -1502,7 +1502,7 @@ EllipseConfig::EllipseConfig(Ellipse *ellipse, QWidget *parent)
 
 	m_vlayout = new QVBoxLayout(this, marginHint(), spacingHint());
 
-	QCheckBox *check = new QCheckBox(i18n("Enable Show/Hide"), this);
+	QCheckBox *check = new QCheckBox(i18n("Enable show/hide"), this);
 	m_vlayout->addWidget(check);
 	connect(check, SIGNAL(toggled(bool)), this, SLOT(check1Changed(bool)));
 	check->setChecked(ellipse->changeEnabled());
