@@ -12,6 +12,7 @@
 #include <knuminput.h>
 #include <ksimpleconfig.h>
 
+#include "statedb.h"
 #include "canvasitem.h"
 #include "poolball.h"
 
@@ -21,7 +22,7 @@ QObject *PoolBallFactory::createObject (QObject *parent, const char *name, const
 PoolBall::PoolBall(QCanvas *canvas)
 	: Ball(canvas)
 {
-	kdDebug() << "PoolBall::PoolBall\n";
+	//kdDebug() << "PoolBall::PoolBall\n";
 	setBrush(black);
 	m_number = 1;
 }
@@ -31,9 +32,21 @@ void PoolBall::save(KSimpleConfig *cfg)
 	cfg->writeEntry("number", number());
 }
 
+void PoolBall::saveState(StateDB *db)
+{
+	db->setPoint(QPoint(x(), y()));
+}
+
 void PoolBall::load(KSimpleConfig *cfg)
 {
 	setNumber(cfg->readNumEntry("number", 1));
+}
+
+void PoolBall::loadState(StateDB *db)
+{
+	move(db->point().x(), db->point().y());
+	setVelocity(0, 0);
+	setState(Stopped);
 }
 
 void PoolBall::draw(QPainter &p)

@@ -6,7 +6,9 @@
 			<Separator />
 			<Action name="newhole" />
 			<Action name="clearhole" />
-			<Action name="resethole" />
+			<Separator />
+			<Action name="reloadhole" />
+			<Action name="restarthole" />
 			<Separator />
 			<Action name="undoshot" />
 		</Menu>
@@ -17,6 +19,7 @@
 			<Action name="prevhole" />
 			<Action name="firsthole" />
 			<Action name="lasthole" />
+			<Separator />
 			<Action name="randhole" />
 		</Menu>
 		<Menu name="settings">

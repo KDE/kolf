@@ -4,6 +4,7 @@
 #include <kdialogbase.h>
 #include <kmessagebox.h>
 #include <kglobal.h>
+#include <kscoredialog.h>
 #include <kstandarddirs.h>
 #include <kseparator.h>
 #include <klineedit.h>
@@ -72,7 +73,7 @@ void ColorButton::drawButtonLabel(QPainter *painter)
 /////////////////////////
 
 TransparentButton::TransparentButton(const QString &text, QWidget *parent, const char *name)
- : QPushButton(text, parent, name)
+ : KPushButton(text, parent, name)
 {
 	mouseOver = false;
 }
@@ -114,7 +115,7 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 	playerPage = addPage(i18n("Players"));
 	QVBoxLayout *bigLayout = new QVBoxLayout(playerPage, marginHint(), spacingHint());
 
-	addButton = new QPushButton(i18n("&New Player"), playerPage);
+	addButton = new KPushButton(i18n("&New Player"), playerPage);
 	bigLayout->addWidget(addButton);
 
 	connect(addButton, SIGNAL(clicked()), this, SLOT(addPlayer()));
@@ -209,15 +210,20 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 		minorLayout->addWidget(holes);
 
 		detailLayout->addStretch();
+		KPushButton *scores = new KPushButton(i18n("Highscores..."), coursePage);
+		connect(scores, SIGNAL(clicked()), this, SLOT(showHighscores()));
+		detailLayout->addWidget(scores);
+
+		detailLayout->addStretch();
 		detailLayout->addWidget(new KSeparator(coursePage));
 
 		minorLayout = new QHBoxLayout(detailLayout, spacingHint());
 
-		QPushButton *addCourseButton = new QPushButton(i18n("Add..."), coursePage);
+		KPushButton *addCourseButton = new KPushButton(i18n("Add..."), coursePage);
 		minorLayout->addWidget(addCourseButton);
 		connect(addCourseButton, SIGNAL(clicked()), this, SLOT(addCourse()));
 
-		remove = new QPushButton(i18n("Remove"), coursePage);
+		remove = new KPushButton(i18n("Remove"), coursePage);
 		minorLayout->addWidget(remove);
 		connect(remove, SIGNAL(clicked()), this, SLOT(removeCourse()));
 
@@ -269,10 +275,20 @@ void NewGameDialog::courseSelected(int index)
 
 	CourseInfo &curinfo = info[currentCourse];
 
-	name->setText(QString("<strong>%1</strong>").arg(curinfo.name));
+	currentCourseName = curinfo.name;
+	name->setText(QString("<strong>%1</strong>").arg(currentCourseName));
+
 	author->setText(i18n("By %1").arg(curinfo.author));
 	par->setText(i18n("Par %1").arg(curinfo.par));
 	holes->setText(i18n("%1 Holes").arg(curinfo.holes));
+}
+
+void NewGameDialog::showHighscores()
+{
+	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Score, this);
+	scoreDialog->setConfigGroup(currentCourseName + QString(" Highscores"));
+	scoreDialog->setComment(i18n("High Scores for Course %1").arg(currentCourseName));
+	scoreDialog->show();
 }
 
 void NewGameDialog::removeCourse()
@@ -371,7 +387,7 @@ PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent
 	layout->addWidget(colorButton = new ColorButton(startColor, this));
 	colorButton->setBackgroundPixmap(grass);
 
-	QPushButton *remove = new TransparentButton(i18n("Remove"), this);
+	KPushButton *remove = new TransparentButton(i18n("Remove"), this);
 	layout->addWidget(remove);
 	remove->setBackgroundPixmap(grass);
 	connect(remove, SIGNAL(clicked()), this, SLOT(removeMe()));

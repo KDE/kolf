@@ -43,7 +43,7 @@ public:
 	virtual int rtti() const { return Rtti_Ball; };
 
 	bool addStroke() { return m_addStroke; }
-	bool placeOnGround(Vector &v) { v = oldVector; }
+	bool placeOnGround(Vector &v) { v = oldVector; return m_placeOnGround; }
 	void setAddStroke(int newStrokes) { m_addStroke = newStrokes; }
 	void setPlaceOnGround(bool placeOnGround) { m_placeOnGround = placeOnGround; oldVector = m_vector; }
 
@@ -56,6 +56,11 @@ public:
 	bool collisionLock() { return m_collisionLock; }
 	void setCollisionLock(bool yes) { m_collisionLock = yes; }
 	virtual void fastAdvanceDone() { setCollisionLock(false); }
+
+	void setDoDetect(bool yes) { m_doDetect = yes; }
+	bool doDetect() { return m_doDetect; }
+
+	const QCanvasItemList collisionList() { return m_list; }
 
 private:
 	BallState state;
@@ -76,6 +81,9 @@ private:
 	Vector m_vector;
 	Vector oldVector;
 	bool m_collisionLock;
+
+	bool m_doDetect;
+	QCanvasItemList m_list;
 };
 
 

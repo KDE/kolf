@@ -29,8 +29,6 @@ class KSimpleConfig;
 class StateDB;
 class KolfGame;
 
-// this is mostly just internal -- don't use it
-
 class CanvasItem
 {
 public:
@@ -98,6 +96,10 @@ public:
 	 */
 	virtual void doAdvance() {}
 	/**
+	 * if all items of this type of item (based on rtti()) that are "colliding" (ie, in the same spot) with ball should get collision() called.
+	 */
+	virtual bool terrainCollisions() { return false; }
+	/**
 	 * returns whether or not this item lifts items on top of it.
 	 */
 	virtual bool vStrut() const { return false; }
@@ -143,7 +145,10 @@ public:
 	 */
 	void playSound(QString file);
 
-	virtual void collision(Ball * /*ball*/, long int /*id*/) {};
+	/**
+	 * called on ball's collision. Return if terrain collisions should be processed.
+	 */
+	virtual bool collision(Ball * /*ball*/, long int /*id*/) { return true; }
 
 	/**
 	 * reimplement if you want extra items to have access to the game object.

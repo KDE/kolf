@@ -52,6 +52,7 @@ public:
 	int id;
 	QPoint spot;
 	BallState state;
+	bool beginningOfHole;
 	int score;
 };
 typedef QValueList<BallStateInfo> BallStateList;
@@ -62,7 +63,7 @@ public:
 	Player() : m_ball(new Ball(0)) {};
 	Ball *ball() { return m_ball; }
 	void setBall(Ball *ball) { m_ball = ball; }
-	BallStateInfo stateInfo(int hole) { BallStateInfo ret; ret.spot = QPoint(m_ball->x(), m_ball->y()); ret.state = m_ball->curState(); ret.score = score(hole); ret.id = m_id; return ret; }
+	BallStateInfo stateInfo(int hole) { BallStateInfo ret; ret.spot = QPoint(m_ball->x(), m_ball->y()); ret.state = m_ball->curState(); ret.score = score(hole); ret.beginningOfHole = m_ball->beginningOfHole(); ret.id = m_id; return ret; }
 
 	QValueList<int> scores() { return m_scores; }
 	int score(int hole) { return (*m_scores.at(hole - 1)); }
@@ -144,6 +145,7 @@ class Slope : public QCanvasRectangle, public CanvasItem, public RectItem
 public:
 	Slope(QRect rect, QCanvas *canvas);
 	virtual void aboutToDie();
+	virtual int rtti() const { return 1031; }
 
 	virtual void showInfo();
 	virtual void hideInfo();
@@ -174,7 +176,8 @@ public:
 	virtual void load(KSimpleConfig *cfg);
 	virtual void save(KSimpleConfig *cfg);
 
-	virtual void collision(Ball *ball, long int id);
+	virtual bool collision(Ball *ball, long int id);
+	virtual bool terrainCollisions() { return true; }
 
 	QMap<KImageEffect::GradientType, QString> gradientI18nKeys;
 	QMap<KImageEffect::GradientType, QString> gradientKeys;
@@ -275,7 +278,7 @@ class Puddle : public Ellipse
 {
 public:
 	Puddle(QCanvas *canvas);
-	virtual void collision(Ball *ball, long int id);
+	virtual bool collision(Ball *ball, long int id);
 	virtual int rtti() const { return Rtti_DontPlaceOn; }
 	virtual void load(KSimpleConfig *cfg);
 	virtual void save(KSimpleConfig *cfg);
@@ -291,7 +294,7 @@ class Sand : public Ellipse
 {
 public:
 	Sand(QCanvas *canvas);
-	virtual void collision(Ball *ball, long int id);
+	virtual bool collision(Ball *ball, long int id);
 	virtual void load(KSimpleConfig *cfg);
 	virtual void save(KSimpleConfig *cfg);
 };
@@ -306,7 +309,7 @@ class Inside : public QCanvasEllipse, public CanvasItem
 {
 public:
 	Inside(CanvasItem *item, QCanvas *canvas) : QCanvasEllipse(canvas) { this->item = item; }
-	virtual void collision(Ball *ball, long int id) { item->collision(ball, id); }
+	virtual bool collision(Ball *ball, long int id) { return item->collision(ball, id); }
 
 private:
 	CanvasItem *item;
@@ -322,7 +325,7 @@ public:
 	virtual void moveBy(double dx, double dy);
 	virtual void editModeChanged(bool changed);
 
-	virtual void collision(Ball *ball, long int id);
+	virtual bool collision(Ball *ball, long int id);
 
 private:
 	QColor firstColor;
@@ -343,7 +346,7 @@ public:
 	Hole(QColor color, QCanvas *canvas);
 	virtual bool place(Ball * /*ball*/, bool /*wasCenter*/) { return true; };
 
-	virtual void collision(Ball *ball, long int id);
+	virtual bool collision(Ball *ball, long int id);
 
 protected:
 	virtual HoleResult result(const QPoint, double, bool *wasCenter);
@@ -443,12 +446,12 @@ class Wall : public QCanvasLine, public CanvasItem
 public:
 	Wall(QCanvas *canvas);
 	virtual void aboutToDie();
-	double dampening() { return 1.22; }
+	double dampening;
 
 	void setAlwaysShow(bool yes);
 	virtual void setZ(double newz);
 	virtual void setPen(QPen p);
-	virtual void collision(Ball *ball, long int id);
+	virtual bool collision(Ball *ball, long int id);
 	virtual void save(KSimpleConfig *cfg);
 	virtual void load(KSimpleConfig *cfg);
 	virtual void editModeChanged(bool changed);
@@ -481,7 +484,7 @@ public:
 	virtual void moveBy(double dx, double dy);
 	virtual int rtti() const { return Rtti_WallPoint; }
 	virtual bool deleteable() { return false; }
-	virtual void collision(Ball *ball, long int id);
+	virtual bool collision(Ball *ball, long int id);
 	virtual void clean();
 	virtual Config *config(QWidget *parent) { return wall->config(parent); }
 	void dontMove() { dontmove = true; };
@@ -564,7 +567,7 @@ class Bridge : public QCanvasRectangle, public CanvasItem, public RectItem
 {
 public:
 	Bridge(QRect rect, QCanvas *canvas);
-	virtual void collision(Ball *ball, long int id);
+	virtual bool collision(Ball *ball, long int id);
 	virtual void aboutToDie();
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
@@ -625,7 +628,6 @@ public:
 	Sign(QCanvas *canvas);
 	void setText(const QString &text) { m_text = text; update(); }
 	QString text() { return m_text; }
-	virtual int rtti() const { return Rtti_NoCollision; }
 	virtual void draw(QPainter &painter);
 	virtual bool vStrut() const { return false; }
 	virtual Config *config(QWidget *parent) { return new SignConfig(this, parent); }
@@ -640,7 +642,6 @@ class SignObj : public Object
 public:
 	SignObj() { m_name = i18n("Sign"); m__name = "sign"; }
 	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Sign(canvas); }
-	virtual int rtti() const { return Rtti_NoCollision; }
 };
 
 class Windmill;
@@ -733,6 +734,7 @@ class Floater : public Bridge
 {
 public:
 	Floater(QRect rect, QCanvas *canvas);
+	virtual bool collision(Ball *ball, long int id) { Bridge::collision(ball, id); return false; }
 	virtual void saveState(StateDB *db);
 	virtual void loadState(StateDB *db);
 	virtual void save(KSimpleConfig *cfg);
@@ -871,6 +873,8 @@ public:
 	void updateCourse() { course->update(); }
 	QCanvasItem *curSelectedItem() { return selectedItem; }
 	void setBorderWalls(bool);
+	void setInPlay(bool yes) { inPlay = yes; }
+	QString courseName() { return holeInfo.name(); }
 
 	static void courseInfo(CourseInfo &info, const QString &filename);
 

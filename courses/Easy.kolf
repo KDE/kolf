@@ -3,16 +3,8 @@ author=Jason Katz-Brown
 borderWalls=true
 name=Easy Course\s
 
-[1-ball@222,62]
+[1-ball@342,322]
 dummykey=true
-
-[1-bridge@313,271|20]
-botWallVisible=false
-height=30
-leftWallVisible=false
-rightWallVisible=false
-topWallVisible=false
-width=48
 
 [1-cup@325,52|14]
 dummykey=true
@@ -56,7 +48,7 @@ changeEnabled=false
 changeEvery=50
 
 [1-slope@117,173|18]
-grade=3
+grade=2
 gradient=Diagonal
 height=214
 reversed=false
@@ -88,12 +80,28 @@ stuckOnGround=false
 width=67
 
 [1-wall@0,0|13]
-endPoint=215,196
+endPoint=208,200
 startPoint=180,199
 
 [1-wall@0,0|17]
 endPoint=180,199
-startPoint=150,214
+startPoint=148,213
+
+[1-wall@0,0|21]
+endPoint=388,221
+startPoint=307,234
+
+[1-wall@0,0|22]
+endPoint=307,234
+startPoint=255,218
+
+[1-wall@0,0|23]
+endPoint=255,218
+startPoint=229,215
+
+[1-wall@0,0|24]
+endPoint=208,200
+startPoint=229,215
 
 [1-wall@0,0|3]
 endPoint=103,388
@@ -1839,95 +1847,77 @@ hasFinalLoad=false
 maxstrokes=10
 par=4
 
-[5-puddle@172,204|35]
+[5-puddle@187,195|33]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
-[5-puddle@179,180|33]
+[5-puddle@188,213|35]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [5-puddle@188,228|34]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [5-puddle@201,198|47]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [5-puddle@201,253|31]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
-[5-puddle@208,170|20]
+[5-puddle@204,179|20]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [5-puddle@209,217|23]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [5-puddle@219,271|21]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [5-puddle@223,238|30]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [5-puddle@225,179|26]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [5-puddle@229,252|25]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [5-puddle@230,201|29]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [5-puddle@248,218|24]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [5-puddle@252,268|27]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [5-puddle@256,241|22]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [5-puddle@306,368|46]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [5-puddle@331,361|32]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [5-puddle@365,367|45]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [5-sand@188,99|19]
 changeEnabled=true
@@ -2025,10 +2015,6 @@ startPoint=272,159
 endPoint=223,130
 startPoint=190,135
 
-[5-wall@0,0|7]
-endPoint=190,135
-startPoint=153,131
-
 [5-wall@0,0|8]
 endPoint=306,251
 startPoint=278,203
@@ -2039,6 +2025,7 @@ startPoint=372,267
 
 [5-windmill@259,284|44]
 botWallVisible=false
+bottom=true
 height=77
 leftWallVisible=false
 rightWallVisible=true

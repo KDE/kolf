@@ -8,6 +8,7 @@
 #include <qptrlist.h>
 #include <qstring.h>
 #include <qwidget.h>
+#include <qvaluelist.h>
 
 #include "game.h"
 
@@ -60,6 +61,7 @@ protected slots:
 	void initPlugins();
 	void showPlugins();
 	void keyBindings();
+	void showHighScores();
  
 private:
 	QWidget *dummy;
@@ -83,6 +85,7 @@ private:
 	KAction *saveAction;
 	KAction *aboutAction;
 	KListAction *holeAction;
+	KAction *highScoreAction;
 	KAction *nextAction;
 	KAction *prevAction;
 	KAction *firstAction;
@@ -102,5 +105,14 @@ private:
 	// contains subset of obj
 	ObjectList plugins;
 };
+
+struct HighScore
+{
+	HighScore() {}
+	HighScore(const QString &name, int score) { this->name = name; this->score = score; }
+	QString name;
+	int score;
+};
+typedef QValueList<HighScore> HighScoreList;
 
 #endif

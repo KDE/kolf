@@ -18,6 +18,7 @@
 Ball::Ball(QCanvas *canvas)
 	: QCanvasEllipse(canvas)
 {
+	m_doDetect = true;
 	m_collisionLock = false;
 	setBeginningOfHole(false);
 	setBlowUp(false);
@@ -87,8 +88,6 @@ void Ball::friction()
 
 void Ball::setVelocity(double vx, double vy)
 {
-	//kdDebug() << "Ball::setVelocity(" << vx << ", " << vy << ")" << endl;
-
 	QCanvasEllipse::setVelocity(vx, vy);
 
 	if (vx == 0 && vy == 0)
@@ -138,10 +137,9 @@ void Ball::doAdvance()
 
 void Ball::collisionDetect()
 {
-	if (!isVisible() || state == Holed)
+	if (!isVisible() || state == Holed || !m_doDetect)
 		return;
 
-	//kdDebug() << "collision detect\n";
 	if (collisionId >= INT_MAX - 1)
 		collisionId = 0;
 	else
@@ -154,21 +152,25 @@ void Ball::collisionDetect()
 
 	//kdDebug() << "velocitiees: " << xVelocity() << ", " << yVelocity() << endl;
 
-	QCanvasItemList list = collisions(true);
-	//kdDebug() << "collisions done\n";
-	if (list.isEmpty())
+	const double minSpeed = .06;
+
+	QCanvasItemList m_list = collisions(true);
+
+	// please don't ask why QCanvas doesn't actually sort its list;
+	// it just doesn't.
+	m_list.sort();
+
+	this->m_list = m_list;
+
+	if (m_list.isEmpty())
 	{
 		//kdDebug() << "collision list empty\n";
 		return;
 	}
 
-	// please don't ask why QCanvas doesn't actually sort its list
-	// it just doesn't.
-	list.sort();
-
 	QCanvasItem *item = 0;
 
-	for (QCanvasItemList::Iterator it = list.begin(); it != list.end(); ++it)
+	for (QCanvasItemList::Iterator it = m_list.begin(); it != m_list.end(); ++it)
 	{
 		item = *it;
 
@@ -181,6 +183,7 @@ void Ball::collisionDetect()
 			Ball *oball = dynamic_cast<Ball *>(item);
 			if (oball->collisionLock())
 				continue;
+			oball->setCollisionLock(true);
 
 			if ((oball->x() - x() != 0 && oball->y() - y() != 0) && state == Rolling)
 			{
@@ -214,32 +217,10 @@ void Ball::collisionDetect()
 				oball->setVector(bvector);
 				setVector(m_vector);
 
-				double distance = 0;
-
-				/*
-				distance = sqrt(pow(x() - item->x(), 2) + pow(y() - item->y(), 2));
-				//kdDebug() << "distance between balls is " << distance << endl;
-				double delta = (width() - distance) / 2.0;
-				//kdDebug() << "delta is " << delta << endl;
-				double _angle = atan2(y() - item->y(), x() - item->x());
-				//kdDebug() << "angle between balls is " << rad2deg(distance) << endl;
-				double delta_x = ::cos(_angle) * delta;
-				double delta_y = sin(_angle) * delta;
-
-				//kdDebug() << "moving balls\n";
-				setX(x() - delta_x);
-				setY(y() - delta_y);
-				item->setX(item->x() + delta_x);
-				item->setY(item->y() + delta_y);
-				//kdDebug() << "done moving balls\n";
-				*/
-
-				distance = sqrt(pow(x() - item->x(), 2) + pow(y() - item->y(), 2));
-				//kdDebug() << "distance between balls is " << distance << endl;
-				//kdDebug() << "---------\n";
-
 				oball->setState(Rolling);
 				setState(Rolling);
+
+				oball->doAdvance();
 			}
 
 			continue;
@@ -250,11 +231,33 @@ void Ball::collisionDetect()
 
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
 		if (citem)
-			citem->collision(this, collisionId);
-		else
+		{
+			if (!citem->terrainCollisions())
+			{
+				if (!citem->collision(this, collisionId))
+				{
+					goto end;
+				}
+			}
 			break;
+		}
+	}
 
-		continue;
+
+	for (QCanvasItemList::Iterator it = m_list.begin(); it != m_list.end(); ++it)
+	{
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(*it);
+		if (citem)
+			if (citem->terrainCollisions())
+				citem->collision(this, collisionId);
+	}
+
+	end:
+
+	if (m_vector.magnitude() < minSpeed && m_vector.magnitude())
+	{
+		setVelocity(0, 0);
+		setState(Stopped);
 	}
 }
 

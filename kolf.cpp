@@ -1,3 +1,4 @@
+#include <arts/kartsdispatcher.h>
 #include <kconfig.h>
 #include <kaction.h>
 #include <kmessagebox.h>
@@ -10,9 +11,11 @@
 #include <kprinter.h>
 #include <klocale.h>
 #include <kmainwindow.h>
+#include <kscoredialog.h>
 #include <kstatusbar.h>
 #include <kstdaccel.h>
 #include <kstdaction.h>
+#include <kstdgameaction.h>
 #include <kurl.h>
 
 #include <qevent.h>
@@ -47,6 +50,7 @@ Kolf::Kolf()
 	spacer = 0;
 	scoreboard = 0;
 
+	new KArtsDispatcher;
 	initGUI();
 
 	obj = new ObjectList;
@@ -90,17 +94,20 @@ Kolf::~Kolf()
 
 void Kolf::initGUI()
 {
-	newAction = KStdAction::openNew(this, SLOT(newGame()), actionCollection(), "game_new");
+	newAction = KStdGameAction::gameNew(this, SLOT(newGame()), actionCollection());
 	newAction->setText(newAction->text() + QString("..."));
 
 	(void) KStdAction::keyBindings(this, SLOT(keyBindings()), actionCollection());
-	endAction = KStdAction::close(this, SLOT(closeGame()), actionCollection(), "game_end");
-	endAction->setText(i18n("&Close Current Course"));
-	printAction = KStdAction::print(this, SLOT(print()), actionCollection(), "game_print");
+	endAction = KStdGameAction::end(this, SLOT(closeGame()), actionCollection());
+	printAction = KStdGameAction::print(this, SLOT(print()), actionCollection());
 
-	(void) KStdAction::quit(this, SLOT(close()), actionCollection(), "game_quit");
+	(void) KStdGameAction::quit(this, SLOT(close()), actionCollection());
 	saveAction = KStdAction::save(this, SLOT(save()), actionCollection(), "game_save");
+	saveAction->setText(i18n("Save Course"));
 	saveAsAction = KStdAction::saveAs(this, SLOT(saveAs()), actionCollection(), "game_save_as");
+	saveAsAction->setText(i18n("Save Course As..."));
+
+	highScoreAction = KStdGameAction::highscores(this, SLOT(showHighScores()), actionCollection());
 
 	editingAction = new KToggleAction(i18n("&Edit"), "pencil", CTRL+Key_E, 0, 0, actionCollection(), "editing");
 	newHoleAction = new KAction(i18n("&New"), "filenew", CTRL+Key_H, 0, 0, actionCollection(), "newhole");
@@ -231,6 +238,7 @@ void Kolf::startNewGame()
 		endAction->setEnabled(true);
 		setHoleMovementEnabled(true);
 		aboutAction->setEnabled(true);
+		highScoreAction->setEnabled(true);
 		printAction->setEnabled(true);
 		saveAction->setEnabled(true);
 		saveAsAction->setEnabled(true);
@@ -294,6 +302,7 @@ void Kolf::closeGame()
 	setEditingEnabled(false);
 	endAction->setEnabled(false);
 	aboutAction->setEnabled(false);
+	highScoreAction->setEnabled(false);
 	printAction->setEnabled(false);
 	saveAction->setEnabled(false);
 	saveAsAction->setEnabled(false);
@@ -309,10 +318,16 @@ void Kolf::closeGame()
 
 void Kolf::gameOver()
 {
+	if (!competition)
+		return;
+
 	int lowScore = INT_MAX; // let's hope it doesn't stay this way!
 	int curScore = 1;
 	QStringList names;
+	HighScoreList highScores;
 	int i = 1;
+	HighScore topScore;
+
 	while (curScore != 0)
 	{
 		QString curName;
@@ -328,10 +343,15 @@ void Kolf::gameOver()
 			names.clear();
 			lowScore = curScore;
 			names.append(curName);
+			topScore.name = curName;
+			topScore.score = curScore;
 		}
 		else if (curScore == lowScore)
 			names.append(curName);
+		else
+			highScores.append(HighScore(curName, curScore));
 	}
+	highScores.append(topScore);
 
 	if (names.count() > 1)
 	{
@@ -341,7 +361,32 @@ void Kolf::gameOver()
 	else
 		statusBar()->message(i18n("%1 won!").arg(names.first()));
 
+	// deal with highscores
+	// KScoreDialog makes it very easy :-))
+
+	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Score, this);
+	scoreDialog->setConfigGroup(game->courseName() + QString(" Highscores"));
+
+	for (HighScoreList::Iterator it = highScores.begin(); it != highScores.end(); ++it)
+	{
+		KScoreDialog::FieldInfo info;
+		info[KScoreDialog::Name] = (*it).name;
+
+		scoreDialog->addScore((*it).score, info, false, true);
+	}
+
+	scoreDialog->setComment(i18n("High Scores for Course %1").arg(game->courseName()));
+	scoreDialog->show();
+
 	QTimer::singleShot(700, this, SLOT(closeGame()));
+}
+
+void Kolf::showHighScores()
+{
+	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Score, this);
+	scoreDialog->setConfigGroup(game->courseName() + QString(" Highscores"));
+	scoreDialog->setComment(i18n("High Scores for Course %1").arg(game->courseName()));
+	scoreDialog->show();
 }
 
 void Kolf::save()

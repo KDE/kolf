@@ -11,6 +11,7 @@
 #include "canvasitem.h"
 #include "object.h"
 
+class StateDB;
 class KSimpleConfig;
 
 class PoolBallFactory : KLibFactory { Q_OBJECT public: QObject *createObject(QObject *, const char *, const char *, const QStringList & = QStringList()); };
@@ -21,7 +22,9 @@ public:
 	PoolBall(QCanvas *canvas);
 
 	virtual Config *config(QWidget *parent);
+	virtual void saveState(StateDB *);
 	virtual void save(KSimpleConfig *cfg);
+	virtual void loadState(StateDB *);
 	virtual void load(KSimpleConfig *cfg);
 	virtual void draw(QPainter &);
 	virtual bool fastAdvance() { return true; }

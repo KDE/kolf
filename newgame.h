@@ -9,7 +9,7 @@
 #include <qcolor.h>
 #include <qptrlist.h>
 #include <qstring.h>
-#include <qpushbutton.h>
+#include <kpushbutton.h>
 #include <qstringlist.h>
 #include <qvaluelist.h>
 #include <qwidget.h>
@@ -41,7 +41,7 @@ private:
 	bool mouseOver;
 };
 
-class TransparentButton : public QPushButton
+class TransparentButton : public KPushButton
 {
 	Q_OBJECT
 
@@ -102,17 +102,18 @@ private slots:
 	void addCourse();
 	void removeCourse();
 	void selectionChanged();
+	void showHighscores();
 
 private:
 	QVBox *layout;
-	QPushButton *addButton;
+	KPushButton *addButton;
 	QFrame *playerPage;
 	QScrollView *scroller;
 	QFrame *coursePage;
 	QFrame *optionsPage;
 	QValueList<QColor> startColors;
 	QPtrList<PlayerEditor> editors;
-	QPushButton *remove;
+	KPushButton *remove;
 	QCheckBox *mode;
 
 	QPixmap grass;
@@ -130,6 +131,7 @@ private:
 	QLabel *holes;
 
 	QString currentCourse;
+	QString currentCourseName;
 
 	void enableButtons();
 
