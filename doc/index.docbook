@@ -230,7 +230,7 @@ button next to the player's name.</para>
 <para>To start editing a hole, toggle the <menuchoice><guimenu>Hole</guimenu><guimenuitem>Edit</guimenuitem></menuchoice> menu item, or press the pencil icon on the toolbar. To leave editing mode, uncheck this menu item (or the toolbar icon).</para>
 
 <sect2> <title>Adding Objects</title>
-<para>To add a new object to the course, choose it's name in the list box titled <guilabel>Create Element</guilabel>. The object will appear in the center of the course.</para>
+<para>To add a new object to the course, choose it's name in the list box labeled <guilabel>Add object</guilabel>. The object will appear in the center of the course.</para>
 <caution>
 <para>Bridges and signs will cover up new objects if they were already in the center of the hole.</para>
 </caution>
@@ -243,7 +243,7 @@ button next to the player's name.</para>
 
 <sect2> <title>Moving and Resizing Objects</title>
 <para>Move your mouse cursor over the object that you want to move, and the mouse cursor will change to a hand cursor. Then click and drag the object to where you want it.</para>
-<para>Puddles, sand, floaters, bridges, and signs can be resized by dragging the small circle at their lower-left corner.</para>
+<para>Puddles, sand, floaters, bridges, and signs can be resized by dragging the small circle at their lower-right corner.</para>
 
 <note>
 <para>Walls can be moved by clicking and dragging their endpoints, or you can move the whole wall by clicking and dragging on the middle part of the wall as normal.</para>
@@ -251,7 +251,7 @@ button next to the player's name.</para>
 </sect2>
 
 <sect2> <title>Objects' Settings</title>
-<para>Objects' properties can be changed in the area at the lower-left corner of the &kolf; window. To edit an object, move your mouse cursor over it until the cursor changes to the hand cursor. Then click. Various controls for that object will appear in the lower-left corner of the &kolf; window.</para>
+<para>Objects' properties can be changed in the area at the lower-right corner of the &kolf; window. To edit an object, move your mouse cursor over it until the cursor changes to the hand cursor. Then click. Various controls for that object will appear in the lower-right corner of the &kolf; window.</para>
 <sect3> <title>General Hole Settings</title>
 <para>To edit general hole settings, click an area of the hole that is not covered by an object. When this is possible, the cursor will be the normal pointer cursor.</para>
 
@@ -306,7 +306,7 @@ button next to the player's name.</para>
 <listitem>
 <para>Whether or not this can be moved by other objects, like floaters.</para>
 <caution>
-<para>If a floater overlaps with this object at any point on this path, and the slope is large and thus won't move the floater, you <emphasis>must</emphasis> make the slope <guilabel>Unmoveable</guilabel>, or Kolf will suffer poor performance!</para>
+<para>If a floater overlaps with this object at any point on this path, and the slope is large and thus won't move the floater, you <emphasis>must</emphasis> make the slope <guilabel>Unmoveable</guilabel>, or &kolf; will suffer poor performance!</para>
 </caution>
 </listitem>
 </varlistentry>
