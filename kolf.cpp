@@ -92,7 +92,7 @@ void Kolf::initGUI()
 	connect(newDefaultAction, SIGNAL(activated(const QString &)), this, SLOT(openDefaultCourse(const QString &)));
 
 	newAction->setText(newAction->text() + QString("..."));
-	newSameAction = new KAction(i18n("&Same Course..."), "filenew", CTRL+SHIFT+Key_N, this, SLOT(newSameGame()), actionCollection(), "samecourse");
+	newSameAction = new KAction(i18n("&Play Course Again..."), "filenew", CTRL+SHIFT+Key_N, this, SLOT(newSameGame()), actionCollection(), "samecourse");
 	newSameAction->setStatusText(i18n("Open the last course you opened."));
 	endAction = KStdAction::close(this, SLOT(closeGame()), actionCollection());
 	endAction->setText(i18n("&Close Current Course"));

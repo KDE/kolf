@@ -1,11 +1,11 @@
 #include <kapplication.h>
+#include <kcombobox.h>
 #include <kconfig.h>
 #include <kdebug.h>
 #include <kdialog.h>
 #include <kfiledialog.h>
 #include <kglobal.h>
 #include <klineedit.h>
-#include <kcombobox.h>
 #include <kmessagebox.h>
 #include <kpixmap.h>
 #include <kpixmapeffect.h>
@@ -14,14 +14,15 @@
 #include <kstandarddirs.h>
 
 #include <math.h>
-#include <unistd.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #include <qbitmap.h>
 #include <qbrush.h>
 #include <qcanvas.h>
 #include <qcheckbox.h>
 #include <qcolor.h>
+#include <qcursor.h>
 #include <qevent.h>
 #include <qfont.h>
 #include <qfontmetrics.h>
@@ -900,15 +901,15 @@ void Floater::moveBy(double dx, double dy)
 	if (!isEnabled())
 		return;
 
-	QCanvasRectangle::moveBy(dx, dy);
-
 	QCanvasItemList l = collisions(false);
 	for (QCanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
 	{
 		CanvasItem *item = dynamic_cast<CanvasItem *>(*it);
+
 		if (!noUpdateZ)
 			if (item)
 				item->updateZ();
+
 		if ((*it)->z() >= z())
 		{
 			if (item)
@@ -918,13 +919,17 @@ void Floater::moveBy(double dx, double dy)
 					if (collidesWith(*it))
 					{
 						if ((*it)->rtti() == Rtti_Ball)
-							dynamic_cast<Ball *>(*it)->setMoved(true);
+						{
+							((Ball *)(*it))->setMoved(true);
+							if (game)
+								if (game->hasFocus() && !game->isEditing())
+									if (game->curBall() == (Ball *)(*it))
+										QCursor::setPos(QCursor::pos().x() + dx, QCursor::pos().y() + dy);
+						}
 
 						//kdDebug() << "moving an item\n";
 						if ((*it)->rtti() != Rtti_Putter)
-						{
 							(*it)->moveBy(dx, dy);
-						}
 					}
 				}
 			}
@@ -938,6 +943,10 @@ void Floater::moveBy(double dx, double dy)
 	botWall->move(x(), y());
 	leftWall->move(x(), y());
 	rightWall->move(x(), y());
+
+	// this call must come after we have tested for collisions, otherwise we skip them when saving!
+	// that's a bad thing
+	QCanvasRectangle::moveBy(dx, dy);
 }
 
 void Floater::save(KSimpleConfig *cfg, int hole)
@@ -2553,6 +2562,7 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 	addingNewHole = false;
 	scoreboardHoles = 0;
 	infoShown = false;
+	m_useMouse = true;
 
 	holeInfo.setAuthor(i18n("Course Author"));
 	holeInfo.setName(i18n("Course Name"));
@@ -2833,6 +2843,7 @@ void KolfGame::contentsMouseMoveEvent(QMouseEvent *e)
 		return;
 	}
 
+	//kdDebug() << "moving: " << moving << endl;
 	if (!moving || !editing)
 		return;
 
@@ -2880,9 +2891,7 @@ void KolfGame::keyPressEvent(QKeyEvent *e)
 	{
 		case Key_I: case Key_Up:
 			if (!e->isAutoRepeat())
-			{
 				showInfoPress();
-			}
 		break;
 
 		case Key_Escape:
@@ -3796,6 +3805,8 @@ void KolfGame::toggleEditMode()
 			return;
 		}
 	}
+
+	moving = false;
 
 	//kdDebug() << "toggling\n";
 	editing = !editing;

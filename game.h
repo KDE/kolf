@@ -487,7 +487,7 @@ protected:
 class Cup : public Hole
 {
 public:
-	Cup(QCanvas *canvas) : Hole(QColor("#FF923F"), canvas) { }
+	Cup(QCanvas *canvas) : Hole(QColor("#FF923F"), canvas) {}
 	virtual bool place(Ball *ball, bool wasCenter);
 	virtual void save(KSimpleConfig *cfg, int hole);
 	virtual bool canBeMovedByOthers() { return true; }
@@ -940,12 +940,14 @@ public:
 	~KolfGame();
 	ObjectList *objectList() { return &obj; }
 	void setFilename(const QString &filename);
-	QString curFilename() { return filename; }
+	QString curFilename() const { return filename; }
 	void emitLargestHole() { emit largestHole(highestHole); }
-	QCanvas *canvas() { return course; }
+	QCanvas *canvas() const { return course; }
 	void removeItem(QCanvasItem *item) { items.setAutoDelete(false); items.removeRef(item); }
 	// returns whether it was a cancel
 	bool askSave(bool);
+	bool isEditing() const { return editing; }
+	Ball *curBall() { return (*curPlayer).ball(); }
 
 public slots:
 	void pause();

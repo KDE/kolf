@@ -704,7 +704,7 @@ changeEvery=50
 changeEnabled=false
 changeEvery=50
 
-[12-puddle@81,72|21]
+[12-puddle@81,71|21]
 changeEnabled=false
 changeEvery=50
 
@@ -712,7 +712,7 @@ changeEvery=50
 changeEnabled=false
 changeEvery=50
 
-[12-puddle@90,78|26]
+[12-puddle@90,70|26]
 changeEnabled=false
 changeEvery=50
 
@@ -1162,7 +1162,7 @@ exitDeg=50
 maxspeed=2
 minspeed=1
 
-[14-cup@305,96|10]
+[14-cup@309,110|10]
 dummykey=true
 
 [14-cup@87,276|6]
@@ -1223,13 +1223,13 @@ reversed=true
 stuckOnGround=false
 width=63
 
-[14-slope@320,64|11]
+[14-slope@292,57|11]
 grade=2
 gradient=Vertical
-height=63
+height=73
 reversed=false
 stuckOnGround=false
-width=56
+width=93
 
 [14-wall@0,0|13]
 endPoint=203,205
@@ -1251,7 +1251,7 @@ startPoint=105,365
 endPoint=181,353
 startPoint=170,362
 
-[15-ball@42,375]
+[15-ball@47,364]
 dummykey=true
 
 [15-blackhole@228,90|22]
@@ -1335,7 +1335,7 @@ stuckOnGround=false
 width=93
 
 [15-slope@12,129|31]
-grade=1
+grade=3
 gradient=Horizontal
 height=125
 reversed=true
@@ -1391,7 +1391,7 @@ stuckOnGround=false
 width=41
 
 [15-slope@272,316|32]
-grade=1
+grade=3
 gradient=Vertical
 height=70
 reversed=false
@@ -1479,12 +1479,30 @@ width=108
 dummykey=true
 
 [16-blackhole@374,371|66]
-exit=316,79
+exit=318,79
 exitDeg=180
 maxspeed=1
 minspeed=1
 
-[16-cup@88,104|3]
+[16-cup@-48,-27|3]
+dummykey=true
+
+[16-cup@-48,-43|70]
+dummykey=true
+
+[16-cup@-50,-40|71]
+dummykey=true
+
+[16-cup@-51,-42|68]
+dummykey=true
+
+[16-cup@-52,-41|69]
+dummykey=true
+
+[16-cup@-57,-40|72]
+dummykey=true
+
+[16-cup@87,94|73]
 dummykey=true
 
 [16-floater@172,322|39]
@@ -2323,7 +2341,7 @@ startPoint=170,36
 endPoint=81,121
 startPoint=81,109
 
-[3-ball@376,375]
+[3-ball@346,322]
 dummykey=true
 
 [3-blackhole@203,286|7]
@@ -3157,7 +3175,7 @@ startPoint=93,90
 endPoint=158,60
 startPoint=132,51
 
-[5-ball@376,374]
+[5-ball@364,360]
 dummykey=true
 
 [5-cup@29,53|3]
@@ -3236,7 +3254,7 @@ startPoint=122,68
 endPoint=148,359
 startPoint=68,99
 
-[6-ball@39,30]
+[6-ball@38,36]
 dummykey=true
 
 [6-blackhole@331,316|12]
