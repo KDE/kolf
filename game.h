@@ -958,7 +958,6 @@ public:
 	bool isPaused() const { return paused; }
 	Ball *curBall() const { return (*curPlayer).ball(); }
 	void updateMouse();
-	//void changeMouse();
 	void ballMoved();
 	void updateHighlighter();
 	void updateCourse() { course->update(); }

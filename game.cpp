@@ -2648,9 +2648,9 @@ void Wall::setZ(double newz)
 {
 	QCanvasLine::setZ(newz);
 	if (startItem)
-		startItem->setZ(newz + 1);
+		startItem->setZ(newz + .002);
 	if (endItem)
-		endItem->setZ(newz + 1);
+		endItem->setZ(newz + .001);
 }
 
 void Wall::setPen(QPen p)
@@ -4444,7 +4444,7 @@ void KolfGame::openFile()
 
 		if (!loaded && name != "hole" && warned.contains(name) <= 0)
 		{
-			KMessageBox::information(this, i18n("To fully experience this hole, you'll need to install the %1 plugin.").arg(QString("\"%1\"").arg(name)), QString::null, QString("%1 warning").arg(name));
+			KMessageBox::information(this, i18n("This hole uses the %1 plugin, which you do not have installed.").arg(QString("\"%1\"").arg(name)), QString::null, QString("%1 warning").arg(name));
 			warned.append(name);
 		}
 	}
