@@ -581,10 +581,13 @@ public:
 	virtual Config *config(QWidget *parent) { return new BridgeConfig(this, parent); }
 	void setSize(int width, int height);
 	virtual QPtrList<QCanvasItem> moveableItems();
+
 	void setWallColor(QColor color);
 	QPen wallPen() { return topWall->pen(); }
+
 	double wallZ() { return topWall->z(); }
 	void setWallZ(double);
+
 	void setTopWallVisible(bool yes) { topWall->setVisible(yes); }
 	void setBotWallVisible(bool yes) { botWall->setVisible(yes); }
 	void setLeftWallVisible(bool yes) { leftWall->setVisible(yes); }

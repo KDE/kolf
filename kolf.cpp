@@ -320,6 +320,7 @@ void Kolf::gameOver()
 {
 	if (competition)
 	{
+		int curPar = 0;
 		int lowScore = INT_MAX; // let's hope it doesn't stay this way!
 		int curScore = 1;
 		QStringList names;
@@ -334,7 +335,13 @@ void Kolf::gameOver()
 
 			i++;
 
-			if (curName == i18n("Par") || curScore == 0)
+			if (curName == i18n("Par"))
+			{
+				curPar = curScore;
+				continue;
+			}
+
+			if (curScore == 0)
 				continue;
 
 			if (curScore < lowScore)
@@ -363,13 +370,15 @@ void Kolf::gameOver()
 		// deal with highscores
 		// KScoreDialog makes it very easy :-))
 
-		KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Score, this);
+		KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Custom1 | KScoreDialog::Score, this);
+		scoreDialog->addField(KScoreDialog::Custom1, i18n("Par"), "Par");
 		scoreDialog->setConfigGroup(game->courseName() + QString(" Highscores"));
 
 		for (HighScoreList::Iterator it = highScores.begin(); it != highScores.end(); ++it)
 		{
 			KScoreDialog::FieldInfo info;
 			info[KScoreDialog::Name] = (*it).name;
+			info[KScoreDialog::Custom1] = QString::number(curPar);
 
 			scoreDialog->addScore((*it).score, info, false, true);
 		}
@@ -383,7 +392,8 @@ void Kolf::gameOver()
 
 void Kolf::showHighScores()
 {
-	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Score, this);
+	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Custom1 | KScoreDialog::Score, this);
+	scoreDialog->addField(KScoreDialog::Custom1, i18n("Par"), "Par");
 	scoreDialog->setConfigGroup(game->courseName() + QString(" Highscores"));
 	scoreDialog->setComment(i18n("High Scores for Course %1").arg(game->courseName()));
 	scoreDialog->show();

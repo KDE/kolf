@@ -741,7 +741,7 @@ Bridge::Bridge(QRect rect, QCanvas *canvas)
 bool Bridge::collision(Ball *ball, long int /*id*/)
 {
 	ball->setFrictionMultiplier(.63);
-	return true;
+	return false;
 }
 
 void Bridge::setWallZ(double newz)
@@ -2409,7 +2409,7 @@ bool WallPoint::collision(Ball *ball, long int id)
 		//kdDebug() << "weird col\n";
 		lastId = id;
 
-		const double dampening = 1.0 + wall->dampening * ball->curVector().magnitude();
+		const double dampening = wall->dampening;
 
 		if (start.y() == end.y())
 		{
@@ -2456,7 +2456,7 @@ Wall::Wall(QCanvas *canvas)
 {
 	editing = false;
 
-	dampening = 0.022;
+	dampening = 1.2;
 
 	startItem = 0;
 	endItem = 0;
@@ -2635,25 +2635,24 @@ bool Wall::collision(Ball *ball, long int id)
 
 	double vx = ball->xVelocity();
 	double vy = ball->yVelocity();
-	const double _dampening = 1.0 + dampening * ball->curVector().magnitude();
 
 	if (start.y() == end.y())
 		// horizontal
 	{
 		vy *= -1;
-		vy /= _dampening;
-		vx /= _dampening;
+		vy /= dampening;
+		vx /= dampening;
 	}
 	else if (start.x() == end.x())
 		// vertical
 	{
 		vx *= -1;
-		vy /= _dampening;
-		vx /= _dampening;
+		vy /= dampening;
+		vx /= dampening;
 	}
 	else
 	{
-		const double speed = (double)sqrt(vx * vx + vy * vy) / _dampening;
+		const double speed = (double)sqrt(vx * vx + vy * vy) / dampening;
 		const double ballSlope = -(double)vy / (double)vx;
 		const double wallSlope = (double)(start.y() - end.y()) / (double)(end.x() - start.x());
 		double ballAngle = atan(ballSlope);
