@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=Slope Practice
+Name[ca]=Pràctica de baixada
 Name[da]=Træn skråninger
 Name[de]=Hügelpraxis
 Name[es]=Práctica de pendiente
@@ -8,6 +9,7 @@ Name[fi]=Kaltevuusharjoitus
 Name[fr]=Entraînement sur la pente
 Name[he]=אימון מדרונים
 Name[hu]=Gyakorlás lejtőn
+Name[is]=Æfing í halla
 Name[it]=Esercizio su pendio
 Name[ja]=斜面の練習
 Name[nb]=Skråningsøvelse
@@ -21,6 +23,7 @@ Name[sk]=Nácvik slope
 Name[sv]=Sluttningsövning
 Name[ven]=Ndowendowe ya Mutshoni
 Name[xh]=Induli yokuzilolonga
+Name[zh_CN]=斜坡练习
 Name[zh_TW]=斜坡練習
 Name[zu]=Ukuzejwayeza kokusantaba
 author=Jason Katz-Brown
