@@ -25,7 +25,7 @@ kolfincludedir=$(includedir)/kolf
 
 METASOURCES=AUTO
 
-messages: rc.cpp game.h
+messages: rc.cpp game.h floater.h slope.h
 	$(XGETTEXT) *.cpp -o $(podir)/kolf.pot
 
 install-data-local:

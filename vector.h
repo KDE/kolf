@@ -1,6 +1,8 @@
 #ifndef KOLF_VECTOR_H
 #define KOLF_VECTOR_H
 
+#include <math.h>
+
 #include <qpoint.h>
 
 class Point

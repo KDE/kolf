@@ -254,6 +254,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 				double ballAngle = m_vector.direction();
 				while (collisions(true).contains(item) > 0)
 					move(x() - cos(ballAngle) / 2.0, y() + sin(ballAngle) / 2.0);
+
 				// make a 2 pixel separation
 				move(x() - 2 * cos(ballAngle), y() + 2 * sin(ballAngle));
 

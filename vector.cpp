@@ -1,5 +1,3 @@
-#include <math.h>
-
 #include <kdebug.h>
 
 #include "vector.h"
@@ -103,5 +101,6 @@ void debugPoint(const QString &text, const Point &p)
 
 void debugVector(const QString &text, const Vector &p)
 {
-	kdDebug() << text << " (magnitude: " << p.magnitude() << ", direction: " << p.direction() << ")" << endl;
+	// debug degrees
+	kdDebug() << text << " (magnitude: " << p.magnitude() << ", direction: " << p.direction() << ", direction (deg): " << (360L / (2L * M_PI)) * p.direction() << ")" << endl;
 }
