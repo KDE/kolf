@@ -1,6 +1,7 @@
 [0-course@-50,-50]
 Name=Tutorial Course
 Name[af]=Tutoriaal Natuurlik
+Name[ar]=فصل دراسي
 Name[bg]=Обучение
 Name[bn]=টিউটোরিয়াল কোর্স
 Name[bs]=Teren za obuku
@@ -60,6 +61,7 @@ par=2
 
 [1-sign@2,2|3]
 Comment=<h3>Welcome</h3> to the tutorial course for Kolf!
+Comment[ar]=<h3>مرحباً</h3> إلى الفصل الدراسي للغولف!
 Comment[bg]=<h3>Добре дошли</h3> на обучаващите нива по голф!
 Comment[bn]=কল্‌ফ এর টিউটোরিয়াল কোর্সে <h3>স্বাগতম</h3> !
 Comment[bs]=<h3>Dobrodošli</h3> u Kolf teren za obuku!
@@ -111,6 +113,7 @@ width=319
 [1-sign@73,81|4]
 Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
 Comment[af]=Na getref die bal, druk en hou die Ondertoe Pyl van links muis knoppie. Hoe lang jy hou Ondertoe die muis knoppie van sleutel bepaal sterkte van die geskiet.
+Comment[ar]=لضرب الكرة, اضغط وامسك السهم الأسفل أَو زر الفأرة الأيسر. إن طول مدة مسك زرة الفأرة أو المفتاح يحددان قوّة الطّلقة.
 Comment[bg]=Натиснете и задръжте клавиша "долна стрелка" или левия бутон на мишката, за да ударите топката. Силата на удара зависи от продължителността на задържане на бутона на мишката или клавиатурата.
 Comment[bn]=বলে আঘাত করার জন্য ডাউন অ্যারো অথবা মাউসের বাম বাটন চেপে ধরে রাখুন। আঘাতের ফলে বল কী পরিমাণ দূরত্ব অতিক্রম করবে তা নির্ভর করে আপনি কতক্ষণ যাবত্‍ কীবোর্ড বা মাউসের বাটন চেপে ধরে রাখছেন তার ওপর।
 Comment[bs]=Da biste udarili lopticu, pritisnite i držite dugme Strelica dole ili lijevo dugme miša. Snagu udarca određujete dužinom pritiska na tipku odnosno dugme miša.
@@ -160,6 +163,7 @@ width=319
 
 [1-sign@74,251|7]
 Comment=To aim the putter, press the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use the mouse.
+Comment[ar]=لتَهْديف مضرب الجولف, إضغطْ سهم اليسار (عكس عقارب الساعة) واليمينَ (بإتجاه عقارب الساعةَ) أَو إستعمل الفأرة.
 Comment[bg]=За да насочите стика, натиснете клавиш "лява стрелка" (за завъртане обратно на часовниковата стрелка) и "дясна стрелка" (по часовниковата стрелка) или използвайте мишката.
 Comment[bn]=পুটারের দিকে লক্ষ্যস্থির করার জন্য কীবোর্ডের বাম ( ঘড়ির কাটার বিপরীতে) এবং ডান ( ঘড়ির কাটার দিকে ) অ্যারো কী (Key) অথবা মাউস ব্যবহার করুন।
 Comment[bs]=Da nanišanite palicom, pritisnite strelicu lijevo (rotacija suprotno kazaljci sata) ili desno (rotacija u smijeru kazaljke sata) ili koristite miš.
@@ -262,6 +266,7 @@ width=112
 
 [10-sign@7,9|4]
 Comment=<h3>Bridges</h3>Bridges can have walls on the top, bottom, left, or right.
+Comment[ar]=<h3>الجسور</h3>الجسور يمكن أن يكون لها جدران في الأعلى, الأسفل, اليسار, أو اليمين.
 Comment[bg]= <h3>Мостове</h3>Мостовете могат да имат стени отгоре, отдолу, отляво или отдясно.
 Comment[bn]=<h3>ব্রীজ</h3>  ব্রীজের উপরে, নীচে, ডানে, অথবা বামে দেয়াল থাকতে পারে।
 Comment[bs]=<h3>Mostovi</h3>Mostovi mogu imati zidove iznad, ispod, lijevo ili desno.
@@ -379,6 +384,7 @@ width=172
 
 [11-sign@145,4|3]
 Comment=<h3>Everything</h3>Here's a hole that has it all. Have fun with Kolf!<br><center>-- Jason Katz-Brown</center>
+Comment[ar]=<h3>كل شيء</h3>هنا فتحةَ التي أخذته جميعاً. وقتاً ممتعاً مَع الغولف!<br><center>-- Jason Katz-Brown</center>
 Comment[bg]=<h3>Всичко накуп</h3>Това е дупка, която притежава всичко. Приятна игра!<br><center>-- Jason Katz-Brown</center>
 Comment[bn]=<h3>সবকিছু</h3> এই গর্তে সবকিছুই আছে। কে-ওলফ খেলে মজা করুন! <br><center>-- জেসন কাট্‌জ-ব্রাউন</center>
 Comment[bs]=<h3>Svega pomalo</h3>Ovo je rupa koja ima sve. Zabavite se s Kolfom!<br><center>-- Jason Katz-Brown</center>
@@ -487,6 +493,7 @@ par=2
 
 [2-sign@1,5|3]
 Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you choose <u>Hole->Show Info</u>.
+Comment[ar]=<h3>منحدرت</h3>المنحدرات هي المناطق المائلة من الأرض التي تَدْفعُ الكرةَ في الإتّجاه الذي تنحدر إليه. هذا الاتجاه إلى الأسفل إذا اخترت <u>Hole->إظهار المعلومات</u>.
 Comment[bg]=<h3>Склонове</h3>Това са наклонени земни участъци, които изтласкват топката по посока на техния наклон. За да видите посоката изберете от менюто <u>Дупка/Информация</u>.
 Comment[bn]=<h3>ঢাল</h3> ঢাল হল মাটির মধ্যে নিচু স্থান যা বলকে কোন নির্দিষ্ট দিকে নিয়ে যায়। বলের এই গতিপথ দেখার জন্য <u>গর্ত->তথ্য প্রদর্শন</u> চাপুন।
 Comment[bs]=<h3>Nagibi</h3>Nagibi su nakošene oblasti tla koje guraju lopticu u smijeru u kojem padaju. Ovaj smjer se može vidjeti kada izaberete <u>Rupa->Prikaži informacije</u>.
@@ -536,6 +543,7 @@ width=392
 
 [2-sign@197,198|5]
 Comment=Hit the ball onto the slope and let it roll into cup.
+Comment[ar]=إضرب الكرة على المنحدر واتركها تنطوي في الكأس.
 Comment[bg]=Ако сте на склон, ударете топката леко и я оставете да се изтъркаля до дупката.
 Comment[bn]=বলে আঘাত করে ঢালের মধ্যে ঠেলে দিন এবং তা নিজে থেকেই গড়িয়ে গড়িয়ে কাপের দিকে চলে যাবে।
 Comment[bs]=Šutnite loptu prema nagibu i pustite da se spusti u rupu.
@@ -605,6 +613,7 @@ par=3
 
 [3-sign@4,4|4]
 Comment=Try out these different types of slopes.
+Comment[ar]=حاول هذه الأنواع المختلفة من المنحدرات.
 Comment[bg]=Тук може, да изпробвате различните видове наклони.
 Comment[bn]=বিভিন্ন ধরনের এই ঢালগুলো ব্যবহার করে দেখুন।
 Comment[bs]=Isprobajte ove razne vrste nagiba.
@@ -738,6 +747,7 @@ par=3
 
 [4-sign@6,3|3]
 Comment=The steepness of a slope is shown when you choose <u>Hole->Show Info</u>. Steepness goes from 8 (steepest) to 1 (shallowest).
+Comment[ar]=مدى حدة الانحدار ستظهر عندما تختار <u>Hole->إظهار المعلومات</u>. الحدّة تبدأ من 8 (حادة جداً) إلى 1 (أكثر ضحالة).
 Comment[bg]=За да видите стръмнината на склона, изберете от менюто <u>Дупка/Информация</u>. Наклонът се изменя от 8 (най-стръмен) до 1 (най-полегат).
 Comment[bn]=ঢালের বক্রতা দেখার জন্য <u>গর্ত->তথ্য প্রদর্শন</u> চাপুন। বক্রতার ব্যাপ্তি ১ ( অগভীরতম ) থেকে ৮ ( বক্রতম ) পর্যন্ত।
 Comment[bs]=Stupanj nagiba možete dobiti ako izaberete <u>Rupa->Prikaži informacije</u>. Nagnutost se kreće od 8 (najveća) do 1 (najmanja).
@@ -813,6 +823,7 @@ par=2
 
 [5-sign@3,5|3]
 Comment=<h3>Walls</h3>Bounce the ball off of the red walls.
+Comment[ar]=<h3>حوائط</h3>أوثب الكرة مِن الحيطانِ الحمراء.
 Comment[bg]=<h3>Стени</h3>Стените изтласкват топката, когато се удари в тях.
 Comment[bn]=<h3>দেয়াল</h3> লাল দেয়ালে আঘাত করে বলকে ফিরিয়ে আনুন।
 Comment[bs]=<h3>Zidovi</h3>Lopticu možete odbijati od crvene zidove.
@@ -916,6 +927,7 @@ width=78
 
 [6-sign@3,152|37]
 Comment=<h3>Sand</h3>Sand is yellow, and slows your ball down.
+Comment[ar]=<h3>الرمل</h3>الرمل أصفر, ويسمح لكرتك بالهبوط.
 Comment[bg]=<h3>Пясъци</h3>Пясъците са жълти и забавят топката.
 Comment[bn]=<h3>বালি</h3> বালির রং হলুদ, এবং এটি বলের গতি হ্রাস করে।
 Comment[bs]=<h3>Pijesak</h3>Pijesak je žute boje i usporava vašu lopticu.
@@ -966,6 +978,7 @@ width=138
 
 [6-sign@3,5|4]
 Comment=<h3>Puddles (Water)</h3>Hitting into a puddle (blue) adds a penalty stroke to your score, and your ball is placed outside the puddle.
+Comment[ar]=<h3>البُرَك (الماء)</h3>الضرب في البركة (الزرقاء) يضيف ضربة جزاء لرصيدك, ويتم إخراج الكرة من البركة.
 Comment[bg]=<h3>Локви</h3>Падането на топката в локва, прибавя наказателен удар към резултата и топката се изважда от локвата за следващия удар.
 Comment[bn]=<h3>ডোবা</h3> ডোবার (নীল রঙের) মধ্যে বল ফেললে আপনার স্কোর কমে যাবে, তবে বলটি ডোবা থেকে তুলে দেওয়া হবে।
 Comment[bs]=<h3>Bare (Voda)</h3>Pogodak u baru (plava boja) dodaje kaznene bodove na vaš rezultat, a loptica se premješta izvan bare.
@@ -1030,6 +1043,7 @@ par=2
 
 [7-sign@130,2|4]
 Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The windmill arm's speed may vary by hole.
+Comment[ar]=<h3>الطواحين الهوائية</h3>الطواحين الهوائية (قاعدة بنية مع أذرعة متحركة) لديها حوائط بنية (أو نف حوائط). سرعة ذراع الطّاحونة قد تَتفاوت بالفتحة.
 Comment[bg]=<h3>Вятърни мелници</h3>Вятърните мелници имат кафяви стени с подвижни части, между които трябва да мине топката. Скоростта им на движение може да е различна за различните дупки.
 Comment[bn]=<h3>বায়ুকল</h3> বায়ুকলের ( বাদামী ভিত্তির ওপর চলন্ত পাখা ) দেয়ালের ( বা অর্ধেক দেয়ালের ) রং বাদামী। গর্ত ভেদে বায়ুকলের পাখার গতি ভিন্ন হতে পারে।
 Comment[bs]=<h3>Vjetrenjače</h3>Vjetrenjača (smeđi stub sa pokretnom rukom) ima smeđe zidove (ili polu-zidove). Ruka vjetrenjače može biti različita za svaku rupu.
@@ -1107,6 +1121,7 @@ par=2
 [8-sign@5,5|3]
 Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out at.
 Comment[af]=<h3>Swart Gate</h3>Swart Gate vervoerder die bal na hulle beïendig, en uitskiet dit na 'n spoed direk verwante na die spoed jou bal was gaan. Kies <u>Gat->Show Inligting</u> na sien wat Swart Gat gaan na wat beïendig en die rigting die bal sal kom uit na.
+Comment[ar]=<h3>الحفر السوداء</h3>الحفر السوداء ترحّل الكرات إلى مخرجها, وتقذفها في سرعة علائقية مباشرة إلى السرعة التي كانت عليها كرتك. اختر <u>Hole->إظهار معلومات</u> لرُّؤية أيّة حفرة سوداء تذهب إلى أي مخرج والإتّجاه الذي ستخرج منه الكرة.
 Comment[bg]=<h3>Черни дупки</h3>Черните дупки пренасят топката до даден изхода и я изхвърлят със скорост, пропорционална на скоростта на движение на топката. Изберете от менюто <u>Дупка/Информация</u>, за да видите коя черна дупка до кой изход води и посоката, от която ще се появи топката.
 Comment[bn]=<h3>কালো গর্ত</h3> কালো গর্ত দিয়ে বল তার বহির্গমনের দিকে চলে যায়; কী গতিতে বহির্গমন দিয়ে বল বের হবে তা বলের গতির সাথে সরাসরি সম্পর্কিত। কোন কালো গর্ত কোন বহির্গমনের সাথে যুক্ত এবং কোন দিক দিয়ে বল বের হয়ে আসবে তা জানার জন্য <u>গর্ত-তথ্য প্রদর্শন</u> চাপুন।
 Comment[bs]=<h3>Crne rupe</h3>Crne rupe transportuju lopticu do svog izlaza, te je izbacuju brzinom proporcionalnom brzini kojom je loptica ranije išla. Izaberite <u>Rupa->Pokaži informacije</u> da vidite koja Crna rupa odgovara kojem izlazu kao i smjer kojim će loptica biti izbačena.
@@ -1186,6 +1201,7 @@ par=2
 
 [9-sign@5,6|3]
 Comment=<h3>Floaters</h3>Floaters are moving platforms that carry a ball that lands on it. Floaters' speeds vary.
+Comment[ar]=<h3>العوامات</h3>العوّامات تُحرّك الأرصفة التي تَحْمل الكرة التي تَهْبط عليها. تتفاوت سرعة العوامات.
 Comment[bg]=<h3>Хвърчащи килимчета</h3>Хвърчащите килимчета са подвижни платформи, които носят падналите върху тях топки. Скоростта им може да варира.
 Comment[bn]=<h3>ফ্লোটার</h3> ফ্লোটার হল একটি ভাসমান প্লাটফর্ম যার ওপর বল পড়লে সে তা নিয়ে ভেসে বেড়ায়। বিভিন্ন ফ্লোটারের গতি বিভিন্ন রকম।
 Comment[bs]=<h3>Plutači</h3>Plutači su pokretne platforme koje prenose lopticu koja padne na njih. Brzina plutača je promjenljiva.

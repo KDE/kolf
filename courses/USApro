@@ -53,6 +53,7 @@ width=840
 
 [1-sign@4,371|14]
 Comment=Daytona Beach, FL
+Comment[ar]=شاطئ دايتونا, FL
 Comment[bg]=Дейтона бийч, Флорида
 Comment[bn]=ডেটোনা বীচ, ফ্লোরিডা
 Comment[hi]=डायटोना बीच, फ्लो.
@@ -764,6 +765,7 @@ par=2
 
 [3-sign@-4,358|9]
 Comment=San Francisco, CA
+Comment[ar]=سان فرانسيسكو, CA
 Comment[bg]=Сан Франциско, Калифорния
 Comment[bn]=সান ফ্রান্সিসকো, ক্যালিফোর্নিয়া
 Comment[el]=Σαν Φρανσίσκο, CA
@@ -1344,6 +1346,7 @@ width=40
 
 [7-sign@135,364|25]
 Comment=San Francisco, CA
+Comment[ar]=سان فرانسيسكو, CA
 Comment[bg]=Сан Франциско, Калифорния
 Comment[bn]=সান ফ্রান্সিসকো, ক্যালিফোর্নিয়া
 Comment[el]=Σαν Φρανσίσκο, CA

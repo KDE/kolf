@@ -1,6 +1,7 @@
 [0-course@-50,-50]
 Name=Impossible Course
 Name[af]=Onmoontlik Natuurlik
+Name[ar]=الفصل المستحيل
 Name[bg]=Невъзможно
 Name[bn]=অসম্ভব কঠিন খেলা
 Name[bs]=Nemoguć teren
@@ -827,6 +828,7 @@ width=66
 
 [13-sign@142,193|1]
 Comment=Reprieve
+Comment[ar]=التّنفيس
 Comment[bg]=Отмяна
 Comment[bn]=সাময়িকভাবে স্থগিত
 Comment[bs]=Odgodi

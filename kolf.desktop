@@ -16,6 +16,7 @@ Icon=kolf
 MimeType=application/x-kourse;application/x-kolf
 
 GenericName=Miniature Golf
+GenericName[ar]=الغولف الصّغير
 GenericName[bg]=Миниатюрен голф
 GenericName[bn]=ছোটখাটো গলফ
 GenericName[bs]=Minijaturni golf
@@ -44,7 +45,7 @@ GenericName[nb]=Minigolf
 GenericName[nl]=Miniatuurgolf
 GenericName[nn]=Minigolf
 GenericName[pl]=Miniaturowy Golf
-GenericName[pt]=Golf em Miniatura
+GenericName[pt]=Golfe em Miniatura
 GenericName[pt_BR]=Golf em Miniatura
 GenericName[ro]=Golf în miniatură
 GenericName[ru]=Гольф в миниатюре

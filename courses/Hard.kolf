@@ -1,6 +1,7 @@
 [0-course@-50,-50]
 Name=Hard Course
 Name[af]=Hard Natuurlik
+Name[ar]=الفصل الصعب
 Name[bg]=Трудно
 Name[bn]=কঠিন খেলা
 Name[bs]=Težak teren
@@ -1109,6 +1110,7 @@ par=3
 
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
+Comment[ar]=دع العوّامات <بقوة>تدفع</بقوة> !
 Comment[bg]=Обръщане на грешките във Ваша полза!
 Comment[bn]=ফ্লোটারগুলো আপনাকে <strong>ধাক্কা</strong> দিক!
 Comment[bs]=Dopustite plutačima da vas <strong>guraju</strong>!
