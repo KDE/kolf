@@ -32,14 +32,14 @@ maxstrokes=10
 par=3
 
 [1-slope@10,9|13]
-grade=4
+grade=3
 gradient=Diagonal
 height=67
 reversed=true
 stuckOnGround=false
 width=77
 
-[1-slope@11,153|22]
+[1-slope@11,151|22]
 grade=3
 gradient=Opposite Diagonal
 height=66
@@ -47,7 +47,7 @@ reversed=false
 stuckOnGround=true
 width=86
 
-[1-slope@11,220|23]
+[1-slope@11,217|23]
 grade=3
 gradient=Diagonal
 height=73
@@ -56,7 +56,7 @@ stuckOnGround=true
 width=81
 
 [1-slope@137,133|6]
-grade=4
+grade=5
 gradient=Diagonal
 height=253
 reversed=false
@@ -71,16 +71,24 @@ reversed=false
 stuckOnGround=true
 width=177
 
-[1-slope@167,11|24]
-grade=4
+[1-slope@161,10|24]
+grade=3
 gradient=Opposite Diagonal
 height=79
 reversed=true
 stuckOnGround=true
 width=60
 
+[1-slope@216,10|23]
+grade=3
+gradient=Diagonal
+height=79
+reversed=true
+stuckOnGround=true
+width=108
+
 [1-slope@217,27|5]
-grade=4
+grade=5
 gradient=Elliptic
 height=179
 reversed=true
@@ -88,23 +96,15 @@ stuckOnGround=true
 width=179
 
 [1-slope@22,215|4]
-grade=4
+grade=5
 gradient=Elliptic
 height=188
 reversed=true
 stuckOnGround=true
 width=188
 
-[1-slope@222,11|23]
-grade=3
-gradient=Diagonal
-height=67
-reversed=true
-stuckOnGround=true
-width=107
-
 [1-slope@286,10|14]
-grade=4
+grade=3
 gradient=Opposite Diagonal
 height=105
 reversed=true
@@ -120,20 +120,12 @@ stuckOnGround=false
 width=53
 
 [1-slope@3,-3|3]
-grade=4
+grade=1
 gradient=Elliptic
 height=221
 reversed=true
 stuckOnGround=true
 width=221
-
-[1-slope@348,345|17]
-grade=8
-gradient=Diagonal
-height=40
-reversed=false
-stuckOnGround=true
-width=40
 
 [1-slope@88,283|10]
 grade=4
@@ -144,7 +136,7 @@ stuckOnGround=true
 width=52
 
 [1-slope@9,290|15]
-grade=4
+grade=3
 gradient=Opposite Diagonal
 height=99
 reversed=false
