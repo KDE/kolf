@@ -37,9 +37,9 @@ void ScoreBoard::newHole(int par)
 	setText(numRows() - 1, numCols() - 1, QString::number(tot));
 	
 	// shrink cell...
-	setColumnWidth(numRows() - 1, 3);
+	setColumnWidth(numCols() - 2, 3);
 	// and make it big enough for the numbers
-	adjustColumn(numRows() - 1);
+	adjustColumn(numCols() - 2);
 }
 
 void ScoreBoard::newPlayer(const QString &name)

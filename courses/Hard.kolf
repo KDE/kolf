@@ -1,5 +1,6 @@
 [0-course@-50,-50]
-Name=Hard Course
+Name=難しいコース
+Name[ja]=難しいコース
 Name[af]=hard natuurlik
 Name[bs]=Težak kurs
 Name[cs]=Těžký
@@ -8,7 +9,6 @@ Name[el]=Δύσκολη πίστα
 Name[es]=Curso duro
 Name[fi]=Vaikea kenttä
 Name[hu]=Nehéz pálya
-Name[ja]=難しいコース
 Name[pt]=Percurso Difícil
 Name[pt_BR]=Curso difícil
 Name[sl]=Težka steza
@@ -21,7 +21,7 @@ author=Jason Katz-Brown
 dummykey=true
 
 [1-blackhole@83,203|10]
-exit=115,215
+exit=111,214
 exitDeg=330
 maxspeed=5
 minspeed=3
@@ -286,18 +286,18 @@ reversed=false
 stuckOnGround=true
 width=74
 
-[10-slope@151,34|31]
+[10-slope@149,30|31]
 grade=3
 gradient=Horizontal
-height=84
+height=85
 reversed=true
 stuckOnGround=true
-width=46
+width=52
 
-[10-slope@18,33|60]
+[10-slope@18,32|60]
 grade=3
 gradient=Diagonal
-height=58
+height=59
 reversed=true
 stuckOnGround=false
 width=138
@@ -342,7 +342,7 @@ reversed=true
 stuckOnGround=false
 width=29
 
-[10-slope@212,205|61]
+[10-slope@211,199|61]
 grade=4
 gradient=Diagonal
 height=40
@@ -468,7 +468,7 @@ maxspeed=2
 minspeed=1
 
 [11-blackhole@293,44|16]
-exit=137,258
+exit=132,260
 exitDeg=0
 maxspeed=3
 minspeed=2
@@ -746,8 +746,8 @@ startPoint=209,113
 dummykey=true
 
 [12-blackhole@244,110|62]
-exit=158,101
-exitDeg=290
+exit=166,91
+exitDeg=280
 maxspeed=3
 minspeed=3
 
@@ -1079,16 +1079,16 @@ par=3
 
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
+Comment[ja]=フローターでボールを<strong>プッシュ</strong>させよう!
 Comment[da]=Lad svæverne <strong>skubbe</strong> dig!
 Comment[es]=Dejar que los flotadores te <strong>empujen</strong>
 Comment[fi]=Anna kelluvien <strong>painaa</strong> sinua!
 Comment[hu]=Csak a legjobbaknak!
-Comment[ja]=フローターでボールを<strong>プッシュ</strong>させよう!
 Comment[pt]=Deixe os flutuadores <strong>empurrá-lo</strong>!
-Comment[pt_BR]=Deixe as bóias <strong>levarem</strong> você! 
+Comment[pt_BR]=Deixe as bóias <strong>levarem</strong> você!
 Comment[sv]=Låt flottarna <strong>knuffa</strong> dig!
 Comment[xh]=Vumela ezidadayo <strong>tyhala</strong> wena!
-Comment[zu]=Yekela okuntantayo <strong>kukududule</strong>! 
+Comment[zu]=Yekela okuntantayo <strong>kukududule</strong>!
 botWallVisible=true
 height=196
 leftWallVisible=true
@@ -1296,10 +1296,10 @@ startPoint=170,362
 dummykey=true
 
 [15-blackhole@172,240|6]
-exit=317,259
-exitDeg=40
-maxspeed=7
-minspeed=5
+exit=316,255
+exitDeg=42
+maxspeed=1
+minspeed=0
 
 [15-blackhole@228,90|22]
 exit=345,328
@@ -1314,7 +1314,7 @@ maxspeed=5
 minspeed=3
 
 [15-blackhole@330,369|8]
-exit=351,363
+exit=353,363
 exitDeg=10
 maxspeed=5
 minspeed=3
@@ -1548,11 +1548,11 @@ stuckOnGround=false
 width=40
 
 [15-wall@0,0|10]
-endPoint=256,173
+endPoint=257,172
 startPoint=295,241
 
 [15-wall@0,0|11]
-endPoint=257,172
+endPoint=256,173
 startPoint=201,137
 
 [15-wall@0,0|12]
@@ -1561,11 +1561,11 @@ startPoint=12,110
 
 [15-wall@0,0|18]
 endPoint=295,241
-startPoint=330,281
+startPoint=331,283
 
 [15-wall@0,0|19]
 endPoint=363,242
-startPoint=331,283
+startPoint=330,281
 
 [15-wall@0,0|20]
 endPoint=382,237
@@ -1573,14 +1573,14 @@ startPoint=363,242
 
 [15-wall@0,0|23]
 endPoint=273,135
-startPoint=256,173
+startPoint=257,172
 
 [15-wall@0,0|28]
 endPoint=382,237
 startPoint=390,249
 
 [15-wall@0,0|9]
-endPoint=330,281
+endPoint=331,283
 startPoint=351,387
 
 [15-windmill@273,10|21]
@@ -1597,7 +1597,7 @@ width=115
 dummykey=true
 
 [16-blackhole@354,290|51]
-exit=314,39
+exit=319,40
 exitDeg=180
 maxspeed=4
 minspeed=3
@@ -1620,7 +1620,7 @@ dummykey=true
 [16-cup@-57,-40|72]
 dummykey=true
 
-[16-cup@87,87|73]
+[16-cup@87,84|73]
 dummykey=true
 
 [16-floater@122,335|39]
@@ -1898,7 +1898,7 @@ startPoint=345,264
 dummykey=true
 
 [17-blackhole@233,359|24]
-exit=296,34
+exit=288,38
 exitDeg=50
 maxspeed=3
 minspeed=1
@@ -2253,7 +2253,7 @@ startPoint=219,390
 dummykey=true
 
 [2-blackhole@142,61|20]
-exit=262,77
+exit=261,80
 exitDeg=305
 maxspeed=4
 minspeed=3
@@ -2271,7 +2271,7 @@ maxspeed=5
 minspeed=1
 
 [2-blackhole@374,89|7]
-exit=306,84
+exit=308,84
 exitDeg=244
 maxspeed=3
 minspeed=2
@@ -2498,16 +2498,16 @@ endPoint=86,192
 startPoint=54,196
 
 [2-wall@0,0|11]
-endPoint=32,173
+endPoint=33,173
 startPoint=54,196
 
 [2-wall@0,0|12]
 endPoint=11,167
-startPoint=31,174
+startPoint=33,173
 
 [2-wall@0,0|13]
 endPoint=48,144
-startPoint=32,173
+startPoint=33,173
 
 [2-wall@0,0|14]
 endPoint=28,113
@@ -2543,15 +2543,15 @@ startPoint=89,115
 
 [2-wall@0,0|54]
 endPoint=131,11
-startPoint=171,36
+startPoint=170,36
 
 [2-wall@0,0|55]
 endPoint=172,66
-startPoint=170,36
+startPoint=171,36
 
 [2-wall@0,0|56]
 endPoint=198,44
-startPoint=171,36
+startPoint=170,36
 
 [2-wall@0,0|60]
 endPoint=48,144
@@ -2563,14 +2563,14 @@ dummykey=true
 [3-blackhole@192,132|23]
 exit=47,35
 exitDeg=310
-maxspeed=4
-minspeed=2
+maxspeed=3.75
+minspeed=1.78
 
-[3-blackhole@209,286|7]
-exit=145,367
+[3-blackhole@208,286|7]
+exit=147,367
 exitDeg=180
-maxspeed=7
-minspeed=3
+maxspeed=6.63
+minspeed=2.33
 
 [3-cup@341,43|16]
 dummykey=true
@@ -2839,7 +2839,7 @@ maxspeed=2
 minspeed=1
 
 [4-blackhole@360,332|116]
-exit=122,236
+exit=122,234
 exitDeg=290
 maxspeed=5
 minspeed=3
@@ -3288,7 +3288,7 @@ startPoint=76,195
 
 [4-wall@0,0|111]
 endPoint=216,291
-startPoint=190,299
+startPoint=189,299
 
 [4-wall@0,0|115]
 endPoint=138,131
@@ -3391,7 +3391,7 @@ endPoint=69,367
 startPoint=39,353
 
 [4-wall@0,0|21]
-endPoint=189,299
+endPoint=190,299
 startPoint=164,241
 
 [4-wall@0,0|22]
@@ -3479,7 +3479,7 @@ endPoint=365,22
 startPoint=314,12
 
 [4-wall@0,0|5]
-endPoint=190,299
+endPoint=189,299
 startPoint=153,355
 
 [4-wall@0,0|7]
@@ -3635,7 +3635,7 @@ startPoint=68,99
 dummykey=true
 
 [6-blackhole@331,316|12]
-exit=203,62
+exit=199,62
 exitDeg=0
 maxspeed=6
 minspeed=2
@@ -4121,7 +4121,7 @@ startPoint=141,196
 dummykey=true
 
 [9-blackhole@189,342|22]
-exit=53,144
+exit=44,144
 exitDeg=0
 maxspeed=3
 minspeed=1

@@ -1,5 +1,6 @@
 [0-course@-50,-50]
-Name=Impossible Course
+Name=不可能なコース
+Name[ja]=不可能なコース
 Name[af]=onmoontlik natuurlik
 Name[bs]=Nemoguć kurs
 Name[cs]=Nesplnitelný
@@ -8,7 +9,6 @@ Name[el]=Πολύ δύσκολη πίστα
 Name[es]=Curso imposible
 Name[fi]=Mahdoton kenttä
 Name[hu]=Különlegesen nehéz pálya
-Name[ja]=不可能なコース
 Name[pt]=Percusro Impossível
 Name[pt_BR]=Curso Impossível
 Name[sl]=Nemogoča steza
@@ -347,8 +347,8 @@ startPoint=298,362
 [10-ball@351,365]
 dummykey=true
 
-[10-blackhole@256,206|4]
-exit=23,38
+[10-blackhole@255,206|4]
+exit=15,39
 exitDeg=0
 maxspeed=1
 minspeed=1
@@ -797,11 +797,11 @@ width=66
 
 [13-sign@142,193|1]
 Comment=Reprieve
+Comment[ja]=カンタンな一瞬
 Comment[da]=Red dig selv
 Comment[es]=Respiro
 Comment[fi]=Armonaika
 Comment[hu]=Mázli
-Comment[ja]=カンタンな一瞬
 Comment[pt]=Tortura
 Comment[pt_BR]=Suspensão
 Comment[sv]=Lättnad
@@ -922,7 +922,7 @@ width=92
 dummykey=true
 
 [15-blackhole@122,62|42]
-exit=104,219
+exit=107,219
 exitDeg=180
 maxspeed=5
 minspeed=3
@@ -1476,7 +1476,7 @@ width=154
 dummykey=true
 
 [17-blackhole@269,363|4]
-exit=198,378
+exit=198,384
 exitDeg=90
 maxspeed=3
 minspeed=2
@@ -1518,14 +1518,13 @@ height=44
 width=50
 
 [17-sign@23,152|20]
-Comment=Luck
+Comment=運
 Comment[bs]=Sreća
 Comment[da]=Held
 Comment[el]=Τύχη
 Comment[es]=Suerte
 Comment[fi]=Onni
 Comment[hu]=Szerencse
-Comment[ja]=運
 Comment[pt]=Sorte
 Comment[pt_BR]=Sorte
 Comment[sl]=Sreča
@@ -1633,7 +1632,7 @@ startPoint=70,330
 dummykey=true
 
 [18-blackhole@362,297|7]
-exit=210,44
+exit=207,44
 exitDeg=0
 maxspeed=2
 minspeed=1
@@ -1990,7 +1989,7 @@ startPoint=298,103
 dummykey=true
 
 [3-blackhole@85,70|9]
-exit=166,89
+exit=166,79
 exitDeg=269
 maxspeed=4
 minspeed=1
@@ -2047,13 +2046,13 @@ reversed=false
 stuckOnGround=false
 width=134
 
-[3-slope@135,82|4]
+[3-slope@136,74|4]
 grade=4
 gradient=Horizontal
-height=225
+height=234
 reversed=true
 stuckOnGround=true
-width=204
+width=205
 
 [3-wall@0,0|6]
 endPoint=338,308
@@ -2061,15 +2060,15 @@ startPoint=132,307
 
 [3-wall@0,0|7]
 endPoint=132,307
-startPoint=136,80
+startPoint=136,75
 
 [3-wall@0,0|8]
-endPoint=343,82
+endPoint=343,77
 startPoint=338,308
 
 [3-wall@0,0|9]
-endPoint=343,82
-startPoint=136,80
+endPoint=343,77
+startPoint=136,75
 
 [4-ball@125,336]
 dummykey=true
@@ -2651,19 +2650,19 @@ width=35
 dummykey=true
 
 [7-blackhole@111,125|20]
-exit=33,7
+exit=31,3
 exitDeg=270
 maxspeed=5
 minspeed=3
 
 [7-blackhole@146,160|19]
-exit=198,307
+exit=197,312
 exitDeg=90
 maxspeed=3
 minspeed=2
 
 [7-blackhole@99,169|21]
-exit=10,359
+exit=3,359
 exitDeg=0
 maxspeed=4
 minspeed=2
@@ -2789,7 +2788,7 @@ startPoint=-3,316
 dummykey=true
 
 [8-blackhole@296,38|9]
-exit=249,365
+exit=254,371
 exitDeg=139
 maxspeed=5
 minspeed=3
@@ -3069,7 +3068,7 @@ startPoint=379,154
 dummykey=true
 
 [9-blackhole@118,60|0]
-exit=271,93
+exit=269,90
 exitDeg=270
 maxspeed=5
 minspeed=5
@@ -3093,7 +3092,7 @@ maxspeed=3
 minspeed=3
 
 [9-blackhole@68,112|12]
-exit=373,153
+exit=373,150
 exitDeg=269
 maxspeed=5
 minspeed=4
@@ -3299,7 +3298,7 @@ height=66
 width=66
 
 [9-sign@146,329|23]
-Comment=Chaos
+Comment=カオス
 Comment[af]=chaos
 Comment[bs]=Haos
 Comment[da]=Kaos
@@ -3307,7 +3306,6 @@ Comment[el]=Χάος
 Comment[es]=Caos
 Comment[fi]=Kaaos
 Comment[hu]=Káosz
-Comment[ja]=カオス
 Comment[pt]=Caos
 Comment[pt_BR]=Caos
 Comment[sl]=Kaos
