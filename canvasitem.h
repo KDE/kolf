@@ -3,7 +3,7 @@
 
 #include <qcanvas.h>
 
-#include <kolf/config.h>
+#include "config.h"
 
 class Ball;
 class KConfig;

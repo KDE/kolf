@@ -6,8 +6,8 @@
 
 #include <math.h>
 
-#include <kolf/vector.h>
-#include <kolf/rtti.h>
+#include "vector.h"
+#include "rtti.h"
 
 enum BallState { Rolling = 0, Stopped, Holed };
 
