@@ -302,11 +302,11 @@ button next to the player's name.</para>
 <para>Choose the grade (steepness) of the slope by moving the slider so the grade moves towards 0 or 8, where 8 is steepest and 0 is flat. Steeper slopes push the ball more.</para>
 </listitem>
 </varlistentry>
-<varlistentry> <term><guilabel>Unmoveable</guilabel></term>
+<varlistentry> <term><guilabel>Unmovable</guilabel></term>
 <listitem>
 <para>Whether or not this can be moved by other objects, like floaters.</para>
 <caution>
-<para>If a floater overlaps with this object at any point on this path, and the slope is large and thus won't move the floater, you <emphasis>must</emphasis> make the slope <guilabel>Unmoveable</guilabel>, or &kolf; will suffer poor performance!</para>
+<para>If a floater overlaps with this object at any point on this path, and the slope is large and thus won't move the floater, you <emphasis>must</emphasis> make the slope <guilabel>Unmovable</guilabel>, or &kolf; will suffer poor performance!</para>
 </caution>
 </listitem>
 </varlistentry>
