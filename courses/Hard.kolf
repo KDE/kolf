@@ -1,18 +1,5 @@
 [0-course@-50,-50]
 Name=難しいコース
-Name[ja]=難しいコース
-Name[af]=hard natuurlik
-Name[bs]=Težak kurs
-Name[cs]=Těžký
-Name[da]=Svær bane
-Name[el]=Δύσκολη πίστα
-Name[es]=Curso duro
-Name[fi]=Vaikea kenttä
-Name[hu]=Nehéz pálya
-Name[pt]=Percurso Difícil
-Name[pt_BR]=Curso difícil
-Name[sl]=Težka steza
-Name[sv]=Svår bana
 author=Jason Katz-Brown
 name=Hard Course
 
@@ -1078,14 +1065,15 @@ par=3
 
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
-Comment[ja]=フローターでボールを<strong>プッシュ</strong>させよう!
 Comment[da]=Lad svæverne <strong>skubbe</strong> dig!
 Comment[es]=Dejar que los flotadores te <strong>empujen</strong>
 Comment[fi]=Anna kelluvien <strong>painaa</strong> sinua!
 Comment[hu]=Csak a legjobbaknak!
+Comment[ja]=フローターでボールを<strong>プッシュ</strong>させよう!
 Comment[pt]=Deixe os flutuadores <strong>empurrá-lo</strong>!
-Comment[pt_BR]=Deixe as bóias <strong>levarem</strong> você!
+Comment[pt_BR]=Deixe as bóias <strong>levarem</strong> você! 
 Comment[sv]=Låt flottarna <strong>knuffa</strong> dig!
+Comment[xh]=Vumela ezidadayo <strong>tyhala</strong> wena!
 botWallVisible=true
 height=196
 leftWallVisible=true
