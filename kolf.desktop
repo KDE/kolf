@@ -8,7 +8,6 @@ Name[hi]=कोल्फ
 Name[ru]=Гольф
 Name[ta]=கால்ஃப்
 Name[tg]=Колф
-Name[xx]=xxKolfxx
 
 Type=Application
 Exec=kolf %U
@@ -58,7 +57,6 @@ GenericName[tr]=Minyatür Golf
 GenericName[uk]=Мініатюрний гольф
 GenericName[wa]=Golf miniateure
 GenericName[xh]=Igalufa encinci
-GenericName[xx]=xxMiniature Golfxx
 GenericName[zh_CN]=微型高尔夫
 GenericName[zh_TW]=迷你高爾夫
 GenericName[zu]=Igalofu elincanyana
