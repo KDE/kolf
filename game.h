@@ -460,7 +460,7 @@ protected:
 private:
 	long int lastId;
 
-	friend WallPoint;
+	friend class WallPoint;
 };
 class WallPoint : public QCanvasEllipse, public CanvasItem
 {
@@ -484,14 +484,14 @@ protected:
 	Wall *wall;
 	bool editing;
 	bool visible;
-	
+
 private:
 	bool alwaysShow;
 	bool start;
 	bool dontmove;
 	long int lastId;
 
-	friend Wall;
+	friend class Wall;
 };
 class WallObj : public Object
 {
@@ -593,7 +593,7 @@ public:
 	bool botWallVisible() const { return botWall->isVisible(); }
 	bool leftWallVisible() const { return leftWall->isVisible(); }
 	bool rightWallVisible() const { return rightWall->isVisible(); }
-	
+
 protected:
 	Wall *topWall;
 	Wall *botWall;
@@ -760,7 +760,7 @@ public:
 	StrokeCircle(QCanvas *canvas);
 
 	void setValue(double v);
-	double value();	
+	double value();
 	void setMaxValue(double m);
 	void setSize(int w, int h);
 	void setThickness(int t);
@@ -900,7 +900,7 @@ protected:
 	void mouseDoubleClickEvent(QMouseEvent *e);
 
 	void handleMousePressEvent(QMouseEvent *e);
-	void handleMouseDoubleClickEvent(QMouseEvent *e);	
+	void handleMouseDoubleClickEvent(QMouseEvent *e);
 	void handleMouseMoveEvent(QMouseEvent *e);
 	void handleMouseReleaseEvent(QMouseEvent *e);
 	void keyPressEvent(QKeyEvent *e);

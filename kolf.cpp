@@ -73,7 +73,7 @@ Kolf::Kolf()
 	layout = new QGridLayout(dummy, 3, 1);
 
 	resize(420, 480);
-	applyMainWindowSettings(KGlobal::config(), "TopLevelWindow");
+	setAutoSaveSettings("TopLevelWindow");
 }
 
 Kolf::~Kolf()
@@ -155,13 +155,12 @@ void Kolf::initGUI()
 	createGUI();
 }
 
-void Kolf::closeEvent(QCloseEvent *e)
+bool Kolf::queryClose()
 {
 	if (game)
 		if (game->askSave(true))
-			return;
-	saveMainWindowSettings(KGlobal::config(), "TopLevelWindow");
-	e->accept();
+			return false;
+	return true;
 }
 
 void Kolf::startNewGame()
@@ -256,10 +255,10 @@ void Kolf::startNewGame()
 	//connect(replayShotAction, SIGNAL(activated()), game, SLOT(replay()));
 	connect(aboutAction, SIGNAL(activated()), game, SLOT(showInfoDlg()));
 	connect(useMouseAction, SIGNAL(toggled(bool)), game, SLOT(setUseMouse(bool)));
-	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), game, SLOT(setUseAdvancedPutting(bool)));		
-	connect(soundAction, SIGNAL(toggled(bool)), game, SLOT(setSound(bool)));		
-	connect(showGuideLineAction, SIGNAL(toggled(bool)), game, SLOT(setShowGuideLine(bool)));		
-	connect(showInfoAction, SIGNAL(toggled(bool)), game, SLOT(setShowInfo(bool)));		
+	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), game, SLOT(setUseAdvancedPutting(bool)));
+	connect(soundAction, SIGNAL(toggled(bool)), game, SLOT(setSound(bool)));
+	connect(showGuideLineAction, SIGNAL(toggled(bool)), game, SLOT(setShowGuideLine(bool)));
+	connect(showInfoAction, SIGNAL(toggled(bool)), game, SLOT(setShowInfo(bool)));
 
 	game->setUseMouse(useMouseAction->isChecked());
 	game->setUseAdvancedPutting(useAdvancedPuttingAction->isChecked());
@@ -311,7 +310,7 @@ void Kolf::tutorial()
 	QString newfilename = KGlobal::dirs()->findResource("appdata", "tutorial.kolfgame");
 	if (newfilename.isNull())
 	        return;
-	
+
 	filename = QString::null;
 	loadedGame = newfilename;
 	isTutorial = true;
@@ -504,9 +503,9 @@ void Kolf::saveGameAs()
 	QString newfilename = KFileDialog::getSaveFileName(QString::null, "application/x-kolf", this, i18n("Pick Saved Game to Save To"));
 	if (newfilename.isNull())
 		return;
-	
+
 	loadedGame = newfilename;
-	
+
 	saveGame();
 }
 
@@ -517,7 +516,7 @@ void Kolf::saveGame()
 		saveGameAs();
 		return;
 	}
-	
+
 	KConfig config(loadedGame);
 	config.setGroup("0 Saved Game");
 
@@ -804,13 +803,12 @@ void Kolf::configureToolBars()
 
 	KEditToolbar dlg(actionCollection());
 	connect(&dlg, SIGNAL(newToolbarConfig()), SLOT(newToolBarConfig()));
-
-	if (dlg.exec())
-		createGUI();
+	dlg.exec();
 }
 
 void Kolf::newToolBarConfig()
 {
+	createGUI();
 	applyMainWindowSettings(KGlobal::config(), "TopLevelWindow");
 }
 

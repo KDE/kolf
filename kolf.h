@@ -39,7 +39,7 @@ public slots:
 	void updateModified(bool);
 
 protected:
-	void closeEvent(QCloseEvent *);
+	virtual bool queryClose();
 
 protected slots:
 	void startNewGame();
@@ -65,9 +65,9 @@ protected slots:
 	void newStatusText(const QString &);
 	void showInfoChanged(bool);
 	void useMouseChanged(bool);
-	void useAdvancedPuttingChanged(bool);	
-	void showGuideLineChanged(bool);	
-	void soundChanged(bool);	
+	void useAdvancedPuttingChanged(bool);
+	void showGuideLineChanged(bool);
+	void soundChanged(bool);
 	void initPlugins();
 	void showPlugins();
 	void keyBindings();
@@ -80,7 +80,7 @@ protected slots:
 	void emptySlot() {};
 
 	void setCurrentHole(int);
- 
+
 private:
 	QWidget *dummy;
 	KolfGame *game;
@@ -117,8 +117,8 @@ private:
 	KAction *randAction;
 	KToggleAction *showInfoAction;
 	KToggleAction *useMouseAction;
-	KToggleAction *useAdvancedPuttingAction;	
-	KToggleAction *showGuideLineAction;	
+	KToggleAction *useAdvancedPuttingAction;
+	KToggleAction *showGuideLineAction;
 	KToggleAction *soundAction;
 	void setHoleMovementEnabled(bool);
 	void setHoleOtherEnabled(bool);
