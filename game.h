@@ -1018,6 +1018,8 @@ protected:
 
 	QPoint viewportToViewport(const QPoint &p);
 
+  QRect canvasRect() const;
+
 private:
 	QCanvas *course;
 	Putter *putter;

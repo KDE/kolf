@@ -3160,7 +3160,9 @@ void KolfGame::contentsMouseDoubleClickEvent(QMouseEvent *e)
 void KolfGame::contentsMousePressEvent(QMouseEvent *e)
 {
 	if (inPlay || m_ignoreEvents)
+  {
 		return;
+  }
 
 	if (!editing)
 	{
@@ -3241,6 +3243,9 @@ QPoint KolfGame::viewportToViewport(const QPoint &p)
 
 void KolfGame::mouseReleaseEvent(QMouseEvent * e)
 {
+  if (canvasRect().contains(e->pos()))
+    return;
+
   QMouseEvent fixedEvent
     (
       QEvent::MouseButtonRelease,
@@ -3254,6 +3259,9 @@ void KolfGame::mouseReleaseEvent(QMouseEvent * e)
 
 void KolfGame::mousePressEvent(QMouseEvent * e)
 {
+  if (canvasRect().contains(e->pos()))
+    return;
+
   QMouseEvent fixedEvent
     (
       QEvent::MouseButtonPress,
@@ -3267,6 +3275,9 @@ void KolfGame::mousePressEvent(QMouseEvent * e)
 
 void KolfGame::mouseDoubleClickEvent(QMouseEvent * e)
 {
+  if (canvasRect().contains(e->pos()))
+    return;
+
   QMouseEvent fixedEvent
     (
       QEvent::MouseButtonDblClick,
@@ -3280,6 +3291,9 @@ void KolfGame::mouseDoubleClickEvent(QMouseEvent * e)
 
 void KolfGame::mouseMoveEvent(QMouseEvent * e)
 {
+  if (canvasRect().contains(e->pos()))
+    return;
+
   QMouseEvent fixedEvent
     (
       QEvent::MouseMove,
@@ -4858,19 +4872,18 @@ void KolfGame::print(KPrinter &pr)
 {
 	QPainter p(&pr);
 
-	QRect canvasRect(0, 0, width, height);
 	QPaintDeviceMetrics metrics(&pr);
 
 	// translate to center
-	p.translate(metrics.width() / 2 - canvasRect.width() / 2, metrics.height() / 2 - canvasRect.height() / 2);
+	p.translate(metrics.width() / 2 - canvasRect().width() / 2, metrics.height() / 2 - canvasRect().height() / 2);
 
 	QPixmap pix(width, height);
 	QPainter pixp(&pix);
-	course->drawArea(canvasRect, &pixp);
+	course->drawArea(canvasRect(), &pixp);
 	p.drawPixmap(0, 0, pix);
 
 	p.setPen(QPen(black, 2));
-	p.drawRect(canvasRect);
+	p.drawRect(canvasRect());
 
 	p.resetXForm();
 
@@ -4883,7 +4896,7 @@ void KolfGame::print(KPrinter &pr)
 		QRect rect = QFontMetrics(font).boundingRect(text);
 		p.setFont(font);
 
-		p.drawText(metrics.width() / 2 - rect.width() / 2, metrics.height() / 2 - canvasRect.height() / 2 -20 - rect.height(), text);
+		p.drawText(metrics.width() / 2 - rect.width() / 2, metrics.height() / 2 - canvasRect().height() / 2 -20 - rect.height(), text);
 	}
 }
 
@@ -5009,6 +5022,11 @@ void KolfGame::saveScores(KConfig *config)
 
 		config->writeEntry("Scores", scores);
 	}
+}
+
+QRect KolfGame::canvasRect() const
+{
+  return QRect(10, 10, width - 20, height - 20);
 }
 
 #include "game.moc"
