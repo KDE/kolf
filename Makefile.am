@@ -15,7 +15,8 @@ libkolf_la_LIBADD = $(LIB_KDEGAMES) $(LIB_KDEPRINT) $(LIB_KIO) -lartskde
 
 # the installed header files
 kolfinclude_HEADERS = \
-	ball.h game.h statedb.h config.h canvasitem.h object.h rtti.h vector.h
+	ball.h game.h statedb.h config.h canvasitem.h object.h rtti.h vector.h \
+	floater.h slope.h
 
 kolfincludedir=$(includedir)/kolf
 

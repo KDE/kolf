@@ -1570,7 +1570,6 @@ WallPoint::WallPoint(bool start, Wall *wall, QCanvas *canvas)
 		p = wall->endPoint();
 	setX(p.x());
 	setY(p.y());
-	setZ(wall->z() + 1);
 }
 
 void WallPoint::clean()
@@ -1715,7 +1714,6 @@ Wall::Wall(QCanvas *canvas)
 	endItem = 0;
 
 	moveBy(0, 0);
-	setPoints(-15, 10, 15, -5);
 	setZ(50);
 
 	startItem = new WallPoint(true, this, canvas);
@@ -1843,8 +1841,8 @@ void Wall::editModeChanged(bool changed)
 {
 	editing = changed;
 
-	startItem->setZ(z() + 1);
-	endItem->setZ(z() + 1);
+	startItem->setZ(z() + .002);
+	endItem->setZ(z() + .001);
 	startItem->editModeChanged(editing);
 	endItem->editModeChanged(editing);
 
@@ -2508,7 +2506,8 @@ void KolfGame::handleMouseMoveEvent(QMouseEvent *e)
 
 	highlighter->moveBy(-(double)moveX, -(double)moveY);
 	movingItem->moveBy(-(double)moveX, -(double)moveY);
-	emit newStatusText(QString("%1x%2").arg(movingItem->x()).arg(movingItem->y()));
+	QRect brect = movingItem->boundingRect();
+	emit newStatusText(QString("%1x%2").arg(brect.x()).arg(brect.y()));
 	storedMousePos = mouse;
 }
 

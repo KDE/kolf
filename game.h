@@ -147,10 +147,12 @@ public:
 	virtual CanvasItem *itemToDelete() { return dynamic_cast<CanvasItem *>(rect); }
 	void setSizeFactor(double newFactor) { m_sizeFactor = newFactor; }
 
-private:
-	bool dontmove;
+protected:
 	RectItem *rect;
 	double m_sizeFactor;
+
+private:
+	bool dontmove;
 };
 
 class Ellipse : public QCanvasEllipse, public CanvasItem, public RectItem
@@ -182,11 +184,11 @@ public:
 
 protected:
 	RectPoint *point;
+	int m_changeEvery;
+	bool m_changeEnabled;
 
 private:
 	int count;
-	int m_changeEvery;
-	bool m_changeEnabled;
 	bool dontHide;
 };
 class EllipseConfig : public Config
@@ -248,7 +250,7 @@ public:
 	Inside(CanvasItem *item, QCanvas *canvas) : QCanvasEllipse(canvas) { this->item = item; }
 	virtual bool collision(Ball *ball, long int id) { return item->collision(ball, id); }
 
-private:
+protected:
 	CanvasItem *item;
 };
 
@@ -264,11 +266,13 @@ public:
 
 	virtual bool collision(Ball *ball, long int id);
 
-private:
+protected:
 	QColor firstColor;
 	QColor secondColor;
-	int count;
 	Inside *inside;
+
+private:
+	int count;
 };
 class BumperObj : public Object
 {
@@ -298,7 +302,7 @@ public:
 	virtual bool canBeMovedByOthers() const { return true; }
 	virtual void draw(QPainter &painter);
 
-private:
+protected:
 	QPixmap pixmap;
 };
 class CupObj : public Object
@@ -342,7 +346,7 @@ public:
 	virtual Config *config(QWidget *parent);
 	BlackHole *blackHole;
 
-private:
+protected:
 	Arrow *arrow;
 };
 class BlackHoleTimer : public QObject
@@ -360,7 +364,7 @@ protected slots:
 	void mySlot();
 	void myMidSlot();
 
-private:
+protected:
 	double m_speed;
 	Ball *m_ball;
 };
@@ -398,17 +402,17 @@ public slots:
 	void eject(Ball *ball, double speed);
 	void halfway();
 
-private:
+protected:
 	int exitDeg;
 	BlackHoleExit *exitItem;
-	QCanvasEllipse *outside;
-	QCanvasLine *infoLine;
-
-	void finishMe();
 	double m_minSpeed;
 	double m_maxSpeed;
 
+private:
 	int runs;
+	QCanvasLine *infoLine;
+	QCanvasEllipse *outside;
+	void finishMe();
 };
 class BlackHoleObj : public Object
 {
@@ -438,7 +442,7 @@ public:
 	virtual void clean();
 
 	// must reimp because we gotta move the end items,
-	// and we do that in :moveBy()
+	// and we do that in moveBy()
 	virtual void setPoints(int xa, int ya, int xb, int yb) { QCanvasLine::setPoints(xa, ya, xb, yb); moveBy(0, 0); }
 
 	virtual int rtti() const { return Rtti_DontPlaceOn; }
@@ -448,11 +452,13 @@ public:
 
 	virtual QPointArray areaPoints() const;
 
-private:
-	int lastId;
-	bool editing;
+protected:
 	WallPoint *startItem;
 	WallPoint *endItem;
+	bool editing;
+
+private:
+	int lastId;
 };
 class WallPoint : public QCanvasEllipse, public CanvasItem
 {
@@ -469,14 +475,16 @@ public:
 	virtual Config *config(QWidget *parent) { return wall->config(parent); }
 	void dontMove() { dontmove = true; };
 	void updateVisible();
+
+protected:
+	Wall *wall;
+	bool editing;
+	bool visible;
 	
 private:
 	bool alwaysShow;
-	Wall *wall;
-	bool editing;
 	bool start;
 	bool dontmove;
-	bool visible;
 	int lastId;
 };
 class WallObj : public Object
@@ -639,7 +647,7 @@ public:
 	void setBetween(int newmin, int newmax) { max = newmax; min = newmin; }
 	virtual void advance(int phase);
 
-private:
+protected:
 	int max;
 	int min;
 };
@@ -674,7 +682,7 @@ public:
 	void setBottom(bool yes);
 	bool bottom() const { return m_bottom; }
 
-private:
+protected:
 	WindmillGuard *guard;
 	Wall *left;
 	Wall *right;
