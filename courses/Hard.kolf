@@ -478,7 +478,7 @@ maxspeed=2
 minspeed=1
 
 [11-blackhole@293,44|16]
-exit=133,259
+exit=132,259
 exitDeg=5
 maxspeed=3
 minspeed=2
@@ -683,7 +683,7 @@ endPoint=253,280
 startPoint=10,278
 
 [11-wall@0,0|42]
-endPoint=197,53
+endPoint=199,63
 startPoint=209,113
 
 [12-ball@58,341]
@@ -2543,17 +2543,17 @@ startPoint=50,133
 [3-ball@346,322]
 dummykey=true
 
+[3-blackhole@192,132|23]
+exit=47,35
+exitDeg=310
+maxspeed=4
+minspeed=2
+
 [3-blackhole@209,286|7]
 exit=145,367
 exitDeg=180
 maxspeed=7
 minspeed=5
-
-[3-blackhole@251,75|23]
-exit=47,35
-exitDeg=310
-maxspeed=4
-minspeed=2
 
 [3-cup@341,43|16]
 dummykey=true
@@ -2665,7 +2665,7 @@ stuckOnGround=false
 width=48
 
 [3-slope@99,36|39]
-grade=2
+grade=3
 gradient=Elliptic
 height=190
 reversed=true
@@ -2705,7 +2705,7 @@ endPoint=150,198
 startPoint=224,228
 
 [3-wall@0,0|31]
-endPoint=192,252
+endPoint=192,250
 startPoint=128,227
 
 [3-wall@0,0|34]
@@ -2713,11 +2713,11 @@ endPoint=255,24
 startPoint=250,13
 
 [3-wall@0,0|35]
-endPoint=192,250
+endPoint=192,252
 startPoint=192,250
 
 [3-wall@0,0|36]
-endPoint=192,252
+endPoint=192,250
 startPoint=189,264
 
 [3-wall@0,0|38]
