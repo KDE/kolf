@@ -2139,7 +2139,11 @@ void BlackHole::aboutToDie()
 void BlackHole::updateInfo()
 {
 	if (infoLine)
-		showInfo();
+	{
+		infoLine->setVisible(true);
+		infoLine->setPoints(x(), y(), exitItem->x(), exitItem->y());
+		exitItem->showInfo();
+	}
 }
 
 void BlackHole::moveBy(double dx, double dy)
@@ -3151,18 +3155,18 @@ void KolfGame::updateHighlighter()
 	highlighter->setSize(rect.width(), rect.height());
 }
 
-void KolfGame::contentsMouseDoubleClickEvent(QMouseEvent *e)
+void KolfGame::handleMouseDoubleClickEvent(QMouseEvent *e)
 {
 	// allow two fast single clicks
-	contentsMousePressEvent(e);
+	handleMousePressEvent(e);
 }
 
-void KolfGame::contentsMousePressEvent(QMouseEvent *e)
+void KolfGame::handleMousePressEvent(QMouseEvent *e)
 {
 	if (inPlay || m_ignoreEvents)
-  {
+	{
 		return;
-  }
+	}
 
 	if (!editing)
 	{
@@ -3173,63 +3177,65 @@ void KolfGame::contentsMousePressEvent(QMouseEvent *e)
 			else if (e->button() == RightButton)
 				toggleShowInfo();
 		}
-		return;
 	}
-
-	storedMousePos = e->pos();
-
-	QCanvasItemList list = course->collisions(e->pos());
-	if (list.first() == highlighter)
-		list.pop_front();
-
-	moving = false;
-	highlighter->setVisible(false);
-	selectedItem = 0;
-	movingItem = 0;
-
-	if (list.count() < 1)
+	else
 	{
-		emit newSelectedItem(&holeInfo);
-		return;
-	}
-	// only items we keep track of
-	if ((!(items.containsRef(list.first()) || list.first() == whiteBall || extraMoveable.containsRef(list.first()))))
-	{
-		emit newSelectedItem(&holeInfo);
-		return;
-	}
 
-	CanvasItem *citem = dynamic_cast<CanvasItem *>(list.first());
-	if (!citem || !citem->moveable())
-	{
-		emit newSelectedItem(&holeInfo);
-		return;
-	}
+		storedMousePos = e->pos();
 
-	switch (e->button())
-	{
-		// select AND move now :)
-		case LeftButton:
+		QCanvasItemList list = course->collisions(e->pos());
+		if (list.first() == highlighter)
+			list.pop_front();
+
+		moving = false;
+		highlighter->setVisible(false);
+		selectedItem = 0;
+		movingItem = 0;
+
+		if (list.count() < 1)
 		{
-			selectedItem = list.first();
-			movingItem = selectedItem;
-			moving = true;
-
-			if (citem->cornerResize())
-				setCursor(KCursor::sizeFDiagCursor());
-			else
-				setCursor(KCursor::sizeAllCursor());
-
-			emit newSelectedItem(citem);
-			highlighter->setVisible(true);
-			QRect rect = selectedItem->boundingRect();
-			highlighter->move(rect.x() + 1, rect.y() + 1);
-			highlighter->setSize(rect.width(), rect.height());
+			emit newSelectedItem(&holeInfo);
+			return;
 		}
-		break;
+		// only items we keep track of
+		if ((!(items.containsRef(list.first()) || list.first() == whiteBall || extraMoveable.containsRef(list.first()))))
+		{
+			emit newSelectedItem(&holeInfo);
+			return;
+		}
 
-		default:
-		break;
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(list.first());
+		if (!citem || !citem->moveable())
+		{
+			emit newSelectedItem(&holeInfo);
+			return;
+		}
+
+		switch (e->button())
+		{
+			// select AND move now :)
+			case LeftButton:
+				{
+					selectedItem = list.first();
+					movingItem = selectedItem;
+					moving = true;
+
+					if (citem->cornerResize())
+						setCursor(KCursor::sizeFDiagCursor());
+					else
+						setCursor(KCursor::sizeAllCursor());
+
+					emit newSelectedItem(citem);
+					highlighter->setVisible(true);
+					QRect rect = selectedItem->boundingRect();
+					highlighter->move(rect.x() + 1, rect.y() + 1);
+					highlighter->setSize(rect.width(), rect.height());
+				}
+				break;
+
+			default:
+				break;
+		}
 	}
 
 	setFocus();
@@ -3241,71 +3247,34 @@ QPoint KolfGame::viewportToViewport(const QPoint &p)
 	return p - QPoint(margin, margin);
 }
 
+// the following four functions are needed to handle both
+// border presses and regular in-course presses
+
 void KolfGame::mouseReleaseEvent(QMouseEvent * e)
 {
-  if (canvasRect().contains(e->pos()))
-    return;
-
-  QMouseEvent fixedEvent
-    (
-      QEvent::MouseButtonRelease,
-      viewportToViewport(viewportToContents(e->pos())),
-      e->button(),
-      e->state()
-    );
-
-  contentsMouseReleaseEvent(&fixedEvent);
+	QMouseEvent fixedEvent (QEvent::MouseButtonRelease, viewportToViewport(viewportToContents(e->pos())), e->button(), e->state());
+	handleMouseReleaseEvent(&fixedEvent);
 }
 
 void KolfGame::mousePressEvent(QMouseEvent * e)
 {
-  if (canvasRect().contains(e->pos()))
-    return;
-
-  QMouseEvent fixedEvent
-    (
-      QEvent::MouseButtonPress,
-      viewportToViewport(viewportToContents(e->pos())),
-      e->button(),
-      e->state()
-    );
-
-  contentsMousePressEvent(&fixedEvent);
+	QMouseEvent fixedEvent (QEvent::MouseButtonPress, viewportToViewport(viewportToContents(e->pos())), e->button(), e->state());
+	handleMousePressEvent(&fixedEvent);
 }
 
 void KolfGame::mouseDoubleClickEvent(QMouseEvent * e)
 {
-  if (canvasRect().contains(e->pos()))
-    return;
-
-  QMouseEvent fixedEvent
-    (
-      QEvent::MouseButtonDblClick,
-      viewportToViewport(viewportToContents(e->pos())),
-      e->button(),
-      e->state()
-    );
-
-  contentsMouseDoubleClickEvent(&fixedEvent);
+	QMouseEvent fixedEvent (QEvent::MouseButtonDblClick, viewportToViewport(viewportToContents(e->pos())), e->button(), e->state());
+	handleMouseDoubleClickEvent(&fixedEvent);
 }
 
 void KolfGame::mouseMoveEvent(QMouseEvent * e)
 {
-  if (canvasRect().contains(e->pos()))
-    return;
-
-  QMouseEvent fixedEvent
-    (
-      QEvent::MouseMove,
-      viewportToViewport(viewportToContents(e->pos())),
-      e->button(),
-      e->state()
-    );
-
-  contentsMouseMoveEvent(&fixedEvent);
+	QMouseEvent fixedEvent (QEvent::MouseMove, viewportToViewport(viewportToContents(e->pos())), e->button(), e->state());
+	handleMouseMoveEvent(&fixedEvent);
 }
 
-void KolfGame::contentsMouseMoveEvent(QMouseEvent *e)
+void KolfGame::handleMouseMoveEvent(QMouseEvent *e)
 {
 	if (inPlay || !putter || m_ignoreEvents)
 		return;
@@ -3355,7 +3324,7 @@ void KolfGame::updateMouse()
 	putter->setAngle(-Vector(cursor, ball).direction());
 }
 
-void KolfGame::contentsMouseReleaseEvent(QMouseEvent *e)
+void KolfGame::handleMouseReleaseEvent(QMouseEvent *e)
 {
 	setCursor(KCursor::arrowCursor());
 	moving = false;
@@ -4875,15 +4844,15 @@ void KolfGame::print(KPrinter &pr)
 	QPaintDeviceMetrics metrics(&pr);
 
 	// translate to center
-	p.translate(metrics.width() / 2 - canvasRect().width() / 2, metrics.height() / 2 - canvasRect().height() / 2);
+	p.translate(metrics.width() / 2 - course->rect().width() / 2, metrics.height() / 2 - course->rect().height() / 2);
 
 	QPixmap pix(width, height);
 	QPainter pixp(&pix);
-	course->drawArea(canvasRect(), &pixp);
+	course->drawArea(course->rect(), &pixp);
 	p.drawPixmap(0, 0, pix);
 
 	p.setPen(QPen(black, 2));
-	p.drawRect(canvasRect());
+	p.drawRect(course->rect());
 
 	p.resetXForm();
 
@@ -4896,7 +4865,7 @@ void KolfGame::print(KPrinter &pr)
 		QRect rect = QFontMetrics(font).boundingRect(text);
 		p.setFont(font);
 
-		p.drawText(metrics.width() / 2 - rect.width() / 2, metrics.height() / 2 - canvasRect().height() / 2 -20 - rect.height(), text);
+		p.drawText(metrics.width() / 2 - rect.width() / 2, metrics.height() / 2 - course->rect().height() / 2 -20 - rect.height(), text);
 	}
 }
 
@@ -5022,11 +4991,6 @@ void KolfGame::saveScores(KConfig *config)
 
 		config->writeEntry("Scores", scores);
 	}
-}
-
-QRect KolfGame::canvasRect() const
-{
-  return QRect(10, 10, width - 20, height - 20);
 }
 
 #include "game.moc"

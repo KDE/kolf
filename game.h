@@ -1009,16 +1009,14 @@ protected:
 	void mouseReleaseEvent(QMouseEvent *e);
 	void mouseDoubleClickEvent(QMouseEvent *e);
 
-	void contentsMousePressEvent(QMouseEvent *e);
-	void contentsMouseDoubleClickEvent(QMouseEvent *e);	
-	void contentsMouseMoveEvent(QMouseEvent *e);
-	void contentsMouseReleaseEvent(QMouseEvent *e);
+	void handleMousePressEvent(QMouseEvent *e);
+	void handleMouseDoubleClickEvent(QMouseEvent *e);	
+	void handleMouseMoveEvent(QMouseEvent *e);
+	void handleMouseReleaseEvent(QMouseEvent *e);
 	void keyPressEvent(QKeyEvent *e);
 	void keyReleaseEvent(QKeyEvent *e);
 
 	QPoint viewportToViewport(const QPoint &p);
-
-  QRect canvasRect() const;
 
 private:
 	QCanvas *course;
