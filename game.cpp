@@ -923,7 +923,7 @@ Floater::Floater(QRect rect, QCanvas *canvas)
 
 	newSize(width(), height());
 	moveBy(0, 0);
-	setSpeed(5);
+	setSpeed(0);
 
 	editModeChanged(false);
 	reset();
@@ -1027,14 +1027,18 @@ void Floater::aboutToDie()
 
 void Floater::setSpeed(int news)
 {
-	if (news < 0)
-		return;
-
-	if (news != 0)
-		speed = news;
-
 	if (!wall)
 		return;
+
+	if (news < 0)
+		return;
+		
+	speed = news;
+
+	if (news == 0)
+	{
+		setVelocity(0, 0);
+	}
 
 	const double rise = wall->startPoint().y() - wall->endPoint().y();
 	const double run = wall->startPoint().x() - wall->endPoint().x();
@@ -1177,7 +1181,7 @@ FloaterConfig::FloaterConfig(Floater *floater, QWidget *parent)
 
 	QHBoxLayout *hlayout = new QHBoxLayout(m_vlayout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Slow"), this));
-	QSlider *slider = new QSlider(1, 20, 2, floater->curSpeed(), Qt::Horizontal, this);
+	QSlider *slider = new QSlider(0, 20, 2, floater->curSpeed(), Qt::Horizontal, this);
 	hlayout->addWidget(slider);
 	hlayout->addWidget(new QLabel(i18n("Fast"), this));
 	connect(slider, SIGNAL(valueChanged(int)), this, SLOT(speedChanged(int)));
