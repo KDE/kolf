@@ -15,7 +15,7 @@ endPoint=119,226
 height=10
 leftWallVisible=true
 rightWallVisible=true
-speed=3
+speed=2
 startPoint=11,146
 topWallVisible=true
 width=39
@@ -2158,130 +2158,194 @@ par=3
 [6-puddle@122,214|34]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [6-puddle@127,194|70]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [6-puddle@146,228|32]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [6-puddle@162,353|41]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [6-puddle@164,334|40]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [6-puddle@170,376|42]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [6-puddle@174,311|39]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [6-puddle@177,232|35]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [6-puddle@178,285|38]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [6-puddle@191,264|37]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [6-puddle@196,246|36]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [6-puddle@32,180|28]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [6-puddle@37,199|67]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [6-puddle@61,186|27]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [6-puddle@73,203|69]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [6-puddle@93,183|68]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [6-puddle@98,196|33]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [6-sand@266,34|54]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [6-sand@287,55|26]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [6-sand@307,74|56]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [6-sand@309,31|47]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [6-sand@325,55|48]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [6-sand@327,84|52]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [6-sand@342,33|49]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [6-sand@344,113|51]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [6-sand@349,168|65]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [6-sand@358,135|57]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [6-sand@358,77|46]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [6-sand@359,51|50]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [6-sand@361,104|53]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [6-sand@362,151|64]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [6-sand@362,37|55]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [6-slope@10,11|63]
 grade=4
@@ -2369,7 +2433,7 @@ startPoint=388,272
 
 [6-wall@0,0|11]
 endPoint=344,292
-startPoint=305,265
+startPoint=290,254
 
 [6-wall@0,0|12]
 endPoint=309,302
@@ -2378,10 +2442,6 @@ startPoint=282,312
 [6-wall@0,0|13]
 endPoint=102,60
 startPoint=70,74
-
-[6-wall@0,0|14]
-endPoint=363,342
-startPoint=323,328
 
 [6-wall@0,0|15]
 endPoint=360,284

@@ -2173,9 +2173,10 @@ void BlackHole::load(KSimpleConfig *cfg)
 	exitItem->setX(exit.x());
 	exitItem->setY(exit.y());
 	exitDeg = cfg->readNumEntry("exitDeg", exitDeg);
-	exitItem->updateArrowAngle();
 	m_minSpeed = cfg->readNumEntry("minspeed", m_minSpeed);
 	m_maxSpeed = cfg->readNumEntry("maxspeed", m_maxSpeed);
+	exitItem->updateArrowAngle();
+	exitItem->updateArrowLength();
 
 	finishMe();
 }
