@@ -8,7 +8,6 @@
 #include <kseparator.h>
 #include <klineedit.h>
 #include <klocale.h>
-#include <kpushbutton.h>
 #include <kfiledialog.h>
 
 #include <qcheckbox.h>
@@ -72,6 +71,35 @@ void ColorButton::drawButtonLabel(QPainter *painter)
 
 /////////////////////////
 
+TransparentButton::TransparentButton(const QString &text, QWidget *parent, const char *name)
+ : QPushButton(text, parent, name)
+{
+	mouseOver = false;
+}
+
+void TransparentButton::enterEvent(QEvent *)
+{
+	mouseOver = true;
+	update();
+}
+
+void TransparentButton::leaveEvent(QEvent *)
+{
+	mouseOver = false;
+	update();
+}
+
+void TransparentButton::drawButton(QPainter *painter)
+{
+	painter->setPen(QPen(isDown() ? green.dark(240) : green.dark(), 3));
+	if (mouseOver)
+		painter->drawRoundRect(QRect(0, 0, width(), height()));
+
+	drawButtonLabel(painter);
+}
+
+/////////////////////////
+
 NewGameDialog::NewGameDialog(QWidget *parent, const char *_name)
 	: KDialogBase(KDialogBase::TreeList, i18n("New Game"), Ok | Cancel, Ok, parent, _name)
 {
@@ -84,17 +112,10 @@ NewGameDialog::NewGameDialog(QWidget *parent, const char *_name)
 	playerPage = addPage(i18n("Players"));
 	QVBoxLayout *bigLayout = new QVBoxLayout(playerPage, marginHint(), spacingHint());
 
-	QHBoxLayout *hlayout = new QHBoxLayout(bigLayout, spacingHint());
-
-	addButton = new KPushButton(i18n("&New Player"), playerPage);
-	delButton = new KPushButton(i18n("&Remove Last Player"), playerPage);
-
-	hlayout->addWidget(addButton);
-	hlayout->addStretch();
-	hlayout->addWidget(delButton);
+	addButton = new QPushButton(i18n("&New Player"), playerPage);
+	bigLayout->addWidget(addButton);
 
 	connect(addButton, SIGNAL(clicked()), this, SLOT(addPlayer()));
-	connect(delButton, SIGNAL(clicked()), this, SLOT(delPlayer()));
 
 	scroller = new QScrollView(playerPage);
 	bigLayout->addWidget(scroller);
@@ -130,7 +151,7 @@ NewGameDialog::NewGameDialog(QWidget *parent, const char *_name)
 	enableButtons();
 
 	coursePage = addPage(i18n("Course"), i18n("Choose Course to Play"));
-	hlayout = new QHBoxLayout(coursePage, marginHint(), spacingHint());
+	QHBoxLayout *hlayout = new QHBoxLayout(coursePage, marginHint(), spacingHint());
 
 	// following use this group
 	config->setGroup("New Game Dialog Mode");
@@ -300,16 +321,17 @@ void NewGameDialog::addPlayer()
 
 	editors.append(new PlayerEditor(i18n("Player %1").arg(editors.count() + 1), *startColors.at(editors.count()), layout));
 	editors.last()->show();
+	connect(editors.last(), SIGNAL(deleteEditor(PlayerEditor *)), this, SLOT(deleteEditor(PlayerEditor *)));
 
 	enableButtons();
 }
 
-void NewGameDialog::delPlayer()
+void NewGameDialog::deleteEditor(PlayerEditor *editor)
 {
 	if (editors.count() < 2)
 		return;
 
-	editors.removeLast();
+	editors.removeRef(editor);
 
 	enableButtons();
 }
@@ -317,7 +339,6 @@ void NewGameDialog::delPlayer()
 void NewGameDialog::enableButtons()
 {
 	addButton->setEnabled(!(editors.count() >= startColors.count()));
-	delButton->setEnabled(!(editors.count() < 2));
 }
 
 /////////////////////////
@@ -341,6 +362,16 @@ PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent
 	layout->addStretch();
 	layout->addWidget(colorButton = new ColorButton(startColor, this));
 	colorButton->setBackgroundPixmap(grass);
+
+	QPushButton *remove = new TransparentButton(i18n("Remove"), this);
+	layout->addWidget(remove);
+	remove->setBackgroundPixmap(grass);
+	connect(remove, SIGNAL(clicked()), this, SLOT(removeMe()));
+}
+
+void PlayerEditor::removeMe()
+{
+	emit deleteEditor(this);
 }
 
 #include "newgame.moc"

@@ -10,28 +10,46 @@
 #include <qcolor.h>
 #include <qptrlist.h>
 #include <qstring.h>
+#include <qpushbutton.h>
 #include <qstringlist.h>
 #include <qvaluelist.h>
-#include <qvbox.h>
 #include <qwidget.h>
 
 #include "game.h"
 
 class KLineEdit;
-class KPushButton;
 class QFrame;
 class QVBoxLayout;
+class QVBox;
 class QPainter;
 class KListBox;
 class QEvent;
 
 class ColorButton : public KColorButton
 {
+	Q_OBJECT
+
 public:
 	ColorButton(QColor color, QWidget *parent, const char *name = 0L);
 
 protected:
 	virtual void drawButtonLabel(QPainter *painter);
+	virtual void drawButton(QPainter *painter);
+	virtual void enterEvent(QEvent *);
+	virtual void leaveEvent(QEvent *);
+
+private:
+	bool mouseOver;
+};
+
+class TransparentButton : public QPushButton
+{
+	Q_OBJECT
+
+public:
+	TransparentButton(const QString &text, QWidget *parent, const char *name = 0L);
+
+protected:
 	virtual void drawButton(QPainter *painter);
 	virtual void enterEvent(QEvent *);
 	virtual void leaveEvent(QEvent *);
@@ -51,6 +69,12 @@ public:
 	void setColor(QColor col) { colorButton->setColor(col); }
 	void setName(const QString &newname) { editor->setText(newname); }
 
+signals:
+	void deleteEditor(PlayerEditor *editor);
+
+private slots:
+	void removeMe();
+
 private:
 	KLineEdit *editor;
 	KColorButton *colorButton;
@@ -67,12 +91,14 @@ public:
 	bool competition() { return mode->isChecked(); }
 	QString course() { return currentCourse; }
 
+public slots:
+	void deleteEditor(PlayerEditor *);
+
 protected slots:
 	void slotOk();
 
 private slots:
 	void addPlayer();
-	void delPlayer();
 	void courseSelected(int);
 	void addCourse();
 	void removeCourse();
@@ -80,8 +106,7 @@ private slots:
 
 private:
 	QVBox *layout;
-	KPushButton *addButton;
-	KPushButton *delButton;
+	QPushButton *addButton;
 	QFrame *playerPage;
 	QScrollView *scroller;
 	QFrame *coursePage;
