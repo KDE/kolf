@@ -241,13 +241,6 @@ width=36
 
 [10-sign@-1,360|42]
 Comment=Washington DC (Pentagon)
-Comment[bg]=Вашингтон, окръг Колумбия<br>(Пентагона)
-Comment[es]=Washington DC<br>(Pentágono)
-Comment[pt]=Washington DC<br>(Pentágono)
-Comment[pt_BR]=Washington DC<br>(Pentágono)
-Comment[sr]=Вашингтон ДЦ<br>(Пентагон)
-Comment[wa]=Washington DC, USA
-Comment[xx]=xxWashington DC<br>(Pentagon)xx
 botWallVisible=true
 height=49
 leftWallVisible=true
@@ -1208,12 +1201,6 @@ width=178
 
 [7-sign@11,116|7]
 Comment=Golden Gate
-Comment[bg]=Гол<br>дън Гейт
-Comment[cs]=Golden Gate
-Comment[sr]=Голден гејт
-Comment[sv]=Golden Gate
-Comment[wa]=Golden Gate, USA
-Comment[xx]=xxGol<br>den Gatexx
 botWallVisible=false
 height=97
 leftWallVisible=true
