@@ -3197,9 +3197,7 @@ void KolfGame::handleMouseDoubleClickEvent(QMouseEvent *e)
 void KolfGame::handleMousePressEvent(QMouseEvent *e)
 {
 	if (inPlay || m_ignoreEvents)
-	{
 		return;
-	}
 
 	if (!editing)
 	{
@@ -3213,7 +3211,6 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 	}
 	else
 	{
-
 		storedMousePos = e->pos();
 
 		QCanvasItemList list = course->collisions(e->pos());
@@ -5053,7 +5050,7 @@ void KolfGame::saveScores(KConfig *config)
 }
 
 CourseInfo::CourseInfo()
-: name(i18n("No Name")), author(i18n("No Author")), holes(0), par(0)
+: name(i18n("Course Name")), author(i18n("Course Author")), holes(0), par(0)
 {
 }
 
