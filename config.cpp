@@ -6,7 +6,7 @@
 
 #include "config.h"
 
-Config::Config(QWidget *parent, const char *name = 0)
+Config::Config(QWidget *parent, const char *name)
 	: QFrame(parent, name)
 {
 	startedUp = false;
@@ -33,14 +33,14 @@ void Config::changed()
 		emit modified();
 }
 
-MessageConfig::MessageConfig(QString text, QWidget *parent, const char *name = 0)
+MessageConfig::MessageConfig(QString text, QWidget *parent, const char *name)
 	: Config(parent, name)
 {
 	QVBoxLayout *layout = new QVBoxLayout(this, marginHint(), spacingHint());
 	layout->addWidget(new QLabel(text, this));
 }
 
-DefaultConfig::DefaultConfig(QWidget *parent, const char *name = 0)
+DefaultConfig::DefaultConfig(QWidget *parent, const char *name)
 	: MessageConfig(i18n("No configuration options"), parent, name)
 {
 }
