@@ -1,0 +1,7 @@
+Heya,
+
+I made a kolf pool game as an example of kolf plugin use. kolf/obects/poolball/ contains the PoolBall class, which is installed as a plugin.
+
+So, compile PoolBall, install it, and open pool.kolf. Kolf courses can specify any object name, and it is up to the user to install these objects that the course needs. Kolf will warn when an object is not found in the hole being loaded.
+
+Jason
