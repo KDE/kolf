@@ -1,7 +1,7 @@
 SUBDIRS = objects sounds courses pics graphics
 INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/libkdegames $(all_includes)
 
-noinst_LTLIBRARIES = libkolf.la
+lib_LTLIBRARIES = libkolf.la
 bin_PROGRAMS = kolf
 
 libkolf_la_SOURCES = \
@@ -10,7 +10,7 @@ libkolf_la_SOURCES = \
 	printdialogpage.cpp kcomboboxdialog.cpp kvolumecontrol.cpp \
 	floater.cpp slope.cpp
 
-libkolf_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -export-dynamic
+libkolf_la_LDFLAGS = $(all_libraries) -no-undefined -version-info 3:0:2
 libkolf_la_LIBADD = $(LIB_KDEGAMES) $(LIB_KDEPRINT) $(LIB_KIO) -lartskde
 
 # the installed header files
