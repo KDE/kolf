@@ -747,6 +747,7 @@ void BridgeConfig::leftWallChanged(bool yes)
 void BridgeConfig::rightWallChanged(bool yes)
 {
 	bridge->setRightWallVisible(yes);
+	changed();
 }
 
 /////////////////////////
@@ -768,7 +769,7 @@ Bridge::Bridge(QRect rect, QCanvas *canvas)
 	rightWall = new Wall(canvas);
 	rightWall->setAlwaysShow(true);
 
-	setWallZ(998.1);
+	setWallZ(z() + 0.01);
 	setWallColor(color);
 
 	topWall->setVisible(false);
@@ -1569,9 +1570,8 @@ void EllipseConfig::value1Changed(int news)
 	changed();
 }
 
-void EllipseConfig::value2Changed(int news)
+void EllipseConfig::value2Changed(int /*news*/)
 {
-	ellipse->setChangeEvery(100 - news);
 	changed();
 }
 
@@ -1619,6 +1619,15 @@ Ellipse::Ellipse(QCanvas *canvas)
 void Ellipse::aboutToDie()
 {
 	delete point;
+}
+
+void Ellipse::setChangeEnabled(bool changeEnabled)
+{
+	m_changeEnabled = changeEnabled;
+	setAnimated(m_changeEnabled);
+
+	if (!m_changeEnabled)
+		setVisible(true);
 }
 
 QPtrList<QCanvasItem> Ellipse::moveableItems() const
@@ -3142,6 +3151,12 @@ KolfGame::~KolfGame()
 	delete cfg;
 }
 
+void KolfGame::setModified(bool mod)
+{
+	modified = mod;
+	emit modifiedChanged(mod);
+}
+
 void KolfGame::pause()
 {
 	if (paused)
@@ -3338,7 +3353,7 @@ void KolfGame::handleMouseMoveEvent(QMouseEvent *e)
 
 	// moving counts as modifying
 	if (moveX || moveY)
-		modified = true;
+		setModified(true);
 
 	highlighter->moveBy(-(double)moveX, -(double)moveY);
 	movingItem->moveBy(-(double)moveX, -(double)moveY);
@@ -3536,7 +3551,7 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 				selectedItem = 0;
 				emit newSelectedItem(&holeInfo);
 
-				modified = true;
+				setModified(true);
 			}
 		}
 	}
@@ -3597,7 +3612,7 @@ void KolfGame::timeout()
 	if (curState == Stopped && inPlay)
 	{
 		inPlay = false;
-		QTimer::singleShot(500, this, SLOT(shotDone()));
+		QTimer::singleShot(0, this, SLOT(shotDone()));
 	}
 
 	if (curState == Holed && inPlay)
@@ -3630,7 +3645,7 @@ void KolfGame::timeout()
 		else
 		{
 			inPlay = false;
-			QTimer::singleShot(40, this, SLOT(shotDone()));
+			QTimer::singleShot(0, this, SLOT(shotDone()));
 		}
 	}
 }
@@ -4100,7 +4115,7 @@ void KolfGame::startNextHole()
 			return;
 	}
 	else
-		modified = false;
+		setModified(false);
 
 	pause();
 
@@ -4392,7 +4407,7 @@ void KolfGame::openFile()
 		// tidy things up
 		setBorderWalls(false);
 		clearHole();
-		modified = false;
+		setModified(false);
 		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 			(*it).ball()->setVisible(false);
 
@@ -4459,7 +4474,7 @@ void KolfGame::openFile()
 		infoShown = true;
 	}
 
-	modified = false;
+	setModified(false);
 }
 
 void KolfGame::addItemsToMoveableList(QPtrList<QCanvasItem> list)
@@ -4533,7 +4548,7 @@ void KolfGame::addNewObject(Object *newObj)
 	if (selectedItem)
 		canvasItem->selectedItem(selectedItem);
 
-	modified = true;
+	setModified(true);
 }
 
 bool KolfGame::askSave(bool noMoreChances)
@@ -4572,7 +4587,7 @@ void KolfGame::addNewHole()
 	// either it's already false
 	// because it was saved by askSave(),
 	// or the user pressed the 'discard' button
-	modified = false;
+	setModified(false);
 
 	// find highest hole num, and create new hole
 	// now openFile makes highest hole for us
@@ -4607,7 +4622,7 @@ void KolfGame::resetHole()
 {
 	if (askSave(true))
 		return;
-	modified = false;
+	setModified(false);
 	curHole--;
 	startNextHole();
 	resetHoleScores();
@@ -4642,7 +4657,7 @@ void KolfGame::clearHole()
 		if (curObj->addOnNewHole())
 			addNewObject(curObj);
 
-	modified = true;
+	setModified(true);
 }
 
 void KolfGame::switchHole(int hole)
@@ -4658,7 +4673,7 @@ void KolfGame::switchHole(int hole)
 
 	if (askSave(true))
 		return;
-	modified = false;
+	setModified(false);
 
 	curHole = hole;
 	resetHole();
@@ -4778,7 +4793,7 @@ void KolfGame::save()
 			citem->savingDone();
 	}
 
-	modified = false;
+	setModified(false);
 }
 
 void KolfGame::toggleEditMode()

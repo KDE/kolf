@@ -197,7 +197,7 @@ void Kolf::startNewGame()
 	}
 	else
 	{
-		KSimpleConfig config(loadedGame);
+		KConfig config(loadedGame);
 		config.setGroup("0 Saved Game");
 
 		if (isTutorial)
@@ -227,6 +227,7 @@ void Kolf::startNewGame()
 	connect(game, SIGNAL(newHole(int)), scoreboard, SLOT(newHole(int)));
 	connect(game, SIGNAL(scoreChanged(int, int, int)), scoreboard, SLOT(setScore(int, int, int)));
 	connect(game, SIGNAL(parChanged(int, int)), scoreboard, SLOT(parChanged(int, int)));
+	connect(game, SIGNAL(modifiedChanged(bool)), this, SLOT(updateModified(bool)));
 	connect(game, SIGNAL(newPlayersTurn(Player *)), this, SLOT(newPlayersTurn(Player *)));
 	connect(game, SIGNAL(holesDone()), this, SLOT(gameOver()));
 	connect(game, SIGNAL(checkEditing()), this, SLOT(checkEditing()));
@@ -353,6 +354,7 @@ void Kolf::closeGame()
 	tutorialAction->setEnabled(true);
 
 	titleChanged("");
+	updateModified(false);
 
 	QTimer::singleShot(100, this, SLOT(createSpacer()));
 }
@@ -513,7 +515,7 @@ void Kolf::saveGame()
 		return;
 	}
 	
-	KSimpleConfig config(loadedGame);
+	KConfig config(loadedGame);
 	config.setGroup("0 Saved Game");
 
 	config.writeEntry("Competition", competition);
@@ -680,9 +682,16 @@ void Kolf::print()
 	}
 }
 
+void Kolf::updateModified(bool mod)
+{
+	courseModified = mod;
+	titleChanged(title);
+}
+
 void Kolf::titleChanged(const QString &newTitle)
 {
-	setCaption(newTitle);
+	title = newTitle;
+	setCaption(title, courseModified);
 }
 
 void Kolf::useMouseChanged(bool yes)

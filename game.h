@@ -251,7 +251,7 @@ public:
 	int changeEvery() const { return m_changeEvery; }
 	void setChangeEvery(int news) { m_changeEvery = news; }
 	bool changeEnabled() const { return m_changeEnabled; }
-	void setChangeEnabled(bool news) { setAnimated(news); m_changeEnabled = news; }
+	void setChangeEnabled(bool news);
 
 	virtual void aboutToDie();
 	virtual void aboutToSave();
@@ -544,7 +544,6 @@ class WallPoint : public QCanvasEllipse, public CanvasItem
 {
 public:
 	WallPoint(bool start, Wall *wall, QCanvas *canvas);
-	//virtual int rtti() const { return Rtti_NoCollision; }
 	void setAlwaysShow(bool yes) { alwaysShow = yes; updateVisible(); }
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
@@ -977,7 +976,7 @@ public slots:
 	void unPause();
 	void save();
 	void toggleEditMode();
-	void setModified() { modified = true; }
+	void setModified(bool mod = true);
 	void addNewObject(Object *newObj);
 	void addNewHole();
 	void switchHole(int);
@@ -1022,6 +1021,7 @@ signals:
 	void inPlayEnd();
 	void maxStrokesReached(const QString &);
 	void currentHole(int);
+	void modifiedChanged(bool);
 
 private slots:
 	void shotDone();

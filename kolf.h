@@ -36,6 +36,7 @@ public:
 
 public slots:
 	void closeGame();
+	void updateModified(bool);
 
 protected:
 	void closeEvent(QCloseEvent *);
@@ -131,6 +132,8 @@ private:
 	QString loadedGame;
 
 	bool isTutorial;
+	bool courseModified;
+	QString title;
 };
 
 struct HighScore

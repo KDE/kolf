@@ -205,7 +205,7 @@ namespace Lines
 
 #include <iostream.h>
 
-void Ball::collisionDetect(double /*oldx*/, double /*oldy*/)
+void Ball::collisionDetect(double oldx, double oldy)
 {
 	if (!isVisible() || state == Holed || !m_doDetect)
 		return;
@@ -306,9 +306,9 @@ void Ball::collisionDetect(double /*oldx*/, double /*oldy*/)
 	}
 
 // this makes kolf more buggy than it is without
+// or does it?
 // - jason
 
-#if 0
 	{ // check if I went through a wall
 		QCanvasItemList items;
 		if (game)
@@ -334,7 +334,6 @@ void Ball::collisionDetect(double /*oldx*/, double /*oldy*/)
 		
 		}
 	}
-#endif
 
 	end:
 
