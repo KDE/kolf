@@ -23,6 +23,7 @@ Name[sl]=Težka steza
 Name[sv]=Svår bana
 Name[ven]=Thero i Kondaho
 Name[xh]=Indlela enzima
+Name[zh_TW]=困難的路線
 Name[zu]=Indlela elukhuni
 author=Jason Katz-Brown
 
@@ -1106,6 +1107,7 @@ Comment[sk]=Nechajte sa unášať!
 Comment[sv]=Låt flottarna <strong>knuffa</strong> dig!
 Comment[ven]=Irani zwipapamali<strong>sukumedza</strong>inwi!
 Comment[xh]=Vumela ezidadayo <strong>tyhala</strong> wena!
+Comment[zh_TW]=讓浮標<strong>推動</strong>您！
 Comment[zu]=Yekela okuntantayo <strong>kukududule</strong>! 
 botWallVisible=true
 height=196
