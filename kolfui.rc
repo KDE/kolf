@@ -12,6 +12,7 @@
 		</Menu>
 		<Menu name="go_course"><text>&amp;Go</text>
 			<Action name="switchhole" />
+			<Seperator />
 			<Action name="nexthole" />
 			<Action name="prevhole" />
 			<Action name="firsthole" />
@@ -21,6 +22,7 @@
 		<Menu name="settings">
 			<Action name="usemouse" />
 			<Action name="useadvancedputting" />			
+			<Action name="showguideline" />
 		</Menu>
 		<Menu name="help">
 			<Action name="aboutcourse" />
@@ -28,6 +30,12 @@
 		</Menu>
 	</MenuBar>
 	<ToolBar name="mainToolBar" fullWidth="true" noEdit="true">
+		<Action name="undoshot" />
 		<Action name="editing" />
+		<Seperator />
+		<Action name="prevhole" />
+		<Action name="nexthole" />
+		<Seperator />
+		<Action name="switchhole" />
 	</ToolBar>
 </kpartgui>

@@ -1793,6 +1793,8 @@ void Sand::collision(Ball *ball, long int /*id*/)
 Putter::Putter(QCanvas *canvas)
 	: QCanvasLine(canvas)
 {
+	m_showGuideLine = true;
+
 	guideLine = new QCanvasLine(canvas);
 	guideLine->setPen(QPen(white, 1));
 	guideLine->setZ(998.8);
@@ -1809,12 +1811,12 @@ Putter::Putter(QCanvas *canvas)
 
 void Putter::showInfo()
 {
-	guideLine->setVisible(true);
+	guideLine->setVisible(isVisible());
 }
 
 void Putter::hideInfo()
 {
-	guideLine->setVisible(false);
+	guideLine->setVisible(m_showGuideLine? isVisible() : false);
 }
 
 void Putter::moveBy(double dx, double dy)
@@ -1823,10 +1825,16 @@ void Putter::moveBy(double dx, double dy)
 	guideLine->move(x(), y());
 }
 
+void Putter::setShowGuideLine(bool yes)
+{
+	m_showGuideLine = yes;
+	setVisible(isVisible());
+}
+
 void Putter::setVisible(bool yes)
 {
 	QCanvasLine::setVisible(yes);
-	guideLine->setVisible(false);
+	guideLine->setVisible(m_showGuideLine? yes : false);
 }
 
 void Putter::setOrigin(int _x, int _y)
@@ -1938,7 +1946,8 @@ void Ball::advance(int phase)
 	{
 		if (blowUpCount >= 50)
 		{
-			setAddStroke(addStroke() + 1);
+			//TODO make this a config option
+			//setAddStroke(addStroke() + 1);
 			setBlowUp(false);
 			resetSize();
 			return;
@@ -1985,6 +1994,11 @@ void Ball::collisionDetect()
 		collisionId = 0;
 	else
 		collisionId++;
+
+	// every other time...
+	// do friction
+	if (collisionId % 2)
+		friction();
 
 	QCanvasItemList list = collisions(true);
 	if (list.isEmpty())
@@ -3518,6 +3532,7 @@ void KolfGame::showInfoPress()
 		if (citem)
 			citem->showInfo();
 	}
+
 	showInfo();
 	putter->showInfo();
 }
@@ -3531,6 +3546,7 @@ void KolfGame::showInfoRelease()
 		if (citem)
 			citem->hideInfo();
 	}
+
 	hideInfoText();
 	putter->hideInfo();
 }
@@ -3625,6 +3641,17 @@ void KolfGame::timeout()
 {
 	Ball *curBall = (*curPlayer).ball();
 
+	// test if the ball is gone
+	// in this case we want to stop the ball and
+	// later undo the shot
+	if (!course->rect().contains(QPoint(curBall->x(), curBall->y())))
+	{
+		curBall->setState(Stopped);
+		shotDone();
+		loadStateList();
+		return;
+	}
+
 	int curState = curBall->curState();
 	if (curState == Stopped && inPlay)
 	{
@@ -3683,8 +3710,9 @@ void KolfGame::ballMoved()
 
 void KolfGame::frictionTimeout()
 {
-	if (inPlay && !editing)
-		(*curPlayer).ball()->friction();
+	// this is now done by the ball
+	//if (inPlay && !editing)
+		//(*curPlayer).ball()->friction();
 	course->advance();
 }
 
@@ -3910,18 +3938,6 @@ void KolfGame::shotDone()
 		(*it).ball()->setAddStroke(0);
 	}
 
-	/*
-	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-	{
-		if ((*it).ball()->blowUp())
-		{
-			(*it).addStrokeToHole(curHole);
-			emit scoreChanged((*it).id(), curHole, (*it).score(curHole));
-		}
-		(*it).ball()->setBlowUp(false);
-	}
-	*/
-
 	double vx = 0, vy = 0;
 	if (ball->placeOnGround(vx, vy))
 	{
@@ -3968,6 +3984,8 @@ void KolfGame::shotDone()
 
 		//kdDebug() << "placing on " << p.x() << ", " << p.y() << endl;
 		ball->move(ball->x(), ball->y());
+
+		ball->setVisible(true);
 	}
 
 	// off by default
@@ -4554,6 +4572,8 @@ void KolfGame::save()
 		setFilename(newfilename);
 	}
 
+	emit parChanged(curHole, holeInfo.par());
+
 	// we use this bool for optimization
 	// in openFile().
 	bool hasFinalLoad = false;
@@ -4779,6 +4799,11 @@ void KolfGame::setUseAdvancedPutting(bool yes)
 	else
 		maxStrength = 55;
 }	
+
+void KolfGame::setShowGuideLine(bool yes)
+{
+	putter->setShowGuideLine(yes);
+}
 
 void KolfGame::courseInfo(CourseInfo &info, const QString& filename)
 {

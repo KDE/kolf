@@ -18,6 +18,7 @@ public slots:
 	void newHole(int);
 	void newPlayer(const QString &name);
 	void setScore(int id, int hole, int score);
+	void parChanged(int hole, int par);
 
 private:
 	QTable *table;

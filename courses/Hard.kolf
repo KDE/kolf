@@ -7,10 +7,10 @@ name=Hard Course
 dummykey=true
 
 [1-blackhole@83,203|10]
-exit=176,281
+exit=111,213
 exitDeg=330
-maxspeed=4
-minspeed=2
+maxspeed=6
+minspeed=3
 
 [1-cup@40,198|5]
 dummykey=true
@@ -119,7 +119,7 @@ topWallVisible=true
 width=76
 
 [10-hole@-50,-50|0]
-borderWalls=true
+borderWalls=false
 hasFinalLoad=true
 maxstrokes=10
 par=3
@@ -390,11 +390,11 @@ startPoint=29,60
 
 [10-wall@0,0|11]
 endPoint=29,60
-startPoint=10,186
+startPoint=11,187
 
 [10-wall@0,0|4]
 endPoint=229,252
-startPoint=290,391
+startPoint=288,385
 
 [10-wall@0,0|5]
 endPoint=232,206
@@ -405,8 +405,40 @@ endPoint=338,159
 startPoint=302,131
 
 [10-wall@0,0|6]
-endPoint=390,148
+endPoint=389,148
 startPoint=355,92
+
+[10-wall@0,0|62]
+endPoint=6,316
+startPoint=11,187
+
+[10-wall@0,0|63]
+endPoint=8,374
+startPoint=6,316
+
+[10-wall@0,0|64]
+endPoint=35,387
+startPoint=8,374
+
+[10-wall@0,0|65]
+endPoint=70,392
+startPoint=35,387
+
+[10-wall@0,0|66]
+endPoint=246,397
+startPoint=70,392
+
+[10-wall@0,0|67]
+endPoint=275,355
+startPoint=246,397
+
+[10-wall@0,0|68]
+endPoint=387,384
+startPoint=288,385
+
+[10-wall@0,0|69]
+endPoint=389,148
+startPoint=387,384
 
 [10-wall@0,0|7]
 endPoint=355,92
@@ -2271,6 +2303,14 @@ reversed=true
 stuckOnGround=false
 width=43
 
+[2-slope@210,22|58]
+grade=2
+gradient=Opposite Diagonal
+height=39
+reversed=true
+stuckOnGround=false
+width=20
+
 [2-slope@224,11|46]
 grade=2
 gradient=Vertical
@@ -2334,6 +2374,14 @@ height=84
 reversed=false
 stuckOnGround=true
 width=68
+
+[2-slope@7,174|59]
+grade=4
+gradient=Elliptic
+height=33
+reversed=true
+stuckOnGround=true
+width=33
 
 [2-wall@0,0|10]
 endPoint=86,192
@@ -3331,7 +3379,7 @@ grade=2
 gradient=Diagonal
 height=162
 reversed=true
-stuckOnGround=false
+stuckOnGround=true
 width=77
 
 [5-slope@271,268|16]

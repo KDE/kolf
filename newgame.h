@@ -85,7 +85,7 @@ class NewGameDialog : public KDialogBase
 	Q_OBJECT
 
 public:
-	NewGameDialog(QWidget *parent, const char *_name = 0);
+	NewGameDialog(bool enableCourses, QWidget *parent, const char *_name = 0);
 	QPtrList<PlayerEditor> *players() { return &editors; }
 	bool competition() { return mode->isChecked(); }
 	QString course() { return currentCourse; }
@@ -132,6 +132,8 @@ private:
 	QString currentCourse;
 
 	void enableButtons();
+
+	bool enableCourses;
 };
 
 #endif

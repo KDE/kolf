@@ -34,6 +34,7 @@ void ScoreBoard::newHole(int par)
 	setText(numRows() - 1, numCols() - 2, QString::number(par));
 	setColumnWidth(numCols() - 2, 40);
 
+	// update total
 	int tot = 0;
 	for (int i = 0; i < numCols() - 1; ++i)
 	{
@@ -59,6 +60,20 @@ void ScoreBoard::setScore(int id, int hole, int score)
 	setText(id - 1, numCols() - 1, QString::number(total(id, name)));
 	ensureCellVisible(id - 1, hole - 1);
 	setCurrentCell(id - 1, hole - 1);
+}
+
+void ScoreBoard::parChanged(int hole, int par)
+{
+	kdDebug() << "parChange - hole is " << hole << ", par is " << par << endl;
+	setText(numCols() - 1, hole - 1, QString::number(par));
+
+	// update total
+	int tot = 0;
+	for (int i = 0; i < numCols() - 1; ++i)
+	{
+		tot += text(numRows() - 1, i).toInt();
+	}
+	setText(numRows() - 1, numCols() - 1, QString::number(tot));
 }
 
 int ScoreBoard::total(int id, QString &name)

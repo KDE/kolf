@@ -100,9 +100,11 @@ void TransparentButton::drawButton(QPainter *painter)
 
 /////////////////////////
 
-NewGameDialog::NewGameDialog(QWidget *parent, const char *_name)
+NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_name)
 	: KDialogBase(KDialogBase::TreeList, i18n("New Game"), Ok | Cancel, Ok, parent, _name)
 {
+	this->enableCourses = enableCourses;
+
 	editors.setAutoDelete(true);
 	KConfig *config = kapp->config();
 
@@ -150,75 +152,78 @@ NewGameDialog::NewGameDialog(QWidget *parent, const char *_name)
 
 	enableButtons();
 
-	coursePage = addPage(i18n("Course"), i18n("Choose Course to Play"));
-	QHBoxLayout *hlayout = new QHBoxLayout(coursePage, marginHint(), spacingHint());
-
-	// following use this group
-	config->setGroup("New Game Dialog Mode");
-
-	// find other courses
-	externCourses = config->readListEntry("extra");
-
-	/// course loading
-	QStringList items = externCourses + KGlobal::dirs()->findAllResources("appdata", "courses/*.kolf");
-	QStringList nameList;
-	const QString lastCourse(config->readEntry("course", ""));
-	int curItem = -1;
-	i = 0;
-	for (QStringList::Iterator it = items.begin(); it != items.end(); ++it, ++i)
+	if (enableCourses)
 	{
-		QString file = *it;
-		CourseInfo curinfo;
-		KolfGame::courseInfo(curinfo, file);
-		info[file] = curinfo;
-		names.append(file);
-		nameList.append(curinfo.name);
+		coursePage = addPage(i18n("Course"), i18n("Choose Course to Play"));
+		QHBoxLayout *hlayout = new QHBoxLayout(coursePage, marginHint(), spacingHint());
 
-		if (lastCourse == file)
-			curItem = i;
+		// following use this group
+		config->setGroup("New Game Dialog Mode");
+
+		// find other courses
+		externCourses = config->readListEntry("extra");
+
+		/// course loading
+		QStringList items = externCourses + KGlobal::dirs()->findAllResources("appdata", "courses/*.kolf");
+		QStringList nameList;
+		const QString lastCourse(config->readEntry("course", ""));
+		int curItem = -1;
+		i = 0;
+		for (QStringList::Iterator it = items.begin(); it != items.end(); ++it, ++i)
+		{
+			QString file = *it;
+			CourseInfo curinfo;
+			KolfGame::courseInfo(curinfo, file);
+			info[file] = curinfo;
+			names.append(file);
+			nameList.append(curinfo.name);
+
+			if (lastCourse == file)
+				curItem = i;
+		}
+
+		const QString newName(i18n("Create New"));
+		info[QString::null] = CourseInfo(newName, i18n("You"), 0, 0);
+		names.append(QString::null);
+		nameList.append(newName);
+		if (curItem < 0)
+			curItem = names.count() - 1;
+
+		courseList = new KListBox(coursePage);
+		hlayout->addWidget(courseList);
+		courseList->insertStringList(nameList);
+		courseList->setCurrentItem(curItem);
+		connect(courseList, SIGNAL(highlighted(int)), this, SLOT(courseSelected(int)));
+		connect(courseList, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
+
+		QVBoxLayout *detailLayout = new QVBoxLayout(hlayout, spacingHint());
+		name = new QLabel(coursePage);
+		detailLayout->addWidget(name);
+		author = new QLabel(coursePage);
+		detailLayout->addWidget(author);
+
+		QHBoxLayout *minorLayout = new QHBoxLayout(detailLayout, spacingHint());
+		par = new QLabel(coursePage);
+		minorLayout->addWidget(par);
+		holes = new QLabel(coursePage);
+		minorLayout->addWidget(holes);
+
+		detailLayout->addStretch();
+		detailLayout->addWidget(new KSeparator(coursePage));
+
+		minorLayout = new QHBoxLayout(detailLayout, spacingHint());
+
+		QPushButton *addCourseButton = new QPushButton(i18n("Add..."), coursePage);
+		minorLayout->addWidget(addCourseButton);
+		connect(addCourseButton, SIGNAL(clicked()), this, SLOT(addCourse()));
+
+		remove = new QPushButton(i18n("Remove"), coursePage);
+		minorLayout->addWidget(remove);
+		connect(remove, SIGNAL(clicked()), this, SLOT(removeCourse()));
+
+		courseSelected(curItem);
+		selectionChanged();
 	}
-
-	const QString newName(i18n("Create New"));
-	info[QString::null] = CourseInfo(newName, i18n("You"), 0, 0);
-	names.append(QString::null);
-	nameList.append(newName);
-	if (curItem < 0)
-		curItem = names.count() - 1;
-
-	courseList = new KListBox(coursePage);
-	hlayout->addWidget(courseList);
-	courseList->insertStringList(nameList);
-	courseList->setCurrentItem(curItem);
-	connect(courseList, SIGNAL(highlighted(int)), this, SLOT(courseSelected(int)));
-	connect(courseList, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
-
-	QVBoxLayout *detailLayout = new QVBoxLayout(hlayout, spacingHint());
-	name = new QLabel(coursePage);
-	detailLayout->addWidget(name);
-	author = new QLabel(coursePage);
-	detailLayout->addWidget(author);
-
-	QHBoxLayout *minorLayout = new QHBoxLayout(detailLayout, spacingHint());
-	par = new QLabel(coursePage);
-	minorLayout->addWidget(par);
-	holes = new QLabel(coursePage);
-	minorLayout->addWidget(holes);
-
-	detailLayout->addStretch();
-	detailLayout->addWidget(new KSeparator(coursePage));
-
-	minorLayout = new QHBoxLayout(detailLayout, spacingHint());
-
-	QPushButton *addCourseButton = new QPushButton(i18n("Add..."), coursePage);
-	minorLayout->addWidget(addCourseButton);
-	connect(addCourseButton, SIGNAL(clicked()), this, SLOT(addCourse()));
-
-	remove = new QPushButton(i18n("Remove"), coursePage);
-	minorLayout->addWidget(remove);
-	connect(remove, SIGNAL(clicked()), this, SLOT(removeCourse()));
-
-	courseSelected(curItem);
-	selectionChanged();
 	
 	// options page
 	optionsPage = addPage(i18n("Options"), i18n("Game Options"));
@@ -239,8 +244,11 @@ void NewGameDialog::slotOk()
 
 	config->setGroup("New Game Dialog Mode");
 	config->writeEntry("competition", mode->isChecked());
-	config->writeEntry("course", currentCourse);
-	config->writeEntry("extra", externCourses);
+	if (enableCourses)
+	{
+		config->writeEntry("course", currentCourse);
+		config->writeEntry("extra", externCourses);
+	}
 
 	config->deleteGroup("New Game Dialog");
 	config->setGroup("New Game Dialog");

@@ -1059,10 +1059,10 @@ width=16
 
 [2-wall@0,0|10]
 endPoint=244,38
-startPoint=140,151
+startPoint=139,149
 
 [2-wall@0,0|11]
-endPoint=296,91
+endPoint=297,92
 startPoint=251,153
 
 [2-wall@0,0|12]
@@ -1071,11 +1071,11 @@ startPoint=244,38
 
 [2-wall@0,0|13]
 endPoint=389,91
-startPoint=297,92
+startPoint=296,91
 
 [2-wall@0,0|16]
 endPoint=274,69
-startPoint=296,91
+startPoint=297,92
 
 [2-wall@0,0|17]
 endPoint=314,60
@@ -1090,7 +1090,7 @@ endPoint=389,37
 startPoint=389,91
 
 [2-wall@0,0|3]
-endPoint=139,149
+endPoint=140,151
 startPoint=139,388
 
 [2-wall@0,0|4]
@@ -1099,7 +1099,7 @@ startPoint=250,388
 
 [2-wall@0,0|7]
 endPoint=191,149
-startPoint=140,151
+startPoint=139,149
 
 [2-wall@0,0|8]
 endPoint=251,153

@@ -78,22 +78,22 @@ Kolf::Kolf()
 
 void Kolf::initGUI()
 {
-	newAction = KStdAction::openNew(this, SLOT(newGame()), actionCollection());
+	newAction = KStdAction::openNew(this, SLOT(newGame()), actionCollection(), "game_new");
 
 	newAction->setText(newAction->text() + QString("..."));
-	endAction = KStdAction::close(this, SLOT(closeGame()), actionCollection());
+	endAction = KStdAction::close(this, SLOT(closeGame()), actionCollection(), "game_end");
 	endAction->setText(i18n("&Close Current Course"));
-	printAction = KStdAction::print(this, SLOT(print()), actionCollection());
+	printAction = KStdAction::print(this, SLOT(print()), actionCollection(), "game_print");
+
+	(void) KStdAction::quit(this, SLOT(close()), actionCollection(), "game_quit");
+	saveAction = KStdAction::save(this, SLOT(save()), actionCollection(), "game_save");
+	saveAsAction = KStdAction::saveAs(this, SLOT(saveAs()), actionCollection(), "game_save_as");
 
 	editingAction = new KToggleAction(i18n("&Edit"), "pencil", CTRL+Key_E, 0, 0, actionCollection(), "editing");
 	newHoleAction = new KAction(i18n("&New"), "filenew", CTRL+Key_H, 0, 0, actionCollection(), "newhole");
 	clearHoleAction = new KAction(i18n("&Clear"), "locationbar_erase", CTRL+Key_Delete, game, SLOT(clearHole()), actionCollection(), "clearhole");
 	resetHoleAction = new KAction(i18n("&Reset"), CTRL+Key_R, 0, 0, actionCollection(), "resethole");
-	undoShotAction = new KAction(i18n("&Undo Shot"), CTRL+Key_Z, 0, 0, actionCollection(), "undoshot");
-
-	(void) KStdAction::quit(this, SLOT(close()), actionCollection());
-	saveAction = KStdAction::save(this, SLOT(save()), actionCollection());
-	saveAsAction = KStdAction::saveAs(this, SLOT(saveAs()), actionCollection());
+	undoShotAction = KStdAction::undo(0, 0, actionCollection(), "undoshot");
 
 	holeAction = new KListAction(i18n("Switch to Hole"), 0, 0, 0, actionCollection(), "switchhole");
 	nextAction = new KAction(i18n("&Next Hole"), "forward", KStdAccel::key(KStdAccel::Forward), 0, 0, actionCollection(), "nexthole");
@@ -111,6 +111,10 @@ void Kolf::initGUI()
 	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Putting"), 0, 0, 0, actionCollection(), "useadvancedputting");
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
 	useAdvancedPuttingAction->setChecked(config->readBoolEntry("useAdvancedPutting", false));
+
+	showGuideLineAction = new KToggleAction(i18n("Always Show Putter &Guideline"), 0, 0, 0, actionCollection(), "showguideline");
+	connect(showGuideLineAction, SIGNAL(toggled(bool)), this, SLOT(showGuideLineChanged(bool)));
+	showGuideLineAction->setChecked(config->readBoolEntry("showGuideLine", true));
 
 	aboutAction = new KAction(i18n("&About Course..."), 0, 0, 0, actionCollection(), "aboutcourse");
 	tutorialAction = new KAction(i18n("&Tutorial..."), 0, this, SLOT(tutorial()), actionCollection(), "tutorial");
@@ -130,7 +134,7 @@ void Kolf::closeEvent(QCloseEvent *e)
 
 void Kolf::startNewGame()
 {
-	NewGameDialog *dialog = new NewGameDialog(dummy, "New Game Dialog");
+	NewGameDialog *dialog = new NewGameDialog(filename.isNull(), dummy, "New Game Dialog");
 
 	if (dialog->exec() == QDialog::Accepted)
 	{
@@ -161,6 +165,7 @@ void Kolf::startNewGame()
 		connect(game, SIGNAL(newHole(int)), scoreboard, SLOT(newHole(int)));
 		connect(game, SIGNAL(newHole(int)), this, SLOT(parChanged(int)));
 		connect(game, SIGNAL(scoreChanged(int, int, int)), scoreboard, SLOT(setScore(int, int, int)));
+		connect(game, SIGNAL(parChanged(int, int)), scoreboard, SLOT(parChanged(int, int)));
 		connect(game, SIGNAL(newPlayersTurn(Player *)), this, SLOT(newPlayersTurn(Player *)));
 		connect(game, SIGNAL(holesDone()), this, SLOT(gameOver()));
 		connect(game, SIGNAL(checkEditing()), this, SLOT(checkEditing()));
@@ -184,9 +189,11 @@ void Kolf::startNewGame()
 		connect(aboutAction, SIGNAL(activated()), game, SLOT(showInfoDlg()));
 		connect(useMouseAction, SIGNAL(toggled(bool)), game, SLOT(setUseMouse(bool)));
 		connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), game, SLOT(setUseAdvancedPutting(bool)));		
+		connect(showGuideLineAction, SIGNAL(toggled(bool)), game, SLOT(setShowGuideLine(bool)));		
 
 		game->setUseMouse(useMouseAction->isChecked());
 		game->setUseAdvancedPutting(useAdvancedPuttingAction->isChecked());		
+		game->setShowGuideLine(showGuideLineAction->isChecked());		
 
 		layout->addWidget(game, 0, 0);
 
@@ -436,18 +443,17 @@ void Kolf::print()
 
 void Kolf::useMouseChanged(bool yes)
 {
-	KConfig *config = kapp->config();
-	config->setGroup("Settings");
-	config->writeEntry("useMouse", yes);
-	config->sync();
+	KConfig *config = kapp->config(); config->setGroup("Settings"); config->writeEntry("useMouse", yes); config->sync();
 }
 
 void Kolf::useAdvancedPuttingChanged(bool yes)
 {
-	KConfig *config = kapp->config();
-	config->setGroup("Settings");
-	config->writeEntry("useAdvancedPutting", yes);
-	config->sync();
+	KConfig *config = kapp->config(); config->setGroup("Settings"); config->writeEntry("useAdvancedPutting", yes); config->sync();
+}
+
+void Kolf::showGuideLineChanged(bool yes)
+{
+	KConfig *config = kapp->config(); config->setGroup("Settings"); config->writeEntry("showGuideLine", yes); config->sync();
 }
 
 #include "kolf.moc"

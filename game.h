@@ -761,6 +761,7 @@ public:
 	void resetDegrees() { degMap.clear(); setZ(999999); }
 	virtual bool canBeMovedByOthers() const { return true; }
 	virtual void moveBy(double dx, double dy);
+	void setShowGuideLine(bool yes);
 
 private:
 	QPoint midPoint;
@@ -771,6 +772,7 @@ private:
 	int putterWidth;
 	QCanvasLine *guideLine;
 	QMap<Ball *, int> degMap;
+	bool m_showGuideLine;
 };
 
 class Bridge;
@@ -1132,11 +1134,13 @@ public slots:
 	void print(QPainter &);
 	void setUseMouse(bool yes) { m_useMouse = yes; }
 	void setUseAdvancedPutting(bool yes);
+	void setShowGuideLine(bool yes);
 	void undoShot();
 
 signals:
 	void holesDone();
 	void newHole(int);
+	void parChanged(int, int);
 	void largestHole(int);
 	void scoreChanged(int, int, int);
 	void newPlayersTurn(Player *);
@@ -1224,6 +1228,7 @@ private:
 	bool editing;
 	QPoint storedMousePos;
 	bool moving;
+	bool dragging;
 	QCanvasItem *movingItem;
 	QCanvasItem *selectedItem;
 	QCanvasRectangle *highlighter;
