@@ -4663,7 +4663,7 @@ void KolfGame::save()
 {
 	if (filename.isNull())
 	{
-		QString newfilename = KFileDialog::getSaveFileName(QString::null, "application/x-kourse", this, i18n("Pick Kolf Course to Save to"));
+		QString newfilename = KFileDialog::getSaveFileName(QString::null, "application/x-kourse", this, i18n("Pick Kolf Course to Save To"));
 		if (newfilename.isNull())
 			return;
 
