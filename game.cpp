@@ -1904,7 +1904,6 @@ void Bumper::advance(int phase)
 void Bumper::collision(Ball *ball, long int /*id*/)
 {
 	setBrush(secondColor);
-	update();
 
 	double speed = 1.8 + ball->curSpeed() * .9;
 	if (speed > 8)
@@ -1946,6 +1945,9 @@ void Bumper::collision(Ball *ball, long int /*id*/)
 			angle = (-M_PI / 2) - angle;
 		}
 	}
+
+	// add some randomness so we don't go indefinately
+	angle += kapp->random() % 4 - 2;
 
 	const double vx = -cos(angle) * speed;
 	const double vy = -sin(angle) * speed;
