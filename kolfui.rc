@@ -35,15 +35,15 @@
 		</Menu>
 
 		<Menu name="settings">
-			<Action name="usemouse" />
-			<Action name="useadvancedputting" />			
-			<Action name="showguideline" />
-			<Action name="sound" />
-			<Separator />
-			<Action name="enableAll" />
-			<Separator />
-			<Action name="reloadplugins" />
-			<Action name="showplugins" />
+			<Action name="usemouse" append="save_merge"/>
+			<Action name="useadvancedputting"  append="save_merge"/>
+			<Action name="showguideline" append="save_merge"/>
+			<Action name="sound" append="save_merge"/>
+			<Separator append="save_merge"/>
+			<Action name="enableAll" append="save_merge"/>
+			<Separator append="save_merge"/>
+			<Action name="reloadplugins" append="save_merge"/>
+			<Action name="showplugins" append="save_merge"/>
 		</Menu>
 
 		<Menu name="help">
