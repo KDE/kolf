@@ -271,7 +271,7 @@ void Slope::aboutToDie()
 	delete text;
 }
 
-QPtrList<QCanvasItem> Slope::moveableItems()
+QPtrList<QCanvasItem> Slope::moveableItems() const
 {
 	QPtrList<QCanvasItem> ret;
 	ret.append(point);
@@ -850,7 +850,7 @@ void Bridge::doSave(KSimpleConfig *cfg)
 	cfg->writeEntry("rightWallVisible", rightWallVisible());
 }
 
-QPtrList<QCanvasItem> Bridge::moveableItems()
+QPtrList<QCanvasItem> Bridge::moveableItems() const
 {
 	QPtrList<QCanvasItem> ret;
 	ret.append(point);
@@ -1018,7 +1018,7 @@ void Floater::reset()
 	setSpeed(speed);
 }
 
-QPtrList<QCanvasItem> Floater::moveableItems()
+QPtrList<QCanvasItem> Floater::moveableItems() const
 {
 	QPtrList<QCanvasItem> ret(wall->moveableItems());
 	ret.append(wall);
@@ -1597,7 +1597,7 @@ void Ellipse::aboutToDie()
 	delete point;
 }
 
-QPtrList<QCanvasItem> Ellipse::moveableItems()
+QPtrList<QCanvasItem> Ellipse::moveableItems() const
 {
 	QPtrList<QCanvasItem> ret;
 	ret.append(point);
@@ -2130,7 +2130,7 @@ void BlackHole::setExitDeg(int newdeg)
 	finishMe();
 }
 
-QPtrList<QCanvasItem> BlackHole::moveableItems()
+QPtrList<QCanvasItem> BlackHole::moveableItems() const
 {
 	QPtrList<QCanvasItem> ret;
 	ret.append(exitItem);
@@ -2635,7 +2635,7 @@ void Wall::setGame(KolfGame *game)
 	endItem->setGame(game);
 }
 
-QPtrList<QCanvasItem> Wall::moveableItems()
+QPtrList<QCanvasItem> Wall::moveableItems() const
 {
 	QPtrList<QCanvasItem> ret;
 	ret.append(startItem);

@@ -64,28 +64,28 @@ class Player
 {
 public:
 	Player() : m_ball(new Ball(0)) {};
-	Ball *ball() { return m_ball; }
+	Ball *ball() const { return m_ball; }
 	void setBall(Ball *ball) { m_ball = ball; }
-	BallStateInfo stateInfo(int hole) { BallStateInfo ret; ret.spot = QPoint(m_ball->x(), m_ball->y()); ret.state = m_ball->curState(); ret.score = score(hole); ret.beginningOfHole = m_ball->beginningOfHole(); ret.id = m_id; return ret; }
+	BallStateInfo stateInfo(int hole) const { BallStateInfo ret; ret.spot = QPoint(m_ball->x(), m_ball->y()); ret.state = m_ball->curState(); ret.score = score(hole); ret.beginningOfHole = m_ball->beginningOfHole(); ret.id = m_id; return ret; }
 
-	QValueList<int> scores() { return m_scores; }
+	QValueList<int> scores() const { return m_scores; }
 	void setScores(const QValueList<int> &newScores) { m_scores = newScores; }
-	int score(int hole) { return (*m_scores.at(hole - 1)); }
-	int lastScore() { return m_scores.last(); }
-	int firstScore() { return m_scores.first(); }
+	int score(int hole) const { return (*m_scores.at(hole - 1)); }
+	int lastScore() const { return m_scores.last(); }
+	int firstScore() const { return m_scores.first(); }
 
 	void addStrokeToHole(int hole) { (*m_scores.at(hole - 1))++; }
 	void setScoreForHole(int score, int hole) { (*m_scores.at(hole - 1)) = score; }
 	void subtractStrokeFromHole(int hole) { (*m_scores.at(hole - 1))--; }
 	void resetScore(int hole) { (*m_scores.at(hole - 1)) = 0; }
 	void addHole() { m_scores.append(0); }
-	unsigned int numHoles() { return m_scores.count(); }
+	unsigned int numHoles() const { return m_scores.count(); }
 
-	QString name() { return m_name; }
+	QString name() const { return m_name; }
 	void setName(const QString &name) { m_name = name; }
 
 	void setId(int id) { m_id = id; }
-	int id() { return m_id; }
+	int id() const { return m_id; }
 
 private:
 	Ball *m_ball;
@@ -100,11 +100,11 @@ class Arrow : public QCanvasLine
 public:
 	Arrow(QCanvas *canvas);
 	void setAngle(double newAngle) { m_angle = newAngle; }
-	double angle() { return m_angle; }
+	double angle() const { return m_angle; }
 	void setLength(double newLength) { m_length = newLength; }
-	double length() { return m_length; }
+	double length() const { return m_length; }
 	void setReversed(bool yes) { m_reversed = yes; }
-	bool reversed() { return m_reversed; }
+	bool reversed() const { return m_reversed; }
 	virtual void setVisible(bool);
 	virtual void setPen(QPen p);
 	void aboutToDie();
@@ -155,7 +155,7 @@ public:
 	virtual void hideInfo();
 	virtual void editModeChanged(bool changed);
 	virtual bool canBeMovedByOthers() const { return !stuckOnGround; }
-	virtual QPtrList<QCanvasItem> moveableItems();
+	virtual QPtrList<QCanvasItem> moveableItems() const;
 	virtual Config *config(QWidget *parent) { return new SlopeConfig(this, parent); }
 	void setSize(int, int);
 	virtual void newSize(int width, int height);
@@ -166,15 +166,15 @@ public:
 	virtual QPointArray areaPoints() const;
 
 	void setGradient(QString text);
-	KImageEffect::GradientType curType() { return type; }
+	KImageEffect::GradientType curType() const { return type; }
 	void setGrade(int grade) { if (grade > 0 && grade < 11) { this->grade = grade; updatePixmap(); } }
 
-	int curGrade() { return grade; }
+	int curGrade() const { return grade; }
 	void setColor(QColor color) { this->color = color; updatePixmap(); }
 	void setReversed(bool reversed) { this->reversed = reversed; updatePixmap(); }
-	bool isReversed() { return reversed; }
+	bool isReversed() const { return reversed; }
 
-	bool isStuckOnGround() { return stuckOnGround; }
+	bool isStuckOnGround() const { return stuckOnGround; }
 	void setStuckOnGround(bool yes) { stuckOnGround = yes; updateZ(); }
 
 	virtual void load(KSimpleConfig *cfg);
@@ -209,7 +209,7 @@ class SlopeObj : public Object
 {
 public:
 	SlopeObj() { m_name = i18n("Slope"); m__name = "slope"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Slope(QRect(0, 0, 40, 40), canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Slope(QRect(0, 0, 40, 40), canvas); }
 };
 
 class RectPoint : public QCanvasEllipse, public CanvasItem
@@ -219,8 +219,8 @@ public:
 	void dontMove() { dontmove = true; }
 	virtual void moveBy(double dx, double dy);
 	virtual Config *config(QWidget *parent);
-	virtual bool deleteable() { return false; }
-	virtual bool cornerResize() { return true; }
+	virtual bool deleteable() const { return false; }
+	virtual bool cornerResize() const { return true; }
 	virtual CanvasItem *itemToDelete() { return dynamic_cast<CanvasItem *>(rect); }
 	void setSizeFactor(double newFactor) { m_sizeFactor = newFactor; }
 
@@ -236,16 +236,16 @@ public:
 	Ellipse(QCanvas *canvas);
 	virtual void advance(int phase);
 
-	int changeEvery() { return m_changeEvery; }
+	int changeEvery() const { return m_changeEvery; }
 	void setChangeEvery(int news) { m_changeEvery = news; }
-	bool changeEnabled() { return m_changeEnabled; }
+	bool changeEnabled() const { return m_changeEnabled; }
 	void setChangeEnabled(bool news) { setAnimated(news); m_changeEnabled = news; }
 
 	virtual void aboutToDie();
 	virtual void aboutToSave();
 	virtual void savingDone();
 
-	virtual QPtrList<QCanvasItem> moveableItems();
+	virtual QPtrList<QCanvasItem> moveableItems() const;
 
 	virtual void newSize(int width, int height);
 	virtual void moveBy(double dx, double dy);
@@ -303,7 +303,7 @@ class PuddleObj : public Object
 {
 public:
 	PuddleObj() { m_name = i18n("Puddle"); m__name = "puddle"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Puddle(canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Puddle(canvas); }
 };
 
 class Sand : public Ellipse
@@ -316,14 +316,14 @@ class SandObj : public Object
 {
 public:
 	SandObj() { m_name = i18n("Sand"); m__name = "sand"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Sand(canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Sand(canvas); }
 };
 
 class Inside : public QCanvasEllipse, public CanvasItem
 {
 public:
 	Inside(CanvasItem *item, QCanvas *canvas) : QCanvasEllipse(canvas) { this->item = item; }
-	virtual bool collision(Ball *ball, long int id) { return item->collision(ball, id); }
+	virtual bool collision(Ball *ball, long int id) const { return item->collision(ball, id); }
 
 private:
 	CanvasItem *item;
@@ -351,14 +351,14 @@ class BumperObj : public Object
 {
 public:
 	BumperObj() { m_name = i18n("Bumper"); m__name = "bumper"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Bumper(canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Bumper(canvas); }
 };
 
 class Hole : public QCanvasEllipse, public CanvasItem
 {
 public:
 	Hole(QColor color, QCanvas *canvas);
-	virtual bool place(Ball * /*ball*/, bool /*wasCenter*/) { return true; };
+	virtual bool place(Ball * /*ball*/, bool /*wasCenter*/) const { return true; };
 
 	virtual bool collision(Ball *ball, long int id);
 
@@ -382,7 +382,7 @@ class CupObj : public Object
 {
 public:
 	CupObj() { m_name = i18n("Cup"); m__name = "cup"; m_addOnNewHole = true; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Cup(canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Cup(canvas); }
 };
 
 class BlackHole;
@@ -407,7 +407,7 @@ public:
 	BlackHoleExit(BlackHole *blackHole, QCanvas *canvas);
 	virtual int rtti() const { return Rtti_NoCollision; }
 	virtual void moveBy(double dx, double dy);
-	virtual bool deleteable() { return false; }
+	virtual bool deleteable() const { return false; }
 	virtual bool canBeMovedByOthers() const { return true; }
 	virtual void editModeChanged(bool editing);
 	virtual void setPen(QPen p);
@@ -433,13 +433,13 @@ public:
 	virtual void save(KSimpleConfig *cfg);
 	virtual void load(KSimpleConfig *cfg);
 	virtual Config *config(QWidget *parent) { return new BlackHoleConfig(this, parent); }
-	virtual QPtrList<QCanvasItem> moveableItems();
-	int minSpeed() { return m_minSpeed; }
-	int maxSpeed() { return m_maxSpeed; }
+	virtual QPtrList<QCanvasItem> moveableItems() const;
+	int minSpeed() const { return m_minSpeed; }
+	int maxSpeed() const { return m_maxSpeed; }
 	void setMinSpeed(int news) { m_minSpeed = news; exitItem->updateArrowLength(); }
 	void setMaxSpeed(int news) { m_maxSpeed = news; exitItem->updateArrowLength(); }
 
-	int curExitDeg() { return exitDeg; }
+	int curExitDeg() const { return exitDeg; }
 	void setExitDeg(int newdeg);
 
 	virtual void editModeChanged(bool editing) { exitItem->editModeChanged(editing); }
@@ -460,7 +460,7 @@ class BlackHoleObj : public Object
 {
 public:
 	BlackHoleObj() { m_name = i18n("Black Hole"); m__name = "blackhole"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new BlackHole(canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new BlackHole(canvas); }
 };
 
 class WallPoint;
@@ -486,7 +486,7 @@ public:
 	// and we do that in :moveBy()
 	virtual void setPoints(int xa, int ya, int xb, int yb) { QCanvasLine::setPoints(xa, ya, xb, yb); moveBy(0, 0); }
 	virtual int rtti() const { return Rtti_DontPlaceOn; }
-	virtual QPtrList<QCanvasItem> moveableItems();
+	virtual QPtrList<QCanvasItem> moveableItems() const;
 	virtual void setGame(KolfGame *game);
 	virtual void setVisible(bool);
 
@@ -507,7 +507,7 @@ public:
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
 	virtual int rtti() const { return Rtti_WallPoint; }
-	virtual bool deleteable() { return false; }
+	virtual bool deleteable() const { return false; }
 	virtual bool collision(Ball *ball, long int id);
 	virtual CanvasItem *itemToDelete() { return wall; }
 	virtual void clean();
@@ -528,7 +528,7 @@ class WallObj : public Object
 {
 public:
 	WallObj() { m_name = i18n("Wall"); m__name = "wall"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Wall(canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Wall(canvas); }
 };
 
 class Putter : public QCanvasLine, public CanvasItem
@@ -537,12 +537,12 @@ public:
 	Putter(QCanvas *canvas);
 	void go(Direction, bool more = false);
 	void setOrigin(int x, int y);
-	int curLen() { return len; }
-	int curDeg() { return deg; }
+	int curLen() const { return len; }
+	int curDeg() const { return deg; }
 	virtual void showInfo();
 	virtual void hideInfo();
 	void setDeg(int news) { deg = news; finishMe(); }
-	int curMaxDeg() { return maxDeg; }
+	int curMaxDeg() const { return maxDeg; }
 	virtual int rtti() const { return Rtti_Putter; }
 	virtual void setVisible(bool yes);
 	void saveDegrees(Ball *ball) { degMap[ball] = deg; }
@@ -605,22 +605,22 @@ public:
 	virtual void setGame(KolfGame *game);
 	virtual Config *config(QWidget *parent) { return new BridgeConfig(this, parent); }
 	void setSize(int width, int height);
-	virtual QPtrList<QCanvasItem> moveableItems();
+	virtual QPtrList<QCanvasItem> moveableItems() const;
 
 	void setWallColor(QColor color);
-	QPen wallPen() { return topWall->pen(); }
+	QPen wallPen() const { return topWall->pen(); }
 
-	double wallZ() { return topWall->z(); }
+	double wallZ() const { return topWall->z(); }
 	void setWallZ(double);
 
 	void setTopWallVisible(bool yes) { topWall->setVisible(yes); }
 	void setBotWallVisible(bool yes) { botWall->setVisible(yes); }
 	void setLeftWallVisible(bool yes) { leftWall->setVisible(yes); }
 	void setRightWallVisible(bool yes) { rightWall->setVisible(yes); }
-	bool topWallVisible() { return topWall->isVisible(); }
-	bool botWallVisible() { return botWall->isVisible(); }
-	bool leftWallVisible() { return leftWall->isVisible(); }
-	bool rightWallVisible() { return rightWall->isVisible(); }
+	bool topWallVisible() const { return topWall->isVisible(); }
+	bool botWallVisible() const { return botWall->isVisible(); }
+	bool leftWallVisible() const { return leftWall->isVisible(); }
+	bool rightWallVisible() const { return rightWall->isVisible(); }
 	
 protected:
 	Wall *topWall;
@@ -633,7 +633,7 @@ class BridgeObj : public Object
 {
 public:
 	BridgeObj() { m_name = i18n("Bridge"); m__name = "bridge"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Bridge(QRect(0, 0, 80, 40), canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Bridge(QRect(0, 0, 80, 40), canvas); }
 };
 
 class Sign;
@@ -655,7 +655,7 @@ class Sign : public Bridge
 public:
 	Sign(QCanvas *canvas);
 	void setText(const QString &text) { m_text = text; update(); }
-	QString text() { return m_text; }
+	QString text() const { return m_text; }
 	virtual void draw(QPainter &painter);
 	virtual bool vStrut() const { return false; }
 	virtual Config *config(QWidget *parent) { return new SignConfig(this, parent); }
@@ -669,7 +669,7 @@ class SignObj : public Object
 {
 public:
 	SignObj() { m_name = i18n("Sign"); m__name = "sign"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Sign(canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Sign(canvas); }
 };
 
 class Windmill;
@@ -711,9 +711,9 @@ public:
 	void setSize(int width, int height);
 	virtual void moveBy(double dx, double dy);
 	void setSpeed(int news);
-	int curSpeed() { return speed; }
+	int curSpeed() const { return speed; }
 	void setBottom(bool yes);
-	bool bottom() { return m_bottom; }
+	bool bottom() const { return m_bottom; }
 
 private:
 	WindmillGuard *guard;
@@ -727,7 +727,7 @@ class WindmillObj : public Object
 {
 public:
 	WindmillObj() { m_name = i18n("Windmill"); m__name = "windmill"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Windmill(QRect(0, 0, 80, 40), canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Windmill(QRect(0, 0, 80, 40), canvas); }
 };
 
 class Floater;
@@ -767,7 +767,7 @@ public:
 	virtual void loadState(StateDB *db);
 	virtual void save(KSimpleConfig *cfg);
 	virtual void load(KSimpleConfig *cfg);
-	virtual bool loadLast() { return true; }
+	virtual bool loadLast() const { return true; }
 	virtual void firstMove(int x, int y);
 	virtual void aboutToSave();
 	virtual void aboutToDie();
@@ -777,10 +777,10 @@ public:
 	virtual bool moveable() const { return false; }
 	virtual void moveBy(double dx, double dy);
 	virtual Config *config(QWidget *parent) { return new FloaterConfig(this, parent); }
-	virtual QPtrList<QCanvasItem> moveableItems();
+	virtual QPtrList<QCanvasItem> moveableItems() const;
 	virtual void advance(int phase);
 	void setSpeed(int news);
-	int curSpeed() { return speed; }
+	int curSpeed() const { return speed; }
 
 	// called by floaterguide when changed;
 	void reset();
@@ -799,7 +799,7 @@ class FloaterObj : public Object
 {
 public:
 	FloaterObj() { m_name = i18n("Floater"); m__name = "floater"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Floater(QRect(0, 0, 80, 40), canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Floater(QRect(0, 0, 80, 40), canvas); }
 };
 
 class HoleInfo;
@@ -826,18 +826,18 @@ public:
 	HoleInfo() { m_lowestMaxStrokes = 4; }
 	virtual ~HoleInfo() {}
 	void setPar(int newpar) { m_par = newpar; }
-	int par() { return m_par; }
+	int par() const { return m_par; }
 	void setMaxStrokes(int newMaxStrokes) { m_maxStrokes = newMaxStrokes; }
-	int lowestMaxStrokes() { return m_lowestMaxStrokes; }
-	int maxStrokes() { return m_maxStrokes; }
-	bool hasMaxStrokes() { return m_maxStrokes != m_lowestMaxStrokes; }
+	int lowestMaxStrokes() const { return m_lowestMaxStrokes; }
+	int maxStrokes() const { return m_maxStrokes; }
+	bool hasMaxStrokes() const { return m_maxStrokes != m_lowestMaxStrokes; }
 	void setAuthor(QString newauthor) { m_author = newauthor; }
-	QString author() { return m_author; }
+	QString author() const { return m_author; }
 	void setName(QString newname) { m_name = newname; }
-	QString name() { return m_name; }
+	QString name() const { return m_name; }
 	virtual Config *config(QWidget *parent) { return new HoleConfig(this, parent); }
 	void borderWallsChanged(bool yes);
-	bool borderWalls() { return m_borderWalls; }
+	bool borderWalls() const { return m_borderWalls; }
 
 private:
 	QString m_author;
@@ -897,17 +897,17 @@ public:
 	// returns whether it was a cancel
 	bool askSave(bool);
 	bool isEditing() const { return editing; }
-	Ball *curBall() { return (*curPlayer).ball(); }
+	Ball *curBall() const { return (*curPlayer).ball(); }
 	void updateMouse();
 	//void changeMouse();
 	void ballMoved();
 	void updateHighlighter();
 	void updateCourse() { course->update(); }
-	QCanvasItem *curSelectedItem() { return selectedItem; }
+	QCanvasItem *curSelectedItem() const { return selectedItem; }
 	void setBorderWalls(bool);
 	void setInPlay(bool yes) { inPlay = yes; }
 	void stoppedBall();
-	QString courseName() { return holeInfo.name(); }
+	QString courseName() const { return holeInfo.name(); }
 
 	static void scoresFromSaved(KSimpleConfig *, PlayerList &players);
 	static void courseInfo(CourseInfo &info, const QString &filename);

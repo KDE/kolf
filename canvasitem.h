@@ -45,7 +45,7 @@ public:
 	/**
 	 * returns a bool that is true if your item needs to load after other items
 	 */
-	virtual bool loadLast() { return false; }
+	virtual bool loadLast() const { return false; }
 	/**
 	 * called if the item is made by user while editing, with the item that was selected on the hole;
 	 */
@@ -90,11 +90,11 @@ public:
 	/**
 	 * returns whether this item should be able to be deleted by user while editing.
 	 */
-	virtual bool deleteable() { return true; }
+	virtual bool deleteable() const { return true; }
 	/**
 	 * returns whether this item should get doAdvance called -- it is called in sync with ball advancing (which is twice as fast as the advance() calling rate)
 	 */
-	virtual bool fastAdvance() { return false; }
+	virtual bool fastAdvance() const { return false; }
 	/**
 	 * called when all items have had their chance at a doAdvance
 	 */
@@ -106,7 +106,7 @@ public:
 	/**
 	 * if all items of this type of item (based on rtti()) that are "colliding" (ie, in the same spot) with ball should get collision() called.
 	 */
-	virtual bool terrainCollisions() { return false; }
+	virtual bool terrainCollisions() const { return false; }
 	/**
 	 * returns whether or not this item lifts items on top of it.
 	 */
@@ -139,7 +139,7 @@ public:
 	/**
 	 * returns other items that should be moveable (besides this one of course).
 	 */
-	virtual QPtrList<QCanvasItem> moveableItems() { return QPtrList<QCanvasItem>(); }
+	virtual QPtrList<QCanvasItem> moveableItems() const { return QPtrList<QCanvasItem>(); }
 	/**
 	 * returns whether this can be moved by the user while editing.
 	 */
@@ -156,7 +156,7 @@ public:
 	/**
 	 * called on ball's collision. Return if terrain collisions should be processed.
 	 */
-	virtual bool collision(Ball * /*ball*/, long int /*id*/) { return true; }
+	virtual bool collision(Ball * /*ball*/, long int /*id*/) const { return true; }
 
 	/**
 	 * reimplement if you want extra items to have access to the game object.
@@ -167,9 +167,9 @@ public:
 	/**
 	 * returns whether this resizes from south-east.
 	 */
-	virtual bool cornerResize() { return false; }
+	virtual bool cornerResize() const { return false; }
 
-	QString name() { return m_name; }
+	QString name() const { return m_name; }
 	void setName(const QString &newname) { m_name = newname; }
 
 protected:

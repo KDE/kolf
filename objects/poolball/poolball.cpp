@@ -16,8 +16,8 @@
 #include "canvasitem.h"
 #include "poolball.h"
 
-K_EXPORT_COMPONENT_FACTORY( libkolfpoolball, PoolBallFactory )
-QObject *PoolBallFactory::createObject (QObject *parent, const char *name, const char *classname, const QStringList &args) { return new PoolBallObj; }
+K_EXPORT_COMPONENT_FACTORY(libkolfpoolball, PoolBallFactory)
+QObject *PoolBallFactory::createObject (QObject *, const char *, const char *, const QStringList &) { return new PoolBallObj; }
 
 PoolBall::PoolBall(QCanvas *canvas)
 	: Ball(canvas)
@@ -63,8 +63,8 @@ PoolBallConfig::PoolBallConfig(PoolBall *poolBall, QWidget *parent)
 
 	layout->addStretch();
 
-	QLabel *slow = new QLabel(i18n("Number"), this);
-	layout->addWidget(slow);
+	QLabel *num = new QLabel(i18n("Number"), this);
+	layout->addWidget(num);
 	KIntNumInput *slider = new KIntNumInput(poolBall->number(), this);
 	slider->setRange(1, 15);
 	layout->addWidget(slider);

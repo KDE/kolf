@@ -24,7 +24,7 @@ public:
 
 	virtual void advance(int phase);
 
-	int switchEvery() { return m_switchEvery / 2; }
+	int switchEvery() const { return m_switchEvery / 2; }
 	void setSwitchEvery(int news) { m_switchEvery = news * 2; }
 
 private:
@@ -50,7 +50,7 @@ class TestObj : public Object
 {
 public:
 	TestObj() { m_name = i18n("Flash"); m__name = "flash"; m_author = "Jason Katz-Brown"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Test(canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Test(canvas); }
 };
 
 #endif

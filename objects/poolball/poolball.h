@@ -27,9 +27,9 @@ public:
 	virtual void loadState(StateDB *);
 	virtual void load(KSimpleConfig *cfg);
 	virtual void draw(QPainter &);
-	virtual bool fastAdvance() { return true; }
+	virtual bool fastAdvance() const { return true; }
 
-	int number() { return m_number; }
+	int number() const { return m_number; }
 	void setNumber(int newNumber) { m_number = newNumber; update(); }
 
 private:
@@ -54,7 +54,7 @@ class PoolBallObj : public Object
 {
 public:
 	PoolBallObj() { m_name = i18n("Pool Ball"); m__name = "poolball"; m_author = "Jason Katz-Brown"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new PoolBall(canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new PoolBall(canvas); }
 };
 
 #endif

@@ -14,8 +14,9 @@
 #include "canvasitem.h"
 #include "test.h"
 
-K_EXPORT_COMPONENT_FACTORY( libkolftest, TestFactory )
-QObject *TestFactory::createObject (QObject *parent, const char *name, const char *classname, const QStringList &args) { return new TestObj; }
+K_EXPORT_COMPONENT_FACTORY(libkolftest, TestFactory)
+QObject *TestFactory::createObject (QObject * /*parent*/, const char * /*name*/, const char * /*classname*/, const QStringList & /*args*/)
+{ return new TestObj; }
 
 Test::Test(QCanvas *canvas)
 	: QCanvasEllipse(60, 40, canvas)
