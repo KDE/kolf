@@ -1259,6 +1259,7 @@ width=159
 [7-sign@98,209|24]
 Comment=Bay Bridge
 Comment[bg]=Бей Бридж
+Comment[de]=Bay-Brücke
 Comment[es]=Puente de la Bahía
 Comment[gl]=Ponte da Ría
 Comment[pt_BR]=Ponte da Baía
@@ -1625,6 +1626,7 @@ width=20
 [9-sign@291,368|28]
 Comment=Niagara Falls, NY
 Comment[bg]=Ниагара, Ню Йорк
+Comment[de]=Niagara-Fälle, NY
 Comment[el]=Καταρράχτες Νιαγάρα, NY
 Comment[es]=Cataratas del Niágara, NY
 Comment[fr]=Chutes du Niagara, NY
