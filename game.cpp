@@ -3439,8 +3439,10 @@ void KolfGame::setShowInfo(bool yes)
 				citem->showInfo();
 		}
 
+		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+			(*it).ball()->showInfo();
+
 		showInfo();
-		//putter->showInfo();
 	}
 	else
 	{
@@ -3452,8 +3454,10 @@ void KolfGame::setShowInfo(bool yes)
 				citem->hideInfo();
 		}
 
+		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+			(*it).ball()->hideInfo();
+
 		hideInfoText();
-		//putter->hideInfo();
 	}
 }
 
@@ -4216,7 +4220,7 @@ void KolfGame::showInfo()
 	QString text = i18n("Hole %1: par %2, maximum number of strokes is %3.").arg(curHole).arg(holeInfo.par()).arg(holeInfo.maxStrokes());
 	infoText->move((width - QFontMetrics(infoText->font()).width(text)) / 2, infoText->y());
 	infoText->setText(text);
-	// I personally hate this text! Let's not show it
+	// I hate this text! Let's not show it
 	//infoText->setVisible(true);
 }
 
@@ -4850,7 +4854,6 @@ void KolfGame::playSound(QString file, double vol)
 		{
 			if (oldPlayObject && oldPlayObject->state() != Arts::posPlaying)
 			{
-				kdDebug() << "removing obj\n";
 				oldPlayObjects.remove();
 
 				// because we will go to next() next time

@@ -15,6 +15,8 @@ class Ball : public QCanvasEllipse, public CanvasItem
 {
 public:
 	Ball(QCanvas *canvas);
+	virtual void aboutToDie();
+
 	BallState currentState();
 
 	virtual void resetSize() { setSize(7, 7); }
@@ -65,6 +67,12 @@ public:
 	void setDoDetect(bool yes) { m_doDetect = yes; }
 	bool doDetect() const { return m_doDetect; }
 
+	virtual void showInfo();
+	virtual void hideInfo();
+	virtual void setName(const QString &);
+	virtual void setCanvas(QCanvas *c);
+	virtual void setVisible(bool yes);
+
 private:
 	BallState state;
 	QColor m_color;
@@ -88,6 +96,8 @@ private:
 
 	bool m_doDetect;
 	QCanvasItemList m_list;
+
+	QCanvasText *label;
 };
 
 

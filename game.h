@@ -91,7 +91,7 @@ public:
 	unsigned int numHoles() const { return m_scores.count(); }
 
 	QString name() const { return m_name; }
-	void setName(const QString &name) { m_name = name; }
+	void setName(const QString &name) { m_name = name; m_ball->setName(name); }
 
 	void setId(int id) { m_id = id; }
 	int id() const { return m_id; }
@@ -958,6 +958,7 @@ public:
 	void setBorderWalls(bool);
 	void setInPlay(bool yes) { inPlay = yes; }
 	bool isInPlay() { return inPlay; }
+	bool isInfoShowing() { return m_showInfo; }
 	void stoppedBall();
 	QString courseName() const { return holeInfo.name(); }
 	void hidePutter() { putter->setVisible(false); }

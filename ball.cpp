@@ -29,9 +29,20 @@ Ball::Ball(QCanvas *canvas)
 	m_placeOnGround = false;
 	m_forceStillGoing = false;
 	frictionMultiplier = 1.0;
+	QFont font(kapp->font());
+	//font.setPixelSize(10);
+	label = new QCanvasText("", font, canvas);
+	label->setColor(white);
+	label->setVisible(false);
 
 	// this sets z
 	setState(Stopped);
+	label->setZ(z() - .1);
+}
+
+void Ball::aboutToDie()
+{
+	delete label;
 }
 
 void Ball::setState(BallState newState)
@@ -126,6 +137,8 @@ void Ball::moveBy(double dx, double dy)
 		
 	if ((dx || dy) && game && game->curBall() == this)
 		game->ballMoved();
+	
+	label->move(x() + width(), y() + height());
 }
 
 void Ball::doAdvance()
@@ -192,7 +205,7 @@ namespace Lines
 
 #include <iostream.h>
 
-void Ball::collisionDetect(double oldx, double oldy)
+void Ball::collisionDetect(double /*oldx*/, double /*oldy*/)
 {
 	if (!isVisible() || state == Holed || !m_doDetect)
 		return;
@@ -292,6 +305,10 @@ void Ball::collisionDetect(double oldx, double oldy)
 				citem->collision(this, collisionId);
 	}
 
+// this makes kolf more buggy than it is without
+// - jason
+
+#if 0
 	{ // check if I went through a wall
 		QCanvasItemList items;
 		if (game)
@@ -317,8 +334,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 		
 		}
 	}
-	
-
+#endif
 
 	end:
 
@@ -332,5 +348,33 @@ void Ball::collisionDetect(double oldx, double oldy)
 BallState Ball::currentState()
 {
 	return state;
+}
+
+void Ball::showInfo()
+{
+	label->setVisible(isVisible());
+}
+
+void Ball::hideInfo()
+{
+	label->setVisible(false);
+}
+
+void Ball::setName(const QString &name)
+{
+	label->setText(name);
+}
+
+void Ball::setCanvas(QCanvas *c)
+{
+	QCanvasEllipse::setCanvas(c);
+	label->setCanvas(c);
+}
+
+void Ball::setVisible(bool yes)
+{
+	QCanvasEllipse::setVisible(yes);
+
+	label->setVisible(yes && game && game->isInfoShowing());
 }
 
