@@ -384,8 +384,8 @@ void Kolf::createSpacer()
 
 	delete spacer;
 	spacer = new KolfGame(obj, &spacerPlayers, KGlobal::dirs()->findResource("appdata", "intro"), dummy);
-	spacer->startFirstHole(1);
 	spacer->setSound(false);
+	spacer->startFirstHole(1);
 	layout->addWidget(spacer, 0, 0, AlignCenter);
 	spacer->hidePutter();
 	spacer->ignoreEvents(true);
@@ -554,6 +554,7 @@ void Kolf::loadGame()
 void Kolf::newPlayersTurn(Player *player)
 {
 	statusBar()->message(i18n("%1's turn").arg(player->name()));
+	scoreboard->setCurrentCell(player->id() - 1, game->currentHole() - 1);
 }
 
 void Kolf::editingStarted()

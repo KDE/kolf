@@ -944,6 +944,7 @@ public:
 	// returns whether it was a cancel
 	bool askSave(bool);
 	bool isEditing() const { return editing; }
+	int currentHole() { return curHole; }
 	void setStrict(bool yes) { strict = yes; }
 	// returns true when you shouldn't do anything
 	bool isPaused() const { return paused; }
@@ -1028,7 +1029,6 @@ private slots:
 	void hideInfoText();
 
 protected:
-
 	void mouseMoveEvent(QMouseEvent *e);
 	void mousePressEvent(QMouseEvent *e);
 	void mouseReleaseEvent(QMouseEvent *e);

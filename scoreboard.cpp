@@ -18,12 +18,8 @@ ScoreBoard::ScoreBoard(QWidget *parent, const char *name)
 	hh->setLabel(numCols() - 1, i18n("Total"));
 
 	setFocusPolicy(QWidget::NoFocus);
-	setSelectionMode(NoSelection);
-
 	setRowReadOnly(0, true);
 	setRowReadOnly(1, true);
-	setRowReadOnly(2, true);
-	setRowReadOnly(3, true);
 }
 
 void ScoreBoard::newHole(int par)
@@ -37,9 +33,7 @@ void ScoreBoard::newHole(int par)
 	// update total
 	int tot = 0;
 	for (int i = 0; i < numCols() - 1; ++i)
-	{
 		tot += text(numRows() - 1, i).toInt();
-	}
 	setText(numRows() - 1, numCols() - 1, QString::number(tot));
 }
 
@@ -58,7 +52,16 @@ void ScoreBoard::setScore(int id, int hole, int score)
 
 	QString name;
 	setText(id - 1, numCols() - 1, QString::number(total(id, name)));
-	ensureCellVisible(id - 1, hole - 1);
+	if (hole >= numCols() - 2)
+		ensureCellVisible(id - 1, numCols() - 1);
+	else
+		ensureCellVisible(id - 1, hole - 1);
+	
+	// shrink cell...
+	setColumnWidth(hole - 1, 3);
+	// and make it big enough for the numbers
+	adjustColumn(hole - 1);
+		
 	setCurrentCell(id - 1, hole - 1);
 }
 
@@ -69,9 +72,7 @@ void ScoreBoard::parChanged(int hole, int par)
 	// update total
 	int tot = 0;
 	for (int i = 0; i < numCols() - 1; ++i)
-	{
 		tot += text(numRows() - 1, i).toInt();
-	}
 	setText(numRows() - 1, numCols() - 1, QString::number(tot));
 }
 
