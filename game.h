@@ -445,7 +445,7 @@ public:
 	// and we do that in moveBy()
 	virtual void setPoints(int xa, int ya, int xb, int yb) { QCanvasLine::setPoints(xa, ya, xb, yb); moveBy(0, 0); }
 
-	virtual int rtti() const { return Rtti_DontPlaceOn; }
+	virtual int rtti() const { return Rtti_Wall; }
 	virtual QPtrList<QCanvasItem> moveableItems() const;
 	virtual void setGame(KolfGame *game);
 	virtual void setVisible(bool);
@@ -458,7 +458,9 @@ protected:
 	bool editing;
 
 private:
-	int lastId;
+	long int lastId;
+
+	friend WallPoint;
 };
 class WallPoint : public QCanvasEllipse, public CanvasItem
 {
@@ -476,6 +478,8 @@ public:
 	void dontMove() { dontmove = true; };
 	void updateVisible();
 
+	Wall *parentWall() { return wall; }
+
 protected:
 	Wall *wall;
 	bool editing;
@@ -485,7 +489,9 @@ private:
 	bool alwaysShow;
 	bool start;
 	bool dontmove;
-	int lastId;
+	long int lastId;
+
+	friend Wall;
 };
 class WallObj : public Object
 {

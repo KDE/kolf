@@ -1,5 +1,7 @@
 #include <math.h>
 
+#include <kdebug.h>
+
 #include "vector.h"
 
 // this and vector.h by Ryan Cummings
@@ -8,6 +10,12 @@
 Vector::Vector(const QPoint &source, const QPoint &dest) {
 	_magnitude = sqrt(pow(source.x() - dest.x(), 2) + pow(source.y() - dest.y(), 2));
 	_direction = atan2(source.y() - dest.y(), source.x() - dest.x());
+}
+
+// Creates a vector with between two points
+Vector::Vector(const Point &source, const Point &dest) {
+	_magnitude = sqrt(pow(source.x - dest.x, 2) + pow(source.y - dest.y, 2));
+	_direction = atan2(source.y - dest.y, source.x - dest.x);
 }
 
 // Creates an empty Vector
@@ -86,4 +94,14 @@ Vector& Vector::operator/= (double m) {
 void Vector::setComponents(double x, double y) {
 	_direction = atan2(y, x);
 	_magnitude = sqrt((x * x) + (y * y));
+}
+
+void debugPoint(const QString &text, const Point &p)
+{
+	kdDebug() << text << " (" << p.x << ", " << p.y << ")" << endl;
+}
+
+void debugVector(const QString &text, const Vector &p)
+{
+	kdDebug() << text << " (magnitude: " << p.magnitude() << ", direction: " << p.direction() << ")" << endl;
 }

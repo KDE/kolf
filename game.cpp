@@ -1648,14 +1648,23 @@ bool WallPoint::collision(Ball *ball, long int id)
 {
 	if (ball->curVector().magnitude() <= 0)
 		return false;
-
-	if (abs(id - lastId) < 2)
+	
+	long int tempLastId = lastId;
+	lastId = id;
+	QCanvasItemList l = collisions(true);
+	for (QCanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
 	{
-		lastId = id;
-		return false;
+		if ((*it)->rtti() == rtti())
+		{
+			WallPoint *point = (WallPoint *)(*it);
+			point->lastId = id;
+		}
 	}
 
-	lastId = id;
+	if (abs(id - tempLastId) < 2)
+	{
+		return false;
+	}
 
 	bool weirdBounce = visible;
 
@@ -1693,11 +1702,14 @@ bool WallPoint::collision(Ball *ball, long int id)
 
 		ballVector.setDirection(leavingAngle);
 		ball->setVector(ballVector);
+		wall->lastId = id;
 
 		return false;
 	}
 	else
+	{
 		return wall->collision(ball, id);
+	}
 }
 
 /////////////////////////
@@ -1839,6 +1851,9 @@ QPointArray Wall::areaPoints() const
 
 void Wall::editModeChanged(bool changed)
 {
+	// make big for debugging?
+	const bool debugPoints = true;
+
 	editing = changed;
 
 	startItem->setZ(z() + .002);
@@ -1847,7 +1862,7 @@ void Wall::editModeChanged(bool changed)
 	endItem->editModeChanged(editing);
 
 	int neww = 0;
-	if (changed)
+	if (changed || debugPoints)
 		neww = 10;
 	else
 		neww = pen().width();
@@ -1863,13 +1878,16 @@ bool Wall::collision(Ball *ball, long int id)
 	if (ball->curVector().magnitude() <= 0)
 		return false;
 
-	if (abs(id - lastId) < 2)
+	long int tempLastId = lastId;
+	lastId = id;
+	startItem->lastId = id;
+	endItem->lastId = id;
+
+	if (abs(id - tempLastId) < 2)
 	{
-		lastId = id;
 		return false;
 	}
 
-	lastId = id;
 	playSound("wall", ball->curVector().magnitude() / 10.0);
 
 	Vector ballVector(ball->curVector());

@@ -4,6 +4,7 @@
 
 #include <kapplication.h>
 #include <kdebug.h>
+#include <kdebugclasses.h>
 
 #include <math.h>
 #include <stdlib.h>
@@ -148,12 +149,7 @@ void Ball::doAdvance()
 
 namespace Lines
 {
-
-	struct Point
-	{
-		double x;
-		double y;
-	};
+	// provides a point made of doubles
 
 	struct Line
 	{
@@ -282,6 +278,72 @@ void Ball::collisionDetect(double oldx, double oldy)
 
 			continue;
 		}
+		else if (item->rtti() == Rtti_WallPoint)
+		{
+			//kdDebug() << "collided with WallPoint\n";
+			// iterate through the rst
+			QPtrList<WallPoint> points;
+			for (QCanvasItemList::Iterator pit = it; pit != m_list.end(); ++pit)
+			{
+				if ((*pit)->rtti() == Rtti_WallPoint)
+				{
+					WallPoint *point = (WallPoint *)(*pit);
+					if (point)
+						points.prepend(point);
+				}
+			}
+
+			// ok now we have a list of wall points we are on
+
+			WallPoint *iterpoint = 0;
+			WallPoint *finalPoint = 0;
+
+			// this wont be least when we're done hopefully
+			double leastAngleDifference = 9999;
+
+			for (iterpoint = points.first(); iterpoint; iterpoint = points.next())
+			{
+				//kdDebug() << "-----\n";
+				const Wall *parentWall = iterpoint->parentWall();
+				const QPoint qp(iterpoint->x() + parentWall->x(), iterpoint->y() + parentWall->y());
+				const Point p(qp.x(), qp.y());
+				const QPoint qother = QPoint(parentWall->startPoint() == qp? parentWall->endPoint() : parentWall->startPoint()) + QPoint(parentWall->x(), parentWall->y());
+				const Point other(qother.x(), qother.y());
+
+				// vector of wall
+				Vector v = Vector(p, other);
+
+				// difference between our path and the wall path
+				double ourDir = m_vector.direction();
+
+				double wallDir = M_PI - v.direction();
+
+				//kdDebug() << "ourDir: " << rad2deg(ourDir) << endl;
+				//kdDebug() << "wallDir: " << rad2deg(wallDir) << endl;
+
+				const double angleDifference = fabs(M_PI - fabs(ourDir - wallDir));
+				//kdDebug() << "computed angleDifference: " << rad2deg(angleDifference) << endl;
+
+				// only if this one is the least of all
+				if (angleDifference < leastAngleDifference)
+				{
+					leastAngleDifference = angleDifference;
+					finalPoint = iterpoint;
+					//kdDebug() << "it's the one\n";
+				}
+			}
+
+			// this'll never happen
+			if (!finalPoint)
+				continue;
+
+			// collide with our chosen point
+			finalPoint->collision(this, collisionId);
+
+			// don't worry about colliding with walls
+			// wall points are ok alone
+			goto end;
+		}
 
 		if (!isVisible() || state == Holed)
 			return;
@@ -290,19 +352,22 @@ void Ball::collisionDetect(double oldx, double oldy)
 		if (citem)
 		{
 			if (!citem->terrainCollisions())
+			{
 				if (!citem->collision(this, collisionId))
-					goto end;
+				{
+					if (citem->vStrut() || item->rtti() == Rtti_Wall)
+						goto end;
+				}
+			}
 			break;
 		}
 	}
 
-
 	for (QCanvasItemList::Iterator it = m_list.begin(); it != m_list.end(); ++it)
 	{
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(*it);
-		if (citem)
-			if (citem->terrainCollisions())
-				citem->collision(this, collisionId);
+		if (citem && citem->terrainCollisions())
+			citem->collision(this, collisionId);
 	}
 
 // this makes kolf more buggy than it is without
@@ -315,7 +380,10 @@ void Ball::collisionDetect(double oldx, double oldy)
 			items = game->canvas()->allItems();
 		for (QCanvasItemList::Iterator i = items.begin(); i != items.end(); ++i)
 		{
-			QCanvasItem *item = *i;
+			if ((*i)->rtti() != Rtti_Wall)
+				continue;
+
+			QCanvasItem *item = (*i);
 			Wall *wall = dynamic_cast<Wall*>(item);
 			if (!wall || !wall->isVisible())
 				continue;

@@ -58,9 +58,8 @@ Slope::Slope(QRect rect, QCanvas *canvas)
 
 bool Slope::terrainCollisions() const
 {
-	// having circles be different is evil
-	//return type == KImageEffect::EllipticGradient;
-	return false;
+	// we are a terrain collision
+	return true;
 }
 
 void Slope::showInfo()
@@ -331,7 +330,8 @@ bool Slope::collision(Ball *ball, long int /*id*/)
 	ball->setVelocity(vx, vy);
 	ball->setState(Rolling);
 
-	return true;
+	// do NOT do terrain collisions
+	return false;
 }
 
 void Slope::setGradient(QString text)

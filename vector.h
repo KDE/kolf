@@ -3,6 +3,27 @@
 
 #include <qpoint.h>
 
+class Point
+{
+public:
+	Point(double _x, double _y)
+	{
+		x = _x;
+		y = _y;
+	}
+
+	Point()
+	{
+		x = 0;
+		y = 0;
+	}
+
+	double x;
+	double y;
+};
+
+void debugPoint(const QString &, const Point &);
+
 // This and vector.cpp by Ryan Cummings
 
 // Implements a vector in 2D
@@ -11,6 +32,7 @@ class Vector {
 	// Normal constructors
 	Vector(double magnitude, double direction) { _magnitude = magnitude; _direction = direction; }
 	Vector(const QPoint& source, const QPoint& dest);
+	Vector(const Point& source, const Point& dest);
 	Vector();
 
 	// Copy constructor
@@ -62,5 +84,7 @@ class Vector {
 	double _magnitude;
 	double _direction;
 };
+
+void debugVector(const QString &, const Vector &);
 
 #endif
