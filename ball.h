@@ -1,13 +1,13 @@
-#ifndef _BALL_H
-#define _BALL_H
+#ifndef KOLF_BALL_H
+#define KOLF_BALL_H
 
 #include <qcanvas.h>
 #include <qcolor.h>
 
 #include <math.h>
 
-#include "vector.h"
-#include "rtti.h"
+#include <kolf/vector.h>
+#include <kolf/rtti.h>
 
 enum BallState { Rolling = 0, Stopped, Holed };
 

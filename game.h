@@ -24,12 +24,12 @@
 #include <qvaluelist.h>
 #include <qwidget.h>
 
-#include "object.h"
-#include "config.h"
-#include "canvasitem.h"
-#include "ball.h"
-#include "statedb.h"
-#include "rtti.h"
+#include <kolf/object.h>
+#include <kolf/config.h>
+#include <kolf/canvasitem.h>
+#include <kolf/ball.h>
+#include <kolf/statedb.h>
+#include <kolf/rtti.h>
 
 class QLabel;
 class QSlider;

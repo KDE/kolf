@@ -1,5 +1,5 @@
-#ifndef _VECTOR_H
-#define _VECTOR_H
+#ifndef KOLF_VECTOR_H
+#define KOLF_VECTOR_H
 
 #include <qpoint.h>
 

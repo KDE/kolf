@@ -1,5 +1,5 @@
-#ifndef CANVASITEM_H
-#define CANVASITEM_H
+#ifndef KOLF_CANVASITEM_H
+#define KOLF_CANVASITEM_H
 
 #include <qcanvas.h>
 #include <qlabel.h>
@@ -7,7 +7,7 @@
 
 #include <klocale.h>
 
-#include "config.h"
+#include <kolf/config.h>
 
 // internal
 class DefaultConfig : public Config

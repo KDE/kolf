@@ -1,5 +1,5 @@
-#ifndef STATEDB_H
-#define STATEDB_H
+#ifndef KOLF_STATEDB_H
+#define KOLF_STATEDB_H
 
 #include <qmap.h>
 #include <qstring.h>

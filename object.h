@@ -1,7 +1,7 @@
 // it seems that OBJECT_H is used by something else
 
-#ifndef _OBJECT_H
-#define _OBJECT_H
+#ifndef KOLF_OBJECT_H
+#define KOLF_OBJECT_H
 
 #include <qcanvas.h>
 #include <qstring.h>

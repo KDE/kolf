@@ -1,5 +1,5 @@
-#ifndef _CONFIG_H
-#define _CONFIG_H
+#ifndef KOLF_CONFIG_H
+#define KOLF_CONFIG_H
 
 #include <kdialog.h>
 #include <qframe.h>
