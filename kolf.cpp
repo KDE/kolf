@@ -600,7 +600,7 @@ void Kolf::inPlayEnd()
 
 void Kolf::maxStrokesReached(const QString &name)
 {
-	KMessageBox::sorry(this, i18n("%1's score has exceeded the maximum for this hole.").arg(name));
+	KMessageBox::sorry(this, i18n("%1's score has reached the maximum for this hole.").arg(name));
 }
 
 void Kolf::updateHoleMenu(int largest)

@@ -4,25 +4,22 @@ author=Jason
 borderWalls=true
 name=Test
 
-[1-ball@114,105]
+[1-ball@121,178]
 dummykey=true
 
-[1-floater@77,162|1]
-botWallVisible=true
-endPoint=77,162
-height=40
-leftWallVisible=true
-rightWallVisible=true
-speed=10
-startPoint=150,339
-topWallVisible=true
-width=80
-
 [1-hole@-50,-50|0]
-borderWalls=true
-hasFinalLoad=true
+borderWalls=false
+hasFinalLoad=false
 maxstrokes=4
 par=3
+
+[1-wall@0,0|0]
+endPoint=141,147
+startPoint=215,147
+
+[1-wall@0,0|8]
+endPoint=141,147
+startPoint=140,235
 
 [2-ball@200,200]
 dummykey=true

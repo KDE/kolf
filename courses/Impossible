@@ -1308,10 +1308,10 @@ width=177
 [2-slope@111,100|4]
 grade=3
 gradient=Diagonal
-height=298
+height=301
 reversed=false
 stuckOnGround=false
-width=287
+width=291
 
 [2-slope@181,130|0]
 grade=4
@@ -1347,15 +1347,15 @@ width=111
 
 [2-wall@0,0|10]
 endPoint=298,169
-startPoint=285,186
+startPoint=278,188
 
 [2-wall@0,0|11]
 endPoint=181,200
-startPoint=191,186
+startPoint=191,188
 
 [2-wall@0,0|15]
 endPoint=179,178
-startPoint=191,188
+startPoint=191,186
 
 [2-wall@0,0|18]
 endPoint=278,20
@@ -1370,8 +1370,8 @@ endPoint=179,127
 startPoint=180,270
 
 [2-wall@0,0|7]
-endPoint=191,186
-startPoint=285,186
+endPoint=191,188
+startPoint=278,188
 
 [2-wall@0,0|8]
 endPoint=298,169
@@ -1658,7 +1658,7 @@ reversed=false
 stuckOnGround=true
 width=97
 
-[5-slope@58,111|17]
+[5-slope@58,112|17]
 grade=4
 gradient=Vertical
 height=40
@@ -1666,21 +1666,21 @@ reversed=true
 stuckOnGround=true
 width=99
 
-[5-slope@59,150|18]
+[5-slope@59,152|18]
 grade=2
 gradient=Horizontal
-height=15
+height=10
 reversed=true
 stuckOnGround=false
 width=95
 
-[5-slope@59,166|18]
+[5-slope@59,163|18]
 grade=5
 gradient=Vertical
-height=39
+height=41
 reversed=false
 stuckOnGround=true
-width=100
+width=95
 
 [5-slope@61,23|20]
 grade=2
@@ -2395,19 +2395,10 @@ rightWallVisible=true
 topWallVisible=false
 width=27
 
-[9-bumper@120,177|7]
-dummykey=true
-
-[9-bumper@140,209|8]
+[9-bumper@129,201|8]
 dummykey=true
 
 [9-bumper@152,151|4]
-dummykey=true
-
-[9-bumper@176,209|5]
-dummykey=true
-
-[9-bumper@189,176|6]
 dummykey=true
 
 [9-bumper@374,137|14]
@@ -2476,12 +2467,6 @@ changeEvery=50
 height=44
 width=38
 
-[9-sand@156,182|19]
-changeEnabled=false
-changeEvery=50
-height=62
-width=68
-
 [9-sand@99,344|7]
 changeEnabled=false
 changeEvery=50
@@ -2544,7 +2529,7 @@ reversed=true
 stuckOnGround=false
 width=35
 
-[9-slope@92,120|9]
+[9-slope@93,119|9]
 grade=8
 gradient=Elliptic
 height=125

@@ -2430,6 +2430,7 @@ void WallPoint::updateVisible()
 		visible = false;
 		return;
 	}
+
 	if (alwaysShow)
 		visible = true;
 	else
@@ -2452,6 +2453,7 @@ void WallPoint::editModeChanged(bool changed)
 
 bool WallPoint::collision(Ball *ball, long int id)
 {
+	kdDebug() << "wallPoint::collision\n";
 	if (ball->curVector().magnitude() <= 0)
 		return false;
 
@@ -2462,7 +2464,6 @@ bool WallPoint::collision(Ball *ball, long int id)
 	}
 
 	lastId = id;
-	playSound("wall");
 
 	bool weirdBounce = visible;
 
@@ -2479,7 +2480,9 @@ bool WallPoint::collision(Ball *ball, long int id)
 		while (difference > 2 * M_PI)
 			difference -= 2 * M_PI;
 
-		if (difference < 2 * M_PI / 3 || difference > 4 * M_PI / 3)
+		kdDebug() << "difference is " << rad2deg(difference) << endl;
+
+		if (difference < M_PI / 2 || difference > 3 * M_PI / 2)
 			weirdBounce = false;
 	}
 
@@ -2487,6 +2490,8 @@ bool WallPoint::collision(Ball *ball, long int id)
 
 	if (weirdBounce)
 	{
+		playSound("wall");
+
 		ballVector /= wall->dampening;
 		const double ballAngle = ballVector.direction();
 
@@ -2498,11 +2503,11 @@ bool WallPoint::collision(Ball *ball, long int id)
 
 		ballVector.setDirection(leavingAngle);
 		ball->setVector(ballVector);
+
+		return false;
 	}
 	else
-		wall->collision(ball, id);
-
-	return false;
+		return wall->collision(ball, id);
 }
 
 /////////////////////////
@@ -3489,10 +3494,16 @@ void KolfGame::timeout()
 		if (!course->rect().contains(QPoint((*it).ball()->x(), (*it).ball()->y())))
 		{
 			(*it).ball()->setState(Stopped);
-			shotDone();
-			loadStateList();
-			// increment curPlayer; he did take a shot, after all
-			shotDone();
+
+			// don't do it if he's past maxStrokes
+			if ((*it).score(curHole) < holeInfo.maxStrokes() || !holeInfo.hasMaxStrokes())
+			{
+				shotDone();
+				loadStateList();
+
+				// increment curPlayer; he did take a shot, after all
+				shotDone();
+			}
 			return;
 		}
 	}
