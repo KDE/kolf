@@ -425,7 +425,7 @@ maxstrokes=10
 par=3
 
 [4-sign@6,3|3]
-Comment=The steepness of a slope is shown when you press Up Arrow or the right mouse button. Steepness goes from 8 (steepest) to 1 (shallowest).
+Comment=The steepness of a slope is shown when you choose <u>Hole->Show Info</u>. Steepness goes from 8 (steepest) to 1 (shallowest).
 Comment[da]=Du kan se hvor stejl en skråning er ved at trykke på op-pilen eller højre museknap. Stejlhed går fra 8 (stejlest) til 1 (fladest).
 Comment[es]=La intensidad de la pendiente se muestra cuando usted pulsa la flecha arriba o el botón derecho del ratón. La intensidad va de 8 (máxima) a 1 (mínima).
 Comment[fi]=Mäen kaltevuus näytetään kun painat nuolta ylös tai oikeaa hiirinappia. Kaltevuus on välillä 8 (jyrkin) - 1 (loivin)
