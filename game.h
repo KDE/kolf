@@ -380,7 +380,7 @@ private:
 class CupObj : public Object
 {
 public:
-	CupObj() { m_name = i18n("Cup"); m__name = "cup"; }
+	CupObj() { m_name = i18n("Cup"); m__name = "cup"; m_addOnNewHole = true; }
 	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Cup(canvas); }
 };
 

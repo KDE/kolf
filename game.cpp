@@ -4364,8 +4364,8 @@ void KolfGame::openFile()
 			citem->updateZ();
 	}
 
-	if (curHole > highestHole)
-		highestHole = curHole;
+	if (curHole > _highestHole)
+		_highestHole = curHole;
 
 	if (recalcHighestHole)
 	{
@@ -4418,7 +4418,7 @@ void KolfGame::addNewObject(Object *newObj)
 	if (canvasItem->fastAdvance())
 		addItemToFastAdvancersList(canvasItem);
 
-	newItem->move(width/2, height/2);
+	newItem->move(width/2 - 18, height/2 - 18);
 
 	if (selectedItem)
 		canvasItem->selectedItem(selectedItem);
@@ -4484,13 +4484,13 @@ void KolfGame::addNewHole()
 	putter->setVisible(!editing);
 	inPlay = false;
 
-	// obviously, we've modified this course by adding a new hole!
-	// but there is no point in making the user save now.
-	// so let's save.
-	// this also prevents the user from immediately going backwards
-	// and then not having a hole be there anymore (which
-	// used to happen!)
-	save();
+	// add default objects
+	Object *curObj = 0;
+	for (curObj = obj->first(); curObj; curObj = obj->next())
+		if (curObj->addOnNewHole())
+			addNewObject(curObj);
+
+	modified = true;
 }
 
 // kantan deshou ;-)

@@ -9,16 +9,16 @@ dummykey=true
 [1-cup@325,52|14]
 dummykey=true
 
-[1-floater@119,226|24]
+[1-floater@100,208|24]
 botWallVisible=true
-endPoint=119,226
+endPoint=100,208
 height=10
 leftWallVisible=true
 rightWallVisible=true
 speed=2
-startPoint=11,146
+startPoint=16,189
 topWallVisible=true
-width=39
+width=19
 
 [1-hole@-50,-50|0]
 borderWalls=true

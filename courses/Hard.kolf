@@ -4100,7 +4100,7 @@ reversed=true
 stuckOnGround=false
 width=31
 
-[8-slope@290,14|12]
+[8-slope@291,10|12]
 grade=8
 gradient=Opposite Diagonal
 height=98
