@@ -209,6 +209,147 @@ button next to the player's name.</para>
 <sect1 id="adding-holes"> <title>Adding Holes</title>
 <para>Choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>New</guimenuitem></menuchoice> to add a new hole at the end of the course.</para>
 </sect1>
+
+<sect1 id="basics"> <title>Editing Basics</title>
+<para>The basic building block of &kolf; courses is the <quote>object</quote>. Holes are made up of a bunch of objects. Objects can be moved to any location, and the different kinds of objects each have different properties you can set.</para>
+<para>To start editing a hole, toggle the <menuchoice><guimenu>Hole</guimenu><guimenuitem>Edit</guimenuitem></menuchoice> menu item, or press the pencil icon on the toolbar. To leave editing mode, uncheck this menu item (or the toolbar icon).</para>
+
+<sect2> <title>Adding Objects</title>
+<para>To add a new object to the course, choose it's name in the list box titled <guilabel>Create Element</guilabel>. The object will appear in the center of the course.</para>
+<caution>
+<para>Bridges and signs will cover up new objects if they were already in the center of the hole.</para>
+</caution>
+</sect2>
+
+<sect2> <title>Moving and Resizing Objects</title>
+<para>Move your mouse cursor over the object that you want to move, and the mouse cursor will change to a hand cursor. Then click and drag the object to where you want it.</para>
+<para>Puddles, sand, floaters, bridges, and signs can be resized by dragging the small circle at their lower-left corner.</para>
+
+<note>
+<para>Walls can be moved by clicking and dragging their endpoints, or you can move the whole wall by clicking and dragging on the middle part of the wall as normal.</para>
+</note>
+</sect2>
+
+<sect2> <title>Objects' Settings</title>
+<para>Objects' properties can be changed in the area at the lower-left corner of the &kolf; window. To edit an object, move your mouse cursor over it until the cursor changes to the hand cursor. Then click. Various controls for that object will appear in the lower-left corner of the &kolf; window.</para>
+<sect3> <title>General Hole Settings</title>
+<para>To edit general hole settings, click an area of the hole that is not covered by an object. When this is possible, the cursor will be the normal pointer cursor.</para>
+
+<variablelist>
+<varlistentry> <term><guilabel>Course name</guilabel></term>
+<listitem>
+<para>This is the name that is shown in the newgame dialog and in the <guimenuitem>About Course</guimenuitem> dialog.</para>
+</listitem>
+</varlistentry>
+<varlistentry> <term><guilabel>Course author</guilabel></term>
+<listitem>
+<para>This is the author name that is shown in the <guimenuitem>About Course</guimenuitem> dialog.</para>
+</listitem>
+</varlistentry>
+<varlistentry> <term><guilabel>Par</guilabel></term>
+<listitem>
+<para>The par of the hole.</para>
+</listitem>
+</varlistentry>
+<varlistentry> <term><guilabel>Maximum</guilabel></term>
+<listitem>
+<para>The maximum number of strokes a player can take on the hole.</para>
+</listitem>
+</varlistentry>
+<varlistentry> <term><guilabel>Show border walls</guilabel></term>
+<listitem>
+<para>Whether or not to show walls around the border of the hole.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3> <title>Slopes</title>
+
+<variablelist>
+<varlistentry> <term>Type</term>
+<listitem>
+<para>Choose the type of the slope - <guilabel>Vertical</guilabel>, <guilabel>Horizontal</guilabel>, <guilabel>Diagonal</guilabel>, <guilabel>Opposite Diagonal</guilabel>, <guilabel>Elliptical</guilabel>. Diagonal and opposite diagonal slopes are triangles, while elliptical slopes are circles. Vertical and horizontal slopes are rectangles of course.</para>
+</listitem>
+</varlistentry>
+<varlistentry> <term><guilabel>Reverse direction</guilabel></term>
+<listitem>
+<para>Whether or not to reverse the slant of the slope. For example, consider an elliptical slope (a circular slope). When it is not reversed, it pushes balls outward like a mound. When it is reversed, it sucks balls inward like a hole.</para>
+</listitem>
+</varlistentry>
+<varlistentry> <term>Steepness</term>
+<listitem>
+<para>Choose the steepness of the slope by moving the slider towards either <guilabel>Slow</guilabel> or <guilabel>Fast</guilabel>. Steeper slopes push the ball more.</para>
+</listitem>
+</varlistentry>
+<varlistentry> <term><guilabel>Unmoveable</guilabel></term>
+<listitem>
+<para>Whether or not this can be moved by other objects, like floaters.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3> <title>Puddles and Sand</title>
+<para>Puddles and Sand have the same configuration options as each other.</para>
+
+<variablelist>
+<varlistentry> <term><guilabel>Enable show/hide</guilabel></term>
+<listitem>
+<para>Checking this enables the flashing of this puddle or sand.</para>
+</listitem>
+</varlistentry>
+<varlistentry> <term>Show/Hide speed</term>
+<listitem>
+<para>The more towards <guilabel>Fast</guilabel> the slider is, the faster the puddle or sand flashes.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3> <title>Bridges, Windmills, Floaters, and Signs</title>
+<para>Bridges, windmills, floaters, and signs all have similiar settings for configuring on which sides there are border walls. To show the wall on a side, check the checkbox for that side.</para>
+<para>There are also some more specific options for windmills, floaters, and signs.</para>
+
+<sect4> <title>Windmills</title>
+<variablelist>
+<varlistentry> <term><guilabel>Windmill on bottom</guilabel></term>
+<listitem>
+<para>Whether or not the black windmill arm is on bottom or top - the default is that it is on the bottom. The two half-walls will always be with the arm. Note that you can not enable a border wall on the side that the arm is.</para>
+</listitem>
+</varlistentry>
+<varlistentry> <term>Speed</term>
+<listitem>
+<para>The more towards <guilabel>Fast</guilabel> the slider is, the faster the black windmill arm moves.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4> <title>Floaters</title>
+<para>The path the floater moves along is shown by the wall it's connected to.</para>
+<variablelist>
+<varlistentry> <term><guilabel>Moving speed</guilabel></term>
+<listitem>
+<para>The more towards <guilabel>Fast</guilabel> the slider is, the faster the floater moves. If the slider is all the way at the <guilabel>Slow</guilabel> end, the floater will stop.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4> <title>Signs</title>
+<variablelist>
+<varlistentry> <term><guilabel>Sign HTML:</guilabel></term>
+<listitem>
+<para>You can enter any valid HTML here. For example, entering <markup>Hit it &lt;i&gt;softly&lt;/i&gt; towards the slope!</markup> will create the text <quote>Hit it <emphasis>softly</emphasis> towards the slope!</quote>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+</sect3>
+</sect2>
+</sect1>
 </chapter>
 
 <chapter id="command-reference">
