@@ -2063,6 +2063,7 @@ void Cup::draw(QPainter &p)
 bool Cup::place(Ball *ball, bool /*wasCenter*/)
 {
 	ball->setState(Holed);
+	playSound("holed");
 
 	// the picture's center is a little different
 	ball->move(x() - 1, y());
@@ -3610,16 +3611,14 @@ void KolfGame::timeout()
 			curScore++;
 
 		if (curScore == 1)
-			playSound("holeinone");
+			playHoleInOne();
 		else if (curScore <= holeInfo.par())
-			playSound("woohoo");
+			playWooHoo();
 
 		(*curPlayer).ball()->setZ((*curPlayer).ball()->z() + .1 - (.1)/(curScore));
 
 		if (allPlayersDone())
 		{
-			for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-				(*it).ball()->setVisible(false);
 			inPlay = false;
 
 			if (curHole > 0 && !dontAddStroke)
@@ -3627,7 +3626,7 @@ void KolfGame::timeout()
 				(*curPlayer).addStrokeToHole(curHole);
 				emit scoreChanged((*curPlayer).id(), curHole, (*curPlayer).score(curHole));
 			}
-			QTimer::singleShot(400, this, SLOT(holeDone()));
+			QTimer::singleShot(600, this, SLOT(holeDone()));
 		}
 		else
 		{
@@ -4077,6 +4076,8 @@ void KolfGame::sayWhosGoing()
 
 void KolfGame::holeDone()
 {
+	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+		(*it).ball()->setVisible(false);
 	startNextHole();
 	sayWhosGoing();
 }

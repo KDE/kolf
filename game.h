@@ -982,7 +982,7 @@ public slots:
 	void firstHole();
 	void lastHole();
 	void randHole();
-	void playSound(QString file, double vol = 0);
+	void playSound(QString file, double vol = 1);
 	void showInfoDlg(bool = false);
 	void resetHole();
 	void clearHole();
@@ -1028,6 +1028,9 @@ private slots:
 	void addItemsToMoveableList(QPtrList<QCanvasItem>);
 	void addItemToFastAdvancersList(CanvasItem *);
 	void hideInfoText();
+
+	void playHoleInOne() { playSound("holeinone"); }
+	void playWooHoo() { playSound("woohoo"); }
 
 protected:
 	void mouseMoveEvent(QMouseEvent *e);
@@ -1154,9 +1157,6 @@ private:
 
 	QPtrList<CanvasItem> fastAdvancers;
 	bool fastAdvancedExist;
-
-	bool fillPrint;
-	bool isprinting;;
 };
 
 #endif
