@@ -3,6 +3,7 @@ Name=Hard Course
 Name[af]=Hard Natuurlik
 Name[bg]=Трудно игрище
 Name[bs]=Težak kurs
+Name[ca]=Camp difícil
 Name[cs]=Těžký
 Name[da]=Svær bane
 Name[de]=Schwer
@@ -1097,6 +1098,7 @@ par=3
 
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
+Comment[ca]=Permetre que els flotdrs t'<strong>empenyin</strong>!
 Comment[da]=Lad svæverne <strong>skubbe</strong> dig!
 Comment[de]=Lassen Sie sich von den Flößen <strong>weiterschubsen</strong>.
 Comment[es]=Dejar que los flotadores te <strong>empujen</strong>
