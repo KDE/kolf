@@ -1697,8 +1697,8 @@ width=115
 [16-ball@39,319]
 dummykey=true
 
-[16-blackhole@362,301|51]
-exit=386,78
+[16-blackhole@354,290|51]
+exit=320,31
 exitDeg=180
 maxspeed=5
 minspeed=3
@@ -1721,12 +1721,12 @@ dummykey=true
 [16-cup@-57,-40|72]
 dummykey=true
 
-[16-cup@87,89|73]
+[16-cup@87,88|73]
 dummykey=true
 
-[16-floater@131,336|39]
+[16-floater@122,335|39]
 botWallVisible=true
-endPoint=131,336
+endPoint=122,335
 height=42
 leftWallVisible=false
 rightWallVisible=false
@@ -1735,9 +1735,9 @@ startPoint=67,242
 topWallVisible=true
 width=165
 
-[16-floater@253,62|63]
+[16-floater@188,15|63]
 botWallVisible=true
-endPoint=253,62
+endPoint=188,15
 height=34
 leftWallVisible=false
 rightWallVisible=true
@@ -1978,6 +1978,14 @@ changeEnabled=false
 changeEvery=50
 height=72
 width=58
+
+[16-slope@293,269|52]
+grade=4
+gradient=Diagonal
+height=118
+reversed=false
+stuckOnGround=false
+width=93
 
 [16-wall@0,0|65]
 endPoint=345,264
