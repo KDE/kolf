@@ -1,4 +1,4 @@
 coursedir = $(kde_datadir)/kolf/courses
-course_DATA = $(top_srcdir)/kolf/courses/*.kolf
+course_DATA = Classic.kolf Hard.kolf Easy.kolf
 
 EXTRA_DIST=$(course_DATA)
