@@ -967,7 +967,6 @@ private slots:
 	void shotDone();
 	void holeDone();
 	void fastTimeout();
-	void frictionTimeout();
 	void putterTimeout();
 	void autoSaveTimeout();
 	void addItemsToMoveableList(QPtrList<QCanvasItem>);
@@ -993,8 +992,8 @@ private:
 	QTimer *timer;
 	QTimer *autoSaveTimer;
 	QTimer *fastTimer;
-	QTimer *frictionTimer;
 	QTimer *putterTimer;
+	bool regAdv;
 
 	ObjectList *obj;
 	QPtrList<QCanvasItem> items;
@@ -1004,7 +1003,6 @@ private:
 	int timerMsec;
 	int autoSaveMsec;
 	int fastTimerMsec;
-	int frictionTimerMsec;
 	int putterTimerMsec;
 
 	void puttPress();

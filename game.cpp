@@ -1762,7 +1762,6 @@ bool Sand::collision(Ball *ball, long int /*id*/)
 		{
 			ball->setVelocity(0, 0);
 			ball->setState(Stopped);
-			game->timeout();
 		}
 	}
 
@@ -2851,6 +2850,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	viewport()->setMouseTracking(true);
 	setFrameShape(NoFrame);
 
+	regAdv = false;
 	curHole = 0; // will get ++'d
 	cfg = 0;
 	setFilename(filename);
@@ -2982,10 +2982,6 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	connect(fastTimer, SIGNAL(timeout()), this, SLOT(fastTimeout()));
 	fastTimerMsec = 11;
 
-	frictionTimer = new QTimer(this);
-	connect(frictionTimer, SIGNAL(timeout()), this, SLOT(frictionTimeout()));
-	frictionTimerMsec = 22;
-
 	autoSaveTimer = new QTimer(this);
 	connect(autoSaveTimer, SIGNAL(timeout()), this, SLOT(autoSaveTimeout()));
 	autoSaveMsec = 5 * 1000 * 60; // 5 min autosave
@@ -3053,7 +3049,6 @@ void KolfGame::pause()
 	paused = true;
 	timer->stop();
 	fastTimer->stop();
-	frictionTimer->stop();
 	putterTimer->stop();
 }
 
@@ -3066,7 +3061,6 @@ void KolfGame::unPause()
 
 	timer->start(timerMsec);
 	fastTimer->start(fastTimerMsec);
-	frictionTimer->start(frictionTimerMsec);
 
 	if (putting || stroking)
 		putterTimer->start(putterTimerMsec);
@@ -3478,6 +3472,11 @@ void KolfGame::timeout()
 
 void KolfGame::fastTimeout()
 {
+	// do regular advance every other time
+	if (regAdv)
+		course->advance();
+	regAdv = !regAdv;
+
 	if (!editing)
 	{
 		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
@@ -3505,15 +3504,10 @@ void KolfGame::fastTimeout()
 void KolfGame::ballMoved()
 {
 	if (putter->isVisible())
+	{
 		putter->move((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
-}
-
-void KolfGame::frictionTimeout()
-{
-	// this is now done by the ball
-	//if (inPlay && !editing)
-		//(*curPlayer).ball()->friction();
-	course->advance();
+		updateMouse();
+	}
 }
 
 void KolfGame::putterTimeout()
