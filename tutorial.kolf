@@ -55,7 +55,7 @@ width=319
 
 [1-sign@73,81|4]
 Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
-Comment[af]=aan getref die bal, druk en hou die ondertoe pyl van links muis knoppie. hoe lang jy hou ondertoe die muis knoppie van sleutel bepaal sterkte van die geskiet.
+Comment[af]=na getref die bal, druk en hou die ondertoe pyl van links muis knoppie. hoe lang jy hou ondertoe die muis knoppie van sleutel bepaal sterkte van die geskiet.
 Comment[bs]=Da biste udarili loptu, pritisnite i držite dugme Strelica dola ili lijevo dugme miša. Snagu udarca određujete dužinom pritiska na tipku odnosno dugme miša.
 Comment[da]=For at slå til bolden, tryk og hold ned-pilen eller venstre museknap nede. Slagets kraft afhænger af hvor lang tid du holder knappen i bund.
 Comment[el]=Για να χτυπήσετε τη μπάλα κρατήστε πατημένο το πλήκτρο του κάτω βέλους ή το αριστερό πλήκτρο του ποντικιού. Το πόσο κρατάτε πατημένο το πλήκτρο καθορίζει τη δύναμη της βολής.
@@ -518,6 +518,7 @@ Comment[fi]=<h3>Seinät</h3>Lyö kimmoke punaisista seinistä.
 Comment[fr]=<h3>Murs</h3>La balle rebondit sur les murs rouges.
 Comment[hu]=<h3>Falak</h3>Pattintsa vissza a golyót a piros falakról.
 Comment[ja]=<h3>壁</h3>赤い壁にボールをバウンスさせて下さい。
+Comment[pt]=<h3>Paredes</h3>Faça tabelas com a bola nas paredes vermelhas.
 Comment[pt_BR]=<h3>Paredes</h3>Bate a bola em paredes vermelhas.
 Comment[ru]=<h3>Стены</h3>Шарик отскакивает от красных стен.
 Comment[sv]=<h3>Väggar</h3>Studsa bollen från de röda väggarna.
@@ -692,6 +693,7 @@ par=2
 
 [8-sign@5,5|3]
 Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out at.
+Comment[af]=<h3>swart gate</h3>swart gate vervoerder die bal na hulle beïendig, en uitskiet dit na 'n spoed direk verwante na die spoed jou bal was gaan. kies <u>gat->Show inligting</u> na sien wat swart gat gaan na wat beïendig en die rigting die bal sal kom uit na.
 Comment[da]=<h3>Sorte huller</h3>Sorte huller transporterer bolden til deres udgang og affyrer bolden med en fart i direkte relation til boldens oprindelige fart. Vælg<u>Hul -> Vis info</u> for at se hvilket sort hul der fører til hvilken udgang og den retning bolden vil komme ud i.
 Comment[es]=<h3>Agujeros negros</h3>Los agujeros negros transportan la pelota a la salida y la disparan a una velocidad directamente proporcional a la que llevaban. Seleccione <u>Hoyo->Mostrar información</u> para ver qué agujero negro lleva a acada salida y la dirección en la que saldrá la bola.
 Comment[fi]=<h3>Mustat aukot</h3> Mustat aukot kuljettavat pallon ulostuloonsa, ja ampuvat pallon nopeudella, joka on verranollinen pallon entiseen nopeuteen. Valitse <u>Reikä->Näytä tiedot</u> nähdäksesi mikä musta aukko on yhteydessä mihinkin ulostuloon ja mihin suuntaan pallo lähtee.
