@@ -32,10 +32,13 @@ dummykey=true
 [1-cup@181,287|15]
 dummykey=true
 
+[1-cup@67,112|62]
+dummykey=true
+
 [1-hole@-50,-50|0]
 borderWalls=true
 hasFinalLoad=false
-maxstrokes=10
+maxstrokes=30
 par=3
 
 [1-puddle@102,359|46]

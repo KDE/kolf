@@ -296,21 +296,22 @@ class Arrow : public QCanvasLine
 {
 public:
 	Arrow(QCanvas *canvas);
-	void setAngle(double newAngle) { m_angle = newAngle; updateSelf(); }
+	void setAngle(double newAngle) { m_angle = newAngle; }
 	double angle() { return m_angle; }
-	void setLength(double newLength) { m_length = newLength; updateSelf(); }
+	void setLength(double newLength) { m_length = newLength; }
 	double length() { return m_length; }
+	void setReversed(bool yes) { m_reversed = yes; }
+	bool reversed() { return m_reversed; }
 	virtual void setVisible(bool);
 	virtual void setPen(QPen p);
 	void aboutToDie();
 	virtual void moveBy(double, double);
-
-protected:
 	void updateSelf();
 
 private:
 	double m_angle;
 	double m_length;
+	double m_reversed;
 	QCanvasLine *line1;
 	QCanvasLine *line2;
 };
@@ -394,7 +395,7 @@ private:
 	bool stuckOnGround;
 	QPixmap grass;
 
-	Arrow *arrow;
+	QPtrList<Arrow> arrows;
 	QCanvasText *text;
 	RectPoint *point;
 };
@@ -590,8 +591,6 @@ class BlackHoleExit : public QCanvasLine, public CanvasItem
 public:
 	BlackHoleExit(BlackHole *blackHole, QCanvas *canvas);
 	virtual int rtti() const { return Rtti_NoCollision; }
-	virtual void showInfo();
-	virtual void hideInfo();
 	virtual bool deleteable() { return false; }
 	virtual bool canBeMovedByOthers() { return true; }
 	virtual Config *config(QWidget *parent);

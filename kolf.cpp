@@ -92,7 +92,6 @@ void Kolf::initGUI()
 		QString newName = cfg.readEntry("name", "");
 		defaults[newName] = *it;
 		*it = newName;
-		//(*it) = QFileInfo(*it).baseName();
 	}
 	newDefaultAction->setItems(items);
 	connect(newDefaultAction, SIGNAL(activated(const QString &)), this, SLOT(openDefaultCourse(const QString &)));
@@ -158,7 +157,6 @@ void Kolf::startNewGame()
 
 	if (dialog->exec() == QDialog::Accepted)
 	{
-		//statusBar()->message(i18n("Loading course..."));
 		players.clear();
 		delete scoreboard;
 		scoreboard = new ScoreBoard(dummy, "Score Board");
@@ -236,7 +234,6 @@ void Kolf::startNewGame()
 
 		game->addFirstHole();
 		game->emitLargestHole();
-		//statusBar()->message(i18n("Good luck!"));
 	}
 
 	delete dialog;
@@ -383,7 +380,6 @@ void Kolf::save()
 		saveAs();
 		return;
 	}
-	//kdDebug() << "Kolf::save\n";
 	if (game)
 		game->save();
 	game->setFocus();

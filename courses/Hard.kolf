@@ -3544,6 +3544,12 @@ width=166
 [7-ball@330,324]
 dummykey=true
 
+[7-blackhole@85,70|38]
+exit=370,17
+exitDeg=269
+maxspeed=4
+minspeed=3
+
 [7-cup@208,70|4]
 dummykey=true
 
@@ -3556,147 +3562,118 @@ par=2
 [7-puddle@-7,275|36]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@104,367|19]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@116,337|33]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@12,353|18]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@121,393|27]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@127,377|14]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@134,353|32]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@140,340|34]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@156,394|31]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@16,376|23]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@17,393|30]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@175,402|35]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@20,324|20]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@24,307|16]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@29,290|11]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@3,310|25]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@41,338|8]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@46,363|10]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@54,382|22]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@56,312|9]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@57,394|29]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@6,330|24]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@67,350|17]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@70,370|21]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@72,334|12]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@89,396|28]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@9,288|26]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@93,380|13]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-puddle@94,352|15]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [7-sand@200,200|38]
 changeEnabled=false
