@@ -1,5 +1,6 @@
 [0-course@-50,-50]
-Name=Really Easy
+Name=ホントにカンタン
+Name[ja]=ホントにカンタン
 Name[af]=rerig maklike
 Name[bs]=Stvarno lagano
 Name[da]=Meget nem
@@ -7,7 +8,6 @@ Name[el]=Πραγματικά εύκολο
 Name[es]=Realmente fácil
 Name[fi]=Todella helppo
 Name[hu]=Nagyon könnyű
-Name[ja]=ホントにカンタン
 Name[pt]=Realmente Fácil
 Name[pt_BR]=Realmente fácil
 Name[sl]=Zelo lahka
@@ -1320,8 +1320,8 @@ dummykey=true
 [6-blackhole@201,82|19]
 exit=312,177
 exitDeg=183
-maxspeed=2.38
-minspeed=2.38
+maxspeed=2.32
+minspeed=2.32
 
 [6-bridge@90,199|21]
 botWallVisible=false
@@ -2228,7 +2228,7 @@ minspeed=0
 
 [8-blackhole@46,280|13]
 exit=203,114
-exitDeg=312
+exitDeg=308
 maxspeed=3
 minspeed=3
 
