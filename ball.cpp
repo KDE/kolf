@@ -57,11 +57,13 @@ void Ball::setState(BallState newState)
 
 void Ball::advance(int phase)
 {
+	// not used anymore
+	// can be used to make ball wobble
 	if (phase == 1 && m_blowUp)
 	{
 		if (blowUpCount >= 50)
 		{
-			//TODO make this a config option
+			// i should make this a config option
 			//setAddStroke(addStroke() + 1);
 			setBlowUp(false);
 			resetSize();
@@ -171,7 +173,8 @@ namespace Lines
 
 	int intersects(const Line &l1, const Line &l2)
 	{
-		// TODO: Account for vertical lines
+		// Charles says, TODO: Account for vertical lines
+		// Jason says, in my testing vertical lines work
 		return ((ccw(l1.p1, l1.p2, l2.p1)
 				*ccw(l1.p1, l1.p2, l2.p2)) <= 0)
 				&& ((ccw(l2.p1, l2.p2, l1.p1)
@@ -412,7 +415,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 					oldx, oldy, x(), y()
 				))
 			{
-				//kdDebug() << "smart wall collision\n";
+				kdDebug() << "smart wall collision\n";
 				wall->collision(this, collisionId);
 				break;
 			}
