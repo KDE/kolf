@@ -333,7 +333,6 @@ public:
 	virtual QPointArray areaPoints() const;
 
 	void setGradient(QString text);
-	void setType(KPixmapEffect::GradientType type) { this->type = type; updatePixmap(); }
 	KPixmapEffect::GradientType curType() { return type; }
 	void setGrade(int grade) { if (grade > 0 && grade < 11) { this->grade = grade; updatePixmap(); } }
 
@@ -358,6 +357,7 @@ public:
 
 private:
 	KPixmapEffect::GradientType type;
+	inline void setType(KPixmapEffect::GradientType type);
 	int grade;
 	bool showGrade;
 	bool reversed;

@@ -9,6 +9,7 @@ dummykey=true
 dummykey=true
 
 [1-hole@-50,-50|0]
+borderWalls=true
 maxstrokes=6
 par=2
 
@@ -35,7 +36,7 @@ botWallVisible=true
 height=114
 leftWallVisible=true
 rightWallVisible=true
-text=To hit the ball: hold down and release the Down arrow. How long you press the key determines ball's speed.\s
+text=To hit the ball: hold down and release the Down arrow or left mouse button. How long you press the key determines ball's speed.\s
 topWallVisible=true
 width=327
 
@@ -44,7 +45,7 @@ botWallVisible=true
 height=93
 leftWallVisible=true
 rightWallVisible=true
-text=To aim putter: hit left (counterclockwise) and right (clockwise) arrow keys.
+text=To aim putter: hit left (counterclockwise) and right (clockwise) arrow keys or use mouse.
 topWallVisible=true
 width=324
 
@@ -401,6 +402,7 @@ dummykey=true
 dummykey=true
 
 [2-hole@-50,-50|0]
+borderWalls=true
 maxstrokes=8
 par=2
 
@@ -415,20 +417,20 @@ width=398
 
 [2-sign@110,152|5]
 botWallVisible=true
-height=101
+height=171
 leftWallVisible=true
 rightWallVisible=true
 text=Hint: hit the ball onto the slope and let it roll into cup.
 topWallVisible=true
-width=289
+width=288
 
-[2-slope@46,206|4]
+[2-slope@14,188|4]
 grade=4
 gradient=Vertical
-height=98
+height=131
 reversed=false
 stuckOnGround=false
-width=53
+width=94
 
 [3-ball@86,353]
 dummykey=true
@@ -437,6 +439,7 @@ dummykey=true
 dummykey=true
 
 [3-hole@-50,-50|0]
+borderWalls=true
 maxstrokes=8
 par=3
 
@@ -449,13 +452,13 @@ text=Try out these different types of slopes.
 topWallVisible=true
 width=307
 
-[3-slope@128,272|5]
+[3-slope@148,292|5]
 grade=4
 gradient=Vertical
-height=96
+height=79
 reversed=true
 stuckOnGround=false
-width=74
+width=66
 
 [3-slope@15,264|9]
 grade=4
@@ -465,7 +468,7 @@ reversed=true
 stuckOnGround=false
 width=93
 
-[3-slope@176,161|6]
+[3-slope@190,147|6]
 grade=4
 gradient=Horizontal
 height=80
@@ -497,13 +500,29 @@ reversed=true
 stuckOnGround=false
 width=74
 
-[3-slope@30,155|8]
+[3-slope@285,144|13]
+grade=4
+gradient=Elliptic
+height=87
+reversed=true
+stuckOnGround=false
+width=87
+
+[3-slope@32,129|8]
 grade=4
 gradient=Diagonal
 height=72
 reversed=false
 stuckOnGround=false
 width=90
+
+[3-slope@99,204|12]
+grade=4
+gradient=Elliptic
+height=84
+reversed=false
+stuckOnGround=false
+width=84
 
 [4-ball@34,271]
 dummykey=true
@@ -772,6 +791,7 @@ minspeed=1
 dummykey=true
 
 [8-hole@-50,-50|0]
+borderWalls=true
 maxstrokes=16
 par=2
 
@@ -780,7 +800,7 @@ botWallVisible=true
 height=164
 leftWallVisible=true
 rightWallVisible=true
-text=<h3>Black Holes</h3>Black Holes transport the  ball to their exit, and eject it at a random speed. Press the Up arrow to see which Black Hole goes to which exit.
+text=<h3>Black Holes</h3>Black Holes transport the  ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Press the Up arrow to see which Black Hole goes to which exit.
 topWallVisible=true
 width=393
 

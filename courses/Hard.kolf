@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 author=Jason Katz-Brown
+borderWalls=false
 name=Hard Course
 
 [1-ball@84,73]
@@ -15,6 +16,7 @@ minspeed=2
 dummykey=true
 
 [1-hole@-50,-50|0]
+borderWalls=true
 maxstrokes=10
 par=3
 
@@ -40,7 +42,7 @@ gradient=Horizontal
 height=10
 reversed=true
 stuckOnGround=false
-width=52
+width=95
 
 [1-slope@11,151|15]
 grade=2
@@ -66,37 +68,13 @@ reversed=false
 stuckOnGround=false
 width=73
 
-[1-slope@215,154|18]
+[1-slope@221,145|17]
 grade=4
-gradient=Diagonal
-height=32
+gradient=Elliptic
+height=77
 reversed=false
 stuckOnGround=false
-width=33
-
-[1-slope@219,185|21]
-grade=4
-gradient=Opposite Diagonal
-height=25
-reversed=true
-stuckOnGround=false
-width=26
-
-[1-slope@245,185|20]
-grade=4
-gradient=Diagonal
-height=25
-reversed=true
-stuckOnGround=false
-width=61
-
-[1-slope@247,155|19]
-grade=4
-gradient=Opposite Diagonal
-height=31
-reversed=false
-stuckOnGround=false
-width=60
+width=77
 
 [1-slope@8,14|14]
 grade=1
@@ -2592,6 +2570,7 @@ dummykey=true
 dummykey=true
 
 [4-hole@-50,-50|0]
+borderWalls=false
 maxstrokes=10
 par=4
 
@@ -3024,8 +3003,24 @@ endPoint=277,62
 startPoint=272,75
 
 [4-wall@0,0|141]
-endPoint=93,233
-startPoint=79,221
+endPoint=315,11
+startPoint=97,8
+
+[4-wall@0,0|142]
+endPoint=11,334
+startPoint=8,264
+
+[4-wall@0,0|143]
+endPoint=392,359
+startPoint=352,386
+
+[4-wall@0,0|144]
+endPoint=351,387
+startPoint=223,393
+
+[4-wall@0,0|145]
+endPoint=389,273
+startPoint=393,356
 
 [4-wall@0,0|15]
 endPoint=74,58

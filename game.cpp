@@ -424,7 +424,7 @@ void Slope::collision(Ball *ball, long int /*id*/)
 		}
 
 		const double factor = sqrt(xDiff * xDiff + yDiff * yDiff) / (double)((double)width() / 2.0);
-		kdDebug() << "factor: " << factor << endl;
+		//kdDebug() << "factor: " << factor << endl;
 		// factor kinda weakens it
 		addto *= factor * 1.41;
 	}
@@ -485,6 +485,14 @@ void Slope::setGradient(QString text)
 			return;
 		}
 	}
+}
+
+void Slope::setType(KPixmapEffect::GradientType type)
+{
+	this->type = type;
+	if (type == KPixmapEffect::EllipticGradient)
+		newSize(width, height());
+	updatePixmap();
 }
 
 void Slope::updatePixmap()
@@ -2680,10 +2688,10 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 	adjustSize();
 
 	obj.setAutoDelete(true);
-	obj.append(new CupObj());
 	obj.append(new SlopeObj());
-	obj.append(new WallObj());
 	obj.append(new PuddleObj());
+	obj.append(new WallObj());
+	obj.append(new CupObj());
 	obj.append(new SandObj());
 	obj.append(new WindmillObj());
 	obj.append(new BlackHoleObj());
@@ -3546,7 +3554,6 @@ void KolfGame::openFile()
 		{
 			holeInfo.setAuthor(cfg->readEntry("author", holeInfo.author()));
 			holeInfo.setName(cfg->readEntry("name", holeInfo.name()));
-			holeInfo.borderWallsChanged(cfg->readBoolEntry("borderWalls", holeInfo.borderWalls()));
 			continue;
 		}
 
@@ -3580,6 +3587,7 @@ void KolfGame::openFile()
 		{
 			curPar = cfg->readNumEntry("par", curPar);
 			holeInfo.setPar(curPar);
+			holeInfo.borderWallsChanged(cfg->readBoolEntry("borderWalls", holeInfo.borderWalls()));
 			holeInfo.setMaxStrokes(cfg->readNumEntry("maxstrokes", holeInfo.maxStrokes()));
 			continue;
 		}
@@ -3904,12 +3912,12 @@ void KolfGame::save()
 	cfg->setGroup("0-course@-50,-50");
 	cfg->writeEntry("author", holeInfo.author());
 	cfg->writeEntry("name", holeInfo.name());
-	cfg->writeEntry("borderWalls", holeInfo.borderWalls());
 
 	// save hole info
 	cfg->setGroup(QString("%1-hole@-50,-50|0").arg(curHole));
 	cfg->writeEntry("par", holeInfo.par());
 	cfg->writeEntry("maxstrokes", holeInfo.maxStrokes());
+	cfg->writeEntry("borderWalls", holeInfo.borderWalls());
 
 	cfg->sync();
 
