@@ -380,7 +380,7 @@ void Kolf::inPlayEnd()
 
 void Kolf::maxStrokesReached()
 {
-	statusBar()->message(i18n("Sorry, maximum number of strokes for this hole reached"));
+	statusBar()->message(i18n("The maximum number of strokes for this hole has been reached."));
 }
 
 void Kolf::updateHoleMenu(int largest)
