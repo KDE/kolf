@@ -600,12 +600,12 @@ void Slope::updatePixmap()
 		{
 			case KImageEffect::HorizontalGradient:
 				angle = 0;
-				factor = .25;
+				factor = .32;
 				break;
 
 			case KImageEffect::VerticalGradient:
 				angle = M_PI / 2;
-				factor = .25;
+				factor = .32;
 				break;
 
 			case KImageEffect::DiagonalGradient:
@@ -822,7 +822,7 @@ void Bridge::moveBy(double dx, double dy)
 	point->move(x() + width(), y() + height());
 
 	topWall->move(x(), y());
-	botWall->move(x(), y());
+	botWall->move(x(), y() - 1);
 	leftWall->move(x(), y());
 	rightWall->move(x(), y());
 
@@ -1122,7 +1122,7 @@ void Floater::moveBy(double dx, double dy)
 
 	// because we don't do Bridge::moveBy();
 	topWall->move(x(), y());
-	botWall->move(x(), y());
+	botWall->move(x(), y() - 1);
 	leftWall->move(x(), y());
 	rightWall->move(x(), y());
 
@@ -2159,7 +2159,7 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 
 	const double diff = (m_maxSpeed - m_minSpeed);
 	Vector v;
-	v.setMagnitude(m_minSpeed + ball->curVector().magnitude() * (diff / 3.5));
+	v.setMagnitude(m_minSpeed + ball->curVector().magnitude() * (diff / 3.75));
 	v.setDirection(deg2rad(exitDeg));
 
 	ball->move(exitItem->x(), exitItem->y());
