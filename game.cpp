@@ -1661,10 +1661,10 @@ bool WallPoint::collision(Ball *ball, long int id)
 		}
 	}
 
-	//kdDebug() << "WallPoint::collision id: " << id << ", tempLastId: " << tempLastId << endl;
+	//kdDebug(12007) << "WallPoint::collision id: " << id << ", tempLastId: " << tempLastId << endl;
 	Vector ballVector(ball->curVector());
 
-	//kdDebug() << "Wall::collision ball speed: " << ball->curVector().magnitude() << endl;
+	//kdDebug(12007) << "Wall::collision ball speed: " << ball->curVector().magnitude() << endl;
 	int allowableDifference = 1;
 	if (ballVector.magnitude() < .30)
 		allowableDifference = 8;
@@ -1677,7 +1677,7 @@ bool WallPoint::collision(Ball *ball, long int id)
 
 	if (abs(id - tempLastId) <= allowableDifference)
 	{
-		//kdDebug() << "WallPoint::collision - SKIP\n";
+		//kdDebug(12007) << "WallPoint::collision - SKIP\n";
 	}
 	else
 	{
@@ -1716,7 +1716,7 @@ bool WallPoint::collision(Ball *ball, long int id)
 	ball->setVector(ballVector);
 	wall->lastId = id;
 
-	//kdDebug() << "WallPoint::collision - NOT skip, weirdBounce is " << weirdBounce << endl;
+	//kdDebug(12007) << "WallPoint::collision - NOT skip, weirdBounce is " << weirdBounce << endl;
 	} // end if that skips
 
 	wall->lastId = id;
@@ -1896,10 +1896,10 @@ bool Wall::collision(Ball *ball, long int id)
 	startItem->lastId = id;
 	endItem->lastId = id;
 
-	//kdDebug() << "Wall::collision id: " << id << ", tempLastId: " << tempLastId << endl;
+	//kdDebug(12007) << "Wall::collision id: " << id << ", tempLastId: " << tempLastId << endl;
 	Vector ballVector(ball->curVector());
 
-	//kdDebug() << "Wall::collision ball speed: " << ball->curVector().magnitude() << endl;
+	//kdDebug(12007) << "Wall::collision ball speed: " << ball->curVector().magnitude() << endl;
 	int allowableDifference = 1;
 	if (ballVector.magnitude() < .30)
 		allowableDifference = 8;
@@ -1909,10 +1909,10 @@ bool Wall::collision(Ball *ball, long int id)
 		allowableDifference = 4;
 	else if (ballVector.magnitude() < .95)
 		allowableDifference = 2;
-	//kdDebug() << "Wall::collision allowableDifference is " << allowableDifference << endl;
+	//kdDebug(12007) << "Wall::collision allowableDifference is " << allowableDifference << endl;
 	if (abs(id - tempLastId) <= allowableDifference)
 	{
-		//kdDebug() << "Wall::collision - SKIP\n";
+		//kdDebug(12007) << "Wall::collision - SKIP\n";
 		return false;
 	}
 
@@ -1928,7 +1928,7 @@ bool Wall::collision(Ball *ball, long int id)
 	ballVector.setDirection(leavingAngle);
 	ball->setVector(ballVector);
 
-	//kdDebug() << "Wall::collision - NOT skip\n";
+	//kdDebug(12007) << "Wall::collision - NOT skip\n";
 	return false;
 }
 

@@ -23,7 +23,7 @@ QCanvasRectangle *CanvasItem::onVStrut()
 			qitem = *it;
 			if (item->vStrut())
 			{
-				//kdDebug() << "above vstrut\n";
+				//kdDebug(12007) << "above vstrut\n";
 				aboveVStrut = true;
 				break;
 			}

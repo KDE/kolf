@@ -211,8 +211,8 @@ void Ball::collisionDetect(double oldx, double oldy)
 	else
 		collisionId++;
 
-	//kdDebug() << "------" << endl;
-	//kdDebug() << "Ball::collisionDetect id " << collisionId << endl;
+	//kdDebug(12007) << "------" << endl;
+	//kdDebug(12007) << "Ball::collisionDetect id " << collisionId << endl;
 
 	// every other time...
 	// do friction
@@ -284,7 +284,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 		}
 		else if (item->rtti() == Rtti_WallPoint)
 		{
-			//kdDebug() << "collided with WallPoint\n";
+			//kdDebug(12007) << "collided with WallPoint\n";
 			// iterate through the rst
 			QPtrList<WallPoint> points;
 			for (QCanvasItemList::Iterator pit = it; pit != m_list.end(); ++pit)
@@ -307,7 +307,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 
 			for (iterpoint = points.first(); iterpoint; iterpoint = points.next())
 			{
-				//kdDebug() << "-----\n";
+				//kdDebug(12007) << "-----\n";
 				const Wall *parentWall = iterpoint->parentWall();
 				const QPoint qp(iterpoint->x() + parentWall->x(), iterpoint->y() + parentWall->y());
 				const Point p(qp.x(), qp.y());
@@ -322,18 +322,18 @@ void Ball::collisionDetect(double oldx, double oldy)
 
 				double wallDir = M_PI - v.direction();
 
-				//kdDebug() << "ourDir: " << rad2deg(ourDir) << endl;
-				//kdDebug() << "wallDir: " << rad2deg(wallDir) << endl;
+				//kdDebug(12007) << "ourDir: " << rad2deg(ourDir) << endl;
+				//kdDebug(12007) << "wallDir: " << rad2deg(wallDir) << endl;
 
 				const double angleDifference = fabs(M_PI - fabs(ourDir - wallDir));
-				//kdDebug() << "computed angleDifference: " << rad2deg(angleDifference) << endl;
+				//kdDebug(12007) << "computed angleDifference: " << rad2deg(angleDifference) << endl;
 
 				// only if this one is the least of all
 				if (angleDifference < leastAngleDifference)
 				{
 					leastAngleDifference = angleDifference;
 					finalPoint = iterpoint;
-					//kdDebug() << "it's the one\n";
+					//kdDebug(12007) << "it's the one\n";
 				}
 			}
 
@@ -413,7 +413,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 					oldx, oldy, x(), y()
 				))
 			{
-				//kdDebug() << "smart wall collision\n";
+				//kdDebug(12007) << "smart wall collision\n";
 				wall->collision(this, collisionId);
 				break;
 			}

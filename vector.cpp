@@ -96,11 +96,11 @@ void Vector::setComponents(double x, double y) {
 
 void debugPoint(const QString &text, const Point &p)
 {
-	kdDebug() << text << " (" << p.x << ", " << p.y << ")" << endl;
+	kdDebug(12007) << text << " (" << p.x << ", " << p.y << ")" << endl;
 }
 
 void debugVector(const QString &text, const Vector &p)
 {
 	// debug degrees
-	kdDebug() << text << " (magnitude: " << p.magnitude() << ", direction: " << p.direction() << ", direction (deg): " << (360L / (2L * M_PI)) * p.direction() << ")" << endl;
+	kdDebug(12007) << text << " (magnitude: " << p.magnitude() << ", direction: " << p.direction() << ", direction (deg): " << (360L / (2L * M_PI)) * p.direction() << ")" << endl;
 }

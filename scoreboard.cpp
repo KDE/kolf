@@ -44,7 +44,7 @@ void ScoreBoard::newHole(int par)
 
 void ScoreBoard::newPlayer(const QString &name)
 {
-	//kdDebug() << "name of new player is " << name << endl;
+	//kdDebug(12007) << "name of new player is " << name << endl;
 	insertRows(numRows() - 1);
 	vh->setLabel(numRows() - 2, name);
 	setRowReadOnly(numRows() - 2, true);
@@ -52,7 +52,7 @@ void ScoreBoard::newPlayer(const QString &name)
 
 void ScoreBoard::setScore(int id, int hole, int score)
 {
-	//kdDebug() << "set score\n";
+	//kdDebug(12007) << "set score\n";
 	setText(id - 1, hole - 1, score > 0? QString::number(score) : QString(""));
 
 	QString name;
@@ -87,7 +87,7 @@ int ScoreBoard::total(int id, QString &name)
 	for (int i = 0; i < numCols() - 1; i++)
 		tot += text(id - 1, i).toInt();
 	name = vh->label(id - 1);
-	//kdDebug() << "tot is " << tot << endl;
+	//kdDebug(12007) << "tot is " << tot << endl;
 	return tot;
 }
 
