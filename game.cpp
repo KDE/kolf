@@ -2037,7 +2037,7 @@ HoleResult Hole::result(QPoint p, double s, bool * /*wasCenter*/)
 Cup::Cup(QCanvas *canvas)
 	: Hole(QColor("#808080"), canvas)
 {
-	if (!QPixmapCache::find("grass", pixmap))
+	if (!QPixmapCache::find("cup", pixmap))
 	{
 		pixmap.load(locate("appdata", "pics/cup.png"));
 		QPixmapCache::insert("cup", pixmap);
