@@ -1760,7 +1760,7 @@ bool Puddle::collision(Ball *ball, long int /*id*/)
 		}
 	}
 
-	return false;
+	return true;
 }
 
 /////////////////////////
@@ -3621,7 +3621,7 @@ void KolfGame::timeout()
 			(*it).ball()->setState(Stopped);
 
 			// don't do it if he's past maxStrokes
-			if ((*it).score(curHole) < holeInfo.maxStrokes() || !holeInfo.hasMaxStrokes())
+			if ((*it).score(curHole) < holeInfo.maxStrokes() - 1 || !holeInfo.hasMaxStrokes())
 			{
 				shotDone();
 				loadStateList();
@@ -3630,6 +3630,9 @@ void KolfGame::timeout()
 				(*curPlayer).addStrokeToHole(curHole);
 				emit scoreChanged((*curPlayer).id(), curHole, (*curPlayer).score(curHole));
 			}
+			else
+				shotDone();
+
 			return;
 		}
 	}
@@ -3934,9 +3937,8 @@ void KolfGame::shotDone()
 	Ball *ball = (*curPlayer).ball();
 	double oldx = ball->x(), oldy = ball->y();
 
-	if (!dontAddStroke)
-		if ((*curPlayer).numHoles())
-			(*curPlayer).addStrokeToHole(curHole);
+	if (!dontAddStroke && (*curPlayer).numHoles())
+		(*curPlayer).addStrokeToHole(curHole);
 
 	dontAddStroke = false;
 
@@ -4041,15 +4043,21 @@ void KolfGame::shotDone()
 		int curStrokes = (*it).score(curHole);
 		if (curStrokes >= holeInfo.maxStrokes() && holeInfo.hasMaxStrokes())
 		{
-			emit maxStrokesReached((*it).name());
 			ball->setState(Holed);
 			ball->setVisible(false);
+
+			// move to center in case he/she hit out
+			ball->move(width / 2, height / 2);
+			playerWhoMaxed = (*it).name();
 
 			if (allPlayersDone())
 			{
 				startNextHole();
+				QTimer::singleShot(100, this, SLOT(emitMax()));
 				return;
 			}
+
+			QTimer::singleShot(100, this, SLOT(emitMax()));
 		}
 	}
 
@@ -4073,6 +4081,11 @@ void KolfGame::shotDone()
 
 	inPlay = false;
 	(*curPlayer).ball()->collisionDetect(oldx, oldy);
+}
+
+void KolfGame::emitMax()
+{
+	emit maxStrokesReached(playerWhoMaxed);
 }
 
 void KolfGame::startBall(const Vector &vector)
@@ -4270,7 +4283,7 @@ void KolfGame::startNextHole()
 
 void KolfGame::showInfo()
 {
-	QString text = i18n("Hole %1: par %2, maximum: %3").arg(curHole).arg(holeInfo.par()).arg(holeInfo.maxStrokes());
+	QString text = i18n("Hole %1: par %2, maximum %3 strokes").arg(curHole).arg(holeInfo.par()).arg(holeInfo.maxStrokes());
 	infoText->move((width - QFontMetrics(infoText->font()).width(text)) / 2, infoText->y());
 	infoText->setText(text);
 	// I hate this text! Let's not show it
@@ -4990,12 +5003,11 @@ void KolfGame::print(KPrinter &pr)
 
 bool KolfGame::allPlayersDone()
 {
-	bool b = true;
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 		if ((*it).ball()->curState() != Holed)
-			b = false;
+			return false;
 
-	return b;
+	return true;
 }
 
 void KolfGame::setBorderWalls(bool showing)

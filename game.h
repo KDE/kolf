@@ -1039,6 +1039,8 @@ private slots:
 	void addItemToFastAdvancersList(CanvasItem *);
 	void hideInfo();
 
+	void emitMax();
+
 protected:
 	void mouseMoveEvent(QMouseEvent *e);
 	void mousePressEvent(QMouseEvent *e);
@@ -1164,6 +1166,8 @@ private:
 
 	QPtrList<CanvasItem> fastAdvancers;
 	bool fastAdvancedExist;
+
+	QString playerWhoMaxed;
 };
 
 #endif
