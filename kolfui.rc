@@ -18,6 +18,10 @@
 			<Action name="prevhole" />
 			<Action name="firsthole" />
 			<Action name="lasthole" />
+			<Action name="randhole" />
+		</Menu>
+		<Menu name="settings">
+			<Action name="usemouse" />
 		</Menu>
 		<Menu name="help">
 			<Action name="aboutcourse" />

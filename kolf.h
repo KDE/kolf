@@ -45,8 +45,6 @@ protected slots:
 	void saveAs();
 	void print();
 	void newPlayersTurn(Player *);
-	void playerHoled(Player *);
-	void parChanged(int);
 	void gameOver();
 	void editingStarted();
 	void editingEnded();
@@ -57,18 +55,18 @@ protected slots:
 	void maxStrokesReached();
 	void updateHoleMenu(int);
 	void openRecent(const KURL &);
+	void useMouseChanged(bool);
  
 private:
 	QWidget *dummy;
 	KolfGame *game;
 	Editor *editor;
 	QWidget *spacer;
-	void initGUI();
+	inline void initGUI();
 	QString filename;
 	PlayerList players;
 	QGridLayout *layout;
 	ScoreBoard *scoreboard;
-	int curPar;
 	KToggleAction *editingAction;
 	KAction *newHoleAction;
 	KAction *resetHoleAction;
@@ -88,7 +86,9 @@ private:
 	KAction *prevAction;
 	KAction *firstAction;
 	KAction *lastAction;
+	KAction *randAction;
 	KAction *saveAsAction;
+	KToggleAction *useMouseAction;
 	void setHoleMovementEnabled(bool);
 	inline void setEditingEnabled(bool);
 	bool competition;

@@ -74,6 +74,7 @@ Kolf::Kolf()
 		}
 		config->writeEntry("beenRun", true);
 	}
+
 	config->sync();
 }
 
@@ -116,6 +117,13 @@ void Kolf::initGUI()
 	prevAction = new KAction(i18n("&Previous Hole"), "back", KStdAccel::key(KStdAccel::Back), 0, 0, actionCollection(), "prevhole");
 	firstAction = new KAction(i18n("&First Hole"), "gohome", KStdAccel::key(KStdAccel::Home), 0, 0, actionCollection(), "firsthole");
 	lastAction = new KAction(i18n("&Last Hole"), CTRL+Key_End, 0, 0, actionCollection(), "lasthole");
+	randAction = new KAction(i18n("&Random Hole"), "goto", 0, 0, 0, actionCollection(), "randhole");
+
+	useMouseAction = new KToggleAction(i18n("Enable &Mouse for Moving Putter"), 0, 0, 0, actionCollection(), "usemouse");
+	connect(useMouseAction, SIGNAL(toggled(bool)), this, SLOT(useMouseChanged(bool)));
+	KConfig *config = kapp->config();
+	config->setGroup("Settings");
+	useMouseAction->setChecked(config->readBoolEntry("useMouse", true));
 
 	aboutAction = new KAction(i18n("&About Course..."), 0, 0, 0, actionCollection(), "aboutcourse");
 	tutorialAction = new KAction(i18n("&Tutorial..."), 0, this, SLOT(tutorial()), actionCollection(), "tutorial");
@@ -126,6 +134,9 @@ void Kolf::initGUI()
 
 void Kolf::closeEvent(QCloseEvent *e)
 {
+	if (game)
+		if (game->askSave(true))
+			return;
 	saveMainWindowSettings(KGlobal::config(), "TopLevelWindow");
 	recentAction->saveEntries(KGlobal::config(), "Kolf recent files");
 	e->accept();
@@ -165,7 +176,6 @@ void Kolf::startNewGame()
 		connect(game, SIGNAL(newHole(int)), this, SLOT(parChanged(int)));
 		connect(game, SIGNAL(scoreChanged(int, int, int)), scoreboard, SLOT(setScore(int, int, int)));
 		connect(game, SIGNAL(newPlayersTurn(Player *)), this, SLOT(newPlayersTurn(Player *)));
-		connect(game, SIGNAL(playerHoled(Player *)), this, SLOT(playerHoled(Player *)));
 		connect(game, SIGNAL(holesDone()), this, SLOT(gameOver()));
 		connect(game, SIGNAL(checkEditing()), this, SLOT(checkEditing()));
 		connect(game, SIGNAL(editingStarted()), this, SLOT(editingStarted()));
@@ -179,11 +189,15 @@ void Kolf::startNewGame()
 		connect(prevAction, SIGNAL(activated()), game, SLOT(prevHole()));
 		connect(firstAction, SIGNAL(activated()), game, SLOT(firstHole()));
 		connect(lastAction, SIGNAL(activated()), game, SLOT(lastHole()));
+		connect(randAction, SIGNAL(activated()), game, SLOT(randHole()));
 		connect(editingAction, SIGNAL(activated()), game, SLOT(toggleEditMode()));
 		connect(newHoleAction, SIGNAL(activated()), game, SLOT(addNewHole()));
 		connect(clearHoleAction, SIGNAL(activated()), game, SLOT(clearHole()));
 		connect(resetHoleAction, SIGNAL(activated()), game, SLOT(resetHole()));
 		connect(aboutAction, SIGNAL(activated()), game, SLOT(showInfoDlg()));
+		connect(useMouseAction, SIGNAL(toggled(bool)), game, SLOT(setUseMouse(bool)));
+
+		game->setUseMouse(useMouseAction->isChecked());
 
 		layout->addWidget(game, 0, 0);
 
@@ -278,7 +292,11 @@ void Kolf::newSameGame()
 void Kolf::closeGame()
 {
 	if (game)
+	{
+		if (game->askSave(true))
+			return;
 		game->pause();
+	}
 	editingEnded();
 	delete game;
 	game = 0;
@@ -377,24 +395,6 @@ void Kolf::newPlayersTurn(Player *player)
 	statusBar()->message(i18n("%1's turn").arg(player->name()));
 }
 
-void Kolf::playerHoled(Player * /*player*/)
-{
-	/*
-	kdDebug() << "last score is " << player->lastScore() << endl;
-	if (player->lastScore() == 1)
-		statusBar()->message(i18n("Great hole-in-one, %1!").arg(player->name()));
-	else if (player->lastScore() <= curPar)
-		statusBar()->message(i18n("Good job %1").arg(player->name()));
-	else
-		statusBar()->message(i18n("Better luck next time,  %1").arg(player->name()));
-	*/
-}
-
-void Kolf::parChanged(int newPar)
-{
-	curPar = newPar;
-}
-
 void Kolf::editingStarted()
 {
 	delete editor;
@@ -472,6 +472,7 @@ void Kolf::setHoleMovementEnabled(bool yes)
 	prevAction->setEnabled(yes);
 	firstAction->setEnabled(yes);
 	lastAction->setEnabled(yes);
+	randAction->setEnabled(yes);
 
 	resetHoleAction->setEnabled(yes);
 }
@@ -496,6 +497,14 @@ void Kolf::print()
 		if (game)
 			game->print(p);
 	}
+}
+
+void Kolf::useMouseChanged(bool yes)
+{
+	KConfig *config = kapp->config();
+	config->setGroup("Settings");
+	config->writeEntry("useMouse", yes);
+	config->sync();
 }
 
 #include "kolf.moc"

@@ -2058,12 +2058,6 @@ WallPoint::WallPoint(bool start, Wall *wall, QCanvas *canvas)
 	setZ(wall->z() + 1);
 }
 
-void WallPoint::setVisible(bool yes)
-{
-	//kdDebug() << "setVisible " << yes << endl;
-	QCanvasEllipse::setVisible(yes);
-}
-
 void WallPoint::moveBy(double dx, double dy)
 {
 	//kdDebug() << "WallPoint::moveBy(" << dx << ", " << dy << ")\n";
@@ -2146,9 +2140,9 @@ void WallPoint::collision(Ball *ball, long int id)
 	if (vx < 0)  
 		ballAngle += PI;
 
-	kdDebug() << "----\nstart: " << this->start << endl;
-	kdDebug() << "ballAngle: " << rad2deg(ballAngle) << endl;
-	kdDebug() << "wallAngle: " << rad2deg(wallAngle) << endl;
+	//kdDebug() << "----\nstart: " << this->start << endl;
+	//kdDebug() << "ballAngle: " << rad2deg(ballAngle) << endl;
+	//kdDebug() << "wallAngle: " << rad2deg(wallAngle) << endl;
 
 	// visible just means if we should bounce opposite way
 	bool weirdbounce = visible;
@@ -2158,13 +2152,13 @@ void WallPoint::collision(Ball *ball, long int id)
 	// wierd neg. slope angle
 	if (relWallAngle > PI / 2)
 	{
-		kdDebug() << "neg slope\n";
+		//kdDebug() << "neg slope\n";
 		relWallAngle -= PI / 2;
 		relWallAngle = PI / 2 - relWallAngle;
 		relWallAngle *= -1;
 	}
 
-	kdDebug() << "relWallAngle: " << rad2deg(relWallAngle) << endl;
+	//kdDebug() << "relWallAngle: " << rad2deg(relWallAngle) << endl;
 
 	// forget that we are using english, i switched
 	// start and end i think
@@ -2173,21 +2167,24 @@ void WallPoint::collision(Ball *ball, long int id)
 	if (start.x() < end.x())
 		isStart = !isStart;
 
-	const double angle = PI / 3;
+	//const double angle = PI / 3;
+	const double angle = PI / 2;
 
 	// if it's going 'backwards', don't bounce opposite way
 	if (isStart)
 	{
+		//kdDebug() << "isStart true\n";
 		if (ballAngle > relWallAngle - angle && ballAngle < relWallAngle + angle)
 			weirdbounce = false;
 	}
 	else
 	{
+		//kdDebug() << "isStart false\n";
 		if (ballAngle > relWallAngle + angle || ballAngle < relWallAngle - angle)
 			weirdbounce = false;
 	}
 
-	kdDebug() << "weirdbounce: " << weirdbounce << endl;
+	//kdDebug() << "weirdbounce: " << weirdbounce << endl;
 
 	if (weirdbounce)
 	{
@@ -2354,29 +2351,9 @@ QPointArray Wall::areaPoints() const
 	// to make lines _very_ fat :(
 	// from qcanvas.cpp, only the stuff for a line width of 1 taken
 	
-    QPointArray p(4);
-    const int xi = int(x());
-    const int yi = int(y());
-	const QPoint start = startPoint();
-	const QPoint end = endPoint();
-	const int x1 = start.x();
-	const int x2 = end.x();
-	const int y1 = start.y();
-	const int y2 = end.y();
-    const int dx = QABS(x1-x2);
-    const int dy = QABS(y1-y2);
-	if ( dx > dy ) {
-	    p[0] = QPoint(x1+xi,y1+yi-1);
-	    p[1] = QPoint(x2+xi,y2+yi-1);
-	    p[2] = QPoint(x2+xi,y2+yi+1);
-	    p[3] = QPoint(x1+xi,y1+yi+1);
-	} else {
-	    p[0] = QPoint(x1+xi-1,y1+yi);
-	    p[1] = QPoint(x2+xi-1,y2+yi);
-	    p[2] = QPoint(x2+xi+1,y2+yi);
-	    p[3] = QPoint(x1+xi+1,y1+yi);
-	}
-    return p;
+	// it's all squished because I don't want my
+	// line counts to count code I didn't write!
+	QPointArray p(4); const int xi = int(x()); const int yi = int(y()); const QPoint start = startPoint(); const QPoint end = endPoint(); const int x1 = start.x(); const int x2 = end.x(); const int y1 = start.y(); const int y2 = end.y(); const int dx = QABS(x1-x2); const int dy = QABS(y1-y2); if ( dx > dy ) { p[0] = QPoint(x1+xi,y1+yi-1); p[1] = QPoint(x2+xi,y2+yi-1); p[2] = QPoint(x2+xi,y2+yi+1); p[3] = QPoint(x1+xi,y1+yi+1); } else { p[0] = QPoint(x1+xi-1,y1+yi); p[1] = QPoint(x2+xi-1,y2+yi); p[2] = QPoint(x2+xi+1,y2+yi); p[3] = QPoint(x1+xi+1,y1+yi); } return p;
 }
 
 void Wall::editModeChanged(bool changed)
@@ -2443,8 +2420,8 @@ void Wall::collision(Ball *ball, long int id)
 	else
 	{
 		const double speed = (double)sqrt(vx * vx + vy * vy) / _dampening;
-		const double ballSlope = -(double)vy/(double)vx;
-		const double wallSlope = (double)(start.y() - end.y())/(double)(end.x() - start.x());
+		const double ballSlope = -(double)vy / (double)vx;
+		const double wallSlope = (double)(start.y() - end.y()) / (double)(end.x() - start.x());
 		double ballAngle = atan(ballSlope);
 		if (vx < 0)  
 			ballAngle += PI;
@@ -2555,6 +2532,9 @@ void HoleConfig::maxStrokesChanged(int newms)
 KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const char *name )
 	: QCanvasView(parent, name)
 {
+	// for mouse control
+	QScrollView::viewport()->setMouseTracking(true);
+
 	curHole = 0; // will get ++'d 
 	cfg = 0;
 	setFilename(filename);
@@ -2730,9 +2710,18 @@ void KolfGame::addBorderWall(QPoint start, QPoint end)
 
 void KolfGame::contentsMousePressEvent(QMouseEvent *e)
 {
-	if ((inPlay || !editing) && e->button() == Qt::LeftButton)
+	if (inPlay)
+		return;
+
+	if (!editing)
 	{
-		//puttPress();
+		if (m_useMouse)
+		{
+			if (e->button() == LeftButton)
+				puttPress();
+			else if (e->button() == RightButton)
+				showInfoPress();
+		}
 		return;
 	}
 
@@ -2794,10 +2783,59 @@ void KolfGame::contentsMousePressEvent(QMouseEvent *e)
 
 void KolfGame::contentsMouseMoveEvent(QMouseEvent *e)
 {
+	if (inPlay || !putter)
+		return;
+
 	QPoint mouse = e->pos();
 
-	if (inPlay || !editing || !moving)
+	// mouse moving of putter
+	if (!editing && m_useMouse)
+	{
+		double newAngle = 0;
+		const double yDiff = (double)(putter->y() - mouse.y());
+		const double xDiff = (double)(mouse.x() - putter->x());
+		//kdDebug() << "yDiff: " << yDiff << ", xDiff: " << xDiff << endl;
+		if (yDiff == 0)
+		{
+			//kdDebug() << "horizontal\n";
+			// horizontal
+			if (putter->x() < mouse.x())
+				newAngle = 0;
+			else
+				newAngle = PI;
+		}
+		else if (xDiff == 0)
+		{
+			//kdDebug() << "vertical\n";
+			// vertical
+			if (putter->y() < mouse.y())
+				newAngle = (3 * PI) / 2;
+			else
+				newAngle = PI / 2;
+		}
+		else
+		{
+			const double slope = yDiff / xDiff;
+			const double angle = atan(slope);
+			//kdDebug() << "angle: " << rad2deg(angle) << endl;
+			newAngle = angle;
+
+			if (mouse.x() < putter->x())
+				newAngle += PI;
+		}
+
+		//kdDebug() << "newAngle: " << rad2deg(newAngle) << endl;
+
+		const int degrees = (int)rad2deg(newAngle);
+		//kdDebug() << "degrees: " << degrees << endl;
+		putter->setDeg(degrees);
+
 		return;
+	}
+
+	if (!moving || !editing)
+		return;
+
 	int moveX = storedMousePos.x() - mouse.x();
 	int moveY = storedMousePos.y() - mouse.y();
 
@@ -2810,14 +2848,22 @@ void KolfGame::contentsMouseMoveEvent(QMouseEvent *e)
 	storedMousePos = mouse;
 }
 
-void KolfGame::contentsMouseReleaseEvent(QMouseEvent * /*e*/)
+void KolfGame::contentsMouseReleaseEvent(QMouseEvent *e)
 {
 	moving = false;
 
-	if (inPlay || !editing)
-	{
-		//puttRelease();
+	if (inPlay)
 		return;
+
+	if (!editing)
+	{
+		if (m_useMouse)
+		{
+			if (e->button() == LeftButton)
+				puttRelease();
+			else if (e->button() == RightButton)
+				showInfoRelease();
+		}
 	}
 
 	setFocus();
@@ -2833,20 +2879,10 @@ void KolfGame::keyPressEvent(QKeyEvent *e)
 	switch (e->key())
 	{
 		case Key_I: case Key_Up:
-		{
 			if (!e->isAutoRepeat())
 			{
-				QCanvasItem *item = 0;
-				for (item = items.first(); item; item = items.next())
-				{
-					CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
-					if (citem)
-						citem->showInfo();
-				}
-				showInfo();
-				putter->showInfo();
+				showInfoPress();
 			}
-		}
 		break;
 
 		case Key_Escape:
@@ -2871,6 +2907,32 @@ void KolfGame::keyPressEvent(QKeyEvent *e)
 		default:
 		break;
 	}
+}
+
+void KolfGame::showInfoPress()
+{
+	QCanvasItem *item = 0;
+	for (item = items.first(); item; item = items.next())
+	{
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		if (citem)
+			citem->showInfo();
+	}
+	showInfo();
+	putter->showInfo();
+}
+
+void KolfGame::showInfoRelease()
+{
+	QCanvasItem *item = 0;
+	for (item = items.first(); item; item = items.next())
+	{
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		if (citem)
+			citem->hideInfo();
+	}
+	hideInfoText();
+	putter->hideInfo();
 }
 
 void KolfGame::puttPress()
@@ -2920,17 +2982,7 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 		}
 	}
 	else if (e->key() == Key_I || e->key() == Key_Up)
-	{
-		QCanvasItem *item = 0;
-		for (item = items.first(); item; item = items.next())
-		{
-			CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
-			if (citem)
-				citem->hideInfo();
-		}
-		hideInfoText();
-		putter->hideInfo();
-	}
+		showInfoRelease();
 }
 
 void KolfGame::puttRelease()
@@ -3589,6 +3641,9 @@ void KolfGame::addNewHole()
 // kantan deshou ;-)
 void KolfGame::resetHole()
 {
+	if (askSave(true))
+		return;
+	modified = false;
 	curHole--;
 	holeDone();
 	resetHoleScores();
@@ -3658,6 +3713,14 @@ void KolfGame::firstHole()
 void KolfGame::lastHole()
 {
 	switchHole(highestHole);
+}
+
+void KolfGame::randHole()
+{
+	//kdDebug() << "randHole\n";
+	int newHole = 1 + (int)((double)kapp->random() * ((double)(highestHole - 1) / (double)RAND_MAX));
+	//kdDebug() << "newHole: " << newHole << endl;
+	switchHole(newHole);
 }
 
 void KolfGame::save()

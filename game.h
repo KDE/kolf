@@ -53,10 +53,10 @@ signals:
 	void modified();
 
 protected:
-	int spacingHint();
-	int marginHint();
+	inline int spacingHint();
+	inline int marginHint();
 	bool startedUp;
-	void changed();
+	inline void changed();
 };
 
 class DefaultConfig : public Config
@@ -162,7 +162,7 @@ public:
 	/**
 	 * use this to KSimpleConfig::setGroup() in your load and save functions.
 	 */
-	QString makeGroup(int hole, QString name, int x, int y) { return QString("%1-%2@%3,%4|%5").arg(hole).arg(name).arg(x).arg(y).arg(id); }
+	inline QString makeGroup(int hole, QString name, int x, int y) { return QString("%1-%2@%3,%4|%5").arg(hole).arg(name).arg(x).arg(y).arg(id); }
 
 	/**
 	 * reimplement if you want extra items to have access to the game object.
@@ -175,6 +175,7 @@ protected:
 	 * pointer to main KolfGame
 	 */
 	KolfGame *game;
+
 	/**
 	 * returns the highest vertical strut the item is on
 	 */
@@ -607,7 +608,6 @@ public:
 	//virtual int rtti() const { return Rtti_NoCollision; }
 	void setAlwaysShow(bool yes) { alwaysShow = yes; updateVisible(); }
 	virtual void editModeChanged(bool changed);
-	virtual void setVisible(bool yes);
 	virtual void moveBy(double dx, double dy);
 	virtual int rtti() const { return Rtti_WallPoint; }
 	virtual bool deleteable() { return false; }
@@ -944,6 +944,8 @@ public:
 	void emitLargestHole() { emit largestHole(highestHole); }
 	QCanvas *canvas() { return course; }
 	void removeItem(QCanvasItem *item) { items.setAutoDelete(false); items.removeRef(item); }
+	// returns whether it was a cancel
+	bool askSave(bool);
 
 public slots:
 	void pause();
@@ -960,12 +962,14 @@ public slots:
 	void prevHole();
 	void firstHole();
 	void lastHole();
+	void randHole();
 	void playSound(QString file);
 	void showInfo();
 	void showInfoDlg(bool = false);
 	void resetHole();
 	void clearHole();
 	void print(QPainter &);
+	void setUseMouse(bool yes) { m_useMouse = yes; }
 
 signals:
 	void holesDone();
@@ -1079,11 +1083,14 @@ private:
 	inline void addBorderWall(QPoint start, QPoint end);
 	inline void shotStart();
 
+	void showInfoPress();
+	void showInfoRelease();
+
 	bool modified;
-	// returns whether it was a cancel
-	bool askSave(bool);
 
 	inline bool allPlayersDone();
+
+	bool m_useMouse;
 };
 
 #endif

@@ -40,11 +40,11 @@ NewGameDialog::NewGameDialog(QWidget *parent, const char *name)
 	startColors << yellow << blue << red << lightGray << cyan << darkBlue << magenta << darkGray << darkMagenta << darkYellow;
 
 	dummy = plainPage();
-	dummy->setMinimumSize(250, 300);
+	//dummy->setMinimumSize(250, 300);
 
 	layout = new QVBoxLayout(dummy, 3);
 
-	mode = new QCheckBox(i18n("&Disallow Editing/Hole Movement"), dummy);
+	mode = new QCheckBox(i18n("&Strict Mode"), dummy);
 	layout->addWidget(mode);
 
 	config->setGroup("New Game Dialog Mode");
