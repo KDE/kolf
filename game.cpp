@@ -1,6 +1,7 @@
 #include <arts/kmedia2.h>
 #include <arts/kplayobject.h>
 #include <arts/kplayobjectfactory.h>
+
 #include <kapplication.h>
 #include <kcombobox.h>
 #include <kconfig.h>
@@ -54,6 +55,7 @@
 #include <unistd.h>
 
 #include "kcomboboxdialog.h"
+#include "kvolumecontrol.h"
 #include "rtti.h"
 #include "object.h"
 #include "config.h"
@@ -2491,7 +2493,7 @@ bool WallPoint::collision(Ball *ball, long int id)
 
 	if (weirdBounce)
 	{
-		playSound("wall");
+		playSound("wall", ball->curVector().magnitude() / 10.0);
 
 		ballVector /= wall->dampening;
 		const double ballAngle = ballVector.direction();
@@ -2682,7 +2684,7 @@ bool Wall::collision(Ball *ball, long int id)
 	}
 
 	lastId = id;
-	playSound("wall");
+	playSound("wall", ball->curVector().magnitude() / 10.0);
 
 	Vector ballVector(ball->curVector());
 	ballVector /= dampening;
@@ -4802,7 +4804,7 @@ void KolfGame::toggleEditMode()
 	inPlay = false;
 }
 
-void KolfGame::playSound(QString file)
+void KolfGame::playSound(QString file, double vol)
 {
 	if (m_sound)
 	{
@@ -4811,6 +4813,7 @@ void KolfGame::playSound(QString file)
 		{
 			if (oldPlayObject && oldPlayObject->state() != Arts::posPlaying)
 			{
+				kdDebug() << "removing obj\n";
 				oldPlayObjects.remove();
 
 				// because we will go to next() next time
@@ -4819,12 +4822,26 @@ void KolfGame::playSound(QString file)
 				(void) oldPlayObjects.prev();
 			}
 		}
+
 		KURL url(soundDir + file + QString::fromLatin1(".wav"));
 		KPlayObjectFactory factory(artsServer.server());
 		KPlayObject *playObject = factory.createPlayObject(url, true);
 
 		if (playObject && !playObject->isNull())
 		{
+			if (vol > 1)
+				vol = 1;
+			else if (vol <= .01)
+			{
+				delete playObject;
+				return;
+			}
+
+			if (vol < .99)
+			{
+				//new KVolumeControl(vol, artsServer.server(), playObject);
+			}
+			
 			playObject->play();
 			oldPlayObjects.append(playObject);
 		}

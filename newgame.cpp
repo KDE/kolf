@@ -318,9 +318,11 @@ PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent
 	editor->setText(startName);
 	layout->addStretch();
 	layout->addWidget(colorButton = new KColorButton(startColor, this));
+	colorButton->setAutoMask(true);
 	colorButton->setBackgroundPixmap(grass);
 
 	KPushButton *remove = new KPushButton(i18n("Remove"), this);
+	remove->setAutoMask(true);
 	layout->addWidget(remove);
 	remove->setBackgroundPixmap(grass);
 	connect(remove, SIGNAL(clicked()), this, SLOT(removeMe()));

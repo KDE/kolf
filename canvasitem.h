@@ -154,8 +154,9 @@ public:
 
 	/**
 	 * call to play sound (ie, playSound("wall") plays kdedir/share/apps/kolf/sounds/wall.wav).
+	 * optionally, specify vol to be between 0-1, for no sound to full volume, respectively.
 	 */
-	void playSound(QString file);
+	void playSound(QString file, double vol = 1);
 
 	/**
 	 * called on ball's collision. Return if terrain collisions should be processed.

@@ -956,7 +956,7 @@ public slots:
 	void firstHole();
 	void lastHole();
 	void randHole();
-	void playSound(QString file);
+	void playSound(QString file, double vol = 0);
 	void showInfoDlg(bool = false);
 	void resetHole();
 	void clearHole();
