@@ -610,7 +610,7 @@ maxstrokes=10
 par=2
 
 [8-sign@5,5|3]
-Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will be come out at.
+Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out at.
 botWallVisible=true
 height=206
 leftWallVisible=true
