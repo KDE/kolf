@@ -23,7 +23,6 @@ public:
 	virtual void moveBy(double dx, double dy);
 	virtual void setVelocity(double vx, double vy);
 
-	double curSpeed() { return sqrt(xVelocity() * xVelocity() + yVelocity() * yVelocity()); }
 	virtual bool canBeMovedByOthers() const { return true; }
 
 	BallState curState() { return state; }
@@ -44,9 +43,9 @@ public:
 	virtual int rtti() const { return Rtti_Ball; };
 
 	bool addStroke() { return m_addStroke; }
-	bool placeOnGround(double &oldvx, double &oldvy) { oldvx = m_oldvx; oldvy = m_oldvy; return m_placeOnGround; }
+	bool placeOnGround(Vector &v) { v = oldVector; }
 	void setAddStroke(int newStrokes) { m_addStroke = newStrokes; }
-	void setPlaceOnGround(bool placeOnGround, double oldvx, double oldvy) { m_placeOnGround = placeOnGround; m_oldvx = oldvx; m_oldvy = oldvy;}
+	void setPlaceOnGround(bool placeOnGround) { m_placeOnGround = placeOnGround; oldVector = m_vector; }
 
 	bool beginningOfHole() { return m_beginningOfHole; }
 	void setBeginningOfHole(bool yes) { m_beginningOfHole = yes; }
@@ -75,6 +74,7 @@ private:
 	bool m_beginningOfHole;
 
 	Vector m_vector;
+	Vector oldVector;
 	bool m_collisionLock;
 };
 

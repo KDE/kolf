@@ -339,9 +339,7 @@ void Kolf::gameOver()
 		statusBar()->message(i18n("%1 tied").arg(winners));
 	}
 	else
-	{
 		statusBar()->message(i18n("%1 won!").arg(names.first()));
-	}
 
 	QTimer::singleShot(700, this, SLOT(closeGame()));
 }

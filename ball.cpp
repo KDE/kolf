@@ -74,12 +74,14 @@ void Ball::friction()
 {
 	if (state == Stopped || state == Holed || !isVisible()) { setVelocity(0, 0); return; }
 	const double subtractAmount = .027 * frictionMultiplier;
+	//kdDebug() << "Friction, magnitude is " << m_vector.magnitude() << ", subtractAmount is " << subtractAmount << endl;
 	if (m_vector.magnitude() <= subtractAmount)
 	{
 		//kdDebug() << "Ball::friction stopping\n";
 		//kdDebug() << "magnitude is " << m_vector.magnitude() << endl;
 		state = Stopped;
 		setVelocity(0, 0);
+		game->timeout();
 		return;
 	}
 	m_vector.setMagnitude(m_vector.magnitude() - subtractAmount);
@@ -105,7 +107,7 @@ void Ball::setVelocity(double vx, double vy)
 	//kdDebug() << "ballAngle calculated as " << rad2deg(ballAngle) << endl;
 
 	m_vector.setDirection(ballAngle);
-	m_vector.setMagnitude(curSpeed());
+	m_vector.setMagnitude(sqrt(pow(vx, 2) + pow(vy, 2))); 
 }
 
 void Ball::setVector(Vector newVector)
@@ -141,7 +143,7 @@ void Ball::doAdvance()
 
 void Ball::collisionDetect()
 {
-	if (!isVisible())
+	if (!isVisible() || state == Holed)
 		return;
 
 	//kdDebug() << "collision detect\n";
@@ -247,6 +249,9 @@ void Ball::collisionDetect()
 
 			continue;
 		}
+
+		if (!isVisible() || state == Holed)
+			return;
 
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
 		if (citem)

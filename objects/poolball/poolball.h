@@ -21,7 +21,6 @@ public:
 	PoolBall(QCanvas *canvas);
 
 	virtual Config *config(QWidget *parent);
-	//virtual void resetSize() { setSize(15, 15); }
 	virtual void save(KSimpleConfig *cfg);
 	virtual void load(KSimpleConfig *cfg);
 	virtual void draw(QPainter &);

@@ -568,7 +568,6 @@ public:
 	virtual void aboutToDie();
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
-	virtual void setVelocity(double vx, double vy);
 	virtual void load(KSimpleConfig *cfg);
 	virtual void save(KSimpleConfig *cfg);
 	virtual bool vStrut() const { return true; }
@@ -904,6 +903,8 @@ public slots:
 	void setSound(bool yes);
 	void undoShot();
 
+	void timeout();
+
 signals:
 	void holesDone();
 	void newHole(int);
@@ -924,7 +925,6 @@ signals:
 private slots:
 	void shotDone();
 	void holeDone();
-	void timeout();
 	void fastTimeout();
 	void frictionTimeout();
 	void putterTimeout();

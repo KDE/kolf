@@ -430,8 +430,6 @@ QPointArray Slope::areaPoints() const
 
 void Slope::collision(Ball *ball, long int /*id*/)
 {
-	//kdDebug() << "slope::collision\n";
-
 	double vx = ball->xVelocity();
 	double vy = ball->yVelocity();
 	double addto = 0.013 * grade;
@@ -447,43 +445,14 @@ void Slope::collision(Ball *ball, long int /*id*/)
 	{
 		const QPoint start(x() + (int)width() / 2.0, y() + (int)height() / 2.0);
 		const QPoint end((int)ball->x(), (int)ball->y());
-		const double yDiff = (double)(end.x() - start.x());
-		const double xDiff = (double)(start.y() - end.y());
+	
+		Vector betweenVector(start, end);
+		const double factor = betweenVector.magnitude() / ((double)width() / 2.0);
+		slopeAngle = betweenVector.direction();
 
-		if (yDiff == 0 && xDiff == 0)
-			return;
-
-		if (yDiff == 0)
-		{
-			// this is all weird
-			// see comment in bumper::collision
-			// horizontal
-			//slopeAngle = end.x() < start.x()? 0 : M_PI;
-			slopeAngle = M_PI;
-		}
-		else
-		{
-			slopeAngle = atan(yDiff / xDiff);
-			//kdDebug() << "before slopeAngle: " << rad2deg(slopeAngle) << endl;
-
-			slopeAngle *= -1;
-			if (end.y() < start.y())
-			{
-				//kdDebug() << "neg slopeAngle: " << rad2deg(slopeAngle) << endl;
-				slopeAngle = (M_PI / 2) - slopeAngle;
-			}
-			else
-			{
-				slopeAngle = (-M_PI / 2) - slopeAngle;
-			}
-		}
-
-		const double factor = sqrt(xDiff * xDiff + yDiff * yDiff) / (double)((double)width() / 2.0);
-		//kdDebug() << "factor: " << factor << endl;
-		// this algorithm by daniel
+		// this little bit by Daniel
 		addto *= factor * M_PI / 2;
 		addto = sin(addto);
-		//addto *= 1.4;
 	}
 
 	//kdDebug() << "slopeAngle: " << rad2deg(slopeAngle) << endl;
@@ -851,17 +820,6 @@ void Bridge::moveBy(double dx, double dy)
 		if (citem)
 			citem->updateZ();
 	}
-}
-
-void Bridge::setVelocity(double vx, double vy)
-{
-	QCanvasRectangle::setVelocity(vx, vy);
-	/*
-	topWall->setVelocity(vx, vy);
-	botWall->setVelocity(vx, vy);
-	leftWall->setVelocity(vx, vy);
-	rightWall->setVelocity(vx, vy);
-	*/
 }
 
 void Bridge::load(KSimpleConfig *cfg)
@@ -1711,12 +1669,11 @@ void Puddle::collision(Ball *ball, long int /*id*/)
 	i.setVisible(true);
 
 	// is center of ball in?
-	if (i.collidesWith(this)/* && ball->curSpeed() < 4*/)
+	if (i.collidesWith(this)/* && ball->curVector().magnitude() < 4*/)
 	{
 		playSound("puddle");
 		ball->setAddStroke(ball->addStroke() + 1);
-		ball->setPlaceOnGround(true, ball->xVelocity(), ball->yVelocity());
-		//ball->setVelocity(0, 0);
+		ball->setPlaceOnGround(true);
 		ball->setVisible(false);
 		ball->setState(Stopped);
 		ball->setVelocity(0, 0);
@@ -1757,13 +1714,22 @@ void Sand::load(KSimpleConfig *cfg)
 
 void Sand::collision(Ball *ball, long int /*id*/)
 {
+	//kdDebug() << "sand::collision\n";
 	QCanvasRectangle i(QRect(ball->x(), ball->y(), 1, 1), canvas());
 	i.setVisible(true);
 
 	// is center of ball in?
-	if (i.collidesWith(this)/* && ball->curSpeed() < 4*/)
+	if (i.collidesWith(this)/* && ball->curVector().magnitude() < 4*/)
 	{
-		ball->setFrictionMultiplier(7);
+		if (ball->curVector().magnitude() > 0)
+			ball->setFrictionMultiplier(7);
+		else
+		{
+			//kdDebug() << "no magnitude\n";
+			ball->setVelocity(0, 0);
+			ball->setState(Stopped);
+			game->timeout();
+		}
 	}
 }
 
@@ -1949,53 +1915,22 @@ void Bumper::collision(Ball *ball, long int /*id*/)
 {
 	setBrush(secondColor);
 
-	double speed = 1.8 + ball->curSpeed() * .9;
+	double speed = 1.8 + ball->curVector().magnitude() * .9;
 	if (speed > 8)
 		speed = 8;
 
-	double angle = 0;
-
 	const QPoint start(x(), y());
-	const QPoint end((int)ball->x(), (int)ball->y());
+	const QPoint end(ball->x(), ball->y());
+	
+	Vector betweenVector(start, end);
+	betweenVector.setMagnitude(speed);
 
-	// okay.. realize about a week after i write code in slope and bumper
-	// that I switched yDiff and xDiff
-	// interesting, eh? :)
+	// add some randomness so we don't go indefinetely
+	betweenVector.setDirection(betweenVector.direction() + deg2rad((kapp->random() % 3) - 1));
 
-	const double yDiff = (double)(end.x() - start.x());
-	const double xDiff = (double)(start.y() - end.y());
-	//kdDebug() << "yDiff: " << yDiff << endl;
-	//kdDebug() << "xDiff: " << xDiff << endl;
-
-	if (yDiff == 0 && xDiff == 0)
-		return;
-
-	if (xDiff == 0)
-	{
-		// horizontal
-		angle = end.x() < start.x()? 0 : M_PI;
-	}
-	else
-	{
-		angle = atan(yDiff / xDiff);
-
-		angle *= -1;
-		if (end.y() < start.y())
-		{
-			angle = (M_PI / 2) - angle;
-		}
-		else
-		{
-			angle = (-M_PI / 2) - angle;
-		}
-	}
-
-	// add some randomness so we don't go indefinately
-	angle += kapp->random() % 4 - 2;
-
-	const double vx = -cos(angle) * speed;
-	const double vy = -sin(angle) * speed;
-	ball->setVelocity(vx, vy);
+	ball->setVector(betweenVector);
+	// for some reason, x is always switched...
+	ball->setXVelocity(-ball->xVelocity());
 	ball->setState(Rolling);
 
 	setAnimated(true);
@@ -2015,11 +1950,10 @@ void Hole::collision(Ball *ball, long int /*id*/)
 {
 	bool wasCenter = false;
 
-	switch (result(QPoint(ball->x(), ball->y()), ball->curSpeed(), &wasCenter))
+	switch (result(QPoint(ball->x(), ball->y()), ball->curVector().magnitude(), &wasCenter))
 	{
 		case Result_Holed:
-			if (place(ball, wasCenter))
-				ball->setState(Holed);
+			place(ball, wasCenter);
 			return;
 
 		default:
@@ -2062,6 +1996,7 @@ void Cup::draw(QPainter &painter)
 bool Cup::place(Ball *ball, bool /*wasCenter*/)
 {
 	// the picture's center is a little different
+	ball->setState(Holed);
 	ball->move(x() - 1, y());
 	ball->setVelocity(0, 0);
 	return true;
@@ -2158,12 +2093,13 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 {
 	playSound("blackhole");
 
-	double diff = (m_maxSpeed - m_minSpeed);
-	double strength = m_minSpeed + ball->curSpeed() * (diff / 3.0);
+	const double diff = (m_maxSpeed - m_minSpeed);
+	Vector v;
+	v.setMagnitude(m_minSpeed + ball->curVector().magnitude() * (diff / 3.0));
+	v.setDirection(deg2rad(exitDeg));
 
 	ball->move(exitItem->x(), exitItem->y());
-	int deg = -exitDeg;
-	ball->setVelocity(cos(deg2rad(deg))*strength, sin(deg2rad(deg))*strength);
+	ball->setVector(v);
 	ball->setState(Rolling);
 
 	return false;
@@ -2377,6 +2313,8 @@ void WallPoint::editModeChanged(bool changed)
 
 void WallPoint::collision(Ball *ball, long int id)
 {
+	// this and Wall::collision not ported to use vectors
+
 	//kdDebug() << "lastId is " << lastId << ", this id is " << id << endl;
 	if (abs(id - lastId) < 2)
 	{
@@ -2481,7 +2419,7 @@ void WallPoint::collision(Ball *ball, long int id)
 		}
 		else
 		{
-			const double speed = ball->curSpeed() / dampening;
+			const double speed = ball->curVector().magnitude() / dampening;
 
 			const double collisionAngle = ballAngle - wallAngle;
 			const double leavingAngle = M_PI - collisionAngle + wallAngle;
@@ -2654,6 +2592,8 @@ void Wall::editModeChanged(bool changed)
 
 void Wall::collision(Ball *ball, long int id)
 {
+	// this and WallPoint::collision not ported to use vectors
+
 	//kdDebug() << "lastId is " << lastId << ", this id is " << id << endl;
 	if (abs(id - lastId) < 2)
 	{
@@ -3500,8 +3440,14 @@ void KolfGame::timeout()
 	}
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-		if ((*it).ball()->curState() == Rolling && (*it).ball()->curSpeed() > 0)
+	{
+		if ((*it).ball()->curState() == Rolling && (*it).ball()->curVector().magnitude() > 0)
+		{
+			//kdDebug() << "ball " << (*it).name() << " still going\n";
+			//kdDebug() << "velocities: " << (*it).ball()->xVelocity() << ", " << (*it).ball()->yVelocity() << endl;
 			return;
+		}
+	}
 
 	int curState = curBall->curState();
 	if (curState == Stopped && inPlay)
@@ -3809,17 +3755,14 @@ void KolfGame::shotDone()
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 	{
+		if ((*it).ball()->curState() == Holed)
+			continue;
+
 		Ball *ball = (*it).ball();
-		double vx = 0, vy = 0;
-		if (ball->placeOnGround(vx, vy))
+		Vector v;
+		if (ball->placeOnGround(v))
 		{
 			double x = ball->x(), y = ball->y();
-
-			double ballAngle = atan(vx / vy);
-
-			if (vy < 0)
-				ballAngle -= M_PI;
-			ballAngle = M_PI/2 - ballAngle;
 
 			while (1)
 			{
@@ -3837,28 +3780,22 @@ void KolfGame::shotDone()
 					break;
 
 				const float movePixel = 3.0;
-				x -= cos(ballAngle) * movePixel;
-				y -= sin(ballAngle) * movePixel;
+				x -= cos(v.direction()) * movePixel;
+				y += sin(v.direction()) * movePixel;
 
 				ball->move(x, y);
-
-				// for debugging
-				/*
-				   ball->setVisible(true);
-				   kapp->processEvents();
-				//kdDebug() << "(" << x << ", " << y << ")" << endl;
-				sleep(1);
-				 */
 			}
 
 			//kdDebug() << "placing on " << p.x() << ", " << p.y() << endl;
 			ball->move(ball->x(), ball->y());
 
 			ball->setVisible(true);
+			ball->setState(Stopped);
+			ball->collisionDetect();
 		}
 
 		// off by default
-		ball->setPlaceOnGround(false, 0, 0);
+		ball->setPlaceOnGround(false);
 		// end hacky stuff
 	}
 	

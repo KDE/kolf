@@ -3,7 +3,7 @@ author=Jason Katz-Brown
 borderWalls=true
 name=Easy Course\s
 
-[1-ball@337,287]
+[1-ball@222,62]
 dummykey=true
 
 [1-bridge@313,271|20]

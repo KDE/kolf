@@ -24,7 +24,6 @@ PoolBall::PoolBall(QCanvas *canvas)
 	kdDebug() << "PoolBall::PoolBall\n";
 	setBrush(black);
 	m_number = 1;
-	//resetSize();
 }
 
 void PoolBall::save(KSimpleConfig *cfg)
