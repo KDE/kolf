@@ -841,7 +841,8 @@ QPtrList<QCanvasItem> Floater::moveableItems()
 
 void Floater::aboutToDie()
 {
-	wall->setVisible(false);
+	if (wall)
+		wall->setVisible(false);
 	Bridge::aboutToDie();
 	setEnabled(false);
 }
@@ -1701,7 +1702,9 @@ void Ball::collisionDetect()
 				// it's one of our own kind, a ball, and we're hitting it
 				// sorta hard
 				//kdDebug() << "gonna blow up\n";
-				dynamic_cast<Ball *>(item)->setBlowUp(true);
+				Ball *oball = dynamic_cast<Ball *>(item);
+				if (oball->curState() != Stopped && oball->curState() != Holed)
+					oball->setBlowUp(true);
 				continue;
 			}
 		}
@@ -3146,11 +3149,11 @@ void KolfGame::holeDone()
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 	{
 		(*it).ball()->move(width/2, height/2);
-		(*it).ball()->setVisible(false);
 		(*it).ball()->setState(Stopped);
 		(*it).addHole();
 		(*it).ball()->setVelocity(0, 0);
 		(*it).ball()->setMoved(false);
+		(*it).ball()->setVisible(false);
 	}
 
 	curPlayer = players->begin();

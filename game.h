@@ -551,7 +551,7 @@ public:
 	virtual void setVisible(bool yes);
 	void saveDegrees(Ball *ball) { degMap[ball] = deg; }
 	void setDegrees(Ball *ball);
-	void resetDegrees() { degMap.clear(); setZ(998.9); }
+	void resetDegrees() { degMap.clear(); setZ(999999); }
 	virtual bool onBridge() { return true; }
 	virtual void moveBy(double dx, double dy);
 
