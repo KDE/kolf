@@ -1,6 +1,7 @@
 [0-course@-50,-50]
 Name=Slope Practice
 Name[bg]=Тренировка на наклонен терен
+Name[bn]=ঢালুতে অনুশীলন
 Name[ca]=Pràctica de baixada
 Name[da]=Træn skråninger
 Name[de]=Hügelpraxis
@@ -26,6 +27,7 @@ Name[ru]=Практика на горках
 Name[sk]=Nácvik slope
 Name[sl]=Vaja za strmine
 Name[sr]=Вежба нагиба
+Name[sr@Latn]=Vežba nagiba
 Name[sv]=Sluttningsövning
 Name[ta]=சரியப்பழகு
 Name[tr]=Eğim Çalışması
