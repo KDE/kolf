@@ -41,79 +41,65 @@ par=3
 [1-puddle@102,359|46]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [1-puddle@105,375|40]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [1-puddle@133,377|61]
 changeEnabled=true
 changeEvery=50
-dummykey=true
 
 [1-puddle@20,242|59]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [1-puddle@27,264|57]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [1-puddle@36,281|54]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [1-puddle@53,365|39]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [1-puddle@60,294|56]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [1-puddle@70,349|38]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [1-puddle@76,333|53]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [1-puddle@79,369|41]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [1-puddle@8,226|58]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [1-puddle@81,312|55]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [1-puddle@9,213|60]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [1-sand@47,108|16]
-changeEnabled=false
+changeEnabled=true
 changeEvery=50
 
 [1-sand@63,120|16]
-changeEnabled=false
+changeEnabled=true
 changeEvery=50
 
 [1-sign@202,72|55]

@@ -68,28 +68,25 @@ class CanvasItem
 {
 public:
 	CanvasItem() { game = 0; }
+	virtual ~CanvasItem() {}
 	/**
 	 * load your settings from the KSimpleConfig.
-	 * You'll have to call KSimpleConfig::setGroup(this->makeGroup(...))
+	 * load your settings
 	 *
 	 */
-	virtual void load(KSimpleConfig *, int /*hole*/) {}
+	virtual void load(KSimpleConfig *) {}
 	/**
 	 * returns a bool that is true if your item needs to load after other items
 	 */
 	virtual bool loadLast() { return false; }
 	/**
-	 * called after all items have had load() called.
-	 */
-	virtual void finalLoad() {}
-	/**
 	 * called after the item is moved the very first time by the game
 	 */
 	virtual void firstMove(int /*x*/, int /*y*/) {}
 	/**
-	 * same as load (you must call setGroup), but save your settings.
+	 * save your settings.
 	 */
-	virtual void save(KSimpleConfig *, int /*hole*/) {}
+	virtual void save(KSimpleConfig *cfg);
 	/**
 	 * called right before any items are saved.
 	 */
@@ -151,21 +148,16 @@ public:
 	 * returns whether this can be moved by the user while editing.
 	 */
 	virtual bool moveable() { return true; }
-	/**
-	 * no need to reimplement.
-	 */
+
 	void setId(int newId) { id = newId; }
+	int curId() { return id; }
+
 	/**
-	 * no need to reimplement.
+	 * call to play sound (ie, playSound("wall") plays kdedir/share/apps/kolf/sounds/wall.wav)
 	 */
 	void playSound(QString file);
 
 	virtual void collision(Ball * /*ball*/, long int /*id*/) {};
-
-	/**
-	 * use this to KSimpleConfig::setGroup() in your load and save functions.
-	 */
-	inline QString makeGroup(int hole, QString name, int x, int y) { return QString("%1-%2@%3,%4|%5").arg(hole).arg(name).arg(x).arg(y).arg(id); }
 
 	/**
 	 * reimplement if you want extra items to have access to the game object.
@@ -177,6 +169,9 @@ public:
 	 * returns whether this resizes from south-east.
 	 */
 	virtual bool cornerResize() { return false; }
+
+	QString name() { return m_name; }
+	void setName(const QString &newname) { m_name = newname; }
 
 protected:
 	/**
@@ -190,6 +185,7 @@ protected:
 	QCanvasItem *onVStrut();
 
 private:
+	QString m_name;
 	int id;
 };
 
@@ -375,8 +371,8 @@ public:
 	bool isStuckOnGround() { return stuckOnGround; }
 	void setStuckOnGround(bool yes) { stuckOnGround = yes; updateZ(); }
 
-	virtual void load(KSimpleConfig *cfg, int hole);
-	virtual void save(KSimpleConfig *cfg, int hole);
+	virtual void load(KSimpleConfig *cfg);
+	virtual void save(KSimpleConfig *cfg);
 
 	virtual void collision(Ball *ball, long int id);
 
@@ -438,8 +434,8 @@ public:
 	virtual void aboutToSave();
 	virtual void savingDone();
 
-	virtual void doSave(KSimpleConfig *cfg, int hole);
-	virtual void doLoad(KSimpleConfig *cfg, int hole);
+	virtual void doSave(KSimpleConfig *cfg);
+	virtual void doLoad(KSimpleConfig *cfg);
 
 	virtual Config *config(QWidget *parent);
 
@@ -482,8 +478,8 @@ public:
 	Puddle(QCanvas *canvas);
 	virtual void collision(Ball *ball, long int id);
 	virtual int rtti() const { return Rtti_DontPlaceOn; }
-	virtual void load(KSimpleConfig *cfg, int hole);
-	virtual void save(KSimpleConfig *cfg, int hole);
+	virtual void load(KSimpleConfig *cfg);
+	virtual void save(KSimpleConfig *cfg);
 };
 class PuddleObj : public Object
 {
@@ -497,8 +493,8 @@ class Sand : public Ellipse
 public:
 	Sand(QCanvas *canvas);
 	virtual void collision(Ball *ball, long int id);
-	virtual void load(KSimpleConfig *cfg, int hole);
-	virtual void save(KSimpleConfig *cfg, int hole);
+	virtual void load(KSimpleConfig *cfg);
+	virtual void save(KSimpleConfig *cfg);
 };
 class SandObj : public Object
 {
@@ -521,8 +517,6 @@ class Bumper : public QCanvasEllipse, public CanvasItem
 {
 public:
 	Bumper(QCanvas *canvas);
-
-	virtual void save(KSimpleConfig *cfg, int hole);
 
 	virtual void advance(int phase);
 	virtual void aboutToDie();
@@ -561,7 +555,7 @@ class Cup : public Hole
 public:
 	Cup(QCanvas *canvas);
 	virtual bool place(Ball *ball, bool wasCenter);
-	virtual void save(KSimpleConfig *cfg, int hole);
+	virtual void save(KSimpleConfig *cfg);
 	virtual bool canBeMovedByOthers() { return true; }
 	virtual void draw(QPainter &painter);
 
@@ -615,8 +609,8 @@ public:
 	virtual void showInfo();
 	virtual void hideInfo();
 	virtual bool place(Ball *ball, bool wasCenter);
-	virtual void save(KSimpleConfig *cfg, int hole);
-	virtual void load(KSimpleConfig *cfg, int hole);
+	virtual void save(KSimpleConfig *cfg);
+	virtual void load(KSimpleConfig *cfg);
 	virtual Config *config(QWidget *parent) { return new BlackHoleConfig(this, parent); }
 	virtual QPtrList<QCanvasItem> moveableItems();
 	int minSpeed() { return m_minSpeed; }
@@ -655,12 +649,11 @@ public:
 	virtual void setZ(double newz);
 	virtual void setPen(QPen p);
 	virtual void collision(Ball *ball, long int id);
-	virtual void save(KSimpleConfig *cfg, int hole);
-	virtual void load(KSimpleConfig *cfg, int hole);
+	virtual void save(KSimpleConfig *cfg);
+	virtual void load(KSimpleConfig *cfg);
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
 	virtual void setVelocity(double vx, double vy);
-	virtual void finalLoad();
 	virtual void clean();
 	// must reimp because we gotta move the end items,
 	// and we do that in :moveBy()
@@ -774,11 +767,11 @@ public:
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
 	virtual void setVelocity(double vx, double vy);
-	virtual void load(KSimpleConfig *cfg, int hole);
-	virtual void save(KSimpleConfig *cfg, int hole);
+	virtual void load(KSimpleConfig *cfg);
+	virtual void save(KSimpleConfig *cfg);
 	virtual bool vStrut() { return true; }
-	void doLoad(KSimpleConfig *cfg, int hole);
-	void doSave(KSimpleConfig *cfg, int hole);
+	void doLoad(KSimpleConfig *cfg);
+	void doSave(KSimpleConfig *cfg);
 	virtual void newSize(int width, int height);
 	virtual void setGame(KolfGame *game);
 	virtual Config *config(QWidget *parent) { return new BridgeConfig(this, parent); }
@@ -835,8 +828,8 @@ public:
 	virtual void draw(QPainter &painter);
 	virtual bool vStrut() { return false; }
 	virtual Config *config(QWidget *parent) { return new SignConfig(this, parent); }
-	virtual void save(KSimpleConfig *cfg, int hole);
-	virtual void load(KSimpleConfig *cfg, int hole);
+	virtual void save(KSimpleConfig *cfg);
+	virtual void load(KSimpleConfig *cfg);
 
 protected:
 	QString m_text;
@@ -880,13 +873,12 @@ public:
 	Windmill(QRect rect, QCanvas *canvas);
 	virtual void aboutToDie();
 	virtual void newSize(int width, int height);
-	virtual void save(KSimpleConfig *cfg, int hole);
-	virtual void load(KSimpleConfig *cfg, int hole);
+	virtual void save(KSimpleConfig *cfg);
+	virtual void load(KSimpleConfig *cfg);
 	virtual void setGame(KolfGame *game);
 	virtual Config *config(QWidget *parent) { return new WindmillConfig(this, parent); }
 	void setSize(int width, int height);
 	virtual void moveBy(double dx, double dy);
-	virtual void setVelocity(double vx, double vy);
 	void setSpeed(int news);
 	int curSpeed() { return speed; }
 
@@ -918,13 +910,26 @@ private slots:
 private:
 	Floater *floater;
 };
-class FloaterGuide;
+class FloaterGuide : public Wall
+{
+public:
+	FloaterGuide(Floater *floater, QCanvas *canvas) : Wall(canvas) { this->floater = floater; almostDead = false; }
+	virtual void setPoints(int xa, int ya, int xb, int yb);
+	virtual void moveBy(double dx, double dy);
+	virtual Config *config(QWidget *parent);
+	virtual void aboutToDelete();
+	virtual void aboutToDie();
+
+private:
+	Floater *floater;
+	bool almostDead;
+};
 class Floater : public Bridge
 {
 public:
 	Floater(QRect rect, QCanvas *canvas);
-	virtual void save(KSimpleConfig *cfg, int hole);
-	virtual void load(KSimpleConfig *cfg, int hole);
+	virtual void save(KSimpleConfig *cfg);
+	virtual void load(KSimpleConfig *cfg);
 	virtual bool loadLast() { return true; }
 	virtual void firstMove(int x, int y);
 	virtual void aboutToSave();
@@ -940,28 +945,18 @@ public:
 	void setSpeed(int news);
 	int curSpeed() { return speed; }
 
+	// called by floaterguide when changed;
+	void reset();
+
 private:
 	int speedfactor;
 	int speed;
 	FloaterGuide *wall;
-	QPoint lastStart;
-	QPoint lastEnd;
-	QPoint lastWall;
+	QPoint start;
+	QPoint end;
 	bool noUpdateZ;
 	bool haventMoved;
 	QPoint firstPoint;
-};
-class FloaterGuide : public Wall
-{
-public:
-	FloaterGuide(Floater *floater, QCanvas *canvas) : Wall(canvas) { this->floater = floater; almostDead = false; }
-	virtual Config *config(QWidget *parent) { return floater->config(parent); }
-	virtual void aboutToDelete();
-	virtual void aboutToDie();
-
-private:
-	Floater *floater;
-	bool almostDead;
 };
 class FloaterObj : public Object
 {

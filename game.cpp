@@ -61,6 +61,11 @@ inline double rad2deg(double theDouble)
 	return ((360L / (2L * PI)) * theDouble);
 }
 
+inline QString makeGroup(int id, int hole, QString name, int x, int y)
+{
+	return QString("%1-%2@%3,%4|%5").arg(hole).arg(name).arg(x).arg(y).arg(id);
+}
+
 /////////////////////////
 
 int Config::spacingHint()
@@ -108,6 +113,11 @@ QCanvasItem *CanvasItem::onVStrut()
 	}
 
 	return aboveVStrut? qitem : 0;
+}
+
+void CanvasItem::save(KSimpleConfig *cfg)
+{
+	cfg->writeEntry("dummykey", true);
 }
 
 /////////////////////////
@@ -384,11 +394,9 @@ void Slope::updateZ()
 	setZ(((double)1 / (area == 0? 1 : area)) + newZ);
 }
 
-void Slope::load(KSimpleConfig *cfg, int hole)
+void Slope::load(KSimpleConfig *cfg)
 {
 	//kdDebug() << "Slope::load()\n";
-
-	cfg->setGroup(makeGroup(hole, "slope", x(), y()));
 
 	stuckOnGround = cfg->readBoolEntry("stuckOnGround", stuckOnGround);
 	grade = cfg->readNumEntry("grade", grade);
@@ -398,12 +406,9 @@ void Slope::load(KSimpleConfig *cfg, int hole)
 	setGradient(gradientType);
 }
 
-void Slope::save(KSimpleConfig *cfg, int hole)
+void Slope::save(KSimpleConfig *cfg)
 {
 	//kdDebug() << "Slope::save()\n";
-
-	cfg->setGroup(makeGroup(hole, "slope", x(), y()));
-	//kdDebug() << "on group: " << cfg->group() << endl;
 
 	cfg->writeEntry("reversed", reversed);
 	cfg->writeEntry("width", width());
@@ -885,14 +890,12 @@ void Bridge::setVelocity(double vx, double vy)
 	*/
 }
 
-void Bridge::load(KSimpleConfig *cfg, int hole)
+void Bridge::load(KSimpleConfig *cfg)
 {
-	cfg->setGroup(makeGroup(hole, "bridge", x(), y()));
-
-	doLoad(cfg, hole);
+	doLoad(cfg);
 }
 
-void Bridge::doLoad(KSimpleConfig *cfg, int /*hole*/)
+void Bridge::doLoad(KSimpleConfig *cfg)
 {
 	newSize(cfg->readNumEntry("width", width()), cfg->readNumEntry("height", height()));
 	setTopWallVisible(cfg->readBoolEntry("topWallVisible", topWallVisible()));
@@ -902,14 +905,12 @@ void Bridge::doLoad(KSimpleConfig *cfg, int /*hole*/)
 	update();
 }
 
-void Bridge::save(KSimpleConfig *cfg, int hole)
+void Bridge::save(KSimpleConfig *cfg)
 {
-	cfg->setGroup(makeGroup(hole, "bridge", x(), y()));
-
-	doSave(cfg, hole);
+	doSave(cfg);
 }
 
-void Bridge::doSave(KSimpleConfig *cfg, int /*hole*/)
+void Bridge::doSave(KSimpleConfig *cfg)
 {
 	cfg->writeEntry("width", width());
 	cfg->writeEntry("height", height());
@@ -962,6 +963,25 @@ void FloaterGuide::aboutToDie()
 		Wall::aboutToDie();
 }
 
+void FloaterGuide::moveBy(double dx, double dy)
+{
+	Wall::moveBy(dx, dy);
+	if (floater)
+		floater->reset();
+}
+
+void FloaterGuide::setPoints(int xa, int ya, int xb, int yb)
+{
+	Wall::setPoints(xa, ya, xb, yb);
+	if (floater)
+		floater->reset();
+}
+
+Config *FloaterGuide::config(QWidget *parent)
+{
+	return floater->config(parent);
+}
+
 /////////////////////////
 
 Floater::Floater(QRect rect, QCanvas *canvas)
@@ -973,9 +993,6 @@ Floater::Floater(QRect rect, QCanvas *canvas)
 	haventMoved = true;
 	wall = new FloaterGuide(this, canvas);
 	wall->setPoints(100, 100, 200, 200);
-	lastStart = wall->startPoint();
-	lastEnd = wall->endPoint();
-	lastWall = QPoint(wall->x(), wall->y());
 	move(wall->endPoint().x(), wall->endPoint().y());
 
 	setTopWallVisible(false);
@@ -988,6 +1005,7 @@ Floater::Floater(QRect rect, QCanvas *canvas)
 	setSpeed(5);
 
 	editModeChanged(false);
+	reset();
 }
 
 void Floater::setGame(KolfGame *game)
@@ -1017,53 +1035,10 @@ void Floater::advance(int phase)
 
 	if (phase == 1 && (xVelocity() || yVelocity()))
 	{
-		QPoint start = wall->startPoint(), end = wall->endPoint();
 		const double wally = wall->y();
 		const double wallx = wall->x();
 
-		if (start.y() < end.y())
-		{
-			int old = start.y();
-			start.setY(end.y());
-			end.setY(old);
-		}
-
-		if (end.x() < start.x())
-		{
-			int old = start.x();
-			start.setX(end.x());
-			end.setX(old);
-		}
-
-		if (lastStart != wall->startPoint() || lastEnd != wall->endPoint() || lastWall != QPoint(wallx, wally))
-		{
-			move(wall->endPoint().x() + wallx, wall->endPoint().y() + wally);
-			setSpeed(speed);
-			//kdDebug() << "moving back to beginning\n";
-		}
-		/*
-		else if (start.x() == end.x())
-			// vertical
-		{
-			//kdDebug() << "vertical\n";
-			if (yVelocity() < 0)
-			{
-				if (y() < start.y() + wally)
-				{
-					//kdDebug() << "top\n";
-					setSpeed(speed);
-					setVelocity(-xVelocity(), -yVelocity());
-				}
-			}
-			else if (y() > end.y() + wally)
-			{
-				//kdDebug() << "bottom\n";
-				setSpeed(speed);
-				setVelocity(-xVelocity(), -yVelocity());
-			}
-		}
-		*/
-		else if (start.y() == end.y())
+		if (start.y() == end.y())
 			// horizontal
 		{
 			if (xVelocity() > 0)
@@ -1089,12 +1064,32 @@ void Floater::advance(int phase)
 			setSpeed(speed);
 		}
 
-		lastStart = wall->startPoint();
-		lastEnd = wall->endPoint();
-		lastWall = QPoint(wallx, wally);
-
 		//kdDebug() << "wall is visible: " << wall->isVisible() << endl;
 	}
+}
+
+void Floater::reset()
+{
+	start = wall->startPoint();
+	end = wall->endPoint();
+
+	if (start.y() < end.y())
+	{
+		int old = start.y();
+		start.setY(end.y());
+		end.setY(old);
+	}
+
+	if (end.x() < start.x())
+	{
+		int old = start.x();
+		start.setX(end.x());
+		end.setX(old);
+	}
+
+	move(wall->endPoint().x() + wall->x(), wall->endPoint().y() + wall->y());
+	setSpeed(speed);
+	//kdDebug() << "moving back to beginning\n";
 }
 
 QPtrList<QCanvasItem> Floater::moveableItems()
@@ -1125,14 +1120,6 @@ void Floater::setSpeed(int news)
 	if (!wall)
 		return;
 
-	/*
-	QRect rect(wall->startPoint(), wall->endPoint());
-	rect = rect.normalize();
-	wall->setPoints(rect.x(), rect.y(), rect.x() + rect.width(), rect.y() + rect.height());
-	if (wall->endPoint().y() < wall->startPoint().y() && wall->endPoint().x() < wall->startPoint().x())
-		wall->setPoints(wall->endPoint().x(), wall->endPoint().y(), wall->startPoint().x(), wall->startPoint().y());
-	*/
-	
 	const double rise = wall->startPoint().y() - wall->endPoint().y();
 	const double run = wall->startPoint().x() - wall->endPoint().x();
 	double wallAngle = atan(rise / run);
@@ -1199,6 +1186,7 @@ void Floater::moveBy(double dx, double dy)
 	point->dontMove();
 	point->move(x() + width(), y() + height());
 
+	// because we don't do Bridge::moveBy();
 	topWall->move(x(), y());
 	botWall->move(x(), y());
 	leftWall->move(x(), y());
@@ -1213,25 +1201,22 @@ void Floater::moveBy(double dx, double dy)
 			game->updateHighlighter();
 }
 
-void Floater::save(KSimpleConfig *cfg, int hole)
+void Floater::save(KSimpleConfig *cfg)
 {
-	aboutToSave();
 	//kdDebug() << "floater::save\n";
 	//kdDebug() << "at: " << x() << ", " << y() << endl;
-	cfg->setGroup(makeGroup(hole, "floater", x(), y()));
 	cfg->writeEntry("speed", speed);
 	cfg->writeEntry("startPoint", QPoint(wall->startPoint().x() + wall->x(), wall->startPoint().y() + wall->y()));
 	cfg->writeEntry("endPoint", QPoint(wall->endPoint().x() + wall->x(), wall->endPoint().y() + wall->y()));
 
-	doSave(cfg, hole);
+	doSave(cfg);
 }
 
-void Floater::load(KSimpleConfig *cfg, int hole)
+void Floater::load(KSimpleConfig *cfg)
 {
 	//kdDebug() << "floater::load, hole is " << hole << endl;
 	move(firstPoint.x(), firstPoint.y());
 	//kdDebug() << "at: " << x() << ", " << y() << endl;
-	cfg->setGroup(makeGroup(hole, "floater", x(), y()));
 
 	QPoint start(wall->startPoint());
 	start = cfg->readPointEntry("startPoint", &start);
@@ -1242,9 +1227,9 @@ void Floater::load(KSimpleConfig *cfg, int hole)
 
 	setSpeed(cfg->readNumEntry("speed", -1));
 
-	doLoad(cfg, hole);
+	doLoad(cfg);
 
-	move(wall->endPoint().x() + wall->x(), wall->endPoint().y() + wall->y());
+	reset();
 }
 
 void Floater::firstMove(int x, int y)
@@ -1356,20 +1341,18 @@ void Windmill::setGame(KolfGame *game)
 	right->setGame(game);
 }
 
-void Windmill::save(KSimpleConfig *cfg, int hole)
+void Windmill::save(KSimpleConfig *cfg)
 {
-	cfg->setGroup(makeGroup(hole, "windmill", x(), y()));
 	cfg->writeEntry("speed", speed);
 
-	doSave(cfg, hole);
+	doSave(cfg);
 }
 
-void Windmill::load(KSimpleConfig *cfg, int hole)
+void Windmill::load(KSimpleConfig *cfg)
 {
-	cfg->setGroup(makeGroup(hole, "windmill", x(), y()));
 	setSpeed(cfg->readNumEntry("speed", -1));
 
-	doLoad(cfg, hole);
+	doLoad(cfg);
 
 	left->editModeChanged(false);
 	right->editModeChanged(false);
@@ -1387,16 +1370,6 @@ void Windmill::moveBy(double dx, double dy)
 	guard->setBetween(x(), x() + width());
 
 	update();
-}
-
-void Windmill::setVelocity(double vx, double vy)
-{
-	Bridge::setVelocity(vx, vy);
-	/*
-	guard->setVelocity(guard->xVelocity() + vx, guard->yVelocity() + vy);
-	left->setVelocity(vx, vy);
-	right->setVelocity(vx, vy);
-	*/
 }
 
 void Windmill::setSize(int width, int height)
@@ -1448,22 +1421,18 @@ Sign::Sign(QCanvas *canvas)
 	setRightWallVisible(true);
 }
 
-void Sign::load(KSimpleConfig *cfg, int hole)
+void Sign::load(KSimpleConfig *cfg)
 {
-	cfg->setGroup(makeGroup(hole, "sign", x(), y()));
-
 	m_text = cfg->readEntry("text", m_text);
 
-	doLoad(cfg, hole);
+	doLoad(cfg);
 }
 
-void Sign::save(KSimpleConfig *cfg, int hole)
+void Sign::save(KSimpleConfig *cfg)
 {
-	cfg->setGroup(makeGroup(hole, "sign", x(), y()));
-
 	cfg->writeEntry("text", m_text);
 
-	doSave(cfg, hole);
+	doSave(cfg);
 }
 
 void Sign::draw(QPainter &painter)
@@ -1665,13 +1634,13 @@ void Ellipse::advance(int phase)
 	}
 }
 
-void Ellipse::doLoad(KSimpleConfig *cfg, int /*hole*/)
+void Ellipse::doLoad(KSimpleConfig *cfg)
 {
 	setChangeEnabled(cfg->readBoolEntry("changeEnabled", changeEnabled()));
 	setChangeEvery(cfg->readNumEntry("changeEvery", changeEvery()));
 }
 
-void Ellipse::doSave(KSimpleConfig *cfg, int /*hole*/)
+void Ellipse::doSave(KSimpleConfig *cfg)
 {
 	cfg->writeEntry("changeEvery", changeEvery());
 	cfg->writeEntry("changeEnabled", changeEnabled());
@@ -1717,19 +1686,14 @@ Puddle::Puddle(QCanvas *canvas)
 	setPen(blue);
 }
 
-void Puddle::save(KSimpleConfig *cfg, int hole)
+void Puddle::save(KSimpleConfig *cfg)
 {
-	cfg->setGroup(makeGroup(hole, "puddle", x(), y()));
-	cfg->writeEntry("dummykey", true);
-
-	doSave(cfg, hole);
+	doSave(cfg);
 }
 
-void Puddle::load(KSimpleConfig *cfg, int hole)
+void Puddle::load(KSimpleConfig *cfg)
 {
-	cfg->setGroup(makeGroup(hole, "puddle", x(), y()));
-
-	doLoad(cfg, hole);
+	doLoad(cfg);
 }
 
 void Puddle::collision(Ball *ball, long int /*id*/)
@@ -1773,18 +1737,14 @@ Sand::Sand(QCanvas *canvas)
 	setPen(yellow);
 }
 
-void Sand::save(KSimpleConfig *cfg, int hole)
+void Sand::save(KSimpleConfig *cfg)
 {
-	cfg->setGroup(makeGroup(hole, "sand", x(), y()));
-
-	doSave(cfg, hole);
+	doSave(cfg);
 }
 
-void Sand::load(KSimpleConfig *cfg, int hole)
+void Sand::load(KSimpleConfig *cfg)
 {
-	cfg->setGroup(makeGroup(hole, "sand", x(), y()));
-
-	doLoad(cfg, hole);
+	doLoad(cfg);
 }
 
 void Sand::collision(Ball *ball, long int /*id*/)
@@ -2180,12 +2140,6 @@ void Bumper::collision(Ball *ball, long int /*id*/)
 	setAnimated(true);
 }
 
-void Bumper::save(KSimpleConfig *cfg, int hole)
-{
-	cfg->setGroup(makeGroup(hole, "bumper", x(), y()));
-	cfg->writeEntry("dummykey", true);
-}
-
 /////////////////////////
 
 Hole::Hole(QColor color, QCanvas *canvas)
@@ -2264,9 +2218,8 @@ bool Cup::place(Ball *ball, bool /*wasCenter*/)
 	return true;
 }
 
-void Cup::save(KSimpleConfig *cfg, int hole)
+void Cup::save(KSimpleConfig *cfg)
 {
-	cfg->setGroup(makeGroup(hole, "cup", x(), y()));
 	cfg->writeEntry("dummykey", true);
 }
 
@@ -2348,9 +2301,8 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 	return false;
 }
 
-void BlackHole::load(KSimpleConfig *cfg, int hole)
+void BlackHole::load(KSimpleConfig *cfg)
 {
-	cfg->setGroup(makeGroup(hole, "blackhole", x(), y()));
 	QPoint exit = cfg->readPointEntry("exit", &exit);
 	exitItem->setX(exit.x());
 	exitItem->setY(exit.y());
@@ -2389,9 +2341,8 @@ void BlackHole::finishMe()
 	exitItem->setVisible(true);
 }
 
-void BlackHole::save(KSimpleConfig *cfg, int hole)
+void BlackHole::save(KSimpleConfig *cfg)
 {
-	cfg->setGroup(makeGroup(hole, "blackhole", x(), y()));
 	cfg->writeEntry("exit", QPoint(exitItem->x(), exitItem->y()));
 	cfg->writeEntry("exitDeg", exitDeg);
 	cfg->writeEntry("minspeed", m_minSpeed);
@@ -2747,12 +2698,6 @@ void Wall::clean()
 	endItem->clean();
 }
 
-void Wall::finalLoad()
-{
-	startItem->updateVisible();
-	endItem->updateVisible();
-}
-
 void Wall::setAlwaysShow(bool yes)
 {
 	startItem->setAlwaysShow(yes);
@@ -2929,10 +2874,8 @@ void Wall::collision(Ball *ball, long int id)
 	ball->setVelocity(vx, vy);
 }
 
-void Wall::load(KSimpleConfig *cfg, int hole)
+void Wall::load(KSimpleConfig *cfg)
 {
-	cfg->setGroup(makeGroup(hole, "wall", x(), y()));
-
 	QPoint start(startPoint());
 	start = cfg->readPointEntry("startPoint", &start);
 	QPoint end(endPoint());
@@ -2945,10 +2888,8 @@ void Wall::load(KSimpleConfig *cfg, int hole)
 	endItem->move(end.x(), end.y());
 }
 
-void Wall::save(KSimpleConfig *cfg, int hole)
+void Wall::save(KSimpleConfig *cfg)
 {
-	cfg->setGroup(makeGroup(hole, "wall", x(), y()));
-
 	cfg->writeEntry("startPoint", QPoint(startItem->x(), startItem->y()));
 	cfg->writeEntry("endPoint", QPoint(endItem->x(), endItem->y()));
 }
@@ -4247,8 +4188,6 @@ void KolfGame::openFile()
 	holeInfo.setMaxStrokes(10);
 	int _highestHole = 0;
 
-	QPtrList<CanvasItem> todo;
-
 	for (QStringList::Iterator it = groups.begin(); it != groups.end(); ++it)
 	{
 		//kdDebug() << "GROUP: " << *it << endl;
@@ -4256,14 +4195,14 @@ void KolfGame::openFile()
 		
 		cfg->setGroup(*it);
 
-		int len = (*it).length();
-		int dashIndex = (*it).find("-");
-		int holeNum = (*it).left(dashIndex).toInt();
+		const int len = (*it).length();
+		const int dashIndex = (*it).find("-");
+		const int holeNum = (*it).left(dashIndex).toInt();
 		if (holeNum > _highestHole)
 			_highestHole = holeNum;
 
-		int atIndex = (*it).find("@");
-		QString name = (*it).mid(dashIndex + 1, atIndex - (dashIndex + 1));
+		const int atIndex = (*it).find("@");
+		const QString name = (*it).mid(dashIndex + 1, atIndex - (dashIndex + 1));
 		
 		//kdDebug() << "name is " << name << endl;
 		if (holeNum != curHole)
@@ -4277,10 +4216,10 @@ void KolfGame::openFile()
 		numItems++;
 	
 
-		int commaIndex = (*it).find(",");
-		int pipeIndex = (*it).find("|");
-		int x = (*it).mid(atIndex + 1, commaIndex - (atIndex + 1)).toInt();
-		int y = (*it).mid(commaIndex + 1, pipeIndex - (commaIndex + 1)).toInt();
+		const int commaIndex = (*it).find(",");
+		const int pipeIndex = (*it).find("|");
+		const int x = (*it).mid(atIndex + 1, commaIndex - (atIndex + 1)).toInt();
+		const int y = (*it).mid(commaIndex + 1, pipeIndex - (commaIndex + 1)).toInt();
 
 		// will tell where ball is
 		if (name == "ball")
@@ -4291,7 +4230,7 @@ void KolfGame::openFile()
 			continue;
 		}
 
-		int id = (*it).right(len - (pipeIndex + 1)).toInt();
+		const int id = (*it).right(len - (pipeIndex + 1)).toInt();
 
 		//kdDebug() << "after parsing key: hole = " << holeNum << ", name = " << name << ", x = " << x << ", y = " << y << ", id = " << id << endl;
 
@@ -4309,9 +4248,11 @@ void KolfGame::openFile()
 			CanvasItem *canvasItem = dynamic_cast<CanvasItem *>(newItem);
 			if (!canvasItem)
 				continue;
+
 			canvasItem->setId(id);
 			canvasItem->setGame(this);
 			canvasItem->editModeChanged(editing);
+			canvasItem->setName(curObj->_name());
 			addItemsToMoveableList(canvasItem->moveableItems());
 
 			newItem->move(x, y);
@@ -4322,9 +4263,9 @@ void KolfGame::openFile()
 			// make things actually show
 			if (!hasFinalLoad)
 			{
-				canvasItem->load(cfg, curHole);
+				cfg->setGroup(makeGroup(id, curHole, canvasItem->name(), x, y));
+				canvasItem->load(cfg);
 				course->update();
-				kapp->processEvents();
 			}
 			
 			// we don't allow multiple items for the same thing in
@@ -4353,6 +4294,8 @@ void KolfGame::openFile()
 
 	// do it down here; if !hasFinalLoad, do it up there!
 	QCanvasItem *qcanvasItem = 0;
+	QPtrList<CanvasItem> todo;
+	QPtrList<QCanvasItem> qtodo;
 	if (hasFinalLoad)
 	{
 		for (qcanvasItem = items.first(); qcanvasItem; qcanvasItem = items.next())
@@ -4361,16 +4304,29 @@ void KolfGame::openFile()
 			if (item)
 			{
 				if (item->loadLast())
+				{
+					qtodo.append(qcanvasItem);
 					todo.append(item);
+				}
 				else
-					item->load(cfg, curHole);
+				{
+					QString group = makeGroup(item->curId(), curHole, item->name(), (int)qcanvasItem->x(), (int)qcanvasItem->y());
+					cfg->setGroup(group);
+					item->load(cfg);
+				}
 			}
 		}
-	}
 
-	CanvasItem *citem = 0;
-	for (citem = todo.first(); citem; citem = todo.next())
-		citem->load(cfg, curHole);
+		CanvasItem *citem = 0;
+		qcanvasItem = qtodo.first();
+		for (citem = todo.first(); citem; citem = todo.next())
+		{
+			cfg->setGroup(makeGroup(citem->curId(), curHole, citem->name(), (int)qcanvasItem->x(), (int)qcanvasItem->y()));
+			citem->load(cfg);
+
+			qcanvasItem = qtodo.next();
+		}
+	}
 
 	for (qcanvasItem = items.first(); qcanvasItem; qcanvasItem = items.next())
 	{
@@ -4421,6 +4377,7 @@ void KolfGame::addNewObject(Object *newObj)
 	canvasItem->setId(items.count() + 2);
 	canvasItem->setGame(this);
 	canvasItem->editModeChanged(editing);
+	canvasItem->setName(newObj->_name());
 	addItemsToMoveableList(canvasItem->moveableItems());
 
 	newItem->move(width/2, height/2);
@@ -4624,7 +4581,9 @@ void KolfGame::save()
 		if (citem)
 		{
 			citem->clean();
-			citem->save(cfg, curHole);
+
+			cfg->setGroup(makeGroup(citem->curId(), curHole, citem->name(), (int)item->x(), (int)item->y()));
+			citem->save(cfg);
 		}
 	}
 
