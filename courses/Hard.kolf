@@ -102,8 +102,8 @@ endPoint=171,129
 height=53
 leftWallVisible=true
 rightWallVisible=false
-speed=8
-startPoint=20,260
+speed=7
+startPoint=25,212
 topWallVisible=true
 width=76
 
@@ -114,100 +114,162 @@ maxstrokes=10
 par=3
 
 [10-puddle@100,218|41]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@108,167|29]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@111,207|40]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@113,141|32]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@115,231|25]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@123,182|27]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@131,156|38]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@136,250|28]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@139,122|12]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@141,143|14]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@141,204|26]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@142,227|30]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@146,174|24]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@156,151|19]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@164,122|13]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@164,260|36]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@167,191|22]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@175,215|33]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@176,240|21]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@185,144|20]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@185,166|17]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@190,121|16]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@190,268|34]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@196,261|35]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@197,218|59]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@199,237|37]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@200,200|58]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@201,181|23]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@208,279|39]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@209,155|15]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-puddle@215,138|18]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [10-slope@112,365|52]
-grade=1
+grade=2
 gradient=Vertical
 height=19
 reversed=true
@@ -215,7 +277,7 @@ stuckOnGround=false
 width=98
 
 [10-slope@12,271|46]
-grade=1
+grade=2
 gradient=Diagonal
 height=45
 reversed=false
@@ -223,7 +285,7 @@ stuckOnGround=true
 width=20
 
 [10-slope@12,315|53]
-grade=1
+grade=2
 gradient=Horizontal
 height=52
 reversed=false
@@ -231,7 +293,7 @@ stuckOnGround=true
 width=21
 
 [10-slope@134,308|48]
-grade=1
+grade=2
 gradient=Vertical
 height=23
 reversed=false
@@ -255,7 +317,7 @@ stuckOnGround=false
 width=138
 
 [10-slope@207,306|49]
-grade=1
+grade=2
 gradient=Opposite Diagonal
 height=28
 reversed=false
@@ -263,7 +325,7 @@ stuckOnGround=false
 width=29
 
 [10-slope@209,331|50]
-grade=1
+grade=2
 gradient=Horizontal
 height=32
 reversed=true
@@ -271,7 +333,7 @@ stuckOnGround=false
 width=28
 
 [10-slope@209,363|51]
-grade=1
+grade=2
 gradient=Diagonal
 height=19
 reversed=true
@@ -295,7 +357,7 @@ stuckOnGround=true
 width=124
 
 [10-slope@32,275|44]
-grade=1
+grade=2
 gradient=Vertical
 height=41
 reversed=false
@@ -303,7 +365,7 @@ stuckOnGround=true
 width=59
 
 [10-slope@89,276|45]
-grade=1
+grade=2
 gradient=Opposite Diagonal
 height=55
 reversed=false
@@ -311,7 +373,7 @@ stuckOnGround=true
 width=75
 
 [10-slope@9,365|47]
-grade=1
+grade=2
 gradient=Opposite Diagonal
 height=23
 reversed=true
@@ -1042,13 +1104,14 @@ height=97
 leftWallVisible=true
 rightWallVisible=true
 speed=5
-startPoint=244,16
+startPoint=250,24
 topWallVisible=true
 width=100
 
 [14-hole@-50,-50|0]
 borderWalls=true
-maxstrokes=14
+hasFinalLoad=true
+maxstrokes=10
 par=2
 
 [14-slope@10,362|8]
@@ -1939,27 +2002,43 @@ maxstrokes=10
 par=3
 
 [2-puddle@-1,255|29]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [2-puddle@14,263|30]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [2-puddle@25,274|31]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [2-puddle@37,258|32]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [2-puddle@5,284|32]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [2-puddle@62,249|33]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [2-puddle@72,232|34]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [2-puddle@73,213|35]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [2-sand@151,240|43]
@@ -2054,22 +2133,6 @@ reversed=true
 stuckOnGround=false
 width=92
 
-[2-slope@231,242|23]
-grade=3
-gradient=Horizontal
-height=147
-reversed=false
-stuckOnGround=true
-width=158
-
-[2-slope@232,244|48]
-grade=3
-gradient=Diagonal
-height=29
-reversed=true
-stuckOnGround=false
-width=135
-
 [2-slope@233,119|22]
 grade=3
 gradient=Vertical
@@ -2077,6 +2140,22 @@ height=126
 reversed=true
 stuckOnGround=true
 width=153
+
+[2-slope@234,243|23]
+grade=3
+gradient=Horizontal
+height=144
+reversed=false
+stuckOnGround=true
+width=154
+
+[2-slope@234,244|48]
+grade=3
+gradient=Diagonal
+height=29
+reversed=true
+stuckOnGround=false
+width=135
 
 [2-slope@235,88|59]
 grade=3
@@ -2409,7 +2488,7 @@ rightWallVisible=false
 topWallVisible=true
 width=84
 
-[4-cup@101,111|3]
+[4-cup@105,116|3]
 dummykey=true
 
 [4-cup@191,335|136]
@@ -2419,153 +2498,251 @@ dummykey=true
 borderWalls=false
 hasFinalLoad=false
 maxstrokes=10
-par=3
+par=4
 
 [4-puddle@109,189|122]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@112,202|76]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@120,173|70]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@123,400|146]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@132,181|134]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@143,157|66]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@143,200|75]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@155,391|145]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@157,375|60]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@165,193|78]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@167,138|61]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@177,118|65]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@188,186|129]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@189,391|144]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@190,94|67]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@200,379|53]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@216,107|64]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@216,83|141]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@217,182|81]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@217,18|141]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@218,2|143]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@219,314|59]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@224,255|55]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@230,123|73]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@239,181|100]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@240,38|139]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@240,63|139]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@241,15|140]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@246,323|52]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@249,139|77]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@257,250|56]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@260,145|153]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@275,180|97]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@282,159|86]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@283,333|57]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@292,261|58]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@299,187|98]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@300,165|152]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@303,178|91]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@310,177|83]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@310,327|54]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@319,279|51]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@319,306|50]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@321,198|96]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@347,204|99]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@367,213|154]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@380,226|120]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@398,241|121]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-puddle@99,393|147]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [4-sand@150,179|133]
