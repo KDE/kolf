@@ -1305,6 +1305,7 @@ startPoint=174,389
 
 [18-windmill@9,179|6]
 botWallVisible=false
+bottom=false
 height=96
 leftWallVisible=false
 rightWallVisible=true

@@ -2,6 +2,7 @@
 
 #include <ksimpleconfig.h>
 
+#include "game.h"
 #include "canvasitem.h"
 
 QCanvasRectangle *CanvasItem::onVStrut()
@@ -37,5 +38,11 @@ QCanvasRectangle *CanvasItem::onVStrut()
 void CanvasItem::save(KSimpleConfig *cfg)
 {
 	cfg->writeEntry("dummykey", true);
+}
+
+void CanvasItem::playSound(QString file)
+{
+	if (game)
+		game->playSound(file);
 }
 

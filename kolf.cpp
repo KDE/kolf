@@ -57,8 +57,6 @@ Kolf::Kolf()
 	setCentralWidget(dummy);
 	layout = new QGridLayout(dummy, 3, 1);
 
-	new Arts::Dispatcher;
-
 	resize(420, 480);
 	applyMainWindowSettings(KGlobal::config(), "TopLevelWindow");
 

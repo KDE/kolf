@@ -1,7 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <arts/soundserver.h>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kpixmap.h>
@@ -1002,13 +1001,8 @@ private:
 	QCanvasRectangle *highlighter;
 
 	// sound
-	Arts::SimpleSoundServer soundserver;
-	Arts::PlayObjectFactory playObjectFactory;
-	Arts::PlayObject playObject;
-	void initSoundServer();
-	bool m_serverRunning;
-	bool m_soundError;
 	bool m_sound;
+	bool soundedOnce;
 	QString soundDir;
 
 	HoleInfo holeInfo;

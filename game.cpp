@@ -1,3 +1,7 @@
+#include <arts/kartsserver.h>
+#include <arts/kartsdispatcher.h>
+#include <arts/kplayobject.h>
+#include <arts/kplayobjectfactory.h>
 #include <kapplication.h>
 #include <kcombobox.h>
 #include <kconfig.h>
@@ -2915,8 +2919,6 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	putting = false;
 	stroking = false;
 	editing = false;
-	m_serverRunning = false;
-	m_soundError = true;
 	soundDir = locate("appdata", "sounds/");
 	addingNewHole = false;
 	scoreboardHoles = 0;
@@ -2924,6 +2926,8 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	m_useMouse = true;
 	m_useAdvancedPutting = false;	
 	m_useAdvancedPutting = true;	
+	m_sound = true;	
+	soundedOnce = false;
 	highestHole = 0;
 
 	holeInfo.setGame(this);
@@ -2931,8 +2935,6 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	holeInfo.setName(i18n("Course Name"));
 	holeInfo.setMaxStrokes(10);
 	holeInfo.borderWallsChanged(true);
-
-	initSoundServer();
 
 	width = 400;
 	height = 400;
@@ -4540,59 +4542,26 @@ void KolfGame::toggleEditMode()
 	inPlay = false;
 }
 
-// this is essentially out of kdegames/kbattleship
-void KolfGame::initSoundServer()
-{
-	soundserver = Arts::Reference("global:Arts_SimpleSoundServer");
-
-	if (soundserver.isNull())
-	{
-		if (m_sound)
-			KMessageBox::error(this, i18n("Could not connect to aRts Soundserver. Sound deactivated."));
-		playObjectFactory = Arts::PlayObjectFactory::null();
-		soundserver = Arts::SimpleSoundServer::null();
-		m_serverRunning = false;
-		m_soundError = true;
-	}
-	else
-	{
-		QString soundDirCheck = locate("appdata", "sounds/");
-		QString oneSoundCheck = locate("appdata", "sounds/woohoo.wav");
-		if (!soundDirCheck.isEmpty() && !oneSoundCheck.isEmpty())
-		{
-			m_serverRunning = true;
-			m_soundError = false;
-		}
-		else
-		{
-			if (m_sound)
-				KMessageBox::error(this, i18n("You do not have Kolf sounds installed. Sound deactivated."));
-			playObjectFactory = Arts::PlayObjectFactory::null();
-			soundserver = Arts::SimpleSoundServer::null();
-			m_serverRunning = false;
-			m_soundError = true;
-		}
-	}
-
-	playObjectFactory = Arts::Reference("global:Arts_PlayObjectFactory");
-}
-
 void KolfGame::playSound(QString file)
 {
-	if (m_serverRunning && !m_soundError && m_sound)
+	if (m_sound)
 	{
-		QString playFile = soundDir + file + QString::fromLatin1(".wav");
+		if (!soundedOnce)
+		{
+			new KArtsDispatcher;
+			soundedOnce = true;
+		}
 
-		playObject = playObjectFactory.createPlayObject(playFile.latin1());
-		if (!playObject.isNull())
-			playObject.play();
+		KArtsServer server;
+
+		KURL file(soundDir + file + QString::fromLatin1(".wav"));
+
+		KPlayObjectFactory factory(server.server());
+		KPlayObject *playobj = factory.createPlayObject(file, true);
+
+		if (playobj)
+			playobj->play();
 	}
-}
-
-void CanvasItem::playSound(QString file)
-{
-	if (game)
-		game->playSound(file);
 }
 
 void HoleInfo::borderWallsChanged(bool yes)
