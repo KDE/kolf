@@ -65,9 +65,9 @@ topWallVisible=true
 width=319
 
 [1-sign@74,251|7]
-Comment=To aim putter, hit the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use mouse.
+Comment=To aim the putter, press the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use the mouse.
 Comment[da]=For at sigte mod hullet brug venstrepil (rotér mod uret) og højrepil (rotér med uret), eller brug musen.
-Comment[en_GB]=To aim putter, hit the Left (rotate anticlockwise) and Right (rotate clockwise) Arrow keys or use mouse.
+Comment[en_GB]=To aim the putter, press the Left (rotate anticlockwise) and Right (rotate clockwise) Arrow keys or use the mouse.
 Comment[es]=Para dirigir el empujador, golpee las teclas de las flechas izquierda (rotar en sentido antihorario) y derecho (sentido horario) o use el ratón.
 Comment[fi]=Suunnataksesi putteria paina vasenta ja oikeaa kursorinäppäintä tai käytä hiirtä.
 Comment[hu]=Célzáshoz a balra (balra forgatás) és jobbra (jobbra forgatás) nyilak ill. az egér használható.
