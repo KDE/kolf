@@ -9,12 +9,14 @@ Name[fr]=Parcours impossible
 Name[he]=מסלול בלתי אפשרי
 Name[hu]=Különlegesen nehéz pálya
 Name[ja]=不可能なコース
+Name[nl]=Onmogelijk parcour
 Name[pt]=Curso Impossível
 Name[pt_BR]=Curso Impossível
 Name[ru]=Миссия невыполнима
 Name[sk]=Nezvládnuteľné ihrisko
 Name[sv]=Omöjlig bana
 Name[ven]=Thero i sa koneiho
+Name[xh]=Indlela Engenzekiyo
 author=Jason Katz-Brown
 
 [1-ball@31,330]
@@ -1537,6 +1539,7 @@ Comment[he]=מזל
 Comment[hu]=Szerencse
 Comment[it]=Fortunato
 Comment[ja]=運
+Comment[nl]=Geluk
 Comment[pt]=Sorte
 Comment[pt_BR]=Sorte
 Comment[ru]=Удача
