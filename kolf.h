@@ -9,7 +9,7 @@
 #include <qstring.h>
 #include <qwidget.h>
 #include <qvaluelist.h>
-
+#include <kdemacros.h>
 #include "game.h"
 
 class KolfGame;
@@ -24,7 +24,7 @@ class Player;
 class QWidget;
 class Editor;
 
-class Kolf : public KMainWindow
+class KDE_EXPORT Kolf : public KMainWindow
 {
 	Q_OBJECT
 
