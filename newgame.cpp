@@ -170,7 +170,7 @@ NewGameDialog::NewGameDialog(QWidget *parent, const char *_name)
 	vlayout->addWidget(mode);
 	mode->setChecked(config->readBoolEntry("competition", false));
 
-	QLabel *desc = new QLabel(i18n("In strict mode, neither editing nor switching holes is allowed. This is generally for competition."), optionsPage);
+	QLabel *desc = new QLabel(i18n("In strict mode, neither editing nor switching holes is allowed. This is generally used for competitions."), optionsPage);
 	desc->setTextFormat(RichText);
 	vlayout->addWidget(desc);
 }
