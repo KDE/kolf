@@ -2780,6 +2780,14 @@ reversed=false
 stuckOnGround=false
 width=81
 
+[3-slope@170,248|46]
+grade=4
+gradient=Elliptic
+height=81
+reversed=true
+stuckOnGround=false
+width=81
+
 [3-slope@281,117|41]
 grade=2
 gradient=Diagonal
@@ -2861,7 +2869,7 @@ endPoint=150,198
 startPoint=224,228
 
 [3-wall@0,0|31]
-endPoint=192,250
+endPoint=192,252
 startPoint=128,227
 
 [3-wall@0,0|34]
@@ -2870,10 +2878,10 @@ startPoint=250,13
 
 [3-wall@0,0|35]
 endPoint=192,250
-startPoint=192,252
+startPoint=192,250
 
 [3-wall@0,0|36]
-endPoint=192,250
+endPoint=192,252
 startPoint=189,264
 
 [3-wall@0,0|38]
