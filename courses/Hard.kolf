@@ -2,6 +2,7 @@
 Name=Hard Course
 Name[af]=Hard Natuurlik
 Name[bg]=Трудно
+Name[bn]=কঠিন খেলা
 Name[bs]=Težak kurs
 Name[ca]=Camp difícil
 Name[cs]=Těžký
@@ -1107,6 +1108,7 @@ par=3
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
 Comment[bg]=Обръщане на грешките във Ваша полза!
+Comment[bn]=ফ্লোটারগুলো আপনাকে <strong>ধাক্কা</strong> দিক!
 Comment[ca]=Permetre que els flotdrs t'<strong>empenyin</strong>!
 Comment[da]=Lad svæverne <strong>skubbe</strong> dig!
 Comment[de]=Lassen Sie sich von den Flößen <strong>weiterschubsen</strong>.

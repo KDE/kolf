@@ -2,6 +2,7 @@
 Name=Impossible Course
 Name[af]=Onmoontlik Natuurlik
 Name[bg]=Невъзможно
+Name[bn]=অসম্ভব কঠিন খেলা
 Name[ca]=Cursa impossible
 Name[cs]=Nesplnitelný
 Name[da]=Umulig bane
@@ -824,6 +825,7 @@ width=66
 [13-sign@142,193|1]
 Comment=Reprieve
 Comment[bg]=Отмяна
+Comment[bn]=সাময়িকভাবে স্থগিত
 Comment[ca]=Respir
 Comment[da]=Red dig selv
 Comment[de]=Aufschub
@@ -1572,6 +1574,7 @@ width=50
 [17-sign@23,152|20]
 Comment=Luck
 Comment[bg]=Късмет
+Comment[bn]=ভাগ্য
 Comment[bs]=Sreća
 Comment[ca]=Sort
 Comment[cs]=Štěstí
@@ -3381,6 +3384,7 @@ width=66
 [9-sign@146,329|23]
 Comment=Chaos
 Comment[bg]=Хаос
+Comment[bn]=গোলমাল
 Comment[bs]=Haos
 Comment[ca]=Caos
 Comment[da]=Kaos
