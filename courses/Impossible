@@ -1,6 +1,7 @@
 [0-course@-50,-50]
 Name=Impossible Course
 Name[af]=onmoontlik natuurlik
+Name[bs]=Nemoguć kurs
 Name[cs]=Nesplnitelný
 Name[da]=Umulig bane
 Name[es]=Curso imposible
@@ -1511,6 +1512,7 @@ width=50
 
 [17-sign@23,152|20]
 Comment=Luck
+Comment[bs]=Sreća
 Comment[da]=Held
 Comment[es]=Suerte
 Comment[fi]=Onni
@@ -3287,6 +3289,7 @@ width=66
 [9-sign@146,329|23]
 Comment=Chaos
 Comment[af]=chaos
+Comment[bs]=Haos
 Comment[da]=Kaos
 Comment[es]=Caos
 Comment[fi]=Kaaos

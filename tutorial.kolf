@@ -1,6 +1,7 @@
 [0-course@-50,-50]
 Name=Tutorial Course
 Name[af]=tutoriaal natuurlik
+Name[bs]=Kurs za obuku
 Name[da]=Øvebane
 Name[es]=Curso de tutorial
 Name[fi]=Harjoituskenttä
@@ -24,6 +25,7 @@ par=2
 
 [1-sign@2,2|3]
 Comment=<h3>Welcome</h3> to the tutorial course for Kolf!
+Comment[bs]=<h3>Dobro došli</h3> u Kolf kurs za obuku!
 Comment[da]=<h3>Velkommen</h3> til Kolfs øvebane!
 Comment[es]=<h3>Bienvenido</h3> al curso de tutorial de Kolf
 Comment[fi]=<h3>Tervetuloa</h3> Kolf harjoituskierrokselle!
@@ -40,6 +42,7 @@ width=319
 [1-sign@73,81|4]
 Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
 Comment[af]=aan getref die bal, druk en hou die ondertoe pyl van links muis knoppie. hoe lang jy hou ondertoe die muis knoppie van sleutel bepaal sterkte van die geskiet.
+Comment[bs]=Da biste udarili loptu, pritisnite i držite dugme Strelica dola ili lijevo dugme miša. Snagu udarca određujete dužinom pritiska na tipku odnosno dugme miša.
 Comment[da]=For at slå til bolden, tryk og hold ned-pilen eller venstre museknap nede. Slagets kraft afhænger af hvor lang tid du holder knappen i bund.
 Comment[es]=Para golpear la bola, pulsar y mantener la flecha hacia abajo o el botón izquierdo del ratón. El tiempo que mantiene pulsado el botón del ratón o la tecla determinan la intensidad del disparo.
 Comment[fi]=Lyödäksesi palloa, paina ja pidä alhaalla nuolta alas tai hiiren vasenta nappia. Painalluksen pituus määrittelee lyönnin voiman.
