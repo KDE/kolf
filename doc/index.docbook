@@ -208,6 +208,10 @@ button next to the player's name.</para>
 
 <sect1 id="adding-holes"> <title>Adding Holes</title>
 <para>Choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>New</guimenuitem></menuchoice> to add a new hole at the end of the course.</para>
+<tip>
+<para>You can restore a hole to a blank state, similiar to when it was first created, by choosing <menuchoice><guimenu>Hole</guimenu><guimenuitem>Clear</guimenuitem></menuchoice>.</para>
+</tip>
+<para>Two items will appear on new holes: a cup, and a white ball. The white ball marks where players' balls start the hole.</para>
 </sect1>
 
 <sect1 id="basics"> <title>Editing Basics</title>
@@ -219,6 +223,9 @@ button next to the player's name.</para>
 <caution>
 <para>Bridges and signs will cover up new objects if they were already in the center of the hole.</para>
 </caution>
+<tip>
+<para>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
+</tip>
 </sect2>
 
 <sect2> <title>Moving and Resizing Objects</title>
