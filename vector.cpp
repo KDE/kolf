@@ -88,7 +88,7 @@ Vector& Vector::operator/= (double m) {
 	return *this;
 }
 
-// Sets both components at once (the only way to do it efficently)
+// Sets both components at once (the only way to do it efficiently)
 void Vector::setComponents(double x, double y) {
 	_direction = atan2(y, x);
 	_magnitude = sqrt((x * x) + (y * y));
