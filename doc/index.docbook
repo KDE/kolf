@@ -60,7 +60,7 @@ Please respect the format of the date (DD/MM/YYYY) and of the version
 </chapter>
 
 <chapter id="tutorial"> <title>Tutorial</title>
-<para>&kolf;'s gameplay is simple. It is easiest to learn how to play hands-on, and thus a tutorial course is included to guide you through the basics. This chapter will guide you through this tutorial. To start the tutorial, choose <guimenu>File</guimenu>-><guimenuitem>Tutorial...</guimenuitem>.</para>
+<para>&kolf;'s gameplay is simple. It is easiest to learn how to play hands-on, and thus a tutorial course is included to guide you through the basics. This chapter will guide you through this tutorial. To start the tutorial, choose <guimenu>Game</guimenu>-><guimenuitem>Tutorial...</guimenuitem>.</para>
 
 <sect1 id="hitting"> <title>Hitting the Ball</title>
 <para>To aim the ball, either line up the mouse behind the ball so the putter aims in the direction you want to hit it or press the left (counterclockwise) or right (clockwise) arrow keys to rotate the putter.</para>
@@ -114,7 +114,7 @@ Please respect the format of the date (DD/MM/YYYY) and of the version
 <para>Here's in-depth description of &kolf;'s basic features.</para>
 
 <sect1 id="starting"> <title>Starting a Game</title>
-<para>To start a game, choose <guimenu>File</guimenu>-><guimenuitem>New</guimenuitem>. This opens a dialog where you can configure your new game.</para>
+<para>To start a game, choose <guimenu>Game</guimenu>-><guimenuitem>New</guimenuitem>. This opens a dialog where you can configure your new game.</para>
 <sect2> <title><guilabel>Players</guilabel> Page</title>
 <para>To add a player to your game, click the <guibutton>New Player</guibutton> button.</para>
 <para>The text boxes in the grass area are the names of the players in this game. To change the name of the players, change the text in the text boxes. To change the ball color of the players' balls, click the middle button that has a color rectangle, and a dialog will open where you can select the new ball color. The rectangle on the button is the current player's ball color.</para>
@@ -132,10 +132,10 @@ Please respect the format of the date (DD/MM/YYYY) and of the version
 <sect1 id="saved-games"> <title>Saved Games</title>
 <para>&kolf; can keep a history of your rounds that are still in progress and save them to disk so you can load them and play them later. Saved games include the current hole, names and colors of all players in game, and the scores of the players.</para>
 <sect2> <title>Saving Your Game</title>
-<para>To save your game while still playing, choose <guimenu>File</guimenu>-><guimenuitem>Save Game</guimenuitem>. If you have not saved a game on this game before, you will be prompted for the file to save to.</para>
+<para>To save your game while still playing, choose <guimenu>Game</guimenu>-><guimenuitem>Save Game</guimenuitem>. If you have not saved a game on this game before, you will be prompted for the file to save to.</para>
 </sect2>
 <sect2> <title>Loading Your Game</title>
-<para>To load the game that you saved, choose <guimenu>File</guimenu>-><guimenuitem>Load Saved...</guimenuitem>. You can then choose the saved game to open.</para>
+<para>To load the game that you saved, choose <guimenu>Game</guimenu>-><guimenuitem>Load Saved...</guimenuitem>. You can then choose the saved game to open.</para>
 </sect2>
 </sect1>
 
@@ -145,7 +145,30 @@ Please respect the format of the date (DD/MM/YYYY) and of the version
 <para>To undo a bad shot, choose <guimenu>Hole</guimenu>-><guimenuitem>Undo Shot</guimenuitem>.</para>
 </sect2>
 <sect2> <title>Switching Holes</title>
-<para></para>
+<para>The <guimenu>Go</guimenu> menu contains many menu items for switching to different holes that are quite self explanatory.</para>
+</sect2>
+</sect1>
+
+<sect1 id="putting-options"> <title>Putting Options</title>
+<para>Kolf has a few ways to putt. The basic putting method is <link linkend="hitting">described above</link>.</para>
+<para>The mouse is enabled by default. This means that whenever the mouse is moved, the putter aligns to the line between the mouse and ball.</para>
+<para>If you prefer to only use the keyboard and arrow keys, you can disble mouse putting by unchecking <guimenu>Settings</guimenu>-><guimenuitem>Enable Mouse for Moving Putter</guimenuitem>.</para>
+<sect2> <title>Advanced Putting</title>
+<para>Advanced putting can be enabled by checking <guimenu>Settings</guimenu>-><guimenuitem>Enable Advanced Putting</guimenuitem>. This putting mode is slightly more challenging than the regular click-and-hold mode, and can be used with either the mouse or keyboard.</para>
+<para>To putt in this mode:</para>
+<procedure>
+<step>
+<para>Click or press the down arrow key once to begin the swing. The putting indicator will appear, and the strength gauge will start filling up with a color, which changes as the gauge fills up.</para>
+</step>
+<step>
+<para>Click or press the down arrow key when the strength gauge has filled up the amount that you want. The farther around the circle the strength gauge has filled up, the stronger the putt will be. It takes practice to be able to get the correct strength on putts.</para>
+<para>After this, the color in the putting indicator will start to wind down back to where it started.</para>
+</step>
+<step>
+<para>Click or press the down arrow key again when the strength-indicator is as close as possible to the center line of the putting indicator.</para>
+</step>
+</procedure>
+<para>The closer the final click (or keypress) is, the more true the putt is to the original line.</para>
 </sect2>
 </sect1>
 </chapter>
@@ -154,7 +177,7 @@ Please respect the format of the date (DD/MM/YYYY) and of the version
 <para>&kolf; comes with a versatile editor for it's course file format. Courses can have any number of holes, and there is no limiting the creativity of the course designer.</para>
 
 <sect1 id="creating"> <title>Creating a New Course</title>
-<para>To create a new course, choose <guimenu>File</guimenu>-><guimenuitem>New</guimenuitem>. Go to the <guilabel>Courses</guilabel> page of the dialog, and choose the <guilabel>Create New</guilabel> course. Make sure that, under the <guilabel>Options</guilabel> page of the dialog, that <guilabel>Strict mode</guilabel> is unchecked.</para>
+<para>To create a new course, choose <guimenu>Game</guimenu>-><guimenuitem>New</guimenuitem>. Go to the <guilabel>Courses</guilabel> page of the dialog, and choose the <guilabel>Create New</guilabel> course. Make sure that, under the <guilabel>Options</guilabel> page of the dialog, that <guilabel>Strict mode</guilabel> is unchecked.</para>
 
 <note>
 <para>To play this new course later, click the <guibutton>Add...</guibutton> button to add the course to your list of courses.</para>
