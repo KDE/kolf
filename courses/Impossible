@@ -1,16 +1,13 @@
 [0-course@-50,-50]
 Name=Impossible Course
-Name[af]=onmoontlik natuurlik
-Name[be]=Немагчымая пляцоўка
-Name[bs]=Nemoguć kurs
-Name[cs]=Nesplnitelný
-Name[da]=Umulig bane
-Name[es]=Curso imposible
-Name[fi]=Mahdoton kenttä
-Name[hu]=Különlegesen nehéz pálya
-Name[ja]=不可能なコース
-Name[pt_BR]=Curso Impossível
-Name[sv]=Omöjlig bana
+Name[af/messages/kdegames/desktop_kdegames.po]=onmoontlik natuurlik
+Name[cs/messages/kdegames/desktop_kdegames.po]=Nesplnitelný
+Name[da/messages/kdegames/desktop_kdegames.po]=Umulig bane
+Name[es/messages/kdegames/desktop_kdegames.po]=Curso imposible
+Name[fi/messages/kdegames/desktop_kdegames.po]=Mahdoton kenttä
+Name[hu/messages/kdegames/desktop_kdegames.po]=Különlegesen nehéz pálya
+Name[ja/messages/kdegames/desktop_kdegames.po]=不可能なコース
+Name[sv/messages/kdegames/desktop_kdegames.po]=Omöjlig bana
 author=Jason Katz-Brown
 
 [1-ball@31,330]
@@ -793,13 +790,12 @@ width=66
 
 [13-sign@142,193|1]
 Comment=Reprieve
-Comment[da]=Red dig selv
-Comment[es]=Respiro
-Comment[fi]=Armonaika
-Comment[hu]=Mázli
-Comment[ja]=カンタンな一瞬
-Comment[pt_BR]=Suspensão
-Comment[sv]=Lättnad
+Comment[da/messages/kdegames/desktop_kdegames.po]=Red dig selv
+Comment[es/messages/kdegames/desktop_kdegames.po]=Respiro
+Comment[fi/messages/kdegames/desktop_kdegames.po]=Armonaika
+Comment[hu/messages/kdegames/desktop_kdegames.po]=Mázli
+Comment[ja/messages/kdegames/desktop_kdegames.po]=カンタンな一瞬
+Comment[sv/messages/kdegames/desktop_kdegames.po]=Lättnad
 botWallVisible=false
 height=47
 leftWallVisible=false
@@ -1512,14 +1508,12 @@ width=50
 
 [17-sign@23,152|20]
 Comment=Luck
-Comment[bs]=Sreća
-Comment[da]=Held
-Comment[es]=Suerte
-Comment[fi]=Onni
-Comment[hu]=Szerencse
-Comment[ja]=運
-Comment[pt_BR]=Sorte
-Comment[sv]=Tur
+Comment[da/messages/kdegames/desktop_kdegames.po]=Held
+Comment[es/messages/kdegames/desktop_kdegames.po]=Suerte
+Comment[fi/messages/kdegames/desktop_kdegames.po]=Onni
+Comment[hu/messages/kdegames/desktop_kdegames.po]=Szerencse
+Comment[ja/messages/kdegames/desktop_kdegames.po]=運
+Comment[sv/messages/kdegames/desktop_kdegames.po]=Tur
 botWallVisible=false
 height=51
 leftWallVisible=false
@@ -3286,15 +3280,13 @@ width=66
 
 [9-sign@146,329|23]
 Comment=Chaos
-Comment[af]=chaos
-Comment[bs]=Haos
-Comment[da]=Kaos
-Comment[es]=Caos
-Comment[fi]=Kaaos
-Comment[hu]=Káosz
-Comment[ja]=カオス
-Comment[pt_BR]=Caos
-Comment[sv]=Kaos
+Comment[af/messages/kdegames/desktop_kdegames.po]=chaos
+Comment[da/messages/kdegames/desktop_kdegames.po]=Kaos
+Comment[es/messages/kdegames/desktop_kdegames.po]=Caos
+Comment[fi/messages/kdegames/desktop_kdegames.po]=Kaaos
+Comment[hu/messages/kdegames/desktop_kdegames.po]=Káosz
+Comment[ja/messages/kdegames/desktop_kdegames.po]=カオス
+Comment[sv/messages/kdegames/desktop_kdegames.po]=Kaos
 botWallVisible=true
 height=38
 leftWallVisible=false

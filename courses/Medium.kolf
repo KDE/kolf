@@ -1,15 +1,12 @@
 [0-course@-50,-50]
 Name=Medium Course
-Name[af]=medium natuurlik
-Name[be]=Сярэдняя пляцоўка
-Name[bs]=Srednji kurs
-Name[da]=Middelsvær bane
-Name[es]=Curso medio
-Name[fi]=Keskivaikea kenttä
-Name[hu]=Közepes nehézségű pálya
-Name[ja]=普通のコース
-Name[pt_BR]=Curso Médio
-Name[sv]=Normal bana
+Name[af/messages/kdegames/desktop_kdegames.po]=medium natuurlik
+Name[da/messages/kdegames/desktop_kdegames.po]=Middelsvær bane
+Name[es/messages/kdegames/desktop_kdegames.po]=Curso medio
+Name[fi/messages/kdegames/desktop_kdegames.po]=Keskivaikea kenttä
+Name[hu/messages/kdegames/desktop_kdegames.po]=Közepes nehézségű pálya
+Name[ja/messages/kdegames/desktop_kdegames.po]=普通のコース
+Name[sv/messages/kdegames/desktop_kdegames.po]=Normal bana
 author=Jason Katz-Brown
 name=Medium Course
 

@@ -1,18 +1,15 @@
 [0-course@-50,-50]
 Name=Classic
-Name[af]=klasieke
-Name[be]=Клясычная
-Name[bs]=Klasični
-Name[cs]=Klasický
-Name[da]=Klassisk
-Name[es]=Clásico
-Name[fi]=Klassinen
-Name[he]=קלאסי
-Name[hu]=Klasszikus
-Name[ja]=クラッシック
-Name[pt_BR]=Clássico
-Name[sv]=Klassisk
-Name[tr]=Klasik
+Name[af/messages/kdegames/desktop_kdegames.po]=klasieke
+Name[cs/messages/kdegames/desktop_kdegames.po]=Klasický
+Name[da/messages/kdegames/desktop_kdegames.po]=Klassisk
+Name[es/messages/kdegames/desktop_kdegames.po]=Clásico
+Name[fi/messages/kdegames/desktop_kdegames.po]=Klassinen
+Name[he/messages/kdegames/desktop_kdegames.po]=קלאסי
+Name[hu/messages/kdegames/desktop_kdegames.po]=Klasszikus
+Name[ja/messages/kdegames/desktop_kdegames.po]=クラッシック
+Name[sv/messages/kdegames/desktop_kdegames.po]=Klassisk
+Name[tr/messages/kdegames/desktop_kdegames.po]=Klasik
 author=Niklas Knutsson
 name=Classic
 

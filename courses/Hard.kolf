@@ -1,16 +1,13 @@
 [0-course@-50,-50]
 Name=Hard Course
-Name[af]=hard natuurlik
-Name[be]=Складаная пляцоўка
-Name[bs]=Težak kurs
-Name[cs]=Těžký
-Name[da]=Svær bane
-Name[es]=Curso duro
-Name[fi]=Vaikea kenttä
-Name[hu]=Nehéz pálya
-Name[ja]=難しいコース
-Name[pt_BR]=Curso difícil
-Name[sv]=Svår bana
+Name[af/messages/kdegames/desktop_kdegames.po]=hard natuurlik
+Name[cs/messages/kdegames/desktop_kdegames.po]=Těžký
+Name[da/messages/kdegames/desktop_kdegames.po]=Svær bane
+Name[es/messages/kdegames/desktop_kdegames.po]=Curso duro
+Name[fi/messages/kdegames/desktop_kdegames.po]=Vaikea kenttä
+Name[hu/messages/kdegames/desktop_kdegames.po]=Nehéz pálya
+Name[ja/messages/kdegames/desktop_kdegames.po]=難しいコース
+Name[sv/messages/kdegames/desktop_kdegames.po]=Svår bana
 author=Jason Katz-Brown
 name=Hard Course
 
@@ -1076,13 +1073,12 @@ par=3
 
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
-Comment[da]=Lad svæverne <strong>skubbe</strong> dig!
-Comment[es]=Dejar que los flotadores te <strong>empujen</strong>
-Comment[fi]=Anna kelluvien <strong>painaa</strong> sinua!
-Comment[hu]=Csak a legjobbaknak!
-Comment[ja]=フローターでボールを<strong>プッシュ</strong>させよう!
-Comment[pt_BR]=Deixe as bóias <strong>levarem</strong> você! 
-Comment[sv]=Låt flottarna <strong>knuffa</strong> dig!
+Comment[da/messages/kdegames/desktop_kdegames.po]=Lad svæverne <strong>skubbe</strong> dig!
+Comment[es/messages/kdegames/desktop_kdegames.po]=Dejar que los flotadores te <strong>empujen</strong>
+Comment[fi/messages/kdegames/desktop_kdegames.po]=Anna kelluvien <strong>painaa</strong> sinua!
+Comment[hu/messages/kdegames/desktop_kdegames.po]=Csak a legjobbaknak!
+Comment[ja/messages/kdegames/desktop_kdegames.po]=フローターでボールを<strong>プッシュ</strong>させよう!
+Comment[sv/messages/kdegames/desktop_kdegames.po]=Låt flottarna <strong>knuffa</strong> dig!
 botWallVisible=true
 height=196
 leftWallVisible=true
