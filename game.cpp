@@ -4174,7 +4174,7 @@ void KolfGame::holeDone()
 
 		// flash the information
 		showInfoPress();
-		QTimer::singleShot(800, this, SLOT(showInfoRelease()));
+		QTimer::singleShot(1500, this, SLOT(showInfoRelease()));
 	}
 	// else we're done
 }

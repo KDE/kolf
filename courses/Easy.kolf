@@ -588,7 +588,7 @@ dummykey=true
 borderWalls=true
 hasFinalLoad=false
 maxstrokes=10
-par=3
+par=2
 
 [13-puddle@123,31|22]
 changeEnabled=false
@@ -1247,7 +1247,7 @@ startPoint=171,251
 endPoint=387,77
 startPoint=339,14
 
-[17-ball@75,351]
+[17-ball@44,230]
 dummykey=true
 
 [17-cup@271,34|3]
@@ -1257,7 +1257,7 @@ dummykey=true
 borderWalls=true
 hasFinalLoad=false
 maxstrokes=10
-par=3
+par=4
 
 [17-puddle@38,50|16]
 changeEnabled=false
@@ -1299,7 +1299,7 @@ stuckOnGround=false
 width=81
 
 [17-wall@0,0|10]
-endPoint=292,227
+endPoint=323,221
 startPoint=260,219
 
 [17-wall@0,0|13]

@@ -373,7 +373,7 @@ void Kolf::gameOver()
 		statusBar()->message(i18n("%1 won!").arg(names.first()));
 	}
 
-	QTimer::singleShot(2000, this, SLOT(closeGame()));
+	QTimer::singleShot(700, this, SLOT(closeGame()));
 }
 
 void Kolf::save()
