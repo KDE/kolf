@@ -19,6 +19,7 @@
 #include <kstdaccel.h>
 #include <kstdaction.h>
 #include <kstdgameaction.h>
+#include <kstdguiitem.h>
 
 #include <qcolor.h>
 #include <qevent.h>
@@ -109,7 +110,7 @@ void Kolf::initGUI()
 
 	editingAction = new KToggleAction(i18n("&Edit"), "pencil", CTRL+Key_E, this, SLOT(emptySlot()), actionCollection(), "editing");
 	newHoleAction = new KAction(i18n("&New"), "filenew", CTRL+SHIFT+Key_N, this, SLOT(emptySlot()), actionCollection(), "newhole");
-	clearHoleAction = new KAction(i18n("&Clear"), "locationbar_erase", CTRL+Key_Delete, this, SLOT(emptySlot()), actionCollection(), "clearhole");
+	clearHoleAction = new KAction(KStdGuiItem::clear().text(), "locationbar_erase", CTRL+Key_Delete, this, SLOT(emptySlot()), actionCollection(), "clearhole");
 	resetHoleAction = new KAction(i18n("&Reset"), CTRL+Key_R, this, SLOT(emptySlot()), actionCollection(), "resethole");
 	undoShotAction = KStdAction::undo(this, SLOT(emptySlot()), actionCollection(), "undoshot");
 	undoShotAction->setText(i18n("&Undo Shot"));
