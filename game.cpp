@@ -1697,7 +1697,7 @@ void Ball::collisionDetect()
 
 		if (item->rtti() == rtti())
 		{
-			if (curSpeed() > 2)
+			if (curSpeed() > 2.7)
 			{
 				// it's one of our own kind, a ball, and we're hitting it
 				// sorta hard
@@ -2107,7 +2107,7 @@ void WallPoint::collision(Ball *ball, long int id)
 	// visible just means if we should bounce opposite way
 	if (visible)
 	{
-		kdDebug() << "weird col\n";
+		//kdDebug() << "weird col\n";
 		lastId = id;
 
 		const QPoint start = wall->startPoint();
@@ -2154,7 +2154,7 @@ void WallPoint::collision(Ball *ball, long int id)
 	}
 	else
 	{
-		kdDebug() << "passing on to wall\n";
+		//kdDebug() << "passing on to wall\n";
 		wall->collision(ball, id);
 	}
 }

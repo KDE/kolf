@@ -79,9 +79,9 @@ Kolf::Kolf()
 
 void Kolf::initGUI()
 {
-	newAction = KStdAction::openNew(this, SLOT(newGame()), (QObject*)actionCollection());
+	newAction = KStdAction::openNew(this, SLOT(newGame()), actionCollection());
 
-	newDefaultAction = new KListAction(i18n("Open Default Course"), 0, 0, 0, (QObject *)actionCollection(), "newdefault");
+	newDefaultAction = new KListAction(i18n("Open Default Course"), 0, 0, 0, actionCollection(), "newdefault");
 	QStringList items = KGlobal::dirs()->findAllResources("appdata", "courses/*.kolf");
 	for (QStringList::Iterator it = items.begin(); it != items.end(); ++it)
 	{
@@ -91,34 +91,34 @@ void Kolf::initGUI()
 	connect(newDefaultAction, SIGNAL(activated(const QString &)), this, SLOT(openDefaultCourse(const QString &)));
 
 	newAction->setText(newAction->text() + QString("..."));
-	newSameAction = new KAction(i18n("&Same Course..."), "filenew", CTRL+SHIFT+Key_N, this, SLOT(newSameGame()), (QObject *)actionCollection(), "samecourse");
+	newSameAction = new KAction(i18n("&Same Course..."), "filenew", CTRL+SHIFT+Key_N, this, SLOT(newSameGame()), actionCollection(), "samecourse");
 	newSameAction->setStatusText(i18n("Open the last course you opened."));
-	endAction = KStdAction::close(this, SLOT(closeGame()), (QObject*)actionCollection());
+	endAction = KStdAction::close(this, SLOT(closeGame()), actionCollection());
 	endAction->setText(i18n("&Close Current Course"));
 	recentAction = KStdAction::openRecent(0, 0, actionCollection());
 	recentAction->setText(recentAction->text() + QString("..."));
 	connect(recentAction, SIGNAL(urlSelected(const KURL &)), this, SLOT(openRecent(const KURL &)));
 	recentAction->loadEntries(KGlobal::config(), "Kolf recent files");
-	printAction = KStdAction::print(this, SLOT(print()), (QObject*)actionCollection());
+	printAction = KStdAction::print(this, SLOT(print()), actionCollection());
 
-	editingAction = new KToggleAction(i18n("&Edit"), "pencil", CTRL+Key_E, 0, 0, (QObject *)actionCollection(), "editing");
-	newHoleAction = new KAction(i18n("&New"), "filenew", CTRL+Key_H, 0, 0, (QObject *)actionCollection(), "newhole");
-	clearHoleAction = new KAction(i18n("&Clear"), "locationbar_erase", CTRL+Key_Delete, game, SLOT(clearHole()), (QObject *)actionCollection(), "clearhole");
-	resetHoleAction = new KAction(i18n("&Reset"), CTRL+Key_R, 0, 0, (QObject *)actionCollection(), "resethole");
+	editingAction = new KToggleAction(i18n("&Edit"), "pencil", CTRL+Key_E, 0, 0, actionCollection(), "editing");
+	newHoleAction = new KAction(i18n("&New"), "filenew", CTRL+Key_H, 0, 0, actionCollection(), "newhole");
+	clearHoleAction = new KAction(i18n("&Clear"), "locationbar_erase", CTRL+Key_Delete, game, SLOT(clearHole()), actionCollection(), "clearhole");
+	resetHoleAction = new KAction(i18n("&Reset"), CTRL+Key_R, 0, 0, actionCollection(), "resethole");
 
-	(void) KStdAction::quit(this, SLOT(close()), (QObject*)actionCollection());
-	openAction = KStdAction::open(this, SLOT(open()), (QObject*)actionCollection());
-	saveAction = KStdAction::save(this, SLOT(save()), (QObject*)actionCollection());
-	saveAsAction = KStdAction::saveAs(this, SLOT(saveAs()), (QObject*)actionCollection());
+	(void) KStdAction::quit(this, SLOT(close()), actionCollection());
+	openAction = KStdAction::open(this, SLOT(open()), actionCollection());
+	saveAction = KStdAction::save(this, SLOT(save()), actionCollection());
+	saveAsAction = KStdAction::saveAs(this, SLOT(saveAs()), actionCollection());
 
-	holeAction = new KListAction(i18n("Switch To Hole"), 0, 0, 0, (QObject *)actionCollection(), "switchhole");
-	nextAction = new KAction(i18n("&Next Hole"), "forward", KStdAccel::key(KStdAccel::Forward), 0, 0, (QObject *)actionCollection(), "nexthole");
-	prevAction = new KAction(i18n("&Previous Hole"), "back", KStdAccel::key(KStdAccel::Back), 0, 0, (QObject *)actionCollection(), "prevhole");
-	firstAction = new KAction(i18n("&First Hole"), "gohome", KStdAccel::key(KStdAccel::Home), 0, 0, (QObject *)actionCollection(), "firsthole");
-	lastAction = new KAction(i18n("&Last Hole"), CTRL+Key_End, 0, 0, (QObject *)actionCollection(), "lasthole");
+	holeAction = new KListAction(i18n("Switch To Hole"), 0, 0, 0, actionCollection(), "switchhole");
+	nextAction = new KAction(i18n("&Next Hole"), "forward", KStdAccel::key(KStdAccel::Forward), 0, 0, actionCollection(), "nexthole");
+	prevAction = new KAction(i18n("&Previous Hole"), "back", KStdAccel::key(KStdAccel::Back), 0, 0, actionCollection(), "prevhole");
+	firstAction = new KAction(i18n("&First Hole"), "gohome", KStdAccel::key(KStdAccel::Home), 0, 0, actionCollection(), "firsthole");
+	lastAction = new KAction(i18n("&Last Hole"), CTRL+Key_End, 0, 0, actionCollection(), "lasthole");
 
-	aboutAction = new KAction(i18n("&About Course..."), 0, 0, 0, (QObject *)actionCollection(), "aboutcourse");
-	tutorialAction = new KAction(i18n("&Tutorial..."), 0, this, SLOT(tutorial()), (QObject *)actionCollection(), "tutorial");
+	aboutAction = new KAction(i18n("&About Course..."), 0, 0, 0, actionCollection(), "aboutcourse");
+	tutorialAction = new KAction(i18n("&Tutorial..."), 0, this, SLOT(tutorial()), actionCollection(), "tutorial");
 
 	statusBar();
 	createGUI();
