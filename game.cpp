@@ -1,4 +1,4 @@
-#include <arts/kartsserver.h>
+#include <arts/kmedia2.h>
 #include <arts/kplayobject.h>
 #include <arts/kplayobjectfactory.h>
 #include <kapplication.h>
@@ -2101,7 +2101,7 @@ QPtrList<QCanvasItem> BlackHole::moveableItems()
 
 bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 {
-	playSound("blackhole", true);
+	playSound("blackhole");
 
 	const double diff = (m_maxSpeed - m_minSpeed);
 	Vector v;
@@ -2338,7 +2338,7 @@ bool WallPoint::collision(Ball *ball, long int id)
 		return false;
 	}
 
-	playSound("wall", true);
+	playSound("wall");
 
 	const QPoint start = wall->startPoint();
 	const QPoint end = wall->endPoint();
@@ -2631,7 +2631,7 @@ bool Wall::collision(Ball *ball, long int id)
 	}
 */
 
-	playSound("wall", true);
+	playSound("wall");
 
 	const QPoint start = startPoint();
 	const QPoint end = endPoint();
@@ -2911,6 +2911,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	m_useAdvancedPutting = true;
 	m_sound = true;
 	soundedOnce = false;
+	oldPlayObjects.setAutoDelete(true);
 	highestHole = 0;
 
 	holeInfo.setGame(this);
@@ -3042,12 +3043,7 @@ void KolfGame::setFilename(const QString &filename)
 
 KolfGame::~KolfGame()
 {
-	for (QMap<QString, KPlayObject *>::Iterator it = playObjects.begin(); it != playObjects.end(); ++it)
-	{
-		delete it.data();
-		it.data() = 0;
-	}
-
+	oldPlayObjects.clear();
 	delete cfg;
 }
 
@@ -3512,7 +3508,7 @@ void KolfGame::timeout()
 		if (curScore == 1)
 			playSound("holeinone");
 		else if (curScore <= holeInfo.par())
-			playSound("woohoo", true);
+			playSound("woohoo");
 
 		(*curPlayer).ball()->setZ((*curPlayer).ball()->z() + .1 - (.1)/(curScore));
 		//kdDebug() << "z now is " << (*curPlayer).ball()->z()<< endl;
@@ -4599,48 +4595,42 @@ void KolfGame::toggleEditMode()
 	inPlay = false;
 }
 
-void KolfGame::playSound(QString file, bool cache)
+void KolfGame::playSound(QString file)
 {
 	if (m_sound)
 	{
-		if (!soundedOnce)
+		KPlayObject *oldPlayObject = 0;
+		for (oldPlayObject = oldPlayObjects.first(); oldPlayObject; oldPlayObject = oldPlayObjects.next())
 		{
-			KArtsServer server;
-			soundServer = server.server();
-			soundedOnce = true;
-		}
+			bool remove = false;
+			if (oldPlayObject)
+			{
+				if (oldPlayObject->state() != Arts::posPlaying)
+					remove = true;
+			}
+			else
+				remove = true;
 
-		bool wasCached = false;
-		KPlayObject *playObject = 0;
+			if (remove)
+			{
+				kdDebug() << "removing " << oldPlayObject->mediaName() << endl;
 
-		if (playObjects.contains(file))
-		{
-			playObject = playObjects[file];
-			if (playObject)
-				wasCached = true;
-		}
-		else
-		{
-			KURL url(soundDir + file + QString::fromLatin1(".wav"));
-			KPlayObjectFactory factory(soundServer);
-			playObject = factory.createPlayObject(url, true);
+				oldPlayObjects.remove();
 
-			if (playObject && cache)
-				playObjects[file] = playObject;
+				// because we will go to next() next time
+				// and after remove current item is one after
+				// removed item
+				(void) oldPlayObjects.prev();
+			}
 		}
+		KURL url(soundDir + file + QString::fromLatin1(".wav"));
+		KPlayObjectFactory factory(artsServer.server());
+		KPlayObject *playObject = factory.createPlayObject(url, true);
 
 		if (playObject)
-		{
-			kdDebug() << "playing\n";
 			playObject->play();
-		}
 
-		if (!(cache || wasCached))
-			delete playObject;
-
-		kdDebug() << "file: " << file << endl;
-		kdDebug() << "cache: " << cache << endl;
-		kdDebug() << "wasCached: " << wasCached << endl;
+		oldPlayObjects.append(playObject);
 	}
 }
 

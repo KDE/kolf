@@ -1,4 +1,3 @@
-#include <arts/kartsdispatcher.h>
 #include <kconfig.h>
 #include <kaction.h>
 #include <kmessagebox.h>
@@ -50,7 +49,6 @@ Kolf::Kolf()
 	spacer = 0;
 	scoreboard = 0;
 
-	new KArtsDispatcher;
 	initGUI();
 
 	obj = new ObjectList;
