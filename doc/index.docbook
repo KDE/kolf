@@ -128,6 +128,10 @@ slope and let it roll into the cup to move onto the next hole.</para>
 <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice>.
 This opens a dialog where you can configure your new game.</para>
 
+<tip>
+<para>More third-party Kolf courses are available at the Kolf website. See <ulink url="http://www.katzbrown.com/kolf/Courses/User Uploaded/">the Kolf user-uploaded courses page</ulink>.</para>
+</tip>
+
 <sect2> 
 <title><guilabel>Players</guilabel> Page</title>
 <para>To add a player to your game, click the <guibutton>New
@@ -233,6 +237,8 @@ button next to the player's name.</para>
 <tip>
 <para>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
 </tip>
+<para>Some Kolf objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
+<para>Third-party Kolf plugins are available at the Kolf website. See <ulink url="http://www.katzbrown.com/kolf/Plugins/Download/">the Kolf plugins download page</ulink>.</para>
 </sect2>
 
 <sect2> <title>Moving and Resizing Objects</title>
@@ -740,7 +746,7 @@ section</link>.</para>
 <guimenuitem>Reload Plugins</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>Reload any plugins currently loaded.</action></para>
+<para><action>Reload plugins.</action></para>
 </listitem>
 </varlistentry>
 
