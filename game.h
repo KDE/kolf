@@ -14,6 +14,7 @@
 #include <qpainter.h>
 #include <qcolor.h>
 #include <qframe.h>
+#include <qlayout.h>
 #include <qmap.h>
 #include <qpen.h>
 #include <qpoint.h>
@@ -21,7 +22,6 @@
 #include <qrect.h>
 #include <qstringlist.h>
 #include <qvaluelist.h>
-#include <qwidget.h>
 
 #include <kolf/object.h>
 #include <kolf/config.h>

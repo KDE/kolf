@@ -52,7 +52,7 @@ magic_DATA = kolf.magic
 
 METASOURCES = AUTO
 
-messages: rc.cpp canvasitem.h game.h
+messages: rc.cpp game.h
 	$(XGETTEXT) *.cpp canvasitem.h game.h -o $(podir)/kolf.pot
 
 install-data-local:

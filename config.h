@@ -1,7 +1,6 @@
 #ifndef KOLF_CONFIG_H
 #define KOLF_CONFIG_H
 
-#include <kdialog.h>
 #include <qframe.h>
 
 class Config : public QFrame
@@ -9,17 +8,35 @@ class Config : public QFrame
 	Q_OBJECT
 
 public:
-	Config(QWidget *parent, const char *name = 0) : QFrame(parent, name) { startedUp = false; }
-	void ctorDone() { startedUp = true; }
+	Config(QWidget *parent, const char *name = 0);
+	void ctorDone();
 
 signals:
 	void modified();
 
 protected:
-	inline int spacingHint() { return KDialog::spacingHint() / 2; }
-	inline int marginHint() { return KDialog::marginHint(); }
+	int spacingHint();
+	int marginHint();
 	bool startedUp;
-	inline void changed() { if (startedUp) emit modified(); }
+	void changed();
+};
+
+// this is easy to use to show a message
+class MessageConfig : public Config
+{
+	Q_OBJECT
+
+public:
+	MessageConfig(QString text, QWidget *parent, const char *name = 0);
+};
+
+// internal
+class DefaultConfig : public MessageConfig
+{
+	Q_OBJECT
+
+public:
+	DefaultConfig(QWidget *parent, const char *name = 0);
 };
 
 #endif

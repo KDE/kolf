@@ -1,3 +1,4 @@
+#include <qlabel.h>
 #include <qslider.h>
 
 #include <kconfig.h>

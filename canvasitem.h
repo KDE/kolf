@@ -2,27 +2,8 @@
 #define KOLF_CANVASITEM_H
 
 #include <qcanvas.h>
-#include <qlabel.h>
-#include <qlayout.h>
-
-#include <klocale.h>
 
 #include <kolf/config.h>
-
-// internal
-class DefaultConfig : public Config
-{
-	public:
-		DefaultConfig(QWidget *parent)
-			: Config(parent)
-		{
-			QVBoxLayout *layout = new QVBoxLayout(this, marginHint(), spacingHint());
-			QHBoxLayout *hlayout = new QHBoxLayout(layout, spacingHint());
-			hlayout->addStretch();
-			hlayout->addWidget(new QLabel(i18n("No configuration options"), this));
-			hlayout->addStretch();
-		}
-};
 
 class Ball;
 class KConfig;

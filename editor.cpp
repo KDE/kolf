@@ -1,6 +1,7 @@
 #include <kdialog.h>
 #include <klistbox.h>
 
+#include <qlabel.h>
 #include <qlayout.h>
 #include <qwidget.h>
 #include <qframe.h>

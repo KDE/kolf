@@ -1,5 +1,6 @@
 #include <qbitmap.h>
 #include <qcheckbox.h>
+#include <qlabel.h>
 #include <qimage.h>
 #include <qpixmapcache.h>
 #include <qwhatsthis.h>
