@@ -3476,7 +3476,7 @@ void KolfGame::openFile()
 	holeInfo.setMaxStrokes(cfg->readNumEntry("maxstrokes", 10));
 	bool hasFinalLoad = cfg->readBoolEntry("hasFinalLoad", true);
 
-	QStringList warned;
+	QStringList missingPlugins;
 	QStringList groups = cfg->groupList();
 
 	int numItems = 0;
@@ -3565,11 +3565,13 @@ void KolfGame::openFile()
 			break;
 		}
 
-		if (!loaded && name != "hole" && warned.contains(name) <= 0)
-		{
-			KMessageBox::information(this, i18n("This hole uses the %1 plugin, which you do not have installed.").arg(QString("\"%1\"").arg(name)), QString::null, QString("%1 warning").arg(name));
-			warned.append(name);
-		}
+		if (!loaded && name != "hole" && missingPlugins.contains(name) <= 0)
+			missingPlugins.append(name);
+	}
+
+	if (!missingPlugins.empty())
+	{
+		KMessageBox::informationList(this, i18n("This hole uses the following plugins, which you do not have installed:"), missingPlugins, QString::null, QString("%1 warning").arg(holeInfo.untranslatedName() + QString::number(curHole)));
 	}
 
 	lastDelId = -1;
