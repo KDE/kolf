@@ -118,10 +118,10 @@ width=323
 [1-slope@8,14|14]
 grade=2
 gradient=Opposite Diagonal
-height=102
+height=105
 reversed=true
 stuckOnGround=false
-width=377
+width=383
 
 [1-wall@0,0|17]
 endPoint=129,176
@@ -480,7 +480,7 @@ width=260
 borderWalls=true
 hasFinalLoad=true
 maxstrokes=10
-par=3
+par=4
 
 [11-puddle@142,397|19]
 changeEnabled=false
@@ -1123,6 +1123,14 @@ reversed=true
 stuckOnGround=false
 width=57
 
+[13-slope@125,113|42]
+grade=2
+gradient=Diagonal
+height=22
+reversed=true
+stuckOnGround=false
+width=23
+
 [13-slope@125,273|41]
 grade=1
 gradient=Diagonal
@@ -1195,13 +1203,13 @@ reversed=false
 stuckOnGround=false
 width=70
 
-[13-slope@324,308|29]
+[13-slope@325,328|29]
 grade=4
 gradient=Vertical
-height=49
+height=33
 reversed=false
 stuckOnGround=false
-width=65
+width=66
 
 [13-slope@332,139|42]
 grade=4

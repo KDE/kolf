@@ -373,7 +373,11 @@ void Slope::load(KSimpleConfig *cfg)
 	stuckOnGround = cfg->readBoolEntry("stuckOnGround", stuckOnGround);
 	grade = cfg->readNumEntry("grade", grade);
 	reversed = cfg->readBoolEntry("reversed", reversed);
-	setSize(cfg->readNumEntry("width", width()), cfg->readNumEntry("height", height()));
+
+	// bypass updatePixmap which newSize normally does
+	QCanvasRectangle::setSize(cfg->readNumEntry("width", width()), cfg->readNumEntry("height", height()));
+	updateZ();
+
 	QString gradientType = cfg->readEntry("gradient", gradientKeys[type]);
 	setGradient(gradientType);
 }
@@ -512,16 +516,20 @@ void Slope::setGradient(QString text)
 void Slope::setType(KImageEffect::GradientType type)
 {
 	this->type = type;
-	if (type == KImageEffect::EllipticGradient)
-		newSize(width(), height());
-	moveArrow();
 
-	updatePixmap();
+	if (type == KImageEffect::EllipticGradient)
+	{
+		// calls updatePixmap
+		newSize(width(), height());
+	}
+	else
+		updatePixmap();
 }
 
 void Slope::updatePixmap()
 {
-	// this is nasty complex, eh?
+	// make a gradient, make grass that's bright or dim
+	// merge into this->pixmap. This is drawn in draw()
 
 	// we update the arrows in this function
 	arrows.setAutoDelete(true);
@@ -658,7 +666,6 @@ void Slope::updatePixmap()
 	}
 
 	moveArrow();
-
 	update();
 }
 
