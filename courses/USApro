@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=USA Pro
+Name[bg]=Ю Ес Ей Про (USA Pro)
 Name[hu]=Amerikai profi
 Name[pt_BR]=Pro EUA
 Name[sv]=USA-proffs
@@ -46,6 +47,7 @@ width=840
 
 [1-sign@4,371|14]
 Comment=Daytona Beach, FL
+Comment[bg]=Дейтона бийч, Флорида
 Comment[hu]=Daytona Beach, Florida
 Comment[pt_BR]=Praia de Daytona, FL
 Comment[sv]=Daytona Beach, Florida
@@ -236,6 +238,7 @@ width=36
 
 [10-sign@-1,360|42]
 Comment=Washington DC<br>(Pentagon)
+Comment[bg]=Вашингтон, окръг Колумбия<br>(Пентагона)
 Comment[pt_BR]=Washington DC<br>(Pentágono)
 Comment[wa]=Washington DC, USA
 Comment[xx]=xxWashington DC<br>(Pentagon)xx
@@ -386,6 +389,7 @@ width=84
 
 [11-sign@-2,370|24]
 Comment=Palm Springs, CO
+Comment[bg]=Палм Спрингс, Колорадо
 Comment[hu]=Palm Springs, Connecticut
 Comment[sv]=Palm Springs, Colorado
 Comment[wa]=Palm Springs, Colorado, USA
@@ -542,6 +546,7 @@ width=38
 
 [2-sign@26,345|31]
 Comment=Las Vegas, NV
+Comment[bg]=Лас Вегас, Невада
 Comment[hu]=Las Vegas, Nevada
 Comment[sv]=Las Vegas, Nevada
 Comment[wa]=Las Vegas, Nevada, USA
@@ -695,6 +700,7 @@ par=2
 
 [3-sign@-4,358|9]
 Comment=San Francisco, CA
+Comment[bg]=Сан Франциско, Калифорния
 Comment[hu]=San Francisco, Kalifornia
 Comment[pt_BR]=São Francisco, CA
 Comment[sv]=San Francisco, Kalifornien
@@ -781,6 +787,7 @@ par=3
 
 [4-sign@201,171|8]
 Comment=Grand Canyon
+Comment[bg]=Гранд Каньон
 Comment[tr]=Büyük Kanyon
 Comment[wa]=Grand Canyon, USA
 Comment[xx]=xxGrand Canyonxx
@@ -891,6 +898,7 @@ width=48
 
 [5-sign@219,344|10]
 Comment=Lake Tahoe, CA/NV
+Comment[bg]=Езерото Тахо, Калифорния/Невада
 Comment[hu]=Lake Tahoe, Kalifornia/Nevada
 Comment[pt_BR]=Lago Tahoe, CA/NV
 Comment[sv]=Lake Tahoe, Kalifornien/Nevada
@@ -1035,6 +1043,7 @@ width=368
 
 [6-sign@3,101|17]
 Comment=Florida Keys, FL
+Comment[bg]=Флорида Кийс, Флорида
 Comment[hu]=Florida Keys, Florida
 Comment[pt_BR]=Flórida Keys, FL
 Comment[sv]=Florida Keys, Florida
@@ -1183,6 +1192,7 @@ width=178
 
 [7-sign@11,116|7]
 Comment=Gol<br>den Gate
+Comment[bg]=Гол<br>дън Гейт
 Comment[sv]=Golden Gate
 Comment[wa]=Golden Gate, USA
 Comment[xx]=xxGol<br>den Gatexx
@@ -1195,6 +1205,7 @@ width=40
 
 [7-sign@135,364|25]
 Comment=San Francisco, CA
+Comment[bg]=Сан Франциско, Калифорния
 Comment[hu]=San Francisco, Kalifornia
 Comment[pt_BR]=São Francisco, CA
 Comment[sv]=San Francisco, Kalifornien
@@ -1209,6 +1220,7 @@ width=159
 
 [7-sign@98,209|24]
 Comment=Bay Bridge
+Comment[bg]=Бей Бридж
 Comment[pt_BR]=Ponte da Baía
 Comment[tr]=Bay Köprüsü
 Comment[xx]=xxBay Bridgexx
@@ -1351,6 +1363,7 @@ width=98
 
 [8-sign@147,370|19]
 Comment=Washington DC
+Comment[bg]=Вашингтон, окръг Колумбия
 Comment[wa]=Washington DC, USA
 Comment[xx]=xxWashington DCxx
 botWallVisible=true
@@ -1566,6 +1579,7 @@ width=20
 
 [9-sign@291,368|28]
 Comment=Niagara Falls, NY
+Comment[bg]=Ниагара, Ню Йорк
 Comment[hu]=Niagara Falls, New York
 Comment[pt_BR]=Cataratas do Niágara, NY
 Comment[sv]=Niagarafallen, Staten New York

@@ -89,7 +89,7 @@ width=319
 [1-sign@73,81|4]
 Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
 Comment[af]=Na getref die bal, druk en hou die Ondertoe Pyl van links muis knoppie. Hoe lang jy hou Ondertoe die muis knoppie van sleutel bepaal sterkte van die geskiet.
-Comment[bg]=Натиснете и задръжте клавиша "Долна стрелка" или левия бутон на мишката, за да ударите топката.Силата на удара зависи от продължителността на задържане на бутона на мишката или клавиатурата.
+Comment[bg]=Натиснете и задръжте клавиша "Долна стрелка" или левия бутон на мишката, за да ударите топката. Силата на удара зависи от продължителността на задържане на бутона на мишката или клавиатурата.
 Comment[bs]=Da biste udarili loptu, pritisnite i držite dugme Strelica dola ili lijevo dugme miša. Snagu udarca određujete dužinom pritiska na tipku odnosno dugme miša.
 Comment[ca]=Per a picar la bola, prémer i mantindre la tecla de la fletxa cap avall o el botó esquerra del ratolí. El temps que el mantingueu premut determinarà la força del tir.
 Comment[da]=For at slå til bolden, tryk og hold ned-pilen eller venstre museknap nede. Slagets kraft afhænger af hvor lang tid du holder knappen i bund.
@@ -412,7 +412,7 @@ par=2
 
 [2-sign@1,5|3]
 Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you choose <u>Hole->Show Info</u>.
-Comment[bg]=<h3>Склонове</h3>Те са наклонени земни участъци, които изтласкват топката по посока на техния наклон. За да видите посоката изберете<u>Дупка->Информация</u>.
+Comment[bg]=<h3>Склонове</h3>Те са наклонени земни участъци, които изтласкват топката по посока на техния наклон. За да видите посоката изберете<u>Дупка/Информация</u>.
 Comment[ca]=<h3>Baixada</h3>Les baixades són arees ratllades en el terra que empenyen la bola en la direcció de la baixada. Aquesta direcció es selecciona quan escolliu <u>Forat->Mostra informació</u>.
 Comment[da]=<h3>Skråninger</h3>Skråninger på banen skubber bolden i den retning de hælder. Denne retning vises når du vælger <u>Hul -> Vis info</u>.
 Comment[de]= <h3>Hügel</h3>Hügel sind kurvige Bodenstücke, die den Ball in die eine oder andere Richtung ablenken. Diese Richtung ist sichtbar, wenn man <u>Loch->Informationen anzeigen</u> auswählt.
@@ -622,7 +622,7 @@ par=3
 
 [4-sign@6,3|3]
 Comment=The steepness of a slope is shown when you choose <u>Hole->Show Info</u>. Steepness goes from 8 (steepest) to 1 (shallowest).
-Comment[bg]=За да видите стръмнината на склона изберете <u>Дупка->Информация</u>. Стръмнината се изменя от 8 (най-стръмна) до 1 (най-полегата).
+Comment[bg]=За да видите стръмнината на склона изберете <u>Дупка/Информация</u>. Стръмнината се изменя от 8 (най-стръмна) до 1 (най-полегата).
 Comment[ca]=La intensitat de la baixada es mostra quan escolliu <u>Forat->Mostra informació</u>. La força va des de 8 (màxim) a 1 (mínim).
 Comment[da]=Du kan se hvor stejl en skråning er ved at vælge <u>Hul -> Vis info</u>. Stejlhed går fra 8 (stejlest) til 1 (fladest).
 Comment[de]=Die Steigung eines Grüns bekommen Sie angezeigt, wenn Sie <u>Loch->Informationen anzeigen</u> auswählen. Steigungen gehen von 8 (sehr steil) bis 1 (sehr flach).
@@ -860,7 +860,7 @@ par=2
 
 [7-sign@130,2|4]
 Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The windmill arm's speed may vary by hole.
-Comment[bg]=<h3>Вятърни мелници</h3>Вятърните мелници имат кафяви стени (или половин стени). Скороста им на въртене може да е различна за различните дупки.
+Comment[bg]=<h3>Вятърни мелници</h3>Вятърните мелници имат кафяви стени (или половин стени). Скоростта им на въртене може да е различна за различните дупки.
 Comment[ca]=<h3>Molins de vent</h3>Els molins de vent (base marron amb braç mòbil) tenen parets marrons (o mitja paret). La velocitat de rotació del braç no és constant.
 Comment[da]=<h3>Vindmøller</h3>Vindmøller (brun base med bevægende vinge) har brune vægge (eller halve vægge). Vindmøllevingens fart kan variere fra bane til bane.
 Comment[de]= <h3>Windmühlen</h3>Windmühlen (braune Gebäude mit sich bewegenden "Armen") haben braune Wände (oder Halbwände). Die Geschwindigkeit der "Arme" kann sich von Loch zu Loch ändern.
@@ -923,7 +923,7 @@ par=2
 [8-sign@5,5|3]
 Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out at.
 Comment[af]=<h3>Swart Gate</h3>Swart Gate vervoerder die bal na hulle beïendig, en uitskiet dit na 'n spoed direk verwante na die spoed jou bal was gaan. Kies <u>Gat->Show Inligting</u> na sien wat Swart Gat gaan na wat beïendig en die rigting die bal sal kom uit na.
-Comment[bg]=<h3>Черни дупки</h3>Черните дупки пренасят топката до изхода им и я изхвърлят със скорост, пропорционална на скоростта на движение на топката. Изберете<u>Дупка->Информация</u> за да видите коя черна дупка до кой изход води и посоката, от която ще се появи топката.
+Comment[bg]=<h3>Черни дупки</h3>Черните дупки пренасят топката до изхода им и я изхвърлят със скорост, пропорционална на скоростта на движение на топката. Изберете<u>Дупка/Информация</u>, за да видите коя черна дупка до кой изход води и посоката, от която ще се появи топката.
 Comment[ca]=<h3>Forats negres</h3>Els forats negres transporten la pilota cap a la sortida i la disparen a una velocitat directament proporcional a la que ja tenien. Seleccioneu <u>Forat->Mostra informació</u> per a veure quin forat negre porta a cada sortida i al direcció en la sortirà la bola.
 Comment[da]=<h3>Sorte huller</h3>Sorte huller transporterer bolden til deres udgang og affyrer bolden med en fart i direkte relation til boldens oprindelige fart. Vælg<u>Hul -> Vis info</u> for at se hvilket sort hul der fører til hvilken udgang og den retning bolden vil komme ud i.
 Comment[de]= <h3>Schwarze Löcher</h3>Schwarze Löcher teleportieren den Ball zu ihrem Ausgang, und werfen den Ball mit einer Geschwindigkeit, die zu seiner ursprünglichen Geschwindigkeit direkt im Verhältnis steht, wieder auf das Spielfeld. Wählen Sie <u>Loch->Info anzeigen</u> um zu sehen, welches Schwarze Loch zu welchem Ausgang gehört, und in welcher Richtung der Ball herauskommt.
