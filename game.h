@@ -620,9 +620,12 @@ public:
 	int curExitDeg() { return exitDeg; }
 	void setExitDeg(int newdeg);
 
+	virtual void moveBy(double dx, double dy);
+
 private:
 	int exitDeg;
 	BlackHoleExit *exitItem;
+	QCanvasEllipse *outside;
 	QCanvasLine *infoLine;
 
 	void finishMe();

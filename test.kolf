@@ -6,6 +6,12 @@ name=Jason's Kolf Test Course
 [1-ball@96,160]
 dummykey=true
 
+[1-blackhole@356,225|63]
+exit=299,287
+exitDeg=20
+maxspeed=5
+minspeed=3
+
 [1-bridge@26,246|24]
 botWallVisible=true
 height=47
@@ -105,7 +111,7 @@ changeEvery=50
 changeEnabled=true
 changeEvery=50
 
-[1-sign@202,72|55]
+[1-sign@206,75|55]
 botWallVisible=true
 height=88
 leftWallVisible=true

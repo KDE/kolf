@@ -2108,15 +2108,6 @@ Hole::Hole(QColor color, QCanvas *canvas)
 	setZ(998.1);
 	setPen(black);
 	setBrush(color);
-
-	/*
-	inside = new Inside(this, canvas);
-	inside->setBrush(color);
-	inside->setSize(width() - 4, height() - 4);
-	inside->show();
-
-	inside->setZ(z() + .01);
-	*/
 }
 
 void Hole::collision(Ball *ball, long int /*id*/)
@@ -2188,14 +2179,27 @@ BlackHole::BlackHole(QCanvas *canvas)
 	m_minSpeed = 3;
 	m_maxSpeed = 5;
 
+	QColor myColor((QRgb)(kapp->random() % 0x01000000));
+
+	outside = new QCanvasEllipse(canvas);
+	outside->setZ(z() - .001);
+
+	outside->setBrush(QBrush(myColor));
+	setBrush(black);
+
 	exitItem = new BlackHoleExit(this, canvas);
-	exitItem->setPen(QPen(darkGray, 6));
+	exitItem->setPen(QPen(myColor, 6));
 	exitItem->setX(300);
 	exitItem->setY(100);
 
+	setSize(width(), width() / .8);
+	const float factor = 1.3;
+	outside->setSize(width() * factor, height() * factor);
+	outside->setVisible(true);
+
 	infoLine = 0;
 
-	setSize(width(), width() / .70);
+	moveBy(0, 0);
 
 	finishMe();
 }
@@ -2223,7 +2227,14 @@ void BlackHole::hideInfo()
 void BlackHole::aboutToDie()
 {
 	Hole::aboutToDie();
+	delete outside;
 	delete exitItem;
+}
+
+void BlackHole::moveBy(double dx, double dy)
+{
+	QCanvasEllipse::moveBy(dx, dy);
+	outside->move(x(), y());
 }
 
 void BlackHole::setExitDeg(int newdeg)
@@ -3625,7 +3636,8 @@ void KolfGame::putterTimeout()
 	{
 		if (putting)
 		{
-			const float base = 3.2;
+			const float base = 2.0;
+
 			if (puttReverse && strength <= 0)
 			{
 				// aborted
@@ -3636,7 +3648,7 @@ void KolfGame::putterTimeout()
 			{
 				// decreasing strength as we've reached the top
 				puttReverse = true;
-				strength -= pow(base, strength / maxStrength) - 0.6;		
+				strength -= pow(base, strength / maxStrength) - 1.8;		
 				if ((int) strength < puttCount * 2) 
 				{
 					puttCount--;
@@ -3647,7 +3659,7 @@ void KolfGame::putterTimeout()
 			else 
 			{
 				// make the increase at high strength faster
-				strength += pow(base, strength / maxStrength) - 0.6;
+				strength += pow(base, strength / maxStrength) - .3;
 				if ((int) strength > puttCount * 2) 
 				{
 					putter->go(Backwards);
