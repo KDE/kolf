@@ -54,12 +54,6 @@
 
 #include "kcomboboxdialog.h"
 #include "kvolumecontrol.h"
-#include "rtti.h"
-#include "object.h"
-#include "config.h"
-#include "canvasitem.h"
-#include "ball.h"
-#include "statedb.h"
 #include "vector.h"
 #include "game.h"
 
@@ -1812,7 +1806,7 @@ void Wall::moveBy(double dx, double dy)
 {
 	QCanvasLine::moveBy(dx, dy);
 
-	if ((!startItem || !endItem))
+	if (!startItem || !endItem)
 		return;
 
 	startItem->dontMove();
@@ -2409,26 +2403,26 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 		{
 			// select AND move now :)
 			case LeftButton:
-				{
-					selectedItem = list.first();
-					movingItem = selectedItem;
-					moving = true;
+			{
+				selectedItem = list.first();
+				movingItem = selectedItem;
+				moving = true;
 
-					if (citem->cornerResize())
-						setCursor(KCursor::sizeFDiagCursor());
-					else
-						setCursor(KCursor::sizeAllCursor());
+				if (citem->cornerResize())
+					setCursor(KCursor::sizeFDiagCursor());
+				else
+					setCursor(KCursor::sizeAllCursor());
 
-					emit newSelectedItem(citem);
-					highlighter->setVisible(true);
-					QRect rect = selectedItem->boundingRect();
-					highlighter->move(rect.x() + 1, rect.y() + 1);
-					highlighter->setSize(rect.width(), rect.height());
-				}
-				break;
+				emit newSelectedItem(citem);
+				highlighter->setVisible(true);
+				QRect rect = selectedItem->boundingRect();
+				highlighter->move(rect.x() + 1, rect.y() + 1);
+				highlighter->setSize(rect.width(), rect.height());
+			}
+			break;
 
 			default:
-				break;
+			break;
 		}
 	}
 	else
@@ -2514,6 +2508,7 @@ void KolfGame::handleMouseMoveEvent(QMouseEvent *e)
 
 	highlighter->moveBy(-(double)moveX, -(double)moveY);
 	movingItem->moveBy(-(double)moveX, -(double)moveY);
+	emit newStatusText(QString("%1x%2").arg(movingItem->x()).arg(movingItem->y()));
 	storedMousePos = mouse;
 }
 
@@ -2531,7 +2526,12 @@ void KolfGame::updateMouse()
 void KolfGame::handleMouseReleaseEvent(QMouseEvent *e)
 {
 	setCursor(KCursor::arrowCursor());
-	moving = false;
+
+	if (editing)
+	{
+		emit newStatusText(QString::null);
+		moving = false;
+	}
 
 	if (m_ignoreEvents)
 		return;
