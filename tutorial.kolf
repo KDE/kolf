@@ -426,6 +426,7 @@ par=3
 
 [4-sign@6,3|3]
 Comment=The steepness of a slope is shown when you choose <u>Hole->Show Info</u>. Steepness goes from 8 (steepest) to 1 (shallowest).
+Comment[da]=Du kan se hvor stejl en skråning er ved at vælge <u>Hul -> Vis info</u>. Stejlhed går fra 8 (stejlest) til 1 (fladest).
 Comment[pt_BR]=Quão íngreme é uma ladeira é mostrado quando você escolher<u>Buraco-> Mostrar Informação</u>. O valor para medir o quão íngreme é a ladeira vai de 8 (mais íngreme) para 1 (mais baixo/plano).
 Comment[sv]=En sluttnings lutning visas när du väljer <u>Hål->Visa information</u>. Lutningen sträcker sig från 8 (brantast) till 1 (minst brant).
 botWallVisible=true
@@ -623,6 +624,9 @@ par=2
 
 [8-sign@5,5|3]
 Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out at.
+Comment[da]=<h3>Sorte huller</h3>Sorte huller transporterer bolden til deres udgang og affyrer bolden med en fart i direkte relation til boldens oprindelige fart. Vælg<u>Hul -> Vis info</u> for at se hvilket sort hul der fører til hvilken udgang og den retning bolden vil komme ud i.
+Comment[pt_BR]=<h3>Buraco negro</h3>Os buracos negros transportam a bola para sua saída,  e ejetam-na com uma velocidade diretamente relacionada com a velocidade em que sua bola está indo. Escolha <u>Buraco-> Mostrar Informação</u> para ver qual Buraco Negro vai para qual saída e direcionar a bola que vir dele.
+Comment[sv]=<h3>Svarta hål</h3>Svarta hål transporterar bollen till sina utgångar, och skickar ut den med en hastighet som är direkt proportionell mot hastigheten som bollen hade. Välj <u>Hål->Visa information</u> för att se vilket svart hål som går till vilken utgång, och i vilken riktning bollen kommer ut.
 botWallVisible=true
 height=206
 leftWallVisible=true
