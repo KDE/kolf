@@ -51,7 +51,7 @@
 <chapter id="tutorial"> 
 <title>Tutorial</title>
 
-<para>&kolf;'s game-play is simple. It is easiest to learn how to play hands-on, and thus a tutorial course is included to guide you through the basics. This chapter will guide you through this tutorial. To start the tutorial, choose <menuchoice><guimenu>Game</guimenu><guimenuitem>Tutorial...</guimenuitem></menuchoice>.</para>
+<para>&kolf;'s game-play is simple. It is easiest to learn how to play hands-on, and thus a tutorial course is included to guide you through the basics. This chapter will guide you through this tutorial. To start the tutorial, choose <menuchoice><guimenu>Help</guimenu><guimenuitem>Tutorial</guimenuitem></menuchoice>.</para>
 
 <sect1 id="hitting"> 
 <title>Hitting the Ball</title>
@@ -165,7 +165,7 @@ button next to the player's name.</para>
 <para>To undo a bad shot, choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>Undo Shot</guimenuitem></menuchoice>.</para>
 </sect2>
 <sect2> <title>Switching Holes</title>
-<para>The <guimenu>Go</guimenu> menu contains many menu items for switching to different holes that are quite self explanatory.</para>
+<para>The <guimenu>Go</guimenu> menu contains many menu items for switching to different holes that are quite self explanatory. See the <link linkend="go-menu"><guimenu>Go</guimenu> menu reference</link>.</para>
 </sect2>
 </sect1>
 
@@ -243,7 +243,9 @@ button next to the player's name.</para>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
+<term><menuchoice><shortcut>
+<keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo>
+</shortcut>
 <guimenu>Game</guimenu>
 <guimenuitem>Save Course</guimenuitem>
 </menuchoice></term>
@@ -254,9 +256,10 @@ name.</action></para>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<guimenu>Game</guimenu>
-<guimenuitem>Save Course As...</guimenuitem>
+<term><menuchoice><shortcut>
+<keycombo action="simul">&Alt;&Ctrl;<keycap>S</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu><guimenuitem>Save Course As...</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>Open a file dialog allowing you to <action>save the current
@@ -265,13 +268,11 @@ course using a new file name.</action></para>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><shortcut>
-<keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo>
-</shortcut>
-<guimenu>Game</guimenu><guimenuitem>Save Course</guimenuitem>
+<term><menuchoice>
+<guimenu>Game</guimenu><guimenuitem>Save Game</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>Save the current game</action> with a default file name.</para>
+<para><action>Save the current game</action> with the last saved game filename, or under a filename you specify if you have not saved the game yet.</para>
 </listitem>
 </varlistentry>
 
@@ -317,7 +318,16 @@ game with a filename of your choice.</action></para>
 <guimenu>Game</guimenu><guimenuitem>Print...</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>Print the current screen</action></para>
+<para><action>Print the current screen.</action></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Game</guimenu><guimenuitem>About Course</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Show name, author, and par of course.</action></para>
 </listitem>
 </varlistentry>
 
@@ -345,7 +355,7 @@ game with a filename of your choice.</action></para>
 <guimenuitem>Edit</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>Switch to editing mode to edit the current hole.</action></para>
+<para><action>Switch to editing mode</action> to edit the current hole.</para>
 </listitem>
 </varlistentry>
 
@@ -357,7 +367,7 @@ game with a filename of your choice.</action></para>
 <guimenuitem>New</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>Create a new hole</action></para>
+<para><action>Create a new hole.</action> (Only while editing.)</para>
 </listitem>
 </varlistentry>
 
@@ -370,7 +380,7 @@ game with a filename of your choice.</action></para>
 </menuchoice></term>
 <listitem>
 <para><action>Remove all objects from the current
-hole.</action></para>
+hole.</action> (Only while editing.)</para>
 </listitem>
 </varlistentry>
 
@@ -508,7 +518,7 @@ which hole you wish to go to.</para>
 <guimenuitem>Configure Toolbars...</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>Customize the toolbar icons</action></para>
+<para><action>Customize the toolbar icons.</action></para>
 </listitem>
 </varlistentry>
 
@@ -529,7 +539,7 @@ putter.</action></para>
 <guimenuitem>Enable Advanced Putting</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>Enable the advanced putting mode</action>, as
-described <link linkend="advanced-putting">it's own
+described in <link linkend="advanced-putting">it's own
 section</link>.</para>
 </listitem>
 </varlistentry>
@@ -579,7 +589,7 @@ section</link>.</para>
 <sect1 id="help-menu">
 <title>The <guimenu>Help</guimenu> Menu</title>
 
-&help.menu.documentation;/chapter>
+&help.menu.documentation;
 
 </sect1>
 </chapter>
@@ -595,6 +605,9 @@ section</link>.</para>
 </listitem>
 <listitem>
 <para>Niklas Knutsson</para>
+</listitem>
+<listitem>
+<para>Ryan Cumming</para>
 </listitem>
 <listitem>
 <para>Daniel Matza-Brown</para>
