@@ -14,7 +14,7 @@
 #include <kmessagebox.h>
 #include <kpixmapeffect.h>
 #include <kprinter.h>
-#include <ksimpleconfig.h>
+#include <kconfig.h>
 #include <kstandarddirs.h>
 
 #include <qbitmap.h>
@@ -394,7 +394,7 @@ void Slope::updateZ(QCanvasRectangle *vStrut)
 	setZ(((double)1 / (area == 0? 1 : area)) + newZ);
 }
 
-void Slope::load(KSimpleConfig *cfg)
+void Slope::load(KConfig *cfg)
 {
 	stuckOnGround = cfg->readBoolEntry("stuckOnGround", stuckOnGround);
 	grade = cfg->readDoubleNumEntry("grade", grade);
@@ -408,7 +408,7 @@ void Slope::load(KSimpleConfig *cfg)
 	setGradient(gradientType);
 }
 
-void Slope::save(KSimpleConfig *cfg)
+void Slope::save(KConfig *cfg)
 {
 	cfg->writeEntry("reversed", reversed);
 	cfg->writeEntry("width", width());
@@ -851,12 +851,12 @@ void Bridge::moveBy(double dx, double dy)
 	}
 }
 
-void Bridge::load(KSimpleConfig *cfg)
+void Bridge::load(KConfig *cfg)
 {
 	doLoad(cfg);
 }
 
-void Bridge::doLoad(KSimpleConfig *cfg)
+void Bridge::doLoad(KConfig *cfg)
 {
 	newSize(cfg->readNumEntry("width", width()), cfg->readNumEntry("height", height()));
 	setTopWallVisible(cfg->readBoolEntry("topWallVisible", topWallVisible()));
@@ -865,12 +865,12 @@ void Bridge::doLoad(KSimpleConfig *cfg)
 	setRightWallVisible(cfg->readBoolEntry("rightWallVisible", rightWallVisible()));
 }
 
-void Bridge::save(KSimpleConfig *cfg)
+void Bridge::save(KConfig *cfg)
 {
 	doSave(cfg);
 }
 
-void Bridge::doSave(KSimpleConfig *cfg)
+void Bridge::doSave(KConfig *cfg)
 {
 	cfg->writeEntry("width", width());
 	cfg->writeEntry("height", height());
@@ -1158,7 +1158,7 @@ void Floater::loadState(StateDB *db)
 	move(moveTo.x(), moveTo.y());
 }
 
-void Floater::save(KSimpleConfig *cfg)
+void Floater::save(KConfig *cfg)
 {
 	cfg->writeEntry("speed", speed);
 	cfg->writeEntry("startPoint", QPoint(wall->startPoint().x() + wall->x(), wall->startPoint().y() + wall->y()));
@@ -1167,7 +1167,7 @@ void Floater::save(KSimpleConfig *cfg)
 	doSave(cfg);
 }
 
-void Floater::load(KSimpleConfig *cfg)
+void Floater::load(KConfig *cfg)
 {
 	move(firstPoint.x(), firstPoint.y());
 
@@ -1320,7 +1320,7 @@ void Windmill::setGame(KolfGame *game)
 	right->setGame(game);
 }
 
-void Windmill::save(KSimpleConfig *cfg)
+void Windmill::save(KConfig *cfg)
 {
 	cfg->writeEntry("speed", speed);
 	cfg->writeEntry("bottom", m_bottom);
@@ -1328,7 +1328,7 @@ void Windmill::save(KSimpleConfig *cfg)
 	doSave(cfg);
 }
 
-void Windmill::load(KSimpleConfig *cfg)
+void Windmill::load(KConfig *cfg)
 {
 	setSpeed(cfg->readNumEntry("speed", -1));
 
@@ -1412,7 +1412,7 @@ Sign::Sign(QCanvas *canvas)
 	setRightWallVisible(true);
 }
 
-void Sign::load(KSimpleConfig *cfg)
+void Sign::load(KConfig *cfg)
 {
 	// Comment so it gets translated
 	// text was the old name, we should keep bc
@@ -1421,7 +1421,7 @@ void Sign::load(KSimpleConfig *cfg)
 	doLoad(cfg);
 }
 
-void Sign::save(KSimpleConfig *cfg)
+void Sign::save(KConfig *cfg)
 {
 	cfg->writeEntry("Comment", m_text);
 
@@ -1660,7 +1660,7 @@ void Ellipse::advance(int phase)
 	}
 }
 
-void Ellipse::load(KSimpleConfig *cfg)
+void Ellipse::load(KConfig *cfg)
 {
 	setChangeEnabled(cfg->readBoolEntry("changeEnabled", changeEnabled()));
 	setChangeEvery(cfg->readNumEntry("changeEvery", changeEvery()));
@@ -1670,7 +1670,7 @@ void Ellipse::load(KSimpleConfig *cfg)
 	newSize(newWidth, newHeight);
 }
 
-void Ellipse::save(KSimpleConfig *cfg)
+void Ellipse::save(KConfig *cfg)
 {
 	cfg->writeEntry("changeEvery", changeEvery());
 	cfg->writeEntry("changeEnabled", changeEnabled());
@@ -2070,7 +2070,7 @@ bool Cup::place(Ball *ball, bool /*wasCenter*/)
 	return true;
 }
 
-void Cup::save(KSimpleConfig *cfg)
+void Cup::save(KConfig *cfg)
 {
 	cfg->writeEntry("dummykey", true);
 }
@@ -2188,7 +2188,7 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 	return false;
 }
 
-void BlackHole::load(KSimpleConfig *cfg)
+void BlackHole::load(KConfig *cfg)
 {
 	QPoint exit = cfg->readPointEntry("exit", &exit);
 	exitItem->setX(exit.x());
@@ -2229,7 +2229,7 @@ void BlackHole::finishMe()
 	exitItem->setVisible(true);
 }
 
-void BlackHole::save(KSimpleConfig *cfg)
+void BlackHole::save(KConfig *cfg)
 {
 	cfg->writeEntry("exit", QPoint(exitItem->x(), exitItem->y()));
 	cfg->writeEntry("exitDeg", exitDeg);
@@ -2694,7 +2694,7 @@ bool Wall::collision(Ball *ball, long int id)
 	return false;
 }
 
-void Wall::load(KSimpleConfig *cfg)
+void Wall::load(KConfig *cfg)
 {
 	QPoint start(startPoint());
 	start = cfg->readPointEntry("startPoint", &start);
@@ -2708,7 +2708,7 @@ void Wall::load(KSimpleConfig *cfg)
 	endItem->move(end.x(), end.y());
 }
 
-void Wall::save(KSimpleConfig *cfg)
+void Wall::save(KConfig *cfg)
 {
 	cfg->writeEntry("startPoint", QPoint(startItem->x(), startItem->y()));
 	cfg->writeEntry("endPoint", QPoint(endItem->x(), endItem->y()));
@@ -3094,7 +3094,7 @@ void KolfGame::setFilename(const QString &filename)
 {
 	this->filename = filename;
 	delete cfg;
-	cfg = new KSimpleConfig(filename);
+	cfg = new KConfig(filename, false, false);
 }
 
 KolfGame::~KolfGame()
@@ -4927,7 +4927,7 @@ void KolfGame::setSound(bool yes)
 
 void KolfGame::courseInfo(CourseInfo &info, const QString& filename)
 {
-	KSimpleConfig cfg(filename);
+	KConfig cfg(filename);
 	cfg.setGroup("0-course@-50,-50");
 	info.author = cfg.readEntry("author", info.author);
 	info.name = cfg.readEntry("Name", cfg.readEntry("name", info.name));
@@ -4953,7 +4953,7 @@ void KolfGame::courseInfo(CourseInfo &info, const QString& filename)
 	info.holes = hole;
 }
 
-void KolfGame::scoresFromSaved(KSimpleConfig *config, PlayerList &players)
+void KolfGame::scoresFromSaved(KConfig *config, PlayerList &players)
 {
 	config->setGroup("0 Saved Game");
 	int numPlayers = config->readNumEntry("Players", 0);
@@ -4978,7 +4978,7 @@ void KolfGame::scoresFromSaved(KSimpleConfig *config, PlayerList &players)
 	}
 }
 
-void KolfGame::saveScores(KSimpleConfig *config)
+void KolfGame::saveScores(KConfig *config)
 {
 	// wipe out old player info
 	QStringList groups = config->groupList();

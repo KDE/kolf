@@ -38,7 +38,7 @@ class QTimer;
 class QKeyEvent;
 class QMouseEvent;
 class QPainter;
-class KSimpleConfig;
+class KConfig;
 class KPrinter;
 class KolfGame;
 
@@ -51,8 +51,8 @@ class Player;
 class BallStateInfo
 {
 public:
-	void saveState(KSimpleConfig *cfg);
-	void loadState(KSimpleConfig *cfg);
+	void saveState(KConfig *cfg);
+	void loadState(KConfig *cfg);
 
 	int id;
 	QPoint spot;
@@ -186,8 +186,8 @@ public:
 	bool isStuckOnGround() const { return stuckOnGround; }
 	void setStuckOnGround(bool yes) { stuckOnGround = yes; updateZ(); }
 
-	virtual void load(KSimpleConfig *cfg);
-	virtual void save(KSimpleConfig *cfg);
+	virtual void load(KConfig *cfg);
+	virtual void save(KConfig *cfg);
 
 	virtual bool collision(Ball *ball, long int id);
 	virtual bool terrainCollisions() const;
@@ -264,8 +264,8 @@ public:
 
 	virtual void editModeChanged(bool changed);
 
-	virtual void save(KSimpleConfig *cfg);
-	virtual void load(KSimpleConfig *cfg);
+	virtual void save(KConfig *cfg);
+	virtual void load(KConfig *cfg);
 
 	virtual Config *config(QWidget *parent);
 
@@ -383,7 +383,7 @@ class Cup : public Hole
 public:
 	Cup(QCanvas *canvas);
 	virtual bool place(Ball *ball, bool wasCenter);
-	virtual void save(KSimpleConfig *cfg);
+	virtual void save(KConfig *cfg);
 	virtual bool canBeMovedByOthers() const { return true; }
 	virtual void draw(QPainter &painter);
 
@@ -443,8 +443,8 @@ public:
 	virtual void showInfo();
 	virtual void hideInfo();
 	virtual bool place(Ball *ball, bool wasCenter);
-	virtual void save(KSimpleConfig *cfg);
-	virtual void load(KSimpleConfig *cfg);
+	virtual void save(KConfig *cfg);
+	virtual void load(KConfig *cfg);
 	virtual Config *config(QWidget *parent) { return new BlackHoleConfig(this, parent); }
 	virtual QPtrList<QCanvasItem> moveableItems() const;
 	int minSpeed() const { return m_minSpeed; }
@@ -493,8 +493,8 @@ public:
 	virtual void setZ(double newz);
 	virtual void setPen(QPen p);
 	virtual bool collision(Ball *ball, long int id);
-	virtual void save(KSimpleConfig *cfg);
-	virtual void load(KSimpleConfig *cfg);
+	virtual void save(KConfig *cfg);
+	virtual void load(KConfig *cfg);
 	virtual void selectedItem(QCanvasItem *item);
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
@@ -619,11 +619,11 @@ public:
 	virtual void aboutToDie();
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
-	virtual void load(KSimpleConfig *cfg);
-	virtual void save(KSimpleConfig *cfg);
+	virtual void load(KConfig *cfg);
+	virtual void save(KConfig *cfg);
 	virtual bool vStrut() const { return true; }
-	void doLoad(KSimpleConfig *cfg);
-	void doSave(KSimpleConfig *cfg);
+	void doLoad(KConfig *cfg);
+	void doSave(KConfig *cfg);
 	virtual void newSize(int width, int height);
 	virtual void setGame(KolfGame *game);
 	virtual Config *config(QWidget *parent) { return new BridgeConfig(this, parent); }
@@ -682,8 +682,8 @@ public:
 	virtual void draw(QPainter &painter);
 	virtual bool vStrut() const { return false; }
 	virtual Config *config(QWidget *parent) { return new SignConfig(this, parent); }
-	virtual void save(KSimpleConfig *cfg);
-	virtual void load(KSimpleConfig *cfg);
+	virtual void save(KConfig *cfg);
+	virtual void load(KConfig *cfg);
 
 protected:
 	QString m_text;
@@ -727,8 +727,8 @@ public:
 	Windmill(QRect rect, QCanvas *canvas);
 	virtual void aboutToDie();
 	virtual void newSize(int width, int height);
-	virtual void save(KSimpleConfig *cfg);
-	virtual void load(KSimpleConfig *cfg);
+	virtual void save(KConfig *cfg);
+	virtual void load(KConfig *cfg);
 	virtual void setGame(KolfGame *game);
 	virtual Config *config(QWidget *parent) { return new WindmillConfig(this, parent); }
 	void setSize(int width, int height);
@@ -788,8 +788,8 @@ public:
 	virtual bool collision(Ball *ball, long int id) { Bridge::collision(ball, id); return false; }
 	virtual void saveState(StateDB *db);
 	virtual void loadState(StateDB *db);
-	virtual void save(KSimpleConfig *cfg);
-	virtual void load(KSimpleConfig *cfg);
+	virtual void save(KConfig *cfg);
+	virtual void load(KConfig *cfg);
 	virtual bool loadLast() const { return true; }
 	virtual void firstMove(int x, int y);
 	virtual void aboutToSave();
@@ -938,7 +938,7 @@ public:
 	void hidePutter() { putter->setVisible(false); }
 	void ignoreEvents(bool ignore) { m_ignoreEvents = ignore; }
 
-	static void scoresFromSaved(KSimpleConfig *, PlayerList &players);
+	static void scoresFromSaved(KConfig *, PlayerList &players);
 	static void courseInfo(CourseInfo &info, const QString &filename);
 
 public slots:
@@ -970,7 +970,7 @@ public slots:
 	void setSound(bool yes);
 	void undoShot();
 	void timeout();
-	void saveScores(KSimpleConfig *);
+	void saveScores(KConfig *);
 	void startFirstHole(int hole);
 	void sayWhosGoing();
 
@@ -1113,7 +1113,7 @@ private:
 
 	bool infoShown;
 
-	KSimpleConfig *cfg;
+	KConfig *cfg;
 
 	inline void addBorderWall(QPoint start, QPoint end);
 	void shotStart();

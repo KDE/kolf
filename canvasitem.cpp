@@ -1,6 +1,6 @@
 #include <qcanvas.h>
 
-#include <ksimpleconfig.h>
+#include <kconfig.h>
 
 #include "game.h"
 #include "canvasitem.h"
@@ -35,7 +35,7 @@ QCanvasRectangle *CanvasItem::onVStrut()
 	return aboveVStrut && ritem? ritem : 0;
 }
 
-void CanvasItem::save(KSimpleConfig *cfg)
+void CanvasItem::save(KConfig *cfg)
 {
 	cfg->writeEntry("dummykey", true);
 }

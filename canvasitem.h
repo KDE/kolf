@@ -25,7 +25,7 @@ class DefaultConfig : public Config
 };
 
 class Ball;
-class KSimpleConfig;
+class KConfig;
 class StateDB;
 class KolfGame;
 
@@ -35,9 +35,9 @@ public:
 	CanvasItem() { game = 0; }
 	virtual ~CanvasItem() {}
 	/**
-	 * load your settings from the KSimpleConfig, which represents a course.
+	 * load your settings from the KConfig, which represents a course.
 	 */
-	virtual void load(KSimpleConfig *) {}
+	virtual void load(KConfig *) {}
 	/**
 	 * load a point if you wish. Rarely necessary.
 	 */
@@ -57,7 +57,7 @@ public:
 	/**
 	 * save your settings.
 	 */
-	virtual void save(KSimpleConfig *cfg);
+	virtual void save(KConfig *cfg);
 	/**
 	 * save a point if you wish. Rarely necessary.
 	 */

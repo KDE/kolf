@@ -233,6 +233,12 @@ startPoint=298,362
 [10-ball@351,365]
 dummykey=true
 
+[10-blackhole@256,206|4]
+exit=23,38
+exitDeg=0
+maxspeed=1
+minspeed=1
+
 [10-cup@44,38|3]
 dummykey=true
 
@@ -1386,10 +1392,10 @@ startPoint=162,388
 endPoint=70,217
 startPoint=70,330
 
-[18-ball@136,350]
+[18-ball@134,349]
 dummykey=true
 
-[18-blackhole@342,313|7]
+[18-blackhole@362,297|7]
 exit=210,44
 exitDeg=0
 maxspeed=2
@@ -1415,11 +1421,17 @@ hasFinalLoad=true
 maxstrokes=10
 par=2
 
-[18-puddle@186,220|2]
+[18-puddle@104,229|32]
 changeEnabled=false
 changeEvery=50
-height=54
-width=1178
+height=32
+width=174
+
+[18-puddle@238,220|2]
+changeEnabled=false
+changeEvery=50
+height=52
+width=404
 
 [18-puddle@279,199|5]
 changeEnabled=false
@@ -1432,6 +1444,18 @@ changeEnabled=false
 changeEvery=50
 height=26
 width=244
+
+[18-puddle@33,222|33]
+changeEnabled=false
+changeEvery=50
+height=28
+width=42
+
+[18-puddle@50,218|34]
+changeEnabled=false
+changeEvery=50
+height=22
+width=52
 
 [18-puddle@605,204|3]
 changeEnabled=false
@@ -1513,6 +1537,22 @@ reversed=false
 stuckOnGround=true
 width=129
 
+[18-slope@269,244|28]
+grade=4
+gradient=Opposite Diagonal
+height=185
+reversed=true
+stuckOnGround=false
+width=132
+
+[18-slope@30,233|18]
+grade=4
+gradient=Vertical
+height=34
+reversed=true
+stuckOnGround=true
+width=98
+
 [18-slope@31,323|12]
 grade=6
 gradient=Vertical
@@ -1522,20 +1562,12 @@ stuckOnGround=true
 width=52
 
 [18-slope@32,243|14]
-grade=4
+grade=5
 gradient=Horizontal
 height=125
 reversed=true
 stuckOnGround=true
 width=20
-
-[18-slope@33,246|18]
-grade=4
-gradient=Vertical
-height=25
-reversed=true
-stuckOnGround=true
-width=95
 
 [18-slope@50,241|10]
 grade=5
@@ -1547,11 +1579,27 @@ width=76
 
 [18-wall@0,0|11]
 endPoint=84,367
-startPoint=41,367
+startPoint=35,369
 
 [18-wall@0,0|13]
-endPoint=84,329
+endPoint=84,328
 startPoint=84,367
+
+[18-wall@0,0|27]
+endPoint=385,123
+startPoint=385,166
+
+[18-wall@0,0|29]
+endPoint=422,377
+startPoint=226,377
+
+[18-wall@0,0|30]
+endPoint=91,380
+startPoint=84,328
+
+[18-wall@0,0|31]
+endPoint=91,380
+startPoint=35,369
 
 [18-wall@0,0|9]
 endPoint=31,244
@@ -1560,12 +1608,12 @@ startPoint=31,400
 [18-windmill@201,-2|6]
 botWallVisible=false
 bottom=true
-height=127
+height=121
 leftWallVisible=true
 rightWallVisible=false
 speed=5
 topWallVisible=false
-width=200
+width=201
 
 [2-ball@62,329]
 dummykey=true
