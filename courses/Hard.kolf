@@ -30,11 +30,7 @@ changeEvery=50
 changeEnabled=false
 changeEvery=50
 
-[1-sand@160,237|21]
-changeEnabled=false
-changeEvery=50
-
-[1-sand@181,246|22]
+[1-sand@169,250|21]
 changeEnabled=false
 changeEvery=50
 
@@ -54,13 +50,13 @@ reversed=false
 stuckOnGround=false
 width=98
 
-[1-slope@14,117|24]
+[1-slope@13,78|24]
 grade=2
 gradient=Diagonal
-height=268
+height=308
 reversed=false
 stuckOnGround=false
-width=372
+width=373
 
 [1-slope@16,232|6]
 grade=3
@@ -105,7 +101,7 @@ width=60
 [1-slope@8,14|14]
 grade=1
 gradient=Opposite Diagonal
-height=122
+height=102
 reversed=true
 stuckOnGround=false
 width=377
@@ -449,7 +445,7 @@ maxspeed=2
 minspeed=1
 
 [11-blackhole@293,44|16]
-exit=119,292
+exit=122,292
 exitDeg=5
 maxspeed=3
 minspeed=2
@@ -619,13 +615,13 @@ reversed=true
 stuckOnGround=false
 width=116
 
+[11-wall@-1,8|17]
+endPoint=255,320
+startPoint=12,318
+
 [11-wall@0,0|14]
 endPoint=392,207
 startPoint=12,207
-
-[11-wall@0,0|17]
-endPoint=256,312
-startPoint=13,310
 
 [12-ball@58,341]
 dummykey=true
@@ -2549,12 +2545,12 @@ startPoint=149,345
 
 [3-windmill@323,62|31]
 botWallVisible=false
-height=54
+height=60
 leftWallVisible=true
-rightWallVisible=true
+rightWallVisible=false
 speed=2
 topWallVisible=false
-width=62
+width=61
 
 [4-ball@358,158]
 dummykey=true

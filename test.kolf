@@ -19,7 +19,7 @@ rightWallVisible=false
 topWallVisible=true
 width=80
 
-[1-cup@298,182|15]
+[1-cup@297,182|15]
 dummykey=true
 
 [1-cup@69,253|3]
@@ -61,13 +61,13 @@ text=<h2>welcome</h2>under construction
 topWallVisible=true
 width=157
 
-[1-slope@331,284|5]
+[1-slope@75,42|5]
 grade=6
 gradient=Vertical
-height=40
+height=98
 reversed=false
 stuckOnGround=false
-width=40
+width=114
 
 [1-wall@0,0|12]
 endPoint=125,83

@@ -3608,7 +3608,7 @@ void KolfGame::addNewObject(Object *newObj)
 
 bool KolfGame::askSave(bool noMoreChances)
 {
-	if ((!modified) && filename != QString::null)
+	if (!modified)
 		// not cancel, don't save
 		return false;
 
