@@ -356,7 +356,7 @@ void Kolf::closeGame()
 	loadGameAction->setEnabled(true);
 	tutorialAction->setEnabled(true);
 
-	titleChanged("");
+	titleChanged(QString::null);
 	updateModified(false);
 
 	QTimer::singleShot(100, this, SLOT(createSpacer()));
@@ -384,55 +384,59 @@ void Kolf::createSpacer()
 
 void Kolf::gameOver()
 {
+	int curPar = 0;
+	int lowScore = INT_MAX; // let's hope it doesn't stay this way!
+	int curScore = 1;
+	QStringList names;
+	HighScoreList highScores;
+	int i = 1;
+	HighScore topScore;
+
+	while (curScore != 0)
+	{
+		QString curName;
+
+		// name taken as a reference and filled out
+		curScore = scoreboard->total(i, curName);
+
+		i++;
+
+		if (curName == i18n("Par"))
+		{
+			curPar = curScore;
+			continue;
+		}
+
+		if (curScore == 0)
+			continue;
+
+		// attempt to add everybody to the highscore list
+		// (ignored if we aren't competing down below)
+		highScores.append(HighScore(curName, curScore));
+
+		if (curScore < lowScore)
+		{
+			names.clear();
+			lowScore = curScore;
+			names.append(curName);
+			topScore.name = curName;
+			topScore.score = curScore;
+		}
+		else if (curScore == lowScore)
+			names.append(curName);
+	}
+	highScores.append(topScore);
+
+	if (names.count() > 1)
+	{
+		QString winners = names.join(i18n(" and "));
+		KMessageBox::information(this, i18n("%1 tied").arg(winners));
+	}
+	else
+		KMessageBox::information(this, i18n("%1 won!").arg(names.first()));
+
 	if (competition)
 	{
-		int curPar = 0;
-		int lowScore = INT_MAX; // let's hope it doesn't stay this way!
-		int curScore = 1;
-		QStringList names;
-		HighScoreList highScores;
-		int i = 1;
-		HighScore topScore;
-
-		while (curScore != 0)
-		{
-			QString curName;
-			curScore = scoreboard->total(i, curName);
-
-			i++;
-
-			if (curName == i18n("Par"))
-			{
-				curPar = curScore;
-				continue;
-			}
-
-			if (curScore == 0)
-				continue;
-
-			if (curScore < lowScore)
-			{
-				names.clear();
-				lowScore = curScore;
-				names.append(curName);
-				topScore.name = curName;
-				topScore.score = curScore;
-			}
-			else if (curScore == lowScore)
-				names.append(curName);
-			else
-				highScores.append(HighScore(curName, curScore));
-		}
-		highScores.append(topScore);
-
-		if (names.count() > 1)
-		{
-			QString winners = names.join(i18n(" and "));
-			statusBar()->message(i18n("%1 tied").arg(winners));
-		}
-		else
-			statusBar()->message(i18n("%1 won!").arg(names.first()));
-
 		// deal with highscores
 		// KScoreDialog makes it very easy :-))
 

@@ -3274,6 +3274,11 @@ void KolfGame::startBall(const Vector &vector)
 
 void KolfGame::shotStart()
 {
+	// ensure we never hit the ball back into the hole which
+	// can cause hole skippage
+	if ((*curPlayer).ball()->curState() == Holed)
+		return;
+
 	// save state
 	recreateStateList();
 

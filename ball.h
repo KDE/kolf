@@ -46,7 +46,7 @@ public:
 
 	virtual int rtti() const { return Rtti_Ball; };
 
-	bool addStroke() const { return m_addStroke; }
+	int addStroke() const { return m_addStroke; }
 	bool placeOnGround(Vector &v) { v = oldVector; return m_placeOnGround; }
 	void setAddStroke(int newStrokes) { m_addStroke = newStrokes; }
 	void setPlaceOnGround(bool placeOnGround) { m_placeOnGround = placeOnGround; oldVector = m_vector; }
