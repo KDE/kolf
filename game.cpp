@@ -1215,6 +1215,7 @@ FloaterConfig::FloaterConfig(Floater *floater, QWidget *parent)
 {
 	this->floater = floater;
 	m_vlayout->addStretch();
+
 	QHBoxLayout *hlayout = new QHBoxLayout(m_vlayout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Slow"), this));
 	QSlider *slider = new QSlider(1, 20, 2, floater->curSpeed(), Qt::Horizontal, this);
@@ -1236,6 +1237,12 @@ WindmillConfig::WindmillConfig(Windmill *windmill, QWidget *parent)
 {
 	this->windmill = windmill;
 	m_vlayout->addStretch();
+
+	QCheckBox *check = new QCheckBox(i18n("Windmill on bottom"), this);
+	check->setChecked(windmill->bottom());
+	connect(check, SIGNAL(toggled(bool)), this, SLOT(endChanged(bool)));
+	m_vlayout->addWidget(check);
+
 	QHBoxLayout *hlayout = new QHBoxLayout(m_vlayout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Slow"), this));
 	QSlider *slider = new QSlider(1, 10, 1, windmill->curSpeed(), Qt::Horizontal, this);
@@ -1243,7 +1250,7 @@ WindmillConfig::WindmillConfig(Windmill *windmill, QWidget *parent)
 	hlayout->addWidget(new QLabel(i18n("Fast"), this));
 	connect(slider, SIGNAL(valueChanged(int)), this, SLOT(speedChanged(int)));
 
-	bot->setEnabled(false);
+	endChanged(check->isChecked());
 }
 
 void WindmillConfig::speedChanged(int news)
@@ -1252,10 +1259,23 @@ void WindmillConfig::speedChanged(int news)
 	changed();
 }
 
+void WindmillConfig::endChanged(bool bottom)
+{
+	windmill->setBottom(bottom);
+	changed();
+
+	bot->setEnabled(!bottom);
+	bot->setChecked(!bottom);
+	botWallChanged(bot->isChecked());
+	top->setEnabled(bottom);
+	top->setChecked(bottom);
+	topWallChanged(top->isChecked());
+}
+
 /////////////////////////
 
 Windmill::Windmill(QRect rect, QCanvas *canvas)
-	: Bridge(rect, canvas), speedfactor(16)
+	: Bridge(rect, canvas), speedfactor(16), m_bottom(true)
 {
 	guard = new WindmillGuard(canvas);
 	guard->setPen(QPen(black, 5));
@@ -1314,6 +1334,7 @@ void Windmill::setGame(KolfGame *game)
 void Windmill::save(KSimpleConfig *cfg)
 {
 	cfg->writeEntry("speed", speed);
+	cfg->writeEntry("bottom", m_bottom);
 
 	doSave(cfg);
 }
@@ -1327,6 +1348,8 @@ void Windmill::load(KSimpleConfig *cfg)
 	left->editModeChanged(false);
 	right->editModeChanged(false);
 	guard->editModeChanged(false);
+
+	setBottom(cfg->readBoolEntry("bottom", true));
 }
 
 void Windmill::moveBy(double dx, double dy)
@@ -1347,15 +1370,25 @@ void Windmill::setSize(int width, int height)
 	newSize(width, height);
 }
 
+void Windmill::setBottom(bool yes)
+{
+	m_bottom = yes;
+	newSize(width(), height());
+}
+
 void Windmill::newSize(int width, int height)
 {
 	Bridge::newSize(width, height);
+
 	const int indent = width / 4;
-	left->setPoints(0, height, indent, height);
-	right->setPoints(width - indent, height, width, height);
+
+	double indentY = m_bottom? height : 0;
+	left->setPoints(0, indentY, indent, indentY);
+	right->setPoints(width - indent, indentY, width, indentY);
 
 	guard->setBetween(x(), x() + width);
-	guard->setPoints(0, height + 4, (double)indent / (double)1.07 - 2, height + 4);
+	double guardY = m_bottom? height + 4 : -4;
+	guard->setPoints(0, guardY, (double)indent / (double)1.07 - 2, guardY);
 }
 
 /////////////////////////

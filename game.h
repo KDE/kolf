@@ -545,7 +545,7 @@ class BridgeConfig : public Config
 public:
 	BridgeConfig(Bridge *bridge, QWidget *);
 
-private slots:
+protected slots:
 	void topWallChanged(bool);
 	void botWallChanged(bool);
 	void leftWallChanged(bool);
@@ -666,6 +666,7 @@ public:
 
 private slots:
 	void speedChanged(int news);
+	void endChanged(bool yes);
 
 private:
 	Windmill *windmill;
@@ -684,6 +685,8 @@ public:
 	virtual void moveBy(double dx, double dy);
 	void setSpeed(int news);
 	int curSpeed() { return speed; }
+	void setBottom(bool yes);
+	bool bottom() { return m_bottom; }
 
 private:
 	WindmillGuard *guard;
@@ -691,6 +694,7 @@ private:
 	Wall *right;
 	int speedfactor;
 	int speed;
+	bool m_bottom;
 };
 class WindmillObj : public Object
 {

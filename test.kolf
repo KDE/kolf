@@ -26,16 +26,13 @@ dummykey=true
 [1-bumper@45,192|13]
 dummykey=true
 
-[1-bumper@45,49|7]
-dummykey=true
-
 [1-bumper@67,206|9]
 dummykey=true
 
-[1-bumper@68,52|11]
+[1-cup@181,287|15]
 dummykey=true
 
-[1-cup@181,287|15]
+[1-cup@43,25|63]
 dummykey=true
 
 [1-hole@-50,-50|0]
@@ -205,17 +202,17 @@ reversed=true
 stuckOnGround=false
 width=40
 
-[1-slope@248,227|28]
+[1-slope@248,266|35]
 grade=8
-gradient=Diagonal
+gradient=Horizontal
 height=40
 reversed=false
 stuckOnGround=false
 width=40
 
-[1-slope@248,266|35]
+[1-slope@249,227|28]
 grade=8
-gradient=Horizontal
+gradient=Diagonal
 height=40
 reversed=false
 stuckOnGround=false
@@ -301,7 +298,7 @@ reversed=false
 stuckOnGround=false
 width=38
 
-[1-slope@89,33|36]
+[1-slope@65,77|36]
 grade=6
 gradient=Elliptic
 height=57
@@ -356,6 +353,16 @@ startPoint=305,193
 [1-wall@0,0|54]
 endPoint=226,194
 startPoint=196,209
+
+[1-windmill@6,9|64]
+botWallVisible=false
+bottom=true
+height=64
+leftWallVisible=true
+rightWallVisible=true
+speed=5
+topWallVisible=true
+width=110
 
 [2-ball@200,200]
 dummykey=true

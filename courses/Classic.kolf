@@ -28,59 +28,11 @@ startPoint=247,9
 
 [1-wall@0,0|11]
 endPoint=285,66
-startPoint=238,128
+startPoint=238,127
 
 [1-wall@0,0|13]
 endPoint=213,190
 startPoint=185,190
-
-[1-wall@0,0|14]
-endPoint=40,126
-startPoint=40,178
-
-[1-wall@0,0|15]
-endPoint=65,127
-startPoint=42,150
-
-[1-wall@0,0|16]
-endPoint=69,179
-startPoint=42,150
-
-[1-wall@0,0|17]
-endPoint=40,204
-startPoint=40,245
-
-[1-wall@0,0|18]
-endPoint=66,205
-startPoint=40,204
-
-[1-wall@0,0|19]
-endPoint=66,205
-startPoint=65,245
-
-[1-wall@0,0|20]
-endPoint=65,245
-startPoint=40,245
-
-[1-wall@0,0|21]
-endPoint=40,264
-startPoint=40,300
-
-[1-wall@0,0|22]
-endPoint=65,300
-startPoint=40,300
-
-[1-wall@0,0|23]
-endPoint=40,318
-startPoint=40,360
-
-[1-wall@0,0|24]
-endPoint=66,318
-startPoint=40,318
-
-[1-wall@0,0|25]
-endPoint=61,338
-startPoint=42,338
 
 [1-wall@0,0|26]
 endPoint=238,387
@@ -91,24 +43,24 @@ endPoint=247,9
 startPoint=149,9
 
 [1-wall@0,0|4]
-endPoint=156,128
+endPoint=155,129
 startPoint=156,387
 
 [1-wall@0,0|5]
-endPoint=238,127
+endPoint=238,128
 startPoint=238,387
 
 [1-wall@0,0|6]
 endPoint=180,128
-startPoint=155,129
+startPoint=156,128
 
 [1-wall@0,0|7]
-endPoint=238,128
+endPoint=238,127
 startPoint=212,127
 
 [1-wall@0,0|8]
 endPoint=111,67
-startPoint=156,128
+startPoint=155,129
 
 [1-wall@0,0|9]
 endPoint=149,9

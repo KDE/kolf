@@ -271,12 +271,15 @@ void Kolf::closeGame()
 			return;
 		game->pause();
 	}
+
 	editingEnded();
 	delete game;
 	game = 0;
+
 	delete spacer;
 	spacer = new QWidget(dummy);
 	layout->addWidget(spacer, 0, 0);
+
 	spacer->setMinimumSize(410, 410);
 	spacer->show();
 
@@ -541,7 +544,11 @@ void Kolf::showPlugins()
 	QString text = QString("<h2>%1</h2>").arg(i18n("Currently Loaded"));
 	Object *object = 0;
 	for (object = plugins.first(); object; object = plugins.next())
+	{
 		text.append(object->name());
+		text.append(" - ");
+		text.append(i18n("by %1").arg(object->author()));
+	}
 	KMessageBox::information(this, text, i18n("Plugins"));
 }
 

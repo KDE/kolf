@@ -14,9 +14,9 @@ class Object : public QObject
 public:
 	Object(QObject *parent = 0, const char *name = 0) : QObject(parent, name) {};
 	virtual QCanvasItem *newObject(QCanvas * /*canvas*/) { return 0; }
-	virtual QString name() { return m_name; }
-	virtual QString _name() { return m__name; }
-	virtual QString author() { return m_author; }
+	QString name() { return m_name; }
+	QString _name() { return m__name; }
+	QString author() { return m_author; }
 
 protected:
 	QString m_name;
