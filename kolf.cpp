@@ -30,10 +30,11 @@
 #include <stdlib.h>
 
 #include "game.h"
-#include "kolf.h"
 #include "newgame.h"
 #include "scoreboard.h"
 #include "editor.h"
+#include "pluginloader.h"
+#include "kolf.h"
 
 Kolf::Kolf()
     : KMainWindow(0)
@@ -44,6 +45,9 @@ Kolf::Kolf()
 	scoreboard = 0;
 
 	initGUI();
+
+	obj = new ObjectList;
+	initPlugins();
 
 	filename = QString::null;
 	dummy = new QWidget(this);
@@ -74,6 +78,13 @@ Kolf::Kolf()
 	}
 
 	config->sync();
+}
+
+Kolf::~Kolf()
+{
+	// wipe out our objects
+	obj->setAutoDelete(true);
+	delete obj;
 }
 
 void Kolf::initGUI()
@@ -166,7 +177,10 @@ void Kolf::startNewGame()
 		delete spacer;
 		spacer = 0;
 		delete game;
-		game = new KolfGame(&players, filename, dummy);
+		game = new KolfGame(obj, &players, filename, dummy);
+
+		game->setObjects(obj);
+
 		connect(game, SIGNAL(newHole(int)), scoreboard, SLOT(newHole(int)));
 		connect(game, SIGNAL(newHole(int)), this, SLOT(parChanged(int)));
 		connect(game, SIGNAL(scoreChanged(int, int, int)), scoreboard, SLOT(setScore(int, int, int)));
@@ -349,7 +363,7 @@ void Kolf::newPlayersTurn(Player *player)
 void Kolf::editingStarted()
 {
 	delete editor;
-	editor = new Editor(game->objectList(), dummy, "Editor");
+	editor = new Editor(obj, dummy, "Editor");
 	connect(editor, SIGNAL(addNewItem(Object *)), game, SLOT(addNewObject(Object *)));
 	connect(editor, SIGNAL(changed()), game, SLOT(setModified()));
 	connect(editor, SIGNAL(addNewItem(Object *)), this, SLOT(setHoleFocus()));
@@ -397,7 +411,7 @@ void Kolf::inPlayEnd()
 
 void Kolf::maxStrokesReached()
 {
-	statusBar()->message(i18n("The maximum number of strokes for this hole has been reached."));
+	KMessageBox::sorry(this, i18n("The maximum number of strokes for this hole has been reached."));
 }
 
 void Kolf::updateHoleMenu(int largest)
@@ -474,6 +488,44 @@ void Kolf::showGuideLineChanged(bool yes)
 void Kolf::soundChanged(bool yes)
 {
 	KConfig *config = kapp->config(); config->setGroup("Settings"); config->writeEntry("sound", yes); config->sync();
+}
+
+void Kolf::initPlugins()
+{
+	//kdDebug() << "initPlugins" << endl;
+	if (game)
+		game->pause();
+
+	obj->setAutoDelete(true);
+	obj->clear();
+
+	// add prefab objects
+	obj->append(new SlopeObj());
+	obj->append(new PuddleObj());
+	obj->append(new WallObj());
+	obj->append(new CupObj());
+	obj->append(new SandObj());
+	obj->append(new WindmillObj());
+	obj->append(new BlackHoleObj());
+	obj->append(new FloaterObj());
+	obj->append(new BridgeObj());
+	obj->append(new SignObj());
+	obj->append(new BumperObj());
+
+	ObjectList *other = PluginLoader::loadAll();
+	Object *object = 0;
+	for (object = other->first(); object; object = other->next())
+	{
+		obj->append(object);
+	}
+
+	if (game)
+	{
+		game->setObjects(obj);
+		game->unPause();
+	}
+
+	//kdDebug() << "end of initPlugins" << endl;
 }
 
 #include "kolf.moc"

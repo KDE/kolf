@@ -1,5 +1,5 @@
-#ifndef KJUMP_H_INCLUDED
-#define KJUMP_H_INCLUDED
+#ifndef KOLF_H
+#define KOLF_H
 
 #include <kmainwindow.h>
 #include <kurl.h>
@@ -29,6 +29,7 @@ class Kolf : public KMainWindow
 
 public:
 	Kolf();
+	~Kolf();
 
 protected:
 	void closeEvent(QCloseEvent *);
@@ -56,6 +57,7 @@ protected slots:
 	void useAdvancedPuttingChanged(bool);	
 	void showGuideLineChanged(bool);	
 	void soundChanged(bool);	
+	void initPlugins();
  
 private:
 	QWidget *dummy;
@@ -92,6 +94,8 @@ private:
 	void setHoleMovementEnabled(bool);
 	inline void setEditingEnabled(bool);
 	bool competition;
+
+	ObjectList *obj;
 };
 
 #endif

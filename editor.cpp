@@ -14,16 +14,18 @@ Editor::Editor(ObjectList *list, QWidget *parent, const char *name)
 	this->list = list;
 	config = 0;
 
-	hlayout = new QHBoxLayout(this, KDialog::spacingHint());
+	hlayout = new QHBoxLayout(this, KDialog::marginHint(), KDialog::spacingHint());
 
+	QVBoxLayout *vlayout = new QVBoxLayout(hlayout, KDialog::spacingHint());
+	vlayout->addWidget(new QLabel(i18n("Create Element"), this));
 	listbox = new KListBox(this, "Listbox");
-	hlayout->addWidget(listbox);
-	hlayout->setStretchFactor(listbox, 2);
+	vlayout->addWidget(listbox);
+	hlayout->setStretchFactor(vlayout, 2);
 
 	QStringList items;
 	Object *obj = 0;
 	for (obj = list->first(); obj; obj = list->next())
-		items.append(i18n("New %1").arg(obj->name()));
+		items.append(obj->name());
 
 	listbox->insertStringList(items);
 

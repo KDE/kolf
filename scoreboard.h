@@ -1,5 +1,5 @@
-#ifndef SCOREBOARD_H_INCLUDED
-#define SCOREBOARD_H_INCLUDED
+#ifndef SCOREBOARD_H
+#define SCOREBOARD_H
 
 #include <qtable.h>
 

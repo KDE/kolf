@@ -1,0 +1,73 @@
+#include <qstring.h>
+#include <qvaluelist.h>
+#include <qstringlist.h>
+#include <qfile.h>
+#include <qobject.h>
+
+#include <kdebug.h>
+#include <kglobal.h>
+#include <kstddirs.h>
+#include <ksimpleconfig.h>
+#include <klibloader.h>
+
+#include "game.h"
+#include "pluginloader.h"
+
+ObjectList *PluginLoader::loadAll()
+{
+	ObjectList *ret = new ObjectList;
+
+	QStringList libs;
+	QStringList files = KGlobal::dirs()->findAllResources("appdata", "*.plugin", false, true);
+
+	for (QStringList::Iterator it = files.begin(); it != files.end(); ++it)
+	{
+		KSimpleConfig cfg(*it);
+		QString filename(cfg.readEntry("Filename", ""));
+
+		libs.append(filename);
+
+		//kdDebug() << "will load " << libs.last() << endl;
+	}
+
+	for (QStringList::Iterator it = libs.begin(); it != libs.end(); ++it)
+	{
+		Object *newObject = load(*it);
+		if (newObject)
+		{
+			//kdDebug() << "appending it\n";
+			ret->append(newObject);
+		}
+	}
+
+	return ret;
+}
+
+Object *PluginLoader::load(const QString &filename)
+{
+	//kdDebug() << "load(" << filename << ")" << endl;
+
+	KLibFactory *factory = KLibLoader::self()->factory(filename.latin1());
+
+	if (!factory)
+	{
+		kdWarning() << "no factory for " << filename << "!" << endl;
+		return 0;
+	}
+
+	QObject *newObject = factory->create(0, "objectInstance", "Object");
+	
+	if (!newObject)
+	{
+		kdWarning() << "no newObject for " << filename << "!" << endl;
+		return 0;
+	}
+
+	Object *ret = dynamic_cast<Object *>(newObject);
+
+	if (!ret)
+		kdWarning() << "no ret for " << filename << "!" << endl;
+
+	return ret;
+}
+

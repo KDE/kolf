@@ -1,9 +1,9 @@
-SUBDIRS = sounds courses pics graphics
+SUBDIRS = objects sounds courses pics graphics
 bin_PROGRAMS = kolf
 INCLUDES = $(all_includes)
 
-kolf_SOURCES = main.cpp kolf.cpp game.cpp newgame.cpp scoreboard.cpp editor.cpp
-kolf_LDFLAGS = $(all_libraries) $(KDE_RPATH)
+kolf_SOURCES = main.cpp kolf.cpp game.cpp canvasitem.cpp ball.cpp newgame.cpp config.cpp scoreboard.cpp editor.cpp pluginloader.cpp object.cpp
+kolf_LDFLAGS = $(all_libraries) $(KDE_RPATH) -export-dynamic
 kolf_LDADD = $(LIB_KDEUI) $(LIB_KDEPRINT) $(LIB_KIO) -lsoundserver_idl
 
 EXTRA_DIST = kolf.desktop

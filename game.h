@@ -1,5 +1,5 @@
-#ifndef GAME_H_INCLUDED
-#define GAME_H_INCLUDED
+#ifndef GAME_H
+#define GAME_H
 
 #include <arts/soundserver.h>
 #include <kdebug.h>
@@ -22,6 +22,13 @@
 #include <qvaluelist.h>
 #include <qwidget.h>
 
+#include "object.h"
+#include "config.h"
+#include "canvasitem.h"
+#include "ball.h"
+#include "statedb.h"
+#include "rtti.h"
+
 class QLabel;
 class QSlider;
 class QCheckBox;
@@ -32,238 +39,10 @@ class QPainter;
 class KSimpleConfig;
 class KolfGame;
 
-enum BallState {Rolling, Stopped, Holed};
-enum RttiCodes { Rtti_NoCollision = 1001, Rtti_DontPlaceOn = 1002, Rtti_Ball = 1003, Rtti_Putter = 1004, Rtti_WallPoint = 1005 };
 enum Direction { D_Left, D_Right, Forwards, Backwards };
 enum HoleResult { Result_Holed, Result_Miss, Result_LipOut };
 
-class Ball;
 class Player;
-
-class Config : public QFrame
-{
-	Q_OBJECT
-
-public:
-	Config(QWidget *parent, const char *name = 0) : QFrame(parent, name) { startedUp = false; }
-	void ctorDone() { startedUp = true; }
-
-signals:
-	void modified();
-
-protected:
-	inline int spacingHint();
-	inline int marginHint();
-	bool startedUp;
-	inline void changed();
-};
-
-class DefaultConfig : public Config
-{
-public:
-	DefaultConfig(QWidget *parent);
-};
-
-// items can save their per-game states here
-// most don't have to do anything
-class StateDB
-{
-public:
-	void setPoint(const QPoint &point) { points[curName] = point; }
-	QPoint point() { return points[curName]; }
-	void setName(const QString &name) { curName = name; }
-	void clear() { points.clear(); }
-
-private:
-	QMap<QString, QPoint> points;
-	QString curName;
-};
-
-class CanvasItem
-{
-public:
-	CanvasItem() { game = 0; }
-	virtual ~CanvasItem() {}
-	/**
-	 * load your settings from the KSimpleConfig, which represents a course.
-	 */
-	virtual void load(KSimpleConfig *) {}
-	/**
-	 * load a point if you wish. Rarely necessary.
-	 */
-	virtual void loadState(StateDB * /*db*/) {}
-	/**
-	 * returns a bool that is true if your item needs to load after other items
-	 */
-	virtual bool loadLast() { return false; }
-	/**
-	 * called after the item is moved the very first time by the game
-	 */
-	virtual void firstMove(int /*x*/, int /*y*/) {}
-	/**
-	 * save your settings.
-	 */
-	virtual void save(KSimpleConfig *cfg);
-	/**
-	 * save a point if you wish. Rarely necessary.
-	 */
-	virtual void saveState(StateDB * /*db*/) {}
-	/**
-	 * called right before any items are saved.
-	 */
-	virtual void aboutToSave() {}
-	/**
-	 * called right after all items are saved.
-	 */
-	virtual void savingDone() {}
-	/**
-	 * called when the edit mode has been changed.
-	 */
-	virtual void editModeChanged(bool /*changed*/) {}
-	/**
-	 * the item should delete any other objects it's created.
-	 * DO NOT DO THIS IN THE DESTRUCTOR!
-	 */
-	virtual void aboutToDie() {}
-	/**
-	 * called when user presses delete key while editing. This is very rarely reimplemented, and generally shouldn't be.
-	 */
-	virtual void aboutToDelete() {}
-	/** returns whether this item should be able to be deleted by user while editing.
-	 */
-	virtual bool deleteable() { return true; }
-	/**
-	 * returns whether or not this item lifts items on top of it.
-	 */
-	virtual bool vStrut() const { return false; }
-	/**
-	 * show extra item info
-	 */
-	virtual void showInfo() {};
-	/**
-	 * hide extra item info
-	 */
-	virtual void hideInfo() {};
-	/**
-	 * update your Z value (this is called by various things when perhaps the value should change) if this is called by a vStrut, it will pass 'this'.
-	 */
-	virtual void updateZ(QCanvasRectangle * /*vStrut*/ = 0) {};
-	/**
-	 * clean up for prettyness
-	 */
-	virtual void clean() {};
-	/**
-	 * returns whether this item can be moved by others (if you want to move an item, you should honor this!)
-	 */
-	virtual bool canBeMovedByOthers() const { return false; }
-	/**
-	 * returns a Config that can be used to configure this item by the user.
-	 * The default implementation returns one that says 'No configuration options'.
-	 */
-	virtual Config *config(QWidget *parent) { return new DefaultConfig(parent); }
-	/**
-	 * returns other items that should be moveable (besides this one of course).
-	 */
-	virtual QPtrList<QCanvasItem> moveableItems() { return QPtrList<QCanvasItem>(); }
-	/**
-	 * returns whether this can be moved by the user while editing.
-	 */
-	virtual bool moveable() const { return true; }
-
-	void setId(int newId) { id = newId; }
-	int curId() const { return id; }
-
-	/**
-	 * call to play sound (ie, playSound("wall") plays kdedir/share/apps/kolf/sounds/wall.wav)
-	 */
-	void playSound(QString file);
-
-	virtual void collision(Ball * /*ball*/, long int /*id*/) {};
-
-	/**
-	 * reimplement if you want extra items to have access to the game object.
-	 * playSound() relies on having this.
-	 */
-	virtual void setGame(KolfGame *game) { this->game = game; }
-
-	/**
-	 * returns whether this resizes from south-east.
-	 */
-	virtual bool cornerResize() { return false; }
-
-	QString name() { return m_name; }
-	void setName(const QString &newname) { m_name = newname; }
-
-protected:
-	/**
-	 * pointer to main KolfGame
-	 */
-	KolfGame *game;
-
-	/**
-	 * returns the highest vertical strut the item is on
-	 */
-	QCanvasRectangle *onVStrut();
-
-private:
-	QString m_name;
-	int id;
-};
-
-class Ball : public QCanvasEllipse, public CanvasItem
-{
-public:
-	Ball(QCanvas *canvas);
-	BallState currentState();
-
-	void resetSize() { setSize(7, 7); }
-	virtual void advance(int phase);
-	virtual void doAdvance();
-
-	double curSpeed() { return sqrt(xVelocity() * xVelocity() + yVelocity() * yVelocity()); }
-	virtual bool canBeMovedByOthers() const { return true; }
-
-	BallState curState() { return state; }
-	void setState(BallState newState);
-
-	QColor color() { return m_color; }
-	void setColor(QColor color) { m_color = color; setBrush(color); }
-
-	void setMoved(bool yes) { m_moved = yes; }
-	bool moved() { return m_moved; }
-	void setBlowUp(bool yes) { m_blowUp = yes; blowUpCount = 0; }
-	bool blowUp() { return m_blowUp; }
-
-	void setFrictionMultiplier(double news) { frictionMultiplier = news; };
-	void friction();
-	void collisionDetect();
-
-	virtual int rtti() const { return Rtti_Ball; };
-
-	bool addStroke() { return m_addStroke; }
-	bool placeOnGround(double &oldvx, double &oldvy) { oldvx = m_oldvx; oldvy = m_oldvy; return m_placeOnGround; }
-	void setAddStroke(int newStrokes) { m_addStroke = newStrokes; }
-	void setPlaceOnGround(bool placeOnGround, double oldvx, double oldvy) { m_placeOnGround = placeOnGround; m_oldvx = oldvx; m_oldvy = oldvy;}
-
-	bool beginningOfHole() { return m_beginningOfHole; }
-	void setBeginningOfHole(bool yes) { m_beginningOfHole = yes; }
-
-private:
-	BallState state;
-	QColor m_color;
-	long int collisionId;
-	double frictionMultiplier;
-
-	bool m_blowUp;
-	int blowUpCount;
-	int m_addStroke;
-	bool m_placeOnGround;
-	double m_oldvx;
-	double m_oldvy;
-
-	bool m_moved;
-	bool m_beginningOfHole;
-};
 
 class BallStateInfo
 {
@@ -311,22 +90,6 @@ private:
 	int m_id;
 };
 typedef QValueList<Player> PlayerList;
-
-class Object
-{
-public:
-	Object() {};
-	virtual ~Object() {};
-	virtual QCanvasItem *newObject(QCanvas * /*canvas*/) { return 0; };
-	virtual QString name() { return m_name; }
-	virtual QString _name() { return m__name; }
-
-protected:
-	QString m_name;
-	QString m__name;
-	QPtrList<CanvasItem> items;
-};
-typedef QPtrList<Object> ObjectList;
 
 class Arrow : public QCanvasLine
 {
@@ -507,7 +270,6 @@ private:
 	QSlider *slider1;
 	QSlider *slider2;
 	Ellipse *ellipse;
-	bool startup;
 };
 
 class Puddle : public Ellipse
@@ -1088,9 +850,9 @@ class KolfGame : public QCanvasView
 	Q_OBJECT
 
 public:
-	KolfGame(PlayerList *players, QString filename, QWidget *parent=0, const char *name=0 );
+	KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidget *parent=0, const char *name=0 );
 	~KolfGame();
-	ObjectList *objectList() { return &obj; }
+	void setObjects(ObjectList *obj) { this->obj = obj; }
 	void setFilename(const QString &filename);
 	QString curFilename() const { return filename; }
 	void emitLargestHole() { emit largestHole(highestHole); }
@@ -1188,7 +950,7 @@ private:
 	QTimer *frictionTimer;
 	QTimer *putterTimer;
 
-	ObjectList obj;
+	ObjectList *obj;
 	QPtrList<QCanvasItem> items;
 	QPtrList<QCanvasItem> extraMoveable;
 	QPtrList<Wall> borderWalls;

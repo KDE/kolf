@@ -1,5 +1,5 @@
-#ifndef NEWGAME_H_INCLUDED
-#define NEWGAME_H_INCLUDED
+#ifndef NEWGAME_H
+#define NEWGAME_H
 
 #include <kdialogbase.h>
 #include <klineedit.h>

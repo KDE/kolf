@@ -3,7 +3,6 @@
 #include <kconfig.h>
 #include <kcursor.h>
 #include <kdebug.h>
-#include <kdialog.h>
 #include <kfiledialog.h>
 #include <kglobal.h>
 #include <kimageeffect.h>
@@ -46,19 +45,22 @@
 #include <qtimer.h>
 #include <qvaluelist.h>
 
+#include "rtti.h"
+#include "object.h"
+#include "config.h"
+#include "canvasitem.h"
+#include "ball.h"
+#include "statedb.h"
 #include "game.h"
-
-// from Qt... you gotta love the humor-- i present the following uncut:
-const double PI = 3.14159265358979323846;   // pi // one more useful comment
 
 inline double deg2rad(double theDouble)
 {
-	return (((2L * PI) / 360L) * theDouble);
+	return (((2L * M_PI) / 360L) * theDouble);
 }
 
 inline double rad2deg(double theDouble)
 {
-	return ((360L / (2L * PI)) * theDouble);
+	return ((360L / (2L * M_PI)) * theDouble);
 }
 
 inline QString makeGroup(int id, int hole, QString name, int x, int y)
@@ -69,74 +71,6 @@ inline QString makeGroup(int id, int hole, QString name, int x, int y)
 inline QString makeStateGroup(int id, const QString &name)
 {
 	return QString("%1|%2").arg(name).arg(id);
-}
-
-/////////////////////////
-
-int Config::spacingHint()
-{
-	// the configs need to be squashed IMHO.
-	return KDialog::spacingHint() / 2;
-}
-
-int Config::marginHint()
-{
-	return KDialog::marginHint();
-}
-
-void Config::changed()
-{
-	if (startedUp)
-		emit modified();
-}
-
-/////////////////////////
-
-QCanvasRectangle *CanvasItem::onVStrut()
-{
-	QCanvasItem *qthis = dynamic_cast<QCanvasItem *>(this);
-	if (!qthis)
-		return 0;
-	QCanvasItemList l = qthis->collisions(true);
-	l.sort();
-	bool aboveVStrut = false;
-	CanvasItem *item = 0;
-	QCanvasItem *qitem = 0;
-	for (QCanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
-	{
-		item = dynamic_cast<CanvasItem *>(*it);
-		if (item)
-		{
-			qitem = *it;
-			if (item->vStrut())
-			{
-				//kdDebug() << "above vstrut\n";
-				aboveVStrut = true;
-				break;
-			}
-		}
-	}
-
-	QCanvasRectangle *ritem = dynamic_cast<QCanvasRectangle *>(qitem);
-
-	return aboveVStrut && ritem? ritem : 0;
-}
-
-void CanvasItem::save(KSimpleConfig *cfg)
-{
-	cfg->writeEntry("dummykey", true);
-}
-
-/////////////////////////
-
-DefaultConfig::DefaultConfig(QWidget *parent)
-	: Config(parent)
-{
-	QVBoxLayout *layout = new QVBoxLayout(this, marginHint(), spacingHint());
-	QHBoxLayout *hlayout = new QHBoxLayout(layout, spacingHint());
-	hlayout->addStretch();
-	hlayout->addWidget(new QLabel(i18n("No configuration options"), this));
-	hlayout->addStretch();
 }
 
 /////////////////////////
@@ -240,13 +174,13 @@ void Arrow::updateSelf()
 
 	const double lineLen = m_length / 2;
 
-	const double angle1 = m_angle - PI / 2 - 1;
+	const double angle1 = m_angle - M_PI / 2 - 1;
 	line1->move(end.x() + x(), end.y() + y());
 	start = end;
 	end = QPoint(lineLen * cos(angle1), lineLen * sin(angle1));
 	line1->setPoints(0, 0, end.x(), end.y());
 
-	const double angle2 = m_angle + PI / 2 + 1;
+	const double angle2 = m_angle + M_PI / 2 + 1;
 	line2->move(start.x() + x(), start.y() + y());
 	end = QPoint(lineLen * cos(angle2), lineLen * sin(angle2));
 	line2->setPoints(0, 0, end.x(), end.y());
@@ -517,8 +451,8 @@ void Slope::collision(Ball *ball, long int /*id*/)
 			// this is all weird
 			// see comment in bumper::collision
 			// horizontal
-			//slopeAngle = end.x() < start.x()? 0 : PI;
-			slopeAngle = PI;
+			//slopeAngle = end.x() < start.x()? 0 : M_PI;
+			slopeAngle = M_PI;
 		}
 		else
 		{
@@ -529,18 +463,18 @@ void Slope::collision(Ball *ball, long int /*id*/)
 			if (end.y() < start.y())
 			{
 				//kdDebug() << "neg slopeAngle: " << rad2deg(slopeAngle) << endl;
-				slopeAngle = (PI / 2) - slopeAngle;
+				slopeAngle = (M_PI / 2) - slopeAngle;
 			}
 			else
 			{
-				slopeAngle = (-PI / 2) - slopeAngle;
+				slopeAngle = (-M_PI / 2) - slopeAngle;
 			}
 		}
 
 		const double factor = sqrt(xDiff * xDiff + yDiff * yDiff) / (double)((double)width() / 2.0);
 		//kdDebug() << "factor: " << factor << endl;
 		// this algorithm by daniel
-		addto *= factor * PI / 2;
+		addto *= factor * M_PI / 2;
 		addto = sin(addto);
 		//addto *= 1.4;
 	}
@@ -652,7 +586,7 @@ void Slope::updatePixmap()
 		double angle = 0;
 		for (int i = 0; i < 4; ++i)
 		{
-			angle += PI / 2;
+			angle += M_PI / 2;
 			Arrow *arrow = new Arrow(canvas());
 			arrow->setLength(length);
 			arrow->setAngle(angle);
@@ -678,7 +612,7 @@ void Slope::updatePixmap()
 				break;
 
 			case KImageEffect::VerticalGradient:
-				angle = PI / 2;
+				angle = M_PI / 2;
 				factor = .25;
 				break;
 
@@ -690,7 +624,7 @@ void Slope::updatePixmap()
 
 			case KImageEffect::CrossDiagonalGradient:
 				angle = atan((double)width() / (double)height());
-				angle = PI - angle;
+				angle = M_PI - angle;
 
 				factor = 0;
 				break;
@@ -711,7 +645,7 @@ void Slope::updatePixmap()
 		if (reversed)
 			ratio *= -1;
 		else
-			angle += PI;
+			angle += M_PI;
 
 		//kdDebug() << "ratio is " << ratio << endl;
 
@@ -1915,149 +1849,6 @@ void Putter::finishMe()
 
 /////////////////////////
 
-Ball::Ball(QCanvas *canvas)
-	: QCanvasEllipse(canvas)
-{
-	setBeginningOfHole(false);
-	setBlowUp(false);
-	setBrush(black);
-	setPen(black);
-	resetSize();
-	setVelocity(0, 0);
-	collisionId = 0;
-	m_addStroke = false;
-	m_placeOnGround = false;
-
-	// this sets z
-	setState(Stopped);
-}
-
-void Ball::setState(BallState newState)
-{
-	state = newState;
-	if (state == Stopped)
-		setZ(1000);
-	else
-		setBeginningOfHole(false);
-}
-
-void Ball::advance(int phase)
-{
-	if (phase == 1 && m_blowUp)
-	{
-		if (blowUpCount >= 50)
-		{
-			//TODO make this a config option
-			//setAddStroke(addStroke() + 1);
-			setBlowUp(false);
-			resetSize();
-			return;
-		}
-
-		const double diff = 8;
-		double randnum = kapp->random();
-		const double width = 6 + randnum * (diff / RAND_MAX);
-		randnum = kapp->random();
-		const double height = 6 + randnum * (diff / RAND_MAX);
-		setSize(width, height);
-		blowUpCount++;
-	}
-}
-
-void Ball::friction()
-{
-	if (state == Stopped || state == Holed || !isVisible()) { setVelocity(0, 0); return; }
-	double vx = xVelocity();
-	double vy = yVelocity();
-	double ballAngle = atan(vx / vy);
-	if (vy < 0)
-		ballAngle -= PI;
-	ballAngle = PI/2 - ballAngle;
-	const double frictionFactor = .027;
-	vx -= cos(ballAngle) * frictionFactor * frictionMultiplier;
-	vy -= sin(ballAngle) * frictionFactor * frictionMultiplier;
-	if (vx / xVelocity() < 0)
-	{
-		vx = vy = 0;
-		state = Stopped;
-	}
-	setVelocity(vx, vy);
-
-	frictionMultiplier = 1;
-}
-
-void Ball::doAdvance()
-{
-	//const double halfX = xVelocity() / 2;
-	//const double halfY = yVelocity() / 2;
-	QCanvasEllipse::advance(1);
-	
-	//moveBy(halfX, halfY);
-	//collisionDetect();
-	//moveBy(halfX, halfY);
-}
-
-void Ball::collisionDetect()
-{
-	if (state == Stopped)
-		return;
-
-	if (collisionId >= INT_MAX - 1)
-		collisionId = 0;
-	else
-		collisionId++;
-
-	// every other time...
-	// do friction
-	if (collisionId % 2)
-		friction();
-
-	QCanvasItemList list = collisions(true);
-	if (list.isEmpty())
-		return;
-
-	// please don't ask why QCanvas doesn't actually sort its list
-	// it just doesn't.
-	list.sort();
-
-	QCanvasItem *item = 0;
-
-	for (QCanvasItemList::Iterator it = list.begin(); it != list.end(); ++it)
-	{
-		item = *it;
-
-		if (item->rtti() == Rtti_NoCollision || item->rtti() == Rtti_Putter)
-			continue;
-		if (!collidesWith(item))
-			continue;
-
-		if (item->rtti() == rtti())
-		{
-			if (curSpeed() > 2.7)
-			{
-				// it's one of our own kind, a ball, and we're hitting it
-				// sorta hard
-				Ball *oball = dynamic_cast<Ball *>(item);
-				if (/*oball->curState() != Stopped && */oball->curState() != Holed)
-					oball->setBlowUp(true);
-				continue;
-			}
-		}
-
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
-		if (citem)
-			citem->collision(this, collisionId);
-		break;
-	}
-}
-
-BallState Ball::currentState()
-{
-	return state;
-}
-
-/////////////////////////
-
 Bumper::Bumper(QCanvas *canvas)
 	: QCanvasEllipse(20, 20, canvas)
 {
@@ -2139,7 +1930,7 @@ void Bumper::collision(Ball *ball, long int /*id*/)
 	if (xDiff == 0)
 	{
 		// horizontal
-		angle = end.x() < start.x()? 0 : PI;
+		angle = end.x() < start.x()? 0 : M_PI;
 	}
 	else
 	{
@@ -2148,11 +1939,11 @@ void Bumper::collision(Ball *ball, long int /*id*/)
 		angle *= -1;
 		if (end.y() < start.y())
 		{
-			angle = (PI / 2) - angle;
+			angle = (M_PI / 2) - angle;
 		}
 		else
 		{
-			angle = (-PI / 2) - angle;
+			angle = (-M_PI / 2) - angle;
 		}
 	}
 
@@ -2242,7 +2033,7 @@ BlackHole::BlackHole(QCanvas *canvas)
 	m_minSpeed = 3;
 	m_maxSpeed = 5;
 
-	QColor myColor((QRgb)(kapp->random() % 0x01000000));
+	const QColor myColor((QRgb)(kapp->random() % 0x01000000));
 
 	outside = new QCanvasEllipse(canvas);
 	outside->setZ(z() - .001);
@@ -2566,7 +2357,7 @@ void WallPoint::collision(Ball *ball, long int id)
 	const double ballSlope = -(double)vy/(double)vx;
 	double ballAngle = atan(ballSlope);
 	if (vx < 0)
-		ballAngle += PI;
+		ballAngle += M_PI;
 
 	//kdDebug() << "ballAngle: " << rad2deg(ballAngle) << endl;
 
@@ -2580,14 +2371,14 @@ void WallPoint::collision(Ball *ball, long int id)
 	bool weirdbounce = visible;
 	//bool weirdbounce = true;
 
-	double relWallAngle = wallAngle + PI / 2;
+	double relWallAngle = wallAngle + M_PI / 2;
 
 	// wierd neg. slope angle
-	if (relWallAngle > PI / 2)
+	if (relWallAngle > M_PI / 2)
 	{
 		//kdDebug() << "neg slope\n";
-		relWallAngle -= PI / 2;
-		relWallAngle = PI / 2 - relWallAngle;
+		relWallAngle -= M_PI / 2;
+		relWallAngle = M_PI / 2 - relWallAngle;
 		relWallAngle *= -1;
 	}
 
@@ -2601,8 +2392,8 @@ void WallPoint::collision(Ball *ball, long int id)
 	if (start.x() <= end.x())
 		isStart = !isStart;
 
-	//const double angle = PI / 3;
-	const double angle = PI / 2;
+	//const double angle = M_PI / 3;
+	const double angle = M_PI / 2;
 
 	// if it's going 'backwards', don't bounce opposite way
 	if (isStart)
@@ -2646,7 +2437,7 @@ void WallPoint::collision(Ball *ball, long int id)
 			const double speed = ball->curSpeed() / dampening;
 
 			const double collisionAngle = ballAngle - wallAngle;
-			const double leavingAngle = PI - collisionAngle + wallAngle;
+			const double leavingAngle = M_PI - collisionAngle + wallAngle;
 
 			vx = -cos(leavingAngle)*speed;
 			vy = sin(leavingAngle)*speed;
@@ -2856,11 +2647,11 @@ void Wall::collision(Ball *ball, long int id)
 		const double wallSlope = (double)(start.y() - end.y()) / (double)(end.x() - start.x());
 		double ballAngle = atan(ballSlope);
 		if (vx < 0)
-			ballAngle += PI;
+			ballAngle += M_PI;
 		const double wallAngle = atan(wallSlope);
 
 		const double collisionAngle = ballAngle - wallAngle;
-		const double leavingAngle = PI - collisionAngle + wallAngle;
+		const double leavingAngle = M_PI - collisionAngle + wallAngle;
 		
 		vx = -cos(leavingAngle)*speed;
 		vy = sin(leavingAngle)*speed;
@@ -3070,7 +2861,7 @@ void StrokeCircle::draw(QPainter &p)
 
 /////////////////////////////////////////
 
-KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const char *name )
+KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidget *parent, const char *name )
 	: QCanvasView(parent, name)
 {
 	// for mouse control
@@ -3080,6 +2871,7 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 	cfg = 0;
 	setFilename(filename);
 	this->players = players;
+	this->obj = obj;
 	curPlayer = players->end();
 	curPlayer--; // will get ++'d to end and sent back
 	             // to beginning 
@@ -3128,19 +2920,6 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 	setCanvas(course);
 	move(0, 0);
 	adjustSize();
-
-	obj.setAutoDelete(true);
-	obj.append(new SlopeObj());
-	obj.append(new PuddleObj());
-	obj.append(new WallObj());
-	obj.append(new CupObj());
-	obj.append(new SandObj());
-	obj.append(new WindmillObj());
-	obj.append(new BlackHoleObj());
-	obj.append(new FloaterObj());
-	obj.append(new BridgeObj());
-	obj.append(new SignObj());
-	obj.append(new BumperObj());
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 		(*it).ball()->setCanvas(course);
@@ -3444,15 +3223,15 @@ void KolfGame::updateMouse()
 		if (putter->x() < mouse.x())
 			newAngle = 0;
 		else
-			newAngle = PI;
+			newAngle = M_PI;
 	}
 	else if (xDiff == 0)
 	{
 		// vertical
 		if (putter->y() < mouse.y())
-			newAngle = (3 * PI) / 2;
+			newAngle = (3 * M_PI) / 2;
 		else
-			newAngle = PI / 2;
+			newAngle = M_PI / 2;
 	}
 	else
 	{
@@ -3462,7 +3241,7 @@ void KolfGame::updateMouse()
 		newAngle = angle;
 
 		if (mouse.x() < putter->x())
-			newAngle += PI;
+			newAngle += M_PI;
 	}
 	//kdDebug() << "newAngle: " << rad2deg(newAngle) << endl;
 
@@ -3959,8 +3738,8 @@ void KolfGame::shotDone()
 		double ballAngle = atan(vx / vy);
 
 		if (vy < 0)
-			ballAngle -= PI;
-		ballAngle = PI/2 - ballAngle;
+			ballAngle -= M_PI;
+		ballAngle = M_PI/2 - ballAngle;
 		
 		while (1)
 		{
@@ -4174,12 +3953,18 @@ void KolfGame::showInfo()
 	QString text = i18n("Hole %1: par %1, maximum number of strokes is %2.").arg(curHole).arg(holeInfo.par()).arg(holeInfo.maxStrokes());
 	infoText->move((width - QFontMetrics(infoText->font()).width(text)) / 2, infoText->y());
 	infoText->setText(text);
-	infoText->setVisible(true);
+	// I personally hate this text!
+	//infoText->setVisible(true);
 }
 
 void KolfGame::showInfoDlg(bool addDontShowAgain)
 {
-	KMessageBox::information(parentWidget(), i18n("Course name: %1").arg(holeInfo.name()) + QString("\n") + i18n("Created by %1").arg(holeInfo.author()) + QString("\n") + i18n("%1 holes").arg(highestHole), i18n("Course Information"), addDontShowAgain? holeInfo.name() + QString(" ") + holeInfo.author() : QString::null);
+	KMessageBox::information(parentWidget(),
+	i18n("Course name: %1").arg(holeInfo.name()) + QString("\n")
+	+ i18n("Created by %1").arg(holeInfo.author()) + QString("\n")
+	+ i18n("%1 holes").arg(highestHole),
+	i18n("Course Information"),
+	addDontShowAgain? holeInfo.name() + QString(" ") + holeInfo.author() : QString::null);
 }
 
 void KolfGame::hideInfoText()
@@ -4276,7 +4061,9 @@ void KolfGame::openFile()
 
 		const int id = (*it).right(len - (pipeIndex + 1)).toInt();
 
-		for (curObj = obj.first(); curObj; curObj = obj.next())
+		bool loaded = false;
+
+		for (curObj = obj->first(); curObj; curObj = obj->next())
 		{
 			if (name != curObj->_name())
 				continue;
@@ -4309,8 +4096,13 @@ void KolfGame::openFile()
 			
 			// we don't allow multiple items for the same thing in
 			// the file!
+
+			loaded = true;
 			break;
 		}
+
+		if (!loaded && name != "hole")
+			KMessageBox::sorry(this, i18n("To fully experience this hole, you'll need to install the %1 plugin.").arg(QString("\"%1\"").arg(name)));
 	}
 
 	// if it's the first hole let's not
