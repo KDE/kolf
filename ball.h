@@ -87,9 +87,9 @@ private:
 };
 
 
-inline double rad2deg(double theDouble)
+inline int rad2deg(double theDouble)
 {
-    return ((360L / (2L * M_PI)) * theDouble);
+    return (int)((360L / (2L * M_PI)) * theDouble);
 }
 
 inline double deg2rad(double theDouble)

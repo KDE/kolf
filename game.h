@@ -541,29 +541,32 @@ public:
 	void go(Direction, bool more = false);
 	void setOrigin(int x, int y);
 	int curLen() const { return len; }
-	int curDeg() const { return deg; }
+	double curAngle() const { return angle; }
+	int curDeg() const { return rad2deg(angle); }
 	virtual void showInfo();
 	virtual void hideInfo();
-	void setDeg(int news) { deg = news; finishMe(); }
-	int curMaxDeg() const { return maxDeg; }
+	void setAngle(double news) { angle = news; finishMe(); }
+	void setDeg(int news) { angle = deg2rad(news); finishMe(); }
+	double curMaxAngle() const { return maxAngle; }
 	virtual int rtti() const { return Rtti_Putter; }
 	virtual void setVisible(bool yes);
-	void saveDegrees(Ball *ball) { degMap[ball] = deg; }
-	void setDegrees(Ball *ball);
-	void resetDegrees() { degMap.clear(); setZ(999999); }
+	void saveAngle(Ball *ball) { angleMap[ball] = angle; }
+	void setAngle(Ball *ball);
+	void resetAngles() { angleMap.clear(); setZ(999999); }
 	virtual bool canBeMovedByOthers() const { return true; }
 	virtual void moveBy(double dx, double dy);
 	void setShowGuideLine(bool yes);
 
 private:
 	QPoint midPoint;
-	int maxDeg;
-	int deg;
+	double maxAngle;
+	double angle;
+	double oneDegree;
+	QMap<Ball *, double> angleMap;
 	int len;
 	void finishMe();
 	int putterWidth;
 	QCanvasLine *guideLine;
-	QMap<Ball *, int> degMap;
 	bool m_showGuideLine;
 };
 
@@ -900,6 +903,8 @@ public:
 	// returns whether it was a cancel
 	bool askSave(bool);
 	bool isEditing() const { return editing; }
+	// returns true when you shouldn't do anything
+	bool isPaused() const { return paused; }
 	Ball *curBall() const { return (*curPlayer).ball(); }
 	void updateMouse();
 	//void changeMouse();

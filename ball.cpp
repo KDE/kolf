@@ -115,9 +115,11 @@ void Ball::setVector(const Vector &newVector)
 
 void Ball::moveBy(double dx, double dy)
 {
-	kdDebug() << dx << ", " << dy << endl;
 	QCanvasEllipse::moveBy(dx, dy);
-	collisionDetect();
+
+	if (game && !game->isPaused())
+		collisionDetect();
+		
 	if ((dx || dy) && game && game->curBall() == this)
 		game->ballMoved();
 }

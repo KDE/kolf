@@ -1090,18 +1090,8 @@ void Floater::moveBy(double dx, double dy)
 				{
 					//((Ball *)(*it))->setState(Rolling);
 					(*it)->moveBy(dx, dy);
-					if (game)
-					{
-						game->ballMoved();
-						if (game->hasFocus() && !game->isEditing())
-						{
-							if (game->curBall() == (Ball *)(*it))
-							{
-								//game->changeMouse()
-								game->updateMouse();
-							}
-						}
-					}
+					if (game && game->hasFocus() && !game->isEditing() && game->curBall() == (Ball *)(*it))
+							game->ballMoved();
 				}
 				else if ((*it)->rtti() != Rtti_Putter)
 					(*it)->moveBy(dx, dy);
@@ -1774,19 +1764,20 @@ Putter::Putter(QCanvas *canvas)
 	: QCanvasLine(canvas)
 {
 	m_showGuideLine = true;
+	oneDegree = M_PI / 180;
 
 	guideLine = new QCanvasLine(canvas);
 	guideLine->setPen(QPen(white, 1, QPen::DotLine));
 	guideLine->setZ(998.8);
 
 	setPen(QPen(black, 4));
-	putterWidth = 9;
-	maxDeg = 360;
+	putterWidth = 11;
+	maxAngle = 2 * M_PI;
 
 	hideInfo();
 
 	// this also sets Z
-	resetDegrees();
+	resetAngles();
 }
 
 void Putter::showInfo()
@@ -1825,9 +1816,9 @@ void Putter::setOrigin(int _x, int _y)
 	finishMe();
 }
 
-void Putter::setDegrees(Ball *ball)
+void Putter::setAngle(Ball *ball)
 {
-	deg = degMap.contains(ball)? degMap[ball] : 0;
+	angle = angleMap.contains(ball)? angleMap[ball] : 0;
 	finishMe();
 }
 
@@ -1844,14 +1835,14 @@ void Putter::go(Direction d, bool more)
 			guideLine->setVisible(false);
 			break;
 		case D_Left:
-			deg += more? 6 : 3;
-			if (deg > maxDeg)
-				deg -= maxDeg;
+			angle += more? 6 * oneDegree : 2 * oneDegree;
+			if (angle > maxAngle)
+				angle -= maxAngle;
 			break;
 		case D_Right:
-			deg -= more? 6 : 3;
-			if (deg < 0)
-				deg = maxDeg - abs(deg);
+			angle -= more? 6 * oneDegree : 2 * oneDegree;
+			if (angle < 0)
+				angle = maxAngle - fabs(angle);
 			break;
 	}
 
@@ -1860,19 +1851,18 @@ void Putter::go(Direction d, bool more)
 
 void Putter::finishMe()
 {
-	const double radians = deg2rad(deg);
-	midPoint.setX(cos(radians)*len);
-	midPoint.setY(-sin(radians)*len);
+	midPoint.setX(cos(angle) * len);
+	midPoint.setY(-sin(angle) * len);
 
 	QPoint start;
 	QPoint end;
 
 	if (midPoint.y() || !midPoint.x())
 	{
-		start.setX(midPoint.x() - putterWidth*sin(radians));
-		start.setY(midPoint.y() - putterWidth*cos(radians));
-		end.setX(midPoint.x() + putterWidth*sin(radians));
-		end.setY(midPoint.y() + putterWidth*cos(radians));
+		start.setX(midPoint.x() - putterWidth * sin(angle));
+		start.setY(midPoint.y() - putterWidth * cos(angle));
+		end.setX(midPoint.x() + putterWidth * sin(angle));
+		end.setY(midPoint.y() + putterWidth * cos(angle));
 	}
 	else
 	{
@@ -1882,10 +1872,7 @@ void Putter::finishMe()
 		end.setX(midPoint.x());
 	}
 
-	// this allows showInfo() to get higher precision in display (double * 2 instead of rounded int * 2, made it a bit longer too)
- 	guideLine->setPoints(midPoint.x(), midPoint.y(), -cos(radians)*len * 4, sin(radians)*len * 4);
-
-	//guideLine->setPoints(midPoint.x(), midPoint.y(), -midPoint.x() * 2, -midPoint.y() * 2);
+ 	guideLine->setPoints(midPoint.x(), midPoint.y(), -cos(angle) * len * 4, sin(angle) * len * 4);
 
 	setPoints(start.x(), start.y(), end.x(), end.y());
 }
@@ -2808,7 +2795,7 @@ int StrokeCircle::height() const
 
 void StrokeCircle::draw(QPainter &p)
 {
-	int al = (int) ((dvalue * 360 * 16) / dmax);
+	int al = (int)((dvalue * 360 * 16) / dmax);
 	int length, deg;
 	if (al < 0)
 	{
@@ -2829,7 +2816,7 @@ void StrokeCircle::draw(QPainter &p)
 	p.setBrush(QBrush(black, Qt::NoBrush));
 	p.setPen(QPen(white, ithickness / 2));
 	p.drawEllipse(x() + ithickness / 2, y() + ithickness / 2, iwidth - ithickness, iheight - ithickness);
-	p.setPen(QPen(QColor((int) (0xff * dvalue) / dmax, 0, 0xff - (int) (0xff * dvalue) / dmax), ithickness));
+	p.setPen(QPen(QColor((int)(0xff * dvalue) / dmax, 0, 0xff - (int)(0xff * dvalue) / dmax), ithickness));
 	p.drawArc(x() + ithickness / 2, y() + ithickness / 2, iwidth - ithickness, iheight - ithickness, deg, length);
 
 	p.setPen(QPen(white, 1));
@@ -3210,10 +3197,9 @@ void KolfGame::updateMouse()
 	if (!m_useMouse || ((stroking || putting) && m_useAdvancedPutting))
 		return;
 
-	// make a vector from mouse to ball, find direction,
-	// convert to degrees and set putter to negative of that
-	// vectors are nice
-	putter->setDeg(rad2deg(-Vector(viewportToContents(mapFromGlobal(QCursor::pos())), QPoint((*curPlayer).ball()->x(), (*curPlayer).ball()->y())).direction()));
+	const QPoint cursor = viewportToContents(mapFromGlobal(QCursor::pos()));
+	const QPoint ball((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
+	putter->setAngle(-Vector(cursor, ball).direction());
 }
 
 void KolfGame::contentsMouseReleaseEvent(QMouseEvent *e)
@@ -3325,8 +3311,8 @@ void KolfGame::puttPress()
 			strokeCircle->setValue(0);
 			int pw = putter->endPoint().x() - putter->startPoint().x();
 			if (pw < 0) pw = -pw;
-			int px = (int) putter->x() + pw / 2;
-			int py = (int) putter->y();
+			int px = (int)putter->x() + pw / 2;
+			int py = (int)putter->y();
 			if (px > width / 2 && py < height / 2)
 				strokeCircle->move(px - pw / 2 - 10 - strokeCircle->width(), py + 10);
 			else if (px > width / 2)
@@ -3532,7 +3518,7 @@ void KolfGame::putterTimeout()
 				// decreasing strength as we've reached the top
 				puttReverse = true;
 				strength -= pow(base, strength / maxStrength) - 1.8;
-				if ((int) strength < puttCount * 2)
+				if ((int)strength < puttCount * 2)
 				{
 					puttCount--;
 					if (puttCount >= 0)
@@ -3543,7 +3529,7 @@ void KolfGame::putterTimeout()
 			{
 				// make the increase at high strength faster
 				strength += pow(base, strength / maxStrength) - .3;
-				if ((int) strength > puttCount * 2)
+				if ((int)strength > puttCount * 2)
 				{
 					putter->go(Backwards);
 					puttCount++;
@@ -3584,15 +3570,15 @@ void KolfGame::putterTimeout()
 				if (al > 45)
 				{
 					deg = putter->curDeg() - 45 + rand() % 90;
-					strength -= rand() % (int) strength;
+					strength -= rand() % (int)strength;
 				}
 				else if (!finishStroking)
 				{
 					deg = putter->curDeg() - 45 + rand() % 90;
-					strength -= rand() % (int) strength;
+					strength -= rand() % (int)strength;
 				}
 				else
-					deg = putter->curDeg() + (int) (strokeCircle->value() / 3);
+					deg = putter->curDeg() + (int)(strokeCircle->value() / 3);
 
 				if (deg < 0)
 					deg += 360;
@@ -3820,7 +3806,7 @@ void KolfGame::shotDone()
 
 	(*curPlayer).ball()->setVisible(true);
 
-	putter->setDegrees((*curPlayer).ball());
+	putter->setAngle((*curPlayer).ball());
 	putter->setOrigin((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 	updateMouse();
 
@@ -3835,7 +3821,7 @@ void KolfGame::shotStart()
 	// save state
 	recreateStateList();
 
-	putter->saveDegrees((*curPlayer).ball());
+	putter->saveAngle((*curPlayer).ball());
 	strength /= 8;
 	if (!strength)
 		strength = 1;
@@ -3843,7 +3829,7 @@ void KolfGame::shotStart()
 
 	Vector vector;
 	vector.setMagnitude(strength);
-	vector.setDirection(deg2rad(putter->curDeg() + 180));
+	vector.setDirection(putter->curAngle() + M_PI);
 
 	(*curPlayer).ball()->setState(Rolling);
 	(*curPlayer).ball()->setVector(vector);
@@ -3870,11 +3856,13 @@ void KolfGame::holeDone()
 	else
 		modified = false;
 
+	pause();
+
 	dontAddStroke = false;
 
 	inPlay = false;
 	timer->stop();
-	putter->resetDegrees();
+	putter->resetAngles();
 
 	int oldCurHole = curHole;
 	curHole++;
@@ -3954,6 +3942,8 @@ void KolfGame::holeDone()
 
 		(*curPlayer).ball()->collisionDetect();
 	}
+	
+	unPause();
 }
 
 void KolfGame::showInfo()
@@ -3983,8 +3973,6 @@ void KolfGame::hideInfoText()
 
 void KolfGame::openFile()
 {
-	pause();
-
 	Object *curObj = 0;
 
 	QCanvasItem *item = 0;
@@ -4195,8 +4183,6 @@ void KolfGame::openFile()
 		//showInfoDlg(true);
 		infoShown = true;
 	}
-
-	unPause();
 
 	modified = false;
 }

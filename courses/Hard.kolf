@@ -1698,9 +1698,9 @@ width=115
 dummykey=true
 
 [16-blackhole@354,290|51]
-exit=320,31
+exit=314,39
 exitDeg=180
-maxspeed=5
+maxspeed=4
 minspeed=3
 
 [16-cup@-48,-27|3]
@@ -1721,7 +1721,7 @@ dummykey=true
 [16-cup@-57,-40|72]
 dummykey=true
 
-[16-cup@87,88|73]
+[16-cup@87,87|73]
 dummykey=true
 
 [16-floater@122,335|39]
@@ -1735,9 +1735,9 @@ startPoint=67,242
 topWallVisible=true
 width=165
 
-[16-floater@188,15|63]
+[16-floater@182,24|63]
 botWallVisible=true
-endPoint=188,15
+endPoint=182,24
 height=34
 leftWallVisible=false
 rightWallVisible=true
