@@ -9,5 +9,5 @@ libkolfpoolball_la_METASOURCES = AUTO
 
 noinst_HEADERS = poolball.h
 
-data_DATA = poolball.plugin
-datadir = $(kde_datadir)/kolf
+kolf_DATA = poolball.plugin
+kolfdir = $(kde_datadir)/kolf

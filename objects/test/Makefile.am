@@ -9,5 +9,5 @@ libkolftest_la_METASOURCES = AUTO
 
 noinst_HEADERS = test.h
 
-data_DATA = test.plugin
-datadir = $(kde_datadir)/kolf
+kolf_DATA = test.plugin
+kolfdir = $(kde_datadir)/kolf
