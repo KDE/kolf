@@ -1512,7 +1512,7 @@ Putter::Putter(QCanvas *canvas)
 	guideLine->setZ(998.8);
 
 	setPen(QPen(black, 4));
-	putterWidth = 10;
+	putterWidth = 8;
 	maxDeg = 360;
 
 	hideInfo();
@@ -1551,7 +1551,7 @@ void Putter::setOrigin(int _x, int _y)
 		//return;
 	move(_x, _y);
 	//kdDebug() << "setOrigin\n";
-	len = 12;
+	len = 9;
 	finishMe();
 }
 
@@ -2142,36 +2142,42 @@ void WallPoint::collision(Ball *ball, long int id)
 	double vy = ball->yVelocity();
 	const double wallAngle = atan(wallSlope);
 	const double ballSlope = -(double)vy/(double)vx;
-	double ballangle = atan(ballSlope);
+	double ballAngle = atan(ballSlope);
 	if (vx < 0)  
-		ballangle += PI;
+		ballAngle += PI;
 
-	//kdDebug() << "----\nstart: " << this->start << endl;
-	//kdDebug() << "ballangle: " << rad2deg(ballangle) << endl;
-	//kdDebug() << "wallAngle: " << rad2deg(wallAngle) << endl;
+	kdDebug() << "----\nstart: " << this->start << endl;
+	kdDebug() << "ballAngle: " << rad2deg(ballAngle) << endl;
+	kdDebug() << "wallAngle: " << rad2deg(wallAngle) << endl;
 
-	double relAngle = wallAngle + PI / 2;
-
-	if (this->start)
-		relAngle += PI;
-
-	//kdDebug() << "relAngle: " << rad2deg(relAngle) << endl;
+	const double relWallAngle = wallAngle + PI / 2;
+	kdDebug() << "relWallAngle: " << rad2deg(relWallAngle) << endl;
 
 	// visible just means if we should bounce opposite way
 	bool weirdbounce = visible;
 
-	if (this->start)
+	// forget that we are using english, i switched
+	// start and end i think
+	// but it works
+	bool isStart = this->start;
+	if (start.x() < end.x())
+		isStart = !isStart;
+
+	const double angle = PI / 3;
+
+	// if it's going 'backwards', don't bounce opposite way
+	if (isStart)
 	{
-		if (ballangle < wallAngle - PI / 2 || ballangle > wallAngle + PI / 2)
+		if (ballAngle > relWallAngle - angle && ballAngle < relWallAngle + angle)
 			weirdbounce = false;
 	}
 	else
 	{
-		if (ballangle > wallAngle - PI / 2 || ballangle < wallAngle + PI / 2)
+		if (ballAngle > relWallAngle + angle || ballAngle < relWallAngle - angle)
 			weirdbounce = false;
 	}
 
-	//kdDebug() << "weirdbounce: " << weirdbounce << endl;
+	kdDebug() << "weirdbounce: " << weirdbounce << endl;
 
 	if (weirdbounce)
 	{
@@ -2198,7 +2204,7 @@ void WallPoint::collision(Ball *ball, long int id)
 		{
 			const double speed = ball->curSpeed() / dampening;
 
-			const double collisionAngle = ballangle - wallAngle;
+			const double collisionAngle = ballAngle - wallAngle;
 			const double leavingAngle = PI - collisionAngle + wallAngle;
 
 			vx = -cos(leavingAngle)*speed;
@@ -2429,12 +2435,12 @@ void Wall::collision(Ball *ball, long int id)
 		const double speed = (double)sqrt(vx * vx + vy * vy) / _dampening;
 		const double ballSlope = -(double)vy/(double)vx;
 		const double wallSlope = (double)(start.y() - end.y())/(double)(end.x() - start.x());
-		double ballangle = atan(ballSlope);
+		double ballAngle = atan(ballSlope);
 		if (vx < 0)  
-			ballangle += PI;
+			ballAngle += PI;
 		const double wallAngle = atan(wallSlope);
 
-		const double collisionAngle = ballangle - wallAngle;
+		const double collisionAngle = ballAngle - wallAngle;
 		const double leavingAngle = PI - collisionAngle + wallAngle;
 		
 		vx = -cos(leavingAngle)*speed;
@@ -2954,12 +2960,7 @@ void KolfGame::timeout()
 		(*curPlayer).ball()->setZ((*curPlayer).ball()->z() + .1 - (.1)/(curScore));
 		//kdDebug() << "z now is " << (*curPlayer).ball()->z()<< endl;
 
-		bool allPlayersDone = true;
-		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-			if ((*it).ball()->curState() != Holed)
-				allPlayersDone = false;
-
-		if (allPlayersDone)
+		if (allPlayersDone())
 		{
 			for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 				(*it).ball()->setVisible(false);
@@ -3146,12 +3147,8 @@ void KolfGame::shotDone()
 	{
 		emit maxStrokesReached();
 		ball->setState(Holed);
-		bool allPlayersDone = true;
-		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-			if ((*it).ball()->curState() != Holed)
-				allPlayersDone = false;
 
-		if (allPlayersDone)
+		if (allPlayersDone())
 		{
 			holeDone();
 			return;
@@ -3204,6 +3201,21 @@ void KolfGame::holeDone()
 {
 	setFocus();
 
+	bool reset = true;
+	if (askSave(true))
+	{
+		if (allPlayersDone())
+		{
+			// we'll reload this hole, but not reset
+			curHole--;
+			reset = false;
+		}
+		else
+			return;
+	}
+	else
+		modified = false;
+
 	//kdDebug() << "KolfGame::holeDone()\n";
 
 	inPlay = false;
@@ -3214,7 +3226,8 @@ void KolfGame::holeDone()
 	curHole++;
 	//kdDebug() << "curHole ++'d to " << curHole << endl;
 
-	whiteBall->move(width/2, height/2);
+	if (reset)
+		whiteBall->move(width/2, height/2);
 	int leastScore = INT_MAX;
 	// to get the first player to go first on every hole,
 	// don't do the score stuff below
@@ -3231,7 +3244,11 @@ void KolfGame::holeDone()
 			}
 		}
 
-		(*it).ball()->move(width/2, height/2);
+		if (reset)
+			(*it).ball()->move(width / 2, height / 2);
+		else
+			(*it).ball()->move(whiteBall->x(), whiteBall->y());
+
 		(*it).ball()->setState(Stopped);
 		// this gets set to false when the ball starts
 		// to move by the Mr. Ball himself.
@@ -3245,7 +3262,9 @@ void KolfGame::holeDone()
 	emit newPlayersTurn(&(*curPlayer));
 	//kdDebug() << (*curPlayer).name() << endl;
 	//kdDebug() << (*curPlayer).ball()->color().name() << endl;
-	openFile();
+	
+	if (reset)
+		openFile();
 
 	inPlay = false;
 	timer->start(timerMsec);
@@ -3496,13 +3515,13 @@ void KolfGame::addNewObject(Object *newObj)
 	newItem->move(width/2, height/2);
 }
 
-bool KolfGame::askSave()
+bool KolfGame::askSave(bool noMoreChances)
 {
-	if (!modified)
+	if ((!modified) && filename != QString::null)
 		// not cancel, don't save
 		return false;
 
-	int result = KMessageBox::warningYesNoCancel(this, i18n("There are unsaved changes to current hole. Save them?"), i18n("Unsaved changes"), i18n("Save"), i18n("Discard"), "DiscardAsk", true);
+	int result = KMessageBox::warningYesNoCancel(this, i18n("There are unsaved changes to current hole. Save them?"), i18n("Unsaved changes"), i18n("&Save"), noMoreChances? i18n("&Discard") : i18n("Save &Later"), noMoreChances? "DiscardAsk" : "SaveAsk", true);
 	switch (result)
 	{
 		case KMessageBox::Yes:
@@ -3526,8 +3545,14 @@ bool KolfGame::askSave()
 
 void KolfGame::addNewHole()
 {
-	if (askSave())
+	if (askSave(true))
 		return;
+
+	// either it's already false
+	// because it was saved by askSave(),
+	// or the user pressed the 'discard' button
+	modified = false;
+
 	// find highest hole num, and create new hole
 	// now openFile makes highest hole for us
 
@@ -3629,9 +3654,9 @@ void KolfGame::save()
 {
 	if (filename.isNull())
 	{
-		QString newfilename = QString::null;
-		while (newfilename == QString::null)
-			newfilename = KFileDialog::getSaveFileName(QString::null, "*.kolf", this, i18n("Pick Kolf Course to Save To"));
+		QString newfilename = KFileDialog::getSaveFileName(QString::null, "*.kolf", this, i18n("Pick Kolf Course to Save To"));
+		if (newfilename.isNull())
+			return;
 
 		filename = newfilename;
 	}
@@ -3692,13 +3717,12 @@ void KolfGame::toggleEditMode()
 	// won't be editing anymore, and user wants to cancel, we return
 	if (editing && modified)
 	{
-		if (askSave())
+		if (askSave(false))
 		{
 			emit checkEditing();
 			return;
 		}
 	}
-	modified = false;
 
 	//kdDebug() << "toggling\n";
 	editing = !editing;
@@ -3809,6 +3833,16 @@ void KolfGame::print(QPainter &p)
 	course->setBackgroundColor(white);
 	course->drawArea(r, &p);
 	course->setBackgroundColor(grass);
+}
+
+bool KolfGame::allPlayersDone()
+{
+	bool b = true;
+	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+		if ((*it).ball()->curState() != Holed)
+			b = false;
+
+	return b;
 }
 
 #include "game.moc"

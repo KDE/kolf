@@ -1,13 +1,8 @@
----- make bridges also calculate their Z from their area
----- vertical floaters (100% vertical) don't work
----- make it so one can have different sign text for different locales (use KConfig magic[ja]
+- make bridges also calculate their Z from their area
+- vertical floaters (100% vertical) don't work
+- ask user to save at close/quit
 
-DONE:
----- CRUCIAL: make wall's endpoints don't do their magic if the ball is coming the wrong direction, shouldn't be too hard
+these are really the only 3 known real problems. Wishlist:
 
-these are really the only 4 known real problems. Wishlist:
-
----- make everything pixmaps
-
-
+- make everything pixmaps
 

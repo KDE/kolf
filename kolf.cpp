@@ -195,11 +195,11 @@ void Kolf::startNewGame()
 		setHoleMovementEnabled(true);
 		aboutAction->setEnabled(true);
 		printAction->setEnabled(true);
+		saveAction->setEnabled(true);
+		saveAsAction->setEnabled(true);
 
-		saveAction->setEnabled(false);
 		clearHoleAction->setEnabled(false);
 		newHoleAction->setEnabled(false);
-		saveAsAction->setEnabled(false);
 		openAction->setEnabled(false);
 		recentAction->setEnabled(false);
 		newAction->setEnabled(false);
@@ -293,12 +293,12 @@ void Kolf::closeGame()
 	endAction->setEnabled(false);
 	aboutAction->setEnabled(false);
 	printAction->setEnabled(false);
+	saveAction->setEnabled(false);
+	saveAsAction->setEnabled(false);
 	setHoleMovementEnabled(false);
 
-	saveAction->setEnabled(false);
 	clearHoleAction->setEnabled(false);
 	newHoleAction->setEnabled(false);
-	saveAsAction->setEnabled(false);
 	openAction->setEnabled(true);
 	recentAction->setEnabled(true);
 	newAction->setEnabled(true);
@@ -409,10 +409,8 @@ void Kolf::editingStarted()
 	layout->addWidget(editor, 1, 0);
 	editor->show();
 
-	saveAction->setEnabled(true);
 	clearHoleAction->setEnabled(true);
 	newHoleAction->setEnabled(true);
-	saveAsAction->setEnabled(true);
 	setHoleMovementEnabled(false);
 
 	game->setFocus();
@@ -426,10 +424,8 @@ void Kolf::editingEnded()
 	if (scoreboard)
 		scoreboard->show();
 
-	saveAction->setEnabled(false);
 	clearHoleAction->setEnabled(false);
 	newHoleAction->setEnabled(false);
-	saveAsAction->setEnabled(false);
 	setHoleMovementEnabled(true);
 
 	if (game)

@@ -1081,7 +1081,9 @@ private:
 
 	bool modified;
 	// returns whether it was a cancel
-	bool askSave();
+	bool askSave(bool);
+
+	inline bool allPlayersDone();
 };
 
 #endif
