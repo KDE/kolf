@@ -3130,7 +3130,7 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 	scoreboardHoles = 0;
 	infoShown = false;
 	m_useMouse = true;
-	m_useAdvancedPutting = true;	
+	m_useAdvancedPutting = false;	
 	highestHole = 0;
 
 	holeInfo.setGame(this);

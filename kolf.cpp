@@ -133,7 +133,7 @@ void Kolf::initGUI()
 
 	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Mouse Putting"), 0, 0, 0, actionCollection(), "useadvancedputting");
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
-	useAdvancedPuttingAction->setChecked(config->readBoolEntry("useAdvancedPutting", true));
+	useAdvancedPuttingAction->setChecked(config->readBoolEntry("useAdvancedPutting", false));
 
 	aboutAction = new KAction(i18n("&About Course..."), 0, 0, 0, actionCollection(), "aboutcourse");
 	tutorialAction = new KAction(i18n("&Tutorial..."), 0, this, SLOT(tutorial()), actionCollection(), "tutorial");
