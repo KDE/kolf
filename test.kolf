@@ -108,7 +108,7 @@ changeEvery=50
 changeEnabled=true
 changeEvery=50
 
-[1-sign@205,58|55]
+[1-sign@212,59|55]
 botWallVisible=true
 height=111
 leftWallVisible=true

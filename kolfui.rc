@@ -24,6 +24,9 @@
 			<Action name="useadvancedputting" />			
 			<Action name="showguideline" />
 			<Action name="sound" />
+			<Separator />
+			<Action name="reloadplugins" />
+			<Action name="showplugins" />
 		</Menu>
 		<Menu name="help">
 			<Action name="aboutcourse" />

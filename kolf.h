@@ -58,6 +58,7 @@ protected slots:
 	void showGuideLineChanged(bool);	
 	void soundChanged(bool);	
 	void initPlugins();
+	void showPlugins();
  
 private:
 	QWidget *dummy;
@@ -95,7 +96,10 @@ private:
 	inline void setEditingEnabled(bool);
 	bool competition;
 
+	// contains everything
 	ObjectList *obj;
+	// contains subset of obj
+	ObjectList plugins;
 };
 
 #endif

@@ -132,6 +132,9 @@ void Kolf::initGUI()
 	connect(soundAction, SIGNAL(toggled(bool)), this, SLOT(soundChanged(bool)));
 	soundAction->setChecked(config->readBoolEntry("sound", true));
 
+	(void) new KAction(i18n("&Reload Plugins"), 0, this, SLOT(initPlugins()), actionCollection(), "reloadplugins");
+	(void) new KAction(i18n("&Show Plugins..."), 0, this, SLOT(showPlugins()), actionCollection(), "showplugins");
+
 	aboutAction = new KAction(i18n("&About Course..."), 0, 0, 0, actionCollection(), "aboutcourse");
 	tutorialAction = new KAction(i18n("&Tutorial..."), 0, this, SLOT(tutorial()), actionCollection(), "tutorial");
 
@@ -498,6 +501,8 @@ void Kolf::initPlugins()
 
 	obj->setAutoDelete(true);
 	obj->clear();
+	plugins.setAutoDelete(false);
+	plugins.clear();
 
 	// add prefab objects
 	obj->append(new SlopeObj());
@@ -517,6 +522,7 @@ void Kolf::initPlugins()
 	for (object = other->first(); object; object = other->next())
 	{
 		obj->append(object);
+		plugins.append(object);
 	}
 
 	if (game)
@@ -526,6 +532,15 @@ void Kolf::initPlugins()
 	}
 
 	//kdDebug() << "end of initPlugins" << endl;
+}
+
+void Kolf::showPlugins()
+{
+	QString text = QString("<h2>%1</h2>").arg(i18n("Currently Loaded"));
+	Object *object = 0;
+	for (object = plugins.first(); object; object = plugins.next())
+		text.append(object->name());
+	KMessageBox::information(this, text, i18n("Plugins"));
 }
 
 #include "kolf.moc"
