@@ -1160,7 +1160,7 @@ startPoint=36,377
 dummykey=true
 
 [14-blackhole@87,369|7]
-exit=366,51
+exit=366,50
 exitDeg=50
 maxspeed=2
 minspeed=1
@@ -1236,13 +1236,13 @@ reversed=true
 stuckOnGround=false
 width=53
 
-[14-slope@292,52|11]
+[14-slope@292,51|11]
 grade=2
 gradient=Vertical
-height=73
+height=79
 reversed=false
 stuckOnGround=false
-width=93
+width=96
 
 [14-wall@0,0|13]
 endPoint=203,205
@@ -2553,11 +2553,11 @@ hasFinalLoad=false
 maxstrokes=10
 par=3
 
-[3-puddle@256,301|41]
+[3-puddle@260,299|41]
 changeEnabled=false
 changeEvery=50
-height=24
-width=18
+height=22
+width=22
 
 [3-puddle@261,283|40]
 changeEnabled=false
@@ -2756,7 +2756,7 @@ endPoint=150,198
 startPoint=224,228
 
 [3-wall@0,0|31]
-endPoint=192,252
+endPoint=192,250
 startPoint=128,227
 
 [3-wall@0,0|34]
@@ -2764,11 +2764,11 @@ endPoint=255,24
 startPoint=250,13
 
 [3-wall@0,0|35]
-endPoint=192,250
+endPoint=192,252
 startPoint=192,250
 
 [3-wall@0,0|36]
-endPoint=192,252
+endPoint=192,250
 startPoint=189,264
 
 [3-wall@0,0|38]
@@ -3214,13 +3214,13 @@ reversed=true
 stuckOnGround=false
 width=30
 
-[4-slope@99,12|130]
+[4-slope@99,9|130]
 grade=3
 gradient=Horizontal
-height=38
+height=43
 reversed=false
 stuckOnGround=false
-width=38
+width=37
 
 [4-wall@0,0|10]
 endPoint=95,237
@@ -3260,7 +3260,7 @@ startPoint=76,195
 
 [4-wall@0,0|111]
 endPoint=216,291
-startPoint=190,299
+startPoint=189,299
 
 [4-wall@0,0|115]
 endPoint=138,131
@@ -3363,7 +3363,7 @@ endPoint=69,367
 startPoint=39,353
 
 [4-wall@0,0|21]
-endPoint=189,299
+endPoint=190,299
 startPoint=164,241
 
 [4-wall@0,0|22]
@@ -3451,7 +3451,7 @@ endPoint=365,22
 startPoint=314,12
 
 [4-wall@0,0|5]
-endPoint=190,299
+endPoint=189,299
 startPoint=153,355
 
 [4-wall@0,0|7]

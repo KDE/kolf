@@ -1,4 +1,5 @@
 [0-course@-50,-50]
+Name=Intro
 author=Jason Katz-Brown
 name=Intro
 
@@ -12,7 +13,7 @@ maxspeed=5
 minspeed=5
 
 [1-blackhole@258,282|5]
-exit=6,20
+exit=6,19
 exitDeg=0
 maxspeed=4
 minspeed=4
@@ -277,6 +278,6 @@ startPoint=281,155
 endPoint=279,120
 startPoint=309,119
 
-[1-wall@3,-1|44]
+[1-wall@0,0|44]
 endPoint=282,136
 startPoint=305,136

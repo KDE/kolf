@@ -4394,26 +4394,35 @@ void KolfGame::addNewObject(Object *newObj)
 
 	for (;; ++i)
 	{
+		bool found = false;
 		QCanvasItem *item = 0;
 		for (item = items.first(); item; item = items.next())
 		{
 			CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
 			if (citem)
+			{
 				if (citem->curId() == i)
-					continue;
+				{
+					found = true;
+					break;
+				}
+			}
 		}
 
-		break;
+
+		if (!found)
+			break;
 	}
 	canvasItem->setId(i);
 
 	canvasItem->setGame(this);
-	canvasItem->editModeChanged(editing);
-	
+
 	if (m_showInfo)
 		canvasItem->showInfo();
 	else
 		canvasItem->hideInfo();
+
+	canvasItem->editModeChanged(editing);
 
 	canvasItem->setName(newObj->_name());
 	addItemsToMoveableList(canvasItem->moveableItems());
