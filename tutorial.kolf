@@ -1,6 +1,6 @@
 [0-course@-50,-50]
 author=Jason Katz-Brown
-name=Tutorial Course
+Name=Tutorial Course
 
 [1-ball@34,267]
 dummykey=true
@@ -252,7 +252,7 @@ botWallVisible=true
 height=143
 leftWallVisible=true
 rightWallVisible=true
-text=<h3>Slopes</h3>Slopes: shaded rectangles or triangles that push the ball from dark to light.
+Comment=<h3>Slopes</h3>Slopes: shaded rectangles or triangles that push the ball from dark to light.
 topWallVisible=true
 width=398
 
@@ -261,7 +261,7 @@ botWallVisible=true
 height=171
 leftWallVisible=true
 rightWallVisible=true
-text=Hint: hit the ball onto the slope and let it roll into cup.
+Comment=Hint: hit the ball onto the slope and let it roll into cup.
 topWallVisible=true
 width=288
 
@@ -290,7 +290,7 @@ botWallVisible=true
 height=76
 leftWallVisible=true
 rightWallVisible=true
-text=Try out these different types of slopes.
+Comment=Try out these different types of slopes.
 topWallVisible=true
 width=307
 
@@ -383,7 +383,7 @@ botWallVisible=true
 height=158
 leftWallVisible=true
 rightWallVisible=true
-text=Steepness of slopes: shown when you press Up arrow key or right mouse button. Steepness goes from 8 (steepest) to 1 (least steep).\s
+Comment=Steepness of slopes: shown when you press Up arrow key or right mouse button. Steepness goes from 8 (steepest) to 1 (least steep).\s
 topWallVisible=true
 width=384
 
@@ -420,7 +420,7 @@ botWallVisible=true
 height=117
 leftWallVisible=true
 rightWallVisible=true
-text=<h3>Walls</h3>Watch how the ball bounces off the red walls.
+Comment=<h3>Walls</h3>Watch how the ball bounces off the red walls.
 topWallVisible=true
 width=371
 
@@ -517,7 +517,7 @@ botWallVisible=true
 height=206
 leftWallVisible=true
 rightWallVisible=true
-text=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The  windmill arm's speed may vary by hole.\s
+Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The  windmill arm's speed may vary by hole.\s
 topWallVisible=true
 width=267
 
@@ -553,7 +553,7 @@ botWallVisible=true
 height=164
 leftWallVisible=true
 rightWallVisible=true
-text=<h3>Black Holes</h3>Black Holes transport the  ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Press the Up arrow or right mouse button to see which Black Hole goes to which exit.
+Comment=<h3>Black Holes</h3>Black Holes transport the  ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Press the Up arrow or right mouse button to see which Black Hole goes to which exit.
 topWallVisible=true
 width=393
 
@@ -593,7 +593,7 @@ botWallVisible=true
 height=127
 leftWallVisible=true
 rightWallVisible=true
-text=<h3>Floaters</h3>Floaters are moving platforms that carry a ball that lands on it.  Floaters' speeds vary.
+Comment=<h3>Floaters</h3>Floaters are moving platforms that carry a ball that lands on it.  Floaters' speeds vary.
 topWallVisible=true
 width=391
 

@@ -1,7 +1,6 @@
 [0-course@-50,-50]
 author=Jason Katz-Brown
-borderWalls=false
-name=Hard Course
+Name=Hard Course
 
 [1-ball@84,73]
 dummykey=true

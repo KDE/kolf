@@ -1,6 +1,6 @@
 [0-course@-50,-50]
 author=Niklas Knutsson
-name=Classic
+Name=Classic
 
 [1-ball@200,360]
 dummykey=true

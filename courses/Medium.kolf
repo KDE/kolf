@@ -1,7 +1,6 @@
 [0-course@-50,-50]
 author=Jason Katz-Brown
-borderWalls=true
-name=Medium Course\s
+Name=Medium Course\s
 
 [1-ball@342,322]
 dummykey=true

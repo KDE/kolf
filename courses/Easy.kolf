@@ -1,6 +1,6 @@
 [0-course@-50,-50]
 author=Jason Katz-Brown
-name=Easy Course
+Name=Easy Course
 
 [1-ball@267,126]
 dummykey=true
@@ -558,7 +558,7 @@ botWallVisible=true
 height=55
 leftWallVisible=true
 rightWallVisible=false
-text=Hit slowly...
+Comment=Hit slowly...
 topWallVisible=true
 width=180
 
