@@ -275,7 +275,7 @@ QPointArray Slope::areaPoints() const
 bool Slope::collision(Ball *ball, long int /*id*/)
 {
 	if (grade <= 0)
-		return true;
+		return false;
 
 	double vx = ball->xVelocity();
 	double vy = ball->yVelocity();

@@ -1559,7 +1559,7 @@ WallPoint::WallPoint(bool start, Wall *wall, QCanvas *canvas)
 	alwaysShow = false;
 	editing = false;
 	visible = true;
-	lastId = 0;
+	lastId = INT_MAX - 10;
 	dontmove = false;
 
 	move(0, 0);
@@ -1648,7 +1648,7 @@ bool WallPoint::collision(Ball *ball, long int id)
 {
 	if (ball->curVector().magnitude() <= 0)
 		return false;
-	
+
 	long int tempLastId = lastId;
 	lastId = id;
 	QCanvasItemList l = collisions(true);
@@ -1661,19 +1661,32 @@ bool WallPoint::collision(Ball *ball, long int id)
 		}
 	}
 
-	if (abs(id - tempLastId) < 2)
-	{
-		return false;
-	}
+	//kdDebug() << "WallPoint::collision id: " << id << ", tempLastId: " << tempLastId << endl;
+	Vector ballVector(ball->curVector());
 
+	//kdDebug() << "Wall::collision ball speed: " << ball->curVector().magnitude() << endl;
+	int allowableDifference = 1;
+	if (ballVector.magnitude() < .30)
+		allowableDifference = 8;
+	else if (ballVector.magnitude() < .50)
+		allowableDifference = 6;
+	else if (ballVector.magnitude() < .65)
+		allowableDifference = 4;
+	else if (ballVector.magnitude() < .95)
+		allowableDifference = 2;
+
+	if (abs(id - tempLastId) <= allowableDifference)
+	{
+		//kdDebug() << "WallPoint::collision - SKIP\n";
+	}
+	else
+	{
 	bool weirdBounce = visible;
 
 	QPoint relStart(start? wall->startPoint() : wall->endPoint());
 	QPoint relEnd(start? wall->endPoint() : wall->startPoint());
 	Vector wallVector(relStart, relEnd);
 	wallVector.setDirection(-wallVector.direction());
-
-	Vector ballVector(ball->curVector());
 
 	// find the angle between vectors, between 0 and PI
 	{
@@ -1685,31 +1698,29 @@ bool WallPoint::collision(Ball *ball, long int id)
 			weirdBounce = false;
 	}
 
-	// find difference between wall vector and ball vector
+	playSound("wall", ball->curVector().magnitude() / 10.0);
 
+	ballVector /= wall->dampening;
+	const double ballAngle = ballVector.direction();
+
+	double wallAngle = wallVector.direction();
+
+	// opposite bounce, because we're the endpoint
 	if (weirdBounce)
-	{
-		playSound("wall", ball->curVector().magnitude() / 10.0);
+		wallAngle += M_PI / 2;
 
-		ballVector /= wall->dampening;
-		const double ballAngle = ballVector.direction();
+	const double collisionAngle = ballAngle - wallAngle;
+	const double leavingAngle = wallAngle - collisionAngle;
 
-		// opposite bounce, because we're the endpoint
-		const double wallAngle = wallVector.direction() + M_PI / 2;
+	ballVector.setDirection(leavingAngle);
+	ball->setVector(ballVector);
+	wall->lastId = id;
 
-		const double collisionAngle = ballAngle - wallAngle;
-		const double leavingAngle = wallAngle - collisionAngle;
+	//kdDebug() << "WallPoint::collision - NOT skip, weirdBounce is " << weirdBounce << endl;
+	} // end if that skips
 
-		ballVector.setDirection(leavingAngle);
-		ball->setVector(ballVector);
-		wall->lastId = id;
-
-		return false;
-	}
-	else
-	{
-		return wall->collision(ball, id);
-	}
+	wall->lastId = id;
+	return false;
 }
 
 /////////////////////////
@@ -1718,7 +1729,7 @@ Wall::Wall(QCanvas *canvas)
 	: QCanvasLine(canvas)
 {
 	editing = false;
-	lastId = 0;
+	lastId = INT_MAX - 10;
 
 	dampening = 1.2;
 
@@ -1883,14 +1894,28 @@ bool Wall::collision(Ball *ball, long int id)
 	startItem->lastId = id;
 	endItem->lastId = id;
 
-	if (abs(id - tempLastId) < 2)
+	//kdDebug() << "Wall::collision id: " << id << ", tempLastId: " << tempLastId << endl;
+	Vector ballVector(ball->curVector());
+
+	//kdDebug() << "Wall::collision ball speed: " << ball->curVector().magnitude() << endl;
+	int allowableDifference = 1;
+	if (ballVector.magnitude() < .30)
+		allowableDifference = 8;
+	else if (ballVector.magnitude() < .50)
+		allowableDifference = 6;
+	else if (ballVector.magnitude() < .75)
+		allowableDifference = 4;
+	else if (ballVector.magnitude() < .95)
+		allowableDifference = 2;
+	//kdDebug() << "Wall::collision allowableDifference is " << allowableDifference << endl;
+	if (abs(id - tempLastId) <= allowableDifference)
 	{
+		//kdDebug() << "Wall::collision - SKIP\n";
 		return false;
 	}
 
 	playSound("wall", ball->curVector().magnitude() / 10.0);
 
-	Vector ballVector(ball->curVector());
 	ballVector /= dampening;
 	const double ballAngle = ballVector.direction();
 
@@ -1901,6 +1926,7 @@ bool Wall::collision(Ball *ball, long int id)
 	ballVector.setDirection(leavingAngle);
 	ball->setVector(ballVector);
 
+	//kdDebug() << "Wall::collision - NOT skip\n";
 	return false;
 }
 

@@ -211,6 +211,9 @@ void Ball::collisionDetect(double oldx, double oldy)
 	else
 		collisionId++;
 
+	//kdDebug() << "------" << endl;
+	//kdDebug() << "Ball::collisionDetect id " << collisionId << endl;
+
 	// every other time...
 	// do friction
 	if (collisionId % 2 && !(xVelocity() == 0 && yVelocity() == 0))
@@ -371,7 +374,17 @@ void Ball::collisionDetect(double oldx, double oldy)
 	{
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(*it);
 		if (citem && citem->terrainCollisions())
-			citem->collision(this, collisionId);
+		{
+			// slopes return false
+			// as only one should be processed
+			// however that might not always be true
+
+			// read: if (not do terrain collisions)
+			if (!citem->collision(this, collisionId))
+			{
+				break;
+			}
+		}
 	}
 
 // Charles's smart wall check:
@@ -399,6 +412,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 					oldx, oldy, x(), y()
 				))
 			{
+				//kdDebug() << "smart wall collision\n";
 				wall->collision(this, collisionId);
 				break;
 			}
