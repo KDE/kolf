@@ -384,7 +384,7 @@ height=178
 width=146
 
 [11-slope@-15,24|17]
-grade=3
+grade=2
 gradient=Elliptic
 height=316
 reversed=true
@@ -536,6 +536,18 @@ changeEvery=50
 height=96
 width=12
 
+[13-sand@359,72|11]
+changeEnabled=false
+changeEvery=50
+height=76
+width=14
+
+[13-sand@362,118|12]
+changeEnabled=false
+changeEvery=50
+height=72
+width=10
+
 [13-sign@219,247|14]
 Comment=Hit slowly...
 botWallVisible=true
@@ -570,8 +582,8 @@ stuckOnGround=false
 width=248
 
 [13-wall@0,0|10]
-endPoint=391,135
-startPoint=267,8
+endPoint=385,132
+startPoint=365,12
 
 [14-ball@94,323]
 dummykey=true
@@ -1243,7 +1255,7 @@ height=44
 width=84
 
 [5-slope@14,195|36]
-grade=4
+grade=3
 gradient=Elliptic
 height=106
 reversed=true
@@ -1398,7 +1410,7 @@ stuckOnGround=false
 width=394
 
 [7-slope@247,27|10]
-grade=3
+grade=2
 gradient=Elliptic
 height=123
 reversed=true

@@ -1,5 +1,4 @@
 [0-course@-50,-50]
-Name=Really Easy
 author=Neil Stevens
 name=Really Easy
 
@@ -220,7 +219,7 @@ height=190
 width=58
 
 [3-slope@-188,220|24]
-grade=6
+grade=5
 gradient=Elliptic
 height=307
 reversed=false
