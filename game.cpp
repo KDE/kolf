@@ -3576,9 +3576,10 @@ void KolfGame::timeout()
 			{
 				shotDone();
 				loadStateList();
-
+				
 				// increment curPlayer; he did take a shot, after all
-				shotDone();
+				(*curPlayer).addStrokeToHole(curHole);
+				emit scoreChanged((*curPlayer).id(), curHole, (*curPlayer).score(curHole));
 			}
 			return;
 		}
@@ -3860,6 +3861,7 @@ void KolfGame::loadStateList()
 		BallStateInfo info = (*it);
 		Player &player = (*players->at(info.id - 1));
 		player.ball()->move(info.spot.x(), info.spot.y());
+		player.ball()->setBeginningOfHole(info.beginningOfHole);
 		if ((*curPlayer).id() == info.id)
 			ballMoved();
 		else

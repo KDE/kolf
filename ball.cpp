@@ -300,11 +300,12 @@ void Ball::collisionDetect(double oldx, double oldy)
 		{
 			QCanvasItem *item = *i;
 			Wall *wall = dynamic_cast<Wall*>(item);
-			if (!wall) continue;
+			if (!wall || !wall->isVisible())
+				continue;
 
 			if (Lines::intersects(
-					wall->startPoint().x(), wall->startPoint().y(),
-					wall->endPoint().x(),   wall->endPoint().y(),
+					wall->startPoint().x() + wall->x(), wall->startPoint().y() + wall->y(),
+					wall->endPoint().x() + wall->x(),   wall->endPoint().y() + wall->y(),
 				
 					oldx, oldy, x(), y()
 				))
