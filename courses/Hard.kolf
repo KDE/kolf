@@ -454,7 +454,7 @@ maxspeed=2
 minspeed=1
 
 [11-blackhole@293,44|16]
-exit=132,259
+exit=138,258
 exitDeg=5
 maxspeed=3
 minspeed=2
