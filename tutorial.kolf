@@ -15,7 +15,7 @@ maxstrokes=10
 par=2
 
 [1-sign@2,2|3]
-Comment=<h3>Welcome</h3> to the tutorial course for Kolf!\s
+Comment=<h3>Welcome</h3> to the tutorial course for Kolf!\n
 botWallVisible=true
 height=75
 leftWallVisible=true
@@ -33,7 +33,7 @@ topWallVisible=true
 width=363
 
 [1-sign@73,81|4]
-Comment=To hit the ball: hold down and release the Down arrow or left mouse button. How long you press the key determines ball's speed.\s
+Comment=To hit the ball: hold down and release the Down arrow or left mouse button. How long you press the key determines ball's speed.\n
 botWallVisible=true
 height=114
 leftWallVisible=true
@@ -383,7 +383,7 @@ botWallVisible=true
 height=158
 leftWallVisible=true
 rightWallVisible=true
-Comment=Steepness of slopes: shown when you press Up arrow key or right mouse button. Steepness goes from 8 (steepest) to 1 (least steep).\s
+Comment=Steepness of slopes: shown when you press Up arrow key or right mouse button. Steepness goes from 8 (steepest) to 1 (least steep).\n
 topWallVisible=true
 width=384
 
@@ -488,7 +488,7 @@ topWallVisible=true
 width=138
 
 [6-sign@3,5|4]
-Comment=<h3>Puddles (Water)</h3>Hitting into a Puddle (blue) adds an extra stroke to your score, and your ball is placed outside the Puddle.\s
+Comment=<h3>Puddles (Water)</h3>Hitting into a Puddle (blue) adds an extra stroke to your score, and your ball is placed outside the Puddle.\n
 botWallVisible=true
 height=145
 leftWallVisible=true
@@ -517,7 +517,7 @@ botWallVisible=true
 height=206
 leftWallVisible=true
 rightWallVisible=true
-Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The  windmill arm's speed may vary by hole.\s
+Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The  windmill arm's speed may vary by hole.\n
 topWallVisible=true
 width=267
 
