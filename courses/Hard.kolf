@@ -1,5 +1,6 @@
 [0-course@-50,-50]
-Name=Hard Course
+Name=難しいコース
+Name[ja]=難しいコース
 Name[af]=hard natuurlik
 Name[bs]=Težak kurs
 Name[cs]=Těžký
@@ -8,7 +9,6 @@ Name[el]=Δύσκολη πίστα
 Name[es]=Curso duro
 Name[fi]=Vaikea kenttä
 Name[hu]=Nehéz pálya
-Name[ja]=難しいコース
 Name[pt]=Percurso Difícil
 Name[pt_BR]=Curso difícil
 Name[sl]=Težka steza
@@ -747,8 +747,8 @@ dummykey=true
 [12-blackhole@244,110|62]
 exit=158,101
 exitDeg=290
-maxspeed=2
-minspeed=2
+maxspeed=3
+minspeed=3
 
 [12-blackhole@359,23|65]
 exit=111,236
@@ -943,12 +943,12 @@ endPoint=13,332
 startPoint=21,360
 
 [12-wall@0,0|42]
-endPoint=318,79
+endPoint=316,78
 startPoint=282,74
 
 [12-wall@0,0|43]
 endPoint=337,57
-startPoint=316,78
+startPoint=318,79
 
 [12-wall@0,0|44]
 endPoint=339,30
@@ -959,7 +959,7 @@ endPoint=333,14
 startPoint=339,30
 
 [12-wall@0,0|46]
-endPoint=318,79
+endPoint=316,78
 startPoint=310,111
 
 [12-wall@0,0|47]
@@ -984,7 +984,7 @@ startPoint=284,137
 
 [12-wall@0,0|54]
 endPoint=136,332
-startPoint=134,357
+startPoint=133,354
 
 [12-wall@0,0|55]
 endPoint=56,280
@@ -1020,7 +1020,7 @@ startPoint=186,86
 
 [12-wall@0,0|63]
 endPoint=147,372
-startPoint=133,354
+startPoint=134,357
 
 [12-wall@0,0|64]
 endPoint=186,388
@@ -1035,7 +1035,7 @@ endPoint=288,292
 startPoint=310,111
 
 [12-wall@0,0|8]
-endPoint=134,357
+endPoint=133,354
 startPoint=104,374
 
 [12-wall@0,0|9]
@@ -1078,13 +1078,13 @@ par=3
 
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
+Comment[ja]=フローターでボールを<strong>プッシュ</strong>させよう!
 Comment[da]=Lad svæverne <strong>skubbe</strong> dig!
 Comment[es]=Dejar que los flotadores te <strong>empujen</strong>
 Comment[fi]=Anna kelluvien <strong>painaa</strong> sinua!
 Comment[hu]=Csak a legjobbaknak!
-Comment[ja]=フローターでボールを<strong>プッシュ</strong>させよう!
 Comment[pt]=Deixe os flutuadores <strong>empurrá-lo</strong>!
-Comment[pt_BR]=Deixe as bóias <strong>levarem</strong> você! 
+Comment[pt_BR]=Deixe as bóias <strong>levarem</strong> você!
 Comment[sv]=Låt flottarna <strong>knuffa</strong> dig!
 botWallVisible=true
 height=196

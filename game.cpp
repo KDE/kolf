@@ -2762,7 +2762,7 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 
 	QHBoxLayout *hlayout = new QHBoxLayout(layout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Course name: "), this));
-	KLineEdit *nameEdit = new KLineEdit(holeInfo->name(), this);
+	KLineEdit *nameEdit = new KLineEdit(holeInfo->untranslatedName(), this);
 	hlayout->addWidget(nameEdit);
 	connect(nameEdit, SIGNAL(textChanged(const QString &)), this, SLOT(nameChanged(const QString &)));
 
@@ -2806,6 +2806,7 @@ void HoleConfig::authorChanged(const QString &newauthor)
 void HoleConfig::nameChanged(const QString &newname)
 {
 	holeInfo->setName(newname);
+	holeInfo->setUntranslatedName(newname);
 	changed();
 }
 
@@ -2983,6 +2984,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	holeInfo.setGame(this);
 	holeInfo.setAuthor(i18n("Course Author"));
 	holeInfo.setName(i18n("Course Name"));
+	holeInfo.setUntranslatedName(i18n("Course Name"));
 	holeInfo.setMaxStrokes(10);
 	holeInfo.borderWallsChanged(true);
 
@@ -4270,8 +4272,8 @@ void KolfGame::openFile()
 	// because it's old and when i added ids i forgot to change it.
 	cfg->setGroup("0-course@-50,-50");
 	holeInfo.setAuthor(cfg->readEntry("author", holeInfo.author()));
-	// Name is new for translating, name is for backwards compa
-	holeInfo.setName(cfg->readEntry("Name", cfg->readEntry("name", holeInfo.name())));
+	holeInfo.setName(cfg->readEntry("Name", holeInfo.name()));
+	holeInfo.setUntranslatedName(cfg->readEntryUntranslated("Name", holeInfo.untranslatedName()));
 	emit titleChanged(holeInfo.name());
 
 	cfg->setGroup(QString("%1-hole@-50,-50|0").arg(curHole));

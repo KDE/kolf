@@ -878,8 +878,12 @@ public:
 	bool hasMaxStrokes() const { return m_maxStrokes != m_lowestMaxStrokes; }
 	void setAuthor(QString newauthor) { m_author = newauthor; }
 	QString author() const { return m_author; }
+
 	void setName(QString newname) { m_name = newname; }
+	void setUntranslatedName(QString newname) { m_untranslatedName = newname; }
 	QString name() const { return m_name; }
+	QString untranslatedName() const { return m_untranslatedName; }
+
 	virtual Config *config(QWidget *parent) { return new HoleConfig(this, parent); }
 	void borderWallsChanged(bool yes);
 	bool borderWalls() const { return m_borderWalls; }
@@ -887,6 +891,7 @@ public:
 private:
 	QString m_author;
 	QString m_name;
+	QString m_untranslatedName;
 	bool m_borderWalls;
 	int m_par;
 	int m_maxStrokes;
