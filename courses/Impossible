@@ -1,5 +1,7 @@
 [0-course@-50,-50]
 Name=Impossible
+Name[es]=Imposible
+Name[sv]=Omöjlig bana
 author=Jason Katz-Brown
 
 [1-ball@31,330]
