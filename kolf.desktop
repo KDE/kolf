@@ -2,6 +2,7 @@
 Encoding=UTF-8
 DocPath=kolf/index.html
 Name=Kolf
+Name[ar]=لعبة الجولف (Kolf)
 Name[bn]=কল্‌ফ
 Name[eo]=Golfo
 Name[hi]=कोल्फ
@@ -62,4 +63,4 @@ GenericName[xx]=xxMiniature Golfxx
 GenericName[zh_CN]=微型高尔夫
 GenericName[zh_TW]=迷你高爾夫
 GenericName[zu]=Igalofu elincanyana
-Categories=Qt;KDE;Game;ArcadeGame
+Categories=Qt;KDE;Game;ArcadeGame;
