@@ -353,10 +353,14 @@ void Ball::collisionDetect(double oldx, double oldy)
 		{
 			if (!citem->terrainCollisions())
 			{
+				// read: if (not do terrain collisions)
 				if (!citem->collision(this, collisionId))
 				{
+					// if (skip smart wall test)
 					if (citem->vStrut() || item->rtti() == Rtti_Wall)
 						goto end;
+					else
+						goto wallCheck;
 				}
 			}
 			break;
@@ -370,9 +374,9 @@ void Ball::collisionDetect(double oldx, double oldy)
 			citem->collision(this, collisionId);
 	}
 
-// this makes kolf more buggy than it is without
-// or does it?
-// - jason
+// Charles's smart wall check:
+	
+	wallCheck:
 
 	{ // check if I went through a wall
 		QCanvasItemList items;
