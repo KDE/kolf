@@ -783,7 +783,6 @@ public:
 	virtual void setGame(KolfGame *game);
 	virtual Config *config(QWidget *parent) { return new BridgeConfig(this, parent); }
 	void setSize(int width, int height);
-	virtual QPointArray areaPoints() const;
 	virtual QPtrList<QCanvasItem> moveableItems();
 	void setWallColor(QColor color);
 	QPen wallPen() { return topWall->pen(); }
@@ -1013,13 +1012,11 @@ private:
 	int m_maxStrokes;
 };
 
-class StrokeCircle : public QCanvasItem {
-    
-    public:
-    
+class StrokeCircle : public QCanvasItem
+{
+public:
 	StrokeCircle(QCanvas *canvas);
-	virtual ~StrokeCircle();	
-    
+
 	void setValue(double v);
 	double value();	
 	void setMaxValue(double m);
@@ -1028,16 +1025,14 @@ class StrokeCircle : public QCanvasItem {
 	int thickness() const;
 	int width() const;
 	int height() const;
-	void draw(QPainter &p);
-	QRect boundingRect() const;
-	bool collidesWith(const QCanvasItem*) const;
-	bool collidesWith(const QCanvasSprite*, const QCanvasPolygonalItem*, const QCanvasRectangle*, const QCanvasEllipse*, const QCanvasText*) const;
-    
-    private:
-	
+	virtual void draw(QPainter &p);
+	virtual QRect boundingRect() const;
+	virtual bool collidesWith(const QCanvasItem*) const;
+	virtual bool collidesWith(const QCanvasSprite*, const QCanvasPolygonalItem*, const QCanvasRectangle*, const QCanvasEllipse*, const QCanvasText*) const;
+
+private:
 	double dvalue, dmax;
 	int ithickness, iwidth, iheight;
-	
 };
 
 class KolfGame : public QCanvasView

@@ -18,7 +18,8 @@ int main(int argc, char **argv)
     "(c) 2002, Jason Katz-Brown", "", "http://www.katzbrown.com/kolf/");
 
   aboutData.addAuthor("Jason Katz-Brown", I18N_NOOP("Main author"), "jason@katzbrown.com");
-  aboutData.addCredit("Daniel Matza-Brown", I18N_NOOP("Working wall-bouncing algorithm"), 0);
+  aboutData.addAuthor("Niklas Knutsson", I18N_NOOP("Advanced putting mode"), 0);
+  aboutData.addAuthor("Daniel Matza-Brown", I18N_NOOP("Working wall-bouncing algorithm"), 0);
   aboutData.addCredit("Rob Renaud", I18N_NOOP("Wall-bouncing help"), 0);
 
   KCmdLineArgs::init(argc, argv, &aboutData);
