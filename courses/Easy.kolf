@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=Easy Course
+Name[sv]=Enkel bana
 author=Jason Katz-Brown
 name=Easy Course
 
@@ -550,6 +551,7 @@ width=10
 
 [13-sign@219,247|14]
 Comment=Hit slowly...
+Comment[sv]=Slå långsamt...
 botWallVisible=true
 height=55
 leftWallVisible=true

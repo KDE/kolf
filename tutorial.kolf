@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=Tutorial Course
+Name[sv]=Övningsbana
 author=Jason Katz-Brown
 name=Tutorial Course
 
@@ -17,6 +18,7 @@ par=2
 
 [1-sign@2,2|3]
 Comment=<h3>Welcome</h3> to the tutorial course for Kolf!
+Comment[sv]=<h3>Välkommen</h3> till Kolfs övningsbana.
 botWallVisible=true
 height=74
 leftWallVisible=true
@@ -98,6 +100,7 @@ width=112
 
 [10-sign@7,9|4]
 Comment=<h3>Bridges</h3>Bridges can have walls on the top, bottom, left, or right.
+Comment[sv]=<h3>Broar</h3>Broar kan ha väggar över, under, till vänster eller till höger.
 botWallVisible=true
 height=115
 leftWallVisible=true
@@ -174,6 +177,7 @@ width=172
 
 [11-sign@145,4|3]
 Comment=<h3>Everything</h3>Here's a hole that has it all. Have fun with Kolf!<br><center>-- Jason Katz-Brown</center>
+Comment[sv]=<h3>Alltihop</h3>Här är ett hål som har alltihop. Hoppas du får roligt med Kolf!<br><center>-- Jason Katz-Brown</center>
 botWallVisible=true
 height=132
 leftWallVisible=true
@@ -279,6 +283,7 @@ par=3
 
 [3-sign@4,4|4]
 Comment=Try out these different types of slopes.
+Comment[sv]=Prova med de här olika typerna av sluttning.
 botWallVisible=true
 height=87
 leftWallVisible=true
@@ -472,6 +477,7 @@ width=78
 
 [6-sign@3,152|37]
 Comment=<h3>Sand</h3>Sand is yellow, and slows your ball down.
+Comment[sv]=<h3>Sand</h3>Sand är gul, och saktar ner bollen.
 botWallVisible=true
 height=147
 leftWallVisible=true
@@ -506,6 +512,7 @@ par=2
 
 [7-sign@130,2|4]
 Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The windmill arm's speed may vary by hole.
+Comment[sv]=<h3>Väderkvarnar</h3>Väderkvarnar (brun bas med arm som flyttas) har bruna väggar (eller halva väggar). Väderkvarnens hastighet kan variera för olika hål.
 botWallVisible=true
 height=206
 leftWallVisible=true
@@ -583,6 +590,7 @@ par=2
 
 [9-sign@5,6|3]
 Comment=<h3>Floaters</h3>Floaters are moving platforms that carry a ball that lands on it. Floaters' speeds vary.
+Comment[sv]=<h3>Flottar</h3>Flottar är flyttbara plattformar som kan bära en boll som landar på dem. Flottarnas hastighet varierar.
 botWallVisible=true
 height=127
 leftWallVisible=true
