@@ -111,7 +111,7 @@ slope and let it roll into the cup to move onto the next hole.</para>
 </sect1>
 </chapter>
 
-<chapter id="Basics"> <title>Basics</title>
+<chapter id="basics"> <title>Basics</title>
 <para>Here's in-depth description of &kolf;'s basic features.</para>
 
 <sect1 id="starting"> 
@@ -214,7 +214,7 @@ button next to the player's name.</para>
 <para>Two items will appear on new holes: a cup, and a white ball. The white ball marks where players' balls start the hole.</para>
 </sect1>
 
-<sect1 id="basics"> <title>Editing Basics</title>
+<sect1 id="editing-basics"> <title>Editing Basics</title>
 <para>The basic building block of &kolf; courses is the <quote>object</quote>. Holes are made up of a bunch of objects. Objects can be moved to any location, and the different kinds of objects each have different properties you can set.</para>
 <para>To start editing a hole, toggle the <menuchoice><guimenu>Hole</guimenu><guimenuitem>Edit</guimenuitem></menuchoice> menu item, or press the pencil icon on the toolbar. To leave editing mode, uncheck this menu item (or the toolbar icon).</para>
 
