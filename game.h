@@ -202,6 +202,7 @@ public:
 private:
 	KImageEffect::GradientType type;
 	inline void setType(KImageEffect::GradientType type);
+	bool showingInfo;
 	double grade;
 	bool reversed;
 	QColor color;
@@ -209,6 +210,8 @@ private:
 	void updatePixmap();
 	bool stuckOnGround;
 	QPixmap grass;
+
+	void clearArrows();
 
 	QPtrList<Arrow> arrows;
 	QCanvasText *text;

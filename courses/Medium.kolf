@@ -1181,14 +1181,6 @@ reversed=true
 stuckOnGround=false
 width=125
 
-[18-slope@5,12|9]
-grade=1
-gradient=Elliptic
-height=123
-reversed=true
-stuckOnGround=false
-width=123
-
 [18-windmill@9,179|6]
 botWallVisible=false
 bottom=false

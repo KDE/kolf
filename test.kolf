@@ -22,14 +22,6 @@ hasFinalLoad=false
 maxstrokes=4
 par=3
 
-[1-slope@57,210|3]
-grade=2
-gradient=Vertical
-height=40
-reversed=false
-stuckOnGround=false
-width=174
-
 [1-slope@57,251|4]
 grade=2
 gradient=Vertical
@@ -37,6 +29,14 @@ height=43
 reversed=true
 stuckOnGround=false
 width=195
+
+[1-slope@90,146|3]
+grade=2
+gradient=Diagonal
+height=85
+reversed=false
+stuckOnGround=false
+width=147
 
 [2-ball@200,200]
 dummykey=true

@@ -204,6 +204,7 @@ Slope::Slope(QRect rect, QCanvas *canvas)
 	: QCanvasRectangle(rect, canvas), type(KImageEffect::VerticalGradient), grade(4), reversed(false), color(QColor("#327501"))
 {
 	stuckOnGround = false;
+	showingInfo = false;
 
 	gradientKeys[KImageEffect::VerticalGradient] = "Vertical";
 	gradientKeys[KImageEffect::HorizontalGradient] = "Horizontal";
@@ -243,11 +244,14 @@ Slope::Slope(QRect rect, QCanvas *canvas)
 
 bool Slope::terrainCollisions() const
 {
-	return type == KImageEffect::EllipticGradient;
+	// having circles be different is evil
+	//return type == KImageEffect::EllipticGradient;
+	return false;
 }
 
 void Slope::showInfo()
 {
+	showingInfo = true;
 	Arrow *arrow = 0;
 	for (arrow = arrows.first(); arrow; arrow = arrows.next())
 	{
@@ -259,6 +263,7 @@ void Slope::showInfo()
 
 void Slope::hideInfo()
 {
+	showingInfo = false;
 	Arrow *arrow = 0;
 	for (arrow = arrows.first(); arrow; arrow = arrows.next())
 		arrow->setVisible(false);
@@ -268,13 +273,21 @@ void Slope::hideInfo()
 void Slope::aboutToDie()
 {
 	delete point;
+	clearArrows();
+	delete text;
+}
+
+void Slope::clearArrows()
+{
 	Arrow *arrow = 0;
 	for (arrow = arrows.first(); arrow; arrow = arrows.next())
+	{
+		arrow->setVisible(false);
 		arrow->aboutToDie();
+	}
 	arrows.setAutoDelete(true);
 	arrows.clear();
 	arrows.setAutoDelete(false);
-	delete text;
 }
 
 QPtrList<QCanvasItem> Slope::moveableItems() const
@@ -342,6 +355,11 @@ void Slope::moveArrow()
 	Arrow *arrow = 0;
 	for (arrow = arrows.first(); arrow; arrow = arrows.next())
 		arrow->move((double)xavg, (double)yavg);
+	
+	if (showingInfo)
+		showInfo();
+	else
+		hideInfo();
 
 	text->move((double)xavg - text->boundingRect().width() / 2, (double)yavg - text->boundingRect().height() / 2);
 }
@@ -543,9 +561,7 @@ void Slope::updatePixmap()
 	// merge into this->pixmap. This is drawn in draw()
 
 	// we update the arrows in this function
-	arrows.setAutoDelete(true);
-	arrows.clear();
-	arrows.setAutoDelete(false);
+	clearArrows();
 
 	const bool diag = type == KImageEffect::DiagonalGradient || type == KImageEffect::CrossDiagonalGradient;
 	const bool circle = type == KImageEffect::EllipticGradient;
@@ -2649,6 +2665,9 @@ void Wall::editModeChanged(bool changed)
 
 bool Wall::collision(Ball *ball, long int id)
 {
+	if (ball->curVector().magnitude() <= 0)
+		return false;
+
 	if (abs(id - lastId) < 2)
 	{
 		lastId = id;
@@ -2717,7 +2736,7 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 
 	hlayout = new QHBoxLayout(layout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Par"), this));
-	QSpinBox *par = new QSpinBox(2, 15, 1, this);
+	QSpinBox *par = new QSpinBox(1, 15, 1, this);
 	par->setValue(holeInfo->par());
 	hlayout->addWidget(par);
 	connect(par, SIGNAL(valueChanged(int)), this, SLOT(parChanged(int)));
