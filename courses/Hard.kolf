@@ -1,7 +1,9 @@
 [0-course@-50,-50]
 Name=Hard Course
+Name[af]=hard natuurlik
 Name[be]=Складаная пляцоўка
 Name[bs]=Težak kurs
+Name[da]=Svær bane
 Name[es]=Curso duro
 Name[pt_BR]=Curso difícil
 Name[sv]=Svår bana
@@ -1070,6 +1072,7 @@ par=3
 
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
+Comment[da]=Lad svæverne <strong>skubbe</strong> dig!
 Comment[es]=Dejar que los flotadores te <strong>empujen</strong>
 Comment[pt_BR]=Deixe as bóias <strong>levarem</strong> você! 
 Comment[sv]=Låt flottarna <strong>knuffa</strong> dig!

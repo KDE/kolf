@@ -1,7 +1,9 @@
 [0-course@-50,-50]
 Name=Impossible Course
+Name[af]=onmoontlik natuurlik
 Name[be]=Немагчымая пляцоўка
 Name[bs]=Nemoguć kurs
+Name[da]=Umulig bane
 Name[es]=Curso imposible
 Name[pt_BR]=Curso Impossível
 Name[sv]=Omöjlig bana
@@ -787,6 +789,7 @@ width=66
 
 [13-sign@142,193|1]
 Comment=Reprieve
+Comment[da]=Red dig selv
 Comment[es]=Respiro
 Comment[pt_BR]=Suspensão
 Comment[sv]=Lättnad
@@ -1502,7 +1505,11 @@ width=50
 
 [17-sign@23,152|20]
 Comment=Luck
+Comment[bs]=Sreća
+Comment[da]=Held
+Comment[es]=Suerte
 Comment[pt_BR]=Sorte
+Comment[sv]=Tur
 botWallVisible=false
 height=51
 leftWallVisible=false
@@ -3269,6 +3276,11 @@ width=66
 
 [9-sign@146,329|23]
 Comment=Chaos
+Comment[af]=chaos
+Comment[bs]=Haos
+Comment[da]=Kaos
+Comment[es]=Caos
+Comment[sv]=Kaos
 botWallVisible=true
 height=38
 leftWallVisible=false
