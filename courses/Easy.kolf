@@ -1118,7 +1118,7 @@ hasFinalLoad=false
 maxstrokes=10
 par=3
 
-[3-slope@184,12|7]
+[3-slope@184,11|7]
 grade=4
 gradient=Vertical
 height=177
@@ -1126,7 +1126,7 @@ reversed=true
 stuckOnGround=false
 width=21
 
-[3-slope@205,12|6]
+[3-slope@205,11|6]
 grade=4
 gradient=Diagonal
 height=177

@@ -34,6 +34,7 @@
 #include <qlayout.h>
 #include <qmap.h>
 #include <qpainter.h>
+#include <qpaintdevicemetrics.h>
 #include <qpen.h>
 #include <qpixmap.h>
 #include <qpixmapcache.h>
@@ -200,17 +201,19 @@ Slope::Slope(QRect rect, QCanvas *canvas)
 
 {
 	stuckOnGround = false;
-	setPen(NoPen);
+
 	gradientKeys[KImageEffect::VerticalGradient] = "Vertical";
 	gradientKeys[KImageEffect::HorizontalGradient] = "Horizontal";
 	gradientKeys[KImageEffect::DiagonalGradient] = "Diagonal";
 	gradientKeys[KImageEffect::CrossDiagonalGradient] = "Opposite Diagonal";
 	gradientKeys[KImageEffect::EllipticGradient] = "Elliptic";
+
 	gradientI18nKeys[KImageEffect::VerticalGradient] = i18n("Vertical");
 	gradientI18nKeys[KImageEffect::HorizontalGradient] = i18n("Horizontal");
 	gradientI18nKeys[KImageEffect::DiagonalGradient] = i18n("Diagonal");
 	gradientI18nKeys[KImageEffect::CrossDiagonalGradient] = i18n("Opposite Diagonal");
 	gradientI18nKeys[KImageEffect::EllipticGradient] = i18n("Circular");
+
 	setZ(-50);
 
 	if (!QPixmapCache::find("grass", grass))
@@ -387,7 +390,7 @@ void Slope::save(KSimpleConfig *cfg)
 
 void Slope::draw(QPainter &painter)
 {
-	painter.drawPixmap((int)x(), (int)y(), pixmap);
+	painter.drawPixmap(x(), y(), pixmap);
 }
 
 QPointArray Slope::areaPoints() const
@@ -512,7 +515,9 @@ void Slope::setType(KImageEffect::GradientType type)
 	if (type == KImageEffect::EllipticGradient)
 		newSize(width(), height());
 	moveArrow();
-	updatePixmap();
+
+	if (type != KImageEffect::HorizontalGradient && type != KImageEffect::VerticalGradient)
+		updatePixmap();
 }
 
 void Slope::updatePixmap()
@@ -639,6 +644,7 @@ void Slope::updatePixmap()
 		QPainter bpainter(&bitmap);
 		bpainter.setBrush(color1);
 		QPointArray r = areaPoints();
+
 		// shift all the points
 		for (unsigned int i = 0; i < r.count(); ++i)
 		{
@@ -647,6 +653,7 @@ void Slope::updatePixmap()
 			p.setY(p.y() - y());
 		}
 		bpainter.drawPolygon(r);
+
 		// mask is drawn
 		pixmap.setMask(bitmap);
 	}
@@ -1663,37 +1670,25 @@ Puddle::Puddle(QCanvas *canvas)
 	: Ellipse(canvas)
 {
 	setSize(45, 30);
-	printingModeChanged(false);
+
+	QBrush brush;
+	QPixmap pic;
+
+	if (!QPixmapCache::find("puddle", pic))
+	{
+		pic.load(locate("appdata", "pics/puddle.png"));
+		QPixmapCache::insert("puddle", pic);
+	}
+
+	brush.setPixmap(pic);
+	setBrush(brush);
+
+	KPixmap pointPic(pic);
+	KPixmapEffect::intensity(pointPic, .45);
+	brush.setPixmap(pointPic);
+	point->setBrush(brush);
 
 	setZ(-25);
-}
-
-void Puddle::printingModeChanged(bool printing)
-{
-	if (printing)
-	{
-		setBrush(QColor("#4A91F6"));
-		point->setBrush(brush().color().light());
-	}
-	else
-	{
-		QBrush brush;
-		QPixmap pic;
-
-		if (!QPixmapCache::find("puddle", pic))
-		{
-			pic.load(locate("appdata", "pics/puddle.png"));
-			QPixmapCache::insert("puddle", pic);
-		}
-
-		brush.setPixmap(pic);
-		setBrush(brush);
-
-		KPixmap pointPic(pic);
-		KPixmapEffect::intensity(pointPic, .45);
-		brush.setPixmap(pointPic);
-		point->setBrush(brush);
-	}
 }
 
 bool Puddle::collision(Ball *ball, long int /*id*/)
@@ -1726,37 +1721,25 @@ Sand::Sand(QCanvas *canvas)
 	: Ellipse(canvas)
 {
 	setSize(45, 40);
-	printingModeChanged(false);
+
+	QBrush brush;
+	QPixmap pic;
+
+	if (!QPixmapCache::find("sand", pic))
+	{
+		pic.load(locate("appdata", "pics/sand.png"));
+		QPixmapCache::insert("sand", pic);
+	}
+
+	brush.setPixmap(pic);
+	setBrush(brush);
+
+	KPixmap pointPic(pic);
+	KPixmapEffect::intensity(pointPic, .45);
+	brush.setPixmap(pointPic);
+	point->setBrush(brush);
 
 	setZ(-26);
-}
-
-void Sand::printingModeChanged(bool printing)
-{
-	if (printing)
-	{
-		setBrush(QColor("#CDCA39"));
-		point->setBrush(brush().color().light());
-	}
-	else
-	{
-		QBrush brush;
-		QPixmap pic;
-
-		if (!QPixmapCache::find("sand", pic))
-		{
-			pic.load(locate("appdata", "pics/sand.png"));
-			QPixmapCache::insert("sand", pic);
-		}
-
-		brush.setPixmap(pic);
-		setBrush(brush);
-
-		KPixmap pointPic(pic);
-		KPixmapEffect::intensity(pointPic, .45);
-		brush.setPixmap(pointPic);
-		point->setBrush(brush);
-	}
 }
 
 bool Sand::collision(Ball *ball, long int /*id*/)
@@ -2039,9 +2022,9 @@ Cup::Cup(QCanvas *canvas)
 	}
 }
 
-void Cup::draw(QPainter &painter)
+void Cup::draw(QPainter &p)
 {
-	painter.drawPixmap(QPoint(x() - width() / 2, y() - height() / 2), pixmap);
+	p.drawPixmap(QPoint(x() - width() / 2, y() - height() / 2), pixmap);
 }
 
 bool Cup::place(Ball *ball, bool /*wasCenter*/)
@@ -2497,12 +2480,6 @@ Wall::Wall(QCanvas *canvas)
 	editModeChanged(false);
 }
 
-void Wall::printingModeChanged(bool printing)
-{
-	startItem->setVisible(!printing || editing);
-	endItem->setVisible(!printing || editing);
-}
-
 void Wall::selectedItem(QCanvasItem *item)
 {
 	if (item->rtti() == Rtti_WallPoint)
@@ -2647,7 +2624,7 @@ bool Wall::collision(Ball *ball, long int id)
 	ballVector /= dampening;
 	const double ballAngle = ballVector.direction();
 
-	const double wallAngle = -(Vector(startPoint(), endPoint())).direction();
+	const double wallAngle = -Vector(startPoint(), endPoint()).direction();
 	const double collisionAngle = ballAngle - wallAngle;
 	const double leavingAngle = wallAngle - collisionAngle;
 
@@ -3236,7 +3213,7 @@ void KolfGame::updateMouse()
 	// make a vector from mouse to ball, find direction,
 	// convert to degrees and set putter to negative of that
 	// vectors are nice
-	putter->setDeg(rad2deg(-(Vector(viewportToContents(mapFromGlobal(QCursor::pos())), QPoint((*curPlayer).ball()->x(), (*curPlayer).ball()->y()))).direction()));
+	putter->setDeg(rad2deg(-Vector(viewportToContents(mapFromGlobal(QCursor::pos())), QPoint((*curPlayer).ball()->x(), (*curPlayer).ball()->y())).direction()));
 }
 
 void KolfGame::contentsMouseReleaseEvent(QMouseEvent *e)
@@ -4255,7 +4232,7 @@ void KolfGame::addNewObject(Object *newObj)
 	if (canvasItem->fastAdvance())
 		addItemToFastAdvancersList(canvasItem);
 
-	newItem->move(width/2 - 18, height/2 - 18);
+	newItem->move(width/2 - 18, height / 2 - 18);
 
 	if (selectedItem)
 		canvasItem->selectedItem(selectedItem);
@@ -4603,46 +4580,32 @@ void KolfGame::print(KPrinter &pr)
 {
 	QPainter p(&pr);
 
-	QCanvasItem *item = 0;
-	for (item = items.first(); item; item = items.next())
+	QRect canvasRect(0, 0, width, height);
+	QPaintDeviceMetrics metrics(&pr);
+
+	// translate to center
+	p.translate(metrics.width() / 2 - canvasRect.width() / 2, metrics.height() / 2 - canvasRect.height() / 2);
+
+	QPixmap pix(width, height);
+	QPainter pixp(&pix);
+	course->drawArea(canvasRect, &pixp);
+	p.drawPixmap(0, 0, pix);
+
+	p.setPen(QPen(black, 2));
+	p.drawRect(canvasRect);
+
+	p.resetXForm();
+
+	if (pr.option("kde-kolf-title") == "true")
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
-		if (citem)
-			citem->printingModeChanged(true);
-	}
+		QString text("%1 - Hole %2; by %3");
+		text = text.arg(holeInfo.name()).arg(curHole).arg(holeInfo.author());
+		QFont font(kapp->font());
+		font.setPointSize(18);
+		QRect rect = QFontMetrics(font).boundingRect(text);
+		p.setFont(font);
 
-	// this is pretty ugly/broken
-	// but it's better than nothing.
-	QString text("%1 - Hole %2; by %3");
-	text = text.arg(holeInfo.name()).arg(curHole).arg(holeInfo.author());
-	p.drawText(0, 20, text);
-	p.setWindow(QRect(20, -45, width, height));
-	QRect r(0, 0, width, height);
-
-	const QPixmap background = course->backgroundPixmap();
-
-	if (pr.option("kde-kolf-background") != "true")
-	{
-		// this works and setBackgroundPicture(QPixmap()) doesn't
-		// and I don't want a picture background....
-		// huge waste of ink
-		course->setTiles(QPixmap(), 1, 1, 1, 1);
-	}
-
-	course->drawArea(r, &p);
-
-	if (pr.option("kde-kolf-background") != "true")
-	{
-		course->setBackgroundColor(grass);
-		course->setBackgroundPixmap(background);
-	}
-
-	item = 0;
-	for (item = items.first(); item; item = items.next())
-	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
-		if (citem)
-			citem->printingModeChanged(false);
+		p.drawText(metrics.width() / 2 - rect.width() / 2, metrics.height() / 2 - canvasRect.height() / 2 -20 - rect.height(), text);
 	}
 }
 

@@ -38,8 +38,8 @@ class QTimer;
 class QKeyEvent;
 class QMouseEvent;
 class QPainter;
-class KPrinter;
 class KSimpleConfig;
+class KPrinter;
 class KolfGame;
 
 enum Direction { D_Left, D_Right, Forwards, Backwards };
@@ -299,8 +299,6 @@ public:
 	Puddle(QCanvas *canvas);
 	virtual bool collision(Ball *ball, long int id);
 	virtual int rtti() const { return Rtti_DontPlaceOn; }
-
-	virtual void printingModeChanged(bool printing);
 };
 class PuddleObj : public Object
 {
@@ -314,8 +312,6 @@ class Sand : public Ellipse
 public:
 	Sand(QCanvas *canvas);
 	virtual bool collision(Ball *ball, long int id);
-
-	virtual void printingModeChanged(bool printing);
 };
 class SandObj : public Object
 {
@@ -487,14 +483,15 @@ public:
 	virtual void moveBy(double dx, double dy);
 	virtual void setVelocity(double vx, double vy);
 	virtual void clean();
+
 	// must reimp because we gotta move the end items,
 	// and we do that in :moveBy()
 	virtual void setPoints(int xa, int ya, int xb, int yb) { QCanvasLine::setPoints(xa, ya, xb, yb); moveBy(0, 0); }
+
 	virtual int rtti() const { return Rtti_DontPlaceOn; }
 	virtual QPtrList<QCanvasItem> moveableItems() const;
 	virtual void setGame(KolfGame *game);
 	virtual void setVisible(bool);
-	virtual void printingModeChanged(bool printing);
 
 	virtual QPointArray areaPoints() const;
 
@@ -1085,6 +1082,9 @@ private:
 
 	QPtrList<CanvasItem> fastAdvancers;
 	bool fastAdvancedExist;
+
+	bool fillPrint;
+	bool isprinting;;
 };
 
 #endif

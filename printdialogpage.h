@@ -21,6 +21,7 @@ class PrintDialogPage : public KPrintDialogPage
 
 	private:
 		QCheckBox *bgCheck;
+		QCheckBox *titleCheck;
 };
 
 #endif
