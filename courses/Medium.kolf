@@ -1,5 +1,7 @@
 [0-course@-50,-50]
 Name=Medium Course
+Name[es]=Curso medio
+Name[pt_BR]=Curso Médio
 Name[sv]=Normal bana
 author=Jason Katz-Brown
 name=Medium Course
