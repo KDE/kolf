@@ -3451,7 +3451,7 @@ void KolfGame::timeout()
 				(*it).ball()->setVisible(false);
 			inPlay = false;
 
-			if (curHole > 0)
+			if (curHole > 0 && !dontAddStroke)
 			{
 				(*curPlayer).addStrokeToHole(curHole);
 				emit scoreChanged((*curPlayer).id(), curHole, (*curPlayer).score(curHole));

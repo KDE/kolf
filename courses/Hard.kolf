@@ -7,7 +7,7 @@ name=Hard Course
 dummykey=true
 
 [1-blackhole@83,203|10]
-exit=111,213
+exit=115,215
 exitDeg=330
 maxspeed=5
 minspeed=3
