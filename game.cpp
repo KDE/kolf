@@ -3986,7 +3986,7 @@ void KolfGame::shotDone()
 			/*
 			ball->setVisible(true);
 			kapp->processEvents();
-			kdDebug() << "(" << x << ", " << y << ")" << endl;
+			//kdDebug() << "(" << x << ", " << y << ")" << endl;
 			sleep(1);
 			*/
 		}
@@ -4060,8 +4060,8 @@ void KolfGame::shotStart()
 	vx = -cos(deg2rad(deg))*strength;
 	vy = sin(deg2rad(deg))*strength;
 
-	kdDebug() << "calculated new speed is " << sqrt(vx * vx + vy * vy) << endl;
-	kdDebug() << "vx = " << vx << ", vy = " << vy << endl;
+	//kdDebug() << "calculated new speed is " << sqrt(vx * vx + vy * vy) << endl;
+	//kdDebug() << "vx = " << vx << ", vy = " << vy << endl;
 
 	(*curPlayer).ball()->setVelocity(vx, vy);
 	(*curPlayer).ball()->setState(Rolling);
