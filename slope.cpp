@@ -539,7 +539,7 @@ SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
 	connect(reversed, SIGNAL(toggled(bool)), this, SLOT(setReversed(bool)));
 
 	QHBoxLayout *hlayout = new QHBoxLayout(layout, spacingHint());
-	hlayout->addWidget(new QLabel(i18n("Grade"), this));
+	hlayout->addWidget(new QLabel(i18n("Grade:"), this));
 	KDoubleNumInput *grade = new KDoubleNumInput(this);
 	grade->setRange(0, 8, 1, true);
 	grade->setValue(slope->curGrade());

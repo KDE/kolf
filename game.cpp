@@ -1930,7 +1930,7 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	layout->addStretch();
 
 	hlayout = new QHBoxLayout(layout, spacingHint());
-	hlayout->addWidget(new QLabel(i18n("Par"), this));
+	hlayout->addWidget(new QLabel(i18n("Par:"), this));
 	QSpinBox *par = new QSpinBox(1, 15, 1, this);
 	par->setValue(holeInfo->par());
 	hlayout->addWidget(par);
@@ -3093,8 +3093,8 @@ void KolfGame::shotDone()
 			ball->setPlaceOnGround(false);
 
 			QStringList options;
-			const QString placeOutside = i18n("Drop outside of hazard");
-			const QString rehit = i18n("Rehit from last location");
+			const QString placeOutside = i18n("Drop Outside of Hazard");
+			const QString rehit = i18n("Rehit From Last Location");
 			options << placeOutside << rehit;
 			const QString choice = KComboBoxDialog::getItem(i18n("What would you like to do for your next shot?"), i18n("%1 is in a Hazard").arg((*it).name()), options, placeOutside, "hazardOptions");
 
