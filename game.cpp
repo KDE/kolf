@@ -4863,9 +4863,13 @@ void KolfGame::playSound(QString file, double vol)
 			}
 		}
 
-		KURL url(soundDir + file + QString::fromLatin1(".wav"));
+		file = soundDir + file + QString::fromLatin1(".wav");
+
+		if (!QFile::exists(file))
+			return;
+
 		KPlayObjectFactory factory(artsServer.server());
-		KPlayObject *playObject = factory.createPlayObject(url, true);
+		KPlayObject *playObject = factory.createPlayObject(KURL(file), true);
 
 		if (playObject && !playObject->isNull())
 		{
