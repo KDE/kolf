@@ -3909,7 +3909,7 @@ stuckOnGround=false
 width=62
 
 [7-slope@23,20|39]
-grade=4
+grade=2
 gradient=Elliptic
 height=102
 reversed=true
