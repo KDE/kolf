@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=USA Pro
+Name[sv]=USA-proffs
 author=Rob Kaper
 
 [1-ball@22,350]
@@ -42,6 +43,7 @@ width=840
 
 [1-sign@4,371|14]
 Comment=Daytona Beach, FL
+Comment[sv]=Daytona Beach, Florida
 botWallVisible=false
 height=34
 leftWallVisible=true
@@ -373,6 +375,7 @@ width=84
 
 [11-sign@-2,370|24]
 Comment=Palm Springs, CO
+Comment[sv]=Palm Springs, Colorado
 botWallVisible=true
 height=36
 leftWallVisible=true
@@ -525,6 +528,7 @@ width=38
 
 [2-sign@26,345|31]
 Comment=Las Vegas, NV
+Comment[sv]=Las Vegas, Nevada
 botWallVisible=true
 height=34
 leftWallVisible=true
@@ -674,6 +678,7 @@ par=2
 
 [3-sign@-4,358|9]
 Comment=San Francisco, CA
+Comment[sv]=San Francisco, Kalifornien
 botWallVisible=true
 height=48
 leftWallVisible=true
@@ -862,6 +867,7 @@ width=48
 
 [5-sign@219,344|10]
 Comment=Lake Tahoe, CA/NV
+Comment[sv]=Lake Tahoe, Kalifornien/Nevada
 botWallVisible=true
 height=27
 leftWallVisible=true
@@ -1001,6 +1007,7 @@ width=368
 
 [6-sign@3,101|17]
 Comment=Florida Keys, FL
+Comment[sv]=Florida Keys, Florida
 botWallVisible=true
 height=30
 leftWallVisible=true
@@ -1144,6 +1151,7 @@ width=178
 
 [7-sign@11,116|7]
 Comment=Gol<br>den Gate
+Comment[sv]=Golden Gate
 botWallVisible=false
 height=97
 leftWallVisible=true
@@ -1153,6 +1161,7 @@ width=40
 
 [7-sign@135,364|25]
 Comment=San Francisco, CA
+Comment[sv]=San Francisco, Kalifornien
 botWallVisible=true
 height=40
 leftWallVisible=true
@@ -1514,6 +1523,7 @@ width=20
 
 [9-sign@291,368|28]
 Comment=Niagara Falls, NY
+Comment[sv]=Niagarafallen, Staten New York
 botWallVisible=true
 height=36
 leftWallVisible=true
