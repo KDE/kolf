@@ -142,7 +142,7 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 		minorLayout->addWidget(holes);
 
 		detailLayout->addStretch();
-		KPushButton *scores = new KPushButton(i18n("Highscores..."), coursePage);
+		KPushButton *scores = new KPushButton(i18n("Highscores"), coursePage);
 		connect(scores, SIGNAL(clicked()), this, SLOT(showHighscores()));
 		detailLayout->addWidget(scores);
 

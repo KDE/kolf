@@ -163,7 +163,7 @@ void Kolf::initGUI()
 	soundAction->setChecked(config->readBoolEntry("sound", true));
 
 	(void) new KAction(i18n("&Reload Plugins"), 0, this, SLOT(initPlugins()), actionCollection(), "reloadplugins");
-	(void) new KAction(i18n("Show &Plugins..."), 0, this, SLOT(showPlugins()), actionCollection(), "showplugins");
+	(void) new KAction(i18n("Show &Plugins"), 0, this, SLOT(showPlugins()), actionCollection(), "showplugins");
 
 	aboutAction = new KAction(i18n("&About Course"), 0, this, SLOT(emptySlot()), actionCollection(), "aboutcourse");
 	tutorialAction = new KAction(i18n("&Tutorial"), 0, this, SLOT(tutorial()), actionCollection(), "tutorial");
@@ -491,7 +491,7 @@ void Kolf::save()
 
 void Kolf::saveAs()
 {
-	QString newfilename = KFileDialog::getSaveFileName(QString::null, "application/x-kourse", this, i18n("Pick Kolf Course to Save to"));
+	QString newfilename = KFileDialog::getSaveFileName(QString::null, "application/x-kourse", this, i18n("Pick Kolf Course to Save To"));
 	if (!newfilename.isNull())
 	{
 		filename = newfilename;
@@ -503,7 +503,7 @@ void Kolf::saveAs()
 
 void Kolf::saveGameAs()
 {
-	QString newfilename = KFileDialog::getSaveFileName(QString::null, "application/x-kolf", this, i18n("Pick Saved Game to Save to"));
+	QString newfilename = KFileDialog::getSaveFileName(QString::null, "application/x-kolf", this, i18n("Pick Saved Game to Save To"));
 	if (newfilename.isNull())
 		return;
 	
