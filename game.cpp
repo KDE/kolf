@@ -210,7 +210,16 @@ void Slope::setSize(int width, int height)
 void Slope::newSize(int width, int height)
 {
 	if (type == KPixmapEffect::EllipticGradient)
+	{
 		QCanvasRectangle::setSize(width, width);
+		// move point back to good spot
+		moveBy(0, 0);
+
+		//kdDebug() << "game is " << game << endl;
+		if (game)
+			if (game->isEditing())
+				game->updateHighlighter();
+	}
 	else
 		QCanvasRectangle::setSize(width, height);
 
@@ -399,8 +408,11 @@ void Slope::collision(Ball *ball, long int /*id*/)
 
 		if (yDiff == 0)
 		{
+			// this is all weird
+			// see comment in bumper::collision
 			// horizontal
-			slopeAngle = end.x() < start.x()? 0 : PI;
+			//slopeAngle = end.x() < start.x()? 0 : PI;
+			slopeAngle = PI;
 		}
 		else
 		{
@@ -425,8 +437,10 @@ void Slope::collision(Ball *ball, long int /*id*/)
 
 		const double factor = sqrt(xDiff * xDiff + yDiff * yDiff) / (double)((double)width() / 2.0);
 		//kdDebug() << "factor: " << factor << endl;
-		// factor kinda weakens it
-		addto *= factor * 1.41;
+		// this algorithm by daniel
+		addto *= factor * PI / 2;
+		addto = sin(addto);
+		//addto *= 1.4;
 	}
 
 	//kdDebug() << "slopeAngle: " << rad2deg(slopeAngle) << endl;
@@ -507,8 +521,8 @@ void Slope::updatePixmap()
 	// be purrfect
 	// but I've not the time to get it purrfect
 	// i wish i did -- anybody wanna fix it? :-)
-	QColor darkColor = color.dark(100 + grade * 10);
-	QColor lightColor = diag || circle? color.light(110 + (diag? 5 : 2) * grade) : color;
+	const QColor darkColor = color.dark(100 + grade * 10);
+	const QColor lightColor = diag || circle? color.light(110 + (diag? 5 : 2) * grade) : color;
 
 	(void) KPixmapEffect::gradient(pixmap, reversed? darkColor : lightColor, reversed? lightColor : darkColor, type);
 
@@ -842,6 +856,7 @@ void Floater::editModeChanged(bool changed)
 
 void Floater::advance(int phase)
 {
+	//kdDebug() << "floater's advance\n";
 	if (!isEnabled())
 		return;
 
@@ -1039,6 +1054,10 @@ void Floater::moveBy(double dx, double dy)
 	// this call must come after we have tested for collisions, otherwise we skip them when saving!
 	// that's a bad thing
 	QCanvasRectangle::moveBy(dx, dy);
+
+	if (game)
+		if (game->isEditing())
+			game->updateHighlighter();
 }
 
 void Floater::save(KSimpleConfig *cfg, int hole)
@@ -1783,8 +1802,9 @@ void Ball::friction()
 	if (vy < 0)
 		ballAngle -= PI;
 	ballAngle = PI/2 - ballAngle;
-	vx -= cos(ballAngle) * .033 * frictionMultiplier;
-	vy -= sin(ballAngle) * .033 * frictionMultiplier;
+	const double frictionFactor = .027;
+	vx -= cos(ballAngle) * frictionFactor * frictionMultiplier;
+	vy -= sin(ballAngle) * frictionFactor * frictionMultiplier;
 	if (vx / xVelocity() < 0)
 	{
 		vx = vy = 0;
@@ -1855,12 +1875,159 @@ BallState Ball::currentState()
 
 /////////////////////////
 
+Bumper::Bumper(QCanvas *canvas)
+	: QCanvasEllipse(20, 20, canvas)
+{
+	setZ(-25);
+
+	firstColor = QColor("#E74804");
+	secondColor = firstColor.light();
+
+	count = 0;
+	setBrush(firstColor);
+	setAnimated(false);
+
+	inside = new Inside(this, canvas);
+	inside->setBrush(firstColor.light(109));
+	inside->setSize(width() / 2.6, height() / 2.6);
+	inside->show();
+}
+
+void Bumper::aboutToDie()
+{
+	delete inside;
+}
+
+void Bumper::moveBy(double dx, double dy)
+{
+	QCanvasEllipse::moveBy(dx, dy);
+	//const double insideLen = (double)(width() - inside->width()) / 2.0;
+	inside->move(x(), y());
+}
+
+void Bumper::advance(int phase)
+{
+	//kdDebug() << "bumper's advance\n";
+	QCanvasEllipse::advance(phase);
+
+	if (phase == 1)
+	{
+		//kdDebug() << "count: " << count << endl;
+		count++;
+		if (count > 2)
+		{
+			count = 0;
+			setBrush(firstColor);
+			update();
+			setAnimated(false);
+		}
+	}
+}
+
+void Bumper::collision(Ball *ball, long int /*id*/)
+{
+	setBrush(secondColor);
+	update();
+
+	double speed = 1.8 + ball->curSpeed() * .9;
+	if (speed > 8)
+		speed = 8;
+
+	double angle = 0;
+
+	const QPoint start(x(), y());
+	const QPoint end((int)ball->x(), (int)ball->y());
+
+	// okay.. realize about a week after i write code in slope and bumper
+	// that I switched yDiff and xDiff
+	// interesting, eh? :)
+
+	const double yDiff = (double)(end.x() - start.x());
+	const double xDiff = (double)(start.y() - end.y());
+	//kdDebug() << "yDiff: " << yDiff << endl;
+	//kdDebug() << "xDiff: " << xDiff << endl;
+
+	if (yDiff == 0 && xDiff == 0)
+		return;
+
+	if (xDiff == 0)
+	{
+		kdDebug() << "horizontal\n";
+		// horizontal
+		angle = end.x() < start.x()? 0 : PI;
+		//angle = PI;
+	}
+	else
+	{
+		angle = atan(yDiff / xDiff);
+		//kdDebug() << "before slopeAngle: " << rad2deg(slopeAngle) << endl;
+
+		//if (slopeAngle < 0)
+		angle *= -1;
+		if (end.y() < start.y())
+		{
+			//kdDebug() << "neg angle: " << rad2deg(angle) << endl;
+			angle = (PI / 2) - angle;
+			//kdDebug() << "pi / 2 -  angle: " << rad2deg(angle) << endl;
+		}
+		else
+		{
+			//angle += PI / 2;
+			angle = (-PI / 2) - angle;
+			//kdDebug() << "neg angle: " << rad2deg(angle) << endl;
+		}
+	}
+
+	/*
+	const double ballSlope = -ball->yVelocity() / ball->xVelocity();
+	double ballAngle = atan(ballSlope);
+	if (ball->xVelocity() < 0)  
+		ballAngle += PI;
+	ballAngle *= -1;
+	kdDebug() << "ballAngle: " << ballAngle << endl;
+	kdDebug() << "angle: " << angle << endl;
+	*/
+
+	const double vx = -cos(angle) * speed;
+	const double vy = -sin(angle) * speed;
+	ball->setVelocity(vx, vy);
+
+	setAnimated(true);
+}
+
+void Bumper::save(KSimpleConfig *cfg, int hole)
+{
+	cfg->setGroup(makeGroup(hole, "bumper", x(), y()));
+	cfg->writeEntry("dummykey", true);
+}
+
+/////////////////////////
+
 Hole::Hole(QColor color, QCanvas *canvas)
 	: QCanvasEllipse(15, 15, canvas)
 {
 	setZ(998.1);
 	setPen(black);
-	setBrush(color);
+	//setBrush(color);
+	setBrush(color.light(115));
+
+	inside = new Inside(this, canvas);
+	inside->setBrush(color);
+	inside->setSize(width() - 4, height() - 4);
+	inside->show();
+
+	inside->setZ(z() + .01);
+}
+
+void Hole::aboutToDie()
+{
+	delete inside;
+}
+
+void Hole::moveBy(double dx, double dy)
+{
+	QCanvasEllipse::moveBy(dx, dy);
+	inside->move(x(), y());
 }
 
 void Hole::collision(Ball *ball, long int /*id*/)
@@ -1959,7 +2126,17 @@ void BlackHole::hideInfo()
 
 void BlackHole::aboutToDie()
 {
+	Hole::aboutToDie();
 	delete exitItem;
+}
+
+void BlackHole::setExitDeg(int newdeg)
+{
+	exitDeg = newdeg;
+	if (game)
+		if (game->isEditing() && game->curSelectedItem() == exitItem)
+			game->updateHighlighter();
+	finishMe();
 }
 
 QPtrList<QCanvasItem> BlackHole::moveableItems()
@@ -2699,6 +2876,7 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 	obj.append(new FloaterObj());
 	obj.append(new BridgeObj());
 	obj.append(new SignObj());
+	obj.append(new BumperObj());
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 		(*it).ball()->setCanvas(course);
@@ -2729,16 +2907,15 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 	putter = new Putter(course);
 
 	// border walls:
-	//{
-		int margin = 10;
-		// horiz
-		addBorderWall(QPoint(margin, margin), QPoint(width - margin, margin));
-		addBorderWall(QPoint(margin, height - margin - 1), QPoint(width - margin, height - margin - 1));
+	const int margin = 10;
 
-		// vert
-		addBorderWall(QPoint(margin, margin), QPoint(margin, height - margin));
-		addBorderWall(QPoint(width - margin - 1, margin), QPoint(width - margin - 1, height - margin));
-	//}
+	// horiz
+	addBorderWall(QPoint(margin, margin), QPoint(width - margin, margin));
+	addBorderWall(QPoint(margin, height - margin - 1), QPoint(width - margin, height - margin - 1));
+
+	// vert
+	addBorderWall(QPoint(margin, margin), QPoint(margin, height - margin));
+	addBorderWall(QPoint(width - margin - 1, margin), QPoint(width - margin - 1, height - margin));
 
 	timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(timeout()));
@@ -2821,6 +2998,15 @@ void KolfGame::addBorderWall(QPoint start, QPoint end)
 	wall->setGame(this);
 	wall->setZ(998.7);
 	borderWalls.append(wall);
+}
+
+void KolfGame::updateHighlighter()
+{
+	if (!selectedItem)
+		return;
+	QRect rect = selectedItem->boundingRect();
+	highlighter->move(rect.x() + 1, rect.y() + 1);
+	highlighter->setSize(rect.width(), rect.height());
 }
 
 void KolfGame::contentsMousePressEvent(QMouseEvent *e)
@@ -2921,8 +3107,8 @@ void KolfGame::contentsMouseMoveEvent(QMouseEvent *e)
 	if (moveX || moveY)
 		modified = true;
 
-	movingItem->moveBy(-(double)moveX, -(double)moveY);
 	highlighter->moveBy(-(double)moveX, -(double)moveY);
+	movingItem->moveBy(-(double)moveX, -(double)moveY);
 	storedMousePos = mouse;
 }
 
@@ -2964,6 +3150,10 @@ void KolfGame::updateMouse()
 		if (mouse.x() < putter->x())
 			newAngle += PI;
 	}
+	
+	// this makes the aiming more to my liking.
+	// newAngle += PI / 2;
+	// it's actually pretty dumb
 
 	//kdDebug() << "newAngle: " << rad2deg(newAngle) << endl;
 
@@ -3367,6 +3557,8 @@ void KolfGame::shotStart()
 
 	putter->saveDegrees((*curPlayer).ball());
 	strength /= 8;
+	if (!strength)
+		strength = 1;
 	putter->setVisible(false);
 	int deg = putter->curDeg();
 	//kdDebug() << "deg is " << deg << endl;
@@ -3514,6 +3706,7 @@ void KolfGame::openFile()
 	items.clear();
 	extraMoveable.setAutoDelete(false);
 	extraMoveable.clear();
+	selectedItem = 0;
 
 	//KSimpleConfig cfg(filename);
 
@@ -3945,6 +4138,7 @@ void KolfGame::toggleEditMode()
 	}
 
 	moving = false;
+	selectedItem = 0;
 
 	//kdDebug() << "toggling\n";
 	editing = !editing;
@@ -4005,7 +4199,7 @@ void KolfGame::initSoundServer()
 	else
 	{
 		QString soundDirCheck = locate("appdata", "sounds/");
-		QString oneSoundCheck = locate("appdata", "sounds/wall.wav");
+		QString oneSoundCheck = locate("appdata", "sounds/woohoo.wav");
 		if(!soundDirCheck.isEmpty() && !oneSoundCheck.isEmpty())
 		{
 			m_serverRunning = true;

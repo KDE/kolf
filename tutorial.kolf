@@ -27,7 +27,7 @@ botWallVisible=true
 height=50
 leftWallVisible=true
 rightWallVisible=true
-text=Goal: hit the ball into the Cup (orange circle).
+text=Goal: hit the ball into the Cup (gray circle).
 topWallVisible=true
 width=363
 
@@ -424,13 +424,13 @@ text=Hint: hit the ball onto the slope and let it roll into cup.
 topWallVisible=true
 width=288
 
-[2-slope@14,188|4]
+[2-slope@11,188|4]
 grade=4
 gradient=Vertical
-height=131
+height=135
 reversed=false
 stuckOnGround=false
-width=94
+width=104
 
 [3-ball@86,353]
 dummykey=true

@@ -423,7 +423,7 @@ maxspeed=2
 minspeed=1
 
 [11-blackhole@293,44|16]
-exit=122,292
+exit=128,294
 exitDeg=5
 maxspeed=3
 minspeed=2
@@ -434,18 +434,19 @@ dummykey=true
 [11-cup@221,409|13]
 dummykey=true
 
-[11-floater@116,273|13]
+[11-floater@127,276|13]
 botWallVisible=false
-endPoint=116,273
+endPoint=127,276
 height=36
 leftWallVisible=true
 rightWallVisible=true
 speed=5
-startPoint=11,270
+startPoint=13,270
 topWallVisible=true
 width=260
 
 [11-hole@-50,-50|0]
+borderWalls=true
 maxstrokes=10
 par=3
 
@@ -561,7 +562,7 @@ reversed=false
 stuckOnGround=false
 width=97
 
-[11-slope@290,275|21]
+[11-slope@300,278|21]
 grade=4
 gradient=Horizontal
 height=33
@@ -593,13 +594,13 @@ reversed=true
 stuckOnGround=false
 width=116
 
-[11-wall@-1,8|17]
-endPoint=255,320
-startPoint=12,318
-
 [11-wall@0,0|14]
 endPoint=392,207
 startPoint=12,207
+
+[11-wall@0,0|17]
+endPoint=255,320
+startPoint=12,318
 
 [12-ball@58,341]
 dummykey=true
@@ -885,7 +886,7 @@ minspeed=1
 
 [13-blackhole@329,224|10]
 exit=155,75
-exitDeg=13
+exitDeg=15
 maxspeed=2
 minspeed=2
 
@@ -899,6 +900,7 @@ minspeed=1
 dummykey=true
 
 [13-hole@-50,-50|0]
+borderWalls=true
 maxstrokes=14
 par=3
 
@@ -994,21 +996,13 @@ reversed=true
 stuckOnGround=false
 width=57
 
-[13-slope@278,169|38]
-grade=3
-gradient=Diagonal
-height=55
+[13-slope@290,183|40]
+grade=5
+gradient=Elliptic
+height=79
 reversed=false
 stuckOnGround=false
-width=50
-
-[13-slope@279,223|30]
-grade=3
-gradient=Opposite Diagonal
-height=52
-reversed=true
-stuckOnGround=false
-width=49
+width=79
 
 [13-slope@303,272|43]
 grade=1
@@ -1042,22 +1036,6 @@ reversed=false
 stuckOnGround=false
 width=65
 
-[13-slope@325,168|40]
-grade=3
-gradient=Opposite Diagonal
-height=54
-reversed=false
-stuckOnGround=false
-width=60
-
-[13-slope@327,220|33]
-grade=3
-gradient=Diagonal
-height=55
-reversed=true
-stuckOnGround=false
-width=51
-
 [13-slope@60,11|24]
 grade=4
 gradient=Opposite Diagonal
@@ -1079,7 +1057,7 @@ endPoint=192,50
 startPoint=150,56
 
 [13-wall@0,0|23]
-endPoint=91,196
+endPoint=95,199
 startPoint=106,200
 
 [13-wall@0,0|3]
@@ -1154,8 +1132,9 @@ topWallVisible=true
 width=100
 
 [14-hole@-50,-50|0]
+borderWalls=true
 maxstrokes=14
-par=3
+par=2
 
 [14-slope@10,362|8]
 grade=4
@@ -1234,17 +1213,17 @@ exitDeg=10
 maxspeed=5
 minspeed=3
 
-[15-blackhole@241,195|6]
-exit=317,259
-exitDeg=40
-maxspeed=7
-minspeed=5
-
 [15-blackhole@242,55|24]
 exit=24,53
 exitDeg=10
 maxspeed=5
 minspeed=3
+
+[15-blackhole@251,193|6]
+exit=317,259
+exitDeg=40
+maxspeed=7
+minspeed=5
 
 [15-blackhole@296,348|8]
 exit=351,363
@@ -1281,6 +1260,7 @@ dummykey=true
 dummykey=true
 
 [15-hole@-50,-50|0]
+borderWalls=true
 maxstrokes=14
 par=2
 
@@ -1453,7 +1433,7 @@ width=108
 dummykey=true
 
 [16-blackhole@374,371|66]
-exit=318,79
+exit=382,73
 exitDeg=180
 maxspeed=1
 minspeed=1
@@ -1493,13 +1473,13 @@ width=165
 [16-floater@246,59|63]
 botWallVisible=false
 endPoint=246,59
-height=40
+height=34
 leftWallVisible=false
 rightWallVisible=false
 speed=8
 startPoint=98,77
 topWallVisible=false
-width=80
+width=141
 
 [16-floater@64,69|64]
 botWallVisible=false
@@ -1513,6 +1493,7 @@ topWallVisible=true
 width=73
 
 [16-hole@-50,-50|0]
+borderWalls=true
 maxstrokes=14
 par=3
 
@@ -3019,8 +3000,8 @@ endPoint=351,387
 startPoint=223,393
 
 [4-wall@0,0|145]
-endPoint=389,273
-startPoint=393,356
+endPoint=93,231
+startPoint=78,221
 
 [4-wall@0,0|15]
 endPoint=74,58

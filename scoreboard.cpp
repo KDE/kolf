@@ -57,7 +57,8 @@ void ScoreBoard::setScore(int id, int hole, int score)
 
 	QString name;
 	setText(id - 1, numCols() - 1, QString::number(total(id, name)));
-	ensureCellVisible(id - 1, numCols() - 1);
+	ensureCellVisible(id - 1, hole - 1);
+	setCurrentCell(id - 1, hole - 1);
 }
 
 int ScoreBoard::total(int id, QString &name)

@@ -6,7 +6,6 @@
 #include <klocale.h>
 #include <kpixmap.h>
 #include <kpixmapeffect.h>
-#include <kpixmapeffect.h>
 
 #include <math.h>
 
@@ -472,22 +471,63 @@ public:
 	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Sand(canvas); }
 };
 
+class Inside : public QCanvasEllipse, public CanvasItem
+{
+public:
+	Inside(CanvasItem *item, QCanvas *canvas) : QCanvasEllipse(canvas) { this->item = item; }
+	virtual void collision(Ball *ball, long int id) { item->collision(ball, id); }
+
+private:
+	CanvasItem *item;
+};
+
+class Bumper : public QCanvasEllipse, public CanvasItem
+{
+public:
+	Bumper(QCanvas *canvas);
+
+	virtual void save(KSimpleConfig *cfg, int hole);
+
+	virtual void advance(int phase);
+	virtual void aboutToDie();
+	virtual void moveBy(double dx, double dy);
+
+	virtual void collision(Ball *ball, long int id);
+
+private:
+	QColor firstColor;
+	QColor secondColor;
+	int count;
+	Inside *inside;
+};
+class BumperObj : public Object
+{
+public:
+	BumperObj() { m_name = i18n("Bumper"); m__name = "bumper"; }
+	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Bumper(canvas); }
+};
+
 class Hole : public QCanvasEllipse, public CanvasItem
 {
 public:
 	Hole(QColor color, QCanvas *canvas);
 	virtual bool place(Ball * /*ball*/, bool /*wasCenter*/) { return true; };
+	virtual void aboutToDie();
 
 	virtual void collision(Ball *ball, long int id);
+	virtual void moveBy(double dx, double dy);
 
 protected:
 	virtual HoleResult result(const QPoint, double, bool *wasCenter);
+
+private:
+	Inside *inside;
 };
 
 class Cup : public Hole
 {
 public:
-	Cup(QCanvas *canvas) : Hole(QColor("#FF923F"), canvas) {}
+	Cup(QCanvas *canvas) : Hole(QColor("#808080"), canvas) {}
 	virtual bool place(Ball *ball, bool wasCenter);
 	virtual void save(KSimpleConfig *cfg, int hole);
 	virtual bool canBeMovedByOthers() { return true; }
@@ -549,7 +589,7 @@ public:
 	void setMaxSpeed(int news) { m_maxSpeed = news; }
 
 	int curExitDeg() { return exitDeg; }
-	void setExitDeg(int newdeg) { exitDeg = newdeg; finishMe(); }
+	void setExitDeg(int newdeg);
 
 private:
 	int exitDeg;
@@ -953,6 +993,8 @@ public:
 	bool isEditing() const { return editing; }
 	Ball *curBall() { return (*curPlayer).ball(); }
 	void updateMouse();
+	void updateHighlighter();
+	QCanvasItem *curSelectedItem() { return selectedItem; }
 	void setBorderWalls(bool);
 
 public slots:
