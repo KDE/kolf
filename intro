@@ -79,6 +79,14 @@ reversed=true
 stuckOnGround=true
 width=60
 
+[1-slope@21,215|4]
+grade=5
+gradient=Elliptic
+height=188
+reversed=true
+stuckOnGround=true
+width=188
+
 [1-slope@216,10|23]
 grade=3
 gradient=Diagonal
@@ -94,14 +102,6 @@ height=179
 reversed=true
 stuckOnGround=true
 width=179
-
-[1-slope@22,215|4]
-grade=5
-gradient=Elliptic
-height=188
-reversed=true
-stuckOnGround=true
-width=188
 
 [1-slope@286,10|14]
 grade=3
@@ -120,7 +120,7 @@ stuckOnGround=false
 width=53
 
 [1-slope@3,-3|3]
-grade=1
+grade=5
 gradient=Elliptic
 height=221
 reversed=true
