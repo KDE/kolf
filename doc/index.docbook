@@ -37,6 +37,7 @@
 <keywordset>
 <keyword>KDE</keyword>
 <keyword>golf</keyword>
+<keyword>miniature</keyword>
 <keyword>arcade</keyword>
 </keywordset>
 
@@ -65,13 +66,16 @@ putter aims in the direction you want to hit it or press one of the
 Arrow</keycap> key. The longer you hold down the key or button, the
 more strength the putt will have. It will take practice to get a good
 feel for speed.</para>
+<tip>
+<para>To stop abort the putt while you are still holding moving the putter back in your stroke, press <keycap>Escape</keycap>.</para>
+</tip>
 
 <para>Hit the ball into the hole (grey circle) to move on the next.</para>
 </sect1>
 
 <sect1 id="slopes"> 
 <title>Slopes</title>
-<para>Slopes are areas of slanted down that the golf ball rolls down in an expected manner. The light of the golf course is from the upper-left, so the brightest slopes will push the ball towards the upper-left corner of the hole. Press the <keycap>Up Arrow</keycap> or &RMB; to see an arrow that points in the direction the slope will roll the ball.</para>
+<para>Slopes are areas of slanted down that the golf ball rolls down in an expected manner. The light of the golf course is from the upper-left, so the brightest slopes will push the ball towards the upper-left corner of the hole. Choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>Show Info</guimenuitem></menuchoice> to see an arrow that points in the direction the slope will roll the ball.</para>
 <para>On this tutorial hole, hit the ball onto the upward-pointing
 slope and let it roll into the cup to move onto the next hole.</para>
 
@@ -79,7 +83,7 @@ slope and let it roll into the cup to move onto the next hole.</para>
 <para>On the next hole, experiment with the other kinds of slopes. There are elliptical, vertical, horizontal, and diagonal slopes in &kolf;. Hit the ball into the hole.</para>
 </sect2>
 <sect2> <title>Steepness</title>
-<para>The next tutorial hole has two slopes of differing steepness. If you click the <keycap>Up Arrow</keycap> key or &RMB;, the steepness of the slope will appear as a number from 1-8, where 8 is steepest and 1 is shallowest. Also, the more extreme shading the slope has, the steeper it is. Hit the ball into the hole and continue to the next hole.</para>
+<para>The next tutorial hole has two slopes of differing steepness. If you choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>Show Info</guimenuitem></menuchoice>, the steepness of the slope will appear as a number from 1-8, where 8 is steepest and 1 is shallowest. Also, the more extreme shading the slope has, the steeper it is. Hit the ball into the hole and continue to the next hole.</para>
 </sect2>
 </sect1>
 
@@ -102,7 +106,7 @@ slope and let it roll into the cup to move onto the next hole.</para>
 </sect1>
 
 <sect1 id="black-holes"> <title>Black Holes</title>
-<para>When you hit your ball into a black hole, it is transported to the exit and ejected at the angle of the exit at a speed directly relational to the speed your ball was going. Press the up arrow or &RMB; to see which Black Hole goes to which exit and which direction the ball will come out of the exit. The rim around Black Holes and their corresponding exits are also the same color. Hit the ball into the black hole, which will then eject the ball into the cup so you can go to the next hole.</para>
+<para>When you hit your ball into a black hole, it is transported to the exit and ejected at the angle of the exit at a speed directly relational to the speed your ball was going. Choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>Show Info</guimenuitem></menuchoice> to see which Black Hole goes to which exit and which direction the ball will come out of the exit. The rim around Black Holes and their corresponding exits are also the same color. Hit the ball into the black hole, which will then eject the ball into the cup so you can go to the next hole.</para>
 </sect1>
 
 <sect1 id="floaters"> <title>Floaters</title>
@@ -550,6 +554,18 @@ position</action>, so that you can start over.</para>
 
 <varlistentry>
 <term><menuchoice><shortcut>
+<keycombo action="simul">&Ctrl;<keycap>I</keycap></keycombo>
+</shortcut>
+<guimenu>Hole</guimenu>
+<guimenuitem>Show Info</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Show information about objects on the current hole.</action></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><shortcut>
 <keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo>
 </shortcut>
 <guimenu>Hole</guimenu>
@@ -698,7 +714,7 @@ section</link>.</para>
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Always Show Putter Guideline</guimenuitem>
+<guimenuitem>Show Putter Guideline</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para><action>Toggle on and off the putter guideline.</action></para>
