@@ -594,6 +594,7 @@ class Bridge : public QCanvasRectangle, public CanvasItem, public RectItem
 {
 public:
 	Bridge(QRect rect, QCanvas *canvas);
+	virtual void collision(Ball *ball, long int id);
 	virtual void aboutToDie();
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
@@ -976,7 +977,7 @@ private:
 
 	KSimpleConfig *cfg;
 
-	inline void addWall(QPoint start, QPoint end);
+	inline void addBorderWall(QPoint start, QPoint end);
 	inline void shotStart();
 };
 

@@ -358,7 +358,7 @@ void Slope::collision(Ball *ball, long int /*id*/)
 	double vy = ball->yVelocity();
 	//if (vy == 0 && vx == 0)
 		//return;
-	const double addto = 0.017 * grade;
+	const double addto = 0.013 * grade;
 	const double slopeAngle = atan((double)width() / (double)height());
 
 	switch (type)
@@ -515,6 +515,11 @@ Bridge::Bridge(QRect rect, QCanvas *canvas)
 	editModeChanged(false);
 
 	newSize(width(), height());
+}
+
+void Bridge::collision(Ball *ball, long int /*id*/)
+{
+	ball->setFrictionMultiplier(.63);
 }
 
 void Bridge::setWallZ(double newz)
@@ -1483,7 +1488,7 @@ Putter::Putter(QCanvas *canvas)
 	guideLine->setZ(998.8);
 
 	setPen(QPen(black, 4));
-	putterWidth=12;
+	putterWidth = 10;
 	maxDeg = 360;
 
 	hideInfo();
@@ -2552,12 +2557,12 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 	//{
 		int margin = 10;
 		// horiz
-		addWall(QPoint(margin, margin), QPoint(width - margin, margin));
-		addWall(QPoint(margin, height - margin - 1), QPoint(width - margin, height - margin - 1));
+		addBorderWall(QPoint(margin, margin), QPoint(width - margin, margin));
+		addBorderWall(QPoint(margin, height - margin - 1), QPoint(width - margin, height - margin - 1));
 
 		// vert
-		addWall(QPoint(margin, margin), QPoint(margin, height - margin));
-		addWall(QPoint(width - margin - 1, margin), QPoint(width - margin - 1, height - margin));
+		addBorderWall(QPoint(margin, margin), QPoint(margin, height - margin));
+		addBorderWall(QPoint(width - margin - 1, margin), QPoint(width - margin - 1, height - margin));
 	//}
 
 	timer = new QTimer(this);
@@ -2632,12 +2637,13 @@ void KolfGame::unPause()
 		putterTimer->start(putterTimerMsec);
 }
 
-void KolfGame::addWall(QPoint start, QPoint end)
+void KolfGame::addBorderWall(QPoint start, QPoint end)
 {
 	Wall *wall = new Wall(course);
 	wall->setPoints(start.x(), start.y(), end.x(), end.y());
 	wall->setVisible(true);
 	wall->setGame(this);
+	wall->setZ(998.7);
 	borderWalls.append(wall);
 }
 
