@@ -2179,8 +2179,9 @@ BlackHoleConfig::BlackHoleConfig(BlackHole *blackHole, QWidget *parent)
 {
 	this->blackHole = blackHole;
 	QVBoxLayout *layout = new QVBoxLayout(this, marginHint(), spacingHint());
-	layout->addWidget(new QLabel(i18n("Degree measure of exiting ball:"), this));
+	layout->addWidget(new QLabel(i18n("Exiting ball angle:"), this));
 	QSpinBox *deg = new QSpinBox(0, 359, 10, this);
+	deg->setSuffix(QString(" ") + i18n("degrees"));
 	deg->setValue(blackHole->curExitDeg());
 	deg->setWrapping(true);
 	layout->addWidget(deg);
@@ -2726,8 +2727,9 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	connect(par, SIGNAL(valueChanged(int)), this, SLOT(parChanged(int)));
 	hlayout->addStretch();
 
-	hlayout->addWidget(new QLabel(i18n("Max. strokes"), this));
-	QSpinBox *maxstrokes = new QSpinBox(4, 30, 1, this);
+	hlayout->addWidget(new QLabel(i18n("Maximum"), this));
+	QSpinBox *maxstrokes = new QSpinBox(holeInfo->lowestMaxStrokes(), 30, 1, this);
+	maxstrokes->setSpecialValueText(i18n("Unlimited"));
 	maxstrokes->setValue(holeInfo->maxStrokes());
 	hlayout->addWidget(maxstrokes);
 	connect(maxstrokes, SIGNAL(valueChanged(int)), this, SLOT(maxStrokesChanged(int)));
@@ -2917,7 +2919,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	height = 400;
 	grass = QColor("#35760D");
 
-	setMinimumSize(width, height);
+	setFixedSize(width, height);
 	setFocusPolicy(QWidget::StrongFocus);
 
 	course = new QCanvas(this);
@@ -2931,15 +2933,14 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	}
 	course->setBackgroundPixmap(pic);
 	viewport()->setBackgroundPixmap(pic);
+	setBackgroundPixmap(pic);
 
 	setCanvas(course);
 	move(0, 0);
 	adjustSize();
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-	{
 		(*it).ball()->setCanvas(course);
-	}
 
 	// highlighter shows current item
 	highlighter = new QCanvasRectangle(course);
@@ -3854,7 +3855,7 @@ void KolfGame::shotDone()
 		Ball *ball = (*it).ball();
 
 		int curStrokes = (*curPlayer).score(curHole);
-		if (curStrokes >= holeInfo.maxStrokes())
+		if (curStrokes >= holeInfo.maxStrokes() && holeInfo.hasMaxStrokes())
 		{
 			emit maxStrokesReached((*it).name());
 			ball->setState(Holed);

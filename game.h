@@ -798,11 +798,14 @@ private:
 class HoleInfo : public CanvasItem
 {
 public:
+	HoleInfo() { m_lowestMaxStrokes = 4; }
 	virtual ~HoleInfo() {}
 	void setPar(int newpar) { m_par = newpar; }
 	int par() { return m_par; }
 	void setMaxStrokes(int newMaxStrokes) { m_maxStrokes = newMaxStrokes; }
+	int lowestMaxStrokes() { return m_lowestMaxStrokes; }
 	int maxStrokes() { return m_maxStrokes; }
+	bool hasMaxStrokes() { return m_maxStrokes != m_lowestMaxStrokes; }
 	void setAuthor(QString newauthor) { m_author = newauthor; }
 	QString author() { return m_author; }
 	void setName(QString newname) { m_name = newname; }
@@ -817,6 +820,7 @@ private:
 	bool m_borderWalls;
 	int m_par;
 	int m_maxStrokes;
+	int m_lowestMaxStrokes;
 };
 
 class StrokeCircle : public QCanvasItem

@@ -229,7 +229,7 @@ void Kolf::startNewGame()
 		game->setShowGuideLine(showGuideLineAction->isChecked());		
 		game->setSound(soundAction->isChecked());		
 
-		layout->addWidget(game, 0, 0);
+		layout->addWidget(game, 0, 0, AlignCenter);
 
 		game->show();
 		game->setFocus();
@@ -293,9 +293,9 @@ void Kolf::closeGame()
 		QPixmapCache::insert("grass", grass);
 	}
 	spacer->setBackgroundPixmap(grass);
-	layout->addWidget(spacer, 0, 0);
+	layout->addWidget(spacer, 0, 0, AlignCenter);
 
-	spacer->setMinimumSize(410, 410);
+	spacer->setFixedSize(400, 400);
 	spacer->show();
 
 	editingAction->setChecked(false);

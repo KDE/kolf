@@ -64,8 +64,8 @@ void ScoreBoard::setScore(int id, int hole, int score)
 
 void ScoreBoard::parChanged(int hole, int par)
 {
-	//kdDebug() << "parChange - hole is " << hole << ", par is " << par << endl;
-	setText(numCols() - 1, hole - 1, QString::number(par));
+	kdDebug() << "parChange - hole is " << hole << ", par is " << par << endl;
+	setText(numRows() - 1, hole - 1, QString::number(par));
 
 	// update total
 	int tot = 0;
