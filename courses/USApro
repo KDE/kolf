@@ -241,8 +241,10 @@ width=36
 
 [10-sign@-1,360|42]
 Comment=Washington DC (Pentagon)
+Comment[es]=Washington DC (Pentágono)
 Comment[pt]=Washington DC (Pentágono)
 Comment[pt_BR]=Washington DC (Pentágono)
+Comment[sr]=Вашингтон ДЦ<br>(Пентагон)
 botWallVisible=true
 height=49
 leftWallVisible=true
@@ -1203,6 +1205,7 @@ width=178
 
 [7-sign@11,116|7]
 Comment=Golden Gate
+Comment[sr]=Голден гејт
 botWallVisible=false
 height=97
 leftWallVisible=true
