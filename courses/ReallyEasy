@@ -452,7 +452,7 @@ dummykey=true
 borderWalls=false
 hasFinalLoad=false
 maxstrokes=10
-par=3
+par=5
 
 [17-sand@100,136|3]
 changeEnabled=false
