@@ -4161,8 +4161,7 @@ void KolfGame::print(KPrinter &pr)
 
 	if (pr.option("kde-kolf-title") == "true")
 	{
-		QString text("%1 - Hole %2; by %3");
-		text = text.arg(holeInfo.name()).arg(curHole).arg(holeInfo.author());
+		QString text = i18n("%1 - Hole %2; by %3").arg(holeInfo.name()).arg(curHole).arg(holeInfo.author());
 		QFont font(kapp->font());
 		font.setPointSize(18);
 		QRect rect = QFontMetrics(font).boundingRect(text);

@@ -690,7 +690,7 @@ void Kolf::print()
 	KPrinter pr;
 	pr.addDialogPage(new PrintDialogPage());
 
-	if (pr.setup())
+    if (pr.setup(this, i18n("Print %1 - Hole %2").arg(game->courseName()).arg(game->currentHole())))
 	{
 		pr.newPage();
 		if (game)
