@@ -344,7 +344,7 @@ maxstrokes=10
 par=2
 
 [2-sign@1,5|3]
-Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you choose  <u>Hole->Show Info</u>.
+Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you choose <u>Hole->Show Info</u>.
 botWallVisible=true
 height=187
 leftWallVisible=true
