@@ -3839,7 +3839,7 @@ void KolfGame::shotDone()
 			const QString placeOutside = i18n("Drop outside of hazard");
 			const QString rehit = i18n("Rehit from last location");
 			options << placeOutside << rehit;
-			const QString choice = KComboBoxDialog::getItem(i18n("What would you like to do to for your next shot?"), i18n("%1 Is In a Hazard").arg((*it).name()), options, placeOutside, "hazardOptions");
+			const QString choice = KComboBoxDialog::getItem(i18n("What would you like to do for your next shot?"), i18n("%1 Is In a Hazard").arg((*it).name()), options, placeOutside, "hazardOptions");
 
 			if (choice == placeOutside)
 			{
