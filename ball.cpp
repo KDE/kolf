@@ -240,7 +240,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 		{
 			// it's one of our own kind, a ball
 			Ball *oball = dynamic_cast<Ball *>(item);
-			if (oball->collisionLock())
+			if (!oball || oball->collisionLock())
 				continue;
 			oball->setCollisionLock(true);
 

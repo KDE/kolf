@@ -1757,7 +1757,9 @@ void Wall::selectedItem(QCanvasItem *item)
 	if (item->rtti() == Rtti_WallPoint)
 	{
 		WallPoint *wallPoint = dynamic_cast<WallPoint *>(item);
-		setPoints(startPoint().x(), startPoint().y(), wallPoint->x() - x(), wallPoint->y() - y());
+		if (wallPoint) {
+			setPoints(startPoint().x(), startPoint().y(), wallPoint->x() - x(), wallPoint->y() - y());
+		}
 	}
 }
 
