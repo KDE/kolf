@@ -1574,6 +1574,7 @@ width=50
 
 [17-sign@23,152|20]
 Comment=Luck
+Comment[ar]=حظ
 Comment[bg]=Късмет
 Comment[bn]=ভাগ্য
 Comment[bs]=Sreća
@@ -3383,6 +3384,7 @@ width=66
 
 [9-sign@146,329|23]
 Comment=Chaos
+Comment[ar]=فوضى
 Comment[bg]=Хаос
 Comment[bn]=গোলমাল
 Comment[bs]=Haos
