@@ -78,7 +78,7 @@ stuckOnGround=false
 width=52
 
 [1-slope@8,14|14]
-grade=1
+grade=2
 gradient=Opposite Diagonal
 height=102
 reversed=true
