@@ -1,6 +1,7 @@
 [0-course@-50,-50]
 Name=USA Pro
 Name[hu]=Amerikai profi
+Name[pt_BR]=Pro EUA
 Name[sv]=USA-proffs
 Name[xx]=xxUSA Proxx
 author=Rob Kaper
@@ -46,6 +47,7 @@ width=840
 [1-sign@4,371|14]
 Comment=Daytona Beach, FL
 Comment[hu]=Daytona Beach, Florida
+Comment[pt_BR]=Praia de Daytona, FL
 Comment[sv]=Daytona Beach, Florida
 Comment[wa]=Daytona Beach, Floride, USA
 Comment[xx]=xxDaytona Beach, FLxx
@@ -233,6 +235,7 @@ width=36
 
 [10-sign@-1,360|42]
 Comment=Washington DC<br>(Pentagon)
+Comment[pt_BR]=Washington DC<br>(Pentágono)
 Comment[wa]=Washington DC, USA
 Comment[xx]=xxWashington DC<br>(Pentagon)xx
 botWallVisible=true
@@ -692,6 +695,7 @@ par=2
 [3-sign@-4,358|9]
 Comment=San Francisco, CA
 Comment[hu]=San Francisco, Kalifornia
+Comment[pt_BR]=São Francisco, CA
 Comment[sv]=San Francisco, Kalifornien
 Comment[wa]=San Francisco, Californeye, USA
 Comment[xx]=xxSan Francisco, CAxx
@@ -886,6 +890,7 @@ width=48
 [5-sign@219,344|10]
 Comment=Lake Tahoe, CA/NV
 Comment[hu]=Lake Tahoe, Kalifornia/Nevada
+Comment[pt_BR]=Lago Tahoe, CA/NV
 Comment[sv]=Lake Tahoe, Kalifornien/Nevada
 Comment[wa]=Lak Tahoe, Californeye/Nevada, USA
 Comment[xx]=xxLake Tahoe, CA/NVxx
@@ -1029,6 +1034,7 @@ width=368
 [6-sign@3,101|17]
 Comment=Florida Keys, FL
 Comment[hu]=Florida Keys, Florida
+Comment[pt_BR]=Flórida Keys, FL
 Comment[sv]=Florida Keys, Florida
 Comment[wa]=Florida Keys, Floride, USA
 Comment[xx]=xxFlorida Keys, FLxx
@@ -1188,6 +1194,7 @@ width=40
 [7-sign@135,364|25]
 Comment=San Francisco, CA
 Comment[hu]=San Francisco, Kalifornia
+Comment[pt_BR]=São Francisco, CA
 Comment[sv]=San Francisco, Kalifornien
 Comment[wa]=San Francisco, Californeye, USA
 Comment[xx]=xxSan Francisco, CAxx
@@ -1200,6 +1207,7 @@ width=159
 
 [7-sign@98,209|24]
 Comment=Bay Bridge
+Comment[pt_BR]=Ponte da Baía
 Comment[xx]=xxBay Bridgexx
 botWallVisible=true
 height=24
@@ -1556,6 +1564,7 @@ width=20
 [9-sign@291,368|28]
 Comment=Niagara Falls, NY
 Comment[hu]=Niagara Falls, New York
+Comment[pt_BR]=Cataratas do Niágara, NY
 Comment[sv]=Niagarafallen, Staten New York
 Comment[wa]=Niagara, Noû York, USA
 Comment[xx]=xxNiagara Falls, NYxx
