@@ -47,6 +47,8 @@
 Kolf::Kolf()
     : KMainWindow(0, "Kolf")
 {
+	setStandardToolBarMenuEnabled(true);
+
 	competition = false;
 	game = 0;
 	editor = 0;
