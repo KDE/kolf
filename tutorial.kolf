@@ -1,12 +1,12 @@
 [0-course@-50,-50]
-Name=Tutorial Course
+Name=チュートリアルコース
+Name[ja]=チュートリアルコース
 Name[af]=tutoriaal natuurlik
 Name[bs]=Kurs za obuku
 Name[da]=Øvebane
 Name[es]=Curso de tutorial
 Name[fi]=Harjoituskenttä
 Name[he]=מסלול הדרכה
-Name[ja]=チュートリアルコース
 Name[pt_BR]=Tutorial
 Name[sv]=Övningsbana
 author=Jason Katz-Brown
@@ -26,11 +26,11 @@ par=2
 
 [1-sign@2,2|3]
 Comment=<h3>Welcome</h3> to the tutorial course for Kolf!
+Comment[ja]=<h3>ようこそ</h3> Kolf チュートリアルコースへ!
 Comment[bs]=<h3>Dobro došli</h3> u Kolf kurs za obuku!
 Comment[da]=<h3>Velkommen</h3> til Kolfs øvebane!
 Comment[es]=<h3>Bienvenido</h3> al curso de tutorial de Kolf
 Comment[fi]=<h3>Tervetuloa</h3> Kolf harjoituskierrokselle!
-Comment[ja]=<h3>ようこそ</h3> Kolf チュートリアルコースへ!
 Comment[pt_BR]=<h3>Bem-vindo</h3> ao tutorial do Kolf!
 Comment[sv]=<h3>Välkommen</h3> till Kolfs övningsbana.
 botWallVisible=true
@@ -279,8 +279,8 @@ maxstrokes=10
 par=2
 
 [2-sign@1,5|3]
-Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you press the Up Arrow or right mouse button.
-Comment[da]= <h3>Skråninger</h3>Skråninger på banen skubber bolden i den retning de hælder. Denne retning vises når du trykker på op-pilen eller højre museknap.
+Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you choose  <u>Hole->Show Info</u>.
+Comment[da]=<h3>Skråninger</h3>Skråninger på banen skubber bolden i den retning de hælder. Denne retning vises når du trykker på op-pilen eller højre museknap.
 Comment[es]=<h3>Pendientes</h3>Las pendientes son áreas rayadas de suelo que empujan la bola en la dirección de la pendiente. Esta dirección se muestra al pulsar la flecha arriba o el botón derecho de ratón.
 Comment[fi]=<h3>Kallistukset</h3> Kallistukset ovat alueita, jotka painavat palloa mäen suuntaan. Tämä suunta näytetään, kun painat ylös kohdistinta tai oikeaa hiirinappia.
 Comment[pt_BR]=<h3>Ladeiras</h3>Ladeiras são áreas de terra inclinadas que empurram a bola direção que estão inclinadas. Esta direção é mostrada quando você pressiona a tecla de flecha para cima ou o botão direito do mouse.
@@ -621,7 +621,7 @@ maxstrokes=10
 par=2
 
 [8-sign@5,5|3]
-Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Press the Up Arrow or right mouse button to see which Black Hole goes to which exit and the direction the ball will be come out at.
+Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will be come out at.
 Comment[da]=<h3>Sorte huller</h3>Sorte huller transporterer bolden til deres udgang og affyrer bolden med en fart i direkte relation til boldens oprindelige fart. Tryk på op-pilen eller højre museknap for at se hvilket sort hul der fører til hvilken udgang og den retning bolden vil komme ud i.
 Comment[es]=<h3>Agujeros negros</h3>Los agujeros negros transportan la pelota a la salida y ls disparan a una velocidad directamente proporcional a la que llevaban. Pulse sobre la flecha arriba o el botón derecho del ratón para ver qué agujero negro va a qué salida y la dirección de salida de la bola.
 Comment[fi]=<h3>Mustat aukot</h3> Mustat aukot kuljettavat pallon ulostuloonsa, ja ampuvat pallon nopeudella, joka on verranollinen pallon entiseen nopeuteen. Paina nuolta ylös tai oikeaa hiirinappia nähdäksesi mikä musta aukko on yhteydessä mihinkin ulostuloon ja mihin suuntaan pallo lähtee.
