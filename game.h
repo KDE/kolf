@@ -395,13 +395,20 @@ class BlackHoleExit : public QCanvasLine, public CanvasItem
 public:
 	BlackHoleExit(BlackHole *blackHole, QCanvas *canvas);
 	virtual int rtti() const { return Rtti_NoCollision; }
+	virtual void moveBy(double dx, double dy);
 	virtual bool deleteable() { return false; }
 	virtual bool canBeMovedByOthers() const { return true; }
+	virtual void editModeChanged(bool editing);
+	virtual void setPen(QPen p);
+	virtual void showInfo();
+	virtual void hideInfo();
+	void updateArrowAngle();
+	void updateArrowLength();
 	virtual Config *config(QWidget *parent);
 	BlackHole *blackHole;
 
 private:
-	QCanvasLine *infoLine;
+	Arrow *arrow;
 };
 class BlackHole : public Hole
 {
@@ -418,11 +425,13 @@ public:
 	virtual QPtrList<QCanvasItem> moveableItems();
 	int minSpeed() { return m_minSpeed; }
 	int maxSpeed() { return m_maxSpeed; }
-	void setMinSpeed(int news) { m_minSpeed = news; }
-	void setMaxSpeed(int news) { m_maxSpeed = news; }
+	void setMinSpeed(int news) { m_minSpeed = news; exitItem->updateArrowLength(); }
+	void setMaxSpeed(int news) { m_maxSpeed = news; exitItem->updateArrowLength(); }
 
 	int curExitDeg() { return exitDeg; }
 	void setExitDeg(int newdeg);
+
+	virtual void editModeChanged(bool editing) { exitItem->editModeChanged(editing); }
 
 	virtual void moveBy(double dx, double dy);
 

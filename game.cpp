@@ -1751,7 +1751,7 @@ Putter::Putter(QCanvas *canvas)
 	m_showGuideLine = true;
 
 	guideLine = new QCanvasLine(canvas);
-	guideLine->setPen(QPen(white, 1));
+	guideLine->setPen(QPen(white, 1, QPen::DotLine));
 	guideLine->setZ(998.8);
 
 	setPen(QPen(black, 4));
@@ -2096,6 +2096,8 @@ void BlackHole::setExitDeg(int newdeg)
 	if (game)
 		if (game->isEditing() && game->curSelectedItem() == exitItem)
 			game->updateHighlighter();
+	
+	exitItem->updateArrowAngle();
 	finishMe();
 }
 
@@ -2128,6 +2130,7 @@ void BlackHole::load(KSimpleConfig *cfg)
 	exitItem->setX(exit.x());
 	exitItem->setY(exit.y());
 	exitDeg = cfg->readNumEntry("exitDeg", exitDeg);
+	exitItem->updateArrowAngle();
 	m_minSpeed = cfg->readNumEntry("minspeed", m_minSpeed);
 	m_maxSpeed = cfg->readNumEntry("maxspeed", m_maxSpeed);
 
@@ -2176,8 +2179,54 @@ BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QCanvas *canvas)
 	: QCanvasLine(canvas)
 {
 	this->blackHole = blackHole;
-	infoLine = 0;
+	arrow = new Arrow(canvas);
+	arrow->setPen(QPen(black, 1));
 	setZ(blackHole->z());
+	updateArrowLength();
+	arrow->setVisible(false);
+}
+
+void BlackHoleExit::moveBy(double dx, double dy)
+{
+	QCanvasLine::moveBy(dx, dy);
+	arrow->move(x(), y());
+}
+
+void BlackHoleExit::setPen(QPen p)
+{
+	QCanvasLine::setPen(p);
+	arrow->setPen(QPen(p.color(), 1));
+}
+
+void BlackHoleExit::updateArrowAngle()
+{
+	// arrows work in a different angle system
+	arrow->setAngle(-deg2rad(blackHole->curExitDeg()));
+	arrow->updateSelf();
+}
+
+void BlackHoleExit::updateArrowLength()
+{
+	arrow->setLength(10.0 + 5.0 * (double)(blackHole->minSpeed() + blackHole->maxSpeed()) / 2.0);
+	arrow->updateSelf();
+}
+
+void BlackHoleExit::editModeChanged(bool editing)
+{
+	if (editing)
+		showInfo();
+	else
+		hideInfo();
+}
+
+void BlackHoleExit::showInfo()
+{
+	arrow->setVisible(true);
+}
+
+void BlackHoleExit::hideInfo()
+{
+	arrow->setVisible(false);
 }
 
 Config *BlackHoleExit::config(QWidget *parent)
@@ -2204,14 +2253,14 @@ BlackHoleConfig::BlackHoleConfig(BlackHole *blackHole, QWidget *parent)
 
 	QHBoxLayout *hlayout = new QHBoxLayout(layout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Minimum exit speed"), this));
-	QSpinBox *min = new QSpinBox(0, 12, 1, this);
+	QSpinBox *min = new QSpinBox(0, 8, 1, this);
 	hlayout->addWidget(min);
 	connect(min, SIGNAL(valueChanged(int)), this, SLOT(minChanged(int)));
 	min->setValue(blackHole->minSpeed());
 
 	hlayout = new QHBoxLayout(layout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Maximum"), this));
-	QSpinBox *max = new QSpinBox(1, 12, 1, this);
+	QSpinBox *max = new QSpinBox(1, 10, 1, this);
 	hlayout->addWidget(max);
 	connect(max, SIGNAL(valueChanged(int)), this, SLOT(maxChanged(int)));
 	max->setValue(blackHole->maxSpeed());
@@ -2629,14 +2678,6 @@ bool Wall::collision(Ball *ball, long int id)
 		lastId = id;
 		return false;
 	}
-
-/*
-	if (ball->curVector().magnitude() < .05)
-	{
-		ball->setVelocity(0, 0);
-		return false;
-	}
-*/
 
 	playSound("wall");
 
