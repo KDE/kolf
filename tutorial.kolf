@@ -1,7 +1,6 @@
 [0-course@-50,-50]
-Name=チュートリアルコース
+Name=Tutorial Course
 author=Jason Katz-Brown
-name=Tutorial Course
 
 [1-ball@34,267]
 dummykey=true
