@@ -43,6 +43,7 @@ Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How
 Comment[af]=aan getref die bal, druk en hou die ondertoe pyl van links muis knoppie. hoe lang jy hou ondertoe die muis knoppie van sleutel bepaal sterkte van die geskiet.
 Comment[bs]=Da biste udarili loptu, pritisnite i držite dugme Strelica dola ili lijevo dugme miša. Snagu udarca određujete dužinom pritiska na tipku odnosno dugme miša.
 Comment[da]=For at slå til bolden, tryk og hold ned-pilen eller venstre museknap nede. Slagets kraft afhænger af hvor lang tid du holder knappen i bund.
+Comment[es]=Para golpear la bola, pulsar y mantener la flecha hacia abajo o el botón izquierdo del ratón. El tiempo que mantiene pulsado el botón del ratón o la tecla determinan la intensidad del disparo.
 Comment[fi]=Lyödäksesi palloa, paina ja pidä alhaalla nuolta alas tai hiiren vasenta nappia. Painalluksen pituus määrittelee lyönnin voiman.
 Comment[pt_BR]=Para fazer mexer a bola, pressione e mantenha pressionada a flecha para baixo ou o botão esquerdo do mouse.A quantidade de tempo deste botão/tecla pressionado determina a força do tiro.
 Comment[sv]=För att slå bollen, håll nere och släpp neråtpilen eller vänster musknapp. Hur länge du håller nere musknappen eller tangenten bestämmer hur hårt slaget blir.
@@ -57,6 +58,7 @@ width=319
 Comment=To aim putter, hit the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use mouse.
 Comment[da]=For at sigte mod hullet brug venstrepil (rotér mod uret) og højrepil (rotér med uret), eller brug musen.
 Comment[en_GB]=To aim putter, hit the Left (rotate anticlockwise) and Right (rotate clockwise) Arrow keys or use mouse.
+Comment[es]=Para dirigir el empujador, golpee las teclas de las flechas izquierda (rotar en sentido antihorario) y derecho (sentido horario) o use el ratón.
 Comment[fi]=Suunnataksesi putteria paina vasenta ja oikeaa kursorinäppäintä tai käytä hiirtä.
 Comment[pt_BR]=Para apontar, pressione a flecha Esquerda (rotação no sentido anti-horário) e a flecha Direita (sentido horário), ou use o mouse.
 Comment[sv]=För att sikta med puttern, tryck på vänster (rotera moturs) eller höger (rotera medurs) piltangent eller använd musen.
@@ -277,6 +279,7 @@ par=2
 [2-sign@1,5|3]
 Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you press the Up Arrow or right mouse button.
 Comment[da]= <h3>Skråninger</h3>Skråninger på banen skubber bolden i den retning de hælder. Denne retning vises når du trykker på op-pilen eller højre museknap.
+Comment[es]=<h3>Pendientes</h3>Las pendientes son áreas rayadas de suelo que empujan la bola en la dirección de la pendiente. Esta dirección se muestra al pulsar la flecha arriba o el botón derecho de ratón.
 Comment[fi]=<h3>Kallistukset</h3> Kallistukset ovat alueita, jotka painavat palloa mäen suuntaan. Tämä suunta näytetään, kun painat ylös kohdistinta tai oikeaa hiirinappia.
 Comment[pt_BR]=<h3>Ladeiras</h3>Ladeiras são áreas de terra inclinadas que empurram a bola direção que estão inclinadas. Esta direção é mostrada quando você pressiona a tecla de flecha para cima ou o botão direito do mouse.
 Comment[sv]=<h3>Sluttningar</h3>Sluttningar är lutande markområden som rullar bollen i riktningen de lutar. Riktningen visas när du trycker på uppåtpil eller höger musknapp.
@@ -290,6 +293,7 @@ width=392
 [2-sign@197,198|5]
 Comment=Hit the ball onto the slope and let it roll into cup.
 Comment[da]=Slå bolden op på skråningen og lad den rulle ned i fordybningen.
+Comment[es]=Golpear la bola en la pendiente y dejarla rodar hasta la copa.
 Comment[fi]=Lyä pallo rinteeseen ja anna sen vieriä kuppiin.
 Comment[pt_BR]=Dê uma pancada na bola e deixe-a rolar para dentro da xícara.
 Comment[sv]=Slå bollen över sluttningen och låt den rulla i hålet.
@@ -421,6 +425,7 @@ par=3
 [4-sign@6,3|3]
 Comment=The steepness of a slope is shown when you press Up Arrow or the right mouse button. Steepness goes from 8 (steepest) to 1 (shallowest).
 Comment[da]=Du kan se hvor stejl en skråning er ved at trykke på op-pilen eller højre museknap. Stejlhed går fra 8 (stejlest) til 1 (fladest).
+Comment[es]=La intensidad de la pendiente se muestra cuando usted pulsa la flecha arriba o el botón derecho del ratón. La intensidad va de 8 (máxima) a 1 (mínima).
 Comment[fi]=Mäen kaltevuus näytetään kun painat nuolta ylös tai oikeaa hiirinappia. Kaltevuus on välillä 8 (jyrkin) - 1 (loivin)
 Comment[pt_BR]=Quão íngreme é uma ladeira é mostrado quando você pressionar a flecha para cima ou o botão direito do mouse button. O valor para medir o quão íngreme é a ladeira vai de 8 (mais íngreme) para 1 (mais baixo/plano).
 Comment[sv]=En sluttnings lutning visas när du trycker på uppåtpilen eller höger musknapp. Lutningen sträcker sig från 8 (brantast) till 1 (minst brant).
@@ -574,6 +579,7 @@ par=2
 [7-sign@130,2|4]
 Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The windmill arm's speed may vary by hole.
 Comment[da]=<h3>Vindmøller</h3>Vindmøller (brun base med bevægende vinge) har brune vægge (eller halve vægge). Vindmøllevingens fart kan variere fra bane til bane.
+Comment[es]=<h3>Molinos de viento</h3>Los molinos de viento (base marrón con brazo móvil) tienen paredes marrones (o medias paredes). La velocidad del brazo del molino puede variar completamente.
 Comment[fi]=<h3>Tuulimyllyt</h3>Tuulimyllyissä (ruskea jalusta, pyörivät siivet) on ruskeat seinät (tai puoliseinät). Tuulimyllyn siiven vauhti voi vaihdella reikien välillä.
 Comment[pt_BR]=<h3>Moinhos</h3>Os moinhos (base marrom com uma arma)  possuem paredes marrons (meias-paredes). A velocidade da arma de moinho pode  variar dependendo do buraco.
 Comment[sv]=<h3>Väderkvarnar</h3>Väderkvarnar (brun bas med vinge som flyttas) har bruna väggar (eller halva väggar). Hastigheten på väderkvarnens vinge kan variera för olika hål.
@@ -615,6 +621,7 @@ par=2
 [8-sign@5,5|3]
 Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Press the Up Arrow or right mouse button to see which Black Hole goes to which exit and the direction the ball will be come out at.
 Comment[da]=<h3>Sorte huller</h3>Sorte huller transporterer bolden til deres udgang og affyrer bolden med en fart i direkte relation til boldens oprindelige fart. Tryk på op-pilen eller højre museknap for at se hvilket sort hul der fører til hvilken udgang og den retning bolden vil komme ud i.
+Comment[es]=<h3>Agujeros negros</h3>Los agujeros negros transportan la pelota a la salida y ls disparan a una velocidad directamente proporcional a la que llevaban. Pulse sobre la flecha arriba o el botón derecho del ratón para ver qué agujero negro va a qué salida y la dirección de salida de la bola.
 Comment[fi]=<h3>Mustat aukot</h3> Mustat aukot kuljettavat pallon ulostuloonsa, ja ampuvat pallon nopeudella, joka on verranollinen pallon entiseen nopeuteen. Paina nuolta ylös tai oikeaa hiirinappia nähdäksesi mikä musta aukko on yhteydessä mihinkin ulostuloon ja mihin suuntaan pallo lähtee.
 Comment[pt_BR]=<h3>Buraco negro</h3>Os buracos negros transportam a bola para sua saída,  e ejetam-na com uma velocidade diretamente relacionada com a velocidade em que sua bola está indo. Pressione a tecla de flecha para cima ou o botão direito do mouse para ver qual Buraco Negro vai para qual saída.
 Comment[sv]=<h3>Svarta hål</h3>Svarta hål transporterar bollen till sina utgångar, och skickar ut den med en hastighet som är direkt proportionell mot hastigheten som bollen hade. Tryck på uppåtpilen eller höger musknapp för att se vilket svart hål som går till vilken utgång, och i vilken riktning bollen kommer ut.
@@ -659,6 +666,7 @@ par=2
 [9-sign@5,6|3]
 Comment=<h3>Floaters</h3>Floaters are moving platforms that carry a ball that lands on it. Floaters' speeds vary.
 Comment[da]=<h3>Svævere</h3>Svævere er bevægende platforme som flytter en bold der lander på dem. Svæveres fart varierer.
+Comment[es]=<h3>Flotadores</h3>Los flotadores son plataformas móviles que transportan una pelota que aterrice en ellas. La velocidad de los flotadores es variable.
 Comment[fi]=<h3>Kellujat</h3> Kellujat ovat tasoja, jotka siirtävät palloa joka on tasolla. Tasojen vauhti vaihtelee.
 Comment[pt_BR]=<h3>Bóias</h3>As bóias são plataformas em movimentos que carregam uma bola sobre ela. A velocidade das bóias pode variar.
 Comment[sv]=<h3>Flottar</h3>Flottar är flyttbara plattformar som kan bära en boll som landar på dem. Flottarnas hastighet varierar.
