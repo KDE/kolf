@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="Kolf" version="1">
+<kpartgui name="Kolf" version="2">
 	<MenuBar>
 		<Menu name="hole"><text>Ho&amp;le</text>
 			<Action name="editing" />
