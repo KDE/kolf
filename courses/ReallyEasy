@@ -1,5 +1,4 @@
 [0-course@-50,-50]
-author=Neil Stevens
 Name=Really Easy
 Name[af]=rerig maklike
 Name[bs]=Stvarno lagano
@@ -7,6 +6,7 @@ Name[da]=Meget nem
 Name[es]=Realmente fácil
 Name[pt_BR]=Realmente fácil
 Name[sv]=Mycket enkel
+author=Neil Stevens
 name=Really Easy
 
 [1-ball@79,203]
@@ -623,7 +623,7 @@ dummykey=true
 exit=312,177
 exitDeg=183
 maxspeed=3
-minspeed=2
+minspeed=3
 
 [6-bridge@90,199|21]
 botWallVisible=false
@@ -1586,3 +1586,87 @@ startPoint=163,88
 [8-wall@0,0|9]
 endPoint=212,101
 startPoint=163,88
+
+[9-ball@54,55]
+dummykey=true
+
+[9-bumper@103,164|8]
+dummykey=true
+
+[9-bumper@114,230|11]
+dummykey=true
+
+[9-bumper@128,197|9]
+dummykey=true
+
+[9-bumper@141,161|5]
+dummykey=true
+
+[9-bumper@152,123|0]
+dummykey=true
+
+[9-bumper@156,85|2]
+dummykey=true
+
+[9-bumper@162,25|13]
+dummykey=true
+
+[9-bumper@187,157|6]
+dummykey=true
+
+[9-bumper@221,153|12]
+dummykey=true
+
+[9-bumper@242,329|23]
+dummykey=true
+
+[9-bumper@243,290|18]
+dummykey=true
+
+[9-bumper@248,219|14]
+dummykey=true
+
+[9-bumper@248,254|17]
+dummykey=true
+
+[9-bumper@254,187|16]
+dummykey=true
+
+[9-bumper@257,149|3]
+dummykey=true
+
+[9-bumper@277,339|21]
+dummykey=true
+
+[9-bumper@317,338|20]
+dummykey=true
+
+[9-bumper@346,321|22]
+dummykey=true
+
+[9-bumper@371,295|24]
+dummykey=true
+
+[9-bumper@38,348|19]
+dummykey=true
+
+[9-bumper@58,324|15]
+dummykey=true
+
+[9-bumper@66,170|7]
+dummykey=true
+
+[9-bumper@77,296|10]
+dummykey=true
+
+[9-bumper@97,261|4]
+dummykey=true
+
+[9-cup@281,294|1]
+dummykey=true
+
+[9-hole@-50,-50|0]
+borderWalls=true
+hasFinalLoad=false
+maxstrokes=6
+par=3
