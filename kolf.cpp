@@ -110,7 +110,7 @@ void Kolf::initGUI()
 	highScoreAction = KStdGameAction::highscores(this, SLOT(showHighScores()), actionCollection());
 
 	editingAction = new KToggleAction(i18n("&Edit"), "pencil", CTRL+Key_E, 0, 0, actionCollection(), "editing");
-	newHoleAction = new KAction(i18n("&New"), "filenew", CTRL+Key_H, 0, 0, actionCollection(), "newhole");
+	newHoleAction = new KAction(i18n("&New"), "filenew", CTRL+SHIFT+Key_N, 0, 0, actionCollection(), "newhole");
 	clearHoleAction = new KAction(i18n("&Clear"), "locationbar_erase", CTRL+Key_Delete, game, SLOT(clearHole()), actionCollection(), "clearhole");
 	resetHoleAction = new KAction(i18n("&Reset"), CTRL+Key_R, 0, 0, actionCollection(), "resethole");
 	undoShotAction = KStdAction::undo(0, 0, actionCollection(), "undoshot");

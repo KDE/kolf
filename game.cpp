@@ -2601,8 +2601,6 @@ void Wall::editModeChanged(bool changed)
 	else
 		neww = pen().width();
 
-	//kdDebug() << "neww = " << neww << endl;
-
 	startItem->setSize(neww, neww);
 	endItem->setSize(neww, neww);
 

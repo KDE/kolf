@@ -40,10 +40,12 @@ void Editor::listboxExecuted(QListBoxItem * /*item*/)
 
 	emit addNewItem(list->at(curItem));
 
+	/*
 	listbox->setSelected(curItem, false);
 	listbox->setSelected(0, true);
 	listbox->setSelected(0, false);
 	listbox->setSelected(-1, true);
+	*/
 	listbox->setFocus();
 }
 
