@@ -7,7 +7,7 @@
 
 #include <klocale.h>
 #include <klibloader.h>
-#include <kapp.h>
+#include <kapplication.h>
 #include <kdebug.h>
 #include <knuminput.h>
 #include <ksimpleconfig.h>
