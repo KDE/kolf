@@ -37,7 +37,7 @@ NewGameDialog::NewGameDialog(QWidget *parent, const char *name)
 	KConfig *config = kapp->config();
 
 	// lots o' colors :)
-	startColors << yellow << blue << red << lightGray << cyan << darkBlue << magenta << darkGray << darkMagenta << darkYellow << darkCyan;
+	startColors << yellow << blue << red << lightGray << cyan << darkBlue << magenta << darkGray << darkMagenta << darkYellow;
 
 	dummy = plainPage();
 	dummy->setMinimumSize(250, 300);

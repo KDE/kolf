@@ -111,12 +111,12 @@ stuckOnGround=false
 width=60
 
 [1-slope@259,300|12]
-grade=8
+grade=7
 gradient=Opposite Diagonal
-height=44
+height=32
 reversed=true
 stuckOnGround=false
-width=59
+width=46
 
 [1-slope@9,13|14]
 grade=1
@@ -146,7 +146,7 @@ endPoint=195,125
 height=53
 leftWallVisible=true
 rightWallVisible=false
-speed=5
+speed=8
 startPoint=20,260
 topWallVisible=true
 width=76
@@ -156,97 +156,128 @@ maxstrokes=10
 par=3
 
 [10-puddle@100,218|41]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@108,167|29]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@111,207|40]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@113,141|32]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@115,231|25]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@123,182|27]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@131,156|38]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@136,250|28]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@139,122|12]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@141,143|14]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@141,204|26]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@142,227|30]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@146,174|24]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@156,151|19]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@164,122|13]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@164,260|36]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@167,191|22]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@175,215|33]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@176,240|21]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@185,144|20]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@185,166|17]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@190,121|16]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@190,268|34]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@196,261|35]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@197,218|59]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@199,237|37]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@200,200|58]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@201,181|23]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@208,279|39]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@209,155|15]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-puddle@215,138|18]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [10-slope@112,365|52]
 grade=1
@@ -1699,6 +1730,15 @@ changeEvery=50
 changeEnabled=false
 changeEvery=50
 
+[17-sign@2,346|41]
+botWallVisible=false
+height=50
+leftWallVisible=false
+rightWallVisible=true
+text=No birdies ever
+topWallVisible=true
+width=158
+
 [17-slope@14,136|39]
 grade=3
 gradient=Vertical
@@ -1802,6 +1842,14 @@ exitDeg=0
 maxspeed=2
 minspeed=1
 
+[19-bridge@265,29|32]
+botWallVisible=false
+height=52
+leftWallVisible=false
+rightWallVisible=false
+topWallVisible=false
+width=19
+
 [19-bridge@265,75|33]
 botWallVisible=false
 height=7
@@ -1809,14 +1857,6 @@ leftWallVisible=false
 rightWallVisible=false
 topWallVisible=false
 width=15
-
-[19-bridge@266,-52|32]
-botWallVisible=false
-height=132
-leftWallVisible=false
-rightWallVisible=false
-topWallVisible=false
-width=21
 
 [19-cup@91,109|8]
 dummykey=true
@@ -2176,14 +2216,6 @@ exitDeg=290
 maxspeed=2
 minspeed=1
 
-[3-bridge@60,150|30]
-botWallVisible=false
-height=82
-leftWallVisible=false
-rightWallVisible=false
-topWallVisible=false
-width=68
-
 [3-cup@343,36|16]
 dummykey=true
 
@@ -2195,7 +2227,7 @@ par=4
 changeEnabled=false
 changeEvery=22
 
-[3-puddle@252,264|8]
+[3-puddle@252,272|8]
 changeEnabled=false
 changeEvery=20
 
@@ -2268,7 +2300,7 @@ endPoint=291,108
 startPoint=274,106
 
 [3-wall@0,0|18]
-endPoint=314,65
+endPoint=314,62
 startPoint=293,106
 
 [3-wall@0,0|19]
@@ -2288,16 +2320,24 @@ endPoint=293,10
 startPoint=277,40
 
 [3-wall@0,0|28]
-endPoint=224,230
+endPoint=100,175
 startPoint=13,132
 
 [3-wall@0,0|29]
-endPoint=193,249
-startPoint=10,175
+endPoint=78,206
+startPoint=14,175
 
 [3-wall@0,0|3]
 endPoint=390,233
 startPoint=227,230
+
+[3-wall@0,0|30]
+endPoint=150,198
+startPoint=227,230
+
+[3-wall@0,0|31]
+endPoint=192,249
+startPoint=128,227
 
 [3-wall@0,0|5]
 endPoint=192,248
@@ -3417,13 +3457,13 @@ width=340
 [8-ball@40,30]
 dummykey=true
 
-[8-bridge@138,199|21]
+[8-bridge@139,204|21]
 botWallVisible=true
-height=35
+height=26
 leftWallVisible=false
 rightWallVisible=false
-topWallVisible=true
-width=84
+topWallVisible=false
+width=83
 
 [8-cup@198,167|10]
 dummykey=true

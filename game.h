@@ -34,7 +34,7 @@ class KSimpleConfig;
 class KolfGame;
 
 enum BallState {Rolling, Stopped, Holed};
-enum RttiCodes { Rtti_NoCollision = 1001, Rtti_DontPlaceOn = 1002, Rtti_Ball = 1003, Rtti_Putter = 1004 };
+enum RttiCodes { Rtti_NoCollision = 1001, Rtti_DontPlaceOn = 1002, Rtti_Ball = 1003, Rtti_Putter = 1004, Rtti_WallPoint = 1005 };
 enum Direction { D_Left, D_Right, Forwards, Backwards };
 enum HoleResult { Result_Holed, Result_Miss, Result_LipOut };
 
@@ -96,17 +96,23 @@ public:
 	Ball(QCanvas *canvas);
 	BallState currentState();
 
+	void resetSize() { setSize(7, 7); }
+	virtual void advance(int phase);
+	virtual void doAdvance() { QCanvasEllipse::advance(1); }
+
 	double curSpeed() { return sqrt(xVelocity() * xVelocity() + yVelocity() * yVelocity()); }
 	virtual bool onBridge() { return true; }
 
 	BallState curState() { return state; }
-	void setState(BallState newState) { state = newState; }
+	void setState(BallState newState) { state = newState; if (state == Stopped) setZ(1000); }
 
 	QColor color() { return m_color; }
 	void setColor(QColor color) { m_color = color; setBrush(color); }
 
 	void setMoved(bool yes) { m_moved = yes; }
 	bool moved() { return m_moved; }
+	void setBlowUp(bool yes) { m_blowUp = yes; blowUpCount = 0; }
+	bool blowUp() { return m_blowUp; }
 
 	void setFrictionMultiplier(double news) { frictionMultiplier = news; };
 	void friction();
@@ -116,7 +122,7 @@ public:
 
 	bool addStroke() { return m_addStroke; }
 	bool placeOnGround(double &oldvx, double &oldvy) { oldvx = m_oldvx; oldvy = m_oldvy; return m_placeOnGround; }
-	void setAddStroke(bool addStroke) { m_addStroke = addStroke; }
+	void setAddStroke(int newStrokes) { m_addStroke = newStrokes; }
 	void setPlaceOnGround(bool placeOnGround, double oldvx, double oldvy) { m_placeOnGround = placeOnGround; m_oldvx = oldvx; m_oldvy = oldvy;}
 
 private:
@@ -127,7 +133,9 @@ private:
 	long int collisionId;
 	double frictionMultiplier;
 
-	bool m_addStroke;
+	bool m_blowUp;
+	int blowUpCount;
+	int m_addStroke;
 	bool m_placeOnGround;
 	double m_oldvx;
 	double m_oldvy;
@@ -469,6 +477,7 @@ public:
 	virtual void aboutToDie();
 	double dampening() { return 1.22; }
 
+	void setAlwaysShow(bool yes);
 	virtual void setZ(double newz);
 	virtual void setPen(QPen p);
 	virtual void collision(Ball *ball, long int id);
@@ -477,6 +486,7 @@ public:
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
 	virtual void setVelocity(double vx, double vy);
+	virtual void finalLoad();
 	// must reimp because we gotta move the end items,
 	// and we do that in :moveBy()
 	virtual void setPoints(int xa, int ya, int xb, int yb) { QCanvasLine::setPoints(xa, ya, xb, yb); moveBy(0, 0); }
@@ -498,16 +508,24 @@ class WallPoint : public QCanvasEllipse, public CanvasItem
 public:
 	WallPoint(bool start, Wall *wall, QCanvas *canvas);
 	//virtual int rtti() const { return Rtti_NoCollision; }
+	void setAlwaysShow(bool yes) { alwaysShow = yes; updateVisible(); }
+	virtual void editModeChanged(bool changed);
+	virtual void setVisible(bool yes);
 	virtual void moveBy(double dx, double dy);
+	virtual int rtti() const { return Rtti_WallPoint; }
 	virtual bool deleteable() { return false; }
 	virtual void collision(Ball *ball, long int id);
 	virtual QFrame *config(QWidget *parent) { return wall->config(parent); }
 	void dontMove() { dontmove = true; };
+	void updateVisible();
 	
 private:
+	bool alwaysShow;
 	Wall *wall;
+	bool editing;
 	bool start;
 	bool dontmove;
+	bool visible;
 	int lastId;
 };
 class WallObj : public Object
@@ -533,7 +551,7 @@ public:
 	virtual void setVisible(bool yes);
 	void saveDegrees(Ball *ball) { degMap[ball] = deg; }
 	void setDegrees(Ball *ball);
-	void resetDegrees() { degMap.clear(); }
+	void resetDegrees() { degMap.clear(); setZ(998.9); }
 	virtual bool onBridge() { return true; }
 	virtual void moveBy(double dx, double dy);
 
@@ -866,8 +884,6 @@ signals:
 
 private slots:
 	void shotDone();
-	void shotStart();
-	void addWall(QPoint start, QPoint end);
 	void holeDone();
 	void timeout();
 	void fastTimeout();
@@ -959,6 +975,9 @@ private:
 	bool infoShown;
 
 	KSimpleConfig *cfg;
+
+	inline void addWall(QPoint start, QPoint end);
+	inline void shotStart();
 };
 
 #endif

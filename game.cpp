@@ -497,9 +497,13 @@ Bridge::Bridge(QRect rect, QCanvas *canvas)
 	setZ(998);
 
 	topWall = new Wall(canvas);
+	topWall->setAlwaysShow(true);
 	botWall = new Wall(canvas);
+	botWall->setAlwaysShow(true);
 	leftWall = new Wall(canvas);
+	leftWall->setAlwaysShow(true);
 	rightWall = new Wall(canvas);
+	rightWall->setAlwaysShow(true);
 	setWallZ(998.1);
 	setWallColor(color);
 	topWall->setVisible(false);
@@ -726,7 +730,9 @@ void Floater::setGame(KolfGame *game)
 void Floater::editModeChanged(bool changed)
 {
 	if (changed)
+	{
 		wall->editModeChanged(true);
+	}
 	Bridge::editModeChanged(changed);
 	wall->setVisible(changed);
 }
@@ -764,6 +770,7 @@ void Floater::advance(int phase)
 			setSpeed(speed);
 			//kdDebug() << "moving back to beginning\n";
 		}
+		/*
 		else if (start.x() == end.x())
 			// vertical
 		{
@@ -784,6 +791,7 @@ void Floater::advance(int phase)
 				setVelocity(-xVelocity(), -yVelocity());
 			}
 		}
+		*/
 		else if (start.y() == end.y())
 			// horizontal
 		{
@@ -856,7 +864,7 @@ void Floater::setSpeed(int news)
 	const double rise = wall->startPoint().y() - wall->endPoint().y();
 	const double run = wall->startPoint().x() - wall->endPoint().x();
 	double wallAngle = atan(rise / run);
-	const double factor = (double)speed / (double)5;
+	const double factor = (double)speed / (double)3.5;
 	
 	setVelocity(-cos(wallAngle) * factor, -sin(wallAngle) * factor);
 	//kdDebug() << "velocities now " << xVelocity() << ", " << yVelocity() << endl;
@@ -893,6 +901,7 @@ void Floater::moveBy(double dx, double dy)
 		{
 			CanvasItem *item = dynamic_cast<CanvasItem *>(*it);
 			if (item)
+			{
 				if (item->onBridge())
 					if (collidesWith(*it))
 					{
@@ -903,6 +912,7 @@ void Floater::moveBy(double dx, double dy)
 						if ((*it)->rtti() != Rtti_Putter)
 							(*it)->moveBy(dx, dy);
 					}
+			}
 		}
 	}
 	
@@ -1001,13 +1011,16 @@ Windmill::Windmill(QRect rect, QCanvas *canvas)
 	guard = new WindmillGuard(canvas);
 	guard->setPen(QPen(black, 5));
 	guard->setVisible(true);
+	guard->setAlwaysShow(true);
 	setSpeed(5);
 	guard->setZ(wallZ() + .1);
 
 	left = new Wall(canvas);
 	left->setPen(wallPen());
+	left->setAlwaysShow(true);
 	right = new Wall(canvas);
 	right->setPen(wallPen());
+	right->setAlwaysShow(true);
 	left->setZ(wallZ());
 	right->setZ(wallZ());
 	left->setVisible(true);
@@ -1039,7 +1052,7 @@ void Windmill::setSpeed(int news)
 	if (news < 0)
 		return;
 	speed = news;
-	guard->setXVelocity(((double)news / (double)5) * (guard->xVelocity() > 0? 1 : -1));
+	guard->setXVelocity(((double)news / (double)3) * (guard->xVelocity() > 0? 1 : -1));
 }
 
 void Windmill::setGame(KolfGame *game)
@@ -1330,7 +1343,7 @@ Ellipse::Ellipse(QCanvas *canvas)
 	setChangeEnabled(false);
 	setChangeEvery(50);
 	count = 0;
-	show();
+	setVisible(true);
 }
 
 void Ellipse::advance(int phase)
@@ -1369,7 +1382,7 @@ QFrame *Ellipse::config(QWidget *parent)
 
 void Ellipse::aboutToSave()
 {
-	show();
+	setVisible(true);
 	dontHide = true;
 }
 
@@ -1407,13 +1420,13 @@ void Puddle::load(KSimpleConfig *cfg, int hole)
 void Puddle::collision(Ball *ball, long int /*id*/)
 {
 	QCanvasRectangle i(QRect(ball->x(), ball->y(), 1, 1), canvas());
-	i.show();
+	i.setVisible(true);
 
 	// is center of ball in?
 	if (i.collidesWith(this)/* && ball->curSpeed() < 4*/)
 	{
 		playSound("puddle");
-		ball->setAddStroke(true);
+		ball->setAddStroke(ball->addStroke() + 1);
 		ball->setPlaceOnGround(true, ball->xVelocity(), ball->yVelocity());
 		//ball->setVelocity(0, 0);
 		ball->setVisible(false);
@@ -1451,7 +1464,7 @@ void Sand::load(KSimpleConfig *cfg, int hole)
 void Sand::collision(Ball *ball, long int /*id*/)
 {
 	QCanvasRectangle i(QRect(ball->x(), ball->y(), 1, 1), canvas());
-	i.show();
+	i.setVisible(true);
 
 	// is center of ball in?
 	if (i.collidesWith(this)/* && ball->curSpeed() < 4*/)
@@ -1469,22 +1482,23 @@ Putter::Putter(QCanvas *canvas)
 	guideLine->setPen(QPen(white, 1));
 	guideLine->setZ(998.8);
 
-	setZ(998.9);
-
 	setPen(QPen(black, 4));
-	putterWidth=15;
+	putterWidth=12;
 	maxDeg = 360;
 
 	hideInfo();
+
+	// this also sets Z
+	resetDegrees();
 }
 
 void Putter::showInfo()
 {
-	guideLine->show();
+	guideLine->setVisible(true);
 }
 void Putter::hideInfo()
 {
-	guideLine->hide();
+	guideLine->setVisible(false);
 }
 
 void Putter::moveBy(double dx, double dy)
@@ -1497,7 +1511,7 @@ void Putter::moveBy(double dx, double dy)
 void Putter::setVisible(bool yes)
 {
 	QCanvasLine::setVisible(yes);
-	guideLine->hide();
+	guideLine->setVisible(false);
 }
 
 void Putter::setOrigin(int _x, int _y)
@@ -1581,10 +1595,10 @@ void Putter::finishMe()
 Ball::Ball(QCanvas *canvas)
 	: QCanvasEllipse(canvas)
 {
+	setBlowUp(false);
 	setBrush(black);
 	setPen(black);
-	setSize(7, 7);
-	setZ(1000);
+	resetSize();
 	//kdDebug() << "ball ctor\n";
 	applyFriction = true;
 	setVelocity(0, 0);
@@ -1592,7 +1606,32 @@ Ball::Ball(QCanvas *canvas)
 	m_addStroke = false;
 	m_placeOnGround = false;
 
-	state = Stopped;
+	// this sets z
+	setState(Stopped);
+}
+
+void Ball::advance(int phase)
+{
+	//QCanvasEllipse::advance(phase);
+
+	if (phase == 1 && m_blowUp)
+	{
+		if (blowUpCount >= 50)
+		{
+			setAddStroke(addStroke() + 1);
+			setBlowUp(false);
+			resetSize();
+			return;
+		}
+
+		const double diff = 8;
+		double randnum = kapp->random();
+		const double width = 6 + randnum * (diff / RAND_MAX);
+		randnum = kapp->random();
+		const double height = 6 + randnum * (diff / RAND_MAX);
+		setSize(width, height);
+		blowUpCount++;
+	}
 }
 
 void Ball::friction()
@@ -1652,8 +1691,14 @@ void Ball::collisionDetect()
 
 		if (item->rtti() == rtti())
 		{
-			// it's one of our own kind, a ball!
-			continue;
+			if (curSpeed() > 2)
+			{
+				// it's one of our own kind, a ball, and we're hitting it
+				// sorta hard
+				//kdDebug() << "gonna blow up\n";
+				dynamic_cast<Ball *>(item)->setBlowUp(true);
+				continue;
+			}
 		}
 
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
@@ -1704,7 +1749,7 @@ HoleResult Hole::result(QPoint p, double s, bool * /*wasCenter*/)
 	}
 
 	QCanvasRectangle i(QRect(p, QSize(1, 1)), canvas());
-	i.show();
+	i.setVisible(true);
 
 	// is center of ball in cup?
 	if (i.collidesWith(this))
@@ -1756,7 +1801,7 @@ void BlackHole::showInfo()
 {
 	delete infoLine;
 	infoLine = new QCanvasLine(canvas());
-	infoLine->show();
+	infoLine->setVisible(true);
 	infoLine->setPen(QPen(white, 2));
 	infoLine->setZ(10000);
 	infoLine->setPoints(x(), y(), exitItem->x(), exitItem->y());
@@ -1789,7 +1834,7 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 	playSound("blackhole");
 
 	double diff = (m_maxSpeed - m_minSpeed);
-	double randnum = random();
+	double randnum = kapp->random();
 	//kdDebug() << "randnum = " << randnum << endl;
 	double strength = m_minSpeed + randnum * (diff / RAND_MAX);
 	//kdDebug() << "strength is " << strength << endl;
@@ -1892,7 +1937,7 @@ void BlackHoleExit::showInfo()
 	//kdDebug() << "midPoint is " << midPoint.x() << ", " << midPoint.y() << endl;
 	//kdDebug() << "endPoint is " << endPoint.x() << ", " << endPoint.y() << endl;
 	infoLine->setPoints(midPoint.x(), midPoint.y(), endPoint.x(), endPoint.y());
-	infoLine->show();
+	infoLine->setVisible(true);
 	*/
 }
 
@@ -1957,6 +2002,9 @@ WallPoint::WallPoint(bool start, Wall *wall, QCanvas *canvas)
 {
 	this->wall = wall;
 	this->start = start;
+	this->alwaysShow = false;
+	this->editing = false;
+	this->visible = true;
 	dontmove = false;
 
 	move(0, 0);
@@ -1970,10 +2018,18 @@ WallPoint::WallPoint(bool start, Wall *wall, QCanvas *canvas)
 	setZ(wall->z() + 1);
 }
 
+void WallPoint::setVisible(bool yes)
+{
+	//kdDebug() << "setVisible " << yes << endl;
+	QCanvasEllipse::setVisible(yes);
+}
+
 void WallPoint::moveBy(double dx, double dy)
 {
 	//kdDebug() << "WallPoint::moveBy(" << dx << ", " << dy << ")\n";
 	QCanvasEllipse::moveBy(dx, dy);
+	if (!editing)
+		updateVisible();
 
 	if (dontmove)
 	{
@@ -1997,6 +2053,35 @@ void WallPoint::moveBy(double dx, double dy)
 	update();
 }
 
+void WallPoint::updateVisible()
+{
+	if (!wall->isVisible())
+	{
+		visible = false;
+		return;
+	}
+	//kdDebug() << "WallPoint::updateVisible\n";
+	if (alwaysShow)
+		visible = true;
+	else
+	{
+		visible = true;
+		QCanvasItemList l = collisions(true);
+		for (QCanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
+			if ((*it)->rtti() == rtti())
+				visible = false;
+	}
+}
+
+void WallPoint::editModeChanged(bool changed)
+{
+	//kdDebug() << "WallPoint::editModeChanged " << changed << endl;
+	editing = changed;
+	setVisible(true);
+	if (!editing)
+		updateVisible();
+}
+
 void WallPoint::collision(Ball *ball, long int id)
 {
 	//kdDebug() << "WallPoint::collision\n";
@@ -2011,49 +2096,59 @@ void WallPoint::collision(Ball *ball, long int id)
 
 	playSound("wall");
 
-	lastId = id;
-
-	const QPoint start = wall->startPoint();
-	const QPoint end = wall->endPoint();
-
-	double vx = ball->xVelocity();
-	double vy = ball->yVelocity();
-	const double dampening = wall->dampening();
-
-	if (start.y() == end.y())
+	// visible just means if we should bounce opposite way
+	if (visible)
 	{
-		//kdDebug() << "horizontal\n";
-		vx *= -1;
-		vy /= dampening;
-		vx /= dampening;
-	}
-	else if (start.x() == end.x())
-	{
-		//kdDebug() << "vertical\n";
-		vy *= -1;
-		vy /= dampening;
-		vx /= dampening;
+		//kdDebug() << "weird col\n";
+		lastId = id;
+
+		const QPoint start = wall->startPoint();
+		const QPoint end = wall->endPoint();
+
+		double vx = ball->xVelocity();
+		double vy = ball->yVelocity();
+		const double dampening = wall->dampening();
+
+		if (start.y() == end.y())
+		{
+			//kdDebug() << "horizontal\n";
+			vx *= -1;
+			vy /= dampening;
+			vx /= dampening;
+		}
+		else if (start.x() == end.x())
+		{
+			//kdDebug() << "vertical\n";
+			vy *= -1;
+			vy /= dampening;
+			vx /= dampening;
+		}
+		else
+		{
+			const double speed = ball->curSpeed() / dampening;
+			const double ballslope = -(double)vy/(double)vx;
+			const double wallslope = (double)(-(start.x() - end.x()))/(double)(end.y() - start.y());
+			double ballangle = atan(ballslope);
+			if (vx < 0)  
+				ballangle += PI;
+			const double wallangle = atan(wallslope);
+
+			const double collisionangle = ballangle - wallangle;
+			const double leavingangle = PI - collisionangle + wallangle;
+
+			vx = -cos(leavingangle)*speed;
+			vy = sin(leavingangle)*speed;
+		}
+
+		//kdDebug() << "new velocities: vx = " << vx << ", vy = " << vy << endl;
+		//kdDebug() << "--------------\n";
+		ball->setVelocity(vx, vy);
 	}
 	else
 	{
-		const double speed = ball->curSpeed() / dampening;
-		const double ballslope = -(double)vy/(double)vx;
-		const double wallslope = (double)(-(start.x() - end.x()))/(double)(end.y() - start.y());
-		double ballangle = atan(ballslope);
-		if (vx < 0)  
-			ballangle += PI;
-		const double wallangle = atan(wallslope);
-
-		const double collisionangle = ballangle - wallangle;
-		const double leavingangle = PI - collisionangle + wallangle;
-		
-		vx = -cos(leavingangle)*speed;
-		vy = sin(leavingangle)*speed;
+		//kdDebug() << "passing on to wall\n";
+		wall->collision(ball, id);
 	}
-
-	//kdDebug() << "new velocities: vx = " << vx << ", vy = " << vy << endl;
-	//kdDebug() << "--------------\n";
-	ball->setVelocity(vx, vy);
 }
 
 /////////////////////////
@@ -2072,8 +2167,8 @@ Wall::Wall(QCanvas *canvas)
 	
 	startItem = new WallPoint(true, this, canvas);
 	endItem = new WallPoint(false, this, canvas);
-	startItem->show();
-	endItem->show();
+	startItem->setVisible(true);
+	endItem->setVisible(true);
 	setPen(QPen(darkRed, 3));
 
 	setPoints(-15, 10, 15, -5);
@@ -2082,6 +2177,18 @@ Wall::Wall(QCanvas *canvas)
 	moveBy(0, 0);
 
 	editModeChanged(false);
+}
+
+void Wall::finalLoad()
+{
+	startItem->updateVisible();
+	endItem->updateVisible();
+}
+
+void Wall::setAlwaysShow(bool yes)
+{
+	startItem->setAlwaysShow(yes);
+	endItem->setAlwaysShow(yes);
 }
 
 void Wall::setVisible(bool yes)
@@ -2198,6 +2305,8 @@ void Wall::editModeChanged(bool changed)
 
 	startItem->setZ(z() + 1);
 	endItem->setZ(z() + 1);
+	startItem->editModeChanged(editing);
+	endItem->editModeChanged(editing);
 	
 	int neww = 0;
 	if (changed)
@@ -2440,16 +2549,16 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 	putter = new Putter(course);
 
 	// border walls:
-	{
+	//{
 		int margin = 10;
 		// horiz
 		addWall(QPoint(margin, margin), QPoint(width - margin, margin));
-		addWall(QPoint(margin, height - margin), QPoint(width - margin, height - margin));
+		addWall(QPoint(margin, height - margin - 1), QPoint(width - margin, height - margin - 1));
 
 		// vert
 		addWall(QPoint(margin, margin), QPoint(margin, height - margin));
-		addWall(QPoint(width - margin, margin), QPoint(width - margin, height - margin));
-	}
+		addWall(QPoint(width - margin - 1, margin), QPoint(width - margin - 1, height - margin));
+	//}
 
 	timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(timeout()));
@@ -2457,6 +2566,7 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 
 	fastTimer = new QTimer(this);
 	connect(fastTimer, SIGNAL(timeout()), this, SLOT(fastTimeout()));
+	//fastTimerMsec = 11;
 	fastTimerMsec = 11;
 
 	frictionTimer = new QTimer(this);
@@ -2526,7 +2636,7 @@ void KolfGame::addWall(QPoint start, QPoint end)
 {
 	Wall *wall = new Wall(course);
 	wall->setPoints(start.x(), start.y(), end.x(), end.y());
-	wall->show();
+	wall->setVisible(true);
 	wall->setGame(this);
 	borderWalls.append(wall);
 }
@@ -2757,11 +2867,14 @@ void KolfGame::timeout()
 		emit inPlayEnd();
 		emit playerHoled(&(*curPlayer));
 
-		int curScore = (*curPlayer).score(curHole);
-		if (curScore + 1 == 1)
+		int curScore = (*curPlayer).score(curHole) + 1;
+		if (curScore == 1)
 			playSound("holeinone");
-		else if (curScore + 1 <= holeInfo.par())
+		else if (curScore <= holeInfo.par())
 			playSound("woohoo");
+
+		(*curPlayer).ball()->setZ((*curPlayer).ball()->z() + .1 - (.1)/(curScore));
+		//kdDebug() << "z now is " << (*curPlayer).ball()->z()<< endl;
 
 		bool allPlayersDone = true;
 		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
@@ -2794,7 +2907,8 @@ void KolfGame::fastTimeout()
 	if (inPlay && !editing)
 		(*curPlayer).ball()->collisionDetect();
 
-	course->advance();
+	//course->advance();
+	(*curPlayer).ball()->doAdvance();
 
 	if (!inPlay)
 	{
@@ -2813,6 +2927,7 @@ void KolfGame::frictionTimeout()
 {
 	if (inPlay && !editing)
 		(*curPlayer).ball()->friction();
+	course->advance();
 }
 
 void KolfGame::putterTimeout()
@@ -2865,8 +2980,29 @@ void KolfGame::shotDone()
 
 	// do hack stuff, shouldn't be done here
 
-	if (ball->addStroke())
-		(*curPlayer).addStrokeToHole(curHole);
+	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+	{
+		if ((*it).ball()->addStroke())
+		{
+			for (int i = 1; i <= (*it).ball()->addStroke(); ++i)
+				(*it).addStrokeToHole(curHole);
+			// emit that we have a new stroke count
+			emit scoreChanged((*it).id(), curHole, (*it).score(curHole));
+		}
+		(*it).ball()->setAddStroke(0);
+	}
+
+	/*
+	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+	{
+		if ((*it).ball()->blowUp())
+		{
+			(*it).addStrokeToHole(curHole);
+			emit scoreChanged((*it).id(), curHole, (*it).score(curHole));
+		}
+		(*it).ball()->setBlowUp(false);
+	}
+	*/
 
 	double vx = 0, vy = 0;
 	if (ball->placeOnGround(vx, vy))
@@ -2918,11 +3054,10 @@ void KolfGame::shotDone()
 	}
 
 	// off by default
-	ball->setAddStroke(false);
 	ball->setPlaceOnGround(false, 0, 0);
 	// end hacky stuff
-
-	// emit that we have a new stroke count
+	
+	// emit again
 	emit scoreChanged((*curPlayer).id(), curHole, (*curPlayer).score(curHole));
 	
 	ball->setVelocity(0, 0);
@@ -3013,12 +3148,10 @@ void KolfGame::holeDone()
 	}
 
 	curPlayer = players->begin();
-	(*curPlayer).ball()->setVisible(true);
 	emit newPlayersTurn(&(*curPlayer));
 	//kdDebug() << (*curPlayer).name() << endl;
 	//kdDebug() << (*curPlayer).ball()->color().name() << endl;
 	openFile();
-	putter->setOrigin((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 
 	inPlay = false;
 	timer->start(timerMsec);
@@ -3039,7 +3172,11 @@ void KolfGame::holeDone()
 		}
 
 		resetHoleScores();
+
+		(*curPlayer).ball()->setVisible(true);
+		putter->setOrigin((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 	}
+	// else we're done
 }
 
 void KolfGame::showInfo()
@@ -3113,8 +3250,9 @@ void KolfGame::openFile()
 		if (holeNum != curHole)
 		{
 			// if we've had one, break, cause list is sorted
-			if (numItems)
-				break;
+			// erps, no, cause we need to know highest hole!
+			//if (numItems)
+				//break;
 			continue;
 		}
 		else

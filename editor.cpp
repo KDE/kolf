@@ -30,7 +30,7 @@ Editor::Editor(ObjectList *list, QWidget *parent, const char *name)
 	connect(listbox, SIGNAL(executed(QListBoxItem *)), SLOT(listboxExecuted(QListBoxItem *)));
 }
 
-void Editor::listboxExecuted(QListBoxItem *item)
+void Editor::listboxExecuted(QListBoxItem * /*item*/)
 {
 	int curItem = listbox->currentItem();
 	if (curItem < 0)

@@ -2,7 +2,7 @@
 author=Course Author
 name=Course Name
 
-[1-ball@358,109]
+[1-ball@125,248]
 dummykey=true
 
 [1-blackhole@339,296|8]
@@ -22,15 +22,15 @@ width=80
 [1-cup@69,253|3]
 dummykey=true
 
-[1-floater@131,141|9]
+[1-floater@66,86|9]
 botWallVisible=false
-endPoint=131,141
+endPoint=66,86
 height=63
-leftWallVisible=false
+leftWallVisible=true
 rightWallVisible=false
 speed=5
 startPoint=31,41
-topWallVisible=false
+topWallVisible=true
 width=84
 
 [1-hole@-50,-50|0]
@@ -40,6 +40,10 @@ par=3
 [1-puddle@351,213|11]
 changeEnabled=true
 changeEvery=0
+
+[1-puddle@67,213|16]
+changeEnabled=false
+changeEvery=50
 
 [1-sand@247,208|10]
 changeEnabled=true
@@ -54,6 +58,14 @@ text=<h2>welcome</h2>under construction
 topWallVisible=true
 width=157
 
+[1-slope@166,209|15]
+grade=4
+gradient=Vertical
+height=40
+reversed=false
+stuckOnGround=false
+width=40
+
 [1-slope@239,263|5]
 grade=4
 gradient=Vertical
@@ -61,6 +73,18 @@ height=40
 reversed=false
 stuckOnGround=false
 width=40
+
+[1-wall@0,0|12]
+endPoint=284,123
+startPoint=254,138
+
+[1-wall@0,0|13]
+endPoint=228,161
+startPoint=194,177
+
+[1-wall@0,0|14]
+endPoint=282,188
+startPoint=229,161
 
 [1-windmill@185,32|7]
 botWallVisible=false
