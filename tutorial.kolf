@@ -619,6 +619,7 @@ Comment[de]=Die Steigung eines Grüns bekommen Sie angezeigt, wenn Sie <u>Loch->
 Comment[es]=La intensidad de la pendiente se muestra cuando se selecciona <u>Hoyo->Mostrar información</u>. La intensidad va de 8 (máximo) a 1 (mínimo).
 Comment[et]=Kallaku kallet näeb, kui valid <u>Rada->Näita infot</u>. Kalle jääb 8 (kõige järsem) ja 1 (laugeim) vahele.
 Comment[fi]=Mäen kaltevuus näytetään kun valitset <u>Reikä->Näytä tiedot</u>. Kaltevuus on välillä 8 (jyrkin) - 1 (loivin)
+Comment[fr]=L'inclinaison d'une pente est montrée quand vous choisissez<br><u>Afficher les informations</u>. L'inclinaison va de 8 (le plus pentu) à 1 (le moins pentu).
 Comment[he]=השיפוע של המדרון מוצג כאשר אתה בוחר ב<u>גומה->הצג מידע</u>. השיפוע נע בין 8 (התלול ביותר) ל1- (המתון ביותר).
 Comment[hu]=A lejtő meredeksége megtudható a <u>Lyuk->Információ</u> menüponttal. A meredekség értéke 8-tól (legmeredekebb) 1-ig (leglaposabb) terjedhet.
 Comment[it]= Il grado di inclinazione di un pendio viene mostrato quando scegli <u>Buca->Mostra Infornazioni</u> nel menu. La ripidezza va da 8 (il più scosceso) a 1 (il più dolce).
