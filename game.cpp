@@ -1048,6 +1048,7 @@ void Floater::setSpeed(int news)
 	if (news == 0)
 	{
 		setVelocity(0, 0);
+		return;
 	}
 
 	const double rise = wall->startPoint().y() - wall->endPoint().y();
@@ -1060,7 +1061,7 @@ void Floater::setSpeed(int news)
 
 void Floater::aboutToSave()
 {
-	setSpeed(0);
+	setVelocity(0, 0);
 	noUpdateZ = true;
 	move(wall->endPoint().x() + wall->x(), wall->endPoint().y() + wall->y());
 	noUpdateZ = false;

@@ -185,7 +185,7 @@ void Ball::collisionDetect()
 				continue;
 			oball->setCollisionLock(true);
 
-			if ((oball->x() - x() != 0 && oball->y() - y() != 0) && state == Rolling)
+			if ((oball->x() - x() != 0 && oball->y() - y() != 0) && state == Rolling && oball->curState() != Holed)
 			{
 				m_collisionLock = true;
 				//kdDebug() << "collision with other ball\n";
@@ -233,12 +233,8 @@ void Ball::collisionDetect()
 		if (citem)
 		{
 			if (!citem->terrainCollisions())
-			{
 				if (!citem->collision(this, collisionId))
-				{
 					goto end;
-				}
-			}
 			break;
 		}
 	}

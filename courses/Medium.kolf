@@ -15,7 +15,7 @@ endPoint=119,226
 height=10
 leftWallVisible=true
 rightWallVisible=true
-speed=5
+speed=3
 startPoint=11,146
 topWallVisible=true
 width=39
@@ -24,39 +24,55 @@ width=39
 borderWalls=true
 hasFinalLoad=true
 maxstrokes=10
-par=2
+par=3
 
 [1-puddle@240,193|5]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [1-puddle@276,191|6]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [1-puddle@294,205|9]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [1-puddle@316,183|10]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [1-puddle@327,196|11]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [1-puddle@341,181|12]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [1-puddle@358,199|8]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [1-puddle@393,194|7]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [1-slope@161,174|18]
 grade=2
@@ -811,102 +827,152 @@ par=2
 [15-puddle@139,209|20]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@143,230|21]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@144,188|7]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@147,255|9]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@160,238|12]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@163,177|13]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@163,214|14]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@175,195|22]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@184,166|11]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@189,222|18]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@200,200|25]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@205,177|24]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@206,156|10]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@216,213|17]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@226,191|26]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@231,156|8]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@241,169|23]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@249,198|15]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@257,181|19]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-puddle@275,160|16]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [15-sand@286,57|31]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [15-sand@297,88|28]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [15-sand@322,91|29]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [15-sand@349,107|30]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [15-sand@359,130|32]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [15-slope@18,274|5]
 grade=3
@@ -1766,47 +1832,67 @@ dummykey=true
 borderWalls=true
 hasFinalLoad=false
 maxstrokes=10
-par=3
+par=2
 
 [4-sand@107,149|8]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [4-sand@108,178|9]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [4-sand@124,202|11]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [4-sand@318,136|18]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [4-sand@322,160|13]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [4-sand@334,144|16]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [4-sand@350,173|14]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [4-sand@72,127|10]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [4-sand@82,139|14]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [4-sand@88,202|12]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [4-slope@153,20|21]
 grade=1
