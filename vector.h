@@ -3,7 +3,7 @@
 
 #include <qpoint.h>
 
-// This and vector.h by Ryan Cummings
+// This and vector.cpp by Ryan Cummings
 
 // Implements a vector in 2D
 class Vector {

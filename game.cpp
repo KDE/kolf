@@ -956,6 +956,7 @@ Floater::Floater(QRect rect, QCanvas *canvas)
 	haventMoved = true;
 	wall = new FloaterGuide(this, canvas);
 	wall->setPoints(100, 100, 200, 200);
+	wall->setPen(QPen(wall->pen().color().light(), wall->pen().width() - 1));
 	move(wall->endPoint().x(), wall->endPoint().y());
 
 	setTopWallVisible(false);
@@ -4768,9 +4769,10 @@ void KolfGame::playSound(QString file)
 		KPlayObject *playObject = factory.createPlayObject(url, true);
 
 		if (playObject)
+		{
 			playObject->play();
-
-		oldPlayObjects.append(playObject);
+			oldPlayObjects.append(playObject);
+		}
 	}
 }
 

@@ -2,6 +2,8 @@
 
 #include "vector.h"
 
+// this and vector.h by Ryan Cummings
+
 // Creates a vector with between two points
 Vector::Vector(const QPoint &source, const QPoint &dest) {
 	_magnitude = sqrt(pow(source.x() - dest.x(), 2) + pow(source.y() - dest.y(), 2));
