@@ -64,6 +64,8 @@ protected slots:
 	void initPlugins();
 	void showPlugins();
 	void keyBindings();
+	void configureToolBars();
+	void newToolBarConfig();
 	void showHighScores();
  
 private:

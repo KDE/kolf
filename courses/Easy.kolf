@@ -588,6 +588,14 @@ startPoint=365,12
 [14-ball@94,323]
 dummykey=true
 
+[14-bridge@261,66|13]
+botWallVisible=false
+height=91
+leftWallVisible=false
+rightWallVisible=false
+topWallVisible=false
+width=99
+
 [14-bumper@135,356|12]
 dummykey=true
 
@@ -630,20 +638,12 @@ stuckOnGround=false
 width=145
 
 [14-slope@233,34|9]
-grade=5
+grade=3
 gradient=Elliptic
 height=160
 reversed=false
 stuckOnGround=false
 width=160
-
-[14-slope@258,61|10]
-grade=6
-gradient=Elliptic
-height=106
-reversed=true
-stuckOnGround=false
-width=106
 
 [14-slope@58,54|4]
 grade=7

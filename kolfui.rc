@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="Kolf" version="5">
+<kpartgui name="Kolf" version="6">
 	<MenuBar>
 		<Menu name="game">
 			<Action name="savegame" append="save_merge" />
@@ -40,7 +40,7 @@
 			<Action name="tutorial" />
 		</Menu>
 	</MenuBar>
-	<ToolBar name="mainToolBar" fullWidth="true" noEdit="true">
+	<ToolBar name="mainToolBar" fullWidth="true">
 		<Action name="game_new" />
 		<Action name="game_save" />
 		<Separator />

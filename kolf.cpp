@@ -1,5 +1,6 @@
 #include <kconfig.h>
 #include <kaction.h>
+#include <kedittoolbar.h>
 #include <kmessagebox.h>
 #include <kkeydialog.h>
 #include <kstandarddirs.h>
@@ -98,6 +99,7 @@ void Kolf::initGUI()
 	newAction->setText(newAction->text() + QString("..."));
 
 	(void) KStdAction::keyBindings(this, SLOT(keyBindings()), actionCollection());
+	(void) KStdAction::configureToolbars(this, SLOT(configureToolBars()), actionCollection());
 	endAction = KStdGameAction::end(this, SLOT(closeGame()), actionCollection());
 	printAction = KStdGameAction::print(this, SLOT(print()), actionCollection());
 
@@ -148,7 +150,7 @@ void Kolf::initGUI()
 	soundAction->setChecked(config->readBoolEntry("sound", true));
 
 	(void) new KAction(i18n("&Reload Plugins"), 0, this, SLOT(initPlugins()), actionCollection(), "reloadplugins");
-	(void) new KAction(i18n("&Show Plugins..."), 0, this, SLOT(showPlugins()), actionCollection(), "showplugins");
+	(void) new KAction(i18n("Show &Plugins..."), 0, this, SLOT(showPlugins()), actionCollection(), "showplugins");
 
 	aboutAction = new KAction(i18n("&About Course..."), 0, 0, 0, actionCollection(), "aboutcourse");
 	tutorialAction = new KAction(i18n("&Tutorial..."), 0, this, SLOT(tutorial()), actionCollection(), "tutorial");
@@ -720,6 +722,22 @@ void Kolf::showPlugins()
 void Kolf::keyBindings()
 {
 	KKeyDialog::configure(actionCollection());
+}
+
+void Kolf::configureToolBars()
+{
+	saveMainWindowSettings(KGlobal::config(), "TopLevelWindow");
+
+	KEditToolbar dlg(actionCollection());
+	connect(&dlg, SIGNAL(newToolbarConfig()), SLOT(newToolBarConfig()));
+
+	if (dlg.exec())
+		createGUI();
+}
+
+void Kolf::newToolBarConfig()
+{
+	applyMainWindowSettings(KGlobal::config(), "TopLevelWindow");
 }
 
 #include "kolf.moc"
