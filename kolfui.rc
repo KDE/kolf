@@ -1,0 +1,30 @@
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<kpartgui name="Kolf" version="1">
+	<MenuBar>
+		<Menu name="file">
+			<Action name="samecourse" />
+			<Action name="newdefault" />
+		</Menu>
+		<Menu name="hole"><text>Ho&amp;le</text>
+			<Action name="editing" />
+			<Seperator />
+			<Action name="newhole" />
+			<Action name="clearhole" />
+			<Action name="resethole" />
+		</Menu>
+		<Menu name="go_document">
+			<Action name="switchhole" />
+			<Action name="nexthole" />
+			<Action name="prevhole" />
+			<Action name="firsthole" />
+			<Action name="lasthole" />
+		</Menu>
+		<Menu name="help">
+			<Action name="aboutcourse" />
+			<Action name="tutorial" />
+		</Menu>
+	</MenuBar>
+	<ToolBar name="mainToolBar" fullWidth="true" noEdit="true">
+		<Action name="editing" />
+	</ToolBar>
+</kpartgui>

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Kolf
+
+Type=Application
+Exec=kolf
+Icon=kolf
+
+Comment=Miniature Golf
