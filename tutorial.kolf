@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=Tutorial Course
+Name[bs]=Kurs za obuku
 Name[es]=Curso de tutorial
 Name[pt_BR]=Tutorial
 Name[sv]=Övningsbana
@@ -20,6 +21,7 @@ par=2
 
 [1-sign@2,2|3]
 Comment=<h3>Welcome</h3> to the tutorial course for Kolf!
+Comment[bs]=<h3>Dobro došli</h3> u Kolf kurs za obuku!
 Comment[es]=<h3>Bienvenido</h3> al curso de tutorial de Kolf
 Comment[pt_BR]=<h3>Bem-vindo</h3> ao tutorial do Kolf!
 Comment[sv]=<h3>Välkommen</h3> till Kolfs övningsbana.
@@ -32,6 +34,8 @@ width=319
 
 [1-sign@73,81|4]
 Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
+Comment[bs]=Da biste udarili loptu, pritisnite i držite dugme Strelica dola ili lijevo dugme miša. Snagu udarca određujete dužinom pritiska na tipku odnosno dugme miša.
+Comment[pt_BR]=Para fazer mexer a bola, pressione e mantenha pressionada a flecha para baixo ou o botão esquerdo do mouse.A quantidade de tempo deste botão/tecla pressionado determina a força do tiro.
 botWallVisible=true
 height=163
 leftWallVisible=true
@@ -42,6 +46,7 @@ width=319
 [1-sign@74,251|7]
 Comment=To aim putter, hit the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use mouse.
 Comment[en_GB]=To aim putter, hit the Left (rotate anticlockwise) and Right (rotate clockwise) Arrow keys or use mouse.
+Comment[pt_BR]=Para apontar, pressione a flecha Esquerda (rotação no sentido anti-horário) e a flecha Direita (sentido horário), ou use o mouse.
 botWallVisible=true
 height=142
 leftWallVisible=true
@@ -254,6 +259,7 @@ par=2
 
 [2-sign@1,5|3]
 Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you press the Up Arrow or right mouse button.
+Comment[pt_BR]=<h3>Ladeiras</h3>Ladeiras são áreas de terra inclinadas que empurram a bola direção que estão inclinadas. Esta direção é mostrada quando você pressiona a tecla de flecha para cima ou o botão direito do mouse.
 botWallVisible=true
 height=187
 leftWallVisible=true
@@ -263,6 +269,7 @@ width=392
 
 [2-sign@197,198|5]
 Comment=Hit the ball onto the slope and let it roll into cup.
+Comment[pt_BR]=Dê uma pancada na bola e deixe-a rolar para dentro da xícara.
 botWallVisible=true
 height=195
 leftWallVisible=true
@@ -388,6 +395,7 @@ par=3
 
 [4-sign@6,3|3]
 Comment=The steepness of a slope is shown when you press Up Arrow or the right mouse button. Steepness goes from 8 (steepest) to 1 (shallowest).
+Comment[pt_BR]=Quão íngreme é uma ladeira é mostrado quando você pressionar a flecha para cima ou o botão direito do mouse button. O valor para medir o quão íngreme é a ladeira vai de 8 (mais íngreme) para 1 (mais baixo/plano).
 botWallVisible=true
 height=158
 leftWallVisible=true
@@ -531,6 +539,7 @@ par=2
 
 [7-sign@130,2|4]
 Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The windmill arm's speed may vary by hole.
+Comment[pt_BR]=<h3>Moinhos</h3>Os moinhos (base marrom com uma arma)  possuem paredes marrons (meias-paredes). A velocidade da arma de moinho pode  variar dependendo do buraco.
 botWallVisible=true
 height=206
 leftWallVisible=true
@@ -568,6 +577,7 @@ par=2
 
 [8-sign@5,5|3]
 Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Press the Up Arrow or right mouse button to see which Black Hole goes to which exit and the direction the ball will be come out at.
+Comment[pt_BR]=<h3>Buraco negro</h3>Os buracos negros transportam a bola para sua saída,  e ejetam-na com uma velocidade diretamente relacionada com a velocidade em que sua bola está indo. Pressione a tecla de flecha para cima ou o botão direito do mouse para ver qual Buraco Negro vai para qual saída.
 botWallVisible=true
 height=206
 leftWallVisible=true
