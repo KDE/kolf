@@ -1224,7 +1224,7 @@ stuckOnGround=false
 width=156
 
 [17-slope@32,8|4]
-grade=3
+grade=1
 gradient=Opposite Diagonal
 height=349
 reversed=true
@@ -1333,132 +1333,106 @@ par=2
 [2-puddle@10,204|55]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@107,184|32]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@12,177|33]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@130,168|39]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@145,190|34]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@167,169|35]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@167,207|40]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@177,364|44]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@177,390|45]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@178,228|42]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@184,190|43]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@192,247|52]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@194,275|48]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@195,212|51]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@195,300|49]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@199,326|50]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@201,346|41]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@203,154|54]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@205,374|46]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@206,168|53]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@211,399|47]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@36,193|38]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@43,171|36]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@70,181|37]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@9,222|56]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@95,166|31]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-sand@275,277|65]
 changeEnabled=false

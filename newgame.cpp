@@ -277,8 +277,8 @@ void NewGameDialog::removeCourse()
 	if (externCourses.contains(file) < 1)
 		return;
 
-	names.remove(names.at(curItem));
-	externCourses.remove(names.at(curItem));
+	names.remove(file);
+	externCourses.remove(file);
 	courseList->removeItem(curItem);
 
 	selectionChanged();
