@@ -63,6 +63,10 @@ public:
 	 */
 	virtual void saveState(StateDB * /*db*/) {}
 	/**
+	 * called for information when shot started
+	 */
+	virtual void shotStarted() {}
+	/**
 	 * called right before any items are saved.
 	 */
 	virtual void aboutToSave() {}

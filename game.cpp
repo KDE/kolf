@@ -342,11 +342,7 @@ void Slope::editModeChanged(bool changed)
 
 void Slope::updateZ(QCanvasRectangle *vStrut)
 {
-
-	//const bool diag = (type == KImageEffect::DiagonalGradient || type == KImageEffect::CrossDiagonalGradient);
 	const int area = (height() * width());
-	//if (diag)
-		//area /= 2;
 	const int defaultz = -50;
 
 	double newZ = 0;
@@ -738,8 +734,10 @@ Bridge::Bridge(QRect rect, QCanvas *canvas)
 	leftWall->setAlwaysShow(true);
 	rightWall = new Wall(canvas);
 	rightWall->setAlwaysShow(true);
+
 	setWallZ(998.1);
 	setWallColor(color);
+
 	topWall->setVisible(false);
 	botWall->setVisible(false);
 	leftWall->setVisible(false);
@@ -2042,6 +2040,7 @@ BlackHole::BlackHole(QCanvas *canvas)
 {
 	m_minSpeed = 3;
 	m_maxSpeed = 5;
+	runs = 0;
 
 	const QColor myColor((QRgb)(kapp->random() % 0x01000000));
 
@@ -2092,6 +2091,7 @@ void BlackHole::aboutToDie()
 {
 	Hole::aboutToDie();
 	delete outside;
+	exitItem->aboutToDie();
 	delete exitItem;
 }
 
@@ -2120,6 +2120,10 @@ QPtrList<QCanvasItem> BlackHole::moveableItems() const
 
 bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 {
+	// most number is 10
+	if (runs > 10 && game && game->isInPlay())
+		return false;
+
 	playSound("blackhole");
 
 	const double diff = (m_maxSpeed - m_minSpeed);
@@ -2130,6 +2134,8 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 	ball->move(exitItem->x(), exitItem->y());
 	ball->setVector(v);
 	ball->setState(Rolling);
+
+	runs++;
 
 	return false;
 }
@@ -2194,6 +2200,12 @@ BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QCanvas *canvas)
 	arrow->setZ(z() - .00001);
 	updateArrowLength();
 	arrow->setVisible(false);
+}
+
+void BlackHoleExit::aboutToDie()
+{
+	arrow->aboutToDie();
+	delete arrow;
 }
 
 void BlackHoleExit::moveBy(double dx, double dy)
@@ -2973,9 +2985,6 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	connect(autoSaveTimer, SIGNAL(timeout()), this, SLOT(autoSaveTimeout()));
 	autoSaveMsec = 5 * 1000 * 60; // 5 min autosave
 
-	// increase maxStrength in advanced putting mode
-	// maxStrength = 65;
-	// maxStrength = 55;
 	// setUseAdvancedPutting() sets maxStrength!
 	setUseAdvancedPutting(false);
 
@@ -3833,6 +3842,14 @@ void KolfGame::shotStart()
 
 	(*curPlayer).ball()->setState(Rolling);
 	(*curPlayer).ball()->setVector(vector);
+
+	QCanvasItem *item = 0;
+	for (item = items.first(); item; item = items.next())
+	{
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		if (citem)
+			citem->shotStarted();
+	}
 
 	inPlay = true;
 }

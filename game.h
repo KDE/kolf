@@ -407,6 +407,7 @@ class BlackHoleExit : public QCanvasLine, public CanvasItem
 public:
 	BlackHoleExit(BlackHole *blackHole, QCanvas *canvas);
 	virtual int rtti() const { return Rtti_NoCollision; }
+	virtual void aboutToDie();
 	virtual void moveBy(double dx, double dy);
 	virtual bool deleteable() const { return false; }
 	virtual bool canBeMovedByOthers() const { return true; }
@@ -445,6 +446,8 @@ public:
 
 	virtual void editModeChanged(bool editing) { exitItem->editModeChanged(editing); }
 
+	virtual void shotStarted() { runs = 0; };
+
 	virtual void moveBy(double dx, double dy);
 
 private:
@@ -456,6 +459,8 @@ private:
 	void finishMe();
 	int m_minSpeed;
 	int m_maxSpeed;
+
+	int runs;
 };
 class BlackHoleObj : public Object
 {
@@ -914,6 +919,7 @@ public:
 	QCanvasItem *curSelectedItem() const { return selectedItem; }
 	void setBorderWalls(bool);
 	void setInPlay(bool yes) { inPlay = yes; }
+	bool isInPlay() { return inPlay; }
 	void stoppedBall();
 	QString courseName() const { return holeInfo.name(); }
 
