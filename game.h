@@ -111,7 +111,7 @@ public:
 private:
 	double m_angle;
 	double m_length;
-	double m_reversed;
+	bool m_reversed;
 	QCanvasLine *line1;
 	QCanvasLine *line2;
 };

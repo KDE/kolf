@@ -3629,8 +3629,8 @@ dummykey=true
 [7-blackhole@85,70|38]
 exit=370,17
 exitDeg=269
-maxspeed=4
-minspeed=3
+maxspeed=3
+minspeed=2
 
 [7-cup@208,70|4]
 dummykey=true

@@ -16,10 +16,12 @@ public:
 	virtual QCanvasItem *newObject(QCanvas * /*canvas*/) { return 0; }
 	virtual QString name() { return m_name; }
 	virtual QString _name() { return m__name; }
+	virtual QString author() { return m_author; }
 
 protected:
 	QString m_name;
 	QString m__name;
+	QString m_author;
 };
 typedef QPtrList<Object> ObjectList;
 

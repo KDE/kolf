@@ -285,6 +285,14 @@ reversed=true
 stuckOnGround=false
 width=42
 
+[1-slope@46,131|63]
+grade=4
+gradient=Elliptic
+height=61
+reversed=true
+stuckOnGround=false
+width=61
+
 [1-slope@502,146|18]
 grade=1
 gradient=Vertical
