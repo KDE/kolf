@@ -4615,7 +4615,7 @@ void KolfGame::save()
 {
 	if (filename.isNull())
 	{
-		QString newfilename = KFileDialog::getSaveFileName(QString::null, "*.kolf", this, i18n("Pick Kolf Course To Save To"));
+		QString newfilename = KFileDialog::getSaveFileName(QString::null, "*.kolf", this, i18n("Pick Kolf Course to Save to"));
 		if (newfilename.isNull())
 			return;
 
@@ -4809,9 +4809,15 @@ void KolfGame::print(QPainter &p)
 	p.setWindow(QRect(20, -45, width, height));
 	QRect r(0, 0, width, height);
 
+	const QPixmap background = course->backgroundPixmap();
 	course->setBackgroundColor(white);
+	// this works and setBackgroundPicture(QPixmap()) doesn't
+	// and I don't want a picture background....
+	// huge waste of ink
+	course->setTiles(QPixmap(), 1, 1, 1, 1);
 	course->drawArea(r, &p);
 	course->setBackgroundColor(grass);
+	course->setBackgroundPixmap(background);
 }
 
 bool KolfGame::allPlayersDone()

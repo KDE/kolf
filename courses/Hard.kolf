@@ -1,6 +1,7 @@
 [0-course@-50,-50]
-author=Jason Katz-Brown
 Name=Hard Course
+author=Jason Katz-Brown
+name=Hard Course
 
 [1-ball@84,73]
 dummykey=true
@@ -2986,7 +2987,7 @@ changeEvery=50
 height=48
 width=40
 
-[4-puddle@210,192|75]
+[4-puddle@211,189|75]
 changeEnabled=false
 changeEvery=50
 height=40
@@ -3112,7 +3113,7 @@ changeEvery=50
 height=24
 width=22
 
-[4-puddle@293,191|122]
+[4-puddle@293,189|122]
 changeEnabled=false
 changeEvery=50
 height=42
@@ -3356,7 +3357,7 @@ startPoint=76,195
 
 [4-wall@0,0|111]
 endPoint=216,291
-startPoint=189,299
+startPoint=190,299
 
 [4-wall@0,0|115]
 endPoint=138,131
@@ -3459,7 +3460,7 @@ endPoint=69,367
 startPoint=39,353
 
 [4-wall@0,0|21]
-endPoint=190,299
+endPoint=189,299
 startPoint=164,241
 
 [4-wall@0,0|22]
@@ -3547,7 +3548,7 @@ endPoint=365,22
 startPoint=314,12
 
 [4-wall@0,0|5]
-endPoint=189,299
+endPoint=190,299
 startPoint=153,355
 
 [4-wall@0,0|7]
