@@ -1,1 +1,1 @@
-SUBDIRS = test
+SUBDIRS = #test poolball
