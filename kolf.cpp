@@ -192,7 +192,6 @@ void Kolf::startNewGame()
 		game->setObjects(obj);
 
 		connect(game, SIGNAL(newHole(int)), scoreboard, SLOT(newHole(int)));
-		connect(game, SIGNAL(newHole(int)), this, SLOT(parChanged(int)));
 		connect(game, SIGNAL(scoreChanged(int, int, int)), scoreboard, SLOT(setScore(int, int, int)));
 		connect(game, SIGNAL(parChanged(int, int)), scoreboard, SLOT(parChanged(int, int)));
 		connect(game, SIGNAL(newPlayersTurn(Player *)), this, SLOT(newPlayersTurn(Player *)));
