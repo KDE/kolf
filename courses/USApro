@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=USA Pro
+Name[hu]=Amerikai profi
 Name[sv]=USA-proffs
 author=Rob Kaper
 
@@ -43,7 +44,9 @@ width=840
 
 [1-sign@4,371|14]
 Comment=Daytona Beach, FL
+Comment[hu]=Daytona Beach, Florida
 Comment[sv]=Daytona Beach, Florida
+Comment[wa]=Daytona Beach, Floride, USA
 botWallVisible=false
 height=34
 leftWallVisible=true
@@ -228,6 +231,7 @@ width=36
 
 [10-sign@-1,360|42]
 Comment=Washington DC<br>(Pentagon)
+Comment[wa]=Washington DC, USA
 botWallVisible=true
 height=49
 leftWallVisible=true
@@ -375,7 +379,9 @@ width=84
 
 [11-sign@-2,370|24]
 Comment=Palm Springs, CO
+Comment[hu]=Palm Springs, Connecticut
 Comment[sv]=Palm Springs, Colorado
+Comment[wa]=Palm Springs, Colorado, USA
 botWallVisible=true
 height=36
 leftWallVisible=true
@@ -528,7 +534,9 @@ width=38
 
 [2-sign@26,345|31]
 Comment=Las Vegas, NV
+Comment[hu]=Las Vegas, Nevada
 Comment[sv]=Las Vegas, Nevada
+Comment[wa]=Las Vegas, Nevada, USA
 botWallVisible=true
 height=34
 leftWallVisible=true
@@ -678,7 +686,9 @@ par=2
 
 [3-sign@-4,358|9]
 Comment=San Francisco, CA
+Comment[hu]=San Francisco, Kalifornia
 Comment[sv]=San Francisco, Kalifornien
+Comment[wa]=San Francisco, Californeye, USA
 botWallVisible=true
 height=48
 leftWallVisible=true
@@ -760,6 +770,7 @@ par=3
 
 [4-sign@201,171|8]
 Comment=Grand Canyon
+Comment[wa]=Grand Canyon, USA
 botWallVisible=true
 height=23
 leftWallVisible=true
@@ -867,7 +878,9 @@ width=48
 
 [5-sign@219,344|10]
 Comment=Lake Tahoe, CA/NV
+Comment[hu]=Lake Tahoe, Kalifornia/Nevada
 Comment[sv]=Lake Tahoe, Kalifornien/Nevada
+Comment[wa]=Lak Tahoe, Californeye/Nevada, USA
 botWallVisible=true
 height=27
 leftWallVisible=true
@@ -1007,7 +1020,9 @@ width=368
 
 [6-sign@3,101|17]
 Comment=Florida Keys, FL
+Comment[hu]=Florida Keys, Florida
 Comment[sv]=Florida Keys, Florida
+Comment[wa]=Florida Keys, Floride, USA
 botWallVisible=true
 height=30
 leftWallVisible=true
@@ -1152,6 +1167,7 @@ width=178
 [7-sign@11,116|7]
 Comment=Gol<br>den Gate
 Comment[sv]=Golden Gate
+Comment[wa]=Golden Gate, USA
 botWallVisible=false
 height=97
 leftWallVisible=true
@@ -1161,7 +1177,9 @@ width=40
 
 [7-sign@135,364|25]
 Comment=San Francisco, CA
+Comment[hu]=San Francisco, Kalifornia
 Comment[sv]=San Francisco, Kalifornien
+Comment[wa]=San Francisco, Californeye, USA
 botWallVisible=true
 height=40
 leftWallVisible=true
@@ -1310,6 +1328,7 @@ width=98
 
 [8-sign@147,370|19]
 Comment=Washington DC
+Comment[wa]=Washington DC, USA
 botWallVisible=true
 height=32
 leftWallVisible=true
@@ -1523,7 +1542,9 @@ width=20
 
 [9-sign@291,368|28]
 Comment=Niagara Falls, NY
+Comment[hu]=Niagara Falls, New York
 Comment[sv]=Niagarafallen, Staten New York
+Comment[wa]=Niagara, Noû York, USA
 botWallVisible=true
 height=36
 leftWallVisible=true
