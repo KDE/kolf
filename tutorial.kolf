@@ -27,7 +27,7 @@ topWallVisible=true
 width=319
 
 [1-sign@73,81|4]
-Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
+Comment=To hit the ball, press and hold the Down Arrow key or left mouse button. How long you hold down the mouse button or key determines the strength of the shot.
 Comment[sv]=För att slå bollen, håll nere och släpp neråtpilen eller vänster musknapp. Hur länge du trycker på tangenten bestämmer bollens hastighet.
 botWallVisible=true
 height=163
@@ -37,7 +37,7 @@ topWallVisible=true
 width=319
 
 [1-sign@74,251|7]
-Comment=To aim putter, hit the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use mouse.
+Comment=To aim putter, hit the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use the mouse.
 Comment[sv]=För att sikta med puttern, tryck på vänster (moturs) eller höger (medurs) piltangent eller använd musen.
 botWallVisible=true
 height=142
@@ -246,7 +246,7 @@ maxstrokes=10
 par=2
 
 [2-sign@1,5|3]
-Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you press the Up Arrow or right mouse button.
+Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you press the Up Arrow key or right mouse button.
 Comment[sv]=<h3>Sluttningar</h3>Sluttningar är lutande markområden som rullar bollen i riktningen de lutar. Riktningen visas när du trycker på uppåtpil eller höger musknapp.
 botWallVisible=true
 height=187
@@ -256,7 +256,7 @@ topWallVisible=true
 width=392
 
 [2-sign@197,198|5]
-Comment=Hit the ball onto the slope and let it roll into cup.
+Comment=Hit the ball onto the slope and let it roll into the cup.
 Comment[sv]=Slå bollen över sluttningen och låt den rulla i hålet.
 botWallVisible=true
 height=195
@@ -380,7 +380,7 @@ maxstrokes=10
 par=3
 
 [4-sign@6,3|3]
-Comment=The steepness of a slope is shown when you press Up Arrow or the right mouse button. Steepness goes from 8 (steepest) to 1 (shallowest).
+Comment=The steepness of a slope is shown when you press the Up Arrow key, or the right mouse button. Steepness goes from 8 (steepest) to 1 (shallowest).
 Comment[sv]=En sluttnings lutning visas när du trycker på uppåtpilen eller höger musknapp. Lutningen sträcker sig från 8 (brantast) till 1 (minst brant).
 botWallVisible=true
 height=158
@@ -518,7 +518,7 @@ maxstrokes=10
 par=2
 
 [7-sign@130,2|4]
-Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The windmill arm's speed may vary by hole.
+Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The windmill arm's speed may vary from hole to hole.
 Comment[sv]=<h3>Väderkvarnar</h3>Väderkvarnar (brun bas med vinge som flyttas) har bruna väggar (eller halva väggar). Väderkvarnens hastighet kan variera för olika hål.
 botWallVisible=true
 height=206
@@ -556,7 +556,7 @@ maxstrokes=10
 par=2
 
 [8-sign@5,5|3]
-Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Press the Up Arrow or right mouse button to see which Black Hole goes to which exit and the direction the ball will be come out at.
+Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Press the Up Arrow key or right mouse button to see which Black Hole goes to which exit, and the direction the ball will come out at.
 Comment[sv]=<h3>Svarta hål</h3>Svarta hål transporterar bollen till sina utgångar, och skickar ut den med en hastighet som är direkt proportionell mot hastigheten som bollen hade. Tryck på uppåtpilen eller höger musknapp för att se vilket svart hål som går till vilken utgång, och i vilken riktning bollen kommer ut.
 botWallVisible=true
 height=206
