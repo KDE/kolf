@@ -1,11 +1,5 @@
 [0-course@-50,-50]
 Name=Impossible Course
-Name[af]=onmoontlik
-Name[da]=Umuligt
-Name[es]=Imposible
-Name[pt]=Impossível
-Name[pt_BR]=Impossível
-Name[sv]=Omöjlig bana
 author=Jason Katz-Brown
 
 [1-ball@31,330]
