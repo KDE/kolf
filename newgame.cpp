@@ -253,23 +253,30 @@ void NewGameDialog::selectionChanged()
 
 void NewGameDialog::addCourse()
 {
-	QString file = KFileDialog::getOpenFileName(QString::null, QString::fromLatin1("application/x-kourse"), this, i18n("Pick Kolf Course"));
-	if (file.isNull())
-		return;
+	QStringList files = KFileDialog::getOpenFileNames(":kourses", QString::fromLatin1("application/x-kourse"), this, i18n("Pick Kolf Course"));
 
-	if (names.contains(file) > 0)
+	bool hasDuplicates = false;
+
+	for (QStringList::Iterator fileIt = files.begin(); fileIt != files.end(); ++fileIt)
 	{
-		KMessageBox::information(this, i18n("Chosen course is already on course list."));
-		return;
+		if (names.contains(*fileIt) > 0)
+		{
+			hasDuplicates = true;
+			continue;
+		}
+
+		CourseInfo curinfo;
+		KolfGame::courseInfo(curinfo, *fileIt);
+		info[*fileIt] = curinfo;
+		names.prepend(*fileIt);
+		externCourses.prepend(*fileIt);
+
+		courseList->insertItem(curinfo.name, 0);
 	}
+	
+	if (hasDuplicates)
+		KMessageBox::information(this, i18n("Chosen course is already on course list."));
 
-	CourseInfo curinfo;
-	KolfGame::courseInfo(curinfo, file);
-	info[file] = curinfo;
-	names.prepend(file);
-	externCourses.prepend(file);
-
-	courseList->insertItem(curinfo.name, 0);
 	courseList->setCurrentItem(0);
 	courseSelected(0);
 	selectionChanged();
