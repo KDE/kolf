@@ -891,9 +891,12 @@ void FloaterGuide::moveBy(double dx, double dy)
 
 void FloaterGuide::setPoints(int xa, int ya, int xb, int yb)
 {
-	Wall::setPoints(xa, ya, xb, yb);
-	if (floater)
-		floater->reset();
+	if (fabs(xa - xb) > 0 && fabs(ya - yb) > 0)
+	{
+		Wall::setPoints(xa, ya, xb, yb);
+		if (floater)
+			floater->reset();
+	}
 }
 
 Config *FloaterGuide::config(QWidget *parent)
