@@ -1,0 +1,8 @@
+Hi!
+
+To add a course to the default distribution, first email me at jason@katzbrown.com.
+
+If I say 'sure!', cvs add it here (with or without file extension, preferable without), add it to the Makefile.am, and add it to kolf/courses.list.
+
+Thanks!
+Jason
