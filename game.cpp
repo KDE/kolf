@@ -2024,6 +2024,11 @@ void Hole::aboutToDie()
 	delete inside;
 }
 
+void Hole::editModeChanged(bool changed)
+{
+	inside->setVisible(!changed);
+}
+
 void Hole::moveBy(double dx, double dy)
 {
 	QCanvasEllipse::moveBy(dx, dy);
@@ -4070,7 +4075,7 @@ void KolfGame::save()
 		if (newfilename.isNull())
 			return;
 
-		filename = newfilename;
+		setFilename(newfilename);
 	}
 
 	QCanvasItem *item = 0;

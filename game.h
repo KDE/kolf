@@ -513,6 +513,7 @@ public:
 	Hole(QColor color, QCanvas *canvas);
 	virtual bool place(Ball * /*ball*/, bool /*wasCenter*/) { return true; };
 	virtual void aboutToDie();
+	virtual void editModeChanged(bool changed);
 
 	virtual void collision(Ball *ball, long int id);
 	virtual void moveBy(double dx, double dy);
