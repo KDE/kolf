@@ -1,4 +1,4 @@
-SUBDIRS = sounds #pics
+SUBDIRS = sounds courses #pics
 bin_PROGRAMS = kolf
 INCLUDES = $(all_includes)
 
@@ -10,9 +10,6 @@ EXTRA_DIST = kolf.desktop
 
 appdir = $(kde_datadir)/kolf
 app_DATA = kolfui.rc tutorial.kolf
-
-coursedir = $(kde_datadir)/kolf/courses
-course_DATA = One.kolf
 
 appsdir = $(kde_appsdir)/Games/Arcade
 apps_DATA = kolf.desktop

@@ -4,6 +4,7 @@
 #include <kcolorbutton.h>
 #include <kdialogbase.h>
 #include <klineedit.h>
+#include <kcolorbutton.h>
 
 #include <qcheckbox.h>
 #include <qcolor.h>
@@ -12,11 +13,20 @@
 #include <qvaluelist.h>
 #include <qwidget.h>
 
-class KColorButton;
 class KLineEdit;
 class KPushButton;
 class QFrame;
 class QVBoxLayout;
+class QPainter;
+
+class ColorButton : public KColorButton
+{
+public:
+	ColorButton(QColor color, QWidget *parent, const char *name = 0L) : KColorButton(color, parent, name) {}
+
+protected:
+	void drawButtonLabel(QPainter *painter);
+};
 
 class PlayerEditor : public QWidget
 {

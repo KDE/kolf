@@ -1,5 +1,4 @@
 #include <kapplication.h>
-#include <kcolorbutton.h>
 #include <kconfig.h>
 #include <kdebug.h>
 #include <kdialogbase.h>
@@ -10,13 +9,26 @@
 #include <qcheckbox.h>
 #include <qframe.h>
 #include <qlayout.h>
+#include <qstyle.h>
 #include <qmap.h>
+#include <qpainter.h>
 #include <qwidget.h>
 #include <qvaluelist.h>
 #include <qptrlist.h>
 #include <qstring.h>
 
 #include "newgame.h"
+
+void ColorButton::drawButtonLabel( QPainter *painter )
+{
+	QColor fillCol = isEnabled()? color() : backgroundColor();
+
+	painter->setBrush(fillCol);
+	const int w = 15;
+	painter->drawEllipse(width() / 2 - w / 2, height() / 2 - w / 2, w, w);
+}
+
+/////////////////////////
 
 NewGameDialog::NewGameDialog(QWidget *parent, const char *name)
 	: KDialogBase(KDialogBase::Plain, i18n("Create Players"), Ok | Cancel, Ok, parent, name)
@@ -25,7 +37,7 @@ NewGameDialog::NewGameDialog(QWidget *parent, const char *name)
 	KConfig *config = kapp->config();
 
 	// lots o' colors :)
-	startColors << yellow << blue << red << lightGray << cyan;
+	startColors << yellow << blue << red << lightGray << cyan << darkBlue << magenta << darkGray << darkMagenta << darkYellow << darkCyan;
 
 	dummy = plainPage();
 	dummy->setMinimumSize(250, 300);
@@ -53,7 +65,7 @@ NewGameDialog::NewGameDialog(QWidget *parent, const char *name)
 	layout->addStretch();
 
 	QMap<QString, QString> entries = config->entryMap("New Game Dialog");
-	int i = 0;
+	unsigned int i = 0;
 	for (QMap<QString, QString>::Iterator it = entries.begin(); it != entries.end(); ++it)
 	{
 		if (i > startColors.count())
@@ -134,7 +146,7 @@ PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent
 	layout->addWidget(editor = new KLineEdit(this));
 	editor->setText(startName);
 	layout->addStretch();
-	layout->addWidget(colorButton = new KColorButton(startColor, this));
+	layout->addWidget(colorButton = new ColorButton(startColor, this));
 }
 
 #include "newgame.moc"

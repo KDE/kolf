@@ -1,5 +1,7 @@
+#include <kconfig.h>
 #include <kaction.h>
 #include <kglobal.h>
+#include <kmessagebox.h>
 #include <kstandarddirs.h>
 #include <kapplication.h>
 #include <kdebug.h>
@@ -17,6 +19,7 @@
 #include <qfile.h>
 #include <qobject.h>
 #include <qpoint.h>
+#include <qtimer.h>
 #include <qptrlist.h>
 #include <qfileinfo.h>
 #include <qstring.h>
@@ -34,8 +37,13 @@
 #include "editor.h"
 
 Kolf::Kolf()
-    : KMainWindow(0), game(0), spacer(0), scoreboard(0), editor(0)
+    : KMainWindow(0)
 {
+	game = 0;
+	editor = 0;
+	spacer = 0;
+	scoreboard = 0;
+
 	initGUI();
 
 	filename = QString::null;
@@ -50,6 +58,23 @@ Kolf::Kolf()
 
 	closeGame();
 	newSameAction->setEnabled(false);
+
+	KConfig *config = kapp->config();
+	config->setGroup("App");
+	if (!config->readBoolEntry("beenRun", false))
+	{
+		switch (KMessageBox::questionYesNo(this, i18n("Since it's your first time playing Kolf, would you like to play on the tutorial course once?")))
+		{
+			case KMessageBox::Yes:
+				QTimer::singleShot(100, this, SLOT(tutorial()));
+				break;
+			case KMessageBox::No:
+			default:
+				break;
+		}
+		config->writeEntry("beenRun", true);
+	}
+	config->sync();
 }
 
 void Kolf::initGUI()
@@ -67,6 +92,7 @@ void Kolf::initGUI()
 
 	newAction->setText(newAction->text() + QString("..."));
 	newSameAction = new KAction(i18n("&Same Course..."), "filenew", CTRL+SHIFT+Key_N, this, SLOT(newSameGame()), (QObject *)actionCollection(), "samecourse");
+	newSameAction->setStatusText(i18n("Open the last course you opened."));
 	endAction = KStdAction::close(this, SLOT(closeGame()), (QObject*)actionCollection());
 	endAction->setText(i18n("&Close Current Course"));
 	recentAction = KStdAction::openRecent(0, 0, actionCollection());
@@ -333,7 +359,7 @@ void Kolf::save()
 
 void Kolf::saveAs()
 {
-	QString newfilename = KFileDialog::getOpenFileName(QString::null, "*.kolf", this, i18n("Pick Kolf Course to Save To"));
+	QString newfilename = KFileDialog::getSaveFileName(QString::null, "*.kolf", this, i18n("Pick Kolf Course to Save To"));
 	if (!newfilename.isNull())
 	{
 		filename = newfilename;
@@ -349,7 +375,7 @@ void Kolf::newPlayersTurn(Player *player)
 	statusBar()->message(i18n("%1's turn").arg(player->name()));
 }
 
-void Kolf::playerHoled(Player *player)
+void Kolf::playerHoled(Player * /*player*/)
 {
 	/*
 	kdDebug() << "last score is " << player->lastScore() << endl;

@@ -3037,6 +3037,8 @@ void KolfGame::holeDone()
 			cfg->setGroup(QString("%1-hole@-50,-50|0").arg(scoreboardHoles + 1));
 			emit newHole(cfg->readNumEntry("par", 3));
 		}
+
+		resetHoleScores();
 	}
 }
 
@@ -3363,7 +3365,7 @@ void KolfGame::save()
 	{
 		QString newfilename = QString::null;
 		while (newfilename == QString::null)
-			newfilename = KFileDialog::getOpenFileName(QString::null, "*.kolf", this, i18n("Pick Kolf Course to Save To"));
+			newfilename = KFileDialog::getSaveFileName(QString::null, "*.kolf", this, i18n("Pick Kolf Course to Save To"));
 
 		filename = newfilename;
 	}
@@ -3501,14 +3503,19 @@ bool CanvasItem::playSound(QString file)
 
 void KolfGame::print(QPainter &p)
 {
-	// this is sooo broken
+	// this is pretty ugly/broken
+	// but it's better than nothing.
 	QString text("%1 - Hole %2; by %3");
 	text = text.arg(holeInfo.name()).arg(curHole).arg(holeInfo.author());
-	p.drawText(0, 0, text);
-	QRect r(course->rect());
-	r.moveBy(5, 80);
-	p.setWindow(r);
+	p.drawText(0, 20, text);
+	const double scale = .7;
+	p.scale(scale, scale);
+	p.setWindow(QRect(20, -45, width, height));
+	QRect r(0, 0, width, height);
+
+	course->setBackgroundColor(white);
 	course->drawArea(r, &p);
+	course->setBackgroundColor(grass);
 }
 
 #include "game.moc"
