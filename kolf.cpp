@@ -96,7 +96,7 @@ void Kolf::initGUI()
 	saveAction = KStdAction::save(this, SLOT(save()), actionCollection());
 	saveAsAction = KStdAction::saveAs(this, SLOT(saveAs()), actionCollection());
 
-	holeAction = new KListAction(i18n("Switch To Hole"), 0, 0, 0, actionCollection(), "switchhole");
+	holeAction = new KListAction(i18n("Switch to Hole"), 0, 0, 0, actionCollection(), "switchhole");
 	nextAction = new KAction(i18n("&Next Hole"), "forward", KStdAccel::key(KStdAccel::Forward), 0, 0, actionCollection(), "nexthole");
 	prevAction = new KAction(i18n("&Previous Hole"), "back", KStdAccel::key(KStdAccel::Back), 0, 0, actionCollection(), "prevhole");
 	firstAction = new KAction(i18n("&First Hole"), "gohome", KStdAccel::key(KStdAccel::Home), 0, 0, actionCollection(), "firsthole");
