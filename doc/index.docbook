@@ -69,13 +69,13 @@ Please respect the format of the date (DD/MM/YYYY) and of the version
 </sect1>
 
 <sect1 id="slopes"> <title>Slopes</title>
-<para>Slopes are areas of slanted down that the golf ball rolls down in an expected manner. The light of the golf course is from the upper-left, so the brightest slopes will push the ball towards the upper-left corner of the hole. Press the up arrow or right mouse button to see an arrow that points in the direction the slope will roll the ball.</para>
+<para>Slopes are areas of slanted down that the golf ball rolls down in an expected manner. The light of the golf course is from the upper-left, so the brightest slopes will push the ball towards the upper-left corner of the hole. Press the up arrow or &RMB; to see an arrow that points in the direction the slope will roll the ball.</para>
 <para>On this tutorial hole, hit the ball onto the upward-pointing slope and let it roll into the cup to move onto the next hole.</para>
 <sect2> <title>Directions</title>
 <para>On the next hole, experiment with the other kinds of slopes. There are elliptical, vertical, horizontal, and diagonal slopes in &kolf;. Hit the ball into the hole.</para>
 </sect2>
 <sect2> <title>Steepness</title>
-<para>The next tutorial hole has two slopes with differing steepnesses. If you click the up arrow key or right mouse button, the steepness of the slope will appear as a number from 1-8, where 8 is steepest and 1 is shallowest. Also, the more extreme shading the slope has, the steeper it is. Hit the ball into the hole and continue to the next hole.</para>
+<para>The next tutorial hole has two slopes with differing steepnesses. If you click the up arrow key or &RMB;, the steepness of the slope will appear as a number from 1-8, where 8 is steepest and 1 is shallowest. Also, the more extreme shading the slope has, the steeper it is. Hit the ball into the hole and continue to the next hole.</para>
 </sect2>
 </sect1>
 
@@ -98,7 +98,7 @@ Please respect the format of the date (DD/MM/YYYY) and of the version
 </sect1>
 
 <sect1 id="black-holes"> <title>Black Holes</title>
-<para>When you hit your ball into a black hole, it is transported to the exit and ejected at the angle of the exit at a speed directly relational to the speed your ball was going. Press the up arrow or right mouse button to see which Black Hole goes to which exit and which direction the ball will come out of the exit. The rim around Black Holes and their corresponding exits are also the same color. Hit the ball into the black hole, which will then eject the ball into the cup so you can go to the next hole.</para>
+<para>When you hit your ball into a black hole, it is transported to the exit and ejected at the angle of the exit at a speed directly relational to the speed your ball was going. Press the up arrow or &RMB; to see which Black Hole goes to which exit and which direction the ball will come out of the exit. The rim around Black Holes and their corresponding exits are also the same color. Hit the ball into the black hole, which will then eject the ball into the cup so you can go to the next hole.</para>
 </sect1>
 
 <sect1 id="floaters"> <title>Floaters</title>
@@ -108,7 +108,62 @@ Please respect the format of the date (DD/MM/YYYY) and of the version
 <sect1 id="bridges"> <title>Bridges</title>
 <para>Bridges are simple - they just lift the ball above the things below them, like slopes, sand, and puddles. They can have brown walls on their perimeter.</para>
 </sect1>
+</chapter>
 
+<chapter id="Basics"> <title>Basics</title>
+<para>Here's in-depth description of &kolf;'s basic features.</para>
+
+<sect1 id="starting"> <title>Starting a Game</title>
+<para>To start a game, choose <guimenu>File</guimenu>-><guimenuitem>New</guimenuitem>. This opens a dialog where you can configure your new game.</para>
+<sect2> <title><guilabel>Players</guilabel> Page</title>
+<para>To add a player to your game, click the <guibutton>New Player</guibutton> button.</para>
+<para>The text boxes in the grass area are the names of the players in this game. To change the name of the players, change the text in the text boxes. To change the ball color of the players' balls, click the middle button that has a color rectangle, and a dialog will open where you can select the new ball color. The rectangle on the button is the current player's ball color.</para>
+<para>To remove a player, click the <guibutton>Remove</guibutton> button next to the player's name.</para>
+</sect2>
+<sect2> <title><guilabel>Course</guilabel> Page</title>
+<para>To choose the course that you want to play, click it's entry in the list box on the left of this page. Kolf comes with many built-in courses that you can play.</para>
+<para>To add a course that you have downloaded or made, click on the <guibutton>Add...</guibutton> button on the bottom of this page, and choose the course file in the file dialog.</para>
+</sect2>
+<sect2> <title><guilabel>Options</guilabel> Page</title>
+<para>On this page you can choose whether or not this game will be played in <guilabel>Strict mode</guilabel>. In strict mode, there is no undo, moving holes, or editing of the course. This mode is generally for competition. Only in strict mode are high scores kept.</para>
+</sect2>
+</sect1>
+
+<sect1 id="saved-games"> <title>Saved Games</title>
+<para>&kolf; can keep a history of your rounds that are still in progress and save them to disk so you can load them and play them later. Saved games include the current hole, names and colors of all players in game, and the scores of the players.</para>
+<sect2> <title>Saving Your Game</title>
+<para>To save your game while still playing, choose <guimenu>File</guimenu>-><guimenuitem>Save Game</guimenuitem>. If you have not saved a game on this game before, you will be prompted for the file to save to.</para>
+</sect2>
+<sect2> <title>Loading Your Game</title>
+<para>To load the game that you saved, choose <guimenu>File</guimenu>-><guimenuitem>Load Saved...</guimenuitem>. You can then choose the saved game to open.</para>
+</sect2>
+</sect1>
+
+<sect1 id="practicing"> <title>Practicing</title>
+<para>There are a few features that make practicing your golf easier. These features are not enabled during strict mode.</para>
+<sect2> <title>Undo</title>
+<para>To undo a bad shot, choose <guimenu>Hole</guimenu>-><guimenuitem>Undo Shot</guimenuitem>.</para>
+</sect2>
+<sect2> <title>Switching Holes</title>
+<para></para>
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="editing"> <title>Editing Courses</title>
+<para>&kolf; comes with a versatile editor for it's course file format. Courses can have any number of holes, and there is no limiting the creativity of the course designer.</para>
+
+<sect1 id="creating"> <title>Creating a New Course</title>
+<para>To create a new course, choose <guimenu>File</guimenu>-><guimenuitem>New</guimenuitem>. Go to the <guilabel>Courses</guilabel> page of the dialog, and choose the <guilabel>Create New</guilabel> course. Make sure that, under the <guilabel>Options</guilabel> page of the dialog, that <guilabel>Strict mode</guilabel> is unchecked.</para>
+
+<note>
+<para>To play this new course later, click the <guibutton>Add...</guibutton> button to add the course to your list of courses.</para>
+</note>
+</sect1>
+
+<sect1 id="adding-holes"> <title>Adding Holes</title>
+<para>Choose <guimenu>Hole</guimenu>-><guimenuitem>New</guimenuitem> to add a new hole at the end of the course.</para>
+</sect1>
 </chapter>
 
 &documentation.index; 
