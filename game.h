@@ -460,7 +460,7 @@ protected:
 private:
 	long int lastId;
 
-	friend WallPoint;
+	friend class WallPoint;
 };
 class WallPoint : public QCanvasEllipse, public CanvasItem
 {
@@ -491,7 +491,7 @@ private:
 	bool dontmove;
 	long int lastId;
 
-	friend Wall;
+	friend class Wall;
 };
 class WallObj : public Object
 {
