@@ -6,7 +6,6 @@
 #include <kconfig.h>
 #include <kcursor.h>
 #include <kdebug.h>
-#include <kdebugclasses.h>
 #include <knuminput.h>
 #include <kfiledialog.h>
 #include <kglobal.h>

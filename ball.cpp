@@ -4,7 +4,6 @@
 
 #include <kapplication.h>
 #include <kdebug.h>
-#include <kdebugclasses.h>
 
 #include <math.h>
 #include <stdlib.h>
