@@ -202,8 +202,6 @@ namespace Lines
 	}
 }
 
-#include <iostream.h>
-
 void Ball::collisionDetect(double oldx, double oldy)
 {
 	if (!isVisible() || state == Holed || !m_doDetect)
