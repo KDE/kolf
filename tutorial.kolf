@@ -1,5 +1,14 @@
 [0-course@-50,-50]
 Name=Tutorial Course
+Name[af]=tutoriaal natuurlik
+Name[bs]=Kurs za obuku
+Name[da]=Øvebane
+Name[es]=Curso de tutorial
+Name[fi]=Harjoituskenttä
+Name[he]=מסלול הדרכה
+Name[ja]=チュートリアルコース
+Name[pt_BR]=Tutorial
+Name[sv]=Övningsbana
 author=Jason Katz-Brown
 
 [1-ball@34,267]
@@ -320,6 +329,7 @@ Comment=Try out these different types of slopes.
 Comment[da]=Afprøv disse forskellige typer skråninger.
 Comment[es]=Intente estos diferentes tipo de pendiente.
 Comment[fi]=Kokeile näitä eri kaltevuuksia
+Comment[hu]=Válogatni lehet a különféle lejtők között.
 Comment[ja]=このタイプの違う斜面にボールを打ってみて下さい。
 Comment[pt_BR]=Experimente estes tipos diferentes de ladeiras.
 Comment[sv]=Prova med de här olika typerna av sluttning.
@@ -416,6 +426,8 @@ par=3
 
 [4-sign@6,3|3]
 Comment=The steepness of a slope is shown when you choose <u>Hole->Show Info</u>. Steepness goes from 8 (steepest) to 1 (shallowest).
+Comment[pt_BR]=Quão íngreme é uma ladeira é mostrado quando você escolher<u>Buraco-> Mostrar Informação</u>. O valor para medir o quão íngreme é a ladeira vai de 8 (mais íngreme) para 1 (mais baixo/plano).
+Comment[sv]=En sluttnings lutning visas när du väljer <u>Hål->Visa information</u>. Lutningen sträcker sig från 8 (brantast) till 1 (minst brant).
 botWallVisible=true
 height=158
 leftWallVisible=true
