@@ -876,6 +876,8 @@ bool Puddle::collision(Ball *ball, long int /*id*/)
 			if (game && game->curBall() == ball)
 				game->stoppedBall();
 		}
+		else
+			return true;
 	}
 
 	return false;
