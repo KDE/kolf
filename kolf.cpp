@@ -495,7 +495,7 @@ void Kolf::save()
 
 void Kolf::saveAs()
 {
-	QString newfilename = KFileDialog::getSaveFileName(QString::null, "application/x-kourse", this, i18n("Pick Kolf Course to Save To"));
+	QString newfilename = KFileDialog::getSaveFileName(":kourses", "application/x-kourse", this, i18n("Pick Kolf Course to Save To"));
 	if (!newfilename.isNull())
 	{
 		filename = newfilename;
@@ -507,7 +507,7 @@ void Kolf::saveAs()
 
 void Kolf::saveGameAs()
 {
-	QString newfilename = KFileDialog::getSaveFileName(QString::null, "application/x-kolf", this, i18n("Pick Saved Game to Save To"));
+	QString newfilename = KFileDialog::getSaveFileName(":savedkolf", "application/x-kolf", this, i18n("Pick Saved Game to Save To"));
 	if (newfilename.isNull())
 		return;
 
@@ -537,7 +537,7 @@ void Kolf::saveGame()
 
 void Kolf::loadGame()
 {
-	loadedGame = KFileDialog::getOpenFileName(QString::null, QString::fromLatin1("application/x-kolf"), this, i18n("Pick Kolf Saved Game"));
+	loadedGame = KFileDialog::getOpenFileName(":savedkolf", QString::fromLatin1("application/x-kolf"), this, i18n("Pick Kolf Saved Game"));
 
 	if (loadedGame.isNull())
 		return;
@@ -550,7 +550,7 @@ void Kolf::loadGame()
 void Kolf::openURL(KURL url)
 {
 	QString target;
-	if (KIO::NetAccess::download(url, target))
+	if (KIO::NetAccess::download(url, target, this))
 	{
 		isTutorial = false;
 		QString mimeType = KMimeType::findByPath(target)->name();

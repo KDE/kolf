@@ -3616,7 +3616,7 @@ void KolfGame::openFile()
 
 	if (!missingPlugins.empty())
 	{
-		KMessageBox::informationList(this, QString("http://katzbrown.com/kolf/Plugins/<br>") + i18n("This hole uses the following plugins, which you do not have installed:"), missingPlugins, QString::null, QString("%1 warning").arg(holeInfo.untranslatedName() + QString::number(curHole)));
+		KMessageBox::informationList(this, QString("<p>&lt;http://katzbrown.com/kolf/Plugins/&gt;</p><p>") + i18n("This hole uses the following plugins, which you do not have installed:") + QString("</p>"), missingPlugins, QString::null, QString("%1 warning").arg(holeInfo.untranslatedName() + QString::number(curHole)));
 	}
 
 	lastDelId = -1;
@@ -3946,7 +3946,7 @@ void KolfGame::save()
 {
 	if (filename.isNull())
 	{
-		QString newfilename = KFileDialog::getSaveFileName(QString::null, "application/x-kourse", this, i18n("Pick Kolf Course to Save To"));
+		QString newfilename = KFileDialog::getSaveFileName(":kourses", "application/x-kourse", this, i18n("Pick Kolf Course to Save To"));
 		if (newfilename.isNull())
 			return;
 
