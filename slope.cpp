@@ -546,7 +546,7 @@ SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
 	hlayout->addWidget(grade);
 	connect(grade, SIGNAL(valueChanged(double)), this, SLOT(gradeChanged(double)));
 
-	QCheckBox *stuck = new QCheckBox(i18n("Unmoveable"), this);
+	QCheckBox *stuck = new QCheckBox(i18n("Unmovable"), this);
 	QWhatsThis::add(stuck, i18n("Whether or not this slope can be moved by other objects, like floaters."));
 	stuck->setChecked(slope->isStuckOnGround());
 	layout->addWidget(stuck);
