@@ -1,7 +1,7 @@
 SUBDIRS = objects sounds courses pics graphics
 INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/libkdegames $(all_includes)
 
-lib_LTLIBRARIES = libkolf.la
+noinst_LTLIBRARIES = libkolf.la
 bin_PROGRAMS = kolf
 
 libkolf_la_SOURCES = \
