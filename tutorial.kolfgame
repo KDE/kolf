@@ -1,0 +1,10 @@
+[1]
+Color=#bbffd4
+Name=Player 1
+Scores=0
+
+[Saved Game]
+Competition=false
+Course=/opt/kde3/share/apps/kolf/tutorial.kolf
+Current Hole=1
+Players=1

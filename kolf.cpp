@@ -39,6 +39,7 @@
 #include "scoreboard.h"
 #include "editor.h"
 #include "pluginloader.h"
+#include "printdialogpage.h"
 #include "kolf.h"
 
 Kolf::Kolf()
@@ -48,6 +49,7 @@ Kolf::Kolf()
 	editor = 0;
 	spacer = 0;
 	scoreboard = 0;
+	isTutorial = false;
 
 	initGUI();
 
@@ -124,7 +126,7 @@ void Kolf::initGUI()
 	nextAction = new KAction(i18n("&Next Hole"), "forward", KStdAccel::key(KStdAccel::Forward), 0, 0, actionCollection(), "nexthole");
 	prevAction = new KAction(i18n("&Previous Hole"), "back", KStdAccel::key(KStdAccel::Back), 0, 0, actionCollection(), "prevhole");
 	firstAction = new KAction(i18n("&First Hole"), "gohome", KStdAccel::key(KStdAccel::Home), 0, 0, actionCollection(), "firsthole");
-	lastAction = new KAction(i18n("&Last Hole"), CTRL+Key_End, 0, 0, actionCollection(), "lasthole");
+	lastAction = new KAction(i18n("&Last Hole"), CTRL+SHIFT+Key_End, 0, 0, actionCollection(), "lasthole");
 	randAction = new KAction(i18n("&Random Hole"), "goto", 0, 0, 0, actionCollection(), "randhole");
 
 	useMouseAction = new KToggleAction(i18n("Enable &Mouse for Moving Putter"), 0, 0, 0, actionCollection(), "usemouse");
@@ -167,6 +169,7 @@ void Kolf::closeEvent(QCloseEvent *e)
 void Kolf::startNewGame()
 {
 	NewGameDialog *dialog = 0;
+	int firstHole = 1;
 
 	if (loadedGame.isNull())
 	{
@@ -191,7 +194,6 @@ void Kolf::startNewGame()
 			players.last().ball()->setColor(curEditor->color());
 			players.last().setName(curEditor->name());
 			players.last().setId(newId);
-			scoreboard->newPlayer(curEditor->name());
 		}
 
 		competition = dialog->competition();
@@ -202,18 +204,23 @@ void Kolf::startNewGame()
 		KSimpleConfig config(loadedGame);
 		config.setGroup("Saved Game");
 
-		filename = config.readEntry("Course", QString::null);
+		if (isTutorial)
+			filename = KGlobal::dirs()->findResource("appdata", "tutorial.kolf");
+		else
+			filename = config.readEntry("Course", QString::null);
+
 		if (filename.isNull())
 			return;
 
 		competition = config.readBoolEntry("Competition", false);
+		firstHole = config.readNumEntry("Current Hole", 1);
 
 		players.clear();
 		KolfGame::scoresFromSaved(&config, players);
-
-		for (PlayerList::Iterator it = players.begin(); it != players.end(); ++it)
-			scoreboard->newPlayer((*it).name());
 	}
+
+	for (PlayerList::Iterator it = players.begin(); it != players.end(); ++it)
+		scoreboard->newPlayer((*it).name());
 
 	delete spacer;
 	spacer = 0;
@@ -281,7 +288,7 @@ void Kolf::startNewGame()
 
 	// so game can do stuff that needs to be done
 	// after things above are connected
-	game->startFirstHole();
+	game->startFirstHole(firstHole);
 
 	end:
 	delete dialog;
@@ -289,17 +296,24 @@ void Kolf::startNewGame()
 
 void Kolf::newGame()
 {
+	isTutorial = false;
 	filename = QString::null;
 	startNewGame();
 }
 
 void Kolf::tutorial()
 {
-	QString newfilename = KGlobal::dirs()->findResource("appdata", "tutorial.kolf");
+	QString newfilename = KGlobal::dirs()->findResource("appdata", "tutorial.kolfgame");
 	if (newfilename.isNull())
 		return;
-	filename = newfilename;
+	
+	filename = QString::null;
+	loadedGame = newfilename;
+	isTutorial = true;
+
 	startNewGame();
+
+	loadedGame = QString::null;
 }
 
 void Kolf::closeGame()
@@ -498,6 +512,7 @@ void Kolf::loadGame()
 	if (loadedGame.isNull())
 		return;
 
+	isTutorial = false;
 	startNewGame();
 }
 
@@ -610,12 +625,13 @@ void Kolf::checkEditing()
 void Kolf::print()
 {
 	KPrinter pr;
+	pr.addDialogPage(new PrintDialogPage());
+
 	if (pr.setup())
 	{
 		pr.newPage();
-		QPainter p(&pr);
 		if (game)
-			game->print(p);
+			game->print(pr);
 	}
 }
 

@@ -2,14 +2,14 @@ SUBDIRS = objects sounds courses pics graphics
 bin_PROGRAMS = kolf
 INCLUDES = -I$(top_srcdir)/libkdegames $(all_includes)
 
-kolf_SOURCES = main.cpp kolf.cpp game.cpp canvasitem.cpp ball.cpp newgame.cpp config.cpp scoreboard.cpp editor.cpp pluginloader.cpp object.cpp vector.cpp
+kolf_SOURCES = main.cpp kolf.cpp game.cpp canvasitem.cpp ball.cpp newgame.cpp config.cpp scoreboard.cpp editor.cpp pluginloader.cpp object.cpp vector.cpp printdialogpage.cpp
 kolf_LDFLAGS = $(all_libraries) $(KDE_RPATH) -export-dynamic
 kolf_LDADD = $(top_builddir)/libkdegames/libkdegames.la $(LIB_KDEUI) $(LIB_KDEPRINT) $(LIB_KIO) -lartskde
 
 EXTRA_DIST = kolf.desktop
 
 appdir = $(kde_datadir)/kolf
-app_DATA = kolfui.rc tutorial.kolf
+app_DATA = kolfui.rc tutorial.kolf tutorial.kolfgame
 
 appsdir = $(kde_appsdir)/Games/Arcade
 apps_DATA = kolf.desktop

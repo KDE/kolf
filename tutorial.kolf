@@ -1,6 +1,7 @@
 [0-course@-50,-50]
-author=Jason Katz-Brown
 Name=Tutorial Course
+author=Jason Katz-Brown
+name=Tutorial Course
 
 [1-ball@34,267]
 dummykey=true
@@ -248,20 +249,20 @@ maxstrokes=10
 par=2
 
 [2-sign@1,5|3]
+Comment=<h3>Slopes</h3>Slopes: shaded rectangles or triangles that push the ball from dark to light.
 botWallVisible=true
 height=143
 leftWallVisible=true
 rightWallVisible=true
-Comment=<h3>Slopes</h3>Slopes: shaded rectangles or triangles that push the ball from dark to light.
 topWallVisible=true
 width=398
 
 [2-sign@110,152|5]
+Comment=Hint: hit the ball onto the slope and let it roll into cup.
 botWallVisible=true
 height=171
 leftWallVisible=true
 rightWallVisible=true
-Comment=Hint: hit the ball onto the slope and let it roll into cup.
 topWallVisible=true
 width=288
 
@@ -286,11 +287,11 @@ maxstrokes=10
 par=3
 
 [3-sign@4,4|4]
+Comment=Try out these different types of slopes.
 botWallVisible=true
 height=76
 leftWallVisible=true
 rightWallVisible=true
-Comment=Try out these different types of slopes.
 topWallVisible=true
 width=307
 
@@ -379,11 +380,11 @@ maxstrokes=10
 par=3
 
 [4-sign@6,3|3]
+Comment=Steepness of slopes: shown when you press Up arrow key or right mouse button. Steepness goes from 8 (steepest) to 1 (least steep).\s
 botWallVisible=true
 height=158
 leftWallVisible=true
 rightWallVisible=true
-Comment=Steepness of slopes: shown when you press Up arrow key or right mouse button. Steepness goes from 8 (steepest) to 1 (least steep).\s
 topWallVisible=true
 width=384
 
@@ -416,11 +417,11 @@ maxstrokes=10
 par=2
 
 [5-sign@0,5|3]
+Comment=<h3>Walls</h3>Watch how the ball bounces off the red walls.
 botWallVisible=true
 height=117
 leftWallVisible=true
 rightWallVisible=true
-Comment=<h3>Walls</h3>Watch how the ball bounces off the red walls.
 topWallVisible=true
 width=371
 
@@ -513,11 +514,11 @@ maxstrokes=10
 par=2
 
 [7-sign@130,2|4]
+Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The  windmill arm's speed may vary by hole.\s
 botWallVisible=true
 height=206
 leftWallVisible=true
 rightWallVisible=true
-Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The  windmill arm's speed may vary by hole.\s
 topWallVisible=true
 width=267
 
@@ -549,11 +550,11 @@ maxstrokes=10
 par=2
 
 [8-sign@3,4|3]
+Comment=<h3>Black Holes</h3>Black Holes transport the  ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Press the Up arrow or right mouse button to see which Black Hole goes to which exit.
 botWallVisible=true
 height=164
 leftWallVisible=true
 rightWallVisible=true
-Comment=<h3>Black Holes</h3>Black Holes transport the  ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Press the Up arrow or right mouse button to see which Black Hole goes to which exit.
 topWallVisible=true
 width=393
 
@@ -589,11 +590,11 @@ maxstrokes=10
 par=2
 
 [9-sign@5,6|3]
+Comment=<h3>Floaters</h3>Floaters are moving platforms that carry a ball that lands on it.  Floaters' speeds vary.
 botWallVisible=true
 height=127
 leftWallVisible=true
 rightWallVisible=true
-Comment=<h3>Floaters</h3>Floaters are moving platforms that carry a ball that lands on it.  Floaters' speeds vary.
 topWallVisible=true
 width=391
 

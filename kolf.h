@@ -113,6 +113,8 @@ private:
 	ObjectList plugins;
 
 	QString loadedGame;
+
+	bool isTutorial;
 };
 
 struct HighScore

@@ -73,7 +73,11 @@ public:
 	/**
 	 * called when the edit mode has been changed.
 	 */
-	virtual void editModeChanged(bool /*changed*/) {}
+	virtual void editModeChanged(bool /*editing*/) {}
+	/**
+	 * called when printing state changes
+	 */
+	virtual void printingModeChanged(bool /*printing*/) {}
 	/**
 	 * the item should delete any other objects it's created.
 	 * DO NOT DO THIS KIND OF STUFF IN THE DESTRUCTOR!

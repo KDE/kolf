@@ -117,7 +117,6 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 
 	if (editors.isEmpty())
 	{
-		//kdDebug() << "editors.count() is " << editors.count() << endl;
 		addPlayer();
 		addPlayer();
 	}

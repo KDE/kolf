@@ -3,8 +3,16 @@ author=Jason
 borderWalls=true
 name=Test
 
-[1-ball@277,239]
+[1-ball@273,183]
 dummykey=true
+
+[1-bridge@120,65|4]
+botWallVisible=true
+height=51
+leftWallVisible=false
+rightWallVisible=false
+topWallVisible=true
+width=86
 
 [1-hole@-50,-50|0]
 borderWalls=true
@@ -14,7 +22,7 @@ par=3
 
 [1-wall@0,0|3]
 endPoint=281,202
-startPoint=212,111
+startPoint=189,202
 
 [2-ball@200,200]
 dummykey=true

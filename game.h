@@ -38,6 +38,7 @@ class QTimer;
 class QKeyEvent;
 class QMouseEvent;
 class QPainter;
+class KPrinter;
 class KSimpleConfig;
 class KolfGame;
 
@@ -298,6 +299,8 @@ public:
 	Puddle(QCanvas *canvas);
 	virtual bool collision(Ball *ball, long int id);
 	virtual int rtti() const { return Rtti_DontPlaceOn; }
+
+	virtual void printingModeChanged(bool printing);
 };
 class PuddleObj : public Object
 {
@@ -311,6 +314,8 @@ class Sand : public Ellipse
 public:
 	Sand(QCanvas *canvas);
 	virtual bool collision(Ball *ball, long int id);
+
+	virtual void printingModeChanged(bool printing);
 };
 class SandObj : public Object
 {
@@ -489,6 +494,7 @@ public:
 	virtual QPtrList<QCanvasItem> moveableItems() const;
 	virtual void setGame(KolfGame *game);
 	virtual void setVisible(bool);
+	virtual void printingModeChanged(bool printing);
 
 	virtual QPointArray areaPoints() const;
 
@@ -933,7 +939,7 @@ public slots:
 	void showInfoRelease();
 	void resetHole();
 	void clearHole();
-	void print(QPainter &);
+	void print(KPrinter &);
 	void setUseMouse(bool yes) { m_useMouse = yes; }
 	void setUseAdvancedPutting(bool yes);
 	void setShowGuideLine(bool yes);
@@ -941,7 +947,7 @@ public slots:
 	void undoShot();
 	void timeout();
 	void saveScores(KSimpleConfig *);
-	void startFirstHole();
+	void startFirstHole(int hole);
 
 signals:
 	void holesDone();

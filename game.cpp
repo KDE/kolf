@@ -12,6 +12,7 @@
 #include <klineedit.h>
 #include <kmessagebox.h>
 #include <kpixmapeffect.h>
+#include <kprinter.h>
 #include <ksimpleconfig.h>
 #include <kstandarddirs.h>
 
@@ -132,7 +133,6 @@ Arrow::Arrow(QCanvas *canvas)
 
 void Arrow::setPen(QPen p)
 {
-	p.setWidth(2);
 	QCanvasLine::setPen(p);
 	line1->setPen(p);
 	line2->setPen(p);
@@ -763,7 +763,7 @@ void Bridge::setGame(KolfGame *game)
 
 void Bridge::setWallColor(QColor color)
 {
-	topWall->setPen(QPen(color.dark(), 2));
+	topWall->setPen(QPen(color.dark(), 3));
 	botWall->setPen(topWall->pen());
 	leftWall->setPen(topWall->pen());
 	rightWall->setPen(topWall->pen());
@@ -1663,26 +1663,37 @@ Puddle::Puddle(QCanvas *canvas)
 	: Ellipse(canvas)
 {
 	setSize(45, 30);
-
-	QBrush brush;
-
-	QPixmap pic;
-	if (!QPixmapCache::find("puddle", pic))
-	{
-		pic.load(locate("appdata", "pics/puddle.png"));
-		QPixmapCache::insert("puddle", pic);
-	}
-
-	brush.setPixmap(pic);
-	setBrush(brush);
-
-	KPixmap pointPic(pic);
-	KPixmapEffect::intensity(pointPic, .45);
-	brush.setPixmap(pointPic);
-	point->setBrush(brush);
+	printingModeChanged(false);
 
 	setZ(-25);
-	setPen(blue);
+}
+
+void Puddle::printingModeChanged(bool printing)
+{
+	if (printing)
+	{
+		setBrush(QColor("#4A91F6"));
+		point->setBrush(brush().color().light());
+	}
+	else
+	{
+		QBrush brush;
+		QPixmap pic;
+
+		if (!QPixmapCache::find("puddle", pic))
+		{
+			pic.load(locate("appdata", "pics/puddle.png"));
+			QPixmapCache::insert("puddle", pic);
+		}
+
+		brush.setPixmap(pic);
+		setBrush(brush);
+
+		KPixmap pointPic(pic);
+		KPixmapEffect::intensity(pointPic, .45);
+		brush.setPixmap(pointPic);
+		point->setBrush(brush);
+	}
 }
 
 bool Puddle::collision(Ball *ball, long int /*id*/)
@@ -1715,25 +1726,37 @@ Sand::Sand(QCanvas *canvas)
 	: Ellipse(canvas)
 {
 	setSize(45, 40);
-
-	QBrush brush;
-
-	QPixmap pic;
-	if (!QPixmapCache::find("sand", pic))
-	{
-		pic.load(locate("appdata", "pics/sand.png"));
-		QPixmapCache::insert("sand", pic);
-	}
-	brush.setPixmap(pic);
-	setBrush(brush);
-
-	KPixmap pointPic(pic);
-	KPixmapEffect::intensity(pointPic, .45);
-	brush.setPixmap(pointPic);
-	point->setBrush(brush);
+	printingModeChanged(false);
 
 	setZ(-26);
-	setPen(yellow);
+}
+
+void Sand::printingModeChanged(bool printing)
+{
+	if (printing)
+	{
+		setBrush(QColor("#CDCA39"));
+		point->setBrush(brush().color().light());
+	}
+	else
+	{
+		QBrush brush;
+		QPixmap pic;
+
+		if (!QPixmapCache::find("sand", pic))
+		{
+			pic.load(locate("appdata", "pics/sand.png"));
+			QPixmapCache::insert("sand", pic);
+		}
+
+		brush.setPixmap(pic);
+		setBrush(brush);
+
+		KPixmap pointPic(pic);
+		KPixmapEffect::intensity(pointPic, .45);
+		brush.setPixmap(pointPic);
+		point->setBrush(brush);
+	}
 }
 
 bool Sand::collision(Ball *ball, long int /*id*/)
@@ -1769,7 +1792,7 @@ Putter::Putter(QCanvas *canvas)
 	guideLine->setZ(998.8);
 
 	setPen(QPen(black, 4));
-	putterWidth = 8;
+	putterWidth = 9;
 	maxDeg = 360;
 
 	hideInfo();
@@ -2192,7 +2215,6 @@ BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QCanvas *canvas)
 {
 	this->blackHole = blackHole;
 	arrow = new Arrow(canvas);
-	arrow->setPen(QPen(black, 1));
 	setZ(blackHole->z());
 	arrow->setZ(z() - .00001);
 	updateArrowLength();
@@ -2473,6 +2495,12 @@ Wall::Wall(QCanvas *canvas)
 	moveBy(0, 0);
 
 	editModeChanged(false);
+}
+
+void Wall::printingModeChanged(bool printing)
+{
+	startItem->setVisible(!printing || editing);
+	endItem->setVisible(!printing || editing);
 }
 
 void Wall::selectedItem(QCanvasItem *item)
@@ -2882,6 +2910,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	setFocusPolicy(QWidget::StrongFocus);
 
 	course = new QCanvas(this);
+	course->setBackgroundColor(white);
 	course->resize(width, height);
 
 	QPixmap pic;
@@ -2891,8 +2920,6 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 		QPixmapCache::insert("grass", pic);
 	}
 	course->setBackgroundPixmap(pic);
-	viewport()->setBackgroundPixmap(pic);
-	setBackgroundPixmap(pic);
 
 	setCanvas(course);
 	move(0, 0);
@@ -2949,7 +2976,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 
 	// here only for saved games
 	if (highestLog)
-		curHole = highestLog - 1; // -1 because it gets ++'ed
+		curHole = highestLog;
 
 	putter = new Putter(course);
 
@@ -2992,19 +3019,30 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	putterTimerMsec = 20;
 }
 
-void KolfGame::startFirstHole()
+void KolfGame::startFirstHole(int hole)
 {
+	if (curHole > 0) // if there was saved game, sync scoreboard
+	                 // with number of holes
+	{
+		for (; scoreboardHoles < curHole; ++scoreboardHoles)
+		{
+			cfg->setGroup(QString("%1-hole@-50,-50|0").arg(scoreboardHoles + 1));
+			emit newHole(cfg->readNumEntry("par", 3));
+		}
+
+		// lets load all of the scores from saved game if there are any
+		for (int hole = 1; hole <= curHole; ++hole)
+			for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+				emit scoreChanged((*it).id(), hole, (*it).score(hole));
+	}
+
+	curHole = hole - 1;
+
 	// this increments curHole, etc
 	recalcHighestHole = true;
 	holeDone();
 	paused = true;
 	unPause();
-
-	// lets load all of the scores from saved game if there are any
-	if (curHole > 0) // if there was saved game...
-		for (int hole = 1; hole <= curHole; ++hole)
-			for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-				emit scoreChanged((*it).id(), hole, (*it).score(hole));
 }
 
 void KolfGame::setFilename(const QString &filename)
@@ -3895,7 +3933,8 @@ void KolfGame::holeDone()
 		// this gets set to false when the ball starts
 		// to move by the Mr. Ball himself.
 		(*it).ball()->setBeginningOfHole(true);
-		(*it).addHole();
+		if ((int)(*it).scores().count() < curHole)
+			(*it).addHole();
 		(*it).ball()->setVelocity(0, 0);
 		(*it).ball()->setVisible(false);
 	}
@@ -4560,27 +4599,51 @@ void HoleInfo::borderWallsChanged(bool yes)
 	game->setBorderWalls(yes);
 }
 
-void KolfGame::print(QPainter &p)
+void KolfGame::print(KPrinter &pr)
 {
+	QPainter p(&pr);
+
+	QCanvasItem *item = 0;
+	for (item = items.first(); item; item = items.next())
+	{
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		if (citem)
+			citem->printingModeChanged(true);
+	}
+
 	// this is pretty ugly/broken
 	// but it's better than nothing.
 	QString text("%1 - Hole %2; by %3");
 	text = text.arg(holeInfo.name()).arg(curHole).arg(holeInfo.author());
 	p.drawText(0, 20, text);
-	const double scale = .7;
-	p.scale(scale, scale);
 	p.setWindow(QRect(20, -45, width, height));
 	QRect r(0, 0, width, height);
 
 	const QPixmap background = course->backgroundPixmap();
-	course->setBackgroundColor(white);
-	// this works and setBackgroundPicture(QPixmap()) doesn't
-	// and I don't want a picture background....
-	// huge waste of ink
-	course->setTiles(QPixmap(), 1, 1, 1, 1);
+
+	if (pr.option("kde-kolf-background") != "true")
+	{
+		// this works and setBackgroundPicture(QPixmap()) doesn't
+		// and I don't want a picture background....
+		// huge waste of ink
+		course->setTiles(QPixmap(), 1, 1, 1, 1);
+	}
+
 	course->drawArea(r, &p);
-	course->setBackgroundColor(grass);
-	course->setBackgroundPixmap(background);
+
+	if (pr.option("kde-kolf-background") != "true")
+	{
+		course->setBackgroundColor(grass);
+		course->setBackgroundPixmap(background);
+	}
+
+	item = 0;
+	for (item = items.first(); item; item = items.next())
+	{
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		if (citem)
+			citem->printingModeChanged(false);
+	}
 }
 
 bool KolfGame::allPlayersDone()
@@ -4697,10 +4760,12 @@ void KolfGame::saveScores(KSimpleConfig *config)
 		config->setGroup(QString::number((*it).id()));
 		config->writeEntry("Name", (*it).name());
 		config->writeEntry("Color", (*it).ball()->color().name());
+
 		QStringList scores;
 		QValueList<int> intscores = (*it).scores();
 		for (QValueList<int>::Iterator it = intscores.begin(); it != intscores.end(); ++it)
 			scores.append(QString::number(*it));
+
 		config->writeEntry("Scores", scores);
 	}
 }
