@@ -26,18 +26,13 @@ ObjectList *PluginLoader::loadAll()
 		QString filename(cfg.readEntry("Filename", ""));
 
 		libs.append(filename);
-
-		//kdDebug() << "will load " << libs.last() << endl;
 	}
 
 	for (QStringList::Iterator it = libs.begin(); it != libs.end(); ++it)
 	{
 		Object *newObject = load(*it);
 		if (newObject)
-		{
-			//kdDebug() << "appending it\n";
 			ret->append(newObject);
-		}
 	}
 
 	return ret;
@@ -45,8 +40,6 @@ ObjectList *PluginLoader::loadAll()
 
 Object *PluginLoader::load(const QString &filename)
 {
-	//kdDebug() << "load(" << filename << ")" << endl;
-
 	KLibFactory *factory = KLibLoader::self()->factory(filename.latin1());
 
 	if (!factory)

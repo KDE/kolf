@@ -68,6 +68,7 @@ protected slots:
 	void newToolBarConfig();
 	void showHighScores();
 	void enableAllMessages();
+	void createSpacer();
 
 	void emptySlot() {};
  

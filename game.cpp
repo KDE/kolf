@@ -284,6 +284,15 @@ QPtrList<QCanvasItem> Slope::moveableItems() const
 	return ret;
 }
 
+void Slope::setGrade(double newGrade)
+{
+	if (newGrade >= 0 && newGrade < 11)
+	{
+		grade = newGrade;
+		updatePixmap();
+	}
+}
+
 void Slope::setSize(int width, int height)
 {
 	newSize(width, height);
@@ -434,6 +443,9 @@ QPointArray Slope::areaPoints() const
 
 bool Slope::collision(Ball *ball, long int /*id*/)
 {
+	if (grade <= 0)
+		return true;
+
 	double vx = ball->xVelocity();
 	double vy = ball->yVelocity();
 	double addto = 0.013 * grade;
@@ -1104,15 +1116,15 @@ void Floater::moveBy(double dx, double dy)
 	point->dontMove();
 	point->move(x() + width(), y() + height());
 
+	// this call must come after we have tested for collisions, otherwise we skip them when saving!
+	// that's a bad thing
+	QCanvasRectangle::moveBy(dx, dy);
+
 	// because we don't do Bridge::moveBy();
 	topWall->move(x(), y());
 	botWall->move(x(), y());
 	leftWall->move(x(), y());
 	rightWall->move(x(), y());
-
-	// this call must come after we have tested for collisions, otherwise we skip them when saving!
-	// that's a bad thing
-	QCanvasRectangle::moveBy(dx, dy);
 
 	if (game && game->isEditing())
 		game->updateHighlighter();
@@ -1463,7 +1475,7 @@ SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
 	connect(reversed, SIGNAL(toggled(bool)), this, SLOT(setReversed(bool)));
 
 	QHBoxLayout *hlayout = new QHBoxLayout(layout, spacingHint());
-	hlayout->addWidget(new QLabel(i18n("Shallow"), this));
+	hlayout->addWidget(new QLabel(i18n("Grade"), this));
 	KDoubleNumInput *grade = new KDoubleNumInput(this);
 	grade->setRange(0, 8, 1, true);
 	grade->setValue(slope->curGrade());

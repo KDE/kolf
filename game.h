@@ -176,7 +176,7 @@ public:
 
 	void setGradient(QString text);
 	KImageEffect::GradientType curType() const { return type; }
-	void setGrade(double grade) { if (grade > 0 && grade < 11) { this->grade = grade; updatePixmap(); } }
+	void setGrade(double grade);
 
 	double curGrade() const { return grade; }
 	void setColor(QColor color) { this->color = color; updatePixmap(); }

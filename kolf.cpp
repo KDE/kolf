@@ -342,23 +342,6 @@ void Kolf::closeGame()
 	game = 0;
 	loadedGame = QString::null;
 
-	// make a player to play the spacer hole
-	spacerPlayers.clear();
-	spacerPlayers.append(Player());
-	spacerPlayers.last().ball()->setColor(yellow);
-	spacerPlayers.last().setName("player");
-	spacerPlayers.last().setId(1);
-
-	delete spacer;
-	spacer = new KolfGame(obj, &spacerPlayers, KGlobal::dirs()->findResource("appdata", "intro"), dummy);
-	spacer->startFirstHole(1);
-	spacer->setSound(false);
-	layout->addWidget(spacer, 0, 0, AlignCenter);
-	spacer->hidePutter();
-	spacer->ignoreEvents(true);
-
-	spacer->show();
-
 	editingAction->setChecked(false);
 	setEditingEnabled(false);
 	endAction->setEnabled(false);
@@ -379,6 +362,28 @@ void Kolf::closeGame()
 	tutorialAction->setEnabled(true);
 
 	titleChanged("");
+
+	QTimer::singleShot(100, this, SLOT(createSpacer()));
+}
+
+void Kolf::createSpacer()
+{
+	// make a player to play the spacer hole
+	spacerPlayers.clear();
+	spacerPlayers.append(Player());
+	spacerPlayers.last().ball()->setColor(yellow);
+	spacerPlayers.last().setName("player");
+	spacerPlayers.last().setId(1);
+
+	delete spacer;
+	spacer = new KolfGame(obj, &spacerPlayers, KGlobal::dirs()->findResource("appdata", "intro"), dummy);
+	spacer->startFirstHole(1);
+	spacer->setSound(false);
+	layout->addWidget(spacer, 0, 0, AlignCenter);
+	spacer->hidePutter();
+	spacer->ignoreEvents(true);
+
+	spacer->show();
 }
 
 void Kolf::gameOver()

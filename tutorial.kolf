@@ -527,7 +527,7 @@ width=107
 dummykey=true
 
 [8-blackhole@60,343|4]
-exit=196,287
+exit=195,287
 exitDeg=0
 maxspeed=3
 minspeed=1

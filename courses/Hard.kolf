@@ -1160,7 +1160,7 @@ startPoint=36,377
 dummykey=true
 
 [14-blackhole@87,369|7]
-exit=366,55
+exit=366,52
 exitDeg=50
 maxspeed=2
 minspeed=1
@@ -1196,6 +1196,14 @@ reversed=true
 stuckOnGround=false
 width=83
 
+[14-slope@11,10|4]
+grade=2
+gradient=Vertical
+height=338
+reversed=true
+stuckOnGround=false
+width=163
+
 [14-slope@11,352|11]
 grade=4
 gradient=Opposite Diagonal
@@ -1212,15 +1220,7 @@ reversed=true
 stuckOnGround=false
 width=83
 
-[14-slope@14,15|4]
-grade=2
-gradient=Vertical
-height=338
-reversed=true
-stuckOnGround=false
-width=163
-
-[14-slope@175,15|12]
+[14-slope@175,10|12]
 grade=2
 gradient=Diagonal
 height=339
@@ -1236,7 +1236,7 @@ reversed=true
 stuckOnGround=false
 width=53
 
-[14-slope@292,56|11]
+[14-slope@292,53|11]
 grade=2
 gradient=Vertical
 height=73
