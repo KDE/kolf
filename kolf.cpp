@@ -197,7 +197,7 @@ void Kolf::startNewGame()
 		connect(game, SIGNAL(editingEnded()), this, SLOT(editingEnded()));
 		connect(game, SIGNAL(inPlayStart()), this, SLOT(inPlayStart()));
 		connect(game, SIGNAL(inPlayEnd()), this, SLOT(inPlayEnd()));
-		connect(game, SIGNAL(maxStrokesReached()), this, SLOT(maxStrokesReached()));
+		connect(game, SIGNAL(maxStrokesReached(const QString &)), this, SLOT(maxStrokesReached(const QString &)));
 		connect(game, SIGNAL(largestHole(int)), this, SLOT(updateHoleMenu(int)));
 		connect(game, SIGNAL(titleChanged(const QString &)), this, SLOT(titleChanged(const QString &)));
 		connect(holeAction, SIGNAL(activated(const QString &)), game, SLOT(switchHole(const QString &)));
@@ -424,9 +424,9 @@ void Kolf::inPlayEnd()
 	setHoleMovementEnabled(true);
 }
 
-void Kolf::maxStrokesReached()
+void Kolf::maxStrokesReached(const QString &name)
 {
-	KMessageBox::sorry(this, i18n("The maximum number of strokes for this hole has been reached."));
+	KMessageBox::sorry(this, i18n("%1's score has exceeded the maximum for this hole.").arg(name));
 }
 
 void Kolf::updateHoleMenu(int largest)
@@ -548,14 +548,17 @@ void Kolf::initPlugins()
 
 void Kolf::showPlugins()
 {
-	QString text = QString("<h2>%1</h2>").arg(i18n("Currently Loaded"));
+	QString text = QString("<h2>%1</h2><ol>").arg(i18n("Currently Loaded"));
 	Object *object = 0;
 	for (object = plugins.first(); object; object = plugins.next())
 	{
+		text.append("<li>");
 		text.append(object->name());
 		text.append(" - ");
 		text.append(i18n("by %1").arg(object->author()));
+		text.append("</li>");
 	}
+	text.append("</ol>");
 	KMessageBox::information(this, text, i18n("Plugins"));
 }
 

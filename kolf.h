@@ -50,7 +50,7 @@ protected slots:
 	void setHoleFocus() { game->setFocus(); }
 	void inPlayStart();
 	void inPlayEnd();
-	void maxStrokesReached();
+	void maxStrokesReached(const QString &);
 	void updateHoleMenu(int);
 	void titleChanged(const QString &);
 	void useMouseChanged(bool);

@@ -869,6 +869,7 @@ public:
 	//void changeMouse();
 	void ballMoved();
 	void updateHighlighter();
+	void updateCourse() { course->update(); }
 	QCanvasItem *curSelectedItem() { return selectedItem; }
 	void setBorderWalls(bool);
 
@@ -918,7 +919,7 @@ signals:
 	void editingEnded();
 	void inPlayStart();
 	void inPlayEnd();
-	void maxStrokesReached();
+	void maxStrokesReached(const QString &);
 
 private slots:
 	void shotDone();
@@ -929,6 +930,7 @@ private slots:
 	void putterTimeout();
 	void autoSaveTimeout();
 	void addItemsToMoveableList(QPtrList<QCanvasItem>);
+	void addItemToFastAdvancersList(CanvasItem *);
 	void hideInfoText();
 
 protected:
@@ -1031,6 +1033,9 @@ private:
 
 	bool m_useMouse;
 	bool m_useAdvancedPutting;
+
+	QPtrList<CanvasItem> fastAdvancers;
+	bool fastAdvancedExist;
 };
 
 #endif

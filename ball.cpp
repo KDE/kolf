@@ -10,13 +10,20 @@
 #include <unistd.h>
 
 #include "rtti.h"
+#include "vector.h"
 #include "canvasitem.h"
 #include "game.h"
 #include "ball.h"
 
+inline double rad2deg(double theDouble)
+{
+	return ((360L / (2L * M_PI)) * theDouble);
+}
+
 Ball::Ball(QCanvas *canvas)
 	: QCanvasEllipse(canvas)
 {
+	m_collisionLock = false;
 	setBeginningOfHole(false);
 	setBlowUp(false);
 	setPen(black);
@@ -25,6 +32,7 @@ Ball::Ball(QCanvas *canvas)
 	collisionId = 0;
 	m_addStroke = false;
 	m_placeOnGround = false;
+	frictionMultiplier = 1.0;
 
 	// this sets z
 	setState(Stopped);
@@ -65,28 +73,56 @@ void Ball::advance(int phase)
 void Ball::friction()
 {
 	if (state == Stopped || state == Holed || !isVisible()) { setVelocity(0, 0); return; }
-	if (xVelocity() == 0 && yVelocity() == 0)
+	const double subtractAmount = .027 * frictionMultiplier;
+	if (m_vector.magnitude() <= subtractAmount)
 	{
+		//kdDebug() << "Ball::friction stopping\n";
+		//kdDebug() << "magnitude is " << m_vector.magnitude() << endl;
 		state = Stopped;
+		setVelocity(0, 0);
 		return;
 	}
-	double vx = xVelocity();
-	double vy = yVelocity();
-	double ballAngle = atan(vx / vy);
-	if (vy < 0)
-		ballAngle -= M_PI;
-	ballAngle = M_PI/2 - ballAngle;
-	const double frictionFactor = .027;
-	vx -= cos(ballAngle) * frictionFactor * frictionMultiplier;
-	vy -= sin(ballAngle) * frictionFactor * frictionMultiplier;
-	if (vx / xVelocity() < 0)
-	{
-		vx = vy = 0;
-		state = Stopped;
-	}
-	setVelocity(vx, vy);
+	m_vector.setMagnitude(m_vector.magnitude() - subtractAmount);
+	setVector(m_vector);
 
-	frictionMultiplier = 1;
+	frictionMultiplier = 1.0;
+}
+
+void Ball::setVelocity(double vx, double vy)
+{
+	//kdDebug() << "Ball::setVelocity(" << vx << ", " << vy << ")" << endl;
+
+	QCanvasEllipse::setVelocity(vx, vy);
+
+	if (vx == 0 && vy == 0)
+	{
+		m_vector.setDirection(0);
+		m_vector.setMagnitude(0);
+		return;
+	}
+
+	double ballAngle = atan2(-vy, vx);
+	//kdDebug() << "ballAngle calculated as " << rad2deg(ballAngle) << endl;
+
+	m_vector.setDirection(ballAngle);
+	m_vector.setMagnitude(curSpeed());
+}
+
+void Ball::setVector(Vector newVector)
+{
+	//kdDebug() << "Ball::setVector; Magnitude = " << newVector.magnitude() << ", Direction = " << newVector.direction() << endl;
+
+	m_vector = newVector;
+
+	if (newVector.magnitude() == 0)
+	{
+		setVelocity(0, 0);
+		return;
+	}
+
+	QCanvasEllipse::setVelocity(cos(newVector.direction()) * newVector.magnitude(), -sin(newVector.direction()) * newVector.magnitude());
+
+	//kdDebug() << "new velocities calculated as " << xVelocity() << ", " << yVelocity() << endl;
 }
 
 void Ball::moveBy(double dx, double dy)
@@ -100,17 +136,14 @@ void Ball::moveBy(double dx, double dy)
 
 void Ball::doAdvance()
 {
-	//const double halfX = xVelocity() / 2;
-	//const double halfY = yVelocity() / 2;
 	QCanvasEllipse::advance(1);
-	
-	//moveBy(halfX, halfY);
-	//collisionDetect();
-	//moveBy(halfX, halfY);
 }
 
 void Ball::collisionDetect()
 {
+	if (!isVisible())
+		return;
+
 	//kdDebug() << "collision detect\n";
 	if (collisionId >= INT_MAX - 1)
 		collisionId = 0;
@@ -122,7 +155,10 @@ void Ball::collisionDetect()
 	if (collisionId % 2 && !(xVelocity() == 0 && yVelocity() == 0))
 		friction();
 
+	//kdDebug() << "velocitiees: " << xVelocity() << ", " << yVelocity() << endl;
+
 	QCanvasItemList list = collisions(true);
+	//kdDebug() << "collisions done\n";
 	if (list.isEmpty())
 	{
 		//kdDebug() << "collision list empty\n";
@@ -142,71 +178,73 @@ void Ball::collisionDetect()
 		if (item->rtti() == Rtti_NoCollision || item->rtti() == Rtti_Putter)
 			continue;
 
-		if (item->rtti() == rtti())
+		if (item->rtti() == rtti() && !m_collisionLock)
 		{
 			// it's one of our own kind, a ball
 			Ball *oball = dynamic_cast<Ball *>(item);
-			if (oball->curState() == Stopped && (oball->x() - x() != 0 && oball->y() - y() != 0) && state == Rolling)
-			{
-			QPoint oldPos(x(), y());
-			double vx = xVelocity();
-			double vy = yVelocity();
-			double ballAngle;
-			if (vy == 0)
-				ballAngle = xVelocity() > 0? 0 : M_PI;
-			else
-				ballAngle = atan(vx / vy);
-			if (vy < 0)
-				ballAngle -= M_PI;
-			ballAngle = M_PI / 2 - ballAngle;
-			while (collisions(true).contains(item) > 0)
-			{
-				move(x() - cos(ballAngle), y() - sin(ballAngle));
+			if (oball->collisionLock())
+				continue;
 
-				// for debugging
+			if ((oball->x() - x() != 0 && oball->y() - y() != 0) && state == Rolling)
+			{
+				m_collisionLock = true;
+				//kdDebug() << "collision with other ball\n";
+				// move this ball to where it was barely touching
+				double ballAngle = m_vector.direction();
+				while (collisions(true).contains(item) > 0)
+				{
+					move(x() - cos(ballAngle) / 2.0, y() + sin(ballAngle) / 2.0);
+					//kdDebug() << "moved to " << x() << ", " << y() << endl;
+				}
+				//move(x() - cos(ballAngle), y() - sin(ballAngle));
+
+				Vector bvector = oball->curVector();
+				m_vector -= bvector;
+
+				Vector unit1 = Vector(QPoint(x(), y()), QPoint(oball->x(), oball->y()));
+				unit1 = unit1.unit();
+
+				Vector unit2 = m_vector.unit();
+
+				double cos = unit1 * unit2;
+
+				unit1 *= m_vector.magnitude() * cos;
+				m_vector -= unit1;
+				m_vector += bvector;
+
+				bvector += unit1;
+
+				oball->setVector(bvector);
+				setVector(m_vector);
+
+				double distance = 0;
+
 				/*
-				   kapp->processEvents();
-				   sleep(1);
-				 */
+				distance = sqrt(pow(x() - item->x(), 2) + pow(y() - item->y(), 2));
+				//kdDebug() << "distance between balls is " << distance << endl;
+				double delta = (width() - distance) / 2.0;
+				//kdDebug() << "delta is " << delta << endl;
+				double _angle = atan2(y() - item->y(), x() - item->x());
+				//kdDebug() << "angle between balls is " << rad2deg(distance) << endl;
+				double delta_x = ::cos(_angle) * delta;
+				double delta_y = sin(_angle) * delta;
+
+				//kdDebug() << "moving balls\n";
+				setX(x() - delta_x);
+				setY(y() - delta_y);
+				item->setX(item->x() + delta_x);
+				item->setY(item->y() + delta_y);
+				//kdDebug() << "done moving balls\n";
+				*/
+
+				distance = sqrt(pow(x() - item->x(), 2) + pow(y() - item->y(), 2));
+				//kdDebug() << "distance between balls is " << distance << endl;
+				//kdDebug() << "---------\n";
+
+				oball->setState(Rolling);
+				setState(Rolling);
 			}
 
-			const double mySpeed = curSpeed();
-
-			//oball->setBlowUp(true);
-			double angle = atan2(y() - oball->y(), oball->x() - x());
-			kdDebug() << "ballAngle is " << (360L / (2L * M_PI)) * ballAngle << endl;
-			kdDebug() << "angle is " << (360L / (2L * M_PI)) * angle << endl;
-
-			//double myNewSpeed = mySpeed + oball->curSpeed();
-			//setVelocity(cos(ballAngle) * myNewSpeed, sin(ballAngle) * myNewSpeed);
-
-			double angleDifference = fabs(fabs(ballAngle) - fabs(angle));
-			while (angleDifference > M_PI / 2)
-			{
-				kdDebug() << "angleDifference = " << (360L / (2L * M_PI)) * angleDifference << endl;
-				angleDifference -= M_PI / 2;
-			}
-			kdDebug() << "angleDifference = " << (360L / (2L * M_PI)) * angleDifference << endl;
-			double newVelocity = mySpeed * ((double)(M_PI / 2 - angleDifference) / (double)(M_PI / 2));
-
-			if (y() == oball->y())
-			{
-				// horiz
-				oball->setVelocity(newVelocity, 0);
-				kdDebug() << "horizontal\n";
-			}
-			else if (x() == oball->x())
-			{
-				// vert
-				oball->setVelocity(0, newVelocity);
-				kdDebug() << "vertical\n";
-			}
-			else
-			{
-				oball->setVelocity(cos(angle) * newVelocity, -sin(angle) * newVelocity);
-			}
-			oball->setState(Rolling);
-			}
 			continue;
 		}
 
@@ -214,8 +252,9 @@ void Ball::collisionDetect()
 		if (citem)
 			citem->collision(this, collisionId);
 		else
-			continue;
-		break;
+			break;
+
+		continue;
 	}
 }
 

@@ -1,14 +1,15 @@
-#ifndef BALL_H
-#define BALL_H
+#ifndef _BALL_H
+#define _BALL_H
 
 #include <qcanvas.h>
 #include <qcolor.h>
 
 #include <math.h>
 
+#include "vector.h"
 #include "rtti.h"
 
-enum BallState {Rolling, Stopped, Holed};
+enum BallState { Rolling = 0, Stopped, Holed };
 
 class Ball : public QCanvasEllipse, public CanvasItem
 {
@@ -16,10 +17,11 @@ public:
 	Ball(QCanvas *canvas);
 	BallState currentState();
 
-	void resetSize() { setSize(7, 7); }
+	virtual void resetSize() { setSize(7, 7); }
 	virtual void advance(int phase);
 	virtual void doAdvance();
 	virtual void moveBy(double dx, double dy);
+	virtual void setVelocity(double vx, double vy);
 
 	double curSpeed() { return sqrt(xVelocity() * xVelocity() + yVelocity() * yVelocity()); }
 	virtual bool canBeMovedByOthers() const { return true; }
@@ -49,6 +51,13 @@ public:
 	bool beginningOfHole() { return m_beginningOfHole; }
 	void setBeginningOfHole(bool yes) { m_beginningOfHole = yes; }
 
+	Vector curVector() { return m_vector; }
+	void setVector(Vector newVector);
+	
+	bool collisionLock() { return m_collisionLock; }
+	void setCollisionLock(bool yes) { m_collisionLock = yes; }
+	virtual void fastAdvanceDone() { setCollisionLock(false); }
+
 private:
 	BallState state;
 	QColor m_color;
@@ -64,6 +73,9 @@ private:
 
 	bool m_moved;
 	bool m_beginningOfHole;
+
+	Vector m_vector;
+	bool m_collisionLock;
 };
 
 #endif

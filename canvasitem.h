@@ -81,9 +81,22 @@ public:
 	 * called when user presses delete key while editing. This is very rarely reimplemented, and generally shouldn't be.
 	 */
 	virtual void aboutToDelete() {}
-	/** returns whether this item should be able to be deleted by user while editing.
+	/**
+	 * returns whether this item should be able to be deleted by user while editing.
 	 */
 	virtual bool deleteable() { return true; }
+	/**
+	 * returns whether this item should get doAdvance called -- it is called in sync with ball advancing (which is twice as fast as the advance() calling rate)
+	 */
+	virtual bool fastAdvance() { return false; }
+	/**
+	 * called when all items have had their chance at a doAdvance
+	 */
+	virtual void fastAdvanceDone() {}
+	/**
+	 * called if fastAdvance is enabled
+	 */
+	virtual void doAdvance() {}
 	/**
 	 * returns whether or not this item lifts items on top of it.
 	 */

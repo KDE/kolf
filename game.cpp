@@ -55,6 +55,7 @@
 #include "canvasitem.h"
 #include "ball.h"
 #include "statedb.h"
+#include "vector.h"
 #include "game.h"
 
 inline double deg2rad(double theDouble)
@@ -1133,7 +1134,7 @@ void Floater::moveBy(double dx, double dy)
 					{
 						if ((*it)->rtti() == Rtti_Ball)
 						{
-							((Ball *)(*it))->setState(Rolling);
+							//((Ball *)(*it))->setState(Rolling);
 							(*it)->moveBy(dx, dy);
 							if (game)
 							{
@@ -2928,6 +2929,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	putting = false;
 	stroking = false;
 	editing = false;
+	fastAdvancedExist = false;
 	soundDir = locate("appdata", "sounds/");
 	addingNewHole = false;
 	scoreboardHoles = 0;
@@ -3498,7 +3500,7 @@ void KolfGame::timeout()
 	}
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-		if ((*it).ball()->curState() == Rolling)
+		if ((*it).ball()->curState() == Rolling && (*it).ball()->curSpeed() > 0)
 			return;
 
 	int curState = curBall->curState();
@@ -3549,6 +3551,23 @@ void KolfGame::fastTimeout()
 	{
 		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 			(*it).ball()->doAdvance();
+
+		if (fastAdvancedExist)
+		{
+			CanvasItem *citem = 0;
+			for (citem = fastAdvancers.first(); citem; citem = fastAdvancers.next())
+				citem->doAdvance();
+		}
+	}
+
+	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+		(*it).ball()->fastAdvanceDone();
+
+	if (fastAdvancedExist)
+	{
+		CanvasItem *citem = 0;
+		for (citem = fastAdvancers.first(); citem; citem = fastAdvancers.next())
+			citem->fastAdvanceDone();
 	}
 }
 
@@ -3848,16 +3867,22 @@ void KolfGame::shotDone()
 	
 	ball->setVelocity(0, 0);
 
-	int curStrokes = (*curPlayer).score(curHole);
-	if (curStrokes >= holeInfo.maxStrokes())
+	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 	{
-		emit maxStrokesReached();
-		ball->setState(Holed);
+		Ball *ball = (*it).ball();
 
-		if (allPlayersDone())
+		int curStrokes = (*curPlayer).score(curHole);
+		if (curStrokes >= holeInfo.maxStrokes())
 		{
-			holeDone();
-			return;
+			emit maxStrokesReached((*it).name());
+			ball->setState(Holed);
+			ball->setVisible(false);
+
+			if (allPlayersDone())
+			{
+				holeDone();
+				return;
+			}
 		}
 	}
 
@@ -3895,18 +3920,13 @@ void KolfGame::shotStart()
 	if (!strength)
 		strength = 1;
 	putter->setVisible(false);
-	int deg = putter->curDeg();
-	//kdDebug() << "deg is " << deg << endl;
-	double vx = 0, vy = 0;
 
-	vx = -cos(deg2rad(deg))*strength;
-	vy = sin(deg2rad(deg))*strength;
+	Vector vector;
+	vector.setMagnitude(strength);
+	vector.setDirection(deg2rad(putter->curDeg() + 180));
 
-	//kdDebug() << "calculated new speed is " << sqrt(vx * vx + vy * vy) << endl;
-	//kdDebug() << "vx = " << vx << ", vy = " << vy << endl;
-
-	(*curPlayer).ball()->setVelocity(vx, vy);
 	(*curPlayer).ball()->setState(Rolling);
+	(*curPlayer).ball()->setVector(vector);
 
 	inPlay = true;
 }
@@ -4059,6 +4079,8 @@ void KolfGame::openFile()
 
 	extraMoveable.setAutoDelete(false);
 	extraMoveable.clear();
+	fastAdvancers.setAutoDelete(false);
+	fastAdvancers.clear();
 	selectedItem = 0;
 
 	// will tell basic course info
@@ -4142,6 +4164,8 @@ void KolfGame::openFile()
 			canvasItem->editModeChanged(editing);
 			canvasItem->setName(curObj->_name());
 			addItemsToMoveableList(canvasItem->moveableItems());
+			if (canvasItem->fastAdvance())
+				addItemToFastAdvancersList(canvasItem);
 
 			newItem->move(x, y);
 			canvasItem->firstMove(x, y);
@@ -4258,6 +4282,12 @@ void KolfGame::addItemsToMoveableList(QPtrList<QCanvasItem> list)
 		extraMoveable.append(item);
 }
 
+void KolfGame::addItemToFastAdvancersList(CanvasItem *item)
+{
+	fastAdvancers.append(item);
+	fastAdvancedExist = fastAdvancers.count() > 0;
+}
+
 void KolfGame::addNewObject(Object *newObj)
 {
 	QCanvasItem *newItem = newObj->newObject(course);
@@ -4273,6 +4303,8 @@ void KolfGame::addNewObject(Object *newObj)
 	canvasItem->editModeChanged(editing);
 	canvasItem->setName(newObj->_name());
 	addItemsToMoveableList(canvasItem->moveableItems());
+	if (canvasItem->fastAdvance())
+		addItemToFastAdvancersList(canvasItem);
 
 	newItem->move(width/2, height/2);
 
@@ -4446,6 +4478,7 @@ void KolfGame::save()
 	// we use this bool for optimization
 	// in openFile().
 	bool hasFinalLoad = false;
+	fastAdvancedExist = false;
 
 	QCanvasItem *item = 0;
 	for (item = items.first(); item; item = items.next())
