@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=Easy Course
+Name[ja]=簡単なコース
 Name[af]=maklike natuurlik
 Name[bs]=Lagani kurs
 Name[cs]=Jednoduchý
@@ -9,7 +10,6 @@ Name[es]=Curso sencillo
 Name[fi]=Helppo kenttä
 Name[fr]=Parcours facile
 Name[hu]=Könnyű pálya
-Name[ja]=簡単なコース
 Name[pt]=Percurso Fácil
 Name[pt_BR]=Curso fácil
 Name[ru]=Легкий путь
@@ -55,6 +55,24 @@ changeEnabled=false
 changeEvery=50
 height=238
 width=190
+
+[1-sand@33,295|0]
+changeEnabled=false
+changeEvery=50
+height=116
+width=54
+
+[1-sand@37,261|1]
+changeEnabled=false
+changeEvery=50
+height=84
+width=34
+
+[1-sand@40,303|2]
+changeEnabled=false
+changeEvery=50
+height=88
+width=54
 
 [1-slope@211,282|21]
 grade=3
@@ -567,6 +585,7 @@ width=10
 
 [13-sign@219,247|14]
 Comment=Hit slowly...
+Comment[ja]=ゆっくり打とう...
 Comment[af]=getref stadig...
 Comment[bs]=Polako pucaj...
 Comment[da]=Slå langsomt...
@@ -575,7 +594,6 @@ Comment[es]=Golpear lentamente...
 Comment[fi]=Lyö hitaasti...
 Comment[fr]=Taper doucement...
 Comment[hu]=Lassan megütni...
-Comment[ja]=ゆっくり打とう...
 Comment[pt]=Bata devagarinho...
 Comment[pt_BR]=Acerto lento ...
 Comment[ru]=Бейте не спеша...
