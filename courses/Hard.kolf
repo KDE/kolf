@@ -1049,7 +1049,7 @@ startPoint=104,374
 endPoint=265,189
 startPoint=154,189
 
-[13-ball@31,52]
+[13-ball@38,51]
 dummykey=true
 
 [13-cup@360,359|20]
@@ -1059,23 +1059,23 @@ dummykey=true
 botWallVisible=true
 endPoint=68,306
 height=11
-leftWallVisible=true
-rightWallVisible=true
+leftWallVisible=false
+rightWallVisible=false
 speed=9
 startPoint=133,75
-topWallVisible=true
+topWallVisible=false
 width=50
 
-[13-floater@82,378|16]
-botWallVisible=true
-endPoint=82,378
-height=13
+[13-floater@83,372|16]
+botWallVisible=false
+endPoint=83,372
+height=47
 leftWallVisible=true
-rightWallVisible=true
+rightWallVisible=false
 speed=4
-startPoint=343,377
+startPoint=344,371
 topWallVisible=true
-width=10
+width=14
 
 [13-hole@-50,-50|0]
 borderWalls=true
@@ -1093,12 +1093,12 @@ Comment[fr]=Laissez les flotteurs vous <strong>pousser</strong> !
 Comment[hu]=Csak a legjobbaknak!
 Comment[ja]=フローターでボールを<strong>プッシュ</strong>させよう!
 Comment[pt]=Deixe os flutuadores <strong>empurrá-lo</strong>!
-Comment[pt_BR]=Deixe as bóias <strong>levarem</strong> você! 
+Comment[pt_BR]=Deixe as bóias <strong>levarem</strong> você!
 Comment[ru]=Пусть вас <strong>несут</strong> плывуны!
 Comment[sk]=Nechajte sa unášať!
 Comment[sv]=Låt flottarna <strong>knuffa</strong> dig!
 Comment[xh]=Vumela ezidadayo <strong>tyhala</strong> wena!
-Comment[zu]=Yekela okuntantayo <strong>kukududule</strong>! 
+Comment[zu]=Yekela okuntantayo <strong>kukududule</strong>!
 botWallVisible=true
 height=196
 leftWallVisible=true
@@ -1111,40 +1111,96 @@ grade=6
 gradient=Vertical
 height=137
 reversed=true
-stuckOnGround=false
+stuckOnGround=true
 width=227
+
+[13-slope@10,378|0]
+grade=3
+gradient=Vertical
+height=9
+reversed=false
+stuckOnGround=true
+width=209
+
+[13-slope@11,363|1]
+grade=3
+gradient=Vertical
+height=17
+reversed=false
+stuckOnGround=true
+width=59
+
+[13-slope@111,102|4]
+grade=3
+gradient=Vertical
+height=10
+reversed=false
+stuckOnGround=true
+width=27
 
 [13-slope@12,147|16]
 grade=5
 gradient=Vertical
 height=131
 reversed=true
-stuckOnGround=false
+stuckOnGround=true
 width=227
+
+[13-slope@136,102|6]
+grade=4
+gradient=Vertical
+height=6
+reversed=false
+stuckOnGround=true
+width=17
 
 [13-slope@183,277|25]
 grade=5
 gradient=Vertical
-height=112
+height=111
 reversed=true
-stuckOnGround=false
+stuckOnGround=true
 width=206
+
+[13-slope@218,378|2]
+grade=3
+gradient=Vertical
+height=10
+reversed=false
+stuckOnGround=true
+width=105
 
 [13-slope@332,330|19]
 grade=6
 gradient=Elliptic
-height=58
+height=59
 reversed=true
 stuckOnGround=false
-width=58
+width=59
+
+[13-slope@69,307|8]
+grade=8
+gradient=Vertical
+height=8
+reversed=false
+stuckOnGround=false
+width=46
+
+[13-slope@82,373|13]
+grade=8
+gradient=Horizontal
+height=18
+reversed=true
+stuckOnGround=false
+width=16
 
 [13-slope@9,277|17]
 grade=5
 gradient=Vertical
-height=111
+height=100
 reversed=true
-stuckOnGround=false
-width=174
+stuckOnGround=true
+width=175
 
 [13-wall@0,0|10]
 endPoint=124,297
@@ -1179,12 +1235,12 @@ endPoint=388,276
 startPoint=236,276
 
 [13-wall@0,0|23]
-endPoint=158,103
+endPoint=159,103
 startPoint=173,108
 
 [13-wall@0,0|24]
 endPoint=113,114
-startPoint=158,103
+startPoint=159,103
 
 [13-wall@0,0|5]
 endPoint=173,108
@@ -1198,7 +1254,7 @@ startPoint=36,377
 dummykey=true
 
 [14-blackhole@87,369|7]
-exit=366,50
+exit=366,49
 exitDeg=50
 maxspeed=2
 minspeed=1
@@ -1239,7 +1295,7 @@ grade=2
 gradient=Vertical
 height=338
 reversed=true
-stuckOnGround=false
+stuckOnGround=true
 width=163
 
 [14-slope@11,352|11]
@@ -1263,8 +1319,16 @@ grade=2
 gradient=Diagonal
 height=339
 reversed=true
-stuckOnGround=false
+stuckOnGround=true
 width=63
+
+[14-slope@289,50|11]
+grade=2
+gradient=Vertical
+height=83
+reversed=false
+stuckOnGround=false
+width=101
 
 [14-slope@290,78|18]
 grade=4
@@ -1273,14 +1337,6 @@ height=53
 reversed=true
 stuckOnGround=false
 width=53
-
-[14-slope@292,51|11]
-grade=2
-gradient=Vertical
-height=79
-reversed=false
-stuckOnGround=false
-width=96
 
 [14-wall@0,0|13]
 endPoint=203,205
@@ -1607,7 +1663,7 @@ width=115
 dummykey=true
 
 [16-blackhole@354,290|51]
-exit=319,40
+exit=319,39
 exitDeg=180
 maxspeed=4
 minspeed=3
@@ -1630,7 +1686,7 @@ dummykey=true
 [16-cup@-57,-40|72]
 dummykey=true
 
-[16-cup@87,84|73]
+[16-cup@87,83|73]
 dummykey=true
 
 [16-floater@122,335|39]
@@ -1893,7 +1949,7 @@ grade=4
 gradient=Diagonal
 height=118
 reversed=false
-stuckOnGround=false
+stuckOnGround=true
 width=93
 
 [16-wall@0,0|65]
