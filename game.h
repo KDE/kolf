@@ -43,6 +43,7 @@ class KPrinter;
 class KolfGame;
 
 enum Direction { D_Left, D_Right, Forwards, Backwards };
+enum Amount { Amount_Less, Amount_Normal, Amount_More };
 enum HoleResult { Result_Holed, Result_Miss, Result_LipOut };
 
 class Player;
@@ -550,7 +551,7 @@ class Putter : public QCanvasLine, public CanvasItem
 {
 public:
 	Putter(QCanvas *canvas);
-	void go(Direction, bool more = false);
+	void go(Direction, Amount amount = Amount_Normal);
 	void setOrigin(int x, int y);
 	int curLen() const { return len; }
 	double curAngle() const { return angle; }

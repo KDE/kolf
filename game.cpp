@@ -1827,8 +1827,10 @@ void Putter::setAngle(Ball *ball)
 	finishMe();
 }
 
-void Putter::go(Direction d, bool more)
+void Putter::go(Direction d, Amount amount)
 {
+	double addition = (amount == Amount_More? 6 * oneDegree : amount == Amount_Less? .5 * oneDegree : 2 * oneDegree);
+
 	switch (d)
 	{
 		case Forwards:
@@ -1840,12 +1842,12 @@ void Putter::go(Direction d, bool more)
 			guideLine->setVisible(false);
 			break;
 		case D_Left:
-			angle += more? 6 * oneDegree : 2 * oneDegree;
+			angle += addition;
 			if (angle > maxAngle)
 				angle -= maxAngle;
 			break;
 		case D_Right:
-			angle -= more? 6 * oneDegree : 2 * oneDegree;
+			angle -= addition;
 			if (angle < 0)
 				angle = maxAngle - fabs(angle);
 			break;
@@ -3273,14 +3275,10 @@ void KolfGame::keyPressEvent(QKeyEvent *e)
 		break;
 
 		case Key_Left:
-			if ((!stroking && !putting) || !m_useAdvancedPutting)
-				putter->go(D_Left, e->state() & ShiftButton);
-		break;
-
 		case Key_Right:
 			// don't move putter if in advanced putting sequence
 			if ((!stroking && !putting) || !m_useAdvancedPutting)
-				putter->go(D_Right, e->state() & ShiftButton);
+				putter->go(e->key() == Key_Left? D_Left : D_Right, e->state() & ShiftButton? Amount_More : e->state() & ControlButton? Amount_Less : Amount_Normal);
 		break;
 
 		case Key_Space: case Key_Down:
@@ -3432,6 +3430,8 @@ void KolfGame::timeout()
 			(*it).ball()->setState(Stopped);
 			shotDone();
 			loadStateList();
+			// increment curPlayer; he did take a shot, after all
+			shotDone();
 			return;
 		}
 	}
@@ -4117,7 +4117,7 @@ void KolfGame::openFile()
 	// because it's old and when i added ids i forgot to change it.
 	cfg->setGroup("0-course@-50,-50");
 	holeInfo.setAuthor(cfg->readEntry("author", holeInfo.author()));
-	// Name is new for translating, name is for bc
+	// Name is new for translating, name is for backwards compa
 	holeInfo.setName(cfg->readEntry("Name", cfg->readEntry("name", holeInfo.name())));
 	emit titleChanged(holeInfo.name());
 
@@ -4442,6 +4442,12 @@ void KolfGame::clearHole()
 	items.clear();
 	items.setAutoDelete(false);
 	emit newSelectedItem(&holeInfo);
+
+	// add default objects
+	Object *curObj = 0;
+	for (curObj = obj->first(); curObj; curObj = obj->next())
+		if (curObj->addOnNewHole())
+			addNewObject(curObj);
 
 	modified = true;
 }
