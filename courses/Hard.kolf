@@ -1028,10 +1028,10 @@ startPoint=154,189
 [13-ball@31,52]
 dummykey=true
 
-[13-cup@340,91|4]
+[13-cup@340,89|4]
 dummykey=true
 
-[13-cup@363,362|20]
+[13-cup@360,359|20]
 dummykey=true
 
 [13-floater@313,77|23]
@@ -1052,7 +1052,7 @@ height=11
 leftWallVisible=true
 rightWallVisible=true
 speed=3
-startPoint=129,103
+startPoint=133,75
 topWallVisible=true
 width=50
 
@@ -1101,7 +1101,15 @@ reversed=true
 stuckOnGround=false
 width=227
 
-[13-slope@333,331|19]
+[13-slope@183,277|25]
+grade=5
+gradient=Vertical
+height=112
+reversed=true
+stuckOnGround=false
+width=206
+
+[13-slope@332,330|19]
 grade=6
 gradient=Elliptic
 height=58
@@ -1112,10 +1120,10 @@ width=58
 [13-slope@9,277|17]
 grade=5
 gradient=Vertical
-height=109
+height=111
 reversed=true
 stuckOnGround=false
-width=376
+width=174
 
 [13-wall@0,0|10]
 endPoint=124,297
@@ -1130,7 +1138,7 @@ endPoint=238,12
 startPoint=236,276
 
 [13-wall@0,0|14]
-endPoint=115,110
+endPoint=113,113
 startPoint=96,12
 
 [13-wall@0,0|16]
@@ -1149,8 +1157,12 @@ startPoint=390,326
 endPoint=388,276
 startPoint=236,276
 
+[13-wall@0,0|24]
+endPoint=113,113
+startPoint=176,112
+
 [13-wall@0,0|5]
-endPoint=175,113
+endPoint=176,112
 startPoint=124,297
 
 [13-wall@0,0|9]
@@ -3792,23 +3804,23 @@ changeEvery=50
 height=38
 width=60
 
-[7-sand@303,116|18]
+[7-sand@311,116|18]
 changeEnabled=false
 changeEvery=50
 height=24
-width=18
+width=64
 
-[7-sand@332,111|17]
+[7-sand@329,119|17]
 changeEnabled=false
 changeEvery=50
-height=28
-width=18
+height=34
+width=58
 
-[7-sand@365,123|16]
+[7-sand@349,123|16]
 changeEnabled=false
 changeEvery=50
-height=20
-width=18
+height=38
+width=46
 
 [7-slope@11,10|5]
 grade=4

@@ -2019,8 +2019,9 @@ void Cup::draw(QPainter &p)
 
 bool Cup::place(Ball *ball, bool /*wasCenter*/)
 {
-	// the picture's center is a little different
 	ball->setState(Holed);
+
+	// the picture's center is a little different
 	ball->move(x() - 1, y());
 	ball->setVelocity(0, 0);
 	if (game && game->curBall() == ball)
@@ -3912,6 +3913,7 @@ void KolfGame::holeDone()
 			(*it).ball()->move(whiteBall->x(), whiteBall->y());
 
 		(*it).ball()->setState(Stopped);
+
 		// this gets set to false when the ball starts
 		// to move by the Mr. Ball himself.
 		(*it).ball()->setBeginningOfHole(true);
