@@ -6,8 +6,8 @@
 
 #include <klibloader.h>
 
-#include "canvasitem.h"
-#include "object.h"
+#include <kolf/canvasitem.h>
+#include <kolf/object.h>
 
 class KConfig;
 
@@ -43,7 +43,7 @@ private slots:
 	void switchEveryChanged(int news);
 
 private:
-	Test *test;
+	Test *m_test;
 };
 
 class TestObj : public Object

@@ -11,7 +11,6 @@
 #include <kdebug.h>
 #include <kconfig.h>
 
-#include "canvasitem.h"
 #include "test.h"
 
 K_EXPORT_COMPONENT_FACTORY(libkolftest, TestFactory)
@@ -19,12 +18,12 @@ QObject *TestFactory::createObject (QObject * /*parent*/, const char * /*name*/,
 { return new TestObj; }
 
 Test::Test(QCanvas *canvas)
-	: QCanvasEllipse(60, 40, canvas)
+	: QCanvasEllipse(60, 40, canvas), count(0), m_switchEvery(20)
 {
+	// force to the bottom of other objects
 	setZ(-100000);
-	m_switchEvery = 20;
 
-	count = 0;
+	// we want calls to advance() even though we have no velocity
 	setAnimated(true);
 }
 
@@ -32,12 +31,20 @@ void Test::advance(int phase)
 {
 	QCanvasEllipse::advance(phase);
 
+	// phase is either 0 or 1, only calls with 1 should be handled
 	if (phase == 1)
 	{
+		// this makes it so the body is called every
+		// m_switchEvery times
 		if (count % m_switchEvery == 0)
 		{
+			// random color
 			const QColor myColor((QRgb)(kapp->random() % 0x01000000));
+
+			// set the brush, so our shape is drawn
+			// with the random color
 			setBrush(QBrush(myColor));
+
 			count = 0;
 		}
 
@@ -47,29 +54,30 @@ void Test::advance(int phase)
 
 void Test::save(KConfig *cfg)
 {
+	// save our option from the course
+	// (courses are represented as KConfig files)
 	cfg->writeEntry("switchEvery", switchEvery());
 }
 
 void Test::load(KConfig *cfg)
 {
+	// load our option
 	setSwitchEvery(cfg->readNumEntry("switchEvery", 50));
 }
 
 TestConfig::TestConfig(Test *test, QWidget *parent)
-	: Config(parent)
+	: Config(parent), m_test(test)
 {
-	this->test = test;
-
 	QVBoxLayout *layout = new QVBoxLayout(this, marginHint(), spacingHint());
 
 	layout->addStretch();
 
-	layout->addWidget(new QLabel(i18n("Flash Speed"), this));
+	layout->addWidget(new QLabel(i18n("Flash speed"), this));
 
 	QHBoxLayout *hlayout = new QHBoxLayout(layout, spacingHint());
 	QLabel *slow = new QLabel(i18n("Slow"), this);
 	hlayout->addWidget(slow);
-	QSlider *slider = new QSlider(1, 100, 5, 101 - test->switchEvery(), Qt::Horizontal, this);
+	QSlider *slider = new QSlider(1, 100, 5, 101 - m_test->switchEvery(), Qt::Horizontal, this);
 	hlayout->addWidget(slider);
 	QLabel *fast = new QLabel(i18n("Fast"), this);
 	hlayout->addWidget(fast);
@@ -81,7 +89,10 @@ TestConfig::TestConfig(Test *test, QWidget *parent)
 
 void TestConfig::switchEveryChanged(int news)
 {
-	test->setSwitchEvery((101 - news));
+	// update our object
+	m_test->setSwitchEvery((101 - news));
+
+	// tells Kolf the hole was modified
 	changed();
 }
 
