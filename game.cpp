@@ -386,8 +386,8 @@ void Slope::collision(Ball *ball, long int /*id*/)
 		const QPoint end((int)ball->x(), (int)ball->y());
 		const double yDiff = (double)(end.x() - start.x());
 		const double xDiff = (double)(start.y() - end.y());
-		kdDebug() << "yDiff: " << yDiff << endl;
-		kdDebug() << "xDiff: " << xDiff << endl;
+		//kdDebug() << "yDiff: " << yDiff << endl;
+		//kdDebug() << "xDiff: " << xDiff << endl;
 
 		if (yDiff == 0 && xDiff == 0)
 			return;
@@ -400,22 +400,21 @@ void Slope::collision(Ball *ball, long int /*id*/)
 		else
 		{
 			slopeAngle = atan(yDiff / xDiff);
-			kdDebug() << "before slopeAngle: " << rad2deg(slopeAngle) << endl;
+			//kdDebug() << "before slopeAngle: " << rad2deg(slopeAngle) << endl;
 
 			//if (slopeAngle < 0)
+			slopeAngle *= -1;
 			if (end.y() < start.y())
 			{
-				slopeAngle *= -1;
-				kdDebug() << "neg slopeAngle: " << rad2deg(slopeAngle) << endl;
+				//kdDebug() << "neg slopeAngle: " << rad2deg(slopeAngle) << endl;
 				slopeAngle = (PI / 2) - slopeAngle;
-				kdDebug() << "pi / 2 -  slopeAngle: " << rad2deg(slopeAngle) << endl;
+				//kdDebug() << "pi / 2 -  slopeAngle: " << rad2deg(slopeAngle) << endl;
 			}
 			else
 			{
 				//slopeAngle += PI / 2;
-				slopeAngle *= -1;
 				slopeAngle = (-PI / 2) - slopeAngle;
-				kdDebug() << "neg slopeAngle: " << rad2deg(slopeAngle) << endl;
+				//kdDebug() << "neg slopeAngle: " << rad2deg(slopeAngle) << endl;
 			}
 
 		}
@@ -423,7 +422,7 @@ void Slope::collision(Ball *ball, long int /*id*/)
 		//slopeAngle += PI;
 	}
 
-	kdDebug() << "slopeAngle: " << rad2deg(slopeAngle) << endl;
+	//kdDebug() << "slopeAngle: " << rad2deg(slopeAngle) << endl;
 
 	switch (type)
 	{
