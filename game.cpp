@@ -3793,7 +3793,7 @@ void KolfGame::putterTimeout()
 	{
 		if (putting)
 		{
-			const base = 3.2;
+			const float base = 3.2;
 			if (puttReverse && strength <= 0)
 			{
 				// aborted
