@@ -70,7 +70,7 @@ inline QString makeStateGroup(int id, const QString &name)
 
 /////////////////////////
 
-RectPoint::RectPoint(QColor color, QCanvasItem *rect, QCanvas *canvas)
+RectPoint::RectPoint(QColor color, RectItem *rect, QCanvas *canvas)
 	: QCanvasEllipse(canvas)
 {
 	setZ(9999);
@@ -91,14 +91,16 @@ void RectPoint::moveBy(double dx, double dy)
 		return;
 	}
 
-	double nw = m_sizeFactor * fabs(x() - rect->x());
-	double nh = m_sizeFactor * fabs(y() - rect->y());
+	QCanvasItem *qitem = dynamic_cast<QCanvasItem *>(rect);
+	if (!qitem)
+		return;
+
+	double nw = m_sizeFactor * fabs(x() - qitem->x());
+	double nh = m_sizeFactor * fabs(y() - qitem->y());
 	if (nw <= 0 || nh <= 0)
 		return;
-	RectItem *ritem = dynamic_cast<RectItem *>(rect);
-	ritem->newSize(nw, nh);
 
-	update();
+	rect->newSize(nw, nh);
 }
 
 Config *RectPoint::config(QWidget *parent)
@@ -107,7 +109,7 @@ Config *RectPoint::config(QWidget *parent)
 	if (citem)
 		return citem->config(parent);
 	else
-		return 0;
+		return CanvasItem::config(parent);
 }
 
 /////////////////////////
@@ -830,7 +832,6 @@ void Bridge::doLoad(KSimpleConfig *cfg)
 	setBotWallVisible(cfg->readBoolEntry("botWallVisible", botWallVisible()));
 	setLeftWallVisible(cfg->readBoolEntry("leftWallVisible", leftWallVisible()));
 	setRightWallVisible(cfg->readBoolEntry("rightWallVisible", rightWallVisible()));
-	update();
 }
 
 void Bridge::save(KSimpleConfig *cfg)
@@ -1902,8 +1903,6 @@ void Putter::finishMe()
 	//guideLine->setPoints(midPoint.x(), midPoint.y(), -midPoint.x() * 2, -midPoint.y() * 2);
 
 	setPoints(start.x(), start.y(), end.x(), end.y());
-
-	update();
 }
 
 /////////////////////////
@@ -2038,7 +2037,11 @@ HoleResult Hole::result(QPoint p, double s, bool * /*wasCenter*/)
 Cup::Cup(QCanvas *canvas)
 	: Hole(QColor("#808080"), canvas)
 {
-	pixmap = QPixmap(locate("appdata", "pics/cup.png"));
+	if (!QPixmapCache::find("grass", pixmap))
+	{
+		pixmap.load(locate("appdata", "pics/cup.png"));
+		QPixmapCache::insert("cup", pixmap);
+	}
 }
 
 void Cup::draw(QPainter &painter)
@@ -2888,6 +2891,7 @@ void StrokeCircle::setValue(double v)
 	dvalue = v;
 	if (dvalue > dmax)
 		dvalue = dmax;
+
 	update();
 }
 
@@ -2907,6 +2911,7 @@ void StrokeCircle::setMaxValue(double m)
 	dmax = m;
 	if (dvalue > dmax)
 		dvalue = dmax;
+
 	update();
 }
 void StrokeCircle::setSize(int w, int h)
@@ -2915,12 +2920,14 @@ void StrokeCircle::setSize(int w, int h)
 		iwidth = w;
 	if (h > 0)
 		iheight = h;
+
 	update();
 }
 void StrokeCircle::setThickness(int t)
 {
 	if (t > 0)
 		ithickness = t;
+
 	update();
 }
 
@@ -3527,15 +3534,21 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 		if (editing && !moving && selectedItem)
 		{
 			CanvasItem *citem = dynamic_cast<CanvasItem *>(selectedItem);
+			if (!citem)
+				return;
+			citem = citem->itemToDelete();
+			if (!citem)
+				return;
+			QCanvasItem *item = dynamic_cast<QCanvasItem *>(citem);
 			if (citem)
 			{
 				if (citem->deleteable())
 				{
 					highlighter->setVisible(false);
-					items.remove(selectedItem);
+					items.removeRef(item);
 					citem->aboutToDelete();
 					citem->aboutToDie();
-					delete selectedItem;
+					delete citem;
 					selectedItem = 0;
 					emit newSelectedItem(&holeInfo);
 

@@ -76,9 +76,13 @@ public:
 	virtual void editModeChanged(bool /*changed*/) {}
 	/**
 	 * the item should delete any other objects it's created.
-	 * DO NOT DO THIS IN THE DESTRUCTOR!
+	 * DO NOT DO THIS KIND OF STUFF IN THE DESTRUCTOR!
 	 */
 	virtual void aboutToDie() {}
+	/**
+	 * returns the object to get rid of when the delete button is pressed on this item. Some sub-objects will return something other than this.
+	 */
+	virtual CanvasItem *itemToDelete() { return this; }
 	/**
 	 * called when user presses delete key while editing. This is very rarely reimplemented, and generally shouldn't be.
 	 */

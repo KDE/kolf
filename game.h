@@ -214,17 +214,18 @@ public:
 class RectPoint : public QCanvasEllipse, public CanvasItem
 {
 public:
-	RectPoint(QColor color, QCanvasItem *, QCanvas *canvas);
+	RectPoint(QColor color, RectItem *, QCanvas *canvas);
 	void dontMove() { dontmove = true; }
 	virtual void moveBy(double dx, double dy);
 	virtual Config *config(QWidget *parent);
 	virtual bool deleteable() { return false; }
 	virtual bool cornerResize() { return true; }
+	virtual CanvasItem *itemToDelete() { return dynamic_cast<CanvasItem *>(rect); }
 	void setSizeFactor(double newFactor) { m_sizeFactor = newFactor; }
 
 private:
 	bool dontmove;
-	QCanvasItem *rect;
+	RectItem *rect;
 	double m_sizeFactor;
 };
 
@@ -507,6 +508,7 @@ public:
 	virtual int rtti() const { return Rtti_WallPoint; }
 	virtual bool deleteable() { return false; }
 	virtual bool collision(Ball *ball, long int id);
+	virtual CanvasItem *itemToDelete() { return wall; }
 	virtual void clean();
 	virtual Config *config(QWidget *parent) { return wall->config(parent); }
 	void dontMove() { dontmove = true; };

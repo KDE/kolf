@@ -23,6 +23,8 @@ public:
 	virtual void moveBy(double dx, double dy);
 	virtual void setVelocity(double vx, double vy);
 
+	virtual bool deleteable() { return false; }
+
 	virtual bool canBeMovedByOthers() const { return true; }
 
 	BallState curState() { return state; }
