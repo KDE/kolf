@@ -328,7 +328,13 @@ bool Slope::collision(Ball *ball, long int /*id*/)
 	}
 
 	ball->setVelocity(vx, vy);
-	ball->setState(Rolling);
+
+	// check if the ball is at the center of a pit or mound
+	// or has otherwise stopped.
+	if (vx == 0 && vy ==0)
+		ball->setState(Stopped);
+	else
+		ball->setState(Rolling);
 
 	// do NOT do terrain collisions
 	return false;

@@ -2792,15 +2792,15 @@ void KolfGame::timeout()
 			// don't do it if he's past maxStrokes
 			if ((*it).score(curHole) < holeInfo.maxStrokes() - 1 || !holeInfo.hasMaxStrokes())
 			{
-				shotDone();
 				loadStateList();
 				
 				// increment curPlayer; he did take a shot, after all
-				(*curPlayer).addStrokeToHole(curHole);
-				emit scoreChanged((*curPlayer).id(), curHole, (*curPlayer).score(curHole));
+				// 5-23, oops, no, he gets incremented in shotDone().
+				//(*curPlayer).addStrokeToHole(curHole);
+				//emit scoreChanged((*curPlayer).id(), curHole, (*curPlayer).score(curHole));
 			}
-			else
-				shotDone();
+
+			shotDone();
 
 			return;
 		}
