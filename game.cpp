@@ -4105,6 +4105,7 @@ void KolfGame::startNextHole()
 
 	int oldCurHole = curHole;
 	curHole++;
+	emit currentHole(curHole);
 
 	if (reset)
 	{
@@ -4572,6 +4573,7 @@ void KolfGame::addNewHole()
 	recalcHighestHole = true;
 	startNextHole();
 	addingNewHole = false;
+	emit currentHole(curHole);
 
 	// make sure even the current player isn't showing
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)

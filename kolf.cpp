@@ -255,6 +255,7 @@ void Kolf::startNewGame()
 	connect(game, SIGNAL(maxStrokesReached(const QString &)), this, SLOT(maxStrokesReached(const QString &)));
 	connect(game, SIGNAL(largestHole(int)), this, SLOT(updateHoleMenu(int)));
 	connect(game, SIGNAL(titleChanged(const QString &)), this, SLOT(titleChanged(const QString &)));
+	connect(game, SIGNAL(currentHole(int)), this, SLOT(setCurrentHole(int)));
 	connect(holeAction, SIGNAL(activated(const QString &)), game, SLOT(switchHole(const QString &)));
 	connect(nextAction, SIGNAL(activated()), game, SLOT(nextHole()));
 	connect(prevAction, SIGNAL(activated()), game, SLOT(prevHole()));
@@ -781,6 +782,13 @@ void Kolf::newToolBarConfig()
 void Kolf::enableAllMessages()
 {
 	KMessageBox::enableAllMessages();
+}
+
+void Kolf::setCurrentHole(int hole)
+{
+	if(!holeAction) return;
+	// Golf is 1-based, KListAction is 0-based
+	holeAction->setCurrentItem(hole - 1);
 }
 
 #include "kolf.moc"

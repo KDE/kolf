@@ -1014,6 +1014,7 @@ signals:
 	void inPlayStart();
 	void inPlayEnd();
 	void maxStrokesReached(const QString &);
+	void currentHole(int);
 
 private slots:
 	void shotDone();

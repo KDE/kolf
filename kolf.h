@@ -72,6 +72,8 @@ protected slots:
 	void createSpacer();
 
 	void emptySlot() {};
+
+	void setCurrentHole(int);
  
 private:
 	QWidget *dummy;
