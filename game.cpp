@@ -1221,11 +1221,17 @@ void WindmillConfig::endChanged(bool bottom)
 	changed();
 
 	bot->setEnabled(!bottom);
-	bot->setChecked(!bottom);
-	botWallChanged(bot->isChecked());
+	if (startedUp)
+	{
+		bot->setChecked(!bottom);
+		botWallChanged(bot->isChecked());
+	}
 	top->setEnabled(bottom);
-	top->setChecked(bottom);
-	topWallChanged(top->isChecked());
+	if (startedUp)
+	{
+		top->setChecked(bottom);
+		topWallChanged(top->isChecked());
+	}
 }
 
 /////////////////////////
