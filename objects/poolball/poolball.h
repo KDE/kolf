@@ -54,7 +54,7 @@ class PoolBallObj : public Object
 {
 public:
 	PoolBallObj() { m_name = i18n("Pool Ball"); m__name = "poolball"; m_author = "Jason Katz-Brown"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new PoolBall(canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) { return new PoolBall(canvas); }
 };
 
 #endif

@@ -156,7 +156,7 @@ public:
 	/**
 	 * called on ball's collision. Return if terrain collisions should be processed.
 	 */
-	virtual bool collision(Ball * /*ball*/, long int /*id*/) const { return true; }
+	virtual bool collision(Ball * /*ball*/, long int /*id*/) { return true; }
 
 	/**
 	 * reimplement if you want extra items to have access to the game object.

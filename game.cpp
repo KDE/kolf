@@ -235,7 +235,7 @@ Slope::Slope(QRect rect, QCanvas *canvas)
 	setGradient("Vertical");
 }
 
-bool Slope::terrainCollisions()
+bool Slope::terrainCollisions() const
 {
 	return type == KImageEffect::EllipticGradient;
 }

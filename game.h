@@ -181,7 +181,7 @@ public:
 	virtual void save(KSimpleConfig *cfg);
 
 	virtual bool collision(Ball *ball, long int id);
-	virtual bool terrainCollisions();
+	virtual bool terrainCollisions() const;
 
 	QMap<KImageEffect::GradientType, QString> gradientI18nKeys;
 	QMap<KImageEffect::GradientType, QString> gradientKeys;
@@ -209,7 +209,7 @@ class SlopeObj : public Object
 {
 public:
 	SlopeObj() { m_name = i18n("Slope"); m__name = "slope"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Slope(QRect(0, 0, 40, 40), canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Slope(QRect(0, 0, 40, 40), canvas); }
 };
 
 class RectPoint : public QCanvasEllipse, public CanvasItem
@@ -303,7 +303,7 @@ class PuddleObj : public Object
 {
 public:
 	PuddleObj() { m_name = i18n("Puddle"); m__name = "puddle"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Puddle(canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Puddle(canvas); }
 };
 
 class Sand : public Ellipse
@@ -316,14 +316,14 @@ class SandObj : public Object
 {
 public:
 	SandObj() { m_name = i18n("Sand"); m__name = "sand"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Sand(canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Sand(canvas); }
 };
 
 class Inside : public QCanvasEllipse, public CanvasItem
 {
 public:
 	Inside(CanvasItem *item, QCanvas *canvas) : QCanvasEllipse(canvas) { this->item = item; }
-	virtual bool collision(Ball *ball, long int id) const { return item->collision(ball, id); }
+	virtual bool collision(Ball *ball, long int id) { return item->collision(ball, id); }
 
 private:
 	CanvasItem *item;
@@ -351,7 +351,7 @@ class BumperObj : public Object
 {
 public:
 	BumperObj() { m_name = i18n("Bumper"); m__name = "bumper"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Bumper(canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Bumper(canvas); }
 };
 
 class Hole : public QCanvasEllipse, public CanvasItem
@@ -382,7 +382,7 @@ class CupObj : public Object
 {
 public:
 	CupObj() { m_name = i18n("Cup"); m__name = "cup"; m_addOnNewHole = true; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Cup(canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Cup(canvas); }
 };
 
 class BlackHole;
@@ -460,7 +460,7 @@ class BlackHoleObj : public Object
 {
 public:
 	BlackHoleObj() { m_name = i18n("Black Hole"); m__name = "blackhole"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new BlackHole(canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) { return new BlackHole(canvas); }
 };
 
 class WallPoint;
@@ -528,7 +528,7 @@ class WallObj : public Object
 {
 public:
 	WallObj() { m_name = i18n("Wall"); m__name = "wall"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Wall(canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Wall(canvas); }
 };
 
 class Putter : public QCanvasLine, public CanvasItem
@@ -633,7 +633,7 @@ class BridgeObj : public Object
 {
 public:
 	BridgeObj() { m_name = i18n("Bridge"); m__name = "bridge"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Bridge(QRect(0, 0, 80, 40), canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Bridge(QRect(0, 0, 80, 40), canvas); }
 };
 
 class Sign;
@@ -669,7 +669,7 @@ class SignObj : public Object
 {
 public:
 	SignObj() { m_name = i18n("Sign"); m__name = "sign"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Sign(canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Sign(canvas); }
 };
 
 class Windmill;
@@ -727,7 +727,7 @@ class WindmillObj : public Object
 {
 public:
 	WindmillObj() { m_name = i18n("Windmill"); m__name = "windmill"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Windmill(QRect(0, 0, 80, 40), canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Windmill(QRect(0, 0, 80, 40), canvas); }
 };
 
 class Floater;
@@ -799,7 +799,7 @@ class FloaterObj : public Object
 {
 public:
 	FloaterObj() { m_name = i18n("Floater"); m__name = "floater"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) const { return new Floater(QRect(0, 0, 80, 40), canvas); }
+	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Floater(QRect(0, 0, 80, 40), canvas); }
 };
 
 class HoleInfo;
