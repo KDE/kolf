@@ -553,6 +553,7 @@ width=38
 [2-sign@26,345|31]
 Comment=Las Vegas, NV
 Comment[bg]=Лас Вегас, Невада
+Comment[el]=Λας Βέγκας, NV
 Comment[hu]=Las Vegas, Nevada
 Comment[sr]=Лас Вегас, Невада
 Comment[sv]=Las Vegas, Nevada
@@ -708,6 +709,7 @@ par=2
 [3-sign@-4,358|9]
 Comment=San Francisco, CA
 Comment[bg]=Сан Франциско, Калифорния
+Comment[el]=Σαν Φρανσίσκο, CA
 Comment[hu]=San Francisco, Kalifornia
 Comment[pt]=São Francisco, CA
 Comment[pt_BR]=São Francisco, CA
@@ -797,6 +799,7 @@ par=3
 [4-sign@201,171|8]
 Comment=Grand Canyon
 Comment[bg]=Гранд Каньон
+Comment[el]=Γραντ Κάνυον
 Comment[es]=Gran Cañón
 Comment[sr]=Велики кањон
 Comment[tr]=Büyük Kanyon
@@ -910,6 +913,7 @@ width=48
 [5-sign@219,344|10]
 Comment=Lake Tahoe, CA/NV
 Comment[bg]=Езерото Тахо, Калифорния/Невада
+Comment[el]=Λίμνη Tahoe, CA/NV
 Comment[es]=Lago Tahoe, CA/NV
 Comment[hu]=Lake Tahoe, Kalifornia/Nevada
 Comment[it]=Lago Tahoe, CA/NV
@@ -1221,6 +1225,7 @@ width=40
 [7-sign@135,364|25]
 Comment=San Francisco, CA
 Comment[bg]=Сан Франциско, Калифорния
+Comment[el]=Σαν Φρανσίσκο, CA
 Comment[hu]=San Francisco, Kalifornia
 Comment[pt]=São Francisco, CA
 Comment[pt_BR]=São Francisco, CA
@@ -1383,6 +1388,7 @@ width=98
 [8-sign@147,370|19]
 Comment=Washington DC
 Comment[bg]=Вашингтон, окръг Колумбия
+Comment[el]=Ουάσινγκτον
 Comment[sr]=Вашингтон ДЦ
 Comment[wa]=Washington DC, USA
 Comment[xx]=xxWashington DCxx
@@ -1600,6 +1606,7 @@ width=20
 [9-sign@291,368|28]
 Comment=Niagara Falls, NY
 Comment[bg]=Ниагара, Ню Йорк
+Comment[el]=Καταρράχτες Νιαγάρα, NY
 Comment[es]=Cataratas del Niágara, NY
 Comment[hu]=Niagara Falls, New York
 Comment[pt]=Catarata do Niagara, NY
