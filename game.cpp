@@ -878,7 +878,7 @@ bool Puddle::collision(Ball *ball, long int /*id*/)
 		}
 	}
 
-	return true;
+	return false;
 }
 
 /////////////////////////
