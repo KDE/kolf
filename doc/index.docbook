@@ -287,9 +287,9 @@ button next to the player's name.</para>
 <para>Whether or not to reverse the slant of the slope. For example, consider an elliptical slope (a circular slope). When it is not reversed, it pushes balls outward like a mound. When it is reversed, it sucks balls inward like a hole.</para>
 </listitem>
 </varlistentry>
-<varlistentry> <term>Steepness</term>
+<varlistentry> <term><guilabel>Grade</guilabel></term>
 <listitem>
-<para>Choose the steepness of the slope by moving the slider towards either <guilabel>Slow</guilabel> or <guilabel>Fast</guilabel>. Steeper slopes push the ball more.</para>
+<para>Choose the grade (steepness) of the slope by moving the slider so the grade moves towards 0 or 8, where 8 is steepest and 0 is flat. Steeper slopes push the ball more.</para>
 </listitem>
 </varlistentry>
 <varlistentry> <term><guilabel>Unmoveable</guilabel></term>
