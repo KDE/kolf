@@ -1305,28 +1305,28 @@ stuckOnGround=true
 width=97
 
 [5-slope@58,111|17]
-grade=3
+grade=4
 gradient=Vertical
-height=37
+height=40
 reversed=true
 stuckOnGround=true
 width=99
 
-[5-slope@59,147|18]
+[5-slope@59,150|18]
 grade=2
 gradient=Horizontal
-height=18
+height=15
 reversed=true
 stuckOnGround=false
-width=96
+width=95
 
-[5-slope@59,169|18]
-grade=4
+[5-slope@59,166|18]
+grade=5
 gradient=Vertical
 height=39
 reversed=false
 stuckOnGround=true
-width=96
+width=100
 
 [5-slope@61,23|20]
 grade=2

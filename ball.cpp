@@ -93,7 +93,7 @@ void Ball::setVelocity(double vx, double vy)
 		return;
 	}
 
-	const double ballAngle = atan2(-vy, vx);
+	double ballAngle = atan2(-vy, vx);
 
 	m_vector.setDirection(ballAngle);
 	m_vector.setMagnitude(sqrt(pow(vx, 2) + pow(vy, 2)));

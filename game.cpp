@@ -4768,7 +4768,7 @@ void KolfGame::playSound(QString file)
 		KPlayObjectFactory factory(artsServer.server());
 		KPlayObject *playObject = factory.createPlayObject(url, true);
 
-		if (playObject)
+		if (playObject && !playObject->isNull())
 		{
 			playObject->play();
 			oldPlayObjects.append(playObject);
