@@ -4633,7 +4633,6 @@ void KolfGame::playSound(QString file, bool cache)
 		{
 			kdDebug() << "playing\n";
 			playObject->play();
-			playObject->play();
 		}
 
 		if (!(cache || wasCached))
