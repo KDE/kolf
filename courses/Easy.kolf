@@ -692,7 +692,19 @@ width=313
 [16-ball@299,105]
 dummykey=true
 
-[16-cup@105,328|3]
+[16-blackhole@308,282|23]
+exit=358,136
+exitDeg=160
+maxspeed=3
+minspeed=2
+
+[16-blackhole@37,334|24]
+exit=227,218
+exitDeg=239
+maxspeed=1
+minspeed=0
+
+[16-cup@106,333|3]
 dummykey=true
 
 [16-hole@-50,-50|0]
@@ -701,29 +713,29 @@ hasFinalLoad=false
 maxstrokes=10
 par=3
 
-[16-slope@184,229|22]
+[16-slope@183,211|22]
 grade=4
 gradient=Elliptic
-height=101
+height=108
 reversed=true
 stuckOnGround=false
-width=101
+width=108
 
-[16-slope@50,132|21]
-grade=4
+[16-slope@48,70|20]
+grade=6
 gradient=Elliptic
-height=93
+height=100
 reversed=false
 stuckOnGround=false
-width=93
+width=100
 
-[16-slope@59,74|20]
-grade=4
+[16-slope@50,130|21]
+grade=3
 gradient=Elliptic
-height=81
+height=102
 reversed=false
 stuckOnGround=false
-width=81
+width=102
 
 [16-wall@0,0|10]
 endPoint=371,115
@@ -739,14 +751,14 @@ startPoint=27,141
 
 [16-wall@0,0|13]
 endPoint=81,374
-startPoint=45,338
+startPoint=61,341
 
 [16-wall@0,0|14]
-endPoint=45,338
-startPoint=49,285
+endPoint=27,292
+startPoint=68,281
 
 [16-wall@0,0|15]
-endPoint=49,285
+endPoint=68,281
 startPoint=170,269
 
 [16-wall@0,0|16]
@@ -765,16 +777,40 @@ startPoint=49,225
 endPoint=49,225
 startPoint=27,141
 
+[16-wall@0,0|25]
+endPoint=61,341
+startPoint=49,366
+
+[16-wall@0,0|26]
+endPoint=27,368
+startPoint=13,351
+
+[16-wall@0,0|27]
+endPoint=13,351
+startPoint=12,312
+
+[16-wall@0,0|28]
+endPoint=12,312
+startPoint=27,292
+
+[16-wall@0,0|29]
+endPoint=27,368
+startPoint=49,366
+
+[16-wall@0,0|30]
+endPoint=346,277
+startPoint=335,244
+
 [16-wall@0,0|4]
 endPoint=319,316
 startPoint=81,374
 
 [16-wall@0,0|5]
 endPoint=319,316
-startPoint=351,266
+startPoint=346,277
 
 [16-wall@0,0|6]
-endPoint=351,266
+endPoint=335,244
 startPoint=156,185
 
 [16-wall@0,0|7]

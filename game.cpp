@@ -292,9 +292,8 @@ void Slope::newSize(int width, int height)
 		moveBy(0, 0);
 
 		//kdDebug() << "game is " << game << endl;
-		if (game)
-			if (game->isEditing())
-				game->updateHighlighter();
+		if (game && game->isEditing())
+			game->updateHighlighter();
 	}
 	else
 		QCanvasRectangle::setSize(width, height);
@@ -357,11 +356,8 @@ void Slope::updateZ(QCanvasRectangle *vStrut)
 
 	if (rect)
 	{
-		if (rect)
-			if (area > (rect->width() * rect->height()))
-				newZ = defaultz;
-			else
-				newZ = rect->z();
+		if (area > (rect->width() * rect->height()))
+			newZ = defaultz;
 		else
 			newZ = rect->z();
 	}
@@ -954,9 +950,7 @@ void Floater::setGame(KolfGame *game)
 void Floater::editModeChanged(bool changed)
 {
 	if (changed)
-	{
 		wall->editModeChanged(true);
-	}
 	Bridge::editModeChanged(changed);
 	wall->setVisible(changed);
 }
@@ -1042,10 +1036,7 @@ void Floater::aboutToDie()
 
 void Floater::setSpeed(int news)
 {
-	if (!wall)
-		return;
-
-	if (news < 0)
+	if (!wall || news < 0)
 		return;
 		
 	speed = news;
@@ -1056,10 +1047,11 @@ void Floater::setSpeed(int news)
 		return;
 	}
 
+
 	const double rise = wall->startPoint().y() - wall->endPoint().y();
 	const double run = wall->startPoint().x() - wall->endPoint().x();
 	double wallAngle = atan(rise / run);
-	const double factor = (double)speed / (double)3.5;
+	const double factor = (double)speed / 3.5;
 
 	setVelocity(-cos(wallAngle) * factor, -sin(wallAngle) * factor);
 }
@@ -1088,39 +1080,32 @@ void Floater::moveBy(double dx, double dy)
 		CanvasItem *item = dynamic_cast<CanvasItem *>(*it);
 
 		if (!noUpdateZ)
-			if (item)
-				if (item->canBeMovedByOthers())
-					item->updateZ(this);
+			if (item && item->canBeMovedByOthers())
+				item->updateZ(this);
 
 		if ((*it)->z() >= z())
 		{
-			if (item)
+			if (item && item->canBeMovedByOthers() && collidesWith(*it))
 			{
-				if (item->canBeMovedByOthers())
+				if ((*it)->rtti() == Rtti_Ball)
 				{
-					if (collidesWith(*it))
+					//((Ball *)(*it))->setState(Rolling);
+					(*it)->moveBy(dx, dy);
+					if (game)
 					{
-						if ((*it)->rtti() == Rtti_Ball)
+						game->ballMoved();
+						if (game->hasFocus() && !game->isEditing())
 						{
-							//((Ball *)(*it))->setState(Rolling);
-							(*it)->moveBy(dx, dy);
-							if (game)
+							if (game->curBall() == (Ball *)(*it))
 							{
-								game->ballMoved();
-								if (game->hasFocus() && !game->isEditing())
-								{
-									if (game->curBall() == (Ball *)(*it))
-									{
-										//game->changeMouse()
-										game->updateMouse();
-									}
-								}
+								//game->changeMouse()
+								game->updateMouse();
 							}
 						}
-						else if ((*it)->rtti() != Rtti_Putter)
-							(*it)->moveBy(dx, dy);
 					}
 				}
+				else if ((*it)->rtti() != Rtti_Putter)
+					(*it)->moveBy(dx, dy);
 			}
 		}
 	}
@@ -1138,9 +1123,8 @@ void Floater::moveBy(double dx, double dy)
 	// that's a bad thing
 	QCanvasRectangle::moveBy(dx, dy);
 
-	if (game)
-		if (game->isEditing())
-			game->updateHighlighter();
+	if (game && game->isEditing())
+		game->updateHighlighter();
 }
 
 void Floater::saveState(StateDB *db)
@@ -1732,9 +1716,8 @@ bool Puddle::collision(Ball *ball, long int /*id*/)
 			ball->setVisible(false);
 			ball->setState(Stopped);
 			ball->setVelocity(0, 0);
-			if (game)
-				if (game->curBall() == ball)
-					game->stoppedBall();
+			if (game && game->curBall() == ball)
+				game->stoppedBall();
 		}
 	}
 
@@ -2024,9 +2007,7 @@ bool Hole::collision(Ball *ball, long int /*id*/)
 HoleResult Hole::result(QPoint p, double s, bool * /*wasCenter*/)
 {
 	if (s > 3.0)
-	{
 		return Result_Miss;
-	}
 
 	QCanvasRectangle i(QRect(p, QSize(1, 1)), canvas());
 	i.setVisible(true);
@@ -2063,9 +2044,8 @@ bool Cup::place(Ball *ball, bool /*wasCenter*/)
 	ball->setState(Holed);
 	ball->move(x() - 1, y());
 	ball->setVelocity(0, 0);
-	if (game)
-		if (game->curBall() == ball)
-			game->stoppedBall();
+	if (game && game->curBall() == ball)
+		game->stoppedBall();
 	return true;
 }
 
@@ -2143,9 +2123,8 @@ void BlackHole::moveBy(double dx, double dy)
 void BlackHole::setExitDeg(int newdeg)
 {
 	exitDeg = newdeg;
-	if (game)
-		if (game->isEditing() && game->curSelectedItem() == exitItem)
-			game->updateHighlighter();
+	if (game && game->isEditing() && game->curSelectedItem() == exitItem)
+		game->updateHighlighter();
 	
 	exitItem->updateArrowAngle();
 	finishMe();
@@ -2587,7 +2566,6 @@ Wall::Wall(QCanvas *canvas)
 	setPen(QPen(darkRed, 3));
 
 	setPoints(-15, 10, 15, -5);
-	move(0, 0);
 
 	moveBy(0, 0);
 
@@ -3349,70 +3327,16 @@ void KolfGame::contentsMouseMoveEvent(QMouseEvent *e)
 	storedMousePos = mouse;
 }
 
-/*
-void KolfGame::changeMouse()
-{
-	if (!hasFocus() || !m_useMouse || ((stroking || putting) && m_useAdvancedPutting))
-		return;
-	if (!putter->isVisible())
-		return;
-
-	const QPoint mouse(viewportToContents(mapFromGlobal(QCursor::pos())));
-	const double yDiff = (double)(putter->y() - mouse.y());
-	const double xDiff = (double)(mouse.x() - putter->x());
-	const double len = sqrt(yDiff * yDiff + xDiff * xDiff);
-	//kdDebug() << "len: " << len << endl;
-
-	const double radians = deg2rad(putter->curDeg());
-	//kdDebug() << "radians(): " << rad2deg(radians) << endl;
-	const QPoint cursor(putter->x() + cos(radians) * len, putter->y() + sin(radians) * len);
-	//kdDebug() << "cursor: " << cursor.x() << ", " << cursor.y() << endl;
-	QCursor::setPos(mapToGlobal(contentsToViewport(cursor)));
-}
-*/
-
 void KolfGame::updateMouse()
 {
 	// don't move putter if in advanced putting sequence
 	if (!m_useMouse || ((stroking || putting) && m_useAdvancedPutting))
 		return;
 
-	double newAngle = 0;
-	const QPoint mouse(viewportToContents(mapFromGlobal(QCursor::pos())));
-	const double yDiff = (double)(putter->y() - mouse.y());
-	const double xDiff = (double)(mouse.x() - putter->x());
-	//kdDebug() << "yDiff: " << yDiff << ", xDiff: " << xDiff << endl;
-	if (yDiff == 0)
-	{
-		// horizontal
-		if (putter->x() < mouse.x())
-			newAngle = 0;
-		else
-			newAngle = M_PI;
-	}
-	else if (xDiff == 0)
-	{
-		// vertical
-		if (putter->y() < mouse.y())
-			newAngle = (3 * M_PI) / 2;
-		else
-			newAngle = M_PI / 2;
-	}
-	else
-	{
-		const double slope = yDiff / xDiff;
-		const double angle = atan(slope);
-		//kdDebug() << "angle: " << rad2deg(angle) << endl;
-		newAngle = angle;
-
-		if (mouse.x() < putter->x())
-			newAngle += M_PI;
-	}
-	//kdDebug() << "newAngle: " << rad2deg(newAngle) << endl;
-
-	const int degrees = (int)rad2deg(newAngle);
-	//kdDebug() << "degrees: " << degrees << endl;
-	putter->setDeg(degrees);
+	// make a vector from mouse to ball, find direction,
+	// convert to degrees and set putter to negative of that
+	// vectors are nice
+	putter->setDeg(rad2deg(-(Vector(viewportToContents(mapFromGlobal(QCursor::pos())), QPoint((*curPlayer).ball()->x(), (*curPlayer).ball()->y()))).direction()));
 }
 
 void KolfGame::contentsMouseReleaseEvent(QMouseEvent *e)
@@ -4761,16 +4685,7 @@ void KolfGame::playSound(QString file)
 		KPlayObject *oldPlayObject = 0;
 		for (oldPlayObject = oldPlayObjects.first(); oldPlayObject; oldPlayObject = oldPlayObjects.next())
 		{
-			bool remove = false;
-			if (oldPlayObject)
-			{
-				if (oldPlayObject->state() != Arts::posPlaying)
-					remove = true;
-			}
-			else
-				remove = true;
-
-			if (remove)
+			if (oldPlayObject && oldPlayObject->state() != Arts::posPlaying)
 			{
 				oldPlayObjects.remove();
 
@@ -4919,13 +4834,9 @@ void KolfGame::saveScores(KSimpleConfig *config)
 	{
 		// this deletes all int groups, ie, the player info groups
 		bool ok = false;
-		kdDebug() << "string: " << *it << endl;
-		kdDebug() << "toint: " << (*it).toInt(&ok) << endl;
+		(*it).toInt(&ok);
 		if (ok)
-		{
-			kdDebug() << "delete\n";
 			config->deleteGroup(*it);
-		}
 	}
 
 	config->setGroup("Saved Game");
