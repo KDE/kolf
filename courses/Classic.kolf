@@ -1,5 +1,6 @@
 [0-course@-50,-50]
-Name=Classic
+Name=クラッシック
+Name[ja]=クラッシック
 Name[af]=klasieke
 Name[bs]=Klasični
 Name[cs]=Klasický
@@ -9,7 +10,6 @@ Name[es]=Clásico
 Name[fi]=Klassinen
 Name[he]=קלאסי
 Name[hu]=Klasszikus
-Name[ja]=クラッシック
 Name[pt]=Clássico
 Name[pt_BR]=Clássico
 Name[sl]=Klasična
@@ -476,7 +476,7 @@ width=92
 dummykey=true
 
 [13-blackhole@302,95|4]
-exit=130,78
+exit=133,78
 exitDeg=180
 maxspeed=5
 minspeed=2
@@ -790,7 +790,7 @@ startPoint=250,133
 dummykey=true
 
 [16-blackhole@109,200|12]
-exit=110,109
+exit=110,111
 exitDeg=90
 maxspeed=5
 minspeed=3
