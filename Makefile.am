@@ -14,6 +14,12 @@ app_DATA = kolfui.rc tutorial.kolf tutorial.kolfgame
 appsdir = $(kde_appsdir)/Games/Arcade
 apps_DATA = kolf.desktop
 
+applicationmimedir = $(kde_mimedir)/application
+applicationmime_DATA = x-kourse.desktop x-kolf.desktop
+
+magicdir = $(kde_confdir)/magic
+magic_DATA = kolf.magic
+
 METASOURCES = AUTO
 
 messages: rc.cpp
