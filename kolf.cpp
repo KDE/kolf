@@ -1,6 +1,5 @@
 #include <kconfig.h>
 #include <kaction.h>
-#include <kglobal.h>
 #include <kmessagebox.h>
 #include <kstandarddirs.h>
 #include <kapplication.h>
@@ -26,7 +25,6 @@
 #include <qstring.h>
 #include <qstringlist.h>
 #include <qlayout.h>
-#include <qtimer.h>
 #include <qwidget.h>
 
 #include <stdlib.h>

@@ -1,7 +1,6 @@
 #ifndef NEWGAME_H_INCLUDED
 #define NEWGAME_H_INCLUDED
 
-#include <kcolorbutton.h>
 #include <kdialogbase.h>
 #include <klineedit.h>
 #include <kcolorbutton.h>
