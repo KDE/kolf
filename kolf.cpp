@@ -131,6 +131,10 @@ void Kolf::initGUI()
 	config->setGroup("Settings");
 	useMouseAction->setChecked(config->readBoolEntry("useMouse", true));
 
+	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Mouse Putting"), 0, 0, 0, actionCollection(), "useadvancedputting");
+	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
+	useAdvancedPuttingAction->setChecked(config->readBoolEntry("useAdvancedPutting", true));
+
 	aboutAction = new KAction(i18n("&About Course..."), 0, 0, 0, actionCollection(), "aboutcourse");
 	tutorialAction = new KAction(i18n("&Tutorial..."), 0, this, SLOT(tutorial()), actionCollection(), "tutorial");
 
@@ -202,8 +206,10 @@ void Kolf::startNewGame()
 		connect(resetHoleAction, SIGNAL(activated()), game, SLOT(resetHole()));
 		connect(aboutAction, SIGNAL(activated()), game, SLOT(showInfoDlg()));
 		connect(useMouseAction, SIGNAL(toggled(bool)), game, SLOT(setUseMouse(bool)));
+		connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), game, SLOT(setUseAdvancedPutting(bool)));		
 
 		game->setUseMouse(useMouseAction->isChecked());
+		game->setUseAdvancedPutting(useAdvancedPuttingAction->isChecked());		
 
 		layout->addWidget(game, 0, 0);
 
@@ -510,6 +516,14 @@ void Kolf::useMouseChanged(bool yes)
 	KConfig *config = kapp->config();
 	config->setGroup("Settings");
 	config->writeEntry("useMouse", yes);
+	config->sync();
+}
+
+void Kolf::useAdvancedPuttingChanged(bool yes)
+{
+	KConfig *config = kapp->config();
+	config->setGroup("Settings");
+	config->writeEntry("useAdvancedPutting", yes);
 	config->sync();
 }
 

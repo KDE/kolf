@@ -22,6 +22,7 @@
 		</Menu>
 		<Menu name="settings">
 			<Action name="usemouse" />
+			<Action name="useadvancedputting" />			
 		</Menu>
 		<Menu name="help">
 			<Action name="aboutcourse" />

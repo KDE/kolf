@@ -57,6 +57,7 @@ protected slots:
 	void updateHoleMenu(int);
 	void openRecent(const KURL &);
 	void useMouseChanged(bool);
+	void useAdvancedPuttingChanged(bool);	
  
 private:
 	QWidget *dummy;
@@ -90,6 +91,7 @@ private:
 	KAction *randAction;
 	KAction *saveAsAction;
 	KToggleAction *useMouseAction;
+	KToggleAction *useAdvancedPuttingAction;	
 	void setHoleMovementEnabled(bool);
 	inline void setEditingEnabled(bool);
 	bool competition;

@@ -1928,7 +1928,10 @@ void Putter::finishMe()
 		end.setX(midPoint.x());
 	}
 
-	guideLine->setPoints(midPoint.x(), midPoint.y(), -midPoint.x() * 2, -midPoint.y() * 2);
+	// this allows showInfo() to get higher precision in display (double * 2 instead of rounded int * 2, made it a bit longer too)
+ 	guideLine->setPoints(midPoint.x(), midPoint.y(), -cos(radians)*len * 4, sin(radians)*len * 4);
+
+	//guideLine->setPoints(midPoint.x(), midPoint.y(), -midPoint.x() * 2, -midPoint.y() * 2);
 
 	setPoints(start.x(), start.y(), end.x(), end.y());
 
@@ -3043,6 +3046,65 @@ void HoleConfig::borderWallsChanged(bool yes)
 
 /////////////////////////
 
+StrokeCircle::StrokeCircle(QCanvas *canvas) : QCanvasItem(canvas) {
+    dvalue = 0;
+    dmax = 360;
+    iwidth = 100;
+    iheight = 100;
+    ithickness = 8;
+    setZ(10000);
+} 
+StrokeCircle::~StrokeCircle() {} 
+void StrokeCircle::setValue(double v) {
+    dvalue = v;
+    if(dvalue > dmax) dvalue = dmax;
+    update();    
+}
+double StrokeCircle::value() {
+    return dvalue;
+}
+bool StrokeCircle::collidesWith(const QCanvasItem*) const {return false;}
+bool StrokeCircle::collidesWith(const QCanvasSprite*, const QCanvasPolygonalItem*, const QCanvasRectangle*, const QCanvasEllipse*, const QCanvasText*) const {return false;}
+QRect StrokeCircle::boundingRect() const {return QRect(x(), y(), iwidth, iheight);}
+void StrokeCircle::setMaxValue(double m) {
+    dmax = m;
+    if(dvalue > dmax) dvalue = dmax;
+    update();    
+}
+void StrokeCircle::setSize(int w, int h) {
+    if(w > 0) iwidth = w;
+    if(h > 0) iheight = h;
+    update();
+}
+void StrokeCircle::setThickness(int t) {
+    if(t > 0) ithickness = t;
+    update();
+}
+int StrokeCircle::thickness() const {return ithickness;}
+int StrokeCircle::width() const {return iwidth;}
+int StrokeCircle::height() const {return iheight;}
+void StrokeCircle::draw(QPainter &p) {
+    int al = (int) ((dvalue * 360 * 16) / dmax);
+    int length, deg;
+    if(al < 0) {deg = 270 * 16; length = -al;}		
+    else if(al <= (270 * 16)) {deg = 270 * 16 - al; length = al;}		
+    else {deg = (360 * 16) - (al - (270 * 16)); length = al;}			
+    p.setBrush(QBrush(black, Qt::NoBrush));
+    p.setPen(QPen(white, ithickness / 2));
+    p.drawEllipse(x() + ithickness / 2, y() + ithickness / 2, iwidth - ithickness, iheight - ithickness);        
+    p.setPen(QPen(QColor((int) (0xff * dvalue) / dmax, 0, 0xff - (int) (0xff * dvalue) / dmax), ithickness));
+    p.drawArc(x() + ithickness / 2, y() + ithickness / 2, iwidth - ithickness, iheight - ithickness, deg, length);    
+    p.setPen(QPen(white, 1));            
+    p.drawEllipse(x(), y(), iwidth, iheight);        
+    p.drawEllipse(x() + ithickness, y() + ithickness, iwidth - ithickness * 2, iheight - ithickness * 2);
+    p.setPen(QPen(white, 3));                            
+    p.drawLine(x() + iwidth / 2, y() + iheight - ithickness * 1.5, x() + iwidth / 2, y() + iheight);
+    p.drawLine(x() + iwidth / 4 - iwidth / 20, y() + iheight - iheight / 4 + iheight / 20, x() + iwidth / 4 + iwidth / 20, y() + iheight - iheight / 4 - iheight / 20);    
+    p.drawLine(x() + iwidth - iwidth / 4 + iwidth / 20, y() + iheight - iheight / 4 + iheight / 20, x() + iwidth - iwidth / 4 - iwidth / 20, y() + iheight - iheight / 4 - iheight / 20);        
+}
+
+/////////////////////////////////////////
+
 KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const char *name )
 	: QCanvasView(parent, name)
 {
@@ -3068,6 +3130,7 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 	scoreboardHoles = 0;
 	infoShown = false;
 	m_useMouse = true;
+	m_useAdvancedPutting = true;	
 	highestHole = 0;
 
 	holeInfo.setGame(this);
@@ -3170,7 +3233,9 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 	connect(autoSaveTimer, SIGNAL(timeout()), this, SLOT(autoSaveTimeout()));
 	autoSaveMsec = 5 * 1000 * 60; // 5 min autosave
 
-	maxStrength = 55;
+	// increase maxStrength in advanced putting mode
+	maxStrength = 65;
+	// maxStrength = 55;	
 	putting = false;
 	putterTimer = new QTimer(this);
 	connect(putterTimer, SIGNAL(timeout()), this, SLOT(putterTimeout()));
@@ -3181,6 +3246,16 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 	holeDone();
 	paused = true;
 	unPause();
+	
+	// create the advanced putting indicator	
+	strokeCircle = new StrokeCircle(course);
+	strokeCircle->move(width - 90, height - 90);
+	strokeCircle->setSize(80, 80);
+	strokeCircle->setThickness(8);	
+	strokeCircle->setVisible(false);	
+	strokeCircle->setValue(0);			
+	strokeCircle->setMaxValue(360);				
+	
 }
 
 void KolfGame::setFilename(const QString &filename)
@@ -3244,7 +3319,11 @@ void KolfGame::updateHighlighter()
 	highlighter->move(rect.x() + 1, rect.y() + 1);
 	highlighter->setSize(rect.width(), rect.height());
 }
-
+void KolfGame::contentsMouseDoubleClickEvent(QMouseEvent *e) 
+{
+	//allow two fast single clicks
+	contentsMousePressEvent(e);
+}
 void KolfGame::contentsMousePressEvent(QMouseEvent *e)
 {
 	if (inPlay)
@@ -3367,7 +3446,9 @@ void KolfGame::contentsMouseMoveEvent(QMouseEvent *e)
 
 void KolfGame::updateMouse()
 {
-	if (!m_useMouse)
+
+	// don't move putter if in advanced putting sequence
+	if (!m_useMouse || ((stroking || putting) && m_useAdvancedPutting)) 
 		return;
 
 	double newAngle = 0;
@@ -3439,6 +3520,7 @@ void KolfGame::contentsMouseReleaseEvent(QMouseEvent *e)
 
 void KolfGame::keyPressEvent(QKeyEvent *e)
 {
+
 	if (inPlay || editing)
 	{
 		//kdDebug() << "inPlay or editing so i'm returning\n";
@@ -3454,16 +3536,20 @@ void KolfGame::keyPressEvent(QKeyEvent *e)
 		case Key_Escape:
 			putting = false;
 			stroking = false;
+			finishStroking = false;
+			strokeCircle->setVisible(false);
 			putterTimer->stop();
 			putter->setOrigin((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 		break;
 
 		case Key_Left:
-			putter->go(D_Left, e->state() & ShiftButton);
+			// don't move putter if in advanced putting sequence		
+			if((!stroking && !putting) || !m_useAdvancedPutting) putter->go(D_Left, e->state() & ShiftButton);
 		break;
 
 		case Key_Right:
-			putter->go(D_Right, e->state() & ShiftButton);
+			// don't move putter if in advanced putting sequence		
+			if((!stroking && !putting) || !m_useAdvancedPutting) putter->go(D_Right, e->state() & ShiftButton);
 		break;
 
 		case Key_Space: case Key_Down:
@@ -3503,14 +3589,42 @@ void KolfGame::showInfoRelease()
 
 void KolfGame::puttPress()
 {
+
+	// Advanced putting: 1st click start putting sequence, 2nd determine strength, 3rd determine precision
 	if (!putting && !stroking && !inPlay)
 	{
 		puttCount = 0;
+		puttReverse = false;		
 		putting = true;
 		stroking = false;
 		strength = 0;
+		if(m_useAdvancedPutting) {
+ 		    strokeCircle->setValue(0);
+		    int pw = putter->endPoint().x() - putter->startPoint().x();
+		    if(pw < 0) pw = -pw;
+		    int px = (int) putter->x() + pw / 2;
+		    int py = (int) putter->y();
+		    if(px > width / 2 && py < height / 2) strokeCircle->move(px - pw / 2 - 10 - strokeCircle->width(), py + 10);		    
+		    else if(px > width / 2) strokeCircle->move(px - pw / 2 - 10 - strokeCircle->width(), py - 10 - strokeCircle->height());		    		    
+		    else if(py < height / 2) strokeCircle->move(px + pw / 2 + 10, py + 10);		    		    
+		    else strokeCircle->move(px + pw / 2 + 10, py - 10 - strokeCircle->height());		    		    
+ 		    strokeCircle->setVisible(true);		
+		}
 		putterTimer->start(putterTimerMsec);
 	}
+	else if (m_useAdvancedPutting && putting && !editing) 
+ 	{
+ 		putting = false;
+ 		stroking = true;
+		puttReverse = false;
+ 		finishStroking = false;
+ 	} 
+ 	else if(m_useAdvancedPutting && stroking) 
+ 	{
+ 	    finishStroking = true;
+ 	    putterTimeout();
+	}
+	
 }
 
 void KolfGame::keyReleaseEvent(QKeyEvent *e)
@@ -3553,7 +3667,7 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 
 void KolfGame::puttRelease()
 {
-	if (putting && !editing)
+	if (!m_useAdvancedPutting && putting && !editing)
 	{
 		putting = false;
 		stroking = true;
@@ -3641,7 +3755,83 @@ void KolfGame::putterTimeout()
 {
 	if (inPlay || editing)
 		return;
-
+    if(m_useAdvancedPutting)
+    {
+	if (putting)
+	{
+		if(puttReverse && strength <= 0)
+		{
+			// aborted
+			putting = false;
+			strokeCircle->setVisible(false);
+		} 
+		else if (strength > maxStrength || puttReverse)
+		{
+			//decreasing strength as we've reached the top
+			puttReverse = true;
+			strength -= pow(2.2, strength / maxStrength) - 0.6;		
+			if((int) strength < puttCount * 2) 
+			{
+			    puttCount--;
+			    if(puttCount >= 0) putter->go(Forwards);			
+			}
+		} 
+		else 
+		{
+			// make the increase at high strength faster
+    			strength += pow(2.2, strength / maxStrength) - 0.6;
+			if((int) strength > puttCount * 2) 
+			{
+			    putter->go(Backwards);
+			    puttCount++;
+			}
+		}
+		// make the visible steps at high strength smaller
+		strokeCircle->setValue(pow(strength / maxStrength, 0.8) * 360);				
+	}
+	else if (stroking)
+	{
+		double al = strokeCircle->value();
+		if(al >= 45) al -= 0.2 + strength / 50 + al / 100;
+		else al -= 0.2 + strength / 50;
+		if(puttReverse) 
+		{
+			// show the stroke
+			puttCount--;
+			if(puttCount >= 0) putter->go(Forwards);
+			else
+			{
+			    strokeCircle->setVisible(false);		
+			    finishStroking = false;
+			    putterTimer->stop();
+			    putting = false;
+			    stroking = false;
+			    shotStart();		
+			}
+		}
+		else if (al < -45 || finishStroking)
+		{
+			strokeCircle->setValue(al);
+			int deg;
+			// if > 45 or < -45 then bad stroke
+			if(al > 45) {deg = putter->curDeg() - 45 + rand() % 90; strength -= rand() % (int) strength;}
+			else if(!finishStroking) {deg = putter->curDeg() - 45 + rand() % 90; strength -= rand() % (int) strength;}
+			else {deg = putter->curDeg() + (int) (strokeCircle->value() / 3);}
+			if(deg < 0) deg += 360;
+			else if(deg > 360) deg -= 360;
+			putter->setDeg(deg);
+			puttReverse = true;
+		} 
+		else 
+		{
+			strokeCircle->setValue(al);
+			putterTimer->changeInterval(putterTimerMsec/10);
+		}
+	}
+    
+    } 
+    else
+    {
 	if (putting)
 	{
 		putter->go(Backwards);
@@ -3666,6 +3856,7 @@ void KolfGame::putterTimeout()
 		putter->go(Forwards);
 		putterTimer->changeInterval(putterTimerMsec/10);
 	}
+    }
 }
 
 void KolfGame::autoSaveTimeout()
@@ -4560,5 +4751,12 @@ void KolfGame::setBorderWalls(bool showing)
 	for (wall = borderWalls.first(); wall; wall = borderWalls.next())
 		wall->setVisible(showing);
 }
+
+void KolfGame::setUseAdvancedPutting(bool yes) { 
+    m_useAdvancedPutting = yes; 
+    // increase maxStrength in advanced putting mode
+    if(yes) maxStrength = 65;
+    else maxStrength = 55;
+}	
 
 #include "game.moc"

@@ -1013,6 +1013,33 @@ private:
 	int m_maxStrokes;
 };
 
+class StrokeCircle : public QCanvasItem {
+    
+    public:
+    
+	StrokeCircle(QCanvas *canvas);
+	virtual ~StrokeCircle();	
+    
+	void setValue(double v);
+	double value();	
+	void setMaxValue(double m);
+	void setSize(int w, int h);
+	void setThickness(int t);
+	int thickness() const;
+	int width() const;
+	int height() const;
+	void draw(QPainter &p);
+	QRect boundingRect() const;
+	bool collidesWith(const QCanvasItem*) const;
+	bool collidesWith(const QCanvasSprite*, const QCanvasPolygonalItem*, const QCanvasRectangle*, const QCanvasEllipse*, const QCanvasText*) const;
+    
+    private:
+	
+	double dvalue, dmax;
+	int ithickness, iwidth, iheight;
+	
+};
+
 class KolfGame : public QCanvasView
 {
 	Q_OBJECT
@@ -1059,6 +1086,7 @@ public slots:
 	void clearHole();
 	void print(QPainter &);
 	void setUseMouse(bool yes) { m_useMouse = yes; }
+	void setUseAdvancedPutting(bool yes);
 
 signals:
 	void holesDone();
@@ -1088,6 +1116,7 @@ private slots:
 
 protected:
 	void contentsMousePressEvent(QMouseEvent *e);
+	void contentsMouseDoubleClickEvent(QMouseEvent *e);	
 	void contentsMouseMoveEvent(QMouseEvent *e);
 	void contentsMouseReleaseEvent(QMouseEvent *e);
 	void keyPressEvent(QKeyEvent *e);
@@ -1099,6 +1128,7 @@ private:
 	PlayerList *players;
 	PlayerList::Iterator curPlayer;
 	Ball *whiteBall;
+	StrokeCircle *strokeCircle;
 
 	QTimer *timer;
 	QTimer *autoSaveTimer;
@@ -1122,9 +1152,11 @@ private:
 	bool inPlay;
 	bool putting;
 	bool stroking;
+	bool finishStroking;
 	double strength;
 	double maxStrength;
 	int puttCount;
+	bool puttReverse;
 
 	int curHole;
 	int highestHole;
@@ -1179,6 +1211,7 @@ private:
 	inline bool allPlayersDone();
 
 	bool m_useMouse;
+	bool m_useAdvancedPutting;
 };
 
 #endif
