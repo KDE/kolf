@@ -12,6 +12,7 @@ Name[pt]=Curso Impossível
 Name[pt_BR]=Curso Impossível
 Name[sk]=Nezvládnuteľné ihrisko
 Name[sv]=Omöjlig bana
+Name[ven]=Thero i sa koneiho
 author=Jason Katz-Brown
 
 [1-ball@31,330]
@@ -806,6 +807,7 @@ Comment[pt]=Tortura
 Comment[pt_BR]=Suspensão
 Comment[sk]=Omilostnenie
 Comment[sv]=Lättnad
+Comment[ven]=Zwo fhiriselwa phanda
 Comment[xh]=Urhoxiso lwethutyana
 Comment[zu]=Phumuza
 botWallVisible=false
