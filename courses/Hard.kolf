@@ -122,157 +122,126 @@ par=3
 [10-puddle@100,218|41]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@108,167|29]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@111,207|40]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@113,141|32]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@115,231|25]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@123,182|27]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@131,156|38]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@136,250|28]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@139,122|12]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@141,143|14]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@141,204|26]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@142,227|30]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@146,174|24]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@156,151|19]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@164,122|13]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@164,260|36]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@167,191|22]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@175,215|33]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@176,240|21]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@185,144|20]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@185,166|17]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@190,121|16]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@190,268|34]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@196,261|35]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@197,218|59]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@199,237|37]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@200,200|58]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@201,181|23]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@208,279|39]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-puddle@209,155|15]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
-[10-puddle@215,138|18]
+[10-puddle@212,132|18]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [10-slope@112,365|52]
 grade=2
@@ -322,6 +291,22 @@ reversed=true
 stuckOnGround=false
 width=138
 
+[10-slope@199,135|59]
+grade=4
+gradient=Horizontal
+height=69
+reversed=true
+stuckOnGround=true
+width=52
+
+[10-slope@203,87|60]
+grade=4
+gradient=Opposite Diagonal
+height=58
+reversed=false
+stuckOnGround=true
+width=48
+
 [10-slope@207,306|49]
 grade=2
 gradient=Opposite Diagonal
@@ -345,6 +330,14 @@ height=19
 reversed=true
 stuckOnGround=false
 width=29
+
+[10-slope@212,205|61]
+grade=4
+gradient=Diagonal
+height=40
+reversed=true
+stuckOnGround=true
+width=40
 
 [10-slope@250,140|60]
 grade=1
@@ -432,7 +425,7 @@ maxspeed=2
 minspeed=1
 
 [11-blackhole@293,44|16]
-exit=134,259
+exit=133,259
 exitDeg=5
 maxspeed=3
 minspeed=2
@@ -463,97 +456,78 @@ par=3
 [11-puddle@137,392|20]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-puddle@146,377|19]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-puddle@149,362|3]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-puddle@164,379|9]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-puddle@170,398|18]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-puddle@195,391|10]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-puddle@231,394|12]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-puddle@258,388|11]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-puddle@283,378|8]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-puddle@291,395|7]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-puddle@302,4|40]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-puddle@330,12|39]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-puddle@356,12|33]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-puddle@361,54|39]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-puddle@363,31|37]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-puddle@382,42|38]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-puddle@384,6|35]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-puddle@393,25|34]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-puddle@393,62|36]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [11-sand@111,152|26]
 changeEnabled=false
@@ -583,6 +557,14 @@ reversed=false
 stuckOnGround=false
 width=178
 
+[11-slope@13,217|41]
+grade=4
+gradient=Vertical
+height=22
+reversed=false
+stuckOnGround=true
+width=376
+
 [11-slope@174,289|40]
 grade=4
 gradient=Elliptic
@@ -591,21 +573,13 @@ reversed=true
 stuckOnGround=false
 width=88
 
-[11-slope@290,12|29]
-grade=2
-gradient=Diagonal
-height=193
-reversed=false
-stuckOnGround=false
-width=97
-
-[11-slope@300,243|21]
+[11-slope@300,241|21]
 grade=4
 gradient=Horizontal
-height=33
+height=37
 reversed=true
 stuckOnGround=false
-width=19
+width=23
 
 [11-slope@61,13|30]
 grade=2
@@ -615,13 +589,21 @@ reversed=true
 stuckOnGround=true
 width=286
 
+[11-slope@7,271|42]
+grade=4
+gradient=Vertical
+height=29
+reversed=true
+stuckOnGround=true
+width=382
+
 [11-slope@73,128|28]
 grade=2
 gradient=Vertical
-height=73
+height=77
 reversed=false
 stuckOnGround=true
-width=274
+width=314
 
 [11-slope@9,8|32]
 grade=2
@@ -645,7 +627,7 @@ dummykey=true
 [12-blackhole@244,110|62]
 exit=158,101
 exitDeg=290
-maxspeed=12
+maxspeed=4
 minspeed=2
 
 [12-blackhole@39,108|41]
@@ -689,62 +671,50 @@ par=4
 [12-puddle@14,10|18]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [12-puddle@28,23|20]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [12-puddle@40,33|22]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [12-puddle@43,4|25]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [12-puddle@49,40|23]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [12-puddle@61,51|24]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [12-puddle@63,24|28]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [12-puddle@71,60|19]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [12-puddle@81,71|21]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [12-puddle@85,44|29]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [12-puddle@90,70|26]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [12-puddle@93,66|27]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [12-slope@238,231|53]
 grade=3
@@ -778,7 +748,7 @@ reversed=true
 stuckOnGround=false
 width=63
 
-[12-slope@89,93|52]
+[12-slope@92,94|52]
 grade=4
 gradient=Horizontal
 height=38
@@ -839,12 +809,12 @@ endPoint=13,332
 startPoint=21,360
 
 [12-wall@0,0|42]
-endPoint=318,79
+endPoint=316,78
 startPoint=282,74
 
 [12-wall@0,0|43]
 endPoint=337,57
-startPoint=316,78
+startPoint=318,79
 
 [12-wall@0,0|44]
 endPoint=339,30
@@ -855,7 +825,7 @@ endPoint=333,14
 startPoint=339,30
 
 [12-wall@0,0|46]
-endPoint=318,79
+endPoint=316,78
 startPoint=310,111
 
 [12-wall@0,0|47]
@@ -914,6 +884,14 @@ startPoint=194,107
 endPoint=194,107
 startPoint=186,86
 
+[12-wall@0,0|63]
+endPoint=147,372
+startPoint=134,357
+
+[12-wall@0,0|64]
+endPoint=186,388
+startPoint=147,372
+
 [12-wall@0,0|7]
 endPoint=288,292
 startPoint=310,111
@@ -959,27 +937,22 @@ par=3
 [13-puddle@11,201|18]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [13-puddle@34,201|19]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [13-puddle@55,202|20]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [13-puddle@70,202|21]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [13-puddle@75,197|22]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [13-slope@101,11|25]
 grade=4
@@ -1062,7 +1035,7 @@ stuckOnGround=false
 width=79
 
 [13-slope@303,272|43]
-grade=1
+grade=3
 gradient=Opposite Diagonal
 height=85
 reversed=false
@@ -2106,9 +2079,9 @@ minspeed=2
 
 [2-blackhole@146,364|17]
 exit=17,31
-exitDeg=0
-maxspeed=6
-minspeed=3
+exitDeg=349
+maxspeed=2
+minspeed=2
 
 [2-blackhole@28,148|15]
 exit=238,26
@@ -2180,42 +2153,34 @@ par=3
 [2-puddle@-1,255|29]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@14,263|30]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@25,274|31]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@37,258|32]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@5,284|32]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@62,249|33]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@72,232|34]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-puddle@73,213|35]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [2-sand@151,240|43]
 changeEnabled=false
@@ -2657,7 +2622,7 @@ maxspeed=1
 minspeed=1
 
 [4-blackhole@375,324|116]
-exit=109,234
+exit=111,240
 exitDeg=310
 maxspeed=5
 minspeed=3
@@ -2685,247 +2650,198 @@ par=4
 [4-puddle@109,189|122]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@112,202|76]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@120,173|70]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@123,400|146]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@132,181|134]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@143,157|66]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@143,200|75]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@155,391|145]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@157,375|60]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@165,193|78]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@167,138|61]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@177,118|65]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@188,186|129]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@189,391|144]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@190,94|67]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@200,379|53]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@216,107|64]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@216,83|141]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@217,182|81]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@217,18|141]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@218,2|143]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@219,314|59]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@224,255|55]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@230,123|73]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@239,181|100]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@240,38|139]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@240,63|139]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@241,15|140]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@246,323|52]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@249,139|77]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@257,250|56]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@260,145|153]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@275,180|97]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@282,159|86]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@283,333|57]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@292,261|58]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@299,187|98]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@300,165|152]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@303,178|91]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@310,177|83]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@310,327|54]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@319,279|51]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@319,306|50]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@321,198|96]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@347,204|99]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@367,213|154]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@380,226|120]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@398,241|121]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-puddle@99,393|147]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [4-sand@150,179|133]
 changeEnabled=false
@@ -3109,7 +3025,7 @@ startPoint=292,286
 
 [4-wall@0,0|111]
 endPoint=216,291
-startPoint=189,299
+startPoint=190,299
 
 [4-wall@0,0|115]
 endPoint=138,131
@@ -3216,7 +3132,7 @@ endPoint=69,367
 startPoint=39,353
 
 [4-wall@0,0|21]
-endPoint=190,299
+endPoint=189,299
 startPoint=164,241
 
 [4-wall@0,0|22]
@@ -3304,7 +3220,7 @@ endPoint=365,22
 startPoint=314,12
 
 [4-wall@0,0|5]
-endPoint=189,299
+endPoint=190,299
 startPoint=153,355
 
 [4-wall@0,0|7]
@@ -3679,7 +3595,7 @@ changeEvery=50
 changeEnabled=false
 changeEvery=50
 
-[7-slope@12,126|5]
+[7-slope@10,128|5]
 grade=4
 gradient=Vertical
 height=94
@@ -3687,7 +3603,7 @@ reversed=false
 stuckOnGround=false
 width=253
 
-[7-slope@166,24|7]
+[7-slope@170,26|7]
 grade=4
 gradient=Diagonal
 height=196
@@ -3695,7 +3611,15 @@ reversed=false
 stuckOnGround=false
 width=182
 
-[7-slope@253,14|6]
+[7-slope@23,20|39]
+grade=4
+gradient=Elliptic
+height=102
+reversed=true
+stuckOnGround=false
+width=102
+
+[7-slope@255,14|6]
 grade=4
 gradient=Horizontal
 height=114

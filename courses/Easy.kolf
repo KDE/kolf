@@ -495,7 +495,7 @@ startPoint=100,309
 [12-ball@47,53]
 dummykey=true
 
-[12-blackhole@382,281|12]
+[12-blackhole@375,294|12]
 exit=150,43
 exitDeg=0
 maxspeed=5
@@ -564,11 +564,11 @@ width=150
 
 [12-wall@0,0|4]
 endPoint=387,219
-startPoint=275,272
+startPoint=273,265
 
 [12-wall@0,0|5]
 endPoint=389,266
-startPoint=281,303
+startPoint=284,324
 
 [12-wall@0,0|6]
 endPoint=117,12
@@ -776,16 +776,16 @@ dummykey=true
 [15-cup@43,43|4]
 dummykey=true
 
-[15-floater@193,206|3]
+[15-floater@167,178|3]
 botWallVisible=false
-endPoint=193,206
-height=74
+endPoint=167,178
+height=118
 leftWallVisible=false
 rightWallVisible=false
 speed=8
-startPoint=79,123
+startPoint=53,95
 topWallVisible=false
-width=111
+width=149
 
 [15-hole@-50,-50|0]
 borderWalls=true
@@ -796,102 +796,82 @@ par=2
 [15-puddle@139,209|20]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@143,230|21]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@144,188|7]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@147,255|9]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@160,238|12]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@163,177|13]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@163,214|14]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@175,195|22]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@184,166|11]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@189,222|18]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@200,200|25]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@205,177|24]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@206,156|10]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@216,213|17]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@226,191|26]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@231,156|8]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@241,169|23]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@249,198|15]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@257,181|19]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-puddle@275,160|16]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [15-sand@286,57|31]
 changeEnabled=false
@@ -1262,17 +1242,14 @@ par=4
 [17-puddle@38,50|16]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [17-puddle@39,28|17]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [17-puddle@53,29|15]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [17-slope@131,218|12]
 grade=2
@@ -1328,7 +1305,7 @@ startPoint=313,164
 
 [17-wall@0,0|9]
 endPoint=260,219
-startPoint=250,189
+startPoint=247,173
 
 [18-ball@246,341]
 dummykey=true
@@ -1342,13 +1319,13 @@ hasFinalLoad=false
 maxstrokes=10
 par=3
 
-[18-slope@-77,-141|5]
+[18-slope@-183,-169|5]
 grade=5
 gradient=Elliptic
-height=326
+height=400
 reversed=false
 stuckOnGround=false
-width=326
+width=400
 
 [18-slope@11,297|7]
 grade=3
@@ -2160,67 +2137,54 @@ par=3
 [6-puddle@122,214|34]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [6-puddle@146,228|32]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [6-puddle@162,353|41]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [6-puddle@164,334|40]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [6-puddle@170,376|42]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [6-puddle@174,311|39]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [6-puddle@177,232|35]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [6-puddle@178,285|38]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [6-puddle@191,264|37]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [6-puddle@196,246|36]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [6-puddle@32,180|28]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [6-puddle@61,186|27]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [6-puddle@98,196|33]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [6-sand@252,33|55]
 changeEnabled=false
@@ -2298,14 +2262,6 @@ reversed=false
 stuckOnGround=false
 width=89
 
-[6-slope@131,100|63]
-grade=3
-gradient=Elliptic
-height=137
-reversed=false
-stuckOnGround=false
-width=137
-
 [6-slope@141,14|60]
 grade=2
 gradient=Elliptic
@@ -2329,6 +2285,14 @@ height=40
 reversed=true
 stuckOnGround=false
 width=40
+
+[6-slope@82,108|63]
+grade=1
+gradient=Elliptic
+height=137
+reversed=false
+stuckOnGround=false
+width=137
 
 [6-wall@0,0|10]
 endPoint=362,260
@@ -2573,32 +2537,26 @@ par=3
 [8-puddle@231,297|17]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [8-puddle@259,285|16]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [8-puddle@288,271|15]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [8-puddle@314,261|14]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [8-puddle@343,255|13]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [8-puddle@373,251|12]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [8-sand@215,46|20]
 changeEnabled=false
@@ -2625,7 +2583,7 @@ grade=3
 gradient=Vertical
 height=195
 reversed=false
-stuckOnGround=false
+stuckOnGround=true
 width=180
 
 [8-slope@131,25|22]

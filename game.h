@@ -124,9 +124,9 @@ public:
 	 */
 	virtual void hideInfo() {};
 	/**
-	 * update your Z value (this is called by various things when perhaps the value should change)
+	 * update your Z value (this is called by various things when perhaps the value should change) if this is called by a vStrut, it will pass 'this'.
 	 */
-	virtual void updateZ() {};
+	virtual void updateZ(QCanvasRectangle * /*vStrut*/ = 0) {};
 	/**
 	 * clean up for prettyness
 	 */
@@ -182,7 +182,7 @@ protected:
 	/**
 	 * returns the highest vertical strut the item is on
 	 */
-	QCanvasItem *onVStrut();
+	QCanvasRectangle *onVStrut();
 
 private:
 	QString m_name;
@@ -307,6 +307,7 @@ public:
 	void aboutToDie();
 	virtual void moveBy(double, double);
 	void updateSelf();
+	virtual void setZ(double newz);
 
 private:
 	double m_angle;
@@ -380,7 +381,7 @@ public:
 	QMap<KImageEffect::GradientType, QString> gradientI18nKeys;
 	QMap<KImageEffect::GradientType, QString> gradientKeys;
 
-	virtual void updateZ();
+	virtual void updateZ(QCanvasRectangle *vStrut = 0);
 
 	void moveArrow();
 

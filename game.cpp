@@ -87,7 +87,7 @@ void Config::changed()
 
 /////////////////////////
 
-QCanvasItem *CanvasItem::onVStrut()
+QCanvasRectangle *CanvasItem::onVStrut()
 {
 	QCanvasItem *qthis = dynamic_cast<QCanvasItem *>(this);
 	if (!qthis)
@@ -100,9 +100,9 @@ QCanvasItem *CanvasItem::onVStrut()
 	for (QCanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
 	{
 		item = dynamic_cast<CanvasItem *>(*it);
-		qitem = *it;
 		if (item)
 		{
+			qitem = *it;
 			if (item->vStrut())
 			{
 				//kdDebug() << "above vstrut\n";
@@ -112,7 +112,9 @@ QCanvasItem *CanvasItem::onVStrut()
 		}
 	}
 
-	return aboveVStrut? qitem : 0;
+	QCanvasRectangle *ritem = dynamic_cast<QCanvasRectangle *>(qitem);
+
+	return aboveVStrut && ritem? ritem : 0;
 }
 
 void CanvasItem::save(KSimpleConfig *cfg)
@@ -188,6 +190,13 @@ void Arrow::setPen(QPen p)
 	QCanvasLine::setPen(p);
 	line1->setPen(p);
 	line2->setPen(p);
+}
+
+void Arrow::setZ(double newz)
+{
+	QCanvasLine::setZ(newz);
+	line1->setZ(newz);
+	line2->setZ(newz);
 }
 
 void Arrow::setVisible(bool yes)
@@ -284,7 +293,10 @@ void Slope::showInfo()
 {
 	Arrow *arrow = 0;
 	for (arrow = arrows.first(); arrow; arrow = arrows.next())
+	{
+		arrow->setZ(z() + .01);
 		arrow->setVisible(true);
+	}
 	text->setVisible(true);
 }
 
@@ -377,29 +389,31 @@ void Slope::editModeChanged(bool changed)
 	moveBy(0, 0);
 }
 
-void Slope::updateZ()
+void Slope::updateZ(QCanvasRectangle *vStrut)
 {
+	//kdDebug() << "Slope::updateZ, vStrut = " << vStrut << endl;
+
 	//const bool diag = (type == KImageEffect::DiagonalGradient || type == KImageEffect::CrossDiagonalGradient);
-	int area = (height() * width());
+	const int area = (height() * width());
 	//if (diag)
 		//area /= 2;
 	const int defaultz = -50;
 
 	double newZ = 0;
 
-	QCanvasItem *qitem = 0;
+	QCanvasRectangle *rect = 0;
 	if (!stuckOnGround)
-		qitem = onVStrut();
-	if (qitem)
+		rect = vStrut? vStrut : onVStrut();
+
+	if (rect)
 	{
-		QCanvasRectangle *rect = dynamic_cast<QCanvasRectangle *>(qitem);
 		if (rect)
 			if (area > (rect->width() * rect->height()))
 				newZ = defaultz;
 			else
-				newZ = qitem->z();
+				newZ = rect->z();
 		else
-			newZ = qitem->z();
+			newZ = rect->z();
 	}
 	else
 		newZ = defaultz;
@@ -1158,7 +1172,8 @@ void Floater::moveBy(double dx, double dy)
 
 		if (!noUpdateZ)
 			if (item)
-				item->updateZ();
+				if (item->canBeMovedByOthers())
+					item->updateZ(this);
 
 		if ((*it)->z() >= z())
 		{
@@ -2209,7 +2224,7 @@ void BlackHole::showInfo()
 	delete infoLine;
 	infoLine = new QCanvasLine(canvas());
 	infoLine->setVisible(true);
-	infoLine->setPen(QPen(white, 2));
+	infoLine->setPen(QPen(exitItem->pen().color(), 2));
 	infoLine->setZ(10000);
 	infoLine->setPoints(x(), y(), exitItem->x(), exitItem->y());
 
@@ -2489,14 +2504,23 @@ void WallPoint::collision(Ball *ball, long int id)
 	const QPoint start = wall->startPoint();
 	const QPoint end = wall->endPoint();
 
-	const double wallSlope = (double)(-(start.x() - end.x()))/(double)(end.y() - start.y());
+	const double wallSlope = (double)(-(start.x() - end.x())) / (double)(end.y() - start.y());
+
 	double vx = ball->xVelocity();
 	double vy = ball->yVelocity();
-	const double wallAngle = atan(wallSlope);
+
+	double wallAngle;
+	if (start.x() == end.x())
+		wallAngle = 0;
+	else
+		 wallAngle = atan(wallSlope);
+
 	const double ballSlope = -(double)vy/(double)vx;
 	double ballAngle = atan(ballSlope);
 	if (vx < 0)
 		ballAngle += PI;
+
+	//kdDebug() << "ballAngle: " << rad2deg(ballAngle) << endl;
 
 	//kdDebug() << "----\nstart: " << this->start << endl;
 	//kdDebug() << "ballAngle: " << rad2deg(ballAngle) << endl;
@@ -2504,8 +2528,9 @@ void WallPoint::collision(Ball *ball, long int id)
 
 	// visible just means if we should bounce opposite way
 	// let's dump visible it just makes it worse!
-	//bool weirdbounce = visible;
-	bool weirdbounce = true;
+	// actually, no
+	bool weirdbounce = visible;
+	//bool weirdbounce = true;
 
 	double relWallAngle = wallAngle + PI / 2;
 
@@ -2518,13 +2543,14 @@ void WallPoint::collision(Ball *ball, long int id)
 		relWallAngle *= -1;
 	}
 
+	//kdDebug() << "wallAngle: " << rad2deg(wallAngle) << endl;
 	//kdDebug() << "relWallAngle: " << rad2deg(relWallAngle) << endl;
 
 	// forget that we are using english, i switched
 	// start and end i think
 	// but it works
 	bool isStart = this->start;
-	if (start.x() < end.x())
+	if (start.x() <= end.x())
 		isStart = !isStart;
 
 	//const double angle = PI / 3;

@@ -3,10 +3,10 @@ author=Jas0n Katz-Br0wn
 borderWalls=true
 name=Jason's Kolf Test Course
 
-[1-ball@96,160]
+[1-ball@362,34]
 dummykey=true
 
-[1-blackhole@356,225|63]
+[1-blackhole@162,130|63]
 exit=299,287
 exitDeg=20
 maxspeed=5
@@ -29,16 +29,13 @@ dummykey=true
 [1-bumper@45,49|7]
 dummykey=true
 
+[1-bumper@67,206|9]
+dummykey=true
+
 [1-bumper@68,52|11]
 dummykey=true
 
-[1-bumper@75,197|9]
-dummykey=true
-
 [1-cup@181,287|15]
-dummykey=true
-
-[1-cup@67,112|62]
 dummykey=true
 
 [1-hole@-50,-50|0]
@@ -111,14 +108,14 @@ changeEvery=50
 changeEnabled=true
 changeEvery=50
 
-[1-sign@206,75|55]
+[1-sign@205,58|55]
 botWallVisible=true
-height=88
+height=111
 leftWallVisible=true
 rightWallVisible=false
-text=<h3>kolf items</h3>Here are all items a kolf course can have!
+text=<h3>kolf items</h3>Here are most of the items a kolf course can have!
 topWallVisible=true
-width=186
+width=190
 
 [1-slope@122,226|16]
 grade=1
@@ -256,19 +253,19 @@ reversed=false
 stuckOnGround=false
 width=99
 
+[1-slope@326,227|27]
+grade=8
+gradient=Opposite Diagonal
+height=40
+reversed=false
+stuckOnGround=false
+width=40
+
 [1-slope@326,267|34]
 grade=8
 gradient=Horizontal
 height=40
 reversed=true
-stuckOnGround=false
-width=40
-
-[1-slope@327,228|27]
-grade=8
-gradient=Opposite Diagonal
-height=40
-reversed=false
 stuckOnGround=false
 width=40
 
@@ -318,7 +315,7 @@ startPoint=121,194
 
 [1-wall@0,0|45]
 endPoint=117,176
-startPoint=119,204
+startPoint=117,205
 
 [1-wall@0,0|47]
 endPoint=339,175
