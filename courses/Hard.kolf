@@ -1048,7 +1048,7 @@ minspeed=1
 
 [13-blackhole@363,169|41]
 exit=17,31
-exitDeg=0
+exitDeg=40
 maxspeed=2
 minspeed=1
 
@@ -1576,7 +1576,7 @@ reversed=false
 stuckOnGround=false
 width=40
 
-[15-slope@283,26|33]
+[15-slope@283,9|33]
 grade=4
 gradient=Opposite Diagonal
 height=96
@@ -1641,11 +1641,11 @@ stuckOnGround=false
 width=40
 
 [15-wall@0,0|10]
-endPoint=257,172
+endPoint=256,173
 startPoint=295,241
 
 [15-wall@0,0|11]
-endPoint=256,173
+endPoint=257,172
 startPoint=201,137
 
 [15-wall@0,0|12]
@@ -1654,11 +1654,11 @@ startPoint=12,110
 
 [15-wall@0,0|18]
 endPoint=295,241
-startPoint=331,283
+startPoint=330,281
 
 [15-wall@0,0|19]
 endPoint=363,242
-startPoint=330,281
+startPoint=331,283
 
 [15-wall@0,0|20]
 endPoint=382,237
@@ -1666,25 +1666,25 @@ startPoint=363,242
 
 [15-wall@0,0|23]
 endPoint=273,135
-startPoint=257,172
+startPoint=256,173
 
 [15-wall@0,0|28]
 endPoint=382,237
 startPoint=390,249
 
 [15-wall@0,0|9]
-endPoint=331,283
+endPoint=330,281
 startPoint=351,387
 
-[15-windmill@273,26|21]
+[15-windmill@273,10|21]
 botWallVisible=false
 bottom=true
-height=109
+height=125
 leftWallVisible=false
 rightWallVisible=false
 speed=7
-topWallVisible=true
-width=114
+topWallVisible=false
+width=115
 
 [16-ball@39,319]
 dummykey=true
@@ -2247,12 +2247,12 @@ startPoint=46,59
 [17-windmill@322,91|53]
 botWallVisible=false
 bottom=false
-height=39
+height=43
 leftWallVisible=false
 rightWallVisible=false
 speed=5
 topWallVisible=false
-width=58
+width=67
 
 [18-ball@174,371]
 dummykey=true
@@ -2340,8 +2340,8 @@ dummykey=true
 [2-blackhole@142,61|20]
 exit=262,77
 exitDeg=305
-maxspeed=3
-minspeed=2
+maxspeed=4
+minspeed=3
 
 [2-blackhole@178,367|17]
 exit=17,31
@@ -2583,16 +2583,16 @@ endPoint=86,192
 startPoint=54,196
 
 [2-wall@0,0|11]
-endPoint=31,174
+endPoint=32,173
 startPoint=54,196
 
 [2-wall@0,0|12]
 endPoint=11,167
-startPoint=32,173
+startPoint=31,174
 
 [2-wall@0,0|13]
 endPoint=48,144
-startPoint=31,174
+startPoint=32,173
 
 [2-wall@0,0|14]
 endPoint=28,113
@@ -2628,15 +2628,15 @@ startPoint=89,115
 
 [2-wall@0,0|54]
 endPoint=131,11
-startPoint=170,36
+startPoint=171,36
 
 [2-wall@0,0|55]
 endPoint=172,66
-startPoint=171,36
+startPoint=170,36
 
 [2-wall@0,0|56]
 endPoint=198,44
-startPoint=170,36
+startPoint=171,36
 
 [2-wall@0,0|60]
 endPoint=48,144

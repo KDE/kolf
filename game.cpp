@@ -4905,14 +4905,18 @@ void KolfGame::scoresFromSaved(KSimpleConfig *config, PlayerList &players)
 void KolfGame::saveScores(KSimpleConfig *config)
 {
 	// wipe out old player info
-	QStringList groups = cfg->groupList();
+	QStringList groups = config->groupList();
 	for (QStringList::Iterator it = groups.begin(); it != groups.end(); ++it)
 	{
 		// this deletes all int groups, ie, the player info groups
 		bool ok = false;
-		(*it).toInt(&ok);
+		kdDebug() << "string: " << *it << endl;
+		kdDebug() << "toint: " << (*it).toInt(&ok) << endl;
 		if (ok)
-			cfg->deleteGroup(*it);
+		{
+			kdDebug() << "delete\n";
+			config->deleteGroup(*it);
+		}
 	}
 
 	config->setGroup("Saved Game");
