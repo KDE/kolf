@@ -14,6 +14,12 @@ hasFinalLoad=false
 maxstrokes=10
 par=2
 
+[1-sand@-49,288|16]
+changeEnabled=false
+changeEvery=50
+height=482
+width=332
+
 [1-slope@160,19|13]
 grade=4
 gradient=Elliptic
@@ -28,7 +34,7 @@ startPoint=247,9
 
 [1-wall@0,0|11]
 endPoint=285,66
-startPoint=238,127
+startPoint=238,128
 
 [1-wall@0,0|13]
 endPoint=213,190
@@ -43,24 +49,24 @@ endPoint=247,9
 startPoint=149,9
 
 [1-wall@0,0|4]
-endPoint=155,129
+endPoint=156,128
 startPoint=156,387
 
 [1-wall@0,0|5]
-endPoint=238,128
+endPoint=238,127
 startPoint=238,387
 
 [1-wall@0,0|6]
 endPoint=180,128
-startPoint=156,128
+startPoint=155,129
 
 [1-wall@0,0|7]
-endPoint=238,127
+endPoint=238,128
 startPoint=212,127
 
 [1-wall@0,0|8]
 endPoint=111,67
-startPoint=155,129
+startPoint=156,128
 
 [1-wall@0,0|9]
 endPoint=149,9
@@ -118,6 +124,14 @@ reversed=false
 stuckOnGround=false
 width=40
 
+[10-slope@17,247|26]
+grade=4
+gradient=Elliptic
+height=138
+reversed=false
+stuckOnGround=false
+width=138
+
 [10-slope@172,124|11]
 grade=4
 gradient=Elliptic
@@ -149,6 +163,14 @@ height=66
 reversed=false
 stuckOnGround=false
 width=66
+
+[10-slope@242,6|25]
+grade=4
+gradient=Elliptic
+height=144
+reversed=false
+stuckOnGround=false
+width=144
 
 [10-slope@248,224|6]
 grade=4
@@ -350,6 +372,18 @@ hasFinalLoad=false
 maxstrokes=10
 par=2
 
+[12-sand@-19,297|16]
+changeEnabled=false
+changeEvery=50
+height=394
+width=212
+
+[12-sand@27,396|17]
+changeEnabled=false
+changeEvery=50
+height=192
+width=186
+
 [12-slope@141,119|13]
 grade=1
 gradient=Vertical
@@ -392,6 +426,7 @@ startPoint=266,61
 
 [12-windmill@142,146|12]
 botWallVisible=false
+bottom=true
 height=47
 leftWallVisible=true
 rightWallVisible=true
@@ -401,6 +436,7 @@ width=92
 
 [12-windmill@142,192|11]
 botWallVisible=false
+bottom=true
 height=65
 leftWallVisible=true
 rightWallVisible=true
@@ -410,6 +446,7 @@ width=92
 
 [12-windmill@142,257|10]
 botWallVisible=false
+bottom=true
 height=49
 leftWallVisible=true
 rightWallVisible=true
@@ -438,32 +475,38 @@ par=3
 [13-puddle@209,99|13]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=46
+width=54
 
 [13-puddle@212,77|12]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=46
+width=50
 
 [13-puddle@214,120|14]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=38
+width=48
 
 [13-puddle@221,57|11]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=48
+width=48
 
 [13-puddle@226,143|15]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=46
+width=52
 
 [13-puddle@236,38|10]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=36
+width=46
 
 [13-slope@237,31|3]
 grade=8
@@ -557,6 +600,22 @@ reversed=false
 stuckOnGround=false
 width=245
 
+[14-slope@351,14|21]
+grade=4
+gradient=Opposite Diagonal
+height=194
+reversed=false
+stuckOnGround=false
+width=50
+
+[14-slope@351,206|22]
+grade=4
+gradient=Diagonal
+height=181
+reversed=true
+stuckOnGround=false
+width=49
+
 [14-wall@0,0|10]
 endPoint=50,37
 startPoint=20,68
@@ -629,6 +688,38 @@ hasFinalLoad=false
 maxstrokes=10
 par=3
 
+[15-slope@-1,0|16]
+grade=4
+gradient=Diagonal
+height=319
+reversed=true
+stuckOnGround=false
+width=281
+
+[15-slope@1,319|19]
+grade=4
+gradient=Opposite Diagonal
+height=80
+reversed=false
+stuckOnGround=false
+width=102
+
+[15-slope@119,75|17]
+grade=4
+gradient=Diagonal
+height=322
+reversed=false
+stuckOnGround=false
+width=279
+
+[15-slope@251,-1|18]
+grade=4
+gradient=Opposite Diagonal
+height=91
+reversed=true
+stuckOnGround=false
+width=150
+
 [15-wall@0,0|10]
 endPoint=98,277
 startPoint=98,218
@@ -695,6 +786,30 @@ hasFinalLoad=false
 maxstrokes=10
 par=3
 
+[16-sand@233,399|19]
+changeEnabled=false
+changeEvery=50
+height=150
+width=86
+
+[16-sand@307,259|17]
+changeEnabled=false
+changeEvery=50
+height=116
+width=26
+
+[16-sand@387,206|18]
+changeEnabled=false
+changeEvery=50
+height=146
+width=100
+
+[16-sand@402,371|16]
+changeEnabled=false
+changeEvery=50
+height=404
+width=358
+
 [16-slope@177,19|14]
 grade=4
 gradient=Opposite Diagonal
@@ -746,6 +861,16 @@ startPoint=160,117
 [16-wall@0,0|9]
 endPoint=354,19
 startPoint=354,116
+
+[16-windmill@288,278|20]
+botWallVisible=true
+bottom=false
+height=96
+leftWallVisible=true
+rightWallVisible=true
+speed=5
+topWallVisible=false
+width=86
 
 [17-ball@91,316]
 dummykey=true
@@ -842,78 +967,52 @@ hasFinalLoad=false
 maxstrokes=10
 par=3
 
-[18-puddle@100,127|22]
+[18-puddle@215,126|17]
 changeEnabled=false
 changeEvery=50
+height=44
+width=322
 
-[18-puddle@128,118|21]
+[18-puddle@31,169|14]
 changeEnabled=false
 changeEvery=50
+height=44
+width=80
 
-[18-puddle@149,117|20]
+[18-puddle@341,133|18]
 changeEnabled=false
 changeEvery=50
+height=56
+width=176
 
-[18-puddle@175,115|19]
+[18-puddle@41,155|15]
 changeEnabled=false
 changeEvery=50
-
-[18-puddle@196,116|18]
-changeEnabled=false
-changeEvery=50
-
-[18-puddle@222,115|17]
-changeEnabled=false
-changeEvery=50
-
-[18-puddle@24,165|26]
-changeEnabled=false
-changeEvery=50
-
-[18-puddle@246,116|11]
-changeEnabled=false
-changeEvery=50
-
-[18-puddle@279,117|12]
-changeEnabled=false
-changeEvery=50
-
-[18-puddle@307,118|13]
-changeEnabled=false
-changeEvery=50
-
-[18-puddle@335,118|14]
-changeEnabled=false
-changeEvery=50
-
-[18-puddle@364,119|15]
-changeEnabled=false
-changeEvery=50
-
-[18-puddle@387,119|16]
-changeEnabled=false
-changeEvery=50
-
-[18-puddle@40,156|25]
-changeEnabled=false
-changeEvery=50
+height=52
+width=70
 
 [18-puddle@5,178|27]
 changeEnabled=false
 changeEvery=50
+height=48
+width=122
 
-[18-puddle@60,145|24]
+[18-puddle@53,146|16]
 changeEnabled=false
 changeEvery=50
+height=36
+width=76
 
-[18-puddle@81,133|23]
+[18-puddle@74,135|18]
 changeEnabled=false
 changeEvery=50
+height=30
+width=90
 
-[18-slope@121,133|8]
-grade=1
+[18-slope@122,156|16]
+grade=2
 gradient=Vertical
-height=194
+height=222
 reversed=true
 stuckOnGround=false
 width=134
@@ -965,9 +1064,23 @@ hasFinalLoad=false
 maxstrokes=10
 par=3
 
+[2-puddle@-43,17|23]
+changeEnabled=false
+changeEvery=50
+height=380
+width=288
+
+[2-sand@-28,-1|22]
+changeEnabled=false
+changeEvery=50
+height=502
+width=336
+
 [2-sand@223,221|18]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [2-slope@139,151|19]
 grade=3
@@ -1003,10 +1116,10 @@ width=16
 
 [2-wall@0,0|10]
 endPoint=244,38
-startPoint=139,149
+startPoint=140,151
 
 [2-wall@0,0|11]
-endPoint=297,92
+endPoint=296,91
 startPoint=251,153
 
 [2-wall@0,0|12]
@@ -1015,11 +1128,11 @@ startPoint=244,38
 
 [2-wall@0,0|13]
 endPoint=389,91
-startPoint=296,91
+startPoint=297,92
 
 [2-wall@0,0|16]
 endPoint=274,69
-startPoint=297,92
+startPoint=296,91
 
 [2-wall@0,0|17]
 endPoint=314,60
@@ -1034,7 +1147,7 @@ endPoint=389,37
 startPoint=389,91
 
 [2-wall@0,0|3]
-endPoint=140,151
+endPoint=139,149
 startPoint=139,388
 
 [2-wall@0,0|4]
@@ -1043,7 +1156,7 @@ startPoint=250,388
 
 [2-wall@0,0|7]
 endPoint=191,149
-startPoint=139,149
+startPoint=140,151
 
 [2-wall@0,0|8]
 endPoint=251,153
@@ -1067,6 +1180,14 @@ hasFinalLoad=false
 maxstrokes=10
 par=3
 
+[3-slope@-2,-1|18]
+grade=4
+gradient=Diagonal
+height=318
+reversed=true
+stuckOnGround=false
+width=150
+
 [3-slope@143,152|5]
 grade=5
 gradient=Vertical
@@ -1082,6 +1203,14 @@ height=42
 reversed=false
 stuckOnGround=false
 width=39
+
+[3-slope@257,83|19]
+grade=4
+gradient=Diagonal
+height=319
+reversed=false
+stuckOnGround=false
+width=143
 
 [3-wall@0,0|11]
 endPoint=178,9
@@ -1104,8 +1233,8 @@ endPoint=390,9
 startPoint=178,9
 
 [3-wall@0,0|18]
-endPoint=385,70
-startPoint=390,9
+endPoint=296,38
+startPoint=236,38
 
 [3-wall@0,0|3]
 endPoint=145,151
@@ -1127,10 +1256,6 @@ startPoint=171,201
 endPoint=226,201
 startPoint=198,224
 
-[3-wall@19,-8|18]
-endPoint=296,38
-startPoint=236,38
-
 [4-ball@181,367]
 dummykey=true
 
@@ -1142,6 +1267,18 @@ borderWalls=false
 hasFinalLoad=false
 maxstrokes=10
 par=3
+
+[4-puddle@-2,45|24]
+changeEnabled=false
+changeEvery=50
+height=314
+width=236
+
+[4-puddle@67,-7|25]
+changeEnabled=false
+changeEvery=50
+height=194
+width=348
 
 [4-slope@328,206|23]
 grade=3
@@ -1229,6 +1366,7 @@ startPoint=219,144
 
 [4-windmill@144,144|5]
 botWallVisible=false
+bottom=true
 height=42
 leftWallVisible=true
 rightWallVisible=true
@@ -1251,6 +1389,14 @@ hasFinalLoad=false
 maxstrokes=10
 par=2
 
+[5-slope@-1,-1|16]
+grade=4
+gradient=Horizontal
+height=398
+reversed=false
+stuckOnGround=false
+width=140
+
 [5-slope@139,126|10]
 grade=5
 gradient=Vertical
@@ -1267,6 +1413,22 @@ reversed=false
 stuckOnGround=false
 width=112
 
+[5-slope@252,98|17]
+grade=4
+gradient=Horizontal
+height=296
+reversed=true
+stuckOnGround=false
+width=148
+
+[5-slope@260,84|18]
+grade=4
+gradient=Horizontal
+height=14
+reversed=true
+stuckOnGround=false
+width=171
+
 [5-slope@319,18|11]
 grade=6
 gradient=Elliptic
@@ -1275,16 +1437,24 @@ reversed=false
 stuckOnGround=false
 width=57
 
+[5-slope@387,0|19]
+grade=4
+gradient=Horizontal
+height=84
+reversed=true
+stuckOnGround=false
+width=17
+
 [5-wall@0,0|12]
 endPoint=250,388
 startPoint=140,388
 
 [5-wall@0,0|13]
-endPoint=388,8
+endPoint=388,7
 startPoint=227,8
 
 [5-wall@0,0|14]
-endPoint=388,8
+endPoint=388,7
 startPoint=387,80
 
 [5-wall@0,0|3]
@@ -1327,35 +1497,29 @@ hasFinalLoad=false
 maxstrokes=10
 par=2
 
-[6-puddle@158,175|10]
+[6-puddle@204,177|4]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=38
+width=126
 
-[6-puddle@176,174|3]
+[6-puddle@238,175|5]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=34
+width=92
 
-[6-puddle@197,175|4]
+[6-sand@419,109|18]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=150
+width=126
 
-[6-puddle@219,175|5]
+[6-sand@436,9|17]
 changeEnabled=false
 changeEvery=50
-dummykey=true
-
-[6-puddle@242,175|6]
-changeEnabled=false
-changeEvery=50
-dummykey=true
-
-[6-puddle@265,176|11]
-changeEnabled=false
-changeEvery=50
-dummykey=true
+height=276
+width=228
 
 [6-slope@142,8|20]
 grade=3
@@ -1421,13 +1585,23 @@ hasFinalLoad=false
 maxstrokes=10
 par=3
 
-[7-puddle@169,151|7]
+[7-puddle@170,137|7]
 changeEnabled=false
 changeEvery=50
+height=38
+width=120
 
-[7-puddle@246,245|8]
+[7-puddle@204,128|23]
 changeEnabled=false
 changeEvery=50
+height=48
+width=56
+
+[7-puddle@257,247|8]
+changeEnabled=false
+changeEvery=50
+height=70
+width=40
 
 [7-slope@10,149|19]
 grade=2
@@ -1541,25 +1715,29 @@ hasFinalLoad=false
 maxstrokes=10
 par=3
 
-[8-puddle@339,291|21]
+[8-puddle@320,230|19]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=62
+width=82
 
-[8-puddle@342,269|19]
+[8-puddle@324,228|22]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=90
+width=88
 
-[8-puddle@362,284|20]
+[8-puddle@340,216|21]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=54
+width=68
 
-[8-puddle@368,263|22]
+[8-puddle@340,243|20]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=88
+width=122
 
 [8-slope@138,205|14]
 grade=3
@@ -1653,10 +1831,23 @@ hasFinalLoad=false
 maxstrokes=10
 par=2
 
-[9-puddle@257,105|19]
+[9-puddle@280,79|19]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=54
+width=68
+
+[9-sand@-11,294|21]
+changeEnabled=false
+changeEvery=50
+height=174
+width=152
+
+[9-sand@-16,398|20]
+changeEnabled=false
+changeEvery=50
+height=254
+width=362
 
 [9-slope@141,105|15]
 grade=3
