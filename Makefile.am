@@ -26,4 +26,4 @@ messages: rc.cpp
 	$(XGETTEXT) *.cpp -o $(podir)/kolf.pot
 
 install-data-local:
-	rm -rf $(kde_appsdir)/Games/kolf.desktop
+	rm -rf $(DESTDIR)$(kde_appsdir)/Games/kolf.desktop
