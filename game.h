@@ -148,7 +148,7 @@ private slots:
 	void setGradient(const QString &text);
 	void setReversed(bool);
 	void setStuckOnGround(bool);
-	void gradeChanged(int);
+	void gradeChanged(double);
 
 private:
 	Slope *slope;
@@ -176,9 +176,9 @@ public:
 
 	void setGradient(QString text);
 	KImageEffect::GradientType curType() const { return type; }
-	void setGrade(int grade) { if (grade > 0 && grade < 11) { this->grade = grade; updatePixmap(); } }
+	void setGrade(double grade) { if (grade > 0 && grade < 11) { this->grade = grade; updatePixmap(); } }
 
-	int curGrade() const { return grade; }
+	double curGrade() const { return grade; }
 	void setColor(QColor color) { this->color = color; updatePixmap(); }
 	void setReversed(bool reversed) { this->reversed = reversed; updatePixmap(); }
 	bool isReversed() const { return reversed; }
@@ -202,7 +202,7 @@ public:
 private:
 	KImageEffect::GradientType type;
 	inline void setType(KImageEffect::GradientType type);
-	int grade;
+	double grade;
 	bool reversed;
 	QColor color;
 	QPixmap pixmap;

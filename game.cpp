@@ -6,6 +6,7 @@
 #include <kconfig.h>
 #include <kcursor.h>
 #include <kdebug.h>
+#include <knuminput.h>
 #include <kfiledialog.h>
 #include <kglobal.h>
 #include <kimageeffect.h>
@@ -15,10 +16,6 @@
 #include <kprinter.h>
 #include <ksimpleconfig.h>
 #include <kstandarddirs.h>
-
-#include <math.h>
-#include <stdlib.h>
-#include <unistd.h>
 
 #include <qbitmap.h>
 #include <qbrush.h>
@@ -51,6 +48,10 @@
 #include <qtooltip.h>
 #include <qvaluelist.h>
 #include <qwhatsthis.h>
+
+#include <math.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 #include "kcomboboxdialog.h"
 #include "rtti.h"
@@ -369,7 +370,7 @@ void Slope::updateZ(QCanvasRectangle *vStrut)
 void Slope::load(KSimpleConfig *cfg)
 {
 	stuckOnGround = cfg->readBoolEntry("stuckOnGround", stuckOnGround);
-	grade = cfg->readNumEntry("grade", grade);
+	grade = cfg->readDoubleNumEntry("grade", grade);
 	reversed = cfg->readBoolEntry("reversed", reversed);
 
 	// bypass updatePixmap which newSize normally does
@@ -614,7 +615,7 @@ void Slope::updatePixmap()
 
 		float factorPart = factor * 2;
 		// gradePart is out of 1
-		float gradePart = (float)grade / 8.0;
+		float gradePart = grade / 8.0;
 
 		ratio = factorPart * gradePart;
 
@@ -1463,10 +1464,11 @@ SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
 
 	QHBoxLayout *hlayout = new QHBoxLayout(layout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Shallow"), this));
-	QSlider *grade = new QSlider(1, 8, 1, slope->curGrade(), Qt::Horizontal, this);
+	KDoubleNumInput *grade = new KDoubleNumInput(this);
+	grade->setRange(0, 8, 1, true);
+	grade->setValue(slope->curGrade());
 	hlayout->addWidget(grade);
-	hlayout->addWidget(new QLabel(i18n("Steep"), this));
-	connect(grade, SIGNAL(valueChanged(int)), this, SLOT(gradeChanged(int)));
+	connect(grade, SIGNAL(valueChanged(double)), this, SLOT(gradeChanged(double)));
 
 	QCheckBox *stuck = new QCheckBox(i18n("Unmoveable"), this);
 	QWhatsThis::add(stuck, i18n("Whether or not this slope can be moved by other objects, like floaters."));
@@ -1493,7 +1495,7 @@ void SlopeConfig::setStuckOnGround(bool yes)
 	changed();
 }
 
-void SlopeConfig::gradeChanged(int newgrade)
+void SlopeConfig::gradeChanged(double newgrade)
 {
 	slope->setGrade(newgrade);
 	changed();
