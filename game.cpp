@@ -2022,7 +2022,7 @@ bool Hole::collision(Ball *ball, long int /*id*/)
 		break;
 	}
 
-	return false;
+	return true;
 }
 
 HoleResult Hole::result(QPoint p, double s, bool * /*wasCenter*/)
