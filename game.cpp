@@ -3410,11 +3410,7 @@ void KolfGame::updateMouse()
 
 	const int degrees = (int)rad2deg(newAngle);
 	//kdDebug() << "degrees: " << degrees << endl;
-
-	// here... If the user can just draw a line from mouse->ball->hole
-	// it's way too easy.. so i add 22 deg.
-
-	putter->setDeg(degrees + 22);
+	putter->setDeg(degrees);
 }
 
 void KolfGame::contentsMouseReleaseEvent(QMouseEvent *e)
