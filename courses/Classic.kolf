@@ -1,6 +1,7 @@
 [0-course@-50,-50]
-author=Niklas Knutsson
 Name=Classic
+author=Niklas Knutsson
+name=Classic
 
 [1-ball@200,360]
 dummykey=true
@@ -246,7 +247,7 @@ dummykey=true
 borderWalls=true
 hasFinalLoad=false
 maxstrokes=10
-par=4
+par=3
 
 [11-slope@117,42|10]
 grade=2

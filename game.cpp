@@ -516,8 +516,7 @@ void Slope::setType(KImageEffect::GradientType type)
 		newSize(width(), height());
 	moveArrow();
 
-	if (type != KImageEffect::HorizontalGradient && type != KImageEffect::VerticalGradient)
-		updatePixmap();
+	updatePixmap();
 }
 
 void Slope::updatePixmap()
