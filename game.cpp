@@ -491,7 +491,8 @@ void Slope::setType(KPixmapEffect::GradientType type)
 {
 	this->type = type;
 	if (type == KPixmapEffect::EllipticGradient)
-		newSize(width, height());
+		// recalc size
+		newSize(width(), height());
 	updatePixmap();
 }
 
