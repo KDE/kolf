@@ -12,7 +12,7 @@
 #include "object.h"
 
 class StateDB;
-class KSimpleConfig;
+class KConfig;
 
 class PoolBallFactory : KLibFactory { Q_OBJECT public: QObject *createObject(QObject *, const char *, const char *, const QStringList & = QStringList()); };
 
@@ -25,9 +25,9 @@ public:
 
 	virtual Config *config(QWidget *parent);
 	virtual void saveState(StateDB *);
-	virtual void save(KSimpleConfig *cfg);
+	virtual void save(KConfig *cfg);
 	virtual void loadState(StateDB *);
-	virtual void load(KSimpleConfig *cfg);
+	virtual void load(KConfig *cfg);
 	virtual void draw(QPainter &);
 	virtual bool fastAdvance() const { return true; }
 

@@ -10,7 +10,7 @@
 #include <kapplication.h>
 #include <kdebug.h>
 #include <knuminput.h>
-#include <ksimpleconfig.h>
+#include <kconfig.h>
 
 #include "statedb.h"
 #include "canvasitem.h"
@@ -27,7 +27,7 @@ PoolBall::PoolBall(QCanvas *canvas)
 	m_number = 1;
 }
 
-void PoolBall::save(KSimpleConfig *cfg)
+void PoolBall::save(KConfig *cfg)
 {
 	cfg->writeEntry("number", number());
 }
@@ -37,7 +37,7 @@ void PoolBall::saveState(StateDB *db)
 	db->setPoint(QPoint(x(), y()));
 }
 
-void PoolBall::load(KSimpleConfig *cfg)
+void PoolBall::load(KConfig *cfg)
 {
 	setNumber(cfg->readNumEntry("number", 1));
 }
