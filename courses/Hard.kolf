@@ -1099,6 +1099,7 @@ par=3
 
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
+Comment[bg]=Обръщане на грешките във Ваша полза!
 Comment[ca]=Permetre que els flotdrs t'<strong>empenyin</strong>!
 Comment[da]=Lad svæverne <strong>skubbe</strong> dig!
 Comment[de]=Lassen Sie sich von den Flößen <strong>weiterschubsen</strong>.
