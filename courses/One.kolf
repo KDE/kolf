@@ -3269,7 +3269,7 @@ exitDeg=0
 maxspeed=1
 minspeed=1
 
-[6-bridge@153,278|10]
+[6-bridge@166,277|10]
 botWallVisible=true
 height=74
 leftWallVisible=false

@@ -948,6 +948,7 @@ public:
 	bool askSave(bool);
 	bool isEditing() const { return editing; }
 	Ball *curBall() { return (*curPlayer).ball(); }
+	void updateMouse();
 
 public slots:
 	void pause();
@@ -1053,6 +1054,7 @@ private:
 	bool paused;
 
 	QString filename;
+	bool recalcHighestHole;
 	void openFile();
 
 	bool editing;

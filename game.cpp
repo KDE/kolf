@@ -924,7 +924,8 @@ void Floater::moveBy(double dx, double dy)
 							if (game)
 								if (game->hasFocus() && !game->isEditing())
 									if (game->curBall() == (Ball *)(*it))
-										QCursor::setPos(QCursor::pos().x() + dx, QCursor::pos().y() + dy);
+										//QCursor::setPos(QCursor::pos().x() + dx, QCursor::pos().y() + dy);
+										game->updateMouse();
 						}
 
 						//kdDebug() << "moving an item\n";
@@ -2563,6 +2564,7 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 	scoreboardHoles = 0;
 	infoShown = false;
 	m_useMouse = true;
+	highestHole = 0;
 
 	holeInfo.setAuthor(i18n("Course Author"));
 	holeInfo.setName(i18n("Course Name"));
@@ -2660,6 +2662,7 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 	putterTimerMsec = 20;
 
 	// this increments curHole, etc
+	recalcHighestHole = true;
 	holeDone();
 	paused = true;
 	unPause();
@@ -2799,52 +2802,14 @@ void KolfGame::contentsMouseMoveEvent(QMouseEvent *e)
 	QPoint mouse = e->pos();
 
 	// mouse moving of putter
-	if (!editing && m_useMouse)
+	if (!editing)
 	{
-		double newAngle = 0;
-		const double yDiff = (double)(putter->y() - mouse.y());
-		const double xDiff = (double)(mouse.x() - putter->x());
-		//kdDebug() << "yDiff: " << yDiff << ", xDiff: " << xDiff << endl;
-		if (yDiff == 0)
-		{
-			//kdDebug() << "horizontal\n";
-			// horizontal
-			if (putter->x() < mouse.x())
-				newAngle = 0;
-			else
-				newAngle = PI;
-		}
-		else if (xDiff == 0)
-		{
-			//kdDebug() << "vertical\n";
-			// vertical
-			if (putter->y() < mouse.y())
-				newAngle = (3 * PI) / 2;
-			else
-				newAngle = PI / 2;
-		}
-		else
-		{
-			const double slope = yDiff / xDiff;
-			const double angle = atan(slope);
-			//kdDebug() << "angle: " << rad2deg(angle) << endl;
-			newAngle = angle;
-
-			if (mouse.x() < putter->x())
-				newAngle += PI;
-		}
-
-		//kdDebug() << "newAngle: " << rad2deg(newAngle) << endl;
-
-		const int degrees = (int)rad2deg(newAngle);
-		//kdDebug() << "degrees: " << degrees << endl;
-		putter->setDeg(degrees);
-
+		updateMouse();
 		return;
 	}
 
 	//kdDebug() << "moving: " << moving << endl;
-	if (!moving || !editing)
+	if (!moving)
 		return;
 
 	int moveX = storedMousePos.x() - mouse.x();
@@ -2857,6 +2822,52 @@ void KolfGame::contentsMouseMoveEvent(QMouseEvent *e)
 	movingItem->moveBy(-(double)moveX, -(double)moveY);
 	highlighter->moveBy(-(double)moveX, -(double)moveY);
 	storedMousePos = mouse;
+}
+
+void KolfGame::updateMouse()
+{
+	if (!m_useMouse)
+		return;
+
+	double newAngle = 0;
+	QPoint mouse(viewportToContents(mapFromGlobal(QCursor::pos())));
+	const double yDiff = (double)(putter->y() - mouse.y());
+	const double xDiff = (double)(mouse.x() - putter->x());
+	//kdDebug() << "yDiff: " << yDiff << ", xDiff: " << xDiff << endl;
+	if (yDiff == 0)
+	{
+		//kdDebug() << "horizontal\n";
+		// horizontal
+		if (putter->x() < mouse.x())
+			newAngle = 0;
+		else
+			newAngle = PI;
+	}
+	else if (xDiff == 0)
+	{
+		//kdDebug() << "vertical\n";
+		// vertical
+		if (putter->y() < mouse.y())
+			newAngle = (3 * PI) / 2;
+		else
+			newAngle = PI / 2;
+	}
+	else
+	{
+		const double slope = yDiff / xDiff;
+		const double angle = atan(slope);
+		//kdDebug() << "angle: " << rad2deg(angle) << endl;
+		newAngle = angle;
+
+		if (mouse.x() < putter->x())
+			newAngle += PI;
+	}
+
+	//kdDebug() << "newAngle: " << rad2deg(newAngle) << endl;
+
+	const int degrees = (int)rad2deg(newAngle);
+	//kdDebug() << "degrees: " << degrees << endl;
+	putter->setDeg(degrees);
 }
 
 void KolfGame::contentsMouseReleaseEvent(QMouseEvent *e)
@@ -3403,7 +3414,7 @@ void KolfGame::openFile()
 	int numItems = 0;
 	curPar = 3;
 	holeInfo.setPar(curPar);
-	highestHole = 0;
+	int _highestHole = 0;
 
 	/****
 	TODO : add a progress bar based on groups.size()
@@ -3421,8 +3432,8 @@ void KolfGame::openFile()
 		int len = (*it).length();
 		int dashIndex = (*it).find("-");
 		int holeNum = (*it).left(dashIndex).toInt();
-		if (holeNum > highestHole)
-			highestHole = holeNum;
+		if (holeNum > _highestHole)
+			_highestHole = holeNum;
 
 		int atIndex = (*it).find("@");
 		QString name = (*it).mid(dashIndex + 1, atIndex - (dashIndex + 1));
@@ -3441,8 +3452,8 @@ void KolfGame::openFile()
 		{
 			// if we've had one, break, cause list is sorted
 			// erps, no, cause we need to know highest hole!
-			//if (numItems)
-				//break;
+			if (numItems && !recalcHighestHole)
+					break;
 			continue;
 		}
 		numItems++;
@@ -3501,11 +3512,15 @@ void KolfGame::openFile()
 			// make things actually show
 			// kapp->processEvents();
 			// turns out that that fscks everything up
+			
+			// we don't allow multiple items for the same thing in
+			// the file!
+			break;
 		}
 	}
 
 	// if it's the first hole let's not
-	if (!numItems && curHole > 1 && !addingNewHole && !(curHole < highestHole))
+	if (!numItems && curHole > 1 && !addingNewHole && !(curHole < _highestHole))
 	{
 		// we're done, let's quit
 		curHole--;
@@ -3559,6 +3574,11 @@ void KolfGame::openFile()
 
 	//kdDebug() << "openfile finishing; highestHole is " << highestHole << endl;
 
+	if (recalcHighestHole)
+	{
+		highestHole = _highestHole;
+		recalcHighestHole = false;
+	}
 	unPause();
 }
 
@@ -3633,6 +3653,7 @@ void KolfGame::addNewHole()
 	addingNewHole = true;
 	curHole = highestHole;
 	//kdDebug() << "highestHole is " << highestHole << endl;
+	recalcHighestHole = true;
 	holeDone();
 	emit largestHole(curHole);
 	addingNewHole = false;
