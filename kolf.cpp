@@ -238,6 +238,7 @@ void Kolf::startNewGame()
 	connect(game, SIGNAL(maxStrokesReached(const QString &)), this, SLOT(maxStrokesReached(const QString &)));
 	connect(game, SIGNAL(largestHole(int)), this, SLOT(updateHoleMenu(int)));
 	connect(game, SIGNAL(titleChanged(const QString &)), this, SLOT(titleChanged(const QString &)));
+	connect(game, SIGNAL(newStatusText(const QString &)), this, SLOT(newStatusText(const QString &)));
 	connect(game, SIGNAL(currentHole(int)), this, SLOT(setCurrentHole(int)));
 	connect(holeAction, SIGNAL(activated(const QString &)), game, SLOT(switchHole(const QString &)));
 	connect(nextAction, SIGNAL(activated()), game, SLOT(nextHole()));
@@ -563,8 +564,22 @@ void Kolf::openURL(KURL url)
 
 void Kolf::newPlayersTurn(Player *player)
 {
-	statusBar()->message(i18n("%1's turn").arg(player->name()));
+	tempStatusBarText = i18n("%1's turn").arg(player->name());
+
+	if (showInfoAction->isChecked())
+		statusBar()->message(tempStatusBarText, 5 * 1000);
+	else
+		statusBar()->message(tempStatusBarText);
+
 	scoreboard->setCurrentCell(player->id() - 1, game->currentHole() - 1);
+}
+
+void Kolf::newStatusText(const QString &text)
+{
+	if (text.isEmpty())
+		statusBar()->message(tempStatusBarText);
+	else
+		statusBar()->message(text);
 }
 
 void Kolf::editingStarted()

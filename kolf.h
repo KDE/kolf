@@ -62,6 +62,7 @@ protected slots:
 	void maxStrokesReached(const QString &);
 	void updateHoleMenu(int);
 	void titleChanged(const QString &);
+	void newStatusText(const QString &);
 	void showInfoChanged(bool);
 	void useMouseChanged(bool);
 	void useAdvancedPuttingChanged(bool);	
@@ -134,6 +135,7 @@ private:
 	bool isTutorial;
 	bool courseModified;
 	QString title;
+	QString tempStatusBarText;
 };
 
 struct HighScore

@@ -3243,21 +3243,14 @@ void KolfGame::handleMouseDoubleClickEvent(QMouseEvent *e)
 
 void KolfGame::handleMousePressEvent(QMouseEvent *e)
 {
-	if (inPlay || m_ignoreEvents)
+	if (m_ignoreEvents)
 		return;
 
-	if (!editing)
+	if (editing)
 	{
-		if (m_useMouse)
-		{
-			if (e->button() == LeftButton)
-				puttPress();
-			else if (e->button() == RightButton)
-				toggleShowInfo();
-		}
-	}
-	else
-	{
+		if (inPlay)
+			return;
+
 		storedMousePos = e->pos();
 
 		QCanvasItemList list = course->collisions(e->pos());
@@ -3312,6 +3305,16 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 
 			default:
 				break;
+		}
+	}
+	else
+	{
+		if (m_useMouse)
+		{
+			if (!inPlay && e->button() == LeftButton)
+				puttPress();
+			else if (e->button() == RightButton)
+				toggleShowInfo();
 		}
 	}
 
@@ -3406,18 +3409,15 @@ void KolfGame::handleMouseReleaseEvent(QMouseEvent *e)
 	setCursor(KCursor::arrowCursor());
 	moving = false;
 
-	if (inPlay || m_ignoreEvents)
+	if (m_ignoreEvents)
 		return;
 
-	if (!editing)
+	if (!editing && m_useMouse)
 	{
-		if (m_useMouse)
-		{
-			if (e->button() == LeftButton)
-				puttRelease();
-			else if (e->button() == RightButton)
-				toggleShowInfo();
-		}
+		if (!inPlay && e->button() == LeftButton)
+			puttRelease();
+		else if (e->button() == RightButton)
+			toggleShowInfo();
 	}
 
 	setFocus();
@@ -3502,7 +3502,7 @@ void KolfGame::setShowInfo(bool yes)
 		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 			(*it).ball()->hideInfo();
 
-		hideInfoText();
+		hideInfo();
 	}
 }
 
@@ -4270,11 +4270,13 @@ void KolfGame::startNextHole()
 
 void KolfGame::showInfo()
 {
-	QString text = i18n("Hole %1: par %2, maximum number of strokes is %3.").arg(curHole).arg(holeInfo.par()).arg(holeInfo.maxStrokes());
+	QString text = i18n("Hole %1: par %2, maximum: %3").arg(curHole).arg(holeInfo.par()).arg(holeInfo.maxStrokes());
 	infoText->move((width - QFontMetrics(infoText->font()).width(text)) / 2, infoText->y());
 	infoText->setText(text);
 	// I hate this text! Let's not show it
 	//infoText->setVisible(true);
+
+	emit newStatusText(text);
 }
 
 void KolfGame::showInfoDlg(bool addDontShowAgain)
@@ -4287,10 +4289,12 @@ void KolfGame::showInfoDlg(bool addDontShowAgain)
 	addDontShowAgain? holeInfo.name() + QString(" ") + holeInfo.author() : QString::null);
 }
 
-void KolfGame::hideInfoText()
+void KolfGame::hideInfo()
 {
 	infoText->setText("");
 	infoText->setVisible(false);
+
+	emit newStatusText(QString::null);
 }
 
 void KolfGame::openFile()

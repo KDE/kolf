@@ -1026,6 +1026,7 @@ signals:
 	void maxStrokesReached(const QString &);
 	void currentHole(int);
 	void modifiedChanged(bool);
+	void newStatusText(const QString &);
 
 private slots:
 	void shotDone();
@@ -1036,7 +1037,7 @@ private slots:
 	void autoSaveTimeout();
 	void addItemsToMoveableList(QPtrList<QCanvasItem>);
 	void addItemToFastAdvancersList(CanvasItem *);
-	void hideInfoText();
+	void hideInfo();
 
 protected:
 	void mouseMoveEvent(QMouseEvent *e);
