@@ -97,6 +97,7 @@ private:
 	KToggleAction *showGuideLineAction;	
 	KToggleAction *soundAction;
 	void setHoleMovementEnabled(bool);
+	void setHoleOtherEnabled(bool);
 	inline void setEditingEnabled(bool);
 	bool competition;
 

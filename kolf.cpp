@@ -234,6 +234,7 @@ void Kolf::startNewGame()
 		setEditingEnabled(true);
 		endAction->setEnabled(true);
 		setHoleMovementEnabled(true);
+		setHoleOtherEnabled(true);
 		aboutAction->setEnabled(true);
 		highScoreAction->setEnabled(true);
 		printAction->setEnabled(true);
@@ -304,6 +305,7 @@ void Kolf::closeGame()
 	saveAction->setEnabled(false);
 	saveAsAction->setEnabled(false);
 	setHoleMovementEnabled(false);
+	setHoleOtherEnabled(false);
 
 	clearHoleAction->setEnabled(false);
 	newHoleAction->setEnabled(false);
@@ -441,7 +443,7 @@ void Kolf::editingStarted()
 
 	clearHoleAction->setEnabled(true);
 	newHoleAction->setEnabled(true);
-	setHoleMovementEnabled(false);
+	setHoleOtherEnabled(false);
 
 	game->setFocus();
 }
@@ -456,7 +458,7 @@ void Kolf::editingEnded()
 
 	clearHoleAction->setEnabled(false);
 	newHoleAction->setEnabled(false);
-	setHoleMovementEnabled(true);
+	setHoleOtherEnabled(true);
 
 	if (game)
 		game->setFocus();
@@ -465,12 +467,14 @@ void Kolf::editingEnded()
 void Kolf::inPlayStart()
 {
 	setEditingEnabled(false);
+	setHoleOtherEnabled(false);
 	setHoleMovementEnabled(false);
 }
 
 void Kolf::inPlayEnd()
 {
 	setEditingEnabled(true);
+	setHoleOtherEnabled(true);
 	setHoleMovementEnabled(true);
 }
 
@@ -503,6 +507,12 @@ void Kolf::setHoleMovementEnabled(bool yes)
 	firstAction->setEnabled(yes);
 	lastAction->setEnabled(yes);
 	randAction->setEnabled(yes);
+}
+
+void Kolf::setHoleOtherEnabled(bool yes)
+{
+	if (competition)
+		yes = false;
 
 	resetHoleAction->setEnabled(yes);
 	undoShotAction->setEnabled(yes);

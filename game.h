@@ -5,9 +5,9 @@
 #include <klocale.h>
 #include <kpixmap.h>
 #include <kimageeffect.h>
+#include <arts/kplayobject.h>
 #include <arts/kartsserver.h>
 #include <arts/kartsdispatcher.h>
-#include <arts/kplayobject.h>
 
 #include <math.h>
 
@@ -1020,9 +1020,9 @@ private:
 	// sound
 	KArtsDispatcher artsDispatcher;
 	KArtsServer artsServer;
+	QPtrList<KPlayObject> oldPlayObjects;
 	bool m_sound;
 	bool soundedOnce;
-	QPtrList<KPlayObject> oldPlayObjects;
 	QString soundDir;
 
 	HoleInfo holeInfo;

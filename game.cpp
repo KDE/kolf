@@ -4419,13 +4419,24 @@ void KolfGame::clearHole()
 
 void KolfGame::switchHole(int hole)
 {
-	if (editing || inPlay)
+	if (inPlay)
 		return;
 	if (hole < 1 || hole > highestHole)
 		return;
+	
+	bool wasEditing = editing;
+	if (editing)
+		toggleEditMode();
+
+	if (askSave(true))
+		return;
+	modified = false;
 
 	curHole = hole;
 	resetHole();
+
+	if (wasEditing)
+		toggleEditMode();
 }
 
 void KolfGame::switchHole(const QString &holestring)
@@ -4545,6 +4556,9 @@ void KolfGame::save()
 void KolfGame::toggleEditMode()
 {
 	// won't be editing anymore, and user wants to cancel, we return
+	// this is pretty useless. when the person leaves the hole,
+	// he gets asked again
+	/*
 	if (editing && modified)
 	{
 		if (askSave(false))
@@ -4553,6 +4567,7 @@ void KolfGame::toggleEditMode()
 			return;
 		}
 	}
+	*/
 
 	moving = false;
 	selectedItem = 0;
