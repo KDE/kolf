@@ -8,6 +8,6 @@ namespace PluginLoader
 {
 	ObjectList *loadAll();
 	Object *load(const QString &);
-};
+}
 
 #endif
