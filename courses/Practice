@@ -165,7 +165,7 @@ maxstrokes=10
 par=2
 
 [5-slope@-119,167|4]
-grade=4
+grade=2
 gradient=Elliptic
 height=345
 reversed=false

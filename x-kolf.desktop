@@ -3,5 +3,5 @@
 Encoding=UTF-8
 MimeType=application/x-kolf
 Comment=Kolf saved game
-Comment[xx]=xx
+Icon=kolf
 Type=MimeType

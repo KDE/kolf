@@ -3795,7 +3795,7 @@ void KolfGame::shotDone()
 	{
 		Ball *ball = (*it).ball();
 
-		int curStrokes = (*curPlayer).score(curHole);
+		int curStrokes = (*it).score(curHole);
 		if (curStrokes >= holeInfo.maxStrokes() && holeInfo.hasMaxStrokes())
 		{
 			emit maxStrokesReached((*it).name());

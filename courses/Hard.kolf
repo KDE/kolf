@@ -734,8 +734,8 @@ dummykey=true
 [12-blackhole@244,110|62]
 exit=158,101
 exitDeg=290
-maxspeed=4
-minspeed=2
+maxspeed=1
+minspeed=1
 
 [12-blackhole@359,23|65]
 exit=111,236
@@ -930,12 +930,12 @@ endPoint=13,332
 startPoint=21,360
 
 [12-wall@0,0|42]
-endPoint=316,78
+endPoint=318,79
 startPoint=282,74
 
 [12-wall@0,0|43]
 endPoint=337,57
-startPoint=318,79
+startPoint=316,78
 
 [12-wall@0,0|44]
 endPoint=339,30
@@ -946,7 +946,7 @@ endPoint=333,14
 startPoint=339,30
 
 [12-wall@0,0|46]
-endPoint=316,78
+endPoint=318,79
 startPoint=310,111
 
 [12-wall@0,0|47]
@@ -971,7 +971,7 @@ startPoint=284,137
 
 [12-wall@0,0|54]
 endPoint=136,332
-startPoint=133,354
+startPoint=134,357
 
 [12-wall@0,0|55]
 endPoint=56,280
@@ -1007,7 +1007,7 @@ startPoint=186,86
 
 [12-wall@0,0|63]
 endPoint=147,372
-startPoint=134,357
+startPoint=133,354
 
 [12-wall@0,0|64]
 endPoint=186,388
@@ -1018,7 +1018,7 @@ endPoint=288,292
 startPoint=310,111
 
 [12-wall@0,0|8]
-endPoint=133,354
+endPoint=134,357
 startPoint=104,374
 
 [12-wall@0,0|9]
@@ -2804,7 +2804,7 @@ width=61
 [4-ball@356,151]
 dummykey=true
 
-[4-blackhole@159,31|45]
+[4-blackhole@160,36|45]
 exit=156,218
 exitDeg=350
 maxspeed=2
@@ -3260,7 +3260,7 @@ startPoint=76,195
 
 [4-wall@0,0|111]
 endPoint=216,291
-startPoint=189,299
+startPoint=190,299
 
 [4-wall@0,0|115]
 endPoint=138,131
@@ -3363,7 +3363,7 @@ endPoint=69,367
 startPoint=39,353
 
 [4-wall@0,0|21]
-endPoint=190,299
+endPoint=189,299
 startPoint=164,241
 
 [4-wall@0,0|22]
@@ -3451,7 +3451,7 @@ endPoint=365,22
 startPoint=314,12
 
 [4-wall@0,0|5]
-endPoint=189,299
+endPoint=190,299
 startPoint=153,355
 
 [4-wall@0,0|7]

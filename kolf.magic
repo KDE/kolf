@@ -1,3 +1,2 @@
-0	string	[0-course@-50,-50]	application/x-kourse
-
-0	string	[0 Saved Game]	application/x-kolf
+0	string		[0-course@-50,-50]		application/x-kourse
+0	string		[0\ Saved\ Game]		application/x-kolf
