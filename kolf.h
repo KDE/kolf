@@ -51,10 +51,11 @@ protected slots:
 	void inPlayEnd();
 	void maxStrokesReached();
 	void updateHoleMenu(int);
-	void useMouseChanged(bool);
 	void titleChanged(const QString &);
+	void useMouseChanged(bool);
 	void useAdvancedPuttingChanged(bool);	
 	void showGuideLineChanged(bool);	
+	void soundChanged(bool);	
  
 private:
 	QWidget *dummy;
@@ -87,6 +88,7 @@ private:
 	KToggleAction *useMouseAction;
 	KToggleAction *useAdvancedPuttingAction;	
 	KToggleAction *showGuideLineAction;	
+	KToggleAction *soundAction;
 	void setHoleMovementEnabled(bool);
 	inline void setEditingEnabled(bool);
 	bool competition;

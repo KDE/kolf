@@ -23,6 +23,7 @@
 			<Action name="usemouse" />
 			<Action name="useadvancedputting" />			
 			<Action name="showguideline" />
+			<Action name="sound" />
 		</Menu>
 		<Menu name="help">
 			<Action name="aboutcourse" />

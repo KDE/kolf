@@ -117,6 +117,10 @@ void Kolf::initGUI()
 	connect(showGuideLineAction, SIGNAL(toggled(bool)), this, SLOT(showGuideLineChanged(bool)));
 	showGuideLineAction->setChecked(config->readBoolEntry("showGuideLine", true));
 
+	soundAction = new KToggleAction(i18n("Play &Sounds"), 0, 0, 0, actionCollection(), "sound");
+	connect(soundAction, SIGNAL(toggled(bool)), this, SLOT(soundChanged(bool)));
+	soundAction->setChecked(config->readBoolEntry("sound", true));
+
 	aboutAction = new KAction(i18n("&About Course..."), 0, 0, 0, actionCollection(), "aboutcourse");
 	tutorialAction = new KAction(i18n("&Tutorial..."), 0, this, SLOT(tutorial()), actionCollection(), "tutorial");
 
@@ -191,11 +195,13 @@ void Kolf::startNewGame()
 		connect(aboutAction, SIGNAL(activated()), game, SLOT(showInfoDlg()));
 		connect(useMouseAction, SIGNAL(toggled(bool)), game, SLOT(setUseMouse(bool)));
 		connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), game, SLOT(setUseAdvancedPutting(bool)));		
+		connect(soundAction, SIGNAL(toggled(bool)), game, SLOT(setSound(bool)));		
 		connect(showGuideLineAction, SIGNAL(toggled(bool)), game, SLOT(setShowGuideLine(bool)));		
 
 		game->setUseMouse(useMouseAction->isChecked());
 		game->setUseAdvancedPutting(useAdvancedPuttingAction->isChecked());		
 		game->setShowGuideLine(showGuideLineAction->isChecked());		
+		game->setSound(soundAction->isChecked());		
 
 		layout->addWidget(game, 0, 0);
 
@@ -463,6 +469,11 @@ void Kolf::useAdvancedPuttingChanged(bool yes)
 void Kolf::showGuideLineChanged(bool yes)
 {
 	KConfig *config = kapp->config(); config->setGroup("Settings"); config->writeEntry("showGuideLine", yes); config->sync();
+}
+
+void Kolf::soundChanged(bool yes)
+{
+	KConfig *config = kapp->config(); config->setGroup("Settings"); config->writeEntry("sound", yes); config->sync();
 }
 
 #include "kolf.moc"

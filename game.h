@@ -1135,6 +1135,7 @@ public slots:
 	void setUseMouse(bool yes) { m_useMouse = yes; }
 	void setUseAdvancedPutting(bool yes);
 	void setShowGuideLine(bool yes);
+	void setSound(bool yes);
 	void undoShot();
 
 signals:
@@ -1241,6 +1242,7 @@ private:
 	void initSoundServer();
 	bool m_serverRunning;
 	bool m_soundError;
+	bool m_sound;
 	QString soundDir;
 
 	HoleInfo holeInfo;

@@ -3096,6 +3096,7 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 	infoShown = false;
 	m_useMouse = true;
 	m_useAdvancedPutting = false;	
+	m_useAdvancedPutting = true;	
 	highestHole = 0;
 
 	holeInfo.setGame(this);
@@ -4719,7 +4720,8 @@ void KolfGame::initSoundServer()
 	playObjectFactory = Arts::Reference("global:Arts_PlayObjectFactory");
 	if (soundserver.isNull())
 	{
-		KMessageBox::error(this, i18n("Couldn't connect to aRts Soundserver. Sound deactivated."));
+		if (m_sound)
+			KMessageBox::error(this, i18n("Could not connect to aRts Soundserver. Sound deactivated."));
 		playObjectFactory = Arts::PlayObjectFactory::null();
 		soundserver = Arts::SimpleSoundServer::null();
 		m_serverRunning = false;
@@ -4736,7 +4738,8 @@ void KolfGame::initSoundServer()
 		}
 		else
 		{
-			KMessageBox::error(this, i18n("You don't have Kolf sounds installed. Sound deactivated."));
+			if (m_sound)
+				KMessageBox::error(this, i18n("You do not have Kolf sounds installed. Sound deactivated."));
 			playObjectFactory = Arts::PlayObjectFactory::null();
 			soundserver = Arts::SimpleSoundServer::null();
 			m_serverRunning = false;
@@ -4747,7 +4750,7 @@ void KolfGame::initSoundServer()
 
 void KolfGame::playSound(QString file)
 {
-	if (m_serverRunning && !m_soundError)
+	if (m_serverRunning && !m_soundError && m_sound)
 	{
 		QString playFile = soundDir + file + QString::fromLatin1(".wav");
 
@@ -4817,6 +4820,11 @@ void KolfGame::setUseAdvancedPutting(bool yes)
 void KolfGame::setShowGuideLine(bool yes)
 {
 	putter->setShowGuideLine(yes);
+}
+
+void KolfGame::setSound(bool yes)
+{
+	m_sound = yes;
 }
 
 void KolfGame::courseInfo(CourseInfo &info, const QString& filename)
