@@ -4420,7 +4420,7 @@ void KolfGame::openFile()
 
 		if (!loaded && name != "hole" && warned.contains(name) <= 0)
 		{
-			KMessageBox::sorry(this, i18n("To fully experience this hole, you'll need to install the %1 plugin.").arg(QString("\"%1\"").arg(name)));
+			KMessageBox::information(this, i18n("To fully experience this hole, you'll need to install the %1 plugin.").arg(QString("\"%1\"").arg(name)), QString::null, QString("%1 warning").arg(name));
 			warned.append(name);
 		}
 	}

@@ -15,7 +15,7 @@
 static const char *description =
 I18N_NOOP("KDE Minigolf Game");
 
-static const char *version = "1.0";
+static const char *version = "1.1";
 
 static KCmdLineOptions options[] = 
 {
