@@ -83,13 +83,13 @@ reversed=true
 stuckOnGround=false
 width=119
 
-[1-slope@16,232|6]
+[1-slope@10,229|6]
 grade=3
 gradient=Vertical
-height=56
+height=60
 reversed=false
 stuckOnGround=false
-width=73
+width=83
 
 [1-slope@221,145|17]
 grade=4

@@ -70,11 +70,8 @@ void Ball::friction()
 {
 	if (state == Stopped || state == Holed || !isVisible()) { setVelocity(0, 0); return; }
 	const double subtractAmount = .027 * frictionMultiplier;
-	//kdDebug() << "Friction, magnitude is " << m_vector.magnitude() << ", subtractAmount is " << subtractAmount << endl;
 	if (m_vector.magnitude() <= subtractAmount)
 	{
-		//kdDebug() << "Ball::friction stopping\n";
-		//kdDebug() << "magnitude is " << m_vector.magnitude() << endl;
 		state = Stopped;
 		setVelocity(0, 0);
 		game->timeout();
@@ -98,16 +95,13 @@ void Ball::setVelocity(double vx, double vy)
 	}
 
 	double ballAngle = atan2(-vy, vx);
-	//kdDebug() << "ballAngle calculated as " << rad2deg(ballAngle) << endl;
 
 	m_vector.setDirection(ballAngle);
 	m_vector.setMagnitude(sqrt(pow(vx, 2) + pow(vy, 2)));
 }
 
-void Ball::setVector(Vector newVector)
+void Ball::setVector(const Vector &newVector)
 {
-	//kdDebug() << "Ball::setVector; Magnitude = " << newVector.magnitude() << ", Direction = " << newVector.direction() << endl;
-
 	m_vector = newVector;
 
 	if (newVector.magnitude() == 0)
@@ -117,8 +111,6 @@ void Ball::setVector(Vector newVector)
 	}
 
 	QCanvasEllipse::setVelocity(cos(newVector.direction()) * newVector.magnitude(), -sin(newVector.direction()) * newVector.magnitude());
-
-	//kdDebug() << "new velocities calculated as " << xVelocity() << ", " << yVelocity() << endl;
 }
 
 void Ball::moveBy(double dx, double dy)
@@ -150,8 +142,6 @@ void Ball::collisionDetect()
 	if (collisionId % 2 && !(xVelocity() == 0 && yVelocity() == 0))
 		friction();
 
-	//kdDebug() << "velocitiees: " << xVelocity() << ", " << yVelocity() << endl;
-
 	const double minSpeed = .06;
 
 	QCanvasItemList m_list = collisions(true);
@@ -164,7 +154,6 @@ void Ball::collisionDetect()
 
 	if (m_list.isEmpty())
 	{
-		//kdDebug() << "collision list empty\n";
 		return;
 	}
 
@@ -188,14 +177,10 @@ void Ball::collisionDetect()
 			if ((oball->x() - x() != 0 && oball->y() - y() != 0) && state == Rolling && oball->curState() != Holed)
 			{
 				m_collisionLock = true;
-				//kdDebug() << "collision with other ball\n";
 				// move this ball to where it was barely touching
 				double ballAngle = m_vector.direction();
 				while (collisions(true).contains(item) > 0)
-				{
 					move(x() - cos(ballAngle) / 2.0, y() + sin(ballAngle) / 2.0);
-					//kdDebug() << "moved to " << x() << ", " << y() << endl;
-				}
 				// make a 1 pixel separation
 				move(x() - cos(ballAngle), y() + sin(ballAngle));
 

@@ -291,7 +291,6 @@ void Slope::newSize(int width, int height)
 		// move point back to good spot
 		moveBy(0, 0);
 
-		//kdDebug() << "game is " << game << endl;
 		if (game && game->isEditing())
 			game->updateHighlighter();
 	}
@@ -340,7 +339,6 @@ void Slope::editModeChanged(bool changed)
 
 void Slope::updateZ(QCanvasRectangle *vStrut)
 {
-	//kdDebug() << "Slope::updateZ, vStrut = " << vStrut << endl;
 
 	//const bool diag = (type == KImageEffect::DiagonalGradient || type == KImageEffect::CrossDiagonalGradient);
 	const int area = (height() * width());
@@ -369,8 +367,6 @@ void Slope::updateZ(QCanvasRectangle *vStrut)
 
 void Slope::load(KSimpleConfig *cfg)
 {
-	//kdDebug() << "Slope::load()\n";
-
 	stuckOnGround = cfg->readBoolEntry("stuckOnGround", stuckOnGround);
 	grade = cfg->readNumEntry("grade", grade);
 	reversed = cfg->readBoolEntry("reversed", reversed);
@@ -457,8 +453,6 @@ bool Slope::collision(Ball *ball, long int /*id*/)
 		addto = sin(addto);
 	}
 
-	//kdDebug() << "slopeAngle: " << rad2deg(slopeAngle) << endl;
-
 	switch (type)
 	{
 		case KImageEffect::HorizontalGradient:
@@ -483,8 +477,6 @@ bool Slope::collision(Ball *ball, long int /*id*/)
 		default:
 		break;
 	}
-
-	//kdDebug() << "set velocities of ball to " << vx << ", " << vy << endl;
 
 	ball->setVelocity(vx, vy);
 	ball->setState(Rolling);
@@ -610,8 +602,6 @@ void Slope::updatePixmap()
 				break;
 		}
 
-		//kdDebug() << "factor: " << factor << endl;
-
 		float factorPart = factor * 2;
 		// gradePart is out of 1
 		float gradePart = (float)grade / 8.0;
@@ -623,8 +613,6 @@ void Slope::updatePixmap()
 			ratio *= -1;
 		else
 			angle += M_PI;
-
-		//kdDebug() << "ratio is " << ratio << endl;
 
 		KPixmap kpixmap = qpixmap;
 		(void) KPixmapEffect::intensity(kpixmap, ratio);
@@ -983,13 +971,11 @@ void Floater::advance(int phase)
 		}
 		else if (x() < start.x() + wallx && (yVelocity() > 0? y() > start.y() + wally : y() < start.y() + wally))
 		{
-			//kdDebug() << "first\n";
 			setSpeed(speed);
 			setVelocity(-xVelocity(), -yVelocity());
 		}
 		else if (x() > end.x() + wallx && (yVelocity() < 0? y() < end.y() + wally : y() > end.y() + wally))
 		{
-			//kdDebug() << "second\n";
 			setSpeed(speed);
 		}
 	}
@@ -1135,7 +1121,6 @@ void Floater::saveState(StateDB *db)
 void Floater::loadState(StateDB *db)
 {
 	const QPoint moveTo = db->point();
-	//kdDebug() << "moveTo: " << moveTo.x() << ", " << moveTo.y() << endl;
 	move(moveTo.x(), moveTo.y());
 }
 
@@ -1753,7 +1738,6 @@ Sand::Sand(QCanvas *canvas)
 
 bool Sand::collision(Ball *ball, long int /*id*/)
 {
-	//kdDebug() << "sand::collision\n";
 	QCanvasRectangle i(QRect(ball->x(), ball->y(), 1, 1), canvas());
 	i.setVisible(true);
 
@@ -1764,7 +1748,6 @@ bool Sand::collision(Ball *ball, long int /*id*/)
 			ball->setFrictionMultiplier(7);
 		else
 		{
-			//kdDebug() << "no magnitude\n";
 			ball->setVelocity(0, 0);
 			ball->setState(Stopped);
 			game->timeout();
@@ -2190,7 +2173,6 @@ void BlackHole::finishMe()
 		end.setX(midPoint.x());
 	}
 
-	//kdDebug() << "moving points to " << start.x() << ", " << start.y() << " and " << end.x() << ", " << end.y() << endl;
 	exitItem->setPoints(start.x(), start.y(), end.x(), end.y());
 	exitItem->setVisible(true);
 }
@@ -2411,136 +2393,57 @@ void WallPoint::editModeChanged(bool changed)
 
 bool WallPoint::collision(Ball *ball, long int id)
 {
-	// this and Wall::collision not ported to use vectors
-
-	//kdDebug() << "lastId is " << lastId << ", this id is " << id << endl;
-
 	if (ball->curVector().magnitude() <= 0)
 		return false;
 
 	if (abs(id - lastId) < 2)
 	{
-		//kdDebug() << "collisionIds too similiar\n";
 		lastId = id;
 		return false;
 	}
 
+	lastId = id;
 	playSound("wall");
 
-	const QPoint start = wall->startPoint();
-	const QPoint end = wall->endPoint();
+	bool weirdBounce = visible;
 
-	const double wallSlope = (double)(-(start.x() - end.x())) / (double)(end.y() - start.y());
+	QPoint relStart(start? wall->startPoint() : wall->endPoint());
+	QPoint relEnd(start? wall->endPoint() : wall->startPoint());
+	Vector wallVector(relStart, relEnd);
+	wallVector.setDirection(-wallVector.direction());
 
-	double vx = ball->xVelocity();
-	double vy = ball->yVelocity();
+	Vector ballVector(ball->curVector());
 
-	double wallAngle;
-	if (start.x() == end.x())
-		wallAngle = 0;
-	else
-		 wallAngle = atan(wallSlope);
-
-	const double ballSlope = -(double)vy/(double)vx;
-	double ballAngle = atan(ballSlope);
-	if (vx < 0)
-		ballAngle += M_PI;
-
-	//kdDebug() << "ballAngle: " << rad2deg(ballAngle) << endl;
-
-	//kdDebug() << "----\nstart: " << this->start << endl;
-	//kdDebug() << "ballAngle: " << rad2deg(ballAngle) << endl;
-	//kdDebug() << "wallAngle: " << rad2deg(wallAngle) << endl;
-
-	// visible just means if we should bounce opposite way
-	// let's dump visible it just makes it worse!
-	// actually, no
-	bool weirdbounce = visible;
-	//bool weirdbounce = true;
-
-	double relWallAngle = wallAngle + M_PI / 2;
-
-	// wierd neg. slope angle
-	if (relWallAngle > M_PI / 2)
+	// find the angle between vectors, between 0 and PI
 	{
-		//kdDebug() << "neg slope\n";
-		relWallAngle -= M_PI / 2;
-		relWallAngle = M_PI / 2 - relWallAngle;
-		relWallAngle *= -1;
+		double difference = fabs(wallVector.direction() - ballVector.direction());
+		while (difference > 2 * M_PI)
+			difference -= 2 * M_PI;
+
+		if (difference < 2 * M_PI / 3 || difference > 4 * M_PI / 3)
+			weirdBounce = false;
 	}
 
-	//kdDebug() << "wallAngle: " << rad2deg(wallAngle) << endl;
-	//kdDebug() << "relWallAngle: " << rad2deg(relWallAngle) << endl;
+	// find difference between wall vector and ball vector
 
-	// forget that we are using english, i switched
-	// start and end i think
-	// but it works
-	bool isStart = this->start;
-	if (start.x() <= end.x())
-		isStart = !isStart;
-
-	//const double angle = M_PI / 3;
-	const double angle = M_PI / 2;
-
-	// if it's going 'backwards', don't bounce opposite way
-	if (isStart)
+	if (weirdBounce)
 	{
-		//kdDebug() << "isStart true\n";
-		if (ballAngle > relWallAngle - angle && ballAngle < relWallAngle + angle)
-			weirdbounce = false;
+		ballVector /= wall->dampening;
+		const double ballAngle = ballVector.direction();
+
+		// opposite bounce, because we're the endpoint
+		const double wallAngle = wallVector.direction() + M_PI / 2;
+
+		const double collisionAngle = ballAngle - wallAngle;
+		const double leavingAngle = wallAngle - collisionAngle;
+
+		ballVector.setDirection(leavingAngle);
+		ball->setVector(ballVector);
 	}
 	else
-	{
-		//kdDebug() << "isStart false\n";
-		if (ballAngle > relWallAngle + angle || ballAngle < relWallAngle - angle)
-			weirdbounce = false;
-	}
+		wall->collision(ball, id);
 
-	//kdDebug() << "weirdbounce: " << weirdbounce << endl;
-
-	if (weirdbounce)
-	{
-		//kdDebug() << "weird col\n";
-		lastId = id;
-
-		const double dampening = wall->dampening;
-
-		if (start.y() == end.y())
-		{
-			//kdDebug() << "horizontal\n";
-			vx *= -1;
-			vy /= dampening;
-			vx /= dampening;
-		}
-		else if (start.x() == end.x())
-		{
-			//kdDebug() << "vertical\n";
-			vy *= -1;
-			vy /= dampening;
-			vx /= dampening;
-		}
-		else
-		{
-			const double speed = ball->curVector().magnitude() / dampening;
-
-			const double collisionAngle = ballAngle - wallAngle;
-			const double leavingAngle = M_PI - collisionAngle + wallAngle;
-
-			vx = -cos(leavingAngle)*speed;
-			vy = sin(leavingAngle)*speed;
-		}
-
-		//kdDebug() << "new velocities: vx = " << vx << ", vy = " << vy << endl;
-		//kdDebug() << "--------------\n";
-		ball->setVelocity(vx, vy);
-	}
-	else
-	{
-		//kdDebug() << "passing on to wall\n";
-		return wall->collision(ball, id);
-	}
-
-	return true;
+	return false;
 }
 
 /////////////////////////
@@ -2682,7 +2585,6 @@ QPointArray Wall::areaPoints() const
 
 void Wall::editModeChanged(bool changed)
 {
-	//kdDebug() << "Wall::editModeChanged\n";
 	editing = changed;
 
 	startItem->setZ(z() + 1);
@@ -2704,65 +2606,25 @@ void Wall::editModeChanged(bool changed)
 
 bool Wall::collision(Ball *ball, long int id)
 {
-	// this and WallPoint::collision not ported to use vectors
-
-	//kdDebug() << "lastId is " << lastId << ", this id is " << id << endl;
-
-	if (ball->curVector().magnitude() <= 0)
-		return false;
-
 	if (abs(id - lastId) < 2)
 	{
-		//kdDebug() << "collisionIds too similiar\n";
 		lastId = id;
 		return false;
 	}
 
+	lastId = id;
 	playSound("wall");
 
-	const QPoint start = startPoint();
-	const QPoint end = endPoint();
+	Vector ballVector(ball->curVector());
+	ballVector /= dampening;
+	const double ballAngle = ballVector.direction();
 
-	lastId = id;
+	const double wallAngle = -(Vector(startPoint(), endPoint())).direction();
+	const double collisionAngle = ballAngle - wallAngle;
+	const double leavingAngle = wallAngle - collisionAngle;
 
-	double vx = ball->xVelocity();
-	double vy = ball->yVelocity();
-
-	if (start.y() == end.y())
-		// horizontal
-	{
-		vy *= -1;
-		vy /= dampening;
-		vx /= dampening;
-	}
-	else if (start.x() == end.x())
-		// vertical
-	{
-		vx *= -1;
-		vy /= dampening;
-		vx /= dampening;
-	}
-	else
-	{
-		const double speed = (double)sqrt(vx * vx + vy * vy) / dampening;
-		const double ballSlope = -(double)vy / (double)vx;
-		const double wallSlope = (double)(start.y() - end.y()) / (double)(end.x() - start.x());
-		double ballAngle = atan(ballSlope);
-		if (vx < 0)
-			ballAngle += M_PI;
-		const double wallAngle = atan(wallSlope);
-
-		const double collisionAngle = ballAngle - wallAngle;
-		const double leavingAngle = M_PI - collisionAngle + wallAngle;
-
-		vx = -cos(leavingAngle)*speed;
-		vy = sin(leavingAngle)*speed;
-	}
-
-	//kdDebug() << "new velocities: vx = " << vx << ", vy = " << vy << endl;
-	//kdDebug() << "--------------\n";
-	ball->setVelocity(vx, vy);
-	ball->setState(Rolling);
+	ballVector.setDirection(leavingAngle);
+	ball->setVector(ballVector);
 
 	return false;
 }
@@ -3494,20 +3356,17 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 			if (!citem)
 				return;
 			QCanvasItem *item = dynamic_cast<QCanvasItem *>(citem);
-			if (citem)
+			if (citem && citem->deleteable())
 			{
-				if (citem->deleteable())
-				{
-					highlighter->setVisible(false);
-					items.removeRef(item);
-					citem->aboutToDelete();
-					citem->aboutToDie();
-					delete citem;
-					selectedItem = 0;
-					emit newSelectedItem(&holeInfo);
+				highlighter->setVisible(false);
+				items.removeRef(item);
+				citem->aboutToDelete();
+				citem->aboutToDie();
+				delete citem;
+				selectedItem = 0;
+				emit newSelectedItem(&holeInfo);
 
-					modified = true;
-				}
+				modified = true;
 			}
 		}
 	}
@@ -3574,7 +3433,6 @@ void KolfGame::timeout()
 			playSound("woohoo");
 
 		(*curPlayer).ball()->setZ((*curPlayer).ball()->z() + .1 - (.1)/(curScore));
-		//kdDebug() << "z now is " << (*curPlayer).ball()->z()<< endl;
 
 		if (allPlayersDone())
 		{
@@ -3800,7 +3658,6 @@ void KolfGame::recreateStateList()
 
 void KolfGame::undoShot()
 {
-	//kdDebug() << "KolfGame::undoShot()\n";
 	loadStateList();
 }
 
@@ -3821,9 +3678,7 @@ void KolfGame::loadStateList()
 	for (BallStateList::Iterator it = ballStateList.begin(); it != ballStateList.end(); ++it)
 	{
 		BallStateInfo info = (*it);
-		//kdDebug() << "on player " << info.id << endl;
 		Player &player = (*players->at(info.id - 1));
-		//kdDebug() << "move to: " << info.spot.x() << ", " << info.spot.y() << endl;
 		player.ball()->move(info.spot.x(), info.spot.y());
 		if ((*curPlayer).id() == info.id)
 			ballMoved();
@@ -3837,7 +3692,6 @@ void KolfGame::loadStateList()
 
 void KolfGame::shotDone()
 {
-	//kdDebug() << "game->shotDone\n";
 	inPlay = false;
 	emit inPlayEnd();
 	setFocus();
@@ -3900,7 +3754,6 @@ void KolfGame::shotDone()
 				ball->move(x, y);
 			}
 
-			//kdDebug() << "placing on " << p.x() << ", " << p.y() << endl;
 			ball->move(ball->x(), ball->y());
 
 			ball->setVisible(true);
@@ -4010,7 +3863,6 @@ void KolfGame::holeDone()
 
 	int oldCurHole = curHole;
 	curHole++;
-	//kdDebug() << "curHole ++'d to " << curHole << endl;
 
 	if (reset)
 	{
@@ -4027,7 +3879,6 @@ void KolfGame::holeDone()
 	{
 		if (curHole > 1)
 		{
-			//kdDebug() << "lastScore: " << (*it).lastScore() << ", leastScore: " << leastScore << endl;
 			if ((*it).lastScore() < leastScore && (*it).lastScore() != 0)
 			{
 				curPlayer = it;
@@ -4331,8 +4182,6 @@ void KolfGame::openFile()
 
 	unPause();
 
-	//kdDebug() << "openfile finishing; highestHole is " << highestHole << endl;
-
 	modified = false;
 }
 
@@ -4418,7 +4267,6 @@ void KolfGame::addNewHole()
 
 	addingNewHole = true;
 	curHole = highestHole;
-	//kdDebug() << "highestHole is " << highestHole << endl;
 	recalcHighestHole = true;
 	holeDone();
 	addingNewHole = false;

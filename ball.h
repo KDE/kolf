@@ -53,7 +53,7 @@ public:
 	void setBeginningOfHole(bool yes) { m_beginningOfHole = yes; }
 
 	Vector curVector() const { return m_vector; }
-	void setVector(Vector newVector);
+	void setVector(const Vector &newVector);
 
 	bool collisionLock() const { return m_collisionLock; }
 	void setCollisionLock(bool yes) { m_collisionLock = yes; }

@@ -1,27 +1,20 @@
 [0-course@-50,-50]
-author=Course Author
+author=Jason
 borderWalls=true
-name=Course Name
+name=Test
 
-[1-ball@131,290]
+[1-ball@277,239]
 dummykey=true
-
-[1-floater@57,168|3]
-botWallVisible=false
-endPoint=57,168
-height=40
-leftWallVisible=false
-rightWallVisible=false
-speed=11
-startPoint=126,207
-topWallVisible=false
-width=80
 
 [1-hole@-50,-50|0]
 borderWalls=true
-hasFinalLoad=true
-maxstrokes=10
+hasFinalLoad=false
+maxstrokes=4
 par=3
+
+[1-wall@0,0|3]
+endPoint=281,202
+startPoint=212,111
 
 [2-ball@200,200]
 dummykey=true
