@@ -59,7 +59,14 @@ public:
 	bool beginningOfHole;
 	int score;
 };
-typedef QValueList<BallStateInfo> BallStateList;
+class BallStateList : public QValueList<BallStateInfo>
+{
+public:
+	int hole;
+	int player;
+	bool canUndo;
+	Vector vector;
+};
 
 class Player
 {
@@ -908,6 +915,7 @@ public:
 	// returns whether it was a cancel
 	bool askSave(bool);
 	bool isEditing() const { return editing; }
+	void setStrict(bool yes) { strict = yes; }
 	// returns true when you shouldn't do anything
 	bool isPaused() const { return paused; }
 	Ball *curBall() const { return (*curPlayer).ball(); }
@@ -1044,6 +1052,8 @@ private:
 	bool recalcHighestHole;
 	void openFile();
 
+	bool strict;
+
 	bool editing;
 	QPoint storedMousePos;
 	bool moving;
@@ -1068,6 +1078,7 @@ private:
 	BallStateList ballStateList;
 	void loadStateList();
 	void recreateStateList();
+	void addHoleInfo(BallStateList &list);
 
 	bool dontAddStroke;
 
@@ -1080,7 +1091,8 @@ private:
 	KSimpleConfig *cfg;
 
 	inline void addBorderWall(QPoint start, QPoint end);
-	inline void shotStart();
+	void shotStart();
+	void startBall(const Vector &vector);
 
 	bool modified;
 

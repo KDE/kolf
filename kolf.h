@@ -82,6 +82,7 @@ private:
 	KAction *newHoleAction;
 	KAction *resetHoleAction;
 	KAction *undoShotAction;
+	//KAction *replayShotAction;
 	KAction *clearHoleAction;
 	KAction *tutorialAction;
 	KAction *newAction;

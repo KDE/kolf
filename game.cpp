@@ -2864,6 +2864,8 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	putting = false;
 	stroking = false;
 	editing = false;
+	strict = false;
+	ballStateList.canUndo = false;
 	fastAdvancedExist = false;
 	soundDir = locate("appdata", "sounds/");
 	dontAddStroke = false;
@@ -2889,8 +2891,8 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	height = 400;
 	grass = QColor("#35760D");
 
-	setFixedSize(width, height);
 	setFocusPolicy(QWidget::StrongFocus);
+	setFixedSize(width, height);
 
 	course = new QCanvas(this);
 	course->setBackgroundColor(white);
@@ -3437,7 +3439,10 @@ void KolfGame::timeout()
 		emit inPlayEnd();
 		emit playerHoled(&(*curPlayer));
 
-		int curScore = (*curPlayer).score(curHole) + 1;
+		int curScore = (*curPlayer).score(curHole);
+		if (!dontAddStroke)
+			curScore++;
+
 		if (curScore == 1)
 			playSound("holeinone");
 		else if (curScore <= holeInfo.par())
@@ -3665,11 +3670,14 @@ void KolfGame::recreateStateList()
 	ballStateList.clear();
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 		ballStateList.append((*it).stateInfo(curHole));
+	
+	ballStateList.canUndo = true;
 }
 
 void KolfGame::undoShot()
 {
-	loadStateList();
+	if (ballStateList.canUndo)
+		loadStateList();
 }
 
 void KolfGame::loadStateList()
@@ -3824,22 +3832,10 @@ void KolfGame::shotDone()
 	(*curPlayer).ball()->collisionDetect();
 }
 
-void KolfGame::shotStart()
+void KolfGame::startBall(const Vector &vector)
 {
 	emit inPlayStart();
-
-	// save state
-	recreateStateList();
-
-	putter->saveAngle((*curPlayer).ball());
-	strength /= 8;
-	if (!strength)
-		strength = 1;
 	putter->setVisible(false);
-
-	Vector vector;
-	vector.setMagnitude(strength);
-	vector.setDirection(putter->curAngle() + M_PI);
 
 	(*curPlayer).ball()->setState(Rolling);
 	(*curPlayer).ball()->setVector(vector);
@@ -3853,6 +3849,28 @@ void KolfGame::shotStart()
 	}
 
 	inPlay = true;
+}
+
+void KolfGame::shotStart()
+{
+	// save state
+	recreateStateList();
+
+	putter->saveAngle((*curPlayer).ball());
+	strength /= 8;
+	if (!strength)
+		strength = 1;
+
+	startBall(Vector(strength, putter->curAngle() + M_PI));
+
+	addHoleInfo(ballStateList);
+}
+
+void KolfGame::addHoleInfo(BallStateList &list)
+{
+	list.player = (*curPlayer).id();
+	list.vector = (*curPlayer).ball()->curVector();
+	list.hole = curHole;
 }
 
 void KolfGame::holeDone()
@@ -3957,7 +3975,7 @@ void KolfGame::holeDone()
 		showInfoPress();
 		QTimer::singleShot(1250, this, SLOT(showInfoRelease()));
 
-		recreateStateList();
+		ballStateList.canUndo = false;
 
 		(*curPlayer).ball()->collisionDetect();
 	}
@@ -4307,7 +4325,7 @@ void KolfGame::addNewHole()
 		if (curObj->addOnNewHole())
 			addNewObject(curObj);
 
-	modified = true;
+	save();
 }
 
 // kantan deshou ;-)

@@ -119,10 +119,11 @@ void Kolf::initGUI()
 
 	editingAction = new KToggleAction(i18n("&Edit"), "pencil", CTRL+Key_E, 0, 0, actionCollection(), "editing");
 	newHoleAction = new KAction(i18n("&New"), "filenew", CTRL+SHIFT+Key_N, 0, 0, actionCollection(), "newhole");
-	clearHoleAction = new KAction(i18n("&Clear"), "locationbar_erase", CTRL+Key_Delete, game, SLOT(clearHole()), actionCollection(), "clearhole");
+	clearHoleAction = new KAction(i18n("&Clear"), "locationbar_erase", CTRL+Key_Delete, 0, 0, actionCollection(), "clearhole");
 	resetHoleAction = new KAction(i18n("&Reset"), CTRL+Key_R, 0, 0, actionCollection(), "resethole");
 	undoShotAction = KStdAction::undo(0, 0, actionCollection(), "undoshot");
-	undoShotAction->setText(i18n("Undo Shot"));
+	undoShotAction->setText(i18n("&Undo Shot"));
+	//replayShotAction = new KAction(i18n("&Replay Shot"), 0, 0, 0, actionCollection(), "replay");
 
 	holeAction = new KListAction(i18n("Switch to Hole"), 0, 0, 0, actionCollection(), "switchhole");
 	nextAction = new KAction(i18n("&Next Hole"), "forward", KStdAccel::key(KStdAccel::Forward), 0, 0, actionCollection(), "nexthole");
@@ -228,6 +229,7 @@ void Kolf::startNewGame()
 	spacer = 0;
 	delete game;
 	game = new KolfGame(obj, &players, filename, dummy);
+	game->setStrict(competition);
 
 	connect(game, SIGNAL(newHole(int)), scoreboard, SLOT(newHole(int)));
 	connect(game, SIGNAL(scoreChanged(int, int, int)), scoreboard, SLOT(setScore(int, int, int)));
@@ -253,6 +255,7 @@ void Kolf::startNewGame()
 	connect(clearHoleAction, SIGNAL(activated()), game, SLOT(clearHole()));
 	connect(resetHoleAction, SIGNAL(activated()), game, SLOT(resetHole()));
 	connect(undoShotAction, SIGNAL(activated()), game, SLOT(undoShot()));
+	//connect(replayShotAction, SIGNAL(activated()), game, SLOT(replay()));
 	connect(aboutAction, SIGNAL(activated()), game, SLOT(showInfoDlg()));
 	connect(useMouseAction, SIGNAL(toggled(bool)), game, SLOT(setUseMouse(bool)));
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), game, SLOT(setUseAdvancedPutting(bool)));		
@@ -612,6 +615,7 @@ void Kolf::setHoleOtherEnabled(bool yes)
 
 	resetHoleAction->setEnabled(yes);
 	undoShotAction->setEnabled(yes);
+	//replayShotAction->setEnabled(yes);
 }
 
 void Kolf::setEditingEnabled(bool yes)
