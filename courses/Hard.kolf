@@ -4,6 +4,7 @@ Name[af]=hard natuurlik
 Name[bs]=Težak kurs
 Name[cs]=Těžký
 Name[da]=Svær bane
+Name[de]=Schwer
 Name[el]=Δύσκολη πίστα
 Name[es]=Curso duro
 Name[fi]=Vaikea kenttä
@@ -1082,6 +1083,7 @@ par=3
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
 Comment[da]=Lad svæverne <strong>skubbe</strong> dig!
+Comment[de]=Lass Dich von den Schwimmern <strong>schubsen</strong>.
 Comment[es]=Dejar que los flotadores te <strong>empujen</strong>
 Comment[fi]=Anna kelluvien <strong>painaa</strong> sinua!
 Comment[fr]=Laissez les flotteurs vous <strong>pousser</strong> !
