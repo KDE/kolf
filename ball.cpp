@@ -415,7 +415,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 					oldx, oldy, x(), y()
 				))
 			{
-				kdDebug() << "smart wall collision\n";
+				//kdDebug() << "smart wall collision\n";
 				wall->collision(this, collisionId);
 				break;
 			}
