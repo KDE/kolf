@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="Kolf" version="2">
+<kpartgui name="Kolf" version="3">
 	<MenuBar>
 		<Menu name="hole"><text>Ho&amp;le</text>
 			<Action name="editing" />
@@ -7,7 +7,7 @@
 			<Action name="newhole" />
 			<Action name="clearhole" />
 			<Separator />
-			<Action name="reloadhole" />
+			<Action name="resethole" />
 			<Action name="restarthole" />
 			<Separator />
 			<Action name="undoshot" />
