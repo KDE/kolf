@@ -61,7 +61,7 @@ PoolBallConfig::PoolBallConfig(PoolBall *poolBall, QWidget *parent)
 
 	layout->addStretch();
 
-	QLabel *num = new QLabel(i18n("Number"), this);
+	QLabel *num = new QLabel(i18n("Number:"), this);
 	layout->addWidget(num);
 	KIntNumInput *slider = new KIntNumInput(m_poolBall->number(), this);
 	slider->setRange(1, 15);
