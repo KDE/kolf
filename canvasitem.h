@@ -47,6 +47,10 @@ public:
 	 */
 	virtual bool loadLast() { return false; }
 	/**
+	 * called if the item is made by user while editing, with the item that was selected on the hole;
+	 */
+	virtual void selectedItem(QCanvasItem * /*item*/) {}
+	/**
 	 * called after the item is moved the very first time by the game
 	 */
 	virtual void firstMove(int /*x*/, int /*y*/) {}

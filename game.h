@@ -475,6 +475,7 @@ public:
 	virtual bool collision(Ball *ball, long int id);
 	virtual void save(KSimpleConfig *cfg);
 	virtual void load(KSimpleConfig *cfg);
+	virtual void selectedItem(QCanvasItem *item);
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
 	virtual void setVelocity(double vx, double vy);
