@@ -680,7 +680,55 @@ exitDeg=180
 maxspeed=5
 minspeed=3
 
-[15-cup@179,331|0]
+[15-bridge@129,134|62]
+botWallVisible=false
+height=20
+leftWallVisible=false
+rightWallVisible=false
+topWallVisible=false
+width=74
+
+[15-bridge@129,135|63]
+botWallVisible=false
+height=37
+leftWallVisible=false
+rightWallVisible=false
+topWallVisible=false
+width=16
+
+[15-bridge@161,134|59]
+botWallVisible=false
+height=46
+leftWallVisible=false
+rightWallVisible=false
+topWallVisible=false
+width=87
+
+[15-bridge@180,152|61]
+botWallVisible=false
+height=42
+leftWallVisible=false
+rightWallVisible=false
+topWallVisible=false
+width=34
+
+[15-bridge@202,120|60]
+botWallVisible=false
+height=45
+leftWallVisible=false
+rightWallVisible=false
+topWallVisible=false
+width=32
+
+[15-bridge@222,152|64]
+botWallVisible=false
+height=27
+leftWallVisible=false
+rightWallVisible=false
+topWallVisible=false
+width=44
+
+[15-cup@185,340|0]
 dummykey=true
 
 [15-hole@-50,-50|0]
@@ -689,11 +737,43 @@ hasFinalLoad=false
 maxstrokes=10
 par=3
 
+[15-slope@102,285|56]
+grade=5
+gradient=Opposite Diagonal
+height=25
+reversed=true
+stuckOnGround=false
+width=45
+
 [15-slope@105,251|47]
 grade=6
 gradient=Horizontal
 height=16
 reversed=false
+stuckOnGround=false
+width=27
+
+[15-slope@108,313|57]
+grade=4
+gradient=Opposite Diagonal
+height=55
+reversed=false
+stuckOnGround=false
+width=39
+
+[15-slope@132,215|58]
+grade=6
+gradient=Vertical
+height=20
+reversed=true
+stuckOnGround=false
+width=34
+
+[15-slope@145,308|53]
+grade=4
+gradient=Horizontal
+height=61
+reversed=true
 stuckOnGround=false
 width=27
 
@@ -705,6 +785,22 @@ reversed=true
 stuckOnGround=false
 width=118
 
+[15-slope@172,308|54]
+grade=4
+gradient=Vertical
+height=25
+reversed=true
+stuckOnGround=false
+width=28
+
+[15-slope@174,345|55]
+grade=4
+gradient=Vertical
+height=22
+reversed=false
+stuckOnGround=false
+width=27
+
 [15-slope@304,150|45]
 grade=4
 gradient=Horizontal
@@ -712,6 +808,30 @@ height=105
 reversed=false
 stuckOnGround=false
 width=59
+
+[15-slope@65,251|52]
+grade=4
+gradient=Opposite Diagonal
+height=60
+reversed=false
+stuckOnGround=false
+width=40
+
+[15-slope@81,207|51]
+grade=5
+gradient=Horizontal
+height=24
+reversed=false
+stuckOnGround=false
+width=30
+
+[15-slope@90,51|65]
+grade=4
+gradient=Diagonal
+height=51
+reversed=true
+stuckOnGround=false
+width=25
 
 [15-wall@0,0|10]
 endPoint=216,102
@@ -763,10 +883,10 @@ startPoint=130,184
 
 [15-wall@0,0|21]
 endPoint=130,184
-startPoint=130,252
+startPoint=130,239
 
 [15-wall@0,0|22]
-endPoint=130,252
+endPoint=123,252
 startPoint=86,252
 
 [15-wall@0,0|23]
@@ -862,12 +982,16 @@ endPoint=166,212
 startPoint=285,211
 
 [15-wall@0,0|49]
-endPoint=165,242
-startPoint=141,270
+endPoint=165,236
+startPoint=133,270
 
 [15-wall@0,0|5]
 endPoint=270,115
 startPoint=270,70
+
+[15-wall@0,0|50]
+endPoint=123,252
+startPoint=130,239
 
 [15-wall@0,0|6]
 endPoint=270,70
