@@ -222,6 +222,8 @@ void NewGameDialog::removeCourse()
 	names.remove(names.at(curItem));
 	externCourses.remove(names.at(curItem));
 	courseList->removeItem(curItem);
+
+	selectionChanged();
 }
 
 void NewGameDialog::selectionChanged()
