@@ -385,7 +385,7 @@ height=192
 width=186
 
 [12-slope@141,119|13]
-grade=1
+grade=3
 gradient=Vertical
 height=26
 reversed=false

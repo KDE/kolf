@@ -235,6 +235,11 @@ Slope::Slope(QRect rect, QCanvas *canvas)
 	setGradient("Vertical");
 }
 
+bool Slope::terrainCollisions()
+{
+	return type == KImageEffect::EllipticGradient;
+}
+
 void Slope::showInfo()
 {
 	Arrow *arrow = 0;
@@ -2226,7 +2231,7 @@ BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QCanvas *canvas)
 	arrow = new Arrow(canvas);
 	arrow->setPen(QPen(black, 1));
 	setZ(blackHole->z());
-	arrow->setZ(z());
+	arrow->setZ(z() - .00001);
 	updateArrowLength();
 	arrow->setVisible(false);
 }

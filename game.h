@@ -180,7 +180,7 @@ public:
 	virtual void save(KSimpleConfig *cfg);
 
 	virtual bool collision(Ball *ball, long int id);
-	virtual bool terrainCollisions() { return true; }
+	virtual bool terrainCollisions();
 
 	QMap<KImageEffect::GradientType, QString> gradientI18nKeys;
 	QMap<KImageEffect::GradientType, QString> gradientKeys;
