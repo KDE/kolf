@@ -701,7 +701,7 @@ class Sign : public Bridge
 {
 public:
 	Sign(QCanvas *canvas);
-	void setText(const QString &text) { m_text = text; update(); }
+	void setText(const QString &text);
 	QString text() const { return m_text; }
 	virtual void draw(QPainter &painter);
 	virtual bool vStrut() const { return false; }
@@ -711,6 +711,7 @@ public:
 
 protected:
 	QString m_text;
+	QString m_untranslatedText;
 };
 class SignObj : public Object
 {

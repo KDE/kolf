@@ -1404,7 +1404,7 @@ Sign::Sign(QCanvas *canvas)
 	: Bridge(QRect(0, 0, 110, 40), canvas)
 {
 	setZ(998.8);
-	m_text = i18n("New Text");
+	m_text = m_untranslatedText = i18n("New Text");
 	setBrush(QBrush(white));
 	setWallColor(black);
 	setWallZ(z() + .01);
@@ -1417,18 +1417,25 @@ Sign::Sign(QCanvas *canvas)
 
 void Sign::load(KConfig *cfg)
 {
-	// Comment so it gets translated
-	// text was the old name, we should keep bc
-	m_text = cfg->readEntry("Comment", cfg->readEntry("text", m_text));
+	m_text = cfg->readEntry("Comment", m_text);
+	m_untranslatedText = cfg->readEntryUntranslated("Comment", m_untranslatedText);
 
 	doLoad(cfg);
 }
 
 void Sign::save(KConfig *cfg)
 {
-	cfg->writeEntry("Comment", m_text);
+	cfg->writeEntry("Comment", m_untranslatedText);
 
 	doSave(cfg);
+}
+
+void Sign::setText(const QString &text)
+{
+	m_text = text;
+	m_untranslatedText = text;
+
+	update();
 }
 
 void Sign::draw(QPainter &painter)
@@ -4806,7 +4813,7 @@ void KolfGame::save()
 
 	cfg->setGroup("0-course@-50,-50");
 	cfg->writeEntry("author", holeInfo.author());
-	cfg->writeEntry("Name", holeInfo.name());
+	cfg->writeEntry("Name", holeInfo.untranslatedName());
 
 	// save hole info
 	cfg->setGroup(QString("%1-hole@-50,-50|0").arg(curHole));
