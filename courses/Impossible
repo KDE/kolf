@@ -1,6 +1,10 @@
 [0-course@-50,-50]
 Name=Impossible
+Name[af]=onmoontlik
+Name[da]=Umuligt
 Name[es]=Imposible
+Name[pt]=Impossível
+Name[pt_BR]=Impossível
 Name[sv]=Omöjlig bana
 author=Jason Katz-Brown
 
@@ -1507,6 +1511,21 @@ width=50
 
 [17-sign@23,152|20]
 Comment=Luck
+Comment[bs]=Sreća
+Comment[da]=Held
+Comment[el]=Τύχη
+Comment[es]=Suerte
+Comment[fi]=Onni
+Comment[fr]=Chance
+Comment[hu]=Szerencse
+Comment[ja]=運
+Comment[pt_BR]=Sorte
+Comment[sl]=Sreča
+Comment[sv]=Tur
+Comment[tr]=Şans
+Comment[ven]=Mashudu
+Comment[xh]=Ithamsanqa
+Comment[zu]=Inhlanhla
 botWallVisible=false
 height=51
 leftWallVisible=false
@@ -3273,6 +3292,21 @@ width=66
 
 [9-sign@146,329|23]
 Comment=Chaos
+Comment[bs]=Haos
+Comment[da]=Kaos
+Comment[el]=Χάος
+Comment[es]=Caos
+Comment[fi]=Kaaos
+Comment[hu]=Káosz
+Comment[ja]=カオス
+Comment[pt_BR]=Caos
+Comment[ru]=Хаос
+Comment[sl]=Kaos
+Comment[sv]=Kaos
+Comment[tr]=Karmaşa
+Comment[ven]=Thaidzo
+Comment[xh]=Ingxwaba ngxwaba
+Comment[zu]=Inyakanyaka
 botWallVisible=true
 height=38
 leftWallVisible=false
