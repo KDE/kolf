@@ -2121,14 +2121,6 @@ reversed=false
 stuckOnGround=false
 width=55
 
-[2-slope@11,10|49]
-grade=1
-gradient=Horizontal
-height=87
-reversed=true
-stuckOnGround=false
-width=142
-
 [2-slope@12,198|36]
 grade=3
 gradient=Vertical
@@ -2153,21 +2145,29 @@ reversed=false
 stuckOnGround=false
 width=70
 
-[2-slope@185,11|46]
+[2-slope@224,11|46]
 grade=1
 gradient=Vertical
-height=47
+height=48
 reversed=true
 stuckOnGround=false
-width=124
+width=92
 
-[2-slope@228,248|23]
+[2-slope@227,280|23]
 grade=3
 gradient=Horizontal
 height=59
 reversed=false
 stuckOnGround=true
 width=163
+
+[2-slope@232,244|48]
+grade=3
+gradient=Diagonal
+height=29
+reversed=true
+stuckOnGround=false
+width=135
 
 [2-slope@233,119|22]
 grade=6
@@ -2177,37 +2177,29 @@ reversed=true
 stuckOnGround=true
 width=153
 
-[2-slope@309,40|8]
-grade=4
+[2-slope@314,9|47]
+grade=1
 gradient=Diagonal
-height=30
+height=49
 reversed=true
 stuckOnGround=false
-width=30
+width=19
 
-[2-slope@310,13|47]
-grade=2
-gradient=Vertical
-height=28
-reversed=false
-stuckOnGround=false
-width=24
-
-[2-slope@338,12|16]
+[2-slope@334,13|16]
 grade=4
 gradient=Opposite Diagonal
-height=24
+height=31
 reversed=true
 stuckOnGround=false
-width=38
+width=52
 
-[2-slope@45,75|18]
+[2-slope@43,112|18]
 grade=8
 gradient=Opposite Diagonal
-height=125
+height=84
 reversed=false
 stuckOnGround=true
-width=75
+width=68
 
 [2-wall@0,0|10]
 endPoint=86,192

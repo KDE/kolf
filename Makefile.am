@@ -1,4 +1,4 @@
-SUBDIRS = sounds courses #pics
+SUBDIRS = sounds courses pics
 bin_PROGRAMS = kolf
 INCLUDES = $(all_includes)
 

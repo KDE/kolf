@@ -1703,7 +1703,7 @@ void Ball::collisionDetect()
 				// sorta hard
 				//kdDebug() << "gonna blow up\n";
 				Ball *oball = dynamic_cast<Ball *>(item);
-				if (oball->curState() != Stopped && oball->curState() != Holed)
+				if (/*oball->curState() != Stopped && */oball->curState() != Holed)
 					oball->setBlowUp(true);
 				continue;
 			}
