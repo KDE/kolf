@@ -443,13 +443,15 @@ public:
 
 signals:
 	void eject(Ball *ball, double speed);
+	void halfway();
 
 protected slots:
 	void mySlot();
+	void myMidSlot();
 
 private:
-	double speed;
-	Ball *ball;
+	double m_speed;
+	Ball *m_ball;
 };
 class BlackHole : public QObject, public Hole
 {
@@ -483,6 +485,7 @@ public:
 
 public slots:
 	void eject(Ball *ball, double speed);
+	void halfway();
 
 private:
 	int exitDeg;

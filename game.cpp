@@ -2183,16 +2183,21 @@ QPtrList<QCanvasItem> BlackHole::moveableItems() const
 }
 
 BlackHoleTimer::BlackHoleTimer(Ball *ball, double speed, int msec)
+	: m_speed(speed), m_ball(ball)
 {
-	this->ball = ball;
-	this->speed = speed;
 	QTimer::singleShot(msec, this, SLOT(mySlot()));
+	QTimer::singleShot(msec / 2, this, SLOT(myMidSlot()));
 }
 
 void BlackHoleTimer::mySlot()
 {
-	emit eject(ball, speed);
+	emit eject(m_ball, m_speed);
 	delete this;
+}
+
+void BlackHoleTimer::myMidSlot()
+{
+	emit halfway();
 }
 
 bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
@@ -2200,6 +2205,8 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 	// most number is 10
 	if (runs > 10 && game && game->isInPlay())
 		return false;
+
+	playSound("blackholeputin");
 
 	const double diff = (m_maxSpeed - m_minSpeed);
 	const double speed = m_minSpeed + ball->curVector().magnitude() * (diff / 3.75);
@@ -2209,9 +2216,11 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 	ball->setVisible(false);
 	ball->setForceStillGoing(true);
 	
-	BlackHoleTimer *timer = new BlackHoleTimer(ball, speed, Vector(QPoint(x(), y()), QPoint(exitItem->x(), exitItem->y())).magnitude() * 2.5 - speed * 35);
+	double magnitude = Vector(QPoint(x(), y()), QPoint(exitItem->x(), exitItem->y())).magnitude();
+	BlackHoleTimer *timer = new BlackHoleTimer(ball, speed, magnitude * 2.5 - speed * 35 + 500);
 
 	connect(timer, SIGNAL(eject(Ball *, double)), this, SLOT(eject(Ball *, double)));
+	connect(timer, SIGNAL(halfway()), this, SLOT(halfway()));
 
 	playSound("blackhole");
 	return false;
@@ -2219,17 +2228,31 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 
 void BlackHole::eject(Ball *ball, double speed)
 {
+	ball->move(exitItem->x(), exitItem->y());
+
 	Vector v;
-	v.setMagnitude(speed);
+	v.setMagnitude(10);
 	v.setDirection(deg2rad(exitDeg));
+	ball->setVector(v);
+
+	// advance ball 10
+	ball->doAdvance();
+
+	v.setMagnitude(speed);
+	ball->setVector(v);
 
 	ball->setForceStillGoing(false);
-	ball->move(exitItem->x(), exitItem->y());
 	ball->setVisible(true);
-	ball->setVector(v);
 	ball->setState(Rolling);
 
 	runs++;
+
+	playSound("blackholeeject");
+}
+
+void BlackHole::halfway()
+{
+	playSound("blackhole");
 }
 
 void BlackHole::load(KConfig *cfg)
@@ -3625,9 +3648,15 @@ void KolfGame::timeout()
 			curScore++;
 
 		if (curScore == 1)
+		{
 			playSound("holeinone");
+		}
 		else if (curScore <= holeInfo.par())
-			playSound("woohoo");
+		{
+			// I don't have a sound!!
+			// *sob*
+			// playSound("woohoo");
+		}
 
 		(*curPlayer).ball()->setZ((*curPlayer).ball()->z() + .1 - (.1)/(curScore));
 
@@ -4041,6 +4070,8 @@ void KolfGame::shotDone()
 
 void KolfGame::startBall(const Vector &vector)
 {
+	playSound("hit");
+
 	emit inPlayStart();
 	putter->setVisible(false);
 
@@ -4880,8 +4911,9 @@ void KolfGame::playSound(QString file, double vol)
 
 		file = soundDir + file + QString::fromLatin1(".wav");
 
-		if (!QFile::exists(file))
-			return;
+		// not needed when all of the files are in the distribution
+		//if (!QFile::exists(file))
+			//return;
 
 		KPlayObjectFactory factory(artsServer.server());
 		KPlayObject *playObject = factory.createPlayObject(KURL(file), true);
