@@ -34,44 +34,6 @@
 #include "newgame.h"
 #include "game.h"
 
-ColorButton::ColorButton(QColor color, QWidget *parent, const char *name)
-	: KColorButton(color, parent, name)
-{
-	mouseOver = false;
-}
-
-void ColorButton::enterEvent(QEvent *)
-{
-	mouseOver = true;
-	update();
-}
-
-void ColorButton::leaveEvent(QEvent *)
-{
-	mouseOver = false;
-	update();
-}
-
-void ColorButton::drawButton(QPainter *painter)
-{
-	painter->setPen(QPen(isDown() ? green.dark(240) : green.dark(), 3));
-	if (mouseOver)
-		painter->drawRoundRect(QRect(0, 0, width(), height()));
-	drawButtonLabel(painter);
-}
-
-void ColorButton::drawButtonLabel(QPainter *painter)
-{
-	QColor fillCol = isDown()? color().dark(130) : color();
-
-	painter->setBrush(fillCol);
-	painter->setPen(NoPen);
-	const int w = 16;
-	painter->drawEllipse(width() / 2 - w / 2, height() / 2 - w / 2, w, w);
-}
-
-/////////////////////////
-
 NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_name)
 	: KDialogBase(KDialogBase::TreeList, i18n("New Game"), Ok | Cancel, Ok, parent, _name)
 {
@@ -355,7 +317,7 @@ PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent
 	editor->setFrame(false);
 	editor->setText(startName);
 	layout->addStretch();
-	layout->addWidget(colorButton = new ColorButton(startColor, this));
+	layout->addWidget(colorButton = new KColorButton(startColor, this));
 	colorButton->setBackgroundPixmap(grass);
 
 	KPushButton *remove = new KPushButton(i18n("Remove"), this);

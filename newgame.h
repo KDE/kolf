@@ -24,23 +24,6 @@ class QPainter;
 class KListBox;
 class QEvent;
 
-class ColorButton : public KColorButton
-{
-	Q_OBJECT
-
-public:
-	ColorButton(QColor color, QWidget *parent, const char *name = 0L);
-
-protected:
-	virtual void drawButtonLabel(QPainter *painter);
-	virtual void drawButton(QPainter *painter);
-	virtual void enterEvent(QEvent *);
-	virtual void leaveEvent(QEvent *);
-
-private:
-	bool mouseOver;
-};
-
 class PlayerEditor : public QWidget
 {
 	Q_OBJECT
