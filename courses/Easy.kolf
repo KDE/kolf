@@ -1292,7 +1292,7 @@ maxstrokes=10
 par=3
 
 [18-slope@-183,-169|5]
-grade=3
+grade=2
 gradient=Elliptic
 height=400
 reversed=false
@@ -1306,6 +1306,22 @@ height=91
 reversed=false
 stuckOnGround=false
 width=163
+
+[18-slope@4,10|8]
+grade=2
+gradient=Elliptic
+height=125
+reversed=true
+stuckOnGround=false
+width=125
+
+[18-slope@5,12|9]
+grade=1
+gradient=Elliptic
+height=123
+reversed=true
+stuckOnGround=false
+width=123
 
 [18-wall@0,0|4]
 endPoint=174,277

@@ -648,6 +648,14 @@ reversed=true
 stuckOnGround=false
 width=23
 
+[11-slope@343,53|44]
+grade=3
+gradient=Diagonal
+height=40
+reversed=true
+stuckOnGround=false
+width=40
+
 [11-slope@61,13|30]
 grade=2
 gradient=Vertical
@@ -2269,55 +2277,7 @@ minspeed=1
 exit=306,84
 exitDeg=244
 maxspeed=3
-minspeed=3
-
-[2-bridge@219,214|61]
-botWallVisible=false
-height=34
-leftWallVisible=false
-rightWallVisible=false
-topWallVisible=false
-width=26
-
-[2-bridge@230,192|60]
-botWallVisible=false
-height=35
-leftWallVisible=false
-rightWallVisible=false
-topWallVisible=false
-width=28
-
-[2-bridge@241,165|27]
-botWallVisible=false
-height=45
-leftWallVisible=false
-rightWallVisible=false
-topWallVisible=false
-width=27
-
-[2-bridge@253,134|26]
-botWallVisible=false
-height=49
-leftWallVisible=false
-rightWallVisible=false
-topWallVisible=false
-width=30
-
-[2-bridge@267,108|25]
-botWallVisible=false
-height=47
-leftWallVisible=false
-rightWallVisible=false
-topWallVisible=false
-width=30
-
-[2-bridge@278,82|61]
-botWallVisible=false
-height=42
-leftWallVisible=false
-rightWallVisible=false
-topWallVisible=false
-width=31
+minspeed=2
 
 [2-cup@23,188|21]
 dummykey=true
@@ -2391,7 +2351,6 @@ grade=4
 gradient=Diagonal
 height=21
 reversed=true
-reversedShape=false
 stuckOnGround=false
 width=43
 
@@ -2400,7 +2359,6 @@ grade=3
 gradient=Vertical
 height=44
 reversed=false
-reversedShape=false
 stuckOnGround=true
 width=35
 
@@ -2409,7 +2367,6 @@ grade=4
 gradient=Horizontal
 height=22
 reversed=true
-reversedShape=false
 stuckOnGround=false
 width=42
 
@@ -2418,7 +2375,6 @@ grade=4
 gradient=Opposite Diagonal
 height=40
 reversed=false
-reversedShape=false
 stuckOnGround=false
 width=42
 
@@ -2427,7 +2383,6 @@ grade=3
 gradient=Diagonal
 height=30
 reversed=false
-reversedShape=false
 stuckOnGround=false
 width=47
 
@@ -2436,7 +2391,6 @@ grade=3
 gradient=Opposite Diagonal
 height=127
 reversed=true
-reversedShape=false
 stuckOnGround=false
 width=43
 
@@ -2445,7 +2399,6 @@ grade=2
 gradient=Opposite Diagonal
 height=39
 reversed=true
-reversedShape=false
 stuckOnGround=false
 width=20
 
@@ -2454,7 +2407,6 @@ grade=2
 gradient=Vertical
 height=48
 reversed=true
-reversedShape=false
 stuckOnGround=false
 width=92
 
@@ -2463,7 +2415,6 @@ grade=3
 gradient=Vertical
 height=126
 reversed=true
-reversedShape=false
 stuckOnGround=true
 width=153
 
@@ -2472,7 +2423,6 @@ grade=3
 gradient=Horizontal
 height=144
 reversed=false
-reversedShape=false
 stuckOnGround=true
 width=154
 
@@ -2481,7 +2431,6 @@ grade=3
 gradient=Diagonal
 height=29
 reversed=true
-reversedShape=false
 stuckOnGround=false
 width=135
 
@@ -2490,7 +2439,6 @@ grade=3
 gradient=Vertical
 height=31
 reversed=false
-reversedShape=false
 stuckOnGround=false
 width=153
 
@@ -2499,7 +2447,6 @@ grade=2
 gradient=Diagonal
 height=49
 reversed=true
-reversedShape=false
 stuckOnGround=false
 width=19
 
@@ -2508,7 +2455,6 @@ grade=4
 gradient=Opposite Diagonal
 height=31
 reversed=true
-reversedShape=false
 stuckOnGround=false
 width=52
 
@@ -2517,7 +2463,6 @@ grade=8
 gradient=Opposite Diagonal
 height=84
 reversed=false
-reversedShape=false
 stuckOnGround=true
 width=68
 
@@ -2526,7 +2471,6 @@ grade=4
 gradient=Elliptic
 height=33
 reversed=true
-reversedShape=false
 stuckOnGround=true
 width=33
 
@@ -2535,16 +2479,16 @@ endPoint=86,192
 startPoint=54,196
 
 [2-wall@0,0|11]
-endPoint=31,174
+endPoint=32,173
 startPoint=54,196
 
 [2-wall@0,0|12]
 endPoint=11,167
-startPoint=32,173
+startPoint=31,174
 
 [2-wall@0,0|13]
 endPoint=48,144
-startPoint=31,174
+startPoint=32,173
 
 [2-wall@0,0|14]
 endPoint=28,113
@@ -2580,15 +2524,15 @@ startPoint=89,115
 
 [2-wall@0,0|54]
 endPoint=131,11
-startPoint=170,36
+startPoint=171,36
 
 [2-wall@0,0|55]
 endPoint=172,66
-startPoint=171,36
+startPoint=170,36
 
 [2-wall@0,0|56]
 endPoint=198,44
-startPoint=170,36
+startPoint=171,36
 
 [2-wall@0,0|60]
 endPoint=48,144
@@ -4155,6 +4099,14 @@ reversed=true
 stuckOnGround=false
 width=499
 
+[9-slope@38,337|28]
+grade=5
+gradient=Diagonal
+height=10
+reversed=true
+stuckOnGround=false
+width=8
+
 [9-slope@93,148|27]
 grade=4
 gradient=Elliptic
@@ -4208,5 +4160,5 @@ endPoint=110,269
 startPoint=78,282
 
 [9-wall@0,0|28]
-endPoint=96,348
+endPoint=93,345
 startPoint=61,369

@@ -318,65 +318,65 @@ void Kolf::closeGame()
 
 void Kolf::gameOver()
 {
-	if (!competition)
-		return;
-
-	int lowScore = INT_MAX; // let's hope it doesn't stay this way!
-	int curScore = 1;
-	QStringList names;
-	HighScoreList highScores;
-	int i = 1;
-	HighScore topScore;
-
-	while (curScore != 0)
+	if (competition)
 	{
-		QString curName;
-		curScore = scoreboard->total(i, curName);
+		int lowScore = INT_MAX; // let's hope it doesn't stay this way!
+		int curScore = 1;
+		QStringList names;
+		HighScoreList highScores;
+		int i = 1;
+		HighScore topScore;
 
-		i++;
-
-		if (curName == i18n("Par") || curScore == 0)
-			continue;
-
-		if (curScore < lowScore)
+		while (curScore != 0)
 		{
-			names.clear();
-			lowScore = curScore;
-			names.append(curName);
-			topScore.name = curName;
-			topScore.score = curScore;
+			QString curName;
+			curScore = scoreboard->total(i, curName);
+
+			i++;
+
+			if (curName == i18n("Par") || curScore == 0)
+				continue;
+
+			if (curScore < lowScore)
+			{
+				names.clear();
+				lowScore = curScore;
+				names.append(curName);
+				topScore.name = curName;
+				topScore.score = curScore;
+			}
+			else if (curScore == lowScore)
+				names.append(curName);
+			else
+				highScores.append(HighScore(curName, curScore));
 		}
-		else if (curScore == lowScore)
-			names.append(curName);
+		highScores.append(topScore);
+
+		if (names.count() > 1)
+		{
+			QString winners = names.join(i18n(" and "));
+			statusBar()->message(i18n("%1 tied").arg(winners));
+		}
 		else
-			highScores.append(HighScore(curName, curScore));
+			statusBar()->message(i18n("%1 won!").arg(names.first()));
+
+		// deal with highscores
+		// KScoreDialog makes it very easy :-))
+
+		KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Score, this);
+		scoreDialog->setConfigGroup(game->courseName() + QString(" Highscores"));
+
+		for (HighScoreList::Iterator it = highScores.begin(); it != highScores.end(); ++it)
+		{
+			KScoreDialog::FieldInfo info;
+			info[KScoreDialog::Name] = (*it).name;
+
+			scoreDialog->addScore((*it).score, info, false, true);
+		}
+
+		scoreDialog->setComment(i18n("High Scores for Course %1").arg(game->courseName()));
+		scoreDialog->show();
 	}
-	highScores.append(topScore);
-
-	if (names.count() > 1)
-	{
-		QString winners = names.join(i18n(" and "));
-		statusBar()->message(i18n("%1 tied").arg(winners));
-	}
-	else
-		statusBar()->message(i18n("%1 won!").arg(names.first()));
-
-	// deal with highscores
-	// KScoreDialog makes it very easy :-))
-
-	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Score, this);
-	scoreDialog->setConfigGroup(game->courseName() + QString(" Highscores"));
-
-	for (HighScoreList::Iterator it = highScores.begin(); it != highScores.end(); ++it)
-	{
-		KScoreDialog::FieldInfo info;
-		info[KScoreDialog::Name] = (*it).name;
-
-		scoreDialog->addScore((*it).score, info, false, true);
-	}
-
-	scoreDialog->setComment(i18n("High Scores for Course %1").arg(game->courseName()));
-	scoreDialog->show();
 
 	QTimer::singleShot(700, this, SLOT(closeGame()));
 }

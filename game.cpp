@@ -1666,6 +1666,9 @@ bool Puddle::collision(Ball *ball, long int /*id*/)
 			ball->setVisible(false);
 			ball->setState(Stopped);
 			ball->setVelocity(0, 0);
+			if (game)
+				if (game->curBall() == ball)
+					game->stoppedBall();
 		}
 	}
 
@@ -1999,7 +2002,7 @@ bool Cup::place(Ball *ball, bool /*wasCenter*/)
 	ball->setVelocity(0, 0);
 	if (game)
 		if (game->curBall() == ball)
-			game->setInPlay(true);
+			game->stoppedBall();
 	return true;
 }
 
@@ -2615,11 +2618,13 @@ bool Wall::collision(Ball *ball, long int id)
 		return false;
 	}
 
+/*
 	if (ball->curVector().magnitude() < .05)
 	{
 		ball->setVelocity(0, 0);
 		return false;
 	}
+*/
 
 	playSound("wall");
 
@@ -2892,6 +2897,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	editing = false;
 	fastAdvancedExist = false;
 	soundDir = locate("appdata", "sounds/");
+	dontAddStroke = false;
 	addingNewHole = false;
 	scoreboardHoles = 0;
 	infoShown = false;
@@ -3449,6 +3455,15 @@ void KolfGame::puttRelease()
 	}
 }
 
+void KolfGame::stoppedBall()
+{
+	if (!inPlay)
+	{
+		inPlay = true;
+		dontAddStroke = true;
+	}
+}
+
 void KolfGame::timeout()
 {
 	Ball *curBall = (*curPlayer).ball();
@@ -3468,14 +3483,8 @@ void KolfGame::timeout()
 	}
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-	{
 		if ((*it).ball()->curState() == Rolling && (*it).ball()->curVector().magnitude() > 0 && (*it).ball()->isVisible())
-		{
-			//kdDebug() << "ball " << (*it).name() << " still going\n";
-			//kdDebug() << "velocities: " << (*it).ball()->xVelocity() << ", " << (*it).ball()->yVelocity() << endl;
 			return;
-		}
-	}
 
 	int curState = curBall->curState();
 	if (curState == Stopped && inPlay)
@@ -3766,8 +3775,11 @@ void KolfGame::shotDone()
 
 	Ball *ball = (*curPlayer).ball();
 
-	if ((*curPlayer).numHoles())
-		(*curPlayer).addStrokeToHole(curHole);
+	if (!dontAddStroke)
+		if ((*curPlayer).numHoles())
+			(*curPlayer).addStrokeToHole(curHole);
+
+	dontAddStroke = false;
 
 	// do hack stuff, shouldn't be done here
 
@@ -3920,6 +3932,8 @@ void KolfGame::holeDone()
 	}
 	else
 		modified = false;
+
+	dontAddStroke = false;
 
 	inPlay = false;
 	timer->stop();
@@ -4167,7 +4181,7 @@ void KolfGame::openFile()
 	}
 
 	// if it's the first hole let's not
-	if (!numItems && curHole > 1 && !addingNewHole && !(curHole < _highestHole))
+	if (!numItems && curHole > 1 && !addingNewHole && curHole >= _highestHole)
 	{
 		// we're done, let's quit
 		curHole--;

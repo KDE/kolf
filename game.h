@@ -874,6 +874,7 @@ public:
 	QCanvasItem *curSelectedItem() { return selectedItem; }
 	void setBorderWalls(bool);
 	void setInPlay(bool yes) { inPlay = yes; }
+	void stoppedBall();
 	QString courseName() { return holeInfo.name(); }
 
 	static void courseInfo(CourseInfo &info, const QString &filename);
@@ -1019,6 +1020,8 @@ private:
 	BallStateList ballStateList;
 	void loadStateList();
 	void recreateStateList();
+
+	bool dontAddStroke;
 
 	bool addingNewHole;
 	int scoreboardHoles;
