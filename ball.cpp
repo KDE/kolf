@@ -27,6 +27,7 @@ Ball::Ball(QCanvas *canvas)
 	collisionId = 0;
 	m_addStroke = false;
 	m_placeOnGround = false;
+	m_forceStillGoing = false;
 	frictionMultiplier = 1.0;
 
 	// this sets z

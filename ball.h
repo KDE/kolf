@@ -52,6 +52,9 @@ public:
 	bool beginningOfHole() const { return m_beginningOfHole; }
 	void setBeginningOfHole(bool yes) { m_beginningOfHole = yes; }
 
+	bool forceStillGoing() const { return m_forceStillGoing; }
+	void setForceStillGoing(bool yes) { m_forceStillGoing = yes; }
+
 	Vector curVector() const { return m_vector; }
 	void setVector(const Vector &newVector);
 
@@ -77,6 +80,7 @@ private:
 
 	bool m_moved;
 	bool m_beginningOfHole;
+	bool m_forceStillGoing;
 
 	Vector m_vector;
 	Vector oldVector;

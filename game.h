@@ -407,8 +407,8 @@ public:
 
 private slots:
 	void degChanged(int);
-	void minChanged(int);
-	void maxChanged(int);
+	void minChanged(double);
+	void maxChanged(double);
 
 private:
 	BlackHole *blackHole;
@@ -434,8 +434,27 @@ public:
 private:
 	Arrow *arrow;
 };
-class BlackHole : public Hole
+class BlackHoleTimer : public QObject
 {
+Q_OBJECT
+
+public:
+	BlackHoleTimer(Ball *ball, double speed, int msec);
+
+signals:
+	void eject(Ball *ball, double speed);
+
+protected slots:
+	void mySlot();
+
+private:
+	double speed;
+	Ball *ball;
+};
+class BlackHole : public QObject, public Hole
+{
+Q_OBJECT
+
 public:
 	BlackHole(QCanvas *canvas);
 	virtual bool canBeMovedByOthers() const { return true; }
@@ -447,10 +466,10 @@ public:
 	virtual void load(KConfig *cfg);
 	virtual Config *config(QWidget *parent) { return new BlackHoleConfig(this, parent); }
 	virtual QPtrList<QCanvasItem> moveableItems() const;
-	int minSpeed() const { return m_minSpeed; }
-	int maxSpeed() const { return m_maxSpeed; }
-	void setMinSpeed(int news) { m_minSpeed = news; exitItem->updateArrowLength(); }
-	void setMaxSpeed(int news) { m_maxSpeed = news; exitItem->updateArrowLength(); }
+	double minSpeed() const { return m_minSpeed; }
+	double maxSpeed() const { return m_maxSpeed; }
+	void setMinSpeed(double news) { m_minSpeed = news; exitItem->updateArrowLength(); }
+	void setMaxSpeed(double news) { m_maxSpeed = news; exitItem->updateArrowLength(); }
 
 	int curExitDeg() const { return exitDeg; }
 	void setExitDeg(int newdeg);
@@ -462,6 +481,9 @@ public:
 
 	virtual void moveBy(double dx, double dy);
 
+public slots:
+	void eject(Ball *ball, double speed);
+
 private:
 	int exitDeg;
 	BlackHoleExit *exitItem;
@@ -469,8 +491,8 @@ private:
 	QCanvasLine *infoLine;
 
 	void finishMe();
-	int m_minSpeed;
-	int m_maxSpeed;
+	double m_minSpeed;
+	double m_maxSpeed;
 
 	int runs;
 };

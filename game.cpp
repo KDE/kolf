@@ -2083,8 +2083,8 @@ BlackHole::BlackHole(QCanvas *canvas)
 	: Hole(black, canvas), exitDeg(0)
 {
 	infoLine = 0;
-	m_minSpeed = 3;
-	m_maxSpeed = 5;
+	m_minSpeed = 3.0;
+	m_maxSpeed = 5.0;
 	runs = 0;
 
 	const QColor myColor((QRgb)(kapp->random() % 0x01000000));
@@ -2172,26 +2172,54 @@ QPtrList<QCanvasItem> BlackHole::moveableItems() const
 	return ret;
 }
 
+BlackHoleTimer::BlackHoleTimer(Ball *ball, double speed, int msec)
+{
+	this->ball = ball;
+	this->speed = speed;
+	QTimer::singleShot(msec, this, SLOT(mySlot()));
+}
+
+void BlackHoleTimer::mySlot()
+{
+	emit eject(ball, speed);
+	delete this;
+}
+
 bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 {
 	// most number is 10
 	if (runs > 10 && game && game->isInPlay())
 		return false;
 
-	playSound("blackhole");
-
 	const double diff = (m_maxSpeed - m_minSpeed);
+	const double speed = m_minSpeed + ball->curVector().magnitude() * (diff / 3.75);
+
+	ball->setVelocity(0, 0);
+	ball->setState(Stopped);
+	ball->setVisible(false);
+	ball->setForceStillGoing(true);
+	
+	BlackHoleTimer *timer = new BlackHoleTimer(ball, speed, Vector(QPoint(x(), y()), QPoint(exitItem->x(), exitItem->y())).magnitude() * 2.5 - speed * 35);
+
+	connect(timer, SIGNAL(eject(Ball *, double)), this, SLOT(eject(Ball *, double)));
+
+	playSound("blackhole");
+	return false;
+}
+
+void BlackHole::eject(Ball *ball, double speed)
+{
 	Vector v;
-	v.setMagnitude(m_minSpeed + ball->curVector().magnitude() * (diff / 3.75));
+	v.setMagnitude(speed);
 	v.setDirection(deg2rad(exitDeg));
 
+	ball->setForceStillGoing(false);
 	ball->move(exitItem->x(), exitItem->y());
+	ball->setVisible(true);
 	ball->setVector(v);
 	ball->setState(Rolling);
 
 	runs++;
-
-	return false;
 }
 
 void BlackHole::load(KConfig *cfg)
@@ -2200,8 +2228,8 @@ void BlackHole::load(KConfig *cfg)
 	exitItem->setX(exit.x());
 	exitItem->setY(exit.y());
 	exitDeg = cfg->readNumEntry("exitDeg", exitDeg);
-	m_minSpeed = cfg->readNumEntry("minspeed", m_minSpeed);
-	m_maxSpeed = cfg->readNumEntry("maxspeed", m_maxSpeed);
+	m_minSpeed = cfg->readDoubleNumEntry("minspeed", m_minSpeed);
+	m_maxSpeed = cfg->readDoubleNumEntry("maxspeed", m_maxSpeed);
 	exitItem->updateArrowAngle();
 	exitItem->updateArrowLength();
 
@@ -2330,16 +2358,18 @@ BlackHoleConfig::BlackHoleConfig(BlackHole *blackHole, QWidget *parent)
 
 	QHBoxLayout *hlayout = new QHBoxLayout(layout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Minimum exit speed"), this));
-	QSpinBox *min = new QSpinBox(0, 8, 1, this);
+	KDoubleNumInput *min = new KDoubleNumInput(this);
+	min->setRange(0, 8, 1, true);
 	hlayout->addWidget(min);
-	connect(min, SIGNAL(valueChanged(int)), this, SLOT(minChanged(int)));
+	connect(min, SIGNAL(valueChanged(double)), this, SLOT(minChanged(double)));
 	min->setValue(blackHole->minSpeed());
 
 	hlayout = new QHBoxLayout(layout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Maximum"), this));
-	QSpinBox *max = new QSpinBox(1, 10, 1, this);
+	KDoubleNumInput *max = new KDoubleNumInput(this);
+	max->setRange(1, 10, 1, true);
 	hlayout->addWidget(max);
-	connect(max, SIGNAL(valueChanged(int)), this, SLOT(maxChanged(int)));
+	connect(max, SIGNAL(valueChanged(double)), this, SLOT(maxChanged(double)));
 	max->setValue(blackHole->maxSpeed());
 }
 
@@ -2349,13 +2379,13 @@ void BlackHoleConfig::degChanged(int newdeg)
 	changed();
 }
 
-void BlackHoleConfig::minChanged(int news)
+void BlackHoleConfig::minChanged(double news)
 {
 	blackHole->setMinSpeed(news);
 	changed();
 }
 
-void BlackHoleConfig::maxChanged(int news)
+void BlackHoleConfig::maxChanged(double news)
 {
 	blackHole->setMaxSpeed(news);
 	changed();
@@ -3555,7 +3585,7 @@ void KolfGame::timeout()
 	}
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-		if ((*it).ball()->curState() == Rolling && (*it).ball()->curVector().magnitude() > 0 && (*it).ball()->isVisible())
+		if ((*it).ball()->forceStillGoing() || ((*it).ball()->curState() == Rolling && (*it).ball()->curVector().magnitude() > 0 && (*it).ball()->isVisible()))
 			return;
 
 	int curState = curBall->curState();
