@@ -1,5 +1,23 @@
 [0-course@-50,-50]
 Name=Classic
+Name[af]=klasieke
+Name[bs]=Klasični
+Name[cs]=Klasický
+Name[da]=Klassisk
+Name[el]=Κλασσικό
+Name[es]=Clásico
+Name[fi]=Klassinen
+Name[fr]=Classique
+Name[he]=קלאסי
+Name[hu]=Klasszikus
+Name[ja]=クラッシック
+Name[pt]=Clássico
+Name[pt_BR]=Clássico
+Name[sl]=Klasična
+Name[sv]=Klassisk
+Name[tr]=Klasik
+Name[xh]=Yeyakudala
+Name[zu]=Okuhle kakhulu
 author=Niklas Knutsson
 name=Classic
 

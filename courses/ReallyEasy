@@ -1,5 +1,22 @@
 [0-course@-50,-50]
 Name=Really Easy
+Name[af]=rerig maklike
+Name[bs]=Stvarno lagano
+Name[da]=Meget nem
+Name[el]=Πραγματικά εύκολο
+Name[es]=Realmente fácil
+Name[fi]=Todella helppo
+Name[fr]=Vraiment facile
+Name[hu]=Nagyon könnyű
+Name[ja]=ホントにカンタン
+Name[pt]=Realmente Fácil
+Name[pt_BR]=Realmente fácil
+Name[sl]=Zelo lahka
+Name[sv]=Mycket enkel
+Name[tr]=Çok Kolay
+Name[ven]=Zwi leluwanga Maanda
+Name[xh]=Ilula kakhulu
+Name[zu]=Kulula kakhulu
 author=Neil Stevens
 name=Really Easy
 
