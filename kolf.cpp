@@ -45,7 +45,7 @@
 #include "kolf.h"
 
 Kolf::Kolf()
-    : KMainWindow(0)
+    : KMainWindow(0, "Kolf")
 {
 	game = 0;
 	editor = 0;
@@ -72,6 +72,9 @@ Kolf::Kolf()
 	config->setGroup("App");
 	if (!config->readBoolEntry("beenRun", false))
 	{
+		// this isn't very kde-compliant, and now
+		// that there is documentation...
+		/*
 		switch (KMessageBox::questionYesNo(this, i18n("Since it's your first time playing Kolf, would you like to play on the tutorial course once?")))
 		{
 			case KMessageBox::Yes:
@@ -81,6 +84,7 @@ Kolf::Kolf()
 			default:
 				break;
 		}
+		*/
 		config->writeEntry("beenRun", true);
 	}
 
@@ -118,46 +122,45 @@ void Kolf::initGUI()
 
 	highScoreAction = KStdGameAction::highscores(this, SLOT(showHighScores()), actionCollection());
 
-	editingAction = new KToggleAction(i18n("&Edit"), "pencil", CTRL+Key_E, 0, 0, actionCollection(), "editing");
-	newHoleAction = new KAction(i18n("&New"), "filenew", CTRL+SHIFT+Key_N, 0, 0, actionCollection(), "newhole");
-	clearHoleAction = new KAction(i18n("&Clear"), "locationbar_erase", CTRL+Key_Delete, 0, 0, actionCollection(), "clearhole");
-	resetHoleAction = new KAction(i18n("&Reset"), CTRL+Key_R, 0, 0, actionCollection(), "resethole");
-	undoShotAction = KStdAction::undo(0, 0, actionCollection(), "undoshot");
+	editingAction = new KToggleAction(i18n("&Edit"), "pencil", CTRL+Key_E, this, SLOT(nullSlot()), actionCollection(), "editing");
+	newHoleAction = new KAction(i18n("&New"), "filenew", CTRL+SHIFT+Key_N, this, SLOT(nullSlot()), actionCollection(), "newhole");
+	clearHoleAction = new KAction(i18n("&Clear"), "locationbar_erase", CTRL+Key_Delete, this, SLOT(nullSlot()), actionCollection(), "clearhole");
+	resetHoleAction = new KAction(i18n("&Reset"), CTRL+Key_R, this, SLOT(nullSlot()), actionCollection(), "resethole");
+	undoShotAction = KStdAction::undo(this, SLOT(nullSlot()), actionCollection(), "undoshot");
 	undoShotAction->setText(i18n("&Undo Shot"));
-	//replayShotAction = new KAction(i18n("&Replay Shot"), 0, 0, 0, actionCollection(), "replay");
+	//replayShotAction = new KAction(i18n("&Replay Shot"), 0, this, SLOT(nullSlot()), actionCollection(), "replay");
 
-	holeAction = new KListAction(i18n("Switch to Hole"), 0, 0, 0, actionCollection(), "switchhole");
-	nextAction = new KAction(i18n("&Next Hole"), "forward", KStdAccel::key(KStdAccel::Forward), 0, 0, actionCollection(), "nexthole");
-	prevAction = new KAction(i18n("&Previous Hole"), "back", KStdAccel::key(KStdAccel::Back), 0, 0, actionCollection(), "prevhole");
-	firstAction = new KAction(i18n("&First Hole"), "gohome", KStdAccel::key(KStdAccel::Home), 0, 0, actionCollection(), "firsthole");
-	lastAction = new KAction(i18n("&Last Hole"), CTRL+SHIFT+Key_End, 0, 0, actionCollection(), "lasthole");
-	randAction = new KAction(i18n("&Random Hole"), "goto", 0, 0, 0, actionCollection(), "randhole");
+	holeAction = new KListAction(i18n("Switch to Hole"), 0, this, SLOT(nullSlot()), actionCollection(), "switchhole");
+	nextAction = new KAction(i18n("&Next Hole"), "forward", KStdAccel::key(KStdAccel::Forward), this, SLOT(nullSlot()), actionCollection(), "nexthole");
+	prevAction = new KAction(i18n("&Previous Hole"), "back", KStdAccel::key(KStdAccel::Back), this, SLOT(nullSlot()), actionCollection(), "prevhole");
+	firstAction = new KAction(i18n("&First Hole"), "gohome", KStdAccel::key(KStdAccel::Home), this, SLOT(nullSlot()), actionCollection(), "firsthole");
+	lastAction = new KAction(i18n("&Last Hole"), CTRL+SHIFT+Key_End, this, SLOT(nullSlot()), actionCollection(), "lasthole");
+	randAction = new KAction(i18n("&Random Hole"), "goto", 0, this, SLOT(nullSlot()), actionCollection(), "randhole");
 
-	useMouseAction = new KToggleAction(i18n("Enable &Mouse for Moving Putter"), 0, 0, 0, actionCollection(), "usemouse");
+	useMouseAction = new KToggleAction(i18n("Enable &Mouse for Moving Putter"), 0, this, SLOT(nullSlot()), actionCollection(), "usemouse");
 	connect(useMouseAction, SIGNAL(toggled(bool)), this, SLOT(useMouseChanged(bool)));
 	KConfig *config = kapp->config();
 	config->setGroup("Settings");
 	useMouseAction->setChecked(config->readBoolEntry("useMouse", true));
 
-	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Putting"), 0, 0, 0, actionCollection(), "useadvancedputting");
+	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Putting"), 0, this, SLOT(nullSlot()), actionCollection(), "useadvancedputting");
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
 	useAdvancedPuttingAction->setChecked(config->readBoolEntry("useAdvancedPutting", false));
 
-	showGuideLineAction = new KToggleAction(i18n("Always Show Putter &Guideline"), 0, 0, 0, actionCollection(), "showguideline");
+	showGuideLineAction = new KToggleAction(i18n("Always Show Putter &Guideline"), 0, this, SLOT(nullSlot()), actionCollection(), "showguideline");
 	connect(showGuideLineAction, SIGNAL(toggled(bool)), this, SLOT(showGuideLineChanged(bool)));
 	showGuideLineAction->setChecked(config->readBoolEntry("showGuideLine", true));
 
-	soundAction = new KToggleAction(i18n("Play &Sounds"), 0, 0, 0, actionCollection(), "sound");
+	soundAction = new KToggleAction(i18n("Play &Sounds"), 0, this, SLOT(nullSlot()), actionCollection(), "sound");
 	connect(soundAction, SIGNAL(toggled(bool)), this, SLOT(soundChanged(bool)));
 	soundAction->setChecked(config->readBoolEntry("sound", true));
 
 	(void) new KAction(i18n("&Reload Plugins"), 0, this, SLOT(initPlugins()), actionCollection(), "reloadplugins");
 	(void) new KAction(i18n("Show &Plugins..."), 0, this, SLOT(showPlugins()), actionCollection(), "showplugins");
 
-	aboutAction = new KAction(i18n("&About Course..."), 0, 0, 0, actionCollection(), "aboutcourse");
+	aboutAction = new KAction(i18n("&About Course..."), 0, this, SLOT(nullSlot()), actionCollection(), "aboutcourse");
 	tutorialAction = new KAction(i18n("&Tutorial..."), 0, this, SLOT(tutorial()), actionCollection(), "tutorial");
 
-	statusBar();
 	createGUI();
 }
 

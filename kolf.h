@@ -67,6 +67,8 @@ protected slots:
 	void configureToolBars();
 	void newToolBarConfig();
 	void showHighScores();
+
+	void nullSlot() {};
  
 private:
 	QWidget *dummy;

@@ -6,6 +6,7 @@
 			<Action name="savegameas" append="save_merge" />
 			<Action name="saveshotas" append="save_merge" />
 		</Menu>
+
 		<Menu name="hole"><text>Ho&amp;le</text>
 			<Action name="editing" />
 			<Separator />
@@ -18,6 +19,7 @@
 			<Action name="undoshot" />
 			<Action name="replay" />
 		</Menu>
+		
 		<Menu name="go_course"><text>&amp;Go</text>
 			<Action name="switchhole" />
 			<Separator />
@@ -28,6 +30,7 @@
 			<Separator />
 			<Action name="randhole" />
 		</Menu>
+
 		<Menu name="settings">
 			<Action name="usemouse" />
 			<Action name="useadvancedputting" />			
@@ -37,11 +40,13 @@
 			<Action name="reloadplugins" />
 			<Action name="showplugins" />
 		</Menu>
+
 		<Menu name="help">
 			<Action name="aboutcourse" />
 			<Action name="tutorial" />
 		</Menu>
 	</MenuBar>
+
 	<ToolBar name="mainToolBar" fullWidth="true">
 		<Action name="game_new" />
 		<Action name="game_save" />

@@ -5,13 +5,13 @@ name=Intro
 [1-ball@379,374]
 dummykey=true
 
-[1-bumper@113,310|7]
+[1-bumper@113,312|7]
 dummykey=true
 
 [1-bumper@114,110|9]
 dummykey=true
 
-[1-bumper@324,130|8]
+[1-bumper@317,117|8]
 dummykey=true
 
 [1-floater@311,203|22]
@@ -71,7 +71,7 @@ reversed=false
 stuckOnGround=true
 width=177
 
-[1-slope@161,10|24]
+[1-slope@167,9|24]
 grade=3
 gradient=Opposite Diagonal
 height=79
@@ -79,15 +79,7 @@ reversed=true
 stuckOnGround=true
 width=60
 
-[1-slope@21,215|4]
-grade=5
-gradient=Elliptic
-height=188
-reversed=true
-stuckOnGround=true
-width=188
-
-[1-slope@216,10|23]
+[1-slope@224,10|23]
 grade=3
 gradient=Diagonal
 height=79
@@ -95,13 +87,21 @@ reversed=true
 stuckOnGround=true
 width=108
 
-[1-slope@217,27|5]
-grade=5
+[1-slope@225,27|5]
+grade=6
 gradient=Elliptic
 height=179
 reversed=true
 stuckOnGround=true
 width=179
+
+[1-slope@23,218|4]
+grade=6
+gradient=Elliptic
+height=188
+reversed=true
+stuckOnGround=true
+width=188
 
 [1-slope@286,10|14]
 grade=3
@@ -111,7 +111,7 @@ reversed=true
 stuckOnGround=true
 width=104
 
-[1-slope@296,103|12]
+[1-slope@289,90|12]
 grade=4
 gradient=Elliptic
 height=53
@@ -120,14 +120,14 @@ stuckOnGround=false
 width=53
 
 [1-slope@3,-3|3]
-grade=5
+grade=6
 gradient=Elliptic
 height=221
 reversed=true
 stuckOnGround=true
 width=221
 
-[1-slope@88,283|10]
+[1-slope@88,285|10]
 grade=4
 gradient=Elliptic
 height=52
