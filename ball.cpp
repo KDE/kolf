@@ -115,10 +115,14 @@ void Ball::setVector(const Vector &newVector)
 
 void Ball::moveBy(double dx, double dy)
 {
+	double oldx;
+	double oldy;
+	oldx = x();
+	oldy = y();
 	QCanvasEllipse::moveBy(dx, dy);
 
 	if (game && !game->isPaused())
-		collisionDetect();
+		collisionDetect(oldx, oldy);
 		
 	if ((dx || dy) && game && game->curBall() == this)
 		game->ballMoved();
@@ -129,7 +133,66 @@ void Ball::doAdvance()
 	QCanvasEllipse::advance(1);
 }
 
-void Ball::collisionDetect()
+namespace Lines
+{
+
+	struct Point
+	{
+		double x;
+		double y;
+	};
+
+	struct Line
+	{
+		Point p1, p2;
+	};
+
+	int ccw(const Point &p0, const Point &p1, const Point &p2)
+	{
+		double dx1, dx2, dy1, dy2;
+		dx1 = p1.x - p0.x; dy1 = p1.y - p0.y;
+		dx2 = p2.x - p0.x; dy2 = p2.y - p0.y;
+		if (dx1*dy2 > dy1*dx2) return +1;
+		if (dx1*dy2 < dy1*dx2) return -1;
+		if ((dx1*dx2 < 0) || (dy1*dy2 < 0)) return -1;
+		if ((dx1*dx1+dy1*dy1) < (dx2*dx2+dy2*dy2))
+			return +1;
+		return 0;
+	}
+
+	int intersects(const Line &l1, const Line &l2)
+	{
+		// TODO: Account for vertical lines
+		return ((ccw(l1.p1, l1.p2, l2.p1)
+				*ccw(l1.p1, l1.p2, l2.p2)) <= 0)
+				&& ((ccw(l2.p1, l2.p2, l1.p1)
+				*ccw(l2.p1, l2.p2, l1.p2)) <= 0);
+	}
+
+	
+	bool intersects(
+			double xa1, double ya1, double xb1, double yb1,
+			double xa2, double ya2, double xb2, double yb2
+		)
+	{
+		Line l1, l2;
+		l1.p1.x = xa1;
+		l1.p1.y = ya1;
+		l1.p2.x = xb1;
+		l1.p2.y = yb1;
+		
+		l2.p1.x = xa2;
+		l2.p1.y = ya2;
+		l2.p2.x = xb2;
+		l2.p2.y = yb2;
+
+		return intersects(l1, l2);
+	}
+}
+
+#include <iostream.h>
+
+void Ball::collisionDetect(double oldx, double oldy)
 {
 	if (!isVisible() || state == Holed || !m_doDetect)
 		return;
@@ -154,16 +217,9 @@ void Ball::collisionDetect()
 
 	this->m_list = m_list;
 
-	if (m_list.isEmpty())
-	{
-		return;
-	}
-
-	QCanvasItem *item = 0;
-
 	for (QCanvasItemList::Iterator it = m_list.begin(); it != m_list.end(); ++it)
 	{
-		item = *it;
+		QCanvasItem *item = *it;
 
 		if (item->rtti() == Rtti_NoCollision || item->rtti() == Rtti_Putter)
 			continue;
@@ -235,6 +291,33 @@ void Ball::collisionDetect()
 			if (citem->terrainCollisions())
 				citem->collision(this, collisionId);
 	}
+
+	{ // check if I went through a wall
+		QCanvasItemList items;
+		if (game)
+			items = game->canvas()->allItems();
+		for (QCanvasItemList::Iterator i = items.begin(); i != items.end(); ++i)
+		{
+			QCanvasItem *item = *i;
+			Wall *wall = dynamic_cast<Wall*>(item);
+			if (!wall) continue;
+
+			if (Lines::intersects(
+					wall->startPoint().x(), wall->startPoint().y(),
+					wall->endPoint().x(),   wall->endPoint().y(),
+				
+					oldx, oldy, x(), y()
+				))
+			{
+				wall->collision(this, collisionId);
+				break;
+			}
+
+		
+		}
+	}
+	
+
 
 	end:
 

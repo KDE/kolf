@@ -3877,6 +3877,7 @@ void KolfGame::shotDone()
 	setFocus();
 
 	Ball *ball = (*curPlayer).ball();
+	double oldx = ball->x(), oldy = ball->y();
 
 	if (!dontAddStroke)
 		if ((*curPlayer).numHoles())
@@ -3969,7 +3970,7 @@ void KolfGame::shotDone()
 			ball->setState(Stopped);
 
 			(*it).ball()->setDoDetect(true);
-			ball->collisionDetect();
+			ball->collisionDetect(oldx, oldy);
 		}
 	}
 
@@ -4016,7 +4017,7 @@ void KolfGame::shotDone()
 	updateMouse();
 
 	inPlay = false;
-	(*curPlayer).ball()->collisionDetect();
+	(*curPlayer).ball()->collisionDetect(oldx, oldy);
 }
 
 void KolfGame::startBall(const Vector &vector)
@@ -4118,6 +4119,8 @@ void KolfGame::startNextHole()
 	// to get the first player to go first on every hole,
 	// don't do the score stuff below
 	curPlayer = players->begin();
+	double oldx=(*curPlayer).ball()->x(), oldy=(*curPlayer).ball()->y();
+	
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 	{
 		if (curHole > 1)
@@ -4200,7 +4203,7 @@ void KolfGame::startNextHole()
 
 		ballStateList.canUndo = false;
 
-		(*curPlayer).ball()->collisionDetect();
+		(*curPlayer).ball()->collisionDetect(oldx, oldy);
 	}
 	
 	unPause();

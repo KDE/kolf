@@ -40,7 +40,7 @@ public:
 
 	void setFrictionMultiplier(double news) { frictionMultiplier = news; };
 	void friction();
-	void collisionDetect();
+	void collisionDetect(double oldx, double oldy);
 
 	virtual int rtti() const { return Rtti_Ball; };
 
