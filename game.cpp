@@ -2107,7 +2107,7 @@ void WallPoint::collision(Ball *ball, long int id)
 	// visible just means if we should bounce opposite way
 	if (visible)
 	{
-		//kdDebug() << "weird col\n";
+		kdDebug() << "weird col\n";
 		lastId = id;
 
 		const QPoint start = wall->startPoint();
@@ -2154,7 +2154,7 @@ void WallPoint::collision(Ball *ball, long int id)
 	}
 	else
 	{
-		//kdDebug() << "passing on to wall\n";
+		kdDebug() << "passing on to wall\n";
 		wall->collision(ball, id);
 	}
 }
@@ -2205,6 +2205,8 @@ void Wall::setVisible(bool yes)
 
 	startItem->setVisible(yes);
 	endItem->setVisible(yes);
+	startItem->updateVisible();
+	endItem->updateVisible();
 }
 
 void Wall::setZ(double newz)

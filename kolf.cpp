@@ -265,6 +265,7 @@ void Kolf::openDefaultCourse(const QString &course)
 		return;
 	filename = newfilename;
 	startNewGame();
+	newDefaultAction->setCurrentItem(-1);
 }
 
 // ahhhhh easy func :-)
