@@ -10,6 +10,7 @@
 #include <klineedit.h>
 #include <klocale.h>
 #include <kfiledialog.h>
+#include <kurllabel.h>
 
 #include <qcheckbox.h>
 #include <qevent.h>
@@ -88,7 +89,13 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 	if (enableCourses)
 	{
 		coursePage = addPage(i18n("Course"), i18n("Choose Course to Play"));
-		QHBoxLayout *hlayout = new QHBoxLayout(coursePage, marginHint(), spacingHint());
+		QVBoxLayout *coursePageLayout = new QVBoxLayout(coursePage, marginHint(), spacingHint());
+
+		KURLLabel *coursesLink = new KURLLabel("http://katzbrown.com/kolf/Courses/User Uploaded/", "katzbrown.com/kolf/Courses/User Uploaded/", coursePage);
+		connect(coursesLink, SIGNAL(leftClickedURL(const QString &)), kapp, SLOT(invokeBrowser(const QString &)));
+		coursePageLayout->addWidget(coursesLink);
+
+		QHBoxLayout *hlayout = new QHBoxLayout(coursePageLayout, spacingHint());
 
 		// following use this group
 		config->setGroup("New Game Dialog Mode");
@@ -100,7 +107,7 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 		QStringList items = externCourses + KGlobal::dirs()->findAllResources("appdata", "courses/*");
 		QStringList nameList;
 		const QString lastCourse(config->readEntry("course", ""));
-		int curItem = -1;
+		int curItem = 0;
 		i = 0;
 		for (QStringList::Iterator it = items.begin(); it != items.end(); ++it, ++i)
 		{
@@ -119,8 +126,6 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 		info[QString::null] = CourseInfo(newName, newName, i18n("You"), 0, 0);
 		names.append(QString::null);
 		nameList.append(newName);
-		if (curItem < 0)
-			curItem = names.count() - 1;
 
 		courseList = new KListBox(coursePage);
 		hlayout->addWidget(courseList);
