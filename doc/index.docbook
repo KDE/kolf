@@ -299,6 +299,9 @@ button next to the player's name.</para>
 <varlistentry> <term><guilabel>Unmoveable</guilabel></term>
 <listitem>
 <para>Whether or not this can be moved by other objects, like floaters.</para>
+<caution>
+<para>If a floater overlaps with this object at any point on this path, and the slope is large and thus won't move the floater, you <emphasis>must</emphasis> make the slope <guilabel>Unmoveable</guilabel>, or Kolf will suffer poor performance!</para>
+</caution>
 </listitem>
 </varlistentry>
 </variablelist>
