@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 {
   KAboutData aboutData( "kolf", I18N_NOOP("Kolf"),
     version, description, KAboutData::License_GPL,
-    "(c) 2002, Jason Katz-Brown");
+    "(c) 2002, Jason Katz-Brown", "", "http://www.katzbrown.com/kolf/");
 
   aboutData.addAuthor("Jason Katz-Brown", I18N_NOOP("Main author"), "jason@katzbrown.com");
   aboutData.addCredit("Daniel Matza-Brown", I18N_NOOP("Working wall-bouncing algorithm"), 0);
