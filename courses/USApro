@@ -49,6 +49,7 @@ Comment=Daytona Beach, FL
 Comment[hu]=Daytona Beach, Florida
 Comment[pt_BR]=Praia de Daytona, FL
 Comment[sv]=Daytona Beach, Florida
+Comment[tr]=Daytona Plajı, FL
 Comment[wa]=Daytona Beach, Floride, USA
 Comment[xx]=xxDaytona Beach, FLxx
 botWallVisible=false
@@ -780,6 +781,7 @@ par=3
 
 [4-sign@201,171|8]
 Comment=Grand Canyon
+Comment[tr]=Büyük Kanyon
 Comment[wa]=Grand Canyon, USA
 Comment[xx]=xxGrand Canyonxx
 botWallVisible=true
@@ -1208,6 +1210,7 @@ width=159
 [7-sign@98,209|24]
 Comment=Bay Bridge
 Comment[pt_BR]=Ponte da Baía
+Comment[tr]=Bay Köprüsü
 Comment[xx]=xxBay Bridgexx
 botWallVisible=true
 height=24
@@ -1566,6 +1569,7 @@ Comment=Niagara Falls, NY
 Comment[hu]=Niagara Falls, New York
 Comment[pt_BR]=Cataratas do Niágara, NY
 Comment[sv]=Niagarafallen, Staten New York
+Comment[tr]=Niagara Şelalesi, NY
 Comment[wa]=Niagara, Noû York, USA
 Comment[xx]=xxNiagara Falls, NYxx
 botWallVisible=true
