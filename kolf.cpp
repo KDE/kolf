@@ -58,7 +58,6 @@ Kolf::Kolf()
 	applyMainWindowSettings(KGlobal::config(), "TopLevelWindow");
 
 	closeGame();
-	newSameAction->setEnabled(false);
 
 	KConfig *config = kapp->config();
 	config->setGroup("App");
@@ -83,28 +82,9 @@ void Kolf::initGUI()
 {
 	newAction = KStdAction::openNew(this, SLOT(newGame()), actionCollection());
 
-	newDefaultAction = new KListAction(i18n("Open Default Course"), 0, 0, 0, actionCollection(), "newdefault");
-	QStringList items = KGlobal::dirs()->findAllResources("appdata", "courses/*.kolf");
-	for (QStringList::Iterator it = items.begin(); it != items.end(); ++it)
-	{
-		KSimpleConfig cfg(*it);
-		cfg.setGroup("0-course@-50,-50");
-		QString newName = cfg.readEntry("name", "");
-		defaults[newName] = *it;
-		*it = newName;
-	}
-	newDefaultAction->setItems(items);
-	connect(newDefaultAction, SIGNAL(activated(const QString &)), this, SLOT(openDefaultCourse(const QString &)));
-
 	newAction->setText(newAction->text() + QString("..."));
-	newSameAction = new KAction(i18n("&Play Course Again..."), "filenew", CTRL+SHIFT+Key_N, this, SLOT(newSameGame()), actionCollection(), "samecourse");
-	newSameAction->setStatusText(i18n("Open the last course you opened."));
 	endAction = KStdAction::close(this, SLOT(closeGame()), actionCollection());
 	endAction->setText(i18n("&Close Current Course"));
-	recentAction = KStdAction::openRecent(0, 0, actionCollection());
-	recentAction->setText(recentAction->text() + QString("..."));
-	connect(recentAction, SIGNAL(urlSelected(const KURL &)), this, SLOT(openRecent(const KURL &)));
-	recentAction->loadEntries(KGlobal::config(), "Kolf recent files");
 	printAction = KStdAction::print(this, SLOT(print()), actionCollection());
 
 	editingAction = new KToggleAction(i18n("&Edit"), "pencil", CTRL+Key_E, 0, 0, actionCollection(), "editing");
@@ -113,7 +93,6 @@ void Kolf::initGUI()
 	resetHoleAction = new KAction(i18n("&Reset"), CTRL+Key_R, 0, 0, actionCollection(), "resethole");
 
 	(void) KStdAction::quit(this, SLOT(close()), actionCollection());
-	openAction = KStdAction::open(this, SLOT(open()), actionCollection());
 	saveAction = KStdAction::save(this, SLOT(save()), actionCollection());
 	saveAsAction = KStdAction::saveAs(this, SLOT(saveAs()), actionCollection());
 
@@ -147,7 +126,6 @@ void Kolf::closeEvent(QCloseEvent *e)
 		if (game->askSave(true))
 			return;
 	saveMainWindowSettings(KGlobal::config(), "TopLevelWindow");
-	recentAction->saveEntries(KGlobal::config(), "Kolf recent files");
 	e->accept();
 }
 
@@ -175,6 +153,7 @@ void Kolf::startNewGame()
 			newId++;
 		}
 		competition = dialog->competition();
+		filename = filename.isNull()? dialog->course() : filename;
 		
 		delete spacer;
 		spacer = 0;
@@ -224,11 +203,7 @@ void Kolf::startNewGame()
 
 		clearHoleAction->setEnabled(false);
 		newHoleAction->setEnabled(false);
-		openAction->setEnabled(false);
-		recentAction->setEnabled(false);
 		newAction->setEnabled(false);
-		newDefaultAction->setEnabled(false);
-		newSameAction->setEnabled(false);
 		tutorialAction->setEnabled(false);
 		
 
@@ -237,34 +212,6 @@ void Kolf::startNewGame()
 	}
 
 	delete dialog;
-}
-
-void Kolf::open()
-{
-	QString oldfilename = filename;
-	filename = KFileDialog::getOpenFileName(QString::null, QString::fromLatin1("*.kolf"), this, i18n("Pick Kolf Course"));
-	if (!filename.isNull())
-	{
-		recentAction->addURL(QString("file:") + filename);
-		startNewGame();
-	}
-	else
-		filename = oldfilename;
-}
-
-void Kolf::openRecent(const KURL &url)
-{
-	if (url.isLocalFile() && QFile::exists(url.path()))
-	{
-		filename = url.path();
-		startNewGame();
-	}
-	else
-	{
-		recentAction->removeURL(url);
-	}
-
-	recentAction->setCurrentItem(-1);
 }
 
 void Kolf::newGame()
@@ -279,22 +226,6 @@ void Kolf::tutorial()
 	if (newfilename.isNull())
 		return;
 	filename = newfilename;
-	startNewGame();
-}
-
-void Kolf::openDefaultCourse(const QString &course)
-{
-	QString newfilename = defaults[course];
-	if (newfilename.isNull())
-		return;
-	filename = newfilename;
-	startNewGame();
-	newDefaultAction->setCurrentItem(-1);
-}
-
-// ahhhhh easy func :-)
-void Kolf::newSameGame()
-{
 	startNewGame();
 }
 
@@ -326,11 +257,7 @@ void Kolf::closeGame()
 
 	clearHoleAction->setEnabled(false);
 	newHoleAction->setEnabled(false);
-	openAction->setEnabled(true);
-	recentAction->setEnabled(true);
 	newAction->setEnabled(true);
-	newDefaultAction->setEnabled(true);
-	newSameAction->setEnabled(true);
 	tutorialAction->setEnabled(true);
 }
 
@@ -391,7 +318,6 @@ void Kolf::saveAs()
 	if (!newfilename.isNull())
 	{
 		filename = newfilename;
-		recentAction->addURL(QString("file:") + filename);
 		game->setFilename(filename);
 		game->save();
 		game->setFocus();

@@ -114,7 +114,7 @@ public:
 	/**
 	 * returns whether or not this item lifts items on top of it.
 	 */
-	virtual bool vStrut() { return false; }
+	virtual bool vStrut() const { return false; }
 	/**
 	 * show extra item info
 	 */
@@ -134,7 +134,7 @@ public:
 	/**
 	 * returns whether this item can be moved by others (if you want to move an item, you should honor this!)
 	 */
-	virtual bool canBeMovedByOthers() { return false; }
+	virtual bool canBeMovedByOthers() const { return false; }
 	/**
 	 * returns a Config that can be used to configure this item by the user.
 	 * The default implementation returns one that says 'No configuration options'.
@@ -147,10 +147,10 @@ public:
 	/**
 	 * returns whether this can be moved by the user while editing.
 	 */
-	virtual bool moveable() { return true; }
+	virtual bool moveable() const { return true; }
 
 	void setId(int newId) { id = newId; }
-	int curId() { return id; }
+	int curId() const { return id; }
 
 	/**
 	 * call to play sound (ie, playSound("wall") plays kdedir/share/apps/kolf/sounds/wall.wav)
@@ -200,7 +200,7 @@ public:
 	virtual void doAdvance() { QCanvasEllipse::advance(1); }
 
 	double curSpeed() { return sqrt(xVelocity() * xVelocity() + yVelocity() * yVelocity()); }
-	virtual bool canBeMovedByOthers() { return true; }
+	virtual bool canBeMovedByOthers() const { return true; }
 
 	BallState curState() { return state; }
 	void setState(BallState newState);
@@ -350,7 +350,7 @@ public:
 	virtual void showInfo();
 	virtual void hideInfo();
 	virtual void editModeChanged(bool changed);
-	virtual bool canBeMovedByOthers() { return !stuckOnGround; }
+	virtual bool canBeMovedByOthers() const { return !stuckOnGround; }
 	virtual QPtrList<QCanvasItem> moveableItems();
 	virtual Config *config(QWidget *parent) { return new SlopeConfig(this, parent); }
 	void setSize(int, int);
@@ -558,7 +558,7 @@ public:
 	Cup(QCanvas *canvas);
 	virtual bool place(Ball *ball, bool wasCenter);
 	virtual void save(KSimpleConfig *cfg);
-	virtual bool canBeMovedByOthers() { return true; }
+	virtual bool canBeMovedByOthers() const { return true; }
 	virtual void draw(QPainter &painter);
 
 private:
@@ -593,7 +593,7 @@ public:
 	BlackHoleExit(BlackHole *blackHole, QCanvas *canvas);
 	virtual int rtti() const { return Rtti_NoCollision; }
 	virtual bool deleteable() { return false; }
-	virtual bool canBeMovedByOthers() { return true; }
+	virtual bool canBeMovedByOthers() const { return true; }
 	virtual Config *config(QWidget *parent);
 	BlackHole *blackHole;
 
@@ -604,7 +604,7 @@ class BlackHole : public Hole
 {
 public:
 	BlackHole(QCanvas *canvas);
-	virtual bool canBeMovedByOthers() { return true; }
+	virtual bool canBeMovedByOthers() const { return true; }
 	virtual void aboutToDie();
 	virtual void showInfo();
 	virtual void hideInfo();
@@ -723,7 +723,7 @@ public:
 	void saveDegrees(Ball *ball) { degMap[ball] = deg; }
 	void setDegrees(Ball *ball);
 	void resetDegrees() { degMap.clear(); setZ(999999); }
-	virtual bool canBeMovedByOthers() { return true; }
+	virtual bool canBeMovedByOthers() const { return true; }
 	virtual void moveBy(double dx, double dy);
 
 private:
@@ -772,7 +772,7 @@ public:
 	virtual void setVelocity(double vx, double vy);
 	virtual void load(KSimpleConfig *cfg);
 	virtual void save(KSimpleConfig *cfg);
-	virtual bool vStrut() { return true; }
+	virtual bool vStrut() const { return true; }
 	void doLoad(KSimpleConfig *cfg);
 	void doSave(KSimpleConfig *cfg);
 	virtual void newSize(int width, int height);
@@ -829,7 +829,7 @@ public:
 	QString text() { return m_text; }
 	virtual int rtti() const { return Rtti_NoCollision; }
 	virtual void draw(QPainter &painter);
-	virtual bool vStrut() { return false; }
+	virtual bool vStrut() const { return false; }
 	virtual Config *config(QWidget *parent) { return new SignConfig(this, parent); }
 	virtual void save(KSimpleConfig *cfg);
 	virtual void load(KSimpleConfig *cfg);
@@ -940,7 +940,7 @@ public:
 	virtual void savingDone();
 	virtual void setGame(KolfGame *game);
 	virtual void editModeChanged(bool changed);
-	virtual bool moveable() { return false; }
+	virtual bool moveable() const { return false; }
 	virtual void moveBy(double dx, double dy);
 	virtual Config *config(QWidget *parent) { return new FloaterConfig(this, parent); }
 	virtual QPtrList<QCanvasItem> moveableItems();
@@ -1033,6 +1033,16 @@ private:
 	int ithickness, iwidth, iheight;
 };
 
+struct CourseInfo
+{
+	CourseInfo(const QString &_name, const QString &_author, unsigned int _holes, unsigned int _par) { name = _name; author = _author; holes = _holes; par = _par; }
+	CourseInfo() {}
+	QString name;
+	QString author;
+	unsigned int holes;
+	unsigned int par;
+};
+
 class KolfGame : public QCanvasView
 {
 	Q_OBJECT
@@ -1051,9 +1061,13 @@ public:
 	bool isEditing() const { return editing; }
 	Ball *curBall() { return (*curPlayer).ball(); }
 	void updateMouse();
+	//void changeMouse();
+	void ballMoved();
 	void updateHighlighter();
 	QCanvasItem *curSelectedItem() { return selectedItem; }
 	void setBorderWalls(bool);
+
+	static void courseInfo(CourseInfo &info, const QString &filename);
 
 public slots:
 	void pause();

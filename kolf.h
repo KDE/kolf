@@ -14,7 +14,6 @@
 class KolfGame;
 class KToggleAction;
 class KListAction;
-class KRecentFilesAction;
 class KAction;
 class QGridLayout;
 class ScoreBoard;
@@ -38,10 +37,7 @@ protected slots:
 	void startNewGame();
 	void tutorial();
 	void newGame();
-	void newSameGame();
 	void closeGame();
-	void openDefaultCourse(const QString &);
-	void open();
 	void save();
 	void saveAs();
 	void print();
@@ -55,7 +51,6 @@ protected slots:
 	void inPlayEnd();
 	void maxStrokesReached();
 	void updateHoleMenu(int);
-	void openRecent(const KURL &);
 	void useMouseChanged(bool);
 	void useAdvancedPuttingChanged(bool);	
  
@@ -75,12 +70,8 @@ private:
 	KAction *clearHoleAction;
 	KAction *tutorialAction;
 	KAction *newAction;
-	KAction *newSameAction;
 	KAction *endAction;
-	KAction *openAction;
 	KAction *printAction;
-	KListAction *newDefaultAction;
-	KRecentFilesAction *recentAction;
 	KAction *saveAction;
 	KAction *aboutAction;
 	KListAction *holeAction;
@@ -95,8 +86,6 @@ private:
 	void setHoleMovementEnabled(bool);
 	inline void setEditingEnabled(bool);
 	bool competition;
-
-	QMap<QString, QString> defaults;
 };
 
 #endif

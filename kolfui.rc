@@ -1,10 +1,6 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
 <kpartgui name="Kolf" version="1">
 	<MenuBar>
-		<Menu name="file"><text>&amp;Game</text>
-			<Action name="samecourse" append="new_merge" />
-			<Action name="newdefault" append="new_merge" />
-		</Menu>
 		<Menu name="hole"><text>Ho&amp;le</text>
 			<Action name="editing" />
 			<Seperator />

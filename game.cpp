@@ -1185,16 +1185,21 @@ void Floater::moveBy(double dx, double dy)
 					{
 						if ((*it)->rtti() == Rtti_Ball)
 						{
-							((Ball *)(*it))->setMoved(true);
+							(*it)->moveBy(dx, dy);
 							if (game)
+							{
+								game->ballMoved();
 								if (game->hasFocus() && !game->isEditing())
+								{
 									if (game->curBall() == (Ball *)(*it))
-										// this doesn't work because qcursor works with ints :(
-										//QCursor::setPos(QCursor::pos().x() + dx, QCursor::pos().y() + dy);
+									{
+										//game->changeMouse()
 										game->updateMouse();
+									}
+								}
+							}
 						}
-
-						if ((*it)->rtti() != Rtti_Putter)
+						else if ((*it)->rtti() != Rtti_Putter)
 							(*it)->moveBy(dx, dy);
 					}
 				}
@@ -3356,6 +3361,28 @@ void KolfGame::contentsMouseMoveEvent(QMouseEvent *e)
 	storedMousePos = mouse;
 }
 
+/*
+void KolfGame::changeMouse()
+{
+	if (!hasFocus() || !m_useMouse || ((stroking || putting) && m_useAdvancedPutting)) 
+		return;
+	if (!putter->isVisible())
+		return;
+
+	const QPoint mouse(viewportToContents(mapFromGlobal(QCursor::pos())));
+	const double yDiff = (double)(putter->y() - mouse.y());
+	const double xDiff = (double)(mouse.x() - putter->x());
+	const double len = sqrt(yDiff * yDiff + xDiff * xDiff);
+	//kdDebug() << "len: " << len << endl;
+
+	const double radians = deg2rad(putter->curDeg());
+	kdDebug() << "radians(): " << rad2deg(radians) << endl;
+	const QPoint cursor(putter->x() + cos(radians) * len, putter->y() + sin(radians) * len);
+	//kdDebug() << "cursor: " << cursor.x() << ", " << cursor.y() << endl;
+	QCursor::setPos(mapToGlobal(contentsToViewport(cursor)));
+}
+*/
+
 void KolfGame::updateMouse()
 {
 	// don't move putter if in advanced putting sequence
@@ -3363,7 +3390,7 @@ void KolfGame::updateMouse()
 		return;
 
 	double newAngle = 0;
-	QPoint mouse(viewportToContents(mapFromGlobal(QCursor::pos())));
+	const QPoint mouse(viewportToContents(mapFromGlobal(QCursor::pos())));
 	const double yDiff = (double)(putter->y() - mouse.y());
 	const double xDiff = (double)(mouse.x() - putter->x());
 	//kdDebug() << "yDiff: " << yDiff << ", xDiff: " << xDiff << endl;
@@ -3632,18 +3659,12 @@ void KolfGame::fastTimeout()
 		(*curPlayer).ball()->collisionDetect();
 
 	(*curPlayer).ball()->doAdvance();
+}
 
-	if (!inPlay)
-	{
-		if ((*curPlayer).ball()->moved())
-		{
-			if (putter->isVisible())
-			{
-				putter->move((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
-				(*curPlayer).ball()->setMoved(false);
-			}
-		}
-	}
+void KolfGame::ballMoved()
+{
+	if (putter->isVisible())
+		putter->move((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 }
 
 void KolfGame::frictionTimeout()
@@ -4004,7 +4025,6 @@ void KolfGame::holeDone()
 		(*it).ball()->setBeginningOfHole(true);
 		(*it).addHole();
 		(*it).ball()->setVelocity(0, 0);
-		(*it).ball()->setMoved(false);
 		(*it).ball()->setVisible(false);
 	}
 
@@ -4256,7 +4276,8 @@ void KolfGame::openFile()
 
 	if (curHole == 1 && !filename.isNull() && !infoShown)
 	{
-		showInfoDlg(true);
+		// let's not now, because they see it when they choose course
+		//showInfoDlg(true);
 		infoShown = true;
 	}
 
@@ -4681,5 +4702,33 @@ void KolfGame::setUseAdvancedPutting(bool yes)
 	else
 		maxStrength = 55;
 }	
+
+void KolfGame::courseInfo(CourseInfo &info, const QString& filename)
+{
+	KSimpleConfig cfg(filename);
+	cfg.setGroup("0-course@-50,-50");
+	info.author = cfg.readEntry("author", info.author);
+	info.name = cfg.readEntry("name", info.name);
+
+	unsigned int hole = 1;
+	unsigned int par= 0;
+	while (1)
+	{
+		QString group = QString("%1-hole@-50,-50|0").arg(hole);
+		if (!cfg.hasGroup(group))
+		{
+			hole--;
+			break;
+		}
+
+		cfg.setGroup(group);
+		par += cfg.readNumEntry("par", 3);
+
+		hole++;
+	}
+
+	info.par = par;
+	info.holes = hole;
+}
 
 #include "game.moc"

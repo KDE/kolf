@@ -10,14 +10,19 @@
 #include <qcolor.h>
 #include <qptrlist.h>
 #include <qstring.h>
+#include <qstringlist.h>
 #include <qvaluelist.h>
+#include <qvbox.h>
 #include <qwidget.h>
+
+#include "game.h"
 
 class KLineEdit;
 class KPushButton;
 class QFrame;
 class QVBoxLayout;
 class QPainter;
+class KListBox;
 
 class ColorButton : public KColorButton
 {
@@ -49,9 +54,10 @@ class NewGameDialog : public KDialogBase
 	Q_OBJECT
 
 public:
-	NewGameDialog(QWidget *parent, const char *name = 0);
+	NewGameDialog(QWidget *parent, const char *_name = 0);
 	QPtrList<PlayerEditor> *players() { return &editors; }
 	bool competition() { return mode->isChecked(); }
+	QString course() { return currentCourse; }
 
 protected slots:
 	void slotOk();
@@ -59,15 +65,37 @@ protected slots:
 private slots:
 	void addPlayer();
 	void delPlayer();
+	void courseSelected(int);
+	void addCourse();
+	void removeCourse();
+	void selectionChanged();
 
 private:
-	QVBoxLayout *layout;
+	QVBox *layout;
 	KPushButton *addButton;
 	KPushButton *delButton;
-	QFrame *dummy;
+	QFrame *playerPage;
+	QScrollView *scroller;
+	QFrame *coursePage;
+	QFrame *optionsPage;
 	QValueList<QColor> startColors;
 	QPtrList<PlayerEditor> editors;
+	QPushButton *remove;
 	QCheckBox *mode;
+
+	QStringList names;
+	QStringList externCourses;
+	QMap<QString, CourseInfo> info;
+
+	QStringList extraCourses;
+
+	KListBox *courseList;
+	QLabel *name;
+	QLabel *author;
+	QLabel *par;
+	QLabel *holes;
+
+	QString currentCourse;
 
 	void enableButtons();
 };

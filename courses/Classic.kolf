@@ -725,7 +725,7 @@ startPoint=250,133
 endPoint=290,134
 startPoint=250,133
 
-[16-ball@109,355]
+[16-ball@132,358]
 dummykey=true
 
 [16-blackhole@109,200|12]
@@ -878,7 +878,7 @@ startPoint=355,347
 endPoint=355,347
 startPoint=289,347
 
-[18-ball@189,352]
+[18-ball@173,353]
 dummykey=true
 
 [18-bridge@172,92|28]
@@ -901,87 +901,70 @@ par=3
 [18-puddle@100,127|22]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [18-puddle@128,118|21]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [18-puddle@149,117|20]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [18-puddle@175,115|19]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [18-puddle@196,116|18]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [18-puddle@222,115|17]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [18-puddle@24,165|26]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [18-puddle@246,116|11]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [18-puddle@279,117|12]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [18-puddle@307,118|13]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [18-puddle@335,118|14]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [18-puddle@364,119|15]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [18-puddle@387,119|16]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [18-puddle@40,156|25]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [18-puddle@5,178|27]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [18-puddle@60,145|24]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [18-puddle@81,133|23]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [18-slope@121,133|8]
 grade=1
