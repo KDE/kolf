@@ -3,12 +3,15 @@
 #include <qpen.h>
 
 #include <kapplication.h>
+#include <kdebug.h>
 
 #include <math.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #include "rtti.h"
 #include "canvasitem.h"
+#include "game.h"
 #include "ball.h"
 
 Ball::Ball(QCanvas *canvas)
@@ -62,6 +65,11 @@ void Ball::advance(int phase)
 void Ball::friction()
 {
 	if (state == Stopped || state == Holed || !isVisible()) { setVelocity(0, 0); return; }
+	if (xVelocity() == 0 && yVelocity() == 0)
+	{
+		state = Stopped;
+		return;
+	}
 	double vx = xVelocity();
 	double vy = yVelocity();
 	double ballAngle = atan(vx / vy);
@@ -81,6 +89,15 @@ void Ball::friction()
 	frictionMultiplier = 1;
 }
 
+void Ball::moveBy(double dx, double dy)
+{
+	QCanvasEllipse::moveBy(dx, dy);
+	collisionDetect();
+	if (game)
+		if (game->curBall() == this)
+			game->ballMoved();
+}
+
 void Ball::doAdvance()
 {
 	//const double halfX = xVelocity() / 2;
@@ -94,9 +111,7 @@ void Ball::doAdvance()
 
 void Ball::collisionDetect()
 {
-	if (state == Stopped)
-		return;
-
+	kdDebug() << "collision detect\n";
 	if (collisionId >= INT_MAX - 1)
 		collisionId = 0;
 	else
@@ -104,12 +119,15 @@ void Ball::collisionDetect()
 
 	// every other time...
 	// do friction
-	if (collisionId % 2)
+	if (collisionId % 2 && !(xVelocity() == 0 && yVelocity() == 0))
 		friction();
 
 	QCanvasItemList list = collisions(true);
 	if (list.isEmpty())
+	{
+		kdDebug() << "collision list empty\n";
 		return;
+	}
 
 	// please don't ask why QCanvas doesn't actually sort its list
 	// it just doesn't.
@@ -123,25 +141,80 @@ void Ball::collisionDetect()
 
 		if (item->rtti() == Rtti_NoCollision || item->rtti() == Rtti_Putter)
 			continue;
-		if (!collidesWith(item))
-			continue;
 
 		if (item->rtti() == rtti())
 		{
-			if (curSpeed() > 2.7)
+			// it's one of our own kind, a ball
+			Ball *oball = dynamic_cast<Ball *>(item);
+			if (oball->curState() == Stopped && (oball->x() - x() != 0 && oball->y() - y() != 0) && state == Rolling)
 			{
-				// it's one of our own kind, a ball, and we're hitting it
-				// sorta hard
-				Ball *oball = dynamic_cast<Ball *>(item);
-				if (/*oball->curState() != Stopped && */oball->curState() != Holed)
-					oball->setBlowUp(true);
-				continue;
+			QPoint oldPos(x(), y());
+			double vx = xVelocity();
+			double vy = yVelocity();
+			double ballAngle;
+			if (vy == 0)
+				ballAngle = xVelocity() > 0? 0 : M_PI;
+			else
+				ballAngle = atan(vx / vy);
+			if (vy < 0)
+				ballAngle -= M_PI;
+			ballAngle = M_PI / 2 - ballAngle;
+			while (collisions(true).contains(item) > 0)
+			{
+				move(x() - cos(ballAngle), y() - sin(ballAngle));
+
+				// for debugging
+				/*
+				   kapp->processEvents();
+				   sleep(1);
+				 */
 			}
+
+			const double mySpeed = curSpeed();
+
+			//oball->setBlowUp(true);
+			double angle = atan2(y() - oball->y(), oball->x() - x());
+			kdDebug() << "ballAngle is " << (360L / (2L * M_PI)) * ballAngle << endl;
+			kdDebug() << "angle is " << (360L / (2L * M_PI)) * angle << endl;
+
+			//double myNewSpeed = mySpeed + oball->curSpeed();
+			//setVelocity(cos(ballAngle) * myNewSpeed, sin(ballAngle) * myNewSpeed);
+
+			double angleDifference = fabs(fabs(ballAngle) - fabs(angle));
+			while (angleDifference > M_PI / 2)
+			{
+				kdDebug() << "angleDifference = " << (360L / (2L * M_PI)) * angleDifference << endl;
+				angleDifference -= M_PI / 2;
+			}
+			kdDebug() << "angleDifference = " << (360L / (2L * M_PI)) * angleDifference << endl;
+			double newVelocity = mySpeed * ((double)(M_PI / 2 - angleDifference) / (double)(M_PI / 2));
+
+			if (y() == oball->y())
+			{
+				// horiz
+				oball->setVelocity(newVelocity, 0);
+				kdDebug() << "horizontal\n";
+			}
+			else if (x() == oball->x())
+			{
+				// vert
+				oball->setVelocity(0, newVelocity);
+				kdDebug() << "vertical\n";
+			}
+			else
+			{
+				oball->setVelocity(cos(angle) * newVelocity, -sin(angle) * newVelocity);
+			}
+			oball->setState(Rolling);
+			}
+			continue;
 		}
 
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
 		if (citem)
 			citem->collision(this, collisionId);
+		else
+			continue;
 		break;
 	}
 }

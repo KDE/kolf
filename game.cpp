@@ -429,6 +429,8 @@ QPointArray Slope::areaPoints() const
 
 void Slope::collision(Ball *ball, long int /*id*/)
 {
+	kdDebug() << "slope::collision\n";
+
 	double vx = ball->xVelocity();
 	double vy = ball->yVelocity();
 	double addto = 0.013 * grade;
@@ -516,7 +518,10 @@ void Slope::collision(Ball *ball, long int /*id*/)
 		ball->setState(Stopped);
 	}
 
+	kdDebug() << "set velocities of ball to " << vx << ", " << vy << endl;
+
 	ball->setVelocity(vx, vy);
+	ball->setState(Rolling);
 }
 
 void Slope::setGradient(QString text)
@@ -1128,6 +1133,7 @@ void Floater::moveBy(double dx, double dy)
 					{
 						if ((*it)->rtti() == Rtti_Ball)
 						{
+							((Ball *)(*it))->setState(Rolling);
 							(*it)->moveBy(dx, dy);
 							if (game)
 							{
@@ -1989,6 +1995,7 @@ void Bumper::collision(Ball *ball, long int /*id*/)
 	const double vx = -cos(angle) * speed;
 	const double vy = -sin(angle) * speed;
 	ball->setVelocity(vx, vy);
+	ball->setState(Rolling);
 
 	setAnimated(true);
 }
@@ -2699,6 +2706,7 @@ void Wall::collision(Ball *ball, long int id)
 	//kdDebug() << "new velocities: vx = " << vx << ", vy = " << vy << endl;
 	//kdDebug() << "--------------\n";
 	ball->setVelocity(vx, vy);
+	ball->setState(Rolling);
 }
 
 void Wall::load(KSimpleConfig *cfg)
@@ -2905,6 +2913,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 {
 	// for mouse control
 	QScrollView::viewport()->setMouseTracking(true);
+	setFrameShape(NoFrame);
 
 	curHole = 0; // will get ++'d 
 	cfg = 0;
@@ -2981,8 +2990,12 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 
 	// whiteBall marks the spot of the whole whilst editing
 	whiteBall = new Ball(course);
+	whiteBall->setGame(this);
 	whiteBall->setColor(white);
 	whiteBall->setVisible(false);
+
+	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+		(*it).ball()->setGame(this);
 
 	putter = new Putter(course);
 
@@ -3473,13 +3486,20 @@ void KolfGame::timeout()
 	// test if the ball is gone
 	// in this case we want to stop the ball and
 	// later undo the shot
-	if (!course->rect().contains(QPoint(curBall->x(), curBall->y())))
+	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 	{
-		curBall->setState(Stopped);
-		shotDone();
-		loadStateList();
-		return;
+		if (!course->rect().contains(QPoint((*it).ball()->x(), (*it).ball()->y())))
+		{
+			(*it).ball()->setState(Stopped);
+			shotDone();
+			loadStateList();
+			return;
+		}
 	}
+
+	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+		if ((*it).ball()->curState() == Rolling)
+			return;
 
 	int curState = curBall->curState();
 	if (curState == Stopped && inPlay)
@@ -3525,10 +3545,11 @@ void KolfGame::timeout()
 
 void KolfGame::fastTimeout()
 {
-	if (inPlay && !editing)
-		(*curPlayer).ball()->collisionDetect();
-
-	(*curPlayer).ball()->doAdvance();
+	if (!editing)
+	{
+		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+			(*it).ball()->doAdvance();
+	}
 }
 
 void KolfGame::ballMoved()
@@ -3767,56 +3788,60 @@ void KolfGame::shotDone()
 		(*it).ball()->setAddStroke(0);
 	}
 
-	double vx = 0, vy = 0;
-	if (ball->placeOnGround(vx, vy))
+	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 	{
-		double x = ball->x(), y = ball->y();
-
-		double ballAngle = atan(vx / vy);
-
-		if (vy < 0)
-			ballAngle -= M_PI;
-		ballAngle = M_PI/2 - ballAngle;
-		
-		while (1)
+		Ball *ball = (*it).ball();
+		double vx = 0, vy = 0;
+		if (ball->placeOnGround(vx, vy))
 		{
-			QCanvasItemList list = ball->collisions(true);
-			bool keepMoving = false;
-			while (!list.isEmpty())
+			double x = ball->x(), y = ball->y();
+
+			double ballAngle = atan(vx / vy);
+
+			if (vy < 0)
+				ballAngle -= M_PI;
+			ballAngle = M_PI/2 - ballAngle;
+
+			while (1)
 			{
-				QCanvasItem *item = list.first();
-				if (item->rtti() == Rtti_DontPlaceOn)
-					keepMoving = true;
+				QCanvasItemList list = ball->collisions(true);
+				bool keepMoving = false;
+				while (!list.isEmpty())
+				{
+					QCanvasItem *item = list.first();
+					if (item->rtti() == Rtti_DontPlaceOn)
+						keepMoving = true;
 
-				list.pop_front();
+					list.pop_front();
+				}
+				if (!keepMoving)
+					break;
+
+				const float movePixel = 3.0;
+				x -= cos(ballAngle) * movePixel;
+				y -= sin(ballAngle) * movePixel;
+
+				ball->move(x, y);
+
+				// for debugging
+				/*
+				   ball->setVisible(true);
+				   kapp->processEvents();
+				//kdDebug() << "(" << x << ", " << y << ")" << endl;
+				sleep(1);
+				 */
 			}
-			if (!keepMoving)
-				break;
 
-			const float movePixel = 3.0;
-			x -= cos(ballAngle) * movePixel;
-			y -= sin(ballAngle) * movePixel;
+			//kdDebug() << "placing on " << p.x() << ", " << p.y() << endl;
+			ball->move(ball->x(), ball->y());
 
-			ball->move(x, y);
-
-			// for debugging
-			/*
 			ball->setVisible(true);
-			kapp->processEvents();
-			//kdDebug() << "(" << x << ", " << y << ")" << endl;
-			sleep(1);
-			*/
 		}
 
-		//kdDebug() << "placing on " << p.x() << ", " << p.y() << endl;
-		ball->move(ball->x(), ball->y());
-
-		ball->setVisible(true);
+		// off by default
+		ball->setPlaceOnGround(false, 0, 0);
+		// end hacky stuff
 	}
-
-	// off by default
-	ball->setPlaceOnGround(false, 0, 0);
-	// end hacky stuff
 	
 	// emit again
 	emit scoreChanged((*curPlayer).id(), curHole, (*curPlayer).score(curHole));

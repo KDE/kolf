@@ -19,6 +19,7 @@ public:
 	void resetSize() { setSize(7, 7); }
 	virtual void advance(int phase);
 	virtual void doAdvance();
+	virtual void moveBy(double dx, double dy);
 
 	double curSpeed() { return sqrt(xVelocity() * xVelocity() + yVelocity() * yVelocity()); }
 	virtual bool canBeMovedByOthers() const { return true; }
