@@ -14,7 +14,6 @@
 #include <kmessagebox.h>
 #include <kpixmapeffect.h>
 #include <kprinter.h>
-#include <kconfig.h>
 #include <kstandarddirs.h>
 
 #include <qbrush.h>
@@ -1297,7 +1296,7 @@ void BlackHole::setExitDeg(int newdeg)
 	exitDeg = newdeg;
 	if (game && game->isEditing() && game->curSelectedItem() == exitItem)
 		game->updateHighlighter();
-	
+
 	exitItem->updateArrowAngle();
 	finishMe();
 }
@@ -1342,7 +1341,7 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 	ball->setState(Stopped);
 	ball->setVisible(false);
 	ball->setForceStillGoing(true);
-	
+
 	double magnitude = Vector(QPoint(x(), y()), QPoint(exitItem->x(), exitItem->y())).magnitude();
 	BlackHoleTimer *timer = new BlackHoleTimer(ball, speed, magnitude * 2.5 - speed * 35 + 500);
 
@@ -2794,7 +2793,7 @@ void KolfGame::timeout()
 			{
 				shotDone();
 				loadStateList();
-				
+
 				// increment curPlayer; he did take a shot, after all
 				(*curPlayer).addStrokeToHole(curHole);
 				emit scoreChanged((*curPlayer).id(), curHole, (*curPlayer).score(curHole));
@@ -3057,7 +3056,7 @@ void KolfGame::recreateStateList()
 	ballStateList.clear();
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 		ballStateList.append((*it).stateInfo(curHole));
-	
+
 	ballStateList.canUndo = true;
 }
 
@@ -3361,7 +3360,7 @@ void KolfGame::startNextHole()
 	// don't do the score stuff below
 	curPlayer = players->begin();
 	double oldx=(*curPlayer).ball()->x(), oldy=(*curPlayer).ball()->y();
-	
+
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 	{
 		if (curHole > 1)
@@ -3446,7 +3445,7 @@ void KolfGame::startNextHole()
 
 		(*curPlayer).ball()->collisionDetect(oldx, oldy);
 	}
-	
+
 	unPause();
 }
 
@@ -3892,7 +3891,7 @@ void KolfGame::switchHole(int hole)
 		return;
 	if (hole < 1 || hole > highestHole)
 		return;
-	
+
 	bool wasEditing = editing;
 	if (editing)
 		toggleEditMode();
@@ -4127,7 +4126,7 @@ void KolfGame::playSound(QString file, double vol)
 			{
 				//new KVolumeControl(vol, artsServer.server(), playObject);
 			}
-			
+
 			playObject->play();
 			oldPlayObjects.append(playObject);
 		}
