@@ -131,7 +131,7 @@ void Kolf::initGUI()
 	config->setGroup("Settings");
 	useMouseAction->setChecked(config->readBoolEntry("useMouse", true));
 
-	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Mouse Putting"), 0, 0, 0, actionCollection(), "useadvancedputting");
+	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Putting"), 0, 0, 0, actionCollection(), "useadvancedputting");
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
 	useAdvancedPuttingAction->setChecked(config->readBoolEntry("useAdvancedPutting", false));
 
