@@ -12,7 +12,7 @@
 			<Action name="clearhole" />
 			<Action name="resethole" />
 		</Menu>
-		<Menu name="go_document">
+		<Menu name="go_course"><text>&amp;Go</text>
 			<Action name="switchhole" />
 			<Action name="nexthole" />
 			<Action name="prevhole" />

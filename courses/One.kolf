@@ -8,10 +8,10 @@ dummykey=true
 [1-blackhole@114,150|10]
 exit=176,281
 exitDeg=330
-maxspeed=3
+maxspeed=4
 minspeed=2
 
-[1-cup@23,196|5]
+[1-cup@40,198|5]
 dummykey=true
 
 [1-hole@-50,-50|0]
@@ -38,69 +38,37 @@ changeEvery=50
 changeEnabled=false
 changeEvery=50
 
-[1-slope@10,12|14]
-grade=1
-gradient=Opposite Diagonal
-height=122
-reversed=true
-stuckOnGround=false
-width=377
-
 [1-slope@10,140|17]
-grade=4
+grade=3
 gradient=Horizontal
 height=10
 reversed=true
 stuckOnGround=false
-width=79
-
-[1-slope@10,231|6]
-grade=3
-gradient=Vertical
-height=108
-reversed=false
-stuckOnGround=false
-width=82
-
-[1-slope@104,358|16]
-grade=6
-gradient=Vertical
-height=30
-reversed=false
-stuckOnGround=false
-width=30
+width=95
 
 [1-slope@11,151|15]
-grade=4
+grade=3
 gradient=Vertical
 height=33
 reversed=false
 stuckOnGround=false
 width=98
 
-[1-slope@115,130|25]
-grade=1
-gradient=Diagonal
-height=193
-reversed=false
-stuckOnGround=false
-width=45
-
-[1-slope@130,318|11]
+[1-slope@14,117|24]
 grade=2
-gradient=Horizontal
-height=71
+gradient=Diagonal
+height=268
 reversed=false
 stuckOnGround=false
-width=175
+width=372
 
-[1-slope@159,130|23]
-grade=1
+[1-slope@16,232|6]
+grade=3
 gradient=Vertical
-height=189
+height=75
 reversed=false
 stuckOnGround=false
-width=229
+width=73
 
 [1-slope@215,154|18]
 grade=4
@@ -134,16 +102,20 @@ reversed=false
 stuckOnGround=false
 width=60
 
-[1-slope@305,317|24]
-grade=2
-gradient=Diagonal
-height=71
+[1-slope@8,14|14]
+grade=1
+gradient=Opposite Diagonal
+height=122
 reversed=true
 stuckOnGround=false
-width=84
+width=377
+
+[1-wall@0,0|24]
+endPoint=94,304
+startPoint=94,234
 
 [1-wall@0,0|3]
-endPoint=92,293
+endPoint=93,234
 startPoint=133,137
 
 [1-wall@0,0|4]
@@ -394,10 +366,18 @@ width=58
 [10-slope@250,140|60]
 grade=1
 gradient=Horizontal
-height=171
+height=243
 reversed=false
 stuckOnGround=false
-width=137
+width=136
+
+[10-slope@264,102|61]
+grade=1
+gradient=Diagonal
+height=39
+reversed=false
+stuckOnGround=true
+width=124
 
 [10-slope@32,275|44]
 grade=1
@@ -735,20 +715,20 @@ changeEnabled=false
 changeEvery=50
 
 [12-slope@238,231|53]
-grade=4
+grade=6
 gradient=Vertical
 height=13
 reversed=false
 stuckOnGround=false
-width=46
+width=51
 
 [12-slope@238,242|36]
-grade=4
+grade=3
 gradient=Vertical
-height=40
+height=41
 reversed=true
 stuckOnGround=false
-width=46
+width=51
 
 [12-slope@262,236|49]
 grade=6
@@ -788,7 +768,7 @@ startPoint=93,95
 
 [12-wall@0,0|14]
 endPoint=81,161
-startPoint=132,352
+startPoint=136,330
 
 [12-wall@0,0|15]
 endPoint=18,306
@@ -851,7 +831,7 @@ endPoint=365,50
 startPoint=337,57
 
 [12-wall@0,0|48]
-endPoint=54,287
+endPoint=38,285
 startPoint=20,305
 
 [12-wall@0,0|49]
@@ -865,6 +845,14 @@ startPoint=35,379
 [12-wall@0,0|51]
 endPoint=300,130
 startPoint=263,91
+
+[12-wall@0,0|54]
+endPoint=136,332
+startPoint=133,353
+
+[12-wall@0,0|55]
+endPoint=56,280
+startPoint=38,285
 
 [12-wall@0,0|6]
 endPoint=105,374
@@ -1282,7 +1270,7 @@ rightWallVisible=true
 topWallVisible=true
 width=153
 
-[15-cup@182,80|14]
+[15-cup@182,78|14]
 dummykey=true
 
 [15-cup@373,269|27]
@@ -1300,7 +1288,7 @@ changeEvery=50
 changeEnabled=false
 changeEvery=50
 
-[15-slope@105,72|34]
+[15-slope@104,71|34]
 grade=2
 gradient=Opposite Diagonal
 height=244
@@ -1315,22 +1303,6 @@ height=159
 reversed=true
 stuckOnGround=false
 width=93
-
-[15-slope@115,22|16]
-grade=4
-gradient=Vertical
-height=43
-reversed=true
-stuckOnGround=false
-width=87
-
-[15-slope@116,64|17]
-grade=4
-gradient=Horizontal
-height=30
-reversed=false
-stuckOnGround=false
-width=83
 
 [15-slope@12,129|31]
 grade=1
@@ -1428,13 +1400,13 @@ reversed=false
 stuckOnGround=false
 width=23
 
-[15-slope@55,23|15]
+[15-slope@61,22|17]
 grade=4
-gradient=Vertical
-height=71
+gradient=Horizontal
+height=70
 reversed=false
 stuckOnGround=false
-width=61
+width=142
 
 [15-wall@0,0|10]
 endPoint=257,174
@@ -1997,31 +1969,31 @@ startPoint=342,336
 endPoint=339,348
 startPoint=220,390
 
-[2-ball@112,37]
+[2-ball@112,41]
 dummykey=true
 
-[2-blackhole@157,39|20]
-exit=184,139
-exitDeg=350
+[2-blackhole@142,61|20]
+exit=262,77
+exitDeg=305
 maxspeed=3
 minspeed=2
 
-[2-blackhole@175,312|17]
-exit=17,45
-exitDeg=30
-maxspeed=8
+[2-blackhole@146,364|17]
+exit=17,31
+exitDeg=0
+maxspeed=6
 minspeed=3
 
 [2-blackhole@28,148|15]
 exit=271,28
 exitDeg=0
-maxspeed=3
-minspeed=2
+maxspeed=5
+minspeed=1
 
 [2-blackhole@374,84|7]
-exit=309,84
-exitDeg=240
-maxspeed=4
+exit=306,84
+exitDeg=244
+maxspeed=3
 minspeed=3
 
 [2-bridge@228,161|27]
@@ -2040,9 +2012,17 @@ rightWallVisible=false
 topWallVisible=false
 width=30
 
-[2-bridge@263,104|25]
+[2-bridge@263,111|25]
 botWallVisible=false
-height=56
+height=47
+leftWallVisible=false
+rightWallVisible=false
+topWallVisible=false
+width=28
+
+[2-bridge@278,97|61]
+botWallVisible=false
+height=43
 leftWallVisible=false
 rightWallVisible=false
 topWallVisible=false
@@ -2061,13 +2041,13 @@ height=64
 leftWallVisible=false
 rightWallVisible=true
 speed=5
-startPoint=41,200
+startPoint=38,207
 topWallVisible=true
 width=81
 
 [2-hole@-50,-50|0]
 maxstrokes=12
-par=2
+par=3
 
 [2-puddle@-1,255|29]
 changeEnabled=false
@@ -2097,7 +2077,7 @@ changeEvery=50
 changeEnabled=false
 changeEvery=50
 
-[2-puddle@73,219|35]
+[2-puddle@73,213|35]
 changeEnabled=false
 changeEvery=50
 
@@ -2169,6 +2149,22 @@ reversed=false
 stuckOnGround=false
 width=70
 
+[2-slope@190,89|58]
+grade=3
+gradient=Diagonal
+height=30
+reversed=false
+stuckOnGround=false
+width=75
+
+[2-slope@192,119|57]
+grade=3
+gradient=Opposite Diagonal
+height=127
+reversed=true
+stuckOnGround=false
+width=43
+
 [2-slope@224,11|46]
 grade=1
 gradient=Vertical
@@ -2177,13 +2173,13 @@ reversed=true
 stuckOnGround=false
 width=92
 
-[2-slope@227,280|23]
+[2-slope@231,242|23]
 grade=3
 gradient=Horizontal
-height=59
+height=147
 reversed=false
 stuckOnGround=true
-width=163
+width=158
 
 [2-slope@232,244|48]
 grade=3
@@ -2194,12 +2190,20 @@ stuckOnGround=false
 width=135
 
 [2-slope@233,119|22]
-grade=6
+grade=3
 gradient=Vertical
 height=126
 reversed=true
 stuckOnGround=true
 width=153
+
+[2-slope@262,88|59]
+grade=3
+gradient=Vertical
+height=32
+reversed=false
+stuckOnGround=false
+width=128
 
 [2-slope@314,9|47]
 grade=1
@@ -2242,16 +2246,12 @@ endPoint=49,145
 startPoint=31,174
 
 [2-wall@0,0|14]
-endPoint=40,125
+endPoint=35,112
 startPoint=52,143
-
-[2-wall@0,0|19]
-endPoint=39,125
-startPoint=27,127
 
 [2-wall@0,0|3]
 endPoint=233,12
-startPoint=96,139
+startPoint=104,130
 
 [2-wall@0,0|37]
 endPoint=115,82
@@ -2277,23 +2277,43 @@ startPoint=104,85
 endPoint=387,117
 startPoint=275,63
 
+[2-wall@0,0|52]
+endPoint=104,130
+startPoint=88,130
+
+[2-wall@0,0|53]
+endPoint=87,129
+startPoint=81,121
+
+[2-wall@0,0|54]
+endPoint=131,11
+startPoint=170,37
+
+[2-wall@0,0|55]
+endPoint=172,66
+startPoint=171,36
+
+[2-wall@0,0|56]
+endPoint=198,44
+startPoint=170,36
+
 [2-wall@0,0|9]
-endPoint=95,140
+endPoint=81,121
 startPoint=81,109
 
 [3-ball@376,375]
 dummykey=true
 
-[3-blackhole@210,275|7]
+[3-blackhole@203,286|7]
 exit=145,367
 exitDeg=180
-maxspeed=6
-minspeed=4
+maxspeed=7
+minspeed=5
 
 [3-blackhole@266,81|23]
 exit=47,35
-exitDeg=300
-maxspeed=4
+exitDeg=310
+maxspeed=5
 minspeed=3
 
 [3-cup@343,36|16]
@@ -2315,13 +2335,21 @@ changeEvery=20
 changeEnabled=false
 changeEvery=26
 
-[3-sand@257,154|30]
+[3-sand@267,148|30]
 changeEnabled=false
 changeEvery=50
 
-[3-sand@266,142|29]
+[3-sand@284,130|29]
 changeEnabled=false
 changeEvery=50
+
+[3-slope@113,334|40]
+grade=8
+gradient=Diagonal
+height=18
+reversed=false
+stuckOnGround=false
+width=35
 
 [3-slope@113,351|14]
 grade=8
@@ -2330,6 +2358,14 @@ height=30
 reversed=false
 stuckOnGround=false
 width=30
+
+[3-slope@113,381|41]
+grade=8
+gradient=Opposite Diagonal
+height=10
+reversed=true
+stuckOnGround=false
+width=38
 
 [3-slope@12,11|25]
 grade=3
@@ -2364,8 +2400,8 @@ stuckOnGround=false
 width=52
 
 [3-slope@334,119|24]
-grade=4
-gradient=Vertical
+grade=2
+gradient=Opposite Diagonal
 height=54
 reversed=false
 stuckOnGround=false
@@ -2390,34 +2426,22 @@ width=229
 [3-slope@81,12|26]
 grade=2
 gradient=Horizontal
-height=107
+height=104
 reversed=true
 stuckOnGround=false
-width=226
+width=229
 
 [3-wall@0,0|13]
 endPoint=90,390
 startPoint=14,350
 
-[3-wall@0,0|17]
-endPoint=292,106
-startPoint=274,106
-
-[3-wall@0,0|18]
-endPoint=314,69
-startPoint=293,106
-
 [3-wall@0,0|19]
-endPoint=298,42
-startPoint=314,61
+endPoint=299,42
+startPoint=322,62
 
 [3-wall@0,0|20]
-endPoint=296,42
+endPoint=275,38
 startPoint=256,58
-
-[3-wall@0,0|21]
-endPoint=321,103
-startPoint=303,91
 
 [3-wall@0,0|22]
 endPoint=254,24
@@ -2472,8 +2496,8 @@ endPoint=150,198
 startPoint=135,194
 
 [3-wall@0,0|43]
-endPoint=313,59
-startPoint=315,69
+endPoint=301,42
+startPoint=274,39
 
 [3-wall@0,0|5]
 endPoint=191,266
@@ -2498,7 +2522,7 @@ dummykey=true
 [4-blackhole@159,24|45]
 exit=156,218
 exitDeg=350
-maxspeed=2
+maxspeed=3
 minspeed=1
 
 [4-blackhole@173,346|137]
@@ -2521,6 +2545,14 @@ rightWallVisible=false
 topWallVisible=true
 width=84
 
+[4-bridge@341,126|140]
+botWallVisible=false
+height=39
+leftWallVisible=false
+rightWallVisible=false
+topWallVisible=false
+width=29
+
 [4-cup@101,111|3]
 dummykey=true
 
@@ -2531,23 +2563,7 @@ dummykey=true
 maxstrokes=10
 par=4
 
-[4-puddle@-14,350|151]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@10,367|150]
-changeEnabled=false
-changeEvery=50
-
 [4-puddle@109,189|122]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@11,390|149]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@110,71|135]
 changeEnabled=false
 changeEvery=50
 
@@ -2559,19 +2575,11 @@ changeEvery=50
 changeEnabled=false
 changeEvery=50
 
-[4-puddle@121,388|49]
-changeEnabled=false
-changeEvery=50
-
 [4-puddle@123,400|146]
 changeEnabled=false
 changeEvery=50
 
-[4-puddle@128,75|92]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@133,187|72]
+[4-puddle@132,181|134]
 changeEnabled=false
 changeEvery=50
 
@@ -2583,10 +2591,6 @@ changeEvery=50
 changeEnabled=false
 changeEvery=50
 
-[4-puddle@147,167|68]
-changeEnabled=false
-changeEvery=50
-
 [4-puddle@155,391|145]
 changeEnabled=false
 changeEvery=50
@@ -2595,31 +2599,15 @@ changeEvery=50
 changeEnabled=false
 changeEvery=50
 
-[4-puddle@164,82|62]
-changeEnabled=false
-changeEvery=50
-
 [4-puddle@165,193|78]
 changeEnabled=false
 changeEvery=50
 
-[4-puddle@171,151|69]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@172,134|61]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@174,104|63]
+[4-puddle@167,138|61]
 changeEnabled=false
 changeEvery=50
 
 [4-puddle@177,118|65]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@177,173|79]
 changeEnabled=false
 changeEvery=50
 
@@ -2631,11 +2619,7 @@ changeEvery=50
 changeEnabled=false
 changeEvery=50
 
-[4-puddle@192,125|71]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@195,84|67]
+[4-puddle@190,94|67]
 changeEnabled=false
 changeEvery=50
 
@@ -2643,23 +2627,11 @@ changeEvery=50
 changeEnabled=false
 changeEvery=50
 
-[4-puddle@201,161|80]
+[4-puddle@216,107|64]
 changeEnabled=false
 changeEvery=50
 
-[4-puddle@209,98|64]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@212,139|74]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@213,107|123]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@215,76|141]
+[4-puddle@216,83|141]
 changeEnabled=false
 changeEvery=50
 
@@ -2687,10 +2659,6 @@ changeEvery=50
 changeEnabled=false
 changeEvery=50
 
-[4-puddle@232,167|85]
-changeEnabled=false
-changeEvery=50
-
 [4-puddle@239,181|100]
 changeEnabled=false
 changeEvery=50
@@ -2700,10 +2668,6 @@ changeEnabled=false
 changeEvery=50
 
 [4-puddle@240,63|139]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@241,151|82]
 changeEnabled=false
 changeEvery=50
 
@@ -2724,10 +2688,6 @@ changeEnabled=false
 changeEvery=50
 
 [4-puddle@260,145|153]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@272,171|87]
 changeEnabled=false
 changeEvery=50
 
@@ -2779,10 +2739,6 @@ changeEvery=50
 changeEnabled=false
 changeEvery=50
 
-[4-puddle@336,194|90]
-changeEnabled=false
-changeEvery=50
-
 [4-puddle@347,204|99]
 changeEnabled=false
 changeEvery=50
@@ -2791,15 +2747,7 @@ changeEvery=50
 changeEnabled=false
 changeEvery=50
 
-[4-puddle@377,196|93]
-changeEnabled=false
-changeEvery=50
-
 [4-puddle@380,226|120]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@389,213|89]
 changeEnabled=false
 changeEvery=50
 
@@ -2807,21 +2755,57 @@ changeEvery=50
 changeEnabled=false
 changeEvery=50
 
-[4-puddle@42,381|47]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@49,395|148]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@80,387|48]
-changeEnabled=false
-changeEvery=50
-
 [4-puddle@99,393|147]
 changeEnabled=false
 changeEvery=50
+
+[4-sand@150,179|133]
+changeEnabled=false
+changeEvery=50
+
+[4-sand@161,165|132]
+changeEnabled=false
+changeEvery=50
+
+[4-sand@173,90|135]
+changeEnabled=false
+changeEvery=50
+
+[4-sand@191,158|131]
+changeEnabled=false
+changeEvery=50
+
+[4-sand@197,82|136]
+changeEnabled=false
+changeEvery=50
+
+[4-sand@203,132|128]
+changeEnabled=false
+changeEvery=50
+
+[4-sand@224,159|129]
+changeEnabled=false
+changeEvery=50
+
+[4-sand@256,166|130]
+changeEnabled=false
+changeEvery=50
+
+[4-slope@12,188|117]
+grade=4
+gradient=Vertical
+height=28
+reversed=false
+stuckOnGround=false
+width=71
+
+[4-slope@12,213|118]
+grade=4
+gradient=Vertical
+height=24
+reversed=true
+stuckOnGround=false
+width=73
 
 [4-slope@169,225|124]
 grade=1
@@ -2839,6 +2823,22 @@ reversed=false
 stuckOnGround=false
 width=15
 
+[4-slope@237,13|137]
+grade=3
+gradient=Opposite Diagonal
+height=208
+reversed=true
+stuckOnGround=false
+width=151
+
+[4-slope@261,193|138]
+grade=3
+gradient=Opposite Diagonal
+height=23
+reversed=true
+stuckOnGround=false
+width=12
+
 [4-slope@273,196|125]
 grade=3
 gradient=Vertical
@@ -2847,37 +2847,13 @@ reversed=true
 stuckOnGround=false
 width=43
 
-[4-slope@274,60|142]
+[4-slope@297,225|137]
 grade=1
-gradient=Vertical
-height=25
+gradient=Opposite Diagonal
+height=35
 reversed=false
 stuckOnGround=false
-width=106
-
-[4-slope@287,21|143]
-grade=6
-gradient=Horizontal
-height=40
-reversed=false
-stuckOnGround=false
-width=95
-
-[4-slope@31,207|117]
-grade=4
-gradient=Vertical
-height=30
-reversed=false
-stuckOnGround=false
-width=30
-
-[4-slope@31,237|118]
-grade=4
-gradient=Vertical
-height=30
-reversed=true
-stuckOnGround=false
-width=30
+width=24
 
 [4-slope@40,280|111]
 grade=4
@@ -2920,7 +2896,7 @@ stuckOnGround=false
 width=38
 
 [4-wall@0,0|10]
-endPoint=86,229
+endPoint=94,232
 startPoint=140,225
 
 [4-wall@0,0|101]
@@ -3000,12 +2976,24 @@ endPoint=79,33
 startPoint=61,25
 
 [4-wall@0,0|138]
-endPoint=266,52
-startPoint=271,67
+endPoint=243,97
+startPoint=244,82
+
+[4-wall@0,0|139]
+endPoint=261,43
+startPoint=271,62
 
 [4-wall@0,0|14]
 endPoint=78,76
 startPoint=93,91
+
+[4-wall@0,0|140]
+endPoint=270,60
+startPoint=264,78
+
+[4-wall@0,0|141]
+endPoint=93,233
+startPoint=79,221
 
 [4-wall@0,0|15]
 endPoint=74,58
@@ -3057,7 +3045,7 @@ startPoint=323,148
 
 [4-wall@0,0|24]
 endPoint=259,114
-startPoint=243,89
+startPoint=243,98
 
 [4-wall@0,0|25]
 endPoint=291,137
@@ -3084,8 +3072,8 @@ endPoint=230,49
 startPoint=208,51
 
 [4-wall@0,0|31]
-endPoint=243,90
-startPoint=271,68
+endPoint=245,83
+startPoint=263,78
 
 [4-wall@0,0|32]
 endPoint=103,51
@@ -3141,7 +3129,7 @@ startPoint=220,278
 
 [4-wall@0,0|8]
 endPoint=76,195
-startPoint=87,228
+startPoint=80,221
 
 [4-wall@0,0|9]
 endPoint=120,137
@@ -3158,20 +3146,19 @@ startPoint=132,51
 [5-ball@376,374]
 dummykey=true
 
-[5-blackhole@308,47|7]
-exit=229,68
-exitDeg=0
-maxspeed=5
-minspeed=3
-
-[5-blackhole@59,306|6]
-exit=50,233
-exitDeg=180
-maxspeed=5
-minspeed=3
-
-[5-cup@27,26|3]
+[5-cup@29,53|3]
 dummykey=true
+
+[5-floater@288,52|16]
+botWallVisible=false
+endPoint=288,52
+height=40
+leftWallVisible=false
+rightWallVisible=false
+speed=7
+startPoint=101,37
+topWallVisible=false
+width=80
 
 [5-floater@309,110|10]
 botWallVisible=false
@@ -3181,6 +3168,17 @@ leftWallVisible=false
 rightWallVisible=false
 speed=18
 startPoint=88,293
+topWallVisible=false
+width=80
+
+[5-floater@33,319|15]
+botWallVisible=false
+endPoint=33,319
+height=40
+leftWallVisible=false
+rightWallVisible=false
+speed=5
+startPoint=64,200
 topWallVisible=false
 width=80
 
@@ -3215,22 +3213,6 @@ changeEvery=50
 [5-sand@175,269|14]
 changeEnabled=false
 changeEvery=50
-
-[5-slope@36,69|9]
-grade=4
-gradient=Opposite Diagonal
-height=57
-reversed=true
-stuckOnGround=false
-width=22
-
-[5-slope@96,18|8]
-grade=4
-gradient=Opposite Diagonal
-height=57
-reversed=false
-stuckOnGround=false
-width=22
 
 [5-wall@0,0|4]
 endPoint=345,237
@@ -3294,13 +3276,13 @@ reversed=true
 stuckOnGround=false
 width=67
 
-[6-slope@10,190|4]
+[6-slope@11,11|8]
 grade=2
 gradient=Diagonal
-height=85
+height=130
 reversed=false
 stuckOnGround=false
-width=67
+width=61
 
 [6-slope@11,148|11]
 grade=3
@@ -3310,35 +3292,27 @@ reversed=false
 stuckOnGround=false
 width=181
 
-[6-slope@11,50|8]
+[6-slope@12,12|6]
 grade=2
 gradient=Diagonal
-height=91
-reversed=false
-stuckOnGround=false
-width=60
-
-[6-slope@12,140|3]
-grade=2
-gradient=Diagonal
-height=48
-reversed=true
-stuckOnGround=false
-width=61
-
-[6-slope@12,52|6]
-grade=2
-gradient=Diagonal
-height=90
+height=127
 reversed=true
 stuckOnGround=false
 width=59
 
+[6-slope@12,148|3]
+grade=2
+gradient=Opposite Diagonal
+height=41
+reversed=false
+stuckOnGround=false
+width=64
+
 [6-slope@14,141|7]
 grade=2
-gradient=Diagonal
+gradient=Opposite Diagonal
 height=48
-reversed=false
+reversed=true
 stuckOnGround=false
 width=61
 
@@ -3350,13 +3324,9 @@ reversed=true
 stuckOnGround=false
 width=22
 
-[6-slope@71,10|9]
-grade=4
-gradient=Horizontal
-height=270
-reversed=false
-stuckOnGround=false
-width=34
+[6-wall@4,0|18]
+endPoint=76,231
+startPoint=76,13
 
 [6-windmill@194,42|19]
 botWallVisible=false
@@ -3761,30 +3731,6 @@ exitDeg=0
 maxspeed=3
 minspeed=1
 
-[9-bridge@113,155|26]
-botWallVisible=false
-height=17
-leftWallVisible=false
-rightWallVisible=false
-topWallVisible=false
-width=38
-
-[9-bridge@131,256|27]
-botWallVisible=false
-height=46
-leftWallVisible=false
-rightWallVisible=false
-topWallVisible=false
-width=32
-
-[9-bridge@58,212|25]
-botWallVisible=false
-height=31
-leftWallVisible=false
-rightWallVisible=false
-topWallVisible=false
-width=55
-
 [9-cup@195,165|20]
 dummykey=true
 
@@ -3796,32 +3742,44 @@ maxstrokes=10
 par=3
 
 [9-puddle@238,340|3]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [9-puddle@271,354|4]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [9-puddle@296,281|6]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [9-puddle@307,367|5]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [9-puddle@315,305|7]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [9-puddle@325,329|8]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [9-puddle@328,349|9]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
-[9-slope@12,68|19]
+[9-sand@87,234|26]
+changeEnabled=false
+changeEvery=50
+
+[9-slope@15,14|19]
 grade=2
 gradient=Diagonal
-height=460
+height=513
 reversed=true
-width=459
+stuckOnGround=false
+width=499
 
 [9-wall@0,0|11]
 endPoint=105,195

@@ -5,11 +5,11 @@ name=Jason's Kolf Test Course
 [1-ball@125,248]
 dummykey=true
 
-[1-blackhole@339,296|8]
+[1-blackhole@130,173|8]
 exit=311,150
 exitDeg=10
-maxspeed=5
-minspeed=3
+maxspeed=4
+minspeed=2
 
 [1-bridge@205,332|9]
 botWallVisible=false

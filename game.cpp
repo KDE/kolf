@@ -908,7 +908,7 @@ void Floater::moveBy(double dx, double dy)
 			CanvasItem *item = dynamic_cast<CanvasItem *>(*it);
 			if (item)
 			{
-				if (item->onBridge())
+				if (item->canBeMovedByOthers())
 					if (collidesWith(*it))
 					{
 						if ((*it)->rtti() == Rtti_Ball)
@@ -1643,7 +1643,7 @@ void Ball::advance(int phase)
 void Ball::friction()
 {
 	if (!applyFriction) { applyFriction = true; return; }
-	if (state == Stopped || state == Holed) { setVelocity(0, 0); return; }
+	if (state == Stopped || state == Holed || !isVisible()) { setVelocity(0, 0); return; }
 	double vx = xVelocity();
 	double vy = yVelocity();
 	double ballAngle = atan(vx / vy);
@@ -1842,9 +1842,7 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 	playSound("blackhole");
 
 	double diff = (m_maxSpeed - m_minSpeed);
-	double randnum = kapp->random();
-	//kdDebug() << "randnum = " << randnum << endl;
-	double strength = m_minSpeed + randnum * (diff / RAND_MAX);
+	double strength = m_minSpeed + ball->curSpeed() * (diff / 3.0);
 	//kdDebug() << "strength is " << strength << endl;
 
 	ball->move(exitItem->x(), exitItem->y());
@@ -3318,6 +3316,10 @@ void KolfGame::openFile()
 
 			newItem->move(x, y);
 			canvasItem->firstMove(x, y);
+
+			// make things actually show
+			// kapp->processEvents();
+			// turns out that fscks everything up
 		}
 	}
 
@@ -3583,13 +3585,9 @@ void KolfGame::toggleEditMode()
 		save();
 
 	if (editing)
-	{
 		autoSaveTimer->start(autoSaveMsec);
-	}
 	else
-	{
 		autoSaveTimer->stop();
-	}
 
 	inPlay = false;
 }

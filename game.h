@@ -51,39 +51,115 @@ class CanvasItem
 {
 public:
 	CanvasItem() { game = 0; }
+	/**
+	 * load your settings from the KSimpleConfig.
+	 * You'll have to call KSimpleConfig::setGroup(this->makeGroup(...))
+	 *
+	 */
 	virtual void load(KSimpleConfig *, int /*hole*/) {}
+	/**
+	 * returns a bool that is true if your item needs to load after other items
+	 */
 	virtual bool loadLast() { return false; }
+	/**
+	 * called after all items have had load() called.
+	 */
 	virtual void finalLoad() {}
+	/**
+	 * called after the item is moved the very first time by the game
+	 */
 	virtual void firstMove(int /*x*/, int /*y*/) {}
+	/**
+	 * same as load (you must call setGroup), but save your settings.
+	 */
 	virtual void save(KSimpleConfig *, int /*hole*/) {}
+	/**
+	 * called right before any items are saved.
+	 */
 	virtual void aboutToSave() {}
+	/**
+	 * called right after all items are saved.
+	 */
 	virtual void savingDone() {}
+	/**
+	 * called when the edit mode has been changed.
+	 */
 	virtual void editModeChanged(bool /*changed*/) {}
+	/**
+	 * the item should delete any other objects it's created.
+	 * DO NOT DO THIS IN THE DESTRUCTOR!
+	 */
 	virtual void aboutToDie() {}
+	/**
+	 * called when user presses delete key while editing. This is very rarely reimplemented, and generally shouldn't be.
+	 */
 	virtual void aboutToDelete() {}
+	/** returns whether this item should be able to be deleted by user while editing.
+	 */
 	virtual bool deleteable() { return true; }
+	/**
+	 * returns whether or not this item lifts items on top of it.
+	 */
 	virtual bool vStrut() { return false; }
+	/**
+	 * show extra item info
+	 */
 	virtual void showInfo() {};
+	/**
+	 * hide extra item info
+	 */
 	virtual void hideInfo() {};
+	/**
+	 * update your Z value (this is called by various things when perhaps the value should change)
+	 */
 	virtual void updateZ() {};
-	virtual bool onBridge() { return false; }
+	/**
+	 * returns whether this item can be moved by others (if you want to move an item, you should honor this!)
+	 */
+	virtual bool canBeMovedByOthers() { return false; }
+	/**
+	 * returns a QFrame that can be used to configure this item by the user.
+	 * The default implementation returns one that says 'No configuration options'.
+	 */
 	virtual QFrame *config(QWidget *parent) { return new DefaultConfig(parent); }
-	// returns other items that should be moveable
-	// (besides this one of course)
+	/**
+	 * returns other items that should be moveable (besides this one of course).
+	 */
 	virtual QPtrList<QCanvasItem> moveableItems() { return QPtrList<QCanvasItem>(); }
+	/**
+	 * returns whether this can be moved by the user while editing.
+	 */
 	virtual bool moveable() { return true; }
+	/**
+	 * no need to reimplement.
+	 */
 	void setId(int newId) { id = newId; }
+	/**
+	 * no need to reimplement.
+	 */
 	bool playSound(QString file);
 
-	// should return true if ball should hit other things
 	virtual void collision(Ball * /*ball*/, long int /*id*/) {};
 
+	/**
+	 * use this to KSimpleConfig::setGroup() in your load and save functions.
+	 */
 	QString makeGroup(int hole, QString name, int x, int y) { return QString("%1-%2@%3,%4|%5").arg(hole).arg(name).arg(x).arg(y).arg(id); }
 
+	/**
+	 * reimplement if you want extra items to have access to the game object.
+	 * playSound() relies on having this.
+	 */
 	virtual void setGame(KolfGame *game) { this->game = game; }
 
 protected:
+	/**
+	 * pointer to main KolfGame
+	 */
 	KolfGame *game;
+	/**
+	 * returns the highest vertical strut the item is on
+	 */
 	QCanvasItem *onVStrut();
 
 private:
@@ -101,7 +177,7 @@ public:
 	virtual void doAdvance() { QCanvasEllipse::advance(1); }
 
 	double curSpeed() { return sqrt(xVelocity() * xVelocity() + yVelocity() * yVelocity()); }
-	virtual bool onBridge() { return true; }
+	virtual bool canBeMovedByOthers() { return true; }
 
 	BallState curState() { return state; }
 	void setState(BallState newState) { state = newState; if (state == Stopped) setZ(1000); }
@@ -224,7 +300,7 @@ public:
 	virtual void showInfo();
 	virtual void hideInfo();
 	virtual void editModeChanged(bool changed);
-	virtual bool onBridge() { return !stuckOnGround; }
+	virtual bool canBeMovedByOthers() { return !stuckOnGround; }
 	virtual QPtrList<QCanvasItem> moveableItems();
 	virtual QFrame *config(QWidget *parent) { return new SlopeConfig(this, parent); }
 	void setSize(int, int);
@@ -392,7 +468,7 @@ public:
 	Cup(QCanvas *canvas) : Hole(QColor("#FF923F"), canvas) { }
 	virtual bool place(Ball *ball, bool wasCenter);
 	virtual void save(KSimpleConfig *cfg, int hole);
-	virtual bool onBridge() { return true; }
+	virtual bool canBeMovedByOthers() { return true; }
 };
 class CupObj : public Object
 {
@@ -425,7 +501,7 @@ public:
 	virtual void showInfo();
 	virtual void hideInfo();
 	virtual bool deleteable() { return false; }
-	virtual bool onBridge() { return true; }
+	virtual bool canBeMovedByOthers() { return true; }
 	virtual QFrame *config(QWidget *parent);
 	BlackHole *blackHole;
 
@@ -436,7 +512,7 @@ class BlackHole : public Hole
 {
 public:
 	BlackHole(QCanvas *canvas);
-	virtual bool onBridge() { return true; }
+	virtual bool canBeMovedByOthers() { return true; }
 	virtual void aboutToDie();
 	virtual void showInfo();
 	virtual void hideInfo();
@@ -552,7 +628,7 @@ public:
 	void saveDegrees(Ball *ball) { degMap[ball] = deg; }
 	void setDegrees(Ball *ball);
 	void resetDegrees() { degMap.clear(); setZ(999999); }
-	virtual bool onBridge() { return true; }
+	virtual bool canBeMovedByOthers() { return true; }
 	virtual void moveBy(double dx, double dy);
 
 private:
