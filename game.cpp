@@ -25,7 +25,6 @@
 #include <qevent.h>
 #include <qfont.h>
 #include <qfontmetrics.h>
-#include <qframe.h>
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qmap.h>
@@ -46,18 +45,6 @@
 
 #include "game.h"
 
-namespace Config
-{
-	int spacingHint()
-	{
-		return KDialog::spacingHint() / 2;
-	}
-	int marginHint()
-	{
-		return KDialog::marginHint();
-	}
-}
-
 // from Qt... you gotta love the humor-- i present the following uncut:
 const double PI = 3.14159265358979323846;   // pi // one more useful comment
 
@@ -66,9 +53,23 @@ inline double deg2rad(double theDouble)
 	return (((2L * PI) / 360L) * theDouble);
 }
 
-inline double rad2deg(double theDouble)
+/////////////////////////
+
+int Config::spacingHint()
 {
-	return ((360L / (2L * PI)) * theDouble);
+	// the configs need to be squashed IMHO.
+	return KDialog::spacingHint() / 2;
+}
+
+int Config::marginHint()
+{
+	return KDialog::marginHint();
+}
+
+void Config::changed()
+{
+	if (startedUp)
+		emit modified();
 }
 
 /////////////////////////
@@ -104,10 +105,10 @@ QCanvasItem *CanvasItem::onVStrut()
 /////////////////////////
 
 DefaultConfig::DefaultConfig(QWidget *parent)
-	: QFrame(parent)
+	: Config(parent)
 {
-	QVBoxLayout *layout = new QVBoxLayout(this, Config::marginHint(), Config::spacingHint());
-	QHBoxLayout *hlayout = new QHBoxLayout(layout, Config::spacingHint());
+	QVBoxLayout *layout = new QVBoxLayout(this, marginHint(), spacingHint());
+	QHBoxLayout *hlayout = new QHBoxLayout(layout, spacingHint());
 	hlayout->addStretch();
 	hlayout->addWidget(new QLabel(i18n("No configuration options"), this));
 	hlayout->addStretch();
@@ -139,7 +140,8 @@ void RectPoint::moveBy(double dx, double dy)
 	double nh = fabs(y() - rect->y());
 	if (nw <= 0 || nh <= 0)
 		return;
-	dynamic_cast<RectItem *>(rect)->newSize(nw, nh);
+	RectItem *ritem = dynamic_cast<RectItem *>(rect);
+	ritem->newSize(nw, nh);
 
 	update();
 }
@@ -201,8 +203,6 @@ void Slope::newSize(int width, int height)
 {
 	QCanvasRectangle::setSize(width, height);
 
-	update();
-
 	updateZ();
 }
 
@@ -226,14 +226,17 @@ void Slope::editModeChanged(bool changed)
 
 void Slope::updateZ()
 {
-	QCanvasItem *qitem = onVStrut();
-	
 	//const bool diag = (type == KPixmapEffect::DiagonalGradient || type == KPixmapEffect::CrossDiagonalGradient);
 	int area = (height() * width());
 	//if (diag)
 		//area /= 2;
 	const int defaultz = -50;
+
 	double newZ = 0;
+
+	QCanvasItem *qitem = 0;
+	if (!stuckOnGround)
+		qitem = onVStrut();
 	if (qitem)
 	{
 		QCanvasRectangle *rect = dynamic_cast<QCanvasRectangle *>(qitem);
@@ -246,9 +249,6 @@ void Slope::updateZ()
 			newZ = qitem->z();
 	}
 	else
-		newZ = defaultz;
-
-	if (stuckOnGround)
 		newZ = defaultz;
 
 	setZ(((double)1 / (area == 0? 1 : area))  + newZ);
@@ -294,7 +294,7 @@ void Slope::draw(QPainter &painter)
 	{
 		painter.setPen(white);
 		QFont font(kapp->font());
-		font.setPixelSize(24); 
+		font.setPixelSize(18); 
 		painter.setFont(font);
 		QFontMetrics metrics(painter.fontMetrics());
 
@@ -441,12 +441,12 @@ void Slope::updatePixmap()
 /////////////////////////
 
 BridgeConfig::BridgeConfig(Bridge *bridge, QWidget *parent)
-	: QFrame(parent)
+	: Config(parent)
 {
 	this->bridge = bridge;
 
-	m_vlayout = new QVBoxLayout(this, Config::marginHint(), Config::spacingHint());
-	QGridLayout *layout = new QGridLayout(m_vlayout, 2, 3, Config::spacingHint());
+	m_vlayout = new QVBoxLayout(this, marginHint(), spacingHint());
+	QGridLayout *layout = new QGridLayout(m_vlayout, 2, 3, spacingHint());
 	layout->addWidget(new QLabel(i18n("Walls on:"), this), 0, 0);
 	top = new QCheckBox(i18n("&Top"), this);
 	layout->addWidget(top, 0, 1);
@@ -469,16 +469,19 @@ BridgeConfig::BridgeConfig(Bridge *bridge, QWidget *parent)
 void BridgeConfig::topWallChanged(bool yes)
 {
 	bridge->setTopWallVisible(yes);
+	changed();
 }
 
 void BridgeConfig::botWallChanged(bool yes)
 {
 	bridge->setBotWallVisible(yes);
+	changed();
 }
 
 void BridgeConfig::leftWallChanged(bool yes)
 {
 	bridge->setLeftWallVisible(yes);
+	changed();
 }
 
 void BridgeConfig::rightWallChanged(bool yes)
@@ -605,8 +608,6 @@ void Bridge::moveBy(double dx, double dy)
 		if (citem)
 			citem->updateZ();
 	}
-
-	update();
 }
 
 void Bridge::setVelocity(double vx, double vy)
@@ -894,21 +895,21 @@ void Floater::moveBy(double dx, double dy)
 	if (!isEnabled())
 		return;
 
-	/*
-	if (onVStrut())
-		if (onVStrut()->z() >= z())
-			return;
-	*/
+	QCanvasRectangle::moveBy(dx, dy);
 
 	QCanvasItemList l = collisions(false);
 	for (QCanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
 	{
+		CanvasItem *item = dynamic_cast<CanvasItem *>(*it);
+		if (!noUpdateZ)
+			if (item)
+				item->updateZ();
 		if ((*it)->z() >= z())
 		{
-			CanvasItem *item = dynamic_cast<CanvasItem *>(*it);
 			if (item)
 			{
 				if (item->canBeMovedByOthers())
+				{
 					if (collidesWith(*it))
 					{
 						if ((*it)->rtti() == Rtti_Ball)
@@ -916,16 +917,22 @@ void Floater::moveBy(double dx, double dy)
 
 						//kdDebug() << "moving an item\n";
 						if ((*it)->rtti() != Rtti_Putter)
+						{
 							(*it)->moveBy(dx, dy);
+						}
 					}
+				}
 			}
 		}
 	}
-	
-	if (noUpdateZ)
-		QCanvasRectangle::moveBy(dx, dy);
-	else
-		Bridge::moveBy(dx, dy);
+
+	point->dontMove();
+	point->move(x() + width(), y() + height());
+
+	topWall->move(x(), y());
+	botWall->move(x(), y());
+	leftWall->move(x(), y());
+	rightWall->move(x(), y());
 }
 
 void Floater::save(KSimpleConfig *cfg, int hole)
@@ -974,7 +981,7 @@ FloaterConfig::FloaterConfig(Floater *floater, QWidget *parent)
 {
 	this->floater = floater;
 	m_vlayout->addStretch();
-	QHBoxLayout *hlayout = new QHBoxLayout(m_vlayout, Config::spacingHint());
+	QHBoxLayout *hlayout = new QHBoxLayout(m_vlayout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Slow"), this));
 	QSlider *slider = new QSlider(1, 20, 2, floater->curSpeed(), Qt::Horizontal, this);
 	hlayout->addWidget(slider);
@@ -985,6 +992,7 @@ FloaterConfig::FloaterConfig(Floater *floater, QWidget *parent)
 void FloaterConfig::speedChanged(int news)
 {
 	floater->setSpeed(news);
+	changed();
 }
 
 /////////////////////////
@@ -994,7 +1002,7 @@ WindmillConfig::WindmillConfig(Windmill *windmill, QWidget *parent)
 {
 	this->windmill = windmill;
 	m_vlayout->addStretch();
-	QHBoxLayout *hlayout = new QHBoxLayout(m_vlayout, Config::spacingHint());
+	QHBoxLayout *hlayout = new QHBoxLayout(m_vlayout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Slow"), this));
 	QSlider *slider = new QSlider(1, 10, 1, windmill->curSpeed(), Qt::Horizontal, this);
 	hlayout->addWidget(slider);
@@ -1007,6 +1015,7 @@ WindmillConfig::WindmillConfig(Windmill *windmill, QWidget *parent)
 void WindmillConfig::speedChanged(int news)
 {
 	windmill->setSpeed(news);
+	changed();
 }
 
 /////////////////////////
@@ -1142,8 +1151,6 @@ void WindmillGuard::advance(int phase)
 		else if (x() + endPoint().x() >= max)
 			setXVelocity(-fabs(xVelocity()));
 	}
-
-	update();
 }
 
 /////////////////////////
@@ -1214,15 +1221,16 @@ SignConfig::SignConfig(Sign *sign, QWidget *parent)
 void SignConfig::textChanged(const QString &text)
 {
 	sign->setText(text);
+	changed();
 }
 
 /////////////////////////
 
 SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
-	: QFrame(parent)
+	: Config(parent)
 {
 	this->slope = slope;
-	QVBoxLayout *layout = new QVBoxLayout(this, Config::marginHint(), Config::spacingHint());
+	QVBoxLayout *layout = new QVBoxLayout(this, marginHint(), spacingHint());
 	KComboBox *gradient = new KComboBox(this);
 	QStringList items;
 	QString curText;
@@ -1244,7 +1252,7 @@ SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
 	layout->addWidget(reversed);
 	connect(reversed, SIGNAL(toggled(bool)), this, SLOT(setReversed(bool)));
 
-	QHBoxLayout *hlayout = new QHBoxLayout(layout, Config::spacingHint());
+	QHBoxLayout *hlayout = new QHBoxLayout(layout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Shallow"), this));
 	QSlider *grade = new QSlider(1, 8, 1, slope->curGrade(), Qt::Horizontal, this);
 	hlayout->addWidget(grade);
@@ -1260,38 +1268,42 @@ SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
 void SlopeConfig::setGradient(const QString &text)
 {
 	slope->setGradient(text);
+	changed();
 }
 
 void SlopeConfig::setReversed(bool yes)
 {
 	slope->setReversed(yes);
+	changed();
 }
 
 void SlopeConfig::setStuckOnGround(bool yes)
 {
 	slope->setStuckOnGround(yes);
+	changed();
 }
 
 void SlopeConfig::gradeChanged(int newgrade)
 {
 	slope->setGrade(newgrade);
+	changed();
 }
 
 /////////////////////////
 
 EllipseConfig::EllipseConfig(Ellipse *ellipse, QWidget *parent)
-	: QFrame(parent), slow1(0), fast1(0), slow2(0), fast2(0), slider1(0), slider2(0)
+	: Config(parent), slow1(0), fast1(0), slow2(0), fast2(0), slider1(0), slider2(0)
 {
 	this->ellipse = ellipse;
 
-	m_vlayout = new QVBoxLayout(this, Config::marginHint(), Config::spacingHint());
+	m_vlayout = new QVBoxLayout(this, marginHint(), spacingHint());
 
 	QCheckBox *check = new QCheckBox(i18n("Enable Show/Hide"), this);
 	m_vlayout->addWidget(check);
 	connect(check, SIGNAL(toggled(bool)), this, SLOT(check1Changed(bool)));
 	check->setChecked(ellipse->changeEnabled());
 
-	QHBoxLayout *hlayout = new QHBoxLayout(m_vlayout, Config::spacingHint());
+	QHBoxLayout *hlayout = new QHBoxLayout(m_vlayout, spacingHint());
 	slow1 = new QLabel(i18n("Slow"), this);
 	hlayout->addWidget(slow1);
 	slider1 = new QSlider(1, 100, 5, 100 - ellipse->changeEvery(), Qt::Horizontal, this);
@@ -1311,11 +1323,13 @@ EllipseConfig::EllipseConfig(Ellipse *ellipse, QWidget *parent)
 void EllipseConfig::value1Changed(int news)
 {
 	ellipse->setChangeEvery(100 - news);
+	changed();
 }
 
 void EllipseConfig::value2Changed(int news)
 {
 	ellipse->setChangeEvery(100 - news);
+	changed();
 }
 
 void EllipseConfig::check1Changed(bool on)
@@ -1327,6 +1341,8 @@ void EllipseConfig::check1Changed(bool on)
 		slow1->setEnabled(on);
 	if (fast1)
 		fast1->setEnabled(on);
+
+	changed();
 }
 
 void EllipseConfig::check2Changed(bool on)
@@ -1338,6 +1354,8 @@ void EllipseConfig::check2Changed(bool on)
 		slow2->setEnabled(on);
 	if (fast2)
 		fast2->setEnabled(on);
+
+	changed();
 }
 
 /////////////////////////
@@ -1381,7 +1399,7 @@ void Ellipse::doSave(KSimpleConfig *cfg, int /*hole*/)
 	cfg->writeEntry("changeEnabled", changeEnabled());
 }
 
-QFrame *Ellipse::config(QWidget *parent)
+Config *Ellipse::config(QWidget *parent)
 {
 	return new EllipseConfig(this, parent);
 }
@@ -1502,6 +1520,7 @@ void Putter::showInfo()
 {
 	guideLine->setVisible(true);
 }
+
 void Putter::hideInfo()
 {
 	guideLine->setVisible(false);
@@ -1913,7 +1932,7 @@ BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QCanvas *canvas)
 	setZ(blackHole->z());
 }
 
-QFrame *BlackHoleExit::config(QWidget *parent)
+Config *BlackHoleExit::config(QWidget *parent)
 {
 	return blackHole->config(parent);
 }
@@ -1958,10 +1977,10 @@ void BlackHoleExit::hideInfo()
 /////////////////////////
 
 BlackHoleConfig::BlackHoleConfig(BlackHole *blackHole, QWidget *parent)
-	: QFrame(parent)
+	: Config(parent)
 {
 	this->blackHole = blackHole;
-	QVBoxLayout *layout = new QVBoxLayout(this, Config::marginHint(), Config::spacingHint());
+	QVBoxLayout *layout = new QVBoxLayout(this, marginHint(), spacingHint());
 	layout->addWidget(new QLabel(i18n("Degree measure of exiting ball:"), this));
 	QSpinBox *deg = new QSpinBox(0, 359, 10, this);
 	deg->setValue(blackHole->curExitDeg());
@@ -1971,14 +1990,14 @@ BlackHoleConfig::BlackHoleConfig(BlackHole *blackHole, QWidget *parent)
 
 	layout->addStretch();
 
-	QHBoxLayout *hlayout = new QHBoxLayout(layout, Config::spacingHint());
+	QHBoxLayout *hlayout = new QHBoxLayout(layout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Minimum exit speed"), this));
 	QSpinBox *min = new QSpinBox(0, 12, 1, this);
 	hlayout->addWidget(min);
 	connect(min, SIGNAL(valueChanged(int)), this, SLOT(minChanged(int)));
 	min->setValue(blackHole->minSpeed());
 
-	hlayout = new QHBoxLayout(layout, Config::spacingHint());
+	hlayout = new QHBoxLayout(layout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Maximum"), this));
 	QSpinBox *max = new QSpinBox(1, 12, 1, this);
 	hlayout->addWidget(max);
@@ -1989,16 +2008,19 @@ BlackHoleConfig::BlackHoleConfig(BlackHole *blackHole, QWidget *parent)
 void BlackHoleConfig::degChanged(int newdeg)
 {
 	blackHole->setExitDeg(newdeg);
+	changed();
 }
 
 void BlackHoleConfig::minChanged(int news)
 {
 	blackHole->setMinSpeed(news);
+	changed();
 }
 
 void BlackHoleConfig::maxChanged(int news)
 {
 	blackHole->setMaxSpeed(news);
+	changed();
 }
 
 /////////////////////////
@@ -2055,8 +2077,6 @@ void WallPoint::moveBy(double dx, double dy)
 		wall->setPoints(wall->startPoint().x() + wall->x(), wall->startPoint().y() + wall->y(), x(), y());
 	}
 	wall->move(0, 0);
-
-	update();
 }
 
 void WallPoint::updateVisible()
@@ -2258,8 +2278,6 @@ void Wall::moveBy(double dx, double dy)
 	endItem->dontMove();
 	startItem->move(startPoint().x() + x(), startPoint().y() + y());
 	endItem->move(endPoint().x() + x(), endPoint().y() + y());
-
-	update();
 }
 
 void Wall::setVelocity(double vx, double vy)
@@ -2416,19 +2434,19 @@ void Wall::save(KSimpleConfig *cfg, int hole)
 /////////////////////////
 
 HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
-	: QFrame(parent)
+	: Config(parent)
 {
 	this->holeInfo = holeInfo;
 
-	QVBoxLayout *layout = new QVBoxLayout(this, Config::marginHint(), Config::spacingHint());
+	QVBoxLayout *layout = new QVBoxLayout(this, marginHint(), spacingHint());
 
-	QHBoxLayout *hlayout = new QHBoxLayout(layout, Config::spacingHint());
+	QHBoxLayout *hlayout = new QHBoxLayout(layout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Course name: "), this));
 	KLineEdit *nameEdit = new KLineEdit(holeInfo->name(), this);
 	hlayout->addWidget(nameEdit);
 	connect(nameEdit, SIGNAL(textChanged(const QString &)), this, SLOT(nameChanged(const QString &)));
 
-	hlayout = new QHBoxLayout(layout, Config::spacingHint());
+	hlayout = new QHBoxLayout(layout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Course author: "), this));
 	KLineEdit *authorEdit = new KLineEdit(holeInfo->author(), this);
 	hlayout->addWidget(authorEdit);
@@ -2436,7 +2454,7 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 
 	layout->addStretch();
 
-	hlayout = new QHBoxLayout(layout, Config::spacingHint());
+	hlayout = new QHBoxLayout(layout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Hole par"), this));
 	hlayout->addStretch();
 	QSpinBox *par = new QSpinBox(2, 15, 1, this);
@@ -2444,7 +2462,7 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	hlayout->addWidget(par);
 	connect(par, SIGNAL(valueChanged(int)), this, SLOT(parChanged(int)));
 
-	hlayout = new QHBoxLayout(layout, Config::spacingHint());
+	hlayout = new QHBoxLayout(layout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Hole max strokes"), this));
 	hlayout->addStretch();
 	QSpinBox *maxstrokes = new QSpinBox(4, 30, 1, this);
@@ -2456,21 +2474,25 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 void HoleConfig::authorChanged(const QString &newauthor)
 {
 	holeInfo->setAuthor(newauthor);
+	changed();
 }
 
 void HoleConfig::nameChanged(const QString &newname)
 {
 	holeInfo->setName(newname);
+	changed();
 }
 
 void HoleConfig::parChanged(int newpar)
 {
 	holeInfo->setPar(newpar);
+	changed();
 }
 
 void HoleConfig::maxStrokesChanged(int newms)
 {
 	holeInfo->setMaxStrokes(newms);
+	changed();
 }
 
 /////////////////////////
@@ -2485,6 +2507,7 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 	curPlayer = players->end();
 	curPlayer--; // will get ++'d to end and sent back
 	             // to beginning 
+	modified = false;
 	inPlay = false;
 	putting = false;
 	stroking = false;
@@ -2662,10 +2685,7 @@ void KolfGame::contentsMousePressEvent(QMouseEvent *e)
 
 	QCanvasItemList list = course->collisions(e->pos());
 	if (list.first() == highlighter)
-	{
-		//kdDebug() << "first was highlighter\n";
 		list.pop_front();
-	}
 
 	moving = false;
 	highlighter->setVisible(false);
@@ -2687,12 +2707,7 @@ void KolfGame::contentsMousePressEvent(QMouseEvent *e)
 	}
 
 	CanvasItem *citem = dynamic_cast<CanvasItem *>(list.first());
-	if (!citem)
-	{
-		emit newSelectedItem(&holeInfo);
-		return;
-	}
-	if (!citem->moveable())
+	if (!citem || !citem->moveable())
 	{
 		emit newSelectedItem(&holeInfo);
 		return;
@@ -2703,10 +2718,16 @@ void KolfGame::contentsMousePressEvent(QMouseEvent *e)
 		// select AND move now :)
 		case LeftButton:
 		{
+			CanvasItem *citem = dynamic_cast<CanvasItem *>(selectedItem);
+			if (!citem)
+			{
+				emit newSelectedItem(&holeInfo);
+				break;
+			}
 			selectedItem = list.first();
 			movingItem = list.first();
 			moving = true;
-			emit newSelectedItem(dynamic_cast<CanvasItem *>(selectedItem));
+			emit newSelectedItem(citem);
 			highlighter->setVisible(true);
 			QRect rect = selectedItem->boundingRect();
 			highlighter->move(rect.x() + 1, rect.y() + 1);
@@ -2729,6 +2750,10 @@ void KolfGame::contentsMouseMoveEvent(QMouseEvent *e)
 		return;
 	int moveX = storedMousePos.x() - mouse.x();
 	int moveY = storedMousePos.y() - mouse.y();
+
+	// moving counts as modifying
+	if (moveX || moveY)
+		modified = true;
 
 	movingItem->moveBy(-(double)moveX, -(double)moveY);
 	highlighter->moveBy(-(double)moveX, -(double)moveY);
@@ -2763,10 +2788,14 @@ void KolfGame::keyPressEvent(QKeyEvent *e)
 			{
 				QCanvasItem *item = 0;
 				for (item = items.first(); item; item = items.next())
-					dynamic_cast<CanvasItem *>(item)->showInfo();
+				{
+					CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+					if (citem)
+						citem->showInfo();
+				}
+				showInfo();
+				putter->showInfo();
 			}
-			showInfo();
-			putter->showInfo();
 		}
 		break;
 
@@ -2834,6 +2863,8 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 					delete selectedItem;
 					selectedItem = 0;
 					emit newSelectedItem(&holeInfo);
+
+					modified = true;
 				}
 			}
 		}
@@ -2842,7 +2873,11 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 	{
 		QCanvasItem *item = 0;
 		for (item = items.first(); item; item = items.next())
-			dynamic_cast<CanvasItem *>(item)->hideInfo();
+		{
+			CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+			if (citem)
+				citem->hideInfo();
+		}
 		hideInfoText();
 		putter->hideInfo();
 	}
@@ -3146,8 +3181,22 @@ void KolfGame::holeDone()
 	//kdDebug() << "curHole ++'d to " << curHole << endl;
 
 	whiteBall->move(width/2, height/2);
+	int leastScore = INT_MAX;
+	// to get the first player to go first on every hole,
+	// don't do the score stuff below
+	curPlayer = players->begin();
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 	{
+		if (curHole > 1)
+		{
+			kdDebug() << "lastScore: " << (*it).lastScore() << ", leastScore: " << leastScore << endl;
+			if ((*it).lastScore() < leastScore && (*it).lastScore() != 0)
+			{
+				curPlayer = it;
+				leastScore = (*it).lastScore();
+			}
+		}
+
 		(*it).ball()->move(width/2, height/2);
 		(*it).ball()->setState(Stopped);
 		(*it).addHole();
@@ -3156,7 +3205,6 @@ void KolfGame::holeDone()
 		(*it).ball()->setVisible(false);
 	}
 
-	curPlayer = players->begin();
 	emit newPlayersTurn(&(*curPlayer));
 	//kdDebug() << (*curPlayer).name() << endl;
 	//kdDebug() << (*curPlayer).ball()->color().name() << endl;
@@ -3230,6 +3278,10 @@ void KolfGame::openFile()
 	holeInfo.setPar(curPar);
 	highestHole = 0;
 
+	/****
+	TODO : add a progress bar based on groups.size()
+	****/
+
 	for (QStringList::Iterator it = groups.begin(); it != groups.end(); ++it)
 	{
 		//kdDebug() << "GROUP: " << *it << endl;
@@ -3264,10 +3316,8 @@ void KolfGame::openFile()
 				//break;
 			continue;
 		}
-		else
-		{
-			numItems++;
-		}
+		numItems++;
+	
 
 		int commaIndex = (*it).find(",");
 		int pipeIndex = (*it).find("|");
@@ -3282,7 +3332,7 @@ void KolfGame::openFile()
 			whiteBall->move(x, y);
 			continue;
 		}
-
+		else
 		// stores par
 		if (name == "hole")
 		{
@@ -3309,6 +3359,8 @@ void KolfGame::openFile()
 			newItem->setVisible(true);
 
 			CanvasItem *canvasItem = dynamic_cast<CanvasItem *>(newItem);
+			if (!canvasItem)
+				continue;
 			canvasItem->setId(id);
 			canvasItem->setGame(this);
 			canvasItem->editModeChanged(editing);
@@ -3319,13 +3371,14 @@ void KolfGame::openFile()
 
 			// make things actually show
 			// kapp->processEvents();
-			// turns out that fscks everything up
+			// turns out that that fscks everything up
 		}
 	}
 
 	// if it's the first hole let's not
-	if (!numItems && curHole >= 2 && !addingNewHole && !(curHole < highestHole))
+	if (!numItems && curHole > 1 && !addingNewHole && !(curHole < highestHole))
 	{
+		// we're done, let's quit
 		curHole--;
 		pause();
 		emit holesDone();
@@ -3334,7 +3387,11 @@ void KolfGame::openFile()
 
 	QCanvasItem *item = 0;
 	for (item = olditems.first(); item; item = olditems.next())
-		dynamic_cast<CanvasItem *>(item)->aboutToDie();
+	{
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		if (citem)
+			citem->aboutToDie();
+	}
 
 	olditems.setAutoDelete(true);
 	olditems.clear();
@@ -3344,16 +3401,23 @@ void KolfGame::openFile()
 	for (qcanvasItem = items.first(); qcanvasItem; qcanvasItem = items.next())
 	{
 		CanvasItem *item = dynamic_cast<CanvasItem *>(qcanvasItem);
-		if (item->loadLast())
-			todo.append(item);
-		else
-			item->load(cfg, curHole);
+		if (item)
+		{
+			if (item->loadLast())
+				todo.append(item);
+			else
+				item->load(cfg, curHole);
+		}
 	}
 	CanvasItem *citem = 0;
 	for (citem = todo.first(); citem; citem = todo.next())
 		citem->load(cfg, curHole);
 	for (qcanvasItem = items.first(); qcanvasItem; qcanvasItem = items.next())
-		dynamic_cast<CanvasItem *>(qcanvasItem)->updateZ();
+	{
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(qcanvasItem);
+		if (citem)
+			citem->updateZ();
+	}
 
 	if (curHole == 1 && !filename.isNull() && !infoShown)
 	{
@@ -3373,10 +3437,7 @@ void KolfGame::addItemsToMoveableList(QPtrList<QCanvasItem> list)
 {
 	QCanvasItem *item = 0;
 	for (item = list.first(); item; item = list.next())
-	{
-		//kdDebug() << "adding an item\n";
 		extraMoveable.append(item);
-	}
 }
 
 void KolfGame::addNewObject(Object *newObj)
@@ -3386,6 +3447,8 @@ void KolfGame::addNewObject(Object *newObj)
 	newItem->setVisible(true);
 
 	CanvasItem *canvasItem = dynamic_cast<CanvasItem *>(newItem);
+	if (!canvasItem)
+		return;
 	canvasItem->setId(items.count() + 2);
 	canvasItem->setGame(this);
 	canvasItem->editModeChanged(editing);
@@ -3394,20 +3457,38 @@ void KolfGame::addNewObject(Object *newObj)
 	newItem->move(width/2, height/2);
 }
 
-void KolfGame::addNewHole()
+bool KolfGame::askSave()
 {
-	/*
+	if (!modified)
+		// not cancel, don't save
+		return false;
+
 	int result = KMessageBox::warningYesNoCancel(this, i18n("There are unsaved changes to current hole. Save them?"), i18n("Unsaved changes"), i18n("Save"), i18n("Discard"), "DiscardAsk", true);
 	switch (result)
 	{
 		case KMessageBox::Yes:
-		*/
 			save();
-			/*
 			// fallthrough
+
 		case KMessageBox::No:
-		*/
-		{
+			return false;
+		break;
+
+		case KMessageBox::Cancel:
+			return true;
+		break;
+
+		default:
+		break;
+	}
+
+	return false;
+}
+
+void KolfGame::addNewHole()
+{
+	if (askSave())
+		return;
 			// find highest hole num, and create new hole
 			// now openFile makes highest hole for us
 			
@@ -3429,15 +3510,6 @@ void KolfGame::addNewHole()
 			highlighter->setVisible(false);
 			putter->setVisible(!editing);
 			inPlay = false;
-		}
-		/*
-		break;
-
-		case KMessageBox::Cancel:
-			// do nothing
-		break;
-	}
-	*/
 }
 
 // kantan deshou ;-)
@@ -3462,7 +3534,11 @@ void KolfGame::clearHole()
 	//kdDebug() << "clearHole()\n";
 	QCanvasItem *qcanvasItem = 0;
 	for (qcanvasItem = items.first(); qcanvasItem; qcanvasItem = items.next())
-		dynamic_cast<CanvasItem *>(qcanvasItem)->aboutToDie();
+	{
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(qcanvasItem);
+		if (citem)
+			citem->aboutToDie();
+	}
 	items.setAutoDelete(true);
 	items.clear();
 	items.setAutoDelete(false);
@@ -3523,7 +3599,11 @@ void KolfGame::save()
 
 	QCanvasItem *item = 0;
 	for (item = items.first(); item; item = items.next())
-		dynamic_cast<CanvasItem *>(item)->aboutToSave();
+	{
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		if (citem)
+			citem->aboutToSave();
+	}
 
 	//KSimpleConfig cfg(filename);
 	//kdDebug() << "KolfGame::save " << filename << "\n";
@@ -3537,7 +3617,11 @@ void KolfGame::save()
 			cfg->deleteGroup(*it);
 	}
 	for (item = items.first(); item; item = items.next())
-		dynamic_cast<CanvasItem *>(item)->save(cfg, curHole);
+	{
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		if (citem)
+			citem->save(cfg, curHole);
+	}
 
 	// save where ball starts (whiteBall tells all)
 	cfg->setGroup(QString("%1-ball@%2,%3").arg(curHole).arg((int)whiteBall->x()).arg((int)whiteBall->y()));
@@ -3555,22 +3639,49 @@ void KolfGame::save()
 	cfg->sync();
 
 	for (item = items.first(); item; item = items.next())
-		dynamic_cast<CanvasItem *>(item)->savingDone();
+	{
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		if (citem)
+			citem->savingDone();
+	}
+
+	modified = false;
 }
 
 void KolfGame::toggleEditMode()
 {
+	// won't be editing anymore, and user wants to cancel, we return
+	if (editing && modified)
+	{
+		if (askSave())
+		{
+			emit checkEditing();
+			return;
+		}
+	}
+	modified = false;
+
 	//kdDebug() << "toggling\n";
 	editing = !editing;
 
-	if (editing) emit editingStarted(); else emit editingEnded();
 	if (editing)
+	{
+		emit editingStarted();
 		emit newSelectedItem(&holeInfo);
+	}
+	else
+	{
+		emit editingEnded();
+	}
 
 	// alert our items
 	QCanvasItem *item = 0;
 	for (item = items.first(); item; item = items.next())
-		dynamic_cast<CanvasItem *>(item)->editModeChanged(editing);
+	{
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		if (citem)
+			citem->editModeChanged(editing);
+	}
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 		(*it).ball()->setVisible(!editing);
@@ -3581,9 +3692,6 @@ void KolfGame::toggleEditMode()
 	// shouldn't see putter whilst editing
 	putter->setVisible(!editing);
 
-	if (!editing)
-		save();
-
 	if (editing)
 		autoSaveTimer->start(autoSaveMsec);
 	else
@@ -3592,13 +3700,14 @@ void KolfGame::toggleEditMode()
 	inPlay = false;
 }
 
+// this is essentially out of kdegames/kbattleship
 void KolfGame::initSoundServer()
 {
 	soundserver = Arts::Reference("global:Arts_SimpleSoundServer");
 	playObjectFactory = Arts::Reference("global:Arts_PlayObjectFactory");
 	if(soundserver.isNull())
 	{
-		KMessageBox::error(this, i18n("Couldn't connect to aRts Soundserver. Sound deactivated"));
+		KMessageBox::error(this, i18n("Couldn't connect to aRts Soundserver. Sound deactivated."));
 		playObjectFactory = Arts::PlayObjectFactory::null();
 		soundserver = Arts::SimpleSoundServer::null();
 		m_serverRunning = false;
@@ -3615,7 +3724,7 @@ void KolfGame::initSoundServer()
 		}
 		else
 		{
-			KMessageBox::error(this, i18n("You don't have Kolf sounds installed. Sound deactivated"));
+			KMessageBox::error(this, i18n("You don't have Kolf sounds installed. Sound deactivated."));
 			playObjectFactory = Arts::PlayObjectFactory::null();
 			soundserver = Arts::SimpleSoundServer::null();
 			m_serverRunning = false;
@@ -3636,16 +3745,10 @@ void KolfGame::playSound(QString file)
 	}
 }
 
-bool CanvasItem::playSound(QString file)
+void CanvasItem::playSound(QString file)
 {
-	if (!game)
-	{
-		//kdDebug() << "game is zero\n";
-		return false;
-	}
-	//kdDebug() << "playing\n";
-	game->playSound(file);
-	return true;
+	if (game)
+		game->playSound(file);
 }
 
 void KolfGame::print(QPainter &p)

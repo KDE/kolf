@@ -50,6 +50,7 @@ protected slots:
 	void gameOver();
 	void editingStarted();
 	void editingEnded();
+	void checkEditing();
 	void setHoleFocus() { game->setFocus(); }
 	void inPlayStart();
 	void inPlayEnd();

@@ -66,8 +66,8 @@ reversed=false
 stuckOnGround=false
 width=40
 
-[1-slope@239,263|5]
-grade=4
+[1-slope@259,266|5]
+grade=6
 gradient=Vertical
 height=40
 reversed=false

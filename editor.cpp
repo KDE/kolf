@@ -48,11 +48,13 @@ void Editor::setItem(CanvasItem *item)
 {
 	delete config;
 	config = item->config(this);
+	config->ctorDone();
 	hlayout->addWidget(config);
-	hlayout->setStretchFactor(config, 3);
+	hlayout->setStretchFactor(config, 2);
 	config->setFrameStyle(QFrame::Box | QFrame::Raised);
 	config->setLineWidth(1);
 	config->show();
+	connect(config, SIGNAL(modified()), this, SIGNAL(changed()));
 }
 
 #include "editor.moc"

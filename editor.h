@@ -8,7 +8,7 @@
 class KListBox;
 class QHBoxLayout;
 class QListBoxItem;
-class QFrame;
+class Config;
 
 class Editor : public QWidget
 {
@@ -31,7 +31,7 @@ private:
 	ObjectList *list;
 	QHBoxLayout *hlayout;
 	KListBox *listbox;
-	QFrame *config;
+	Config *config;
 };
 
 #endif

@@ -41,7 +41,25 @@ enum HoleResult { Result_Holed, Result_Miss, Result_LipOut };
 class Ball;
 class Player;
 
-class DefaultConfig : public QFrame
+class Config : public QFrame
+{
+	Q_OBJECT
+
+public:
+	Config(QWidget *parent, const char *name = 0) : QFrame(parent, name) { startedUp = false; }
+	void ctorDone() { startedUp = true; }
+
+signals:
+	void modified();
+
+protected:
+	int spacingHint();
+	int marginHint();
+	bool startedUp;
+	void changed();
+};
+
+class DefaultConfig : public Config
 {
 public:
 	DefaultConfig(QWidget *parent);
@@ -118,10 +136,10 @@ public:
 	 */
 	virtual bool canBeMovedByOthers() { return false; }
 	/**
-	 * returns a QFrame that can be used to configure this item by the user.
+	 * returns a Config that can be used to configure this item by the user.
 	 * The default implementation returns one that says 'No configuration options'.
 	 */
-	virtual QFrame *config(QWidget *parent) { return new DefaultConfig(parent); }
+	virtual Config *config(QWidget *parent) { return new DefaultConfig(parent); }
 	/**
 	 * returns other items that should be moveable (besides this one of course).
 	 */
@@ -137,7 +155,7 @@ public:
 	/**
 	 * no need to reimplement.
 	 */
-	bool playSound(QString file);
+	void playSound(QString file);
 
 	virtual void collision(Ball * /*ball*/, long int /*id*/) {};
 
@@ -275,7 +293,7 @@ public:
 };
 
 class Slope;
-class SlopeConfig : public QFrame
+class SlopeConfig : public Config
 {
 	Q_OBJECT
 
@@ -302,7 +320,7 @@ public:
 	virtual void editModeChanged(bool changed);
 	virtual bool canBeMovedByOthers() { return !stuckOnGround; }
 	virtual QPtrList<QCanvasItem> moveableItems();
-	virtual QFrame *config(QWidget *parent) { return new SlopeConfig(this, parent); }
+	virtual Config *config(QWidget *parent) { return new SlopeConfig(this, parent); }
 	void setSize(int, int);
 	virtual void newSize(int width, int height);
 
@@ -360,7 +378,7 @@ public:
 	RectPoint(QColor color, QCanvasRectangle *slope, QCanvas *canvas);
 	void dontMove() { dontmove = true; }
 	virtual void moveBy(double dx, double dy);
-	virtual QFrame *config(QWidget *parent) { return dynamic_cast<CanvasItem *>(rect)->config(parent); }
+	virtual Config *config(QWidget *parent) { return dynamic_cast<CanvasItem *>(rect)->config(parent); }
 	virtual bool deleteable() { return false; }
 
 private:
@@ -385,7 +403,7 @@ public:
 	virtual void doSave(KSimpleConfig *cfg, int hole);
 	virtual void doLoad(KSimpleConfig *cfg, int hole);
 
-	virtual QFrame *config(QWidget *parent);
+	virtual Config *config(QWidget *parent);
 
 private:
 	int count;
@@ -393,7 +411,7 @@ private:
 	bool m_changeEnabled;
 	bool dontHide;
 };
-class EllipseConfig : public QFrame
+class EllipseConfig : public Config
 {
 	Q_OBJECT
 
@@ -417,6 +435,7 @@ private:
 	QSlider *slider1;
 	QSlider *slider2;
 	Ellipse *ellipse;
+	bool startup;
 };
 
 class Puddle : public Ellipse
@@ -478,7 +497,7 @@ public:
 };
 
 class BlackHole;
-class BlackHoleConfig : public QFrame
+class BlackHoleConfig : public Config
 {
 	Q_OBJECT
 
@@ -502,7 +521,7 @@ public:
 	virtual void hideInfo();
 	virtual bool deleteable() { return false; }
 	virtual bool canBeMovedByOthers() { return true; }
-	virtual QFrame *config(QWidget *parent);
+	virtual Config *config(QWidget *parent);
 	BlackHole *blackHole;
 
 private:
@@ -519,7 +538,7 @@ public:
 	virtual bool place(Ball *ball, bool wasCenter);
 	virtual void save(KSimpleConfig *cfg, int hole);
 	virtual void load(KSimpleConfig *cfg, int hole);
-	virtual QFrame *config(QWidget *parent) { return new BlackHoleConfig(this, parent); }
+	virtual Config *config(QWidget *parent) { return new BlackHoleConfig(this, parent); }
 	virtual QPtrList<QCanvasItem> moveableItems();
 	int minSpeed() { return m_minSpeed; }
 	int maxSpeed() { return m_maxSpeed; }
@@ -591,7 +610,7 @@ public:
 	virtual int rtti() const { return Rtti_WallPoint; }
 	virtual bool deleteable() { return false; }
 	virtual void collision(Ball *ball, long int id);
-	virtual QFrame *config(QWidget *parent) { return wall->config(parent); }
+	virtual Config *config(QWidget *parent) { return wall->config(parent); }
 	void dontMove() { dontmove = true; };
 	void updateVisible();
 	
@@ -643,7 +662,7 @@ private:
 };
 
 class Bridge;
-class BridgeConfig : public QFrame
+class BridgeConfig : public Config
 {
 	Q_OBJECT
 
@@ -682,7 +701,7 @@ public:
 	void doSave(KSimpleConfig *cfg, int hole);
 	virtual void newSize(int width, int height);
 	virtual void setGame(KolfGame *game);
-	virtual QFrame *config(QWidget *parent) { return new BridgeConfig(this, parent); }
+	virtual Config *config(QWidget *parent) { return new BridgeConfig(this, parent); }
 	void setSize(int width, int height);
 	virtual QPointArray areaPoints() const;
 	virtual QPtrList<QCanvasItem> moveableItems();
@@ -736,7 +755,7 @@ public:
 	virtual int rtti() const { return Rtti_NoCollision; }
 	virtual void draw(QPainter &painter);
 	virtual bool vStrut() { return false; }
-	virtual QFrame *config(QWidget *parent) { return new SignConfig(this, parent); }
+	virtual Config *config(QWidget *parent) { return new SignConfig(this, parent); }
 	virtual void save(KSimpleConfig *cfg, int hole);
 	virtual void load(KSimpleConfig *cfg, int hole);
 
@@ -785,7 +804,7 @@ public:
 	virtual void save(KSimpleConfig *cfg, int hole);
 	virtual void load(KSimpleConfig *cfg, int hole);
 	virtual void setGame(KolfGame *game);
-	virtual QFrame *config(QWidget *parent) { return new WindmillConfig(this, parent); }
+	virtual Config *config(QWidget *parent) { return new WindmillConfig(this, parent); }
 	void setSize(int width, int height);
 	virtual void moveBy(double dx, double dy);
 	virtual void setVelocity(double vx, double vy);
@@ -836,7 +855,7 @@ public:
 	virtual void editModeChanged(bool changed);
 	virtual bool moveable() { return false; }
 	virtual void moveBy(double dx, double dy);
-	virtual QFrame *config(QWidget *parent) { return new FloaterConfig(this, parent); }
+	virtual Config *config(QWidget *parent) { return new FloaterConfig(this, parent); }
 	virtual QPtrList<QCanvasItem> moveableItems();
 	virtual void advance(int phase);
 	void setSpeed(int news);
@@ -857,7 +876,7 @@ class FloaterGuide : public Wall
 {
 public:
 	FloaterGuide(Floater *floater, QCanvas *canvas) : Wall(canvas) { this->floater = floater; almostDead = false; }
-	virtual QFrame *config(QWidget *parent) { return floater->config(parent); }
+	virtual Config *config(QWidget *parent) { return floater->config(parent); }
 	virtual void aboutToDelete();
 	virtual void aboutToDie();
 
@@ -873,7 +892,7 @@ public:
 };
 
 class HoleInfo;
-class HoleConfig : public QFrame
+class HoleConfig : public Config
 {
 	Q_OBJECT
 
@@ -901,7 +920,7 @@ public:
 	QString author() { return m_author; }
 	void setName(QString newname) { m_name = newname; }
 	QString name() { return m_name; }
-	virtual QFrame *config(QWidget *parent) { return new HoleConfig(this, parent); }
+	virtual Config *config(QWidget *parent) { return new HoleConfig(this, parent); }
 
 private:
 	QString m_author;
@@ -930,6 +949,7 @@ public slots:
 	void save();
 	void addFirstHole() { emit newHole(curPar); }
 	void toggleEditMode();
+	void setModified() { modified = true; }
 	void addNewObject(Object *newObj);
 	void addNewHole();
 	void switchHole(int);
@@ -953,6 +973,7 @@ signals:
 	void newPlayersTurn(Player *);
 	void playerHoled(Player *);
 	void newSelectedItem(CanvasItem *);
+	void checkEditing();
 	void editingStarted();
 	void editingEnded();
 	void inPlayStart();
@@ -1055,6 +1076,10 @@ private:
 
 	inline void addBorderWall(QPoint start, QPoint end);
 	inline void shotStart();
+
+	bool modified;
+	// returns whether it was a cancel
+	bool askSave();
 };
 
 #endif

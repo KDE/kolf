@@ -167,6 +167,7 @@ void Kolf::startNewGame()
 		connect(game, SIGNAL(newPlayersTurn(Player *)), this, SLOT(newPlayersTurn(Player *)));
 		connect(game, SIGNAL(playerHoled(Player *)), this, SLOT(playerHoled(Player *)));
 		connect(game, SIGNAL(holesDone()), this, SLOT(gameOver()));
+		connect(game, SIGNAL(checkEditing()), this, SLOT(checkEditing()));
 		connect(game, SIGNAL(editingStarted()), this, SLOT(editingStarted()));
 		connect(game, SIGNAL(editingEnded()), this, SLOT(editingEnded()));
 		connect(game, SIGNAL(inPlayStart()), this, SLOT(inPlayStart()));
@@ -399,6 +400,7 @@ void Kolf::editingStarted()
 	delete editor;
 	editor = new Editor(game->objectList(), dummy, "Editor");
 	connect(editor, SIGNAL(addNewItem(Object *)), game, SLOT(addNewObject(Object *)));
+	connect(editor, SIGNAL(changed()), game, SLOT(setModified()));
 	connect(editor, SIGNAL(addNewItem(Object *)), this, SLOT(setHoleFocus()));
 	connect(game, SIGNAL(newSelectedItem(CanvasItem *)), editor, SLOT(setItem(CanvasItem *)));
 
@@ -481,6 +483,11 @@ void Kolf::setHoleMovementEnabled(bool yes)
 void Kolf::setEditingEnabled(bool yes)
 {
 	editingAction->setEnabled(competition? false : yes);
+}
+
+void Kolf::checkEditing()
+{
+	editingAction->setChecked(true);
 }
 
 void Kolf::print()
