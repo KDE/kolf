@@ -3915,7 +3915,7 @@ void KolfGame::shotDone()
 			const QString placeOutside = i18n("Drop outside of hazard");
 			const QString rehit = i18n("Rehit from last location");
 			options << placeOutside << rehit;
-			const QString choice = KComboBoxDialog::getItem(i18n("What would you like to do for your next shot?"), i18n("%1 Is In a Hazard").arg((*it).name()), options, placeOutside, "hazardOptions");
+			const QString choice = KComboBoxDialog::getItem(i18n("What would you like to do for your next shot?"), i18n("%1 is in a Hazard").arg((*it).name()), options, placeOutside, "hazardOptions");
 
 			if (choice == placeOutside)
 			{
@@ -4207,7 +4207,7 @@ void KolfGame::startNextHole()
 
 void KolfGame::showInfo()
 {
-	QString text = i18n("Hole %1: par %1, maximum number of strokes is %2.").arg(curHole).arg(holeInfo.par()).arg(holeInfo.maxStrokes());
+	QString text = i18n("Hole %1: par %2, maximum number of strokes is %3.").arg(curHole).arg(holeInfo.par()).arg(holeInfo.maxStrokes());
 	infoText->move((width - QFontMetrics(infoText->font()).width(text)) / 2, infoText->y());
 	infoText->setText(text);
 	// I personally hate this text! Let's not show it
@@ -4960,6 +4960,7 @@ void KolfGame::courseInfo(CourseInfo &info, const QString& filename)
 	cfg.setGroup("0-course@-50,-50");
 	info.author = cfg.readEntry("author", info.author);
 	info.name = cfg.readEntry("Name", cfg.readEntry("name", info.name));
+	info.untranslatedName = cfg.readEntryUntranslated("Name", cfg.readEntryUntranslated("name", info.name));
 
 	unsigned int hole = 1;
 	unsigned int par= 0;

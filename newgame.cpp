@@ -116,7 +116,7 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 		}
 
 		const QString newName(i18n("Create New"));
-		info[QString::null] = CourseInfo(newName, i18n("You"), 0, 0);
+		info[QString::null] = CourseInfo(newName, newName, i18n("You"), 0, 0);
 		names.append(QString::null);
 		nameList.append(newName);
 		if (curItem < 0)
@@ -207,8 +207,7 @@ void NewGameDialog::courseSelected(int index)
 
 	CourseInfo &curinfo = info[currentCourse];
 
-	currentCourseName = curinfo.name;
-	name->setText(QString("<strong>%1</strong>").arg(currentCourseName));
+	name->setText(QString("<strong>%1</strong>").arg(curinfo.name));
 
 	author->setText(i18n("By %1").arg(curinfo.author));
 	par->setText(i18n("Par %1").arg(curinfo.par));
@@ -219,8 +218,8 @@ void NewGameDialog::showHighscores()
 {
 	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Custom1 | KScoreDialog::Score, this);
 	scoreDialog->addField(KScoreDialog::Custom1, i18n("Par"), "Par");
-	scoreDialog->setConfigGroup(currentCourseName + QString(" Highscores"));
-	scoreDialog->setComment(i18n("High Scores for Course %1").arg(currentCourseName));
+	scoreDialog->setConfigGroup(info[currentCourse].untranslatedName + QString(" Highscores"));
+	scoreDialog->setComment(i18n("High Scores for %1").arg(info[currentCourse].name));
 	scoreDialog->show();
 }
 

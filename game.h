@@ -918,9 +918,11 @@ private:
 
 struct CourseInfo
 {
-	CourseInfo(const QString &_name, const QString &_author, unsigned int _holes, unsigned int _par) { name = _name; author = _author; holes = _holes; par = _par; }
+	CourseInfo(const QString &_name, const QString &_untranslatedName, const QString &_author, unsigned int _holes, unsigned int _par) { name = _name; untranslatedName = _untranslatedName, author = _author; holes = _holes; par = _par; }
 	CourseInfo() {}
+
 	QString name;
+	QString untranslatedName;
 	QString author;
 	unsigned int holes;
 	unsigned int par;

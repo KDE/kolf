@@ -98,10 +98,8 @@ private:
 	QLabel *holes;
 
 	QString currentCourse;
-	QString currentCourseName;
 
 	void enableButtons();
-
 	bool enableCourses;
 };
 

@@ -111,9 +111,9 @@ void Kolf::initGUI()
 
 	(void) KStdGameAction::quit(this, SLOT(close()), actionCollection());
 	saveAction = KStdAction::save(this, SLOT(save()), actionCollection(), "game_save");
-	saveAction->setText(i18n("Save Course"));
+	saveAction->setText(i18n("Save &Course"));
 	saveAsAction = KStdAction::saveAs(this, SLOT(saveAs()), actionCollection(), "game_save_as");
-	saveAsAction->setText(i18n("Save Course As..."));
+	saveAsAction->setText(i18n("Save &Course As..."));
 
 	saveGameAction = new KAction(i18n("&Save Game"), 0, this, SLOT(saveGame()), actionCollection(), "savegame");
 	saveGameAsAction = new KAction(i18n("&Save Game As..."), 0, this, SLOT(saveGameAs()), actionCollection(), "savegameas");
@@ -448,7 +448,11 @@ void Kolf::gameOver()
 
 		KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Custom1 | KScoreDialog::Score, this);
 		scoreDialog->addField(KScoreDialog::Custom1, i18n("Par"), "Par");
-		scoreDialog->setConfigGroup(game->courseName() + QString(" Highscores"));
+
+		CourseInfo courseInfo;
+		game->courseInfo(courseInfo, game->curFilename());
+
+		scoreDialog->setConfigGroup(courseInfo.untranslatedName + QString(" Highscores"));
 
 		for (HighScoreList::Iterator it = highScores.begin(); it != highScores.end(); ++it)
 		{
@@ -459,7 +463,7 @@ void Kolf::gameOver()
 			scoreDialog->addScore((*it).score, info, false, true);
 		}
 
-		scoreDialog->setComment(i18n("High Scores for %1").arg(game->courseName()));
+		scoreDialog->setComment(i18n("High Scores for %1").arg(courseInfo.name));
 		scoreDialog->show();
 	}
 
@@ -470,8 +474,12 @@ void Kolf::showHighScores()
 {
 	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Custom1 | KScoreDialog::Score, this);
 	scoreDialog->addField(KScoreDialog::Custom1, i18n("Par"), "Par");
-	scoreDialog->setConfigGroup(game->courseName() + QString(" Highscores"));
-	scoreDialog->setComment(i18n("High Scores for Course %1").arg(game->courseName()));
+
+	CourseInfo courseInfo;
+	game->courseInfo(courseInfo, game->curFilename());
+
+	scoreDialog->setConfigGroup(courseInfo.untranslatedName + QString(" Highscores"));
+	scoreDialog->setComment(i18n("High Scores for %1").arg(courseInfo.name));
 	scoreDialog->show();
 }
 
@@ -735,7 +743,7 @@ void Kolf::initPlugins()
 
 void Kolf::showPlugins()
 {
-	QString text = QString("<h2>%1</h2><ol>").arg(i18n("Currently Loaded"));
+	QString text = QString("<h2>%1</h2><ol>").arg(i18n("Currently Loaded Plugins"));
 	Object *object = 0;
 	for (object = plugins.first(); object; object = plugins.next())
 	{
