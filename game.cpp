@@ -1474,6 +1474,17 @@ Putter::Putter(QCanvas *canvas)
 	setPen(QPen(black, 4));
 	putterWidth=15;
 	maxDeg = 360;
+
+	hideInfo();
+}
+
+void Putter::showInfo()
+{
+	guideLine->show();
+}
+void Putter::hideInfo()
+{
+	guideLine->hide();
 }
 
 void Putter::moveBy(double dx, double dy)
@@ -1486,7 +1497,7 @@ void Putter::moveBy(double dx, double dy)
 void Putter::setVisible(bool yes)
 {
 	QCanvasLine::setVisible(yes);
-	guideLine->setVisible(yes);
+	guideLine->hide();
 }
 
 void Putter::setOrigin(int _x, int _y)
@@ -2636,6 +2647,7 @@ void KolfGame::keyPressEvent(QKeyEvent *e)
 					dynamic_cast<CanvasItem *>(item)->showInfo();
 			}
 			showInfo();
+			putter->showInfo();
 		}
 		break;
 
@@ -2713,6 +2725,7 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 		for (item = items.first(); item; item = items.next())
 			dynamic_cast<CanvasItem *>(item)->hideInfo();
 		hideInfoText();
+		putter->hideInfo();
 	}
 }
 

@@ -525,6 +525,8 @@ public:
 	void setOrigin(int x, int y);
 	int curLen() { return len; }
 	int curDeg() { return deg; }
+	virtual void showInfo();
+	virtual void hideInfo();
 	void setDeg(int news) { deg = news; finishMe(); }
 	int curMaxDeg() { return maxDeg; }
 	virtual int rtti() const { return Rtti_Putter; }
