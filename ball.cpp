@@ -24,7 +24,6 @@ Ball::Ball(QCanvas *canvas)
 	setBlowUp(false);
 	setPen(black);
 	resetSize();
-	setVelocity(0, 0);
 	collisionId = 0;
 	m_addStroke = false;
 	m_placeOnGround = false;
