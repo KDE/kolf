@@ -10,7 +10,6 @@
 #include <ksimpleconfig.h>
 #include <klibloader.h>
 
-#include "game.h"
 #include "pluginloader.h"
 
 ObjectList *PluginLoader::loadAll()

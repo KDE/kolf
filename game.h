@@ -1056,6 +1056,8 @@ private:
 
 	int advancePeriod;
 
+	int lastDelId;
+
 	bool paused;
 
 	QString filename;

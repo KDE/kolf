@@ -2920,6 +2920,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	stroking = false;
 	editing = false;
 	strict = false;
+	lastDelId = -1;
 	m_showInfo = false;
 	ballStateList.canUndo = false;
 	fastAdvancedExist = false;
@@ -3438,8 +3439,11 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 			QCanvasItem *item = dynamic_cast<QCanvasItem *>(citem);
 			if (citem && citem->deleteable())
 			{
+				lastDelId = citem->curId();
+
 				highlighter->setVisible(false);
 				items.removeRef(item);
+				citem->hideInfo();
 				citem->aboutToDelete();
 				citem->aboutToDie();
 				delete citem;
@@ -4277,6 +4281,8 @@ void KolfGame::openFile()
 		}
 	}
 
+	lastDelId = -1;
+
 	// if it's the first hole let's not
 	if (!numItems && curHole > 1 && !addingNewHole && curHole >= _highestHole)
 	{
@@ -4381,11 +4387,37 @@ void KolfGame::addNewObject(Object *newObj)
 	if (!canvasItem)
 		return;
 
-	canvasItem->setId(items.count() + 2);
+	// we need to find a number that isn't taken
+	int i = lastDelId > 0? lastDelId : items.count() - 30;
+	if (i <= 0)
+		i = 0;
+
+	for (;; ++i)
+	{
+		QCanvasItem *item = 0;
+		for (item = items.first(); item; item = items.next())
+		{
+			CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+			if (citem)
+				if (citem->curId() == i)
+					continue;
+		}
+
+		break;
+	}
+	canvasItem->setId(i);
+
 	canvasItem->setGame(this);
 	canvasItem->editModeChanged(editing);
+	
+	if (m_showInfo)
+		canvasItem->showInfo();
+	else
+		canvasItem->hideInfo();
+
 	canvasItem->setName(newObj->_name());
 	addItemsToMoveableList(canvasItem->moveableItems());
+
 	if (canvasItem->fastAdvance())
 		addItemToFastAdvancersList(canvasItem);
 

@@ -7,12 +7,6 @@ name=Test
 [1-ball@273,183]
 dummykey=true
 
-[1-blackhole@190,74|5]
-exit=300,100
-exitDeg=0
-maxspeed=5
-minspeed=3
-
 [1-cup@116,121|6]
 dummykey=true
 
@@ -21,6 +15,14 @@ borderWalls=true
 hasFinalLoad=false
 maxstrokes=4
 par=3
+
+[1-slope@284,239|0]
+grade=4
+gradient=Vertical
+height=42
+reversed=false
+stuckOnGround=false
+width=37
 
 [1-slope@57,251|4]
 grade=2
