@@ -1,6 +1,5 @@
 [0-course@-50,-50]
 Name=Classic
-Name[sv]=Klassisk
 author=Niklas Knutsson
 name=Classic
 
@@ -1223,7 +1222,7 @@ endPoint=215,71
 startPoint=214,151
 
 [3-wall@0,0|14]
-endPoint=385,70
+endPoint=385,72
 startPoint=215,71
 
 [3-wall@0,0|16]
@@ -1231,12 +1230,16 @@ endPoint=250,388
 startPoint=144,388
 
 [3-wall@0,0|17]
-endPoint=390,9
+endPoint=393,10
 startPoint=178,9
 
 [3-wall@0,0|18]
 endPoint=296,38
 startPoint=236,38
+
+[3-wall@0,0|20]
+endPoint=393,10
+startPoint=385,72
 
 [3-wall@0,0|3]
 endPoint=145,151

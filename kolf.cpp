@@ -47,6 +47,7 @@
 Kolf::Kolf()
     : KMainWindow(0, "Kolf")
 {
+	competition = false;
 	game = 0;
 	editor = 0;
 	spacer = 0;
@@ -122,43 +123,45 @@ void Kolf::initGUI()
 
 	highScoreAction = KStdGameAction::highscores(this, SLOT(showHighScores()), actionCollection());
 
-	editingAction = new KToggleAction(i18n("&Edit"), "pencil", CTRL+Key_E, this, SLOT(nullSlot()), actionCollection(), "editing");
-	newHoleAction = new KAction(i18n("&New"), "filenew", CTRL+SHIFT+Key_N, this, SLOT(nullSlot()), actionCollection(), "newhole");
-	clearHoleAction = new KAction(i18n("&Clear"), "locationbar_erase", CTRL+Key_Delete, this, SLOT(nullSlot()), actionCollection(), "clearhole");
-	resetHoleAction = new KAction(i18n("&Reset"), CTRL+Key_R, this, SLOT(nullSlot()), actionCollection(), "resethole");
-	undoShotAction = KStdAction::undo(this, SLOT(nullSlot()), actionCollection(), "undoshot");
+	editingAction = new KToggleAction(i18n("&Edit"), "pencil", CTRL+Key_E, this, SLOT(emptySlot()), actionCollection(), "editing");
+	newHoleAction = new KAction(i18n("&New"), "filenew", CTRL+SHIFT+Key_N, this, SLOT(emptySlot()), actionCollection(), "newhole");
+	clearHoleAction = new KAction(i18n("&Clear"), "locationbar_erase", CTRL+Key_Delete, this, SLOT(emptySlot()), actionCollection(), "clearhole");
+	resetHoleAction = new KAction(i18n("&Reset"), CTRL+Key_R, this, SLOT(emptySlot()), actionCollection(), "resethole");
+	undoShotAction = KStdAction::undo(this, SLOT(emptySlot()), actionCollection(), "undoshot");
 	undoShotAction->setText(i18n("&Undo Shot"));
-	//replayShotAction = new KAction(i18n("&Replay Shot"), 0, this, SLOT(nullSlot()), actionCollection(), "replay");
+	//replayShotAction = new KAction(i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 
-	holeAction = new KListAction(i18n("Switch to Hole"), 0, this, SLOT(nullSlot()), actionCollection(), "switchhole");
-	nextAction = new KAction(i18n("&Next Hole"), "forward", KStdAccel::key(KStdAccel::Forward), this, SLOT(nullSlot()), actionCollection(), "nexthole");
-	prevAction = new KAction(i18n("&Previous Hole"), "back", KStdAccel::key(KStdAccel::Back), this, SLOT(nullSlot()), actionCollection(), "prevhole");
-	firstAction = new KAction(i18n("&First Hole"), "gohome", KStdAccel::key(KStdAccel::Home), this, SLOT(nullSlot()), actionCollection(), "firsthole");
-	lastAction = new KAction(i18n("&Last Hole"), CTRL+SHIFT+Key_End, this, SLOT(nullSlot()), actionCollection(), "lasthole");
-	randAction = new KAction(i18n("&Random Hole"), "goto", 0, this, SLOT(nullSlot()), actionCollection(), "randhole");
+	holeAction = new KListAction(i18n("Switch to Hole"), 0, this, SLOT(emptySlot()), actionCollection(), "switchhole");
+	nextAction = new KAction(i18n("&Next Hole"), "forward", KStdAccel::key(KStdAccel::Forward), this, SLOT(emptySlot()), actionCollection(), "nexthole");
+	prevAction = new KAction(i18n("&Previous Hole"), "back", KStdAccel::key(KStdAccel::Back), this, SLOT(emptySlot()), actionCollection(), "prevhole");
+	firstAction = new KAction(i18n("&First Hole"), "gohome", KStdAccel::key(KStdAccel::Home), this, SLOT(emptySlot()), actionCollection(), "firsthole");
+	lastAction = new KAction(i18n("&Last Hole"), CTRL+SHIFT+Key_End, this, SLOT(emptySlot()), actionCollection(), "lasthole");
+	randAction = new KAction(i18n("&Random Hole"), "goto", 0, this, SLOT(emptySlot()), actionCollection(), "randhole");
 
-	useMouseAction = new KToggleAction(i18n("Enable &Mouse for Moving Putter"), 0, this, SLOT(nullSlot()), actionCollection(), "usemouse");
+	useMouseAction = new KToggleAction(i18n("Enable &Mouse for Moving Putter"), 0, this, SLOT(emptySlot()), actionCollection(), "usemouse");
 	connect(useMouseAction, SIGNAL(toggled(bool)), this, SLOT(useMouseChanged(bool)));
 	KConfig *config = kapp->config();
 	config->setGroup("Settings");
 	useMouseAction->setChecked(config->readBoolEntry("useMouse", true));
 
-	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Putting"), 0, this, SLOT(nullSlot()), actionCollection(), "useadvancedputting");
+	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Putting"), 0, this, SLOT(emptySlot()), actionCollection(), "useadvancedputting");
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
 	useAdvancedPuttingAction->setChecked(config->readBoolEntry("useAdvancedPutting", false));
 
-	showGuideLineAction = new KToggleAction(i18n("Always Show Putter &Guideline"), 0, this, SLOT(nullSlot()), actionCollection(), "showguideline");
+	showGuideLineAction = new KToggleAction(i18n("Always Show Putter &Guideline"), 0, this, SLOT(emptySlot()), actionCollection(), "showguideline");
 	connect(showGuideLineAction, SIGNAL(toggled(bool)), this, SLOT(showGuideLineChanged(bool)));
 	showGuideLineAction->setChecked(config->readBoolEntry("showGuideLine", true));
 
-	soundAction = new KToggleAction(i18n("Play &Sounds"), 0, this, SLOT(nullSlot()), actionCollection(), "sound");
+	(void) new KToggleAction(i18n("Enable All Dialog Boxes"), 0, this, SLOT(enableAllMessages()), actionCollection(), "enableAll");
+
+	soundAction = new KToggleAction(i18n("Play &Sounds"), 0, this, SLOT(emptySlot()), actionCollection(), "sound");
 	connect(soundAction, SIGNAL(toggled(bool)), this, SLOT(soundChanged(bool)));
 	soundAction->setChecked(config->readBoolEntry("sound", true));
 
 	(void) new KAction(i18n("&Reload Plugins"), 0, this, SLOT(initPlugins()), actionCollection(), "reloadplugins");
 	(void) new KAction(i18n("Show &Plugins..."), 0, this, SLOT(showPlugins()), actionCollection(), "showplugins");
 
-	aboutAction = new KAction(i18n("&About Course"), 0, this, SLOT(nullSlot()), actionCollection(), "aboutcourse");
+	aboutAction = new KAction(i18n("&About Course"), 0, this, SLOT(emptySlot()), actionCollection(), "aboutcourse");
 	tutorialAction = new KAction(i18n("&Tutorial"), 0, this, SLOT(tutorial()), actionCollection(), "tutorial");
 
 	createGUI();
@@ -749,6 +752,11 @@ void Kolf::configureToolBars()
 void Kolf::newToolBarConfig()
 {
 	applyMainWindowSettings(KGlobal::config(), "TopLevelWindow");
+}
+
+void Kolf::enableAllMessages()
+{
+	KMessageBox::enableAllMessages();
 }
 
 #include "kolf.moc"

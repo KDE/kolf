@@ -17,7 +17,7 @@ Editor::Editor(ObjectList *list, QWidget *parent, const char *name)
 	hlayout = new QHBoxLayout(this, KDialog::marginHint(), KDialog::spacingHint());
 
 	QVBoxLayout *vlayout = new QVBoxLayout(hlayout, KDialog::spacingHint());
-	vlayout->addWidget(new QLabel(i18n("Create Element"), this));
+	vlayout->addWidget(new QLabel(i18n("Add Object"), this));
 	listbox = new KListBox(this, "Listbox");
 	vlayout->addWidget(listbox);
 	hlayout->setStretchFactor(vlayout, 2);
@@ -39,14 +39,6 @@ void Editor::listboxExecuted(QListBoxItem * /*item*/)
 		return;
 
 	emit addNewItem(list->at(curItem));
-
-	/*
-	listbox->setSelected(curItem, false);
-	listbox->setSelected(0, true);
-	listbox->setSelected(0, false);
-	listbox->setSelected(-1, true);
-	*/
-	listbox->setFocus();
 }
 
 void Editor::setItem(CanvasItem *item)

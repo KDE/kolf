@@ -20,9 +20,11 @@ hasFinalLoad=false
 maxstrokes=4
 par=3
 
-[1-wall@0,0|3]
-endPoint=281,202
-startPoint=189,202
+[1-puddle@159,267|4]
+changeEnabled=false
+changeEvery=50
+height=162
+width=166
 
 [2-ball@200,200]
 dummykey=true

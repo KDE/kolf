@@ -966,6 +966,7 @@ public slots:
 	void timeout();
 	void saveScores(KSimpleConfig *);
 	void startFirstHole(int hole);
+	void sayWhosGoing();
 
 signals:
 	void holesDone();
@@ -987,6 +988,7 @@ signals:
 private slots:
 	void shotDone();
 	void holeDone();
+	void startNextHole();
 	void fastTimeout();
 	void putterTimeout();
 	void autoSaveTimeout();

@@ -48,8 +48,11 @@
 #include <qstring.h>
 #include <qstringlist.h>
 #include <qtimer.h>
+#include <qtooltip.h>
 #include <qvaluelist.h>
+#include <qwhatsthis.h>
 
+#include "kcomboboxdialog.h"
 #include "rtti.h"
 #include "object.h"
 #include "config.h"
@@ -197,8 +200,7 @@ void Arrow::updateSelf()
 /////////////////////////
 
 Slope::Slope(QRect rect, QCanvas *canvas)
-	: QCanvasRectangle(rect, canvas), grade(4), reversed(false), color(QColor("#327501"))
-
+	: QCanvasRectangle(rect, canvas), type(KImageEffect::VerticalGradient), grade(4), reversed(false), color(QColor("#327501"))
 {
 	stuckOnGround = false;
 
@@ -919,6 +921,7 @@ Config *FloaterGuide::config(QWidget *parent)
 Floater::Floater(QRect rect, QCanvas *canvas)
 	: Bridge(rect, canvas), speedfactor(16)
 {
+	wall = 0;
 	setEnabled(true);
 	noUpdateZ = false;
 	haventMoved = true;
@@ -1165,6 +1168,7 @@ FloaterConfig::FloaterConfig(Floater *floater, QWidget *parent)
 	this->floater = floater;
 	m_vlayout->addStretch();
 
+	m_vlayout->addWidget(new QLabel(i18n("Moving speed"), this));
 	QHBoxLayout *hlayout = new QHBoxLayout(m_vlayout, spacingHint());
 	hlayout->addWidget(new QLabel(i18n("Slow"), this));
 	QSlider *slider = new QSlider(0, 20, 2, floater->curSpeed(), Qt::Horizontal, this);
@@ -1417,7 +1421,7 @@ SignConfig::SignConfig(Sign *sign, QWidget *parent)
 {
 	this->sign = sign;
 	m_vlayout->addStretch();
-	m_vlayout->addWidget(new QLabel(i18n("Sign HTML:"), this));
+	m_vlayout->addWidget(new QLabel(i18n("Sign HTML"), this));
 	KLineEdit *name = new KLineEdit(sign->text(), this);
 	m_vlayout->addWidget(name);
 	connect(name, SIGNAL(textChanged(const QString &)), this, SLOT(textChanged(const QString &)));
@@ -1465,6 +1469,7 @@ SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
 	connect(grade, SIGNAL(valueChanged(int)), this, SLOT(gradeChanged(int)));
 
 	QCheckBox *stuck = new QCheckBox(i18n("Unmoveable"), this);
+	QWhatsThis::add(stuck, i18n("Whether or not this slope can be moved by other objects, like floaters."));
 	stuck->setChecked(slope->isStuckOnGround());
 	layout->addWidget(stuck);
 	connect(stuck, SIGNAL(toggled(bool)), this, SLOT(setStuckOnGround(bool)));
@@ -1763,6 +1768,8 @@ Putter::Putter(QCanvas *canvas)
 {
 	m_showGuideLine = true;
 	oneDegree = M_PI / 180;
+	len = 9;
+	angle = 0;
 
 	guideLine = new QCanvasLine(canvas);
 	guideLine->setPen(QPen(white, 1, QPen::DotLine));
@@ -2314,9 +2321,10 @@ WallPoint::WallPoint(bool start, Wall *wall, QCanvas *canvas)
 {
 	this->wall = wall;
 	this->start = start;
-	this->alwaysShow = false;
-	this->editing = false;
-	this->visible = true;
+	alwaysShow = false;
+	editing = false;
+	visible = true;
+	lastId = 0;
 	dontmove = false;
 
 	move(0, 0);
@@ -2462,6 +2470,7 @@ Wall::Wall(QCanvas *canvas)
 	: QCanvasLine(canvas)
 {
 	editing = false;
+	lastId = 0;
 
 	dampening = 1.2;
 
@@ -2692,6 +2701,8 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 
 	hlayout->addWidget(new QLabel(i18n("Maximum"), this));
 	QSpinBox *maxstrokes = new QSpinBox(holeInfo->lowestMaxStrokes(), 30, 1, this);
+	QWhatsThis::add(maxstrokes, i18n("Maximum number of strokes player can take on this hole."));
+	QToolTip::add(maxstrokes, i18n("Maximum number of strokes"));
 	maxstrokes->setSpecialValueText(i18n("Unlimited"));
 	maxstrokes->setValue(holeInfo->maxStrokes());
 	hlayout->addWidget(maxstrokes);
@@ -2859,6 +2870,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	curPlayer = players->end();
 	curPlayer--; // will get ++'d to end and sent back
 	             // to beginning
+	paused = false;
 	modified = false;
 	inPlay = false;
 	putting = false;
@@ -3019,7 +3031,7 @@ void KolfGame::startFirstHole(int hole)
 
 	// this increments curHole, etc
 	recalcHighestHole = true;
-	holeDone();
+	startNextHole();
 	paused = true;
 	unPause();
 }
@@ -3039,7 +3051,7 @@ KolfGame::~KolfGame()
 
 void KolfGame::pause()
 {
-	if (paused == true)
+	if (paused)
 	{
 		// play along with people who call pause() again, instead of unPause()
 		unPause();
@@ -3462,7 +3474,7 @@ void KolfGame::timeout()
 				(*curPlayer).addStrokeToHole(curHole);
 				emit scoreChanged((*curPlayer).id(), curHole, (*curPlayer).score(curHole));
 			}
-			QTimer::singleShot(500, this, SLOT(holeDone()));
+			QTimer::singleShot(400, this, SLOT(holeDone()));
 		}
 		else
 		{
@@ -3741,40 +3753,69 @@ void KolfGame::shotDone()
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 	{
-		if ((*it).ball()->curState() == Holed)
+		Ball *ball = (*it).ball();
+
+		if (ball->curState() == Holed)
 			continue;
 
-		Ball *ball = (*it).ball();
 		Vector v;
 		if (ball->placeOnGround(v))
 		{
-			(*it).ball()->setDoDetect(false);
+			ball->setPlaceOnGround(false);
 
-			double x = ball->x(), y = ball->y();
+			QStringList options;
+			const QString placeOutside = i18n("Drop outside of hazard");
+			const QString rehit = i18n("Rehit from last location");
+			options << placeOutside << rehit;
+			const QString choice = KComboBoxDialog::getItem(i18n("What would you like to do to for your next shot?"), i18n("%1 Is In a Hazard").arg((*it).name()), options, placeOutside, "hazardOptions");
 
-			while (1)
+			if (choice == placeOutside)
 			{
-				QCanvasItemList list = ball->collisions(true);
-				bool keepMoving = false;
-				while (!list.isEmpty())
+				(*it).ball()->setDoDetect(false);
+
+				double x = ball->x(), y = ball->y();
+
+				while (1)
 				{
-					QCanvasItem *item = list.first();
-					if (item->rtti() == Rtti_DontPlaceOn)
-						keepMoving = true;
+					QCanvasItemList list = ball->collisions(true);
+					bool keepMoving = false;
+					while (!list.isEmpty())
+					{
+						QCanvasItem *item = list.first();
+						if (item->rtti() == Rtti_DontPlaceOn)
+							keepMoving = true;
 
-					list.pop_front();
+						list.pop_front();
+					}
+					if (!keepMoving)
+						break;
+
+					const float movePixel = 3.0;
+					x -= cos(v.direction()) * movePixel;
+					y += sin(v.direction()) * movePixel;
+
+					ball->move(x, y);
 				}
-				if (!keepMoving)
-					break;
 
-				const float movePixel = 3.0;
-				x -= cos(v.direction()) * movePixel;
-				y += sin(v.direction()) * movePixel;
-
-				ball->move(x, y);
+				// move another two pixels away
+				x -= cos(v.direction()) * 2;
+				y += sin(v.direction()) * 2;
 			}
+			else if (choice == rehit)
+			{
+				for (BallStateList::Iterator it = ballStateList.begin(); it != ballStateList.end(); ++it)
+				{
+					if ((*it).id == (*curPlayer).id())
+					{
+						if ((*it).beginningOfHole)
+							ball->move(whiteBall->x(), whiteBall->y());
+						else
+							ball->move((*it).spot.x(), (*it).spot.y());
 
-			ball->move(ball->x(), ball->y());
+						break;
+					}
+				}
+			}
 
 			ball->setVisible(true);
 			ball->setState(Stopped);
@@ -3782,9 +3823,6 @@ void KolfGame::shotDone()
 			(*it).ball()->setDoDetect(true);
 			ball->collisionDetect();
 		}
-
-		// off by default
-		ball->setPlaceOnGround(false);
 	}
 
 	// emit again
@@ -3805,7 +3843,7 @@ void KolfGame::shotDone()
 
 			if (allPlayersDone())
 			{
-				holeDone();
+				startNextHole();
 				return;
 			}
 		}
@@ -3874,7 +3912,23 @@ void KolfGame::addHoleInfo(BallStateList &list)
 	list.hole = curHole;
 }
 
+void KolfGame::sayWhosGoing()
+{
+	if (players->count() >= 2)
+	{
+		KMessageBox::information(this, i18n("%1 will start off.").arg((*curPlayer).name()), i18n("New Hole"), "newHole");
+	}
+}
+
 void KolfGame::holeDone()
+{
+	startNextHole();
+	sayWhosGoing();
+}
+
+// this function is WAY too smart for it's own good
+// ie, bad design :-(
+void KolfGame::startNextHole()
 {
 	setFocus();
 
@@ -3919,7 +3973,29 @@ void KolfGame::holeDone()
 	{
 		if (curHole > 1)
 		{
-			if ((*it).lastScore() < leastScore && (*it).lastScore() != 0)
+			bool ahead = false;
+			if ((*it).lastScore() != 0)
+			{
+				if ((*it).lastScore() < leastScore)
+					ahead = true;
+				else if ((*it).lastScore() == leastScore)
+				{
+					for (int i = curHole - 1; i > 0; --i)
+					{
+						const int thisScore = (*it).score(i);
+						const int thatScore = (*curPlayer).score(i);
+						if (thisScore < thatScore)
+						{
+							ahead = true;
+							break;
+						}
+						else if (thisScore > thatScore)
+							break;
+					}
+				}
+			}
+
+			if (ahead)
 			{
 				curPlayer = it;
 				leastScore = (*it).lastScore();
@@ -4141,7 +4217,7 @@ void KolfGame::openFile()
 			break;
 		}
 
-		if (!loaded && name != "hole" && warned.contains(name) < 0)
+		if (!loaded && name != "hole" && warned.contains(name) <= 0)
 		{
 			KMessageBox::sorry(this, i18n("To fully experience this hole, you'll need to install the %1 plugin.").arg(QString("\"%1\"").arg(name)));
 			warned.append(name);
@@ -4312,7 +4388,7 @@ void KolfGame::addNewHole()
 	addingNewHole = true;
 	curHole = highestHole;
 	recalcHighestHole = true;
-	holeDone();
+	startNextHole();
 	addingNewHole = false;
 
 	// make sure even the current player isn't showing
@@ -4340,7 +4416,7 @@ void KolfGame::resetHole()
 		return;
 	modified = false;
 	curHole--;
-	holeDone();
+	startNextHole();
 	resetHoleScores();
 }
 
@@ -4485,7 +4561,7 @@ void KolfGame::save()
 
 	cfg->setGroup("0-course@-50,-50");
 	cfg->writeEntry("author", holeInfo.author());
-	cfg->writeEntry("name", holeInfo.name());
+	cfg->writeEntry("Name", holeInfo.name());
 
 	// save hole info
 	cfg->setGroup(QString("%1-hole@-50,-50|0").arg(curHole));

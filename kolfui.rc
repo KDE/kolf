@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="Kolf" version="8">
+<kpartgui name="Kolf" version="9">
 	<MenuBar>
 		<Menu name="game">
 			<Action name="savegame" append="save_merge" />
@@ -39,6 +39,8 @@
 			<Action name="showguideline" />
 			<Action name="sound" />
 			<Separator />
+			<Action name="enableAll" />
+			<Separator />
 			<Action name="reloadplugins" />
 			<Action name="showplugins" />
 		</Menu>
@@ -60,4 +62,6 @@
 		<Separator />
 		<Action name="switchhole" />
 	</ToolBar>
+
+	<StatusBar />
 </kpartgui>

@@ -67,15 +67,16 @@ protected slots:
 	void configureToolBars();
 	void newToolBarConfig();
 	void showHighScores();
+	void enableAllMessages();
 
-	void nullSlot() {};
+	void emptySlot() {};
  
 private:
 	QWidget *dummy;
 	KolfGame *game;
 	Editor *editor;
 	KolfGame *spacer;
-	inline void initGUI();
+	void initGUI();
 	QString filename;
 	PlayerList players;
 	PlayerList spacerPlayers;

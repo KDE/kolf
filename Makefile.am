@@ -7,7 +7,7 @@ bin_PROGRAMS = kolf
 libkolf_la_SOURCES = \
 	kolf.cpp game.cpp canvasitem.cpp ball.cpp newgame.cpp config.cpp \
 	scoreboard.cpp editor.cpp pluginloader.cpp object.cpp vector.cpp \
-	printdialogpage.cpp
+	printdialogpage.cpp kcomboboxdialog.cpp
 
 libkolf_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -export-dynamic
 libkolf_la_LIBADD = $(top_builddir)/libkdegames/libkdegames.la $(LIB_KDEPRINT) $(LIB_KIO) -lartskde
