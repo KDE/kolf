@@ -1,12 +1,37 @@
+// Copyright (C) 2002 Jason Katz-Brown <jason@katzbrown.com>
+// Copyright (C) 2002 Neil Stevens <neil@qualityassistant.com>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+// THE AUTHOR(S) BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
+// AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+// 
+// Except as contained in this notice, the name(s) of the author(s) shall not be
+// used in advertising or otherwise to promote the sale, use or other dealings
+// in this Software without prior written authorization from the author(s).
+
 #ifndef KCOMBOBOX_DIALOG_H
 #define KCOMBOBOX_DIALOG_H
 
 #include <qstringlist.h>
 
 #include <kdialogbase.h>
+#include <kglobal.h>
 
 class QCheckBox;
-class KComboBox;
+class KHistoryCombo;
 
 /**
  * Dialog for user to choose an item from a QStringList.
@@ -37,7 +62,7 @@ public:
 	/**
 	 * @return the line edit widget
 	 */
-	KComboBox *comboBox() const { return combo; }
+	KHistoryCombo *comboBox() const { return combo; }
 
 	/**
 	 * Static convenience function to get input from the user.
@@ -61,8 +86,27 @@ public:
 	 */
 	static QString getItem( const QString &_text, const QString &_caption, const QStringList &_items, const QString& _value = QString::null, const QString &dontAskAgainName = QString::null, QWidget *parent = 0 );
 
+	/**
+	 * Static convenience method.
+	 * This method is meant as a replacement for KLineEditDlg::getText() for cases
+	 * when a history and autocompletion are desired.
+	 *
+	 * @param _caption         Caption of the dialog
+	 * @param _text            Text of the label
+	 * @param _value           Initial value of the inputline
+	 * @param ok               Variable to store whether the user hit OK
+	 * @param parent           Parent widget for the dialog
+	 * @param configName       Name of the dialog for saving the completion and history
+	 * @parma config           KConfig for saving the completion and history
+	 */
+	static QString getText(const QString &_caption, const QString &_text,
+	                       const QString &_value = QString::null,
+	                       bool *ok = 0, QWidget *parent = 0,
+	                       const QString &configName = QString::null,
+	                       KConfig *config = KGlobal::config());
+
 protected:
-	KComboBox *combo;
+	KHistoryCombo *combo;
 	QCheckBox *dontAskAgainCheckBox;
 	bool dontAskAgainChecked();
 };
