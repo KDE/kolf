@@ -18,6 +18,7 @@
 #include <kstdgameaction.h>
 #include <kurl.h>
 
+#include <qcolor.h>
 #include <qevent.h>
 #include <qfile.h>
 #include <qobject.h>
@@ -263,9 +264,9 @@ void Kolf::startNewGame()
 	connect(showGuideLineAction, SIGNAL(toggled(bool)), game, SLOT(setShowGuideLine(bool)));		
 
 	game->setUseMouse(useMouseAction->isChecked());
-	game->setUseAdvancedPutting(useAdvancedPuttingAction->isChecked());		
-	game->setShowGuideLine(showGuideLineAction->isChecked());		
-	game->setSound(soundAction->isChecked());		
+	game->setUseAdvancedPutting(useAdvancedPuttingAction->isChecked());
+	game->setShowGuideLine(showGuideLineAction->isChecked());
+	game->setSound(soundAction->isChecked());
 
 	layout->addWidget(game, 0, 0, AlignCenter);
 
@@ -293,7 +294,7 @@ void Kolf::startNewGame()
 
 	// so game can do stuff that needs to be done
 	// after things above are connected
-	game->startFirstHole(firstHole);
+	game->startFirstHole(1);
 
 	end:
 	delete dialog;
@@ -310,7 +311,7 @@ void Kolf::tutorial()
 {
 	QString newfilename = KGlobal::dirs()->findResource("appdata", "tutorial.kolfgame");
 	if (newfilename.isNull())
-		return;
+	        return;
 	
 	filename = QString::null;
 	loadedGame = newfilename;
@@ -335,18 +336,21 @@ void Kolf::closeGame()
 	game = 0;
 	loadedGame = QString::null;
 
-	delete spacer;
-	spacer = new QWidget(dummy);
-	QPixmap grass;
-	if (!QPixmapCache::find("grass", grass))
-	{
-		grass.load(locate("appdata", "pics/grass.png"));
-		QPixmapCache::insert("grass", grass);
-	}
-	spacer->setBackgroundPixmap(grass);
-	layout->addWidget(spacer, 0, 0, AlignCenter);
+	// make a player to play the spacer hole
+	spacerPlayers.clear();
+	spacerPlayers.append(Player());
+	spacerPlayers.last().ball()->setColor(yellow);
+	spacerPlayers.last().setName("player");
+	spacerPlayers.last().setId(1);
 
-	spacer->setFixedSize(400, 400);
+	delete spacer;
+	spacer = new KolfGame(obj, &spacerPlayers, KGlobal::dirs()->findResource("appdata", "intro"), dummy);
+	spacer->startFirstHole(1);
+	spacer->setSound(false);
+	layout->addWidget(spacer, 0, 0, AlignCenter);
+	spacer->hidePutter();
+	spacer->ignoreEvents(true);
+
 	spacer->show();
 
 	editingAction->setChecked(false);

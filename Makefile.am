@@ -9,7 +9,7 @@ kolf_LDADD = $(top_builddir)/libkdegames/libkdegames.la $(LIB_KDEPRINT) $(LIB_KI
 EXTRA_DIST = kolf.desktop
 
 appdir = $(kde_datadir)/kolf
-app_DATA = kolfui.rc tutorial.kolf tutorial.kolfgame
+app_DATA = kolfui.rc intro tutorial.kolf tutorial.kolfgame
 
 appsdir = $(kde_appsdir)/Games/Arcade
 apps_DATA = kolf.desktop

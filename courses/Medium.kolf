@@ -1,6 +1,7 @@
 [0-course@-50,-50]
-author=Jason Katz-Brown
 Name=Medium Course\s
+author=Jason Katz-Brown
+name=Medium Course\s
 
 [1-ball@342,322]
 dummykey=true
@@ -1905,8 +1906,8 @@ minspeed=1
 [6-blackhole@266,293|43]
 exit=26,239
 exitDeg=290
-maxspeed=1
-minspeed=0
+maxspeed=2
+minspeed=1
 
 [6-cup@103,354|44]
 dummykey=true
@@ -2164,14 +2165,14 @@ startPoint=197,83
 
 [6-wall@0,0|30]
 endPoint=203,11
-startPoint=227,46
+startPoint=225,46
 
 [6-wall@0,0|31]
 endPoint=38,114
 startPoint=11,114
 
 [6-wall@0,0|4]
-endPoint=225,46
+endPoint=227,46
 startPoint=226,63
 
 [6-wall@0,0|45]
@@ -2208,7 +2209,7 @@ startPoint=70,74
 
 [6-wall@0,0|74]
 endPoint=251,10
-startPoint=227,46
+startPoint=225,46
 
 [6-wall@0,0|8]
 endPoint=232,273

@@ -930,6 +930,8 @@ public:
 	bool isInPlay() { return inPlay; }
 	void stoppedBall();
 	QString courseName() const { return holeInfo.name(); }
+	void hidePutter() { putter->setVisible(false); }
+	void ignoreEvents(bool ignore) { m_ignoreEvents = ignore; }
 
 	static void scoresFromSaved(KSimpleConfig *, PlayerList &players);
 	static void courseInfo(CourseInfo &info, const QString &filename);
@@ -1069,6 +1071,8 @@ private:
 	bool m_sound;
 	bool soundedOnce;
 	QString soundDir;
+
+	bool m_ignoreEvents;
 
 	HoleInfo holeInfo;
 	QCanvasText *infoText;

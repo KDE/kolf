@@ -72,10 +72,11 @@ private:
 	QWidget *dummy;
 	KolfGame *game;
 	Editor *editor;
-	QWidget *spacer;
+	KolfGame *spacer;
 	inline void initGUI();
 	QString filename;
 	PlayerList players;
+	PlayerList spacerPlayers;
 	QGridLayout *layout;
 	ScoreBoard *scoreboard;
 	KToggleAction *editingAction;

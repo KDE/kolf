@@ -2876,6 +2876,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	m_useAdvancedPutting = false;
 	m_useAdvancedPutting = true;
 	m_sound = true;
+	m_ignoreEvents = false;
 	soundedOnce = false;
 	oldPlayObjects.setAutoDelete(true);
 	highestHole = 0;
@@ -3083,14 +3084,16 @@ void KolfGame::updateHighlighter()
 	highlighter->move(rect.x() + 1, rect.y() + 1);
 	highlighter->setSize(rect.width(), rect.height());
 }
+
 void KolfGame::contentsMouseDoubleClickEvent(QMouseEvent *e)
 {
 	// allow two fast single clicks
 	contentsMousePressEvent(e);
 }
+
 void KolfGame::contentsMousePressEvent(QMouseEvent *e)
 {
-	if (inPlay)
+	if (inPlay || m_ignoreEvents)
 		return;
 
 	if (!editing)
@@ -3166,7 +3169,7 @@ void KolfGame::contentsMousePressEvent(QMouseEvent *e)
 
 void KolfGame::contentsMouseMoveEvent(QMouseEvent *e)
 {
-	if (inPlay || !putter)
+	if (inPlay || !putter || m_ignoreEvents)
 		return;
 
 	QPoint mouse = e->pos();
@@ -3219,7 +3222,7 @@ void KolfGame::contentsMouseReleaseEvent(QMouseEvent *e)
 	setCursor(KCursor::arrowCursor());
 	moving = false;
 
-	if (inPlay)
+	if (inPlay || m_ignoreEvents)
 		return;
 
 	if (!editing)
@@ -3238,11 +3241,9 @@ void KolfGame::contentsMouseReleaseEvent(QMouseEvent *e)
 
 void KolfGame::keyPressEvent(QKeyEvent *e)
 {
-
-	if (inPlay || editing)
-	{
+	if (inPlay || editing || m_ignoreEvents)
 		return;
-	}
+
 	switch (e->key())
 	{
 		case Key_I: case Key_Up:
@@ -3353,7 +3354,7 @@ void KolfGame::puttPress()
 
 void KolfGame::keyReleaseEvent(QKeyEvent *e)
 {
-	if (e->isAutoRepeat())
+	if (e->isAutoRepeat() || m_ignoreEvents)
 		return;
 
 	if (e->key() == Key_Space || e->key() == Key_Down)
