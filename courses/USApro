@@ -241,6 +241,8 @@ width=36
 
 [10-sign@-1,360|42]
 Comment=Washington DC (Pentagon)
+Comment[pt]=Washington DC (Pentágono)
+Comment[pt_BR]=Washington DC (Pentágono)
 botWallVisible=true
 height=49
 leftWallVisible=true
