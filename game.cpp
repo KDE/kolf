@@ -1852,7 +1852,7 @@ QPointArray Wall::areaPoints() const
 void Wall::editModeChanged(bool changed)
 {
 	// make big for debugging?
-	const bool debugPoints = true;
+	const bool debugPoints = false;
 
 	editing = changed;
 
