@@ -2694,14 +2694,14 @@ void KolfGame::contentsMousePressEvent(QMouseEvent *e)
 
 	if (list.count() < 1)
 	{
-		//kdDebug() << "emitting\n";
+		kdDebug() << "returning\n";
 		emit newSelectedItem(&holeInfo);
 		return;
 	}
 	// only items we keep track of
 	if ((!(items.containsRef(list.first()) || list.first() == whiteBall || extraMoveable.containsRef(list.first()))))
 	{
-		//kdDebug() << "emitting\n";
+		kdDebug() << "returning\n";
 		emit newSelectedItem(&holeInfo);
 		return;
 	}
@@ -2709,6 +2709,7 @@ void KolfGame::contentsMousePressEvent(QMouseEvent *e)
 	CanvasItem *citem = dynamic_cast<CanvasItem *>(list.first());
 	if (!citem || !citem->moveable())
 	{
+		kdDebug() << "returning\n";
 		emit newSelectedItem(&holeInfo);
 		return;
 	}
@@ -2718,14 +2719,8 @@ void KolfGame::contentsMousePressEvent(QMouseEvent *e)
 		// select AND move now :)
 		case LeftButton:
 		{
-			CanvasItem *citem = dynamic_cast<CanvasItem *>(selectedItem);
-			if (!citem)
-			{
-				emit newSelectedItem(&holeInfo);
-				break;
-			}
 			selectedItem = list.first();
-			movingItem = list.first();
+			movingItem = selectedItem;
 			moving = true;
 			emit newSelectedItem(citem);
 			highlighter->setVisible(true);

@@ -449,7 +449,7 @@ maxspeed=2
 minspeed=1
 
 [11-blackhole@293,44|16]
-exit=76,295
+exit=119,292
 exitDeg=5
 maxspeed=3
 minspeed=2
@@ -631,10 +631,10 @@ startPoint=13,310
 dummykey=true
 
 [12-blackhole@244,110|62]
-exit=165,129
-exitDeg=320
+exit=158,101
+exitDeg=290
 maxspeed=12
-minspeed=5
+minspeed=2
 
 [12-blackhole@39,108|41]
 exit=144,33
@@ -660,13 +660,13 @@ dummykey=true
 [12-floater@329,91|50]
 botWallVisible=false
 endPoint=329,91
-height=48
+height=46
 leftWallVisible=false
 rightWallVisible=false
 speed=5
 startPoint=277,35
 topWallVisible=false
-width=56
+width=52
 
 [12-hole@-50,-50|0]
 maxstrokes=14
@@ -1896,10 +1896,10 @@ width=118
 [17-slope@204,241|25]
 grade=2
 gradient=Opposite Diagonal
-height=110
+height=268
 reversed=true
 stuckOnGround=false
-width=183
+width=181
 
 [17-slope@216,242|38]
 grade=3
@@ -1907,7 +1907,7 @@ gradient=Vertical
 height=98
 reversed=true
 stuckOnGround=false
-width=70
+width=58
 
 [17-slope@253,341|40]
 grade=3
@@ -1922,7 +1922,7 @@ endPoint=210,201
 startPoint=207,391
 
 [17-wall@0,0|19]
-endPoint=164,133
+endPoint=145,133
 startPoint=10,133
 
 [17-wall@0,0|21]
@@ -1931,7 +1931,7 @@ startPoint=205,11
 
 [17-wall@0,0|22]
 endPoint=210,200
-startPoint=165,132
+startPoint=146,132
 
 [17-wall@0,0|23]
 endPoint=55,133
