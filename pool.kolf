@@ -50,7 +50,7 @@ minspeed=3
 [1-hole@-50,-50|0]
 borderWalls=false
 hasFinalLoad=false
-maxstrokes=30
+maxstrokes=4
 par=3
 
 [1-poolball@-215,24|33]
