@@ -27,7 +27,7 @@ static KCmdLineOptions options[] =
 };
 
 
-int main(int argc, char **argv)
+extern "C" int kdemain(int argc, char **argv)
 {
 	KAboutData aboutData( "kolf", I18N_NOOP("Kolf"), version, description, KAboutData::License_GPL, "(c) 2002, Jason Katz-Brown", 0, "http://www.katzbrown.com/kolf/");
 
