@@ -387,19 +387,21 @@ void Kolf::gameOver()
 	int curPar = 0;
 	int lowScore = INT_MAX; // let's hope it doesn't stay this way!
 	int curScore = 1;
+
+	// names of people who had the lowest score
 	QStringList names;
+
 	HighScoreList highScores;
-	int i = 1;
-	HighScore topScore;
+	int scoreBoardIndex = 1;
 
 	while (curScore != 0)
 	{
 		QString curName;
 
 		// name taken as a reference and filled out
-		curScore = scoreboard->total(i, curName);
+		curScore = scoreboard->total(scoreBoardIndex, curName);
 
-		i++;
+		scoreBoardIndex++;
 
 		if (curName == i18n("Par"))
 		{
@@ -419,21 +421,24 @@ void Kolf::gameOver()
 			names.clear();
 			lowScore = curScore;
 			names.append(curName);
-			topScore.name = curName;
-			topScore.score = curScore;
 		}
 		else if (curScore == lowScore)
 			names.append(curName);
 	}
-	highScores.append(topScore);
 
-	if (names.count() > 1)
+	// only announce a winner if more than two entries
+	// (player and par) are on the scoreboard + one to go past end
+	// + 1 for koodoo
+	if (scoreBoardIndex > 4)
 	{
-		QString winners = names.join(i18n(" and "));
-		KMessageBox::information(this, i18n("%1 tied").arg(winners));
+		if (names.count() > 1)
+		{
+			QString winners = names.join(i18n(" and "));
+			KMessageBox::information(this, i18n("%1 tied").arg(winners));
+		}
+		else
+			KMessageBox::information(this, i18n("%1 won!").arg(names.first()));
 	}
-	else
-		KMessageBox::information(this, i18n("%1 won!").arg(names.first()));
 
 	if (competition)
 	{
