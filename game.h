@@ -906,6 +906,7 @@ private slots:
 	void parChanged(int);
 	void maxStrokesChanged(int);
 	void nameChanged(const QString &);
+	void borderWallsChanged(bool);
 
 private:
 	HoleInfo *holeInfo;
@@ -923,10 +924,13 @@ public:
 	void setName(QString newname) { m_name = newname; }
 	QString name() { return m_name; }
 	virtual Config *config(QWidget *parent) { return new HoleConfig(this, parent); }
+	void borderWallsChanged(bool yes);
+	bool borderWalls() { return m_borderWalls; }
 
 private:
 	QString m_author;
 	QString m_name;
+	bool m_borderWalls;
 	int m_par;
 	int m_maxStrokes;
 };
@@ -949,6 +953,7 @@ public:
 	bool isEditing() const { return editing; }
 	Ball *curBall() { return (*curPlayer).ball(); }
 	void updateMouse();
+	void setBorderWalls(bool);
 
 public slots:
 	void pause();

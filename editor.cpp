@@ -42,6 +42,7 @@ void Editor::listboxExecuted(QListBoxItem * /*item*/)
 	listbox->setSelected(0, true);
 	listbox->setSelected(0, false);
 	listbox->setSelected(-1, true);
+	listbox->setFocus();
 }
 
 void Editor::setItem(CanvasItem *item)

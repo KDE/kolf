@@ -164,10 +164,12 @@ Slope::Slope(QRect rect, QCanvas *canvas)
 	gradientKeys[KPixmapEffect::HorizontalGradient] = "Horizontal";
 	gradientKeys[KPixmapEffect::DiagonalGradient] = "Diagonal";
 	gradientKeys[KPixmapEffect::CrossDiagonalGradient] = "Opposite Diagonal";
+	gradientKeys[KPixmapEffect::EllipticGradient] = "Elliptic";
 	gradientI18nKeys[KPixmapEffect::VerticalGradient] = i18n("Vertical");
 	gradientI18nKeys[KPixmapEffect::HorizontalGradient] = i18n("Horizontal");
 	gradientI18nKeys[KPixmapEffect::DiagonalGradient] = i18n("Diagonal");
 	gradientI18nKeys[KPixmapEffect::CrossDiagonalGradient] = i18n("Opposite Diagonal");
+	gradientI18nKeys[KPixmapEffect::EllipticGradient] = i18n("Elliptic");
 	setZ(-50);
 
 	point = new RectPoint(color.light(), this, canvas);
@@ -352,6 +354,13 @@ QPointArray Slope::areaPoints() const
 			return ret;
 		}
 
+		case KPixmapEffect::EllipticGradient:
+		{
+    		QPointArray ret;
+			ret.makeEllipse((int)x(), (int)y(), width(), height());
+    		return ret;
+		}
+
 		default:
 			return QCanvasRectangle::areaPoints();
 	}
@@ -365,7 +374,56 @@ void Slope::collision(Ball *ball, long int /*id*/)
 	//if (vy == 0 && vx == 0)
 		//return;
 	const double addto = 0.013 * grade;
-	const double slopeAngle = atan((double)width() / (double)height());
+
+	const bool diag = type == KPixmapEffect::DiagonalGradient || type == KPixmapEffect::CrossDiagonalGradient;
+	const bool circle = type == KPixmapEffect::EllipticGradient;
+	double slopeAngle = 0;
+	if (diag)
+		slopeAngle = atan((double)width() / (double)height());
+	else if (circle)
+	{
+		const QPoint start(x() + (int)width() / 2.0, y() + (int)height() / 2.0);
+		const QPoint end((int)ball->x(), (int)ball->y());
+		const double yDiff = (double)(end.x() - start.x());
+		const double xDiff = (double)(start.y() - end.y());
+		kdDebug() << "yDiff: " << yDiff << endl;
+		kdDebug() << "xDiff: " << xDiff << endl;
+
+		if (yDiff == 0 && xDiff == 0)
+			return;
+
+		if (yDiff == 0)
+		{
+			// horizontal
+			slopeAngle = start.x() < end.x()? 0 : PI;
+		}
+		else
+		{
+			slopeAngle = atan(yDiff / xDiff);
+			kdDebug() << "before slopeAngle: " << rad2deg(slopeAngle) << endl;
+
+			//if (slopeAngle < 0)
+			if (end.y() < start.y())
+			{
+				slopeAngle *= -1;
+				kdDebug() << "neg slopeAngle: " << rad2deg(slopeAngle) << endl;
+				slopeAngle = (PI / 2) - slopeAngle;
+				kdDebug() << "pi / 2 -  slopeAngle: " << rad2deg(slopeAngle) << endl;
+			}
+			else
+			{
+				//slopeAngle += PI / 2;
+				slopeAngle *= -1;
+				slopeAngle = (-PI / 2) - slopeAngle;
+				kdDebug() << "neg slopeAngle: " << rad2deg(slopeAngle) << endl;
+			}
+
+		}
+		
+		//slopeAngle += PI;
+	}
+
+	kdDebug() << "slopeAngle: " << rad2deg(slopeAngle) << endl;
 
 	switch (type)
 	{
@@ -378,6 +436,7 @@ void Slope::collision(Ball *ball, long int /*id*/)
 		break;
 
 		case KPixmapEffect::DiagonalGradient:
+		case KPixmapEffect::EllipticGradient:
 			reversed? vx += cos(slopeAngle) * addto : vx -= cos(slopeAngle) * addto;
 			reversed? vy += sin(slopeAngle) * addto : vy -= sin(slopeAngle) * addto;
 		break;
@@ -417,11 +476,18 @@ void Slope::updatePixmap()
 	QPixmap qpixmap(width(), height());
 	pixmap = qpixmap;
 	const bool diag = type == KPixmapEffect::DiagonalGradient || type == KPixmapEffect::CrossDiagonalGradient;
+	const bool circle = type == KPixmapEffect::EllipticGradient;
+
+	// these are approximate for i guess what would theoretically
+	// be purrfect
+	// but I've not the time to get it purrfect
+	// i wish i did -- anybody wanna fix it? :-)
 	QColor darkColor = color.dark(100 + grade * 10);
-	QColor lightColor = diag? color.light(110 + 5 * grade) : color;
+	QColor lightColor = diag || circle? color.light(110 + (diag? 5 : 2) * grade) : color;
+
 	(void) KPixmapEffect::gradient(pixmap, reversed? darkColor : lightColor, reversed? lightColor : darkColor, type);
 
-	if (diag)
+	if (diag || circle)
 	{
 		// make cleared bitmap
 		QBitmap bitmap(pixmap.width(), pixmap.height(), true);;
@@ -2497,20 +2563,23 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	layout->addStretch();
 
 	hlayout = new QHBoxLayout(layout, spacingHint());
-	hlayout->addWidget(new QLabel(i18n("Hole par"), this));
-	hlayout->addStretch();
+	hlayout->addWidget(new QLabel(i18n("Par"), this));
 	QSpinBox *par = new QSpinBox(2, 15, 1, this);
 	par->setValue(holeInfo->par());
 	hlayout->addWidget(par);
 	connect(par, SIGNAL(valueChanged(int)), this, SLOT(parChanged(int)));
-
-	hlayout = new QHBoxLayout(layout, spacingHint());
-	hlayout->addWidget(new QLabel(i18n("Hole max strokes"), this));
 	hlayout->addStretch();
+
+	hlayout->addWidget(new QLabel(i18n("Max. strokes"), this));
 	QSpinBox *maxstrokes = new QSpinBox(4, 30, 1, this);
 	maxstrokes->setValue(holeInfo->maxStrokes());
 	hlayout->addWidget(maxstrokes);
 	connect(maxstrokes, SIGNAL(valueChanged(int)), this, SLOT(maxStrokesChanged(int)));
+
+	QCheckBox *check = new QCheckBox(i18n("Show border walls"), this);
+	check->setChecked(holeInfo->borderWalls());
+	layout->addWidget(check);
+	connect(check, SIGNAL(toggled(bool)), this, SLOT(borderWallsChanged(bool)));
 }
 
 void HoleConfig::authorChanged(const QString &newauthor)
@@ -2534,6 +2603,12 @@ void HoleConfig::parChanged(int newpar)
 void HoleConfig::maxStrokesChanged(int newms)
 {
 	holeInfo->setMaxStrokes(newms);
+	changed();
+}
+
+void HoleConfig::borderWallsChanged(bool yes)
+{
+	holeInfo->borderWallsChanged(yes);
 	changed();
 }
 
@@ -2566,9 +2641,11 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 	m_useMouse = true;
 	highestHole = 0;
 
+	holeInfo.setGame(this);
 	holeInfo.setAuthor(i18n("Course Author"));
 	holeInfo.setName(i18n("Course Name"));
 	holeInfo.setMaxStrokes(10);
+	holeInfo.borderWallsChanged(true);
 
 	initSoundServer();
 
@@ -3250,9 +3327,10 @@ void KolfGame::shotDone()
 	emit newPlayersTurn(&(*curPlayer));
 
 	(*curPlayer).ball()->setVisible(true);
-	
+
 	putter->setDegrees((*curPlayer).ball());
 	putter->setOrigin((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
+	updateMouse();
 
 	inPlay = false;
 	(*curPlayer).ball()->setVelocity(0, 0);
@@ -3265,7 +3343,6 @@ void KolfGame::shotStart()
 	putter->saveDegrees((*curPlayer).ball());
 	strength /= 8;
 	putter->setVisible(false);
-	inPlay = true;
 	int deg = putter->curDeg();
 	//kdDebug() << "deg is " << deg << endl;
 	double vx = 0, vy = 0;
@@ -3277,6 +3354,8 @@ void KolfGame::shotStart()
 
 	(*curPlayer).ball()->setVelocity(vx, vy);
 	(*curPlayer).ball()->setState(Rolling);
+
+	inPlay = true;
 }
 
 void KolfGame::holeDone()
@@ -3309,7 +3388,10 @@ void KolfGame::holeDone()
 	//kdDebug() << "curHole ++'d to " << curHole << endl;
 
 	if (reset)
+	{
 		whiteBall->move(width/2, height/2);
+		holeInfo.borderWallsChanged(true);
+	}
 	int leastScore = INT_MAX;
 	// to get the first player to go first on every hole,
 	// don't do the score stuff below
@@ -3370,6 +3452,7 @@ void KolfGame::holeDone()
 
 		(*curPlayer).ball()->setVisible(true);
 		putter->setOrigin((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
+		updateMouse();
 	}
 	// else we're done
 }
@@ -3414,6 +3497,8 @@ void KolfGame::openFile()
 	int numItems = 0;
 	curPar = 3;
 	holeInfo.setPar(curPar);
+	// if you want the default max strokes to always be 10....
+	//holeInfo.setMaxStrokes(10);
 	int _highestHole = 0;
 
 	/****
@@ -3445,6 +3530,7 @@ void KolfGame::openFile()
 		{
 			holeInfo.setAuthor(cfg->readEntry("author", holeInfo.author()));
 			holeInfo.setName(cfg->readEntry("name", holeInfo.name()));
+			holeInfo.borderWallsChanged(cfg->readBoolEntry("borderWalls", holeInfo.borderWalls()));
 			continue;
 		}
 
@@ -3666,6 +3752,9 @@ void KolfGame::addNewHole()
 	highlighter->setVisible(false);
 	putter->setVisible(!editing);
 	inPlay = false;
+
+	// obviously, we've modified this course by adding a new hole!
+	modified = true;
 }
 
 // kantan deshou ;-)
@@ -3702,6 +3791,8 @@ void KolfGame::clearHole()
 	items.clear();
 	items.setAutoDelete(false);
 	emit newSelectedItem(&holeInfo);
+
+	modified = true;
 }
 
 void KolfGame::switchHole(int hole)
@@ -3797,6 +3888,7 @@ void KolfGame::save()
 	cfg->setGroup("0-course@-50,-50");
 	cfg->writeEntry("author", holeInfo.author());
 	cfg->writeEntry("name", holeInfo.name());
+	cfg->writeEntry("borderWalls", holeInfo.borderWalls());
 
 	// save hole info
 	cfg->setGroup(QString("%1-hole@-50,-50|0").arg(curHole));
@@ -3923,6 +4015,12 @@ void CanvasItem::playSound(QString file)
 		game->playSound(file);
 }
 
+void HoleInfo::borderWallsChanged(bool yes)
+{
+	m_borderWalls = yes;
+	game->setBorderWalls(yes);
+}
+
 void KolfGame::print(QPainter &p)
 {
 	// this is pretty ugly/broken
@@ -3948,6 +4046,13 @@ bool KolfGame::allPlayersDone()
 			b = false;
 
 	return b;
+}
+
+void KolfGame::setBorderWalls(bool showing)
+{
+	Wall *wall = 0;
+	for (wall = borderWalls.first(); wall; wall = borderWalls.next())
+		wall->setVisible(showing);
 }
 
 #include "game.moc"

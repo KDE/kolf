@@ -1,6 +1,6 @@
 [0-course@-50,-50]
 author=Jason Katz-Brown
-name=Default Course One
+name=Hard Course
 
 [1-ball@84,73]
 dummykey=true
@@ -2283,7 +2283,7 @@ startPoint=31,174
 
 [2-wall@0,0|14]
 endPoint=35,112
-startPoint=52,143
+startPoint=49,133
 
 [2-wall@0,0|3]
 endPoint=233,12
@@ -2333,6 +2333,10 @@ startPoint=171,36
 endPoint=198,44
 startPoint=170,36
 
+[2-wall@0,0|60]
+endPoint=48,144
+startPoint=50,133
+
 [2-wall@0,0|9]
 endPoint=81,121
 startPoint=81,109
@@ -2359,15 +2363,15 @@ dummykey=true
 maxstrokes=12
 par=4
 
-[3-puddle@239,304|10]
+[3-puddle@255,311|10]
 changeEnabled=false
 changeEvery=22
 
-[3-puddle@252,272|8]
+[3-puddle@260,276|8]
 changeEnabled=false
 changeEvery=20
 
-[3-puddle@252,285|9]
+[3-puddle@276,295|9]
 changeEnabled=false
 changeEvery=26
 
@@ -2412,7 +2416,7 @@ stuckOnGround=false
 width=128
 
 [3-slope@152,305|11]
-grade=4
+grade=6
 gradient=Opposite Diagonal
 height=86
 reversed=false
@@ -2497,7 +2501,7 @@ startPoint=227,230
 
 [3-wall@0,0|30]
 endPoint=150,198
-startPoint=227,230
+startPoint=224,228
 
 [3-wall@0,0|31]
 endPoint=184,244
@@ -2528,8 +2532,8 @@ endPoint=244,56
 startPoint=240,50
 
 [3-wall@0,0|42]
-endPoint=150,198
-startPoint=135,194
+endPoint=292,10
+startPoint=301,42
 
 [3-wall@0,0|43]
 endPoint=301,42
@@ -2555,7 +2559,7 @@ width=61
 [4-ball@358,158]
 dummykey=true
 
-[4-blackhole@159,24|45]
+[4-blackhole@159,31|45]
 exit=156,218
 exitDeg=350
 maxspeed=2
@@ -2843,15 +2847,15 @@ reversed=false
 stuckOnGround=false
 width=128
 
-[4-slope@205,24|162]
+[4-slope@206,23|162]
 grade=4
 gradient=Horizontal
-height=16
+height=19
 reversed=false
 stuckOnGround=false
-width=15
+width=16
 
-[4-slope@237,13|137]
+[4-slope@237,11|137]
 grade=3
 gradient=Opposite Diagonal
 height=208
@@ -3008,16 +3012,16 @@ endPoint=243,97
 startPoint=244,82
 
 [4-wall@0,0|139]
-endPoint=261,43
-startPoint=271,62
+endPoint=267,43
+startPoint=276,61
 
 [4-wall@0,0|14]
 endPoint=78,76
 startPoint=93,91
 
 [4-wall@0,0|140]
-endPoint=270,60
-startPoint=264,78
+endPoint=277,62
+startPoint=272,75
 
 [4-wall@0,0|141]
 endPoint=93,233
@@ -3101,7 +3105,7 @@ startPoint=208,51
 
 [4-wall@0,0|31]
 endPoint=245,83
-startPoint=263,78
+startPoint=271,76
 
 [4-wall@0,0|32]
 endPoint=103,51
@@ -3174,7 +3178,7 @@ startPoint=132,51
 [5-ball@364,360]
 dummykey=true
 
-[5-cup@29,53|3]
+[5-cup@32,41|3]
 dummykey=true
 
 [5-floater@288,52|16]
@@ -3241,6 +3245,22 @@ changeEvery=50
 [5-sand@175,269|14]
 changeEnabled=false
 changeEvery=50
+
+[5-slope@12,11|17]
+grade=2
+gradient=Diagonal
+height=162
+reversed=true
+stuckOnGround=false
+width=77
+
+[5-slope@271,268|16]
+grade=4
+gradient=Diagonal
+height=120
+reversed=false
+stuckOnGround=true
+width=118
 
 [5-wall@0,0|4]
 endPoint=345,237

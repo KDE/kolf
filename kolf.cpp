@@ -148,7 +148,7 @@ void Kolf::startNewGame()
 
 	if (dialog->exec() == QDialog::Accepted)
 	{
-		statusBar()->message(i18n("Loading course..."));
+		//statusBar()->message(i18n("Loading course..."));
 		players.clear();
 		delete scoreboard;
 		scoreboard = new ScoreBoard(dummy, "Score Board");
@@ -224,7 +224,7 @@ void Kolf::startNewGame()
 
 		game->addFirstHole();
 		game->emitLargestHole();
-		statusBar()->message(i18n("Good luck!"));
+		//statusBar()->message(i18n("Good luck!"));
 	}
 
 	delete dialog;
