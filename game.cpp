@@ -3782,7 +3782,7 @@ bool KolfGame::askSave(bool noMoreChances)
 		// not cancel, don't save
 		return false;
 
-	int result = KMessageBox::warningYesNoCancel(this, i18n("There are unsaved changes to current hole. Save them?"), i18n("Unsaved Changes"), i18n("&Save"), noMoreChances? i18n("Disca&rd") : i18n("Save &Later"), noMoreChances? "DiscardAsk" : "SaveAsk", true);
+	int result = KMessageBox::warningYesNoCancel(this, i18n("There are unsaved changes to current hole. Save them?"), i18n("Unsaved Changes"), KStdGuiItem::save(), noMoreChances? KStdGuiItem::discard() : i18n("Save &Later"), noMoreChances? "DiscardAsk" : "SaveAsk", true);
 	switch (result)
 	{
 		case KMessageBox::Yes:
