@@ -21,37 +21,59 @@ hasFinalLoad=false
 maxstrokes=10
 par=3
 
-[1-puddle@10,350|22]
+[1-puddle@-24,361|16]
 changeEnabled=false
 changeEvery=50
+height=124
+width=168
 
-[1-puddle@18,391|15]
+[1-puddle@1,336|17]
 changeEnabled=false
 changeEvery=50
+height=60
+width=110
 
-[1-puddle@2,373|19]
+[1-puddle@34,377|22]
 changeEnabled=false
 changeEvery=50
+height=54
+width=90
 
-[1-puddle@29,357|21]
+[1-puddle@42,351|18]
 changeEnabled=false
 changeEvery=50
+height=56
+width=40
 
-[1-puddle@35,377|8]
+[1-puddle@51,352|19]
 changeEnabled=false
 changeEvery=50
+height=32
+width=36
 
-[1-puddle@37,372|20]
+[1-puddle@54,363|20]
 changeEnabled=false
 changeEvery=50
+height=40
+width=46
 
-[1-puddle@44,388|7]
+[1-puddle@62,373|21]
 changeEnabled=false
 changeEvery=50
+height=52
+width=36
 
 [1-sand@169,250|21]
 changeEnabled=false
 changeEvery=50
+height=60
+width=46
+
+[1-sand@174,240|23]
+changeEnabled=false
+changeEvery=50
+height=40
+width=45
 
 [1-slope@10,135|15]
 grade=3
@@ -85,7 +107,7 @@ reversed=true
 stuckOnGround=false
 width=52
 
-[1-slope@65,79|24]
+[1-slope@65,78|24]
 grade=2
 gradient=Diagonal
 height=309
@@ -129,7 +151,7 @@ endPoint=171,129
 height=53
 leftWallVisible=true
 rightWallVisible=false
-speed=7
+speed=3
 startPoint=25,212
 topWallVisible=true
 width=76
@@ -140,129 +162,83 @@ hasFinalLoad=true
 maxstrokes=10
 par=3
 
-[10-puddle@100,218|41]
-changeEnabled=false
-changeEvery=50
-
-[10-puddle@108,167|29]
-changeEnabled=false
-changeEvery=50
-
 [10-puddle@111,207|40]
 changeEnabled=false
 changeEvery=50
-
-[10-puddle@113,141|32]
-changeEnabled=false
-changeEvery=50
+height=30
+width=45
 
 [10-puddle@115,231|25]
 changeEnabled=false
 changeEvery=50
-
-[10-puddle@123,182|27]
-changeEnabled=false
-changeEvery=50
-
-[10-puddle@131,156|38]
-changeEnabled=false
-changeEvery=50
+height=30
+width=45
 
 [10-puddle@136,250|28]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
-[10-puddle@139,122|12]
+[10-puddle@139,193|58]
 changeEnabled=false
 changeEvery=50
+height=162
+width=122
 
-[10-puddle@141,143|14]
+[10-puddle@163,123|12]
 changeEnabled=false
 changeEvery=50
-
-[10-puddle@141,204|26]
-changeEnabled=false
-changeEvery=50
-
-[10-puddle@142,227|30]
-changeEnabled=false
-changeEvery=50
-
-[10-puddle@146,174|24]
-changeEnabled=false
-changeEvery=50
-
-[10-puddle@156,151|19]
-changeEnabled=false
-changeEvery=50
-
-[10-puddle@164,122|13]
-changeEnabled=false
-changeEvery=50
+height=40
+width=104
 
 [10-puddle@164,260|36]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
-[10-puddle@167,191|22]
+[10-puddle@188,144|52]
 changeEnabled=false
 changeEvery=50
-
-[10-puddle@175,215|33]
-changeEnabled=false
-changeEvery=50
-
-[10-puddle@176,240|21]
-changeEnabled=false
-changeEvery=50
-
-[10-puddle@185,144|20]
-changeEnabled=false
-changeEvery=50
-
-[10-puddle@185,166|17]
-changeEnabled=false
-changeEvery=50
-
-[10-puddle@190,121|16]
-changeEnabled=false
-changeEvery=50
+height=30
+width=45
 
 [10-puddle@190,268|34]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [10-puddle@196,261|35]
 changeEnabled=false
 changeEvery=50
-
-[10-puddle@197,218|59]
-changeEnabled=false
-changeEvery=50
+height=64
+width=60
 
 [10-puddle@199,237|37]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
-[10-puddle@200,200|58]
+[10-puddle@200,157|53]
 changeEnabled=false
 changeEvery=50
+height=94
+width=72
 
-[10-puddle@201,181|23]
+[10-puddle@200,200|54]
 changeEnabled=false
 changeEvery=50
+height=134
+width=72
 
-[10-puddle@208,279|39]
+[10-puddle@206,276|39]
 changeEnabled=false
 changeEvery=50
-
-[10-puddle@209,155|15]
-changeEnabled=false
-changeEvery=50
-
-[10-puddle@212,132|18]
-changeEnabled=false
-changeEvery=50
+height=48
+width=36
 
 [10-slope@112,365|52]
 grade=2
@@ -312,7 +288,7 @@ reversed=true
 stuckOnGround=false
 width=138
 
-[10-slope@199,135|59]
+[10-slope@199,133|59]
 grade=4
 gradient=Horizontal
 height=69
@@ -483,10 +459,10 @@ exitDeg=5
 maxspeed=3
 minspeed=2
 
-[11-cup@220,334|15]
+[11-cup@221,409|13]
 dummykey=true
 
-[11-cup@221,409|13]
+[11-cup@223,332|15]
 dummykey=true
 
 [11-floater@127,241|13]
@@ -506,101 +482,167 @@ hasFinalLoad=true
 maxstrokes=10
 par=3
 
-[11-puddle@137,392|20]
+[11-puddle@142,397|19]
 changeEnabled=false
 changeEvery=50
-
-[11-puddle@146,377|19]
-changeEnabled=false
-changeEvery=50
+height=94
+width=74
 
 [11-puddle@149,362|3]
 changeEnabled=false
 changeEvery=50
+height=30
+width=56
 
-[11-puddle@164,379|9]
+[11-puddle@159,387|9]
 changeEnabled=false
 changeEvery=50
+height=72
+width=58
 
 [11-puddle@170,398|18]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
-[11-puddle@195,391|10]
+[11-puddle@173,382|20]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
+
+[11-puddle@192,390|10]
+changeEnabled=false
+changeEvery=50
+height=30
+width=45
+
+[11-puddle@210,393|44]
+changeEnabled=false
+changeEvery=50
+height=30
+width=45
 
 [11-puddle@231,394|12]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [11-puddle@258,388|11]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
-[11-puddle@283,378|8]
+[11-puddle@272,380|45]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
-[11-puddle@291,395|7]
+[11-puddle@284,376|8]
 changeEnabled=false
 changeEvery=50
+height=46
+width=46
+
+[11-puddle@290,401|7]
+changeEnabled=false
+changeEvery=50
+height=88
+width=60
 
 [11-puddle@302,4|40]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [11-puddle@330,12|39]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [11-puddle@356,12|33]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [11-puddle@361,54|39]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [11-puddle@363,31|37]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [11-puddle@382,42|38]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [11-puddle@384,6|35]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [11-puddle@393,25|34]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [11-puddle@393,62|36]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
 [11-sand@111,152|26]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
-[11-sand@128,123|24]
+[11-sand@113,140|23]
 changeEnabled=false
 changeEvery=50
+height=80
+width=80
 
-[11-sand@128,143|27]
+[11-sand@120,160|25]
 changeEnabled=false
 changeEvery=50
+height=56
+width=56
 
-[11-sand@87,165|25]
+[11-sand@122,120|24]
 changeEnabled=false
 changeEvery=50
+height=40
+width=70
 
-[11-sand@95,140|23]
+[11-sand@133,177|46]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
+
+[11-sand@141,155|27]
+changeEnabled=false
+changeEvery=50
+height=96
+width=56
 
 [11-slope@11,37|22]
 grade=2
@@ -618,7 +660,7 @@ reversed=false
 stuckOnGround=true
 width=376
 
-[11-slope@174,289|40]
+[11-slope@178,287|40]
 grade=4
 gradient=Elliptic
 height=88
@@ -739,57 +781,53 @@ hasFinalLoad=true
 maxstrokes=10
 par=4
 
-[12-puddle@14,10|18]
+[12-puddle@101,37|66]
 changeEnabled=false
 changeEvery=50
+height=96
+width=76
 
-[12-puddle@16,34|66]
+[12-puddle@104,63|28]
 changeEnabled=false
 changeEvery=50
+height=40
+width=54
 
-[12-puddle@28,23|20]
+[12-puddle@114,15|25]
 changeEnabled=false
 changeEvery=50
+height=98
+width=60
 
-[12-puddle@40,33|22]
+[12-puddle@62,43|24]
 changeEnabled=false
 changeEvery=50
+height=44
+width=54
 
-[12-puddle@43,4|25]
+[12-puddle@68,-60|62]
 changeEnabled=false
 changeEvery=50
+height=244
+width=150
 
-[12-puddle@49,40|23]
+[12-puddle@85,65|26]
 changeEnabled=false
 changeEvery=50
+height=34
+width=42
 
-[12-puddle@61,51|24]
+[12-puddle@91,43|21]
 changeEnabled=false
 changeEvery=50
+height=72
+width=100
 
-[12-puddle@63,24|28]
+[12-puddle@95,72|27]
 changeEnabled=false
 changeEvery=50
-
-[12-puddle@71,60|19]
-changeEnabled=false
-changeEvery=50
-
-[12-puddle@81,71|21]
-changeEnabled=false
-changeEvery=50
-
-[12-puddle@85,44|29]
-changeEnabled=false
-changeEvery=50
-
-[12-puddle@90,70|26]
-changeEnabled=false
-changeEvery=50
-
-[12-puddle@93,66|27]
-changeEnabled=false
-changeEvery=50
+height=30
+width=45
 
 [12-slope@238,231|53]
 grade=3
@@ -1023,25 +1061,35 @@ hasFinalLoad=false
 maxstrokes=10
 par=2
 
+[13-puddle@-43,197|21]
+changeEnabled=false
+changeEvery=50
+height=50
+width=112
+
 [13-puddle@11,201|18]
 changeEnabled=false
 changeEvery=50
+height=34
+width=160
 
 [13-puddle@34,201|19]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
-[13-puddle@55,202|20]
+[13-puddle@53,199|20]
 changeEnabled=false
 changeEvery=50
+height=36
+width=88
 
-[13-puddle@70,202|21]
+[13-puddle@76,197|22]
 changeEnabled=false
 changeEvery=50
-
-[13-puddle@75,197|22]
-changeEnabled=false
-changeEvery=50
+height=30
+width=45
 
 [13-slope@101,11|25]
 grade=4
@@ -1376,21 +1424,21 @@ exitDeg=10
 maxspeed=5
 minspeed=3
 
-[15-bridge@211,349|38]
+[15-bridge@206,351|38]
 botWallVisible=false
-height=25
+height=29
 leftWallVisible=false
 rightWallVisible=false
 topWallVisible=false
-width=40
+width=51
 
 [15-bridge@233,337|36]
 botWallVisible=false
-height=23
+height=28
 leftWallVisible=false
 rightWallVisible=false
 topWallVisible=false
-width=44
+width=53
 
 [15-bridge@52,20|13]
 botWallVisible=true
@@ -1412,13 +1460,17 @@ hasFinalLoad=false
 maxstrokes=10
 par=2
 
-[15-puddle@242,338|35]
+[15-puddle@247,365|35]
 changeEnabled=false
 changeEvery=50
+height=88
+width=58
 
-[15-puddle@246,365|37]
+[15-puddle@252,383|37]
 changeEnabled=false
 changeEvery=50
+height=92
+width=68
 
 [15-slope@107,329|31]
 grade=7
@@ -1581,11 +1633,11 @@ stuckOnGround=false
 width=40
 
 [15-wall@0,0|10]
-endPoint=257,172
+endPoint=256,173
 startPoint=295,241
 
 [15-wall@0,0|11]
-endPoint=256,173
+endPoint=257,172
 startPoint=201,137
 
 [15-wall@0,0|12]
@@ -1594,11 +1646,11 @@ startPoint=12,110
 
 [15-wall@0,0|18]
 endPoint=295,241
-startPoint=331,283
+startPoint=330,281
 
 [15-wall@0,0|19]
 endPoint=363,242
-startPoint=330,281
+startPoint=331,283
 
 [15-wall@0,0|20]
 endPoint=382,237
@@ -1606,14 +1658,14 @@ startPoint=363,242
 
 [15-wall@0,0|23]
 endPoint=273,135
-startPoint=257,172
+startPoint=256,173
 
 [15-wall@0,0|28]
 endPoint=382,237
 startPoint=390,249
 
 [15-wall@0,0|9]
-endPoint=331,283
+endPoint=330,281
 startPoint=351,387
 
 [15-windmill@273,26|21]
@@ -1626,14 +1678,14 @@ speed=7
 topWallVisible=true
 width=114
 
-[16-ball@54,301]
+[16-ball@39,319]
 dummykey=true
 
-[16-blackhole@374,371|66]
-exit=411,79
+[16-blackhole@362,301|51]
+exit=387,79
 exitDeg=180
-maxspeed=1
-minspeed=1
+maxspeed=5
+minspeed=3
 
 [16-cup@-48,-27|3]
 dummykey=true
@@ -1653,17 +1705,17 @@ dummykey=true
 [16-cup@-57,-40|72]
 dummykey=true
 
-[16-cup@87,91|73]
+[16-cup@87,90|73]
 dummykey=true
 
-[16-floater@172,322|39]
+[16-floater@130,346|39]
 botWallVisible=true
-endPoint=172,322
+endPoint=130,346
 height=42
 leftWallVisible=false
 rightWallVisible=false
 speed=5
-startPoint=109,218
+startPoint=67,242
 topWallVisible=true
 width=165
 
@@ -1695,245 +1747,229 @@ hasFinalLoad=true
 maxstrokes=10
 par=3
 
-[16-puddle@-3,139|38]
+[16-puddle@110,211|60]
 changeEnabled=false
 changeEvery=50
+height=60
+width=56
 
-[16-puddle@11,169|34]
+[16-puddle@115,229|44]
 changeEnabled=false
 changeEvery=50
+height=70
+width=88
 
-[16-puddle@12,194|35]
+[16-puddle@128,239|45]
 changeEnabled=false
 changeEvery=50
+height=62
+width=98
 
-[16-puddle@120,170|31]
+[16-puddle@14,174|39]
 changeEnabled=false
 changeEvery=50
+height=64
+width=162
 
-[16-puddle@130,189|32]
+[16-puddle@148,390|55]
 changeEnabled=false
 changeEvery=50
+height=94
+width=58
 
-[16-puddle@142,171|4]
+[16-puddle@152,246|46]
 changeEnabled=false
 changeEvery=50
+height=60
+width=114
 
-[16-puddle@150,189|5]
+[16-puddle@153,373|54]
 changeEnabled=false
 changeEvery=50
+height=86
+width=66
 
-[16-puddle@153,226|17]
+[16-puddle@160,355|53]
 changeEnabled=false
 changeEvery=50
+height=96
+width=74
 
-[16-puddle@154,205|9]
+[16-puddle@170,257|47]
 changeEnabled=false
 changeEvery=50
+height=70
+width=94
 
-[16-puddle@159,245|13]
+[16-puddle@172,334|52]
 changeEnabled=false
 changeEvery=50
+height=94
+width=88
 
-[16-puddle@16,153|37]
+[16-puddle@173,367|56]
 changeEnabled=false
 changeEvery=50
+height=82
+width=58
 
-[16-puddle@176,188|26]
+[16-puddle@177,309|51]
 changeEnabled=false
 changeEvery=50
+height=72
+width=80
 
-[16-puddle@178,258|14]
+[16-puddle@178,263|48]
 changeEnabled=false
 changeEvery=50
+height=72
+width=82
 
-[16-puddle@183,206|62]
+[16-puddle@178,271|49]
 changeEnabled=false
 changeEvery=50
+height=94
+width=82
 
-[16-puddle@184,227|25]
+[16-puddle@183,284|50]
 changeEnabled=false
 changeEvery=50
+height=122
+width=82
 
-[16-puddle@191,275|12]
+[16-puddle@189,358|57]
 changeEnabled=false
 changeEvery=50
+height=54
+width=36
 
-[16-puddle@196,241|6]
+[16-puddle@206,312|58]
 changeEnabled=false
 changeEvery=50
+height=70
+width=32
 
-[16-puddle@202,296|16]
+[16-puddle@65,186|40]
 changeEnabled=false
 changeEvery=50
+height=68
+width=100
 
-[16-puddle@206,315|7]
+[16-puddle@76,216|59]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
-[16-puddle@213,334|15]
+[16-puddle@77,193|41]
 changeEnabled=false
 changeEvery=50
+height=74
+width=98
 
-[16-puddle@215,254|20]
+[16-puddle@89,201|42]
 changeEnabled=false
 changeEvery=50
+height=76
+width=80
 
-[16-puddle@215,351|10]
+[16-puddle@97,216|43]
 changeEnabled=false
 changeEvery=50
+height=72
+width=70
 
-[16-puddle@220,274|11]
+[16-sand@192,162|51]
 changeEnabled=false
 changeEvery=50
+height=58
+width=78
 
-[16-puddle@223,367|8]
+[16-sand@200,168|55]
 changeEnabled=false
 changeEvery=50
+height=62
+width=62
 
-[16-puddle@229,387|19]
+[16-sand@205,172|56]
 changeEnabled=false
 changeEvery=50
+height=62
+width=52
 
-[16-puddle@234,292|24]
+[16-sand@211,175|57]
 changeEnabled=false
 changeEvery=50
+height=60
+width=56
 
-[16-puddle@238,316|22]
+[16-sand@220,192|58]
 changeEnabled=false
 changeEvery=50
+height=32
+width=56
 
-[16-puddle@249,331|23]
+[16-sand@225,182|59]
 changeEnabled=false
 changeEvery=50
+height=54
+width=34
 
-[16-puddle@249,352|21]
+[16-sand@235,186|51]
 changeEnabled=false
 changeEvery=50
+height=22
+width=20
 
-[16-puddle@257,376|18]
+[16-sand@338,126|45]
 changeEnabled=false
 changeEvery=50
-
-[16-puddle@33,183|36]
-changeEnabled=false
-changeEvery=50
-
-[16-puddle@358,120|27]
-changeEnabled=false
-changeEvery=50
-
-[16-puddle@367,84|58]
-changeEnabled=false
-changeEvery=50
-
-[16-puddle@378,131|54]
-changeEnabled=false
-changeEvery=50
-
-[16-puddle@381,101|56]
-changeEnabled=false
-changeEvery=50
-
-[16-puddle@388,65|60]
-changeEnabled=false
-changeEvery=50
-
-[16-puddle@393,147|57]
-changeEnabled=false
-changeEvery=50
-
-[16-puddle@394,85|53]
-changeEnabled=false
-changeEvery=50
-
-[16-puddle@397,123|55]
-changeEnabled=false
-changeEvery=50
-
-[16-puddle@398,23|61]
-changeEnabled=false
-changeEvery=50
-
-[16-puddle@399,45|59]
-changeEnabled=false
-changeEvery=50
-
-[16-puddle@50,157|30]
-changeEnabled=false
-changeEvery=50
-
-[16-puddle@57,176|33]
-changeEnabled=false
-changeEvery=50
-
-[16-puddle@87,164|29]
-changeEnabled=false
-changeEvery=50
-
-[16-puddle@94,185|28]
-changeEnabled=false
-changeEvery=50
-
-[16-sand@173,161|49]
-changeEnabled=false
-changeEvery=50
-
-[16-sand@201,167|48]
-changeEnabled=false
-changeEvery=50
-
-[16-sand@212,189|44]
-changeEnabled=false
-changeEvery=50
-
-[16-sand@240,181|50]
-changeEnabled=false
-changeEvery=50
-
-[16-sand@240,204|47]
-changeEnabled=false
-changeEvery=50
-
-[16-sand@271,165|52]
-changeEnabled=false
-changeEvery=50
-
-[16-sand@276,193|51]
-changeEnabled=false
-changeEvery=50
-
-[16-sand@330,130|45]
-changeEnabled=false
-changeEvery=50
-
-[16-sand@347,174|46]
-changeEnabled=false
-changeEvery=50
+height=62
+width=38
 
 [16-sand@348,108|43]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
-[16-sand@353,149|41]
+[16-sand@363,121|41]
 changeEnabled=false
 changeEvery=50
+height=82
+width=78
 
-[16-sand@370,178|40]
+[16-sand@366,95|50]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
-[16-sand@391,166|42]
+[16-sand@374,88|49]
 changeEnabled=false
 changeEvery=50
+height=40
+width=38
+
+[16-sand@379,142|46]
+changeEnabled=false
+changeEvery=50
+height=64
+width=108
+
+[16-sand@396,83|48]
+changeEnabled=false
+changeEvery=50
+height=72
+width=58
 
 [16-wall@0,0|65]
-endPoint=360,260
-startPoint=285,391
+endPoint=345,264
+startPoint=251,389
 
 [16-wall@0,0|67]
-endPoint=390,245
-startPoint=360,260
+endPoint=389,271
+startPoint=345,264
 
 [17-ball@170,349]
 dummykey=true
@@ -1992,101 +2028,137 @@ hasFinalLoad=false
 maxstrokes=10
 par=2
 
-[17-puddle@235,181|44]
+[17-puddle@243,204|45]
 changeEnabled=false
 changeEvery=50
+height=50
+width=52
 
-[17-puddle@242,220|46]
+[17-puddle@253,194|44]
 changeEnabled=false
 changeEvery=50
+height=54
+width=66
 
-[17-puddle@246,206|45]
+[17-puddle@254,183|46]
 changeEnabled=false
 changeEvery=50
+height=64
+width=58
 
-[17-puddle@268,216|47]
+[17-puddle@262,213|47]
 changeEnabled=false
 changeEvery=50
+height=56
+width=88
 
-[17-sand@0,311|14]
+[17-sand@-19,263|16]
 changeEnabled=false
 changeEvery=50
+height=138
+width=94
 
-[17-sand@10,278|13]
+[17-sand@1,214|52]
 changeEnabled=false
 changeEvery=50
+height=82
+width=64
 
-[17-sand@111,180|12]
+[17-sand@102,219|56]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
+
+[17-sand@109,197|12]
+changeEnabled=false
+changeEvery=50
+height=44
+width=58
 
 [17-sand@115,216|4]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
-[17-sand@129,193|5]
+[17-sand@126,200|5]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [17-sand@136,201|29]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [17-sand@155,202|30]
 changeEnabled=false
 changeEvery=50
-
-[17-sand@159,147|3]
-changeEnabled=false
-changeEvery=50
+height=40
+width=45
 
 [17-sand@160,189|32]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
 [17-sand@166,172|17]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
+
+[17-sand@167,162|3]
+changeEnabled=false
+changeEvery=50
+height=48
+width=44
+
+[17-sand@178,156|54]
+changeEnabled=false
+changeEvery=50
+height=36
+width=52
+
+[17-sand@187,166|55]
+changeEnabled=false
+changeEvery=50
+height=48
+width=60
 
 [17-sand@193,175|31]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
-[17-sand@3,215|16]
+[17-sand@5,238|8]
 changeEnabled=false
 changeEvery=50
-
-[17-sand@30,262|11]
-changeEnabled=false
-changeEvery=50
-
-[17-sand@32,233|10]
-changeEnabled=false
-changeEvery=50
-
-[17-sand@33,215|33]
-changeEnabled=false
-changeEvery=50
-
-[17-sand@60,248|9]
-changeEnabled=false
-changeEvery=50
-
-[17-sand@84,261|8]
-changeEnabled=false
-changeEvery=50
+height=98
+width=64
 
 [17-sand@85,225|34]
 changeEnabled=false
 changeEvery=50
+height=60
+width=34
 
-[17-sand@87,231|7]
+[17-sand@91,232|9]
 changeEnabled=false
 changeEvery=50
+height=28
+width=26
 
 [17-sand@92,208|6]
 changeEnabled=false
 changeEvery=50
+height=46
+width=38
 
 [17-slope@103,219|40]
 grade=2
@@ -2152,9 +2224,9 @@ reversed=false
 stuckOnGround=false
 width=109
 
-[17-wall@0,0|18]
-endPoint=211,196
-startPoint=208,387
+[17-wall@-5,0|18]
+endPoint=206,196
+startPoint=203,387
 
 [17-wall@0,0|19]
 endPoint=46,59
@@ -2287,14 +2359,14 @@ dummykey=true
 [2-cup@375,52|6]
 dummykey=true
 
-[2-floater@48,274|24]
+[2-floater@43,240|24]
 botWallVisible=false
-endPoint=48,274
+endPoint=43,240
 height=64
 leftWallVisible=false
 rightWallVisible=true
 speed=5
-startPoint=38,207
+startPoint=33,173
 topWallVisible=true
 width=81
 
@@ -2304,49 +2376,71 @@ hasFinalLoad=true
 maxstrokes=10
 par=2
 
-[2-puddle@-1,255|29]
+[2-puddle@10,241|50]
 changeEnabled=false
 changeEvery=50
+height=42
+width=142
 
-[2-puddle@14,263|30]
+[2-puddle@48,248|29]
 changeEnabled=false
 changeEvery=50
+height=28
+width=66
 
-[2-puddle@25,274|31]
+[2-puddle@57,233|51]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
-[2-puddle@37,258|32]
+[2-puddle@60,244|31]
 changeEnabled=false
 changeEvery=50
+height=32
+width=58
 
-[2-puddle@5,284|32]
+[2-puddle@68,232|52]
 changeEnabled=false
 changeEvery=50
+height=50
+width=40
 
-[2-puddle@62,249|33]
+[2-puddle@72,241|32]
 changeEnabled=false
 changeEvery=50
+height=30
+width=44
 
-[2-puddle@72,232|34]
+[2-puddle@75,225|34]
 changeEnabled=false
 changeEvery=50
+height=54
+width=38
 
-[2-puddle@73,213|35]
+[2-puddle@75,235|33]
 changeEnabled=false
 changeEvery=50
+height=36
+width=38
 
-[2-sand@151,240|43]
+[2-sand@147,241|43]
 changeEnabled=false
 changeEvery=50
+height=54
+width=48
 
-[2-sand@158,269|45]
+[2-sand@160,261|45]
 changeEnabled=false
 changeEvery=50
+height=22
+width=52
 
-[2-sand@177,247|44]
+[2-sand@169,242|44]
 changeEnabled=false
 changeEvery=50
+height=52
+width=54
 
 [2-slope@11,97|51]
 grade=4
@@ -2393,7 +2487,7 @@ grade=3
 gradient=Opposite Diagonal
 height=127
 reversed=true
-stuckOnGround=false
+stuckOnGround=true
 width=43
 
 [2-slope@210,22|58]
@@ -2412,6 +2506,14 @@ reversed=true
 stuckOnGround=false
 width=92
 
+[2-slope@232,243|48]
+grade=3
+gradient=Diagonal
+height=29
+reversed=true
+stuckOnGround=true
+width=135
+
 [2-slope@233,119|22]
 grade=3
 gradient=Vertical
@@ -2427,14 +2529,6 @@ height=144
 reversed=false
 stuckOnGround=true
 width=154
-
-[2-slope@234,244|48]
-grade=3
-gradient=Diagonal
-height=29
-reversed=true
-stuckOnGround=false
-width=135
 
 [2-slope@235,88|59]
 grade=3
@@ -2564,25 +2658,71 @@ hasFinalLoad=false
 maxstrokes=10
 par=3
 
-[3-puddle@255,311|10]
+[3-puddle@256,301|41]
 changeEnabled=false
 changeEvery=50
+height=24
+width=18
 
-[3-puddle@260,276|8]
+[3-puddle@261,283|40]
 changeEnabled=false
 changeEvery=50
+height=20
+width=26
 
-[3-puddle@276,295|9]
+[3-puddle@262,312|10]
 changeEnabled=false
 changeEvery=50
+height=36
+width=54
 
-[3-sand@267,148|30]
+[3-puddle@267,272|8]
 changeEnabled=false
 changeEvery=50
+height=36
+width=52
 
-[3-sand@284,130|29]
+[3-puddle@276,290|9]
 changeEnabled=false
 changeEvery=50
+height=68
+width=50
+
+[3-sand@269,142|45]
+changeEnabled=false
+changeEvery=50
+height=40
+width=45
+
+[3-sand@270,146|30]
+changeEnabled=false
+changeEvery=50
+height=32
+width=46
+
+[3-sand@272,135|44]
+changeEnabled=false
+changeEvery=50
+height=40
+width=45
+
+[3-sand@277,127|43]
+changeEnabled=false
+changeEvery=50
+height=28
+width=34
+
+[3-sand@282,122|42]
+changeEnabled=false
+changeEvery=50
+height=22
+width=32
+
+[3-sand@284,133|29]
+changeEnabled=false
+changeEvery=50
+height=46
+width=32
 
 [3-slope@11,10|25]
 grade=3
@@ -2624,6 +2764,14 @@ reversed=false
 stuckOnGround=false
 width=81
 
+[3-slope@281,117|41]
+grade=2
+gradient=Diagonal
+height=56
+reversed=false
+stuckOnGround=false
+width=53
+
 [3-slope@282,172|40]
 grade=2
 gradient=Opposite Diagonal
@@ -2631,14 +2779,6 @@ height=53
 reversed=true
 stuckOnGround=false
 width=53
-
-[3-slope@283,119|41]
-grade=2
-gradient=Diagonal
-height=56
-reversed=false
-stuckOnGround=false
-width=52
 
 [3-slope@304,10|41]
 grade=4
@@ -2705,7 +2845,7 @@ endPoint=150,198
 startPoint=224,228
 
 [3-wall@0,0|31]
-endPoint=192,250
+endPoint=192,252
 startPoint=128,227
 
 [3-wall@0,0|34]
@@ -2713,11 +2853,11 @@ endPoint=255,24
 startPoint=250,13
 
 [3-wall@0,0|35]
-endPoint=192,252
+endPoint=192,250
 startPoint=192,250
 
 [3-wall@0,0|36]
-endPoint=192,250
+endPoint=192,252
 startPoint=189,264
 
 [3-wall@0,0|38]
@@ -2785,233 +2925,263 @@ hasFinalLoad=false
 maxstrokes=10
 par=4
 
-[4-puddle@109,189|122]
+[4-puddle@113,399|146]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
-[4-puddle@112,202|76]
+[4-puddle@136,397|147]
 changeEnabled=false
 changeEvery=50
+height=48
+width=74
 
-[4-puddle@120,173|70]
+[4-puddle@141,184|76]
 changeEnabled=false
 changeEvery=50
+height=66
+width=100
 
-[4-puddle@123,400|146]
+[4-puddle@151,162|116]
 changeEnabled=false
 changeEvery=50
+height=54
+width=84
 
-[4-puddle@132,181|134]
+[4-puddle@159,395|60]
 changeEnabled=false
 changeEvery=50
+height=60
+width=108
 
-[4-puddle@143,157|66]
+[4-puddle@178,382|53]
 changeEnabled=false
 changeEvery=50
+height=34
+width=84
 
-[4-puddle@143,200|75]
+[4-puddle@188,158|117]
 changeEnabled=false
 changeEvery=50
+height=100
+width=106
 
-[4-puddle@155,391|145]
+[4-puddle@197,136|81]
 changeEnabled=false
 changeEvery=50
+height=154
+width=92
 
-[4-puddle@157,375|60]
+[4-puddle@207,397|144]
 changeEnabled=false
 changeEvery=50
+height=48
+width=40
 
-[4-puddle@165,193|78]
+[4-puddle@210,192|75]
 changeEnabled=false
 changeEvery=50
+height=40
+width=232
 
-[4-puddle@167,138|61]
+[4-puddle@214,67|139]
 changeEnabled=false
 changeEvery=50
+height=24
+width=66
 
-[4-puddle@177,118|65]
+[4-puddle@217,78|124]
 changeEnabled=false
 changeEvery=50
-
-[4-puddle@188,186|129]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@189,391|144]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@190,94|67]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@200,379|53]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@216,107|64]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@216,83|141]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@217,182|81]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@217,18|141]
-changeEnabled=false
-changeEvery=50
+height=42
+width=50
 
 [4-puddle@218,2|143]
 changeEnabled=false
 changeEvery=50
+height=74
+width=38
 
-[4-puddle@219,314|59]
+[4-puddle@226,139|118]
 changeEnabled=false
 changeEvery=50
+height=82
+width=60
 
-[4-puddle@224,255|55]
+[4-puddle@233,255|55]
 changeEnabled=false
 changeEvery=50
+height=30
+width=64
 
-[4-puddle@230,123|73]
+[4-puddle@236,65|123]
 changeEnabled=false
 changeEvery=50
+height=28
+width=66
 
-[4-puddle@239,181|100]
+[4-puddle@238,151|119]
 changeEnabled=false
 changeEvery=50
+height=70
+width=74
 
-[4-puddle@240,38|139]
+[4-puddle@240,313|128]
 changeEnabled=false
 changeEvery=50
+height=26
+width=36
 
-[4-puddle@240,63|139]
+[4-puddle@241,3|140]
 changeEnabled=false
 changeEvery=50
+height=90
+width=42
 
-[4-puddle@241,15|140]
+[4-puddle@244,26|139]
 changeEnabled=false
 changeEvery=50
+height=82
+width=32
 
-[4-puddle@246,323|52]
+[4-puddle@244,315|59]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
-[4-puddle@249,139|77]
+[4-puddle@247,257|56]
 changeEnabled=false
 changeEvery=50
+height=32
+width=54
 
-[4-puddle@257,250|56]
+[4-puddle@251,320|52]
 changeEnabled=false
 changeEvery=50
+height=24
+width=32
 
-[4-puddle@260,145|153]
+[4-puddle@260,161|120]
 changeEnabled=false
 changeEvery=50
+height=56
+width=66
 
-[4-puddle@275,180|97]
+[4-puddle@266,258|58]
 changeEnabled=false
 changeEvery=50
+height=24
+width=24
 
-[4-puddle@282,159|86]
+[4-puddle@273,261|51]
 changeEnabled=false
 changeEvery=50
+height=26
+width=24
 
-[4-puddle@283,333|57]
+[4-puddle@275,323|130]
 changeEnabled=false
 changeEvery=50
+height=22
+width=70
 
-[4-puddle@292,261|58]
+[4-puddle@279,176|121]
 changeEnabled=false
 changeEvery=50
+height=62
+width=98
 
-[4-puddle@299,187|98]
+[4-puddle@281,264|50]
 changeEnabled=false
 changeEvery=50
+height=26
+width=22
 
-[4-puddle@300,165|152]
+[4-puddle@287,267|54]
 changeEnabled=false
 changeEvery=50
+height=24
+width=22
 
-[4-puddle@303,178|91]
+[4-puddle@293,191|122]
 changeEnabled=false
 changeEvery=50
+height=42
+width=66
 
-[4-puddle@310,177|83]
+[4-puddle@295,273|57]
 changeEnabled=false
 changeEvery=50
+height=28
+width=26
 
-[4-puddle@310,327|54]
+[4-puddle@296,320|131]
 changeEnabled=false
 changeEvery=50
+height=22
+width=30
 
-[4-puddle@319,279|51]
+[4-puddle@302,312|127]
 changeEnabled=false
 changeEvery=50
+height=30
+width=24
 
-[4-puddle@319,306|50]
+[4-puddle@305,278|125]
 changeEnabled=false
 changeEvery=50
+height=24
+width=14
+
+[4-puddle@307,291|128]
+changeEnabled=false
+changeEvery=50
+height=40
+width=24
+
+[4-puddle@310,302|126]
+changeEnabled=false
+changeEvery=50
+height=32
+width=18
+
+[4-puddle@311,185|99]
+changeEnabled=false
+changeEvery=50
+height=44
+width=52
 
 [4-puddle@321,198|96]
 changeEnabled=false
 changeEvery=50
+height=32
+width=48
 
-[4-puddle@347,204|99]
+[4-puddle@333,195|123]
 changeEnabled=false
 changeEvery=50
+height=30
+width=45
 
-[4-puddle@367,213|154]
+[4-puddle@354,202|154]
 changeEnabled=false
 changeEvery=50
+height=40
+width=62
 
-[4-puddle@380,226|120]
+[4-puddle@376,208|115]
 changeEnabled=false
 changeEvery=50
+height=40
+width=46
 
-[4-puddle@398,241|121]
+[4-puddle@397,211|114]
 changeEnabled=false
 changeEvery=50
-
-[4-puddle@99,393|147]
-changeEnabled=false
-changeEvery=50
-
-[4-sand@150,179|133]
-changeEnabled=false
-changeEvery=50
-
-[4-sand@161,165|132]
-changeEnabled=false
-changeEvery=50
-
-[4-sand@173,90|135]
-changeEnabled=false
-changeEvery=50
-
-[4-sand@191,158|131]
-changeEnabled=false
-changeEvery=50
-
-[4-sand@197,82|136]
-changeEnabled=false
-changeEvery=50
-
-[4-sand@203,132|128]
-changeEnabled=false
-changeEvery=50
-
-[4-sand@224,159|129]
-changeEnabled=false
-changeEvery=50
-
-[4-sand@256,166|130]
-changeEnabled=false
-changeEvery=50
+height=62
+width=54
 
 [4-slope@12,188|117]
 grade=4
@@ -3029,6 +3199,14 @@ reversed=true
 stuckOnGround=false
 width=82
 
+[4-slope@146,60|125]
+grade=4
+gradient=Diagonal
+height=83
+reversed=true
+stuckOnGround=false
+width=48
+
 [4-slope@169,225|124]
 grade=1
 gradient=Vertical
@@ -3045,13 +3223,13 @@ reversed=false
 stuckOnGround=false
 width=21
 
-[4-slope@237,11|137]
+[4-slope@215,-1|137]
 grade=3
 gradient=Opposite Diagonal
-height=208
+height=209
 reversed=true
 stuckOnGround=false
-width=151
+width=181
 
 [4-slope@261,193|138]
 grade=3
@@ -3130,44 +3308,36 @@ endPoint=95,237
 startPoint=141,225
 
 [4-wall@0,0|101]
-endPoint=246,271
+endPoint=249,280
 startPoint=220,278
 
 [4-wall@0,0|103]
-endPoint=263,271
-startPoint=246,271
+endPoint=267,277
+startPoint=249,280
 
 [4-wall@0,0|104]
-endPoint=292,286
-startPoint=263,271
+endPoint=288,293
+startPoint=267,277
 
 [4-wall@0,0|105]
-endPoint=239,297
+endPoint=242,292
 startPoint=216,291
 
 [4-wall@0,0|106]
-endPoint=272,310
-startPoint=239,297
+endPoint=267,299
+startPoint=242,292
 
 [4-wall@0,0|107]
-endPoint=289,313
-startPoint=272,310
+endPoint=285,303
+startPoint=273,307
 
 [4-wall@0,0|108]
-endPoint=288,303
-startPoint=289,313
-
-[4-wall@0,0|109]
-endPoint=301,296
-startPoint=288,303
+endPoint=288,293
+startPoint=285,303
 
 [4-wall@0,0|11]
 endPoint=97,154
 startPoint=76,195
-
-[4-wall@0,0|110]
-endPoint=301,296
-startPoint=292,286
 
 [4-wall@0,0|111]
 endPoint=216,291
@@ -3194,8 +3364,8 @@ endPoint=24,43
 startPoint=39,69
 
 [4-wall@0,0|132]
-endPoint=34,25
-startPoint=24,43
+endPoint=267,299
+startPoint=273,307
 
 [4-wall@0,0|133]
 endPoint=61,25
@@ -3231,11 +3401,11 @@ startPoint=9,263
 
 [4-wall@0,0|143]
 endPoint=395,355
-startPoint=351,387
+startPoint=350,388
 
 [4-wall@0,0|144]
-endPoint=351,387
-startPoint=223,393
+endPoint=350,388
+startPoint=230,394
 
 [4-wall@0,0|145]
 endPoint=389,274
@@ -3437,30 +3607,62 @@ par=2
 [5-sand@137,111|16]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
 
-[5-sand@141,241|12]
+[5-sand@137,118|17]
 changeEnabled=false
 changeEvery=50
+height=48
+width=48
 
-[5-sand@150,259|13]
+[5-sand@145,132|19]
 changeEnabled=false
 changeEvery=50
+height=20
+width=26
 
-[5-sand@153,127|17]
+[5-sand@152,120|18]
 changeEnabled=false
 changeEvery=50
+height=44
+width=28
 
-[5-sand@161,290|15]
+[5-sand@152,258|13]
 changeEnabled=false
 changeEvery=50
+height=64
+width=62
 
-[5-sand@163,250|11]
+[5-sand@155,265|15]
 changeEnabled=false
 changeEvery=50
+height=60
+width=56
 
-[5-sand@175,269|14]
+[5-sand@158,279|19]
 changeEnabled=false
 changeEvery=50
+height=40
+width=45
+
+[5-sand@159,244|11]
+changeEnabled=false
+changeEvery=50
+height=26
+width=44
+
+[5-sand@162,269|20]
+changeEnabled=false
+changeEvery=50
+height=40
+width=45
+
+[5-sand@165,257|14]
+changeEnabled=false
+changeEvery=50
+height=40
+width=45
 
 [5-slope@12,11|17]
 grade=2
@@ -3638,121 +3840,29 @@ hasFinalLoad=false
 maxstrokes=10
 par=2
 
-[7-puddle@-7,275|36]
+[7-puddle@-30,384|21]
 changeEnabled=false
 changeEvery=50
+height=288
+width=384
 
-[7-puddle@104,367|19]
+[7-puddle@123,354|35]
 changeEnabled=false
 changeEvery=50
+height=136
+width=96
 
-[7-puddle@116,337|33]
+[7-puddle@147,390|14]
 changeEnabled=false
 changeEvery=50
+height=170
+width=64
 
-[7-puddle@12,353|18]
+[7-puddle@15,318|13]
 changeEnabled=false
 changeEvery=50
-
-[7-puddle@121,393|27]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@127,377|14]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@134,353|32]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@140,340|34]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@156,394|31]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@16,376|23]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@17,393|30]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@175,402|35]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@20,324|20]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@24,307|16]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@29,290|11]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@3,310|25]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@41,338|8]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@46,363|10]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@54,382|22]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@56,312|9]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@57,394|29]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@6,330|24]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@67,350|17]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@70,370|21]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@72,334|12]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@89,396|28]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@9,288|26]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@93,380|13]
-changeEnabled=false
-changeEvery=50
-
-[7-puddle@94,352|15]
-changeEnabled=false
-changeEvery=50
+height=116
+width=278
 
 [7-slope@12,122|5]
 grade=4
@@ -3761,6 +3871,22 @@ height=97
 reversed=true
 stuckOnGround=false
 width=245
+
+[7-slope@127,237|16]
+grade=4
+gradient=Opposite Diagonal
+height=41
+reversed=false
+stuckOnGround=false
+width=63
+
+[7-slope@129,278|15]
+grade=4
+gradient=Horizontal
+height=121
+reversed=true
+stuckOnGround=false
+width=62
 
 [7-slope@23,20|39]
 grade=4
@@ -3794,6 +3920,14 @@ reversed=false
 stuckOnGround=false
 width=97
 
+[7-slope@50,239|17]
+grade=4
+gradient=Vertical
+height=43
+reversed=false
+stuckOnGround=false
+width=77
+
 [7-windmill@11,10|3]
 botWallVisible=false
 bottom=true
@@ -3824,50 +3958,47 @@ hasFinalLoad=false
 maxstrokes=10
 par=6
 
-[8-puddle@171,238|22]
+[8-puddle@170,236|22]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=36
+width=38
 
-[8-puddle@196,238|23]
+[8-puddle@186,239|41]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=32
+width=30
 
-[8-puddle@254,307|17]
+[8-puddle@207,240|43]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=32
+width=30
 
-[8-puddle@272,287|16]
+[8-puddle@268,292|17]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=44
+width=48
 
-[8-puddle@283,304|19]
+[8-puddle@268,307|42]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=34
+width=90
 
-[8-puddle@287,276|15]
+[8-puddle@279,280|19]
 changeEnabled=false
 changeEvery=50
-dummykey=true
+height=42
+width=40
 
-[8-puddle@289,285|18]
+[8-puddle@296,280|13]
 changeEnabled=false
 changeEvery=50
-dummykey=true
-
-[8-puddle@300,261|14]
-changeEnabled=false
-changeEvery=50
-dummykey=true
-
-[8-puddle@301,274|13]
-changeEnabled=false
-changeEvery=50
-dummykey=true
+height=82
+width=50
 
 [8-slope@133,253|37]
 grade=4
@@ -4050,39 +4181,85 @@ hasFinalLoad=false
 maxstrokes=10
 par=2
 
-[9-puddle@238,340|3]
+[9-puddle@260,356|30]
 changeEnabled=false
 changeEvery=50
+height=34
+width=72
 
-[9-puddle@271,354|4]
+[9-puddle@284,362|3]
 changeEnabled=false
 changeEvery=50
+height=28
+width=60
 
-[9-puddle@296,281|6]
+[9-puddle@295,281|6]
 changeEnabled=false
 changeEvery=50
+height=36
+width=48
 
-[9-puddle@307,367|5]
+[9-puddle@298,286|31]
 changeEnabled=false
 changeEvery=50
+height=38
+width=38
 
-[9-puddle@315,305|7]
+[9-puddle@303,367|4]
 changeEnabled=false
 changeEvery=50
+height=28
+width=62
 
-[9-puddle@325,329|8]
+[9-puddle@308,294|7]
 changeEnabled=false
 changeEvery=50
+height=38
+width=46
 
-[9-puddle@328,349|9]
+[9-puddle@314,301|32]
 changeEnabled=false
 changeEvery=50
+height=38
+width=44
+
+[9-puddle@316,364|5]
+changeEnabled=false
+changeEvery=50
+height=30
+width=45
+
+[9-puddle@321,307|8]
+changeEnabled=false
+changeEvery=50
+height=42
+width=40
+
+[9-puddle@328,355|29]
+changeEnabled=false
+changeEvery=50
+height=36
+width=34
+
+[9-puddle@329,320|28]
+changeEnabled=false
+changeEvery=50
+height=42
+width=38
+
+[9-puddle@333,336|9]
+changeEnabled=false
+changeEvery=50
+height=62
+width=36
 
 [9-sand@87,234|26]
 changeEnabled=false
 changeEvery=50
+height=36
+width=62
 
-[9-slope@15,14|19]
+[9-slope@11,11|19]
 grade=2
 gradient=Diagonal
 height=513

@@ -2226,6 +2226,7 @@ BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QCanvas *canvas)
 	arrow = new Arrow(canvas);
 	arrow->setPen(QPen(black, 1));
 	setZ(blackHole->z());
+	arrow->setZ(z());
 	updateArrowLength();
 	arrow->setVisible(false);
 }
