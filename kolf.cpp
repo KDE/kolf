@@ -7,7 +7,6 @@
 #include <kfiledialog.h>
 #include <kglobal.h>
 #include <kio/netaccess.h>
-#include <kkeydialog.h>
 #include <klocale.h>
 #include <kmainwindow.h>
 #include <kmimetype.h>
@@ -89,7 +88,9 @@ void Kolf::initGUI()
 	newAction = KStdGameAction::gameNew(this, SLOT(newGame()), actionCollection());
 	newAction->setText(newAction->text() + QString("..."));
 
-	(void) KStdAction::keyBindings(this, SLOT(keyBindings()), actionCollection());
+	KStdAction::keyBindings(guiFactory(), SLOT(configureShortcuts()), 
+actionCollection());
+	
 	(void) KStdAction::configureToolbars(this, SLOT(configureToolBars()), actionCollection());
 	endAction = KStdGameAction::end(this, SLOT(closeGame()), actionCollection());
 	printAction = KStdGameAction::print(this, SLOT(print()), actionCollection());
@@ -805,11 +806,6 @@ void Kolf::showPlugins()
 	}
 	text.append("</ol>");
 	KMessageBox::information(this, text, i18n("Plugins"));
-}
-
-void Kolf::keyBindings()
-{
-	KKeyDialog::configure(actionCollection());
 }
 
 void Kolf::configureToolBars()
