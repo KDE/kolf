@@ -454,8 +454,8 @@ maxspeed=2
 minspeed=1
 
 [11-blackhole@293,44|16]
-exit=138,258
-exitDeg=5
+exit=137,258
+exitDeg=0
 maxspeed=3
 minspeed=2
 
@@ -2877,7 +2877,7 @@ endPoint=150,198
 startPoint=224,228
 
 [3-wall@0,0|31]
-endPoint=192,252
+endPoint=192,250
 startPoint=128,227
 
 [3-wall@0,0|34]
@@ -2886,10 +2886,10 @@ startPoint=250,13
 
 [3-wall@0,0|35]
 endPoint=192,250
-startPoint=192,250
+startPoint=192,252
 
 [3-wall@0,0|36]
-endPoint=192,252
+endPoint=192,250
 startPoint=189,264
 
 [3-wall@0,0|38]
@@ -3828,22 +3828,6 @@ reversed=true
 stuckOnGround=false
 width=23
 
-[6-slope@333,277|18]
-grade=4
-gradient=Opposite Diagonal
-height=35
-reversed=true
-stuckOnGround=false
-width=52
-
-[6-slope@336,309|19]
-grade=4
-gradient=Diagonal
-height=40
-reversed=false
-stuckOnGround=false
-width=49
-
 [6-wall@0,0|18]
 endPoint=76,231
 startPoint=76,13
@@ -3941,7 +3925,7 @@ stuckOnGround=false
 width=102
 
 [7-slope@253,123|7]
-grade=5
+grade=4
 gradient=Diagonal
 height=97
 reversed=true
