@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=Hard Course
+Name[sv]=Svår bana
 author=Jason Katz-Brown
 name=Hard Course
 
@@ -1061,6 +1062,7 @@ par=3
 
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
+Comment[sv]=Låt flottarna <strong>knuffa</strong> dig!
 botWallVisible=true
 height=196
 leftWallVisible=true
