@@ -1,5 +1,5 @@
 [0-course@-50,-50]
-Name=不可能なコース
+Name=Impossible
 author=Jason Katz-Brown
 
 [1-ball@31,330]
@@ -1503,7 +1503,6 @@ height=44
 width=50
 
 [17-sign@23,152|20]
-Comment=運
 botWallVisible=false
 height=51
 leftWallVisible=false
@@ -3269,7 +3268,6 @@ height=66
 width=66
 
 [9-sign@146,329|23]
-Comment=カオス
 botWallVisible=true
 height=38
 leftWallVisible=false
