@@ -2008,7 +2008,8 @@ bool Hole::collision(Ball *ball, long int /*id*/)
 
 HoleResult Hole::result(QPoint p, double s, bool * /*wasCenter*/)
 {
-	if (s > 3.0)
+	const double longestRadius = width() > height()? width() : height();
+	if (s > longestRadius / 5.0)
 		return Result_Miss;
 
 	QCanvasRectangle i(QRect(p, QSize(1, 1)), canvas());
@@ -2062,6 +2063,7 @@ void Cup::save(KSimpleConfig *cfg)
 BlackHole::BlackHole(QCanvas *canvas)
 	: Hole(black, canvas), exitDeg(0)
 {
+	infoLine = 0;
 	m_minSpeed = 3;
 	m_maxSpeed = 5;
 	runs = 0;
@@ -2083,8 +2085,6 @@ BlackHole::BlackHole(QCanvas *canvas)
 	const float factor = 1.3;
 	outside->setSize(width() * factor, height() * factor);
 	outside->setVisible(true);
-
-	infoLine = 0;
 
 	moveBy(0, 0);
 
@@ -2119,10 +2119,17 @@ void BlackHole::aboutToDie()
 	delete exitItem;
 }
 
+void BlackHole::updateInfo()
+{
+	if (infoLine)
+		showInfo();
+}
+
 void BlackHole::moveBy(double dx, double dy)
 {
 	QCanvasEllipse::moveBy(dx, dy);
 	outside->move(x(), y());
+	updateInfo();
 }
 
 void BlackHole::setExitDeg(int newdeg)
@@ -2152,7 +2159,7 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 
 	const double diff = (m_maxSpeed - m_minSpeed);
 	Vector v;
-	v.setMagnitude(m_minSpeed + ball->curVector().magnitude() * (diff / 3.0));
+	v.setMagnitude(m_minSpeed + ball->curVector().magnitude() * (diff / 3.5));
 	v.setDirection(deg2rad(exitDeg));
 
 	ball->move(exitItem->x(), exitItem->y());
@@ -2236,6 +2243,7 @@ void BlackHoleExit::moveBy(double dx, double dy)
 {
 	QCanvasLine::moveBy(dx, dy);
 	arrow->move(x(), y());
+	blackHole->updateInfo();
 }
 
 void BlackHoleExit::setPen(QPen p)
@@ -2893,6 +2901,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	stroking = false;
 	editing = false;
 	strict = false;
+	m_showInfo = false;
 	ballStateList.canUndo = false;
 	fastAdvancedExist = false;
 	soundDir = locate("appdata", "sounds/");
@@ -3131,7 +3140,7 @@ void KolfGame::contentsMousePressEvent(QMouseEvent *e)
 			if (e->button() == LeftButton)
 				puttPress();
 			else if (e->button() == RightButton)
-				showInfoPress();
+				toggleShowInfo();
 		}
 		return;
 	}
@@ -3260,7 +3269,7 @@ void KolfGame::contentsMouseReleaseEvent(QMouseEvent *e)
 			if (e->button() == LeftButton)
 				puttRelease();
 			else if (e->button() == RightButton)
-				showInfoRelease();
+				toggleShowInfo();
 		}
 	}
 
@@ -3274,9 +3283,9 @@ void KolfGame::keyPressEvent(QKeyEvent *e)
 
 	switch (e->key())
 	{
-		case Key_I: case Key_Up:
+		case Key_Up:
 			if (!e->isAutoRepeat())
-				showInfoPress();
+				toggleShowInfo();
 		break;
 
 		case Key_Escape:
@@ -3304,32 +3313,46 @@ void KolfGame::keyPressEvent(QKeyEvent *e)
 	}
 }
 
-void KolfGame::showInfoPress()
+void KolfGame::toggleShowInfo()
 {
-	QCanvasItem *item = 0;
-	for (item = items.first(); item; item = items.next())
-	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
-		if (citem)
-			citem->showInfo();
-	}
-
-	showInfo();
-	putter->showInfo();
+	setShowInfo(!m_showInfo);
 }
 
-void KolfGame::showInfoRelease()
+void KolfGame::updateShowInfo()
 {
-	QCanvasItem *item = 0;
-	for (item = items.first(); item; item = items.next())
-	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
-		if (citem)
-			citem->hideInfo();
-	}
+	setShowInfo(m_showInfo);
+}
 
-	hideInfoText();
-	putter->hideInfo();
+void KolfGame::setShowInfo(bool yes)
+{
+	m_showInfo = yes;
+
+	if (m_showInfo)
+	{
+		QCanvasItem *item = 0;
+		for (item = items.first(); item; item = items.next())
+		{
+			CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+			if (citem)
+				citem->showInfo();
+		}
+
+		showInfo();
+		//putter->showInfo();
+	}
+	else
+	{
+		QCanvasItem *item = 0;
+		for (item = items.first(); item; item = items.next())
+		{
+			CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+			if (citem)
+				citem->hideInfo();
+		}
+
+		hideInfoText();
+		//putter->hideInfo();
+	}
 }
 
 void KolfGame::puttPress()
@@ -3409,7 +3432,7 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 		}
 	}
 	else if (e->key() == Key_I || e->key() == Key_Up)
-		showInfoRelease();
+		toggleShowInfo();
 }
 
 void KolfGame::puttRelease()
@@ -4056,15 +4079,12 @@ void KolfGame::startNextHole()
 		}
 
 		resetHoleScores();
+		updateShowInfo();
 
 		// this is from shotDone()
 		(*curPlayer).ball()->setVisible(true);
 		putter->setOrigin((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 		updateMouse();
-
-		// flash the information
-		showInfoPress();
-		QTimer::singleShot(1250, this, SLOT(showInfoRelease()));
 
 		ballStateList.canUndo = false;
 
@@ -4079,7 +4099,7 @@ void KolfGame::showInfo()
 	QString text = i18n("Hole %1: par %1, maximum number of strokes is %2.").arg(curHole).arg(holeInfo.par()).arg(holeInfo.maxStrokes());
 	infoText->move((width - QFontMetrics(infoText->font()).width(text)) / 2, infoText->y());
 	infoText->setText(text);
-	// I personally hate this text!
+	// I personally hate this text! Let's not show it
 	//infoText->setVisible(true);
 }
 

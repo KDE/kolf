@@ -57,6 +57,7 @@ protected slots:
 	void maxStrokesReached(const QString &);
 	void updateHoleMenu(int);
 	void titleChanged(const QString &);
+	void showInfoChanged(bool);
 	void useMouseChanged(bool);
 	void useAdvancedPuttingChanged(bool);	
 	void showGuideLineChanged(bool);	
@@ -106,6 +107,7 @@ private:
 	KAction *firstAction;
 	KAction *lastAction;
 	KAction *randAction;
+	KToggleAction *showInfoAction;
 	KToggleAction *useMouseAction;
 	KToggleAction *useAdvancedPuttingAction;	
 	KToggleAction *showGuideLineAction;	

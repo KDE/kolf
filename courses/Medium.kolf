@@ -2278,13 +2278,13 @@ reversed=true
 stuckOnGround=false
 width=143
 
-[7-slope@193,142|10]
+[7-slope@193,145|10]
 grade=3
 gradient=Vertical
-height=61
+height=57
 reversed=true
 stuckOnGround=false
-width=196
+width=197
 
 [7-slope@239,326|17]
 grade=4
@@ -2312,14 +2312,14 @@ width=87
 
 [7-wall@0,0|11]
 endPoint=387,326
-startPoint=312,327
+startPoint=313,326
 
 [7-wall@0,0|12]
-endPoint=313,326
+endPoint=312,327
 startPoint=312,387
 
 [7-wall@0,0|4]
-endPoint=312,327
+endPoint=313,326
 startPoint=194,204
 
 [7-wall@0,0|9]

@@ -453,6 +453,7 @@ public:
 	void setExitDeg(int newdeg);
 
 	virtual void editModeChanged(bool editing) { exitItem->editModeChanged(editing); }
+	void updateInfo();
 
 	virtual void shotStarted() { runs = 0; };
 
@@ -954,11 +955,12 @@ public slots:
 	void randHole();
 	void playSound(QString file);
 	void showInfoDlg(bool = false);
-	void showInfoPress();
-	void showInfoRelease();
 	void resetHole();
 	void clearHole();
 	void print(KPrinter &);
+	void setShowInfo(bool yes);
+	void toggleShowInfo();
+	void updateShowInfo();
 	void setUseMouse(bool yes) { m_useMouse = yes; }
 	void setUseAdvancedPutting(bool yes);
 	void setShowGuideLine(bool yes);
@@ -1092,6 +1094,8 @@ private:
 	bool addingNewHole;
 	int scoreboardHoles;
 	inline void resetHoleScores();
+
+	bool m_showInfo;
 
 	bool infoShown;
 

@@ -729,14 +729,6 @@ reversed=false
 stuckOnGround=false
 width=100
 
-[16-slope@50,130|21]
-grade=3
-gradient=Elliptic
-height=102
-reversed=false
-stuckOnGround=false
-width=102
-
 [16-wall@0,0|10]
 endPoint=371,115
 startPoint=323,59

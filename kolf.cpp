@@ -148,7 +148,11 @@ void Kolf::initGUI()
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
 	useAdvancedPuttingAction->setChecked(config->readBoolEntry("useAdvancedPutting", false));
 
-	showGuideLineAction = new KToggleAction(i18n("Always Show Putter &Guideline"), 0, this, SLOT(emptySlot()), actionCollection(), "showguideline");
+	showInfoAction = new KToggleAction(i18n("Show &Info"), "viewmag+", CTRL+Key_I, this, SLOT(emptySlot()), actionCollection(), "showinfo");
+	connect(showInfoAction, SIGNAL(toggled(bool)), this, SLOT(showInfoChanged(bool)));
+	showInfoAction->setChecked(config->readBoolEntry("showInfo", false));
+
+	showGuideLineAction = new KToggleAction(i18n("Show Putter &Guideline"), 0, this, SLOT(emptySlot()), actionCollection(), "showguideline");
 	connect(showGuideLineAction, SIGNAL(toggled(bool)), this, SLOT(showGuideLineChanged(bool)));
 	showGuideLineAction->setChecked(config->readBoolEntry("showGuideLine", true));
 
@@ -268,9 +272,11 @@ void Kolf::startNewGame()
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), game, SLOT(setUseAdvancedPutting(bool)));		
 	connect(soundAction, SIGNAL(toggled(bool)), game, SLOT(setSound(bool)));		
 	connect(showGuideLineAction, SIGNAL(toggled(bool)), game, SLOT(setShowGuideLine(bool)));		
+	connect(showInfoAction, SIGNAL(toggled(bool)), game, SLOT(setShowInfo(bool)));		
 
 	game->setUseMouse(useMouseAction->isChecked());
 	game->setUseAdvancedPutting(useAdvancedPuttingAction->isChecked());
+	game->setShowInfo(showInfoAction->isChecked());
 	game->setShowGuideLine(showGuideLineAction->isChecked());
 	game->setSound(soundAction->isChecked());
 
@@ -453,7 +459,7 @@ void Kolf::gameOver()
 			scoreDialog->addScore((*it).score, info, false, true);
 		}
 
-		scoreDialog->setComment(i18n("High Scores for Course %1").arg(game->courseName()));
+		scoreDialog->setComment(i18n("High Scores for %1").arg(game->courseName()));
 		scoreDialog->show();
 	}
 
@@ -669,6 +675,11 @@ void Kolf::useMouseChanged(bool yes)
 void Kolf::useAdvancedPuttingChanged(bool yes)
 {
 	KConfig *config = kapp->config(); config->setGroup("Settings"); config->writeEntry("useAdvancedPutting", yes); config->sync();
+}
+
+void Kolf::showInfoChanged(bool yes)
+{
+	KConfig *config = kapp->config(); config->setGroup("Settings"); config->writeEntry("showInfo", yes); config->sync();
 }
 
 void Kolf::showGuideLineChanged(bool yes)
