@@ -12,8 +12,8 @@
 #include <knuminput.h>
 #include <kconfig.h>
 
-#include "statedb.h"
-#include "canvasitem.h"
+#include <kolf/statedb.h>
+#include <kolf/canvasitem.h>
 #include "poolball.h"
 
 K_EXPORT_COMPONENT_FACTORY(libkolfpoolball, PoolBallFactory)
@@ -22,7 +22,6 @@ QObject *PoolBallFactory::createObject (QObject *, const char *, const char *, c
 PoolBall::PoolBall(QCanvas *canvas)
 	: Ball(canvas)
 {
-	//kdDebug() << "PoolBall::PoolBall\n";
 	setBrush(black);
 	m_number = 1;
 }
@@ -51,21 +50,20 @@ void PoolBall::loadState(StateDB *db)
 
 void PoolBall::draw(QPainter &p)
 {
+	// we should draw the number here
 	Ball::draw(p);
 }
 
 PoolBallConfig::PoolBallConfig(PoolBall *poolBall, QWidget *parent)
-	: Config(parent)
+	: Config(parent), m_poolBall(poolBall)
 {
-	this->poolBall = poolBall;
-
 	QVBoxLayout *layout = new QVBoxLayout(this, marginHint(), spacingHint());
 
 	layout->addStretch();
 
 	QLabel *num = new QLabel(i18n("Number"), this);
 	layout->addWidget(num);
-	KIntNumInput *slider = new KIntNumInput(poolBall->number(), this);
+	KIntNumInput *slider = new KIntNumInput(m_poolBall->number(), this);
 	slider->setRange(1, 15);
 	layout->addWidget(slider);
 
@@ -76,7 +74,7 @@ PoolBallConfig::PoolBallConfig(PoolBall *poolBall, QWidget *parent)
 
 void PoolBallConfig::numberChanged(int newNumber)
 {
-	poolBall->setNumber(newNumber);
+	m_poolBall->setNumber(newNumber);
 	changed();
 }
 

@@ -1,9 +1,9 @@
-INCLUDES= -I$(top_srcdir)/kolf $(all_includes)
+INCLUDES= $(all_includes)
 lib_LTLIBRARIES = libkolfpoolball.la
 
 libkolfpoolball_la_SOURCES = poolball.cpp
 
-libkolfpoolball_la_LDFLAGS = $(all_libraries) $(LIB_KIO) -module -avoid-version
+libkolfpoolball_la_LDFLAGS = $(all_libraries) $(LIB_KIO) -lkolf -module -avoid-version
 
 libkolfpoolball_la_METASOURCES = AUTO
 

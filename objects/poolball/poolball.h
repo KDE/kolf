@@ -7,9 +7,10 @@
 
 #include <klibloader.h>
 
-#include "ball.h"
-#include "canvasitem.h"
-#include "object.h"
+#include <kolf/ball.h>
+#include <kolf/canvasitem.h>
+#include <kolf/config.h>
+#include <kolf/object.h>
 
 class StateDB;
 class KConfig;
@@ -49,7 +50,7 @@ private slots:
 	void numberChanged(int);
 
 private:
-	PoolBall *poolBall;
+	PoolBall *m_poolBall;
 };
 
 class PoolBallObj : public Object
