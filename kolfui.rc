@@ -3,16 +3,16 @@
 	<MenuBar>
 		<Menu name="hole"><text>Ho&amp;le</text>
 			<Action name="editing" />
-			<Seperator />
+			<Separator />
 			<Action name="newhole" />
 			<Action name="clearhole" />
 			<Action name="resethole" />
-			<Seperator />
+			<Separator />
 			<Action name="undoshot" />
 		</Menu>
 		<Menu name="go_course"><text>&amp;Go</text>
 			<Action name="switchhole" />
-			<Seperator />
+			<Separator />
 			<Action name="nexthole" />
 			<Action name="prevhole" />
 			<Action name="firsthole" />
@@ -30,12 +30,15 @@
 		</Menu>
 	</MenuBar>
 	<ToolBar name="mainToolBar" fullWidth="true" noEdit="true">
+		<Action name="game_new" />
+		<Action name="game_save" />
+		<Separator />
 		<Action name="undoshot" />
 		<Action name="editing" />
-		<Seperator />
+		<Separator />
 		<Action name="prevhole" />
 		<Action name="nexthole" />
-		<Seperator />
+		<Separator />
 		<Action name="switchhole" />
 	</ToolBar>
 </kpartgui>

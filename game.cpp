@@ -1741,6 +1741,10 @@ void Puddle::collision(Ball *ball, long int /*id*/)
 		//ball->setVelocity(0, 0);
 		ball->setVisible(false);
 		ball->setState(Stopped);
+		ball->setVelocity(0, 0);
+
+		double x = ball->x(), y = ball->y();
+		kdDebug() << "(" << x << ", " << y << ")" << endl;
 	}
 }
 
@@ -1983,6 +1987,17 @@ void Ball::friction()
 	setVelocity(vx, vy);
 
 	frictionMultiplier = 1;
+}
+
+void Ball::doAdvance()
+{
+	//const double halfX = xVelocity() / 2;
+	//const double halfY = yVelocity() / 2;
+	QCanvasEllipse::advance(1);
+	
+	//moveBy(halfX, halfY);
+	//collisionDetect();
+	//moveBy(halfX, halfY);
 }
 
 void Ball::collisionDetect()
@@ -3949,7 +3964,6 @@ void KolfGame::shotDone()
 			ballAngle -= PI;
 		ballAngle = PI/2 - ballAngle;
 		
-		//kdDebug() << "ballAngle is " << ballAngle << endl;
 		while (1)
 		{
 			QCanvasItemList list = ball->collisions(true);
@@ -3958,26 +3972,24 @@ void KolfGame::shotDone()
 			{
 				QCanvasItem *item = list.first();
 				if (item->rtti() == Rtti_DontPlaceOn)
-				{
 					keepMoving = true;
-					break;
-				}
 
 				list.pop_front();
 			}
 			if (!keepMoving)
 				break;
 
-			x -= cos(ballAngle) * 4;
-			y -= sin(ballAngle) * 4;
+			const float movePixel = 3.0;
+			x -= cos(ballAngle) * movePixel;
+			y -= sin(ballAngle) * movePixel;
 
 			ball->move(x, y);
 
 			// for debugging
 			/*
 			ball->setVisible(true);
-			qapp->processEvents();
-			//kdDebug() << "(" << x << ", " << y << ")" << endl;
+			kapp->processEvents();
+			kdDebug() << "(" << x << ", " << y << ")" << endl;
 			sleep(1);
 			*/
 		}
@@ -4051,7 +4063,8 @@ void KolfGame::shotStart()
 	vx = -cos(deg2rad(deg))*strength;
 	vy = sin(deg2rad(deg))*strength;
 
-	//kdDebug() << "calculated new speed is " << sqrt(vx * vx + vy * vy) << endl;
+	kdDebug() << "calculated new speed is " << sqrt(vx * vx + vy * vy) << endl;
+	kdDebug() << "vx = " << vx << ", vy = " << vy << endl;
 
 	(*curPlayer).ball()->setVelocity(vx, vy);
 	(*curPlayer).ball()->setState(Rolling);
@@ -4152,6 +4165,8 @@ void KolfGame::holeDone()
 		// flash the information
 		showInfoPress();
 		QTimer::singleShot(1500, this, SLOT(showInfoRelease()));
+
+		recreateStateList();
 	}
 	// else we're done
 }
@@ -4208,6 +4223,7 @@ void KolfGame::openFile()
 	cfg->setGroup("0-course@-50,-50");
 	holeInfo.setAuthor(cfg->readEntry("author", holeInfo.author()));
 	holeInfo.setName(cfg->readEntry("name", holeInfo.name()));
+	emit titleChanged(holeInfo.name());
 
 	cfg->setGroup(QString("%1-hole@-50,-50|0").arg(curHole));
 	curPar = cfg->readNumEntry("par", 3);
@@ -4573,6 +4589,7 @@ void KolfGame::save()
 	}
 
 	emit parChanged(curHole, holeInfo.par());
+	emit titleChanged(holeInfo.name());
 
 	// we use this bool for optimization
 	// in openFile().

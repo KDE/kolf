@@ -94,6 +94,7 @@ void Kolf::initGUI()
 	clearHoleAction = new KAction(i18n("&Clear"), "locationbar_erase", CTRL+Key_Delete, game, SLOT(clearHole()), actionCollection(), "clearhole");
 	resetHoleAction = new KAction(i18n("&Reset"), CTRL+Key_R, 0, 0, actionCollection(), "resethole");
 	undoShotAction = KStdAction::undo(0, 0, actionCollection(), "undoshot");
+	undoShotAction->setText(i18n("Undo Shot"));
 
 	holeAction = new KListAction(i18n("Switch to Hole"), 0, 0, 0, actionCollection(), "switchhole");
 	nextAction = new KAction(i18n("&Next Hole"), "forward", KStdAccel::key(KStdAccel::Forward), 0, 0, actionCollection(), "nexthole");
@@ -175,6 +176,7 @@ void Kolf::startNewGame()
 		connect(game, SIGNAL(inPlayEnd()), this, SLOT(inPlayEnd()));
 		connect(game, SIGNAL(maxStrokesReached()), this, SLOT(maxStrokesReached()));
 		connect(game, SIGNAL(largestHole(int)), this, SLOT(updateHoleMenu(int)));
+		connect(game, SIGNAL(titleChanged(const QString &)), this, SLOT(titleChanged(const QString &)));
 		connect(holeAction, SIGNAL(activated(const QString &)), game, SLOT(switchHole(const QString &)));
 		connect(nextAction, SIGNAL(activated()), game, SLOT(nextHole()));
 		connect(prevAction, SIGNAL(activated()), game, SLOT(prevHole()));
@@ -266,6 +268,8 @@ void Kolf::closeGame()
 	newHoleAction->setEnabled(false);
 	newAction->setEnabled(true);
 	tutorialAction->setEnabled(true);
+
+	titleChanged("");
 }
 
 void Kolf::gameOver()
@@ -439,6 +443,11 @@ void Kolf::print()
 		if (game)
 			game->print(p);
 	}
+}
+
+void Kolf::titleChanged(const QString &newTitle)
+{
+	setCaption(newTitle);
 }
 
 void Kolf::useMouseChanged(bool yes)

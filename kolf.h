@@ -52,6 +52,7 @@ protected slots:
 	void maxStrokesReached();
 	void updateHoleMenu(int);
 	void useMouseChanged(bool);
+	void titleChanged(const QString &);
 	void useAdvancedPuttingChanged(bool);	
 	void showGuideLineChanged(bool);	
  

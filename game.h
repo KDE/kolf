@@ -218,7 +218,7 @@ public:
 
 	void resetSize() { setSize(7, 7); }
 	virtual void advance(int phase);
-	virtual void doAdvance() { QCanvasEllipse::advance(1); }
+	virtual void doAdvance();
 
 	double curSpeed() { return sqrt(xVelocity() * xVelocity() + yVelocity() * yVelocity()); }
 	virtual bool canBeMovedByOthers() const { return true; }
@@ -1141,6 +1141,7 @@ signals:
 	void holesDone();
 	void newHole(int);
 	void parChanged(int, int);
+	void titleChanged(const QString &);
 	void largestHole(int);
 	void scoreChanged(int, int, int);
 	void newPlayersTurn(Player *);
