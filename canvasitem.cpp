@@ -40,9 +40,9 @@ void CanvasItem::save(KSimpleConfig *cfg)
 	cfg->writeEntry("dummykey", true);
 }
 
-void CanvasItem::playSound(QString file)
+void CanvasItem::playSound(QString file, bool cache)
 {
 	if (game)
-		game->playSound(file);
+		game->playSound(file, cache);
 }
 

@@ -5,6 +5,7 @@
 #include <klocale.h>
 #include <kpixmap.h>
 #include <kimageeffect.h>
+#include <arts/soundserver.h>
 
 #include <math.h>
 
@@ -36,6 +37,7 @@ class QKeyEvent;
 class QMouseEvent;
 class QPainter;
 class KSimpleConfig;
+class KPlayObject;
 class KolfGame;
 
 enum Direction { D_Left, D_Right, Forwards, Backwards };
@@ -902,7 +904,7 @@ public slots:
 	void firstHole();
 	void lastHole();
 	void randHole();
-	void playSound(QString file);
+	void playSound(QString file, bool cache = false);
 	void showInfoDlg(bool = false);
 	void showInfoPress();
 	void showInfoRelease();
@@ -1015,6 +1017,8 @@ private:
 	QCanvasRectangle *highlighter;
 
 	// sound
+	Arts::SoundServerV2 soundServer;
+	QMap<QString, KPlayObject *> playObjects;
 	bool m_sound;
 	bool soundedOnce;
 	QString soundDir;

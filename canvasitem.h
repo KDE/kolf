@@ -141,9 +141,9 @@ public:
 	int curId() const { return id; }
 
 	/**
-	 * call to play sound (ie, playSound("wall") plays kdedir/share/apps/kolf/sounds/wall.wav)
+	 * call to play sound (ie, playSound("wall") plays kdedir/share/apps/kolf/sounds/wall.wav). To cache this sound (for often played sounds), pass true to the cache argument.
 	 */
-	void playSound(QString file);
+	void playSound(QString file, bool cache = false);
 
 	/**
 	 * called on ball's collision. Return if terrain collisions should be processed.
