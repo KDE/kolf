@@ -9,7 +9,7 @@
 #include "canvasitem.h"
 #include "object.h"
 
-class KSimpleConfig;
+class KConfig;
 
 class TestFactory : KLibFactory { Q_OBJECT public: QObject *createObject(QObject *, const char *, const char *, const QStringList & = QStringList()); };
 
@@ -19,8 +19,8 @@ public:
 	Test(QCanvas *canvas);
 
 	virtual Config *config(QWidget *parent);
-	virtual void save(KSimpleConfig *cfg);
-	virtual void load(KSimpleConfig *cfg);
+	virtual void save(KConfig *cfg);
+	virtual void load(KConfig *cfg);
 
 	virtual void advance(int phase);
 

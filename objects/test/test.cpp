@@ -9,7 +9,7 @@
 #include <klibloader.h>
 #include <kapplication.h>
 #include <kdebug.h>
-#include <ksimpleconfig.h>
+#include <kconfig.h>
 
 #include "canvasitem.h"
 #include "test.h"
@@ -45,12 +45,12 @@ void Test::advance(int phase)
 	}
 }
 
-void Test::save(KSimpleConfig *cfg)
+void Test::save(KConfig *cfg)
 {
 	cfg->writeEntry("switchEvery", switchEvery());
 }
 
-void Test::load(KSimpleConfig *cfg)
+void Test::load(KConfig *cfg)
 {
 	setSwitchEvery(cfg->readNumEntry("switchEvery", 50));
 }
