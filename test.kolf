@@ -12,7 +12,7 @@ exitDeg=10
 maxspeed=4
 minspeed=2
 
-[1-bridge@205,332|9]
+[1-bridge@206,332|9]
 botWallVisible=false
 height=40
 leftWallVisible=true
@@ -20,7 +20,7 @@ rightWallVisible=false
 topWallVisible=true
 width=80
 
-[1-cup@339,174|15]
+[1-cup@337,174|15]
 dummykey=true
 
 [1-cup@69,253|3]
@@ -62,7 +62,15 @@ text=<h2>welcome</h2>under construction
 topWallVisible=true
 width=157
 
-[1-slope@129,155|16]
+[1-slope@164,138|17]
+grade=8
+gradient=Opposite Diagonal
+height=40
+reversed=true
+stuckOnGround=false
+width=40
+
+[1-slope@209,252|16]
 grade=4
 gradient=Opposite Diagonal
 height=70
@@ -70,13 +78,13 @@ reversed=true
 stuckOnGround=false
 width=26
 
-[1-slope@79,36|5]
-grade=5
+[1-slope@78,115|5]
+grade=4
 gradient=Elliptic
-height=98
+height=69
 reversed=false
 stuckOnGround=false
-width=114
+width=69
 
 [1-wall@0,0|12]
 endPoint=66,69
@@ -87,8 +95,8 @@ endPoint=216,244
 startPoint=173,232
 
 [1-wall@0,0|14]
-endPoint=282,188
-startPoint=229,161
+endPoint=320,313
+startPoint=267,286
 
 [2-ball@200,200]
 dummykey=true

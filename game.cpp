@@ -169,7 +169,7 @@ Slope::Slope(QRect rect, QCanvas *canvas)
 	gradientI18nKeys[KPixmapEffect::HorizontalGradient] = i18n("Horizontal");
 	gradientI18nKeys[KPixmapEffect::DiagonalGradient] = i18n("Diagonal");
 	gradientI18nKeys[KPixmapEffect::CrossDiagonalGradient] = i18n("Opposite Diagonal");
-	gradientI18nKeys[KPixmapEffect::EllipticGradient] = i18n("Elliptic");
+	gradientI18nKeys[KPixmapEffect::EllipticGradient] = i18n("Circular");
 	setZ(-50);
 
 	point = new RectPoint(color.light(), this, canvas);
@@ -209,7 +209,10 @@ void Slope::setSize(int width, int height)
 
 void Slope::newSize(int width, int height)
 {
-	QCanvasRectangle::setSize(width, height);
+	if (type == KPixmapEffect::EllipticGradient)
+		QCanvasRectangle::setSize(width, width);
+	else
+		QCanvasRectangle::setSize(width, height);
 
 	updateZ();
 }
@@ -373,11 +376,13 @@ void Slope::collision(Ball *ball, long int /*id*/)
 	double vy = ball->yVelocity();
 	//if (vy == 0 && vx == 0)
 		//return;
-	const double addto = 0.013 * grade;
+	double addto = 0.013 * grade;
 
 	const bool diag = type == KPixmapEffect::DiagonalGradient || type == KPixmapEffect::CrossDiagonalGradient;
 	const bool circle = type == KPixmapEffect::EllipticGradient;
+
 	double slopeAngle = 0;
+
 	if (diag)
 		slopeAngle = atan((double)width() / (double)height());
 	else if (circle)
@@ -395,7 +400,7 @@ void Slope::collision(Ball *ball, long int /*id*/)
 		if (yDiff == 0)
 		{
 			// horizontal
-			slopeAngle = start.x() < end.x()? 0 : PI;
+			slopeAngle = end.x() < start.x()? 0 : PI;
 		}
 		else
 		{
@@ -416,10 +421,12 @@ void Slope::collision(Ball *ball, long int /*id*/)
 				slopeAngle = (-PI / 2) - slopeAngle;
 				//kdDebug() << "neg slopeAngle: " << rad2deg(slopeAngle) << endl;
 			}
-
 		}
-		
-		//slopeAngle += PI;
+
+		const double factor = sqrt(xDiff * xDiff + yDiff * yDiff) / (double)((double)width() / 2.0);
+		kdDebug() << "factor: " << factor << endl;
+		// factor kinda weakens it
+		addto *= factor * 1.41;
 	}
 
 	//kdDebug() << "slopeAngle: " << rad2deg(slopeAngle) << endl;
@@ -460,12 +467,22 @@ void Slope::collision(Ball *ball, long int /*id*/)
 
 void Slope::setGradient(QString text)
 {
+	for (QMap<KPixmapEffect::GradientType, QString>::Iterator it = gradientKeys.begin(); it != gradientKeys.end(); ++it)
+	{
+		if (it.data() == text)
+		{
+			setType(it.key());
+			return;
+		}
+	}
+
+	// extra forgiveness ;-) (note it's i18n keys)
 	for (QMap<KPixmapEffect::GradientType, QString>::Iterator it = gradientI18nKeys.begin(); it != gradientI18nKeys.end(); ++it)
 	{
 		if (it.data() == text)
 		{
 			setType(it.key());
-			break;
+			return;
 		}
 	}
 }
