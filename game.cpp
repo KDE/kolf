@@ -4613,8 +4613,6 @@ void KolfGame::playSound(QString file)
 
 			if (remove)
 			{
-				kdDebug() << "removing " << oldPlayObject->mediaName() << endl;
-
 				oldPlayObjects.remove();
 
 				// because we will go to next() next time
