@@ -22,7 +22,7 @@ static const char version[] = "1.1";
 static KCmdLineOptions options[] =
 {
 	{ "+file", I18N_NOOP("File"), 0 },
-	{ "course-info ", I18N_NOOP("Print course information and exit."), 0 },
+	{ "course-info ", I18N_NOOP("Print course information and exit"), 0 },
 	KCmdLineLastOption
 };
 
