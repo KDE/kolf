@@ -67,6 +67,7 @@ private:
 	KToggleAction *editingAction;
 	KAction *newHoleAction;
 	KAction *resetHoleAction;
+	KAction *undoShotAction;
 	KAction *clearHoleAction;
 	KAction *tutorialAction;
 	KAction *newAction;

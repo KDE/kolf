@@ -66,6 +66,11 @@ inline QString makeGroup(int id, int hole, QString name, int x, int y)
 	return QString("%1-%2@%3,%4|%5").arg(hole).arg(name).arg(x).arg(y).arg(id);
 }
 
+inline QString makeStateGroup(int id, const QString &name)
+{
+	return QString("%1|%2").arg(name).arg(id);
+}
+
 /////////////////////////
 
 int Config::spacingHint()
@@ -1223,6 +1228,18 @@ void Floater::moveBy(double dx, double dy)
 	if (game)
 		if (game->isEditing())
 			game->updateHighlighter();
+}
+
+void Floater::saveState(StateDB *db)
+{
+	db->setPoint(QPoint(x(), y()));
+}
+
+void Floater::loadState(StateDB *db)
+{
+	const QPoint moveTo = db->point();
+	//kdDebug() << "moveTo: " << moveTo.x() << ", " << moveTo.y() << endl;
+	move(moveTo.x(), moveTo.y());
 }
 
 void Floater::save(KSimpleConfig *cfg)
@@ -3376,7 +3393,7 @@ void KolfGame::changeMouse()
 	//kdDebug() << "len: " << len << endl;
 
 	const double radians = deg2rad(putter->curDeg());
-	kdDebug() << "radians(): " << rad2deg(radians) << endl;
+	//kdDebug() << "radians(): " << rad2deg(radians) << endl;
 	const QPoint cursor(putter->x() + cos(radians) * len, putter->y() + sin(radians) * len);
 	//kdDebug() << "cursor: " << cursor.x() << ", " << cursor.y() << endl;
 	QCursor::setPos(mapToGlobal(contentsToViewport(cursor)));
@@ -3611,7 +3628,7 @@ void KolfGame::timeout()
 	int curState = curBall->curState();
 	if (curState == Stopped && inPlay)
 	{
-                inPlay = false;
+		inPlay = false;
 		QTimer::singleShot(500, this, SLOT(shotDone()));
 	}
 
@@ -3805,17 +3822,73 @@ void KolfGame::autoSaveTimeout()
 {
 	// this should be a config option
 	// until it is i'll disable it
-	//if (editing)
+	if (editing)
+	{
 		//save();
+	}
+}
+
+void KolfGame::recreateStateList()
+{
+	stateDB.clear();
+
+	QCanvasItem *item = 0;
+	
+	for (item = items.first(); item; item = items.next())
+	{
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		if (citem)
+		{
+			stateDB.setName(makeStateGroup(citem->curId(), citem->name()));
+			citem->saveState(&stateDB);
+		}
+	}
+
+	ballStateList.clear();
+	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+		ballStateList.append((*it).stateInfo(curHole));
+}
+
+void KolfGame::undoShot()
+{
+	//kdDebug() << "KolfGame::undoShot()\n";
+	loadStateList();
+}
+
+void KolfGame::loadStateList()
+{
+	QCanvasItem *item = 0;
+
+	for (item = items.first(); item; item = items.next())
+	{
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		if (citem)
+		{
+			stateDB.setName(makeStateGroup(citem->curId(), citem->name()));
+			citem->loadState(&stateDB);
+		}
+	}
+
+	for (BallStateList::Iterator it = ballStateList.begin(); it != ballStateList.end(); ++it)
+	{
+		BallStateInfo info = (*it);
+		//kdDebug() << "on player " << info.id << endl;
+		Player &player = (*players->at(info.id - 1));
+		//kdDebug() << "move to: " << info.spot.x() << ", " << info.spot.y() << endl;
+		player.ball()->move(info.spot.x(), info.spot.y());
+		if ((*curPlayer).id() == info.id)
+			ballMoved();
+		player.setScoreForHole(info.score, curHole);
+		player.ball()->setState(info.state);
+		emit scoreChanged(info.id, curHole, info.score);
+	}
 }
 
 void KolfGame::shotDone()
 {
-        inPlay = false;
-        emit inPlayEnd();
-
+	inPlay = false;
+	emit inPlayEnd();
 	setFocus();
-        
 
 	Ball *ball = (*curPlayer).ball();
 
@@ -3944,6 +4017,9 @@ void KolfGame::shotDone()
 void KolfGame::shotStart()
 {
 	emit inPlayStart();
+
+	// save state
+	recreateStateList();
 
 	putter->saveDegrees((*curPlayer).ball());
 	strength /= 8;

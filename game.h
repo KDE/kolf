@@ -64,17 +64,34 @@ public:
 	DefaultConfig(QWidget *parent);
 };
 
+// items can save their per-game states here
+// most don't have to do anything
+class StateDB
+{
+public:
+	void setPoint(const QPoint &point) { points[curName] = point; }
+	QPoint point() { return points[curName]; }
+	void setName(const QString &name) { curName = name; }
+	void clear() { points.clear(); }
+
+private:
+	QMap<QString, QPoint> points;
+	QString curName;
+};
+
 class CanvasItem
 {
 public:
 	CanvasItem() { game = 0; }
 	virtual ~CanvasItem() {}
 	/**
-	 * load your settings from the KSimpleConfig.
-	 * load your settings
-	 *
+	 * load your settings from the KSimpleConfig, which represents a course.
 	 */
 	virtual void load(KSimpleConfig *) {}
+	/**
+	 * load a point if you wish. Rarely necessary.
+	 */
+	virtual void loadState(StateDB * /*db*/) {}
 	/**
 	 * returns a bool that is true if your item needs to load after other items
 	 */
@@ -87,6 +104,10 @@ public:
 	 * save your settings.
 	 */
 	virtual void save(KSimpleConfig *cfg);
+	/**
+	 * save a point if you wish. Rarely necessary.
+	 */
+	virtual void saveState(StateDB * /*db*/) {}
 	/**
 	 * called right before any items are saved.
 	 */
@@ -244,12 +265,26 @@ private:
 	bool m_beginningOfHole;
 };
 
+class BallStateInfo
+{
+public:
+	void saveState(KSimpleConfig *cfg);
+	void loadState(KSimpleConfig *cfg);
+
+	int id;
+	QPoint spot;
+	BallState state;
+	int score;
+};
+typedef QValueList<BallStateInfo> BallStateList;
+
 class Player
 {
 public:
 	Player() : m_ball(new Ball(0)) {};
 	Ball *ball() { return m_ball; }
 	void setBall(Ball *ball) { m_ball = ball; }
+	BallStateInfo stateInfo(int hole) { BallStateInfo ret; ret.spot = QPoint(m_ball->x(), m_ball->y()); ret.state = m_ball->curState(); ret.score = score(hole); ret.id = m_id; return ret; }
 
 	QValueList<int> scores() { return m_scores; }
 	int score(int hole) { return (*m_scores.at(hole - 1)); }
@@ -257,6 +292,7 @@ public:
 	int firstScore() { return m_scores.first(); }
 
 	void addStrokeToHole(int hole) { (*m_scores.at(hole - 1))++; }
+	void setScoreForHole(int score, int hole) { (*m_scores.at(hole - 1)) = score; }
 	void subtractStrokeFromHole(int hole) { (*m_scores.at(hole - 1))--; }
 	void resetScore(int hole) { (*m_scores.at(hole - 1)) = 0; }
 	void addHole() { m_scores.append(0); }
@@ -931,6 +967,8 @@ class Floater : public Bridge
 {
 public:
 	Floater(QRect rect, QCanvas *canvas);
+	virtual void saveState(StateDB *db);
+	virtual void loadState(StateDB *db);
 	virtual void save(KSimpleConfig *cfg);
 	virtual void load(KSimpleConfig *cfg);
 	virtual bool loadLast() { return true; }
@@ -1094,6 +1132,7 @@ public slots:
 	void print(QPainter &);
 	void setUseMouse(bool yes) { m_useMouse = yes; }
 	void setUseAdvancedPutting(bool yes);
+	void undoShot();
 
 signals:
 	void holesDone();
@@ -1201,6 +1240,11 @@ private:
 	HoleInfo holeInfo;
 	QCanvasText *infoText;
 	void showInfo();
+	StateDB stateDB;
+
+	BallStateList ballStateList;
+	void loadStateList();
+	void recreateStateList();
 
 	bool addingNewHole;
 	int scoreboardHoles;

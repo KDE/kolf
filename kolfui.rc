@@ -7,6 +7,8 @@
 			<Action name="newhole" />
 			<Action name="clearhole" />
 			<Action name="resethole" />
+			<Seperator />
+			<Action name="undoshot" />
 		</Menu>
 		<Menu name="go_course"><text>&amp;Go</text>
 			<Action name="switchhole" />

@@ -91,6 +91,7 @@ void Kolf::initGUI()
 	newHoleAction = new KAction(i18n("&New"), "filenew", CTRL+Key_H, 0, 0, actionCollection(), "newhole");
 	clearHoleAction = new KAction(i18n("&Clear"), "locationbar_erase", CTRL+Key_Delete, game, SLOT(clearHole()), actionCollection(), "clearhole");
 	resetHoleAction = new KAction(i18n("&Reset"), CTRL+Key_R, 0, 0, actionCollection(), "resethole");
+	undoShotAction = new KAction(i18n("&Undo Shot"), CTRL+Key_Z, 0, 0, actionCollection(), "undoshot");
 
 	(void) KStdAction::quit(this, SLOT(close()), actionCollection());
 	saveAction = KStdAction::save(this, SLOT(save()), actionCollection());
@@ -181,6 +182,7 @@ void Kolf::startNewGame()
 		connect(newHoleAction, SIGNAL(activated()), game, SLOT(addNewHole()));
 		connect(clearHoleAction, SIGNAL(activated()), game, SLOT(clearHole()));
 		connect(resetHoleAction, SIGNAL(activated()), game, SLOT(resetHole()));
+		connect(undoShotAction, SIGNAL(activated()), game, SLOT(undoShot()));
 		connect(aboutAction, SIGNAL(activated()), game, SLOT(showInfoDlg()));
 		connect(useMouseAction, SIGNAL(toggled(bool)), game, SLOT(setUseMouse(bool)));
 		connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), game, SLOT(setUseAdvancedPutting(bool)));		
@@ -409,6 +411,7 @@ void Kolf::setHoleMovementEnabled(bool yes)
 	randAction->setEnabled(yes);
 
 	resetHoleAction->setEnabled(yes);
+	undoShotAction->setEnabled(yes);
 }
 
 void Kolf::setEditingEnabled(bool yes)
