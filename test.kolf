@@ -6,7 +6,7 @@ name=Jason's Kolf Test Course
 [1-ball@96,160]
 dummykey=true
 
-[1-bridge@28,239|24]
+[1-bridge@26,246|24]
 botWallVisible=true
 height=47
 leftWallVisible=false
@@ -39,42 +39,73 @@ maxstrokes=10
 par=3
 
 [1-puddle@102,359|46]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [1-puddle@105,375|40]
+changeEnabled=false
+changeEvery=50
+dummykey=true
+
+[1-puddle@133,377|61]
+changeEnabled=true
+changeEvery=50
 dummykey=true
 
 [1-puddle@20,242|59]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [1-puddle@27,264|57]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [1-puddle@36,281|54]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [1-puddle@53,365|39]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [1-puddle@60,294|56]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [1-puddle@70,349|38]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [1-puddle@76,333|53]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [1-puddle@79,369|41]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [1-puddle@8,226|58]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [1-puddle@81,312|55]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [1-puddle@9,213|60]
+changeEnabled=false
+changeEvery=50
 dummykey=true
 
 [1-sand@47,108|16]
@@ -113,10 +144,10 @@ width=40
 [1-slope@122,89|23]
 grade=5
 gradient=Elliptic
-height=71
+height=67
 reversed=true
 stuckOnGround=false
-width=71
+width=67
 
 [1-slope@123,264|15]
 grade=1
@@ -150,13 +181,13 @@ reversed=false
 stuckOnGround=false
 width=40
 
-[1-slope@198,11|22]
+[1-slope@198,10|22]
 grade=8
 gradient=Opposite Diagonal
 height=59
 reversed=true
 stuckOnGround=false
-width=191
+width=190
 
 [1-slope@198,267|36]
 grade=1
@@ -270,17 +301,13 @@ reversed=false
 stuckOnGround=false
 width=38
 
-[1-slope@89,32|36]
-grade=8
+[1-slope@89,33|36]
+grade=6
 gradient=Elliptic
 height=57
 reversed=false
 stuckOnGround=false
 width=57
-
-[1-wall@-3,-1|53]
-endPoint=324,191
-startPoint=305,193
 
 [1-wall@0,0|42]
 endPoint=196,209
@@ -321,6 +348,10 @@ startPoint=252,208
 [1-wall@0,0|52]
 endPoint=304,208
 startPoint=302,175
+
+[1-wall@0,0|53]
+endPoint=324,191
+startPoint=305,193
 
 [1-wall@0,0|54]
 endPoint=226,194

@@ -173,6 +173,11 @@ public:
 	 */
 	virtual void setGame(KolfGame *game) { this->game = game; }
 
+	/**
+	 * returns whether this resizes from south-east.
+	 */
+	virtual bool cornerResize() { return false; }
+
 protected:
 	/**
 	 * pointer to main KolfGame
@@ -391,6 +396,7 @@ private:
 	QPixmap pixmap;
 	void updatePixmap();
 	bool stuckOnGround;
+	QPixmap grass;
 
 	Arrow *arrow;
 	QCanvasText *text;
@@ -411,6 +417,7 @@ public:
 	virtual void moveBy(double dx, double dy);
 	virtual Config *config(QWidget *parent) { return dynamic_cast<CanvasItem *>(rect)->config(parent); }
 	virtual bool deleteable() { return false; }
+	virtual bool cornerResize() { return true; }
 
 private:
 	bool dontmove;
@@ -475,7 +482,7 @@ public:
 	Puddle(QCanvas *canvas);
 	virtual void collision(Ball *ball, long int id);
 	virtual int rtti() const { return Rtti_DontPlaceOn; }
-	//virtual void load(KSimpleConfig *cfg, int hole);
+	virtual void load(KSimpleConfig *cfg, int hole);
 	virtual void save(KSimpleConfig *cfg, int hole);
 };
 class PuddleObj : public Object

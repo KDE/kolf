@@ -1,6 +1,7 @@
 #include <kapplication.h>
 #include <kcombobox.h>
 #include <kconfig.h>
+#include <kcursor.h>
 #include <kdebug.h>
 #include <kdialog.h>
 #include <kfiledialog.h>
@@ -32,6 +33,7 @@
 #include <qpainter.h>
 #include <qpen.h>
 #include <qpixmap.h>
+#include <qpixmapcache.h>
 #include <qpoint.h>
 #include <qpointarray.h>
 #include <qrect.h>
@@ -239,6 +241,12 @@ Slope::Slope(QRect rect, QCanvas *canvas)
 	gradientI18nKeys[KImageEffect::EllipticGradient] = i18n("Circular");
 	setZ(-50);
 
+	if (!QPixmapCache::find("grass", grass))
+	{
+		grass.load(locate("appdata", "pics/grass.png"));
+		QPixmapCache::insert("grass", grass);
+	}
+
 	point = new RectPoint(color.light(), this, canvas);
 
 	QFont font(kapp->font());
@@ -337,7 +345,6 @@ void Slope::moveArrow()
 
 	arrow->move((double)xavg, (double)yavg);
 
-	text->setText(QString::number(grade));
 	text->move((double)xavg - text->boundingRect().width() / 2, (double)yavg - text->boundingRect().height() / 2);
 }
 
@@ -584,6 +591,8 @@ void Slope::setType(KImageEffect::GradientType type)
 
 void Slope::updatePixmap()
 {
+	// this is nasty complex, eh?
+	
 	const bool diag = type == KImageEffect::DiagonalGradient || type == KImageEffect::CrossDiagonalGradient;
 	const bool circle = type == KImageEffect::EllipticGradient;
 
@@ -592,7 +601,7 @@ void Slope::updatePixmap()
 	// hack only for circles
 	const bool _reversed = circle? !reversed : reversed;
 	QImage gradientImage = KImageEffect::gradient(QSize(width(), height()), _reversed? darkColor : lightColor, _reversed? lightColor : darkColor, type);
-	QPixmap grass(locate("appdata", "pics/grass.png"));
+
 	//kdDebug() << "width: " << width() << ", height: " << height() << endl;
 	//kdDebug() << "width: " << grass.width() << ", height: " << grass.height() << endl;
 	QPixmap qpixmap(width(), height());
@@ -686,6 +695,8 @@ void Slope::updatePixmap()
 		arrow->setAngle(angle);
 		arrow->setLength(length);
 	}
+
+	text->setText(QString::number(grade));
 
 	if (diag || circle)
 	{
@@ -1709,7 +1720,15 @@ Puddle::Puddle(QCanvas *canvas)
 
 	//setBrush(QColor("#5498FF"));
 	QBrush brush;
-	brush.setPixmap(QPixmap(locate("appdata", "pics/puddle.png")));
+
+	QPixmap pic;
+	if (!QPixmapCache::find("puddle", pic))
+	{
+		pic.load(locate("appdata", "pics/puddle.png"));
+		QPixmapCache::insert("puddle", pic);
+	}
+
+	brush.setPixmap(pic);
 	setBrush(brush);
 
 	setZ(-25);
@@ -1721,17 +1740,15 @@ void Puddle::save(KSimpleConfig *cfg, int hole)
 	cfg->setGroup(makeGroup(hole, "puddle", x(), y()));
 	cfg->writeEntry("dummykey", true);
 
-	//doSave(cfg, hole);
+	doSave(cfg, hole);
 }
 
-/*
 void Puddle::load(KSimpleConfig *cfg, int hole)
 {
 	cfg->setGroup(makeGroup(hole, "puddle", x(), y()));
 
 	doLoad(cfg, hole);
 }
-*/
 
 void Puddle::collision(Ball *ball, long int /*id*/)
 {
@@ -1760,7 +1777,14 @@ Sand::Sand(QCanvas *canvas)
 
 	//setBrush(QColor("#c9c933"));
 	QBrush brush;
-	brush.setPixmap(QPixmap(locate("appdata", "pics/sand.png")));
+
+	QPixmap pic;
+	if (!QPixmapCache::find("sand", pic))
+	{
+		pic.load(locate("appdata", "pics/sand.png"));
+		QPixmapCache::insert("sand", pic);
+	}
+	brush.setPixmap(pic);
 	setBrush(brush);
 
 	setZ(-26);
@@ -3064,7 +3088,15 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 	course = new QCanvas(this);
 	course->resize(width, height);
 	//course->setBackgroundColor(grass);
-	course->setBackgroundPixmap(QPixmap(locate("appdata", "pics/grass.png")));
+
+	QPixmap pic;
+	if (!QPixmapCache::find("grass", pic))
+	{
+		pic.load(locate("appdata", "pics/grass.png"));
+		QPixmapCache::insert("grass", pic);
+	}
+	course->setBackgroundPixmap(pic);
+
 	setCanvas(course);
 	move(0, 0);
 	adjustSize();
@@ -3271,6 +3303,12 @@ void KolfGame::contentsMousePressEvent(QMouseEvent *e)
 			selectedItem = list.first();
 			movingItem = selectedItem;
 			moving = true;
+
+			if (citem->cornerResize())
+				setCursor(KCursor::sizeFDiagCursor());
+			else
+				setCursor(KCursor::sizeAllCursor());
+
 			emit newSelectedItem(citem);
 			highlighter->setVisible(true);
 			QRect rect = selectedItem->boundingRect();
@@ -3302,7 +3340,18 @@ void KolfGame::contentsMouseMoveEvent(QMouseEvent *e)
 
 	//kdDebug() << "moving: " << moving << endl;
 	if (!moving)
+	{
+		// lets change the cursor to a hand
+		// if we're hovering over something
+
+
+		QCanvasItemList list = course->collisions(e->pos());
+		if (list.count() > 0)
+			setCursor(KCursor::handCursor());
+		else
+			setCursor(KCursor::arrowCursor());
 		return;
+	}
 
 	int moveX = storedMousePos.x() - mouse.x();
 	int moveY = storedMousePos.y() - mouse.y();
@@ -3368,6 +3417,7 @@ void KolfGame::updateMouse()
 
 void KolfGame::contentsMouseReleaseEvent(QMouseEvent *e)
 {
+	setCursor(KCursor::arrowCursor());
 	moving = false;
 
 	if (inPlay)
@@ -3950,6 +4000,8 @@ void KolfGame::openFile()
 	holeInfo.setMaxStrokes(10);
 	int _highestHole = 0;
 
+	QPtrList<CanvasItem> todo;
+
 	for (QStringList::Iterator it = groups.begin(); it != groups.end(); ++it)
 	{
 		//kdDebug() << "GROUP: " << *it << endl;
@@ -4006,7 +4058,6 @@ void KolfGame::openFile()
 			QCanvasItem *newItem = curObj->newObject(course);
 			//kdDebug() << "item created\n";
 			items.append(newItem);
-			newItem->setVisible(true);
 
 			CanvasItem *canvasItem = dynamic_cast<CanvasItem *>(newItem);
 			if (!canvasItem)
@@ -4019,9 +4070,15 @@ void KolfGame::openFile()
 			newItem->move(x, y);
 			canvasItem->firstMove(x, y);
 
+			newItem->setVisible(true);
+
 			// make things actually show
 			if (!hasFinalLoad)
+			{
+				canvasItem->load(cfg, curHole);
+				course->update();
 				kapp->processEvents();
+			}
 			
 			// we don't allow multiple items for the same thing in
 			// the file!
@@ -4047,22 +4104,27 @@ void KolfGame::openFile()
 		return;
 	}
 
+	// do it down here; if !hasFinalLoad, do it up there!
 	QCanvasItem *qcanvasItem = 0;
-	QPtrList<CanvasItem> todo;
-	for (qcanvasItem = items.first(); qcanvasItem; qcanvasItem = items.next())
+	if (hasFinalLoad)
 	{
-		CanvasItem *item = dynamic_cast<CanvasItem *>(qcanvasItem);
-		if (item)
+		for (qcanvasItem = items.first(); qcanvasItem; qcanvasItem = items.next())
 		{
-			if (item->loadLast())
-				todo.append(item);
-			else
-				item->load(cfg, curHole);
+			CanvasItem *item = dynamic_cast<CanvasItem *>(qcanvasItem);
+			if (item)
+			{
+				if (item->loadLast())
+					todo.append(item);
+				else
+					item->load(cfg, curHole);
+			}
 		}
 	}
+
 	CanvasItem *citem = 0;
 	for (citem = todo.first(); citem; citem = todo.next())
 		citem->load(cfg, curHole);
+
 	for (qcanvasItem = items.first(); qcanvasItem; qcanvasItem = items.next())
 	{
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(qcanvasItem);
@@ -4371,7 +4433,10 @@ void KolfGame::toggleEditMode()
 		emit newSelectedItem(&holeInfo);
 	}
 	else
+	{
 		emit editingEnded();
+		setCursor(KCursor::arrowCursor());
+	}
 
 	// alert our items
 	QCanvasItem *item = 0;
