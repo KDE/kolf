@@ -52,7 +52,7 @@ public:
 
 	Vector curVector() { return m_vector; }
 	void setVector(Vector newVector);
-	
+
 	bool collisionLock() { return m_collisionLock; }
 	void setCollisionLock(bool yes) { m_collisionLock = yes; }
 	virtual void fastAdvanceDone() { setCollisionLock(false); }
@@ -77,5 +77,16 @@ private:
 	Vector oldVector;
 	bool m_collisionLock;
 };
+
+
+inline double rad2deg(double theDouble)
+{
+    return ((360L / (2L * M_PI)) * theDouble);
+}
+
+inline double deg2rad(double theDouble)
+{
+	return (((2L * M_PI) / 360L) * theDouble);
+}
 
 #endif

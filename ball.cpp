@@ -15,11 +15,6 @@
 #include "game.h"
 #include "ball.h"
 
-inline double rad2deg(double theDouble)
-{
-	return ((360L / (2L * M_PI)) * theDouble);
-}
-
 Ball::Ball(QCanvas *canvas)
 	: QCanvasEllipse(canvas)
 {
@@ -107,7 +102,7 @@ void Ball::setVelocity(double vx, double vy)
 	//kdDebug() << "ballAngle calculated as " << rad2deg(ballAngle) << endl;
 
 	m_vector.setDirection(ballAngle);
-	m_vector.setMagnitude(sqrt(pow(vx, 2) + pow(vy, 2))); 
+	m_vector.setMagnitude(sqrt(pow(vx, 2) + pow(vy, 2)));
 }
 
 void Ball::setVector(Vector newVector)
