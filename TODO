@@ -1,4 +1,6 @@
----- play sound with contact with ball
----- make bridges also calculate their Z from their area
+/*---- play sound with contact with ball*/
+/*---- make bridges also calculate their Z from their area*/
 ---- vertical floaters (100% vertical) don't work
 ---- make it so one can have different sign text for different locales (use KConfig magic[ja]
+
+CRUCIAL: make wall's endpoints don't do their magic if the ball is coming the wrong direction, shouldn't be too hard

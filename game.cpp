@@ -1620,12 +1620,12 @@ void Putter::finishMe()
 Ball::Ball(QCanvas *canvas)
 	: QCanvasEllipse(canvas)
 {
+	setBeginningOfHole(false);
 	setBlowUp(false);
 	setBrush(black);
 	setPen(black);
 	resetSize();
 	//kdDebug() << "ball ctor\n";
-	applyFriction = true;
 	setVelocity(0, 0);
 	collisionId = 0;
 	m_addStroke = false;
@@ -1633,6 +1633,15 @@ Ball::Ball(QCanvas *canvas)
 
 	// this sets z
 	setState(Stopped);
+}
+
+void Ball::setState(BallState newState)
+{
+	state = newState;
+	if (state == Stopped)
+		setZ(1000);
+	else
+		setBeginningOfHole(false);
 }
 
 void Ball::advance(int phase)
@@ -1661,7 +1670,6 @@ void Ball::advance(int phase)
 
 void Ball::friction()
 {
-	if (!applyFriction) { applyFriction = true; return; }
 	if (state == Stopped || state == Holed || !isVisible()) { setVelocity(0, 0); return; }
 	double vx = xVelocity();
 	double vy = yVelocity();
@@ -1701,7 +1709,6 @@ void Ball::collisionDetect()
 
 	QCanvasItem *item = 0;
 
-	applyFriction = true;
 	//kdDebug() << "---" << endl;
 	for (QCanvasItemList::Iterator it = list.begin(); it != list.end(); ++it)
 	{
@@ -3194,6 +3201,9 @@ void KolfGame::holeDone()
 
 		(*it).ball()->move(width/2, height/2);
 		(*it).ball()->setState(Stopped);
+		// this gets set to false when the ball starts
+		// to move by the Mr. Ball himself.
+		(*it).ball()->setBeginningOfHole(true);
 		(*it).addHole();
 		(*it).ball()->setVelocity(0, 0);
 		(*it).ball()->setMoved(false);
@@ -3275,6 +3285,8 @@ void KolfGame::openFile()
 
 	/****
 	TODO : add a progress bar based on groups.size()
+	oh.. but... that's always the same for any size hole
+	bah humbug, how to tell?!
 	****/
 
 	for (QStringList::Iterator it = groups.begin(); it != groups.end(); ++it)
@@ -3484,27 +3496,27 @@ void KolfGame::addNewHole()
 {
 	if (askSave())
 		return;
-			// find highest hole num, and create new hole
-			// now openFile makes highest hole for us
-			
-			//KSimpleConfig cfg(filename);
-			QStringList groups = cfg->groupList();
+	// find highest hole num, and create new hole
+	// now openFile makes highest hole for us
 
-			addingNewHole = true;
-			curHole = highestHole;
-			//kdDebug() << "highestHole is " << highestHole << endl;
-			holeDone();
-			emit largestHole(curHole);
-			addingNewHole = false;
+	//KSimpleConfig cfg(filename);
+	QStringList groups = cfg->groupList();
 
-			// make sure even the current player isn't showing
-			for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-				(*it).ball()->setVisible(false);
+	addingNewHole = true;
+	curHole = highestHole;
+	//kdDebug() << "highestHole is " << highestHole << endl;
+	holeDone();
+	emit largestHole(curHole);
+	addingNewHole = false;
 
-			whiteBall->setVisible(editing);
-			highlighter->setVisible(false);
-			putter->setVisible(!editing);
-			inPlay = false;
+	// make sure even the current player isn't showing
+	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+		(*it).ball()->setVisible(false);
+
+	whiteBall->setVisible(editing);
+	highlighter->setVisible(false);
+	putter->setVisible(!editing);
+	inPlay = false;
 }
 
 // kantan deshou ;-)
@@ -3665,9 +3677,7 @@ void KolfGame::toggleEditMode()
 		emit newSelectedItem(&holeInfo);
 	}
 	else
-	{
 		emit editingEnded();
-	}
 
 	// alert our items
 	QCanvasItem *item = 0;
@@ -3679,7 +3689,13 @@ void KolfGame::toggleEditMode()
 	}
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-		(*it).ball()->setVisible(!editing);
+	{
+		// curplayer shouldn't be hidden no matter what
+		if ((*it).ball()->beginningOfHole() && it != curPlayer)
+			(*it).ball()->setVisible(false);
+		else
+			(*it).ball()->setVisible(!editing);
+	}
 
 	whiteBall->setVisible(editing);
 	highlighter->setVisible(false);

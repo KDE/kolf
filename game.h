@@ -198,7 +198,7 @@ public:
 	virtual bool canBeMovedByOthers() { return true; }
 
 	BallState curState() { return state; }
-	void setState(BallState newState) { state = newState; if (state == Stopped) setZ(1000); }
+	void setState(BallState newState);
 
 	QColor color() { return m_color; }
 	void setColor(QColor color) { m_color = color; setBrush(color); }
@@ -219,10 +219,11 @@ public:
 	void setAddStroke(int newStrokes) { m_addStroke = newStrokes; }
 	void setPlaceOnGround(bool placeOnGround, double oldvx, double oldvy) { m_placeOnGround = placeOnGround; m_oldvx = oldvx; m_oldvy = oldvy;}
 
+	bool beginningOfHole() { return m_beginningOfHole; }
+	void setBeginningOfHole(bool yes) { m_beginningOfHole = yes; }
+
 private:
 	BallState state;
-	int power;
-	bool applyFriction;
 	QColor m_color;
 	long int collisionId;
 	double frictionMultiplier;
@@ -235,6 +236,7 @@ private:
 	double m_oldvy;
 
 	bool m_moved;
+	bool m_beginningOfHole;
 };
 
 class Player
