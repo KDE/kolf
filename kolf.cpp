@@ -39,6 +39,8 @@
 #include <stdlib.h>
 
 #include "game.h"
+#include "floater.h"
+#include "slope.h"
 #include "newgame.h"
 #include "scoreboard.h"
 #include "editor.h"
