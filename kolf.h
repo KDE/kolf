@@ -59,6 +59,7 @@ protected slots:
 	void soundChanged(bool);	
 	void initPlugins();
 	void showPlugins();
+	void keyBindings();
  
 private:
 	QWidget *dummy;

@@ -1,6 +1,7 @@
 #include <kconfig.h>
 #include <kaction.h>
 #include <kmessagebox.h>
+#include <kkeydialog.h>
 #include <kstandarddirs.h>
 #include <kapplication.h>
 #include <kdebug.h>
@@ -90,8 +91,9 @@ Kolf::~Kolf()
 void Kolf::initGUI()
 {
 	newAction = KStdAction::openNew(this, SLOT(newGame()), actionCollection(), "game_new");
-
 	newAction->setText(newAction->text() + QString("..."));
+
+	(void) KStdAction::keyBindings(this, SLOT(keyBindings()), actionCollection());
 	endAction = KStdAction::close(this, SLOT(closeGame()), actionCollection(), "game_end");
 	endAction->setText(i18n("&Close Current Course"));
 	printAction = KStdAction::print(this, SLOT(print()), actionCollection(), "game_print");
@@ -541,6 +543,11 @@ void Kolf::showPlugins()
 	for (object = plugins.first(); object; object = plugins.next())
 		text.append(object->name());
 	KMessageBox::information(this, text, i18n("Plugins"));
+}
+
+void Kolf::keyBindings()
+{
+	KKeyDialog::configure(actionCollection());
 }
 
 #include "kolf.moc"
