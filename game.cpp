@@ -3611,10 +3611,7 @@ void KolfGame::timeout()
 	int curState = curBall->curState();
 	if (curState == Stopped && inPlay)
 	{
-		inPlay = false;
-
-		emit inPlayEnd();
-
+                inPlay = false;
 		QTimer::singleShot(500, this, SLOT(shotDone()));
 	}
 
@@ -3814,7 +3811,11 @@ void KolfGame::autoSaveTimeout()
 
 void KolfGame::shotDone()
 {
+        inPlay = false;
+        emit inPlayEnd();
+
 	setFocus();
+        
 
 	Ball *ball = (*curPlayer).ball();
 
