@@ -24,7 +24,7 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2002-06-15</date>
+<date>2003-09-18</date>
 <releaseinfo>1.00.00</releaseinfo>
 
 <abstract>
@@ -220,7 +220,7 @@ button next to the player's name.</para>
 <sect1 id="adding-holes"> <title>Adding Holes</title>
 <para>Choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>New</guimenuitem></menuchoice> to add a new hole at the end of the course.</para>
 <tip>
-<para>You can restore a hole to a blank state, similiar to when it was first created, by choosing <menuchoice><guimenu>Hole</guimenu><guimenuitem>Clear</guimenuitem></menuchoice>.</para>
+<para>You can restore a hole to a blank state, similar to when it was first created, by choosing <menuchoice><guimenu>Hole</guimenu><guimenuitem>Clear</guimenuitem></menuchoice>.</para>
 </tip>
 <para>Two items will appear on new holes: a cup, and a white ball. The white ball marks where players' balls start the hole.</para>
 </sect1>
@@ -258,7 +258,7 @@ button next to the player's name.</para>
 <variablelist>
 <varlistentry> <term><guilabel>Course name</guilabel></term>
 <listitem>
-<para>This is the name that is shown in the newgame dialog and in the <guimenuitem>About Course</guimenuitem> dialog.</para>
+<para>This is the name that is shown in the new game dialog and in the <guimenuitem>About Course</guimenuitem> dialog.</para>
 </listitem>
 </varlistentry>
 <varlistentry> <term><guilabel>Course author</guilabel></term>
@@ -331,7 +331,7 @@ button next to the player's name.</para>
 
 </sect3>
 <sect3> <title>Bridges, Windmills, Floaters, and Signs</title>
-<para>Bridges, windmills, floaters, and signs all have similiar settings for configuring on which sides there are border walls. To show the wall on a side, check the checkbox for that side.</para>
+<para>Bridges, windmills, floaters, and signs all have similar settings for configuring on which sides there are border walls. To show the wall on a side, check the checkbox for that side.</para>
 <para>There are also some more specific options for windmills, floaters, and signs.</para>
 
 <sect4> <title>Windmills</title>
@@ -671,30 +671,10 @@ which hole you wish to go to.</para>
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Show Main Toolbar</guimenuitem>
+<guimenuitem>Show Toolbar</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>Toggle on and off the toolbar icons.</action></para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Configure Shortcuts...</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para><action>Customize the keyboard shortcuts.</action></para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Configure Toolbars...</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para><action>Customize the toolbar icons.</action></para>
+<para><action>Toggle on and off the main toolbar.</action></para>
 </listitem>
 </varlistentry>
 
@@ -715,7 +695,7 @@ putter.</action></para>
 <guimenuitem>Enable Advanced Putting</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>Enable the advanced putting mode</action>, as
-described in <link linkend="advanced-putting">it's own
+described in <link linkend="advanced-putting">its own
 section</link>.</para>
 </listitem>
 </varlistentry>
@@ -743,6 +723,17 @@ section</link>.</para>
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
+<guimenuitem>Enable all Dialog Boxes</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Re-enables any dialog boxes that you disabled by clicking on
+<guilabel>Do not show this message again</guilabel> or similar</action>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
 <guimenuitem>Reload Plugins</guimenuitem>
 </menuchoice></term>
 <listitem>
@@ -759,6 +750,27 @@ section</link>.</para>
 <para><action>Display the currently loaded plugins.</action></para>
 </listitem>
 </varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure Shortcuts...</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Customize the keyboard shortcuts.</action></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure Toolbars...</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Customize the toolbar icons.</action></para>
+</listitem>
+</varlistentry>
+
 </variablelist>
 </sect1>
 
