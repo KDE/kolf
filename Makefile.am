@@ -13,6 +13,8 @@ libkolf_la_SOURCES = \
 
 libkolf_la_LDFLAGS = $(all_libraries) -no-undefined -version-info 3:0:2
 libkolf_la_LIBADD = $(LIB_KDEGAMES) $(LIB_KDEPRINT) $(LIB_KIO) -lartskde
+libkolf_la_DEPENDENCIES = $(LIB_KDEGAMES_DEP)
+
 
 # the installed header files
 kolfinclude_HEADERS = \
