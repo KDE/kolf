@@ -3062,7 +3062,7 @@ minspeed=6
 
 [9-blackhole@273,274|18]
 exit=116,237
-exitDeg=25
+exitDeg=20
 maxspeed=5
 minspeed=3
 
