@@ -646,7 +646,7 @@ SignConfig::SignConfig(Sign *sign, QWidget *parent)
 {
 	this->sign = sign;
 	m_vlayout->addStretch();
-	m_vlayout->addWidget(new QLabel(i18n("Sign HTML"), this));
+	m_vlayout->addWidget(new QLabel(i18n("Sign HTML:"), this));
 	KLineEdit *name = new KLineEdit(sign->text(), this);
 	m_vlayout->addWidget(name);
 	connect(name, SIGNAL(textChanged(const QString &)), this, SLOT(textChanged(const QString &)));
@@ -1515,7 +1515,7 @@ BlackHoleConfig::BlackHoleConfig(BlackHole *blackHole, QWidget *parent)
 	layout->addStretch();
 
 	QHBoxLayout *hlayout = new QHBoxLayout(layout, spacingHint());
-	hlayout->addWidget(new QLabel(i18n("Minimum exit speed"), this));
+	hlayout->addWidget(new QLabel(i18n("Minimum exit speed:"), this));
 	KDoubleNumInput *min = new KDoubleNumInput(this);
 	min->setRange(0, 8, 1, true);
 	hlayout->addWidget(min);
@@ -1523,7 +1523,7 @@ BlackHoleConfig::BlackHoleConfig(BlackHole *blackHole, QWidget *parent)
 	min->setValue(blackHole->minSpeed());
 
 	hlayout = new QHBoxLayout(layout, spacingHint());
-	hlayout->addWidget(new QLabel(i18n("Maximum"), this));
+	hlayout->addWidget(new QLabel(i18n("Maximum:"), this));
 	KDoubleNumInput *max = new KDoubleNumInput(this);
 	max->setRange(1, 10, 1, true);
 	hlayout->addWidget(max);
@@ -1939,7 +1939,7 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	connect(par, SIGNAL(valueChanged(int)), this, SLOT(parChanged(int)));
 	hlayout->addStretch();
 
-	hlayout->addWidget(new QLabel(i18n("Maximum"), this));
+	hlayout->addWidget(new QLabel(i18n("Maximum:"), this));
 	QSpinBox *maxstrokes = new QSpinBox(holeInfo->lowestMaxStrokes(), 30, 1, this);
 	QWhatsThis::add(maxstrokes, i18n("Maximum number of strokes player can take on this hole."));
 	QToolTip::add(maxstrokes, i18n("Maximum number of strokes"));

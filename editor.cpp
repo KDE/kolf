@@ -17,7 +17,7 @@ Editor::Editor(ObjectList *list, QWidget *parent, const char *name)
 	hlayout = new QHBoxLayout(this, KDialog::marginHint(), KDialog::spacingHint());
 
 	QVBoxLayout *vlayout = new QVBoxLayout(hlayout, KDialog::spacingHint());
-	vlayout->addWidget(new QLabel(i18n("Add Object"), this));
+	vlayout->addWidget(new QLabel(i18n("Add object:"), this));
 	listbox = new KListBox(this, "Listbox");
 	vlayout->addWidget(listbox);
 	hlayout->setStretchFactor(vlayout, 2);
