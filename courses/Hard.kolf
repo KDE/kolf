@@ -14,6 +14,7 @@ Name[pt_BR]=Curso difícil
 Name[sl]=Težka steza
 Name[sv]=Svår bana
 Name[xh]=Indlela enzima
+Name[zu]=Indlela elukhuni
 author=Jason Katz-Brown
 
 [1-ball@84,73]
@@ -1087,6 +1088,7 @@ Comment[pt]=Deixe os flutuadores <strong>empurrá-lo</strong>!
 Comment[pt_BR]=Deixe as bóias <strong>levarem</strong> você! 
 Comment[sv]=Låt flottarna <strong>knuffa</strong> dig!
 Comment[xh]=Vumela ezidadayo <strong>tyhala</strong> wena!
+Comment[zu]=Yekela okuntantayo <strong>kukududule</strong>! 
 botWallVisible=true
 height=196
 leftWallVisible=true
