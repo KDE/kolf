@@ -22,6 +22,8 @@
 #include <qpoint.h>
 #include <qtimer.h>
 #include <qptrlist.h>
+#include <qpixmap.h>
+#include <qpixmapcache.h>
 #include <qfileinfo.h>
 #include <qstring.h>
 #include <qstringlist.h>
@@ -278,6 +280,13 @@ void Kolf::closeGame()
 
 	delete spacer;
 	spacer = new QWidget(dummy);
+	QPixmap grass;
+	if (!QPixmapCache::find("grass", grass))
+	{
+		grass.load(locate("appdata", "pics/grass.png"));
+		QPixmapCache::insert("grass", grass);
+	}
+	spacer->setBackgroundPixmap(grass);
 	layout->addWidget(spacer, 0, 0);
 
 	spacer->setMinimumSize(410, 410);
@@ -302,7 +311,7 @@ void Kolf::closeGame()
 
 void Kolf::gameOver()
 {
-	int lowScore = INT_MAX;
+	int lowScore = INT_MAX; // let's hope it doesn't stay this way!
 	int curScore = 1;
 	QStringList names;
 	int i = 1;

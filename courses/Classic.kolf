@@ -695,14 +695,6 @@ hasFinalLoad=false
 maxstrokes=10
 par=3
 
-[16-slope@111,21|15]
-grade=1
-gradient=Horizontal
-height=98
-reversed=true
-stuckOnGround=false
-width=241
-
 [16-slope@177,19|14]
 grade=4
 gradient=Opposite Diagonal
