@@ -6,7 +6,7 @@ name=Hard Course
 [1-ball@84,73]
 dummykey=true
 
-[1-blackhole@86,198|10]
+[1-blackhole@83,203|10]
 exit=176,281
 exitDeg=330
 maxspeed=4
@@ -24,17 +24,14 @@ par=3
 [1-puddle@41,364|15]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [1-puddle@51,357|7]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [1-puddle@54,364|8]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [1-sand@169,250|21]
 changeEnabled=false
@@ -71,6 +68,14 @@ height=77
 reversed=false
 stuckOnGround=false
 width=77
+
+[1-slope@56,177|18]
+grade=4
+gradient=Elliptic
+height=52
+reversed=true
+stuckOnGround=false
+width=52
 
 [1-slope@8,14|14]
 grade=1
@@ -2127,7 +2132,7 @@ rightWallVisible=false
 topWallVisible=false
 width=28
 
-[2-cup@20,185|21]
+[2-cup@23,188|21]
 dummykey=true
 
 [2-cup@375,52|6]
@@ -2213,10 +2218,10 @@ width=43
 [2-slope@12,198|36]
 grade=3
 gradient=Vertical
-height=42
+height=49
 reversed=false
 stuckOnGround=true
-width=21
+width=43
 
 [2-slope@12,75|50]
 grade=4
@@ -2335,16 +2340,16 @@ endPoint=86,192
 startPoint=54,196
 
 [2-wall@0,0|11]
-endPoint=31,174
+endPoint=32,173
 startPoint=54,196
 
 [2-wall@0,0|12]
 endPoint=11,167
-startPoint=32,173
+startPoint=31,174
 
 [2-wall@0,0|13]
 endPoint=48,144
-startPoint=31,174
+startPoint=32,173
 
 [2-wall@0,0|14]
 endPoint=28,113
@@ -2380,15 +2385,15 @@ startPoint=89,115
 
 [2-wall@0,0|54]
 endPoint=131,11
-startPoint=170,36
+startPoint=171,36
 
 [2-wall@0,0|55]
 endPoint=172,66
-startPoint=171,36
+startPoint=170,36
 
 [2-wall@0,0|56]
 endPoint=198,44
-startPoint=170,36
+startPoint=171,36
 
 [2-wall@0,0|60]
 endPoint=48,144
@@ -2421,17 +2426,14 @@ par=3
 [3-puddle@255,311|10]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [3-puddle@260,276|8]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [3-puddle@276,295|9]
 changeEnabled=false
 changeEvery=50
-dummykey=true
 
 [3-sand@267,148|30]
 changeEnabled=false
@@ -2482,7 +2484,7 @@ stuckOnGround=false
 width=81
 
 [3-slope@282,172|40]
-grade=3
+grade=2
 gradient=Opposite Diagonal
 height=53
 reversed=true
@@ -2490,7 +2492,7 @@ stuckOnGround=false
 width=53
 
 [3-slope@283,119|41]
-grade=3
+grade=2
 gradient=Diagonal
 height=56
 reversed=false
@@ -2562,7 +2564,7 @@ endPoint=150,198
 startPoint=224,228
 
 [3-wall@0,0|31]
-endPoint=192,250
+endPoint=192,252
 startPoint=128,227
 
 [3-wall@0,0|34]
@@ -2571,10 +2573,10 @@ startPoint=250,13
 
 [3-wall@0,0|35]
 endPoint=192,250
-startPoint=192,252
+startPoint=192,250
 
 [3-wall@0,0|36]
-endPoint=192,250
+endPoint=192,252
 startPoint=189,264
 
 [3-wall@0,0|38]

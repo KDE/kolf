@@ -2181,7 +2181,7 @@ void Cup::draw(QPainter &painter)
 bool Cup::place(Ball *ball, bool /*wasCenter*/)
 {
 	// the picture's center is a little different
-	ball->move(x() - 2, y());
+	ball->move(x() - 1, y());
 	ball->setVelocity(0, 0);
 	return true;
 }

@@ -12,13 +12,17 @@
 #include <kfiledialog.h>
 
 #include <qcheckbox.h>
+#include <qevent.h>
 #include <qframe.h>
+#include <qpen.h>
 #include <qlayout.h>
 #include <qlabel.h>
 #include <klistbox.h>
 #include <qstyle.h>
+#include <qrect.h>
 #include <qmap.h>
 #include <qpainter.h>
+#include <qpixmapcache.h>
 #include <qwidget.h>
 #include <qscrollview.h>
 #include <qvaluelist.h>
@@ -30,11 +34,38 @@
 #include "newgame.h"
 #include "game.h"
 
+ColorButton::ColorButton(QColor color, QWidget *parent, const char *name)
+	: KColorButton(color, parent, name)
+{
+	mouseOver = false;
+}
+
+void ColorButton::enterEvent(QEvent *)
+{
+	mouseOver = true;
+	update();
+}
+
+void ColorButton::leaveEvent(QEvent *)
+{
+	mouseOver = false;
+	update();
+}
+
+void ColorButton::drawButton(QPainter *painter)
+{
+	painter->setPen(QPen(isDown() ? green.dark(240) : green.dark(), 3));
+	if (mouseOver)
+		painter->drawRoundRect(QRect(0, 0, width(), height()));
+	drawButtonLabel(painter);
+}
+
 void ColorButton::drawButtonLabel(QPainter *painter)
 {
-	QColor fillCol = isEnabled()? color() : backgroundColor();
+	QColor fillCol = isDown()? color().dark(130) : color();
 
 	painter->setBrush(fillCol);
+	painter->setPen(NoPen);
 	const int w = 16;
 	painter->drawEllipse(width() / 2 - w / 2, height() / 2 - w / 2, w, w);
 }
@@ -68,6 +99,12 @@ NewGameDialog::NewGameDialog(QWidget *parent, const char *_name)
 	scroller = new QScrollView(playerPage);
 	bigLayout->addWidget(scroller);
 	layout = new QVBox(scroller->viewport());
+	if (!QPixmapCache::find("grass", grass))
+	{
+		grass.load(locate("appdata", "pics/grass.png"));
+		QPixmapCache::insert("grass", grass);
+	}
+	scroller->viewport()->setBackgroundPixmap(grass);
 	scroller->addChild(layout);
 
 	QMap<QString, QString> entries = config->entryMap("New Game Dialog");
@@ -170,7 +207,7 @@ NewGameDialog::NewGameDialog(QWidget *parent, const char *_name)
 	vlayout->addWidget(mode);
 	mode->setChecked(config->readBoolEntry("competition", false));
 
-	QLabel *desc = new QLabel(i18n("In strict mode, neither editing nor switching holes is allowed. This is generally used for competitions."), optionsPage);
+	QLabel *desc = new QLabel(i18n("In strict mode, neither editing nor switching holes is allowed. This is generally for competition."), optionsPage);
 	desc->setTextFormat(RichText);
 	vlayout->addWidget(desc);
 }
@@ -228,13 +265,8 @@ void NewGameDialog::removeCourse()
 
 void NewGameDialog::selectionChanged()
 {
-	bool enabled = true;
-	int curItem = courseList->currentItem();
-	if (curItem < 0)
-		enabled = false;
-	if (externCourses.contains(*names.at(curItem)) < 1)
-		enabled = false;
-	remove->setEnabled(enabled);
+	const int curItem = courseList->currentItem();
+	remove->setEnabled(!(curItem < 0 || externCourses.contains(*names.at(curItem)) < 1));
 }
 
 void NewGameDialog::addCourse()
@@ -295,10 +327,20 @@ PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent
 {
 	QHBoxLayout *layout = new QHBoxLayout(this, KDialogBase::spacingHint());
 
-	layout->addWidget(editor = new KLineEdit(this));
+	if (!QPixmapCache::find("grass", grass))
+	{
+		grass.load(locate("appdata", "pics/grass.png"));
+		QPixmapCache::insert("grass", grass);
+	}
+	setBackgroundPixmap(grass);
+
+	editor = new KLineEdit(this);
+	layout->addWidget(editor);
+	editor->setFrame(false);
 	editor->setText(startName);
 	layout->addStretch();
 	layout->addWidget(colorButton = new ColorButton(startColor, this));
+	colorButton->setBackgroundPixmap(grass);
 }
 
 #include "newgame.moc"

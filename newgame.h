@@ -23,14 +23,21 @@ class QFrame;
 class QVBoxLayout;
 class QPainter;
 class KListBox;
+class QEvent;
 
 class ColorButton : public KColorButton
 {
 public:
-	ColorButton(QColor color, QWidget *parent, const char *name = 0L) : KColorButton(color, parent, name) {}
+	ColorButton(QColor color, QWidget *parent, const char *name = 0L);
 
 protected:
-	void drawButtonLabel(QPainter *painter);
+	virtual void drawButtonLabel(QPainter *painter);
+	virtual void drawButton(QPainter *painter);
+	virtual void enterEvent(QEvent *);
+	virtual void leaveEvent(QEvent *);
+
+private:
+	bool mouseOver;
 };
 
 class PlayerEditor : public QWidget
@@ -47,6 +54,7 @@ public:
 private:
 	KLineEdit *editor;
 	KColorButton *colorButton;
+	QPixmap grass;
 };
 
 class NewGameDialog : public KDialogBase
@@ -82,6 +90,8 @@ private:
 	QPtrList<PlayerEditor> editors;
 	QPushButton *remove;
 	QCheckBox *mode;
+
+	QPixmap grass;
 
 	QStringList names;
 	QStringList externCourses;
