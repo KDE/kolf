@@ -2,11 +2,11 @@
 author=Jas0n Katz-Br0wn
 name=Jason's Kolf Test Course
 
-[1-ball@125,248]
+[1-ball@180,252]
 dummykey=true
 
-[1-blackhole@130,173|8]
-exit=311,150
+[1-blackhole@352,342|8]
+exit=554,198
 exitDeg=10
 maxspeed=4
 minspeed=2
@@ -21,17 +21,6 @@ width=80
 
 [1-cup@69,253|3]
 dummykey=true
-
-[1-floater@66,86|9]
-botWallVisible=false
-endPoint=66,86
-height=63
-leftWallVisible=true
-rightWallVisible=false
-speed=5
-startPoint=31,41
-topWallVisible=true
-width=84
 
 [1-hole@-50,-50|0]
 maxstrokes=10
@@ -58,13 +47,13 @@ text=<h2>welcome</h2>under construction
 topWallVisible=true
 width=157
 
-[1-slope@166,209|15]
-grade=4
-gradient=Vertical
-height=40
-reversed=false
+[1-slope@12,9|15]
+grade=5
+gradient=Diagonal
+height=232
+reversed=true
 stuckOnGround=false
-width=40
+width=383
 
 [1-slope@259,266|5]
 grade=6
@@ -75,25 +64,16 @@ stuckOnGround=false
 width=40
 
 [1-wall@0,0|12]
-endPoint=284,123
-startPoint=254,138
-
-[1-wall@0,0|13]
-endPoint=228,161
-startPoint=194,177
+endPoint=153,107
+startPoint=115,139
 
 [1-wall@0,0|14]
 endPoint=282,188
 startPoint=229,161
 
-[1-windmill@185,32|7]
-botWallVisible=false
-height=40
-leftWallVisible=true
-rightWallVisible=true
-speed=5
-topWallVisible=false
-width=80
+[1-wall@35,-13|13]
+endPoint=209,228
+startPoint=175,244
 
 [2-ball@200,200]
 dummykey=true

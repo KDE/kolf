@@ -53,6 +53,11 @@ inline double deg2rad(double theDouble)
 	return (((2L * PI) / 360L) * theDouble);
 }
 
+inline double rad2deg(double theDouble)
+{
+	return ((360L / (2L * PI)) * theDouble);
+}
+
 /////////////////////////
 
 int Config::spacingHint()
@@ -2129,17 +2134,50 @@ void WallPoint::collision(Ball *ball, long int id)
 
 	playSound("wall");
 
+	const QPoint start = wall->startPoint();
+	const QPoint end = wall->endPoint();
+
+	const double wallSlope = (double)(-(start.x() - end.x()))/(double)(end.y() - start.y());
+	double vx = ball->xVelocity();
+	double vy = ball->yVelocity();
+	const double wallAngle = atan(wallSlope);
+	const double ballSlope = -(double)vy/(double)vx;
+	double ballangle = atan(ballSlope);
+	if (vx < 0)  
+		ballangle += PI;
+
+	//kdDebug() << "----\nstart: " << this->start << endl;
+	//kdDebug() << "ballangle: " << rad2deg(ballangle) << endl;
+	//kdDebug() << "wallAngle: " << rad2deg(wallAngle) << endl;
+
+	double relAngle = wallAngle + PI / 2;
+
+	if (this->start)
+		relAngle += PI;
+
+	//kdDebug() << "relAngle: " << rad2deg(relAngle) << endl;
+
 	// visible just means if we should bounce opposite way
-	if (visible)
+	bool weirdbounce = visible;
+
+	if (this->start)
+	{
+		if (ballangle < wallAngle - PI / 2 || ballangle > wallAngle + PI / 2)
+			weirdbounce = false;
+	}
+	else
+	{
+		if (ballangle > wallAngle - PI / 2 || ballangle < wallAngle + PI / 2)
+			weirdbounce = false;
+	}
+
+	//kdDebug() << "weirdbounce: " << weirdbounce << endl;
+
+	if (weirdbounce)
 	{
 		//kdDebug() << "weird col\n";
 		lastId = id;
 
-		const QPoint start = wall->startPoint();
-		const QPoint end = wall->endPoint();
-
-		double vx = ball->xVelocity();
-		double vy = ball->yVelocity();
 		const double dampening = wall->dampening();
 
 		if (start.y() == end.y())
@@ -2159,18 +2197,12 @@ void WallPoint::collision(Ball *ball, long int id)
 		else
 		{
 			const double speed = ball->curSpeed() / dampening;
-			const double ballslope = -(double)vy/(double)vx;
-			const double wallslope = (double)(-(start.x() - end.x()))/(double)(end.y() - start.y());
-			double ballangle = atan(ballslope);
-			if (vx < 0)  
-				ballangle += PI;
-			const double wallangle = atan(wallslope);
 
-			const double collisionangle = ballangle - wallangle;
-			const double leavingangle = PI - collisionangle + wallangle;
+			const double collisionAngle = ballangle - wallAngle;
+			const double leavingAngle = PI - collisionAngle + wallAngle;
 
-			vx = -cos(leavingangle)*speed;
-			vy = sin(leavingangle)*speed;
+			vx = -cos(leavingAngle)*speed;
+			vy = sin(leavingAngle)*speed;
 		}
 
 		//kdDebug() << "new velocities: vx = " << vx << ", vy = " << vy << endl;
@@ -2395,18 +2427,18 @@ void Wall::collision(Ball *ball, long int id)
 	else
 	{
 		const double speed = (double)sqrt(vx * vx + vy * vy) / _dampening;
-		const double ballslope = -(double)vy/(double)vx;
-		const double wallslope = (double)(start.y() - end.y())/(double)(end.x() - start.x());
-		double ballangle = atan(ballslope);
+		const double ballSlope = -(double)vy/(double)vx;
+		const double wallSlope = (double)(start.y() - end.y())/(double)(end.x() - start.x());
+		double ballangle = atan(ballSlope);
 		if (vx < 0)  
 			ballangle += PI;
-		const double wallangle = atan(wallslope);
+		const double wallAngle = atan(wallSlope);
 
-		const double collisionangle = ballangle - wallangle;
-		const double leavingangle = PI - collisionangle + wallangle;
+		const double collisionAngle = ballangle - wallAngle;
+		const double leavingAngle = PI - collisionAngle + wallAngle;
 		
-		vx = -cos(leavingangle)*speed;
-		vy = sin(leavingangle)*speed;
+		vx = -cos(leavingAngle)*speed;
+		vy = sin(leavingAngle)*speed;
 	}
 				   
 	//kdDebug() << "new velocities: vx = " << vx << ", vy = " << vy << endl;
@@ -2701,14 +2733,14 @@ void KolfGame::contentsMousePressEvent(QMouseEvent *e)
 
 	if (list.count() < 1)
 	{
-		kdDebug() << "returning\n";
+		//kdDebug() << "returning\n";
 		emit newSelectedItem(&holeInfo);
 		return;
 	}
 	// only items we keep track of
 	if ((!(items.containsRef(list.first()) || list.first() == whiteBall || extraMoveable.containsRef(list.first()))))
 	{
-		kdDebug() << "returning\n";
+		//kdDebug() << "returning\n";
 		emit newSelectedItem(&holeInfo);
 		return;
 	}
@@ -2716,7 +2748,7 @@ void KolfGame::contentsMousePressEvent(QMouseEvent *e)
 	CanvasItem *citem = dynamic_cast<CanvasItem *>(list.first());
 	if (!citem || !citem->moveable())
 	{
-		kdDebug() << "returning\n";
+		//kdDebug() << "returning\n";
 		emit newSelectedItem(&holeInfo);
 		return;
 	}
@@ -3191,7 +3223,7 @@ void KolfGame::holeDone()
 	{
 		if (curHole > 1)
 		{
-			kdDebug() << "lastScore: " << (*it).lastScore() << ", leastScore: " << leastScore << endl;
+			//kdDebug() << "lastScore: " << (*it).lastScore() << ", leastScore: " << leastScore << endl;
 			if ((*it).lastScore() < leastScore && (*it).lastScore() != 0)
 			{
 				curPlayer = it;
