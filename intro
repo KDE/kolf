@@ -19,7 +19,7 @@ maxspeed=3.7
 minspeed=3.7
 
 [1-blackhole@48,356|7]
-exit=5,281
+exit=3,281
 exitDeg=0
 maxspeed=4
 minspeed=4
