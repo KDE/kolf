@@ -147,7 +147,7 @@ void RectPoint::moveBy(double dx, double dy)
 /////////////////////////
 
 Slope::Slope(QRect rect, QCanvas *canvas)
-	: QCanvasRectangle(rect, canvas), reversed(false), color(QColor("#307002")), showGrade(false), grade(4)
+	: QCanvasRectangle(rect, canvas), grade(4), showGrade(false), reversed(false), color(QColor("#307002"))
 
 {
 	stuckOnGround = false;
@@ -228,7 +228,7 @@ void Slope::updateZ()
 {
 	QCanvasItem *qitem = onVStrut();
 	
-	const bool diag = (type == KPixmapEffect::DiagonalGradient || type == KPixmapEffect::CrossDiagonalGradient);
+	//const bool diag = (type == KPixmapEffect::DiagonalGradient || type == KPixmapEffect::CrossDiagonalGradient);
 	int area = (height() * width());
 	//if (diag)
 		//area /= 2;
@@ -303,7 +303,7 @@ void Slope::draw(QPainter &painter)
 		// this makes it about in the center
 		int xavg = 0, yavg = 0;
 		QPointArray r = areaPoints();
-		for (int i = 0; i < r.size(); ++i)
+		for (unsigned int i = 0; i < r.size(); ++i)
 		{
 			xavg += r[i].x();
 			yavg += r[i].y();
@@ -351,7 +351,7 @@ QPointArray Slope::areaPoints() const
 	}
 }
 
-void Slope::collision(Ball *ball, long int id)
+void Slope::collision(Ball *ball, long int /*id*/)
 {
 	//kdDebug() << "Slope::collision\n";
 	double vx = ball->xVelocity();
@@ -424,7 +424,7 @@ void Slope::updatePixmap()
 		bpainter.setBrush(color1);
 		QPointArray r = areaPoints();
 		// shift all the points
-		for (int i = 0; i < r.count(); ++i)
+		for (unsigned int i = 0; i < r.count(); ++i)
 		{
 			QPoint &p = r[i];
 			p.setX(p.x() - x());
@@ -618,7 +618,7 @@ void Bridge::load(KSimpleConfig *cfg, int hole)
 	doLoad(cfg, hole);
 }
 
-void Bridge::doLoad(KSimpleConfig *cfg, int hole)
+void Bridge::doLoad(KSimpleConfig *cfg, int /*hole*/)
 {
 	newSize(cfg->readNumEntry("width", width()), cfg->readNumEntry("height", height()));
 	setTopWallVisible(cfg->readBoolEntry("topWallVisible", topWallVisible()));
@@ -635,7 +635,7 @@ void Bridge::save(KSimpleConfig *cfg, int hole)
 	doSave(cfg, hole);
 }
 
-void Bridge::doSave(KSimpleConfig *cfg, int hole)
+void Bridge::doSave(KSimpleConfig *cfg, int /*hole*/)
 {
 	cfg->writeEntry("width", width());
 	cfg->writeEntry("height", height());
@@ -886,8 +886,6 @@ void Floater::moveBy(double dx, double dy)
 			return;
 	*/
 
-	bool putterOn;
-	bool ballOn;
 	QCanvasItemList l = collisions(false);
 	for (QCanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
 	{
@@ -1352,13 +1350,13 @@ void Ellipse::advance(int phase)
 	}
 }
 
-void Ellipse::doLoad(KSimpleConfig *cfg, int hole)
+void Ellipse::doLoad(KSimpleConfig *cfg, int /*hole*/)
 {
 	setChangeEnabled(cfg->readBoolEntry("changeEnabled", changeEnabled()));
 	setChangeEvery(cfg->readNumEntry("changeEvery", changeEvery()));
 }
 
-void Ellipse::doSave(KSimpleConfig *cfg, int hole)
+void Ellipse::doSave(KSimpleConfig *cfg, int /*hole*/)
 {
 	cfg->writeEntry("changeEvery", changeEvery());
 	cfg->writeEntry("changeEnabled", changeEnabled());
@@ -1406,7 +1404,7 @@ void Puddle::load(KSimpleConfig *cfg, int hole)
 	doLoad(cfg, hole);
 }
 
-void Puddle::collision(Ball *ball, long int id)
+void Puddle::collision(Ball *ball, long int /*id*/)
 {
 	QCanvasRectangle i(QRect(ball->x(), ball->y(), 1, 1), canvas());
 	i.show();
@@ -1450,7 +1448,7 @@ void Sand::load(KSimpleConfig *cfg, int hole)
 	doLoad(cfg, hole);
 }
 
-void Sand::collision(Ball *ball, long int id)
+void Sand::collision(Ball *ball, long int /*id*/)
 {
 	QCanvasRectangle i(QRect(ball->x(), ball->y(), 1, 1), canvas());
 	i.show();
@@ -1538,7 +1536,6 @@ void Putter::go(Direction d, bool more)
 
 void Putter::finishMe()
 {
-	const int degrees = deg%(maxDeg/4);
 	const double radians = deg2rad(deg);
 	midPoint.setX(cos(radians)*len);
 	midPoint.setY(-sin(radians)*len);
@@ -1670,7 +1667,7 @@ Hole::Hole(QColor color, QCanvas *canvas)
 	setBrush(color);
 }
 
-void Hole::collision(Ball *ball, long int id)
+void Hole::collision(Ball *ball, long int /*id*/)
 {
 	bool wasCenter = false;
 
@@ -1686,7 +1683,7 @@ void Hole::collision(Ball *ball, long int id)
 	}
 }
 
-HoleResult Hole::result(QPoint p, double s, bool *wasCenter)
+HoleResult Hole::result(QPoint p, double s, bool * /*wasCenter*/)
 {
 	//kdDebug() << "Hole::result\n";
 	if (s > 3.0)
@@ -1710,7 +1707,7 @@ HoleResult Hole::result(QPoint p, double s, bool *wasCenter)
 
 /////////////////////////
 
-bool Cup::place(Ball *ball, bool wasCenter)
+bool Cup::place(Ball *ball, bool /*wasCenter*/)
 {
 	//kdDebug() << "Cup::place()\n";
 	ball->move(x(), y());
@@ -1776,7 +1773,7 @@ QPtrList<QCanvasItem> BlackHole::moveableItems()
 	return ret;
 }
 
-bool BlackHole::place(Ball *ball, bool wasCenter)
+bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 {
 	playSound("blackhole");
 
@@ -2001,7 +1998,7 @@ void WallPoint::collision(Ball *ball, long int id)
 		return;
 	}
 
-	bool soundPlayed = playSound("wall");
+	playSound("wall");
 
 	lastId = id;
 
@@ -2215,7 +2212,7 @@ void Wall::collision(Ball *ball, long int id)
 		return;
 	}
 
-	bool soundPlayed = playSound("wall");
+	playSound("wall");
 
 	const QPoint start = startPoint();
 	const QPoint end = endPoint();
@@ -2608,7 +2605,7 @@ void KolfGame::contentsMouseMoveEvent(QMouseEvent *e)
 	storedMousePos = mouse;
 }
 
-void KolfGame::contentsMouseReleaseEvent(QMouseEvent *e)
+void KolfGame::contentsMouseReleaseEvent(QMouseEvent * /*e*/)
 {
 	moving = false;
 

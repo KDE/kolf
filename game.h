@@ -51,14 +51,14 @@ class CanvasItem
 {
 public:
 	CanvasItem() { game = 0; }
-	virtual void load(KSimpleConfig *, int hole) {}
+	virtual void load(KSimpleConfig *, int /*hole*/) {}
 	virtual bool loadLast() { return false; }
 	virtual void finalLoad() {}
-	virtual void firstMove(int x, int y) {}
-	virtual void save(KSimpleConfig *, int hole) {}
+	virtual void firstMove(int /*x*/, int /*y*/) {}
+	virtual void save(KSimpleConfig *, int /*hole*/) {}
 	virtual void aboutToSave() {}
 	virtual void savingDone() {}
-	virtual void editModeChanged(bool changed) {}
+	virtual void editModeChanged(bool /*changed*/) {}
 	virtual void aboutToDie() {}
 	virtual void aboutToDelete() {}
 	virtual bool deleteable() { return true; }
@@ -76,7 +76,7 @@ public:
 	bool playSound(QString file);
 
 	// should return true if ball should hit other things
-	virtual void collision(Ball *ball, long int id) {};
+	virtual void collision(Ball * /*ball*/, long int /*id*/) {};
 
 	QString makeGroup(int hole, QString name, int x, int y) { return QString("%1-%2@%3,%4|%5").arg(hole).arg(name).arg(x).arg(y).arg(id); }
 
@@ -172,7 +172,7 @@ class Object
 public:
 	Object() {};
 	virtual ~Object() {};
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return 0; };
+	virtual QCanvasItem *newObject(QCanvas * /*canvas*/) { return 0; };
 	virtual QString name() { return m_name; }
 	virtual QString _name() { return m__name; }
 
@@ -187,7 +187,7 @@ class RectPoint;
 class RectItem
 {
 public:
-	virtual void newSize(int width, int height) {};
+	virtual void newSize(int /*width*/, int /*height*/) {};
 };
 
 class Slope;
@@ -370,7 +370,7 @@ class Hole : public QCanvasEllipse, public CanvasItem
 {
 public:
 	Hole(QColor color, QCanvas *canvas);
-	virtual bool place(Ball *ball, bool wasCenter) { return true; };
+	virtual bool place(Ball * /*ball*/, bool /*wasCenter*/) { return true; };
 
 	virtual void collision(Ball *ball, long int id);
 
@@ -795,6 +795,7 @@ private:
 class HoleInfo : public CanvasItem
 {
 public:
+	virtual ~HoleInfo() {}
 	void setPar(int newpar) { m_par = newpar; }
 	int par() { return m_par; }
 	void setMaxStrokes(int newMaxStrokes) { m_maxStrokes = newMaxStrokes; }

@@ -1074,7 +1074,7 @@ exitDeg=10
 maxspeed=5
 minspeed=3
 
-[15-bridge@213,336|38]
+[15-bridge@211,337|38]
 botWallVisible=false
 height=40
 leftWallVisible=false
@@ -1100,14 +1100,13 @@ dummykey=true
 maxstrokes=14
 par=2
 
-[15-puddle@240,357|36]
-dummykey=true
-
 [15-puddle@242,338|35]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [15-puddle@243,376|37]
-dummykey=true
+changeEnabled=false
+changeEvery=50
 
 [15-slope@107,142|29]
 grade=3
