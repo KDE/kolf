@@ -158,8 +158,8 @@ void Kolf::initGUI()
 	(void) new KAction(i18n("&Reload Plugins"), 0, this, SLOT(initPlugins()), actionCollection(), "reloadplugins");
 	(void) new KAction(i18n("Show &Plugins..."), 0, this, SLOT(showPlugins()), actionCollection(), "showplugins");
 
-	aboutAction = new KAction(i18n("&About Course..."), 0, this, SLOT(nullSlot()), actionCollection(), "aboutcourse");
-	tutorialAction = new KAction(i18n("&Tutorial..."), 0, this, SLOT(tutorial()), actionCollection(), "tutorial");
+	aboutAction = new KAction(i18n("&About Course"), 0, this, SLOT(nullSlot()), actionCollection(), "aboutcourse");
+	tutorialAction = new KAction(i18n("&Tutorial"), 0, this, SLOT(tutorial()), actionCollection(), "tutorial");
 
 	createGUI();
 }

@@ -4052,6 +4052,7 @@ void KolfGame::openFile()
 	holeInfo.setMaxStrokes(cfg->readNumEntry("maxstrokes", 10));
 	bool hasFinalLoad = cfg->readBoolEntry("hasFinalLoad", true);
 
+	QStringList warned;
 	QStringList groups = cfg->groupList();
 
 	int numItems = 0;
@@ -4140,8 +4141,11 @@ void KolfGame::openFile()
 			break;
 		}
 
-		if (!loaded && name != "hole")
+		if (!loaded && name != "hole" && warned.contains(name) < 0)
+		{
 			KMessageBox::sorry(this, i18n("To fully experience this hole, you'll need to install the %1 plugin.").arg(QString("\"%1\"").arg(name)));
+			warned.append(name);
+		}
 	}
 
 	// if it's the first hole let's not

@@ -18,38 +18,29 @@ par=2
 [1-sign@2,2|3]
 Comment=<h3>Welcome</h3> to the tutorial course for Kolf!\s
 botWallVisible=true
-height=75
+height=74
 leftWallVisible=true
 rightWallVisible=true
 topWallVisible=true
-width=261
-
-[1-sign@21,321|5]
-Comment=Goal: hit the ball into the Cup (gray circle).
-botWallVisible=true
-height=50
-leftWallVisible=true
-rightWallVisible=true
-topWallVisible=true
-width=363
+width=319
 
 [1-sign@73,81|4]
-Comment=To hit the ball: hold down and release the Down arrow or left mouse button. How long you press the key determines ball's speed.\s
+Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
 botWallVisible=true
-height=114
+height=163
 leftWallVisible=true
 rightWallVisible=true
 topWallVisible=true
-width=327
+width=319
 
-[1-sign@74,201|7]
-Comment=To aim putter: hit left (counterclockwise) and right (clockwise) arrow keys or use mouse.
+[1-sign@74,251|7]
+Comment=To aim putter, hit the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use mouse.
 botWallVisible=true
-height=93
+height=142
 leftWallVisible=true
 rightWallVisible=true
 topWallVisible=true
-width=324
+width=320
 
 [10-ball@27,177]
 dummykey=true
@@ -236,10 +227,10 @@ speed=2
 topWallVisible=false
 width=80
 
-[2-ball@41,354]
+[2-ball@38,373]
 dummykey=true
 
-[2-cup@87,164|6]
+[2-cup@129,209|6]
 dummykey=true
 
 [2-hole@-50,-50|0]
@@ -249,30 +240,30 @@ maxstrokes=10
 par=2
 
 [2-sign@1,5|3]
-Comment=<h3>Slopes</h3>Slopes: shaded rectangles or triangles that push the ball from dark to light.
+Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you press the Up Arrow or right mouse button.
 botWallVisible=true
-height=143
+height=187
 leftWallVisible=true
 rightWallVisible=true
 topWallVisible=true
-width=398
+width=392
 
-[2-sign@110,152|5]
-Comment=Hint: hit the ball onto the slope and let it roll into cup.
+[2-sign@197,198|5]
+Comment=Hit the ball onto the slope and let it roll into cup.
 botWallVisible=true
-height=171
+height=195
 leftWallVisible=true
 rightWallVisible=true
 topWallVisible=true
-width=288
+width=197
 
-[2-slope@11,188|4]
+[2-slope@11,237|4]
 grade=4
 gradient=Vertical
-height=135
+height=113
 reversed=false
 stuckOnGround=false
-width=104
+width=181
 
 [3-ball@86,353]
 dummykey=true
@@ -289,11 +280,11 @@ par=3
 [3-sign@4,4|4]
 Comment=Try out these different types of slopes.
 botWallVisible=true
-height=76
+height=87
 leftWallVisible=true
 rightWallVisible=true
 topWallVisible=true
-width=307
+width=343
 
 [3-slope@148,292|5]
 grade=4
@@ -380,7 +371,7 @@ maxstrokes=10
 par=3
 
 [4-sign@6,3|3]
-Comment=Steepness of slopes: shown when you press Up arrow key or right mouse button. Steepness goes from 8 (steepest) to 1 (least steep).\s
+Comment=The steepness of a slope is shown when you press Up Arrow or the right mouse button. Steepness goes from 8 (steepest) to 1 (shallowest).\s
 botWallVisible=true
 height=158
 leftWallVisible=true
@@ -416,8 +407,8 @@ hasFinalLoad=false
 maxstrokes=10
 par=2
 
-[5-sign@0,5|3]
-Comment=<h3>Walls</h3>Watch how the ball bounces off the red walls.
+[5-sign@3,5|3]
+Comment=<h3>Walls</h3>Bounce the ball off of the red walls.
 botWallVisible=true
 height=117
 leftWallVisible=true
@@ -489,7 +480,7 @@ topWallVisible=true
 width=138
 
 [6-sign@3,5|4]
-Comment=<h3>Puddles (Water)</h3>Hitting into a Puddle (blue) adds an extra stroke to your score, and your ball is placed outside the Puddle.\s
+Comment=<h3>Puddles (Water)</h3>Hitting into a puddle (blue) adds a penalty stroke to your score, and your ball is placed outside the puddle.\s
 botWallVisible=true
 height=145
 leftWallVisible=true
@@ -524,6 +515,7 @@ width=267
 
 [7-windmill@15,145|3]
 botWallVisible=false
+bottom=true
 height=71
 leftWallVisible=true
 rightWallVisible=true
@@ -531,7 +523,7 @@ speed=5
 topWallVisible=false
 width=107
 
-[8-ball@35,220]
+[8-ball@39,234]
 dummykey=true
 
 [8-blackhole@60,343|4]
@@ -549,14 +541,14 @@ hasFinalLoad=false
 maxstrokes=10
 par=2
 
-[8-sign@3,4|3]
-Comment=<h3>Black Holes</h3>Black Holes transport the  ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Press the Up arrow or right mouse button to see which Black Hole goes to which exit.
+[8-sign@5,5|3]
+Comment=<h3>Black Holes</h3>Black Holes transport the  ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Press the Up Arrow or right mouse button to see which Black Hole goes to which exit and the direction the ball will be come out at.
 botWallVisible=true
-height=164
+height=206
 leftWallVisible=true
 rightWallVisible=true
 topWallVisible=true
-width=393
+width=390
 
 [8-wall@0,0|6]
 endPoint=145,132

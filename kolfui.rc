@@ -1,10 +1,12 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="Kolf" version="7">
+<kpartgui name="Kolf" version="8">
 	<MenuBar>
 		<Menu name="game">
 			<Action name="savegame" append="save_merge" />
 			<Action name="savegameas" append="save_merge" />
 			<Action name="saveshotas" append="save_merge" />
+
+			<Action name="aboutcourse" />
 		</Menu>
 
 		<Menu name="hole"><text>Ho&amp;le</text>
@@ -42,7 +44,6 @@
 		</Menu>
 
 		<Menu name="help">
-			<Action name="aboutcourse" />
 			<Action name="tutorial" />
 		</Menu>
 	</MenuBar>

@@ -29,10 +29,10 @@ int main(int argc, char **argv)
 
 	aboutData.addAuthor("Jason Katz-Brown", I18N_NOOP("Main author"), "jason@katzbrown.com");
 	aboutData.addAuthor("Niklas Knutsson", I18N_NOOP("Advanced putting mode"), 0);
+	aboutData.addAuthor("Ryan Cumming", I18N_NOOP("Vector class"), 0);
 	aboutData.addAuthor("Daniel Matza-Brown", I18N_NOOP("Working wall-bouncing algorithm"), 0);
 	aboutData.addCredit("Rob Renaud", I18N_NOOP("Wall-bouncing help"), 0);
 	aboutData.addCredit("Aaron Segio", I18N_NOOP("Suggestions, bug reports"), 0);
-	aboutData.addCredit("Rynan Cumming", I18N_NOOP("Vector class"), 0);
 
 	KCmdLineArgs::init(argc, argv, &aboutData);
 	KCmdLineArgs::addCmdLineOptions(options);
