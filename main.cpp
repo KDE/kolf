@@ -8,9 +8,11 @@
 #include <kdebug.h>
 #include <kurl.h>
 
-#include <iostream.h>
-
 #include "kolf.h"
+
+#include <iostream>
+
+using namespace std;
 
 static const char *description =
 I18N_NOOP("KDE Minigolf Game");
