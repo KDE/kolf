@@ -6,6 +6,7 @@
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>
 #include <kdebug.h>
+#include <kurl.h>
 
 #include <iostream.h>
 
@@ -18,6 +19,7 @@ static const char *version = "1.0";
 
 static KCmdLineOptions options[] = 
 {
+	{ "+file", I18N_NOOP("File"), 0 },
 	{ "course-info ", I18N_NOOP("Print course information and exit."), 0 },
 	{ 0, 0, 0 }
 };
@@ -32,6 +34,8 @@ int main(int argc, char **argv)
 	aboutData.addAuthor("Rik Hemsley", I18N_NOOP("Border around course"), 0);
 	aboutData.addAuthor("Ryan Cumming", I18N_NOOP("Vector class"), 0);
 	aboutData.addAuthor("Daniel Matza-Brown", I18N_NOOP("Working wall-bouncing algorithm"), 0);
+	aboutData.addAuthor("Timo A. Hummel", I18N_NOOP("Some good sound effects"), "timo.hummel@gmx.net");
+
 	aboutData.addCredit("Rob Renaud", I18N_NOOP("Wall-bouncing help"), 0);
 	aboutData.addCredit("Aaron Seigo", I18N_NOOP("Suggestions, bug reports"), 0);
 
@@ -68,9 +72,17 @@ int main(int argc, char **argv)
 	KApplication a;
 	KGlobal::locale()->insertCatalogue("libkdegames");
 
-	args->clear();
-
 	Kolf *top = new Kolf;
+
+	if (args->count() >= 1)
+	{
+		KURL url = args->url(args->count() - 1);
+		top->openURL(url);
+		args->clear();
+	}
+	else
+		top->closeGame();
+
 	a.setMainWidget(top);
 	top->show();
 

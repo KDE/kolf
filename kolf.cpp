@@ -1,22 +1,23 @@
-#include <kconfig.h>
 #include <kaction.h>
-#include <kedittoolbar.h>
-#include <kmessagebox.h>
-#include <kkeydialog.h>
-#include <kstandarddirs.h>
 #include <kapplication.h>
+#include <kconfig.h>
 #include <kdebug.h>
+#include <kedittoolbar.h>
 #include <kfiledialog.h>
 #include <kglobal.h>
-#include <kprinter.h>
+#include <kio/netaccess.h>
+#include <kkeydialog.h>
 #include <klocale.h>
 #include <kmainwindow.h>
+#include <kmimetype.h>
+#include <kmessagebox.h>
+#include <kprinter.h>
 #include <kscoredialog.h>
+#include <kstandarddirs.h>
 #include <kstatusbar.h>
 #include <kstdaccel.h>
 #include <kstdaction.h>
 #include <kstdgameaction.h>
-#include <kurl.h>
 
 #include <qcolor.h>
 #include <qevent.h>
@@ -68,30 +69,6 @@ Kolf::Kolf()
 
 	resize(420, 480);
 	applyMainWindowSettings(KGlobal::config(), "TopLevelWindow");
-
-	closeGame();
-
-	KConfig *config = kapp->config();
-	config->setGroup("App");
-	if (!config->readBoolEntry("beenRun", false))
-	{
-		// this isn't very kde-compliant, and now
-		// that there is documentation...
-		/*
-		switch (KMessageBox::questionYesNo(this, i18n("Since it's your first time playing Kolf, would you like to play on the tutorial course once?")))
-		{
-			case KMessageBox::Yes:
-				QTimer::singleShot(100, this, SLOT(tutorial()));
-				break;
-			case KMessageBox::No:
-			default:
-				break;
-		}
-		*/
-		config->writeEntry("beenRun", true);
-	}
-
-	config->sync();
 }
 
 Kolf::~Kolf()
@@ -309,7 +286,7 @@ void Kolf::startNewGame()
 
 	// so game can do stuff that needs to be done
 	// after things above are connected
-	game->startFirstHole(1);
+	game->startFirstHole(firstHole);
 
 	end:
 	delete dialog;
@@ -345,6 +322,8 @@ void Kolf::closeGame()
 			return;
 		game->pause();
 	}
+
+	filename = QString::null;
 
 	editingEnded();
 	delete game;
@@ -551,6 +530,30 @@ void Kolf::loadGame()
 
 	isTutorial = false;
 	startNewGame();
+}
+
+// called by main for commmand line files
+void Kolf::openURL(KURL url)
+{
+	QString target;
+	if (KIO::NetAccess::download(url, target))
+	{
+		isTutorial = false;
+		QString mimeType = KMimeType::findByPath(target)->name();
+		if (mimeType == "application/x-kourse")
+			filename = target;
+		else if (mimeType == "application/x-kolf")
+			loadedGame = target;
+		else
+		{
+			closeGame();
+			return;
+		}
+
+		QTimer::singleShot(10, this, SLOT(startNewGame()));
+	}
+	else
+		closeGame();
 }
 
 void Kolf::newPlayersTurn(Player *player)
@@ -789,7 +792,8 @@ void Kolf::enableAllMessages()
 
 void Kolf::setCurrentHole(int hole)
 {
-	if(!holeAction) return;
+	if (!holeAction)
+		return;
 	// Golf is 1-based, KListAction is 0-based
 	holeAction->setCurrentItem(hole - 1);
 }

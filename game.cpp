@@ -3611,9 +3611,9 @@ void KolfGame::timeout()
 			curScore++;
 
 		if (curScore == 1)
-			playHoleInOne();
+			playSound("holeinone");
 		else if (curScore <= holeInfo.par())
-			playWooHoo();
+			playSound("woohoo");
 
 		(*curPlayer).ball()->setZ((*curPlayer).ball()->z() + .1 - (.1)/(curScore));
 
@@ -3631,7 +3631,7 @@ void KolfGame::timeout()
 		else
 		{
 			inPlay = false;
-			QTimer::singleShot(500, this, SLOT(shotDone()));
+			QTimer::singleShot(40, this, SLOT(shotDone()));
 		}
 	}
 }
@@ -5050,6 +5050,11 @@ void KolfGame::saveScores(KConfig *config)
 
 		config->writeEntry("Scores", scores);
 	}
+}
+
+CourseInfo::CourseInfo()
+: name(i18n("No Name")), author(i18n("No Author")), holes(0), par(0)
+{
 }
 
 #include "game.moc"

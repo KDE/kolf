@@ -32,6 +32,11 @@ public:
 	Kolf();
 	~Kolf();
 
+	void openURL(KURL url);
+
+public slots:
+	void closeGame();
+
 protected:
 	void closeEvent(QCloseEvent *);
 
@@ -40,7 +45,6 @@ protected slots:
 	void loadGame();
 	void tutorial();
 	void newGame();
-	void closeGame();
 	void save();
 	void saveAs();
 	void saveGame();

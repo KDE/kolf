@@ -2,6 +2,20 @@
 [Desktop Entry]
 Encoding=UTF-8
 MimeType=application/x-kolf
-Comment=Kolf saved game
-Icon=kolf
 Type=MimeType
+Comment=Kolf saved game
+Comment[bs]=Kolf snimljena igra
+Comment[da]=Gemt Kolf-spil
+Comment[el]=Αποθηκευμένο παιχνίδι του Kolf
+Comment[eo]=Golfo ludkonservo
+Comment[es]=Juego de Kolf guardado
+Comment[fi]=Kolf talletettu peli
+Comment[he]=משחק שמור של Kolf
+Comment[hu]=Kolf elmentett állás
+Comment[ja]=Kolf の保存されたゲーム
+Comment[pt]=Jogo gravado do Kolf
+Comment[pt_BR]=Jogo Kolf salvo
+Comment[sl]=Shranjena igra za Kolf
+Comment[sv]=Sparat Kolfspel
+Icon=kolf
+Patterns=*.kolfgame

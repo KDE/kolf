@@ -919,7 +919,7 @@ private:
 struct CourseInfo
 {
 	CourseInfo(const QString &_name, const QString &_untranslatedName, const QString &_author, unsigned int _holes, unsigned int _par) { name = _name; untranslatedName = _untranslatedName, author = _author; holes = _holes; par = _par; }
-	CourseInfo() {}
+	CourseInfo();
 
 	QString name;
 	QString untranslatedName;
@@ -1028,9 +1028,6 @@ private slots:
 	void addItemsToMoveableList(QPtrList<QCanvasItem>);
 	void addItemToFastAdvancersList(CanvasItem *);
 	void hideInfoText();
-
-	void playHoleInOne() { playSound("holeinone"); }
-	void playWooHoo() { playSound("woohoo"); }
 
 protected:
 	void mouseMoveEvent(QMouseEvent *e);
