@@ -11,7 +11,7 @@ Icon=kolf
 MimeType=application/x-kourse;application/x-kolf
 
 GenericName=Miniature Golf
-GenericName[bg]=Миниатюрен Golf
+GenericName[bg]=Миниатюрен голф
 GenericName[bs]=Minijaturni golf
 GenericName[ca]=Golf en miniatura
 GenericName[cs]=Miniaturní golf
@@ -31,6 +31,7 @@ GenericName[is]=Minigolf
 GenericName[it]=Minigolf
 GenericName[ja]=ミニチュアゴルフ
 GenericName[lv]=Miniatūrs Golfs
+GenericName[mk]=Мини голф
 GenericName[nb]=Miniatyrgolf
 GenericName[nl]=miniatuur golf
 GenericName[nn]=Minigolf

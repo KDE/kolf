@@ -1,6 +1,7 @@
 [0-course@-50,-50]
 Name=Easy Course
 Name[af]=Maklike Natuurlik
+Name[bg]=Лесно игрище
 Name[bs]=Lagani kurs
 Name[ca]=Camp fàcil
 Name[cs]=Jednoduchý
@@ -28,6 +29,7 @@ Name[sk]=Jednoduché ihrisko
 Name[sl]=Lahka steza
 Name[sv]=Enkel bana
 Name[tr]=Kolay Pist
+Name[uk]=Легкий
 Name[ven]=Thero i Leluwaho
 Name[xh]=Indlela Elula
 Name[zh_CN]=轻松的路线
@@ -602,6 +604,7 @@ width=10
 [13-sign@219,247|14]
 Comment=Hit slowly...
 Comment[af]=Getref stadig...
+Comment[bg]=Лек удар...
 Comment[bs]=Polako pucaj...
 Comment[ca]=Picar lentament...
 Comment[cs]=Trefujte pomalu...

@@ -3,6 +3,7 @@
 Encoding=UTF-8
 MimeType=application/x-kourse
 Comment=Kolf course
+Comment[bg]=Учебен курс по Kolf
 Comment[bs]=Kolf kurs
 Comment[ca]=Curs de kolf
 Comment[cs]=Kurs Kolfu
@@ -19,6 +20,7 @@ Comment[hu]=Kolf pálya
 Comment[is]=Kolf Braut
 Comment[it]=Percorso di Kolf
 Comment[ja]=Kolf コース
+Comment[mk]=Kolf курс
 Comment[nb]=Kolf-kurs
 Comment[nl]=Kolf-baan
 Comment[nn]=Kolf-bane
