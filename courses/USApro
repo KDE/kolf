@@ -242,6 +242,7 @@ width=36
 [10-sign@-1,360|42]
 Comment=Washington DC (Pentagon)
 Comment[es]=Washington DC (Pentágono)
+Comment[it]=Washington DC (Pentagono)
 Comment[pt]=Washington DC (Pentágono)
 Comment[pt_BR]=Washington DC (Pentágono)
 Comment[sr]=Вашингтон ДЦ<br>(Пентагон)
@@ -910,6 +911,7 @@ Comment=Lake Tahoe, CA/NV
 Comment[bg]=Езерото Тахо, Калифорния/Невада
 Comment[es]=Lago Tahoe, CA/NV
 Comment[hu]=Lake Tahoe, Kalifornia/Nevada
+Comment[it]=Lago Tahoe, CA/NV
 Comment[pt]=Lago Tahoe, CA/NV
 Comment[pt_BR]=Lago Tahoe, CA/NV
 Comment[sr]=Језеро Тахо, Кал./Нев.
