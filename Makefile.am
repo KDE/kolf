@@ -50,8 +50,8 @@ magic_DATA = kolf.magic
 
 METASOURCES = AUTO
 
-messages: rc.cpp
-	$(XGETTEXT) *.cpp -o $(podir)/kolf.pot
+messages: rc.cpp canvasitem.h game.h
+	$(XGETTEXT) *.cpp canvasitem.h game.h -o $(podir)/kolf.pot
 
 install-data-local:
 	rm -rf $(DESTDIR)$(kde_appsdir)/Games/kolf.desktop
