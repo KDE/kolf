@@ -207,10 +207,10 @@ button next to the player's name.</para>
 </chapter>
 
 <chapter id="editing"> <title>Editing Courses</title>
-<para>&kolf; comes with a versatile editor for it's course file format. Courses can have any number of holes, and there is no limiting the creativity of the course designer.</para>
+<para>&kolf; comes with a versatile editor for its course file format. Courses can have any number of holes, and there is no limiting the creativity of the course designer.</para>
 
 <sect1 id="creating"> <title>Creating a New Course</title>
-<para>To create a new course, choose <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice>. Go to the <guilabel>Courses</guilabel> page of the dialog, and choose the <guilabel>Create New</guilabel> course. Make sure that, under the <guilabel>Options</guilabel> page of the dialog, that <guilabel>Strict mode</guilabel> is unchecked.</para>
+<para>To create a new course, choose <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice>. Go to the <guilabel>Courses</guilabel> page of the dialog, and choose the <guilabel>Create New</guilabel> course. Make sure that, under the <guilabel>Options</guilabel> page of the dialog, <guilabel>Strict mode</guilabel> is unchecked.</para>
 
 <note>
 <para>To play this new course later, click the <guibutton>Add...</guibutton> button to add the course to your list of courses.</para>
