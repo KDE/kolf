@@ -202,7 +202,7 @@ void Kolf::startNewGame()
 	else
 	{
 		KSimpleConfig config(loadedGame);
-		config.setGroup("Saved Game");
+		config.setGroup("0 Saved Game");
 
 		if (isTutorial)
 			filename = KGlobal::dirs()->findResource("appdata", "tutorial.kolf");
@@ -495,7 +495,7 @@ void Kolf::saveGame()
 	}
 	
 	KSimpleConfig config(loadedGame);
-	config.setGroup("Saved Game");
+	config.setGroup("0 Saved Game");
 
 	config.writeEntry("Competition", competition);
 	config.writeEntry("Course", filename);

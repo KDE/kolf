@@ -4677,7 +4677,7 @@ void KolfGame::courseInfo(CourseInfo &info, const QString& filename)
 
 void KolfGame::scoresFromSaved(KSimpleConfig *config, PlayerList &players)
 {
-	config->setGroup("Saved Game");
+	config->setGroup("0 Saved Game");
 	int numPlayers = config->readNumEntry("Players", 0);
 	if (numPlayers <= 0)
 		return;
@@ -4713,7 +4713,7 @@ void KolfGame::saveScores(KSimpleConfig *config)
 			config->deleteGroup(*it);
 	}
 
-	config->setGroup("Saved Game");
+	config->setGroup("0 Saved Game");
 	config->writeEntry("Players", players->count());
 	config->writeEntry("Course", filename);
 	config->writeEntry("Current Hole", curHole);
