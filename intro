@@ -15,8 +15,8 @@ minspeed=5
 [1-blackhole@258,282|5]
 exit=6,19
 exitDeg=0
-maxspeed=4
-minspeed=4
+maxspeed=3.7
+minspeed=3.7
 
 [1-blackhole@48,356|7]
 exit=5,281
