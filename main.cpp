@@ -18,7 +18,7 @@ static const char *version = "1.0";
 
 static KCmdLineOptions options[] = 
 {
-	{ "course-info ", I18N_NOOP("Print course information and quit."), 0 },
+	{ "course-info ", I18N_NOOP("Print course information and exit."), 0 },
 	{ 0, 0, 0 }
 };
 
@@ -29,6 +29,7 @@ int main(int argc, char **argv)
 
 	aboutData.addAuthor("Jason Katz-Brown", I18N_NOOP("Main author"), "jason@katzbrown.com");
 	aboutData.addAuthor("Niklas Knutsson", I18N_NOOP("Advanced putting mode"), 0);
+	aboutData.addAuthor("Rik Hemsley", I18N_NOOP("Border around course"), 0);
 	aboutData.addAuthor("Ryan Cumming", I18N_NOOP("Vector class"), 0);
 	aboutData.addAuthor("Daniel Matza-Brown", I18N_NOOP("Working wall-bouncing algorithm"), 0);
 	aboutData.addCredit("Rob Renaud", I18N_NOOP("Wall-bouncing help"), 0);

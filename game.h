@@ -1003,12 +1003,20 @@ private slots:
 	void hideInfoText();
 
 protected:
+
+	void mouseMoveEvent(QMouseEvent *e);
+	void mousePressEvent(QMouseEvent *e);
+	void mouseReleaseEvent(QMouseEvent *e);
+	void mouseDoubleClickEvent(QMouseEvent *e);
+
 	void contentsMousePressEvent(QMouseEvent *e);
 	void contentsMouseDoubleClickEvent(QMouseEvent *e);	
 	void contentsMouseMoveEvent(QMouseEvent *e);
 	void contentsMouseReleaseEvent(QMouseEvent *e);
 	void keyPressEvent(QKeyEvent *e);
 	void keyReleaseEvent(QKeyEvent *e);
+
+	QPoint viewportToViewport(const QPoint &p);
 
 private:
 	QCanvas *course;
@@ -1052,6 +1060,7 @@ private:
 	int wallWidth;
 	int height;
 	int width;
+	int margin;
 	QColor grass;
 
 	int advancePeriod;

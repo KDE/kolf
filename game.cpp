@@ -2453,7 +2453,6 @@ void WallPoint::editModeChanged(bool changed)
 
 bool WallPoint::collision(Ball *ball, long int id)
 {
-	kdDebug() << "wallPoint::collision\n";
 	if (ball->curVector().magnitude() <= 0)
 		return false;
 
@@ -2479,8 +2478,6 @@ bool WallPoint::collision(Ball *ball, long int id)
 		double difference = fabs(wallVector.direction() - ballVector.direction());
 		while (difference > 2 * M_PI)
 			difference -= 2 * M_PI;
-
-		kdDebug() << "difference is " << rad2deg(difference) << endl;
 
 		if (difference < M_PI / 2 || difference > 3 * M_PI / 2)
 			weirdBounce = false;
@@ -2907,6 +2904,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	: QCanvasView(parent, name)
 {
 	// for mouse control
+	setMouseTracking(true);
 	viewport()->setMouseTracking(true);
 	setFrameShape(NoFrame);
 
@@ -2951,12 +2949,18 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	holeInfo.setMaxStrokes(10);
 	holeInfo.borderWallsChanged(true);
 
+	// width and height are the width and height of the canvas
+	// in easy storage
 	width = 400;
 	height = 400;
 	grass = QColor("#35760D");
 
+	margin = 10;
+
 	setFocusPolicy(QWidget::StrongFocus);
-	setFixedSize(width, height);
+	setFixedSize(width + 2 * margin, height + 2 * margin);
+
+	setMargins(margin, margin, margin, margin);
 
 	course = new QCanvas(this);
 	course->setBackgroundColor(white);
@@ -3030,7 +3034,6 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	putter = new Putter(course);
 
 	// border walls:
-	const int margin = 10;
 
 	// horiz
 	addBorderWall(QPoint(margin, margin), QPoint(width - margin, margin));
@@ -3230,6 +3233,64 @@ void KolfGame::contentsMousePressEvent(QMouseEvent *e)
 	setFocus();
 }
 
+QPoint KolfGame::viewportToViewport(const QPoint &p)
+{
+	// for some reason viewportToContents doesn't work right
+	return p - QPoint(margin, margin);
+}
+
+void KolfGame::mouseReleaseEvent(QMouseEvent * e)
+{
+  QMouseEvent fixedEvent
+    (
+      QEvent::MouseButtonRelease,
+      viewportToViewport(viewportToContents(e->pos())),
+      e->button(),
+      e->state()
+    );
+
+  contentsMouseReleaseEvent(&fixedEvent);
+}
+
+void KolfGame::mousePressEvent(QMouseEvent * e)
+{
+  QMouseEvent fixedEvent
+    (
+      QEvent::MouseButtonPress,
+      viewportToViewport(viewportToContents(e->pos())),
+      e->button(),
+      e->state()
+    );
+
+  contentsMousePressEvent(&fixedEvent);
+}
+
+void KolfGame::mouseDoubleClickEvent(QMouseEvent * e)
+{
+  QMouseEvent fixedEvent
+    (
+      QEvent::MouseButtonDblClick,
+      viewportToViewport(viewportToContents(e->pos())),
+      e->button(),
+      e->state()
+    );
+
+  contentsMouseDoubleClickEvent(&fixedEvent);
+}
+
+void KolfGame::mouseMoveEvent(QMouseEvent * e)
+{
+  QMouseEvent fixedEvent
+    (
+      QEvent::MouseMove,
+      viewportToViewport(viewportToContents(e->pos())),
+      e->button(),
+      e->state()
+    );
+
+  contentsMouseMoveEvent(&fixedEvent);
+}
+
 void KolfGame::contentsMouseMoveEvent(QMouseEvent *e)
 {
 	if (inPlay || !putter || m_ignoreEvents)
@@ -3275,7 +3336,7 @@ void KolfGame::updateMouse()
 	if (!m_useMouse || ((stroking || putting) && m_useAdvancedPutting))
 		return;
 
-	const QPoint cursor = viewportToContents(mapFromGlobal(QCursor::pos()));
+	const QPoint cursor = viewportToViewport(viewportToContents(mapFromGlobal(QCursor::pos())));
 	const QPoint ball((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 	putter->setAngle(-Vector(cursor, ball).direction());
 }

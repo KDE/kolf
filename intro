@@ -157,10 +157,10 @@ width=53
 [1-slope@232,224|6]
 grade=7
 gradient=Diagonal
-height=175
+height=177
 reversed=false
 stuckOnGround=true
-width=168
+width=170
 
 [1-slope@281,234|27]
 grade=4

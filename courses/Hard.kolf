@@ -1,6 +1,5 @@
 [0-course@-50,-50]
 Name=Hard Course
-Name[sv]=Svår bana
 author=Jason Katz-Brown
 name=Hard Course
 
@@ -923,7 +922,7 @@ endPoint=196,264
 startPoint=189,292
 
 [12-wall@0,0|35]
-endPoint=231,251
+endPoint=236,251
 startPoint=196,264
 
 [12-wall@0,0|4]
@@ -931,12 +930,12 @@ endPoint=13,332
 startPoint=21,360
 
 [12-wall@0,0|42]
-endPoint=316,78
+endPoint=318,79
 startPoint=282,74
 
 [12-wall@0,0|43]
 endPoint=337,57
-startPoint=318,79
+startPoint=316,78
 
 [12-wall@0,0|44]
 endPoint=339,30
@@ -947,7 +946,7 @@ endPoint=333,14
 startPoint=339,30
 
 [12-wall@0,0|46]
-endPoint=316,78
+endPoint=318,79
 startPoint=310,111
 
 [12-wall@0,0|47]
@@ -972,7 +971,7 @@ startPoint=284,137
 
 [12-wall@0,0|54]
 endPoint=136,332
-startPoint=133,354
+startPoint=134,357
 
 [12-wall@0,0|55]
 endPoint=56,280
@@ -1008,18 +1007,22 @@ startPoint=186,86
 
 [12-wall@0,0|63]
 endPoint=147,372
-startPoint=134,357
+startPoint=133,354
 
 [12-wall@0,0|64]
 endPoint=186,388
 startPoint=147,372
+
+[12-wall@0,0|68]
+endPoint=236,251
+startPoint=238,230
 
 [12-wall@0,0|7]
 endPoint=288,292
 startPoint=310,111
 
 [12-wall@0,0|8]
-endPoint=133,354
+endPoint=134,357
 startPoint=104,374
 
 [12-wall@0,0|9]
@@ -1062,7 +1065,6 @@ par=3
 
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
-Comment[sv]=Låt flottarna <strong>knuffa</strong> dig!
 botWallVisible=true
 height=196
 leftWallVisible=true
@@ -2922,6 +2924,12 @@ changeEvery=50
 height=82
 width=60
 
+[4-puddle@226,149|120]
+changeEnabled=false
+changeEvery=50
+height=92
+width=116
+
 [4-puddle@233,255|55]
 changeEnabled=false
 changeEvery=50
@@ -2933,12 +2941,6 @@ changeEnabled=false
 changeEvery=50
 height=28
 width=66
-
-[4-puddle@238,151|119]
-changeEnabled=false
-changeEvery=50
-height=70
-width=74
 
 [4-puddle@240,313|128]
 changeEnabled=false
@@ -2976,17 +2978,17 @@ changeEvery=50
 height=24
 width=32
 
-[4-puddle@260,161|120]
-changeEnabled=false
-changeEvery=50
-height=56
-width=66
-
 [4-puddle@266,258|58]
 changeEnabled=false
 changeEvery=50
 height=24
 width=24
+
+[4-puddle@267,157|119]
+changeEnabled=false
+changeEvery=50
+height=42
+width=46
 
 [4-puddle@273,261|51]
 changeEnabled=false
@@ -3262,7 +3264,7 @@ startPoint=76,195
 
 [4-wall@0,0|111]
 endPoint=216,291
-startPoint=189,299
+startPoint=190,299
 
 [4-wall@0,0|115]
 endPoint=138,131
@@ -3365,7 +3367,7 @@ endPoint=69,367
 startPoint=39,353
 
 [4-wall@0,0|21]
-endPoint=190,299
+endPoint=189,299
 startPoint=164,241
 
 [4-wall@0,0|22]
@@ -3377,12 +3379,12 @@ endPoint=345,178
 startPoint=322,148
 
 [4-wall@0,0|24]
-endPoint=259,113
+endPoint=275,113
 startPoint=243,98
 
 [4-wall@0,0|25]
 endPoint=291,137
-startPoint=259,113
+startPoint=275,113
 
 [4-wall@0,0|26]
 endPoint=182,55
@@ -3453,7 +3455,7 @@ endPoint=365,22
 startPoint=314,12
 
 [4-wall@0,0|5]
-endPoint=189,299
+endPoint=190,299
 startPoint=153,355
 
 [4-wall@0,0|7]
