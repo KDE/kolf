@@ -5,11 +5,10 @@
 #include <kdialog.h>
 #include <kfiledialog.h>
 #include <kglobal.h>
+#include <kimageeffect.h>
 #include <klineedit.h>
 #include <kmessagebox.h>
-#include <kpixmap.h>
 #include <kpixmapeffect.h>
-#include <kpopupmenu.h>
 #include <ksimpleconfig.h>
 #include <kstandarddirs.h>
 
@@ -26,6 +25,7 @@
 #include <qevent.h>
 #include <qfont.h>
 #include <qfontmetrics.h>
+#include <qimage.h>
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qmap.h>
@@ -154,26 +154,103 @@ void RectPoint::moveBy(double dx, double dy)
 
 /////////////////////////
 
+Arrow::Arrow(QCanvas *canvas)
+	: QCanvasLine(canvas)
+{
+	line1 = new QCanvasLine(canvas);
+	line2 = new QCanvasLine(canvas);
+
+	line1->setVisible(true);
+	line2->setVisible(true);
+
+	m_angle = 0;
+	m_length = 20;
+
+	setPen(black);
+
+	updateSelf();
+}
+
+void Arrow::setPen(QPen p)
+{
+	p.setWidth(2);
+	QCanvasLine::setPen(p);
+	line1->setPen(p);
+	line2->setPen(p);
+}
+
+void Arrow::setVisible(bool yes)
+{
+	QCanvasLine::setVisible(yes);
+	line1->setVisible(yes);
+	line2->setVisible(yes);
+}
+
+void Arrow::moveBy(double dx, double dy)
+{
+	QCanvasLine::moveBy(dx, dy);
+	line1->moveBy(dx, dy);
+	line2->moveBy(dx, dy);
+}
+
+void Arrow::aboutToDie()
+{
+	delete line1;
+	delete line2;
+}
+
+void Arrow::updateSelf()
+{
+	QPoint start = startPoint();
+	QPoint end(m_length * cos(m_angle), m_length * sin(m_angle));
+	setPoints(start.x(), start.y(), end.x(), end.y());
+
+	const double lineLen = m_length / 2;
+
+	const double angle1 = m_angle - PI / 2 - 1;
+	line1->move(end.x() + x(), end.y() + y());
+	start = end;
+	end = QPoint(lineLen * cos(angle1), lineLen * sin(angle1));
+	line1->setPoints(0, 0, end.x(), end.y());
+
+	const double angle2 = m_angle + PI / 2 + 1;
+	line2->move(start.x() + x(), start.y() + y());
+	end = QPoint(lineLen * cos(angle2), lineLen * sin(angle2));
+	line2->setPoints(0, 0, end.x(), end.y());
+}
+
+/////////////////////////
+
 Slope::Slope(QRect rect, QCanvas *canvas)
-	: QCanvasRectangle(rect, canvas), grade(4), showGrade(false), reversed(false), color(QColor("#307002"))
+	: QCanvasRectangle(rect, canvas), grade(4), reversed(false), color(QColor("#327501"))
 
 {
 	stuckOnGround = false;
 	setPen(NoPen);
-	gradientKeys[KPixmapEffect::VerticalGradient] = "Vertical";
-	gradientKeys[KPixmapEffect::HorizontalGradient] = "Horizontal";
-	gradientKeys[KPixmapEffect::DiagonalGradient] = "Diagonal";
-	gradientKeys[KPixmapEffect::CrossDiagonalGradient] = "Opposite Diagonal";
-	gradientKeys[KPixmapEffect::EllipticGradient] = "Elliptic";
-	gradientI18nKeys[KPixmapEffect::VerticalGradient] = i18n("Vertical");
-	gradientI18nKeys[KPixmapEffect::HorizontalGradient] = i18n("Horizontal");
-	gradientI18nKeys[KPixmapEffect::DiagonalGradient] = i18n("Diagonal");
-	gradientI18nKeys[KPixmapEffect::CrossDiagonalGradient] = i18n("Opposite Diagonal");
-	gradientI18nKeys[KPixmapEffect::EllipticGradient] = i18n("Circular");
+	gradientKeys[KImageEffect::VerticalGradient] = "Vertical";
+	gradientKeys[KImageEffect::HorizontalGradient] = "Horizontal";
+	gradientKeys[KImageEffect::DiagonalGradient] = "Diagonal";
+	gradientKeys[KImageEffect::CrossDiagonalGradient] = "Opposite Diagonal";
+	gradientKeys[KImageEffect::EllipticGradient] = "Elliptic";
+	gradientI18nKeys[KImageEffect::VerticalGradient] = i18n("Vertical");
+	gradientI18nKeys[KImageEffect::HorizontalGradient] = i18n("Horizontal");
+	gradientI18nKeys[KImageEffect::DiagonalGradient] = i18n("Diagonal");
+	gradientI18nKeys[KImageEffect::CrossDiagonalGradient] = i18n("Opposite Diagonal");
+	gradientI18nKeys[KImageEffect::EllipticGradient] = i18n("Circular");
 	setZ(-50);
 
 	point = new RectPoint(color.light(), this, canvas);
+
+	QFont font(kapp->font());
+	font.setPixelSize(18); 
+	text = new QCanvasText(canvas);
+	text->setFont(font);
+	text->setColor(white);
+
+	arrow = new Arrow(canvas);
+
 	editModeChanged(false);
+	hideInfo();
 
 	// this does updatePixmap
 	setGradient("Vertical");
@@ -181,17 +258,23 @@ Slope::Slope(QRect rect, QCanvas *canvas)
 
 void Slope::showInfo()
 {
-	setGradeVisible(true);
+	if (type != KImageEffect::EllipticGradient)
+		arrow->setVisible(true);
+	text->setVisible(true);
 }
 
 void Slope::hideInfo()
 {
-	setGradeVisible(false);
+	arrow->setVisible(false);
+	text->setVisible(false);
 }
 
 void Slope::aboutToDie()
 {
 	delete point;
+	arrow->aboutToDie();
+	delete text;
+	delete arrow;
 }
 
 QPtrList<QCanvasItem> Slope::moveableItems()
@@ -209,7 +292,7 @@ void Slope::setSize(int width, int height)
 
 void Slope::newSize(int width, int height)
 {
-	if (type == KPixmapEffect::EllipticGradient)
+	if (type == KImageEffect::EllipticGradient)
 	{
 		QCanvasRectangle::setSize(width, width);
 		// move point back to good spot
@@ -223,6 +306,8 @@ void Slope::newSize(int width, int height)
 	else
 		QCanvasRectangle::setSize(width, height);
 
+	moveArrow();
+	updatePixmap();
 	updateZ();
 }
 
@@ -233,9 +318,27 @@ void Slope::moveBy(double dx, double dy)
 	point->dontMove();
 	point->move(x() + width(), y() + height());
 
-	updateZ();
+	moveArrow();
 
-	update();
+	updateZ();
+}
+
+void Slope::moveArrow()
+{
+	int xavg = 0, yavg = 0;
+	QPointArray r = areaPoints();
+	for (unsigned int i = 0; i < r.size(); ++i)
+	{
+		xavg += r[i].x();
+		yavg += r[i].y();
+	}
+	xavg /= r.size();
+	yavg /= r.size();
+
+	arrow->move((double)xavg, (double)yavg);
+
+	text->setText(QString::number(grade));
+	text->move((double)xavg - text->boundingRect().width() / 2, (double)yavg - text->boundingRect().height() / 2);
 }
 
 void Slope::editModeChanged(bool changed)
@@ -246,7 +349,7 @@ void Slope::editModeChanged(bool changed)
 
 void Slope::updateZ()
 {
-	//const bool diag = (type == KPixmapEffect::DiagonalGradient || type == KPixmapEffect::CrossDiagonalGradient);
+	//const bool diag = (type == KImageEffect::DiagonalGradient || type == KImageEffect::CrossDiagonalGradient);
 	int area = (height() * width());
 	//if (diag)
 		//area /= 2;
@@ -305,40 +408,8 @@ void Slope::save(KSimpleConfig *cfg, int hole)
 
 void Slope::draw(QPainter &painter)
 {
-	if (pixmap.width() != width() || pixmap.height() != height())
-		updatePixmap();
 	//kdDebug() << "Slope::draw\n";
 	painter.drawPixmap((int)x(), (int)y(), pixmap);
-
-	if (showGrade)
-	{
-		painter.setPen(white);
-		QFont font(kapp->font());
-		font.setPixelSize(18); 
-		painter.setFont(font);
-		QFontMetrics metrics(painter.fontMetrics());
-
-		QString num(QString::number(grade));
-
-		// this makes it about in the center
-		int xavg = 0, yavg = 0;
-		QPointArray r = areaPoints();
-		for (unsigned int i = 0; i < r.size(); ++i)
-		{
-			xavg += r[i].x();
-			yavg += r[i].y();
-		}
-		xavg /= r.size();
-		yavg /= r.size();
-
-		//kdDebug() << "xavg is " << xavg << endl;
-		//kdDebug() << "yavg is " << yavg << endl;
-
-		const int tx = xavg - metrics.width(num) / 2;
-		const int ty = yavg + metrics.boundingRect(num).height() / 2;
-
-		painter.drawText(tx, ty, num);
-	}
 }
 
 QPointArray Slope::areaPoints() const
@@ -346,7 +417,7 @@ QPointArray Slope::areaPoints() const
 	//kdDebug() << "Slope::areaPoints\n";
 	switch (type)
 	{
-		case KPixmapEffect::CrossDiagonalGradient:
+		case KImageEffect::CrossDiagonalGradient:
 		{
 			QPointArray ret(3);
 			ret[0] = QPoint((int)x(), (int)y());
@@ -356,7 +427,7 @@ QPointArray Slope::areaPoints() const
 			return ret;
 		}
 
-		case KPixmapEffect::DiagonalGradient:
+		case KImageEffect::DiagonalGradient:
 		{
 			QPointArray ret(3);
 			ret[0] = QPoint((int)x() + width(), (int)y());
@@ -366,7 +437,7 @@ QPointArray Slope::areaPoints() const
 			return ret;
 		}
 
-		case KPixmapEffect::EllipticGradient:
+		case KImageEffect::EllipticGradient:
 		{
     		QPointArray ret;
 			ret.makeEllipse((int)x(), (int)y(), width(), height());
@@ -387,8 +458,8 @@ void Slope::collision(Ball *ball, long int /*id*/)
 		//return;
 	double addto = 0.013 * grade;
 
-	const bool diag = type == KPixmapEffect::DiagonalGradient || type == KPixmapEffect::CrossDiagonalGradient;
-	const bool circle = type == KPixmapEffect::EllipticGradient;
+	const bool diag = type == KImageEffect::DiagonalGradient || type == KImageEffect::CrossDiagonalGradient;
+	const bool circle = type == KImageEffect::EllipticGradient;
 
 	double slopeAngle = 0;
 
@@ -447,21 +518,21 @@ void Slope::collision(Ball *ball, long int /*id*/)
 
 	switch (type)
 	{
-		case KPixmapEffect::HorizontalGradient:
+		case KImageEffect::HorizontalGradient:
 			reversed? vx += addto : vx -= addto;
 		break;
 
-		case KPixmapEffect::VerticalGradient:
+		case KImageEffect::VerticalGradient:
 			reversed? vy += addto : vy -= addto;
 		break;
 
-		case KPixmapEffect::DiagonalGradient:
-		case KPixmapEffect::EllipticGradient:
+		case KImageEffect::DiagonalGradient:
+		case KImageEffect::EllipticGradient:
 			reversed? vx += cos(slopeAngle) * addto : vx -= cos(slopeAngle) * addto;
 			reversed? vy += sin(slopeAngle) * addto : vy -= sin(slopeAngle) * addto;
 		break;
 
-		case KPixmapEffect::CrossDiagonalGradient:
+		case KImageEffect::CrossDiagonalGradient:
 			reversed? vx -= cos(slopeAngle) * addto : vx += cos(slopeAngle) * addto;
 			reversed? vy += sin(slopeAngle) * addto : vy -= sin(slopeAngle) * addto;
 		break;
@@ -481,7 +552,7 @@ void Slope::collision(Ball *ball, long int /*id*/)
 
 void Slope::setGradient(QString text)
 {
-	for (QMap<KPixmapEffect::GradientType, QString>::Iterator it = gradientKeys.begin(); it != gradientKeys.end(); ++it)
+	for (QMap<KImageEffect::GradientType, QString>::Iterator it = gradientKeys.begin(); it != gradientKeys.end(); ++it)
 	{
 		if (it.data() == text)
 		{
@@ -491,7 +562,7 @@ void Slope::setGradient(QString text)
 	}
 
 	// extra forgiveness ;-) (note it's i18n keys)
-	for (QMap<KPixmapEffect::GradientType, QString>::Iterator it = gradientI18nKeys.begin(); it != gradientI18nKeys.end(); ++it)
+	for (QMap<KImageEffect::GradientType, QString>::Iterator it = gradientI18nKeys.begin(); it != gradientI18nKeys.end(); ++it)
 	{
 		if (it.data() == text)
 		{
@@ -501,37 +572,126 @@ void Slope::setGradient(QString text)
 	}
 }
 
-void Slope::setType(KPixmapEffect::GradientType type)
+void Slope::setType(KImageEffect::GradientType type)
 {
 	this->type = type;
-	if (type == KPixmapEffect::EllipticGradient)
+	if (type == KImageEffect::EllipticGradient)
 		// recalc size
 		newSize(width(), height());
+	moveArrow();
 	updatePixmap();
 }
 
 void Slope::updatePixmap()
 {
+	const bool diag = type == KImageEffect::DiagonalGradient || type == KImageEffect::CrossDiagonalGradient;
+	const bool circle = type == KImageEffect::EllipticGradient;
+
+	const QColor darkColor = color.dark(100 + grade * (circle? 20 : 10));
+	const QColor lightColor = diag || circle? color.light(110 + (diag? 5 : .5) * grade) : color;
+	// hack only for circles
+	const bool _reversed = circle? !reversed : reversed;
+	QImage gradientImage = KImageEffect::gradient(QSize(width(), height()), _reversed? darkColor : lightColor, _reversed? lightColor : darkColor, type);
+	QPixmap grass(locate("appdata", "pics/grass.png"));
+	//kdDebug() << "width: " << width() << ", height: " << height() << endl;
+	//kdDebug() << "width: " << grass.width() << ", height: " << grass.height() << endl;
 	QPixmap qpixmap(width(), height());
-	pixmap = qpixmap;
-	const bool diag = type == KPixmapEffect::DiagonalGradient || type == KPixmapEffect::CrossDiagonalGradient;
-	const bool circle = type == KPixmapEffect::EllipticGradient;
+	QPainter p(&qpixmap);
+	p.drawTiledPixmap(QRect(0, 0, width(), height()), grass);
+	p.end();
 
-	// these are approximate for i guess what would theoretically
-	// be purrfect
-	// but I've not the time to get it purrfect
-	// i wish i did -- anybody wanna fix it? :-)
-	const QColor darkColor = color.dark(100 + grade * 10);
-	const QColor lightColor = diag || circle? color.light(110 + (diag? 5 : 2) * grade) : color;
 
-	(void) KPixmapEffect::gradient(pixmap, reversed? darkColor : lightColor, reversed? lightColor : darkColor, type);
+	if (circle)
+	{
+		const QColor otherLightColor = color.light(110 + 15 * grade);
+		const QColor otherDarkColor = darkColor.dark(110 + 20 * grade);
+		QImage otherGradientImage = KImageEffect::gradient(QSize(width(), height()), reversed? otherDarkColor : otherLightColor, reversed? otherLightColor : otherDarkColor, KImageEffect::DiagonalGradient);
+
+		QImage grassImage(qpixmap.convertToImage());
+
+		QImage finalGradientImage = KImageEffect::blend(otherGradientImage, gradientImage, .60);
+		pixmap.convertFromImage(KImageEffect::blend(grassImage, finalGradientImage, .40));
+	}
+	else
+	{
+		float ratio = 0;
+		float factor = 1;
+
+		double angle = 0;
+		double length = sqrt(width() * width() + height() * height()) / 4;
+
+		switch (type)
+		{
+			case KImageEffect::HorizontalGradient:
+				angle = 0;
+				//factor = reversed? .10 : .07;
+				factor = .25;
+				break;
+
+			case KImageEffect::VerticalGradient:
+				angle = PI / 2;
+				//factor = reversed? .10 : .07;
+				factor = .25;
+				break;
+
+			case KImageEffect::DiagonalGradient:
+				angle = atan((double)width() / (double)height());
+
+				factor = .45;
+				break;
+
+			case KImageEffect::CrossDiagonalGradient:
+				angle = atan((double)width() / (double)height());
+				angle = PI - angle;
+
+				factor = 0;
+				break;
+
+			default:
+				break;
+		}
+
+		//kdDebug() << "factor: " << factor << endl;
+
+		// factorPart is out of 1/5
+		// factorPart is now out of 1/5
+		float factorPart = factor * 2;
+		// gradePart is out of 1
+		float gradePart = (float)grade / 8.0;
+		// gradePart now is out of 1/4
+		//gradePart /= 4;
+
+		//ratio = factorPart + gradePart;
+		ratio = factorPart * gradePart;
+
+		// reverse the reversed ones
+		if (reversed)
+			ratio *= -1;
+		else
+			angle += PI;
+
+		//kdDebug() << "ratio is " << ratio << endl;
+
+		KPixmap kpixmap = qpixmap;
+		(void) KPixmapEffect::intensity(kpixmap, ratio);
+
+		QImage grassImage(kpixmap.convertToImage());
+
+		// okay, now we have a grass image that's
+		// appropriately lit, and a gradient;
+		// lets blend..
+		pixmap.convertFromImage(KImageEffect::blend(gradientImage, grassImage, .42));
+		//pixmap.convertFromImage(gradientImage);
+
+		arrow->setAngle(angle);
+		arrow->setLength(length);
+	}
 
 	if (diag || circle)
 	{
 		// make cleared bitmap
-		QBitmap bitmap(pixmap.width(), pixmap.height(), true);;
-		QPainter bpainter;
-		bpainter.begin(&bitmap);
+		QBitmap bitmap(pixmap.width(), pixmap.height(), true);
+		QPainter bpainter(&bitmap);
 		bpainter.setBrush(color1);
 		QPointArray r = areaPoints();
 		// shift all the points
@@ -1359,7 +1519,7 @@ SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
 	KComboBox *gradient = new KComboBox(this);
 	QStringList items;
 	QString curText;
-	for (QMap<KPixmapEffect::GradientType, QString>::Iterator it = slope->gradientI18nKeys.begin(); it != slope->gradientI18nKeys.end(); ++it)
+	for (QMap<KImageEffect::GradientType, QString>::Iterator it = slope->gradientI18nKeys.begin(); it != slope->gradientI18nKeys.end(); ++it)
 	{
 		if (it.key() == slope->curType())
 			curText = it.data();
@@ -1547,7 +1707,11 @@ Puddle::Puddle(QCanvas *canvas)
 {
 	setSize(45, 30);
 
-	setBrush(QColor("#5498FF"));
+	//setBrush(QColor("#5498FF"));
+	QBrush brush;
+	brush.setPixmap(QPixmap(locate("appdata", "pics/puddle.png")));
+	setBrush(brush);
+
 	setZ(-25);
 	setPen(blue);
 }
@@ -1555,16 +1719,19 @@ Puddle::Puddle(QCanvas *canvas)
 void Puddle::save(KSimpleConfig *cfg, int hole)
 {
 	cfg->setGroup(makeGroup(hole, "puddle", x(), y()));
+	cfg->writeEntry("dummykey", true);
 
-	doSave(cfg, hole);
+	//doSave(cfg, hole);
 }
 
+/*
 void Puddle::load(KSimpleConfig *cfg, int hole)
 {
 	cfg->setGroup(makeGroup(hole, "puddle", x(), y()));
 
 	doLoad(cfg, hole);
 }
+*/
 
 void Puddle::collision(Ball *ball, long int /*id*/)
 {
@@ -1591,7 +1758,11 @@ Sand::Sand(QCanvas *canvas)
 {
 	setSize(45, 40);
 
-	setBrush(QColor("#c9c933"));
+	//setBrush(QColor("#c9c933"));
+	QBrush brush;
+	brush.setPixmap(QPixmap(locate("appdata", "pics/sand.png")));
+	setBrush(brush);
+
 	setZ(-26);
 	setPen(yellow);
 }
@@ -1905,6 +2076,11 @@ void Bumper::moveBy(double dx, double dy)
 	inside->move(x(), y());
 }
 
+void Bumper::editModeChanged(bool changed)
+{
+	inside->setVisible(!changed);
+}
+
 void Bumper::advance(int phase)
 {
 	//kdDebug() << "bumper's advance\n";
@@ -1952,7 +2128,7 @@ void Bumper::collision(Ball *ball, long int /*id*/)
 
 	if (xDiff == 0)
 	{
-		kdDebug() << "horizontal\n";
+		//kdDebug() << "horizontal\n";
 		// horizontal
 		angle = end.x() < start.x()? 0 : PI;
 		//angle = PI;
@@ -1984,8 +2160,8 @@ void Bumper::collision(Ball *ball, long int /*id*/)
 	if (ball->xVelocity() < 0)  
 		ballAngle += PI;
 	ballAngle *= -1;
-	kdDebug() << "ballAngle: " << ballAngle << endl;
-	kdDebug() << "angle: " << angle << endl;
+	//kdDebug() << "ballAngle: " << ballAngle << endl;
+	//kdDebug() << "angle: " << angle << endl;
 	*/
 
 	const double vx = -cos(angle) * speed;
@@ -2008,31 +2184,16 @@ Hole::Hole(QColor color, QCanvas *canvas)
 {
 	setZ(998.1);
 	setPen(black);
-	//setBrush(color);
-	setBrush(color.light(115));
+	setBrush(color);
 
+	/*
 	inside = new Inside(this, canvas);
 	inside->setBrush(color);
 	inside->setSize(width() - 4, height() - 4);
 	inside->show();
 
 	inside->setZ(z() + .01);
-}
-
-void Hole::aboutToDie()
-{
-	delete inside;
-}
-
-void Hole::editModeChanged(bool changed)
-{
-	inside->setVisible(!changed);
-}
-
-void Hole::moveBy(double dx, double dy)
-{
-	QCanvasEllipse::moveBy(dx, dy);
-	inside->move(x(), y());
+	*/
 }
 
 void Hole::collision(Ball *ball, long int /*id*/)
@@ -2074,6 +2235,17 @@ HoleResult Hole::result(QPoint p, double s, bool * /*wasCenter*/)
 }
 
 /////////////////////////
+
+Cup::Cup(QCanvas *canvas)
+	: Hole(QColor("#808080"), canvas)
+{
+	pixmap = QPixmap(locate("appdata", "pics/cup.png"));
+}
+
+void Cup::draw(QPainter &painter)
+{
+	painter.drawPixmap(QPoint(x() - width() / 2, y() - height() / 2), pixmap);
+}
 
 bool Cup::place(Ball *ball, bool /*wasCenter*/)
 {
@@ -2341,6 +2513,24 @@ WallPoint::WallPoint(bool start, Wall *wall, QCanvas *canvas)
 	setZ(wall->z() + 1);
 }
 
+void WallPoint::clean()
+{
+	int oldWidth = width();
+	setSize(7, 7);
+	update();
+
+	QCanvasItem *onPoint = 0;
+	QCanvasItemList l = collisions(true);
+	for (QCanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
+		if ((*it)->rtti() == rtti())
+			onPoint = (*it);
+
+	if (onPoint)
+		move(onPoint->x(), onPoint->y());
+
+	setSize(oldWidth, oldWidth);
+}
+
 void WallPoint::moveBy(double dx, double dy)
 {
 	//kdDebug() << "WallPoint::moveBy(" << dx << ", " << dy << ")\n";
@@ -2428,7 +2618,9 @@ void WallPoint::collision(Ball *ball, long int id)
 	//kdDebug() << "wallAngle: " << rad2deg(wallAngle) << endl;
 
 	// visible just means if we should bounce opposite way
-	bool weirdbounce = visible;
+	// let's dump visible it just makes it worse!
+	//bool weirdbounce = visible;
+	bool weirdbounce = true;
 
 	double relWallAngle = wallAngle + PI / 2;
 
@@ -2538,6 +2730,12 @@ Wall::Wall(QCanvas *canvas)
 	moveBy(0, 0);
 
 	editModeChanged(false);
+}
+
+void Wall::clean()
+{
+	startItem->clean();
+	endItem->clean();
 }
 
 void Wall::finalLoad()
@@ -2865,7 +3063,8 @@ KolfGame::KolfGame(PlayerList *players, QString filename, QWidget *parent, const
 
 	course = new QCanvas(this);
 	course->resize(width, height);
-	course->setBackgroundColor(grass);
+	//course->setBackgroundColor(grass);
+	course->setBackgroundPixmap(QPixmap(locate("appdata", "pics/grass.png")));
 	setCanvas(course);
 	move(0, 0);
 	adjustSize();
@@ -3675,6 +3874,10 @@ void KolfGame::holeDone()
 		(*curPlayer).ball()->setVisible(true);
 		putter->setOrigin((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 		updateMouse();
+
+		// flash the information
+		showInfoPress();
+		QTimer::singleShot(800, this, SLOT(showInfoRelease()));
 	}
 	// else we're done
 }
@@ -3690,7 +3893,7 @@ void KolfGame::showInfo()
 void KolfGame::showInfoDlg(bool addDontShowAgain)
 {
 	//kdDebug() << "show info dlg\n";
-	KMessageBox::information(parentWidget(), i18n("Course name: %1").arg(holeInfo.name()) + QString("\n") + i18n("Created by %1").arg(holeInfo.author()), i18n("Course Information"), addDontShowAgain? holeInfo.name() + QString(" ") + holeInfo.author() : QString::null);
+	KMessageBox::information(parentWidget(), i18n("Course name: %1").arg(holeInfo.name()) + QString("\n") + i18n("Created by %1").arg(holeInfo.author()) + QString("\n") + i18n("%1 holes").arg(highestHole), i18n("Course Information"), addDontShowAgain? holeInfo.name() + QString(" ") + holeInfo.author() : QString::null);
 }
 
 void KolfGame::hideInfoText()
@@ -3706,29 +3909,46 @@ void KolfGame::openFile()
 
 	Object *curObj = 0;
 
-	QPtrList<QCanvasItem> olditems(items);
-	items.setAutoDelete(false);
+	QCanvasItem *item = 0;
+	for (item = items.first(); item; item = items.next())
+	{
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		if (citem)
+		{
+			// sometimes info is still showing
+			citem->hideInfo();
+			citem->aboutToDie();
+		}
+	}
+
+	items.setAutoDelete(true);
 	items.clear();
+	items.setAutoDelete(false);
+
 	extraMoveable.setAutoDelete(false);
 	extraMoveable.clear();
 	selectedItem = 0;
 
-	//KSimpleConfig cfg(filename);
+	// will tell basic course info
+	// we do this here for the hell of it.
+	// there is no fake id, by the way,
+	// because it's old and when i added ids i forgot to change it.
+	cfg->setGroup("0-course@-50,-50");
+	holeInfo.setAuthor(cfg->readEntry("author", holeInfo.author()));
+	holeInfo.setName(cfg->readEntry("name", holeInfo.name()));
+
+	cfg->setGroup(QString("%1-hole@-50,-50|0").arg(curHole));
+	curPar = cfg->readNumEntry("par", 3);
+	holeInfo.setPar(curPar);
+	holeInfo.borderWallsChanged(cfg->readBoolEntry("borderWalls", holeInfo.borderWalls()));
+	holeInfo.setMaxStrokes(cfg->readNumEntry("maxstrokes", holeInfo.maxStrokes()));
+	bool hasFinalLoad = cfg->readBoolEntry("hasFinalLoad", true);
 
 	QStringList groups = cfg->groupList();
 
 	int numItems = 0;
-	curPar = 3;
-	holeInfo.setPar(curPar);
-	// if you want the default max strokes to always be 10....
-	//holeInfo.setMaxStrokes(10);
+	holeInfo.setMaxStrokes(10);
 	int _highestHole = 0;
-
-	/****
-	TODO : add a progress bar based on groups.size()
-	oh.. but... that's always the same for any size hole
-	bah humbug, how to tell?!
-	****/
 
 	for (QStringList::Iterator it = groups.begin(); it != groups.end(); ++it)
 	{
@@ -3747,15 +3967,6 @@ void KolfGame::openFile()
 		QString name = (*it).mid(dashIndex + 1, atIndex - (dashIndex + 1));
 		
 		//kdDebug() << "name is " << name << endl;
-
-		// will tell basic course info
-		if (name == "course")
-		{
-			holeInfo.setAuthor(cfg->readEntry("author", holeInfo.author()));
-			holeInfo.setName(cfg->readEntry("name", holeInfo.name()));
-			continue;
-		}
-
 		if (holeNum != curHole)
 		{
 			// if we've had one, break, cause list is sorted
@@ -3778,16 +3989,6 @@ void KolfGame::openFile()
 			for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 				(*it).ball()->move(x, y);
 			whiteBall->move(x, y);
-			continue;
-		}
-		else
-		// stores par
-		if (name == "hole")
-		{
-			curPar = cfg->readNumEntry("par", curPar);
-			holeInfo.setPar(curPar);
-			holeInfo.borderWallsChanged(cfg->readBoolEntry("borderWalls", holeInfo.borderWalls()));
-			holeInfo.setMaxStrokes(cfg->readNumEntry("maxstrokes", holeInfo.maxStrokes()));
 			continue;
 		}
 
@@ -3819,8 +4020,8 @@ void KolfGame::openFile()
 			canvasItem->firstMove(x, y);
 
 			// make things actually show
-			// kapp->processEvents();
-			// turns out that that fscks everything up
+			if (!hasFinalLoad)
+				kapp->processEvents();
 			
 			// we don't allow multiple items for the same thing in
 			// the file!
@@ -3835,19 +4036,16 @@ void KolfGame::openFile()
 		curHole--;
 		pause();
 		emit holesDone();
+
+		// tidy things up
+		setBorderWalls(false);
+		clearHole();
+		modified = false;
+		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+			(*it).ball()->setVisible(false);
+
 		return;
 	}
-
-	QCanvasItem *item = 0;
-	for (item = olditems.first(); item; item = olditems.next())
-	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
-		if (citem)
-			citem->aboutToDie();
-	}
-
-	olditems.setAutoDelete(true);
-	olditems.clear();
 
 	QCanvasItem *qcanvasItem = 0;
 	QPtrList<CanvasItem> todo;
@@ -3872,23 +4070,26 @@ void KolfGame::openFile()
 			citem->updateZ();
 	}
 
-	if (curHole == 1 && !filename.isNull() && !infoShown)
-	{
-		showInfoDlg(true);
-		infoShown = true;
-	}
-
 	if (curHole > highestHole)
 		highestHole = curHole;
-
-	//kdDebug() << "openfile finishing; highestHole is " << highestHole << endl;
 
 	if (recalcHighestHole)
 	{
 		highestHole = _highestHole;
 		recalcHighestHole = false;
 	}
+
+	if (curHole == 1 && !filename.isNull() && !infoShown)
+	{
+		showInfoDlg(true);
+		infoShown = true;
+	}
+
 	unPause();
+
+	//kdDebug() << "openfile finishing; highestHole is " << highestHole << endl;
+
+	modified = false;
 }
 
 void KolfGame::addItemsToMoveableList(QPtrList<QCanvasItem> list)
@@ -3907,12 +4108,15 @@ void KolfGame::addNewObject(Object *newObj)
 	CanvasItem *canvasItem = dynamic_cast<CanvasItem *>(newItem);
 	if (!canvasItem)
 		return;
+
 	canvasItem->setId(items.count() + 2);
 	canvasItem->setGame(this);
 	canvasItem->editModeChanged(editing);
 	addItemsToMoveableList(canvasItem->moveableItems());
 
 	newItem->move(width/2, height/2);
+
+	modified = true;
 }
 
 bool KolfGame::askSave(bool noMoreChances)
@@ -3956,9 +4160,6 @@ void KolfGame::addNewHole()
 	// find highest hole num, and create new hole
 	// now openFile makes highest hole for us
 
-	//KSimpleConfig cfg(filename);
-	QStringList groups = cfg->groupList();
-
 	addingNewHole = true;
 	curHole = highestHole;
 	//kdDebug() << "highestHole is " << highestHole << endl;
@@ -3977,7 +4178,12 @@ void KolfGame::addNewHole()
 	inPlay = false;
 
 	// obviously, we've modified this course by adding a new hole!
-	modified = true;
+	// but there is no point in making the user save now.
+	// so let's save.
+	// this also prevents the user from immediately going backwards
+	// and then not having a hole be there anymore (which
+	// used to happen!)
+	save();
 }
 
 // kantan deshou ;-)
@@ -4078,16 +4284,22 @@ void KolfGame::save()
 		setFilename(newfilename);
 	}
 
+	// we use this bool for optimization
+	// in openFile().
+	bool hasFinalLoad = false;
+
 	QCanvasItem *item = 0;
 	for (item = items.first(); item; item = items.next())
 	{
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
 		if (citem)
+		{
 			citem->aboutToSave();
+			if (citem->loadLast())
+				hasFinalLoad = true;
+		}
 	}
 
-	//KSimpleConfig cfg(filename);
-	//kdDebug() << "KolfGame::save " << filename << "\n";
 	QStringList groups = cfg->groupList();
 
 	// wipe out all groups from this hole
@@ -4101,7 +4313,10 @@ void KolfGame::save()
 	{
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
 		if (citem)
+		{
+			citem->clean();
 			citem->save(cfg, curHole);
+		}
 	}
 
 	// save where ball starts (whiteBall tells all)
@@ -4117,6 +4332,8 @@ void KolfGame::save()
 	cfg->writeEntry("par", holeInfo.par());
 	cfg->writeEntry("maxstrokes", holeInfo.maxStrokes());
 	cfg->writeEntry("borderWalls", holeInfo.borderWalls());
+	cfg->writeEntry("hasFinalLoad", hasFinalLoad);
+	//kdDebug() << "hasFinalLoad = " << hasFinalLoad << endl;
 
 	cfg->sync();
 

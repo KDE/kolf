@@ -5,7 +5,7 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kpixmap.h>
-#include <kpixmapeffect.h>
+#include <kimageeffect.h>
 
 #include <math.h>
 
@@ -130,6 +130,10 @@ public:
 	 * update your Z value (this is called by various things when perhaps the value should change)
 	 */
 	virtual void updateZ() {};
+	/**
+	 * clean up for prettyness
+	 */
+	virtual void clean() {};
 	/**
 	 * returns whether this item can be moved by others (if you want to move an item, you should honor this!)
 	 */
@@ -287,6 +291,29 @@ protected:
 };
 typedef QPtrList<Object> ObjectList;
 
+class Arrow : public QCanvasLine
+{
+public:
+	Arrow(QCanvas *canvas);
+	void setAngle(double newAngle) { m_angle = newAngle; updateSelf(); }
+	double angle() { return m_angle; }
+	void setLength(double newLength) { m_length = newLength; updateSelf(); }
+	double length() { return m_length; }
+	virtual void setVisible(bool);
+	virtual void setPen(QPen p);
+	void aboutToDie();
+	virtual void moveBy(double, double);
+
+protected:
+	void updateSelf();
+
+private:
+	double m_angle;
+	double m_length;
+	QCanvasLine *line1;
+	QCanvasLine *line2;
+};
+
 class RectPoint;
 class RectItem
 {
@@ -332,11 +359,10 @@ public:
 	virtual QPointArray areaPoints() const;
 
 	void setGradient(QString text);
-	KPixmapEffect::GradientType curType() { return type; }
+	KImageEffect::GradientType curType() { return type; }
 	void setGrade(int grade) { if (grade > 0 && grade < 11) { this->grade = grade; updatePixmap(); } }
 
 	int curGrade() { return grade; }
-	void setGradeVisible(bool visible) { showGrade = visible; update(); }
 	void setColor(QColor color) { this->color = color; updatePixmap(); }
 	void setReversed(bool reversed) { this->reversed = reversed; updatePixmap(); }
 	bool isReversed() { return reversed; }
@@ -349,22 +375,25 @@ public:
 
 	virtual void collision(Ball *ball, long int id);
 
-	QMap<KPixmapEffect::GradientType, QString> gradientI18nKeys;
-	QMap<KPixmapEffect::GradientType, QString> gradientKeys;
+	QMap<KImageEffect::GradientType, QString> gradientI18nKeys;
+	QMap<KImageEffect::GradientType, QString> gradientKeys;
 
 	virtual void updateZ();
 
+	void moveArrow();
+
 private:
-	KPixmapEffect::GradientType type;
-	inline void setType(KPixmapEffect::GradientType type);
+	KImageEffect::GradientType type;
+	inline void setType(KImageEffect::GradientType type);
 	int grade;
-	bool showGrade;
 	bool reversed;
 	QColor color;
-	KPixmap pixmap;
+	QPixmap pixmap;
 	void updatePixmap();
 	bool stuckOnGround;
 
+	Arrow *arrow;
+	QCanvasText *text;
 	RectPoint *point;
 };
 class SlopeObj : public Object
@@ -446,7 +475,7 @@ public:
 	Puddle(QCanvas *canvas);
 	virtual void collision(Ball *ball, long int id);
 	virtual int rtti() const { return Rtti_DontPlaceOn; }
-	virtual void load(KSimpleConfig *cfg, int hole);
+	//virtual void load(KSimpleConfig *cfg, int hole);
 	virtual void save(KSimpleConfig *cfg, int hole);
 };
 class PuddleObj : public Object
@@ -491,6 +520,7 @@ public:
 	virtual void advance(int phase);
 	virtual void aboutToDie();
 	virtual void moveBy(double dx, double dy);
+	virtual void editModeChanged(bool changed);
 
 	virtual void collision(Ball *ball, long int id);
 
@@ -512,26 +542,24 @@ class Hole : public QCanvasEllipse, public CanvasItem
 public:
 	Hole(QColor color, QCanvas *canvas);
 	virtual bool place(Ball * /*ball*/, bool /*wasCenter*/) { return true; };
-	virtual void aboutToDie();
-	virtual void editModeChanged(bool changed);
 
 	virtual void collision(Ball *ball, long int id);
-	virtual void moveBy(double dx, double dy);
 
 protected:
 	virtual HoleResult result(const QPoint, double, bool *wasCenter);
-
-private:
-	Inside *inside;
 };
 
 class Cup : public Hole
 {
 public:
-	Cup(QCanvas *canvas) : Hole(QColor("#808080"), canvas) {}
+	Cup(QCanvas *canvas);
 	virtual bool place(Ball *ball, bool wasCenter);
 	virtual void save(KSimpleConfig *cfg, int hole);
 	virtual bool canBeMovedByOthers() { return true; }
+	virtual void draw(QPainter &painter);
+
+private:
+	QPixmap pixmap;
 };
 class CupObj : public Object
 {
@@ -626,6 +654,7 @@ public:
 	virtual void moveBy(double dx, double dy);
 	virtual void setVelocity(double vx, double vy);
 	virtual void finalLoad();
+	virtual void clean();
 	// must reimp because we gotta move the end items,
 	// and we do that in :moveBy()
 	virtual void setPoints(int xa, int ya, int xb, int yb) { QCanvasLine::setPoints(xa, ya, xb, yb); moveBy(0, 0); }
@@ -653,6 +682,7 @@ public:
 	virtual int rtti() const { return Rtti_WallPoint; }
 	virtual bool deleteable() { return false; }
 	virtual void collision(Ball *ball, long int id);
+	virtual void clean();
 	virtual Config *config(QWidget *parent) { return wall->config(parent); }
 	void dontMove() { dontmove = true; };
 	void updateVisible();
@@ -1015,8 +1045,9 @@ public slots:
 	void lastHole();
 	void randHole();
 	void playSound(QString file);
-	void showInfo();
 	void showInfoDlg(bool = false);
+	void showInfoPress();
+	void showInfoRelease();
 	void resetHole();
 	void clearHole();
 	void print(QPainter &);
@@ -1123,6 +1154,7 @@ private:
 
 	HoleInfo holeInfo;
 	QCanvasText *infoText;
+	void showInfo();
 
 	bool addingNewHole;
 	int scoreboardHoles;
@@ -1134,9 +1166,6 @@ private:
 
 	inline void addBorderWall(QPoint start, QPoint end);
 	inline void shotStart();
-
-	void showInfoPress();
-	void showInfoRelease();
 
 	bool modified;
 

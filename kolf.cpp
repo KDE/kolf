@@ -18,6 +18,7 @@
 #include <qevent.h>
 #include <qfile.h>
 #include <qobject.h>
+#include <qmap.h>
 #include <qpoint.h>
 #include <qtimer.h>
 #include <qptrlist.h>
@@ -86,7 +87,12 @@ void Kolf::initGUI()
 	QStringList items = KGlobal::dirs()->findAllResources("appdata", "courses/*.kolf");
 	for (QStringList::Iterator it = items.begin(); it != items.end(); ++it)
 	{
-		(*it) = QFileInfo(*it).baseName();
+		KSimpleConfig cfg(*it);
+		cfg.setGroup("0-course@-50,-50");
+		QString newName = cfg.readEntry("name", "");
+		defaults[newName] = *it;
+		*it = newName;
+		//(*it) = QFileInfo(*it).baseName();
 	}
 	newDefaultAction->setItems(items);
 	connect(newDefaultAction, SIGNAL(activated(const QString &)), this, SLOT(openDefaultCourse(const QString &)));
@@ -275,7 +281,7 @@ void Kolf::tutorial()
 
 void Kolf::openDefaultCourse(const QString &course)
 {
-	QString newfilename = KGlobal::dirs()->findResource("appdata", QString("courses/") + course + QString(".kolf"));
+	QString newfilename = defaults[course];
 	if (newfilename.isNull())
 		return;
 	filename = newfilename;

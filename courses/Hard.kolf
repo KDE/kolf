@@ -6,7 +6,7 @@ name=Hard Course
 [1-ball@84,73]
 dummykey=true
 
-[1-blackhole@114,150|10]
+[1-blackhole@86,198|10]
 exit=176,281
 exitDeg=330
 maxspeed=4
@@ -17,40 +17,30 @@ dummykey=true
 
 [1-hole@-50,-50|0]
 borderWalls=true
+hasFinalLoad=false
 maxstrokes=10
 par=3
 
 [1-puddle@41,364|15]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [1-puddle@51,357|7]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [1-puddle@54,364|8]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [1-sand@169,250|21]
 changeEnabled=false
 changeEvery=50
 
-[1-slope@10,140|17]
-grade=2
-gradient=Horizontal
-height=10
+[1-slope@10,135|15]
+grade=3
+gradient=Vertical
+height=40
 reversed=true
 stuckOnGround=false
-width=95
-
-[1-slope@11,151|15]
-grade=2
-gradient=Vertical
-height=33
-reversed=false
-stuckOnGround=false
-width=98
+width=119
 
 [1-slope@13,78|24]
 grade=2
@@ -84,16 +74,20 @@ reversed=true
 stuckOnGround=false
 width=377
 
+[1-wall@0,0|17]
+endPoint=129,176
+startPoint=129,137
+
 [1-wall@0,0|24]
 endPoint=94,287
-startPoint=94,234
+startPoint=93,234
 
 [1-wall@0,0|3]
 endPoint=93,234
-startPoint=133,137
+startPoint=129,176
 
 [1-wall@0,0|4]
-endPoint=129,136
+endPoint=129,137
 startPoint=14,137
 
 [10-ball@346,360]
@@ -102,9 +96,9 @@ dummykey=true
 [10-cup@66,343|3]
 dummykey=true
 
-[10-floater@195,125|54]
+[10-floater@171,129|54]
 botWallVisible=false
-endPoint=195,125
+endPoint=171,129
 height=53
 leftWallVisible=true
 rightWallVisible=false
@@ -114,132 +108,103 @@ topWallVisible=true
 width=76
 
 [10-hole@-50,-50|0]
+borderWalls=true
+hasFinalLoad=true
 maxstrokes=10
 par=3
 
 [10-puddle@100,218|41]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@108,167|29]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@111,207|40]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@113,141|32]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@115,231|25]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@123,182|27]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@131,156|38]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@136,250|28]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@139,122|12]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@141,143|14]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@141,204|26]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@142,227|30]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@146,174|24]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@156,151|19]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@164,122|13]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@164,260|36]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@167,191|22]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@175,215|33]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@176,240|21]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@185,144|20]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@185,166|17]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@190,121|16]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@190,268|34]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@196,261|35]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@197,218|59]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@199,237|37]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@200,200|58]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@201,181|23]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@208,279|39]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@209,155|15]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-puddle@215,138|18]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [10-slope@112,365|52]
 grade=1
@@ -289,14 +254,6 @@ reversed=true
 stuckOnGround=false
 width=138
 
-[10-slope@197,82|42]
-grade=2
-gradient=Opposite Diagonal
-height=58
-reversed=false
-stuckOnGround=true
-width=83
-
 [10-slope@207,306|49]
 grade=1
 gradient=Opposite Diagonal
@@ -320,22 +277,6 @@ height=19
 reversed=true
 stuckOnGround=false
 width=29
-
-[10-slope@218,140|43]
-grade=2
-gradient=Horizontal
-height=68
-reversed=true
-stuckOnGround=true
-width=57
-
-[10-slope@219,201|56]
-grade=2
-gradient=Diagonal
-height=51
-reversed=true
-stuckOnGround=true
-width=58
 
 [10-slope@250,140|60]
 grade=1
@@ -378,15 +319,15 @@ stuckOnGround=false
 width=104
 
 [10-wall@0,0|10]
-endPoint=76,32
-startPoint=32,60
+endPoint=77,31
+startPoint=29,60
 
 [10-wall@0,0|11]
 endPoint=29,60
 startPoint=10,186
 
 [10-wall@0,0|4]
-endPoint=229,251
+endPoint=229,252
 startPoint=290,391
 
 [10-wall@0,0|5]
@@ -399,15 +340,15 @@ startPoint=302,131
 
 [10-wall@0,0|6]
 endPoint=390,148
-startPoint=356,92
+startPoint=355,92
 
 [10-wall@0,0|7]
 endPoint=355,92
-startPoint=277,55
+startPoint=274,56
 
 [10-wall@0,0|8]
 endPoint=274,56
-startPoint=178,31
+startPoint=179,31
 
 [10-wall@0,0|9]
 endPoint=179,31
@@ -423,108 +364,90 @@ maxspeed=2
 minspeed=1
 
 [11-blackhole@293,44|16]
-exit=128,294
+exit=134,259
 exitDeg=5
 maxspeed=3
 minspeed=2
 
-[11-cup@208,351|15]
+[11-cup@220,334|15]
 dummykey=true
 
 [11-cup@221,409|13]
 dummykey=true
 
-[11-floater@127,276|13]
+[11-floater@127,241|13]
 botWallVisible=false
-endPoint=127,276
+endPoint=127,241
 height=36
 leftWallVisible=true
 rightWallVisible=true
 speed=5
-startPoint=13,270
+startPoint=13,235
 topWallVisible=true
 width=260
 
 [11-hole@-50,-50|0]
 borderWalls=true
+hasFinalLoad=true
 maxstrokes=10
 par=3
 
 [11-puddle@137,392|20]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [11-puddle@146,377|19]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [11-puddle@149,362|3]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [11-puddle@164,379|9]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [11-puddle@170,398|18]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
-[11-puddle@196,387|10]
-changeEnabled=false
-changeEvery=50
+[11-puddle@195,391|10]
+dummykey=true
 
 [11-puddle@231,394|12]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [11-puddle@258,388|11]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [11-puddle@283,378|8]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [11-puddle@291,395|7]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [11-puddle@302,4|40]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [11-puddle@330,12|39]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [11-puddle@356,12|33]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [11-puddle@361,54|39]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [11-puddle@363,31|37]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [11-puddle@382,42|38]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [11-puddle@384,6|35]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [11-puddle@393,25|34]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [11-puddle@393,62|36]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [11-sand@111,152|26]
 changeEnabled=false
@@ -554,6 +477,14 @@ reversed=false
 stuckOnGround=false
 width=178
 
+[11-slope@174,289|40]
+grade=4
+gradient=Elliptic
+height=88
+reversed=true
+stuckOnGround=false
+width=88
+
 [11-slope@290,12|29]
 grade=2
 gradient=Diagonal
@@ -562,7 +493,7 @@ reversed=false
 stuckOnGround=false
 width=97
 
-[11-slope@300,278|21]
+[11-slope@300,243|21]
 grade=4
 gradient=Horizontal
 height=33
@@ -578,10 +509,10 @@ reversed=true
 stuckOnGround=true
 width=286
 
-[11-slope@74,92|28]
+[11-slope@73,128|28]
 grade=2
 gradient=Vertical
-height=111
+height=73
 reversed=false
 stuckOnGround=true
 width=274
@@ -594,13 +525,13 @@ reversed=true
 stuckOnGround=false
 width=116
 
+[11-wall@-2,-40|17]
+endPoint=253,280
+startPoint=10,278
+
 [11-wall@0,0|14]
 endPoint=392,207
 startPoint=12,207
-
-[11-wall@0,0|17]
-endPoint=255,320
-startPoint=12,318
 
 [12-ball@58,341]
 dummykey=true
@@ -644,64 +575,53 @@ topWallVisible=false
 width=52
 
 [12-hole@-50,-50|0]
+borderWalls=true
 maxstrokes=14
 par=4
 
 [12-puddle@14,10|18]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [12-puddle@28,23|20]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [12-puddle@40,33|22]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [12-puddle@43,4|25]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [12-puddle@49,40|23]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [12-puddle@61,51|24]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [12-puddle@63,24|28]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [12-puddle@71,60|19]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [12-puddle@81,71|21]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [12-puddle@85,44|29]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [12-puddle@90,70|26]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [12-puddle@93,66|27]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [12-slope@238,231|53]
-grade=6
+grade=3
 gradient=Vertical
-height=13
+height=11
 reversed=false
 stuckOnGround=false
-width=51
+width=58
 
 [12-slope@238,242|36]
 grade=3
@@ -736,36 +656,36 @@ stuckOnGround=false
 width=56
 
 [12-wall@0,0|10]
-endPoint=21,362
-startPoint=37,377
+endPoint=21,360
+startPoint=35,379
 
 [12-wall@0,0|12]
-endPoint=276,327
-startPoint=287,294
+endPoint=274,328
+startPoint=288,292
 
 [12-wall@0,0|13]
-endPoint=83,161
-startPoint=93,95
+endPoint=81,161
+startPoint=96,93
 
 [12-wall@0,0|14]
 endPoint=81,161
-startPoint=136,330
+startPoint=136,332
 
 [12-wall@0,0|15]
-endPoint=18,306
-startPoint=14,332
+endPoint=20,305
+startPoint=13,332
 
 [12-wall@0,0|20]
-endPoint=281,73
+endPoint=282,74
 startPoint=96,93
 
 [12-wall@0,0|30]
-endPoint=249,340
-startPoint=218,336
+endPoint=252,339
+startPoint=218,337
 
 [12-wall@0,0|31]
 endPoint=218,337
-startPoint=199,323
+startPoint=196,320
 
 [12-wall@0,0|32]
 endPoint=274,328
@@ -773,10 +693,10 @@ startPoint=252,339
 
 [12-wall@0,0|33]
 endPoint=196,320
-startPoint=187,294
+startPoint=189,292
 
 [12-wall@0,0|34]
-endPoint=196,265
+endPoint=196,264
 startPoint=189,292
 
 [12-wall@0,0|35]
@@ -788,7 +708,7 @@ endPoint=13,332
 startPoint=21,360
 
 [12-wall@0,0|42]
-endPoint=316,80
+endPoint=316,78
 startPoint=282,74
 
 [12-wall@0,0|43]
@@ -805,10 +725,10 @@ startPoint=339,30
 
 [12-wall@0,0|46]
 endPoint=316,78
-startPoint=310,109
+startPoint=310,111
 
 [12-wall@0,0|47]
-endPoint=365,50
+endPoint=365,51
 startPoint=337,57
 
 [12-wall@0,0|48]
@@ -820,16 +740,16 @@ endPoint=387,54
 startPoint=365,51
 
 [12-wall@0,0|5]
-endPoint=68,384
+endPoint=71,383
 startPoint=35,379
 
 [12-wall@0,0|51]
 endPoint=307,131
-startPoint=287,136
+startPoint=284,137
 
 [12-wall@0,0|54]
 endPoint=136,332
-startPoint=133,353
+startPoint=133,354
 
 [12-wall@0,0|55]
 endPoint=56,280
@@ -837,11 +757,11 @@ startPoint=38,285
 
 [12-wall@0,0|56]
 endPoint=284,137
-startPoint=267,135
+startPoint=264,134
 
 [12-wall@0,0|57]
 endPoint=264,134
-startPoint=243,138
+startPoint=241,139
 
 [12-wall@0,0|58]
 endPoint=241,139
@@ -849,15 +769,15 @@ startPoint=221,129
 
 [12-wall@0,0|59]
 endPoint=221,129
-startPoint=211,114
+startPoint=212,115
 
 [12-wall@0,0|6]
-endPoint=105,374
+endPoint=104,374
 startPoint=71,383
 
 [12-wall@0,0|60]
 endPoint=212,115
-startPoint=195,107
+startPoint=194,107
 
 [12-wall@0,0|61]
 endPoint=194,107
@@ -905,24 +825,19 @@ maxstrokes=14
 par=3
 
 [13-puddle@11,201|18]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [13-puddle@34,201|19]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [13-puddle@55,202|20]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [13-puddle@70,202|21]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [13-puddle@75,197|22]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [13-slope@101,11|25]
 grade=4
@@ -947,6 +862,14 @@ height=35
 reversed=true
 stuckOnGround=false
 width=35
+
+[13-slope@11,88|13]
+grade=2
+gradient=Diagonal
+height=80
+reversed=true
+stuckOnGround=false
+width=57
 
 [13-slope@125,273|41]
 grade=1
@@ -987,14 +910,6 @@ height=48
 reversed=true
 stuckOnGround=false
 width=109
-
-[13-slope@16,89|13]
-grade=2
-gradient=Diagonal
-height=80
-reversed=true
-stuckOnGround=false
-width=57
 
 [13-slope@290,183|40]
 grade=5
@@ -1045,12 +960,12 @@ stuckOnGround=false
 width=41
 
 [13-wall@0,0|14]
-endPoint=121,85
+endPoint=124,90
 startPoint=14,85
 
 [13-wall@0,0|15]
-endPoint=149,55
-startPoint=123,84
+endPoint=150,56
+startPoint=124,90
 
 [13-wall@0,0|16]
 endPoint=192,50
@@ -1058,19 +973,19 @@ startPoint=150,56
 
 [13-wall@0,0|23]
 endPoint=95,199
-startPoint=106,200
+startPoint=108,201
 
 [13-wall@0,0|3]
 endPoint=296,13
-startPoint=235,63
+startPoint=233,64
 
 [13-wall@0,0|4]
 endPoint=390,136
-startPoint=336,149
+startPoint=336,150
 
 [13-wall@0,0|42]
 endPoint=229,10
-startPoint=258,26
+startPoint=258,28
 
 [13-wall@0,0|43]
 endPoint=260,41
@@ -1078,15 +993,15 @@ startPoint=258,28
 
 [13-wall@0,0|5]
 endPoint=336,150
-startPoint=265,218
+startPoint=264,219
 
 [13-wall@0,0|6]
 endPoint=233,64
-startPoint=221,97
+startPoint=220,98
 
 [13-wall@0,0|7]
 endPoint=220,98
-startPoint=162,160
+startPoint=161,162
 
 [13-wall@0,0|8]
 endPoint=161,162
@@ -1186,14 +1101,14 @@ width=93
 
 [14-wall@0,0|13]
 endPoint=203,205
-startPoint=180,354
+startPoint=181,353
 
 [14-wall@0,0|14]
-endPoint=170,363
-startPoint=116,361
+endPoint=170,362
+startPoint=115,361
 
 [14-wall@0,0|15]
-endPoint=104,366
+endPoint=105,365
 startPoint=115,361
 
 [14-wall@0,0|16]
@@ -1225,7 +1140,7 @@ exitDeg=40
 maxspeed=7
 minspeed=5
 
-[15-blackhole@296,348|8]
+[15-blackhole@330,369|8]
 exit=351,363
 exitDeg=10
 maxspeed=5
@@ -1237,9 +1152,9 @@ exitDeg=10
 maxspeed=5
 minspeed=3
 
-[15-bridge@211,337|38]
+[15-bridge@211,344|38]
 botWallVisible=false
-height=40
+height=28
 leftWallVisible=false
 rightWallVisible=false
 topWallVisible=false
@@ -1265,12 +1180,10 @@ maxstrokes=14
 par=2
 
 [15-puddle@242,338|35]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [15-puddle@243,376|37]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [15-slope@104,71|34]
 grade=2
@@ -1328,22 +1241,6 @@ reversed=true
 stuckOnGround=false
 width=78
 
-[15-slope@171,326|39]
-grade=4
-gradient=Vertical
-height=32
-reversed=false
-stuckOnGround=false
-width=41
-
-[15-slope@171,357|40]
-grade=4
-gradient=Vertical
-height=30
-reversed=true
-stuckOnGround=false
-width=41
-
 [15-slope@272,316|32]
 grade=3
 gradient=Vertical
@@ -1385,12 +1282,12 @@ stuckOnGround=false
 width=142
 
 [15-wall@0,0|10]
-endPoint=257,174
-startPoint=295,242
+endPoint=256,173
+startPoint=295,241
 
 [15-wall@0,0|11]
-endPoint=256,173
-startPoint=202,137
+endPoint=257,172
+startPoint=201,137
 
 [15-wall@0,0|12]
 endPoint=201,137
@@ -1398,26 +1295,26 @@ startPoint=12,110
 
 [15-wall@0,0|18]
 endPoint=295,241
-startPoint=330,283
+startPoint=330,281
 
 [15-wall@0,0|19]
 endPoint=363,242
-startPoint=330,281
+startPoint=331,283
 
 [15-wall@0,0|20]
-endPoint=381,237
+endPoint=382,237
 startPoint=363,242
 
 [15-wall@0,0|23]
-endPoint=274,136
-startPoint=257,172
+endPoint=273,135
+startPoint=256,173
 
 [15-wall@0,0|28]
 endPoint=382,237
 startPoint=390,249
 
 [15-wall@0,0|9]
-endPoint=331,283
+endPoint=330,281
 startPoint=351,387
 
 [15-windmill@273,26|21]
@@ -1456,7 +1353,7 @@ dummykey=true
 [16-cup@-57,-40|72]
 dummykey=true
 
-[16-cup@87,94|73]
+[16-cup@87,93|73]
 dummykey=true
 
 [16-floater@172,322|39]
@@ -1498,184 +1395,139 @@ maxstrokes=14
 par=3
 
 [16-puddle@-3,139|38]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@11,169|34]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@12,194|35]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@120,170|31]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@130,189|32]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@142,171|4]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@150,189|5]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@153,226|17]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@154,205|9]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@159,245|13]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@16,153|37]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@176,188|26]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@178,258|14]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@183,206|62]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@184,227|25]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@191,275|12]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@196,241|6]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@202,296|16]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@206,315|7]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@213,334|15]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@215,254|20]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@215,351|10]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@220,274|11]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@223,367|8]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@229,387|19]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@234,292|24]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@238,316|22]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@249,331|23]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@249,352|21]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@257,376|18]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@33,183|36]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@358,120|27]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@367,84|58]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@378,131|54]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@381,101|56]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@388,65|60]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@393,147|57]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@394,85|53]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@397,123|55]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@398,23|61]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@399,45|59]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@50,157|30]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@57,176|33]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@87,164|29]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-puddle@94,185|28]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [16-sand@173,161|49]
 changeEnabled=false
@@ -1730,7 +1582,7 @@ changeEnabled=false
 changeEvery=50
 
 [16-wall@0,0|65]
-endPoint=359,261
+endPoint=360,260
 startPoint=285,391
 
 [16-wall@0,0|67]
@@ -1759,7 +1611,9 @@ dummykey=true
 dummykey=true
 
 [17-hole@-50,-50|0]
-maxstrokes=14
+borderWalls=true
+hasFinalLoad=false
+maxstrokes=10
 par=3
 
 [17-sand@-2,182|17]
@@ -1874,28 +1728,36 @@ reversed=true
 stuckOnGround=false
 width=181
 
-[17-slope@216,242|38]
-grade=3
-gradient=Vertical
-height=98
-reversed=true
-stuckOnGround=false
-width=58
-
-[17-slope@253,341|40]
-grade=3
-gradient=Horizontal
-height=42
+[17-slope@209,347|41]
+grade=4
+gradient=Opposite Diagonal
+height=44
 reversed=false
 stuckOnGround=false
-width=52
+width=44
+
+[17-slope@210,240|38]
+grade=3
+gradient=Vertical
+height=103
+reversed=true
+stuckOnGround=false
+width=63
+
+[17-slope@246,336|40]
+grade=3
+gradient=Horizontal
+height=52
+reversed=false
+stuckOnGround=false
+width=60
 
 [17-wall@0,0|18]
-endPoint=210,201
+endPoint=210,200
 startPoint=207,391
 
 [17-wall@0,0|19]
-endPoint=145,133
+endPoint=146,132
 startPoint=10,133
 
 [17-wall@0,0|21]
@@ -1917,43 +1779,73 @@ startPoint=12,255
 [18-ball@174,371]
 dummykey=true
 
-[18-cup@339,47|3]
+[18-cup@340,103|3]
 dummykey=true
 
 [18-hole@-50,-50|0]
-maxstrokes=14
+borderWalls=false
+hasFinalLoad=false
+maxstrokes=10
 par=2
 
+[18-slope@308,71|19]
+grade=4
+gradient=Elliptic
+height=65
+reversed=true
+stuckOnGround=false
+width=65
+
 [18-wall@0,0|10]
-endPoint=359,173
+endPoint=388,174
 startPoint=250,151
 
 [18-wall@0,0|11]
-endPoint=324,256
-startPoint=320,269
+endPoint=324,257
+startPoint=320,270
 
 [18-wall@0,0|12]
-endPoint=342,337
-startPoint=340,348
+endPoint=342,336
+startPoint=339,348
 
 [18-wall@0,0|13]
-endPoint=239,90
-startPoint=232,97
+endPoint=228,98
+startPoint=239,90
+
+[18-wall@0,0|14]
+endPoint=15,367
+startPoint=12,143
+
+[18-wall@0,0|15]
+endPoint=219,390
+startPoint=36,391
+
+[18-wall@0,0|16]
+endPoint=36,391
+startPoint=15,367
+
+[18-wall@0,0|17]
+endPoint=388,12
+startPoint=275,11
+
+[18-wall@0,0|18]
+endPoint=388,12
+startPoint=390,212
 
 [18-wall@0,0|4]
 endPoint=238,238
-startPoint=60,316
+startPoint=75,312
 
 [18-wall@0,0|5]
-endPoint=232,96
-startPoint=13,139
+endPoint=228,98
+startPoint=12,143
 
 [18-wall@0,0|6]
-endPoint=274,11
+endPoint=275,11
 startPoint=239,90
 
 [18-wall@0,0|7]
-endPoint=389,213
+endPoint=390,212
 startPoint=324,257
 
 [18-wall@0,0|8]
@@ -1962,7 +1854,7 @@ startPoint=342,336
 
 [18-wall@0,0|9]
 endPoint=339,348
-startPoint=220,390
+startPoint=219,390
 
 [2-ball@112,41]
 dummykey=true
@@ -1980,12 +1872,12 @@ maxspeed=6
 minspeed=3
 
 [2-blackhole@28,148|15]
-exit=271,28
+exit=238,26
 exitDeg=0
 maxspeed=5
 minspeed=1
 
-[2-blackhole@374,84|7]
+[2-blackhole@374,89|7]
 exit=306,84
 exitDeg=244
 maxspeed=3
@@ -2023,7 +1915,7 @@ rightWallVisible=false
 topWallVisible=false
 width=28
 
-[2-cup@21,188|21]
+[2-cup@20,185|21]
 dummykey=true
 
 [2-cup@375,52|6]
@@ -2041,40 +1933,34 @@ topWallVisible=true
 width=81
 
 [2-hole@-50,-50|0]
-maxstrokes=12
+borderWalls=true
+hasFinalLoad=true
+maxstrokes=10
 par=3
 
 [2-puddle@-1,255|29]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [2-puddle@14,263|30]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [2-puddle@25,274|31]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [2-puddle@37,258|32]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [2-puddle@5,284|32]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [2-puddle@62,249|33]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [2-puddle@72,232|34]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [2-puddle@73,213|35]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [2-sand@151,240|43]
 changeEnabled=false
@@ -2089,12 +1975,12 @@ changeEnabled=false
 changeEvery=50
 
 [2-slope@103,118|43]
-grade=1
+grade=2
 gradient=Vertical
-height=30
+height=32
 reversed=false
 stuckOnGround=false
-width=55
+width=69
 
 [2-slope@11,97|51]
 grade=4
@@ -2129,20 +2015,20 @@ stuckOnGround=false
 width=42
 
 [2-slope@138,89|44]
-grade=1
+grade=2
 gradient=Vertical
-height=28
+height=31
 reversed=true
 stuckOnGround=false
-width=59
+width=75
 
 [2-slope@174,59|45]
-grade=1
+grade=2
 gradient=Vertical
-height=28
+height=31
 reversed=false
 stuckOnGround=false
-width=70
+width=85
 
 [2-slope@190,89|58]
 grade=3
@@ -2150,7 +2036,7 @@ gradient=Diagonal
 height=30
 reversed=false
 stuckOnGround=false
-width=75
+width=47
 
 [2-slope@192,119|57]
 grade=3
@@ -2161,7 +2047,7 @@ stuckOnGround=false
 width=43
 
 [2-slope@224,11|46]
-grade=1
+grade=2
 gradient=Vertical
 height=48
 reversed=true
@@ -2192,16 +2078,16 @@ reversed=true
 stuckOnGround=true
 width=153
 
-[2-slope@262,88|59]
+[2-slope@235,88|59]
 grade=3
 gradient=Vertical
-height=32
+height=31
 reversed=false
 stuckOnGround=false
-width=128
+width=153
 
 [2-slope@314,9|47]
-grade=1
+grade=2
 gradient=Diagonal
 height=49
 reversed=true
@@ -2229,40 +2115,36 @@ endPoint=86,192
 startPoint=54,196
 
 [2-wall@0,0|11]
-endPoint=32,174
+endPoint=32,173
 startPoint=54,196
 
 [2-wall@0,0|12]
 endPoint=11,167
-startPoint=32,173
-
-[2-wall@0,0|13]
-endPoint=49,145
 startPoint=31,174
 
+[2-wall@0,0|13]
+endPoint=48,144
+startPoint=32,173
+
 [2-wall@0,0|14]
-endPoint=35,112
-startPoint=49,133
+endPoint=28,113
+startPoint=50,133
 
 [2-wall@0,0|3]
 endPoint=233,12
 startPoint=104,130
 
 [2-wall@0,0|37]
-endPoint=115,82
+endPoint=116,82
 startPoint=141,96
 
 [2-wall@0,0|38]
-endPoint=101,85
-startPoint=85,100
+endPoint=104,85
+startPoint=89,115
 
 [2-wall@0,0|4]
-endPoint=272,61
+endPoint=275,63
 startPoint=86,192
-
-[2-wall@0,0|48]
-endPoint=85,99
-startPoint=81,111
 
 [2-wall@0,0|49]
 endPoint=116,82
@@ -2274,31 +2156,23 @@ startPoint=275,63
 
 [2-wall@0,0|52]
 endPoint=104,130
-startPoint=88,130
-
-[2-wall@0,0|53]
-endPoint=87,129
-startPoint=81,121
+startPoint=89,115
 
 [2-wall@0,0|54]
 endPoint=131,11
-startPoint=170,37
+startPoint=171,36
 
 [2-wall@0,0|55]
 endPoint=172,66
-startPoint=171,36
+startPoint=170,36
 
 [2-wall@0,0|56]
 endPoint=198,44
-startPoint=170,36
+startPoint=171,36
 
 [2-wall@0,0|60]
 endPoint=48,144
 startPoint=50,133
-
-[2-wall@0,0|9]
-endPoint=81,121
-startPoint=81,109
 
 [3-ball@346,322]
 dummykey=true
@@ -2312,27 +2186,26 @@ minspeed=5
 [3-blackhole@266,81|23]
 exit=47,35
 exitDeg=310
-maxspeed=5
-minspeed=3
+maxspeed=4
+minspeed=2
 
 [3-cup@343,36|16]
 dummykey=true
 
 [3-hole@-50,-50|0]
-maxstrokes=12
-par=4
+borderWalls=true
+hasFinalLoad=false
+maxstrokes=10
+par=3
 
 [3-puddle@255,311|10]
-changeEnabled=false
-changeEvery=22
+dummykey=true
 
 [3-puddle@260,276|8]
-changeEnabled=false
-changeEvery=20
+dummykey=true
 
 [3-puddle@276,295|9]
-changeEnabled=false
-changeEvery=26
+dummykey=true
 
 [3-sand@267,148|30]
 changeEnabled=false
@@ -2341,6 +2214,14 @@ changeEvery=50
 [3-sand@284,130|29]
 changeEnabled=false
 changeEvery=50
+
+[3-slope@112,381|41]
+grade=8
+gradient=Opposite Diagonal
+height=15
+reversed=true
+stuckOnGround=false
+width=35
 
 [3-slope@113,334|40]
 grade=8
@@ -2358,14 +2239,6 @@ reversed=false
 stuckOnGround=false
 width=30
 
-[3-slope@113,381|41]
-grade=8
-gradient=Opposite Diagonal
-height=10
-reversed=true
-stuckOnGround=false
-width=38
-
 [3-slope@12,11|25]
 grade=3
 gradient=Diagonal
@@ -2374,7 +2247,7 @@ reversed=true
 stuckOnGround=false
 width=128
 
-[3-slope@152,305|11]
+[3-slope@150,302|11]
 grade=6
 gradient=Opposite Diagonal
 height=86
@@ -2406,7 +2279,7 @@ reversed=false
 stuckOnGround=false
 width=52
 
-[3-slope@335,173|33]
+[3-slope@335,174|33]
 grade=2
 gradient=Diagonal
 height=54
@@ -2415,7 +2288,7 @@ stuckOnGround=false
 width=48
 
 [3-slope@81,116|39]
-grade=2
+grade=3
 gradient=Diagonal
 height=38
 reversed=true
@@ -2423,7 +2296,7 @@ stuckOnGround=false
 width=229
 
 [3-slope@81,12|26]
-grade=2
+grade=3
 gradient=Horizontal
 height=104
 reversed=true
@@ -2435,16 +2308,16 @@ endPoint=90,390
 startPoint=14,350
 
 [3-wall@0,0|19]
-endPoint=299,42
-startPoint=322,62
+endPoint=301,42
+startPoint=323,62
 
 [3-wall@0,0|20]
-endPoint=275,38
-startPoint=256,58
+endPoint=274,39
+startPoint=261,46
 
 [3-wall@0,0|22]
-endPoint=254,24
-startPoint=244,40
+endPoint=255,24
+startPoint=242,41
 
 [3-wall@0,0|28]
 endPoint=100,175
@@ -2456,14 +2329,14 @@ startPoint=14,175
 
 [3-wall@0,0|3]
 endPoint=390,233
-startPoint=227,230
+startPoint=224,228
 
 [3-wall@0,0|30]
 endPoint=150,198
 startPoint=224,228
 
 [3-wall@0,0|31]
-endPoint=184,244
+endPoint=192,250
 startPoint=128,227
 
 [3-wall@0,0|34]
@@ -2471,24 +2344,16 @@ endPoint=255,24
 startPoint=250,13
 
 [3-wall@0,0|35]
-endPoint=192,250
-startPoint=184,244
+endPoint=192,252
+startPoint=192,250
 
 [3-wall@0,0|36]
-endPoint=192,252
-startPoint=192,265
-
-[3-wall@0,0|37]
-endPoint=240,50
-startPoint=242,41
+endPoint=192,250
+startPoint=189,264
 
 [3-wall@0,0|38]
-endPoint=256,57
-startPoint=245,57
-
-[3-wall@0,0|39]
-endPoint=244,56
-startPoint=240,50
+endPoint=261,46
+startPoint=242,41
 
 [3-wall@0,0|42]
 endPoint=292,10
@@ -2499,12 +2364,12 @@ endPoint=301,42
 startPoint=274,39
 
 [3-wall@0,0|5]
-endPoint=191,266
-startPoint=149,342
+endPoint=189,264
+startPoint=151,310
 
 [3-wall@0,0|6]
 endPoint=151,390
-startPoint=149,345
+startPoint=151,310
 
 [3-windmill@323,62|31]
 botWallVisible=false
@@ -2552,204 +2417,156 @@ dummykey=true
 
 [4-hole@-50,-50|0]
 borderWalls=false
+hasFinalLoad=false
 maxstrokes=10
-par=4
+par=3
 
 [4-puddle@109,189|122]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@112,202|76]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@120,173|70]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@123,400|146]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@132,181|134]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@143,157|66]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@143,200|75]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@155,391|145]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@157,375|60]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@165,193|78]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@167,138|61]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@177,118|65]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@188,186|129]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@189,391|144]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@190,94|67]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@200,379|53]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@216,107|64]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@216,83|141]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@217,182|81]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@217,18|141]
-changeEnabled=false
-changeEvery=50
-
-[4-puddle@217,313|59]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@218,2|143]
-changeEnabled=false
-changeEvery=50
+dummykey=true
+
+[4-puddle@219,314|59]
+dummykey=true
 
 [4-puddle@224,255|55]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@230,123|73]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@239,181|100]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@240,38|139]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@240,63|139]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@241,15|140]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@246,323|52]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@249,139|77]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@257,250|56]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@260,145|153]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@275,180|97]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@282,159|86]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@283,333|57]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@292,261|58]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@299,187|98]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@300,165|152]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@303,178|91]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@310,177|83]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@310,327|54]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@319,279|51]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@319,306|50]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@321,198|96]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@347,204|99]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@367,213|154]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@380,226|120]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@398,241|121]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-puddle@99,393|147]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [4-sand@150,179|133]
 changeEnabled=false
@@ -2797,7 +2614,7 @@ gradient=Vertical
 height=24
 reversed=true
 stuckOnGround=false
-width=73
+width=82
 
 [4-slope@169,225|124]
 grade=1
@@ -2863,7 +2680,7 @@ reversed=true
 stuckOnGround=false
 width=30
 
-[4-slope@70,282|112]
+[4-slope@70,281|112]
 grade=4
 gradient=Opposite Diagonal
 height=30
@@ -2871,7 +2688,7 @@ reversed=false
 stuckOnGround=false
 width=30
 
-[4-slope@70,309|114]
+[4-slope@70,308|114]
 grade=4
 gradient=Diagonal
 height=30
@@ -2888,24 +2705,24 @@ stuckOnGround=false
 width=38
 
 [4-wall@0,0|10]
-endPoint=94,232
-startPoint=140,225
+endPoint=95,237
+startPoint=141,225
 
 [4-wall@0,0|101]
-endPoint=245,270
+endPoint=246,271
 startPoint=220,278
 
 [4-wall@0,0|103]
-endPoint=264,271
+endPoint=263,271
 startPoint=246,271
 
 [4-wall@0,0|104]
-endPoint=291,285
+endPoint=292,286
 startPoint=263,271
 
 [4-wall@0,0|105]
-endPoint=239,296
-startPoint=217,291
+endPoint=239,297
+startPoint=216,291
 
 [4-wall@0,0|106]
 endPoint=272,310
@@ -2916,16 +2733,16 @@ endPoint=289,313
 startPoint=272,310
 
 [4-wall@0,0|108]
-endPoint=290,302
+endPoint=288,303
 startPoint=289,313
 
 [4-wall@0,0|109]
-endPoint=300,296
+endPoint=301,296
 startPoint=288,303
 
 [4-wall@0,0|11]
 endPoint=97,154
-startPoint=75,193
+startPoint=76,195
 
 [4-wall@0,0|110]
 endPoint=301,296
@@ -2933,19 +2750,19 @@ startPoint=292,286
 
 [4-wall@0,0|111]
 endPoint=216,291
-startPoint=189,300
+startPoint=190,299
 
 [4-wall@0,0|115]
-endPoint=137,132
-startPoint=121,137
+endPoint=138,131
+startPoint=120,137
 
 [4-wall@0,0|119]
-endPoint=390,272
+endPoint=389,274
 startPoint=342,227
 
 [4-wall@0,0|12]
 endPoint=136,101
-startPoint=146,115
+startPoint=146,113
 
 [4-wall@0,0|13]
 endPoint=146,113
@@ -2953,55 +2770,55 @@ startPoint=138,131
 
 [4-wall@0,0|131]
 endPoint=24,43
-startPoint=40,69
+startPoint=39,69
 
 [4-wall@0,0|132]
-endPoint=32,25
+endPoint=34,25
 startPoint=24,43
 
 [4-wall@0,0|133]
-endPoint=60,27
+endPoint=61,25
 startPoint=34,25
 
 [4-wall@0,0|134]
-endPoint=79,33
+endPoint=80,40
 startPoint=61,25
 
 [4-wall@0,0|138]
-endPoint=243,97
-startPoint=244,82
+endPoint=243,98
+startPoint=245,83
 
 [4-wall@0,0|139]
-endPoint=267,43
-startPoint=276,61
+endPoint=255,44
+startPoint=277,62
 
 [4-wall@0,0|14]
-endPoint=78,76
-startPoint=93,91
+endPoint=77,75
+startPoint=93,90
 
 [4-wall@0,0|140]
 endPoint=277,62
-startPoint=272,75
+startPoint=271,76
 
 [4-wall@0,0|141]
-endPoint=315,11
-startPoint=97,8
+endPoint=314,12
+startPoint=96,8
 
 [4-wall@0,0|142]
-endPoint=11,334
-startPoint=8,264
+endPoint=13,336
+startPoint=9,263
 
 [4-wall@0,0|143]
-endPoint=392,359
-startPoint=352,386
+endPoint=395,355
+startPoint=351,387
 
 [4-wall@0,0|144]
 endPoint=351,387
 startPoint=223,393
 
 [4-wall@0,0|145]
-endPoint=93,231
-startPoint=78,221
+endPoint=389,274
+startPoint=395,355
 
 [4-wall@0,0|15]
 endPoint=74,58
@@ -3009,19 +2826,19 @@ startPoint=77,75
 
 [4-wall@0,0|152]
 endPoint=383,162
-startPoint=377,177
+startPoint=378,176
 
 [4-wall@0,0|153]
-endPoint=347,179
+endPoint=345,178
 startPoint=378,176
 
 [4-wall@0,0|16]
 endPoint=39,69
-startPoint=24,103
+startPoint=25,103
 
 [4-wall@0,0|162]
-endPoint=154,354
-startPoint=122,366
+endPoint=153,355
+startPoint=121,366
 
 [4-wall@0,0|17]
 endPoint=15,170
@@ -3032,27 +2849,27 @@ endPoint=9,263
 startPoint=15,170
 
 [4-wall@0,0|19]
-endPoint=39,355
+endPoint=39,353
 startPoint=13,336
 
 [4-wall@0,0|20]
-endPoint=69,369
+endPoint=69,367
 startPoint=39,353
 
 [4-wall@0,0|21]
-endPoint=190,299
+endPoint=189,299
 startPoint=164,241
 
 [4-wall@0,0|22]
-endPoint=380,147
+endPoint=379,147
 startPoint=383,162
 
 [4-wall@0,0|23]
 endPoint=345,178
-startPoint=323,148
+startPoint=322,148
 
 [4-wall@0,0|24]
-endPoint=259,114
+endPoint=259,113
 startPoint=243,98
 
 [4-wall@0,0|25]
@@ -3060,8 +2877,8 @@ endPoint=291,137
 startPoint=259,113
 
 [4-wall@0,0|26]
-endPoint=181,56
-startPoint=157,61
+endPoint=182,55
+startPoint=158,60
 
 [4-wall@0,0|27]
 endPoint=80,40
@@ -3073,7 +2890,7 @@ startPoint=182,55
 
 [4-wall@0,0|29]
 endPoint=132,51
-startPoint=104,52
+startPoint=103,51
 
 [4-wall@0,0|30]
 endPoint=230,49
@@ -3097,11 +2914,11 @@ startPoint=79,24
 
 [4-wall@0,0|38]
 endPoint=379,147
-startPoint=385,137
+startPoint=385,136
 
 [4-wall@0,0|39]
 endPoint=385,136
-startPoint=384,114
+startPoint=383,113
 
 [4-wall@0,0|4]
 endPoint=121,366
@@ -3109,11 +2926,11 @@ startPoint=69,367
 
 [4-wall@0,0|40]
 endPoint=383,113
-startPoint=378,83
+startPoint=379,83
 
 [4-wall@0,0|41]
 endPoint=379,83
-startPoint=384,60
+startPoint=385,60
 
 [4-wall@0,0|42]
 endPoint=385,60
@@ -3121,14 +2938,14 @@ startPoint=383,43
 
 [4-wall@0,0|43]
 endPoint=383,43
-startPoint=366,22
+startPoint=365,22
 
 [4-wall@0,0|44]
 endPoint=365,22
 startPoint=314,12
 
 [4-wall@0,0|5]
-endPoint=189,299
+endPoint=190,299
 startPoint=153,355
 
 [4-wall@0,0|7]
@@ -3137,7 +2954,7 @@ startPoint=220,278
 
 [4-wall@0,0|8]
 endPoint=76,195
-startPoint=80,221
+startPoint=95,237
 
 [4-wall@0,0|9]
 endPoint=120,137
@@ -3191,6 +3008,7 @@ topWallVisible=false
 width=80
 
 [5-hole@-50,-50|0]
+borderWalls=true
 maxstrokes=10
 par=2
 
@@ -3252,7 +3070,7 @@ dummykey=true
 [6-blackhole@331,316|12]
 exit=221,84
 exitDeg=30
-maxspeed=4
+maxspeed=6
 minspeed=2
 
 [6-blackhole@374,374|17]
@@ -3289,16 +3107,10 @@ width=28
 dummykey=true
 
 [6-hole@-50,-50|0]
+borderWalls=true
+hasFinalLoad=false
 maxstrokes=10
 par=3
-
-[6-slope@10,149|3]
-grade=2
-gradient=Opposite Diagonal
-height=41
-reversed=false
-stuckOnGround=false
-width=64
 
 [6-slope@10,187|5]
 grade=2
@@ -3312,6 +3124,14 @@ width=67
 grade=2
 gradient=Diagonal
 height=130
+reversed=false
+stuckOnGround=false
+width=64
+
+[6-slope@11,140|3]
+grade=2
+gradient=Opposite Diagonal
+height=51
 reversed=false
 stuckOnGround=false
 width=64
@@ -3332,21 +3152,21 @@ reversed=true
 stuckOnGround=false
 width=62
 
-[6-slope@15,141|7]
+[6-slope@12,140|7]
 grade=2
 gradient=Opposite Diagonal
 height=48
 reversed=true
 stuckOnGround=false
-width=61
+width=63
 
-[6-slope@231,280|18]
+[6-slope@231,275|18]
 grade=4
 gradient=Horizontal
-height=69
+height=77
 reversed=true
 stuckOnGround=false
-width=22
+width=23
 
 [6-wall@0,0|18]
 endPoint=76,231
@@ -3368,130 +3188,103 @@ dummykey=true
 dummykey=true
 
 [7-hole@-50,-50|0]
+borderWalls=true
+hasFinalLoad=false
 maxstrokes=10
 par=2
 
 [7-puddle@-7,275|36]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@104,367|19]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@116,337|33]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@12,353|18]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@121,393|27]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@127,377|14]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@134,353|32]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@140,340|34]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@156,394|31]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@16,376|23]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@17,393|30]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@175,402|35]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@20,324|20]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@24,307|16]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@29,290|11]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@3,310|25]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@41,338|8]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@46,363|10]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@54,382|22]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@56,312|9]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@57,394|29]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@6,330|24]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@67,350|17]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@70,370|21]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@72,334|12]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@89,396|28]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@9,288|26]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@93,380|13]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-puddle@94,352|15]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [7-sand@200,200|38]
 changeEnabled=false
 changeEvery=50
 
-[7-slope@13,124|5]
+[7-slope@12,126|5]
 grade=4
 gradient=Vertical
 height=94
@@ -3499,15 +3292,7 @@ reversed=false
 stuckOnGround=false
 width=253
 
-[7-slope@13,15|37]
-grade=1
-gradient=Horizontal
-height=110
-reversed=true
-stuckOnGround=false
-width=240
-
-[7-slope@166,21|7]
+[7-slope@166,24|7]
 grade=4
 gradient=Diagonal
 height=196
@@ -3515,7 +3300,7 @@ reversed=false
 stuckOnGround=false
 width=182
 
-[7-slope@252,14|6]
+[7-slope@253,14|6]
 grade=4
 gradient=Horizontal
 height=114
@@ -3523,7 +3308,7 @@ reversed=false
 stuckOnGround=false
 width=95
 
-[7-windmill@14,18|3]
+[7-windmill@12,13|3]
 botWallVisible=false
 height=210
 leftWallVisible=false
@@ -3547,44 +3332,37 @@ width=66
 dummykey=true
 
 [8-hole@-50,-50|0]
-maxstrokes=15
+borderWalls=true
+hasFinalLoad=false
+maxstrokes=10
 par=6
 
 [8-puddle@171,238|22]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [8-puddle@196,238|23]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [8-puddle@254,307|17]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [8-puddle@272,287|16]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [8-puddle@283,304|19]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [8-puddle@287,276|15]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [8-puddle@289,285|18]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [8-puddle@300,261|14]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [8-puddle@301,274|13]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [8-slope@133,253|37]
 grade=4
@@ -3618,13 +3396,13 @@ reversed=true
 stuckOnGround=false
 width=78
 
-[8-slope@150,132|27]
+[8-slope@150,129|27]
 grade=3
 gradient=Horizontal
-height=63
+height=69
 reversed=false
 stuckOnGround=false
-width=25
+width=28
 
 [8-slope@221,204|39]
 grade=4
@@ -3684,23 +3462,23 @@ width=97
 
 [8-wall@0,0|11]
 endPoint=11,161
-startPoint=29,91
+startPoint=30,90
 
 [8-wall@0,0|29]
-endPoint=317,125
-startPoint=238,82
+endPoint=318,125
+startPoint=238,83
 
 [8-wall@0,0|3]
 endPoint=238,83
-startPoint=62,71
+startPoint=61,70
 
 [8-wall@0,0|30]
-endPoint=301,227
-startPoint=320,151
+endPoint=300,226
+startPoint=320,150
 
 [8-wall@0,0|31]
-endPoint=89,126
-startPoint=70,144
+endPoint=90,126
+startPoint=70,145
 
 [8-wall@0,0|32]
 endPoint=61,70
@@ -3708,11 +3486,11 @@ startPoint=30,90
 
 [8-wall@0,0|33]
 endPoint=227,129
-startPoint=242,143
+startPoint=241,143
 
 [8-wall@0,0|34]
-endPoint=241,180
-startPoint=224,196
+endPoint=241,181
+startPoint=225,196
 
 [8-wall@0,0|4]
 endPoint=300,226
@@ -3724,11 +3502,11 @@ startPoint=320,150
 
 [8-wall@0,0|41]
 endPoint=185,332
-startPoint=171,330
+startPoint=171,331
 
 [8-wall@0,0|5]
 endPoint=171,331
-startPoint=76,229
+startPoint=75,228
 
 [8-wall@0,0|6]
 endPoint=70,145
@@ -3762,36 +3540,30 @@ dummykey=true
 dummykey=true
 
 [9-hole@-50,-50|0]
+borderWalls=true
 maxstrokes=10
 par=3
 
 [9-puddle@238,340|3]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [9-puddle@271,354|4]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [9-puddle@296,281|6]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [9-puddle@307,367|5]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [9-puddle@315,305|7]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [9-puddle@325,329|8]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [9-puddle@328,349|9]
-changeEnabled=false
-changeEvery=50
+dummykey=true
 
 [9-sand@87,234|26]
 changeEnabled=false
@@ -3805,7 +3577,7 @@ reversed=true
 stuckOnGround=false
 width=499
 
-[9-wall@-16,-4|11]
+[9-wall@0,0|11]
 endPoint=88,205
 startPoint=68,172
 

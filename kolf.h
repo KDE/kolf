@@ -4,6 +4,7 @@
 #include <kmainwindow.h>
 #include <kurl.h>
 
+#include <qmap.h>
 #include <qptrlist.h>
 #include <qstring.h>
 #include <qwidget.h>
@@ -92,6 +93,8 @@ private:
 	void setHoleMovementEnabled(bool);
 	inline void setEditingEnabled(bool);
 	bool competition;
+
+	QMap<QString, QString> defaults;
 };
 
 #endif
