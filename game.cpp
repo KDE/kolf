@@ -1742,9 +1742,6 @@ void Puddle::collision(Ball *ball, long int /*id*/)
 		ball->setVisible(false);
 		ball->setState(Stopped);
 		ball->setVelocity(0, 0);
-
-		double x = ball->x(), y = ball->y();
-		kdDebug() << "(" << x << ", " << y << ")" << endl;
 	}
 }
 
