@@ -95,7 +95,7 @@ void Kolf::initGUI()
 	saveGameAsAction = new KAction(i18n("&Save Game As..."), 0, this, SLOT(saveGameAs()), actionCollection(), "savegameas");
 
 	loadGameAction = KStdGameAction::load(this, SLOT(loadGame()), actionCollection());
-	loadGameAction->setText(i18n("Load Saved..."));
+	loadGameAction->setText(i18n("Load Saved Game..."));
 
 	highScoreAction = KStdGameAction::highscores(this, SLOT(showHighScores()), actionCollection());
 
