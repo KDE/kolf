@@ -240,7 +240,7 @@ height=38
 width=36
 
 [10-sign@-1,360|42]
-Comment=Washington DC<br>(Pentagon)
+Comment=Washington DC (Pentagon)
 Comment[bg]=Вашингтон, окръг Колумбия<br>(Пентагона)
 Comment[es]=Washington DC<br>(Pentágono)
 Comment[pt]=Washington DC<br>(Pentágono)
@@ -1207,7 +1207,7 @@ height=78
 width=178
 
 [7-sign@11,116|7]
-Comment=Gol<br>den Gate
+Comment=Golden Gate
 Comment[bg]=Гол<br>дън Гейт
 Comment[cs]=Golden Gate
 Comment[sr]=Голден гејт
