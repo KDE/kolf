@@ -1,5 +1,7 @@
 [0-course@-50,-50]
 Name=Tutorial Course
+Name[es]=Curso de tutorial
+Name[pt_BR]=Tutorial
 Name[sv]=Övningsbana
 author=Jason Katz-Brown
 name=Tutorial Course
@@ -18,6 +20,8 @@ par=2
 
 [1-sign@2,2|3]
 Comment=<h3>Welcome</h3> to the tutorial course for Kolf!
+Comment[es]=<h3>Bienvenido</h3> al curso de tutorial de Kolf
+Comment[pt_BR]=<h3>Bem-vindo</h3> ao tutorial do Kolf!
 Comment[sv]=<h3>Välkommen</h3> till Kolfs övningsbana.
 botWallVisible=true
 height=74
@@ -37,6 +41,7 @@ width=319
 
 [1-sign@74,251|7]
 Comment=To aim putter, hit the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use mouse.
+Comment[en_GB]=To aim putter, hit the Left (rotate anticlockwise) and Right (rotate clockwise) Arrow keys or use mouse.
 botWallVisible=true
 height=142
 leftWallVisible=true
@@ -100,6 +105,8 @@ width=112
 
 [10-sign@7,9|4]
 Comment=<h3>Bridges</h3>Bridges can have walls on the top, bottom, left, or right.
+Comment[es]=<h3>Puentes</h3>Los puentes pueden tener paredes, en la parte superior, fondo, izquierdo o derecho.
+Comment[pt_BR]=<h3>Pontes</h3>Pontes podem ter muros no topo, base, esquerda ou direita.
 Comment[sv]=<h3>Broar</h3>Broar kan ha väggar över, under, till vänster eller till höger.
 botWallVisible=true
 height=115
@@ -177,6 +184,8 @@ width=172
 
 [11-sign@145,4|3]
 Comment=<h3>Everything</h3>Here's a hole that has it all. Have fun with Kolf!<br><center>-- Jason Katz-Brown</center>
+Comment[es]=<h3>Todo</h3>Aquí hay un agujero que lo tiene todo. Disfrute con Kolf<br> <center>-- Jason Katz-Brown</center>
+Comment[pt_BR]=<h3>Tudo</h3>Aqui está a regra que diz tudol. Divirta-se com o Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[sv]=<h3>Alltihop</h3>Här är ett hål som har alltihop. Hoppas du får roligt med Kolf!<br><center>-- Jason Katz-Brown</center>
 botWallVisible=true
 height=132
@@ -283,6 +292,8 @@ par=3
 
 [3-sign@4,4|4]
 Comment=Try out these different types of slopes.
+Comment[es]=Intente estos diferentes tipo de pendiente.
+Comment[pt_BR]=Experimente estes tipos diferentes de ladeiras.
 Comment[sv]=Prova med de här olika typerna av sluttning.
 botWallVisible=true
 height=87
@@ -414,6 +425,9 @@ par=2
 
 [5-sign@3,5|3]
 Comment=<h3>Walls</h3>Bounce the ball off of the red walls.
+Comment[es]=<h3>Paredes</h3>Rebota la pelota fuera de las paredes rojas.
+Comment[pt_BR]=<h3>Paredes</h3>Bate a bola em paredes vermelhas.
+Comment[sv]=<h3>Väggar</h3>Studsa bollen från de röda väggarna.
 botWallVisible=true
 height=117
 leftWallVisible=true
@@ -477,7 +491,9 @@ width=78
 
 [6-sign@3,152|37]
 Comment=<h3>Sand</h3>Sand is yellow, and slows your ball down.
-Comment[sv]=<h3>Sand</h3>Sand är gul, och saktar ner bollen.
+Comment[es]=<h3>Arena</h3>La arena es amarilla, y enlentece su pelota.
+Comment[pt_BR]=<h3>Areia</h3>A areia é amarela, e faz sua bola andar mais devagar.
+Comment[sv]=<h3>Bunkrar</h3>Bunkrar är gula, och saktar ner bollen.
 botWallVisible=true
 height=147
 leftWallVisible=true
@@ -487,6 +503,9 @@ width=138
 
 [6-sign@3,5|4]
 Comment=<h3>Puddles (Water)</h3>Hitting into a puddle (blue) adds a penalty stroke to your score, and your ball is placed outside the puddle.
+Comment[es]=<h3>Charcos (Agua)</h3>Pisar un charca (azul) añade un penalización a su puntuación, y su pelota es situada fuera del charco.
+Comment[pt_BR]=<h3>Poças (Água)</h3>Golpear para uma poça (azul) adicionar um penâlti para o seu escore, e sua bola é colocada fora da poça.
+Comment[sv]=<h3>Vattenhinder</h3>Att slå i ett vattenhinder (blå) lägger till ett extra slag till poängen, och bollen placeras utanför hindret.
 botWallVisible=true
 height=145
 leftWallVisible=true
@@ -512,7 +531,6 @@ par=2
 
 [7-sign@130,2|4]
 Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The windmill arm's speed may vary by hole.
-Comment[sv]=<h3>Väderkvarnar</h3>Väderkvarnar (brun bas med arm som flyttas) har bruna väggar (eller halva väggar). Väderkvarnens hastighet kan variera för olika hål.
 botWallVisible=true
 height=206
 leftWallVisible=true
@@ -590,6 +608,7 @@ par=2
 
 [9-sign@5,6|3]
 Comment=<h3>Floaters</h3>Floaters are moving platforms that carry a ball that lands on it. Floaters' speeds vary.
+Comment[pt_BR]=<h3>Bóias</h3>As bóias são plataformas em movimentos que carregam uma bola sobre ela. A velocidade das bóias pode variar.
 Comment[sv]=<h3>Flottar</h3>Flottar är flyttbara plattformar som kan bära en boll som landar på dem. Flottarnas hastighet varierar.
 botWallVisible=true
 height=127
