@@ -4511,7 +4511,7 @@ void KolfGame::toggleEditMode()
 void KolfGame::initSoundServer()
 {
 	soundserver = Arts::Reference("global:Arts_SimpleSoundServer");
-	playObjectFactory = Arts::Reference("global:Arts_PlayObjectFactory");
+
 	if (soundserver.isNull())
 	{
 		if (m_sound)
@@ -4540,6 +4540,8 @@ void KolfGame::initSoundServer()
 			m_soundError = true;
 		}
 	}
+
+	playObjectFactory = Arts::Reference("global:Arts_PlayObjectFactory");
 }
 
 void KolfGame::playSound(QString file)
