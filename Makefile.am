@@ -41,8 +41,7 @@ EXTRA_DIST = kolf.desktop
 appdir = $(kde_datadir)/kolf
 app_DATA = kolfui.rc intro tutorial.kolf tutorial.kolfgame
 
-appsdir = $(kde_appsdir)/Games/Arcade
-apps_DATA = kolf.desktop
+xdg_apps_DATA = kolf.desktop
 
 applicationmimedir = $(kde_mimedir)/application
 applicationmime_DATA = x-kourse.desktop x-kolf.desktop
@@ -54,6 +53,3 @@ METASOURCES = AUTO
 
 messages: rc.cpp game.h floater.h slope.h
 	$(XGETTEXT) *.cpp canvasitem.h game.h -o $(podir)/kolf.pot
-
-install-data-local:
-	rm -rf $(DESTDIR)$(kde_appsdir)/Games/kolf.desktop
