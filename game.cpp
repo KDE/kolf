@@ -70,13 +70,14 @@ inline QString makeStateGroup(int id, const QString &name)
 
 /////////////////////////
 
-RectPoint::RectPoint(QColor color, QCanvasRectangle *rect, QCanvas *canvas)
+RectPoint::RectPoint(QColor color, QCanvasItem *rect, QCanvas *canvas)
 	: QCanvasEllipse(canvas)
 {
 	setZ(9999);
 	setSize(10, 10);
 	this->rect = rect;
 	setBrush(QBrush(color));
+	setSizeFactor(1.0);
 	dontmove = false;
 }
 
@@ -90,14 +91,23 @@ void RectPoint::moveBy(double dx, double dy)
 		return;
 	}
 
-	double nw = fabs(x() - rect->x());
-	double nh = fabs(y() - rect->y());
+	double nw = m_sizeFactor * fabs(x() - rect->x());
+	double nh = m_sizeFactor * fabs(y() - rect->y());
 	if (nw <= 0 || nh <= 0)
 		return;
 	RectItem *ritem = dynamic_cast<RectItem *>(rect);
 	ritem->newSize(nw, nh);
 
 	update();
+}
+
+Config *RectPoint::config(QWidget *parent)
+{
+	CanvasItem *citem = dynamic_cast<CanvasItem *>(rect);
+	if (citem)
+		return citem->config(parent);
+	else
+		return 0;
 }
 
 /////////////////////////
@@ -256,7 +266,6 @@ void Slope::aboutToDie()
 
 QPtrList<QCanvasItem> Slope::moveableItems()
 {
-	//kdDebug() << "moveableitems\n";
 	QPtrList<QCanvasItem> ret;
 	ret.append(point);
 	return ret;
@@ -1585,6 +1594,40 @@ Ellipse::Ellipse(QCanvas *canvas)
 	setChangeEvery(50);
 	count = 0;
 	setVisible(true);
+
+	point = new RectPoint(black, this, canvas);
+	point->setSizeFactor(2.0);
+}
+
+void Ellipse::aboutToDie()
+{
+	delete point;
+}
+
+QPtrList<QCanvasItem> Ellipse::moveableItems()
+{
+	QPtrList<QCanvasItem> ret;
+	ret.append(point);
+	return ret;
+}
+
+void Ellipse::newSize(int width, int height)
+{
+	QCanvasEllipse::setSize(width, height);
+}
+
+void Ellipse::moveBy(double dx, double dy)
+{
+	QCanvasEllipse::moveBy(dx, dy);
+
+	point->dontMove();
+	point->move(x() + width() / 2, y() + height() / 2);
+}
+
+void Ellipse::editModeChanged(bool changed)
+{
+	point->setVisible(changed);
+	moveBy(0, 0);
 }
 
 void Ellipse::advance(int phase)
@@ -1602,16 +1645,22 @@ void Ellipse::advance(int phase)
 	}
 }
 
-void Ellipse::doLoad(KSimpleConfig *cfg)
+void Ellipse::load(KSimpleConfig *cfg)
 {
 	setChangeEnabled(cfg->readBoolEntry("changeEnabled", changeEnabled()));
 	setChangeEvery(cfg->readNumEntry("changeEvery", changeEvery()));
+	double newWidth = width(), newHeight = height();
+	newWidth = cfg->readNumEntry("width", newWidth);
+	newHeight = cfg->readNumEntry("height", newHeight);
+	newSize(newWidth, newHeight);
 }
 
-void Ellipse::doSave(KSimpleConfig *cfg)
+void Ellipse::save(KSimpleConfig *cfg)
 {
 	cfg->writeEntry("changeEvery", changeEvery());
 	cfg->writeEntry("changeEnabled", changeEnabled());
+	cfg->writeEntry("width", width());
+	cfg->writeEntry("height", height());
 }
 
 Config *Ellipse::config(QWidget *parent)
@@ -1649,18 +1698,13 @@ Puddle::Puddle(QCanvas *canvas)
 	brush.setPixmap(pic);
 	setBrush(brush);
 
+	KPixmap pointPic(pic);
+	KPixmapEffect::intensity(pointPic, .45);
+	brush.setPixmap(pointPic);
+	point->setBrush(brush);
+
 	setZ(-25);
 	setPen(blue);
-}
-
-void Puddle::save(KSimpleConfig *cfg)
-{
-	doSave(cfg);
-}
-
-void Puddle::load(KSimpleConfig *cfg)
-{
-	doLoad(cfg);
 }
 
 bool Puddle::collision(Ball *ball, long int /*id*/)
@@ -1706,18 +1750,13 @@ Sand::Sand(QCanvas *canvas)
 	brush.setPixmap(pic);
 	setBrush(brush);
 
+	KPixmap pointPic(pic);
+	KPixmapEffect::intensity(pointPic, .45);
+	brush.setPixmap(pointPic);
+	point->setBrush(brush);
+
 	setZ(-26);
 	setPen(yellow);
-}
-
-void Sand::save(KSimpleConfig *cfg)
-{
-	doSave(cfg);
-}
-
-void Sand::load(KSimpleConfig *cfg)
-{
-	doLoad(cfg);
 }
 
 bool Sand::collision(Ball *ball, long int /*id*/)

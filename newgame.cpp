@@ -72,35 +72,6 @@ void ColorButton::drawButtonLabel(QPainter *painter)
 
 /////////////////////////
 
-TransparentButton::TransparentButton(const QString &text, QWidget *parent, const char *name)
- : KPushButton(text, parent, name)
-{
-	mouseOver = false;
-}
-
-void TransparentButton::enterEvent(QEvent *)
-{
-	mouseOver = true;
-	update();
-}
-
-void TransparentButton::leaveEvent(QEvent *)
-{
-	mouseOver = false;
-	update();
-}
-
-void TransparentButton::drawButton(QPainter *painter)
-{
-	painter->setPen(QPen(isDown() ? green.dark(240) : green.dark(), 3));
-	if (mouseOver)
-		painter->drawRoundRect(QRect(0, 0, width(), height()));
-
-	drawButtonLabel(painter);
-}
-
-/////////////////////////
-
 NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_name)
 	: KDialogBase(KDialogBase::TreeList, i18n("New Game"), Ok | Cancel, Ok, parent, _name)
 {
@@ -388,7 +359,7 @@ PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent
 	layout->addWidget(colorButton = new ColorButton(startColor, this));
 	colorButton->setBackgroundPixmap(grass);
 
-	KPushButton *remove = new TransparentButton(i18n("Remove"), this);
+	KPushButton *remove = new KPushButton(i18n("Remove"), this);
 	layout->addWidget(remove);
 	remove->setBackgroundPixmap(grass);
 	connect(remove, SIGNAL(clicked()), this, SLOT(removeMe()));

@@ -41,22 +41,6 @@ private:
 	bool mouseOver;
 };
 
-class TransparentButton : public KPushButton
-{
-	Q_OBJECT
-
-public:
-	TransparentButton(const QString &text, QWidget *parent, const char *name = 0L);
-
-protected:
-	virtual void drawButton(QPainter *painter);
-	virtual void enterEvent(QEvent *);
-	virtual void leaveEvent(QEvent *);
-
-private:
-	bool mouseOver;
-};
-
 class PlayerEditor : public QWidget
 {
 	Q_OBJECT

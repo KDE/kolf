@@ -2760,7 +2760,7 @@ maxspeed=2
 minspeed=1
 
 [4-blackhole@379,325|116]
-exit=111,240
+exit=122,236
 exitDeg=290
 maxspeed=5
 minspeed=3
@@ -3171,7 +3171,7 @@ startPoint=292,286
 
 [4-wall@0,0|111]
 endPoint=216,291
-startPoint=190,299
+startPoint=189,299
 
 [4-wall@0,0|115]
 endPoint=138,131
@@ -3278,7 +3278,7 @@ endPoint=69,367
 startPoint=39,353
 
 [4-wall@0,0|21]
-endPoint=189,299
+endPoint=190,299
 startPoint=164,241
 
 [4-wall@0,0|22]
@@ -3366,7 +3366,7 @@ endPoint=365,22
 startPoint=314,12
 
 [4-wall@0,0|5]
-endPoint=190,299
+endPoint=189,299
 startPoint=153,355
 
 [4-wall@0,0|7]

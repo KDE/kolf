@@ -214,19 +214,21 @@ public:
 class RectPoint : public QCanvasEllipse, public CanvasItem
 {
 public:
-	RectPoint(QColor color, QCanvasRectangle *slope, QCanvas *canvas);
+	RectPoint(QColor color, QCanvasItem *, QCanvas *canvas);
 	void dontMove() { dontmove = true; }
 	virtual void moveBy(double dx, double dy);
-	virtual Config *config(QWidget *parent) { return dynamic_cast<CanvasItem *>(rect)->config(parent); }
+	virtual Config *config(QWidget *parent);
 	virtual bool deleteable() { return false; }
 	virtual bool cornerResize() { return true; }
+	void setSizeFactor(double newFactor) { m_sizeFactor = newFactor; }
 
 private:
 	bool dontmove;
-	QCanvasRectangle *rect;
+	QCanvasItem *rect;
+	double m_sizeFactor;
 };
 
-class Ellipse : public QCanvasEllipse, public CanvasItem
+class Ellipse : public QCanvasEllipse, public CanvasItem, public RectItem
 {
 public:
 	Ellipse(QCanvas *canvas);
@@ -237,13 +239,24 @@ public:
 	bool changeEnabled() { return m_changeEnabled; }
 	void setChangeEnabled(bool news) { setAnimated(news); m_changeEnabled = news; }
 
+	virtual void aboutToDie();
 	virtual void aboutToSave();
 	virtual void savingDone();
 
-	virtual void doSave(KSimpleConfig *cfg);
-	virtual void doLoad(KSimpleConfig *cfg);
+	virtual QPtrList<QCanvasItem> moveableItems();
+
+	virtual void newSize(int width, int height);
+	virtual void moveBy(double dx, double dy);
+
+	virtual void editModeChanged(bool changed);
+
+	virtual void save(KSimpleConfig *cfg);
+	virtual void load(KSimpleConfig *cfg);
 
 	virtual Config *config(QWidget *parent);
+
+protected:
+	RectPoint *point;
 
 private:
 	int count;
@@ -283,8 +296,6 @@ public:
 	Puddle(QCanvas *canvas);
 	virtual bool collision(Ball *ball, long int id);
 	virtual int rtti() const { return Rtti_DontPlaceOn; }
-	virtual void load(KSimpleConfig *cfg);
-	virtual void save(KSimpleConfig *cfg);
 };
 class PuddleObj : public Object
 {
@@ -298,8 +309,6 @@ class Sand : public Ellipse
 public:
 	Sand(QCanvas *canvas);
 	virtual bool collision(Ball *ball, long int id);
-	virtual void load(KSimpleConfig *cfg);
-	virtual void save(KSimpleConfig *cfg);
 };
 class SandObj : public Object
 {

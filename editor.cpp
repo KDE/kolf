@@ -53,6 +53,8 @@ void Editor::setItem(CanvasItem *item)
 {
 	delete config;
 	config = item->config(this);
+	if (!config)
+		return;
 	config->ctorDone();
 	hlayout->addWidget(config);
 	hlayout->setStretchFactor(config, 2);
