@@ -111,7 +111,7 @@ void Ball::doAdvance()
 
 void Ball::collisionDetect()
 {
-	kdDebug() << "collision detect\n";
+	//kdDebug() << "collision detect\n";
 	if (collisionId >= INT_MAX - 1)
 		collisionId = 0;
 	else
@@ -125,7 +125,7 @@ void Ball::collisionDetect()
 	QCanvasItemList list = collisions(true);
 	if (list.isEmpty())
 	{
-		kdDebug() << "collision list empty\n";
+		//kdDebug() << "collision list empty\n";
 		return;
 	}
 

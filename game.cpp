@@ -429,7 +429,7 @@ QPointArray Slope::areaPoints() const
 
 void Slope::collision(Ball *ball, long int /*id*/)
 {
-	kdDebug() << "slope::collision\n";
+	//kdDebug() << "slope::collision\n";
 
 	double vx = ball->xVelocity();
 	double vy = ball->yVelocity();
@@ -518,7 +518,7 @@ void Slope::collision(Ball *ball, long int /*id*/)
 		ball->setState(Stopped);
 	}
 
-	kdDebug() << "set velocities of ball to " << vx << ", " << vy << endl;
+	//kdDebug() << "set velocities of ball to " << vx << ", " << vy << endl;
 
 	ball->setVelocity(vx, vy);
 	ball->setState(Rolling);
