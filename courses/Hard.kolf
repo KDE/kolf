@@ -1,5 +1,19 @@
 [0-course@-50,-50]
 Name=Hard Course
+Name[af]=hard natuurlik
+Name[bs]=Težak kurs
+Name[cs]=Těžký
+Name[da]=Svær bane
+Name[el]=Δύσκολη πίστα
+Name[es]=Curso duro
+Name[fi]=Vaikea kenttä
+Name[hu]=Nehéz pálya
+Name[ja]=難しいコース
+Name[pt]=Percurso Difícil
+Name[pt_BR]=Curso difícil
+Name[sl]=Težka steza
+Name[sv]=Svår bana
+Name[xh]=Indlela enzima
 author=Jason Katz-Brown
 
 [1-ball@84,73]
