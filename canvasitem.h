@@ -113,6 +113,11 @@ public:
 	 */
 	virtual void clean() {};
 	/**
+	 * scale factor changed (game->scaleFactor(), the world matrix is game->worldMatrix())
+	 * NOTE: not used in Kolf 1.1, which comes with KDE 3.1.
+	 */
+	virtual void scaleChanged() {};
+	/**
 	 * returns whether this item can be moved by others (if you want to move an item, you should honor this!)
 	 */
 	virtual bool canBeMovedByOthers() const { return false; }
