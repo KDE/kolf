@@ -241,6 +241,7 @@ width=36
 
 [10-sign@-1,360|42]
 Comment=Washington DC (Pentagon)
+Comment[bg]=Вашингтон, окръг Колумбия (Пентагона)
 Comment[es]=Washington DC (Pentágono)
 Comment[it]=Washington DC (Pentagono)
 Comment[pt]=Washington DC (Pentágono)
@@ -1207,6 +1208,7 @@ width=178
 
 [7-sign@11,116|7]
 Comment=Golden Gate
+Comment[bg]=Голдън Гейт
 Comment[cs]=Zlatá brána
 Comment[sr]=Голден гејт
 botWallVisible=false
