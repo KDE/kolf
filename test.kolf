@@ -2,7 +2,7 @@
 author=Jas0n Katz-Br0wn
 name=Jason's Kolf Test Course
 
-[1-ball@158,267]
+[1-ball@187,255]
 dummykey=true
 
 [1-blackhole@352,342|8]
@@ -47,7 +47,7 @@ text=<h2>welcome</h2>under construction
 topWallVisible=true
 width=157
 
-[1-slope@11,12|15]
+[1-slope@11,11|15]
 grade=5
 gradient=Diagonal
 height=232
@@ -68,8 +68,8 @@ endPoint=153,107
 startPoint=115,139
 
 [1-wall@0,0|13]
-endPoint=186,237
-startPoint=166,249
+endPoint=179,237
+startPoint=239,258
 
 [1-wall@0,0|14]
 endPoint=282,188

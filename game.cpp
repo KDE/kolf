@@ -2150,11 +2150,21 @@ void WallPoint::collision(Ball *ball, long int id)
 	kdDebug() << "ballAngle: " << rad2deg(ballAngle) << endl;
 	kdDebug() << "wallAngle: " << rad2deg(wallAngle) << endl;
 
-	const double relWallAngle = wallAngle + PI / 2;
-	kdDebug() << "relWallAngle: " << rad2deg(relWallAngle) << endl;
-
 	// visible just means if we should bounce opposite way
 	bool weirdbounce = visible;
+
+	double relWallAngle = wallAngle + PI / 2;
+
+	// wierd neg. slope angle
+	if (relWallAngle > PI / 2)
+	{
+		kdDebug() << "neg slope\n";
+		relWallAngle -= PI / 2;
+		relWallAngle = PI / 2 - relWallAngle;
+		relWallAngle *= -1;
+	}
+
+	kdDebug() << "relWallAngle: " << rad2deg(relWallAngle) << endl;
 
 	// forget that we are using english, i switched
 	// start and end i think
