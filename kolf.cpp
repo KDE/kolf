@@ -2,6 +2,7 @@
 #include <kapplication.h>
 #include <kconfig.h>
 #include <kdebug.h>
+#include <kdeversion.h>
 #include <kedittoolbar.h>
 #include <kfiledialog.h>
 #include <kglobal.h>
@@ -48,7 +49,9 @@
 Kolf::Kolf()
     : KMainWindow(0, "Kolf")
 {
+#if KDE_VERSION > 305
 	setStandardToolBarMenuEnabled(true);
+#endif
 
 	competition = false;
 	game = 0;
