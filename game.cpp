@@ -3024,6 +3024,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	soundedOnce = false;
 	oldPlayObjects.setAutoDelete(true);
 	highestHole = 0;
+	recalcHighestHole = false;
 
 	holeInfo.setGame(this);
 	holeInfo.setAuthor(i18n("Course Author"));
@@ -3092,11 +3093,21 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	whiteBall->setVisible(false);
 	whiteBall->setDoDetect(false);
 
+	int highestLog = 0;
+
+	// if players have scores from loaded game, move to last hole
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 	{
+		if ((int)(*it).scores().count() > highestLog)
+			highestLog = (*it).scores().count();
+
 		(*it).ball()->setGame(this);
 		(*it).ball()->setAnimated(true);
 	}
+
+	// here only for saved games
+	if (highestLog)
+		curHole = highestLog - 1; // -1 because it gets ++'ed
 
 	putter = new Putter(course);
 
@@ -3137,12 +3148,21 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	putterTimer = new QTimer(this);
 	connect(putterTimer, SIGNAL(timeout()), this, SLOT(putterTimeout()));
 	putterTimerMsec = 20;
+}
 
+void KolfGame::startFirstHole()
+{
 	// this increments curHole, etc
 	recalcHighestHole = true;
 	holeDone();
 	paused = true;
 	unPause();
+
+	// lets load all of the scores from saved game if there are any
+	if (curHole > 0) // if there was saved game...
+		for (int hole = 1; hole <= curHole; ++hole)
+			for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+				emit scoreChanged((*it).id(), hole, (*it).score(hole));
 }
 
 void KolfGame::setFilename(const QString &filename)
@@ -3390,7 +3410,11 @@ void KolfGame::updateMouse()
 
 	const int degrees = (int)rad2deg(newAngle);
 	//kdDebug() << "degrees: " << degrees << endl;
-	putter->setDeg(degrees);
+
+	// here... If the user can just draw a line from mouse->ball->hole
+	// it's way too easy.. so i add 22 deg.
+
+	putter->setDeg(degrees + 22);
 }
 
 void KolfGame::contentsMouseReleaseEvent(QMouseEvent *e)
@@ -4111,14 +4135,17 @@ void KolfGame::holeDone()
 	inPlay = false;
 	timer->start(timerMsec);
 
+	// if (false) { we're done with the round! }
 	if (oldCurHole != curHole)
 	{
+		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+			(*it).ball()->setPlaceOnGround(false);
+
 		// here we have to make sure the scoreboard shows
 		// all of the holes up until now;
 
 		for (; scoreboardHoles < curHole; ++scoreboardHoles)
 		{
-			//kdDebug() << "scoreboardHoles is " << scoreboardHoles << endl;
 			cfg->setGroup(QString("%1-hole@-50,-50|0").arg(scoreboardHoles + 1));
 			emit newHole(cfg->readNumEntry("par", 3));
 		}
@@ -4126,20 +4153,18 @@ void KolfGame::holeDone()
 		resetHoleScores();
 
 		// this is from shotDone()
-
 		(*curPlayer).ball()->setVisible(true);
 		putter->setOrigin((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 		updateMouse();
 
 		// flash the information
 		showInfoPress();
-		QTimer::singleShot(1500, this, SLOT(showInfoRelease()));
+		QTimer::singleShot(1250, this, SLOT(showInfoRelease()));
 
 		recreateStateList();
 
 		(*curPlayer).ball()->collisionDetect();
 	}
-	// else we're done with game
 }
 
 void KolfGame::showInfo()
@@ -4371,6 +4396,7 @@ void KolfGame::openFile()
 	{
 		highestHole = _highestHole;
 		recalcHighestHole = false;
+		emit largestHole(highestHole);
 	}
 
 	if (curHole == 1 && !filename.isNull() && !infoShown)
@@ -4472,7 +4498,6 @@ void KolfGame::addNewHole()
 	//kdDebug() << "highestHole is " << highestHole << endl;
 	recalcHighestHole = true;
 	holeDone();
-	emit largestHole(curHole);
 	addingNewHole = false;
 
 	// make sure even the current player isn't showing
@@ -4591,7 +4616,7 @@ void KolfGame::save()
 {
 	if (filename.isNull())
 	{
-		QString newfilename = KFileDialog::getSaveFileName(QString::null, "*.kolf", this, i18n("Pick Kolf Course to Save To"));
+		QString newfilename = KFileDialog::getSaveFileName(QString::null, "*.kolf", this, i18n("Pick Kolf Course To Save To"));
 		if (newfilename.isNull())
 			return;
 
@@ -4854,6 +4879,62 @@ void KolfGame::courseInfo(CourseInfo &info, const QString& filename)
 
 	info.par = par;
 	info.holes = hole;
+}
+
+void KolfGame::scoresFromSaved(KSimpleConfig *config, PlayerList &players)
+{
+	config->setGroup("Saved Game");
+	int numPlayers = config->readNumEntry("Players", 0);
+	if (numPlayers <= 0)
+		return;
+
+	for (int i = 1; i <= numPlayers; ++i)
+	{
+		// this is same as in kolf.cpp, but we use saved game values
+		config->setGroup(QString::number(i));
+		players.append(Player());
+		players.last().ball()->setColor(config->readEntry("Color", "#ffffff"));
+		players.last().setName(config->readEntry("Name"));
+		players.last().setId(i);
+
+		QStringList scores(config->readListEntry("Scores"));
+		QValueList<int> intscores;
+		for (QStringList::Iterator it = scores.begin(); it != scores.end(); ++it)
+			intscores.append((*it).toInt());
+
+		players.last().setScores(intscores);
+	}
+}
+
+void KolfGame::saveScores(KSimpleConfig *config)
+{
+	// wipe out old player info
+	QStringList groups = cfg->groupList();
+	for (QStringList::Iterator it = groups.begin(); it != groups.end(); ++it)
+	{
+		// this deletes all int groups, ie, the player info groups
+		bool ok = false;
+		(*it).toInt(&ok);
+		if (ok)
+			cfg->deleteGroup(*it);
+	}
+
+	config->setGroup("Saved Game");
+	config->writeEntry("Players", players->count());
+	config->writeEntry("Course", filename);
+	config->writeEntry("Current Hole", curHole);
+
+	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+	{
+		config->setGroup(QString::number((*it).id()));
+		config->writeEntry("Name", (*it).name());
+		config->writeEntry("Color", (*it).ball()->color().name());
+		QStringList scores;
+		QValueList<int> intscores = (*it).scores();
+		for (QValueList<int>::Iterator it = intscores.begin(); it != intscores.end(); ++it)
+			scores.append(QString::number(*it));
+		config->writeEntry("Scores", scores);
+	}
 }
 
 #include "game.moc"

@@ -37,11 +37,14 @@ protected:
 
 protected slots:
 	void startNewGame();
+	void loadGame();
 	void tutorial();
 	void newGame();
 	void closeGame();
 	void save();
 	void saveAs();
+	void saveGame();
+	void saveGameAs();
 	void print();
 	void newPlayersTurn(Player *);
 	void gameOver();
@@ -83,6 +86,10 @@ private:
 	KAction *endAction;
 	KAction *printAction;
 	KAction *saveAction;
+	KAction *saveAsAction;
+	KAction *saveGameAction;
+	KAction *saveGameAsAction;
+	KAction *loadGameAction;
 	KAction *aboutAction;
 	KListAction *holeAction;
 	KAction *highScoreAction;
@@ -91,7 +98,6 @@ private:
 	KAction *firstAction;
 	KAction *lastAction;
 	KAction *randAction;
-	KAction *saveAsAction;
 	KToggleAction *useMouseAction;
 	KToggleAction *useAdvancedPuttingAction;	
 	KToggleAction *showGuideLineAction;	
@@ -105,6 +111,8 @@ private:
 	ObjectList *obj;
 	// contains subset of obj
 	ObjectList plugins;
+
+	QString loadedGame;
 };
 
 struct HighScore

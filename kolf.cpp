@@ -105,6 +105,12 @@ void Kolf::initGUI()
 	saveAsAction = KStdAction::saveAs(this, SLOT(saveAs()), actionCollection(), "game_save_as");
 	saveAsAction->setText(i18n("Save Course As..."));
 
+	saveGameAction = new KAction(i18n("&Save Game"), 0, this, SLOT(saveGame()), actionCollection(), "savegame");
+	saveGameAsAction = new KAction(i18n("&Save Game As..."), 0, this, SLOT(saveGameAs()), actionCollection(), "savegameas");
+
+	loadGameAction = KStdGameAction::load(this, SLOT(loadGame()), actionCollection());
+	loadGameAction->setText(i18n("Load Saved..."));
+
 	highScoreAction = KStdGameAction::highscores(this, SLOT(showHighScores()), actionCollection());
 
 	editingAction = new KToggleAction(i18n("&Edit"), "pencil", CTRL+Key_E, 0, 0, actionCollection(), "editing");
@@ -160,97 +166,124 @@ void Kolf::closeEvent(QCloseEvent *e)
 
 void Kolf::startNewGame()
 {
-	NewGameDialog *dialog = new NewGameDialog(filename.isNull(), dummy, "New Game Dialog");
+	NewGameDialog *dialog = 0;
 
-	if (dialog->exec() == QDialog::Accepted)
+	if (loadedGame.isNull())
 	{
-		players.clear();
-		delete scoreboard;
-		scoreboard = new ScoreBoard(dummy, "Score Board");
-		layout->addWidget(scoreboard, 1, 0);
-		scoreboard->show();
-		
+		dialog = new NewGameDialog(filename.isNull(), dummy, "New Game Dialog");
+		if (dialog->exec() != QDialog::Accepted)
+			goto end;
+	}
+
+	players.clear();
+	delete scoreboard;
+	scoreboard = new ScoreBoard(dummy, "Score Board");
+	layout->addWidget(scoreboard, 1, 0);
+	scoreboard->show();
+
+	if (loadedGame.isNull())
+	{
 		PlayerEditor *curEditor = 0;
 		int newId = 1;
-		for (curEditor = dialog->players()->first(); curEditor; curEditor = dialog->players()->next())
+		for (curEditor = dialog->players()->first(); curEditor; curEditor = dialog->players()->next(), ++newId)
 		{
 			players.append(Player());
 			players.last().ball()->setColor(curEditor->color());
 			players.last().setName(curEditor->name());
 			players.last().setId(newId);
 			scoreboard->newPlayer(curEditor->name());
-			newId++;
 		}
+
 		competition = dialog->competition();
 		filename = filename.isNull()? dialog->course() : filename;
-		
-		delete spacer;
-		spacer = 0;
-		delete game;
-		game = new KolfGame(obj, &players, filename, dummy);
+	}
+	else
+	{
+		KSimpleConfig config(loadedGame);
+		config.setGroup("Saved Game");
 
-		game->setObjects(obj);
+		filename = config.readEntry("Course", QString::null);
+		if (filename.isNull())
+			return;
 
-		connect(game, SIGNAL(newHole(int)), scoreboard, SLOT(newHole(int)));
-		connect(game, SIGNAL(scoreChanged(int, int, int)), scoreboard, SLOT(setScore(int, int, int)));
-		connect(game, SIGNAL(parChanged(int, int)), scoreboard, SLOT(parChanged(int, int)));
-		connect(game, SIGNAL(newPlayersTurn(Player *)), this, SLOT(newPlayersTurn(Player *)));
-		connect(game, SIGNAL(holesDone()), this, SLOT(gameOver()));
-		connect(game, SIGNAL(checkEditing()), this, SLOT(checkEditing()));
-		connect(game, SIGNAL(editingStarted()), this, SLOT(editingStarted()));
-		connect(game, SIGNAL(editingEnded()), this, SLOT(editingEnded()));
-		connect(game, SIGNAL(inPlayStart()), this, SLOT(inPlayStart()));
-		connect(game, SIGNAL(inPlayEnd()), this, SLOT(inPlayEnd()));
-		connect(game, SIGNAL(maxStrokesReached(const QString &)), this, SLOT(maxStrokesReached(const QString &)));
-		connect(game, SIGNAL(largestHole(int)), this, SLOT(updateHoleMenu(int)));
-		connect(game, SIGNAL(titleChanged(const QString &)), this, SLOT(titleChanged(const QString &)));
-		connect(holeAction, SIGNAL(activated(const QString &)), game, SLOT(switchHole(const QString &)));
-		connect(nextAction, SIGNAL(activated()), game, SLOT(nextHole()));
-		connect(prevAction, SIGNAL(activated()), game, SLOT(prevHole()));
-		connect(firstAction, SIGNAL(activated()), game, SLOT(firstHole()));
-		connect(lastAction, SIGNAL(activated()), game, SLOT(lastHole()));
-		connect(randAction, SIGNAL(activated()), game, SLOT(randHole()));
-		connect(editingAction, SIGNAL(activated()), game, SLOT(toggleEditMode()));
-		connect(newHoleAction, SIGNAL(activated()), game, SLOT(addNewHole()));
-		connect(clearHoleAction, SIGNAL(activated()), game, SLOT(clearHole()));
-		connect(resetHoleAction, SIGNAL(activated()), game, SLOT(resetHole()));
-		connect(undoShotAction, SIGNAL(activated()), game, SLOT(undoShot()));
-		connect(aboutAction, SIGNAL(activated()), game, SLOT(showInfoDlg()));
-		connect(useMouseAction, SIGNAL(toggled(bool)), game, SLOT(setUseMouse(bool)));
-		connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), game, SLOT(setUseAdvancedPutting(bool)));		
-		connect(soundAction, SIGNAL(toggled(bool)), game, SLOT(setSound(bool)));		
-		connect(showGuideLineAction, SIGNAL(toggled(bool)), game, SLOT(setShowGuideLine(bool)));		
+		competition = config.readBoolEntry("Competition", false);
 
-		game->setUseMouse(useMouseAction->isChecked());
-		game->setUseAdvancedPutting(useAdvancedPuttingAction->isChecked());		
-		game->setShowGuideLine(showGuideLineAction->isChecked());		
-		game->setSound(soundAction->isChecked());		
+		players.clear();
+		KolfGame::scoresFromSaved(&config, players);
 
-		layout->addWidget(game, 0, 0, AlignCenter);
-
-		game->show();
-		game->setFocus();
-
-		setEditingEnabled(true);
-		endAction->setEnabled(true);
-		setHoleMovementEnabled(true);
-		setHoleOtherEnabled(true);
-		aboutAction->setEnabled(true);
-		highScoreAction->setEnabled(true);
-		printAction->setEnabled(true);
-		saveAction->setEnabled(true);
-		saveAsAction->setEnabled(true);
-
-		clearHoleAction->setEnabled(false);
-		newHoleAction->setEnabled(false);
-		newAction->setEnabled(false);
-		tutorialAction->setEnabled(false);
-		
-
-		game->addFirstHole();
-		game->emitLargestHole();
+		for (PlayerList::Iterator it = players.begin(); it != players.end(); ++it)
+			scoreboard->newPlayer((*it).name());
 	}
 
+	delete spacer;
+	spacer = 0;
+	delete game;
+	game = new KolfGame(obj, &players, filename, dummy);
+
+	connect(game, SIGNAL(newHole(int)), scoreboard, SLOT(newHole(int)));
+	connect(game, SIGNAL(scoreChanged(int, int, int)), scoreboard, SLOT(setScore(int, int, int)));
+	connect(game, SIGNAL(parChanged(int, int)), scoreboard, SLOT(parChanged(int, int)));
+	connect(game, SIGNAL(newPlayersTurn(Player *)), this, SLOT(newPlayersTurn(Player *)));
+	connect(game, SIGNAL(holesDone()), this, SLOT(gameOver()));
+	connect(game, SIGNAL(checkEditing()), this, SLOT(checkEditing()));
+	connect(game, SIGNAL(editingStarted()), this, SLOT(editingStarted()));
+	connect(game, SIGNAL(editingEnded()), this, SLOT(editingEnded()));
+	connect(game, SIGNAL(inPlayStart()), this, SLOT(inPlayStart()));
+	connect(game, SIGNAL(inPlayEnd()), this, SLOT(inPlayEnd()));
+	connect(game, SIGNAL(maxStrokesReached(const QString &)), this, SLOT(maxStrokesReached(const QString &)));
+	connect(game, SIGNAL(largestHole(int)), this, SLOT(updateHoleMenu(int)));
+	connect(game, SIGNAL(titleChanged(const QString &)), this, SLOT(titleChanged(const QString &)));
+	connect(holeAction, SIGNAL(activated(const QString &)), game, SLOT(switchHole(const QString &)));
+	connect(nextAction, SIGNAL(activated()), game, SLOT(nextHole()));
+	connect(prevAction, SIGNAL(activated()), game, SLOT(prevHole()));
+	connect(firstAction, SIGNAL(activated()), game, SLOT(firstHole()));
+	connect(lastAction, SIGNAL(activated()), game, SLOT(lastHole()));
+	connect(randAction, SIGNAL(activated()), game, SLOT(randHole()));
+	connect(editingAction, SIGNAL(activated()), game, SLOT(toggleEditMode()));
+	connect(newHoleAction, SIGNAL(activated()), game, SLOT(addNewHole()));
+	connect(clearHoleAction, SIGNAL(activated()), game, SLOT(clearHole()));
+	connect(resetHoleAction, SIGNAL(activated()), game, SLOT(resetHole()));
+	connect(undoShotAction, SIGNAL(activated()), game, SLOT(undoShot()));
+	connect(aboutAction, SIGNAL(activated()), game, SLOT(showInfoDlg()));
+	connect(useMouseAction, SIGNAL(toggled(bool)), game, SLOT(setUseMouse(bool)));
+	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), game, SLOT(setUseAdvancedPutting(bool)));		
+	connect(soundAction, SIGNAL(toggled(bool)), game, SLOT(setSound(bool)));		
+	connect(showGuideLineAction, SIGNAL(toggled(bool)), game, SLOT(setShowGuideLine(bool)));		
+
+	game->setUseMouse(useMouseAction->isChecked());
+	game->setUseAdvancedPutting(useAdvancedPuttingAction->isChecked());		
+	game->setShowGuideLine(showGuideLineAction->isChecked());		
+	game->setSound(soundAction->isChecked());		
+
+	layout->addWidget(game, 0, 0, AlignCenter);
+
+	game->show();
+	game->setFocus();
+
+	setEditingEnabled(true);
+	endAction->setEnabled(true);
+	setHoleMovementEnabled(true);
+	setHoleOtherEnabled(true);
+	aboutAction->setEnabled(true);
+	highScoreAction->setEnabled(true);
+	printAction->setEnabled(true);
+	saveAction->setEnabled(true);
+	saveAsAction->setEnabled(true);
+	saveGameAction->setEnabled(true);
+	saveGameAsAction->setEnabled(true);
+
+	clearHoleAction->setEnabled(false);
+	newHoleAction->setEnabled(false);
+	newAction->setEnabled(false);
+	loadGameAction->setEnabled(false);
+	tutorialAction->setEnabled(false);
+
+
+	// so game can do stuff that needs to be done
+	// after things above are connected
+	game->startFirstHole();
+
+	end:
 	delete dialog;
 }
 
@@ -281,6 +314,7 @@ void Kolf::closeGame()
 	editingEnded();
 	delete game;
 	game = 0;
+	loadedGame = QString::null;
 
 	delete spacer;
 	spacer = new QWidget(dummy);
@@ -304,12 +338,15 @@ void Kolf::closeGame()
 	printAction->setEnabled(false);
 	saveAction->setEnabled(false);
 	saveAsAction->setEnabled(false);
+	saveGameAction->setEnabled(false);
+	saveGameAsAction->setEnabled(false);
 	setHoleMovementEnabled(false);
 	setHoleOtherEnabled(false);
 
 	clearHoleAction->setEnabled(false);
 	newHoleAction->setEnabled(false);
 	newAction->setEnabled(true);
+	loadGameAction->setEnabled(true);
 	tutorialAction->setEnabled(true);
 
 	titleChanged("");
@@ -405,14 +442,16 @@ void Kolf::save()
 		saveAs();
 		return;
 	}
+
 	if (game)
 		game->save();
+
 	game->setFocus();
 }
 
 void Kolf::saveAs()
 {
-	QString newfilename = KFileDialog::getSaveFileName(QString::null, "*.kolf", this, i18n("Pick Kolf Course to Save To"));
+	QString newfilename = KFileDialog::getSaveFileName(QString::null, "*.kolf", this, i18n("Pick Kolf Course To Save To"));
 	if (!newfilename.isNull())
 	{
 		filename = newfilename;
@@ -420,6 +459,46 @@ void Kolf::saveAs()
 		game->save();
 		game->setFocus();
 	}
+}
+
+void Kolf::saveGameAs()
+{
+	QString newfilename = KFileDialog::getSaveFileName(QString::null, "*.kolfgame", this, i18n("Pick Saved Game To Save To"));
+	if (newfilename.isNull())
+		return;
+	
+	loadedGame = newfilename;
+	
+	saveGame();
+}
+
+void Kolf::saveGame()
+{
+	if (loadedGame.isNull())
+	{
+		saveGameAs();
+		return;
+	}
+	
+	KSimpleConfig config(loadedGame);
+	config.setGroup("Saved Game");
+
+	config.writeEntry("Competition", competition);
+	config.writeEntry("Course", filename);
+
+	game->saveScores(&config);
+
+	config.sync();
+}
+
+void Kolf::loadGame()
+{
+	loadedGame = KFileDialog::getOpenFileName(QString::null, QString::fromLatin1("*.kolfgame"), this, i18n("Pick Kolf Saved Game"));
+
+	if (loadedGame.isNull())
+		return;
+
+	startNewGame();
 }
 
 void Kolf::newPlayersTurn(Player *player)

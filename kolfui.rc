@@ -1,6 +1,10 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="Kolf" version="3">
+<kpartgui name="Kolf" version="5">
 	<MenuBar>
+		<Menu name="game">
+			<Action name="savegame" append="save_merge" />
+			<Action name="savegameas" append="save_merge" />
+		</Menu>
 		<Menu name="hole"><text>Ho&amp;le</text>
 			<Action name="editing" />
 			<Separator />

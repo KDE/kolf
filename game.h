@@ -69,6 +69,7 @@ public:
 	BallStateInfo stateInfo(int hole) { BallStateInfo ret; ret.spot = QPoint(m_ball->x(), m_ball->y()); ret.state = m_ball->curState(); ret.score = score(hole); ret.beginningOfHole = m_ball->beginningOfHole(); ret.id = m_id; return ret; }
 
 	QValueList<int> scores() { return m_scores; }
+	void setScores(const QValueList<int> &newScores) { m_scores = newScores; }
 	int score(int hole) { return (*m_scores.at(hole - 1)); }
 	int lastScore() { return m_scores.last(); }
 	int firstScore() { return m_scores.first(); }
@@ -908,13 +909,13 @@ public:
 	void stoppedBall();
 	QString courseName() { return holeInfo.name(); }
 
+	static void scoresFromSaved(KSimpleConfig *, PlayerList &players);
 	static void courseInfo(CourseInfo &info, const QString &filename);
 
 public slots:
 	void pause();
 	void unPause();
 	void save();
-	void addFirstHole() { emit newHole(curPar); }
 	void toggleEditMode();
 	void setModified() { modified = true; }
 	void addNewObject(Object *newObj);
@@ -938,8 +939,9 @@ public slots:
 	void setShowGuideLine(bool yes);
 	void setSound(bool yes);
 	void undoShot();
-
 	void timeout();
+	void saveScores(KSimpleConfig *);
+	void startFirstHole();
 
 signals:
 	void holesDone();

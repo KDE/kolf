@@ -196,7 +196,8 @@ void Ball::collisionDetect()
 					move(x() - cos(ballAngle) / 2.0, y() + sin(ballAngle) / 2.0);
 					//kdDebug() << "moved to " << x() << ", " << y() << endl;
 				}
-				//move(x() - cos(ballAngle), y() - sin(ballAngle));
+				// make a 1 pixel separation
+				move(x() - cos(ballAngle), y() + sin(ballAngle));
 
 				Vector bvector = oball->curVector();
 				m_vector -= bvector;
