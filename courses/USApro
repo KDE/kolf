@@ -859,6 +859,7 @@ par=3
 
 [4-sign@201,171|8]
 Comment=Grand Canyon
+Comment[ar]=الوادي العظيم
 Comment[bg]=Гранд Каньон
 Comment[bn]=গ্র্যান্ড ক্যানিয়ন
 Comment[el]=Γραντ Κάνυον
@@ -1305,6 +1306,7 @@ width=178
 
 [7-sign@11,116|7]
 Comment=Golden Gate
+Comment[ar]=البوابة الذهبية
 Comment[bg]=Голдън Гейт
 Comment[bn]=গোল্ডেন গেট
 Comment[cs]=Zlatá brána
@@ -1359,6 +1361,7 @@ width=159
 
 [7-sign@98,209|24]
 Comment=Bay Bridge
+Comment[ar]=جسر الخليج (باي(
 Comment[bg]=Бей Бридж
 Comment[bn]=বে ব্রিজ
 Comment[de]=Bay-Brücke
