@@ -3,7 +3,6 @@
 #include <kconfig.h>
 #include <kdebug.h>
 #include <kdeversion.h>
-#include <kedittoolbar.h>
 #include <kfiledialog.h>
 #include <kglobal.h>
 #include <kio/netaccess.h>
@@ -51,10 +50,6 @@
 Kolf::Kolf()
     : KMainWindow(0, "Kolf")
 {
-#if KDE_VERSION > 305
-	setStandardToolBarMenuEnabled(true);
-#endif
-
 	competition = false;
 	game = 0;
 	editor = 0;
@@ -73,7 +68,6 @@ Kolf::Kolf()
 	layout = new QGridLayout(dummy, 3, 1);
 
 	resize(420, 480);
-	setAutoSaveSettings("TopLevelWindow");
 }
 
 Kolf::~Kolf()
@@ -88,10 +82,6 @@ void Kolf::initGUI()
 	newAction = KStdGameAction::gameNew(this, SLOT(newGame()), actionCollection());
 	newAction->setText(newAction->text() + QString("..."));
 
-	KStdAction::keyBindings(guiFactory(), SLOT(configureShortcuts()), 
-actionCollection());
-	
-	(void) KStdAction::configureToolbars(this, SLOT(configureToolBars()), actionCollection());
 	endAction = KStdGameAction::end(this, SLOT(closeGame()), actionCollection());
 	printAction = KStdGameAction::print(this, SLOT(print()), actionCollection());
 
@@ -159,7 +149,8 @@ actionCollection());
 	aboutAction = new KAction(i18n("&About Course"), 0, this, SLOT(emptySlot()), actionCollection(), "aboutcourse");
 	tutorialAction = new KAction(i18n("&Tutorial"), 0, this, SLOT(tutorial()), actionCollection(), "tutorial");
 
-	createGUI();
+	statusBar();
+	setupGUI();
 }
 
 bool Kolf::queryClose()
@@ -806,21 +797,6 @@ void Kolf::showPlugins()
 	}
 	text.append("</ol>");
 	KMessageBox::information(this, text, i18n("Plugins"));
-}
-
-void Kolf::configureToolBars()
-{
-	saveMainWindowSettings(KGlobal::config(), "TopLevelWindow");
-
-	KEditToolbar dlg(actionCollection());
-	connect(&dlg, SIGNAL(newToolbarConfig()), SLOT(newToolBarConfig()));
-	dlg.exec();
-}
-
-void Kolf::newToolBarConfig()
-{
-	createGUI();
-	applyMainWindowSettings(KGlobal::config(), "TopLevelWindow");
 }
 
 void Kolf::enableAllMessages()

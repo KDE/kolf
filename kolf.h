@@ -70,8 +70,6 @@ protected slots:
 	void soundChanged(bool);
 	void initPlugins();
 	void showPlugins();
-	void configureToolBars();
-	void newToolBarConfig();
 	void showHighScores();
 	void enableAllMessages();
 	void createSpacer();
