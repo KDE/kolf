@@ -358,7 +358,7 @@ class Hole : public QCanvasEllipse, public CanvasItem
 {
 public:
 	Hole(QColor color, QCanvas *canvas);
-	virtual bool place(Ball * /*ball*/, bool /*wasCenter*/) const { return true; };
+	virtual bool place(Ball * /*ball*/, bool /*wasCenter*/) { return true; };
 
 	virtual bool collision(Ball *ball, long int id);
 

@@ -21,6 +21,8 @@ class PoolBall : public Ball
 public:
 	PoolBall(QCanvas *canvas);
 
+	virtual bool deleteable() const { return true; }
+
 	virtual Config *config(QWidget *parent);
 	virtual void saveState(StateDB *);
 	virtual void save(KSimpleConfig *cfg);

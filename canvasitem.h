@@ -165,7 +165,7 @@ public:
 	virtual void setGame(KolfGame *game) { this->game = game; }
 
 	/**
-	 * returns whether this resizes from south-east.
+	 * returns whether this is a corner resizer
 	 */
 	virtual bool cornerResize() const { return false; }
 

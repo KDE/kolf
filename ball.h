@@ -23,20 +23,20 @@ public:
 	virtual void moveBy(double dx, double dy);
 	virtual void setVelocity(double vx, double vy);
 
-	virtual bool deleteable() { return false; }
+	virtual bool deleteable() const { return false; }
 
 	virtual bool canBeMovedByOthers() const { return true; }
 
-	BallState curState() { return state; }
+	BallState curState() const { return state; }
 	void setState(BallState newState);
 
-	QColor color() { return m_color; }
+	QColor color() const { return m_color; }
 	void setColor(QColor color) { m_color = color; setBrush(color); }
 
 	void setMoved(bool yes) { m_moved = yes; }
-	bool moved() { return m_moved; }
+	bool moved() const { return m_moved; }
 	void setBlowUp(bool yes) { m_blowUp = yes; blowUpCount = 0; }
-	bool blowUp() { return m_blowUp; }
+	bool blowUp() const { return m_blowUp; }
 
 	void setFrictionMultiplier(double news) { frictionMultiplier = news; };
 	void friction();
@@ -44,25 +44,23 @@ public:
 
 	virtual int rtti() const { return Rtti_Ball; };
 
-	bool addStroke() { return m_addStroke; }
+	bool addStroke() const { return m_addStroke; }
 	bool placeOnGround(Vector &v) { v = oldVector; return m_placeOnGround; }
 	void setAddStroke(int newStrokes) { m_addStroke = newStrokes; }
 	void setPlaceOnGround(bool placeOnGround) { m_placeOnGround = placeOnGround; oldVector = m_vector; }
 
-	bool beginningOfHole() { return m_beginningOfHole; }
+	bool beginningOfHole() const { return m_beginningOfHole; }
 	void setBeginningOfHole(bool yes) { m_beginningOfHole = yes; }
 
-	Vector curVector() { return m_vector; }
+	Vector curVector() const { return m_vector; }
 	void setVector(Vector newVector);
 
-	bool collisionLock() { return m_collisionLock; }
+	bool collisionLock() const { return m_collisionLock; }
 	void setCollisionLock(bool yes) { m_collisionLock = yes; }
 	virtual void fastAdvanceDone() { setCollisionLock(false); }
 
 	void setDoDetect(bool yes) { m_doDetect = yes; }
-	bool doDetect() { return m_doDetect; }
-
-	const QCanvasItemList collisionList() { return m_list; }
+	bool doDetect() const { return m_doDetect; }
 
 private:
 	BallState state;
