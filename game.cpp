@@ -3793,6 +3793,7 @@ void KolfGame::putterTimeout()
 	{
 		if (putting)
 		{
+			const base = 2.2;
 			if (puttReverse && strength <= 0)
 			{
 				// aborted
@@ -3803,7 +3804,7 @@ void KolfGame::putterTimeout()
 			{
 				//decreasing strength as we've reached the top
 				puttReverse = true;
-				strength -= pow(2.2, strength / maxStrength) - 0.6;		
+				strength -= pow(base, strength / maxStrength) - 0.6;		
 				if ((int) strength < puttCount * 2) 
 				{
 					puttCount--;
@@ -3814,7 +3815,7 @@ void KolfGame::putterTimeout()
 			else 
 			{
 				// make the increase at high strength faster
-				strength += pow(2.2, strength / maxStrength) - 0.6;
+				strength += pow(base, strength / maxStrength) - 0.6;
 				if ((int) strength > puttCount * 2) 
 				{
 					putter->go(Backwards);
