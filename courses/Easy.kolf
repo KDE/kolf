@@ -14,17 +14,29 @@ hasFinalLoad=false
 maxstrokes=10
 par=2
 
-[1-puddle@53,73|14]
+[1-puddle@69,72|14]
 changeEnabled=false
 changeEvery=50
 height=92
 width=112
 
-[1-puddle@76,105|19]
+[1-puddle@84,103|19]
 changeEnabled=false
 changeEvery=50
 height=144
 width=96
+
+[1-sand@-6,255|19]
+changeEnabled=false
+changeEvery=50
+height=256
+width=112
+
+[1-sand@-6,368|18]
+changeEnabled=false
+changeEvery=50
+height=238
+width=190
 
 [1-slope@211,282|21]
 grade=3
@@ -286,14 +298,14 @@ startPoint=164,230
 endPoint=164,230
 startPoint=139,218
 
-[11-ball@53,336]
+[11-ball@63,369]
 dummykey=true
 
 [11-blackhole@116,216|10]
 exit=275,307
 exitDeg=140
-maxspeed=5
-minspeed=3
+maxspeed=4
+minspeed=2
 
 [11-blackhole@124,260|6]
 exit=23,381
@@ -333,7 +345,7 @@ minspeed=1
 
 [11-blackhole@194,207|5]
 exit=308,183
-exitDeg=349
+exitDeg=170
 maxspeed=10
 minspeed=3
 
@@ -345,7 +357,7 @@ minspeed=3
 
 [11-blackhole@82,233|8]
 exit=301,235
-exitDeg=40
+exitDeg=160
 maxspeed=8
 minspeed=4
 
@@ -403,6 +415,10 @@ startPoint=288,157
 [11-wall@0,0|20]
 endPoint=185,27
 startPoint=72,11
+
+[11-wall@0,0|22]
+endPoint=81,346
+startPoint=84,388
 
 [12-ball@247,85]
 dummykey=true
@@ -488,6 +504,91 @@ rightWallVisible=true
 speed=5
 topWallVisible=true
 width=101
+
+[13-ball@356,340]
+dummykey=true
+
+[13-cup@213,189|3]
+dummykey=true
+
+[13-hole@-50,-50|0]
+borderWalls=true
+hasFinalLoad=false
+maxstrokes=10
+par=3
+
+[13-puddle@166,190|8]
+changeEnabled=false
+changeEvery=50
+height=86
+width=22
+
+[13-puddle@234,150|9]
+changeEnabled=false
+changeEvery=50
+height=26
+width=140
+
+[13-puddle@276,228|7]
+changeEnabled=false
+changeEvery=50
+height=28
+width=230
+
+[13-sand@137,322|14]
+changeEnabled=false
+changeEvery=50
+height=96
+width=12
+
+[13-sand@359,72|11]
+changeEnabled=false
+changeEvery=50
+height=76
+width=14
+
+[13-sand@362,118|12]
+changeEnabled=false
+changeEvery=50
+height=72
+width=10
+
+[13-sign@219,247|14]
+botWallVisible=true
+height=55
+leftWallVisible=true
+rightWallVisible=false
+text=Hit slowly...
+topWallVisible=true
+width=180
+
+[13-slope@12,11|8]
+grade=2
+gradient=Horizontal
+height=124
+reversed=true
+stuckOnGround=false
+width=373
+
+[13-slope@12,133|7]
+grade=2
+gradient=Vertical
+height=254
+reversed=false
+stuckOnGround=false
+width=139
+
+[13-slope@139,266|6]
+grade=2
+gradient=Horizontal
+height=121
+reversed=false
+stuckOnGround=false
+width=248
+
+[13-wall@0,0|10]
+endPoint=385,132
+startPoint=365,12
 
 [2-ball@60,82]
 dummykey=true

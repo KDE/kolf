@@ -1410,14 +1410,16 @@ Sign::Sign(QCanvas *canvas)
 
 void Sign::load(KSimpleConfig *cfg)
 {
-	m_text = cfg->readEntry("text", m_text);
+	// Comment so it gets translated
+	// text was the old name, we should keep bc
+	m_text = cfg->readEntry("Comment", cfg->readEntry("text", m_text));
 
 	doLoad(cfg);
 }
 
 void Sign::save(KSimpleConfig *cfg)
 {
-	cfg->writeEntry("text", m_text);
+	cfg->writeEntry("Comment", m_text);
 
 	doSave(cfg);
 }
@@ -4222,7 +4224,8 @@ void KolfGame::openFile()
 	// because it's old and when i added ids i forgot to change it.
 	cfg->setGroup("0-course@-50,-50");
 	holeInfo.setAuthor(cfg->readEntry("author", holeInfo.author()));
-	holeInfo.setName(cfg->readEntry("name", holeInfo.name()));
+	// Name is new for translating, name is for bc
+	holeInfo.setName(cfg->readEntry("Name", cfg->readEntry("name", holeInfo.name())));
 	emit titleChanged(holeInfo.name());
 
 	cfg->setGroup(QString("%1-hole@-50,-50|0").arg(curHole));
@@ -4854,7 +4857,7 @@ void KolfGame::courseInfo(CourseInfo &info, const QString& filename)
 	KSimpleConfig cfg(filename);
 	cfg.setGroup("0-course@-50,-50");
 	info.author = cfg.readEntry("author", info.author);
-	info.name = cfg.readEntry("name", info.name);
+	info.name = cfg.readEntry("Name", cfg.readEntry("name", info.name));
 
 	unsigned int hole = 1;
 	unsigned int par= 0;
