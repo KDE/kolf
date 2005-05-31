@@ -2,12 +2,14 @@
 #define EDITOR_H_INCLUDED
 
 #include <qwidget.h>
+//Added by qt3to4:
+#include <QHBoxLayout>
 
 #include "game.h"
 
 class KListBox;
 class QHBoxLayout;
-class QListBoxItem;
+class Q3ListBoxItem;
 class Config;
 
 class Editor : public QWidget
@@ -25,7 +27,7 @@ public slots:
 	void setItem(CanvasItem *);
 
 private slots:
-	void listboxExecuted(QListBoxItem *);
+	void listboxExecuted(Q3ListBoxItem *);
 
 private:
 	ObjectList *list;

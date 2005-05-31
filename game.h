@@ -10,18 +10,25 @@
 
 #include <math.h>
 
-#include <qcanvas.h>
+#include <q3canvas.h>
 #include <qpainter.h>
 #include <qcolor.h>
-#include <qframe.h>
+#include <q3frame.h>
 #include <qlayout.h>
 #include <qmap.h>
 #include <qpen.h>
 #include <qpoint.h>
-#include <qpointarray.h>
+#include <q3pointarray.h>
 #include <qrect.h>
 #include <qstringlist.h>
-#include <qvaluelist.h>
+#include <q3valuelist.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <Q3PtrList>
+#include <QKeyEvent>
+#include <QLabel>
+#include <QVBoxLayout>
+#include <QMouseEvent>
 
 #include "object.h"
 #include "config.h"
@@ -60,7 +67,7 @@ public:
 	bool beginningOfHole;
 	int score;
 };
-class BallStateList : public QValueList<BallStateInfo>
+class BallStateList : public Q3ValueList<BallStateInfo>
 {
 public:
 	int hole;
@@ -77,8 +84,8 @@ public:
 	void setBall(Ball *ball) { m_ball = ball; }
 	BallStateInfo stateInfo(int hole) const { BallStateInfo ret; ret.spot = QPoint(m_ball->x(), m_ball->y()); ret.state = m_ball->curState(); ret.score = score(hole); ret.beginningOfHole = m_ball->beginningOfHole(); ret.id = m_id; return ret; }
 
-	QValueList<int> scores() const { return m_scores; }
-	void setScores(const QValueList<int> &newScores) { m_scores = newScores; }
+	Q3ValueList<int> scores() const { return m_scores; }
+	void setScores(const Q3ValueList<int> &newScores) { m_scores = newScores; }
 	int score(int hole) const { return (*m_scores.at(hole - 1)); }
 	int lastScore() const { return m_scores.last(); }
 	int firstScore() const { return m_scores.first(); }
@@ -98,16 +105,16 @@ public:
 
 private:
 	Ball *m_ball;
-	QValueList<int> m_scores;
+	Q3ValueList<int> m_scores;
 	QString m_name;
 	int m_id;
 };
-typedef QValueList<Player> PlayerList;
+typedef Q3ValueList<Player> PlayerList;
 
-class Arrow : public QCanvasLine
+class Arrow : public Q3CanvasLine
 {
 public:
-	Arrow(QCanvas *canvas);
+	Arrow(Q3Canvas *canvas);
 	void setAngle(double newAngle) { m_angle = newAngle; }
 	double angle() const { return m_angle; }
 	void setLength(double newLength) { m_length = newLength; }
@@ -125,8 +132,8 @@ private:
 	double m_angle;
 	double m_length;
 	bool m_reversed;
-	QCanvasLine *line1;
-	QCanvasLine *line2;
+	Q3CanvasLine *line1;
+	Q3CanvasLine *line2;
 };
 
 class RectPoint;
@@ -136,10 +143,10 @@ public:
 	virtual void newSize(int /*width*/, int /*height*/) {};
 };
 
-class RectPoint : public QCanvasEllipse, public CanvasItem
+class RectPoint : public Q3CanvasEllipse, public CanvasItem
 {
 public:
-	RectPoint(QColor color, RectItem *, QCanvas *canvas);
+	RectPoint(QColor color, RectItem *, Q3Canvas *canvas);
 	void dontMove() { dontmove = true; }
 	virtual void moveBy(double dx, double dy);
 	virtual Config *config(QWidget *parent);
@@ -156,10 +163,10 @@ private:
 	bool dontmove;
 };
 
-class Ellipse : public QCanvasEllipse, public CanvasItem, public RectItem
+class Ellipse : public Q3CanvasEllipse, public CanvasItem, public RectItem
 {
 public:
-	Ellipse(QCanvas *canvas);
+	Ellipse(Q3Canvas *canvas);
 	virtual void advance(int phase);
 
 	int changeEvery() const { return m_changeEvery; }
@@ -171,7 +178,7 @@ public:
 	virtual void aboutToSave();
 	virtual void savingDone();
 
-	virtual QPtrList<QCanvasItem> moveableItems() const;
+	virtual Q3PtrList<Q3CanvasItem> moveableItems() const;
 
 	virtual void newSize(int width, int height);
 	virtual void moveBy(double dx, double dy);
@@ -221,7 +228,7 @@ private:
 class Puddle : public Ellipse
 {
 public:
-	Puddle(QCanvas *canvas);
+	Puddle(Q3Canvas *canvas);
 	virtual bool collision(Ball *ball, long int id);
 	virtual int rtti() const { return Rtti_DontPlaceOn; }
 };
@@ -229,36 +236,36 @@ class PuddleObj : public Object
 {
 public:
 	PuddleObj() { m_name = i18n("Puddle"); m__name = "puddle"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Puddle(canvas); }
+	virtual Q3CanvasItem *newObject(Q3Canvas *canvas) { return new Puddle(canvas); }
 };
 
 class Sand : public Ellipse
 {
 public:
-	Sand(QCanvas *canvas);
+	Sand(Q3Canvas *canvas);
 	virtual bool collision(Ball *ball, long int id);
 };
 class SandObj : public Object
 {
 public:
 	SandObj() { m_name = i18n("Sand"); m__name = "sand"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Sand(canvas); }
+	virtual Q3CanvasItem *newObject(Q3Canvas *canvas) { return new Sand(canvas); }
 };
 
-class Inside : public QCanvasEllipse, public CanvasItem
+class Inside : public Q3CanvasEllipse, public CanvasItem
 {
 public:
-	Inside(CanvasItem *item, QCanvas *canvas) : QCanvasEllipse(canvas) { this->item = item; }
+	Inside(CanvasItem *item, Q3Canvas *canvas) : Q3CanvasEllipse(canvas) { this->item = item; }
 	virtual bool collision(Ball *ball, long int id) { return item->collision(ball, id); }
 
 protected:
 	CanvasItem *item;
 };
 
-class Bumper : public QCanvasEllipse, public CanvasItem
+class Bumper : public Q3CanvasEllipse, public CanvasItem
 {
 public:
-	Bumper(QCanvas *canvas);
+	Bumper(Q3Canvas *canvas);
 
 	virtual void advance(int phase);
 	virtual void aboutToDie();
@@ -279,13 +286,13 @@ class BumperObj : public Object
 {
 public:
 	BumperObj() { m_name = i18n("Bumper"); m__name = "bumper"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Bumper(canvas); }
+	virtual Q3CanvasItem *newObject(Q3Canvas *canvas) { return new Bumper(canvas); }
 };
 
-class Hole : public QCanvasEllipse, public CanvasItem
+class Hole : public Q3CanvasEllipse, public CanvasItem
 {
 public:
-	Hole(QColor color, QCanvas *canvas);
+	Hole(QColor color, Q3Canvas *canvas);
 	virtual bool place(Ball * /*ball*/, bool /*wasCenter*/) { return true; };
 
 	virtual bool collision(Ball *ball, long int id);
@@ -297,7 +304,7 @@ protected:
 class Cup : public Hole
 {
 public:
-	Cup(QCanvas *canvas);
+	Cup(Q3Canvas *canvas);
 	virtual bool place(Ball *ball, bool wasCenter);
 	virtual void save(KConfig *cfg);
 	virtual bool canBeMovedByOthers() const { return true; }
@@ -310,7 +317,7 @@ class CupObj : public Object
 {
 public:
 	CupObj() { m_name = i18n("Cup"); m__name = "cup"; m_addOnNewHole = true; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Cup(canvas); }
+	virtual Q3CanvasItem *newObject(Q3Canvas *canvas) { return new Cup(canvas); }
 };
 
 class BlackHole;
@@ -329,10 +336,10 @@ private slots:
 private:
 	BlackHole *blackHole;
 };
-class BlackHoleExit : public QCanvasLine, public CanvasItem
+class BlackHoleExit : public Q3CanvasLine, public CanvasItem
 {
 public:
-	BlackHoleExit(BlackHole *blackHole, QCanvas *canvas);
+	BlackHoleExit(BlackHole *blackHole, Q3Canvas *canvas);
 	virtual int rtti() const { return Rtti_NoCollision; }
 	virtual void aboutToDie();
 	virtual void moveBy(double dx, double dy);
@@ -374,7 +381,7 @@ class BlackHole : public QObject, public Hole
 Q_OBJECT
 
 public:
-	BlackHole(QCanvas *canvas);
+	BlackHole(Q3Canvas *canvas);
 	virtual bool canBeMovedByOthers() const { return true; }
 	virtual void aboutToDie();
 	virtual void showInfo();
@@ -383,7 +390,7 @@ public:
 	virtual void save(KConfig *cfg);
 	virtual void load(KConfig *cfg);
 	virtual Config *config(QWidget *parent) { return new BlackHoleConfig(this, parent); }
-	virtual QPtrList<QCanvasItem> moveableItems() const;
+	virtual Q3PtrList<Q3CanvasItem> moveableItems() const;
 	double minSpeed() const { return m_minSpeed; }
 	double maxSpeed() const { return m_maxSpeed; }
 	void setMinSpeed(double news) { m_minSpeed = news; exitItem->updateArrowLength(); }
@@ -411,22 +418,22 @@ protected:
 
 private:
 	int runs;
-	QCanvasLine *infoLine;
-	QCanvasEllipse *outside;
+	Q3CanvasLine *infoLine;
+	Q3CanvasEllipse *outside;
 	void finishMe();
 };
 class BlackHoleObj : public Object
 {
 public:
 	BlackHoleObj() { m_name = i18n("Black Hole"); m__name = "blackhole"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new BlackHole(canvas); }
+	virtual Q3CanvasItem *newObject(Q3Canvas *canvas) { return new BlackHole(canvas); }
 };
 
 class WallPoint;
-class Wall : public QCanvasLine, public CanvasItem
+class Wall : public Q3CanvasLine, public CanvasItem
 {
 public:
-	Wall(QCanvas *canvas);
+	Wall(Q3Canvas *canvas);
 	virtual void aboutToDie();
 	double dampening;
 
@@ -436,7 +443,7 @@ public:
 	virtual bool collision(Ball *ball, long int id);
 	virtual void save(KConfig *cfg);
 	virtual void load(KConfig *cfg);
-	virtual void selectedItem(QCanvasItem *item);
+	virtual void selectedItem(Q3CanvasItem *item);
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
 	virtual void setVelocity(double vx, double vy);
@@ -444,14 +451,14 @@ public:
 
 	// must reimp because we gotta move the end items,
 	// and we do that in moveBy()
-	virtual void setPoints(int xa, int ya, int xb, int yb) { QCanvasLine::setPoints(xa, ya, xb, yb); moveBy(0, 0); }
+	virtual void setPoints(int xa, int ya, int xb, int yb) { Q3CanvasLine::setPoints(xa, ya, xb, yb); moveBy(0, 0); }
 
 	virtual int rtti() const { return Rtti_Wall; }
-	virtual QPtrList<QCanvasItem> moveableItems() const;
+	virtual Q3PtrList<Q3CanvasItem> moveableItems() const;
 	virtual void setGame(KolfGame *game);
 	virtual void setVisible(bool);
 
-	virtual QPointArray areaPoints() const;
+	virtual Q3PointArray areaPoints() const;
 
 protected:
 	WallPoint *startItem;
@@ -463,10 +470,10 @@ private:
 
 	friend class WallPoint;
 };
-class WallPoint : public QCanvasEllipse, public CanvasItem
+class WallPoint : public Q3CanvasEllipse, public CanvasItem
 {
 public:
-	WallPoint(bool start, Wall *wall, QCanvas *canvas);
+	WallPoint(bool start, Wall *wall, Q3Canvas *canvas);
 	void setAlwaysShow(bool yes) { alwaysShow = yes; updateVisible(); }
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
@@ -498,14 +505,14 @@ class WallObj : public Object
 {
 public:
 	WallObj() { m_name = i18n("Wall"); m__name = "wall"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Wall(canvas); }
+	virtual Q3CanvasItem *newObject(Q3Canvas *canvas) { return new Wall(canvas); }
 };
 
-class Putter : public QCanvasLine, public CanvasItem
+class Putter : public Q3CanvasLine, public CanvasItem
 {
 public:
-	Putter(QCanvas *canvas);
-	void go(Direction, Amount amount = Amount_Normal);
+	Putter(Q3Canvas *canvas);
+	void go(Qt::Orientation, Amount amount = Amount_Normal);
 	void setOrigin(int x, int y);
 	int curLen() const { return len; }
 	double curAngle() const { return angle; }
@@ -533,7 +540,7 @@ private:
 	int len;
 	void finishMe();
 	int putterWidth;
-	QCanvasLine *guideLine;
+	Q3CanvasLine *guideLine;
 	bool m_showGuideLine;
 };
 
@@ -561,10 +568,10 @@ protected:
 private:
 	Bridge *bridge;
 };
-class Bridge : public QCanvasRectangle, public CanvasItem, public RectItem
+class Bridge : public Q3CanvasRectangle, public CanvasItem, public RectItem
 {
 public:
-	Bridge(QRect rect, QCanvas *canvas);
+	Bridge(QRect rect, Q3Canvas *canvas);
 	virtual bool collision(Ball *ball, long int id);
 	virtual void aboutToDie();
 	virtual void editModeChanged(bool changed);
@@ -578,7 +585,7 @@ public:
 	virtual void setGame(KolfGame *game);
 	virtual Config *config(QWidget *parent) { return new BridgeConfig(this, parent); }
 	void setSize(int width, int height);
-	virtual QPtrList<QCanvasItem> moveableItems() const;
+	virtual Q3PtrList<Q3CanvasItem> moveableItems() const;
 
 	void setWallColor(QColor color);
 	QPen wallPen() const { return topWall->pen(); }
@@ -606,7 +613,7 @@ class BridgeObj : public Object
 {
 public:
 	BridgeObj() { m_name = i18n("Bridge"); m__name = "bridge"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Bridge(QRect(0, 0, 80, 40), canvas); }
+	virtual Q3CanvasItem *newObject(Q3Canvas *canvas) { return new Bridge(QRect(0, 0, 80, 40), canvas); }
 };
 
 class Sign;
@@ -626,7 +633,7 @@ private:
 class Sign : public Bridge
 {
 public:
-	Sign(QCanvas *canvas);
+	Sign(Q3Canvas *canvas);
 	void setText(const QString &text);
 	QString text() const { return m_text; }
 	virtual void draw(QPainter &painter);
@@ -643,14 +650,14 @@ class SignObj : public Object
 {
 public:
 	SignObj() { m_name = i18n("Sign"); m__name = "sign"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Sign(canvas); }
+	virtual Q3CanvasItem *newObject(Q3Canvas *canvas) { return new Sign(canvas); }
 };
 
 class Windmill;
 class WindmillGuard : public Wall
 {
 public:
-	WindmillGuard(QCanvas *canvas) : Wall(canvas) {};
+	WindmillGuard(Q3Canvas *canvas) : Wall(canvas) {};
 	void setBetween(int newmin, int newmax) { max = newmax; min = newmin; }
 	virtual void advance(int phase);
 
@@ -675,7 +682,7 @@ private:
 class Windmill : public Bridge
 {
 public:
-	Windmill(QRect rect, QCanvas *canvas);
+	Windmill(QRect rect, Q3Canvas *canvas);
 	virtual void aboutToDie();
 	virtual void newSize(int width, int height);
 	virtual void save(KConfig *cfg);
@@ -701,7 +708,7 @@ class WindmillObj : public Object
 {
 public:
 	WindmillObj() { m_name = i18n("Windmill"); m__name = "windmill"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Windmill(QRect(0, 0, 80, 40), canvas); }
+	virtual Q3CanvasItem *newObject(Q3Canvas *canvas) { return new Windmill(QRect(0, 0, 80, 40), canvas); }
 };
 
 class HoleInfo;
@@ -755,10 +762,10 @@ private:
 	int m_lowestMaxStrokes;
 };
 
-class StrokeCircle : public QCanvasItem
+class StrokeCircle : public Q3CanvasItem
 {
 public:
-	StrokeCircle(QCanvas *canvas);
+	StrokeCircle(Q3Canvas *canvas);
 
 	void setValue(double v);
 	double value();
@@ -770,8 +777,8 @@ public:
 	int height() const;
 	virtual void draw(QPainter &p);
 	virtual QRect boundingRect() const;
-	virtual bool collidesWith(const QCanvasItem*) const;
-	virtual bool collidesWith(const QCanvasSprite*, const QCanvasPolygonalItem*, const QCanvasRectangle*, const QCanvasEllipse*, const QCanvasText*) const;
+	virtual bool collidesWith(const Q3CanvasItem*) const;
+	virtual bool collidesWith(const Q3CanvasSprite*, const Q3CanvasPolygonalItem*, const Q3CanvasRectangle*, const Q3CanvasEllipse*, const Q3CanvasText*) const;
 
 private:
 	double dvalue, dmax;
@@ -790,7 +797,7 @@ struct KDE_EXPORT CourseInfo
 	unsigned int par;
 };
 
-class KDE_EXPORT KolfGame : public QCanvasView
+class KDE_EXPORT KolfGame : public Q3CanvasView
 {
 	Q_OBJECT
 
@@ -801,8 +808,8 @@ public:
 	void setFilename(const QString &filename);
 	QString curFilename() const { return filename; }
 	void emitLargestHole() { emit largestHole(highestHole); }
-	QCanvas *canvas() const { return course; }
-	void removeItem(QCanvasItem *item) { items.setAutoDelete(false); items.removeRef(item); }
+	Q3Canvas *canvas() const { return course; }
+	void removeItem(Q3CanvasItem *item) { items.setAutoDelete(false); items.removeRef(item); }
 	// returns whether it was a cancel
 	bool askSave(bool);
 	bool isEditing() const { return editing; }
@@ -815,7 +822,7 @@ public:
 	void ballMoved();
 	void updateHighlighter();
 	void updateCourse() { course->update(); }
-	QCanvasItem *curSelectedItem() const { return selectedItem; }
+	Q3CanvasItem *curSelectedItem() const { return selectedItem; }
 	void setBorderWalls(bool);
 	void setInPlay(bool yes) { inPlay = yes; }
 	bool isInPlay() { return inPlay; }
@@ -888,7 +895,7 @@ private slots:
 	void fastTimeout();
 	void putterTimeout();
 	void autoSaveTimeout();
-	void addItemsToMoveableList(QPtrList<QCanvasItem>);
+	void addItemsToMoveableList(Q3PtrList<Q3CanvasItem>);
 	void addItemToFastAdvancersList(CanvasItem *);
 	void hideInfo();
 
@@ -910,7 +917,7 @@ protected:
 	QPoint viewportToViewport(const QPoint &p);
 
 private:
-	QCanvas *course;
+	Q3Canvas *course;
 	Putter *putter;
 	PlayerList *players;
 	PlayerList::Iterator curPlayer;
@@ -924,9 +931,9 @@ private:
 	bool regAdv;
 
 	ObjectList *obj;
-	QPtrList<QCanvasItem> items;
-	QPtrList<QCanvasItem> extraMoveable;
-	QPtrList<Wall> borderWalls;
+	Q3PtrList<Q3CanvasItem> items;
+	Q3PtrList<Q3CanvasItem> extraMoveable;
+	Q3PtrList<Wall> borderWalls;
 
 	int timerMsec;
 	int autoSaveMsec;
@@ -970,14 +977,14 @@ private:
 	QPoint storedMousePos;
 	bool moving;
 	bool dragging;
-	QCanvasItem *movingItem;
-	QCanvasItem *selectedItem;
-	QCanvasRectangle *highlighter;
+	Q3CanvasItem *movingItem;
+	Q3CanvasItem *selectedItem;
+	Q3CanvasRectangle *highlighter;
 
 	// sound
 	KArtsDispatcher artsDispatcher;
 	KArtsServer artsServer;
-	QPtrList<KPlayObject> oldPlayObjects;
+	Q3PtrList<KPlayObject> oldPlayObjects;
 	bool m_sound;
 	bool soundedOnce;
 	QString soundDir;
@@ -985,7 +992,7 @@ private:
 	bool m_ignoreEvents;
 
 	HoleInfo holeInfo;
-	QCanvasText *infoText;
+	Q3CanvasText *infoText;
 	void showInfo();
 	StateDB stateDB;
 
@@ -1017,7 +1024,7 @@ private:
 	bool m_useMouse;
 	bool m_useAdvancedPutting;
 
-	QPtrList<CanvasItem> fastAdvancers;
+	Q3PtrList<CanvasItem> fastAdvancers;
 	bool fastAdvancedExist;
 
 	QString playerWhoMaxed;

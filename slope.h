@@ -4,6 +4,10 @@
 #include <kimageeffect.h>
 
 #include "game.h"
+//Added by qt3to4:
+#include <QPixmap>
+#include <Q3PointArray>
+#include <Q3PtrList>
 
 class Slope;
 class SlopeConfig : public Config
@@ -23,10 +27,10 @@ private:
 	Slope *slope;
 };
 
-class Slope : public QCanvasRectangle, public CanvasItem, public RectItem
+class Slope : public Q3CanvasRectangle, public CanvasItem, public RectItem
 {
 public:
-	Slope(QRect rect, QCanvas *canvas);
+	Slope(QRect rect, Q3Canvas *canvas);
 	virtual void aboutToDie();
 	virtual int rtti() const { return 1031; }
 
@@ -34,7 +38,7 @@ public:
 	virtual void hideInfo();
 	virtual void editModeChanged(bool changed);
 	virtual bool canBeMovedByOthers() const { return !stuckOnGround; }
-	virtual QPtrList<QCanvasItem> moveableItems() const;
+	virtual Q3PtrList<Q3CanvasItem> moveableItems() const;
 	virtual Config *config(QWidget *parent) { return new SlopeConfig(this, parent); }
 	void setSize(int, int);
 	virtual void newSize(int width, int height);
@@ -42,7 +46,7 @@ public:
 	virtual void moveBy(double dx, double dy);
 
 	virtual void draw(QPainter &painter);
-	virtual QPointArray areaPoints() const;
+	virtual Q3PointArray areaPoints() const;
 
 	void setGradient(QString text);
 	KImageEffect::GradientType curType() const { return type; }
@@ -65,7 +69,7 @@ public:
 	QMap<KImageEffect::GradientType, QString> gradientI18nKeys;
 	QMap<KImageEffect::GradientType, QString> gradientKeys;
 
-	virtual void updateZ(QCanvasRectangle *vStrut = 0);
+	virtual void updateZ(Q3CanvasRectangle *vStrut = 0);
 
 	void moveArrow();
 
@@ -83,8 +87,8 @@ private:
 
 	void clearArrows();
 
-	QPtrList<Arrow> arrows;
-	QCanvasText *text;
+	Q3PtrList<Arrow> arrows;
+	Q3CanvasText *text;
 	RectPoint *point;
 };
 
@@ -92,7 +96,7 @@ class SlopeObj : public Object
 {
 public:
 	SlopeObj() { m_name = i18n("Slope"); m__name = "slope"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Slope(QRect(0, 0, 40, 40), canvas); }
+	virtual Q3CanvasItem *newObject(Q3Canvas *canvas) { return new Slope(QRect(0, 0, 40, 40), canvas); }
 };
 
 #endif

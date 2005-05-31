@@ -14,10 +14,13 @@
 
 #include <qcheckbox.h>
 #include <qevent.h>
-#include <qframe.h>
+#include <q3frame.h>
 #include <qpen.h>
 #include <qlayout.h>
 #include <qlabel.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <klistbox.h>
 #include <qstyle.h>
 #include <qrect.h>
@@ -25,12 +28,12 @@
 #include <qpainter.h>
 #include <qpixmapcache.h>
 #include <qwidget.h>
-#include <qscrollview.h>
-#include <qvaluelist.h>
-#include <qptrlist.h>
+#include <q3scrollview.h>
+#include <q3valuelist.h>
+#include <q3ptrlist.h>
 #include <qstringlist.h>
 #include <qstring.h>
-#include <qvbox.h>
+#include <q3vbox.h>
 
 #include "newgame.h"
 #include "game.h"
@@ -54,9 +57,9 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 
 	connect(addButton, SIGNAL(clicked()), this, SLOT(addPlayer()));
 
-	scroller = new QScrollView(playerPage);
+	scroller = new Q3ScrollView(playerPage);
 	bigLayout->addWidget(scroller);
-	layout = new QVBox(scroller->viewport());
+	layout = new Q3VBox(scroller->viewport());
 	if (!QPixmapCache::find("grass", grass))
 	{
 		grass.load(locate("appdata", "pics/grass.png"));

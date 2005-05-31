@@ -1,12 +1,12 @@
 #ifndef SCOREBOARD_H
 #define SCOREBOARD_H
 
-#include <qtable.h>
+#include <q3table.h>
 
 class QWidget;
-class QHeader;
+class Q3Header;
 
-class ScoreBoard : public QTable
+class ScoreBoard : public Q3Table
 {
 	Q_OBJECT
 
@@ -21,9 +21,9 @@ public slots:
 	void parChanged(int hole, int par);
 
 private:
-	QTable *table;
-	QHeader *vh;
-	QHeader *hh;
+	Q3Table *table;
+	Q3Header *vh;
+	Q3Header *hh;
 };
 
 #endif

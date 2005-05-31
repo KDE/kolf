@@ -1,7 +1,9 @@
 #ifndef KOLF_CANVASITEM_H
 #define KOLF_CANVASITEM_H
 
-#include <qcanvas.h>
+#include <q3canvas.h>
+//Added by qt3to4:
+#include <Q3PtrList>
 
 #include "config.h"
 
@@ -30,7 +32,7 @@ public:
 	/**
 	 * called if the item is made by user while editing, with the item that was selected on the hole;
 	 */
-	virtual void selectedItem(QCanvasItem * /*item*/) {}
+	virtual void selectedItem(Q3CanvasItem * /*item*/) {}
 	/**
 	 * called after the item is moved the very first time by the game
 	 */
@@ -107,7 +109,7 @@ public:
 	/**
 	 * update your Z value (this is called by various things when perhaps the value should change) if this is called by a vStrut, it will pass 'this'.
 	 */
-	virtual void updateZ(QCanvasRectangle * /*vStrut*/ = 0) {};
+	virtual void updateZ(Q3CanvasRectangle * /*vStrut*/ = 0) {};
 	/**
 	 * clean up for prettyness
 	 */
@@ -129,7 +131,7 @@ public:
 	/**
 	 * returns other items that should be moveable (besides this one of course).
 	 */
-	virtual QPtrList<QCanvasItem> moveableItems() const { return QPtrList<QCanvasItem>(); }
+	virtual Q3PtrList<Q3CanvasItem> moveableItems() const { return Q3PtrList<Q3CanvasItem>(); }
 	/**
 	 * returns whether this can be moved by the user while editing.
 	 */
@@ -172,7 +174,7 @@ protected:
 	/**
 	 * returns the highest vertical strut the item is on
 	 */
-	QCanvasRectangle *onVStrut();
+	Q3CanvasRectangle *onVStrut();
 
 private:
 	QString m_name;

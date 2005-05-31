@@ -2,15 +2,15 @@
 #include <klocale.h>
 
 #include <qlayout.h>
-#include <qtable.h>
+#include <q3table.h>
 #include <qwidget.h>
-#include <qheader.h>
+#include <q3header.h>
 #include <qstring.h>
 
 #include "scoreboard.h"
 
 ScoreBoard::ScoreBoard(QWidget *parent, const char *name)
-	: QTable(1, 1, parent, name)
+	: Q3Table(1, 1, parent, name)
 {
 	vh = verticalHeader();
 	hh = horizontalHeader();

@@ -1,5 +1,8 @@
 #include <qlabel.h>
 #include <qslider.h>
+//Added by qt3to4:
+#include <QHBoxLayout>
+#include <Q3PtrList>
 
 #include <kconfig.h>
 
@@ -46,7 +49,7 @@ Config *FloaterGuide::config(QWidget *parent)
 
 /////////////////////////
 
-Floater::Floater(QRect rect, QCanvas *canvas)
+Floater::Floater(QRect rect, Q3Canvas *canvas)
 	: Bridge(rect, canvas), speedfactor(16)
 {
 	wall = 0;
@@ -117,9 +120,9 @@ void Floater::reset()
 	setSpeed(speed);
 }
 
-QPtrList<QCanvasItem> Floater::moveableItems() const
+Q3PtrList<Q3CanvasItem> Floater::moveableItems() const
 {
-	QPtrList<QCanvasItem> ret(wall->moveableItems());
+	Q3PtrList<Q3CanvasItem> ret(wall->moveableItems());
 	ret.append(wall);
 	ret.append(point);
 	return ret;
@@ -167,8 +170,8 @@ void Floater::moveBy(double dx, double dy)
 	if (!isEnabled())
 		return;
 
-	QCanvasItemList l = collisions(false);
-	for (QCanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
+	Q3CanvasItemList l = collisions(false);
+	for (Q3CanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
 	{
 		CanvasItem *item = dynamic_cast<CanvasItem *>(*it);
 
@@ -197,7 +200,7 @@ void Floater::moveBy(double dx, double dy)
 
 	// this call must come after we have tested for collisions, otherwise we skip them when saving!
 	// that's a bad thing
-	QCanvasRectangle::moveBy(dx, dy);
+	Q3CanvasRectangle::moveBy(dx, dy);
 
 	// because we don't do Bridge::moveBy();
 	topWall->move(x(), y());
