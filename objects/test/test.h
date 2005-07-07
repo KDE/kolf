@@ -1,7 +1,7 @@
 #ifndef KOLFTEST_H
 #define KOLFTEST_H
 
-#include <qcanvas.h>
+#include <q3canvas.h>
 #include <qobject.h>
 
 #include <klibloader.h>
@@ -13,10 +13,10 @@ class KConfig;
 
 class TestFactory : KLibFactory { Q_OBJECT public: QObject *createObject(QObject *, const char *, const char *, const QStringList & = QStringList()); };
 
-class Test : public QCanvasEllipse, public CanvasItem
+class Test : public Q3CanvasEllipse, public CanvasItem
 {
 public:
-	Test(QCanvas *canvas);
+	Test(Q3Canvas *canvas);
 
 	virtual Config *config(QWidget *parent);
 	virtual void save(KConfig *cfg);
@@ -50,7 +50,7 @@ class TestObj : public Object
 {
 public:
 	TestObj() { m_name = i18n("Flash"); m__name = "flash"; m_author = "Jason Katz-Brown"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Test(canvas); }
+	virtual Q3CanvasItem *newObject(Q3Canvas *canvas) { return new Test(canvas); }
 };
 
 #endif

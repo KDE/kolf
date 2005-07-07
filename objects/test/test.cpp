@@ -1,9 +1,12 @@
 #include <qbrush.h>
 #include <qcolor.h>
-#include <qcanvas.h>
+#include <q3canvas.h>
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qslider.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 
 #include <klocale.h>
 #include <klibloader.h>
@@ -17,8 +20,8 @@ K_EXPORT_COMPONENT_FACTORY(libkolftest, TestFactory)
 QObject *TestFactory::createObject (QObject * /*parent*/, const char * /*name*/, const char * /*classname*/, const QStringList & /*args*/)
 { return new TestObj; }
 
-Test::Test(QCanvas *canvas)
-	: QCanvasEllipse(60, 40, canvas), count(0), m_switchEvery(20)
+Test::Test(Q3Canvas *canvas)
+	: Q3CanvasEllipse(60, 40, canvas), count(0), m_switchEvery(20)
 {
 	// force to the bottom of other objects
 	setZ(-100000);
@@ -29,7 +32,7 @@ Test::Test(QCanvas *canvas)
 
 void Test::advance(int phase)
 {
-	QCanvasEllipse::advance(phase);
+	Q3CanvasEllipse::advance(phase);
 
 	// phase is either 0 or 1, only calls with 1 should be handled
 	if (phase == 1)

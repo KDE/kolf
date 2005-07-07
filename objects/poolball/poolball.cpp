@@ -1,9 +1,11 @@
 #include <qbrush.h>
 #include <qcolor.h>
-#include <qcanvas.h>
+#include <q3canvas.h>
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qpainter.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
 
 #include <klocale.h>
 #include <klibloader.h>
@@ -19,10 +21,10 @@
 K_EXPORT_COMPONENT_FACTORY(libkolfpoolball, PoolBallFactory)
 QObject *PoolBallFactory::createObject (QObject *, const char *, const char *, const QStringList &) { return new PoolBallObj; }
 
-PoolBall::PoolBall(QCanvas *canvas)
+PoolBall::PoolBall(Q3Canvas *canvas)
 	: Ball(canvas)
 {
-	setBrush(black);
+	setBrush(Qt::black);
 	m_number = 1;
 }
 
