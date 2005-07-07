@@ -24,7 +24,8 @@ Ball::Ball(Q3Canvas *canvas)
 	m_collisionLock = false;
 	setBeginningOfHole(false);
 	setBlowUp(false);
-	setPen(Qt::black);
+#warning "Qt4 setPen doesn't exist ???";	
+	//setPen(Qt::black);
 	resetSize();
 	collisionId = 0;
 	m_addStroke = false;
