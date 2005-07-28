@@ -1,4 +1,4 @@
-#include <qcstring.h>
+#include <q3cstring.h>
 #include <qfile.h>
 
 #include <kapplication.h>

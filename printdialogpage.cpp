@@ -1,6 +1,8 @@
 #include <qcheckbox.h>
 #include <qlayout.h>
 #include <qwidget.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
 
 #include <klocale.h>
 #include <kdialog.h>

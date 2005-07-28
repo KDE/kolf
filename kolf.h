@@ -5,10 +5,14 @@
 #include <kurl.h>
 
 #include <qmap.h>
-#include <qptrlist.h>
+#include <q3ptrlist.h>
 #include <qstring.h>
 #include <qwidget.h>
-#include <qvaluelist.h>
+#include <q3valuelist.h>
+//Added by qt3to4:
+#include <QGridLayout>
+#include <QEvent>
+#include <QCloseEvent>
 #include <kdemacros.h>
 #include "game.h"
 
@@ -142,6 +146,6 @@ struct HighScore
 	QString name;
 	int score;
 };
-typedef QValueList<HighScore> HighScoreList;
+typedef Q3ValueList<HighScore> HighScoreList;
 
 #endif

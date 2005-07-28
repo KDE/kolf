@@ -1,6 +1,8 @@
-#include <qcanvas.h>
+#include <q3canvas.h>
 #include <qcolor.h>
 #include <qpen.h>
+//Added by qt3to4:
+#include <Q3PtrList>
 
 #include <kapplication.h>
 #include <kdebug.h>
@@ -15,14 +17,15 @@
 #include "game.h"
 #include "ball.h"
 
-Ball::Ball(QCanvas *canvas)
-	: QCanvasEllipse(canvas)
+Ball::Ball(Q3Canvas *canvas)
+	: Q3CanvasEllipse(canvas)
 {
 	m_doDetect = true;
 	m_collisionLock = false;
 	setBeginningOfHole(false);
 	setBlowUp(false);
-	setPen(black);
+#warning "Qt4 setPen doesn't exist ???";	
+	//setPen(Qt::black);
 	resetSize();
 	collisionId = 0;
 	m_addStroke = false;
@@ -31,8 +34,8 @@ Ball::Ball(QCanvas *canvas)
 	frictionMultiplier = 1.0;
 	QFont font(kapp->font());
 	//font.setPixelSize(10);
-	label = new QCanvasText("", font, canvas);
-	label->setColor(white);
+	label = new Q3CanvasText("", font, canvas);
+	label->setColor(Qt::white);
 	label->setVisible(false);
 
 	// this sets z
@@ -98,7 +101,7 @@ void Ball::friction()
 
 void Ball::setVelocity(double vx, double vy)
 {
-	QCanvasEllipse::setVelocity(vx, vy);
+	Q3CanvasEllipse::setVelocity(vx, vy);
 
 	if (vx == 0 && vy == 0)
 	{
@@ -123,7 +126,7 @@ void Ball::setVector(const Vector &newVector)
 		return;
 	}
 
-	QCanvasEllipse::setVelocity(cos(newVector.direction()) * newVector.magnitude(), -sin(newVector.direction()) * newVector.magnitude());
+	Q3CanvasEllipse::setVelocity(cos(newVector.direction()) * newVector.magnitude(), -sin(newVector.direction()) * newVector.magnitude());
 }
 
 void Ball::moveBy(double dx, double dy)
@@ -132,7 +135,7 @@ void Ball::moveBy(double dx, double dy)
 	double oldy;
 	oldx = x();
 	oldy = y();
-	QCanvasEllipse::moveBy(dx, dy);
+	Q3CanvasEllipse::moveBy(dx, dy);
 
 	if (game && !game->isPaused())
 		collisionDetect(oldx, oldy);
@@ -145,7 +148,7 @@ void Ball::moveBy(double dx, double dy)
 
 void Ball::doAdvance()
 {
-	QCanvasEllipse::advance(1);
+	Q3CanvasEllipse::advance(1);
 }
 
 namespace Lines
@@ -221,7 +224,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 
 	const double minSpeed = .06;
 
-	QCanvasItemList m_list = collisions(true);
+	Q3CanvasItemList m_list = collisions(true);
 
 	// please don't ask why QCanvas doesn't actually sort its list;
 	// it just doesn't.
@@ -229,9 +232,9 @@ void Ball::collisionDetect(double oldx, double oldy)
 
 	this->m_list = m_list;
 
-	for (QCanvasItemList::Iterator it = m_list.begin(); it != m_list.end(); ++it)
+	for (Q3CanvasItemList::Iterator it = m_list.begin(); it != m_list.end(); ++it)
 	{
-		QCanvasItem *item = *it;
+		Q3CanvasItem *item = *it;
 
 		if (item->rtti() == Rtti_NoCollision || item->rtti() == Rtti_Putter)
 			continue;
@@ -286,8 +289,8 @@ void Ball::collisionDetect(double oldx, double oldy)
 		{
 			//kdDebug(12007) << "collided with WallPoint\n";
 			// iterate through the rst
-			QPtrList<WallPoint> points;
-			for (QCanvasItemList::Iterator pit = it; pit != m_list.end(); ++pit)
+			Q3PtrList<WallPoint> points;
+			for (Q3CanvasItemList::Iterator pit = it; pit != m_list.end(); ++pit)
 			{
 				if ((*pit)->rtti() == Rtti_WallPoint)
 				{
@@ -371,7 +374,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 		}
 	}
 
-	for (QCanvasItemList::Iterator it = m_list.begin(); it != m_list.end(); ++it)
+	for (Q3CanvasItemList::Iterator it = m_list.begin(); it != m_list.end(); ++it)
 	{
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(*it);
 		if (citem && citem->terrainCollisions())
@@ -393,15 +396,15 @@ void Ball::collisionDetect(double oldx, double oldy)
 	wallCheck:
 
 	{ // check if I went through a wall
-		QCanvasItemList items;
+		Q3CanvasItemList items;
 		if (game)
 			items = game->canvas()->allItems();
-		for (QCanvasItemList::Iterator i = items.begin(); i != items.end(); ++i)
+		for (Q3CanvasItemList::Iterator i = items.begin(); i != items.end(); ++i)
 		{
 			if ((*i)->rtti() != Rtti_Wall)
 				continue;
 
-			QCanvasItem *item = (*i);
+			Q3CanvasItem *item = (*i);
 			Wall *wall = dynamic_cast<Wall*>(item);
 			if (!wall || !wall->isVisible())
 				continue;
@@ -451,15 +454,15 @@ void Ball::setName(const QString &name)
 	label->setText(name);
 }
 
-void Ball::setCanvas(QCanvas *c)
+void Ball::setCanvas(Q3Canvas *c)
 {
-	QCanvasEllipse::setCanvas(c);
+	Q3CanvasEllipse::setCanvas(c);
 	label->setCanvas(c);
 }
 
 void Ball::setVisible(bool yes)
 {
-	QCanvasEllipse::setVisible(yes);
+	Q3CanvasEllipse::setVisible(yes);
 
 	label->setVisible(yes && game && game->isInfoShowing());
 }

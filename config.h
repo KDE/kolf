@@ -1,9 +1,9 @@
 #ifndef KOLF_CONFIG_H
 #define KOLF_CONFIG_H
 
-#include <qframe.h>
+#include <q3frame.h>
 
-class Config : public QFrame
+class Config : public Q3Frame
 {
 	Q_OBJECT
 

@@ -3,7 +3,13 @@
 #include <qlabel.h>
 #include <qimage.h>
 #include <qpixmapcache.h>
-#include <qwhatsthis.h>
+#include <q3whatsthis.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <Q3PointArray>
+#include <Q3PtrList>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 
 #include <kapplication.h>
 #include <kcombobox.h>
@@ -14,8 +20,8 @@
 
 #include "slope.h"
 
-Slope::Slope(QRect rect, QCanvas *canvas)
-	: QCanvasRectangle(rect, canvas), type(KImageEffect::VerticalGradient), grade(4), reversed(false), color(QColor("#327501"))
+Slope::Slope(QRect rect, Q3Canvas *canvas)
+	: Q3CanvasRectangle(rect, canvas), type(KImageEffect::VerticalGradient), grade(4), reversed(false), color(QColor("#327501"))
 {
 	stuckOnGround = false;
 	showingInfo = false;
@@ -44,7 +50,7 @@ Slope::Slope(QRect rect, QCanvas *canvas)
 
 	QFont font(kapp->font());
 	font.setPixelSize(18);
-	text = new QCanvasText(canvas);
+	text = new Q3CanvasText(canvas);
 	text->setZ(99999.99);
 	text->setFont(font);
 	text->setColor(white);
@@ -103,9 +109,9 @@ void Slope::clearArrows()
 	arrows.setAutoDelete(false);
 }
 
-QPtrList<QCanvasItem> Slope::moveableItems() const
+Q3PtrList<Q3CanvasItem> Slope::moveableItems() const
 {
-	QPtrList<QCanvasItem> ret;
+	Q3PtrList<Q3CanvasItem> ret;
 	ret.append(point);
 	return ret;
 }
@@ -128,7 +134,7 @@ void Slope::newSize(int width, int height)
 {
 	if (type == KImageEffect::EllipticGradient)
 	{
-		QCanvasRectangle::setSize(width, width);
+		Q3CanvasRectangle::setSize(width, width);
 		// move point back to good spot
 		moveBy(0, 0);
 
@@ -136,7 +142,7 @@ void Slope::newSize(int width, int height)
 			game->updateHighlighter();
 	}
 	else
-		QCanvasRectangle::setSize(width, height);
+		Q3CanvasRectangle::setSize(width, height);
 
 	updatePixmap();
 	updateZ();
@@ -144,7 +150,7 @@ void Slope::newSize(int width, int height)
 
 void Slope::moveBy(double dx, double dy)
 {
-	QCanvasRectangle::moveBy(dx, dy);
+	Q3CanvasRectangle::moveBy(dx, dy);
 
 	point->dontMove();
 	point->move(x() + width(), y() + height());
@@ -156,7 +162,7 @@ void Slope::moveBy(double dx, double dy)
 void Slope::moveArrow()
 {
 	int xavg = 0, yavg = 0;
-	QPointArray r = areaPoints();
+	Q3PointArray r = areaPoints();
 	for (unsigned int i = 0; i < r.size(); ++i)
 	{
 		xavg += r[i].x();
@@ -183,14 +189,14 @@ void Slope::editModeChanged(bool changed)
 	moveBy(0, 0);
 }
 
-void Slope::updateZ(QCanvasRectangle *vStrut)
+void Slope::updateZ(Q3CanvasRectangle *vStrut)
 {
 	const int area = (height() * width());
 	const int defaultz = -50;
 
 	double newZ = 0;
 
-	QCanvasRectangle *rect = 0;
+	Q3CanvasRectangle *rect = 0;
 	if (!stuckOnGround)
 		rect = vStrut? vStrut : onVStrut();
 
@@ -214,7 +220,7 @@ void Slope::load(KConfig *cfg)
 	reversed = cfg->readBoolEntry("reversed", reversed);
 
 	// bypass updatePixmap which newSize normally does
-	QCanvasRectangle::setSize(cfg->readNumEntry("width", width()), cfg->readNumEntry("height", height()));
+	Q3CanvasRectangle::setSize(cfg->readNumEntry("width", width()), cfg->readNumEntry("height", height()));
 	updateZ();
 
 	QString gradientType = cfg->readEntry("gradient", gradientKeys[type]);
@@ -236,13 +242,13 @@ void Slope::draw(QPainter &painter)
 	painter.drawPixmap(x(), y(), pixmap);
 }
 
-QPointArray Slope::areaPoints() const
+Q3PointArray Slope::areaPoints() const
 {
 	switch (type)
 	{
 		case KImageEffect::CrossDiagonalGradient:
 		{
-			QPointArray ret(3);
+			Q3PointArray ret(3);
 			ret[0] = QPoint((int)x(), (int)y());
 			ret[1] = QPoint((int)x() + width(), (int)y() + height());
 			ret[2] = reversed? QPoint((int)x() + width(), y()) : QPoint((int)x(), (int)y() + height());
@@ -252,7 +258,7 @@ QPointArray Slope::areaPoints() const
 
 		case KImageEffect::DiagonalGradient:
 		{
-			QPointArray ret(3);
+			Q3PointArray ret(3);
 			ret[0] = QPoint((int)x() + width(), (int)y());
 			ret[1] = QPoint((int)x(), (int)y() + height());
 			ret[2] = !reversed? QPoint((int)x() + width(), y() + height()) : QPoint((int)x(), (int)y());
@@ -262,13 +268,13 @@ QPointArray Slope::areaPoints() const
 
 		case KImageEffect::EllipticGradient:
 		{
-			QPointArray ret;
+			Q3PointArray ret;
 			ret.makeEllipse((int)x(), (int)y(), width(), height());
 			return ret;
 		}
 
 		default:
-			return QCanvasRectangle::areaPoints();
+			return Q3CanvasRectangle::areaPoints();
 	}
 }
 
@@ -496,7 +502,7 @@ void Slope::updatePixmap()
 		QBitmap bitmap(pixmap.width(), pixmap.height(), true);
 		QPainter bpainter(&bitmap);
 		bpainter.setBrush(color1);
-		QPointArray r = areaPoints();
+		Q3PointArray r = areaPoints();
 
 		// shift all the points
 		for (unsigned int i = 0; i < r.count(); ++i)
@@ -552,7 +558,7 @@ SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
 	connect(grade, SIGNAL(valueChanged(double)), this, SLOT(gradeChanged(double)));
 
 	QCheckBox *stuck = new QCheckBox(i18n("Unmovable"), this);
-	QWhatsThis::add(stuck, i18n("Whether or not this slope can be moved by other objects, like floaters."));
+	Q3WhatsThis::add(stuck, i18n("Whether or not this slope can be moved by other objects, like floaters."));
 	stuck->setChecked(slope->isStuckOnGround());
 	layout->addWidget(stuck);
 	connect(stuck, SIGNAL(toggled(bool)), this, SLOT(setStuckOnGround(bool)));

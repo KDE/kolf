@@ -4,7 +4,10 @@
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qwidget.h>
-#include <qframe.h>
+#include <q3frame.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 
 #include "editor.h"
 #include "game.h"
@@ -30,10 +33,10 @@ Editor::Editor(ObjectList *list, QWidget *parent, const char *name)
 
 	listbox->insertStringList(items);
 
-	connect(listbox, SIGNAL(executed(QListBoxItem *)), SLOT(listboxExecuted(QListBoxItem *)));
+	connect(listbox, SIGNAL(executed(Q3ListBoxItem *)), SLOT(listboxExecuted(Q3ListBoxItem *)));
 }
 
-void Editor::listboxExecuted(QListBoxItem * /*item*/)
+void Editor::listboxExecuted(Q3ListBoxItem * /*item*/)
 {
 	int curItem = listbox->currentItem();
 	if (curItem < 0)
@@ -51,7 +54,7 @@ void Editor::setItem(CanvasItem *item)
 	config->ctorDone();
 	hlayout->addWidget(config);
 	hlayout->setStretchFactor(config, 2);
-	config->setFrameStyle(QFrame::Box | QFrame::Raised);
+	config->setFrameStyle(Q3Frame::Box | Q3Frame::Raised);
 	config->setLineWidth(1);
 	config->show();
 	connect(config, SIGNAL(modified()), this, SIGNAL(changed()));

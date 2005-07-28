@@ -26,7 +26,7 @@
 #include <qmap.h>
 #include <qpoint.h>
 #include <qtimer.h>
-#include <qptrlist.h>
+#include <q3ptrlist.h>
 #include <qpixmap.h>
 #include <qpixmapcache.h>
 #include <qfileinfo.h>
@@ -34,6 +34,8 @@
 #include <qstringlist.h>
 #include <qlayout.h>
 #include <qwidget.h>
+//Added by qt3to4:
+#include <QGridLayout>
 
 #include <stdlib.h>
 
@@ -99,10 +101,10 @@ void Kolf::initGUI()
 
 	highScoreAction = KStdGameAction::highscores(this, SLOT(showHighScores()), actionCollection());
 
-	editingAction = new KToggleAction(i18n("&Edit"), "pencil", CTRL+Key_E, this, SLOT(emptySlot()), actionCollection(), "editing");
-	newHoleAction = new KAction(i18n("&New"), "filenew", CTRL+SHIFT+Key_N, this, SLOT(emptySlot()), actionCollection(), "newhole");
-	clearHoleAction = new KAction(KStdGuiItem::clear().text(), "locationbar_erase", CTRL+Key_Delete, this, SLOT(emptySlot()), actionCollection(), "clearhole");
-	resetHoleAction = new KAction(i18n("&Reset"), CTRL+Key_R, this, SLOT(emptySlot()), actionCollection(), "resethole");
+	editingAction = new KToggleAction(i18n("&Edit"), "pencil", Qt::CTRL+Qt::Key_E, this, SLOT(emptySlot()), actionCollection(), "editing");
+	newHoleAction = new KAction(i18n("&New"), "filenew", Qt::CTRL+Qt::SHIFT+Qt::Key_N, this, SLOT(emptySlot()), actionCollection(), "newhole");
+	clearHoleAction = new KAction(KStdGuiItem::clear().text(), "locationbar_erase", Qt::CTRL+Qt::Key_Delete, this, SLOT(emptySlot()), actionCollection(), "clearhole");
+	resetHoleAction = new KAction(i18n("&Reset"), Qt::CTRL+Qt::Key_R, this, SLOT(emptySlot()), actionCollection(), "resethole");
 	undoShotAction = KStdAction::undo(this, SLOT(emptySlot()), actionCollection(), "undoshot");
 	undoShotAction->setText(i18n("&Undo Shot"));
 	//replayShotAction = new KAction(i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
@@ -111,7 +113,7 @@ void Kolf::initGUI()
 	nextAction = new KAction(i18n("&Next Hole"), "forward", KStdAccel::shortcut(KStdAccel::Forward), this, SLOT(emptySlot()), actionCollection(), "nexthole");
 	prevAction = new KAction(i18n("&Previous Hole"), "back", KStdAccel::shortcut(KStdAccel::Back), this, SLOT(emptySlot()), actionCollection(), "prevhole");
 	firstAction = new KAction(i18n("&First Hole"), "gohome", KStdAccel::shortcut(KStdAccel::Home), this, SLOT(emptySlot()), actionCollection(), "firsthole");
-	lastAction = new KAction(i18n("&Last Hole"), CTRL+SHIFT+Key_End, this, SLOT(emptySlot()), actionCollection(), "lasthole");
+	lastAction = new KAction(i18n("&Last Hole"), Qt::CTRL+Qt::SHIFT+Qt::Key_End, this, SLOT(emptySlot()), actionCollection(), "lasthole");
 	randAction = new KAction(i18n("&Random Hole"), "goto", 0, this, SLOT(emptySlot()), actionCollection(), "randhole");
 
 	useMouseAction = new KToggleAction(i18n("Enable &Mouse for Moving Putter"), 0, this, SLOT(emptySlot()), actionCollection(), "usemouse");
@@ -126,7 +128,7 @@ void Kolf::initGUI()
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
 	useAdvancedPuttingAction->setChecked(config->readBoolEntry("useAdvancedPutting", false));
 
-	showInfoAction = new KToggleAction(i18n("Show &Info"), "viewmag+", CTRL+Key_I, this, SLOT(emptySlot()), actionCollection(), "showinfo");
+	showInfoAction = new KToggleAction(i18n("Show &Info"), "viewmag+", Qt::CTRL+Qt::Key_I, this, SLOT(emptySlot()), actionCollection(), "showinfo");
 	showInfoAction->setCheckedState(i18n("Hide &Info"));
 	connect(showInfoAction, SIGNAL(toggled(bool)), this, SLOT(showInfoChanged(bool)));
 	showInfoAction->setChecked(config->readBoolEntry("showInfo", false));
@@ -264,7 +266,7 @@ void Kolf::startNewGame()
 	game->setShowGuideLine(showGuideLineAction->isChecked());
 	game->setSound(soundAction->isChecked());
 
-	layout->addWidget(game, 0, 0, AlignCenter);
+	layout->addWidget(game, 0, 0, Qt::AlignCenter);
 
 	game->show();
 	game->setFocus();
@@ -364,7 +366,7 @@ void Kolf::createSpacer()
 	// make a player to play the spacer hole
 	spacerPlayers.clear();
 	spacerPlayers.append(Player());
-	spacerPlayers.last().ball()->setColor(yellow);
+	spacerPlayers.last().ball()->setColor(Qt::yellow);
 	spacerPlayers.last().setName("player");
 	spacerPlayers.last().setId(1);
 
@@ -372,7 +374,7 @@ void Kolf::createSpacer()
 	spacer = new KolfGame(obj, &spacerPlayers, KGlobal::dirs()->findResource("appdata", "intro"), dummy);
 	spacer->setSound(false);
 	spacer->startFirstHole(1);
-	layout->addWidget(spacer, 0, 0, AlignCenter);
+	layout->addWidget(spacer, 0, 0, Qt::AlignCenter);
 	spacer->hidePutter();
 	spacer->ignoreEvents(true);
 

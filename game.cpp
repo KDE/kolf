@@ -16,7 +16,7 @@
 #include <kstandarddirs.h>
 
 #include <qbrush.h>
-#include <qcanvas.h>
+#include <q3canvas.h>
 #include <qcheckbox.h>
 #include <qcolor.h>
 #include <qcursor.h>
@@ -28,14 +28,14 @@
 #include <qlayout.h>
 #include <qmap.h>
 #include <qpainter.h>
-#include <qpaintdevicemetrics.h>
+#include <q3paintdevicemetrics.h>
 #include <qpen.h>
 #include <qpixmap.h>
 #include <qpixmapcache.h>
 #include <qpoint.h>
-#include <qpointarray.h>
+#include <q3pointarray.h>
 #include <qrect.h>
-#include <qsimplerichtext.h>
+#include <q3simplerichtext.h>
 #include <qsize.h>
 #include <qslider.h>
 #include <qspinbox.h>
@@ -43,8 +43,15 @@
 #include <qstringlist.h>
 #include <qtimer.h>
 #include <qtooltip.h>
-#include <qvaluelist.h>
-#include <qwhatsthis.h>
+#include <q3valuelist.h>
+#include <q3whatsthis.h>
+//Added by qt3to4:
+#include <QMouseEvent>
+#include <QGridLayout>
+#include <QKeyEvent>
+#include <QVBoxLayout>
+#include <Q3PtrList>
+#include <QHBoxLayout>
 
 #include <math.h>
 #include <stdlib.h>
@@ -68,8 +75,8 @@ inline QString makeStateGroup(int id, const QString &name)
 
 /////////////////////////
 
-RectPoint::RectPoint(QColor color, RectItem *rect, QCanvas *canvas)
-	: QCanvasEllipse(canvas)
+RectPoint::RectPoint(QColor color, RectItem *rect, Q3Canvas *canvas)
+	: Q3CanvasEllipse(canvas)
 {
 	setZ(9999);
 	setSize(10, 10);
@@ -81,7 +88,7 @@ RectPoint::RectPoint(QColor color, RectItem *rect, QCanvas *canvas)
 
 void RectPoint::moveBy(double dx, double dy)
 {
-	QCanvasEllipse::moveBy(dx, dy);
+	Q3CanvasEllipse::moveBy(dx, dy);
 
 	if (dontmove)
 	{
@@ -89,7 +96,7 @@ void RectPoint::moveBy(double dx, double dy)
 		return;
 	}
 
-	QCanvasItem *qitem = dynamic_cast<QCanvasItem *>(rect);
+	Q3CanvasItem *qitem = dynamic_cast<Q3CanvasItem *>(rect);
 	if (!qitem)
 		return;
 
@@ -112,17 +119,17 @@ Config *RectPoint::config(QWidget *parent)
 
 /////////////////////////
 
-Arrow::Arrow(QCanvas *canvas)
-	: QCanvasLine(canvas)
+Arrow::Arrow(Q3Canvas *canvas)
+	: Q3CanvasLine(canvas)
 {
-	line1 = new QCanvasLine(canvas);
-	line2 = new QCanvasLine(canvas);
+	line1 = new Q3CanvasLine(canvas);
+	line2 = new Q3CanvasLine(canvas);
 
 	m_angle = 0;
 	m_length = 20;
 	m_reversed = false;
 
-	setPen(black);
+	setPen(Qt::black);
 
 	updateSelf();
 	setVisible(false);
@@ -130,28 +137,28 @@ Arrow::Arrow(QCanvas *canvas)
 
 void Arrow::setPen(QPen p)
 {
-	QCanvasLine::setPen(p);
+	Q3CanvasLine::setPen(p);
 	line1->setPen(p);
 	line2->setPen(p);
 }
 
 void Arrow::setZ(double newz)
 {
-	QCanvasLine::setZ(newz);
+	Q3CanvasLine::setZ(newz);
 	line1->setZ(newz);
 	line2->setZ(newz);
 }
 
 void Arrow::setVisible(bool yes)
 {
-	QCanvasLine::setVisible(yes);
+	Q3CanvasLine::setVisible(yes);
 	line1->setVisible(yes);
 	line2->setVisible(yes);
 }
 
 void Arrow::moveBy(double dx, double dy)
 {
-	QCanvasLine::moveBy(dx, dy);
+	Q3CanvasLine::moveBy(dx, dy);
 	line1->moveBy(dx, dy);
 	line2->moveBy(dx, dy);
 }
@@ -244,8 +251,8 @@ void BridgeConfig::rightWallChanged(bool yes)
 
 /////////////////////////
 
-Bridge::Bridge(QRect rect, QCanvas *canvas)
-	: QCanvasRectangle(rect, canvas)
+Bridge::Bridge(QRect rect, Q3Canvas *canvas)
+	: Q3CanvasRectangle(rect, canvas)
 {
 	QColor color("#92772D");
 	setBrush(QBrush(color));
@@ -327,7 +334,7 @@ void Bridge::editModeChanged(bool changed)
 
 void Bridge::moveBy(double dx, double dy)
 {
-	QCanvasRectangle::moveBy(dx, dy);
+	Q3CanvasRectangle::moveBy(dx, dy);
 
 	point->dontMove();
 	point->move(x() + width(), y() + height());
@@ -337,8 +344,8 @@ void Bridge::moveBy(double dx, double dy)
 	leftWall->move(x(), y());
 	rightWall->move(x(), y());
 
-	QCanvasItemList list = collisions(true);
-	for (QCanvasItemList::Iterator it = list.begin(); it != list.end(); ++it)
+	Q3CanvasItemList list = collisions(true);
+	for (Q3CanvasItemList::Iterator it = list.begin(); it != list.end(); ++it)
 	{
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(*it);
 		if (citem)
@@ -375,9 +382,9 @@ void Bridge::doSave(KConfig *cfg)
 	cfg->writeEntry("rightWallVisible", rightWallVisible());
 }
 
-QPtrList<QCanvasItem> Bridge::moveableItems() const
+Q3PtrList<Q3CanvasItem> Bridge::moveableItems() const
 {
-	QPtrList<QCanvasItem> ret;
+	Q3PtrList<Q3CanvasItem> ret;
 	ret.append(point);
 	return ret;
 }
@@ -389,7 +396,7 @@ void Bridge::newSize(int width, int height)
 
 void Bridge::setSize(int width, int height)
 {
-	QCanvasRectangle::setSize(width, height);
+	Q3CanvasRectangle::setSize(width, height);
 
 	topWall->setPoints(0, 0, width, 0);
 	botWall->setPoints(0, height, width, height);
@@ -449,11 +456,11 @@ void WindmillConfig::endChanged(bool bottom)
 
 /////////////////////////
 
-Windmill::Windmill(QRect rect, QCanvas *canvas)
+Windmill::Windmill(QRect rect, Q3Canvas *canvas)
 	: Bridge(rect, canvas), speedfactor(16), m_bottom(true)
 {
 	guard = new WindmillGuard(canvas);
-	guard->setPen(QPen(black, 5));
+	guard->setPen(QPen(Qt::black, 5));
 	guard->setVisible(true);
 	guard->setAlwaysShow(true);
 	setSpeed(5);
@@ -583,13 +590,13 @@ void WindmillGuard::advance(int phase)
 
 /////////////////////////
 
-Sign::Sign(QCanvas *canvas)
+Sign::Sign(Q3Canvas *canvas)
 	: Bridge(QRect(0, 0, 110, 40), canvas)
 {
 	setZ(998.8);
 	m_text = m_untranslatedText = i18n("New Text");
-	setBrush(QBrush(white));
-	setWallColor(black);
+	setBrush(QBrush(Qt::white));
+	setWallColor(Qt::black);
 	setWallZ(z() + .01);
 
 	setTopWallVisible(true);
@@ -625,15 +632,15 @@ void Sign::draw(QPainter &painter)
 {
 	Bridge::draw(painter);
 
-	painter.setPen(QPen(black, 1));
-	QSimpleRichText txt(m_text, kapp->font());
+	painter.setPen(QPen(Qt::black, 1));
+	Q3SimpleRichText txt(m_text, kapp->font());
 	const int indent = wallPen().width() + 3;
 	txt.setWidth(width() - 2*indent);
 	QColorGroup colorGroup;
-	colorGroup.setColor(QColorGroup::Foreground, black);
-	colorGroup.setColor(QColorGroup::Text, black);
-	colorGroup.setColor(QColorGroup::Background, black);
-	colorGroup.setColor(QColorGroup::Base, black);
+	colorGroup.setColor(QColorGroup::Foreground, Qt::black);
+	colorGroup.setColor(QColorGroup::Text, Qt::black);
+	colorGroup.setColor(QColorGroup::Background, Qt::black);
+	colorGroup.setColor(QColorGroup::Base, Qt::black);
 	txt.draw(&painter, x() + indent, y(), QRect(x() + indent, y(), width() - indent, height() - indent), colorGroup);
 }
 
@@ -726,8 +733,8 @@ void EllipseConfig::check2Changed(bool on)
 
 /////////////////////////
 
-Ellipse::Ellipse(QCanvas *canvas)
-	: QCanvasEllipse(canvas)
+Ellipse::Ellipse(Q3Canvas *canvas)
+	: Q3CanvasEllipse(canvas)
 {
 	savingDone();
 	setChangeEnabled(false);
@@ -735,7 +742,7 @@ Ellipse::Ellipse(QCanvas *canvas)
 	count = 0;
 	setVisible(true);
 
-	point = new RectPoint(black, this, canvas);
+	point = new RectPoint(Qt::black, this, canvas);
 	point->setSizeFactor(2.0);
 }
 
@@ -753,21 +760,21 @@ void Ellipse::setChangeEnabled(bool changeEnabled)
 		setVisible(true);
 }
 
-QPtrList<QCanvasItem> Ellipse::moveableItems() const
+Q3PtrList<Q3CanvasItem> Ellipse::moveableItems() const
 {
-	QPtrList<QCanvasItem> ret;
+	Q3PtrList<Q3CanvasItem> ret;
 	ret.append(point);
 	return ret;
 }
 
 void Ellipse::newSize(int width, int height)
 {
-	QCanvasEllipse::setSize(width, height);
+	Q3CanvasEllipse::setSize(width, height);
 }
 
 void Ellipse::moveBy(double dx, double dy)
 {
-	QCanvasEllipse::moveBy(dx, dy);
+	Q3CanvasEllipse::moveBy(dx, dy);
 
 	point->dontMove();
 	point->move(x() + width() / 2, y() + height() / 2);
@@ -781,7 +788,7 @@ void Ellipse::editModeChanged(bool changed)
 
 void Ellipse::advance(int phase)
 {
-	QCanvasEllipse::advance(phase);
+	Q3CanvasEllipse::advance(phase);
 
 	if (phase == 1 && m_changeEnabled && !dontHide)
 	{
@@ -830,7 +837,7 @@ void Ellipse::savingDone()
 
 /////////////////////////
 
-Puddle::Puddle(QCanvas *canvas)
+Puddle::Puddle(Q3Canvas *canvas)
 	: Ellipse(canvas)
 {
 	setSize(45, 30);
@@ -859,7 +866,7 @@ bool Puddle::collision(Ball *ball, long int /*id*/)
 {
 	if (ball->isVisible())
 	{
-		QCanvasRectangle i(QRect(ball->x(), ball->y(), 1, 1), canvas());
+		Q3CanvasRectangle i(QRect(ball->x(), ball->y(), 1, 1), canvas());
 		i.setVisible(true);
 
 		// is center of ball in?
@@ -883,7 +890,7 @@ bool Puddle::collision(Ball *ball, long int /*id*/)
 
 /////////////////////////
 
-Sand::Sand(QCanvas *canvas)
+Sand::Sand(Q3Canvas *canvas)
 	: Ellipse(canvas)
 {
 	setSize(45, 40);
@@ -910,7 +917,7 @@ Sand::Sand(QCanvas *canvas)
 
 bool Sand::collision(Ball *ball, long int /*id*/)
 {
-	QCanvasRectangle i(QRect(ball->x(), ball->y(), 1, 1), canvas());
+	Q3CanvasRectangle i(QRect(ball->x(), ball->y(), 1, 1), canvas());
 	i.setVisible(true);
 
 	// is center of ball in?
@@ -930,19 +937,19 @@ bool Sand::collision(Ball *ball, long int /*id*/)
 
 /////////////////////////
 
-Putter::Putter(QCanvas *canvas)
-	: QCanvasLine(canvas)
+Putter::Putter(Q3Canvas *canvas)
+	: Q3CanvasLine(canvas)
 {
 	m_showGuideLine = true;
 	oneDegree = M_PI / 180;
 	len = 9;
 	angle = 0;
 
-	guideLine = new QCanvasLine(canvas);
+	guideLine = new Q3CanvasLine(canvas);
 	guideLine->setPen(QPen(white, 1, QPen::DotLine));
 	guideLine->setZ(998.8);
 
-	setPen(QPen(black, 4));
+	setPen(QPen(Qt::black, 4));
 	putterWidth = 11;
 	maxAngle = 2 * M_PI;
 
@@ -964,7 +971,7 @@ void Putter::hideInfo()
 
 void Putter::moveBy(double dx, double dy)
 {
-	QCanvasLine::moveBy(dx, dy);
+	Q3CanvasLine::moveBy(dx, dy);
 	guideLine->move(x(), y());
 }
 
@@ -976,7 +983,7 @@ void Putter::setShowGuideLine(bool yes)
 
 void Putter::setVisible(bool yes)
 {
-	QCanvasLine::setVisible(yes);
+	Q3CanvasLine::setVisible(yes);
 	guideLine->setVisible(m_showGuideLine? yes : false);
 }
 
@@ -994,7 +1001,7 @@ void Putter::setAngle(Ball *ball)
 	finishMe();
 }
 
-void Putter::go(Direction d, Amount amount)
+void Putter::go(Qt::Orientation d, Amount amount)
 {
 	double addition = (amount == Amount_More? 6 * oneDegree : amount == Amount_Less? .5 * oneDegree : 2 * oneDegree);
 
@@ -1053,8 +1060,8 @@ void Putter::finishMe()
 
 /////////////////////////
 
-Bumper::Bumper(QCanvas *canvas)
-	: QCanvasEllipse(20, 20, canvas)
+Bumper::Bumper(Q3Canvas *canvas)
+	: Q3CanvasEllipse(20, 20, canvas)
 {
 	setZ(-25);
 
@@ -1078,7 +1085,7 @@ void Bumper::aboutToDie()
 
 void Bumper::moveBy(double dx, double dy)
 {
-	QCanvasEllipse::moveBy(dx, dy);
+	Q3CanvasEllipse::moveBy(dx, dy);
 	//const double insideLen = (double)(width() - inside->width()) / 2.0;
 	inside->move(x(), y());
 }
@@ -1090,7 +1097,7 @@ void Bumper::editModeChanged(bool changed)
 
 void Bumper::advance(int phase)
 {
-	QCanvasEllipse::advance(phase);
+	Q3CanvasEllipse::advance(phase);
 
 	if (phase == 1)
 	{
@@ -1134,11 +1141,11 @@ bool Bumper::collision(Ball *ball, long int /*id*/)
 
 /////////////////////////
 
-Hole::Hole(QColor color, QCanvas *canvas)
-	: QCanvasEllipse(15, 15, canvas)
+Hole::Hole(QColor color, Q3Canvas *canvas)
+	: Q3CanvasEllipse(15, 15, canvas)
 {
 	setZ(998.1);
-	setPen(black);
+	setPen(Qt::black);
 	setBrush(color);
 }
 
@@ -1165,7 +1172,7 @@ HoleResult Hole::result(QPoint p, double s, bool * /*wasCenter*/)
 	if (s > longestRadius / 5.0)
 		return Result_Miss;
 
-	QCanvasRectangle i(QRect(p, QSize(1, 1)), canvas());
+	Q3CanvasRectangle i(QRect(p, QSize(1, 1)), canvas());
 	i.setVisible(true);
 
 	// is center of ball in cup?
@@ -1179,7 +1186,7 @@ HoleResult Hole::result(QPoint p, double s, bool * /*wasCenter*/)
 
 /////////////////////////
 
-Cup::Cup(QCanvas *canvas)
+Cup::Cup(Q3Canvas *canvas)
 	: Hole(QColor("#808080"), canvas)
 {
 	if (!QPixmapCache::find("cup", pixmap))
@@ -1214,8 +1221,8 @@ void Cup::save(KConfig *cfg)
 
 /////////////////////////
 
-BlackHole::BlackHole(QCanvas *canvas)
-	: Hole(black, canvas), exitDeg(0)
+BlackHole::BlackHole(Q3Canvas *canvas)
+	: Hole(Qt::black, canvas), exitDeg(0)
 {
 	infoLine = 0;
 	m_minSpeed = 3.0;
@@ -1224,11 +1231,11 @@ BlackHole::BlackHole(QCanvas *canvas)
 
 	const QColor myColor((QRgb)(kapp->random() % 0x01000000));
 
-	outside = new QCanvasEllipse(canvas);
+	outside = new Q3CanvasEllipse(canvas);
 	outside->setZ(z() - .001);
 
 	outside->setBrush(QBrush(myColor));
-	setBrush(black);
+	setBrush(Qt::black);
 
 	exitItem = new BlackHoleExit(this, canvas);
 	exitItem->setPen(QPen(myColor, 6));
@@ -1248,7 +1255,7 @@ BlackHole::BlackHole(QCanvas *canvas)
 void BlackHole::showInfo()
 {
 	delete infoLine;
-	infoLine = new QCanvasLine(canvas());
+	infoLine = new Q3CanvasLine(canvas());
 	infoLine->setVisible(true);
 	infoLine->setPen(QPen(exitItem->pen().color(), 2));
 	infoLine->setZ(10000);
@@ -1285,7 +1292,7 @@ void BlackHole::updateInfo()
 
 void BlackHole::moveBy(double dx, double dy)
 {
-	QCanvasEllipse::moveBy(dx, dy);
+	Q3CanvasEllipse::moveBy(dx, dy);
 	outside->move(x(), y());
 	updateInfo();
 }
@@ -1300,9 +1307,9 @@ void BlackHole::setExitDeg(int newdeg)
 	finishMe();
 }
 
-QPtrList<QCanvasItem> BlackHole::moveableItems() const
+Q3PtrList<Q3CanvasItem> BlackHole::moveableItems() const
 {
-	QPtrList<QCanvasItem> ret;
+	Q3PtrList<Q3CanvasItem> ret;
 	ret.append(exitItem);
 	return ret;
 }
@@ -1431,8 +1438,8 @@ void BlackHole::save(KConfig *cfg)
 
 /////////////////////////
 
-BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QCanvas *canvas)
-	: QCanvasLine(canvas)
+BlackHoleExit::BlackHoleExit(BlackHole *blackHole, Q3Canvas *canvas)
+	: Q3CanvasLine(canvas)
 {
 	this->blackHole = blackHole;
 	arrow = new Arrow(canvas);
@@ -1450,14 +1457,14 @@ void BlackHoleExit::aboutToDie()
 
 void BlackHoleExit::moveBy(double dx, double dy)
 {
-	QCanvasLine::moveBy(dx, dy);
+	Q3CanvasLine::moveBy(dx, dy);
 	arrow->move(x(), y());
 	blackHole->updateInfo();
 }
 
 void BlackHoleExit::setPen(QPen p)
 {
-	QCanvasLine::setPen(p);
+	Q3CanvasLine::setPen(p);
 	arrow->setPen(QPen(p.color(), 1));
 }
 
@@ -1551,8 +1558,8 @@ void BlackHoleConfig::maxChanged(double news)
 
 /////////////////////////
 
-WallPoint::WallPoint(bool start, Wall *wall, QCanvas *canvas)
-	: QCanvasEllipse(canvas)
+WallPoint::WallPoint(bool start, Wall *wall, Q3Canvas *canvas)
+	: Q3CanvasEllipse(canvas)
 {
 	this->wall = wall;
 	this->start = start;
@@ -1578,9 +1585,9 @@ void WallPoint::clean()
 	setSize(7, 7);
 	update();
 
-	QCanvasItem *onPoint = 0;
-	QCanvasItemList l = collisions(true);
-	for (QCanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
+	Q3CanvasItem *onPoint = 0;
+	Q3CanvasItemList l = collisions(true);
+	for (Q3CanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
 		if ((*it)->rtti() == rtti())
 			onPoint = (*it);
 
@@ -1592,7 +1599,7 @@ void WallPoint::clean()
 
 void WallPoint::moveBy(double dx, double dy)
 {
-	QCanvasEllipse::moveBy(dx, dy);
+	Q3CanvasEllipse::moveBy(dx, dy);
 	if (!editing)
 		updateVisible();
 
@@ -1629,8 +1636,8 @@ void WallPoint::updateVisible()
 	else
 	{
 		visible = true;
-		QCanvasItemList l = collisions(true);
-		for (QCanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
+		Q3CanvasItemList l = collisions(true);
+		for (Q3CanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
 			if ((*it)->rtti() == rtti())
 				visible = false;
 	}
@@ -1651,8 +1658,8 @@ bool WallPoint::collision(Ball *ball, long int id)
 
 	long int tempLastId = lastId;
 	lastId = id;
-	QCanvasItemList l = collisions(true);
-	for (QCanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
+	Q3CanvasItemList l = collisions(true);
+	for (Q3CanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
 	{
 		if ((*it)->rtti() == rtti())
 		{
@@ -1725,8 +1732,8 @@ bool WallPoint::collision(Ball *ball, long int id)
 
 /////////////////////////
 
-Wall::Wall(QCanvas *canvas)
-	: QCanvasLine(canvas)
+Wall::Wall(Q3Canvas *canvas)
+	: Q3CanvasLine(canvas)
 {
 	editing = false;
 	lastId = INT_MAX - 10;
@@ -1743,7 +1750,7 @@ Wall::Wall(QCanvas *canvas)
 	endItem = new WallPoint(false, this, canvas);
 	startItem->setVisible(true);
 	endItem->setVisible(true);
-	setPen(QPen(darkRed, 3));
+	setPen(QPen(Qt::darkRed, 3));
 
 	setPoints(-15, 10, 15, -5);
 
@@ -1752,7 +1759,7 @@ Wall::Wall(QCanvas *canvas)
 	editModeChanged(false);
 }
 
-void Wall::selectedItem(QCanvasItem *item)
+void Wall::selectedItem(Q3CanvasItem *item)
 {
 	if (item->rtti() == Rtti_WallPoint)
 	{
@@ -1777,7 +1784,7 @@ void Wall::setAlwaysShow(bool yes)
 
 void Wall::setVisible(bool yes)
 {
-	QCanvasLine::setVisible(yes);
+	Q3CanvasLine::setVisible(yes);
 
 	startItem->setVisible(yes);
 	endItem->setVisible(yes);
@@ -1787,7 +1794,7 @@ void Wall::setVisible(bool yes)
 
 void Wall::setZ(double newz)
 {
-	QCanvasLine::setZ(newz);
+	Q3CanvasLine::setZ(newz);
 	if (startItem)
 		startItem->setZ(newz + .002);
 	if (endItem)
@@ -1796,7 +1803,7 @@ void Wall::setZ(double newz)
 
 void Wall::setPen(QPen p)
 {
-	QCanvasLine::setPen(p);
+	Q3CanvasLine::setPen(p);
 
 	if (startItem)
 		startItem->setBrush(QBrush(p.color()));
@@ -1817,9 +1824,9 @@ void Wall::setGame(KolfGame *game)
 	endItem->setGame(game);
 }
 
-QPtrList<QCanvasItem> Wall::moveableItems() const
+Q3PtrList<Q3CanvasItem> Wall::moveableItems() const
 {
-	QPtrList<QCanvasItem> ret;
+	Q3PtrList<Q3CanvasItem> ret;
 	ret.append(startItem);
 	ret.append(endItem);
 	return ret;
@@ -1827,7 +1834,7 @@ QPtrList<QCanvasItem> Wall::moveableItems() const
 
 void Wall::moveBy(double dx, double dy)
 {
-	QCanvasLine::moveBy(dx, dy);
+	Q3CanvasLine::moveBy(dx, dy);
 
 	if (!startItem || !endItem)
 		return;
@@ -1840,18 +1847,18 @@ void Wall::moveBy(double dx, double dy)
 
 void Wall::setVelocity(double vx, double vy)
 {
-	QCanvasLine::setVelocity(vx, vy);
+	Q3CanvasLine::setVelocity(vx, vy);
 	/*
 	startItem->setVelocity(vx, vy);
 	endItem->setVelocity(vx, vy);
 	*/
 }
 
-QPointArray Wall::areaPoints() const
+Q3PointArray Wall::areaPoints() const
 {
 	// editing we want full width for easy moving
 	if (editing)
-		return QCanvasLine::areaPoints();
+		return Q3CanvasLine::areaPoints();
 
 	// lessen width, for QCanvasLine::areaPoints() likes
 	// to make lines _very_ fat :(
@@ -1859,7 +1866,7 @@ QPointArray Wall::areaPoints() const
 
 	// it's all squished because I don't want my
 	// line counts to count code I didn't write!
-	QPointArray p(4); const int xi = int(x()); const int yi = int(y()); const QPoint start = startPoint(); const QPoint end = endPoint(); const int x1 = start.x(); const int x2 = end.x(); const int y1 = start.y(); const int y2 = end.y(); const int dx = QABS(x1-x2); const int dy = QABS(y1-y2); if ( dx > dy ) { p[0] = QPoint(x1+xi,y1+yi-1); p[1] = QPoint(x2+xi,y2+yi-1); p[2] = QPoint(x2+xi,y2+yi+1); p[3] = QPoint(x1+xi,y1+yi+1); } else { p[0] = QPoint(x1+xi-1,y1+yi); p[1] = QPoint(x2+xi-1,y2+yi); p[2] = QPoint(x2+xi+1,y2+yi); p[3] = QPoint(x1+xi+1,y1+yi); } return p;
+	Q3PointArray p(4); const int xi = int(x()); const int yi = int(y()); const QPoint start = startPoint(); const QPoint end = endPoint(); const int x1 = start.x(); const int x2 = end.x(); const int y1 = start.y(); const int y2 = end.y(); const int dx = QABS(x1-x2); const int dy = QABS(y1-y2); if ( dx > dy ) { p[0] = QPoint(x1+xi,y1+yi-1); p[1] = QPoint(x2+xi,y2+yi-1); p[2] = QPoint(x2+xi,y2+yi+1); p[3] = QPoint(x1+xi,y1+yi+1); } else { p[0] = QPoint(x1+xi-1,y1+yi); p[1] = QPoint(x2+xi-1,y2+yi); p[2] = QPoint(x2+xi+1,y2+yi); p[3] = QPoint(x1+xi+1,y1+yi); } return p;
 }
 
 void Wall::editModeChanged(bool changed)
@@ -1985,7 +1992,7 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 
 	hlayout->addWidget(new QLabel(i18n("Maximum:"), this));
 	QSpinBox *maxstrokes = new QSpinBox(holeInfo->lowestMaxStrokes(), 30, 1, this);
-	QWhatsThis::add(maxstrokes, i18n("Maximum number of strokes player can take on this hole."));
+	Q3WhatsThis::add(maxstrokes, i18n("Maximum number of strokes player can take on this hole."));
 	QToolTip::add(maxstrokes, i18n("Maximum number of strokes"));
 	maxstrokes->setSpecialValueText(i18n("Unlimited"));
 	maxstrokes->setValue(holeInfo->maxStrokes());
@@ -2031,8 +2038,8 @@ void HoleConfig::borderWallsChanged(bool yes)
 
 /////////////////////////
 
-StrokeCircle::StrokeCircle(QCanvas *canvas)
-	: QCanvasItem(canvas)
+StrokeCircle::StrokeCircle(Q3Canvas *canvas)
+	: Q3CanvasItem(canvas)
 {
 	dvalue = 0;
 	dmax = 360;
@@ -2056,9 +2063,9 @@ double StrokeCircle::value()
 	return dvalue;
 }
 
-bool StrokeCircle::collidesWith(const QCanvasItem*) const { return false; }
+bool StrokeCircle::collidesWith(const Q3CanvasItem*) const { return false; }
 
-bool StrokeCircle::collidesWith(const QCanvasSprite*, const QCanvasPolygonalItem*, const QCanvasRectangle*, const QCanvasEllipse*, const QCanvasText*) const { return false; }
+bool StrokeCircle::collidesWith(const Q3CanvasSprite*, const Q3CanvasPolygonalItem*, const Q3CanvasRectangle*, const Q3CanvasEllipse*, const Q3CanvasText*) const { return false; }
 
 QRect StrokeCircle::boundingRect() const { return QRect(x(), y(), iwidth, iheight); }
 
@@ -2123,15 +2130,15 @@ void StrokeCircle::draw(QPainter &p)
 	}
 
 	p.setBrush(QBrush(black, Qt::NoBrush));
-	p.setPen(QPen(white, ithickness / 2));
+	p.setPen(QPen(Qt::white, ithickness / 2));
 	p.drawEllipse(x() + ithickness / 2, y() + ithickness / 2, iwidth - ithickness, iheight - ithickness);
 	p.setPen(QPen(QColor((int)(0xff * dvalue) / dmax, 0, 0xff - (int)(0xff * dvalue) / dmax), ithickness));
 	p.drawArc(x() + ithickness / 2, y() + ithickness / 2, iwidth - ithickness, iheight - ithickness, deg, length);
 
-	p.setPen(QPen(white, 1));
+	p.setPen(QPen(Qt::white, 1));
 	p.drawEllipse(x(), y(), iwidth, iheight);
 	p.drawEllipse(x() + ithickness, y() + ithickness, iwidth - ithickness * 2, iheight - ithickness * 2);
-	p.setPen(QPen(white, 3));
+	p.setPen(QPen(Qt::white, 3));
 	p.drawLine(x() + iwidth / 2, y() + iheight - ithickness * 1.5, x() + iwidth / 2, y() + iheight);
 	p.drawLine(x() + iwidth / 4 - iwidth / 20, y() + iheight - iheight / 4 + iheight / 20, x() + iwidth / 4 + iwidth / 20, y() + iheight - iheight / 4 - iheight / 20);
 	p.drawLine(x() + iwidth - iwidth / 4 + iwidth / 20, y() + iheight - iheight / 4 + iheight / 20, x() + iwidth - iwidth / 4 - iwidth / 20, y() + iheight - iheight / 4 - iheight / 20);
@@ -2140,7 +2147,7 @@ void StrokeCircle::draw(QPainter &p)
 /////////////////////////////////////////
 
 KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidget *parent, const char *name )
-	: QCanvasView(parent, name)
+	: Q3CanvasView(parent, name)
 {
 	// for mouse control
 	setMouseTracking(true);
@@ -2197,13 +2204,13 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 
 	margin = 10;
 
-	setFocusPolicy(QWidget::StrongFocus);
+	setFocusPolicy(Qt::StrongFocus);
 	setFixedSize(width + 2 * margin, height + 2 * margin);
 
 	setMargins(margin, margin, margin, margin);
 
-	course = new QCanvas(this);
-	course->setBackgroundColor(white);
+	course = new Q3Canvas(this);
+	course->setBackgroundColor(Qt::white);
 	course->resize(width, height);
 
 	QPixmap pic;
@@ -2222,16 +2229,16 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 		(*it).ball()->setCanvas(course);
 
 	// highlighter shows current item
-	highlighter = new QCanvasRectangle(course);
-	highlighter->setPen(QPen(yellow, 1));
-	highlighter->setBrush(QBrush(NoBrush));
+	highlighter = new Q3CanvasRectangle(course);
+	highlighter->setPen(QPen(Qt::yellow, 1));
+	highlighter->setBrush(QBrush(Qt::NoBrush));
 	highlighter->setVisible(false);
 	highlighter->setZ(10000);
 
 	// shows some info about hole
-	infoText = new QCanvasText(course);
+	infoText = new Q3CanvasText(course);
 	infoText->setText("");
-	infoText->setColor(white);
+	infoText->setColor(Qt::white);
 	QFont font = kapp->font();
 	font.setPixelSize(12);
 	infoText->move(15, width/2);
@@ -2251,7 +2258,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	// whiteBall marks the spot of the whole whilst editing
 	whiteBall = new Ball(course);
 	whiteBall->setGame(this);
-	whiteBall->setColor(white);
+	whiteBall->setColor(Qt::white);
 	whiteBall->setVisible(false);
 	whiteBall->setDoDetect(false);
 
@@ -2415,7 +2422,7 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 
 		storedMousePos = e->pos();
 
-		QCanvasItemList list = course->collisions(e->pos());
+		Q3CanvasItemList list = course->collisions(e->pos());
 		if (list.first() == highlighter)
 			list.pop_front();
 
@@ -2446,7 +2453,7 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 		switch (e->button())
 		{
 			// select AND move now :)
-			case LeftButton:
+			case Qt::LeftButton:
 			{
 				selectedItem = list.first();
 				movingItem = selectedItem;
@@ -2473,9 +2480,9 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 	{
 		if (m_useMouse)
 		{
-			if (!inPlay && e->button() == LeftButton)
+			if (!inPlay && e->button() == Qt::LeftButton)
 				puttPress();
-			else if (e->button() == RightButton)
+			else if (e->button() == Qt::RightButton)
 				toggleShowInfo();
 		}
 	}
@@ -2535,7 +2542,7 @@ void KolfGame::handleMouseMoveEvent(QMouseEvent *e)
 		// lets change the cursor to a hand
 		// if we're hovering over something
 
-		QCanvasItemList list = course->collisions(e->pos());
+		Q3CanvasItemList list = course->collisions(e->pos());
 		if (list.count() > 0)
 			setCursor(KCursor::handCursor());
 		else
@@ -2583,9 +2590,9 @@ void KolfGame::handleMouseReleaseEvent(QMouseEvent *e)
 
 	if (!editing && m_useMouse)
 	{
-		if (!inPlay && e->button() == LeftButton)
+		if (!inPlay && e->button() == Qt::LeftButton)
 			puttRelease();
-		else if (e->button() == RightButton)
+		else if (e->button() == Qt::RightButton)
 			toggleShowInfo();
 	}
 
@@ -2599,12 +2606,12 @@ void KolfGame::keyPressEvent(QKeyEvent *e)
 
 	switch (e->key())
 	{
-		case Key_Up:
+		case Qt::Key_Up:
 			if (!e->isAutoRepeat())
 				toggleShowInfo();
 		break;
 
-		case Key_Escape:
+		case Qt::Key_Escape:
 			putting = false;
 			stroking = false;
 			finishStroking = false;
@@ -2613,14 +2620,14 @@ void KolfGame::keyPressEvent(QKeyEvent *e)
 			putter->setOrigin((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 		break;
 
-		case Key_Left:
-		case Key_Right:
+		case Qt::Key_Left:
+		case Qt::Key_Right:
 			// don't move putter if in advanced putting sequence
 			if ((!stroking && !putting) || !m_useAdvancedPutting)
-				putter->go(e->key() == Key_Left? D_Left : D_Right, e->state() & ShiftButton? Amount_More : e->state() & ControlButton? Amount_Less : Amount_Normal);
+				putter->go(e->key() == Qt::Key_Left? D_Left : D_Right, e->state() & Qt::ShiftModifier? Amount_More : e->state() & Qt::ControlModifier? Amount_Less : Amount_Normal);
 		break;
 
-		case Key_Space: case Key_Down:
+		case Qt::Key_Space: case Qt::Key_Down:
 			puttPress();
 		break;
 
@@ -2645,7 +2652,7 @@ void KolfGame::setShowInfo(bool yes)
 
 	if (m_showInfo)
 	{
-		QCanvasItem *item = 0;
+		Q3CanvasItem *item = 0;
 		for (item = items.first(); item; item = items.next())
 		{
 			CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
@@ -2660,7 +2667,7 @@ void KolfGame::setShowInfo(bool yes)
 	}
 	else
 	{
-		QCanvasItem *item = 0;
+		Q3CanvasItem *item = 0;
 		for (item = items.first(); item; item = items.next())
 		{
 			CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
@@ -2724,9 +2731,9 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 	if (e->isAutoRepeat() || m_ignoreEvents)
 		return;
 
-	if (e->key() == Key_Space || e->key() == Key_Down)
+	if (e->key() == Qt::Key_Space || e->key() == Qt::Key_Down)
 		puttRelease();
-	else if ((e->key() == Key_Backspace || e->key() == Key_Delete) && !(e->state() & ControlButton))
+	else if ((e->key() == Qt::Key_Backspace || e->key() == Qt::Key_Delete) && !(e->state() & Qt::ControlModifier))
 	{
 		if (editing && !moving && selectedItem)
 		{
@@ -2736,7 +2743,7 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 			citem = citem->itemToDelete();
 			if (!citem)
 				return;
-			QCanvasItem *item = dynamic_cast<QCanvasItem *>(citem);
+			Q3CanvasItem *item = dynamic_cast<Q3CanvasItem *>(citem);
 			if (citem && citem->deleteable())
 			{
 				lastDelId = citem->curId();
@@ -2754,7 +2761,7 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 			}
 		}
 	}
-	else if (e->key() == Key_I || e->key() == Key_Up)
+	else if (e->key() == Qt::Key_I || e->key() == Qt::Key_Up)
 		toggleShowInfo();
 }
 
@@ -3036,7 +3043,7 @@ void KolfGame::recreateStateList()
 {
 	stateDB.clear();
 
-	QCanvasItem *item = 0;
+	Q3CanvasItem *item = 0;
 
 	for (item = items.first(); item; item = items.next())
 	{
@@ -3063,7 +3070,7 @@ void KolfGame::undoShot()
 
 void KolfGame::loadStateList()
 {
-	QCanvasItem *item = 0;
+	Q3CanvasItem *item = 0;
 
 	for (item = items.first(); item; item = items.next())
 	{
@@ -3146,11 +3153,11 @@ void KolfGame::shotDone()
 
 				while (1)
 				{
-					QCanvasItemList list = ball->collisions(true);
+					Q3CanvasItemList list = ball->collisions(true);
 					bool keepMoving = false;
 					while (!list.isEmpty())
 					{
-						QCanvasItem *item = list.first();
+						Q3CanvasItem *item = list.first();
 						if (item->rtti() == Rtti_DontPlaceOn)
 							keepMoving = true;
 
@@ -3261,7 +3268,7 @@ void KolfGame::startBall(const Vector &vector)
 	(*curPlayer).ball()->setState(Rolling);
 	(*curPlayer).ball()->setVector(vector);
 
-	QCanvasItem *item = 0;
+	Q3CanvasItem *item = 0;
 	for (item = items.first(); item; item = items.next())
 	{
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
@@ -3482,7 +3489,7 @@ void KolfGame::openFile()
 {
 	Object *curObj = 0;
 
-	QCanvasItem *item = 0;
+	Q3CanvasItem *item = 0;
 	for (item = items.first(); item; item = items.next())
 	{
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
@@ -3575,7 +3582,7 @@ void KolfGame::openFile()
 			if (name != curObj->_name())
 				continue;
 
-			QCanvasItem *newItem = curObj->newObject(course);
+			Q3CanvasItem *newItem = curObj->newObject(course);
 			items.append(newItem);
 
 			CanvasItem *canvasItem = dynamic_cast<CanvasItem *>(newItem);
@@ -3640,9 +3647,9 @@ void KolfGame::openFile()
 	}
 
 	// do it down here; if !hasFinalLoad, do it up there!
-	QCanvasItem *qcanvasItem = 0;
-	QPtrList<CanvasItem> todo;
-	QPtrList<QCanvasItem> qtodo;
+	Q3CanvasItem *qcanvasItem = 0;
+	Q3PtrList<CanvasItem> todo;
+	Q3PtrList<Q3CanvasItem> qtodo;
 	if (hasFinalLoad)
 	{
 		for (qcanvasItem = items.first(); qcanvasItem; qcanvasItem = items.next())
@@ -3702,9 +3709,9 @@ void KolfGame::openFile()
 	setModified(false);
 }
 
-void KolfGame::addItemsToMoveableList(QPtrList<QCanvasItem> list)
+void KolfGame::addItemsToMoveableList(Q3PtrList<Q3CanvasItem> list)
 {
-	QCanvasItem *item = 0;
+	Q3CanvasItem *item = 0;
 	for (item = list.first(); item; item = list.next())
 		extraMoveable.append(item);
 }
@@ -3717,7 +3724,7 @@ void KolfGame::addItemToFastAdvancersList(CanvasItem *item)
 
 void KolfGame::addNewObject(Object *newObj)
 {
-	QCanvasItem *newItem = newObj->newObject(course);
+	Q3CanvasItem *newItem = newObj->newObject(course);
 	items.append(newItem);
 	newItem->setVisible(true);
 
@@ -3733,7 +3740,7 @@ void KolfGame::addNewObject(Object *newObj)
 	for (;; ++i)
 	{
 		bool found = false;
-		QCanvasItem *item = 0;
+		Q3CanvasItem *item = 0;
 		for (item = items.first(); item; item = items.next())
 		{
 			CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
@@ -3864,7 +3871,7 @@ void KolfGame::resetHoleScores()
 
 void KolfGame::clearHole()
 {
-	QCanvasItem *qcanvasItem = 0;
+	Q3CanvasItem *qcanvasItem = 0;
 	for (qcanvasItem = items.first(); qcanvasItem; qcanvasItem = items.next())
 	{
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(qcanvasItem);
@@ -3961,7 +3968,7 @@ void KolfGame::save()
 	bool hasFinalLoad = false;
 	fastAdvancedExist = false;
 
-	QCanvasItem *item = 0;
+	Q3CanvasItem *item = 0;
 	for (item = items.first(); item; item = items.next())
 	{
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
@@ -4054,7 +4061,7 @@ void KolfGame::toggleEditMode()
 	}
 
 	// alert our items
-	QCanvasItem *item = 0;
+	Q3CanvasItem *item = 0;
 	for (item = items.first(); item; item = items.next())
 	{
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
@@ -4143,7 +4150,7 @@ void KolfGame::print(KPrinter &pr)
 {
 	QPainter p(&pr);
 
-	QPaintDeviceMetrics metrics(&pr);
+	Q3PaintDeviceMetrics metrics(&pr);
 
 	// translate to center
 	p.translate(metrics.width() / 2 - course->rect().width() / 2, metrics.height() / 2 - course->rect().height() / 2);
@@ -4153,7 +4160,7 @@ void KolfGame::print(KPrinter &pr)
 	course->drawArea(course->rect(), &pixp);
 	p.drawPixmap(0, 0, pix);
 
-	p.setPen(QPen(black, 2));
+	p.setPen(QPen(Qt::black, 2));
 	p.drawRect(course->rect());
 
 	p.resetXForm();
@@ -4253,7 +4260,7 @@ void KolfGame::scoresFromSaved(KConfig *config, PlayerList &players)
 		players.last().setId(i);
 
 		QStringList scores(config->readListEntry("Scores"));
-		QValueList<int> intscores;
+		Q3ValueList<int> intscores;
 		for (QStringList::Iterator it = scores.begin(); it != scores.end(); ++it)
 			intscores.append((*it).toInt());
 
@@ -4286,8 +4293,8 @@ void KolfGame::saveScores(KConfig *config)
 		config->writeEntry("Color", (*it).ball()->color().name());
 
 		QStringList scores;
-		QValueList<int> intscores = (*it).scores();
-		for (QValueList<int>::Iterator it = intscores.begin(); it != intscores.end(); ++it)
+		Q3ValueList<int> intscores = (*it).scores();
+		for (Q3ValueList<int>::Iterator it = intscores.begin(); it != intscores.end(); ++it)
 			scores.append(QString::number(*it));
 
 		config->writeEntry("Scores", scores);

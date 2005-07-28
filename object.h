@@ -3,9 +3,11 @@
 #ifndef KOLF_OBJECT_H
 #define KOLF_OBJECT_H
 
-#include <qcanvas.h>
+#include <q3canvas.h>
 #include <qstring.h>
 #include <qobject.h>
+//Added by qt3to4:
+#include <Q3PtrList>
 
 class Object : public QObject
 {
@@ -13,7 +15,7 @@ class Object : public QObject
 
 public:
 	Object(QObject *parent = 0, const char *name = 0) : QObject(parent, name) { m_addOnNewHole = false; }
-	virtual QCanvasItem *newObject(QCanvas * /*canvas*/) { return 0; }
+	virtual Q3CanvasItem *newObject(Q3Canvas * /*canvas*/) { return 0; }
 	QString name() { return m_name; }
 	QString _name() { return m__name; }
 	QString author() { return m_author; }
@@ -25,6 +27,6 @@ protected:
 	QString m_author;
 	bool m_addOnNewHole;
 };
-typedef QPtrList<Object> ObjectList;
+typedef Q3PtrList<Object> ObjectList;
 
 #endif

@@ -1,7 +1,7 @@
 #ifndef KOLF_BALL_H
 #define KOLF_BALL_H
 
-#include <qcanvas.h>
+#include <q3canvas.h>
 #include <qcolor.h>
 
 #include <math.h>
@@ -11,10 +11,10 @@
 
 enum BallState { Rolling = 0, Stopped, Holed };
 
-class Ball : public QCanvasEllipse, public CanvasItem
+class Ball : public Q3CanvasEllipse, public CanvasItem
 {
 public:
-	Ball(QCanvas *canvas);
+	Ball(Q3Canvas *canvas);
 	virtual void aboutToDie();
 
 	BallState currentState();
@@ -70,7 +70,7 @@ public:
 	virtual void showInfo();
 	virtual void hideInfo();
 	virtual void setName(const QString &);
-	virtual void setCanvas(QCanvas *c);
+	virtual void setCanvas(Q3Canvas *c);
 	virtual void setVisible(bool yes);
 
 private:
@@ -95,9 +95,9 @@ private:
 	bool m_collisionLock;
 
 	bool m_doDetect;
-	QCanvasItemList m_list;
+	Q3CanvasItemList m_list;
 
-	QCanvasText *label;
+	Q3CanvasText *label;
 };
 
 

@@ -2,6 +2,8 @@
 #define FLOATER_H
 
 #include "game.h"
+//Added by qt3to4:
+#include <Q3PtrList>
 
 class Floater;
 class FloaterConfig : public BridgeConfig
@@ -21,7 +23,7 @@ private:
 class FloaterGuide : public Wall
 {
 public:
-	FloaterGuide(Floater *floater, QCanvas *canvas) : Wall(canvas) { this->floater = floater; almostDead = false; }
+	FloaterGuide(Floater *floater, Q3Canvas *canvas) : Wall(canvas) { this->floater = floater; almostDead = false; }
 	virtual void setPoints(int xa, int ya, int xb, int yb);
 	virtual void moveBy(double dx, double dy);
 	virtual Config *config(QWidget *parent);
@@ -36,7 +38,7 @@ private:
 class Floater : public Bridge
 {
 public:
-	Floater(QRect rect, QCanvas *canvas);
+	Floater(QRect rect, Q3Canvas *canvas);
 	virtual bool collision(Ball *ball, long int id) { Bridge::collision(ball, id); return false; }
 	virtual void saveState(StateDB *db);
 	virtual void loadState(StateDB *db);
@@ -52,7 +54,7 @@ public:
 	virtual bool moveable() const { return false; }
 	virtual void moveBy(double dx, double dy);
 	virtual Config *config(QWidget *parent) { return new FloaterConfig(this, parent); }
-	virtual QPtrList<QCanvasItem> moveableItems() const;
+	virtual Q3PtrList<Q3CanvasItem> moveableItems() const;
 	virtual void advance(int phase);
 	void setSpeed(int news);
 	int curSpeed() const { return speed; }
@@ -75,7 +77,7 @@ class FloaterObj : public Object
 {
 public:
 	FloaterObj() { m_name = i18n("Floater"); m__name = "floater"; }
-	virtual QCanvasItem *newObject(QCanvas *canvas) { return new Floater(QRect(0, 0, 80, 40), canvas); }
+	virtual Q3CanvasItem *newObject(Q3Canvas *canvas) { return new Floater(QRect(0, 0, 80, 40), canvas); }
 };
 
 #endif

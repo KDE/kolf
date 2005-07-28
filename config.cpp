@@ -1,5 +1,8 @@
 #include <qlabel.h>
 #include <qlayout.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
+#include <Q3Frame>
 
 #include <kdialog.h>
 #include <klocale.h>
@@ -7,7 +10,7 @@
 #include "config.h"
 
 Config::Config(QWidget *parent, const char *name)
-	: QFrame(parent, name)
+	: Q3Frame(parent, name)
 {
 	startedUp = false;
 }
