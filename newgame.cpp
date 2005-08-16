@@ -69,7 +69,7 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 	scroller->addChild(layout);
 
 	QMap<QString, QString> entries = config->entryMap("New Game Dialog");
-	unsigned int i = 0;
+	int i = 0;
 	for (QMap<QString, QString>::Iterator it = entries.begin(); it != entries.end(); ++it)
 	{
 		if (i > startColors.count())
@@ -180,7 +180,7 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 	mode->setChecked(config->readBoolEntry("competition", false));
 
 	QLabel *desc = new QLabel(i18n("In strict mode, undo, editing, and switching holes is not allowed. This is generally for competition. Only in strict mode are highscores kept."), optionsPage);
-	desc->setTextFormat(RichText);
+	desc->setTextFormat(Qt::RichText);
 	vlayout->addWidget(desc);
 }
 
@@ -211,7 +211,7 @@ void NewGameDialog::slotOk()
 
 void NewGameDialog::courseSelected(int index)
 {
-	currentCourse = *names.at(index);
+	currentCourse = names.at(index);
 
 	CourseInfo &curinfo = info[currentCourse];
 
@@ -237,8 +237,8 @@ void NewGameDialog::removeCourse()
 	if (curItem < 0)
 		return;
 
-	QString file = *names.at(curItem);
-	if (externCourses.contains(file) < 1)
+	QString file = names.at(curItem);
+	if (!externCourses.contains(file))
 		return;
 
 	names.remove(file);
@@ -251,7 +251,7 @@ void NewGameDialog::removeCourse()
 void NewGameDialog::selectionChanged()
 {
 	const int curItem = courseList->currentItem();
-	remove->setEnabled(!(curItem < 0 || externCourses.contains(*names.at(curItem)) < 1));
+	remove->setEnabled(!(curItem < 0 || !externCourses.contains(names.at(curItem))));
 }
 
 void NewGameDialog::addCourse()
@@ -332,11 +332,13 @@ PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent
 	editor->setText(startName);
 	layout->addStretch();
 	layout->addWidget(colorButton = new KColorButton(startColor, this));
-	colorButton->setAutoMask(true);
+#warning setAutoMask does not exists in Qt4 port
+//	colorButton->setAutoMask(true);
 	colorButton->setBackgroundPixmap(grass);
 
 	KPushButton *remove = new KPushButton(i18n("Remove"), this);
-	remove->setAutoMask(true);
+#warning setAutoMask does not exists in Qt4 port
+//	remove->setAutoMask(true);
 	layout->addWidget(remove);
 	remove->setBackgroundPixmap(grass);
 	connect(remove, SIGNAL(clicked()), this, SLOT(removeMe()));
