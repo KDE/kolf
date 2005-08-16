@@ -30,7 +30,7 @@ void PrintDialogPage::getOptions(QMap<QString, QString> &opts, bool /*incldef*/)
 void PrintDialogPage::setOptions(const QMap<QString, QString> &opts)
 {
 	QString setting = opts["kde-kolf-title"];
-	if (!!setting)
+	if (!setting.isEmpty())
 		titleCheck->setChecked(setting == "true");
 }
 

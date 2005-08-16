@@ -129,7 +129,7 @@ Arrow::Arrow(Q3Canvas *canvas)
 	m_length = 20;
 	m_reversed = false;
 
-	setPen(Qt::black);
+	setPen(QPen(Qt::black));
 
 	updateSelf();
 	setVisible(false);
@@ -256,7 +256,7 @@ Bridge::Bridge(QRect rect, Q3Canvas *canvas)
 {
 	QColor color("#92772D");
 	setBrush(QBrush(color));
-	setPen(NoPen);
+	setPen(Qt::NoPen);
 	setZ(998);
 
 	topWall = new Wall(canvas);
@@ -946,7 +946,7 @@ Putter::Putter(Q3Canvas *canvas)
 	angle = 0;
 
 	guideLine = new Q3CanvasLine(canvas);
-	guideLine->setPen(QPen(white, 1, QPen::DotLine));
+	guideLine->setPen(QPen(Qt::white, 1, Qt::DotLine));
 	guideLine->setZ(998.8);
 
 	setPen(QPen(Qt::black, 4));
@@ -1001,7 +1001,7 @@ void Putter::setAngle(Ball *ball)
 	finishMe();
 }
 
-void Putter::go(Qt::Orientation d, Amount amount)
+void Putter::go(Direction d, Amount amount)
 {
 	double addition = (amount == Amount_More? 6 * oneDegree : amount == Amount_Less? .5 * oneDegree : 2 * oneDegree);
 
@@ -1145,7 +1145,7 @@ Hole::Hole(QColor color, Q3Canvas *canvas)
 	: Q3CanvasEllipse(15, 15, canvas)
 {
 	setZ(998.1);
-	setPen(Qt::black);
+	setPen(QPen(Qt::black));
 	setBrush(color);
 }
 
@@ -2129,7 +2129,7 @@ void StrokeCircle::draw(QPainter &p)
 		length = al;
 	}
 
-	p.setBrush(QBrush(black, Qt::NoBrush));
+	p.setBrush(QBrush(Qt::black, Qt::NoBrush));
 	p.setPen(QPen(Qt::white, ithickness / 2));
 	p.drawEllipse(x() + ithickness / 2, y() + ithickness / 2, iwidth - ithickness, iheight - ithickness);
 	p.setPen(QPen(QColor((int)(0xff * dvalue) / dmax, 0, 0xff - (int)(0xff * dvalue) / dmax), ithickness));

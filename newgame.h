@@ -80,10 +80,10 @@ private slots:
 private:
 	Q3VBox *layout;
 	KPushButton *addButton;
-	Q3Frame *playerPage;
+	QFrame *playerPage;
 	Q3ScrollView *scroller;
-	Q3Frame *coursePage;
-	Q3Frame *optionsPage;
+	QFrame *coursePage;
+	QFrame *optionsPage;
 	Q3ValueList<QColor> startColors;
 	Q3PtrList<PlayerEditor> editors;
 	KPushButton *remove;

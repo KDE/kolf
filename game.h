@@ -512,7 +512,7 @@ class Putter : public Q3CanvasLine, public CanvasItem
 {
 public:
 	Putter(Q3Canvas *canvas);
-	void go(Qt::Orientation, Amount amount = Amount_Normal);
+	void go(Direction, Amount amount = Amount_Normal);
 	void setOrigin(int x, int y);
 	int curLen() const { return len; }
 	double curAngle() const { return angle; }

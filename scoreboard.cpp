@@ -17,7 +17,7 @@ ScoreBoard::ScoreBoard(QWidget *parent, const char *name)
 	vh->setLabel(numRows() - 1, i18n("Par"));
 	hh->setLabel(numCols() - 1, i18n("Total"));
 
-	setFocusPolicy(QWidget::NoFocus);
+	setFocusPolicy(Qt::NoFocus);
 	setRowReadOnly(0, true);
 	setRowReadOnly(1, true);
 }

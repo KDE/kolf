@@ -47,7 +47,7 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 	KConfig *config = kapp->config();
 
 	// lots o' colors :)
-	startColors << yellow << blue << red << lightGray << cyan << darkBlue << magenta << darkGray << darkMagenta << darkYellow;
+	startColors << Qt::yellow << Qt::blue << Qt::red << Qt::lightGray << Qt::cyan << Qt::darkBlue << Qt::magenta << Qt::darkGray << Qt::darkMagenta << Qt::darkYellow;
 
 	playerPage = addPage(i18n("Players"));
 	QVBoxLayout *bigLayout = new QVBoxLayout(playerPage, marginHint(), spacingHint());

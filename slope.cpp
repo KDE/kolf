@@ -53,7 +53,7 @@ Slope::Slope(QRect rect, Q3Canvas *canvas)
 	text = new Q3CanvasText(canvas);
 	text->setZ(99999.99);
 	text->setFont(font);
-	text->setColor(white);
+	text->setColor(Qt::white);
 
 	editModeChanged(false);
 	hideInfo();
