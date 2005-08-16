@@ -501,7 +501,7 @@ void Slope::updatePixmap()
 		// make cleared bitmap
 		QBitmap bitmap(pixmap.width(), pixmap.height(), true);
 		QPainter bpainter(&bitmap);
-		bpainter.setBrush(color1);
+		bpainter.setBrush(Qt::color1);
 		Q3PointArray r = areaPoints();
 
 		// shift all the points
