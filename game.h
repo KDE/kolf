@@ -982,8 +982,9 @@ private:
 	Q3CanvasRectangle *highlighter;
 
 	// sound
-	KArtsDispatcher artsDispatcher;
-	KArtsServer artsServer;
+#warning port to the new sound system once it exists
+//	KArtsDispatcher artsDispatcher;
+//	KArtsServer artsServer;
 	Q3PtrList<KPlayObject> oldPlayObjects;
 	bool m_sound;
 	bool soundedOnce;

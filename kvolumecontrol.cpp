@@ -1,3 +1,4 @@
+#if 0
 #include <kdebug.h>
 
 #include <arts/soundserver.h>
@@ -65,3 +66,4 @@ double KVolumeControl::volume(void)
 }
 
 #include "kvolumecontrol.moc"
+#endif

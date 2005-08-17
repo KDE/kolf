@@ -4094,7 +4094,8 @@ void KolfGame::toggleEditMode()
 
 void KolfGame::playSound(QString file, double vol)
 {
-	if (m_sound)
+#warning port to the new sound system when it exists
+/*	if (m_sound)
 	{
 		KPlayObject *oldPlayObject = 0;
 		for (oldPlayObject = oldPlayObjects.first(); oldPlayObject; oldPlayObject = oldPlayObjects.next())
@@ -4115,7 +4116,6 @@ void KolfGame::playSound(QString file, double vol)
 		// not needed when all of the files are in the distribution
 		//if (!QFile::exists(file))
 			//return;
-
 		KPlayObjectFactory factory(artsServer.server());
 		KPlayObject *playObject = factory.createPlayObject(KURL(file), true);
 
@@ -4137,7 +4137,7 @@ void KolfGame::playSound(QString file, double vol)
 			playObject->play();
 			oldPlayObjects.append(playObject);
 		}
-	}
+	}*/
 }
 
 void HoleInfo::borderWallsChanged(bool yes)

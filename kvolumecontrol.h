@@ -1,3 +1,4 @@
+#if 0
 #ifndef KVOLUMECONTROL_H
 #define KVOLUMECONTROL_H
 
@@ -25,4 +26,5 @@ private:
 	Arts::Synth_AMAN_PLAY manager;
 };
 
+#endif
 #endif
