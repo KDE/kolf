@@ -126,7 +126,7 @@ void Kolf::initGUI()
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
 	useAdvancedPuttingAction->setChecked(config->readBoolEntry("useAdvancedPutting", false));
 
-	showInfoAction = new KToggleAction(i18n("Show &Info"), "viewmag+", CTRL+Key_I, this, SLOT(emptySlot()), actionCollection(), "showinfo");
+	showInfoAction = new KToggleAction(i18n("Show &Info"), "info", CTRL+Key_I, this, SLOT(emptySlot()), actionCollection(), "showinfo");
 	showInfoAction->setCheckedState(i18n("Hide &Info"));
 	connect(showInfoAction, SIGNAL(toggled(bool)), this, SLOT(showInfoChanged(bool)));
 	showInfoAction->setChecked(config->readBoolEntry("showInfo", false));
