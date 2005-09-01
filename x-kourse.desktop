@@ -27,6 +27,7 @@ Comment[sr@Latn]=Kolf-ov teren
 Comment[sv]=Kolfbana
 Comment[ta]=கால்ஃப் கோர்ஸ்
 Comment[uk]=Майданчик для гольфа
+Comment[xx]=xxKolf Coursexx
 Icon=kolf
 Type=MimeType
 Patterns=*.kolf;*.course;*.kourse;
