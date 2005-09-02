@@ -7,28 +7,24 @@
 
 #include <qcheckbox.h>
 #include <qcolor.h>
-#include <q3ptrlist.h>
 #include <qstring.h>
 //Added by qt3to4:
 #include <QPixmap>
 #include <QEvent>
-#include <Q3Frame>
 #include <QLabel>
 #include <QVBoxLayout>
 #include <kpushbutton.h>
 #include <qstringlist.h>
-#include <q3valuelist.h>
 #include <qwidget.h>
 
 #include "game.h"
 
 class KLineEdit;
-class Q3Frame;
 class QVBoxLayout;
-class Q3VBox;
 class QPainter;
 class KListBox;
 class QEvent;
+class QScrollArea;
 
 class PlayerEditor : public QWidget
 {
@@ -59,7 +55,8 @@ class NewGameDialog : public KDialogBase
 
 public:
 	NewGameDialog(bool enableCourses, QWidget *parent, const char *_name = 0);
-	Q3PtrList<PlayerEditor> *players() { return &editors; }
+	~NewGameDialog();
+	QList<PlayerEditor*> *players() { return &editors; }
 	bool competition() { return mode->isChecked(); }
 	QString course() { return currentCourse; }
 
@@ -78,14 +75,14 @@ private slots:
 	void showHighscores();
 
 private:
-	Q3VBox *layout;
+	QWidget *playersWidget;
 	KPushButton *addButton;
 	QFrame *playerPage;
-	Q3ScrollView *scroller;
+	QScrollArea *scroller;
 	QFrame *coursePage;
 	QFrame *optionsPage;
-	Q3ValueList<QColor> startColors;
-	Q3PtrList<PlayerEditor> editors;
+	QList<QColor> startColors;
+	QList<PlayerEditor*> editors;
 	KPushButton *remove;
 	QCheckBox *mode;
 

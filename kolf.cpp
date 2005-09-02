@@ -185,7 +185,7 @@ void Kolf::startNewGame()
 	{
 		PlayerEditor *curEditor = 0;
 		int newId = 1;
-		for (curEditor = dialog->players()->first(); curEditor; curEditor = dialog->players()->next(), ++newId)
+		for (curEditor = dialog->players()->at(newId-1); newId <= dialog->players()->count(); ++newId)
 		{
 			players.append(Player());
 			players.last().ball()->setColor(curEditor->color());
@@ -808,7 +808,7 @@ void Kolf::enableAllMessages()
 
 void Kolf::setCurrentHole(int hole)
 {
-	if (!holeAction)
+	if (!holeAction || holeAction->items().count() < hole)
 		return;
 	// Golf is 1-based, KListAction is 0-based
 	holeAction->setCurrentItem(hole - 1);

@@ -14,7 +14,6 @@
 
 #include <qcheckbox.h>
 #include <qevent.h>
-#include <q3frame.h>
 #include <qpen.h>
 #include <qlayout.h>
 #include <qlabel.h>
@@ -28,12 +27,9 @@
 #include <qpainter.h>
 #include <qpixmapcache.h>
 #include <qwidget.h>
-#include <q3scrollview.h>
-#include <q3valuelist.h>
-#include <q3ptrlist.h>
+#include <qscrollarea.h>
 #include <qstringlist.h>
 #include <qstring.h>
-#include <q3vbox.h>
 
 #include "newgame.h"
 #include "game.h"
@@ -43,7 +39,6 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 {
 	this->enableCourses = enableCourses;
 
-	editors.setAutoDelete(true);
 	KConfig *config = kapp->config();
 
 	// lots o' colors :)
@@ -57,16 +52,17 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 
 	connect(addButton, SIGNAL(clicked()), this, SLOT(addPlayer()));
 
-	scroller = new Q3ScrollView(playerPage);
+	scroller = new QScrollArea(playerPage);
 	bigLayout->addWidget(scroller);
-	layout = new Q3VBox(scroller->viewport());
+	playersWidget = new QWidget(playerPage);
+	scroller->setWidget(playersWidget);
+	new QVBoxLayout(playersWidget);
 	if (!QPixmapCache::find("grass", grass))
 	{
 		grass.load(locate("appdata", "pics/grass.png"));
 		QPixmapCache::insert("grass", grass);
 	}
-	scroller->viewport()->setBackgroundPixmap(grass);
-	scroller->addChild(layout);
+	scroller->setBackgroundPixmap(grass);
 
 	QMap<QString, QString> entries = config->entryMap("New Game Dialog");
 	int i = 0;
@@ -184,6 +180,11 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 	vlayout->addWidget(desc);
 }
 
+NewGameDialog::~NewGameDialog()
+{
+	qDeleteAll(editors);
+}
+
 void NewGameDialog::slotOk()
 {
 	KConfig *config = kapp->config();
@@ -201,7 +202,7 @@ void NewGameDialog::slotOk()
 
 	PlayerEditor *curEditor = 0;
 	int i = 0;
-	for (curEditor = editors.first(); curEditor; curEditor = editors.next(), ++i)
+	for (curEditor = editors.at(i); i < editors.count(); ++i)
 		config->writeEntry(QString::number(i) + curEditor->name(), curEditor->color().name());
 
 	config->sync();
@@ -290,11 +291,15 @@ void NewGameDialog::addPlayer()
 	if (editors.count() >= startColors.count())
 		return;
 
-	editors.append(new PlayerEditor(i18n("Player %1").arg(editors.count() + 1), *startColors.at(editors.count()), layout));
-	editors.last()->show();
-	connect(editors.last(), SIGNAL(deleteEditor(PlayerEditor *)), this, SLOT(deleteEditor(PlayerEditor *)));
+	
+	PlayerEditor *pe = new PlayerEditor(i18n("Player %1").arg(editors.count() + 1), startColors.at(editors.count()), playersWidget);
+	editors.append(pe);
+	pe->show();
+	playersWidget->layout()->addWidget(pe);
+	connect(pe, SIGNAL(deleteEditor(PlayerEditor *)), this, SLOT(deleteEditor(PlayerEditor *)));
 
 	enableButtons();
+	playersWidget->setMinimumSize(playersWidget->sizeHint());
 }
 
 void NewGameDialog::deleteEditor(PlayerEditor *editor)
@@ -302,9 +307,12 @@ void NewGameDialog::deleteEditor(PlayerEditor *editor)
 	if (editors.count() < 2)
 		return;
 
-	editors.removeRef(editor);
+	editors.remove(editor);
+	delete editor;
 
 	enableButtons();
+	playersWidget->setMinimumSize(playersWidget->sizeHint());
+	playersWidget->resize(playersWidget->sizeHint());
 }
 
 void NewGameDialog::enableButtons()
