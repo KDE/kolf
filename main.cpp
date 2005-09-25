@@ -31,7 +31,7 @@ extern "C" KDE_EXPORT int kdemain(int argc, char **argv)
 {
 	KAboutData aboutData( "kolf", I18N_NOOP("Kolf"), version, description, KAboutData::License_GPL, "(c) 2002-2005, Jason Katz-Brown", 0, "http://www.katzbrown.com/kolf/");
 
-	aboutData.addAuthor("Jason Katz-Brown", I18N_NOOP("Main author"), "jason@katzbrown.com");
+	aboutData.addAuthor("Jason Katz-Brown", I18N_NOOP("Main author"), "jasonkb@mit.edu");
 	aboutData.addAuthor("Niklas Knutsson", I18N_NOOP("Advanced putting mode"), 0);
 	aboutData.addAuthor("Rik Hemsley", I18N_NOOP("Border around course"), 0);
 	aboutData.addAuthor("Ryan Cumming", I18N_NOOP("Vector class"), 0);
