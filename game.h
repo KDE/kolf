@@ -140,6 +140,7 @@ class RectPoint;
 class RectItem
 {
 public:
+	virtual ~RectItem(){}
 	virtual void newSize(int /*width*/, int /*height*/) {};
 };
 
