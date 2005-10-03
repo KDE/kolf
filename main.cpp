@@ -72,7 +72,7 @@ extern "C" KDE_EXPORT int kdemain(int argc, char **argv)
 
 	QApplication::setColorSpec(QApplication::ManyColor);
 	KApplication a;
-	KGlobal::locale()->insertCatalogue("libkdegames");
+	KGlobal::locale()->insertCatalog("libkdegames");
 
 	Kolf *top = new Kolf;
 
