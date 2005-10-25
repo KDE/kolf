@@ -56,6 +56,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <krandom.h>
 
 #include "kcomboboxdialog.h"
 #include "kvolumecontrol.h"
@@ -1127,7 +1128,7 @@ bool Bumper::collision(Ball *ball, long int /*id*/)
 	betweenVector.setMagnitude(speed);
 
 	// add some randomness so we don't go indefinetely
-	betweenVector.setDirection(betweenVector.direction() + deg2rad((kapp->random() % 3) - 1));
+	betweenVector.setDirection(betweenVector.direction() + deg2rad((KRandom::random() % 3) - 1));
 
 	ball->setVector(betweenVector);
 	// for some reason, x is always switched...
@@ -1229,7 +1230,7 @@ BlackHole::BlackHole(Q3Canvas *canvas)
 	m_maxSpeed = 5.0;
 	runs = 0;
 
-	const QColor myColor((QRgb)(kapp->random() % 0x01000000));
+	const QColor myColor((QRgb)(KRandom::random() % 0x01000000));
 
 	outside = new Q3CanvasEllipse(canvas);
 	outside->setZ(z() - .001);
@@ -3945,7 +3946,7 @@ void KolfGame::lastHole()
 
 void KolfGame::randHole()
 {
-	int newHole = 1 + (int)((double)kapp->random() * ((double)(highestHole - 1) / (double)RAND_MAX));
+	int newHole = 1 + (int)((double)KRandom::random() * ((double)(highestHole - 1) / (double)RAND_MAX));
 	switchHole(newHole);
 }
 

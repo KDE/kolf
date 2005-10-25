@@ -13,6 +13,7 @@
 #include <kapplication.h>
 #include <kdebug.h>
 #include <kconfig.h>
+#include <krandom.h>
 
 #include "test.h"
 
@@ -42,7 +43,7 @@ void Test::advance(int phase)
 		if (count % m_switchEvery == 0)
 		{
 			// random color
-			const QColor myColor((QRgb)(kapp->random() % 0x01000000));
+			const QColor myColor((QRgb)(KRandom::random() % 0x01000000));
 
 			// set the brush, so our shape is drawn
 			// with the random color

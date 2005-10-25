@@ -10,6 +10,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <krandom.h>
 
 #include "rtti.h"
 #include "vector.h"
@@ -72,9 +73,9 @@ void Ball::advance(int phase)
 		}
 
 		const double diff = 8;
-		double randnum = kapp->random();
+		double randnum = KRandom::random();
 		const double width = 6 + randnum * (diff / RAND_MAX);
-		randnum = kapp->random();
+		randnum = KRandom::random();
 		const double height = 6 + randnum * (diff / RAND_MAX);
 		setSize(width, height);
 		blowUpCount++;
