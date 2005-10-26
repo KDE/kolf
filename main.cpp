@@ -7,7 +7,7 @@
 #include <kaboutdata.h>
 #include <kdebug.h>
 #include <kurl.h>
-
+#include <kglobal.h>
 #include "kolf.h"
 
 #include <iostream>

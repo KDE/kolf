@@ -11,7 +11,7 @@
 #include "printdialogpage.h"
 
 PrintDialogPage::PrintDialogPage(QWidget *parent, const char *name)
-	: KPrintDialogPage( parent, name )
+	: KPrintDialogPage( parent )
 {
 	setTitle(i18n("Kolf Options"));
 
