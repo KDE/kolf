@@ -39,7 +39,7 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 {
 	this->enableCourses = enableCourses;
 
-	KConfig *config = kapp->config();
+	KConfig *config = KGlobal::config();
 
 	// lots o' colors :)
 	startColors << Qt::yellow << Qt::blue << Qt::red << Qt::lightGray << Qt::cyan << Qt::darkBlue << Qt::magenta << Qt::darkGray << Qt::darkMagenta << Qt::darkYellow;
@@ -187,7 +187,7 @@ NewGameDialog::~NewGameDialog()
 
 void NewGameDialog::slotOk()
 {
-	KConfig *config = kapp->config();
+	KConfig *config = KGlobal::config();
 
 	config->setGroup("New Game Dialog Mode");
 	config->writeEntry("competition", mode->isChecked());

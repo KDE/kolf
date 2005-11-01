@@ -119,7 +119,7 @@ void Kolf::initGUI()
 	useMouseAction = new KToggleAction(i18n("Enable &Mouse for Moving Putter"), 0, this, SLOT(emptySlot()), actionCollection(), "usemouse");
 	useMouseAction->setCheckedState(i18n("Disable &Mouse for Moving Putter"));
 	connect(useMouseAction, SIGNAL(toggled(bool)), this, SLOT(useMouseChanged(bool)));
-	KConfig *config = kapp->config();
+	KConfig *config = KGlobal::config();
 	config->setGroup("Settings");
 	useMouseAction->setChecked(config->readBoolEntry("useMouse", true));
 
@@ -721,27 +721,27 @@ void Kolf::titleChanged(const QString &newTitle)
 
 void Kolf::useMouseChanged(bool yes)
 {
-	KConfig *config = kapp->config(); config->setGroup("Settings"); config->writeEntry("useMouse", yes); config->sync();
+	KConfig *config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("useMouse", yes); config->sync();
 }
 
 void Kolf::useAdvancedPuttingChanged(bool yes)
 {
-	KConfig *config = kapp->config(); config->setGroup("Settings"); config->writeEntry("useAdvancedPutting", yes); config->sync();
+	KConfig *config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("useAdvancedPutting", yes); config->sync();
 }
 
 void Kolf::showInfoChanged(bool yes)
 {
-	KConfig *config = kapp->config(); config->setGroup("Settings"); config->writeEntry("showInfo", yes); config->sync();
+	KConfig *config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("showInfo", yes); config->sync();
 }
 
 void Kolf::showGuideLineChanged(bool yes)
 {
-	KConfig *config = kapp->config(); config->setGroup("Settings"); config->writeEntry("showGuideLine", yes); config->sync();
+	KConfig *config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("showGuideLine", yes); config->sync();
 }
 
 void Kolf::soundChanged(bool yes)
 {
-	KConfig *config = kapp->config(); config->setGroup("Settings"); config->writeEntry("sound", yes); config->sync();
+	KConfig *config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("sound", yes); config->sync();
 }
 
 void Kolf::initPlugins()
