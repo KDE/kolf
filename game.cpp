@@ -2995,7 +2995,7 @@ void KolfGame::putterTimeout()
 			else
 			{
 				strokeCircle->setValue(al);
-				putterTimer->changeInterval(putterTimerMsec/10);
+				putterTimer->start(putterTimerMsec/10);
 			}
 		}
 
@@ -3025,7 +3025,7 @@ void KolfGame::putterTimeout()
 			}
 
 			putter->go(Forwards);
-			putterTimer->changeInterval(putterTimerMsec/10);
+			putterTimer->start(putterTimerMsec/10);
 		}
 	}
 }
