@@ -16,7 +16,7 @@
 <firstname>Jason</firstname>
 <surname>Katz-Brown</surname>
 <affiliation>
-<address><email>jason@katzbrown.com</email></address>
+<address>&Jason.Katz-Brown.mail;</address>
 </affiliation>
 </author>
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
@@ -24,8 +24,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2003-09-18</date>
-<releaseinfo>1.00.00</releaseinfo>
+<date>2005-12-18</date>
+<releaseinfo>1.1</releaseinfo>
 
 <abstract>
 <para>
@@ -129,7 +129,7 @@ slope and let it roll into the cup to move onto the next hole.</para>
 This opens a dialog where you can configure your new game.</para>
 
 <tip>
-<para>More third-party Kolf courses are available at the Kolf website. See <ulink url="http://www.katzbrown.com/kolf/Courses/User Uploaded/">the Kolf user-uploaded courses page</ulink>.</para>
+<para>More third-party &kolf; courses are available at the &kolf; website. See <ulink url="http://www.katzbrown.com/kolf/Courses/User Uploaded/">the &kolf; user-uploaded courses page</ulink>.</para>
 </tip>
 
 <sect2> 
@@ -165,7 +165,7 @@ button next to the player's name.</para>
 </menuchoice>. If you have not saved a game on this game before, you will be prompted for the file to save to.</para>
 </sect2>
 <sect2> <title>Loading Your Game</title>
-<para>To load the game that you saved, choose <menuchoice><guimenu>Game</guimenu><guimenuitem>Load Saved...</guimenuitem>
+<para>To load the game that you saved, choose <menuchoice><guimenu>Game</guimenu><guimenuitem>Load Saved Game...</guimenuitem>
 </menuchoice>. You can then choose the saved game to open.</para>
 </sect2>
 </sect1>
@@ -210,7 +210,7 @@ button next to the player's name.</para>
 <para>&kolf; comes with a versatile editor for its course file format. Courses can have any number of holes, and there is no limiting the creativity of the course designer.</para>
 
 <sect1 id="creating"> <title>Creating a New Course</title>
-<para>To create a new course, choose <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice>. Go to the <guilabel>Courses</guilabel> page of the dialog, and choose the <guilabel>Create New</guilabel> course. Make sure that, under the <guilabel>Options</guilabel> page of the dialog, <guilabel>Strict mode</guilabel> is unchecked.</para>
+<para>To create a new course, choose <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice>. Go to the <guilabel>Course</guilabel> page of the dialog, and choose the <guilabel>Create New</guilabel> course. Make sure that, under the <guilabel>Options</guilabel> page of the dialog, <guilabel>Strict mode</guilabel> is unchecked.</para>
 
 <note>
 <para>To play this new course later, click the <guibutton>Add...</guibutton> button to add the course to your list of courses.</para>
@@ -230,15 +230,15 @@ button next to the player's name.</para>
 <para>To start editing a hole, toggle the <menuchoice><guimenu>Hole</guimenu><guimenuitem>Edit</guimenuitem></menuchoice> menu item, or press the pencil icon on the toolbar. To leave editing mode, uncheck this menu item (or the toolbar icon).</para>
 
 <sect2> <title>Adding Objects</title>
-<para>To add a new object to the course, choose it's name in the list box labeled <guilabel>Add object</guilabel>. The object will appear in the center of the course.</para>
+<para>To add a new object to the course, choose it's name in the list box labeled <guilabel>Add object:</guilabel>. The object will appear in the center of the course.</para>
 <caution>
 <para>Bridges and signs will cover up new objects if they were already in the center of the hole.</para>
 </caution>
 <tip>
 <para>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
 </tip>
-<para>Some Kolf objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
-<para>Third-party Kolf plugins are available at the Kolf website. See <ulink url="http://www.katzbrown.com/kolf/Plugins/Download/">the Kolf plugins download page</ulink>.</para>
+<para>Some &kolf; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
+<para>Third-party &kolf; plugins are available at the &kolf; website. See <ulink url="http://www.katzbrown.com/kolf/Plugins/Download/">the &kolf; plugins download page</ulink>.</para>
 </sect2>
 
 <sect2> <title>Moving and Resizing Objects</title>
@@ -256,22 +256,22 @@ button next to the player's name.</para>
 <para>To edit general hole settings, click an area of the hole that is not covered by an object. When this is possible, the cursor will be the normal pointer cursor.</para>
 
 <variablelist>
-<varlistentry> <term><guilabel>Course name</guilabel></term>
+<varlistentry> <term><guilabel>Course name:</guilabel></term>
 <listitem>
 <para>This is the name that is shown in the new game dialog and in the <guimenuitem>About Course</guimenuitem> dialog.</para>
 </listitem>
 </varlistentry>
-<varlistentry> <term><guilabel>Course author</guilabel></term>
+<varlistentry> <term><guilabel>Course author:</guilabel></term>
 <listitem>
 <para>This is the author name that is shown in the <guimenuitem>About Course</guimenuitem> dialog.</para>
 </listitem>
 </varlistentry>
-<varlistentry> <term><guilabel>Par</guilabel></term>
+<varlistentry> <term><guilabel>Par:</guilabel></term>
 <listitem>
 <para>The par of the hole.</para>
 </listitem>
 </varlistentry>
-<varlistentry> <term><guilabel>Maximum</guilabel></term>
+<varlistentry> <term><guilabel>Maximum:</guilabel></term>
 <listitem>
 <para>The maximum number of strokes a player can take on the hole.</para>
 </listitem>
@@ -289,7 +289,7 @@ button next to the player's name.</para>
 <variablelist>
 <varlistentry> <term>Type</term>
 <listitem>
-<para>Choose the type of the slope - <guilabel>Vertical</guilabel>, <guilabel>Horizontal</guilabel>, <guilabel>Diagonal</guilabel>, <guilabel>Opposite Diagonal</guilabel>, <guilabel>Elliptical</guilabel>. Diagonal and opposite diagonal slopes are triangles, while elliptical slopes are circles. Vertical and horizontal slopes are rectangles of course.</para>
+<para>Choose the type of the slope - <guilabel>Vertical</guilabel>, <guilabel>Horizontal</guilabel>, <guilabel>Diagonal</guilabel>, <guilabel>Opposite Diagonal</guilabel>, <guilabel>Circular</guilabel>. Diagonal and opposite diagonal slopes are triangles, while circular slopes are circles. Vertical and horizontal slopes are rectangles of course.</para>
 </listitem>
 </varlistentry>
 <varlistentry> <term><guilabel>Reverse direction</guilabel></term>
@@ -297,7 +297,7 @@ button next to the player's name.</para>
 <para>Whether or not to reverse the slant of the slope. For example, consider an elliptical slope (a circular slope). When it is not reversed, it pushes balls outward like a mound. When it is reversed, it sucks balls inward like a hole.</para>
 </listitem>
 </varlistentry>
-<varlistentry> <term><guilabel>Grade</guilabel></term>
+<varlistentry> <term><guilabel>Grade:</guilabel></term>
 <listitem>
 <para>Choose the grade (steepness) of the slope by moving the slider so the grade moves towards 0 or 8, where 8 is steepest and 0 is flat. Steeper slopes push the ball more.</para>
 </listitem>
@@ -331,14 +331,14 @@ button next to the player's name.</para>
 
 </sect3>
 <sect3> <title>Bridges, Windmills, Floaters, and Signs</title>
-<para>Bridges, windmills, floaters, and signs all have similar settings for configuring on which sides there are border walls. To show the wall on a side, check the checkbox for that side.</para>
+<para>Bridges, windmills, floaters, and signs all have similar settings for configuring on which sides there are border walls. To show the wall on a side, check the check box for that side.</para>
 <para>There are also some more specific options for windmills, floaters, and signs.</para>
 
 <sect4> <title>Windmills</title>
 <variablelist>
 <varlistentry> <term><guilabel>Windmill on bottom</guilabel></term>
 <listitem>
-<para>Whether or not the black windmill arm is on bottom or top - the default is that it is on the bottom. The two half-walls will always be with the arm. Note that you can not enable a border wall on the side that the arm is.</para>
+<para>Whether or not the black windmill arm is on bottom or top - the default is that it is on the bottom. The two half-walls will always be with the arm. Note that you cannot enable a border wall on the side that the arm is.</para>
 </listitem>
 </varlistentry>
 <varlistentry> <term>Speed</term>
@@ -364,7 +364,7 @@ button next to the player's name.</para>
 <variablelist>
 <varlistentry> <term><guilabel>Sign HTML:</guilabel></term>
 <listitem>
-<para>You can enter any valid HTML here. For example, entering <markup>Hit it &lt;i&gt;softly&lt;/i&gt; towards the slope!</markup> will create the text <quote>Hit it <emphasis>softly</emphasis> towards the slope!</quote>.</para>
+<para>You can enter any valid &HTML; here. For example, entering <markup>Hit it &lt;i&gt;softly&lt;/i&gt; towards the slope!</markup> will create the text <quote>Hit it <emphasis>softly</emphasis> towards the slope!</quote>.</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -399,7 +399,7 @@ button next to the player's name.</para>
 <keycombo action="simul">&Ctrl;<keycap>O</keycap></keycombo>
 </shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Load Saved...</guimenuitem>
+<guimenuitem>Load Saved Game...</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para><action>Load a previously saved game.</action></para>
@@ -420,9 +420,7 @@ name.</action></para>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><shortcut>
-<keycombo action="simul">&Alt;&Ctrl;<keycap>S</keycap></keycombo>
-</shortcut>
+<term><menuchoice>
 <guimenu>Game</guimenu><guimenuitem>Save Course As...</guimenuitem>
 </menuchoice></term>
 <listitem>
@@ -525,7 +523,7 @@ game with a filename of your choice.</action></para>
 
 <varlistentry>
 <term><menuchoice><shortcut>
-<keycombo action="simul">&Ctrl;&Alt;<keycap>N</keycap></keycombo>
+<keycombo action="simul">&Ctrl;&Shift;<keycap>N</keycap></keycombo>
 </shortcut>
 <guimenu>Hole</guimenu>
 <guimenuitem>New</guimenuitem>
@@ -681,6 +679,16 @@ which hole you wish to go to.</para>
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
+<guimenuitem>Show Statusbar</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Toggle on and off the statusbar.</action></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
 <guimenuitem>Enable Mouse for Moving Putter</guimenuitem>
 </menuchoice></term>
 <listitem>
@@ -723,7 +731,7 @@ section</link>.</para>
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Enable all Dialog Boxes</guimenuitem>
+<guimenuitem>Enable All Dialog Boxes</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para><action>Re-enables any dialog boxes that you disabled by clicking on
@@ -744,7 +752,7 @@ section</link>.</para>
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Show Plugins...</guimenuitem>
+<guimenuitem>Show Plugins</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para><action>Display the currently loaded plugins.</action></para>
@@ -767,7 +775,7 @@ section</link>.</para>
 <guimenuitem>Configure Toolbars...</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>Customize the toolbar icons.</action></para>
+<para><action>Open a dialog where you can configure the toolbars</action> for &kolf;.</para>
 </listitem>
 </varlistentry>
 
@@ -784,12 +792,12 @@ section</link>.</para>
 <chapter id="credits-and-license">
 <title>Credits and Licenses</title>
 
-<para>&kolf; copyright 2001, 2002 Jason Katz-Brown</para>
+<para>&kolf; copyright 2001, 2002 &Jason.Katz-Brown;</para>
 
 <itemizedlist>
 <title>Developers</title>
 <listitem>
-<para>Jason Katz-Brown <email>jason@katzbrown.com</email></para>
+<para>&Jason.Katz-Brown; &Jason.Katz-Brown.mail;</para>
 </listitem>
 <listitem>
 <para>Niklas Knutsson</para>
@@ -802,7 +810,7 @@ section</link>.</para>
 </listitem>
 </itemizedlist>
 
-<para>Documentation copyright 2002, Jason Katz-Brown</para>
+<para>Documentation copyright 2002, &Jason.Katz-Brown;</para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 
