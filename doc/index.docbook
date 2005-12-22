@@ -16,7 +16,7 @@
 <firstname>Jason</firstname>
 <surname>Katz-Brown</surname>
 <affiliation>
-<address>&Jason.Katz-Brown.mail;</address>
+<address><email>jasonkb@mit.edu</email></address>
 </affiliation>
 </author>
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
@@ -129,7 +129,8 @@ slope and let it roll into the cup to move onto the next hole.</para>
 This opens a dialog where you can configure your new game.</para>
 
 <tip>
-<para>More third-party &kolf; courses are available at the &kolf; website. See <ulink url="http://www.katzbrown.com/kolf/Courses/User Uploaded/">the &kolf; user-uploaded courses page</ulink>.</para>
+<para>More third-party &kolf; courses are available at the &kolf; website. See <ulink 
+url="http://web.mit.edu/jasonkb/www/kolf/">the &kolf; user-uploaded courses page</ulink>.</para>
 </tip>
 
 <sect2> 
@@ -238,7 +239,7 @@ button next to the player's name.</para>
 <para>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
 </tip>
 <para>Some &kolf; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
-<para>Third-party &kolf; plugins are available at the &kolf; website. See <ulink url="http://www.katzbrown.com/kolf/Plugins/Download/">the &kolf; plugins download page</ulink>.</para>
+<para>Third-party &kolf; plugins are available at the &kolf; website. See <ulink url="http://web.mit.edu/jasonkb/www/kolf/">the &kolf; plugins download page</ulink>.</para>
 </sect2>
 
 <sect2> <title>Moving and Resizing Objects</title>
@@ -797,7 +798,7 @@ section</link>.</para>
 <itemizedlist>
 <title>Developers</title>
 <listitem>
-<para>&Jason.Katz-Brown; &Jason.Katz-Brown.mail;</para>
+<para>&Jason.Katz-Brown; <email>jasonkb@mit.edu</email></para>
 </listitem>
 <listitem>
 <para>Niklas Knutsson</para>
