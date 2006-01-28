@@ -90,7 +90,7 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 		coursePage = addPage(i18n("Course"), i18n("Choose Course to Play"));
 		QVBoxLayout *coursePageLayout = new QVBoxLayout(coursePage, marginHint(), spacingHint());
 
-		KURLLabel *coursesLink = new KURLLabel("http://katzbrown.com/kolf/Courses/User Uploaded/", "katzbrown.com/kolf/Courses/User Uploaded/", coursePage);
+		KUrlLabel *coursesLink = new KUrlLabel("http://katzbrown.com/kolf/Courses/User Uploaded/", "katzbrown.com/kolf/Courses/User Uploaded/", coursePage);
 		connect(coursesLink, SIGNAL(leftClickedURL(const QString &)), kapp, SLOT(invokeBrowser(const QString &)));
 		coursePageLayout->addWidget(coursesLink);
 

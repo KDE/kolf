@@ -36,7 +36,7 @@ public:
 	Kolf();
 	~Kolf();
 
-	void openURL(KURL url);
+	void openURL(KUrl url);
 
 public slots:
 	void closeGame();

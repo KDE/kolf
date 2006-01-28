@@ -78,7 +78,7 @@ extern "C" KDE_EXPORT int kdemain(int argc, char **argv)
 
 	if (args->count() >= 1)
 	{
-		KURL url = args->url(args->count() - 1);
+		KUrl url = args->url(args->count() - 1);
 		top->openURL(url);
 		args->clear();
 	}
