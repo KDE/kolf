@@ -132,8 +132,8 @@ QString KComboBoxDialog::getText(const QString &_caption, const QString &_text, 
 	if(!configName.isNull())
 	{
 		config->setGroup("KComboBoxDialog");
-		box->setHistoryItems(config->readListEntry(historyItem));
-		box->completionObject()->setItems(config->readListEntry(completionItem));
+		box->setHistoryItems(config->readEntry(historyItem,QStringList()));
+		box->completionObject()->setItems(config->readEntry(completionItem,QStringList()));
 	}
 
 	bool result = dlg.exec();

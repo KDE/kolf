@@ -100,7 +100,7 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 		config->setGroup("New Game Dialog Mode");
 
 		// find other courses
-		externCourses = config->readListEntry("extra");
+		externCourses = config->readEntry("extra",QStringList());
 
 		/// course loading
 		QStringList items = externCourses + KGlobal::dirs()->findAllResources("appdata", "courses/*");

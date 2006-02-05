@@ -4260,7 +4260,7 @@ void KolfGame::scoresFromSaved(KConfig *config, PlayerList &players)
 		players.last().setName(config->readEntry("Name"));
 		players.last().setId(i);
 
-		QStringList scores(config->readListEntry("Scores"));
+		QStringList scores(config->readEntry("Scores",QStringList()));
 		Q3ValueList<int> intscores;
 		for (QStringList::Iterator it = scores.begin(); it != scores.end(); ++it)
 			intscores.append((*it).toInt());
