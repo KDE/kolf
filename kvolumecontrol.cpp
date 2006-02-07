@@ -30,7 +30,7 @@ void KVolumeControl::init(Arts::SoundServerV2 server)
 	manager = Arts::DynamicCast(server.createObject("Arts::Synth_AMAN_PLAY"));
 	if (manager.isNull())
 	{
-		kdError() << "Your OS is broken.  Get an OS that installs KDE decently." << endl;
+		kError() << "Your OS is broken.  Get an OS that installs KDE decently." << endl;
 		return;
 	}
 	manager.start();
@@ -38,7 +38,7 @@ void KVolumeControl::init(Arts::SoundServerV2 server)
 	volumeControl = Arts::DynamicCast(server.createObject("Arts::StereoVolumeControl"));
 	if (volumeControl.isNull())
 	{
-		kdError() << "Your OS is broken.  Get an OS that installs KDE decently." << endl;
+		kError() << "Your OS is broken.  Get an OS that installs KDE decently." << endl;
 		return;
 	}
 	volumeControl.start();
