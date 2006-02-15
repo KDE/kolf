@@ -3,7 +3,7 @@
 #include <qlabel.h>
 #include <qimage.h>
 #include <qpixmapcache.h>
-#include <q3whatsthis.h>
+
 //Added by qt3to4:
 #include <QPixmap>
 #include <Q3PointArray>
@@ -558,7 +558,7 @@ SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
 	connect(grade, SIGNAL(valueChanged(double)), this, SLOT(gradeChanged(double)));
 
 	QCheckBox *stuck = new QCheckBox(i18n("Unmovable"), this);
-	Q3WhatsThis::add(stuck, i18n("Whether or not this slope can be moved by other objects, like floaters."));
+	stuck->setWhatsThis( i18n("Whether or not this slope can be moved by other objects, like floaters."));
 	stuck->setChecked(slope->isStuckOnGround());
 	layout->addWidget(stuck);
 	connect(stuck, SIGNAL(toggled(bool)), this, SLOT(setStuckOnGround(bool)));

@@ -204,7 +204,7 @@ void Kolf::startNewGame()
 		if (isTutorial)
 			filename = KGlobal::dirs()->findResource("appdata", "tutorial.kolf");
 		else
-			filename = config.readEntry("Course", QString::null);
+			filename = config.readEntry("Course", QString());
 
 		if (filename.isNull())
 			return;

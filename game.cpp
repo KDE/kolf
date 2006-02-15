@@ -44,7 +44,7 @@
 #include <qtimer.h>
 #include <qtooltip.h>
 #include <q3valuelist.h>
-#include <q3whatsthis.h>
+
 //Added by qt3to4:
 #include <QMouseEvent>
 #include <QGridLayout>
@@ -1993,8 +1993,8 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 
 	hlayout->addWidget(new QLabel(i18n("Maximum:"), this));
 	QSpinBox *maxstrokes = new QSpinBox(holeInfo->lowestMaxStrokes(), 30, 1, this);
-	Q3WhatsThis::add(maxstrokes, i18n("Maximum number of strokes player can take on this hole."));
-	QToolTip::add(maxstrokes, i18n("Maximum number of strokes"));
+	maxstrokes->setWhatsThis( i18n("Maximum number of strokes player can take on this hole."));
+	maxstrokes->setToolTip( i18n("Maximum number of strokes"));
 	maxstrokes->setSpecialValueText(i18n("Unlimited"));
 	maxstrokes->setValue(holeInfo->maxStrokes());
 	hlayout->addWidget(maxstrokes);
@@ -4118,7 +4118,7 @@ void KolfGame::playSound(QString file, double vol)
 		//if (!QFile::exists(file))
 			//return;
 		KPlayObjectFactory factory(artsServer.server());
-		KPlayObject *playObject = factory.createPlayObject(KURL(file), true);
+		KPlayObject *playObject = factory.createPlayObject(KUrl(file), true);
 
 		if (playObject && !playObject->isNull())
 		{

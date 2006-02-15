@@ -90,7 +90,7 @@ QString KComboBoxDialog::getItem( const QString &_text, const QString &_caption,
 	{
 		KConfig *config = KGlobal::config();
 		config->setGroup( "Notification Messages" );
-		prevAnswer = config->readEntry( dontAskAgainName );
+		prevAnswer = config->readEntry( dontAskAgainName,QString() );
 		if ( !prevAnswer.isEmpty() )
 			if ( _items.contains( prevAnswer ) > 0 )
 				return prevAnswer;
