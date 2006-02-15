@@ -210,7 +210,7 @@ void Kolf::startNewGame()
 			return;
 
 		competition = config.readBoolEntry("Competition", false);
-		firstHole = config.readNumEntry("Current Hole", 1);
+		firstHole = config.readEntry("Current Hole", 1);
 
 		players.clear();
 		KolfGame::scoresFromSaved(&config, players);

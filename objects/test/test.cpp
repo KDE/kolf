@@ -66,7 +66,7 @@ void Test::save(KConfig *cfg)
 void Test::load(KConfig *cfg)
 {
 	// load our option
-	setSwitchEvery(cfg->readNumEntry("switchEvery", 50));
+	setSwitchEvery(cfg->readEntry("switchEvery", 50));
 }
 
 TestConfig::TestConfig(Test *test, QWidget *parent)

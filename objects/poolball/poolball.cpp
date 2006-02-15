@@ -40,7 +40,7 @@ void PoolBall::saveState(StateDB *db)
 
 void PoolBall::load(KConfig *cfg)
 {
-	setNumber(cfg->readNumEntry("number", 1));
+	setNumber(cfg->readEntry("number", 1));
 }
 
 void PoolBall::loadState(StateDB *db)

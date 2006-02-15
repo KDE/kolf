@@ -243,7 +243,7 @@ void Floater::load(KConfig *cfg)
 	wall->setPoints(start.x(), start.y(), end.x(), end.y());
 	wall->move(0, 0);
 
-	setSpeed(cfg->readNumEntry("speed", -1));
+	setSpeed(cfg->readEntry("speed", -1));
 
 	doLoad(cfg);
 	reset();

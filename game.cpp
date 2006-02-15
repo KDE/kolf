@@ -361,7 +361,7 @@ void Bridge::load(KConfig *cfg)
 
 void Bridge::doLoad(KConfig *cfg)
 {
-	newSize(cfg->readNumEntry("width", width()), cfg->readNumEntry("height", height()));
+	newSize(cfg->readEntry("width", width()), cfg->readNumEntry("height", height()));
 	setTopWallVisible(cfg->readBoolEntry("topWallVisible", topWallVisible()));
 	setBotWallVisible(cfg->readBoolEntry("botWallVisible", botWallVisible()));
 	setLeftWallVisible(cfg->readBoolEntry("leftWallVisible", leftWallVisible()));
@@ -524,7 +524,7 @@ void Windmill::save(KConfig *cfg)
 
 void Windmill::load(KConfig *cfg)
 {
-	setSpeed(cfg->readNumEntry("speed", -1));
+	setSpeed(cfg->readEntry("speed", -1));
 
 	doLoad(cfg);
 
@@ -805,10 +805,10 @@ void Ellipse::advance(int phase)
 void Ellipse::load(KConfig *cfg)
 {
 	setChangeEnabled(cfg->readBoolEntry("changeEnabled", changeEnabled()));
-	setChangeEvery(cfg->readNumEntry("changeEvery", changeEvery()));
+	setChangeEvery(cfg->readEntry("changeEvery", changeEvery()));
 	double newWidth = width(), newHeight = height();
-	newWidth = cfg->readNumEntry("width", newWidth);
-	newHeight = cfg->readNumEntry("height", newHeight);
+	newWidth = cfg->readEntry("width", newWidth);
+	newHeight = cfg->readEntry("height", newHeight);
 	newSize(newWidth, newHeight);
 }
 
@@ -1393,7 +1393,7 @@ void BlackHole::load(KConfig *cfg)
 	QPoint exit = cfg->readPointEntry("exit", &exit);
 	exitItem->setX(exit.x());
 	exitItem->setY(exit.y());
-	exitDeg = cfg->readNumEntry("exitDeg", exitDeg);
+	exitDeg = cfg->readEntry("exitDeg", exitDeg);
 	m_minSpeed = cfg->readDoubleNumEntry("minspeed", m_minSpeed);
 	m_maxSpeed = cfg->readDoubleNumEntry("maxspeed", m_maxSpeed);
 	exitItem->updateArrowAngle();
@@ -2320,7 +2320,7 @@ void KolfGame::startFirstHole(int hole)
 		for (; scoreboardHoles < curHole; ++scoreboardHoles)
 		{
 			cfg->setGroup(QString("%1-hole@-50,-50|0").arg(scoreboardHoles + 1));
-			emit newHole(cfg->readNumEntry("par", 3));
+			emit newHole(cfg->readEntry("par", 3));
 		}
 
 		// lets load all of the scores from saved game if there are any
@@ -3438,7 +3438,7 @@ void KolfGame::startNextHole()
 		for (; scoreboardHoles < curHole; ++scoreboardHoles)
 		{
 			cfg->setGroup(QString("%1-hole@-50,-50|0").arg(scoreboardHoles + 1));
-			emit newHole(cfg->readNumEntry("par", 3));
+			emit newHole(cfg->readEntry("par", 3));
 		}
 
 		resetHoleScores();
@@ -3523,10 +3523,10 @@ void KolfGame::openFile()
 	emit titleChanged(holeInfo.name());
 
 	cfg->setGroup(QString("%1-hole@-50,-50|0").arg(curHole));
-	curPar = cfg->readNumEntry("par", 3);
+	curPar = cfg->readEntry("par", 3);
 	holeInfo.setPar(curPar);
 	holeInfo.borderWallsChanged(cfg->readBoolEntry("borderWalls", holeInfo.borderWalls()));
-	holeInfo.setMaxStrokes(cfg->readNumEntry("maxstrokes", 10));
+	holeInfo.setMaxStrokes(cfg->readEntry("maxstrokes", 10));
 	bool hasFinalLoad = cfg->readBoolEntry("hasFinalLoad", true);
 
 	QStringList missingPlugins;
@@ -4235,7 +4235,7 @@ void KolfGame::courseInfo(CourseInfo &info, const QString& filename)
 		}
 
 		cfg.setGroup(group);
-		par += cfg.readNumEntry("par", 3);
+		par += cfg.readEntry("par", 3);
 
 		hole++;
 	}
@@ -4247,7 +4247,7 @@ void KolfGame::courseInfo(CourseInfo &info, const QString& filename)
 void KolfGame::scoresFromSaved(KConfig *config, PlayerList &players)
 {
 	config->setGroup("0 Saved Game");
-	int numPlayers = config->readNumEntry("Players", 0);
+	int numPlayers = config->readEntry("Players", 0);
 	if (numPlayers <= 0)
 		return;
 
