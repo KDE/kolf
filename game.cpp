@@ -362,10 +362,10 @@ void Bridge::load(KConfig *cfg)
 void Bridge::doLoad(KConfig *cfg)
 {
 	newSize(cfg->readEntry("width", width()), cfg->readNumEntry("height", height()));
-	setTopWallVisible(cfg->readBoolEntry("topWallVisible", topWallVisible()));
-	setBotWallVisible(cfg->readBoolEntry("botWallVisible", botWallVisible()));
-	setLeftWallVisible(cfg->readBoolEntry("leftWallVisible", leftWallVisible()));
-	setRightWallVisible(cfg->readBoolEntry("rightWallVisible", rightWallVisible()));
+	setTopWallVisible(cfg->readEntry("topWallVisible", topWallVisible()));
+	setBotWallVisible(cfg->readEntry("botWallVisible", botWallVisible()));
+	setLeftWallVisible(cfg->readEntry("leftWallVisible", leftWallVisible()));
+	setRightWallVisible(cfg->readEntry("rightWallVisible", rightWallVisible()));
 }
 
 void Bridge::save(KConfig *cfg)
@@ -532,7 +532,7 @@ void Windmill::load(KConfig *cfg)
 	right->editModeChanged(false);
 	guard->editModeChanged(false);
 
-	setBottom(cfg->readBoolEntry("bottom", true));
+	setBottom(cfg->readEntry("bottom", true));
 }
 
 void Windmill::moveBy(double dx, double dy)
@@ -804,7 +804,7 @@ void Ellipse::advance(int phase)
 
 void Ellipse::load(KConfig *cfg)
 {
-	setChangeEnabled(cfg->readBoolEntry("changeEnabled", changeEnabled()));
+	setChangeEnabled(cfg->readEntry("changeEnabled", changeEnabled()));
 	setChangeEvery(cfg->readEntry("changeEvery", changeEvery()));
 	double newWidth = width(), newHeight = height();
 	newWidth = cfg->readEntry("width", newWidth);
@@ -3525,9 +3525,9 @@ void KolfGame::openFile()
 	cfg->setGroup(QString("%1-hole@-50,-50|0").arg(curHole));
 	curPar = cfg->readEntry("par", 3);
 	holeInfo.setPar(curPar);
-	holeInfo.borderWallsChanged(cfg->readBoolEntry("borderWalls", holeInfo.borderWalls()));
+	holeInfo.borderWallsChanged(cfg->readEntry("borderWalls", holeInfo.borderWalls()));
 	holeInfo.setMaxStrokes(cfg->readEntry("maxstrokes", 10));
-	bool hasFinalLoad = cfg->readBoolEntry("hasFinalLoad", true);
+	bool hasFinalLoad = cfg->readEntry("hasFinalLoad", true);
 
 	QStringList missingPlugins;
 	QStringList groups = cfg->groupList();

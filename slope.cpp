@@ -215,9 +215,9 @@ void Slope::updateZ(Q3CanvasRectangle *vStrut)
 
 void Slope::load(KConfig *cfg)
 {
-	stuckOnGround = cfg->readBoolEntry("stuckOnGround", stuckOnGround);
+	stuckOnGround = cfg->readEntry("stuckOnGround", stuckOnGround);
 	grade = cfg->readDoubleNumEntry("grade", grade);
-	reversed = cfg->readBoolEntry("reversed", reversed);
+	reversed = cfg->readEntry("reversed", reversed);
 
 	// bypass updatePixmap which newSize normally does
 	Q3CanvasRectangle::setSize(cfg->readEntry("width", width()), cfg->readNumEntry("height", height()));

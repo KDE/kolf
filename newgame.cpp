@@ -173,7 +173,7 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 
 	mode = new QCheckBox(i18n("&Strict mode"), optionsPage);
 	vlayout->addWidget(mode);
-	mode->setChecked(config->readBoolEntry("competition", false));
+	mode->setChecked(config->readEntry("competition", false));
 
 	QLabel *desc = new QLabel(i18n("In strict mode, undo, editing, and switching holes is not allowed. This is generally for competition. Only in strict mode are highscores kept."), optionsPage);
 	desc->setTextFormat(Qt::RichText);
