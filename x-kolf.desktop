@@ -4,6 +4,7 @@ Encoding=UTF-8
 MimeType=application/x-kolf
 Type=MimeType
 Comment=Kolf Saved Game
+Comment[fr]=Partie enregistrée de Kolf
 Comment[x-test]=xxKolf Saved Gamexx
 Icon=kolf
 Patterns=*.kolfgame
