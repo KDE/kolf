@@ -1,4 +1,5 @@
 kde4_header()
+project(kolf)
 
 add_subdirectory( objects ) 
 add_subdirectory( sounds ) 
