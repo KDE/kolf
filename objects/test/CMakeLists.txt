@@ -11,7 +11,7 @@ kde4_automoc(${kolftest_LIB_SRCS})
 
 kde4_add_library(kolftest SHARED ${kolftest_LIB_SRCS})
 
-target_link_libraries(kolftest  ${QT_AND_KDECORE_LIBS} kio kolf )
+target_link_libraries(kolftest  ${KDE4_KDECORE_LIBS} kio kolf )
 
 set_target_properties(kolftest PROPERTIES VERSION 1.0.0 SOVERSION 1 )
 install_targets(${LIB_INSTALL_DIR} kolftest )
