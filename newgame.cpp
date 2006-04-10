@@ -218,9 +218,9 @@ void NewGameDialog::courseSelected(int index)
 
 	name->setText(QString("<strong>%1</strong>").arg(curinfo.name));
 
-	author->setText(i18n("By %1").arg(curinfo.author));
-	par->setText(i18n("Par %1").arg(curinfo.par));
-	holes->setText(i18n("%1 Holes").arg(curinfo.holes));
+	author->setText(i18n("By %1", curinfo.author));
+	par->setText(i18n("Par %1", curinfo.par));
+	holes->setText(i18n("%1 Holes", curinfo.holes));
 }
 
 void NewGameDialog::showHighscores()
@@ -228,7 +228,7 @@ void NewGameDialog::showHighscores()
 	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Custom1 | KScoreDialog::Score, this);
 	scoreDialog->addField(KScoreDialog::Custom1, i18n("Par"), "Par");
 	scoreDialog->setConfigGroup(info[currentCourse].untranslatedName + QString(" Highscores"));
-	scoreDialog->setComment(i18n("High Scores for %1").arg(info[currentCourse].name));
+	scoreDialog->setComment(i18n("High Scores for %1", info[currentCourse].name));
 	scoreDialog->show();
 }
 
@@ -292,7 +292,7 @@ void NewGameDialog::addPlayer()
 		return;
 
 	
-	PlayerEditor *pe = new PlayerEditor(i18n("Player %1").arg(editors.count() + 1), startColors.at(editors.count()), playersWidget);
+	PlayerEditor *pe = new PlayerEditor(i18n("Player %1", editors.count() + 1), startColors.at(editors.count()), playersWidget);
 	editors.append(pe);
 	pe->show();
 	playersWidget->layout()->addWidget(pe);

@@ -3144,7 +3144,7 @@ void KolfGame::shotDone()
 			const QString placeOutside = i18n("Drop Outside of Hazard");
 			const QString rehit = i18n("Rehit From Last Location");
 			options << placeOutside << rehit;
-			const QString choice = KComboBoxDialog::getItem(i18n("What would you like to do for your next shot?"), i18n("%1 is in a Hazard").arg((*it).name()), options, placeOutside, "hazardOptions");
+			const QString choice = KComboBoxDialog::getItem(i18n("What would you like to do for your next shot?"), i18n("%1 is in a Hazard", (*it).name()), options, placeOutside, "hazardOptions");
 
 			if (choice == placeOutside)
 			{
@@ -3311,7 +3311,7 @@ void KolfGame::sayWhosGoing()
 {
 	if (players->count() >= 2)
 	{
-		KMessageBox::information(this, i18n("%1 will start off.").arg((*curPlayer).name()), i18n("New Hole"), "newHole");
+		KMessageBox::information(this, i18n("%1 will start off.", (*curPlayer).name()), i18n("New Hole"), "newHole");
 	}
 }
 
@@ -3459,7 +3459,7 @@ void KolfGame::startNextHole()
 
 void KolfGame::showInfo()
 {
-	QString text = i18n("Hole %1: par %2, maximum %3 strokes").arg(curHole).arg(holeInfo.par()).arg(holeInfo.maxStrokes());
+	QString text = i18n("Hole %1: par %2, maximum %3 strokes", curHole, holeInfo.par(), holeInfo.maxStrokes());
 	infoText->move((width - QFontMetrics(infoText->font()).width(text)) / 2, infoText->y());
 	infoText->setText(text);
 	// I hate this text! Let's not show it
@@ -3471,9 +3471,9 @@ void KolfGame::showInfo()
 void KolfGame::showInfoDlg(bool addDontShowAgain)
 {
 	KMessageBox::information(parentWidget(),
-	i18n("Course name: %1").arg(holeInfo.name()) + QString("\n")
-	+ i18n("Created by %1").arg(holeInfo.author()) + QString("\n")
-	+ i18n("%1 holes").arg(highestHole),
+	i18n("Course name: %1", holeInfo.name()) + QString("\n")
+	+ i18n("Created by %1", holeInfo.author()) + QString("\n")
+	+ i18n("%1 holes", highestHole),
 	i18n("Course Information"),
 	addDontShowAgain? holeInfo.name() + QString(" ") + holeInfo.author() : QString::null);
 }
@@ -4168,7 +4168,7 @@ void KolfGame::print(KPrinter &pr)
 
 	if (pr.option("kde-kolf-title") == "true")
 	{
-		QString text = i18n("%1 - Hole %2; by %3").arg(holeInfo.name()).arg(curHole).arg(holeInfo.author());
+		QString text = i18n("%1 - Hole %2; by %3", holeInfo.name(), curHole, holeInfo.author());
 		QFont font(kapp->font());
 		font.setPointSize(18);
 		QRect rect = QFontMetrics(font).boundingRect(text);

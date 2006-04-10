@@ -57,16 +57,16 @@ extern "C" KDE_EXPORT int kdemain(int argc, char **argv)
 			KolfGame::courseInfo(info, filename);
 
 			cout << info.name.latin1()
-			     << " - " << i18n("By %1").arg(info.author).latin1()
-			     << " - " << i18n("%1 holes").arg(info.holes).latin1()
-			     << " - " << i18n("par %1").arg(info.par).latin1()
+			     << " - " << i18n("By %1", info.author).latin1()
+			     << " - " << i18n("%1 holes", info.holes).latin1()
+			     << " - " << i18n("par %1", info.par).latin1()
 			     << endl;
 
 			return 0;
 		}
 		else
 		{
-			KCmdLineArgs::usage(i18n("Course %1 does not exist.").arg(filename.latin1()));
+			KCmdLineArgs::usage(i18n("Course %1 does not exist.", filename.latin1()));
 		}
 	}
 

@@ -433,10 +433,10 @@ void Kolf::gameOver()
 		if (names.count() > 1)
 		{
 			QString winners = names.join(i18n(" and "));
-			KMessageBox::information(this, i18n("%1 tied").arg(winners));
+			KMessageBox::information(this, i18n("%1 tied", winners));
 		}
 		else
-			KMessageBox::information(this, i18n("%1 won!").arg(names.first()));
+			KMessageBox::information(this, i18n("%1 won!", names.first()));
 	}
 
 	if (competition)
@@ -461,7 +461,7 @@ void Kolf::gameOver()
 			scoreDialog->addScore((*it).score, info, false, true);
 		}
 
-		scoreDialog->setComment(i18n("High Scores for %1").arg(courseInfo.name));
+		scoreDialog->setComment(i18n("High Scores for %1", courseInfo.name));
 		scoreDialog->show();
 	}
 
@@ -477,7 +477,7 @@ void Kolf::showHighScores()
 	game->courseInfo(courseInfo, game->curFilename());
 
 	scoreDialog->setConfigGroup(courseInfo.untranslatedName + QString(" Highscores"));
-	scoreDialog->setComment(i18n("High Scores for %1").arg(courseInfo.name));
+	scoreDialog->setComment(i18n("High Scores for %1", courseInfo.name));
 	scoreDialog->show();
 }
 
@@ -574,7 +574,7 @@ void Kolf::openURL(KUrl url)
 
 void Kolf::newPlayersTurn(Player *player)
 {
-	tempStatusBarText = i18n("%1's turn").arg(player->name());
+	tempStatusBarText = i18n("%1's turn", player->name());
 
 	if (showInfoAction->isChecked())
 		statusBar()->message(tempStatusBarText, 5 * 1000);
@@ -645,7 +645,7 @@ void Kolf::inPlayEnd()
 
 void Kolf::maxStrokesReached(const QString &name)
 {
-	KMessageBox::sorry(this, i18n("%1's score has reached the maximum for this hole.").arg(name));
+	KMessageBox::sorry(this, i18n("%1's score has reached the maximum for this hole.", name));
 }
 
 void Kolf::updateHoleMenu(int largest)
@@ -699,7 +699,7 @@ void Kolf::print()
 	KPrinter pr;
 	pr.addDialogPage(new PrintDialogPage());
 
-    if (pr.setup(this, i18n("Print %1 - Hole %2").arg(game->courseName()).arg(game->currentHole())))
+    if (pr.setup(this, i18n("Print %1 - Hole %2", game->courseName(), game->currentHole())))
 	{
 		pr.newPage();
 		if (game)
@@ -794,7 +794,7 @@ void Kolf::showPlugins()
 		text.append("<li>");
 		text.append(object->name());
 		text.append(" - ");
-		text.append(i18n("by %1").arg(object->author()));
+		text.append(i18n("by %1", object->author()));
 		text.append("</li>");
 	}
 	text.append("</ol>");
