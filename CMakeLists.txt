@@ -35,7 +35,7 @@ kde4_automoc(${kolf_LIB_SRCS})
 
 kde4_add_library(kolf SHARED ${kolf_LIB_SRCS})
 
-target_link_libraries(kolf  ${KDE4_KDECORE_LIBS} kdeprint kio kolf )
+target_link_libraries(kolf  ${KDE4_KDECORE_LIBS} kdeprint kio kolf kdegames )
 
 set_target_properties(kolf PROPERTIES VERSION 1.2.0 SOVERSION 1 )
 install_targets(${LIB_INSTALL_DIR} kolf )

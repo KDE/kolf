@@ -1,6 +1,9 @@
+#warning port to the new sound system once it exists
+/*
 #include <arts/kmedia2.h>
 #include <arts/kplayobject.h>
 #include <arts/kplayobjectfactory.h>
+*/
 
 #include <kapplication.h>
 #include <kconfig.h>
@@ -2186,7 +2189,8 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	m_sound = true;
 	m_ignoreEvents = false;
 	soundedOnce = false;
-	oldPlayObjects.setAutoDelete(true);
+#warning port to the new sound system once it exists
+//	oldPlayObjects.setAutoDelete(true);
 	highestHole = 0;
 	recalcHighestHole = false;
 
@@ -2347,7 +2351,8 @@ void KolfGame::setFilename(const QString &filename)
 
 KolfGame::~KolfGame()
 {
-	oldPlayObjects.clear();
+#warning port to the new sound system once it exists
+//	oldPlayObjects.clear();
 	delete cfg;
 }
 
@@ -3790,7 +3795,7 @@ bool KolfGame::askSave(bool noMoreChances)
 		// not cancel, don't save
 		return false;
 
-	int result = KMessageBox::warningYesNoCancel(this, i18n("There are unsaved changes to current hole. Save them?"), i18n("Unsaved Changes"), KStdGuiItem::save(), noMoreChances? KStdGuiItem::discard() : i18n("Save &Later"), noMoreChances? "DiscardAsk" : "SaveAsk", true);
+	int result = KMessageBox::warningYesNoCancel(this, i18n("There are unsaved changes to current hole. Save them?"), i18n("Unsaved Changes"), KStdGuiItem::save(), noMoreChances? KStdGuiItem::discard() : i18n("Save &Later"), noMoreChances? "DiscardAsk" : "SaveAsk");
 	switch (result)
 	{
 		case KMessageBox::Yes:

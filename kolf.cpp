@@ -109,7 +109,7 @@ void Kolf::initGUI()
 	undoShotAction->setText(i18n("&Undo Shot"));
 	//replayShotAction = new KAction(i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 
-	holeAction = new KListAction(i18n("Switch to Hole"), 0, this, SLOT(emptySlot()), actionCollection(), "switchhole");
+	holeAction = new KSelectAction(i18n("Switch to Hole"), 0, this, SLOT(emptySlot()), actionCollection(), "switchhole");
 	nextAction = new KAction(i18n("&Next Hole"), "forward", KStdAccel::shortcut(KStdAccel::Forward), this, SLOT(emptySlot()), actionCollection(), "nexthole");
 	prevAction = new KAction(i18n("&Previous Hole"), "back", KStdAccel::shortcut(KStdAccel::Back), this, SLOT(emptySlot()), actionCollection(), "prevhole");
 	firstAction = new KAction(i18n("&First Hole"), "gohome", KStdAccel::shortcut(KStdAccel::Home), this, SLOT(emptySlot()), actionCollection(), "firsthole");

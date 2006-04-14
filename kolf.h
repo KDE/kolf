@@ -18,7 +18,7 @@
 
 class KolfGame;
 class KToggleAction;
-class KListAction;
+class KSelectAction;
 class KAction;
 class QGridLayout;
 class ScoreBoard;
@@ -109,7 +109,7 @@ private:
 	KAction *saveGameAsAction;
 	KAction *loadGameAction;
 	KAction *aboutAction;
-	KListAction *holeAction;
+	KSelectAction *holeAction;
 	KAction *highScoreAction;
 	KAction *nextAction;
 	KAction *prevAction;

@@ -4,9 +4,12 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kpixmap.h>
+#warning port to the new sound system once it exists
+/*
 #include <arts/kplayobject.h>
 #include <arts/kartsserver.h>
 #include <arts/kartsdispatcher.h>
+*/
 
 #include <math.h>
 
@@ -986,7 +989,7 @@ private:
 #warning port to the new sound system once it exists
 //	KArtsDispatcher artsDispatcher;
 //	KArtsServer artsServer;
-	Q3PtrList<KPlayObject> oldPlayObjects;
+//	Q3PtrList<KPlayObject> oldPlayObjects;
 	bool m_sound;
 	bool soundedOnce;
 	QString soundDir;
