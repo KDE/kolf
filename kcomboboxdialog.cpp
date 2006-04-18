@@ -7,17 +7,17 @@
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
 // THE AUTHOR(S) BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
 // AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-// 
+//
 // Except as contained in this notice, the name(s) of the author(s) shall not be
 // used in advertising or otherwise to promote the sale, use or other dealings
 // in this Software without prior written authorization from the author(s).
@@ -39,7 +39,9 @@
 KComboBoxDialog::KComboBoxDialog( const QString &_text, const QStringList &_items, const QString& _value, bool showDontAskAgain, QWidget *parent )
 	: KDialogBase( Plain, QString::null, Ok, Ok, parent, 0L, true, true )
 {
-	QVBoxLayout *topLayout = new QVBoxLayout( plainPage(), marginHint(), spacingHint() );
+	QVBoxLayout *topLayout = new QVBoxLayout( plainPage() );
+        topLayout->setMargin( marginHint() );
+        topLayout->setSpacing( spacingHint() );
 	QLabel *label = new QLabel(_text, plainPage() );
 	topLayout->addWidget( label, 1 );
 

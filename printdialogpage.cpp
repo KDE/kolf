@@ -10,12 +10,14 @@
 
 #include "printdialogpage.h"
 
-PrintDialogPage::PrintDialogPage(QWidget *parent, const char *name)
+PrintDialogPage::PrintDialogPage(QWidget *parent)
 	: KPrintDialogPage( parent )
 {
 	setTitle(i18n("Kolf Options"));
 
-	QVBoxLayout *layout = new QVBoxLayout(this, KDialog::marginHint(), KDialog::spacingHint());
+	QVBoxLayout *layout = new QVBoxLayout(this);
+        layout->setMargin( KDialog::marginHint() );
+        layout->setSpacing( KDialog::spacingHint() );
 
 	titleCheck = new QCheckBox(i18n("Draw title text"), this);
 	titleCheck->setChecked(true);

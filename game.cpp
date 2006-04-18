@@ -208,7 +208,9 @@ BridgeConfig::BridgeConfig(Bridge *bridge, QWidget *parent)
 {
 	this->bridge = bridge;
 
-	m_vlayout = new QVBoxLayout(this, marginHint(), spacingHint());
+	m_vlayout = new QVBoxLayout(this);
+        m_vlayout->setMargin( marginHint() );
+        m_vlayout->setSpacing( spacingHint() );
 	QGridLayout *layout = new QGridLayout(m_vlayout, 2, 3, spacingHint());
 	layout->addWidget(new QLabel(i18n("Walls on:"), this), 0, 0);
 	top = new QCheckBox(i18n("&Top"), this);
@@ -423,9 +425,14 @@ WindmillConfig::WindmillConfig(Windmill *windmill, QWidget *parent)
 	connect(check, SIGNAL(toggled(bool)), this, SLOT(endChanged(bool)));
 	m_vlayout->addWidget(check);
 
-	QHBoxLayout *hlayout = new QHBoxLayout(m_vlayout, spacingHint());
+	QHBoxLayout *hlayout = new QHBoxLayout;
+        hlayout->setSpacing( spacingHint() );
+        m_vlayout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Slow"), this));
-	QSlider *slider = new QSlider(1, 10, 1, windmill->curSpeed(), Qt::Horizontal, this);
+	QSlider *slider = new QSlider(Qt::Horizontal, this);
+        slider->setRange( 1, 10 );
+        slider->setPageStep( 1 );
+        slider->setValue( windmill->curSpeed() );
 	hlayout->addWidget(slider);
 	hlayout->addWidget(new QLabel(i18n("Fast"), this));
 	connect(slider, SIGNAL(valueChanged(int)), this, SLOT(speedChanged(int)));
@@ -674,17 +681,24 @@ EllipseConfig::EllipseConfig(Ellipse *ellipse, QWidget *parent)
 {
 	this->ellipse = ellipse;
 
-	m_vlayout = new QVBoxLayout(this, marginHint(), spacingHint());
+	m_vlayout = new QVBoxLayout(this);
+        m_vlayout->setMargin( marginHint() );
+        m_vlayout->setSpacing( spacingHint() );
 
 	QCheckBox *check = new QCheckBox(i18n("Enable show/hide"), this);
 	m_vlayout->addWidget(check);
 	connect(check, SIGNAL(toggled(bool)), this, SLOT(check1Changed(bool)));
 	check->setChecked(ellipse->changeEnabled());
 
-	QHBoxLayout *hlayout = new QHBoxLayout(m_vlayout, spacingHint());
+	QHBoxLayout *hlayout = new QHBoxLayout;
+        hlayout->setSpacing( spacingHint() );
+        m_vlayout->addLayout( hlayout );
 	slow1 = new QLabel(i18n("Slow"), this);
 	hlayout->addWidget(slow1);
-	slider1 = new QSlider(1, 100, 5, 100 - ellipse->changeEvery(), Qt::Horizontal, this);
+	slider1 = new QSlider(Qt::Horizontal, this);
+        slider1->setRange( 1, 100 );
+        slider1->setPageStep( 5 );
+        slider1->setValue( 100 - ellipse->changeEvery() );
 	hlayout->addWidget(slider1);
 	fast1 = new QLabel(i18n("Fast"), this);
 	hlayout->addWidget(fast1);
@@ -855,12 +869,12 @@ Puddle::Puddle(Q3Canvas *canvas)
 		QPixmapCache::insert("puddle", pic);
 	}
 
-	brush.setPixmap(pic);
+	brush.setTexture(pic);
 	setBrush(brush);
 
 	KPixmap pointPic(pic);
 	KPixmapEffect::intensity(pointPic, .45);
-	brush.setPixmap(pointPic);
+	brush.setTexture(pointPic);
 	point->setBrush(brush);
 
 	setZ(-25);
@@ -908,12 +922,12 @@ Sand::Sand(Q3Canvas *canvas)
 		QPixmapCache::insert("sand", pic);
 	}
 
-	brush.setPixmap(pic);
+	brush.setTexture(pic);
 	setBrush(brush);
 
 	KPixmap pointPic(pic);
 	KPixmapEffect::intensity(pointPic, .45);
-	brush.setPixmap(pointPic);
+	brush.setTexture(pointPic);
 	point->setBrush(brush);
 
 	setZ(-26);
@@ -1514,9 +1528,13 @@ BlackHoleConfig::BlackHoleConfig(BlackHole *blackHole, QWidget *parent)
 	: Config(parent)
 {
 	this->blackHole = blackHole;
-	QVBoxLayout *layout = new QVBoxLayout(this, marginHint(), spacingHint());
+	QVBoxLayout *layout = new QVBoxLayout(this);
+        layout->setMargin( marginHint() );
+        layout->setSpacing( spacingHint() );
 	layout->addWidget(new QLabel(i18n("Exiting ball angle:"), this));
-	QSpinBox *deg = new QSpinBox(0, 359, 10, this);
+	QSpinBox *deg = new QSpinBox(this);
+        deg->setRange( 0, 359 );
+        deg->setSingleStep( 10 );
 	deg->setSuffix(QString(" ") + i18n("degrees"));
 	deg->setValue(blackHole->curExitDeg());
 	deg->setWrapping(true);
@@ -1525,7 +1543,9 @@ BlackHoleConfig::BlackHoleConfig(BlackHole *blackHole, QWidget *parent)
 
 	layout->addStretch();
 
-	QHBoxLayout *hlayout = new QHBoxLayout(layout, spacingHint());
+	QHBoxLayout *hlayout = new QHBoxLayout;
+        hlayout->setSpacing( spacingHint() );
+        layout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Minimum exit speed:"), this));
 	KDoubleNumInput *min = new KDoubleNumInput(this);
 	min->setRange(0, 8, 1, true);
@@ -1533,7 +1553,9 @@ BlackHoleConfig::BlackHoleConfig(BlackHole *blackHole, QWidget *parent)
 	connect(min, SIGNAL(valueChanged(double)), this, SLOT(minChanged(double)));
 	min->setValue(blackHole->minSpeed());
 
-	hlayout = new QHBoxLayout(layout, spacingHint());
+	hlayout = new QHBoxLayout;
+        hlayout->setSpacing( spacingHint() );
+        layout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Maximum:"), this));
 	KDoubleNumInput *max = new KDoubleNumInput(this);
 	max->setRange(1, 10, 1, true);
@@ -1970,15 +1992,21 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 {
 	this->holeInfo = holeInfo;
 
-	QVBoxLayout *layout = new QVBoxLayout(this, marginHint(), spacingHint());
+	QVBoxLayout *layout = new QVBoxLayout(this);
+        layout->setMargin( marginHint() );
+        layout->setSpacing( spacingHint() );
 
-	QHBoxLayout *hlayout = new QHBoxLayout(layout, spacingHint());
+	QHBoxLayout *hlayout = new QHBoxLayout;
+        hlayout->setSpacing( spacingHint() );
+        layout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Course name: "), this));
 	KLineEdit *nameEdit = new KLineEdit(holeInfo->untranslatedName(), this);
 	hlayout->addWidget(nameEdit);
 	connect(nameEdit, SIGNAL(textChanged(const QString &)), this, SLOT(nameChanged(const QString &)));
 
-	hlayout = new QHBoxLayout(layout, spacingHint());
+	hlayout = new QHBoxLayout;
+        hlayout->setSpacing( spacingHint() );
+        layout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Course author: "), this));
 	KLineEdit *authorEdit = new KLineEdit(holeInfo->author(), this);
 	hlayout->addWidget(authorEdit);
@@ -1986,16 +2014,22 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 
 	layout->addStretch();
 
-	hlayout = new QHBoxLayout(layout, spacingHint());
+	hlayout = new QHBoxLayout;
+        hlayout->setSpacing( spacingHint() );
+        layout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Par:"), this));
-	QSpinBox *par = new QSpinBox(1, 15, 1, this);
+	QSpinBox *par = new QSpinBox(this);
+        par->setRange( 1, 15 );
+        par->setSingleStep( 1 );
 	par->setValue(holeInfo->par());
 	hlayout->addWidget(par);
 	connect(par, SIGNAL(valueChanged(int)), this, SLOT(parChanged(int)));
 	hlayout->addStretch();
 
 	hlayout->addWidget(new QLabel(i18n("Maximum:"), this));
-	QSpinBox *maxstrokes = new QSpinBox(holeInfo->lowestMaxStrokes(), 30, 1, this);
+	QSpinBox *maxstrokes = new QSpinBox(this);
+        maxstrokes->setRange( holeInfo->lowestMaxStrokes(), 30 );
+        maxstrokes->setSingleStep( 1 );
 	maxstrokes->setWhatsThis( i18n("Maximum number of strokes player can take on this hole."));
 	maxstrokes->setToolTip( i18n("Maximum number of strokes"));
 	maxstrokes->setSpecialValueText(i18n("Unlimited"));
@@ -3546,12 +3580,12 @@ void KolfGame::openFile()
 		cfg->setGroup(*it);
 
 		const int len = (*it).length();
-		const int dashIndex = (*it).find("-");
+		const int dashIndex = (*it).indexOf("-");
 		const int holeNum = (*it).left(dashIndex).toInt();
 		if (holeNum > _highestHole)
 			_highestHole = holeNum;
 
-		const int atIndex = (*it).find("@");
+		const int atIndex = (*it).indexOf("@");
 		const QString name = (*it).mid(dashIndex + 1, atIndex - (dashIndex + 1));
 
 		if (holeNum != curHole)
@@ -3565,8 +3599,8 @@ void KolfGame::openFile()
 		numItems++;
 
 
-		const int commaIndex = (*it).find(",");
-		const int pipeIndex = (*it).find("|");
+		const int commaIndex = (*it).indexOf(",");
+		const int pipeIndex = (*it).indexOf("|");
 		const int x = (*it).mid(atIndex + 1, commaIndex - (atIndex + 1)).toInt();
 		const int y = (*it).mid(commaIndex + 1, pipeIndex - (commaIndex + 1)).toInt();
 
@@ -3991,7 +4025,7 @@ void KolfGame::save()
 	// wipe out all groups from this hole
 	for (QStringList::Iterator it = groups.begin(); it != groups.end(); ++it)
 	{
-		int holeNum = (*it).left((*it).find("-")).toInt();
+		int holeNum = (*it).left((*it).indexOf("-")).toInt();
 		if (holeNum == curHole)
 			cfg->deleteGroup(*it);
 	}
@@ -4098,7 +4132,7 @@ void KolfGame::toggleEditMode()
 	inPlay = false;
 }
 
-void KolfGame::playSound(QString file, double vol)
+void KolfGame::playSound(QString /*file*/, double /*vol*/)
 {
 #warning port to the new sound system when it exists
 /*	if (m_sound)
@@ -4169,7 +4203,7 @@ void KolfGame::print(KPrinter &pr)
 	p.setPen(QPen(Qt::black, 2));
 	p.drawRect(course->rect());
 
-	p.resetXForm();
+	p.resetMatrix();
 
 	if (pr.option("kde-kolf-title") == "true")
 	{

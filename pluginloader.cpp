@@ -39,7 +39,7 @@ ObjectList *PluginLoader::loadAll()
 
 Object *PluginLoader::load(const QString &filename)
 {
-	KLibFactory *factory = KLibLoader::self()->factory(filename.latin1());
+	KLibFactory *factory = KLibLoader::self()->factory(filename.toLatin1());
 
 	if (!factory)
 	{
@@ -48,7 +48,7 @@ Object *PluginLoader::load(const QString &filename)
 	}
 
 	QObject *newObject = factory->create(0, "objectInstance", "Object");
-	
+
 	if (!newObject)
 	{
 		kWarning() << "no newObject for " << filename << "!" << endl;

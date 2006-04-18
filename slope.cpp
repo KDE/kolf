@@ -174,7 +174,7 @@ void Slope::moveArrow()
 	Arrow *arrow = 0;
 	for (arrow = arrows.first(); arrow; arrow = arrows.next())
 		arrow->move((double)xavg, (double)yavg);
-	
+
 	if (showingInfo)
 		showInfo();
 	else
@@ -349,7 +349,7 @@ void Slope::setGradient(QString text)
 {
 	for (QMap<KImageEffect::GradientType, QString>::Iterator it = gradientKeys.begin(); it != gradientKeys.end(); ++it)
 	{
-		if (it.data() == text)
+		if (it.value() == text)
 		{
 			setType(it.key());
 			return;
@@ -359,7 +359,7 @@ void Slope::setGradient(QString text)
 	// extra forgiveness ;-) (note it's i18n keys)
 	for (QMap<KImageEffect::GradientType, QString>::Iterator it = gradientI18nKeys.begin(); it != gradientI18nKeys.end(); ++it)
 	{
-		if (it.data() == text)
+		if (it.value() == text)
 		{
 			setType(it.key());
 			return;
@@ -410,10 +410,10 @@ void Slope::updatePixmap()
 		const QColor otherDarkColor = darkColor.dark(110 + 20 * grade);
 		QImage otherGradientImage = KImageEffect::gradient(QSize(width(), height()), reversed? otherDarkColor : otherLightColor, reversed? otherLightColor : otherDarkColor, KImageEffect::DiagonalGradient);
 
-		QImage grassImage(qpixmap.convertToImage());
+		QImage grassImage(qpixmap.toImage());
 
 		QImage finalGradientImage = KImageEffect::blend(otherGradientImage, gradientImage, .60);
-		pixmap.convertFromImage(KImageEffect::blend(grassImage, finalGradientImage, .40));
+		pixmap = QPixmap::fromImage(KImageEffect::blend(grassImage, finalGradientImage, .40));
 
 		// make arrows
 		double angle = 0;
@@ -481,12 +481,12 @@ void Slope::updatePixmap()
 		KPixmap kpixmap = qpixmap;
 		(void) KPixmapEffect::intensity(kpixmap, ratio);
 
-		QImage grassImage(kpixmap.convertToImage());
+		QImage grassImage(kpixmap.toImage());
 
 		// okay, now we have a grass image that's
 		// appropriately lit, and a gradient;
 		// lets blend..
-		pixmap.convertFromImage(KImageEffect::blend(gradientImage, grassImage, .42));
+		pixmap = QPixmap::fromImage(KImageEffect::blend(gradientImage, grassImage, .42));
 		arrow->setAngle(angle);
 		arrow->setLength(length);
 		arrow->updateSelf();
@@ -499,7 +499,8 @@ void Slope::updatePixmap()
 	if (diag || circle)
 	{
 		// make cleared bitmap
-		QBitmap bitmap(pixmap.width(), pixmap.height(), true);
+		QBitmap bitmap(pixmap.width(), pixmap.height());
+                bitmap.clear();
 		QPainter bpainter(&bitmap);
 		bpainter.setBrush(Qt::color1);
 		Q3PointArray r = areaPoints();
@@ -527,15 +528,17 @@ SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
 	: Config(parent)
 {
 	this->slope = slope;
-	QVBoxLayout *layout = new QVBoxLayout(this, marginHint(), spacingHint());
+	QVBoxLayout *layout = new QVBoxLayout(this);
+        layout->setMargin( marginHint() );
+        layout->setSpacing( spacingHint() );
 	KComboBox *gradient = new KComboBox(this);
 	QStringList items;
 	QString curText;
 	for (QMap<KImageEffect::GradientType, QString>::Iterator it = slope->gradientI18nKeys.begin(); it != slope->gradientI18nKeys.end(); ++it)
 	{
 		if (it.key() == slope->curType())
-			curText = it.data();
-		items.append(it.data());
+			curText = it.value();
+		items.append(it.value());
 	}
 	gradient->insertStringList(items);
 	gradient->setCurrentText(curText);
@@ -549,7 +552,9 @@ SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
 	layout->addWidget(reversed);
 	connect(reversed, SIGNAL(toggled(bool)), this, SLOT(setReversed(bool)));
 
-	QHBoxLayout *hlayout = new QHBoxLayout(layout, spacingHint());
+	QHBoxLayout *hlayout = new QHBoxLayout;
+        hlayout->setSpacing( spacingHint() );
+        layout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Grade:"), this));
 	KDoubleNumInput *grade = new KDoubleNumInput(this);
 	grade->setRange(0, 8, 1, true);

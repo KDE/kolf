@@ -263,9 +263,14 @@ FloaterConfig::FloaterConfig(Floater *floater, QWidget *parent)
 	m_vlayout->addStretch();
 
 	m_vlayout->addWidget(new QLabel(i18n("Moving speed"), this));
-	QHBoxLayout *hlayout = new QHBoxLayout(m_vlayout, spacingHint());
+	QHBoxLayout *hlayout = new QHBoxLayout;
+        hlayout->setSpacing( spacingHint() );
+        m_vlayout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Slow"), this));
-	QSlider *slider = new QSlider(0, 20, 2, floater->curSpeed(), Qt::Horizontal, this);
+	QSlider *slider = new QSlider(Qt::Horizontal, this);
+        slider->setRange( 0, 20 );
+        slider->setPageStep( 2 );
+        slider->setValue( floater->curSpeed() );
 	hlayout->addWidget(slider);
 	hlayout->addWidget(new QLabel(i18n("Fast"), this));
 	connect(slider, SIGNAL(valueChanged(int)), this, SLOT(speedChanged(int)));

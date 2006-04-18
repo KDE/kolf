@@ -577,9 +577,9 @@ void Kolf::newPlayersTurn(Player *player)
 	tempStatusBarText = i18n("%1's turn", player->name());
 
 	if (showInfoAction->isChecked())
-		statusBar()->message(tempStatusBarText, 5 * 1000);
+		statusBar()->showMessage(tempStatusBarText, 5 * 1000);
 	else
-		statusBar()->message(tempStatusBarText);
+		statusBar()->showMessage(tempStatusBarText);
 
 	scoreboard->setCurrentCell(player->id() - 1, game->currentHole() - 1);
 }
@@ -587,15 +587,16 @@ void Kolf::newPlayersTurn(Player *player)
 void Kolf::newStatusText(const QString &text)
 {
 	if (text.isEmpty())
-		statusBar()->message(tempStatusBarText);
+		statusBar()->showMessage(tempStatusBarText);
 	else
-		statusBar()->message(text);
+		statusBar()->showMessage(text);
 }
 
 void Kolf::editingStarted()
 {
 	delete editor;
-	editor = new Editor(obj, dummy, "Editor");
+	editor = new Editor(obj, dummy);
+        editor->setObjectName( "Editor" );
 	connect(editor, SIGNAL(addNewItem(Object *)), game, SLOT(addNewObject(Object *)));
 	connect(editor, SIGNAL(changed()), game, SLOT(setModified()));
 	connect(editor, SIGNAL(addNewItem(Object *)), this, SLOT(setHoleFocus()));

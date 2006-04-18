@@ -12,15 +12,19 @@
 #include "editor.h"
 #include "game.h"
 
-Editor::Editor(ObjectList *list, QWidget *parent, const char *name)
-	: QWidget(parent, name)
+Editor::Editor(ObjectList *list, QWidget *parent)
+	: QWidget(parent)
 {
 	this->list = list;
 	config = 0;
 
-	hlayout = new QHBoxLayout(this, KDialog::marginHint(), KDialog::spacingHint());
+	hlayout = new QHBoxLayout(this);
+        hlayout->setMargin( KDialog::marginHint() );
+        hlayout->setSpacing( KDialog::spacingHint() );
 
-	QVBoxLayout *vlayout = new QVBoxLayout(hlayout, KDialog::spacingHint());
+	QVBoxLayout *vlayout = new QVBoxLayout;
+        vlayout->setSpacing( KDialog::spacingHint() );
+        hlayout->addLayout( vlayout );
 	vlayout->addWidget(new QLabel(i18n("Add object:"), this));
 	listbox = new KListBox(this, "Listbox");
 	vlayout->addWidget(listbox);

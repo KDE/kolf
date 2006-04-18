@@ -14,7 +14,7 @@ class Object : public QObject
 	Q_OBJECT
 
 public:
-	Object(QObject *parent = 0, const char *name = 0) : QObject(parent, name) { m_addOnNewHole = false; }
+	Object(QObject *parent = 0) : QObject(parent) { m_addOnNewHole = false; }
 	virtual Q3CanvasItem *newObject(Q3Canvas * /*canvas*/) { return 0; }
 	QString name() { return m_name; }
 	QString _name() { return m__name; }

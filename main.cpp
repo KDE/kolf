@@ -56,10 +56,10 @@ extern "C" KDE_EXPORT int kdemain(int argc, char **argv)
 			CourseInfo info;
 			KolfGame::courseInfo(info, filename);
 
-			cout << info.name.latin1()
-			     << " - " << i18n("By %1", info.author).latin1()
-			     << " - " << i18n("%1 holes", info.holes).latin1()
-			     << " - " << i18n("par %1", info.par).latin1()
+			cout << static_cast<const char*>( info.name.toLatin1() )
+			     << " - " << static_cast<const char*>( i18n("By %1", info.author).toLatin1() )
+			     << " - " << static_cast<const char*>( i18n("%1 holes", info.holes).toLatin1() )
+			     << " - " << static_cast<const char*>( i18n("par %1", info.par).toLatin1() )
 			     << endl;
 
 			return 0;
@@ -85,7 +85,6 @@ extern "C" KDE_EXPORT int kdemain(int argc, char **argv)
 	else
 		top->closeGame();
 
-	a.setMainWidget(top);
 	top->show();
 
 	return a.exec();

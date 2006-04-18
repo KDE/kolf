@@ -45,7 +45,9 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 	startColors << Qt::yellow << Qt::blue << Qt::red << Qt::lightGray << Qt::cyan << Qt::darkBlue << Qt::magenta << Qt::darkGray << Qt::darkMagenta << Qt::darkYellow;
 
 	playerPage = addPage(i18n("Players"));
-	QVBoxLayout *bigLayout = new QVBoxLayout(playerPage, marginHint(), spacingHint());
+	QVBoxLayout *bigLayout = new QVBoxLayout(playerPage);
+        bigLayout->setMargin( marginHint() );
+        bigLayout->setSpacing( spacingHint() );
 
 	addButton = new KPushButton(i18n("&New Player"), playerPage);
 	bigLayout->addWidget(addButton);
@@ -62,7 +64,9 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 		grass.load(locate("appdata", "pics/grass.png"));
 		QPixmapCache::insert("grass", grass);
 	}
-	scroller->setBackgroundPixmap(grass);
+        QPalette palette;
+        palette.setBrush( scroller->backgroundRole(), QBrush( grass ) );
+        scroller->setPalette( palette );
 
 	QMap<QString, QString> entries = config->entryMap("New Game Dialog");
 	int i = 0;
@@ -73,7 +77,7 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 
 		addPlayer();
 		editors.last()->setName(it.key().right(it.key().length() - 1));
-		editors.last()->setColor(QColor(it.data()));
+		editors.last()->setColor(QColor(it.value()));
 		++i;
 	}
 
@@ -88,13 +92,17 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 	if (enableCourses)
 	{
 		coursePage = addPage(i18n("Course"), i18n("Choose Course to Play"));
-		QVBoxLayout *coursePageLayout = new QVBoxLayout(coursePage, marginHint(), spacingHint());
+		QVBoxLayout *coursePageLayout = new QVBoxLayout(coursePage);
+                coursePageLayout->setMargin( marginHint() );
+                coursePageLayout->setSpacing( spacingHint() );
 
 		KUrlLabel *coursesLink = new KUrlLabel("http://katzbrown.com/kolf/Courses/User Uploaded/", "katzbrown.com/kolf/Courses/User Uploaded/", coursePage);
 		connect(coursesLink, SIGNAL(leftClickedURL(const QString &)), kapp, SLOT(invokeBrowser(const QString &)));
 		coursePageLayout->addWidget(coursesLink);
 
-		QHBoxLayout *hlayout = new QHBoxLayout(coursePageLayout, spacingHint());
+		QHBoxLayout *hlayout = new QHBoxLayout;
+                hlayout->setSpacing( spacingHint() );
+                coursePageLayout->addLayout( hlayout );
 
 		// following use this group
 		config->setGroup("New Game Dialog Mode");
@@ -133,13 +141,17 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 		connect(courseList, SIGNAL(highlighted(int)), this, SLOT(courseSelected(int)));
 		connect(courseList, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
 
-		QVBoxLayout *detailLayout = new QVBoxLayout(hlayout, spacingHint());
+		QVBoxLayout *detailLayout = new QVBoxLayout;
+                detailLayout->setSpacing( spacingHint() );
+                hlayout->addLayout( detailLayout );
 		name = new QLabel(coursePage);
 		detailLayout->addWidget(name);
 		author = new QLabel(coursePage);
 		detailLayout->addWidget(author);
 
-		QHBoxLayout *minorLayout = new QHBoxLayout(detailLayout, spacingHint());
+		QHBoxLayout *minorLayout = new QHBoxLayout;
+                minorLayout->setSpacing( spacingHint() );
+                detailLayout->addLayout( minorLayout );
 		par = new QLabel(coursePage);
 		minorLayout->addWidget(par);
 		holes = new QLabel(coursePage);
@@ -153,7 +165,9 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 		detailLayout->addStretch();
 		detailLayout->addWidget(new KSeparator(coursePage));
 
-		minorLayout = new QHBoxLayout(detailLayout, spacingHint());
+		minorLayout = new QHBoxLayout;
+                minorLayout->setSpacing( spacingHint() );
+                detailLayout->addLayout( minorLayout );
 
 		KPushButton *addCourseButton = new KPushButton(i18n("Add..."), coursePage);
 		minorLayout->addWidget(addCourseButton);
@@ -166,10 +180,12 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 		courseSelected(curItem);
 		selectionChanged();
 	}
-	
+
 	// options page
 	optionsPage = addPage(i18n("Options"), i18n("Game Options"));
-	QVBoxLayout *vlayout = new QVBoxLayout(optionsPage, marginHint(), spacingHint());
+	QVBoxLayout *vlayout = new QVBoxLayout(optionsPage);
+        vlayout->setMargin( marginHint() );
+        vlayout->setSpacing( spacingHint() );
 
 	mode = new QCheckBox(i18n("&Strict mode"), optionsPage);
 	vlayout->addWidget(mode);
@@ -242,8 +258,8 @@ void NewGameDialog::removeCourse()
 	if (!externCourses.contains(file))
 		return;
 
-	names.remove(file);
-	externCourses.remove(file);
+	names.removeAll(file);
+	externCourses.removeAll(file);
 	courseList->removeItem(curItem);
 
 	selectionChanged();
@@ -277,7 +293,7 @@ void NewGameDialog::addCourse()
 
 		courseList->insertItem(curinfo.name, 0);
 	}
-	
+
 	if (hasDuplicates)
 		KMessageBox::information(this, i18n("Chosen course is already on course list."));
 
@@ -291,7 +307,7 @@ void NewGameDialog::addPlayer()
 	if (editors.count() >= startColors.count())
 		return;
 
-	
+
 	PlayerEditor *pe = new PlayerEditor(i18n("Player %1", editors.count() + 1), startColors.at(editors.count()), playersWidget);
 	editors.append(pe);
 	pe->show();
@@ -307,7 +323,7 @@ void NewGameDialog::deleteEditor(PlayerEditor *editor)
 	if (editors.count() < 2)
 		return;
 
-	editors.remove(editor);
+	editors.removeAll(editor);
 	delete editor;
 
 	enableButtons();
@@ -322,17 +338,20 @@ void NewGameDialog::enableButtons()
 
 /////////////////////////
 
-PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent, const char *_name)
-	: QWidget(parent, _name)
+PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent)
+	: QWidget(parent)
 {
-	QHBoxLayout *layout = new QHBoxLayout(this, KDialogBase::spacingHint());
+	QHBoxLayout *layout = new QHBoxLayout(this);
+	layout->setMargin( KDialogBase::spacingHint() );
 
 	if (!QPixmapCache::find("grass", grass))
 	{
 		grass.load(locate("appdata", "pics/grass.png"));
 		QPixmapCache::insert("grass", grass);
 	}
-	setBackgroundPixmap(grass);
+        QPalette palette;
+        palette.setBrush( backgroundRole(), QBrush( grass ) );
+        setPalette( palette );
 
 	editor = new KLineEdit(this);
 	layout->addWidget(editor);
@@ -342,13 +361,15 @@ PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent
 	layout->addWidget(colorButton = new KColorButton(startColor, this));
 #warning setAutoMask does not exists in Qt4 port
 //	colorButton->setAutoMask(true);
-	colorButton->setBackgroundPixmap(grass);
+        palette.setBrush( colorButton->backgroundRole(), QBrush( grass ) );
+        colorButton->setPalette( palette );
 
 	KPushButton *remove = new KPushButton(i18n("Remove"), this);
 #warning setAutoMask does not exists in Qt4 port
 //	remove->setAutoMask(true);
 	layout->addWidget(remove);
-	remove->setBackgroundPixmap(grass);
+        palette.setBrush( remove->backgroundRole(), QBrush( grass ) );
+	remove->setPalette( palette );
 	connect(remove, SIGNAL(clicked()), this, SLOT(removeMe()));
 }
 

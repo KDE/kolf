@@ -39,7 +39,9 @@ void Config::changed()
 MessageConfig::MessageConfig(QString text, QWidget *parent, const char *name)
 	: Config(parent, name)
 {
-	QVBoxLayout *layout = new QVBoxLayout(this, marginHint(), spacingHint());
+	QVBoxLayout *layout = new QVBoxLayout(this);
+        layout->setMargin( marginHint() );
+        layout->setSpacing( spacingHint() );
 	layout->addWidget(new QLabel(text, this));
 }
 
