@@ -56,10 +56,10 @@ extern "C" KDE_EXPORT int kdemain(int argc, char **argv)
 			CourseInfo info;
 			KolfGame::courseInfo(info, filename);
 
-			cout << static_cast<const char*>( info.name.toLatin1() )
-			     << " - " << static_cast<const char*>( i18n("By %1", info.author).toLatin1() )
-			     << " - " << static_cast<const char*>( i18n("%1 holes", info.holes).toLatin1() )
-			     << " - " << static_cast<const char*>( i18n("par %1", info.par).toLatin1() )
+			cout << info.name.toLatin1().constData() 
+			     << " - " << i18n("By %1", info.author).toLatin1().constData()
+			     << " - " << i18n("%1 holes", info.holes).toLatin1().constData()
+			     << " - " << i18n("par %1", info.par).toLatin1().constData()
 			     << endl;
 
 			return 0;
