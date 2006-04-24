@@ -66,7 +66,7 @@ extern "C" KDE_EXPORT int kdemain(int argc, char **argv)
 		}
 		else
 		{
-			KCmdLineArgs::usage(i18n("Course %1 does not exist.", filename.latin1()));
+			KCmdLineArgs::usage(i18n("Course %1 does not exist.", filename));
 		}
 	}
 

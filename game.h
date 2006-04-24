@@ -85,7 +85,7 @@ public:
 	Player() : m_ball(new Ball(0)) {};
 	Ball *ball() const { return m_ball; }
 	void setBall(Ball *ball) { m_ball = ball; }
-	BallStateInfo stateInfo(int hole) const { BallStateInfo ret; ret.spot = QPoint(m_ball->x(), m_ball->y()); ret.state = m_ball->curState(); ret.score = score(hole); ret.beginningOfHole = m_ball->beginningOfHole(); ret.id = m_id; return ret; }
+	BallStateInfo stateInfo(int hole) const { BallStateInfo ret; ret.spot = QPoint((int)m_ball->x(), (int)m_ball->y()); ret.state = m_ball->curState(); ret.score = score(hole); ret.beginningOfHole = m_ball->beginningOfHole(); ret.id = m_id; return ret; }
 
 	Q3ValueList<int> scores() const { return m_scores; }
 	void setScores(const Q3ValueList<int> &newScores) { m_scores = newScores; }
@@ -112,6 +112,7 @@ private:
 	QString m_name;
 	int m_id;
 };
+
 typedef Q3ValueList<Player> PlayerList;
 
 class Arrow : public Q3CanvasLine
