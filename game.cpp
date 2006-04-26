@@ -104,12 +104,12 @@ void RectPoint::moveBy(double dx, double dy)
 	if (!qitem)
 		return;
 
-	double nw = m_sizeFactor * fabs(x() - qitem->x());
-	double nh = m_sizeFactor * fabs(y() - qitem->y());
+	int nw = ( int )( m_sizeFactor * fabs(x() - qitem->x()) );
+	int nh = ( int )( m_sizeFactor * fabs(y() - qitem->y()) );
 	if (nw <= 0 || nh <= 0)
 		return;
 
-	rect->newSize(nw, nh);
+	rect->newSize( nw, nh);
 }
 
 Config *RectPoint::config(QWidget *parent)
@@ -176,7 +176,7 @@ void Arrow::aboutToDie()
 void Arrow::updateSelf()
 {
 	QPoint start = startPoint();
-	QPoint end(m_length * cos(m_angle), m_length * sin(m_angle));
+	QPoint end(int( m_length * cos(m_angle) ), int( m_length * sin(m_angle)) );
 
 	if (m_reversed)
 	{
@@ -192,7 +192,7 @@ void Arrow::updateSelf()
 	const double angle1 = m_angle - M_PI / 2 - 1;
 	line1->move(end.x() + x(), end.y() + y());
 	start = end;
-	end = QPoint(lineLen * cos(angle1), lineLen * sin(angle1));
+	end = QPoint(int( lineLen * cos(angle1) ), int( lineLen * sin(angle1) ) );
 	line1->setPoints(0, 0, end.x(), end.y());
 
 	const double angle2 = m_angle + M_PI / 2 + 1;
@@ -366,7 +366,7 @@ void Bridge::load(KConfig *cfg)
 
 void Bridge::doLoad(KConfig *cfg)
 {
-	newSize(cfg->readEntry("width", width()), cfg->readNumEntry("height", height()));
+	newSize(cfg->readEntry("width", width()), cfg->readEntry("height", height()));
 	setTopWallVisible(cfg->readEntry("topWallVisible", topWallVisible()));
 	setBotWallVisible(cfg->readEntry("botWallVisible", botWallVisible()));
 	setLeftWallVisible(cfg->readEntry("leftWallVisible", leftWallVisible()));
