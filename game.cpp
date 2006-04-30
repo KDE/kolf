@@ -648,10 +648,10 @@ void Sign::draw(QPainter &painter)
 	const int indent = wallPen().width() + 3;
 	txt.setWidth(width() - 2*indent);
 	QColorGroup colorGroup;
-	colorGroup.setColor(QColorGroup::Foreground, Qt::black);
-	colorGroup.setColor(QColorGroup::Text, Qt::black);
-	colorGroup.setColor(QColorGroup::Background, Qt::black);
-	colorGroup.setColor(QColorGroup::Base, Qt::black);
+	colorGroup.setColor(QPalette::Foreground, Qt::black);
+	colorGroup.setColor(QPalette::Text, Qt::black);
+	colorGroup.setColor(QPalette::Background, Qt::black);
+	colorGroup.setColor(QPalette::Base, Qt::black);
 	txt.draw(&painter, x() + indent, y(), QRect(x() + indent, y(), width() - indent, height() - indent), colorGroup);
 }
 
