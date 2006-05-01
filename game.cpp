@@ -211,7 +211,9 @@ BridgeConfig::BridgeConfig(Bridge *bridge, QWidget *parent)
 	m_vlayout = new QVBoxLayout(this);
         m_vlayout->setMargin( marginHint() );
         m_vlayout->setSpacing( spacingHint() );
-	QGridLayout *layout = new QGridLayout(m_vlayout, 2, 3, spacingHint());
+	QGridLayout *layout = new QGridLayout( );
+        m_vlayout->addItem( layout );
+        layout->setSpacing( spacingHint());
 	layout->addWidget(new QLabel(i18n("Walls on:"), this), 0, 0);
 	top = new QCheckBox(i18n("&Top"), this);
 	layout->addWidget(top, 0, 1);

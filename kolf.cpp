@@ -67,7 +67,7 @@ Kolf::Kolf()
 	filename = QString::null;
 	dummy = new QWidget(this);
 	setCentralWidget(dummy);
-	layout = new QGridLayout(dummy, 3, 1);
+	layout = new QGridLayout(dummy);
 
 	resize(420, 480);
 }
