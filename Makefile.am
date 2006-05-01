@@ -46,5 +46,3 @@ magic_DATA = kolf.magic
 
 METASOURCES = AUTO
 
-messages: rc.cpp game.h floater.h slope.h
-	$(XGETTEXT) *.cpp canvasitem.h game.h -o $(podir)/kolf.pot
