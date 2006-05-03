@@ -59,7 +59,9 @@ void PoolBall::draw(QPainter &p)
 PoolBallConfig::PoolBallConfig(PoolBall *poolBall, QWidget *parent)
 	: Config(parent), m_poolBall(poolBall)
 {
-	QVBoxLayout *layout = new QVBoxLayout(this, marginHint(), spacingHint());
+	QVBoxLayout *layout = new QVBoxLayout(this);
+	layout->setSpacing(spacingHint());
+	layout->setMargin(marginHint());
 
 	layout->addStretch();
 

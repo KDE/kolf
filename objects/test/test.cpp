@@ -72,13 +72,16 @@ void Test::load(KConfig *cfg)
 TestConfig::TestConfig(Test *test, QWidget *parent)
 	: Config(parent), m_test(test)
 {
-	QVBoxLayout *layout = new QVBoxLayout(this, marginHint(), spacingHint());
+	QVBoxLayout *layout = new QVBoxLayout(this);
+	layout->setSpacing(spacingHint());
+	layout->setMargin(marginHint());
 
 	layout->addStretch();
 
 	layout->addWidget(new QLabel(i18n("Flash speed"), this));
 
-	QHBoxLayout *hlayout = new QHBoxLayout(layout, spacingHint());
+	QHBoxLayout *hlayout = new QHBoxLayout(layout);
+	hlayout->setSpacing(spacingHint());
 	QLabel *slow = new QLabel(i18n("Slow"), this);
 	hlayout->addWidget(slow);
 	QSlider *slider = new QSlider(1, 100, 5, 101 - m_test->switchEvery(), Qt::Horizontal, this);
