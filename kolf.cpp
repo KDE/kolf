@@ -145,8 +145,10 @@ void Kolf::initGUI()
 	connect(soundAction, SIGNAL(toggled(bool)), this, SLOT(soundChanged(bool)));
 	soundAction->setChecked(config->readEntry("sound", true));
 
-	(void) new KAction(i18n("&Reload Plugins"), 0, this, SLOT(initPlugins()), actionCollection(), "reloadplugins");
-	(void) new KAction(i18n("Show &Plugins"), 0, this, SLOT(showPlugins()), actionCollection(), "showplugins");
+	KAction *action = new KAction(i18n("&Reload Plugins"), actionCollection(), "reloadplugins");
+	connect(action, SIGNAL(triggered(bool) ), SLOT(initPlugins()));
+	action = new KAction(i18n("Show &Plugins"), actionCollection(), "showplugins");
+	connect(action, SIGNAL(triggered(bool) ), SLOT(showPlugins()));
 
 	aboutAction = new KAction(i18n("&About Course"), 0, this, SLOT(emptySlot()), actionCollection(), "aboutcourse");
 	tutorialAction = new KAction(i18n("&Tutorial"), 0, this, SLOT(tutorial()), actionCollection(), "tutorial");
