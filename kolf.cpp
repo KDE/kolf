@@ -156,8 +156,10 @@ void Kolf::initGUI()
 	action = new KAction(i18n("Show &Plugins"), actionCollection(), "showplugins");
 	connect(action, SIGNAL(triggered(bool) ), SLOT(showPlugins()));
 
-	aboutAction = new KAction(i18n("&About Course"), 0, this, SLOT(emptySlot()), actionCollection(), "aboutcourse");
-	tutorialAction = new KAction(i18n("&Tutorial"), 0, this, SLOT(tutorial()), actionCollection(), "tutorial");
+	aboutAction = new KAction(i18n("&About Course"), actionCollection(), "aboutcourse");
+	connect(aboutAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
+	tutorialAction = new KAction(i18n("&Tutorial"), actionCollection(), "tutorial");
+	connect(tutorialAction, SIGNAL(triggered(bool) ), SLOT(tutorial()));
 
 	statusBar();
 	setupGUI();
