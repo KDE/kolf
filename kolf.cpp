@@ -104,8 +104,12 @@ void Kolf::initGUI()
 	highScoreAction = KStdGameAction::highscores(this, SLOT(showHighScores()), actionCollection());
 
 	editingAction = new KToggleAction(i18n("&Edit"), "pencil", Qt::CTRL+Qt::Key_E, this, SLOT(emptySlot()), actionCollection(), "editing");
-	newHoleAction = new KAction(i18n("&New"), "filenew", Qt::CTRL+Qt::SHIFT+Qt::Key_N, this, SLOT(emptySlot()), actionCollection(), "newhole");
-	clearHoleAction = new KAction(KStdGuiItem::clear().text(), "locationbar_erase", Qt::CTRL+Qt::Key_Delete, this, SLOT(emptySlot()), actionCollection(), "clearhole");
+	newHoleAction = new KAction(KIcon("filenew"), i18n("&New"), actionCollection(), "newhole");
+	connect(newHoleAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
+	newHoleAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_N);
+	clearHoleAction = new KAction(KIcon("locationbar_erase"), KStdGuiItem::clear().text(), actionCollection(), "clearhole");
+	connect(clearHoleAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
+	clearHoleAction->setShortcut(Qt::CTRL+Qt::Key_Delete);
 	resetHoleAction = new KAction(i18n("&Reset"), actionCollection(), "resethole");
 	connect(resetHoleAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	resetHoleAction->setShortcut(Qt::CTRL+Qt::Key_R);
@@ -114,13 +118,20 @@ void Kolf::initGUI()
 	//replayShotAction = new KAction(i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 
 	holeAction = new KSelectAction(i18n("Switch to Hole"), 0, this, SLOT(emptySlot()), actionCollection(), "switchhole");
-	nextAction = new KAction(i18n("&Next Hole"), "forward", KStdAccel::shortcut(KStdAccel::Forward), this, SLOT(emptySlot()), actionCollection(), "nexthole");
-	prevAction = new KAction(i18n("&Previous Hole"), "back", KStdAccel::shortcut(KStdAccel::Back), this, SLOT(emptySlot()), actionCollection(), "prevhole");
-	firstAction = new KAction(i18n("&First Hole"), "gohome", KStdAccel::shortcut(KStdAccel::Home), this, SLOT(emptySlot()), actionCollection(), "firsthole");
+	nextAction = new KAction(KIcon("forward"), i18n("&Next Hole"), actionCollection(), "nexthole");
+	connect(nextAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
+	nextAction->setShortcut(KStdAccel::shortcut(KStdAccel::Forward));
+	prevAction = new KAction(KIcon("back"), i18n("&Previous Hole"), actionCollection(), "prevhole");
+	connect(prevAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
+	prevAction->setShortcut(KStdAccel::shortcut(KStdAccel::Back));
+	firstAction = new KAction(KIcon("gohome"), i18n("&First Hole"), actionCollection(), "firsthole");
+	connect(firstAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
+	firstAction->setShortcut(KStdAccel::shortcut(KStdAccel::Home));
 	lastAction = new KAction(i18n("&Last Hole"), actionCollection(), "lasthole");
 	connect(lastAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	lastAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_End);
-	randAction = new KAction(i18n("&Random Hole"), "goto", 0, this, SLOT(emptySlot()), actionCollection(), "randhole");
+	randAction = new KAction(KIcon("goto"), i18n("&Random Hole"), actionCollection(), "randhole");
+	connect(randAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 
 	useMouseAction = new KToggleAction(i18n("Enable &Mouse for Moving Putter"), 0, this, SLOT(emptySlot()), actionCollection(), "usemouse");
 	useMouseAction->setCheckedState(i18n("Disable &Mouse for Moving Putter"));
