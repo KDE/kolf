@@ -47,7 +47,7 @@ Object *PluginLoader::load(const QString &filename)
 		return 0;
 	}
 
-	QObject *newObject = factory->create(0, "objectInstance", "Object");
+	QObject *newObject = factory->create(0, "objectInstance", QStringList("Object"));
 
 	if (!newObject)
 	{

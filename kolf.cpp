@@ -1,4 +1,5 @@
 #include <kaction.h>
+#include <ktoggleaction.h>
 #include <kapplication.h>
 #include <kconfig.h>
 #include <kdebug.h>
