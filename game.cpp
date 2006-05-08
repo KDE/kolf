@@ -874,7 +874,7 @@ Puddle::Puddle(Q3Canvas *canvas)
 	brush.setTexture(pic);
 	setBrush(brush);
 
-	KPixmap pointPic(pic);
+	QPixmap pointPic(pic);
 	KPixmapEffect::intensity(pointPic, .45);
 	brush.setTexture(pointPic);
 	point->setBrush(brush);
@@ -927,7 +927,7 @@ Sand::Sand(Q3Canvas *canvas)
 	brush.setTexture(pic);
 	setBrush(brush);
 
-	KPixmap pointPic(pic);
+	QPixmap pointPic(pic);
 	KPixmapEffect::intensity(pointPic, .45);
 	brush.setTexture(pointPic);
 	point->setBrush(brush);

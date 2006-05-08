@@ -478,7 +478,7 @@ void Slope::updatePixmap()
 		else
 			angle += M_PI;
 
-		KPixmap kpixmap = qpixmap;
+		QPixmap kpixmap = qpixmap;
 		(void) KPixmapEffect::intensity(kpixmap, ratio);
 
 		QImage grassImage(kpixmap.toImage());

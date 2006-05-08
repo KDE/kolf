@@ -3,7 +3,7 @@
 
 #include <kdebug.h>
 #include <klocale.h>
-#include <kpixmap.h>
+#include <QPixmap>
 #warning port to the new sound system once it exists
 /*
 #include <arts/kplayobject.h>
