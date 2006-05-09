@@ -1,5 +1,5 @@
 #include <q3cstring.h>
-#include <qfile.h>
+#include <QFile>
 
 #include <kapplication.h>
 #include <klocale.h>

@@ -1,9 +1,9 @@
 #include <kdialog.h>
 #include <klistbox.h>
 
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qwidget.h>
+#include <QLabel>
+#include <QLayout>
+#include <QWidget>
 #include <q3frame.h>
 //Added by qt3to4:
 #include <QVBoxLayout>

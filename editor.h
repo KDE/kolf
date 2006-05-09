@@ -1,7 +1,7 @@
 #ifndef EDITOR_H_INCLUDED
 #define EDITOR_H_INCLUDED
 
-#include <qwidget.h>
+#include <QWidget>
 //Added by qt3to4:
 #include <QHBoxLayout>
 

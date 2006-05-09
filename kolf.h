@@ -4,10 +4,10 @@
 #include <kmainwindow.h>
 #include <kurl.h>
 
-#include <qmap.h>
+#include <QMap>
 #include <q3ptrlist.h>
-#include <qstring.h>
-#include <qwidget.h>
+#include <QString>
+#include <QWidget>
 #include <q3valuelist.h>
 //Added by qt3to4:
 #include <QGridLayout>

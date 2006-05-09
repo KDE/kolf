@@ -1,8 +1,8 @@
 #include <qbrush.h>
-#include <qcolor.h>
+#include <QColor>
 #include <q3canvas.h>
-#include <qlabel.h>
-#include <qlayout.h>
+#include <QLabel>
+#include <QLayout>
 #include <qslider.h>
 //Added by qt3to4:
 #include <QVBoxLayout>

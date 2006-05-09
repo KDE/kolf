@@ -1,9 +1,9 @@
 #ifndef KOLF_STATEDB_H
 #define KOLF_STATEDB_H
 
-#include <qmap.h>
-#include <qstring.h>
-#include <qpoint.h>
+#include <QMap>
+#include <QString>
+#include <QPoint>
 
 // items can save their per-game states here
 // most don't have to do anything

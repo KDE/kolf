@@ -1,7 +1,7 @@
-#include <qstring.h>
+#include <QString>
 #include <q3valuelist.h>
 #include <qstringlist.h>
-#include <qfile.h>
+#include <QFile>
 #include <qobject.h>
 
 #include <kdebug.h>

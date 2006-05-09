@@ -5,9 +5,9 @@
 #include <klineedit.h>
 #include <kcolorbutton.h>
 
-#include <qcheckbox.h>
-#include <qcolor.h>
-#include <qstring.h>
+#include <QCheckBox>
+#include <QColor>
+#include <QString>
 //Added by qt3to4:
 #include <QPixmap>
 #include <QEvent>
@@ -15,7 +15,7 @@
 #include <QVBoxLayout>
 #include <kpushbutton.h>
 #include <qstringlist.h>
-#include <qwidget.h>
+#include <QWidget>
 
 #include "game.h"
 

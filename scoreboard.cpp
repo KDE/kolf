@@ -1,11 +1,11 @@
 #include <kdebug.h>
 #include <klocale.h>
 
-#include <qlayout.h>
+#include <QLayout>
 #include <q3table.h>
-#include <qwidget.h>
+#include <QWidget>
 #include <q3header.h>
-#include <qstring.h>
+#include <QString>
 
 #include "scoreboard.h"
 

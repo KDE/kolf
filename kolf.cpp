@@ -20,21 +20,21 @@
 #include <kstdgameaction.h>
 #include <kstdguiitem.h>
 
-#include <qcolor.h>
+#include <QColor>
 #include <qevent.h>
-#include <qfile.h>
+#include <QFile>
 #include <qobject.h>
-#include <qmap.h>
-#include <qpoint.h>
+#include <QMap>
+#include <QPoint>
 #include <qtimer.h>
 #include <q3ptrlist.h>
 #include <qpixmap.h>
 #include <qpixmapcache.h>
 #include <qfileinfo.h>
-#include <qstring.h>
+#include <QString>
 #include <qstringlist.h>
-#include <qlayout.h>
-#include <qwidget.h>
+#include <QLayout>
+#include <QWidget>
 //Added by qt3to4:
 #include <QGridLayout>
 

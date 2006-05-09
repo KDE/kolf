@@ -2,7 +2,7 @@
 #define KOLF_BALL_H
 
 #include <q3canvas.h>
-#include <qcolor.h>
+#include <QColor>
 
 #include <math.h>
 

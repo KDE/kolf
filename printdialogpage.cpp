@@ -1,6 +1,6 @@
-#include <qcheckbox.h>
-#include <qlayout.h>
-#include <qwidget.h>
+#include <QCheckBox>
+#include <QLayout>
+#include <QWidget>
 //Added by qt3to4:
 #include <QVBoxLayout>
 

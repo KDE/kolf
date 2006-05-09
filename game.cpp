@@ -20,32 +20,32 @@
 
 #include <qbrush.h>
 #include <q3canvas.h>
-#include <qcheckbox.h>
-#include <qcolor.h>
+#include <QCheckBox>
+#include <QColor>
 #include <qcursor.h>
 #include <qevent.h>
-#include <qfont.h>
+#include <QFont>
 #include <qfontmetrics.h>
 #include <qimage.h>
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qmap.h>
+#include <QLabel>
+#include <QLayout>
+#include <QMap>
 #include <qpainter.h>
 #include <q3paintdevicemetrics.h>
 #include <qpen.h>
 #include <qpixmap.h>
 #include <qpixmapcache.h>
-#include <qpoint.h>
+#include <QPoint>
 #include <q3pointarray.h>
 #include <qrect.h>
 #include <q3simplerichtext.h>
 #include <qsize.h>
 #include <qslider.h>
-#include <qspinbox.h>
-#include <qstring.h>
+#include <QSpinBox>
+#include <QString>
 #include <qstringlist.h>
 #include <qtimer.h>
-#include <qtooltip.h>
+#include <QToolTip>
 #include <q3valuelist.h>
 
 //Added by qt3to4:

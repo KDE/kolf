@@ -1,5 +1,5 @@
 #include <q3canvas.h>
-#include <qcolor.h>
+#include <QColor>
 #include <qpen.h>
 //Added by qt3to4:
 #include <Q3PtrList>

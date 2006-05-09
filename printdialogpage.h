@@ -2,8 +2,8 @@
 #define PRINTDIALOGPAGE_H
 
 #include <kdeprint/kprintdialogpage.h>
-#include <qmap.h>
-#include <qstring.h>
+#include <QMap>
+#include <QString>
 
 class QCheckBox;
 class QWidget;

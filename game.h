@@ -15,12 +15,12 @@
 
 #include <q3canvas.h>
 #include <qpainter.h>
-#include <qcolor.h>
+#include <QColor>
 #include <q3frame.h>
-#include <qlayout.h>
-#include <qmap.h>
+#include <QLayout>
+#include <QMap>
 #include <qpen.h>
-#include <qpoint.h>
+#include <QPoint>
 #include <q3pointarray.h>
 #include <qrect.h>
 #include <qstringlist.h>

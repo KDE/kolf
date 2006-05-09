@@ -12,24 +12,24 @@
 #include <kfiledialog.h>
 #include <kurllabel.h>
 
-#include <qcheckbox.h>
+#include <QCheckBox>
 #include <qevent.h>
 #include <qpen.h>
-#include <qlayout.h>
-#include <qlabel.h>
+#include <QLayout>
+#include <QLabel>
 //Added by qt3to4:
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <klistbox.h>
 #include <qstyle.h>
 #include <qrect.h>
-#include <qmap.h>
+#include <QMap>
 #include <qpainter.h>
 #include <qpixmapcache.h>
-#include <qwidget.h>
+#include <QWidget>
 #include <qscrollarea.h>
 #include <qstringlist.h>
-#include <qstring.h>
+#include <QString>
 
 #include "newgame.h"
 #include "game.h"

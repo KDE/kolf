@@ -3,7 +3,7 @@
 
 #include <math.h>
 
-#include <qpoint.h>
+#include <QPoint>
 
 class Point
 {

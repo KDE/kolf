@@ -22,9 +22,9 @@
 // used in advertising or otherwise to promote the sale, use or other dealings
 // in this Software without prior written authorization from the author(s).
 
-#include <qcheckbox.h>
-#include <qlabel.h>
-#include <qlayout.h>
+#include <QCheckBox>
+#include <QLabel>
+#include <QLayout>
 //Added by qt3to4:
 #include <QVBoxLayout>
 
