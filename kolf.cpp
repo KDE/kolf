@@ -104,7 +104,9 @@ void Kolf::initGUI()
 
 	highScoreAction = KStdGameAction::highscores(this, SLOT(showHighScores()), actionCollection());
 
-	editingAction = new KToggleAction(i18n("&Edit"), "pencil", Qt::CTRL+Qt::Key_E, this, SLOT(emptySlot()), actionCollection(), "editing");
+	editingAction = new KToggleAction(KIcon("pencil"), i18n("&Edit"), actionCollection(), "editing");
+	connect(editingAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
+	editingAction->setShortcut(Qt::CTRL+Qt::Key_E);
 	newHoleAction = new KAction(KIcon("filenew"), i18n("&New"), actionCollection(), "newhole");
 	connect(newHoleAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	newHoleAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_N);
@@ -146,7 +148,9 @@ void Kolf::initGUI()
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
 	useAdvancedPuttingAction->setChecked(config->readEntry("useAdvancedPutting", false));
 
-	showInfoAction = new KToggleAction(i18n("Show &Info"), "info", Qt::CTRL+Qt::Key_I, this, SLOT(emptySlot()), actionCollection(), "showinfo");
+	showInfoAction = new KToggleAction(KIcon("info"), i18n("Show &Info"), actionCollection(), "showinfo");
+	connect(showInfoAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
+	showInfoAction->setShortcut(Qt::CTRL+Qt::Key_I);
 	showInfoAction->setCheckedState(i18n("Hide &Info"));
 	connect(showInfoAction, SIGNAL(toggled(bool)), this, SLOT(showInfoChanged(bool)));
 	showInfoAction->setChecked(config->readEntry("showInfo", false));
