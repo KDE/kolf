@@ -136,14 +136,16 @@ void Kolf::initGUI()
 	randAction = new KAction(KIcon("goto"), i18n("&Random Hole"), actionCollection(), "randhole");
 	connect(randAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 
-	useMouseAction = new KToggleAction(i18n("Enable &Mouse for Moving Putter"), 0, this, SLOT(emptySlot()), actionCollection(), "usemouse");
+	useMouseAction = new KToggleAction(i18n("Enable &Mouse for Moving Putter"), actionCollection(), "usemouse");
+	connect(useMouseAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	useMouseAction->setCheckedState(i18n("Disable &Mouse for Moving Putter"));
 	connect(useMouseAction, SIGNAL(toggled(bool)), this, SLOT(useMouseChanged(bool)));
 	KConfig *config = KGlobal::config();
 	config->setGroup("Settings");
 	useMouseAction->setChecked(config->readEntry("useMouse", true));
 
-	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Putting"), 0, this, SLOT(emptySlot()), actionCollection(), "useadvancedputting");
+	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Putting"), actionCollection(), "useadvancedputting");
+	connect(useAdvancedPuttingAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	useAdvancedPuttingAction->setCheckedState(i18n("Disable &Advanced Putting"));
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
 	useAdvancedPuttingAction->setChecked(config->readEntry("useAdvancedPutting", false));
@@ -155,15 +157,18 @@ void Kolf::initGUI()
 	connect(showInfoAction, SIGNAL(toggled(bool)), this, SLOT(showInfoChanged(bool)));
 	showInfoAction->setChecked(config->readEntry("showInfo", false));
 
-	showGuideLineAction = new KToggleAction(i18n("Show Putter &Guideline"), 0, this, SLOT(emptySlot()), actionCollection(), "showguideline");
+	showGuideLineAction = new KToggleAction(i18n("Show Putter &Guideline"), actionCollection(), "showguideline");
+	connect(showGuideLineAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	showGuideLineAction->setCheckedState(i18n("Hide Putter &Guideline"));
 	connect(showGuideLineAction, SIGNAL(toggled(bool)), this, SLOT(showGuideLineChanged(bool)));
 	showGuideLineAction->setChecked(config->readEntry("showGuideLine", true));
 
-	KToggleAction *act=new KToggleAction(i18n("Enable All Dialog Boxes"), 0, this, SLOT(enableAllMessages()), actionCollection(), "enableAll");
+	KToggleAction *act = new KToggleAction(i18n("Enable All Dialog Boxes"), actionCollection(), "enableAll");
+	connect(act, SIGNAL(triggered(bool) ), SLOT(enableAllMessages()));
 	act->setCheckedState(i18n("Disable All Dialog Boxes"));
 
-	soundAction = new KToggleAction(i18n("Play &Sounds"), 0, this, SLOT(emptySlot()), actionCollection(), "sound");
+	soundAction = new KToggleAction(i18n("Play &Sounds"), actionCollection(), "sound");
+	connect(soundAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	connect(soundAction, SIGNAL(toggled(bool)), this, SLOT(soundChanged(bool)));
 	soundAction->setChecked(config->readEntry("sound", true));
 
