@@ -5,7 +5,7 @@
 #include <arts/kplayobject.h>
 #include <arts/artsflow.h>
 #include <kdebug.h>
-#include <qobject.h>
+#include <QObject>
 
 class KVolumeControl : public QObject
 {

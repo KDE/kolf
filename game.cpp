@@ -44,7 +44,7 @@
 #include <QSpinBox>
 #include <QString>
 #include <qstringlist.h>
-#include <qtimer.h>
+#include <QTimer>
 #include <QToolTip>
 #include <q3valuelist.h>
 

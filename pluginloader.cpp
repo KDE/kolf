@@ -2,7 +2,7 @@
 #include <q3valuelist.h>
 #include <qstringlist.h>
 #include <QFile>
-#include <qobject.h>
+#include <QObject>
 
 #include <kdebug.h>
 #include <kglobal.h>

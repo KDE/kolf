@@ -2,7 +2,7 @@
 #define KOLFTEST_H
 
 #include <q3canvas.h>
-#include <qobject.h>
+#include <QObject>
 
 #include <klibloader.h>
 

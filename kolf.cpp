@@ -23,10 +23,10 @@
 #include <QColor>
 #include <qevent.h>
 #include <QFile>
-#include <qobject.h>
+#include <QObject>
 #include <QMap>
 #include <QPoint>
-#include <qtimer.h>
+#include <QTimer>
 #include <q3ptrlist.h>
 #include <qpixmap.h>
 #include <qpixmapcache.h>

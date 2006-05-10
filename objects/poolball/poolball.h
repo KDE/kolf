@@ -2,7 +2,7 @@
 #define KOLFPOOLBALL_H
 
 #include <q3canvas.h>
-#include <qobject.h>
+#include <QObject>
 #include <qpainter.h>
 
 #include <klibloader.h>
