@@ -1,4 +1,3 @@
-kde4_header()
 
 
 
@@ -21,7 +20,6 @@ install_targets(${LIB_INSTALL_DIR} kolftest )
 
 install_files( ${DATA_INSTALL_DIR}/kolf FILES test.plugin )
 
-kde4_footer()
 
 
 

@@ -1,4 +1,3 @@
-kde4_header()
 
 
 
@@ -7,7 +6,6 @@ kde4_header()
 
 install_files( ${DATA_INSTALL_DIR}/kolf/pics/ FILES cup.png grass.png puddle.png sand.png )
 
-kde4_footer()
 
 
 

@@ -1,4 +1,3 @@
-kde4_header()
 
 
 
@@ -7,7 +6,6 @@ kde4_header()
 
 install_files( ${DATA_INSTALL_DIR}/kolf/sounds FILES wall.wav puddle.wav holeinone.wav holed.wav blackhole.wav blackholeputin.wav blackholeeject.wav hit.wav )
 
-kde4_footer()
 
 
 

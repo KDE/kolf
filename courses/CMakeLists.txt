@@ -1,4 +1,3 @@
-kde4_header()
 
 
 
@@ -7,7 +6,6 @@ kde4_header()
 
 install_files( ${DATA_INSTALL_DIR}/kolf/courses FILES Classic.kolf Hard.kolf Medium.kolf Easy.kolf ReallyEasy Practice Impossible USApro )
 
-kde4_footer()
 
 
 
