@@ -65,7 +65,7 @@ public slots:
 
 protected slots:
 	void slotOk();
-
+	void invokeBrowser(const QString &_url);
 private slots:
 	void addPlayer();
 	void courseSelected(int);

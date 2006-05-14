@@ -11,6 +11,7 @@
 #include <klocale.h>
 #include <kfiledialog.h>
 #include <kurllabel.h>
+#include <ktoolinvocation.h>
 
 #include <QCheckBox>
 #include <qevent.h>
@@ -97,7 +98,7 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
                 coursePageLayout->setSpacing( spacingHint() );
 
 		KUrlLabel *coursesLink = new KUrlLabel("http://katzbrown.com/kolf/Courses/User Uploaded/", "katzbrown.com/kolf/Courses/User Uploaded/", coursePage);
-		connect(coursesLink, SIGNAL(leftClickedURL(const QString &)), kapp, SLOT(invokeBrowser(const QString &)));
+		connect(coursesLink, SIGNAL(leftClickedURL(const QString &)), this, SLOT(invokeBrowser(const QString &)));
 		coursePageLayout->addWidget(coursesLink);
 
 		QHBoxLayout *hlayout = new QHBoxLayout;
@@ -199,6 +200,11 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 NewGameDialog::~NewGameDialog()
 {
 	qDeleteAll(editors);
+}
+
+void NewGameDialog::invokeBrowser(const QString &_url)
+{
+	KToolInvocation::invokeBrowser(_url);
 }
 
 void NewGameDialog::slotOk()
