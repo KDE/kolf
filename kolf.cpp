@@ -272,7 +272,7 @@ void Kolf::startNewGame()
 	connect(game, SIGNAL(titleChanged(const QString &)), this, SLOT(titleChanged(const QString &)));
 	connect(game, SIGNAL(newStatusText(const QString &)), this, SLOT(newStatusText(const QString &)));
 	connect(game, SIGNAL(currentHole(int)), this, SLOT(setCurrentHole(int)));
-	connect(holeAction, SIGNAL(activated(const QString &)), game, SLOT(switchHole(const QString &)));
+	connect(holeAction, SIGNAL(triggered(const QString &)), game, SLOT(switchHole(const QString &)));
 	connect(nextAction, SIGNAL(activated()), game, SLOT(nextHole()));
 	connect(prevAction, SIGNAL(activated()), game, SLOT(prevHole()));
 	connect(firstAction, SIGNAL(activated()), game, SLOT(firstHole()));
