@@ -1,6 +1,5 @@
 #include <QLabel>
 #include <qslider.h>
-//Added by qt3to4:
 #include <QHBoxLayout>
 #include <Q3PtrList>
 

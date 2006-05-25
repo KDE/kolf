@@ -1,4 +1,5 @@
 #include <kdebug.h>
+#include <QPoint>
 
 #include "vector.h"
 

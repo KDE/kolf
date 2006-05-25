@@ -25,8 +25,6 @@
 #ifndef KCOMBOBOX_DIALOG_H
 #define KCOMBOBOX_DIALOG_H
 
-#include <qstringlist.h>
-
 #include <kdialogbase.h>
 #include <kglobal.h>
 

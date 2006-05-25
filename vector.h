@@ -3,8 +3,6 @@
 
 #include <math.h>
 
-#include <QPoint>
-
 class Point
 {
 public:
@@ -27,6 +25,8 @@ public:
 void debugPoint(const QString &, const Point &);
 
 // This and vector.cpp by Ryan Cummings
+
+class QPoint;
 
 // Implements a vector in 2D
 class Vector {

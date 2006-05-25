@@ -14,23 +14,12 @@
 #include <ktoolinvocation.h>
 
 #include <QCheckBox>
-#include <qevent.h>
-#include <qpen.h>
-#include <QLayout>
 #include <QLabel>
-//Added by qt3to4:
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <klistbox.h>
-#include <qstyle.h>
-#include <qrect.h>
-#include <QMap>
-#include <qpainter.h>
-#include <qpixmapcache.h>
-#include <QWidget>
-#include <qscrollarea.h>
-#include <qstringlist.h>
-#include <QString>
+#include <QScrollArea>
+#include <QPixmapCache>
 
 #include "newgame.h"
 #include "game.h"

@@ -1,9 +1,3 @@
-#include <QString>
-#include <q3valuelist.h>
-#include <qstringlist.h>
-#include <QFile>
-#include <QObject>
-
 #include <kdebug.h>
 #include <kglobal.h>
 #include <kstandarddirs.h>

@@ -2,7 +2,6 @@
 #define PLUGINLOADER_H
 
 #include <object.h>
-#include <QString>
 
 namespace PluginLoader
 {

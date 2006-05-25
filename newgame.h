@@ -4,18 +4,13 @@
 #include <kdialogbase.h>
 #include <klineedit.h>
 #include <kcolorbutton.h>
+#include <kpushbutton.h>
 
-#include <QCheckBox>
 #include <QColor>
 #include <QString>
-//Added by qt3to4:
 #include <QPixmap>
-#include <QEvent>
-#include <QLabel>
-#include <QVBoxLayout>
-#include <kpushbutton.h>
-#include <qstringlist.h>
 #include <QWidget>
+#include <QCheckBox>
 
 #include "game.h"
 

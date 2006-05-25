@@ -3,7 +3,6 @@
 
 #include <kdebug.h>
 #include <klocale.h>
-#include <QPixmap>
 #warning port to the new sound system once it exists
 /*
 #include <arts/kplayobject.h>
@@ -13,25 +12,14 @@
 
 #include <math.h>
 
-#include <q3canvas.h>
-#include <qpainter.h>
-#include <QColor>
-#include <q3frame.h>
-#include <QLayout>
 #include <QMap>
-#include <qpen.h>
 #include <QPoint>
 #include <q3pointarray.h>
-#include <qrect.h>
-#include <qstringlist.h>
+#include <QRect>
 #include <q3valuelist.h>
-//Added by qt3to4:
 #include <QPixmap>
 #include <Q3PtrList>
 #include <QKeyEvent>
-#include <QLabel>
-#include <QVBoxLayout>
-#include <QMouseEvent>
 
 #include "object.h"
 #include "config.h"
@@ -47,6 +35,7 @@ class QCheckBox;
 class QTimer;
 class QKeyEvent;
 class QMouseEvent;
+class QVBoxLayout;
 class QPainter;
 class KConfig;
 class KPrinter;

@@ -2,7 +2,6 @@
 #define FLOATER_H
 
 #include "game.h"
-//Added by qt3to4:
 #include <Q3PtrList>
 
 class Floater;

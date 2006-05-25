@@ -3,7 +3,6 @@
 
 #include <kdeprint/kprintdialogpage.h>
 #include <QMap>
-#include <QString>
 
 class QCheckBox;
 class QWidget;

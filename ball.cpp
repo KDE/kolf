@@ -1,7 +1,6 @@
 #include <q3canvas.h>
 #include <QColor>
-#include <qpen.h>
-//Added by qt3to4:
+#include <QPen>
 #include <Q3PtrList>
 
 #include <kapplication.h>
@@ -10,6 +9,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <limits.h>
 #include <krandom.h>
 
 #include "rtti.h"

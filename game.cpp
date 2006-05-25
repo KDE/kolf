@@ -18,43 +18,24 @@
 #include <kprinter.h>
 #include <kstandarddirs.h>
 
-#include <qbrush.h>
 #include <q3canvas.h>
+#include <q3paintdevicemetrics.h>
 #include <QCheckBox>
-#include <QColor>
-#include <qcursor.h>
-#include <qevent.h>
-#include <QFont>
-#include <qfontmetrics.h>
+#include <QPixmapCache>
+#include <QCursor>
 #include <qimage.h>
 #include <QLabel>
-#include <QLayout>
-#include <QMap>
-#include <qpainter.h>
-#include <q3paintdevicemetrics.h>
-#include <qpen.h>
-#include <qpixmap.h>
-#include <qpixmapcache.h>
-#include <QPoint>
-#include <q3pointarray.h>
-#include <qrect.h>
+#include <QPainter>
+#include <QPen>
 #include <q3simplerichtext.h>
-#include <qsize.h>
-#include <qslider.h>
+#include <QSlider>
 #include <QSpinBox>
-#include <QString>
-#include <qstringlist.h>
 #include <QTimer>
 #include <QToolTip>
-#include <q3valuelist.h>
 
-//Added by qt3to4:
 #include <QMouseEvent>
-#include <QGridLayout>
 #include <QKeyEvent>
-#include <QVBoxLayout>
-#include <Q3PtrList>
-#include <QHBoxLayout>
+#include <QLayout>
 
 #include <math.h>
 #include <stdlib.h>

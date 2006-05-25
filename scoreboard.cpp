@@ -1,12 +1,6 @@
 #include <kdebug.h>
 #include <klocale.h>
 
-#include <QLayout>
-#include <q3table.h>
-#include <QWidget>
-#include <q3header.h>
-#include <QString>
-
 #include "scoreboard.h"
 
 ScoreBoard::ScoreBoard(QWidget *parent, const char *name)

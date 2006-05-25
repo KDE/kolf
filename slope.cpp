@@ -4,12 +4,9 @@
 #include <qimage.h>
 #include <qpixmapcache.h>
 
-//Added by qt3to4:
-#include <QPixmap>
-#include <Q3PointArray>
-#include <Q3PtrList>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QPainter>
 
 #include <kapplication.h>
 #include <kcombobox.h>
@@ -540,7 +537,7 @@ SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
 			curText = it.value();
 		items.append(it.value());
 	}
-	gradient->insertStringList(items);
+	gradient->addItems(items);
 	gradient->setCurrentText(curText);
 	layout->addWidget(gradient);
 	connect(gradient, SIGNAL(activated(const QString &)), this, SLOT(setGradient(const QString &)));

@@ -20,22 +20,7 @@
 #include <kstdgameaction.h>
 #include <kstdguiitem.h>
 
-#include <QColor>
-#include <qevent.h>
-#include <QFile>
-#include <QObject>
-#include <QMap>
-#include <QPoint>
 #include <QTimer>
-#include <q3ptrlist.h>
-#include <qpixmap.h>
-#include <qpixmapcache.h>
-#include <qfileinfo.h>
-#include <QString>
-#include <qstringlist.h>
-#include <QLayout>
-#include <QWidget>
-//Added by qt3to4:
 #include <QGridLayout>
 
 #include <stdlib.h>
@@ -120,7 +105,8 @@ void Kolf::initGUI()
 	undoShotAction->setText(i18n("&Undo Shot"));
 	//replayShotAction = new KAction(i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 
-	holeAction = new KSelectAction(i18n("Switch to Hole"), 0, this, SLOT(emptySlot()), actionCollection(), "switchhole");
+	holeAction = new KSelectAction(i18n("Switch to Hole"), actionCollection(), "switchhole");
+	connect(holeAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	nextAction = new KAction(KIcon("forward"), i18n("&Next Hole"), actionCollection(), "nexthole");
 	connect(nextAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	nextAction->setShortcut(KStdAccel::shortcut(KStdAccel::Forward));

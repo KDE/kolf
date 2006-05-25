@@ -2,8 +2,6 @@
 #define EDITOR_H_INCLUDED
 
 #include <QWidget>
-//Added by qt3to4:
-#include <QHBoxLayout>
 
 #include "game.h"
 
