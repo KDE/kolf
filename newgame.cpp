@@ -1,7 +1,7 @@
 #include <kapplication.h>
 #include <kconfig.h>
 #include <kdebug.h>
-#include <kdialogbase.h>
+#include <kdialog.h>
 #include <kmessagebox.h>
 #include <kglobal.h>
 #include <kscoredialog.h>
@@ -25,8 +25,12 @@
 #include "game.h"
 
 NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_name)
-	: KDialogBase(KDialogBase::TreeList, i18n("New Game"), Ok | Cancel, Ok, parent, _name)
+	: KPageDialog(parent)
 {
+	setCaption(i18n("New Game"));
+	setButtons(Ok | Cancel);
+	setDefaultButton(Ok);
+	setFaceType(KPageDialog::Tree);
 	this->enableCourses = enableCourses;
 
 	KConfig *config = KGlobal::config();
@@ -34,7 +38,9 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 	// lots o' colors :)
 	startColors << Qt::yellow << Qt::blue << Qt::red << Qt::lightGray << Qt::cyan << Qt::darkBlue << Qt::magenta << Qt::darkGray << Qt::darkMagenta << Qt::darkYellow;
 
-	playerPage = addPage(i18n("Players"));
+	playerPage = new QFrame();
+    addPage(playerPage, i18n("Players"));
+
 	QVBoxLayout *bigLayout = new QVBoxLayout(playerPage);
         bigLayout->setMargin( marginHint() );
         bigLayout->setSpacing( spacingHint() );
@@ -78,10 +84,13 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 	}
 
 	enableButtons();
-
+	KPageWidgetItem *pageItem =0L;
 	if (enableCourses)
 	{
-		coursePage = addPage(i18n("Course"), i18n("Choose Course to Play"));
+		coursePage = new QFrame();
+		pageItem = new KPageWidgetItem( coursePage, i18n("Choose Course to Play") );
+		pageItem->setHeader(i18n("Course"));
+		addPage(pageItem);
 		QVBoxLayout *coursePageLayout = new QVBoxLayout(coursePage);
                 coursePageLayout->setMargin( marginHint() );
                 coursePageLayout->setSpacing( spacingHint() );
@@ -172,7 +181,11 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 	}
 
 	// options page
-	optionsPage = addPage(i18n("Options"), i18n("Game Options"));
+    optionsPage = new QFrame();
+    pageItem = new KPageWidgetItem( optionsPage, i18n("Game Options") );
+    pageItem->setHeader(i18n("Options"));
+    addPage(pageItem);
+
 	QVBoxLayout *vlayout = new QVBoxLayout(optionsPage);
         vlayout->setMargin( marginHint() );
         vlayout->setSpacing( spacingHint() );
@@ -218,7 +231,7 @@ void NewGameDialog::slotOk()
 
 	config->sync();
 
-	KDialogBase::slotOk();
+	KDialog::accept();
 }
 
 void NewGameDialog::courseSelected(int index)
@@ -337,7 +350,7 @@ PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent
 	: QWidget(parent)
 {
 	QHBoxLayout *layout = new QHBoxLayout(this);
-	layout->setMargin( KDialogBase::spacingHint() );
+	layout->setMargin( KDialog::spacingHint() );
 
 	if (!QPixmapCache::find("grass", grass))
 	{

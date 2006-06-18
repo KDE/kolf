@@ -25,7 +25,7 @@
 #ifndef KCOMBOBOX_DIALOG_H
 #define KCOMBOBOX_DIALOG_H
 
-#include <kdialogbase.h>
+#include <kdialog.h>
 #include <kglobal.h>
 
 class QCheckBox;
@@ -35,7 +35,7 @@ class KHistoryCombo;
  * Dialog for user to choose an item from a QStringList.
  */
 
-class KComboBoxDialog : public KDialogBase
+class KComboBoxDialog : public KDialog
 {
 Q_OBJECT
 

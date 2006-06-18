@@ -1,7 +1,7 @@
 #ifndef NEWGAME_H
 #define NEWGAME_H
 
-#include <kdialogbase.h>
+#include <kpagedialog.h>
 #include <klineedit.h>
 #include <kcolorbutton.h>
 #include <kpushbutton.h>
@@ -44,7 +44,7 @@ private:
 	QPixmap grass;
 };
 
-class NewGameDialog : public KDialogBase
+class NewGameDialog : public KPageDialog
 {
 	Q_OBJECT
 

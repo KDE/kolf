@@ -35,22 +35,28 @@
 #include "kcomboboxdialog.h"
 
 KComboBoxDialog::KComboBoxDialog( const QString &_text, const QStringList &_items, const QString& _value, bool showDontAskAgain, QWidget *parent )
-	: KDialogBase( Plain, QString::null, Ok, Ok, parent, 0L, true, true )
+	: KDialog( parent)
 {
-	QVBoxLayout *topLayout = new QVBoxLayout( plainPage() );
+	setButtons(Ok);
+	setDefaultButton(Ok);
+	setModal(true);
+	enableButtonSeparator(true);
+	QFrame *frame = new QFrame(this);
+	setMainWidget(frame);
+	QVBoxLayout *topLayout = new QVBoxLayout( frame );
         topLayout->setMargin( marginHint() );
         topLayout->setSpacing( spacingHint() );
-	QLabel *label = new QLabel(_text, plainPage() );
+	QLabel *label = new QLabel(_text, frame );
 	topLayout->addWidget( label, 1 );
 
-	combo = new KHistoryCombo( plainPage() );
+	combo = new KHistoryCombo( frame);
 	combo->setEditable(false);
 	combo->insertStringList( _items );
 	topLayout->addWidget( combo, 1 );
 
 	if (showDontAskAgain)
 	{
-		dontAskAgainCheckBox = new QCheckBox( i18n("&Do not ask again"), plainPage() );
+		dontAskAgainCheckBox = new QCheckBox( i18n("&Do not ask again"), frame );
 		topLayout->addWidget( dontAskAgainCheckBox, 1 );
 	}
 	else
