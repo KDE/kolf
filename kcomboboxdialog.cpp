@@ -40,7 +40,7 @@ KComboBoxDialog::KComboBoxDialog( const QString &_text, const QStringList &_item
 	setButtons(Ok);
 	setDefaultButton(Ok);
 	setModal(true);
-	enableButtonSeparator(true);
+	showButtonSeparator(true);
 	QFrame *frame = new QFrame(this);
 	setMainWidget(frame);
 	QVBoxLayout *topLayout = new QVBoxLayout( frame );
