@@ -12,6 +12,7 @@
 #include <kfiledialog.h>
 #include <kurllabel.h>
 #include <ktoolinvocation.h>
+#include <kpagewidgetmodel.h>
 
 #include <QCheckBox>
 #include <QLabel>
@@ -282,7 +283,8 @@ void NewGameDialog::selectionChanged()
 
 void NewGameDialog::addCourse()
 {
-	QStringList files = KFileDialog::getOpenFileNames(":kourses", QString::fromLatin1("application/x-kourse"), this, i18n("Pick Kolf Course"));
+	QStringList files = KFileDialog::getOpenFileNames( KUrl("kfiledialog:///kourses"),
+			 QString::fromLatin1("application/x-kourse"), this, i18n("Pick Kolf Course"));
 
 	bool hasDuplicates = false;
 

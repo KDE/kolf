@@ -514,7 +514,8 @@ void Kolf::save()
 
 void Kolf::saveAs()
 {
-	QString newfilename = KFileDialog::getSaveFileName(":kourses", "application/x-kourse", this, i18n("Pick Kolf Course to Save To"));
+	QString newfilename = KFileDialog::getSaveFileName( KUrl("kfiledialog:///kourses"), 
+                                  "application/x-kourse", this, i18n("Pick Kolf Course to Save To"));
 	if (!newfilename.isNull())
 	{
 		filename = newfilename;
@@ -526,7 +527,8 @@ void Kolf::saveAs()
 
 void Kolf::saveGameAs()
 {
-	QString newfilename = KFileDialog::getSaveFileName(":savedkolf", "application/x-kolf", this, i18n("Pick Saved Game to Save To"));
+	QString newfilename = KFileDialog::getSaveFileName( KUrl("kfiledialog:///savedkolf"), 
+                                    "application/x-kolf", this, i18n("Pick Saved Game to Save To"));
 	if (newfilename.isNull())
 		return;
 
@@ -556,7 +558,8 @@ void Kolf::saveGame()
 
 void Kolf::loadGame()
 {
-	loadedGame = KFileDialog::getOpenFileName(":savedkolf", QString::fromLatin1("application/x-kolf"), this, i18n("Pick Kolf Saved Game"));
+	loadedGame = KFileDialog::getOpenFileName( KUrl("kfiledialog:///savedkolf"),
+			 QLatin1String("application/x-kolf"), this, i18n("Pick Kolf Saved Game"));
 
 	if (loadedGame.isNull())
 		return;
