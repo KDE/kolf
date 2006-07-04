@@ -13,12 +13,12 @@ kde4_add_library(kolfpoolball SHARED ${kolfpoolball_LIB_SRCS})
 target_link_libraries(kolfpoolball  ${KDE4_KDECORE_LIBS} kio kolf )
 
 set_target_properties(kolfpoolball PROPERTIES VERSION 1.0.0 SOVERSION 1 )
-install_targets(${LIB_INSTALL_DIR} kolfpoolball )
+install(TARGETS kolfpoolball  DESTINATION ${LIB_INSTALL_DIR} )
 
 
 ########### install files ###############
 
-install_files( ${DATA_INSTALL_DIR}/kolf FILES poolball.plugin )
+install( FILES poolball.plugin  DESTINATION  ${DATA_INSTALL_DIR}/kolf )
 
 
 

@@ -13,12 +13,12 @@ kde4_add_library(kolftest SHARED ${kolftest_LIB_SRCS})
 target_link_libraries(kolftest  ${KDE4_KDECORE_LIBS} kio kolf )
 
 set_target_properties(kolftest PROPERTIES VERSION 1.0.0 SOVERSION 1 )
-install_targets(${LIB_INSTALL_DIR} kolftest )
+install(TARGETS kolftest  DESTINATION ${LIB_INSTALL_DIR} )
 
 
 ########### install files ###############
 
-install_files( ${DATA_INSTALL_DIR}/kolf FILES test.plugin )
+install( FILES test.plugin  DESTINATION  ${DATA_INSTALL_DIR}/kolf )
 
 
 

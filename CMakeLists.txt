@@ -36,7 +36,7 @@ kde4_add_library(kolflib SHARED ${kolf_LIB_SRCS})
 target_link_libraries(kolflib  ${KDE4_KDECORE_LIBS} kdeprint kio kdegames )
 
 set_target_properties(kolflib PROPERTIES VERSION 1.2.0 SOVERSION 1 )
-install_targets(${LIB_INSTALL_DIR} kolflib )
+install(TARGETS kolflib  DESTINATION ${LIB_INSTALL_DIR} )
 
 
 ########### next target ###############
@@ -48,10 +48,10 @@ install_targets(/bin kolf )
 
 ########### install files ###############
 
-install_files( ${XDG_APPS_DIR} FILES kolf.desktop )
-install_files( ${DATA_INSTALL_DIR}/kolf FILES kolfui.rc intro tutorial.kolf tutorial.kolfgame )
-install_files( ${CONFIG_INSTALL_DIR}/magic FILES kolf.magic )
-install_files( ${MIME_INSTALL_DIR}/application FILES x-kourse.desktop x-kolf.desktop )
+install( FILES kolf.desktop  DESTINATION  ${XDG_APPS_DIR} )
+install( FILES kolfui.rc intro tutorial.kolf tutorial.kolfgame  DESTINATION  ${DATA_INSTALL_DIR}/kolf )
+install( FILES kolf.magic  DESTINATION  ${CONFIG_INSTALL_DIR}/magic )
+install( FILES x-kourse.desktop x-kolf.desktop  DESTINATION  ${MIME_INSTALL_DIR}/application )
 install_files( /include/kolf FILES ball.h game.h statedb.h config.h canvasitem.h object.h rtti.h vector.h  	floater.h slope.h )
 
 
