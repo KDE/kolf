@@ -2238,7 +2238,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	QPixmap pic;
 	if (!QPixmapCache::find("grass", pic))
 	{
-		pic.load(locate("appdata", "pics/grass.png"));
+		pic.load(KStandardDirs::locate("appdata", "pics/grass.png"));
 		QPixmapCache::insert("grass", pic);
 	}
 	course->setBackgroundPixmap(pic);
