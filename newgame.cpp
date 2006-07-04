@@ -58,7 +58,7 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 	new QVBoxLayout(playersWidget);
 	if (!QPixmapCache::find("grass", grass))
 	{
-		grass.load(locate("appdata", "pics/grass.png"));
+		grass.load(KStandardDirs::locate("appdata", "pics/grass.png"));
 		QPixmapCache::insert("grass", grass);
 	}
         QPalette palette;
@@ -357,7 +357,7 @@ PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent
 
 	if (!QPixmapCache::find("grass", grass))
 	{
-		grass.load(locate("appdata", "pics/grass.png"));
+		grass.load(KStandardDirs::locate("appdata", "pics/grass.png"));
 		QPixmapCache::insert("grass", grass);
 	}
         QPalette palette;

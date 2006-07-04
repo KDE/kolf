@@ -39,7 +39,7 @@ Slope::Slope(QRect rect, Q3Canvas *canvas)
 
 	if (!QPixmapCache::find("grass", grass))
 	{
-		grass.load(locate("appdata", "pics/grass.png"));
+		grass.load(KStandardDirs::locate("appdata", "pics/grass.png"));
 		QPixmapCache::insert("grass", grass);
 	}
 

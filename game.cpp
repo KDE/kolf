@@ -848,7 +848,7 @@ Puddle::Puddle(Q3Canvas *canvas)
 
 	if (!QPixmapCache::find("puddle", pic))
 	{
-		pic.load(locate("appdata", "pics/puddle.png"));
+		pic.load(KStandardDirs::locate("appdata", "pics/puddle.png"));
 		QPixmapCache::insert("puddle", pic);
 	}
 
@@ -901,7 +901,7 @@ Sand::Sand(Q3Canvas *canvas)
 
 	if (!QPixmapCache::find("sand", pic))
 	{
-		pic.load(locate("appdata", "pics/sand.png"));
+		pic.load(KStandardDirs::locate("appdata", "pics/sand.png"));
 		QPixmapCache::insert("sand", pic);
 	}
 
@@ -1192,7 +1192,7 @@ Cup::Cup(Q3Canvas *canvas)
 {
 	if (!QPixmapCache::find("cup", pixmap))
 	{
-		pixmap.load(locate("appdata", "pics/cup.png"));
+		pixmap.load(KStandardDirs::locate("appdata", "pics/cup.png"));
 		QPixmapCache::insert("cup", pixmap);
 	}
 }
