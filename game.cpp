@@ -2195,7 +2195,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	m_showInfo = false;
 	ballStateList.canUndo = false;
 	fastAdvancedExist = false;
-	soundDir = locate("appdata", "sounds/");
+	soundDir = KStandardDirs::locate("appdata", "sounds/");
 	dontAddStroke = false;
 	addingNewHole = false;
 	scoreboardHoles = 0;
