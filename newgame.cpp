@@ -12,7 +12,6 @@
 #include <kfiledialog.h>
 #include <kurllabel.h>
 #include <ktoolinvocation.h>
-#include <kpagewidgetmodel.h>
 
 #include <QCheckBox>
 #include <QLabel>
