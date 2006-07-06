@@ -44,7 +44,7 @@ install(TARGETS kolflib  DESTINATION ${LIB_INSTALL_DIR} )
 kde4_add_executable( kolf main.cpp )
 
 target_link_libraries( kolf kolflib )
-install_targets(/bin kolf )
+install(TARGETS kolf  DESTINATION ${BIN_INSTALL_DIR} )
 
 ########### install files ###############
 
