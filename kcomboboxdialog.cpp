@@ -51,7 +51,7 @@ KComboBoxDialog::KComboBoxDialog( const QString &_text, const QStringList &_item
 
 	combo = new KHistoryCombo( frame);
 	combo->setEditable(false);
-	combo->insertStringList( _items );
+	combo->addItems( _items );
 	topLayout->addWidget( combo, 1 );
 
 	if (showDontAskAgain)
