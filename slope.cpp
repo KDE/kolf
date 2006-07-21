@@ -217,7 +217,7 @@ void Slope::load(KConfig *cfg)
 	reversed = cfg->readEntry("reversed", reversed);
 
 	// bypass updatePixmap which newSize normally does
-	Q3CanvasRectangle::setSize(cfg->readEntry("width", width()), cfg->readNumEntry("height", height()));
+	Q3CanvasRectangle::setSize(cfg->readEntry("width", width()), cfg->readEntry("height", height()));
 	updateZ();
 
 	QString gradientType = cfg->readEntry("gradient", gradientKeys[type]);
