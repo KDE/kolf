@@ -1390,12 +1390,12 @@ void BlackHole::halfway()
 
 void BlackHole::load(KConfig *cfg)
 {
-	QPoint exit = cfg->readPointEntry("exit", &exit);
+	QPoint exit = cfg->readEntry("exit", exit);
 	exitItem->setX(exit.x());
 	exitItem->setY(exit.y());
 	exitDeg = cfg->readEntry("exitDeg", exitDeg);
-	m_minSpeed = cfg->readDoubleNumEntry("minspeed", m_minSpeed);
-	m_maxSpeed = cfg->readDoubleNumEntry("maxspeed", m_maxSpeed);
+	m_minSpeed = cfg->readEntry("minspeed", m_minSpeed);
+	m_maxSpeed = cfg->readEntry("maxspeed", m_maxSpeed);
 	exitItem->updateArrowAngle();
 	exitItem->updateArrowLength();
 
@@ -1951,9 +1951,9 @@ bool Wall::collision(Ball *ball, long int id)
 void Wall::load(KConfig *cfg)
 {
 	QPoint start(startPoint());
-	start = cfg->readPointEntry("startPoint", &start);
+	start = cfg->readEntry("startPoint", start);
 	QPoint end(endPoint());
-	end = cfg->readPointEntry("endPoint", &end);
+	end = cfg->readEntry("endPoint", end);
 
 	setPoints(start.x(), start.y(), end.x(), end.y());
 

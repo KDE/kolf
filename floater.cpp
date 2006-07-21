@@ -236,9 +236,9 @@ void Floater::load(KConfig *cfg)
 	move(firstPoint.x(), firstPoint.y());
 
 	QPoint start(wall->startPoint() + QPoint(wall->x(), wall->y()));
-	start = cfg->readPointEntry("startPoint", &start);
+	start = cfg->readEntry("startPoint", start);
 	QPoint end(wall->endPoint() + QPoint(wall->x(), wall->y()));
-	end = cfg->readPointEntry("endPoint", &end);
+	end = cfg->readEntry("endPoint", end);
 	wall->setPoints(start.x(), start.y(), end.x(), end.y());
 	wall->move(0, 0);
 
