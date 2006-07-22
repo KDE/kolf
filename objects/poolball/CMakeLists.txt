@@ -10,7 +10,7 @@ kde4_automoc(${kolfpoolball_LIB_SRCS})
 
 kde4_add_library(kolfpoolball SHARED ${kolfpoolball_LIB_SRCS})
 
-target_link_libraries(kolfpoolball  ${KDE4_KDECORE_LIBS} kio kolf )
+target_link_libraries(kolfpoolball  ${KDE4_KDECORE_LIBS} ${KDE4_KIO_LIBS} kolf )
 
 set_target_properties(kolfpoolball PROPERTIES VERSION 1.0.0 SOVERSION 1 )
 install(TARGETS kolfpoolball  DESTINATION ${LIB_INSTALL_DIR} )
