@@ -1,10 +1,3 @@
-#warning port to the new sound system once it exists
-/*
-#include <arts/kmedia2.h>
-#include <arts/kplayobject.h>
-#include <arts/kplayobjectfactory.h>
-*/
-
 #include <kapplication.h>
 #include <kconfig.h>
 #include <kcursor.h>
@@ -17,6 +10,7 @@
 #include <kpixmapeffect.h>
 #include <kprinter.h>
 #include <kstandarddirs.h>
+#include <phonon/audioplayer.h>
 
 #include <q3canvas.h>
 #include <q3paintdevicemetrics.h>
@@ -2206,10 +2200,10 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	m_sound = true;
 	m_ignoreEvents = false;
 	soundedOnce = false;
-#warning port to the new sound system once it exists
-//	oldPlayObjects.setAutoDelete(true);
 	highestHole = 0;
 	recalcHighestHole = false;
+
+	m_player = new Phonon::AudioPlayer( Phonon::GameCategory, this );
 
 	holeInfo.setGame(this);
 	holeInfo.setAuthor(i18n("Course Author"));
@@ -2368,9 +2362,8 @@ void KolfGame::setFilename(const QString &filename)
 
 KolfGame::~KolfGame()
 {
-#warning port to the new sound system once it exists
-//	oldPlayObjects.clear();
 	delete cfg;
+	delete m_player;
 }
 
 void KolfGame::setModified(bool mod)
@@ -4116,52 +4109,19 @@ void KolfGame::toggleEditMode()
 	inPlay = false;
 }
 
-void KolfGame::playSound(QString /*file*/, double /*vol*/)
+void KolfGame::playSound(const QString& file, float vol)
 {
-#warning port to the new sound system when it exists
-/*	if (m_sound)
+	if (m_sound)
 	{
-		KPlayObject *oldPlayObject = 0;
-		for (oldPlayObject = oldPlayObjects.first(); oldPlayObject; oldPlayObject = oldPlayObjects.next())
-		{
-			if (oldPlayObject && oldPlayObject->state() != Arts::posPlaying)
-			{
-				oldPlayObjects.remove();
-
-				// because we will go to next() next time
-				// and after remove current item is one after
-				// removed item
-				(void) oldPlayObjects.prev();
-			}
-		}
-
-		file = soundDir + file + QString::fromLatin1(".wav");
+		QString resFile = soundDir + file + QString::fromLatin1(".wav");
 
 		// not needed when all of the files are in the distribution
-		//if (!QFile::exists(file))
+		//if (!QFile::exists(resFile))
 			//return;
-		KPlayObjectFactory factory(artsServer.server());
-		KPlayObject *playObject = factory.createPlayObject(KUrl(file), true);
-
-		if (playObject && !playObject->isNull())
-		{
-			if (vol > 1)
-				vol = 1;
-			else if (vol <= .01)
-			{
-				delete playObject;
-				return;
-			}
-
-			if (vol < .99)
-			{
-				//new KVolumeControl(vol, artsServer.server(), playObject);
-			}
-
-			playObject->play();
-			oldPlayObjects.append(playObject);
-		}
-	}*/
+		if (vol > 1)
+		    vol = 1;
+		m_player->play(KUrl::fromPath(resFile));
+	}
 }
 
 void HoleInfo::borderWallsChanged(bool yes)

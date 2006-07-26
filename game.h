@@ -3,12 +3,6 @@
 
 #include <kdebug.h>
 #include <klocale.h>
-#warning port to the new sound system once it exists
-/*
-#include <arts/kplayobject.h>
-#include <arts/kartsserver.h>
-#include <arts/kartsdispatcher.h>
-*/
 
 #include <math.h>
 
@@ -41,11 +35,14 @@ class KConfig;
 class KPrinter;
 class KolfGame;
 
+namespace Phonon
+{
+    class AudioPlayer;
+};
+
 enum Direction { D_Left, D_Right, Forwards, Backwards };
 enum Amount { Amount_Less, Amount_Normal, Amount_More };
 enum HoleResult { Result_Holed, Result_Miss, Result_LipOut };
-
-class Player;
 
 class BallStateInfo
 {
@@ -844,7 +841,7 @@ public slots:
 	void firstHole();
 	void lastHole();
 	void randHole();
-	void playSound(QString file, double vol = 1);
+	void playSound(const QString &file, float vol = 1);
 	void showInfoDlg(bool = false);
 	void resetHole();
 	void clearHole();
@@ -976,10 +973,7 @@ private:
 	Q3CanvasRectangle *highlighter;
 
 	// sound
-#warning port to the new sound system once it exists
-//	KArtsDispatcher artsDispatcher;
-//	KArtsServer artsServer;
-//	Q3PtrList<KPlayObject> oldPlayObjects;
+        Phonon::AudioPlayer *m_player;
 	bool m_sound;
 	bool soundedOnce;
 	QString soundDir;
