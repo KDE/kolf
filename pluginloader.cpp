@@ -41,7 +41,7 @@ Object *PluginLoader::load(const QString &filename)
 		return 0;
 	}
 
-	QObject *newObject = factory->create(0, "objectInstance", QStringList("Object"));
+	QObject *newObject = factory->create(0, "Object");
 
 	if (!newObject)
 	{
@@ -49,6 +49,7 @@ Object *PluginLoader::load(const QString &filename)
 		return 0;
 	}
 
+	newObject->setObjectName("objectInstance");
 	Object *ret = dynamic_cast<Object *>(newObject);
 
 	if (!ret)
