@@ -19,6 +19,7 @@
 #include <kstdaction.h>
 #include <kstdgameaction.h>
 #include <kstdguiitem.h>
+#include <kicon.h>
 
 #include <QTimer>
 #include <QGridLayout>
