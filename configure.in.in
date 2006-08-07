@@ -1,3 +1,0 @@
-if test "x$build_arts" = "xno"; then
-  DO_NOT_COMPILE="$DO_NOT_COMPILE kolf"
-fi
