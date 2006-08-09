@@ -38,7 +38,7 @@ class KolfGame;
 namespace Phonon
 {
     class AudioPlayer;
-};
+}
 
 enum Direction { D_Left, D_Right, Forwards, Backwards };
 enum Amount { Amount_Less, Amount_Normal, Amount_More };
