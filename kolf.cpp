@@ -569,7 +569,7 @@ void Kolf::loadGame()
 	startNewGame();
 }
 
-// called by main for commmand line files
+// called by main for command line files
 void Kolf::openURL(KUrl url)
 {
 	QString target;
