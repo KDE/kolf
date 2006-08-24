@@ -507,10 +507,10 @@ void Kolf::save()
 		return;
 	}
 
-	if (game)
+	if (game) {
 		game->save();
-
-	game->setFocus();
+		game->setFocus();
+	}
 }
 
 void Kolf::saveAs()
