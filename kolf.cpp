@@ -718,14 +718,16 @@ void Kolf::checkEditing()
 
 void Kolf::print()
 {
+	if (!game)
+		return;
+
 	KPrinter pr;
 	pr.addDialogPage(new PrintDialogPage());
 
     if (pr.setup(this, i18n("Print %1 - Hole %2", game->courseName(), game->currentHole())))
 	{
 		pr.newPage();
-		if (game)
-			game->print(pr);
+		game->print(pr);
 	}
 }
 
