@@ -570,7 +570,7 @@ void Kolf::loadGame()
 }
 
 // called by main for command line files
-void Kolf::openURL(KUrl url)
+void Kolf::openUrl(KUrl url)
 {
 	QString target;
 	if (KIO::NetAccess::download(url, target, this))

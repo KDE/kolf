@@ -79,7 +79,7 @@ int main(int argc, char **argv)
 	if (args->count() >= 1)
 	{
 		KUrl url = args->url(args->count() - 1);
-		top->openURL(url);
+		top->openUrl(url);
 		args->clear();
 	}
 	else
