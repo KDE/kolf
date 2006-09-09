@@ -3637,9 +3637,9 @@ startPoint=101,37
 topWallVisible=false
 width=80
 
-[5-floater@309,110|10]
+[5-floater@294,95|10]
 botWallVisible=false
-endPoint=309,110
+endPoint=294,95
 height=40
 leftWallVisible=false
 rightWallVisible=false
