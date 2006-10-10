@@ -2,7 +2,7 @@
 #include <klistbox.h>
 
 #include <QLabel>
-#include <q3frame.h>
+#include <QFrame>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 
@@ -55,7 +55,7 @@ void Editor::setItem(CanvasItem *item)
 	config->ctorDone();
 	hlayout->addWidget(config);
 	hlayout->setStretchFactor(config, 2);
-	config->setFrameStyle(Q3Frame::Box | Q3Frame::Raised);
+	config->setFrameStyle(QFrame::Box | QFrame::Raised);
 	config->setLineWidth(1);
 	config->show();
 	connect(config, SIGNAL(modified()), this, SIGNAL(changed()));
