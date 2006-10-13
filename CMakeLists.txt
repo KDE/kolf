@@ -29,7 +29,7 @@ set(kolf_LIB_SRCS
    floater.cpp 
    slope.cpp )
 
-kde4_automoc(${kolf_LIB_SRCS})
+kde4_automoc(kolf ${kolf_LIB_SRCS})
 
 kde4_add_library(kolflib SHARED ${kolf_LIB_SRCS})
 

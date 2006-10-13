@@ -6,7 +6,7 @@
 
 set(kolftest_LIB_SRCS test.cpp )
 
-kde4_automoc(${kolftest_LIB_SRCS})
+kde4_automoc(kolftest ${kolftest_LIB_SRCS})
 
 kde4_add_library(kolftest SHARED ${kolftest_LIB_SRCS})
 
