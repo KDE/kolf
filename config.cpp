@@ -2,15 +2,14 @@
 #include <QLayout>
 //Added by qt3to4:
 #include <QVBoxLayout>
-#include <Q3Frame>
 
 #include <kdialog.h>
 #include <klocale.h>
 
 #include "config.h"
 
-Config::Config(QWidget *parent, const char *name)
-	: Q3Frame(parent, name)
+Config::Config(QWidget *parent)
+	: QFrame(parent)
 {
 	startedUp = false;
 }
@@ -36,8 +35,8 @@ void Config::changed()
 		emit modified();
 }
 
-MessageConfig::MessageConfig(QString text, QWidget *parent, const char *name)
-	: Config(parent, name)
+MessageConfig::MessageConfig(const QString &text, QWidget *parent)
+	: Config(parent)
 {
 	QVBoxLayout *layout = new QVBoxLayout(this);
         layout->setMargin( marginHint() );
@@ -45,8 +44,8 @@ MessageConfig::MessageConfig(QString text, QWidget *parent, const char *name)
 	layout->addWidget(new QLabel(text, this));
 }
 
-DefaultConfig::DefaultConfig(QWidget *parent, const char *name)
-	: MessageConfig(i18n("No configuration options"), parent, name)
+DefaultConfig::DefaultConfig(QWidget *parent)
+	: MessageConfig(i18n("No configuration options"), parent)
 {
 }
 

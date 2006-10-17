@@ -1,14 +1,14 @@
 #ifndef KOLF_CONFIG_H
 #define KOLF_CONFIG_H
 
-#include <q3frame.h>
+#include <QFrame>
 
-class Config : public Q3Frame
+class Config : public QFrame
 {
 	Q_OBJECT
 
 public:
-	Config(QWidget *parent, const char *name = 0);
+	Config(QWidget *parent);
 	void ctorDone();
 
 signals:
@@ -27,7 +27,7 @@ class MessageConfig : public Config
 	Q_OBJECT
 
 public:
-	MessageConfig(QString text, QWidget *parent, const char *name = 0);
+	MessageConfig(const QString &text, QWidget *parent);
 };
 
 // internal
@@ -36,7 +36,7 @@ class DefaultConfig : public MessageConfig
 	Q_OBJECT
 
 public:
-	DefaultConfig(QWidget *parent, const char *name = 0);
+	DefaultConfig(QWidget *parent);
 };
 
 #endif
