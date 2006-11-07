@@ -160,7 +160,7 @@ void Slope::moveArrow()
 {
 	int xavg = 0, yavg = 0;
 	Q3PointArray r = areaPoints();
-	for (unsigned int i = 0; i < r.size(); ++i)
+	for (int i = 0; i < r.size(); ++i)
 	{
 		xavg += r[i].x();
 		yavg += r[i].y();
@@ -399,7 +399,7 @@ void Slope::updatePixmap()
 	p.drawTiledPixmap(QRect(0, 0, width(), height()), grass);
 	p.end();
 
-	const double length = sqrt(width() * width() + height() * height()) / 4;
+	const double length = sqrt(double(width() * width() + height() * height())) / 4;
 
 	if (circle)
 	{
