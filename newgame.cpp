@@ -369,13 +369,17 @@ PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent
 	editor->setText(startName);
 	layout->addStretch();
 	layout->addWidget(colorButton = new KColorButton(startColor, this));
+#ifdef __GNUC__
 #warning setAutoMask does not exists in Qt4 port
+#endif
 //	colorButton->setAutoMask(true);
         palette.setBrush( colorButton->backgroundRole(), QBrush( grass ) );
         colorButton->setPalette( palette );
 
 	KPushButton *remove = new KPushButton(i18n("Remove"), this);
+#ifdef __GNUC__
 #warning setAutoMask does not exists in Qt4 port
+#endif
 //	remove->setAutoMask(true);
 	layout->addWidget(remove);
         palette.setBrush( remove->backgroundRole(), QBrush( grass ) );

@@ -33,7 +33,7 @@ void FloaterGuide::moveBy(double dx, double dy)
 
 void FloaterGuide::setPoints(int xa, int ya, int xb, int yb)
 {
-	if (fabs(xa - xb) > 0 || fabs(ya - yb) > 0)
+	if (qAbs(xa - xb) > 0 || qAbs(ya - yb) > 0)
 	{
 		Wall::setPoints(xa, ya, xb, yb);
 		if (floater)

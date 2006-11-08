@@ -7,13 +7,13 @@
 
 // Creates a vector with between two points
 Vector::Vector(const QPoint &source, const QPoint &dest) {
-	_magnitude = sqrt(pow(source.x() - dest.x(), 2) + pow(source.y() - dest.y(), 2));
-	_direction = atan2(source.y() - dest.y(), source.x() - dest.x());
+	_magnitude = sqrt(pow(source.x() - dest.x(), 2.) + pow(source.y() - dest.y(), 2.));
+	_direction = atan2(double(source.y() - dest.y()), double(source.x() - dest.x()));
 }
 
 // Creates a vector with between two points
 Vector::Vector(const Point &source, const Point &dest) {
-	_magnitude = sqrt(pow(source.x - dest.x, 2) + pow(source.y - dest.y, 2));
+	_magnitude = sqrt(pow(source.x - dest.x, 2.) + pow(source.y - dest.y, 2.));
 	_direction = atan2(source.y - dest.y, source.x - dest.x);
 }
 

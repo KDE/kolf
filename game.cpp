@@ -12,6 +12,7 @@
 #include <kstandarddirs.h>
 #include <phonon/audioplayer.h>
 
+#include "game.h"
 #include <q3canvas.h>
 #include <q3paintdevicemetrics.h>
 #include <QCheckBox>
@@ -39,7 +40,6 @@
 #include "kcomboboxdialog.h"
 #include "kvolumecontrol.h"
 #include "vector.h"
-#include "game.h"
 
 
 inline QString makeGroup(int id, int hole, QString name, int x, int y)
@@ -652,7 +652,6 @@ void SignConfig::textChanged(const QString &text)
 }
 
 /////////////////////////
-
 EllipseConfig::EllipseConfig(Ellipse *ellipse, QWidget *parent)
 	: Config(parent), slow1(0), fast1(0), slow2(0), fast2(0), slider1(0), slider2(0)
 {

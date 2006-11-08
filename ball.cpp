@@ -5,6 +5,7 @@
 
 #include <kapplication.h>
 #include <kdebug.h>
+#include "game.h"
 
 #include <math.h>
 #include <stdlib.h>
@@ -15,7 +16,6 @@
 #include "rtti.h"
 #include "vector.h"
 #include "canvasitem.h"
-#include "game.h"
 #include "ball.h"
 
 Ball::Ball(Q3Canvas *canvas)
