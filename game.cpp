@@ -727,7 +727,7 @@ void EllipseConfig::check2Changed(bool on)
 
 /////////////////////////
 
-Ellipse::GEllipse(Q3Canvas *canvas)
+Ellipse::Ellipse(Q3Canvas *canvas)
 	: Q3CanvasEllipse(canvas)
 {
 	savingDone();
