@@ -1,6 +1,7 @@
 #ifndef KOLF_H
 #define KOLF_H
 
+#include <kolflib_export.h>
 #include <kmainwindow.h>
 #include <kurl.h>
 
@@ -19,7 +20,7 @@ class Player;
 class QWidget;
 class Editor;
 
-class KDE_EXPORT Kolf : public KMainWindow
+class KOLFLIB_EXPORT Kolf : public KMainWindow
 {
 	Q_OBJECT
 

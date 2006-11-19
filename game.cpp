@@ -652,10 +652,10 @@ void SignConfig::textChanged(const QString &text)
 }
 
 /////////////////////////
-EllipseConfig::EllipseConfig(Ellipse *ellipse, QWidget *parent)
+EllipseConfig::EllipseConfig(Ellipse *_ellipse, QWidget *parent)
 	: Config(parent), slow1(0), fast1(0), slow2(0), fast2(0), slider1(0), slider2(0)
 {
-	this->ellipse = ellipse;
+	this->ellipse = _ellipse;
 
 	m_vlayout = new QVBoxLayout(this);
         m_vlayout->setMargin( marginHint() );
@@ -727,7 +727,7 @@ void EllipseConfig::check2Changed(bool on)
 
 /////////////////////////
 
-Ellipse::Ellipse(Q3Canvas *canvas)
+Ellipse::GEllipse(Q3Canvas *canvas)
 	: Q3CanvasEllipse(canvas)
 {
 	savingDone();
@@ -2923,7 +2923,7 @@ void KolfGame::putterTimeout()
 	{
 		if (putting)
 		{
-			const float base = 2.0;
+			const qreal base = 2.0;
 
 			if (puttReverse && strength <= 0)
 			{
@@ -2935,7 +2935,7 @@ void KolfGame::putterTimeout()
 			{
 				// decreasing strength as we've reached the top
 				puttReverse = true;
-				strength -= pow(base, strength / maxStrength) - 1.8;
+				strength -= pow(base, qreal(strength / maxStrength)) - 1.8;
 				if ((int)strength < puttCount * 2)
 				{
 					puttCount--;

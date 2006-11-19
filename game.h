@@ -21,7 +21,7 @@
 #include "ball.h"
 #include "statedb.h"
 #include "rtti.h"
-#include <kdemacros.h>
+#include <kolflib_export.h>
 
 class QLabel;
 class QSlider;
@@ -788,7 +788,7 @@ struct KDE_EXPORT CourseInfo
 	unsigned int par;
 };
 
-class KDE_EXPORT KolfGame : public Q3CanvasView
+class KOLFLIB_EXPORT KolfGame : public Q3CanvasView
 {
 	Q_OBJECT
 
