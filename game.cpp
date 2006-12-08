@@ -539,8 +539,6 @@ void Windmill::moveBy(double dx, double dy)
 	guard->moveBy(dx, dy);
 	guard->moveBy(dx, dy);
 	guard->setBetween(x(), x() + width());
-
-	update();
 }
 
 void Windmill::setSize(double width, double height)
@@ -619,8 +617,6 @@ void Sign::setText(const QString &text)
 {
 	m_text = text;
 	m_untranslatedText = text;
-
-	update();
 }
 
 void Sign::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
@@ -1114,7 +1110,6 @@ void Bumper::advance(int phase)
 		{
 			count = 0;
 			setBrush(firstColor);
-			update();
 			setAnimated(false);
 		}
 	}
@@ -1617,7 +1612,6 @@ void WallPoint::clean()
 {
 	double oldWidth = width();
 	setSize(7, 7);
-	update();
 
 	QGraphicsItem *onPoint = 0;
 	QList<QGraphicsItem *> l = collidingItems();
@@ -2093,8 +2087,6 @@ void StrokeCircle::setValue(double v)
 	dvalue = v;
 	if (dvalue > dmax)
 		dvalue = dmax;
-
-	update();
 }
 
 double StrokeCircle::value()
@@ -2111,8 +2103,6 @@ void StrokeCircle::setMaxValue(double m)
 	dmax = m;
 	if (dvalue > dmax)
 		dvalue = dmax;
-
-	update();
 }
 void StrokeCircle::setSize(int w, int h)
 {
@@ -2120,15 +2110,11 @@ void StrokeCircle::setSize(int w, int h)
 		iwidth = w;
 	if (h > 0)
 		iheight = h;
-
-	update();
 }
 void StrokeCircle::setThickness(int t)
 {
 	if (t > 0)
 		ithickness = t;
-
-	update();
 }
 
 int StrokeCircle::thickness() const
@@ -3627,7 +3613,6 @@ void KolfGame::openFile()
 			{
 				cfg->setGroup(makeGroup(id, curHole, sceneItem->name(), x, y));
 				sceneItem->load(cfg);
-				course->update();
 			}
 
 			// we don't allow multiple items for the same thing in

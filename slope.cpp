@@ -560,7 +560,6 @@ void Slope::updatePixmap()
 	}
 
 	moveArrow();
-	update();
 }
 
 /////////////////////////

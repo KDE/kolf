@@ -823,7 +823,6 @@ public:
 	void updateMouse();
 	void ballMoved();
 	void updateHighlighter();
-	void updateCourse() { course->update(); }
 	QGraphicsItem *curSelectedItem() const { return selectedItem; }
 	void setBorderWalls(bool);
 	void setInPlay(bool yes) { inPlay = yes; }
