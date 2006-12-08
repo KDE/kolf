@@ -24,12 +24,14 @@
 #include "newgame.h"
 #include "game.h"
 
-NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_name)
-	: KPageDialog(parent)
+NewGameDialog::NewGameDialog(bool enableCourses)
+	: KPageDialog()
 {
 	setCaption(i18n("New Game"));
 	setButtons(Ok | Cancel);
 	setDefaultButton(Ok);
+        connect(this, SIGNAL(okClicked()), this, SLOT(slotOk()));
+
 	setFaceType(KPageDialog::Tree);
 	this->enableCourses = enableCourses;
 
@@ -39,7 +41,7 @@ NewGameDialog::NewGameDialog(bool enableCourses, QWidget *parent, const char *_n
 	startColors << Qt::yellow << Qt::blue << Qt::red << Qt::lightGray << Qt::cyan << Qt::darkBlue << Qt::magenta << Qt::darkGray << Qt::darkMagenta << Qt::darkYellow;
 
 	playerPage = new QFrame();
-    addPage(playerPage, i18n("Players"));
+    	addPage(playerPage, i18n("Players"));
 
 	QVBoxLayout *bigLayout = new QVBoxLayout(playerPage);
         bigLayout->setMargin( marginHint() );
@@ -369,21 +371,8 @@ PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent
 	editor->setText(startName);
 	layout->addStretch();
 	layout->addWidget(colorButton = new KColorButton(startColor, this));
-#ifdef __GNUC__
-#warning setAutoMask does not exists in Qt4 port
-#endif
-//	colorButton->setAutoMask(true);
-        palette.setBrush( colorButton->backgroundRole(), QBrush( grass ) );
-        colorButton->setPalette( palette );
-
 	KPushButton *remove = new KPushButton(i18n("Remove"), this);
-#ifdef __GNUC__
-#warning setAutoMask does not exists in Qt4 port
-#endif
-//	remove->setAutoMask(true);
 	layout->addWidget(remove);
-        palette.setBrush( remove->backgroundRole(), QBrush( grass ) );
-	remove->setPalette( palette );
 	connect(remove, SIGNAL(clicked()), this, SLOT(removeMe()));
 }
 

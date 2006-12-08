@@ -25,12 +25,13 @@ public slots:
 	void setItem(CanvasItem *);
 
 private slots:
-	void listboxExecuted(Q3ListBoxItem *);
+	void listboxExecuted(Q3ListBoxItem *); //Q3ListBoxItem used here because that is what KListBox uses
+
 
 private:
 	ObjectList *list;
 	QHBoxLayout *hlayout;
-	KListBox *listbox;
+	KListBox *listbox; //note: this uses Q3 listbox
 	Config *config;
 };
 

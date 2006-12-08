@@ -1,8 +1,8 @@
 #ifndef KOLF_CANVASITEM_H
 #define KOLF_CANVASITEM_H
 
-#include <q3canvas.h>
-#include <Q3PtrList>
+#include <QGraphicsView>
+#include <QGraphicsRectItem>
 
 #include "config.h"
 
@@ -31,7 +31,7 @@ public:
 	/**
 	 * called if the item is made by user while editing, with the item that was selected on the hole;
 	 */
-	virtual void selectedItem(Q3CanvasItem * /*item*/) {}
+	virtual void selectedItem(QGraphicsItem * /*item*/) {}
 	/**
 	 * called after the item is moved the very first time by the game
 	 */
@@ -90,7 +90,7 @@ public:
 	 */
 	virtual void doAdvance() {}
 	/**
-	 * if all items of this type of item (based on rtti()) that are "colliding" (ie, in the same spot) with ball should get collision() called.
+	 * if all items of this type of item (based on data()) that are "colliding" (ie, in the same spot) with ball should get collision() called.
 	 */
 	virtual bool terrainCollisions() const { return false; }
 	/**
@@ -108,7 +108,7 @@ public:
 	/**
 	 * update your Z value (this is called by various things when perhaps the value should change) if this is called by a vStrut, it will pass 'this'.
 	 */
-	virtual void updateZ(Q3CanvasRectangle * /*vStrut*/ = 0) {};
+	virtual void updateZ(QGraphicsRectItem * /*vStrut*/ = 0) {};
 	/**
 	 * clean up for prettyness
 	 */
@@ -130,7 +130,7 @@ public:
 	/**
 	 * returns other items that should be moveable (besides this one of course).
 	 */
-	virtual Q3PtrList<Q3CanvasItem> moveableItems() const { return Q3PtrList<Q3CanvasItem>(); }
+	virtual QList<QGraphicsItem *> moveableItems() const { return QList<QGraphicsItem *>(); }
 	/**
 	 * returns whether this can be moved by the user while editing.
 	 */
@@ -146,9 +146,9 @@ public:
 	void playSound(QString file, double vol = 1);
 
 	/**
-	 * called on ball's collision. Return if terrain collisions should be processed.
+	 * called on ball's collision. Return if terrain collidingItems should be processed.
 	 */
-	virtual bool collision(Ball * /*ball*/, long int /*id*/) { return true; }
+	virtual bool collision(Ball * /*ball*/, long int /*id*/) { kDebug(12007) << "Error: null coll" << endl; return false; }
 
 	/**
 	 * reimplement if you want extra items to have access to the game object.
@@ -164,6 +164,17 @@ public:
 	QString name() const { return m_name; }
 	void setName(const QString &newname) { m_name = newname; }
 
+	/**
+	 * custom animation code
+	 */
+	void setAnimated(bool animated) { this->animated=animated; }
+	void setVelocity(double xv, double yv) { setXVelocity(xv); setYVelocity(yv); }
+	void setXVelocity(double xVelocity) { this->xVelocity=xVelocity; } 
+	void setYVelocity(double yVelocity) { this->yVelocity=yVelocity; }
+	double getXVelocity() { return xVelocity; }
+	double getYVelocity() { return yVelocity; }
+	virtual void moveBy(double , double) { kDebug(12007) << "Warning, empty moveBy used" << endl; } //needed so that float can call the own custom moveBy()s of everything on it
+
 protected:
 	/**
 	 * pointer to main KolfGame
@@ -173,7 +184,14 @@ protected:
 	/**
 	 * returns the highest vertical strut the item is on
 	 */
-	Q3CanvasRectangle *onVStrut();
+	QGraphicsRectItem *onVStrut();
+
+	/**
+	 * custom animation code
+	 */
+	bool animated;
+	double xVelocity;
+	double yVelocity;
 
 private:
 	QString m_name;

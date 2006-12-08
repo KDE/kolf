@@ -1,1 +1,45 @@
-Nothing
+Minor Bugs:
+-----------
+in edit mode it is possible to make a course with no cup
+
+print needs fixing (see KolfGame::print)
+
+balls can go through walls
+	eg: classic 2, can get through connection with top diag and top wall (easliest from left)
+
+if on your first turn (in a multiplayer game) for a hole you fall into water and choose "Rehit from last location" then your ball wall spawn on top of your opponents, so that when they make their first hit they will instantly collide with yours
+	poss fix: check for collisions with ball and other balls when a player is making their first move.
+
+balls can sometimes go through each other:
+	go straigh in one dir with first player, then same with next and they will be able to go through opponent
+
+minor info saving bug:
+	start a game with two players with diff names
+	end the game
+	start a new game, and both players will have the name of the first
+
+need to find a sound for getting a score below par, see game.cpp and find the line that contains:
+	//playSound("woohoo");
+
+apparently void KolfGame::startNextHole() needs tidying work since it is too complex (see game.cpp)
+
+the names of menu items with checkboxs (eg in the Settings menu) seem wrong to me, need to think about what I want to change
+
+slowness, bad performace, espeicially when in Xgl (at least on my system)
+	
+wrong player selected in score table at start of game
+
+the edges of the course view should be hidden (or at least that is the way the levels are currently designed, see the margins in KolfGame::KolfGame
+
+in strickt mode it is possible to select different holes, this is clearly cheating, but useful for debuging, so should be kept in for now
+
+editing mode is very buggy and needs work, but probably best to wait till after the graphics upgrade
+
+layout of the big buttons at the top of window is wrong, needs thinking about
+
+IMPROVEMENTS:
+-------------
+improve graphics
+
+add resizing
+

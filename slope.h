@@ -5,8 +5,7 @@
 
 #include "game.h"
 #include <QPixmap>
-#include <Q3PointArray>
-#include <Q3PtrList>
+#include <Q3PointArray> //needed to find centre of slope for the arrows, will be replaced when grphics are updated
 
 class Slope;
 class SlopeConfig : public Config
@@ -26,25 +25,24 @@ private:
 	Slope *slope;
 };
 
-class Slope : public Q3CanvasRectangle, public CanvasItem, public RectItem
+class Slope : public QGraphicsRectItem, public CanvasItem, public RectItem
 {
 public:
-	Slope(QRect rect, Q3Canvas *canvas);
+	Slope(QRect rect, QGraphicsItem *parent, QGraphicsScene *scene);
 	virtual void aboutToDie();
-	virtual int rtti() const { return 1031; }
 
 	virtual void showInfo();
 	virtual void hideInfo();
 	virtual void editModeChanged(bool changed);
 	virtual bool canBeMovedByOthers() const { return !stuckOnGround; }
-	virtual Q3PtrList<Q3CanvasItem> moveableItems() const;
+	virtual QList<QGraphicsItem *> moveableItems() const;
 	virtual Config *config(QWidget *parent) { return new SlopeConfig(this, parent); }
 	void setSize(int, int);
-	virtual void newSize(int width, int height);
-
+	virtual void newSize(double width, double height);
 	virtual void moveBy(double dx, double dy);
 
-	virtual void draw(QPainter &painter);
+	virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem * option, QWidget * widget = 0 );
+	virtual QPainterPath shape () const;
 	virtual Q3PointArray areaPoints() const;
 
 	void setGradient(QString text);
@@ -68,9 +66,12 @@ public:
 	QMap<KImageEffect::GradientType, QString> gradientI18nKeys;
 	QMap<KImageEffect::GradientType, QString> gradientKeys;
 
-	virtual void updateZ(Q3CanvasRectangle *vStrut = 0);
+	virtual void updateZ(QGraphicsRectItem *vStrut = 0);
 
 	void moveArrow();
+
+	double width() const { return rect().width(); }
+	double height() const { return rect().height(); }
 
 private:
 	KImageEffect::GradientType type;
@@ -86,8 +87,8 @@ private:
 
 	void clearArrows();
 
-	Q3PtrList<Arrow> arrows;
-	Q3CanvasText *text;
+	QList<Arrow *> arrows;
+	QGraphicsSimpleTextItem *text;
 	RectPoint *point;
 };
 
@@ -95,7 +96,7 @@ class SlopeObj : public Object
 {
 public:
 	SlopeObj() { m_name = i18n("Slope"); m__name = "slope"; }
-	virtual Q3CanvasItem *newObject(Q3Canvas *canvas) { return new Slope(QRect(0, 0, 40, 40), canvas); }
+	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene) { return new Slope(QRect(0, 0, 40, 40), parent, scene); }
 };
 
 #endif

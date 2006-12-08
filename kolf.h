@@ -138,6 +138,6 @@ struct HighScore
 	QString name;
 	int score;
 };
-typedef Q3ValueList<HighScore> HighScoreList;
+typedef QList<HighScore> HighScoreList;
 
 #endif

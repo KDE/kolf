@@ -1,7 +1,6 @@
-#include <q3canvas.h>
+#include <QGraphicsView>
 #include <QColor>
 #include <QPen>
-#include <Q3PtrList>
 
 #include <kapplication.h>
 #include <kdebug.h>
@@ -18,9 +17,10 @@
 #include "canvasitem.h"
 #include "ball.h"
 
-Ball::Ball(Q3Canvas *canvas)
-	: Q3CanvasEllipse(canvas)
+Ball::Ball(QGraphicsScene *scene)
+	: QGraphicsEllipseItem(0, scene)
 {
+	setData(0, Rtti_Ball);
 	m_doDetect = true;
 	m_collisionLock = false;
 	setBeginningOfHole(false);
@@ -33,14 +33,15 @@ Ball::Ball(Q3Canvas *canvas)
 	m_forceStillGoing = false;
 	frictionMultiplier = 1.0;
 	QFont font(kapp->font());
-	//font.setPixelSize(10);
-	label = new Q3CanvasText("", font, canvas);
-	label->setColor(Qt::white);
+	label = new QGraphicsSimpleTextItem("", this, scene);
+	label->setFont(font);
+	label->setBrush(Qt::white);
+	label->setPos(5, 5);
 	label->setVisible(false);
 
 	// this sets z
 	setState(Stopped);
-	label->setZ(z() - .1);
+	label->setZValue(zValue() - .1);
 }
 
 void Ball::aboutToDie()
@@ -52,9 +53,14 @@ void Ball::setState(BallState newState)
 {
 	state = newState;
 	if (state == Stopped)
-		setZ(1000);
+		setZValue(1000);
 	else
 		setBeginningOfHole(false);
+}
+
+void Ball::resetSize()
+{
+	setRect(rect().x()-3.5, rect().y()-3.5, 7, 7);
 }
 
 void Ball::advance(int phase)
@@ -77,7 +83,7 @@ void Ball::advance(int phase)
 		const double width = 6 + randnum * (diff / RAND_MAX);
 		randnum = KRandom::random();
 		const double height = 6 + randnum * (diff / RAND_MAX);
-		setSize(width, height);
+		setRect(rect().x(), rect().y(), width, height);
 		blowUpCount++;
 	}
 }
@@ -101,7 +107,7 @@ void Ball::friction()
 
 void Ball::setVelocity(double vx, double vy)
 {
-	Q3CanvasEllipse::setVelocity(vx, vy);
+	CanvasItem::setVelocity(vx, vy);
 
 	if (vx == 0 && vy == 0)
 	{
@@ -126,7 +132,7 @@ void Ball::setVector(const Vector &newVector)
 		return;
 	}
 
-	Q3CanvasEllipse::setVelocity(cos(newVector.direction()) * newVector.magnitude(), -sin(newVector.direction()) * newVector.magnitude());
+	CanvasItem::setVelocity(cos(newVector.direction()) * newVector.magnitude(), -sin(newVector.direction()) * newVector.magnitude());
 }
 
 void Ball::moveBy(double dx, double dy)
@@ -135,20 +141,19 @@ void Ball::moveBy(double dx, double dy)
 	double oldy;
 	oldx = x();
 	oldy = y();
-	Q3CanvasEllipse::moveBy(dx, dy);
+	QGraphicsEllipseItem::moveBy(dx, dy);
 
 	if (game && !game->isPaused())
 		collisionDetect(oldx, oldy);
 		
 	if ((dx || dy) && game && game->curBall() == this)
 		game->ballMoved();
-	
-	label->move(x() + width(), y() + height());
 }
 
 void Ball::doAdvance()
 {
-	Q3CanvasEllipse::advance(1);
+	if(getXVelocity()!=0 || getYVelocity()!=0) 
+		moveBy(getXVelocity(), getYVelocity());
 }
 
 namespace Lines
@@ -219,27 +224,23 @@ void Ball::collisionDetect(double oldx, double oldy)
 
 	// every other time...
 	// do friction
-	if (collisionId % 2 && !(xVelocity() == 0 && yVelocity() == 0))
+	if (collisionId % 2 && !(getXVelocity() == 0 && getXVelocity() == 0))
 		friction();
 
 	const double minSpeed = .06;
 
-	Q3CanvasItemList m_list = collisions(true);
-
-	// please don't ask why QCanvas doesn't actually sort its list;
-	// it just doesn't.
-	m_list.sort();
+	QList<QGraphicsItem *> m_list = collidingItems();
 
 	this->m_list = m_list;
 
-	for (Q3CanvasItemList::Iterator it = m_list.begin(); it != m_list.end(); ++it)
+	for (QList<QGraphicsItem *>::Iterator it = m_list.begin(); it != m_list.end(); ++it)
 	{
-		Q3CanvasItem *item = *it;
+		QGraphicsItem *item = *it;
 
-		if (item->rtti() == Rtti_NoCollision || item->rtti() == Rtti_Putter)
+		if (item->data(0) == Rtti_NoCollision || item->data(0) == Rtti_Putter)
 			continue;
 
-		if (item->rtti() == rtti() && !m_collisionLock)
+		if (item->data(0) == data(0) && !m_collisionLock)
 		{
 			// it's one of our own kind, a ball
 			Ball *oball = dynamic_cast<Ball *>(item);
@@ -252,16 +253,16 @@ void Ball::collisionDetect(double oldx, double oldy)
 				m_collisionLock = true;
 				// move this ball to where it was barely touching
 				double ballAngle = m_vector.direction();
-				while (collisions(true).contains(item) > 0)
-					move(x() - cos(ballAngle) / 2.0, y() + sin(ballAngle) / 2.0);
+				while (collidingItems().contains(item) > 0)
+					setPos(x() - cos(ballAngle) / 2.0, y() + sin(ballAngle) / 2.0);
 
 				// make a 2 pixel separation
-				move(x() - 2 * cos(ballAngle), y() + 2 * sin(ballAngle));
+				setPos(x() - 2 * cos(ballAngle), y() + 2 * sin(ballAngle));
 
 				Vector bvector = oball->curVector();
 				m_vector -= bvector;
 
-				Vector unit1 = Vector(QPoint(x(), y()), QPoint(oball->x(), oball->y()));
+				Vector unit1 = Vector(QPointF(x(), y()), QPointF(oball->x(), oball->y()));
 				unit1 = unit1.unit();
 
 				Vector unit2 = m_vector.unit();
@@ -285,14 +286,14 @@ void Ball::collisionDetect(double oldx, double oldy)
 
 			continue;
 		}
-		else if (item->rtti() == Rtti_WallPoint)
+		else if (item->data(0) == Rtti_WallPoint)
 		{
 			//kDebug(12007) << "collided with WallPoint\n";
 			// iterate through the rst
-			Q3PtrList<WallPoint> points;
-			for (Q3CanvasItemList::Iterator pit = it; pit != m_list.end(); ++pit)
+			QList<WallPoint *> points;
+			for (QList<QGraphicsItem *>::Iterator pit = it; pit != m_list.end(); ++pit)
 			{
-				if ((*pit)->rtti() == Rtti_WallPoint)
+				if ((*pit)->data(0) == Rtti_WallPoint)
 				{
 					WallPoint *point = (WallPoint *)(*pit);
 					if (point)
@@ -302,20 +303,18 @@ void Ball::collisionDetect(double oldx, double oldy)
 
 			// ok now we have a list of wall points we are on
 
-			WallPoint *iterpoint = 0;
-			WallPoint *finalPoint = 0;
+			QList<WallPoint *>::const_iterator iterpoint;
+			QList<WallPoint *>::const_iterator finalPoint;
 
 			// this wont be least when we're done hopefully
 			double leastAngleDifference = 9999;
 
-			for (iterpoint = points.first(); iterpoint; iterpoint = points.next())
+			for (iterpoint = points.constBegin(); iterpoint != points.constEnd(); ++iterpoint)
 			{
 				//kDebug(12007) << "-----\n";
-				const Wall *parentWall = iterpoint->parentWall();
-				const QPoint qp(iterpoint->x() + parentWall->x(), iterpoint->y() + parentWall->y());
-				const Point p(qp.x(), qp.y());
-				const QPoint qother = QPoint(parentWall->startPoint() == qp? parentWall->endPoint() : parentWall->startPoint()) + QPoint(parentWall->x(), parentWall->y());
-				const Point other(qother.x(), qother.y());
+				const Wall *parentWall = (*iterpoint)->parentWall();
+				const QPointF p(((*iterpoint)->x() + parentWall->x()), ((*iterpoint)->y() + parentWall->y()));
+				const QPointF other = QPointF(parentWall->startPoint() == p? parentWall->endPoint() : parentWall->startPoint()) + QPointF(parentWall->x(), parentWall->y());
 
 				// vector of wall
 				Vector v = Vector(p, other);
@@ -341,11 +340,11 @@ void Ball::collisionDetect(double oldx, double oldy)
 			}
 
 			// this'll never happen
-			if (!finalPoint)
+			if (!(*finalPoint))
 				continue;
 
 			// collide with our chosen point
-			finalPoint->collision(this, collisionId);
+			(*finalPoint)->collision(this, collisionId);
 
 			// don't worry about colliding with walls
 			// wall points are ok alone
@@ -360,11 +359,11 @@ void Ball::collisionDetect(double oldx, double oldy)
 		{
 			if (!citem->terrainCollisions())
 			{
-				// read: if (not do terrain collisions)
+				// read: if (not do terrain collidingItems)
 				if (!citem->collision(this, collisionId))
 				{
 					// if (skip smart wall test)
-					if (citem->vStrut() || item->rtti() == Rtti_Wall)
+					if (citem->vStrut() || item->data(0) == Rtti_Wall)
 						goto end;
 					else
 						goto wallCheck;
@@ -374,7 +373,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 		}
 	}
 
-	for (Q3CanvasItemList::Iterator it = m_list.begin(); it != m_list.end(); ++it)
+	for (QList<QGraphicsItem *>::Iterator it = m_list.begin(); it != m_list.end(); ++it)
 	{
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(*it);
 		if (citem && citem->terrainCollisions())
@@ -383,7 +382,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 			// as only one should be processed
 			// however that might not always be true
 
-			// read: if (not do terrain collisions)
+			// read: if (not do terrain collidingItems)
 			if (!citem->collision(this, collisionId))
 			{
 				break;
@@ -396,15 +395,15 @@ void Ball::collisionDetect(double oldx, double oldy)
 	wallCheck:
 
 	{ // check if I went through a wall
-		Q3CanvasItemList items;
+		QList<QGraphicsItem *> items;
 		if (game)
-			items = game->canvas()->allItems();
-		for (Q3CanvasItemList::Iterator i = items.begin(); i != items.end(); ++i)
+			items = game->scene()->items();
+		for (QList<QGraphicsItem *>::Iterator i = items.begin(); i != items.end(); ++i)
 		{
-			if ((*i)->rtti() != Rtti_Wall)
+			if ((*i)->data(0) != Rtti_Wall)
 				continue;
 
-			Q3CanvasItem *item = (*i);
+			QGraphicsItem *item = (*i);
 			Wall *wall = dynamic_cast<Wall*>(item);
 			if (!wall || !wall->isVisible())
 				continue;
@@ -454,15 +453,9 @@ void Ball::setName(const QString &name)
 	label->setText(name);
 }
 
-void Ball::setCanvas(Q3Canvas *c)
-{
-	Q3CanvasEllipse::setCanvas(c);
-	label->setCanvas(c);
-}
-
 void Ball::setVisible(bool yes)
 {
-	Q3CanvasEllipse::setVisible(yes);
+	QGraphicsEllipseItem::setVisible(yes);
 
 	label->setVisible(yes && game && game->isInfoShowing());
 }

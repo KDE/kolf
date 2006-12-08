@@ -13,10 +13,10 @@
 #include <phonon/audioplayer.h>
 
 #include "game.h"
-#include <q3canvas.h>
-#include <q3paintdevicemetrics.h>
+#include <QGraphicsView>
 #include <QCheckBox>
 #include <QPixmapCache>
+#include <QPixmap>
 #include <QCursor>
 #include <qimage.h>
 #include <QLabel>
@@ -27,6 +27,7 @@
 #include <QSpinBox>
 #include <QTimer>
 #include <QToolTip>
+#include <QStyleOptionGraphicsItem>
 
 #include <QMouseEvent>
 #include <QKeyEvent>
@@ -54,10 +55,10 @@ inline QString makeStateGroup(int id, const QString &name)
 
 /////////////////////////
 
-RectPoint::RectPoint(QColor color, RectItem *rect, Q3Canvas *canvas)
-	: Q3CanvasEllipse(canvas)
+RectPoint::RectPoint(QColor color, RectItem *rect, QGraphicsItem * parent, QGraphicsScene *scene)
+: QGraphicsEllipseItem(parent, scene)
 {
-	setZ(9999);
+	setZValue(9999);
 	setSize(10, 10);
 	this->rect = rect;
 	setBrush(QBrush(color));
@@ -67,7 +68,7 @@ RectPoint::RectPoint(QColor color, RectItem *rect, Q3Canvas *canvas)
 
 void RectPoint::moveBy(double dx, double dy)
 {
-	Q3CanvasEllipse::moveBy(dx, dy);
+	QGraphicsEllipseItem::moveBy(dx, dy);
 
 	if (dontmove)
 	{
@@ -75,7 +76,7 @@ void RectPoint::moveBy(double dx, double dy)
 		return;
 	}
 
-	Q3CanvasItem *qitem = dynamic_cast<Q3CanvasItem *>(rect);
+	QGraphicsItem *qitem = dynamic_cast<QGraphicsItem *>(rect);
 	if (!qitem)
 		return;
 
@@ -96,13 +97,19 @@ Config *RectPoint::config(QWidget *parent)
 		return CanvasItem::config(parent);
 }
 
+void RectPoint::setSize(qreal width, qreal height)
+{
+	setRect(x(), y(), width, height);
+}
+
+
 /////////////////////////
 
-Arrow::Arrow(Q3Canvas *canvas)
-	: Q3CanvasLine(canvas)
+Arrow::Arrow(QGraphicsItem * parent, QGraphicsScene *scene)
+: QGraphicsLineItem(parent, scene)
 {
-	line1 = new Q3CanvasLine(canvas);
-	line2 = new Q3CanvasLine(canvas);
+	line1 = new QGraphicsLineItem(this, scene);
+	line2 = new QGraphicsLineItem(this, scene);
 
 	m_angle = 0;
 	m_length = 20;
@@ -116,28 +123,28 @@ Arrow::Arrow(Q3Canvas *canvas)
 
 void Arrow::setPen(QPen p)
 {
-	Q3CanvasLine::setPen(p);
+	QGraphicsLineItem::setPen(p);
 	line1->setPen(p);
 	line2->setPen(p);
 }
 
-void Arrow::setZ(double newz)
+void Arrow::setZValue(double newz)
 {
-	Q3CanvasLine::setZ(newz);
-	line1->setZ(newz);
-	line2->setZ(newz);
+	QGraphicsLineItem::setZValue(newz);
+	line1->setZValue(newz);
+	line2->setZValue(newz);
 }
 
 void Arrow::setVisible(bool yes)
 {
-	Q3CanvasLine::setVisible(yes);
+	QGraphicsLineItem::setVisible(yes);
 	line1->setVisible(yes);
 	line2->setVisible(yes);
 }
 
 void Arrow::moveBy(double dx, double dy)
 {
-	Q3CanvasLine::moveBy(dx, dy);
+	QGraphicsLineItem::moveBy(dx, dy);
 	line1->moveBy(dx, dy);
 	line2->moveBy(dx, dy);
 }
@@ -150,45 +157,45 @@ void Arrow::aboutToDie()
 
 void Arrow::updateSelf()
 {
-	QPoint start = startPoint();
-	QPoint end(int( m_length * cos(m_angle) ), int( m_length * sin(m_angle)) );
+	QPointF start( line().x1(), line().y1() );
+	QPointF end(( m_length * cos(m_angle) ), ( m_length * sin(m_angle)) );
 
 	if (m_reversed)
 	{
-		QPoint tmp(start);
+		QPointF tmp(start);
 		start = end;
 		end = tmp;
 	}
 
-	setPoints(start.x(), start.y(), end.x(), end.y());
+	setLine(start.x(), start.y(), end.x(), end.y());
 
 	const double lineLen = m_length / 2;
 
 	const double angle1 = m_angle - M_PI / 2 - 1;
-	line1->move(end.x() + x(), end.y() + y());
+	line1->setPos(end.x() + x(), end.y() + y());
 	start = end;
 	end = QPoint(int( lineLen * cos(angle1) ), int( lineLen * sin(angle1) ) );
-	line1->setPoints(0, 0, end.x(), end.y());
+	line1->setLine(0, 0, end.x(), end.y());
 
 	const double angle2 = m_angle + M_PI / 2 + 1;
-	line2->move(start.x() + x(), start.y() + y());
-	end = QPoint(lineLen * cos(angle2), lineLen * sin(angle2));
-	line2->setPoints(0, 0, end.x(), end.y());
+	line2->setPos(start.x() + x(), start.y() + y());
+	end = QPointF(lineLen * cos(angle2), lineLen * sin(angle2));
+	line2->setLine(0, 0, end.x(), end.y());
 }
 
 /////////////////////////
 
 BridgeConfig::BridgeConfig(Bridge *bridge, QWidget *parent)
-	: Config(parent)
+: Config(parent)
 {
 	this->bridge = bridge;
 
 	m_vlayout = new QVBoxLayout(this);
-        m_vlayout->setMargin( marginHint() );
-        m_vlayout->setSpacing( spacingHint() );
+	m_vlayout->setMargin( marginHint() );
+	m_vlayout->setSpacing( spacingHint() );
 	QGridLayout *layout = new QGridLayout( );
-        m_vlayout->addItem( layout );
-        layout->setSpacing( spacingHint());
+	m_vlayout->addItem( layout );
+	layout->setSpacing( spacingHint());
 	layout->addWidget(new QLabel(i18n("Walls on:"), this), 0, 0);
 	top = new QCheckBox(i18n("&Top"), this);
 	layout->addWidget(top, 0, 1);
@@ -234,24 +241,24 @@ void BridgeConfig::rightWallChanged(bool yes)
 
 /////////////////////////
 
-Bridge::Bridge(QRect rect, Q3Canvas *canvas)
-	: Q3CanvasRectangle(rect, canvas)
+Bridge::Bridge(QRect rect, QGraphicsItem *parent, QGraphicsScene *scene)
+: QGraphicsRectItem(rect, parent, scene)
 {
 	QColor color("#92772D");
 	setBrush(QBrush(color));
 	setPen(Qt::NoPen);
-	setZ(998);
+	setZValue(998);
 
-	topWall = new Wall(canvas);
+	topWall = new Wall(parent, scene);
 	topWall->setAlwaysShow(true);
-	botWall = new Wall(canvas);
+	botWall = new Wall(parent, scene);
 	botWall->setAlwaysShow(true);
-	leftWall = new Wall(canvas);
+	leftWall = new Wall(parent, scene);
 	leftWall->setAlwaysShow(true);
-	rightWall = new Wall(canvas);
+	rightWall = new Wall(parent, scene);
 	rightWall->setAlwaysShow(true);
 
-	setWallZ(z() + 0.01);
+	setWallZ(zValue() + 0.01);
 	setWallColor(color);
 
 	topWall->setVisible(false);
@@ -259,7 +266,7 @@ Bridge::Bridge(QRect rect, Q3Canvas *canvas)
 	leftWall->setVisible(false);
 	rightWall->setVisible(false);
 
-	point = new RectPoint(color, this, canvas);
+	point = new RectPoint(color, this, parent, scene);
 	editModeChanged(false);
 
 	newSize(width(), height());
@@ -273,10 +280,10 @@ bool Bridge::collision(Ball *ball, long int /*id*/)
 
 void Bridge::setWallZ(double newz)
 {
-	topWall->setZ(newz);
-	botWall->setZ(newz);
-	leftWall->setZ(newz);
-	rightWall->setZ(newz);
+	topWall->setZValue(newz);
+	botWall->setZValue(newz);
+	leftWall->setZValue(newz);
+	rightWall->setZValue(newz);
 }
 
 void Bridge::setGame(KolfGame *game)
@@ -317,18 +324,18 @@ void Bridge::editModeChanged(bool changed)
 
 void Bridge::moveBy(double dx, double dy)
 {
-	Q3CanvasRectangle::moveBy(dx, dy);
+	QGraphicsRectItem::moveBy(dx, dy);
 
 	point->dontMove();
-	point->move(x() + width(), y() + height());
+	point->setPos(x() + width(), y() + height());
 
-	topWall->move(x(), y());
-	botWall->move(x(), y() - 1);
-	leftWall->move(x(), y());
-	rightWall->move(x(), y());
+	topWall->setPos(x(), y());
+	botWall->setPos(x(), y() - 1);
+	leftWall->setPos(x(), y());
+	rightWall->setPos(x(), y());
 
-	Q3CanvasItemList list = collisions(true);
-	for (Q3CanvasItemList::Iterator it = list.begin(); it != list.end(); ++it)
+	QList<QGraphicsItem *> list = collidingItems();
+	for (QList<QGraphicsItem *>::Iterator it = list.begin(); it != list.end(); ++it)
 	{
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(*it);
 		if (citem)
@@ -365,21 +372,21 @@ void Bridge::doSave(KConfig *cfg)
 	cfg->writeEntry("rightWallVisible", rightWallVisible());
 }
 
-Q3PtrList<Q3CanvasItem> Bridge::moveableItems() const
+QList<QGraphicsItem *> Bridge::moveableItems() const
 {
-	Q3PtrList<Q3CanvasItem> ret;
+	QList<QGraphicsItem *> ret;
 	ret.append(point);
 	return ret;
 }
 
-void Bridge::newSize(int width, int height)
+void Bridge::newSize(double width, double height)
 {
 	setSize(width, height);
 }
 
-void Bridge::setSize(int width, int height)
+void Bridge::setSize(double width, double height)
 {
-	Q3CanvasRectangle::setSize(width, height);
+	setRect(rect().x(), rect().y(), width, height);
 
 	topWall->setPoints(0, 0, width, 0);
 	botWall->setPoints(0, height, width, height);
@@ -392,7 +399,7 @@ void Bridge::setSize(int width, int height)
 /////////////////////////
 
 WindmillConfig::WindmillConfig(Windmill *windmill, QWidget *parent)
-	: BridgeConfig(windmill, parent)
+: BridgeConfig(windmill, parent)
 {
 	this->windmill = windmill;
 	m_vlayout->addStretch();
@@ -403,13 +410,13 @@ WindmillConfig::WindmillConfig(Windmill *windmill, QWidget *parent)
 	m_vlayout->addWidget(check);
 
 	QHBoxLayout *hlayout = new QHBoxLayout;
-        hlayout->setSpacing( spacingHint() );
-        m_vlayout->addLayout( hlayout );
+	hlayout->setSpacing( spacingHint() );
+	m_vlayout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Slow"), this));
 	QSlider *slider = new QSlider(Qt::Horizontal, this);
-        slider->setRange( 1, 10 );
-        slider->setPageStep( 1 );
-        slider->setValue( windmill->curSpeed() );
+	slider->setRange( 1, 10 );
+	slider->setPageStep( 1 );
+	slider->setValue( windmill->curSpeed() );
 	hlayout->addWidget(slider);
 	hlayout->addWidget(new QLabel(i18n("Fast"), this));
 	connect(slider, SIGNAL(valueChanged(int)), this, SLOT(speedChanged(int)));
@@ -444,24 +451,24 @@ void WindmillConfig::endChanged(bool bottom)
 
 /////////////////////////
 
-Windmill::Windmill(QRect rect, Q3Canvas *canvas)
-	: Bridge(rect, canvas), speedfactor(16), m_bottom(true)
+Windmill::Windmill(QRect rect, QGraphicsItem * parent, QGraphicsScene *scene)
+: Bridge(rect, parent, scene), speedfactor(16), m_bottom(true)
 {
-	guard = new WindmillGuard(canvas);
+	guard = new WindmillGuard(0, scene);
 	guard->setPen(QPen(Qt::black, 5));
 	guard->setVisible(true);
 	guard->setAlwaysShow(true);
 	setSpeed(5);
-	guard->setZ(wallZ() + .1);
+	guard->setZValue(wallZ() + .1);
 
-	left = new Wall(canvas);
+	left = new Wall(0, scene);
 	left->setPen(wallPen());
 	left->setAlwaysShow(true);
-	right = new Wall(canvas);
+	right = new Wall(0, scene);
 	right->setPen(wallPen());
 	right->setAlwaysShow(true);
-	left->setZ(wallZ());
-	right->setZ(wallZ());
+	left->setZValue(wallZ());
+	right->setZValue(wallZ());
 	left->setVisible(true);
 	right->setVisible(true);
 
@@ -490,7 +497,7 @@ void Windmill::setSpeed(int news)
 	if (news < 0)
 		return;
 	speed = news;
-	guard->setXVelocity(((double)news / (double)3) * (guard->xVelocity() > 0? 1 : -1));
+	guard->setXVelocity(((double)news / (double)3) * (guard->getXVelocity() > 0? 1 : -1));
 }
 
 void Windmill::setGame(KolfGame *game)
@@ -526,16 +533,17 @@ void Windmill::moveBy(double dx, double dy)
 {
 	Bridge::moveBy(dx, dy);
 
-	left->move(x(), y());
-	right->move(x(), y());
+	left->setPos(x(), y());
+	right->setPos(x(), y());
 
+	guard->moveBy(dx, dy);
 	guard->moveBy(dx, dy);
 	guard->setBetween(x(), x() + width());
 
 	update();
 }
 
-void Windmill::setSize(int width, int height)
+void Windmill::setSize(double width, double height)
 {
 	newSize(width, height);
 }
@@ -546,11 +554,11 @@ void Windmill::setBottom(bool yes)
 	newSize(width(), height());
 }
 
-void Windmill::newSize(int width, int height)
+void Windmill::newSize(double width, double height)
 {
 	Bridge::newSize(width, height);
 
-	const int indent = width / 4;
+	const double indent = width / 4;
 
 	double indentY = m_bottom? height : 0;
 	left->setPoints(0, indentY, indent, indentY);
@@ -558,34 +566,33 @@ void Windmill::newSize(int width, int height)
 
 	guard->setBetween(x(), x() + width);
 	double guardY = m_bottom? height + 4 : -4;
-	guard->setPoints(0, guardY, (double)indent / (double)1.07 - 2, guardY);
+	guard->setPoints(x()+0, y()+guardY, x()+(double)indent / (double)1.07 - 2, y()+guardY);
 }
 
 /////////////////////////
 
 void WindmillGuard::advance(int phase)
 {
-	Wall::advance(phase);
-
 	if (phase == 1)
 	{
-		if (x() + startPoint().x() <= min)
-			setXVelocity(fabs(xVelocity()));
-		else if (x() + endPoint().x() >= max)
-			setXVelocity(-fabs(xVelocity()));
+		Wall::doAdvance();
+		if (x() + line().x1() <= min)
+			setXVelocity(fabs(getXVelocity()));
+		else if (x() + line().x2() >= max)
+			setXVelocity(-fabs(getXVelocity()));
 	}
 }
 
 /////////////////////////
 
-Sign::Sign(Q3Canvas *canvas)
-	: Bridge(QRect(0, 0, 110, 40), canvas)
+Sign::Sign(QGraphicsItem * parent, QGraphicsScene *scene)
+: Bridge(QRect(0, 0, 110, 40), parent, scene)
 {
-	setZ(998.8);
+	setZValue(998.8);
 	m_text = m_untranslatedText = i18n("New Text");
 	setBrush(QBrush(Qt::white));
 	setWallColor(Qt::black);
-	setWallZ(z() + .01);
+	setWallZ(zValue() + .01);
 
 	setTopWallVisible(true);
 	setBotWallVisible(true);
@@ -616,26 +623,26 @@ void Sign::setText(const QString &text)
 	update();
 }
 
-void Sign::draw(QPainter &painter)
+void Sign::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
-	Bridge::draw(painter);
+	const QStyleOptionGraphicsItem * style = new QStyleOptionGraphicsItem();
+	Bridge::paint(painter, style);
 
-	painter.setPen(QPen(Qt::black, 1));
-	Q3SimpleRichText txt(m_text, kapp->font());
-	const int indent = wallPen().width() + 3;
-	txt.setWidth(width() - 2*indent);
-	QColorGroup colorGroup;
-	colorGroup.setColor(QPalette::Foreground, Qt::black);
-	colorGroup.setColor(QPalette::Text, Qt::black);
-	colorGroup.setColor(QPalette::Background, Qt::black);
-	colorGroup.setColor(QPalette::Base, Qt::black);
-	txt.draw(&painter, x() + indent, y(), QRect(x() + indent, y(), width() - indent, height() - indent), colorGroup);
+	painter->setPen(QPen(Qt::black, 1));
+	QGraphicsTextItem txt;
+	txt.setFont(kapp->font());
+	txt.setHtml(m_text);
+	const int indent = wallPen().width() + 13;
+	txt.setTextWidth(width() - 2*indent); 
+	txt.paint(painter, style, 0);
+	//txt.paint(painter, x() + indent, y(), QRect(x() + indent, y(), width() - indent, height() - indent), colorGroup); 
+	// minor problem, can't find how to set the start the rect for html text, so the next is right next to the egde of the text box
 }
 
 /////////////////////////
 
 SignConfig::SignConfig(Sign *sign, QWidget *parent)
-	: BridgeConfig(sign, parent)
+: BridgeConfig(sign, parent)
 {
 	this->sign = sign;
 	m_vlayout->addStretch();
@@ -653,13 +660,13 @@ void SignConfig::textChanged(const QString &text)
 
 /////////////////////////
 EllipseConfig::EllipseConfig(Ellipse *_ellipse, QWidget *parent)
-	: Config(parent), slow1(0), fast1(0), slow2(0), fast2(0), slider1(0), slider2(0)
+: Config(parent), slow1(0), fast1(0), slow2(0), fast2(0), slider1(0), slider2(0)
 {
 	this->ellipse = _ellipse;
 
 	m_vlayout = new QVBoxLayout(this);
-        m_vlayout->setMargin( marginHint() );
-        m_vlayout->setSpacing( spacingHint() );
+	m_vlayout->setMargin( marginHint() );
+	m_vlayout->setSpacing( spacingHint() );
 
 	QCheckBox *check = new QCheckBox(i18n("Enable show/hide"), this);
 	m_vlayout->addWidget(check);
@@ -667,14 +674,14 @@ EllipseConfig::EllipseConfig(Ellipse *_ellipse, QWidget *parent)
 	check->setChecked(ellipse->changeEnabled());
 
 	QHBoxLayout *hlayout = new QHBoxLayout;
-        hlayout->setSpacing( spacingHint() );
-        m_vlayout->addLayout( hlayout );
+	hlayout->setSpacing( spacingHint() );
+	m_vlayout->addLayout( hlayout );
 	slow1 = new QLabel(i18n("Slow"), this);
 	hlayout->addWidget(slow1);
 	slider1 = new QSlider(Qt::Horizontal, this);
-        slider1->setRange( 1, 100 );
-        slider1->setPageStep( 5 );
-        slider1->setValue( 100 - ellipse->changeEvery() );
+	slider1->setRange( 1, 100 );
+	slider1->setPageStep( 5 );
+	slider1->setValue( 100 - ellipse->changeEvery() );
 	hlayout->addWidget(slider1);
 	fast1 = new QLabel(i18n("Fast"), this);
 	hlayout->addWidget(fast1);
@@ -727,16 +734,17 @@ void EllipseConfig::check2Changed(bool on)
 
 /////////////////////////
 
-Ellipse::Ellipse(Q3Canvas *canvas)
-	: Q3CanvasEllipse(canvas)
+Ellipse::Ellipse(QGraphicsItem *parent, QGraphicsScene *scene)
+: QGraphicsEllipseItem(parent, scene)
 {
 	savingDone();
 	setChangeEnabled(false);
 	setChangeEvery(50);
 	count = 0;
 	setVisible(true);
+	setPen(QPen(Qt::NoPen));
 
-	point = new RectPoint(Qt::black, this, canvas);
+	point = new RectPoint(Qt::black, this, parent, scene);
 	point->setSizeFactor(2.0);
 }
 
@@ -754,24 +762,24 @@ void Ellipse::setChangeEnabled(bool changeEnabled)
 		setVisible(true);
 }
 
-Q3PtrList<Q3CanvasItem> Ellipse::moveableItems() const
+QList<QGraphicsItem *> Ellipse::moveableItems() const
 {
-	Q3PtrList<Q3CanvasItem> ret;
+	QList<QGraphicsItem *> ret;
 	ret.append(point);
 	return ret;
 }
 
-void Ellipse::newSize(int width, int height)
+void Ellipse::newSize(double width, double height)
 {
-	Q3CanvasEllipse::setSize(width, height);
+	setSize(width, height);
 }
 
 void Ellipse::moveBy(double dx, double dy)
 {
-	Q3CanvasEllipse::moveBy(dx, dy);
+	QGraphicsEllipseItem::moveBy(dx, dy);
 
 	point->dontMove();
-	point->move(x() + width() / 2, y() + height() / 2);
+	setPos(x() - width()/2 , y() - height()/2);
 }
 
 void Ellipse::editModeChanged(bool changed)
@@ -782,7 +790,7 @@ void Ellipse::editModeChanged(bool changed)
 
 void Ellipse::advance(int phase)
 {
-	Q3CanvasEllipse::advance(phase);
+	QGraphicsEllipseItem::advance(phase);
 
 	if (phase == 1 && m_changeEnabled && !dontHide)
 	{
@@ -803,7 +811,8 @@ void Ellipse::load(KConfig *cfg)
 	newWidth = cfg->readEntry("width", newWidth);
 	newHeight = cfg->readEntry("height", newHeight);
 	newSize(newWidth, newHeight);
-}
+	moveBy(0, 0); 
+} 
 
 void Ellipse::save(KConfig *cfg)
 {
@@ -831,9 +840,10 @@ void Ellipse::savingDone()
 
 /////////////////////////
 
-Puddle::Puddle(Q3Canvas *canvas)
-	: Ellipse(canvas)
+Puddle::Puddle(QGraphicsItem * parent, QGraphicsScene *scene)
+: Ellipse(parent, scene)
 {
+	setData(0, Rtti_DontPlaceOn);
 	setSize(45, 30);
 
 	QBrush brush;
@@ -853,18 +863,18 @@ Puddle::Puddle(Q3Canvas *canvas)
 	brush.setTexture(pointPic);
 	point->setBrush(brush);
 
-	setZ(-25);
+	setZValue(-25);
 }
 
 bool Puddle::collision(Ball *ball, long int /*id*/)
 {
 	if (ball->isVisible())
 	{
-		Q3CanvasRectangle i(QRect(ball->x(), ball->y(), 1, 1), canvas());
+		QGraphicsRectItem i(QRectF(ball->x(), ball->y(), 1, 1), 0, 0);
 		i.setVisible(true);
 
 		// is center of ball in?
-		if (i.collidesWith(this)/* && ball->curVector().magnitude() < 4*/)
+		if (i.collidesWithItem(this)/* && ball->curVector().magnitude() < 4*/)
 		{
 			playSound("puddle");
 			ball->setAddStroke(ball->addStroke() + 1);
@@ -884,8 +894,8 @@ bool Puddle::collision(Ball *ball, long int /*id*/)
 
 /////////////////////////
 
-Sand::Sand(Q3Canvas *canvas)
-	: Ellipse(canvas)
+Sand::Sand(QGraphicsItem *parent, QGraphicsScene *scene)
+: Ellipse(parent, scene)
 {
 	setSize(45, 40);
 
@@ -906,16 +916,16 @@ Sand::Sand(Q3Canvas *canvas)
 	brush.setTexture(pointPic);
 	point->setBrush(brush);
 
-	setZ(-26);
+	setZValue(-26);
 }
 
 bool Sand::collision(Ball *ball, long int /*id*/)
 {
-	Q3CanvasRectangle i(QRect(ball->x(), ball->y(), 1, 1), canvas());
+	QGraphicsRectItem i(QRectF(ball->x(), ball->y(), 1, 1), 0, 0);
 	i.setVisible(true);
 
 	// is center of ball in?
-	if (i.collidesWith(this)/* && ball->curVector().magnitude() < 4*/)
+	if (i.collidesWithItem(this)/* && ball->curVector().magnitude() < 4*/)
 	{
 		if (ball->curVector().magnitude() > 0)
 			ball->setFrictionMultiplier(7);
@@ -931,17 +941,18 @@ bool Sand::collision(Ball *ball, long int /*id*/)
 
 /////////////////////////
 
-Putter::Putter(Q3Canvas *canvas)
-	: Q3CanvasLine(canvas)
+Putter::Putter(QGraphicsScene *scene)
+: QGraphicsLineItem(0, scene)
 {
+	setData(0, Rtti_Putter);
 	m_showGuideLine = true;
 	oneDegree = M_PI / 180;
 	len = 9;
 	angle = 0;
 
-	guideLine = new Q3CanvasLine(canvas);
+	guideLine = new QGraphicsLineItem(this, scene);
 	guideLine->setPen(QPen(Qt::white, 1, Qt::DotLine));
-	guideLine->setZ(998.8);
+	guideLine->setZValue(998.8);
 
 	setPen(QPen(Qt::black, 4));
 	putterWidth = 11;
@@ -965,8 +976,8 @@ void Putter::hideInfo()
 
 void Putter::moveBy(double dx, double dy)
 {
-	Q3CanvasLine::moveBy(dx, dy);
-	guideLine->move(x(), y());
+	QGraphicsLineItem::moveBy(dx, dy);
+	guideLine->setPos(x(), y());
 }
 
 void Putter::setShowGuideLine(bool yes)
@@ -977,14 +988,14 @@ void Putter::setShowGuideLine(bool yes)
 
 void Putter::setVisible(bool yes)
 {
-	Q3CanvasLine::setVisible(yes);
+	QGraphicsLineItem::setVisible(yes);
 	guideLine->setVisible(m_showGuideLine? yes : false);
 }
 
-void Putter::setOrigin(int _x, int _y)
+void Putter::setOrigin(double _x, double _y)
 {
 	setVisible(true);
-	move(_x, _y);
+	setPos(_x, _y);
 	len = 9;
 	finishMe();
 }
@@ -1029,8 +1040,8 @@ void Putter::finishMe()
 	midPoint.setX(cos(angle) * len);
 	midPoint.setY(-sin(angle) * len);
 
-	QPoint start;
-	QPoint end;
+	QPointF start;
+	QPointF end;
 
 	if (midPoint.y() || !midPoint.x())
 	{
@@ -1047,28 +1058,31 @@ void Putter::finishMe()
 		end.setX(midPoint.x());
 	}
 
- 	guideLine->setPoints(midPoint.x(), midPoint.y(), -cos(angle) * len * 4, sin(angle) * len * 4);
+	guideLine->setLine(midPoint.x(), midPoint.y(), -cos(angle) * len * 4, sin(angle) * len * 4);
 
-	setPoints(start.x(), start.y(), end.x(), end.y());
+	setLine(start.x(), start.y(), end.x(), end.y());
 }
 
 /////////////////////////
 
-Bumper::Bumper(Q3Canvas *canvas)
-	: Q3CanvasEllipse(20, 20, canvas)
+Bumper::Bumper(QGraphicsItem * parent, QGraphicsScene *scene)
+: QGraphicsEllipseItem(parent, scene)
 {
-	setZ(-25);
+	setRect(-10, -10, 20, 20);
+	setZValue(-25);
 
 	firstColor = QColor("#E74804");
 	secondColor = firstColor.light();
 
 	count = 0;
 	setBrush(firstColor);
+	setPen(Qt::NoPen);
 	setAnimated(false);
 
-	inside = new Inside(this, canvas);
+	inside = new Inside(this, this, scene);
 	inside->setBrush(firstColor.light(109));
-	inside->setSize(width() / 2.6, height() / 2.6);
+	inside->setPen(Qt::NoPen);
+	inside->setRect(-4, -4, 8, 8);
 	inside->show();
 }
 
@@ -1079,9 +1093,9 @@ void Bumper::aboutToDie()
 
 void Bumper::moveBy(double dx, double dy)
 {
-	Q3CanvasEllipse::moveBy(dx, dy);
+	QGraphicsEllipseItem::moveBy(dx, dy);
 	//const double insideLen = (double)(width() - inside->width()) / 2.0;
-	inside->move(x(), y());
+	inside->setPos(x(), y());
 }
 
 void Bumper::editModeChanged(bool changed)
@@ -1091,7 +1105,7 @@ void Bumper::editModeChanged(bool changed)
 
 void Bumper::advance(int phase)
 {
-	Q3CanvasEllipse::advance(phase);
+	QGraphicsEllipseItem::advance(phase);
 
 	if (phase == 1)
 	{
@@ -1114,8 +1128,8 @@ bool Bumper::collision(Ball *ball, long int /*id*/)
 	if (speed > 8)
 		speed = 8;
 
-	const QPoint start(x(), y());
-	const QPoint end(ball->x(), ball->y());
+	const QPointF start(x(), y());
+	const QPointF end(ball->x(), ball->y());
 
 	Vector betweenVector(start, end);
 	betweenVector.setMagnitude(speed);
@@ -1125,7 +1139,7 @@ bool Bumper::collision(Ball *ball, long int /*id*/)
 
 	ball->setVector(betweenVector);
 	// for some reason, x is always switched...
-	ball->setXVelocity(-ball->xVelocity());
+	ball->setXVelocity(-ball->getXVelocity());
 	ball->setState(Rolling);
 
 	setAnimated(true);
@@ -1135,64 +1149,18 @@ bool Bumper::collision(Ball *ball, long int /*id*/)
 
 /////////////////////////
 
-Hole::Hole(QColor color, Q3Canvas *canvas)
-	: Q3CanvasEllipse(15, 15, canvas)
-{
-	setZ(998.1);
-	setPen(QPen(Qt::black));
-	setBrush(color);
-}
-
-bool Hole::collision(Ball *ball, long int /*id*/)
-{
-	bool wasCenter = false;
-
-	switch (result(QPoint(ball->x(), ball->y()), ball->curVector().magnitude(), &wasCenter))
-	{
-		case Result_Holed:
-			place(ball, wasCenter);
-			return false;
-
-		default:
-		break;
-	}
-
-	return true;
-}
-
-HoleResult Hole::result(QPoint p, double s, bool * /*wasCenter*/)
-{
-	const double longestRadius = width() > height()? width() : height();
-	if (s > longestRadius / 5.0)
-		return Result_Miss;
-
-	Q3CanvasRectangle i(QRect(p, QSize(1, 1)), canvas());
-	i.setVisible(true);
-
-	// is center of ball in cup?
-	if (i.collidesWith(this))
-	{
-		return Result_Holed;
-	}
-	else
-		return Result_Miss;
-}
-
-/////////////////////////
-
-Cup::Cup(Q3Canvas *canvas)
-	: Hole(QColor("#808080"), canvas)
+Cup::Cup(QGraphicsItem * parent, QGraphicsScene *scene)
+: QGraphicsPixmapItem(parent, scene)
 {
 	if (!QPixmapCache::find("cup", pixmap))
 	{
 		pixmap.load(KStandardDirs::locate("appdata", "pics/cup.png"));
 		QPixmapCache::insert("cup", pixmap);
 	}
-}
 
-void Cup::draw(QPainter &p)
-{
-	p.drawPixmap(QPoint(x() - width() / 2, y() - height() / 2), pixmap);
+	setPixmap(pixmap);
+
+	setZValue(998.1);
 }
 
 bool Cup::place(Ball *ball, bool /*wasCenter*/)
@@ -1201,11 +1169,14 @@ bool Cup::place(Ball *ball, bool /*wasCenter*/)
 	playSound("holed");
 
 	// the picture's center is a little different
-	ball->move(x() - 1, y());
+	ball->setPos(x() +7, y() +8);
 	ball->setVelocity(0, 0);
-	if (game && game->curBall() == ball)
-		game->stoppedBall();
 	return true;
+}
+
+void Cup::moveBy(double x, double y)
+{
+	QGraphicsPixmapItem::moveBy(x, y);
 }
 
 void Cup::save(KConfig *cfg)
@@ -1213,33 +1184,60 @@ void Cup::save(KConfig *cfg)
 	cfg->writeEntry("dummykey", true);
 }
 
+bool Cup::collision(Ball *ball, long int /*id*/)
+{
+	bool wasCenter = false;
+
+	switch (result(QPointF(ball->x() + ball->width()/2, ball->y() + ball->height()/2), ball->curVector().magnitude(), &wasCenter))
+	{
+		case Result_Holed:
+			place(ball, wasCenter);
+			return false;
+
+		default:
+			break;
+	}
+
+	return true;
+}
+
+HoleResult Cup::result(QPointF p, double speed, bool * /*wasCenter*/)
+{
+	if (speed > 5)
+		return Result_Miss;
+
+	QPointF holeCentre(x() + boundingRect().width()/2, y() + boundingRect().height()/2);
+	double distanceSquared = (holeCentre.x() - p.x())*(holeCentre.x() - p.x()) + (holeCentre.y() - p.y())*(holeCentre.y() - p.y());
+
+	if(distanceSquared < (boundingRect().width()/2)*(boundingRect().width()/2))
+		return Result_Holed;
+	else
+		return Result_Miss;
+}
+
 /////////////////////////
 
-BlackHole::BlackHole(Q3Canvas *canvas)
-	: Hole(Qt::black, canvas), exitDeg(0)
+BlackHole::BlackHole(QGraphicsItem * parent, QGraphicsScene *scene)
+: QGraphicsEllipseItem(-7.5, -7.5, 15, 15, parent, scene), exitDeg(0)
 {
+	setZValue(998.1);
+
 	infoLine = 0;
 	m_minSpeed = 3.0;
 	m_maxSpeed = 5.0;
 	runs = 0;
 
 	const QColor myColor((QRgb)(KRandom::random() % 0x01000000));
+	QPen pen(myColor);
+	pen.setWidth(2);
+	setPen(pen);
+	setBrush(QBrush(Qt::black));
 
-	outside = new Q3CanvasEllipse(canvas);
-	outside->setZ(z() - .001);
-
-	outside->setBrush(QBrush(myColor));
-	setBrush(Qt::black);
-
-	exitItem = new BlackHoleExit(this, canvas);
+	exitItem = new BlackHoleExit(this, 0, scene);
 	exitItem->setPen(QPen(myColor, 6));
-	exitItem->setX(300);
-	exitItem->setY(100);
+	exitItem->setPos(300, 100);
 
 	setSize(width(), width() / .8);
-	const float factor = 1.3;
-	outside->setSize(width() * factor, height() * factor);
-	outside->setVisible(true);
 
 	moveBy(0, 0);
 
@@ -1249,11 +1247,11 @@ BlackHole::BlackHole(Q3Canvas *canvas)
 void BlackHole::showInfo()
 {
 	delete infoLine;
-	infoLine = new Q3CanvasLine(canvas());
+	infoLine = new QGraphicsLineItem(0, scene());
 	infoLine->setVisible(true);
 	infoLine->setPen(QPen(exitItem->pen().color(), 2));
-	infoLine->setZ(10000);
-	infoLine->setPoints(x(), y(), exitItem->x(), exitItem->y());
+	infoLine->setZValue(10000);
+	infoLine->setLine(x(), y(), exitItem->x(), exitItem->y());
 
 	exitItem->showInfo();
 }
@@ -1268,8 +1266,7 @@ void BlackHole::hideInfo()
 
 void BlackHole::aboutToDie()
 {
-	Hole::aboutToDie();
-	delete outside;
+	//Hole::aboutToDie();
 	exitItem->aboutToDie();
 	delete exitItem;
 }
@@ -1279,15 +1276,14 @@ void BlackHole::updateInfo()
 	if (infoLine)
 	{
 		infoLine->setVisible(true);
-		infoLine->setPoints(x(), y(), exitItem->x(), exitItem->y());
+		infoLine->setLine(x(), y(), exitItem->x(), exitItem->y());
 		exitItem->showInfo();
 	}
 }
 
 void BlackHole::moveBy(double dx, double dy)
 {
-	Q3CanvasEllipse::moveBy(dx, dy);
-	outside->move(x(), y());
+	QGraphicsEllipseItem::moveBy(dx, dy);
 	updateInfo();
 }
 
@@ -1301,15 +1297,32 @@ void BlackHole::setExitDeg(int newdeg)
 	finishMe();
 }
 
-Q3PtrList<Q3CanvasItem> BlackHole::moveableItems() const
+QList<QGraphicsItem *> BlackHole::moveableItems() const
 {
-	Q3PtrList<Q3CanvasItem> ret;
+	QList<QGraphicsItem *> ret;
 	ret.append(exitItem);
 	return ret;
 }
 
-BlackHoleTimer::BlackHoleTimer(Ball *ball, double speed, int msec)
-	: m_speed(speed), m_ball(ball)
+bool BlackHole::collision(Ball *ball, long int /*id*/)
+{
+	bool wasCenter = false;
+
+	switch (result(QPointF(ball->x(), ball->y()), ball->curVector().magnitude(), &wasCenter))
+	{
+		case Result_Holed:
+			place(ball, wasCenter);
+			return false;
+
+		default:
+			break;
+	}
+
+	return true;
+}
+
+	BlackHoleTimer::BlackHoleTimer(Ball *ball, double speed, int msec)
+: m_speed(speed), m_ball(ball)
 {
 	QTimer::singleShot(msec, this, SLOT(mySlot()));
 	QTimer::singleShot(msec / 2, this, SLOT(myMidSlot()));
@@ -1342,8 +1355,8 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 	ball->setVisible(false);
 	ball->setForceStillGoing(true);
 
-	double magnitude = Vector(QPoint(x(), y()), QPoint(exitItem->x(), exitItem->y())).magnitude();
-	BlackHoleTimer *timer = new BlackHoleTimer(ball, speed, magnitude * 2.5 - speed * 35 + 500);
+	double magnitude = Vector(QPointF(x(), y()), QPointF(exitItem->x(), exitItem->y())).magnitude();
+	BlackHoleTimer *timer = new BlackHoleTimer(ball, speed, (int)(magnitude * 2.5 - speed * 35 + 500));
 
 	connect(timer, SIGNAL(eject(Ball *, double)), this, SLOT(eject(Ball *, double)));
 	connect(timer, SIGNAL(halfway()), this, SLOT(halfway()));
@@ -1354,7 +1367,7 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 
 void BlackHole::eject(Ball *ball, double speed)
 {
-	ball->move(exitItem->x(), exitItem->y());
+	ball->setPos(exitItem->x(), exitItem->y());
 
 	Vector v;
 	v.setMagnitude(10);
@@ -1384,8 +1397,7 @@ void BlackHole::halfway()
 void BlackHole::load(KConfig *cfg)
 {
 	QPoint exit = cfg->readEntry("exit", exit);
-	exitItem->setX(exit.x());
-	exitItem->setY(exit.y());
+	exitItem->setPos(exit.x(), exit.y());
 	exitDeg = cfg->readEntry("exitDeg", exitDeg);
 	m_minSpeed = cfg->readEntry("minspeed", m_minSpeed);
 	m_maxSpeed = cfg->readEntry("maxspeed", m_maxSpeed);
@@ -1398,9 +1410,9 @@ void BlackHole::load(KConfig *cfg)
 void BlackHole::finishMe()
 {
 	double radians = deg2rad(exitDeg);
-	QPoint midPoint(0, 0);
-	QPoint start;
-	QPoint end;
+	QPointF midPoint(0, 0);
+	QPointF start;
+	QPointF end;
 	const int width = 15;
 
 	if (midPoint.y() || !midPoint.x())
@@ -1414,31 +1426,50 @@ void BlackHole::finishMe()
 	{
 		start.setX(midPoint.x());
 		start.setY(midPoint.y() + width);
-		end.setY(midPoint.y() - width);
-		end.setX(midPoint.x());
+		end.setX(midPoint.y() - width);
+		end.setY(midPoint.x());
 	}
 
-	exitItem->setPoints(start.x(), start.y(), end.x(), end.y());
+	exitItem->setLine(start.x(), start.y(), end.x(), end.y());
 	exitItem->setVisible(true);
 }
 
 void BlackHole::save(KConfig *cfg)
 {
-	cfg->writeEntry("exit", QPoint(exitItem->x(), exitItem->y()));
+	cfg->writeEntry("exit", QPointF(exitItem->x(), exitItem->y()));
 	cfg->writeEntry("exitDeg", exitDeg);
 	cfg->writeEntry("minspeed", m_minSpeed);
 	cfg->writeEntry("maxspeed", m_maxSpeed);
 }
 
+HoleResult BlackHole::result(QPointF p, double s, bool * /*wasCenter*/)
+{
+	const double longestRadius = width() > height()? width() : height();
+	if (s > longestRadius / 5.0)
+		return Result_Miss;
+
+	QGraphicsRectItem i(QRectF(p, QSize(1, 1)), 0, 0);
+	i.setVisible(true);
+
+	// is center of ball in cup?
+	if (i.collidesWithItem(this))
+	{
+		return Result_Holed;
+	}
+	else
+		return Result_Miss;
+}
+
 /////////////////////////
 
-BlackHoleExit::BlackHoleExit(BlackHole *blackHole, Q3Canvas *canvas)
-	: Q3CanvasLine(canvas)
+BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QGraphicsItem * parent, QGraphicsScene *scene)
+: QGraphicsLineItem(parent, scene)
 {
+	setData(0, Rtti_NoCollision);
 	this->blackHole = blackHole;
-	arrow = new Arrow(canvas);
-	setZ(blackHole->z());
-	arrow->setZ(z() - .00001);
+	arrow = new Arrow(this, scene);
+	setZValue(blackHole->zValue());
+	arrow->setZValue(zValue() - .00001);
 	updateArrowLength();
 	arrow->setVisible(false);
 }
@@ -1451,14 +1482,14 @@ void BlackHoleExit::aboutToDie()
 
 void BlackHoleExit::moveBy(double dx, double dy)
 {
-	Q3CanvasLine::moveBy(dx, dy);
-	arrow->move(x(), y());
+	QGraphicsLineItem::moveBy(dx, dy);
+	arrow->setPos(x(), y());
 	blackHole->updateInfo();
 }
 
 void BlackHoleExit::setPen(QPen p)
 {
-	Q3CanvasLine::setPen(p);
+	QGraphicsLineItem::setPen(p);
 	arrow->setPen(QPen(p.color(), 1));
 }
 
@@ -1501,16 +1532,16 @@ Config *BlackHoleExit::config(QWidget *parent)
 /////////////////////////
 
 BlackHoleConfig::BlackHoleConfig(BlackHole *blackHole, QWidget *parent)
-	: Config(parent)
+: Config(parent)
 {
 	this->blackHole = blackHole;
 	QVBoxLayout *layout = new QVBoxLayout(this);
-        layout->setMargin( marginHint() );
-        layout->setSpacing( spacingHint() );
+	layout->setMargin( marginHint() );
+	layout->setSpacing( spacingHint() );
 	layout->addWidget(new QLabel(i18n("Exiting ball angle:"), this));
 	QSpinBox *deg = new QSpinBox(this);
-        deg->setRange( 0, 359 );
-        deg->setSingleStep( 10 );
+	deg->setRange( 0, 359 );
+	deg->setSingleStep( 10 );
 	deg->setSuffix(QString(" ") + i18n("degrees"));
 	deg->setValue(blackHole->curExitDeg());
 	deg->setWrapping(true);
@@ -1520,8 +1551,8 @@ BlackHoleConfig::BlackHoleConfig(BlackHole *blackHole, QWidget *parent)
 	layout->addStretch();
 
 	QHBoxLayout *hlayout = new QHBoxLayout;
-        hlayout->setSpacing( spacingHint() );
-        layout->addLayout( hlayout );
+	hlayout->setSpacing( spacingHint() );
+	layout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Minimum exit speed:"), this));
 	KDoubleNumInput *min = new KDoubleNumInput(this);
 	min->setRange(0, 8, 1, true);
@@ -1530,8 +1561,8 @@ BlackHoleConfig::BlackHoleConfig(BlackHole *blackHole, QWidget *parent)
 	min->setValue(blackHole->minSpeed());
 
 	hlayout = new QHBoxLayout;
-        hlayout->setSpacing( spacingHint() );
-        layout->addLayout( hlayout );
+	hlayout->setSpacing( spacingHint() );
+	layout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Maximum:"), this));
 	KDoubleNumInput *max = new KDoubleNumInput(this);
 	max->setRange(1, 10, 1, true);
@@ -1560,48 +1591,49 @@ void BlackHoleConfig::maxChanged(double news)
 
 /////////////////////////
 
-WallPoint::WallPoint(bool start, Wall *wall, Q3Canvas *canvas)
-	: Q3CanvasEllipse(canvas)
+WallPoint::WallPoint(bool start, Wall *wall, QGraphicsItem * parent, QGraphicsScene *scene)
+: QGraphicsEllipseItem(parent, scene)
 {
+	setData(0, Rtti_WallPoint);
 	this->wall = wall;
 	this->start = start;
 	alwaysShow = false;
 	editing = false;
-	visible = true;
+	visible = false;
 	lastId = INT_MAX - 10;
 	dontmove = false;
 
-	move(0, 0);
-	QPoint p;
+	setPos(0, 0);
+	QPointF p;
 	if (start)
-		p = wall->startPoint();
+		p = wall->startPointF();
 	else
-		p = wall->endPoint();
-	setX(p.x());
-	setY(p.y());
+		p = wall->endPointF();
+	setPos(p.x(), p.y());
+	setPen(QPen(Qt::NoPen));
 }
 
 void WallPoint::clean()
 {
-	int oldWidth = width();
+	double oldWidth = width();
 	setSize(7, 7);
 	update();
 
-	Q3CanvasItem *onPoint = 0;
-	Q3CanvasItemList l = collisions(true);
-	for (Q3CanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
-		if ((*it)->rtti() == rtti())
+	QGraphicsItem *onPoint = 0;
+	QList<QGraphicsItem *> l = collidingItems();
+	for (QList<QGraphicsItem *>::Iterator it = l.begin(); it != l.end(); ++it)
+		if ((*it)->data(0) == data(0))
 			onPoint = (*it);
 
 	if (onPoint)
-		move(onPoint->x(), onPoint->y());
+		setPos(onPoint->x(), onPoint->y());
 
 	setSize(oldWidth, oldWidth);
 }
 
 void WallPoint::moveBy(double dx, double dy)
 {
-	Q3CanvasEllipse::moveBy(dx, dy);
+	QGraphicsEllipseItem::moveBy(dx, dy);
 	if (!editing)
 		updateVisible();
 
@@ -1616,13 +1648,13 @@ void WallPoint::moveBy(double dx, double dy)
 
 	if (start)
 	{
-		wall->setPoints(x(), y(), wall->endPoint().x() + wall->x(), wall->endPoint().y() + wall->y());
+		wall->setLine(x(), y(), wall->endPoint().x() + wall->x(), wall->endPoint().y() + wall->y());
 	}
 	else
 	{
-		wall->setPoints(wall->startPoint().x() + wall->x(), wall->startPoint().y() + wall->y(), x(), y());
+		wall->setLine(wall->startPointF().x() + wall->x(), wall->startPointF().y() + wall->y(), x(), y());
 	}
-	wall->move(0, 0);
+	wall->setPos(0, 0);
 }
 
 void WallPoint::updateVisible()
@@ -1638,9 +1670,9 @@ void WallPoint::updateVisible()
 	else
 	{
 		visible = true;
-		Q3CanvasItemList l = collisions(true);
-		for (Q3CanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
-			if ((*it)->rtti() == rtti())
+		QList<QGraphicsItem *> l = collidingItems();
+		for (QList<QGraphicsItem *>::Iterator it = l.begin(); it != l.end(); ++it)
+			if ((*it)->data(0) == data(0))
 				visible = false;
 	}
 }
@@ -1660,10 +1692,10 @@ bool WallPoint::collision(Ball *ball, long int id)
 
 	long int tempLastId = lastId;
 	lastId = id;
-	Q3CanvasItemList l = collisions(true);
-	for (Q3CanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
+	QList<QGraphicsItem *> l = collidingItems();
+	for (QList<QGraphicsItem *>::Iterator it = l.begin(); it != l.end(); ++it)
 	{
-		if ((*it)->rtti() == rtti())
+		if ((*it)->data(0) == data(0))
 		{
 			WallPoint *point = (WallPoint *)(*it);
 			point->lastId = id;
@@ -1690,42 +1722,42 @@ bool WallPoint::collision(Ball *ball, long int id)
 	}
 	else
 	{
-	bool weirdBounce = visible;
+		bool weirdBounce = visible;
 
-	QPoint relStart(start? wall->startPoint() : wall->endPoint());
-	QPoint relEnd(start? wall->endPoint() : wall->startPoint());
-	Vector wallVector(relStart, relEnd);
-	wallVector.setDirection(-wallVector.direction());
+		QPoint relStart(start? wall->startPoint() : wall->endPoint());
+		QPoint relEnd(start? wall->endPoint() : wall->startPoint());
+		Vector wallVector(relStart, relEnd);
+		wallVector.setDirection(-wallVector.direction());
 
-	// find the angle between vectors, between 0 and PI
-	{
-		double difference = fabs(wallVector.direction() - ballVector.direction());
-		while (difference > 2 * M_PI)
-			difference -= 2 * M_PI;
+		// find the angle between vectors, between 0 and PI
+		{
+			double difference = fabs(wallVector.direction() - ballVector.direction());
+			while (difference > 2 * M_PI)
+				difference -= 2 * M_PI;
 
-		if (difference < M_PI / 2 || difference > 3 * M_PI / 2)
-			weirdBounce = false;
-	}
+			if (difference < M_PI / 2 || difference > 3 * M_PI / 2)
+				weirdBounce = false;
+		}
 
-	playSound("wall", ball->curVector().magnitude() / 10.0);
+		playSound("wall", ball->curVector().magnitude() / 10.0);
 
-	ballVector /= wall->dampening;
-	const double ballAngle = ballVector.direction();
+		ballVector /= wall->dampening;
+		const double ballAngle = ballVector.direction();
 
-	double wallAngle = wallVector.direction();
+		double wallAngle = wallVector.direction();
 
-	// opposite bounce, because we're the endpoint
-	if (weirdBounce)
-		wallAngle += M_PI / 2;
+		// opposite bounce, because we're the endpoint
+		if (weirdBounce)
+			wallAngle += M_PI / 2;
 
-	const double collisionAngle = ballAngle - wallAngle;
-	const double leavingAngle = wallAngle - collisionAngle;
+		const double collisionAngle = ballAngle - wallAngle;
+		const double leavingAngle = wallAngle - collisionAngle;
 
-	ballVector.setDirection(leavingAngle);
-	ball->setVector(ballVector);
-	wall->lastId = id;
+		ballVector.setDirection(leavingAngle);
+		ball->setVector(ballVector);
+		wall->lastId = id;
 
-	//kDebug(12007) << "WallPoint::collision - NOT skip, weirdBounce is " << weirdBounce << endl;
+		//kDebug(12007) << "WallPoint::collision - NOT skip, weirdBounce is " << weirdBounce << endl;
 	} // end if that skips
 
 	wall->lastId = id;
@@ -1734,9 +1766,10 @@ bool WallPoint::collision(Ball *ball, long int id)
 
 /////////////////////////
 
-Wall::Wall(Q3Canvas *canvas)
-	: Q3CanvasLine(canvas)
+Wall::Wall( QGraphicsItem *parent, QGraphicsScene *scene)
+: QGraphicsLineItem(parent, scene)
 {
+	setData(0, Rtti_Wall);
 	editing = false;
 	lastId = INT_MAX - 10;
 
@@ -1746,28 +1779,28 @@ Wall::Wall(Q3Canvas *canvas)
 	endItem = 0;
 
 	moveBy(0, 0);
-	setZ(50);
+	setZValue(50);
 
-	startItem = new WallPoint(true, this, canvas);
-	endItem = new WallPoint(false, this, canvas);
+	startItem = new WallPoint(true, this, parent, scene);
+	endItem = new WallPoint(false, this, parent, scene);
 	startItem->setVisible(true);
 	endItem->setVisible(true);
 	setPen(QPen(Qt::darkRed, 3));
 
-	setPoints(-15, 10, 15, -5);
+	setLine(-15, 10, 15, -5);
 
 	moveBy(0, 0);
 
 	editModeChanged(false);
 }
 
-void Wall::selectedItem(Q3CanvasItem *item)
+void Wall::selectedItem(QGraphicsItem *item)
 {
-	if (item->rtti() == Rtti_WallPoint)
+	if (item->data(0) == Rtti_WallPoint)
 	{
 		WallPoint *wallPoint = dynamic_cast<WallPoint *>(item);
 		if (wallPoint) {
-			setPoints(startPoint().x(), startPoint().y(), wallPoint->x() - x(), wallPoint->y() - y());
+			setLine(startPointF().x(), startPointF().y(), wallPoint->x() - x(), wallPoint->y() - y());
 		}
 	}
 }
@@ -1786,7 +1819,7 @@ void Wall::setAlwaysShow(bool yes)
 
 void Wall::setVisible(bool yes)
 {
-	Q3CanvasLine::setVisible(yes);
+	QGraphicsLineItem::setVisible(yes);
 
 	startItem->setVisible(yes);
 	endItem->setVisible(yes);
@@ -1794,18 +1827,18 @@ void Wall::setVisible(bool yes)
 	endItem->updateVisible();
 }
 
-void Wall::setZ(double newz)
+void Wall::setZValue(double newz)
 {
-	Q3CanvasLine::setZ(newz);
+	QGraphicsLineItem::setZValue(newz);
 	if (startItem)
-		startItem->setZ(newz + .002);
+		startItem->setZValue(newz + .002);
 	if (endItem)
-		endItem->setZ(newz + .001);
+		endItem->setZValue(newz + .001);
 }
 
 void Wall::setPen(QPen p)
 {
-	Q3CanvasLine::setPen(p);
+	QGraphicsLineItem::setPen(p);
 
 	if (startItem)
 		startItem->setBrush(QBrush(p.color()));
@@ -1826,9 +1859,9 @@ void Wall::setGame(KolfGame *game)
 	endItem->setGame(game);
 }
 
-Q3PtrList<Q3CanvasItem> Wall::moveableItems() const
+QList<QGraphicsItem *> Wall::moveableItems() const
 {
-	Q3PtrList<Q3CanvasItem> ret;
+	QList<QGraphicsItem *> ret;
 	ret.append(startItem);
 	ret.append(endItem);
 	return ret;
@@ -1836,39 +1869,26 @@ Q3PtrList<Q3CanvasItem> Wall::moveableItems() const
 
 void Wall::moveBy(double dx, double dy)
 {
-	Q3CanvasLine::moveBy(dx, dy);
+	setPos(x() + dx, y() + dy);
+	return;
+}
+
+void Wall::setPos(double x, double y)
+{
+	QGraphicsLineItem::setPos(x, y);
 
 	if (!startItem || !endItem)
 		return;
 
 	startItem->dontMove();
 	endItem->dontMove();
-	startItem->move(startPoint().x() + x(), startPoint().y() + y());
-	endItem->move(endPoint().x() + x(), endPoint().y() + y());
+	startItem->setPos(startPointF().x() + x - 1, startPointF().y() + y - 1);
+	endItem->setPos(endPointF().x() + x - 1, endPointF().y() + y - 1);
 }
 
 void Wall::setVelocity(double vx, double vy)
 {
-	Q3CanvasLine::setVelocity(vx, vy);
-	/*
-	startItem->setVelocity(vx, vy);
-	endItem->setVelocity(vx, vy);
-	*/
-}
-
-Q3PointArray Wall::areaPoints() const
-{
-	// editing we want full width for easy moving
-	if (editing)
-		return Q3CanvasLine::areaPoints();
-
-	// lessen width, for QCanvasLine::areaPoints() likes
-	// to make lines _very_ fat :(
-	// from qcanvas.cpp, only the stuff for a line width of 1 taken
-
-	// it's all squished because I don't want my
-	// line counts to count code I didn't write!
-	Q3PointArray p(4); const int xi = int(x()); const int yi = int(y()); const QPoint start = startPoint(); const QPoint end = endPoint(); const int x1 = start.x(); const int x2 = end.x(); const int y1 = start.y(); const int y2 = end.y(); const int dx = QABS(x1-x2); const int dy = QABS(y1-y2); if ( dx > dy ) { p[0] = QPoint(x1+xi,y1+yi-1); p[1] = QPoint(x2+xi,y2+yi-1); p[2] = QPoint(x2+xi,y2+yi+1); p[3] = QPoint(x1+xi,y1+yi+1); } else { p[0] = QPoint(x1+xi-1,y1+yi); p[1] = QPoint(x2+xi-1,y2+yi); p[2] = QPoint(x2+xi+1,y2+yi); p[3] = QPoint(x1+xi+1,y1+yi); } return p;
+	CanvasItem::setVelocity(vx, vy);
 }
 
 void Wall::editModeChanged(bool changed)
@@ -1878,8 +1898,8 @@ void Wall::editModeChanged(bool changed)
 
 	editing = changed;
 
-	startItem->setZ(z() + .002);
-	endItem->setZ(z() + .001);
+	startItem->setZValue(zValue() + .002);
+	endItem->setZValue(zValue() + .001);
 	startItem->editModeChanged(editing);
 	endItem->editModeChanged(editing);
 
@@ -1948,41 +1968,46 @@ void Wall::load(KConfig *cfg)
 	QPoint end(endPoint());
 	end = cfg->readEntry("endPoint", end);
 
-	setPoints(start.x(), start.y(), end.x(), end.y());
+	setLine(start.x(), start.y(), end.x(), end.y());
 
 	moveBy(0, 0);
-	startItem->move(start.x(), start.y());
-	endItem->move(end.x(), end.y());
+	startItem->setPos(start.x()-1, start.y()-1);
+	endItem->setPos(end.x()-1, end.y()-1);
 }
 
 void Wall::save(KConfig *cfg)
 {
-	cfg->writeEntry("startPoint", QPoint(startItem->x(), startItem->y()));
-	cfg->writeEntry("endPoint", QPoint(endItem->x(), endItem->y()));
+	cfg->writeEntry("startPoint", QPointF(startItem->x(), startItem->y()));
+	cfg->writeEntry("endPoint", QPointF(endItem->x(), endItem->y()));
+}
+
+void Wall::doAdvance()
+{
+	moveBy(getXVelocity(), getYVelocity());
 }
 
 /////////////////////////
 
 HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
-	: Config(parent)
+: Config(parent)
 {
 	this->holeInfo = holeInfo;
 
 	QVBoxLayout *layout = new QVBoxLayout(this);
-        layout->setMargin( marginHint() );
-        layout->setSpacing( spacingHint() );
+	layout->setMargin( marginHint() );
+	layout->setSpacing( spacingHint() );
 
 	QHBoxLayout *hlayout = new QHBoxLayout;
-        hlayout->setSpacing( spacingHint() );
-        layout->addLayout( hlayout );
+	hlayout->setSpacing( spacingHint() );
+	layout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Course name: "), this));
 	KLineEdit *nameEdit = new KLineEdit(holeInfo->untranslatedName(), this);
 	hlayout->addWidget(nameEdit);
 	connect(nameEdit, SIGNAL(textChanged(const QString &)), this, SLOT(nameChanged(const QString &)));
 
 	hlayout = new QHBoxLayout;
-        hlayout->setSpacing( spacingHint() );
-        layout->addLayout( hlayout );
+	hlayout->setSpacing( spacingHint() );
+	layout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Course author: "), this));
 	KLineEdit *authorEdit = new KLineEdit(holeInfo->author(), this);
 	hlayout->addWidget(authorEdit);
@@ -1991,12 +2016,12 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	layout->addStretch();
 
 	hlayout = new QHBoxLayout;
-        hlayout->setSpacing( spacingHint() );
-        layout->addLayout( hlayout );
+	hlayout->setSpacing( spacingHint() );
+	layout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Par:"), this));
 	QSpinBox *par = new QSpinBox(this);
-        par->setRange( 1, 15 );
-        par->setSingleStep( 1 );
+	par->setRange( 1, 15 );
+	par->setSingleStep( 1 );
 	par->setValue(holeInfo->par());
 	hlayout->addWidget(par);
 	connect(par, SIGNAL(valueChanged(int)), this, SLOT(parChanged(int)));
@@ -2004,8 +2029,8 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 
 	hlayout->addWidget(new QLabel(i18n("Maximum:"), this));
 	QSpinBox *maxstrokes = new QSpinBox(this);
-        maxstrokes->setRange( holeInfo->lowestMaxStrokes(), 30 );
-        maxstrokes->setSingleStep( 1 );
+	maxstrokes->setRange( holeInfo->lowestMaxStrokes(), 30 );
+	maxstrokes->setSingleStep( 1 );
 	maxstrokes->setWhatsThis( i18n("Maximum number of strokes player can take on this hole."));
 	maxstrokes->setToolTip( i18n("Maximum number of strokes"));
 	maxstrokes->setSpecialValueText(i18n("Unlimited"));
@@ -2052,15 +2077,15 @@ void HoleConfig::borderWallsChanged(bool yes)
 
 /////////////////////////
 
-StrokeCircle::StrokeCircle(Q3Canvas *canvas)
-	: Q3CanvasItem(canvas)
+StrokeCircle::StrokeCircle(QGraphicsItem *parent, QGraphicsScene *scene)
+: QGraphicsItem(parent, scene)
 {
 	dvalue = 0;
 	dmax = 360;
 	iwidth = 100;
 	iheight = 100;
 	ithickness = 8;
-	setZ(10000);
+	setZValue(10000);
 }
 
 void StrokeCircle::setValue(double v)
@@ -2077,11 +2102,9 @@ double StrokeCircle::value()
 	return dvalue;
 }
 
-bool StrokeCircle::collidesWith(const Q3CanvasItem*) const { return false; }
+bool StrokeCircle::collidesWithItem(const QGraphicsItem*) const { return false; }
 
-bool StrokeCircle::collidesWith(const Q3CanvasSprite*, const Q3CanvasPolygonalItem*, const Q3CanvasRectangle*, const Q3CanvasEllipse*, const Q3CanvasText*) const { return false; }
-
-QRect StrokeCircle::boundingRect() const { return QRect(x(), y(), iwidth, iheight); }
+QRectF StrokeCircle::boundingRect() const { return QRectF(x(), y(), iwidth, iheight); }
 
 void StrokeCircle::setMaxValue(double m)
 {
@@ -2123,7 +2146,7 @@ int StrokeCircle::height() const
 	return iheight;
 }
 
-void StrokeCircle::draw(QPainter &p)
+void StrokeCircle::paint (QPainter *p, const QStyleOptionGraphicsItem *, QWidget * )
 {
 	int al = (int)((dvalue * 360 * 16) / dmax);
 	int length, deg;
@@ -2143,25 +2166,29 @@ void StrokeCircle::draw(QPainter &p)
 		length = al;
 	}
 
-	p.setBrush(QBrush(Qt::black, Qt::NoBrush));
-	p.setPen(QPen(Qt::white, ithickness / 2));
-	p.drawEllipse(x() + ithickness / 2, y() + ithickness / 2, iwidth - ithickness, iheight - ithickness);
-	p.setPen(QPen(QColor((int)(0xff * dvalue) / dmax, 0, 0xff - (int)(0xff * dvalue) / dmax), ithickness));
-	p.drawArc(x() + ithickness / 2, y() + ithickness / 2, iwidth - ithickness, iheight - ithickness, deg, length);
+	p->setBrush(QBrush(Qt::black, Qt::NoBrush));
+	p->setPen(QPen(Qt::white, ithickness / 2));
+	p->drawEllipse(QRectF(x() + ithickness / 2, y() + ithickness / 2, iwidth - ithickness, iheight - ithickness));
 
-	p.setPen(QPen(Qt::white, 1));
-	p.drawEllipse(x(), y(), iwidth, iheight);
-	p.drawEllipse(x() + ithickness, y() + ithickness, iwidth - ithickness * 2, iheight - ithickness * 2);
-	p.setPen(QPen(Qt::white, 3));
-	p.drawLine(x() + iwidth / 2, y() + iheight - ithickness * 1.5, x() + iwidth / 2, y() + iheight);
-	p.drawLine(x() + iwidth / 4 - iwidth / 20, y() + iheight - iheight / 4 + iheight / 20, x() + iwidth / 4 + iwidth / 20, y() + iheight - iheight / 4 - iheight / 20);
-	p.drawLine(x() + iwidth - iwidth / 4 + iwidth / 20, y() + iheight - iheight / 4 + iheight / 20, x() + iwidth - iwidth / 4 - iwidth / 20, y() + iheight - iheight / 4 - iheight / 20);
+	if(dvalue>=0)
+		p->setPen(QPen(QColor((int)((0xff * dvalue) / dmax), 0, (int)(0xff - (0xff * dvalue) / dmax)), ithickness));
+	else
+		p->setPen(QPen(QColor("black"), ithickness));
+
+	p->drawArc(QRectF(x() + ithickness / 2, y() + ithickness / 2, iwidth - ithickness, iheight - ithickness), deg, length);
+
+	p->setPen(QPen(Qt::white, 1));
+	p->drawEllipse(QRectF(x(), y(), iwidth, iheight));
+	p->drawEllipse(QRectF(x() + ithickness, y() + ithickness, iwidth - ithickness * 2, iheight - ithickness * 2));
+	p->setPen(QPen(Qt::white, 3));
+	p->drawLine(QPointF(x() + iwidth / 2, y() + iheight - ithickness * 1.5), QPointF(x() + iwidth / 2, y() + iheight));
+	p->drawLine(QPointF(x() + iwidth / 4 - iwidth / 20, y() + iheight - iheight / 4 + iheight / 20), QPointF(x() + iwidth / 4 + iwidth / 20, y() + iheight - iheight / 4 - iheight / 20));
+	p->drawLine(QPointF(x() + iwidth - iwidth / 4 + iwidth / 20, y() + iheight - iheight / 4 + iheight / 20), QPointF(x() + iwidth - iwidth / 4 - iwidth / 20, y() + iheight - iheight / 4 - iheight / 20));
 }
-
 /////////////////////////////////////////
 
-KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidget *parent, const char *name )
-	: Q3CanvasView(parent, name)
+KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidget *parent)
+: QGraphicsView(parent)
 {
 	// for mouse control
 	setMouseTracking(true);
@@ -2176,7 +2203,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	this->obj = obj;
 	curPlayer = players->end();
 	curPlayer--; // will get ++'d to end and sent back
-	             // to beginning
+	// to beginning
 	paused = false;
 	modified = false;
 	inPlay = false;
@@ -2211,7 +2238,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	holeInfo.setMaxStrokes(10);
 	holeInfo.borderWallsChanged(true);
 
-	// width and height are the width and height of the canvas
+	// width and height are the width and height of the scene
 	// in easy storage
 	width = 400;
 	height = 400;
@@ -2222,11 +2249,13 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	setFocusPolicy(Qt::StrongFocus);
 	setFixedSize(width + 2 * margin, height + 2 * margin);
 
-	setMargins(margin, margin, margin, margin);
+	setContentsMargins(margin, margin, margin, margin);
 
-	course = new Q3Canvas(this);
-	course->setBackgroundColor(Qt::white);
-	course->resize(width, height);
+	course = new QGraphicsScene(this);
+	course->setBackgroundBrush(Qt::white);
+	course->setSceneRect(sceneRect().x(), sceneRect().y(), width, height);
+
+	//course->resize(width, height);
 
 	QPixmap pic;
 	if (!QPixmapCache::find("grass", pic))
@@ -2234,41 +2263,32 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 		pic.load(KStandardDirs::locate("appdata", "pics/grass.png"));
 		QPixmapCache::insert("grass", pic);
 	}
-	course->setBackgroundPixmap(pic);
+	course->setBackgroundBrush(QBrush(pic));
 
-	setCanvas(course);
-	move(0, 0);
+	setScene(course);
 	adjustSize();
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-		(*it).ball()->setCanvas(course);
+		course->addItem((*it).ball());
 
-	// highlighter shows current item
-	highlighter = new Q3CanvasRectangle(course);
+	// highlighter shows current item when editing
+	highlighter = new QGraphicsRectItem(0, course);
 	highlighter->setPen(QPen(Qt::yellow, 1));
 	highlighter->setBrush(QBrush(Qt::NoBrush));
 	highlighter->setVisible(false);
-	highlighter->setZ(10000);
+	highlighter->setZValue(10000);
 
-	// shows some info about hole
-	infoText = new Q3CanvasText(course);
-	infoText->setText("");
-	infoText->setColor(Qt::white);
 	QFont font = kapp->font();
 	font.setPixelSize(12);
-	infoText->move(15, width/2);
-	infoText->setZ(10001);
-	infoText->setFont(font);
-	infoText->setVisible(false);
 
 	// create the advanced putting indicator
-	strokeCircle = new StrokeCircle(course);
-	strokeCircle->move(width - 90, height - 90);
+	strokeCircle = new StrokeCircle(0, course);
+	strokeCircle->setPos(width - 90, height - 90);
 	strokeCircle->setSize(80, 80);
 	strokeCircle->setThickness(8);
 	strokeCircle->setVisible(false);
 	strokeCircle->setValue(0);
-	strokeCircle->setMaxValue(360);
+	strokeCircle->setMaxValue(360); 
 
 	// whiteBall marks the spot of the whole whilst editing
 	whiteBall = new Ball(course);
@@ -2329,7 +2349,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 void KolfGame::startFirstHole(int hole)
 {
 	if (curHole > 0) // if there was saved game, sync scoreboard
-	                 // with number of holes
+		// with number of holes
 	{
 		for (; scoreboardHoles < curHole; ++scoreboardHoles)
 		{
@@ -2402,11 +2422,11 @@ void KolfGame::unPause()
 
 void KolfGame::addBorderWall(QPoint start, QPoint end)
 {
-	Wall *wall = new Wall(course);
-	wall->setPoints(start.x(), start.y(), end.x(), end.y());
+	Wall *wall = new Wall(0, course);
+	wall->setLine(start.x(), start.y(), end.x(), end.y());
 	wall->setVisible(true);
 	wall->setGame(this);
-	wall->setZ(998.7);
+	wall->setZValue(998.7);
 	borderWalls.append(wall);
 }
 
@@ -2414,9 +2434,8 @@ void KolfGame::updateHighlighter()
 {
 	if (!selectedItem)
 		return;
-	QRect rect = selectedItem->boundingRect();
-	highlighter->move(rect.x() + 1, rect.y() + 1);
-	highlighter->setSize(rect.width(), rect.height());
+	QRectF rect = selectedItem->boundingRect();
+	highlighter->setRect(rect.x() + 1, rect.y() + 1, rect.width(), rect.height());
 }
 
 void KolfGame::handleMouseDoubleClickEvent(QMouseEvent *e)
@@ -2437,9 +2456,10 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 
 		storedMousePos = e->pos();
 
-		Q3CanvasItemList list = course->collisions(e->pos());
-		if (list.first() == highlighter)
-			list.pop_front();
+		QList<QGraphicsItem *> list = course->items(e->pos());
+		if(list.count() > 0)
+			if (list.first() == highlighter)
+				list.pop_front();
 
 		moving = false;
 		highlighter->setVisible(false);
@@ -2452,7 +2472,7 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 			return;
 		}
 		// only items we keep track of
-		if ((!(items.containsRef(list.first()) || list.first() == whiteBall || extraMoveable.containsRef(list.first()))))
+		if ((!(items.count(list.first()) || list.first() == whiteBall || extraMoveable.count(list.first()))))
 		{
 			emit newSelectedItem(&holeInfo);
 			return;
@@ -2469,26 +2489,25 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 		{
 			// select AND move now :)
 			case Qt::LeftButton:
-			{
-				selectedItem = list.first();
-				movingItem = selectedItem;
-				moving = true;
+				{
+					selectedItem = list.first();
+					movingItem = selectedItem;
+					moving = true;
 
-				if (citem->cornerResize())
-					setCursor(KCursor::sizeFDiagCursor());
-				else
-					setCursor(KCursor::sizeAllCursor());
+					if (citem->cornerResize())
+						setCursor(KCursor::sizeFDiagCursor());
+					else
+						setCursor(KCursor::sizeAllCursor());
 
-				emit newSelectedItem(citem);
-				highlighter->setVisible(true);
-				QRect rect = selectedItem->boundingRect();
-				highlighter->move(rect.x() + 1, rect.y() + 1);
-				highlighter->setSize(rect.width(), rect.height());
-			}
-			break;
+					emit newSelectedItem(citem);
+					highlighter->setVisible(true);
+					QRectF rect = selectedItem->boundingRect();
+					highlighter->setRect(rect.x() + 1, rect.y() + 1, rect.width(), rect.height());
+				}
+				break;
 
 			default:
-			break;
+				break;
 		}
 	}
 	else
@@ -2516,25 +2535,25 @@ QPoint KolfGame::viewportToViewport(const QPoint &p)
 
 void KolfGame::mouseReleaseEvent(QMouseEvent * e)
 {
-	QMouseEvent fixedEvent (QEvent::MouseButtonRelease, viewportToViewport(viewportToContents(e->pos())), e->button(), e->state());
+	QMouseEvent fixedEvent (QEvent::MouseButtonRelease, viewportToViewport(e->pos()), e->button(), e->state());
 	handleMouseReleaseEvent(&fixedEvent);
 }
 
 void KolfGame::mousePressEvent(QMouseEvent * e)
 {
-	QMouseEvent fixedEvent (QEvent::MouseButtonPress, viewportToViewport(viewportToContents(e->pos())), e->button(), e->state());
+	QMouseEvent fixedEvent (QEvent::MouseButtonPress, viewportToViewport(e->pos()), e->button(), e->state());
 	handleMousePressEvent(&fixedEvent);
 }
 
 void KolfGame::mouseDoubleClickEvent(QMouseEvent * e)
 {
-	QMouseEvent fixedEvent (QEvent::MouseButtonDblClick, viewportToViewport(viewportToContents(e->pos())), e->button(), e->state());
+	QMouseEvent fixedEvent (QEvent::MouseButtonDblClick, viewportToViewport(e->pos()), e->button(), e->state());
 	handleMouseDoubleClickEvent(&fixedEvent);
 }
 
 void KolfGame::mouseMoveEvent(QMouseEvent * e)
 {
-	QMouseEvent fixedEvent (QEvent::MouseMove, viewportToViewport(viewportToContents(e->pos())), e->button(), e->state());
+	QMouseEvent fixedEvent (QEvent::MouseMove, viewportToViewport(e->pos()), e->button(), e->state());
 	handleMouseMoveEvent(&fixedEvent);
 }
 
@@ -2557,7 +2576,7 @@ void KolfGame::handleMouseMoveEvent(QMouseEvent *e)
 		// lets change the cursor to a hand
 		// if we're hovering over something
 
-		Q3CanvasItemList list = course->collisions(e->pos());
+		QList<QGraphicsItem *> list = course->items(e->pos());
 		if (list.count() > 0)
 			setCursor(KCursor::handCursor());
 		else
@@ -2574,7 +2593,7 @@ void KolfGame::handleMouseMoveEvent(QMouseEvent *e)
 
 	highlighter->moveBy(-(double)moveX, -(double)moveY);
 	movingItem->moveBy(-(double)moveX, -(double)moveY);
-	QRect brect = movingItem->boundingRect();
+	QRectF brect = movingItem->boundingRect();
 	emit newStatusText(QString("%1x%2").arg(brect.x()).arg(brect.y()));
 	storedMousePos = mouse;
 }
@@ -2585,8 +2604,8 @@ void KolfGame::updateMouse()
 	if (!m_useMouse || ((stroking || putting) && m_useAdvancedPutting))
 		return;
 
-	const QPoint cursor = viewportToViewport(viewportToContents(mapFromGlobal(QCursor::pos())));
-	const QPoint ball((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
+	const QPointF cursor = viewportToViewport(mapFromGlobal(QCursor::pos()));
+	const QPointF ball((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 	putter->setAngle(-Vector(cursor, ball).direction());
 }
 
@@ -2624,30 +2643,30 @@ void KolfGame::keyPressEvent(QKeyEvent *e)
 		case Qt::Key_Up:
 			if (!e->isAutoRepeat())
 				toggleShowInfo();
-		break;
+			break;
 
 		case Qt::Key_Escape:
 			putting = false;
 			stroking = false;
 			finishStroking = false;
-			strokeCircle->setVisible(false);
+			strokeCircle->setVisible(false); 
 			putterTimer->stop();
 			putter->setOrigin((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
-		break;
+			break;
 
 		case Qt::Key_Left:
 		case Qt::Key_Right:
 			// don't move putter if in advanced putting sequence
 			if ((!stroking && !putting) || !m_useAdvancedPutting)
 				putter->go(e->key() == Qt::Key_Left? D_Left : D_Right, e->state() & Qt::ShiftModifier? Amount_More : e->state() & Qt::ControlModifier? Amount_Less : Amount_Normal);
-		break;
+			break;
 
 		case Qt::Key_Space: case Qt::Key_Down:
 			puttPress();
-		break;
+			break;
 
 		default:
-		break;
+			break;
 	}
 }
 
@@ -2667,33 +2686,29 @@ void KolfGame::setShowInfo(bool yes)
 
 	if (m_showInfo)
 	{
-		Q3CanvasItem *item = 0;
-		for (item = items.first(); item; item = items.next())
+		QList<QGraphicsItem *>::const_iterator item;
+		for (item = items.constBegin(); item != items.constEnd(); ++item)
 		{
-			CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+			CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
 			if (citem)
 				citem->showInfo();
 		}
 
 		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 			(*it).ball()->showInfo();
-
-		showInfo();
 	}
 	else
 	{
-		Q3CanvasItem *item = 0;
-		for (item = items.first(); item; item = items.next())
+		QList<QGraphicsItem *>::const_iterator item;
+		for (item = items.constBegin(); item != items.constEnd(); ++item)
 		{
-			CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+			CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
 			if (citem)
 				citem->hideInfo();
 		}
 
 		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 			(*it).ball()->hideInfo();
-
-		hideInfo();
 	}
 }
 
@@ -2710,20 +2725,20 @@ void KolfGame::puttPress()
 		strength = 0;
 		if (m_useAdvancedPutting)
 		{
-			strokeCircle->setValue(0);
-			int pw = putter->endPoint().x() - putter->startPoint().x();
+			strokeCircle->setValue(0); 
+			int pw = (int)(putter->line().x2() - putter->line().x1());
 			if (pw < 0) pw = -pw;
 			int px = (int)putter->x() + pw / 2;
 			int py = (int)putter->y();
-			if (px > width / 2 && py < height / 2)
-				strokeCircle->move(px - pw / 2 - 10 - strokeCircle->width(), py + 10);
-			else if (px > width / 2)
-				strokeCircle->move(px - pw / 2 - 10 - strokeCircle->width(), py - 10 - strokeCircle->height());
-			else if (py < height / 2)
-				strokeCircle->move(px + pw / 2 + 10, py + 10);
-			else
-				strokeCircle->move(px + pw / 2 + 10, py - 10 - strokeCircle->height());
-			strokeCircle->setVisible(true);
+			if (px > width / 2 && py < height / 2) 
+				strokeCircle->setPos(px/2 - pw / 2 - 5 - strokeCircle->width()/2, py/2 + 5);
+			else if (px > width / 2) 
+				strokeCircle->setPos(px/2 - pw / 2 - 5 - strokeCircle->width()/2, py/2 - 5 - strokeCircle->height()/2);
+			else if (py < height / 2) 
+				strokeCircle->setPos(px/2 + pw / 2 + 5, py/2 + 5);
+			else 
+				strokeCircle->setPos(px/2 + pw / 2 + 5, py/2 - 5 - strokeCircle->height()/2);
+			strokeCircle->setVisible(true); 
 		}
 		putterTimer->start(putterTimerMsec);
 	}
@@ -2758,13 +2773,13 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 			citem = citem->itemToDelete();
 			if (!citem)
 				return;
-			Q3CanvasItem *item = dynamic_cast<Q3CanvasItem *>(citem);
+			QGraphicsItem *item = dynamic_cast<QGraphicsItem *>(citem);
 			if (citem && citem->deleteable())
 			{
 				lastDelId = citem->curId();
 
 				highlighter->setVisible(false);
-				items.removeRef(item);
+				items.removeAll(item);
 				citem->hideInfo();
 				citem->aboutToDelete();
 				citem->aboutToDie();
@@ -2807,7 +2822,9 @@ void KolfGame::timeout()
 	// later undo the shot
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 	{
-		if (!course->rect().contains(QPoint((*it).ball()->x(), (*it).ball()->y())))
+		course->update();
+
+		if (!course->sceneRect().contains(QPointF((*it).ball()->x(), ((*it).ball()->y()))))
 		{
 			(*it).ball()->setState(Stopped);
 
@@ -2853,7 +2870,7 @@ void KolfGame::timeout()
 			// playSound("woohoo");
 		}
 
-		(*curPlayer).ball()->setZ((*curPlayer).ball()->z() + .1 - (.1)/(curScore));
+		(*curPlayer).ball()->setZValue((*curPlayer).ball()->zValue() + .1 - (.1)/(curScore));
 
 		if (allPlayersDone())
 		{
@@ -2883,14 +2900,15 @@ void KolfGame::fastTimeout()
 
 	if (!editing)
 	{
-		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it) {
 			(*it).ball()->doAdvance();
+		}
 
 		if (fastAdvancedExist)
 		{
-			CanvasItem *citem = 0;
-			for (citem = fastAdvancers.first(); citem; citem = fastAdvancers.next())
-				citem->doAdvance();
+			QList<CanvasItem *>::const_iterator citem;
+			for (citem = fastAdvancers.constBegin(); citem != fastAdvancers.constEnd(); ++citem)
+				(*citem)->doAdvance();
 		}
 
 		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
@@ -2898,9 +2916,9 @@ void KolfGame::fastTimeout()
 
 		if (fastAdvancedExist)
 		{
-			CanvasItem *citem = 0;
-			for (citem = fastAdvancers.first(); citem; citem = fastAdvancers.next())
-				citem->fastAdvanceDone();
+			QList<CanvasItem *>::const_iterator citem;
+			for (citem = fastAdvancers.constBegin(); citem != fastAdvancers.constEnd(); ++citem)
+				(*citem)->fastAdvanceDone();
 		}
 	}
 }
@@ -2909,9 +2927,11 @@ void KolfGame::ballMoved()
 {
 	if (putter->isVisible())
 	{
-		putter->move((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
+		putter->setPos((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 		updateMouse();
 	}
+	if(!inPlay && (*curPlayer).ball()->curState()==Holed) //needed incase somehow the ball rolls into a hole when not in play. this can only be correctly detected by the rest of the program when inPlay is true
+		inPlay = true;
 }
 
 void KolfGame::putterTimeout()
@@ -2929,7 +2949,7 @@ void KolfGame::putterTimeout()
 			{
 				// aborted
 				putting = false;
-				strokeCircle->setVisible(false);
+				strokeCircle->setVisible(false); 
 			}
 			else if (strength > maxStrength || puttReverse)
 			{
@@ -2954,11 +2974,11 @@ void KolfGame::putterTimeout()
 				}
 			}
 			// make the visible steps at high strength smaller
-			strokeCircle->setValue(pow(strength / maxStrength, 0.8) * 360);
+			strokeCircle->setValue(pow(strength / maxStrength, 0.8) * 360); 
 		}
 		else if (stroking)
 		{
-			double al = strokeCircle->value();
+			double al = strokeCircle->value(); 
 			if (al >= 45)
 				al -= 0.2 + strength / 50 + al / 100;
 			else
@@ -2982,7 +3002,7 @@ void KolfGame::putterTimeout()
 			}
 			else if (al < -45 || finishStroking)
 			{
-				strokeCircle->setValue(al);
+				strokeCircle->setValue(al); 
 				int deg;
 				// if > 45 or < -45 then bad stroke
 				if (al > 45)
@@ -3012,7 +3032,6 @@ void KolfGame::putterTimeout()
 				putterTimer->start(putterTimerMsec/10);
 			}
 		}
-
 	}
 	else
 	{
@@ -3058,11 +3077,10 @@ void KolfGame::recreateStateList()
 {
 	stateDB.clear();
 
-	Q3CanvasItem *item = 0;
-
-	for (item = items.first(); item; item = items.next())
+	QList<QGraphicsItem *>::const_iterator item;
+	for (item = items.constBegin(); item != items.constEnd(); ++item)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
 		if (citem)
 		{
 			stateDB.setName(makeStateGroup(citem->curId(), citem->name()));
@@ -3085,11 +3103,10 @@ void KolfGame::undoShot()
 
 void KolfGame::loadStateList()
 {
-	Q3CanvasItem *item = 0;
-
-	for (item = items.first(); item; item = items.next())
+	QList<QGraphicsItem *>::const_iterator item;
+	for (item = items.constBegin(); item != items.constEnd(); ++item)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
 		if (citem)
 		{
 			stateDB.setName(makeStateGroup(citem->curId(), citem->name()));
@@ -3100,8 +3117,8 @@ void KolfGame::loadStateList()
 	for (BallStateList::Iterator it = ballStateList.begin(); it != ballStateList.end(); ++it)
 	{
 		BallStateInfo info = (*it);
-		Player &player = (*players->at(info.id - 1));
-		player.ball()->move(info.spot.x(), info.spot.y());
+		Player &player = (*(players->begin() + (info.id - 1) ));
+		player.ball()->setPos(info.spot.x(), info.spot.y());
 		player.ball()->setBeginningOfHole(info.beginningOfHole);
 		if ((*curPlayer).id() == info.id)
 			ballMoved();
@@ -3168,12 +3185,12 @@ void KolfGame::shotDone()
 
 				while (1)
 				{
-					Q3CanvasItemList list = ball->collisions(true);
+					QList<QGraphicsItem *> list = ball->collidingItems();
 					bool keepMoving = false;
 					while (!list.isEmpty())
 					{
-						Q3CanvasItem *item = list.first();
-						if (item->rtti() == Rtti_DontPlaceOn)
+						QGraphicsItem *item = list.first();
+						if (item->data(0) == Rtti_DontPlaceOn)
 							keepMoving = true;
 
 						list.pop_front();
@@ -3185,7 +3202,7 @@ void KolfGame::shotDone()
 					x -= cos(v.direction()) * movePixel;
 					y += sin(v.direction()) * movePixel;
 
-					ball->move(x, y);
+					ball->setPos(x, y);
 				}
 
 				// move another two pixels away
@@ -3199,9 +3216,9 @@ void KolfGame::shotDone()
 					if ((*it).id == (*curPlayer).id())
 					{
 						if ((*it).beginningOfHole)
-							ball->move(whiteBall->x(), whiteBall->y());
+							ball->setPos(whiteBall->x(), whiteBall->y());
 						else
-							ball->move((*it).spot.x(), (*it).spot.y());
+							ball->setPos((*it).spot.x(), (*it).spot.y());
 
 						break;
 					}
@@ -3209,7 +3226,7 @@ void KolfGame::shotDone()
 			}
 
 			ball->setVisible(true);
-			ball->setState(Stopped);
+			ball->setState(Stopped); 
 
 			(*it).ball()->setDoDetect(true);
 			ball->collisionDetect(oldx, oldy);
@@ -3218,6 +3235,11 @@ void KolfGame::shotDone()
 
 	// emit again
 	emit scoreChanged((*curPlayer).id(), curHole, (*curPlayer).score(curHole));
+
+	if(ball->curState() == Rolling) {
+		inPlay = true; 
+		return;
+	}
 
 	ball->setVelocity(0, 0);
 
@@ -3232,7 +3254,7 @@ void KolfGame::shotDone()
 			ball->setVisible(false);
 
 			// move to center in case he/she hit out
-			ball->move(width / 2, height / 2);
+			ball->setPos(width / 2, height / 2);
 			playerWhoMaxed = (*it).name();
 
 			if (allPlayersDone())
@@ -3283,10 +3305,10 @@ void KolfGame::startBall(const Vector &vector)
 	(*curPlayer).ball()->setState(Rolling);
 	(*curPlayer).ball()->setVector(vector);
 
-	Q3CanvasItem *item = 0;
-	for (item = items.first(); item; item = items.next())
+	QList<QGraphicsItem *>::const_iterator item;
+	for (item = items.constBegin(); item != items.constEnd(); ++item)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
 		if (citem)
 			citem->shotStarted();
 	}
@@ -3372,7 +3394,7 @@ void KolfGame::startNextHole()
 
 	if (reset)
 	{
-		whiteBall->move(width/2, height/2);
+		whiteBall->setPos(width/2, height/2);
 		holeInfo.borderWallsChanged(true);
 	}
 
@@ -3417,9 +3439,9 @@ void KolfGame::startNextHole()
 		}
 
 		if (reset)
-			(*it).ball()->move(width / 2, height / 2);
+			(*it).ball()->setPos(width / 2, height / 2);
 		else
-			(*it).ball()->move(whiteBall->x(), whiteBall->y());
+			(*it).ball()->setPos(whiteBall->x(), whiteBall->y());
 
 		(*it).ball()->setState(Stopped);
 
@@ -3443,8 +3465,11 @@ void KolfGame::startNextHole()
 	// if (false) { we're done with the round! }
 	if (oldCurHole != curHole)
 	{
-		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it) {
 			(*it).ball()->setPlaceOnGround(false);
+			while( (*it).numHoles() < (unsigned)curHole)
+				(*it).addHole();
+		}
 
 		// here we have to make sure the scoreboard shows
 		// all of the holes up until now;
@@ -3471,43 +3496,22 @@ void KolfGame::startNextHole()
 	unPause();
 }
 
-void KolfGame::showInfo()
-{
-	QString text = i18n("Hole %1: par %2, maximum %3 strokes", curHole, holeInfo.par(), holeInfo.maxStrokes());
-	infoText->move((width - QFontMetrics(infoText->font()).width(text)) / 2, infoText->y());
-	infoText->setText(text);
-	// I hate this text! Let's not show it
-	//infoText->setVisible(true);
-
-	emit newStatusText(text);
-}
-
 void KolfGame::showInfoDlg(bool addDontShowAgain)
 {
 	KMessageBox::information(parentWidget(),
-	i18n("Course name: %1", holeInfo.name()) + QString("\n")
-	+ i18n("Created by %1", holeInfo.author()) + QString("\n")
-	+ i18n("%1 holes", highestHole),
-	i18n("Course Information"),
-	addDontShowAgain? holeInfo.name() + QString(" ") + holeInfo.author() : QString::null);
-}
-
-void KolfGame::hideInfo()
-{
-	infoText->setText("");
-	infoText->setVisible(false);
-
-	emit newStatusText(QString::null);
+			i18n("Course name: %1", holeInfo.name()) + QString("\n")
+			+ i18n("Created by %1", holeInfo.author()) + QString("\n")
+			+ i18n("%1 holes", highestHole),
+			i18n("Course Information"),
+			addDontShowAgain? holeInfo.name() + QString(" ") + holeInfo.author() : QString::null);
 }
 
 void KolfGame::openFile()
 {
-	Object *curObj = 0;
-
-	Q3CanvasItem *item = 0;
-	for (item = items.first(); item; item = items.next())
+	QList<QGraphicsItem *>::const_iterator item;
+	for (item = items.constBegin(); item != items.constEnd(); ++item)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
 		if (citem)
 		{
 			// sometimes info is still showing
@@ -3516,13 +3520,10 @@ void KolfGame::openFile()
 		}
 	}
 
-	items.setAutoDelete(true);
-	items.clear();
-	items.setAutoDelete(false);
+	while (!items.isEmpty())
+		delete items.takeFirst();
 
-	extraMoveable.setAutoDelete(false);
 	extraMoveable.clear();
-	fastAdvancers.setAutoDelete(false);
 	fastAdvancers.clear();
 	selectedItem = 0;
 
@@ -3568,7 +3569,7 @@ void KolfGame::openFile()
 			// if we've had one, break, cause list is sorted
 			// erps, no, cause we need to know highest hole!
 			if (numItems && !recalcHighestHole)
-					break;
+				break;
 			continue;
 		}
 		numItems++;
@@ -3583,8 +3584,8 @@ void KolfGame::openFile()
 		if (name == "ball")
 		{
 			for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-				(*it).ball()->move(x, y);
-			whiteBall->move(x, y);
+				(*it).ball()->setPos(x, y);
+			whiteBall->setPos(x, y);
 			continue;
 		}
 
@@ -3592,36 +3593,39 @@ void KolfGame::openFile()
 
 		bool loaded = false;
 
-		for (curObj = obj->first(); curObj; curObj = obj->next())
+		QList<Object *>::const_iterator curObj;
+		for (curObj = obj->constBegin(); curObj != obj->constEnd(); ++curObj)
 		{
-			if (name != curObj->_name())
+			if (name != (*curObj)->_name())
 				continue;
 
-			Q3CanvasItem *newItem = curObj->newObject(course);
+			QGraphicsItem *newItem = (*curObj)->newObject(0, course);
 			items.append(newItem);
+			CanvasItem *sceneItem = dynamic_cast<CanvasItem *>(newItem);
 
-			CanvasItem *canvasItem = dynamic_cast<CanvasItem *>(newItem);
-			if (!canvasItem)
+			if (!sceneItem)
 				continue;
 
-			canvasItem->setId(id);
-			canvasItem->setGame(this);
-			canvasItem->editModeChanged(editing);
-			canvasItem->setName(curObj->_name());
-			addItemsToMoveableList(canvasItem->moveableItems());
-			if (canvasItem->fastAdvance())
-				addItemToFastAdvancersList(canvasItem);
+			sceneItem->setId(id);
+			sceneItem->setGame(this);
+			sceneItem->editModeChanged(editing);
+			sceneItem->setName((*curObj)->_name());
+			addItemsToMoveableList(sceneItem->moveableItems());
+			if (sceneItem->fastAdvance())
+				addItemToFastAdvancersList(sceneItem);
 
-			newItem->move(x, y);
-			canvasItem->firstMove(x, y);
+			newItem->setPos(x, y); 
+			if(name == "cup")
+				newItem->moveBy(-6, -6);
 
+			sceneItem->firstMove(x, y);
 			newItem->setVisible(true);
 
 			// make things actually show
 			if (!hasFinalLoad)
 			{
-				cfg->setGroup(makeGroup(id, curHole, canvasItem->name(), x, y));
-				canvasItem->load(cfg);
+				cfg->setGroup(makeGroup(id, curHole, sceneItem->name(), x, y));
+				sceneItem->load(cfg);
 				course->update();
 			}
 
@@ -3634,6 +3638,7 @@ void KolfGame::openFile()
 
 		if (!loaded && name != "hole" && missingPlugins.contains(name) <= 0)
 			missingPlugins.append(name);
+
 	}
 
 	if (!missingPlugins.empty())
@@ -3662,44 +3667,45 @@ void KolfGame::openFile()
 	}
 
 	// do it down here; if !hasFinalLoad, do it up there!
-	Q3CanvasItem *qcanvasItem = 0;
-	Q3PtrList<CanvasItem> todo;
-	Q3PtrList<Q3CanvasItem> qtodo;
+	//QGraphicsItem *qsceneItem = 0;
+	QList<QGraphicsItem *>::const_iterator qsceneItem;
+	QList<CanvasItem *> todo;
+	QList<QGraphicsItem *> qtodo;
 	if (hasFinalLoad)
 	{
-		for (qcanvasItem = items.first(); qcanvasItem; qcanvasItem = items.next())
+		for (qsceneItem = items.constBegin(); qsceneItem != items.constEnd(); ++qsceneItem)
 		{
-			CanvasItem *item = dynamic_cast<CanvasItem *>(qcanvasItem);
+			CanvasItem *item = dynamic_cast<CanvasItem *>(*qsceneItem);
 			if (item)
 			{
 				if (item->loadLast())
 				{
-					qtodo.append(qcanvasItem);
+					qtodo.append(*qsceneItem);
 					todo.append(item);
 				}
 				else
 				{
-					QString group = makeGroup(item->curId(), curHole, item->name(), (int)qcanvasItem->x(), (int)qcanvasItem->y());
+					QString group = makeGroup(item->curId(), curHole, item->name(), (int)(*qsceneItem)->x(), (int)(*qsceneItem)->y());
 					cfg->setGroup(group);
 					item->load(cfg);
 				}
 			}
 		}
 
-		CanvasItem *citem = 0;
-		qcanvasItem = qtodo.first();
-		for (citem = todo.first(); citem; citem = todo.next())
+		QList<CanvasItem *>::const_iterator citem;
+		qsceneItem = qtodo.constBegin();
+		for (citem = todo.constBegin(); citem != todo.constEnd(); ++citem)
 		{
-			cfg->setGroup(makeGroup(citem->curId(), curHole, citem->name(), (int)qcanvasItem->x(), (int)qcanvasItem->y()));
-			citem->load(cfg);
+			cfg->setGroup(makeGroup((*citem)->curId(), curHole, (*citem)->name(), (int)(*qsceneItem)->x(), (int)(*qsceneItem)->y()));
+			(*citem)->load(cfg);
 
-			qcanvasItem = qtodo.next();
+			qsceneItem++;
 		}
 	}
 
-	for (qcanvasItem = items.first(); qcanvasItem; qcanvasItem = items.next())
+	for (qsceneItem = items.constBegin(); qsceneItem != items.constEnd(); ++qsceneItem)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(qcanvasItem);
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(*qsceneItem);
 		if (citem)
 			citem->updateZ();
 	}
@@ -3724,11 +3730,11 @@ void KolfGame::openFile()
 	setModified(false);
 }
 
-void KolfGame::addItemsToMoveableList(Q3PtrList<Q3CanvasItem> list)
+void KolfGame::addItemsToMoveableList(QList<QGraphicsItem *> list)
 {
-	Q3CanvasItem *item = 0;
-	for (item = list.first(); item; item = list.next())
-		extraMoveable.append(item);
+	QList<QGraphicsItem *>::const_iterator item;
+	for (item = list.constBegin(); item != list.constEnd(); ++item)
+		extraMoveable.append(*item);
 }
 
 void KolfGame::addItemToFastAdvancersList(CanvasItem *item)
@@ -3739,12 +3745,13 @@ void KolfGame::addItemToFastAdvancersList(CanvasItem *item)
 
 void KolfGame::addNewObject(Object *newObj)
 {
-	Q3CanvasItem *newItem = newObj->newObject(course);
+	QGraphicsItem *newItem = newObj->newObject(0, course);
 	items.append(newItem);
-	newItem->setVisible(true);
+	if(!newItem->isVisible())
+		newItem->setVisible(true);
 
-	CanvasItem *canvasItem = dynamic_cast<CanvasItem *>(newItem);
-	if (!canvasItem)
+	CanvasItem *sceneItem = dynamic_cast<CanvasItem *>(newItem);
+	if (!sceneItem)
 		return;
 
 	// we need to find a number that isn't taken
@@ -3755,10 +3762,10 @@ void KolfGame::addNewObject(Object *newObj)
 	for (;; ++i)
 	{
 		bool found = false;
-		Q3CanvasItem *item = 0;
-		for (item = items.first(); item; item = items.next())
+		QList<QGraphicsItem *>::const_iterator item;
+		for (item = items.constBegin(); item != items.constEnd(); ++item)
 		{
-			CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+			CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
 			if (citem)
 			{
 				if (citem->curId() == i)
@@ -3773,27 +3780,27 @@ void KolfGame::addNewObject(Object *newObj)
 		if (!found)
 			break;
 	}
-	canvasItem->setId(i);
+	sceneItem->setId(i);
 
-	canvasItem->setGame(this);
+	sceneItem->setGame(this);
 
 	if (m_showInfo)
-		canvasItem->showInfo();
+		sceneItem->showInfo();
 	else
-		canvasItem->hideInfo();
+		sceneItem->hideInfo();
 
-	canvasItem->editModeChanged(editing);
+	sceneItem->editModeChanged(editing);
 
-	canvasItem->setName(newObj->_name());
-	addItemsToMoveableList(canvasItem->moveableItems());
+	sceneItem->setName(newObj->_name());
+	addItemsToMoveableList(sceneItem->moveableItems());
 
-	if (canvasItem->fastAdvance())
-		addItemToFastAdvancersList(canvasItem);
+	if (sceneItem->fastAdvance())
+		addItemToFastAdvancersList(sceneItem);
 
-	newItem->move(width/2 - 18, height / 2 - 18);
+	newItem->setPos(width/2 - 18, height / 2 - 18);
 
 	if (selectedItem)
-		canvasItem->selectedItem(selectedItem);
+		sceneItem->selectedItem(selectedItem);
 
 	setModified(true);
 }
@@ -3813,14 +3820,14 @@ bool KolfGame::askSave(bool noMoreChances)
 
 		case KMessageBox::No:
 			return false;
-		break;
+			break;
 
 		case KMessageBox::Cancel:
 			return true;
-		break;
+			break;
 
 		default:
-		break;
+			break;
 	}
 
 	return false;
@@ -3856,10 +3863,10 @@ void KolfGame::addNewHole()
 	inPlay = false;
 
 	// add default objects
-	Object *curObj = 0;
-	for (curObj = obj->first(); curObj; curObj = obj->next())
-		if (curObj->addOnNewHole())
-			addNewObject(curObj);
+	QList<Object *>::const_iterator curObj;
+	for (curObj = obj->constBegin(); curObj != obj->constEnd(); ++curObj)
+		if ((*curObj)->addOnNewHole())
+			addNewObject(*curObj);
 
 	save();
 }
@@ -3886,23 +3893,24 @@ void KolfGame::resetHoleScores()
 
 void KolfGame::clearHole()
 {
-	Q3CanvasItem *qcanvasItem = 0;
-	for (qcanvasItem = items.first(); qcanvasItem; qcanvasItem = items.next())
+	QList<QGraphicsItem *>::const_iterator qsceneItem;
+	for (qsceneItem = items.constBegin(); qsceneItem != items.constEnd(); ++qsceneItem)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(qcanvasItem);
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(*qsceneItem);
 		if (citem)
 			citem->aboutToDie();
 	}
-	items.setAutoDelete(true);
-	items.clear();
-	items.setAutoDelete(false);
+
+	while (!items.isEmpty())
+		delete items.takeFirst();
+
 	emit newSelectedItem(&holeInfo);
 
 	// add default objects
-	Object *curObj = 0;
-	for (curObj = obj->first(); curObj; curObj = obj->next())
-		if (curObj->addOnNewHole())
-			addNewObject(curObj);
+	QList<Object *>::const_iterator curObj;
+	for (curObj = obj->constBegin(); curObj != obj->constEnd(); ++curObj)
+		if ((*curObj)->addOnNewHole())
+			addNewObject(*curObj);
 
 	setModified(true);
 }
@@ -3984,10 +3992,10 @@ void KolfGame::save()
 	bool hasFinalLoad = false;
 	fastAdvancedExist = false;
 
-	Q3CanvasItem *item = 0;
-	for (item = items.first(); item; item = items.next())
+	QList<QGraphicsItem *>::const_iterator item;
+	for (item = items.constBegin(); item != items.constEnd(); ++item)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
 		if (citem)
 		{
 			citem->aboutToSave();
@@ -4005,14 +4013,14 @@ void KolfGame::save()
 		if (holeNum == curHole)
 			cfg->deleteGroup(*it);
 	}
-	for (item = items.first(); item; item = items.next())
+	for (item = items.constBegin(); item != items.constEnd(); ++item)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
 		if (citem)
 		{
 			citem->clean();
 
-			cfg->setGroup(makeGroup(citem->curId(), curHole, citem->name(), (int)item->x(), (int)item->y()));
+			cfg->setGroup(makeGroup(citem->curId(), curHole, citem->name(), (int)(*item)->x(), (int)(*item)->y()));
 			citem->save(cfg);
 		}
 	}
@@ -4034,9 +4042,9 @@ void KolfGame::save()
 
 	cfg->sync();
 
-	for (item = items.first(); item; item = items.next())
+	for (item = items.constBegin(); item != items.constEnd(); ++item)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
 		if (citem)
 			citem->savingDone();
 	}
@@ -4050,15 +4058,15 @@ void KolfGame::toggleEditMode()
 	// this is pretty useless. when the person leaves the hole,
 	// he gets asked again
 	/*
-	if (editing && modified)
-	{
-		if (askSave(false))
-		{
-			emit checkEditing();
-			return;
-		}
-	}
-	*/
+	   if (editing && modified)
+	   {
+	   if (askSave(false))
+	   {
+	   emit checkEditing();
+	   return;
+	   }
+	   }
+	   */
 
 	moving = false;
 	selectedItem = 0;
@@ -4077,10 +4085,10 @@ void KolfGame::toggleEditMode()
 	}
 
 	// alert our items
-	Q3CanvasItem *item = 0;
-	for (item = items.first(); item; item = items.next())
+	QList<QGraphicsItem *>::const_iterator item;
+	for (item = items.constBegin(); item != items.constEnd(); ++item)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
 		if (citem)
 			citem->editModeChanged(editing);
 	}
@@ -4116,9 +4124,9 @@ void KolfGame::playSound(const QString& file, float vol)
 
 		// not needed when all of the files are in the distribution
 		//if (!QFile::exists(resFile))
-			//return;
+		//return;
 		if (vol > 1)
-		    vol = 1;
+			vol = 1;
 		m_player->play(KUrl::fromPath(resFile));
 	}
 }
@@ -4129,22 +4137,21 @@ void HoleInfo::borderWallsChanged(bool yes)
 	game->setBorderWalls(yes);
 }
 
-void KolfGame::print(KPrinter &pr)
+void KolfGame::print(KPrinter &pr) //note: this is currently broken, see comment below
 {
+	kDebug(12007) << "Printing Currently broken" << endl;
 	QPainter p(&pr);
 
-	Q3PaintDeviceMetrics metrics(&pr);
-
 	// translate to center
-	p.translate(metrics.width() / 2 - course->rect().width() / 2, metrics.height() / 2 - course->rect().height() / 2);
+	p.translate(pr.width() / 2 - course->sceneRect().width() / 2, pr.height() / 2 - course->sceneRect().height() / 2);
 
 	QPixmap pix(width, height);
 	QPainter pixp(&pix);
-	course->drawArea(course->rect(), &pixp);
+	//course->drawArea(course->sceneRect(), &pixp); //not sure how to fix this line to work with QGV, so just commenting for now. This will break printing
 	p.drawPixmap(0, 0, pix);
 
 	p.setPen(QPen(Qt::black, 2));
-	p.drawRect(course->rect());
+	p.drawRect(course->sceneRect());
 
 	p.resetMatrix();
 
@@ -4156,7 +4163,7 @@ void KolfGame::print(KPrinter &pr)
 		QRect rect = QFontMetrics(font).boundingRect(text);
 		p.setFont(font);
 
-		p.drawText(metrics.width() / 2 - rect.width() / 2, metrics.height() / 2 - course->rect().height() / 2 -20 - rect.height(), text);
+		p.drawText(QPointF(pr.width() / 2 - rect.width() / 2, pr.height() / 2 - course->sceneRect().height() / 2 -20 - rect.height()), text);
 	}
 }
 
@@ -4171,9 +4178,9 @@ bool KolfGame::allPlayersDone()
 
 void KolfGame::setBorderWalls(bool showing)
 {
-	Wall *wall = 0;
-	for (wall = borderWalls.first(); wall; wall = borderWalls.next())
-		wall->setVisible(showing);
+	QList<Wall *>::const_iterator wall;
+	for (wall = borderWalls.constBegin(); wall != borderWalls.constEnd(); ++wall)
+		(*wall)->setVisible(showing);
 }
 
 void KolfGame::setUseAdvancedPutting(bool yes)
@@ -4243,7 +4250,7 @@ void KolfGame::scoresFromSaved(KConfig *config, PlayerList &players)
 		players.last().setId(i);
 
 		QStringList scores(config->readEntry("Scores",QStringList()));
-		Q3ValueList<int> intscores;
+		QList<int> intscores;
 		for (QStringList::Iterator it = scores.begin(); it != scores.end(); ++it)
 			intscores.append((*it).toInt());
 
@@ -4276,8 +4283,8 @@ void KolfGame::saveScores(KConfig *config)
 		config->writeEntry("Color", (*it).ball()->color().name());
 
 		QStringList scores;
-		Q3ValueList<int> intscores = (*it).scores();
-		for (Q3ValueList<int>::Iterator it = intscores.begin(); it != intscores.end(); ++it)
+		QList<int> intscores = (*it).scores();
+		for (QList<int>::Iterator it = intscores.begin(); it != intscores.end(); ++it)
 			scores.append(QString::number(*it));
 
 		config->writeEntry("Scores", scores);
@@ -4285,7 +4292,7 @@ void KolfGame::saveScores(KConfig *config)
 }
 
 CourseInfo::CourseInfo()
-: name(i18n("Course Name")), author(i18n("Course Author")), holes(0), par(0)
+	: name(i18n("Course Name")), author(i18n("Course Author")), holes(0), par(0)
 {
 }
 

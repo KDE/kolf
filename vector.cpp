@@ -1,5 +1,5 @@
 #include <kdebug.h>
-#include <QPoint>
+#include <QPointF>
 
 #include "vector.h"
 
@@ -7,6 +7,12 @@
 
 // Creates a vector with between two points
 Vector::Vector(const QPoint &source, const QPoint &dest) {
+	_magnitude = sqrt(pow(source.x() - dest.x(), 2.) + pow(source.y() - dest.y(), 2.));
+	_direction = atan2(double(source.y() - dest.y()), double(source.x() - dest.x()));
+}
+
+// Creates a vector with between two points
+Vector::Vector(const QPointF &source, const QPointF &dest) {
 	_magnitude = sqrt(pow(source.x() - dest.x(), 2.) + pow(source.y() - dest.y(), 2.));
 	_direction = atan2(double(source.y() - dest.y()), double(source.x() - dest.x()));
 }

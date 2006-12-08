@@ -37,8 +37,9 @@
 #include "kolf.h"
 
 Kolf::Kolf()
-    : KMainWindow(0, "Kolf")
+    : KMainWindow(0)
 {
+	setObjectName("Kolf");
 	competition = false;
 	game = 0;
 	editor = 0;
@@ -62,7 +63,8 @@ Kolf::Kolf()
 Kolf::~Kolf()
 {
 	// wipe out our objects
-	obj->setAutoDelete(true);
+	while (!obj->isEmpty())
+		delete obj->takeFirst();
 	delete obj;
 }
 
@@ -188,14 +190,14 @@ void Kolf::startNewGame()
 
 	if (loadedGame.isNull())
 	{
-		dialog = new NewGameDialog(filename.isNull(), dummy, "New Game Dialog");
+		dialog = new NewGameDialog(filename.isNull());
 		if (dialog->exec() != QDialog::Accepted)
 			goto end;
 	}
 
 	players.clear();
 	delete scoreboard;
-	scoreboard = new ScoreBoard(dummy, "Score Board");
+	scoreboard = new ScoreBoard(dummy);
 	layout->addWidget(scoreboard, 1, 0);
 	scoreboard->show();
 
@@ -206,8 +208,8 @@ void Kolf::startNewGame()
 		for (curEditor = dialog->players()->at(newId-1); newId <= dialog->players()->count(); ++newId)
 		{
 			players.append(Player());
-			players.last().ball()->setColor(curEditor->color());
-			players.last().setName(curEditor->name());
+			players.last().ball()->setColor(dialog->players()->at(newId-1)->color());
+                        players.last().setName(dialog->players()->at(newId-1)->name());
 			players.last().setId(newId);
 		}
 
@@ -423,6 +425,7 @@ void Kolf::gameOver()
 		if (curName == i18n("Par"))
 		{
 			curPar = curScore;
+			curScore = 0;
 			continue;
 		}
 
@@ -774,9 +777,8 @@ void Kolf::initPlugins()
 	if (game)
 		game->pause();
 
-	obj->setAutoDelete(true);
-	obj->clear();
-	plugins.setAutoDelete(false);
+	while (!obj->isEmpty())
+		delete obj->takeFirst();
 	plugins.clear();
 
 	// add prefab objects
@@ -793,12 +795,12 @@ void Kolf::initPlugins()
 	obj->append(new BumperObj());
 
 	ObjectList *other = PluginLoader::loadAll();
-	Object *object = 0;
-	for (object = other->first(); object; object = other->next())
-	{
-		obj->append(object);
-		plugins.append(object);
-	}
+	QList<Object *>::const_iterator object;
+        for (object = other->constBegin(); object != other->constEnd(); ++object)
+        {
+                obj->append(*object);
+                plugins.append(*object);
+        }
 
 	if (game)
 	{
@@ -812,7 +814,16 @@ void Kolf::initPlugins()
 void Kolf::showPlugins()
 {
 	QString text = QString("<h2>%1</h2><ol>").arg(i18n("Currently Loaded Plugins"));
-	Object *object = 0;
+	QList<Object *>::const_iterator object;
+        for (object = plugins.constBegin(); object != plugins.constEnd(); ++object)
+	{
+		text.append("<li>");
+		text.append((*object)->name());
+		text.append(" - ");
+		text.append(i18n("by %1", (*object)->author()));
+		text.append("</li>");
+	}
+	/*Object *object = 0;
 	for (object = plugins.first(); object; object = plugins.next())
 	{
 		text.append("<li>");
@@ -820,7 +831,7 @@ void Kolf::showPlugins()
 		text.append(" - ");
 		text.append(i18n("by %1", object->author()));
 		text.append("</li>");
-	}
+	}*/
 	text.append("</ol>");
 	KMessageBox::information(this, text, i18n("Plugins"));
 }

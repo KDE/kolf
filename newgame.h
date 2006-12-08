@@ -49,7 +49,7 @@ class NewGameDialog : public KPageDialog
 	Q_OBJECT
 
 public:
-	NewGameDialog(bool enableCourses, QWidget *parent, const char *_name = 0);
+	NewGameDialog(bool enableCourses);
 	~NewGameDialog();
 	QList<PlayerEditor*> *players() { return &editors; }
 	bool competition() { return mode->isChecked(); }

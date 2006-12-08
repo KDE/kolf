@@ -1,7 +1,6 @@
 #include <QLabel>
 #include <qslider.h>
 #include <QHBoxLayout>
-#include <Q3PtrList>
 
 #include <kconfig.h>
 
@@ -31,7 +30,7 @@ void FloaterGuide::moveBy(double dx, double dy)
 		floater->reset();
 }
 
-void FloaterGuide::setPoints(int xa, int ya, int xb, int yb)
+void FloaterGuide::setPoints(double xa, double ya, double xb, double yb)
 {
 	if (qAbs(xa - xb) > 0 || qAbs(ya - yb) > 0)
 	{
@@ -48,17 +47,17 @@ Config *FloaterGuide::config(QWidget *parent)
 
 /////////////////////////
 
-Floater::Floater(QRect rect, Q3Canvas *canvas)
-	: Bridge(rect, canvas), speedfactor(16)
+Floater::Floater(QRect rect,  QGraphicsItem *parent, QGraphicsScene *scene)
+	: Bridge(rect, parent, scene), speedfactor(16)
 {
 	wall = 0;
 	setEnabled(true);
 	noUpdateZ = false;
 	haventMoved = true;
-	wall = new FloaterGuide(this, canvas);
+	wall = new FloaterGuide(this, parent, scene);
 	wall->setPoints(100, 100, 200, 200);
 	wall->setPen(QPen(wall->pen().color().light(), wall->pen().width() - 1));
-	move(wall->endPoint().x(), wall->endPoint().y());
+	setPos(wall->endPoint().x(), wall->endPoint().y());
 
 	setTopWallVisible(false);
 	setBotWallVisible(false);
@@ -93,35 +92,41 @@ void Floater::advance(int phase)
 	if (!isEnabled())
 		return;
 
-	Bridge::advance(phase);
-
-	if (phase == 1 && (xVelocity() || yVelocity()))
+	if (phase == 1 && (getXVelocity() || getXVelocity()))
 	{
-		if (Vector(origin, QPoint(x(), y())).magnitude() > vector.magnitude())
+		doAdvance();
+		if (Vector(origin, QPointF(x(), y())).magnitude() > vector.magnitude())
 		{
 			vector.setDirection(vector.direction() + M_PI);
 			origin = (origin == wall->startPoint()? wall->endPoint() : wall->startPoint());
 
-			setVelocity(-xVelocity(), -yVelocity());
+			setVelocity(-getXVelocity(), -getYVelocity());
 		}
 	}
 }
 
+void Floater::doAdvance()
+{
+	moveBy(getXVelocity(), getYVelocity());
+}
+
 void Floater::reset()
 {
-	QPoint start = wall->startPoint() + QPoint(wall->x(), wall->y());
-	QPoint end = wall->endPoint() + QPoint(wall->x(), wall->y());
+	QPointF startf = wall->startPoint() + QPointF(wall->x(), wall->y());
+	QPointF endf = wall->endPoint() + QPointF(wall->x(), wall->y());
+	QPoint start = (QPoint((int)startf.x(), (int)startf.y()));
+	QPoint end = (QPoint((int)endf.x(), (int)endf.y()));
 
 	vector = Vector(end, start);
 	origin = end;
 
-	move(origin.x(), origin.y());
+	setPos(origin.x(), origin.y());
 	setSpeed(speed);
 }
 
-Q3PtrList<Q3CanvasItem> Floater::moveableItems() const
+QList<QGraphicsItem *> Floater::moveableItems() const
 {
-	Q3PtrList<Q3CanvasItem> ret(wall->moveableItems());
+	QList<QGraphicsItem *> ret(wall->moveableItems());
 	ret.append(wall);
 	ret.append(point);
 	return ret;
@@ -155,7 +160,7 @@ void Floater::aboutToSave()
 {
 	setVelocity(0, 0);
 	noUpdateZ = true;
-	move(wall->endPoint().x() + wall->x(), wall->endPoint().y() + wall->y());
+	setPos(wall->endPoint().x() + wall->x(), wall->endPoint().y() + wall->y());
 	noUpdateZ = false;
 }
 
@@ -169,43 +174,44 @@ void Floater::moveBy(double dx, double dy)
 	if (!isEnabled())
 		return;
 
-	Q3CanvasItemList l = collisions(false);
-	for (Q3CanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
+	QList<QGraphicsItem *> l = collidingItems();
+	for (QList<QGraphicsItem *>::Iterator it = l.begin(); it != l.end(); ++it)
 	{
 		CanvasItem *item = dynamic_cast<CanvasItem *>(*it);
 
 		if (!noUpdateZ && item && item->canBeMovedByOthers())
 			item->updateZ(this);
 
-		if ((*it)->z() >= z())
+		if ((*it)->zValue() >= zValue())
 		{
-			if (item && item->canBeMovedByOthers() && collidesWith(*it))
+			if (item && item->canBeMovedByOthers() && collidesWithItem(*it))
 			{
-				if ((*it)->rtti() == Rtti_Ball)
+				if ((*it)->data(0) == Rtti_Ball)
 				{
 					//((Ball *)(*it))->setState(Rolling);
 					(*it)->moveBy(dx, dy);
 					if (game && game->hasFocus() && !game->isEditing() && game->curBall() == (Ball *)(*it))
 							game->ballMoved();
 				}
-				else if ((*it)->rtti() != Rtti_Putter)
-					(*it)->moveBy(dx, dy);
+				else if ((*it)->data(0) != Rtti_Putter) {
+					item->moveBy(dx, dy);
+				}
 			}
 		}
 	}
 
 	point->dontMove();
-	point->move(x() + width(), y() + height());
+	point->setPos(x() + width(), y() + height());
 
-	// this call must come after we have tested for collisions, otherwise we skip them when saving!
+	// this call must come after we have tested for collidingItems, otherwise we skip them when saving!
 	// that's a bad thing
-	Q3CanvasRectangle::moveBy(dx, dy);
+	QGraphicsRectItem::moveBy(dx, dy);
 
 	// because we don't do Bridge::moveBy();
-	topWall->move(x(), y());
-	botWall->move(x(), y() - 1);
-	leftWall->move(x(), y());
-	rightWall->move(x(), y());
+	topWall->setPos(x(), y());
+	botWall->setPos(x(), y() - 1);
+	leftWall->setPos(x(), y());
+	rightWall->setPos(x(), y());
 
 	if (game && game->isEditing())
 		game->updateHighlighter();
@@ -213,34 +219,34 @@ void Floater::moveBy(double dx, double dy)
 
 void Floater::saveState(StateDB *db)
 {
-	db->setPoint(QPoint(x(), y()));
+	db->setPoint(QPointF(x(), y()));
 }
 
 void Floater::loadState(StateDB *db)
 {
-	const QPoint moveTo = db->point();
-	move(moveTo.x(), moveTo.y());
+	const QPointF moveTo = db->point();
+	setPos(moveTo.x(), moveTo.y());
 }
 
 void Floater::save(KConfig *cfg)
 {
 	cfg->writeEntry("speed", speed);
-	cfg->writeEntry("startPoint", QPoint(wall->startPoint().x() + wall->x(), wall->startPoint().y() + wall->y()));
-	cfg->writeEntry("endPoint", QPoint(wall->endPoint().x() + wall->x(), wall->endPoint().y() + wall->y()));
+	cfg->writeEntry("startPoint", QPointF(wall->startPoint().x() + wall->x(), wall->startPoint().y() + wall->y()));
+	cfg->writeEntry("endPoint", QPointF(wall->endPoint().x() + wall->x(), wall->endPoint().y() + wall->y()));
 
 	doSave(cfg);
 }
 
 void Floater::load(KConfig *cfg)
 {
-	move(firstPoint.x(), firstPoint.y());
+	setPos(firstPoint.x(), firstPoint.y());
 
-	QPoint start(wall->startPoint() + QPoint(wall->x(), wall->y()));
+	QPointF start(wall->startPoint() + QPointF(wall->x(), wall->y()));
 	start = cfg->readEntry("startPoint", start);
-	QPoint end(wall->endPoint() + QPoint(wall->x(), wall->y()));
+	QPointF end(wall->endPoint() + QPointF(wall->x(), wall->y()));
 	end = cfg->readEntry("endPoint", end);
 	wall->setPoints(start.x(), start.y(), end.x(), end.y());
-	wall->move(0, 0);
+	wall->setPos(0, 0);
 
 	setSpeed(cfg->readEntry("speed", -1));
 

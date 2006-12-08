@@ -26,7 +26,7 @@ void debugPoint(const QString &, const Point &);
 
 // This and vector.cpp by Ryan Cummings
 
-class QPoint;
+class QPointF;
 
 // Implements a vector in 2D
 class Vector {
@@ -34,6 +34,7 @@ class Vector {
 	// Normal constructors
 	Vector(double magnitude, double direction) { _magnitude = magnitude; _direction = direction; }
 	Vector(const QPoint& source, const QPoint& dest);
+	Vector(const QPointF& source, const QPointF& dest);
 	Vector(const Point& source, const Point& dest);
 	Vector();
 

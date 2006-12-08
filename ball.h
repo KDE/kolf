@@ -8,19 +8,18 @@
 #include "vector.h"
 #include "rtti.h"
 
-class Q3Canvas;
 
 enum BallState { Rolling = 0, Stopped, Holed };
 
-class Ball : public Q3CanvasEllipse, public CanvasItem
+class Ball : public QGraphicsEllipseItem, public CanvasItem
 {
 public:
-	Ball(Q3Canvas *canvas);
+	Ball(QGraphicsScene *scene);
 	virtual void aboutToDie();
 
 	BallState currentState();
 
-	virtual void resetSize() { setSize(7, 7); }
+	virtual void resetSize(); 
 	virtual void advance(int phase);
 	virtual void doAdvance();
 	virtual void moveBy(double dx, double dy);
@@ -34,7 +33,7 @@ public:
 	void setState(BallState newState);
 
 	QColor color() const { return m_color; }
-	void setColor(QColor color) { m_color = color; setBrush(color); }
+	void setColor(QColor color) { m_color = color; setBrush(color); setPen(color); }
 
 	void setMoved(bool yes) { m_moved = yes; }
 	bool moved() const { return m_moved; }
@@ -44,8 +43,6 @@ public:
 	void setFrictionMultiplier(double news) { frictionMultiplier = news; };
 	void friction();
 	void collisionDetect(double oldx, double oldy);
-
-	virtual int rtti() const { return Rtti_Ball; };
 
 	int addStroke() const { return m_addStroke; }
 	bool placeOnGround(Vector &v) { v = oldVector; return m_placeOnGround; }
@@ -71,8 +68,13 @@ public:
 	virtual void showInfo();
 	virtual void hideInfo();
 	virtual void setName(const QString &);
-	virtual void setCanvas(Q3Canvas *c);
 	virtual void setVisible(bool yes);
+
+	double width() { return rect().width(); }
+	double height() { return rect().height(); }
+
+public slots:
+	void update() { doAdvance(); }
 
 private:
 	BallState state;
@@ -96,9 +98,9 @@ private:
 	bool m_collisionLock;
 
 	bool m_doDetect;
-	Q3CanvasItemList m_list;
+	QList<QGraphicsItem *> m_list;
 
-	Q3CanvasText *label;
+	QGraphicsSimpleTextItem *label;
 };
 
 

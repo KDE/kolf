@@ -3,84 +3,73 @@
 
 #include "scoreboard.h"
 
-ScoreBoard::ScoreBoard(QWidget *parent, const char *name)
-	: Q3Table(1, 1, parent, name)
+ScoreBoard::ScoreBoard(QWidget *parent)
+	: QTableWidget(1, 1, parent) 
 {
-	vh = verticalHeader();
-	hh = horizontalHeader();
-	vh->setLabel(numRows() - 1, i18n("Par"));
-	hh->setLabel(numCols() - 1, i18n("Total"));
+	setVerticalHeaderItem(rowCount() -1,  new QTableWidgetItem(i18n("Par")));
+	setHorizontalHeaderItem(columnCount() -1, new QTableWidgetItem(i18n("Total")));
 
 	setFocusPolicy(Qt::NoFocus);
-	setRowReadOnly(0, true);
-	setRowReadOnly(1, true);
+	setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 void ScoreBoard::newHole(int par)
 {
-	int _numCols = numCols();
-	insertColumns(_numCols - 1);
-	hh->setLabel(numCols() - 2, QString::number(numCols() - 1));
-	setText(numRows() - 1, numCols() - 2, QString::number(par));
-	setColumnWidth(numCols() - 2, 40);
+	int _columnCount = columnCount();
+	insertColumn(_columnCount - 1);
+	setHorizontalHeaderItem(columnCount() -2, new QTableWidgetItem(QString::number(columnCount() - 1)));
+	//set each player's score to 0
+	for (int i = 0; i < rowCount() - 1; i++)
+		setItem(i, columnCount() -2, new QTableWidgetItem(QString::number(0)));
+	setItem(rowCount() - 1, columnCount() - 2, new QTableWidgetItem(QString::number(par)));
 
 	// update total
 	int tot = 0;
-	for (int i = 0; i < numCols() - 1; ++i)
-		tot += text(numRows() - 1, i).toInt();
-	setText(numRows() - 1, numCols() - 1, QString::number(tot));
+	for (int i = 0; i < columnCount() - 1; ++i)
+		tot += item(rowCount() - 1, i)->text().toInt();
+	setItem(rowCount() - 1, columnCount() - 1, new QTableWidgetItem(QString::number(tot)));
 	
-	// shrink cell...
-	setColumnWidth(numCols() - 2, 3);
-	// and make it big enough for the numbers
-	adjustColumn(numCols() - 2);
+	resizeColumnToContents(columnCount() - 2); 
 }
 
 void ScoreBoard::newPlayer(const QString &name)
 {
 	//kDebug(12007) << "name of new player is " << name << endl;
-	insertRows(numRows() - 1);
-	vh->setLabel(numRows() - 2, name);
-	setRowReadOnly(numRows() - 2, true);
+	insertRow(rowCount() - 1);
+	setVerticalHeaderItem(rowCount() -2, new QTableWidgetItem(name));
 }
 
 void ScoreBoard::setScore(int id, int hole, int score)
 {
-	//kDebug(12007) << "set score\n";
-	setText(id - 1, hole - 1, score > 0? QString::number(score) : QString(""));
+	setItem(id - 1, hole - 1, new QTableWidgetItem(QString::number(score)));
 
 	QString name;
-	setText(id - 1, numCols() - 1, QString::number(total(id, name)));
-	if (hole >= numCols() - 2)
-		ensureCellVisible(id - 1, numCols() - 1);
-	else
-		ensureCellVisible(id - 1, hole - 1);
+	setItem(id - 1, columnCount() - 1, new QTableWidgetItem(QString::number(total(id, name))));
 	
-	// shrink cell...
-	setColumnWidth(hole - 1, 3);
-	// and make it big enough for the numbers
-	adjustColumn(hole - 1);
+	resizeColumnToContents(hole -1);
 		
 	setCurrentCell(id - 1, hole - 1);
 }
 
 void ScoreBoard::parChanged(int hole, int par)
 {
-	setText(numRows() - 1, hole - 1, QString::number(par));
+	setItem(rowCount() - 1, hole - 1, new QTableWidgetItem(QString::number(par)));
 
 	// update total
 	int tot = 0;
-	for (int i = 0; i < numCols() - 1; ++i)
-		tot += text(numRows() - 1, i).toInt();
-	setText(numRows() - 1, numCols() - 1, QString::number(tot));
+	for (int i = 0; i < columnCount() - 1; ++i)
+		tot += item(rowCount() - 1, i)->text().toInt();
+	setItem(rowCount() - 1, columnCount() - 1, new QTableWidgetItem(QString::number(tot)));
 }
 
 int ScoreBoard::total(int id, QString &name)
 {
 	int tot = 0;
-	for (int i = 0; i < numCols() - 1; i++)
-		tot += text(id - 1, i).toInt();
-	name = vh->label(id - 1);
+	for (int i = 0; i < columnCount() - 1; i++) 
+		tot += item(id - 1, i)->text().toInt();
+		
+	name = verticalHeaderItem(id - 1)->text();
+
 	//kDebug(12007) << "tot is " << tot << endl;
 	return tot;
 }

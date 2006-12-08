@@ -17,9 +17,10 @@
 
 #include "slope.h"
 
-Slope::Slope(QRect rect, Q3Canvas *canvas)
-	: Q3CanvasRectangle(rect, canvas), type(KImageEffect::VerticalGradient), grade(4), reversed(false), color(QColor("#327501"))
+Slope::Slope(QRect rect, QGraphicsItem * parent, QGraphicsScene *scene)
+	: QGraphicsRectItem(rect, parent, scene), type(KImageEffect::VerticalGradient), grade(4), reversed(false), color(QColor("#327501"))
 {
+	setData(0, 1031);
 	stuckOnGround = false;
 	showingInfo = false;
 
@@ -35,7 +36,7 @@ Slope::Slope(QRect rect, Q3Canvas *canvas)
 	gradientI18nKeys[KImageEffect::CrossDiagonalGradient] = i18n("Opposite Diagonal");
 	gradientI18nKeys[KImageEffect::EllipticGradient] = i18n("Circular");
 
-	setZ(-50);
+	setZValue(-50);
 
 	if (!QPixmapCache::find("grass", grass))
 	{
@@ -43,14 +44,14 @@ Slope::Slope(QRect rect, Q3Canvas *canvas)
 		QPixmapCache::insert("grass", grass);
 	}
 
-	point = new RectPoint(color.light(), this, canvas);
+	point = new RectPoint(color.light(), 0, parent, scene);
 
 	QFont font(kapp->font());
 	font.setPixelSize(18);
-	text = new Q3CanvasText(canvas);
-	text->setZ(99999.99);
+	text = new QGraphicsSimpleTextItem(0, scene);
+	text->setZValue(99999.99);
 	text->setFont(font);
-	text->setColor(Qt::white);
+	text->setBrush(Qt::white);
 
 	editModeChanged(false);
 	hideInfo();
@@ -68,11 +69,11 @@ bool Slope::terrainCollisions() const
 void Slope::showInfo()
 {
 	showingInfo = true;
-	Arrow *arrow = 0;
-	for (arrow = arrows.first(); arrow; arrow = arrows.next())
+	QList<Arrow *>::const_iterator arrow;
+	for (arrow = arrows.constBegin(); arrow != arrows.constEnd(); ++arrow)
 	{
-		arrow->setZ(z() + .01);
-		arrow->setVisible(true);
+		(*arrow)->setZValue(zValue() + .01);
+		(*arrow)->setVisible(true);
 	}
 	text->setVisible(true);
 }
@@ -80,9 +81,9 @@ void Slope::showInfo()
 void Slope::hideInfo()
 {
 	showingInfo = false;
-	Arrow *arrow = 0;
-	for (arrow = arrows.first(); arrow; arrow = arrows.next())
-		arrow->setVisible(false);
+	QList<Arrow *>::const_iterator arrow;
+	for (arrow = arrows.constBegin(); arrow != arrows.constEnd(); ++arrow)
+		(*arrow)->setVisible(false);
 	text->setVisible(false);
 }
 
@@ -95,20 +96,19 @@ void Slope::aboutToDie()
 
 void Slope::clearArrows()
 {
-	Arrow *arrow = 0;
-	for (arrow = arrows.first(); arrow; arrow = arrows.next())
+	QList<Arrow *>::const_iterator arrow;
+	for (arrow = arrows.constBegin(); arrow != arrows.constEnd(); ++arrow)
 	{
-		arrow->setVisible(false);
-		arrow->aboutToDie();
+		(*arrow)->setVisible(false);
+		(*arrow)->aboutToDie();
 	}
-	arrows.setAutoDelete(true);
-	arrows.clear();
-	arrows.setAutoDelete(false);
+        while (!arrows.isEmpty())
+            delete arrows.takeFirst();
 }
 
-Q3PtrList<Q3CanvasItem> Slope::moveableItems() const
+QList<QGraphicsItem *> Slope::moveableItems() const
 {
-	Q3PtrList<Q3CanvasItem> ret;
+	QList<QGraphicsItem *> ret;
 	ret.append(point);
 	return ret;
 }
@@ -127,11 +127,11 @@ void Slope::setSize(int width, int height)
 	newSize(width, height);
 }
 
-void Slope::newSize(int width, int height)
+void Slope::newSize(double width, double height)
 {
 	if (type == KImageEffect::EllipticGradient)
 	{
-		Q3CanvasRectangle::setSize(width, width);
+		QGraphicsRectItem::setRect(rect().x(), rect().y(), width, width);
 		// move point back to good spot
 		moveBy(0, 0);
 
@@ -139,7 +139,7 @@ void Slope::newSize(int width, int height)
 			game->updateHighlighter();
 	}
 	else
-		Q3CanvasRectangle::setSize(width, height);
+		QGraphicsRectItem::setRect(rect().x(), rect().y(), width, height);
 
 	updatePixmap();
 	updateZ();
@@ -147,10 +147,10 @@ void Slope::newSize(int width, int height)
 
 void Slope::moveBy(double dx, double dy)
 {
-	Q3CanvasRectangle::moveBy(dx, dy);
+	QGraphicsRectItem::moveBy(dx, dy);
 
 	point->dontMove();
-	point->move(x() + width(), y() + height());
+	point->setPos(x() + width(), y() + height());
 
 	moveArrow();
 	updateZ();
@@ -159,7 +159,7 @@ void Slope::moveBy(double dx, double dy)
 void Slope::moveArrow()
 {
 	int xavg = 0, yavg = 0;
-	Q3PointArray r = areaPoints();
+	Q3PointArray r = areaPoints(); //still using Q3PointArray because I'm not sure of how to change this easily and this code will probably be replaced when the graphics are updated
 	for (int i = 0; i < r.size(); ++i)
 	{
 		xavg += r[i].x();
@@ -168,16 +168,16 @@ void Slope::moveArrow()
 	xavg /= r.size();
 	yavg /= r.size();
 
-	Arrow *arrow = 0;
-	for (arrow = arrows.first(); arrow; arrow = arrows.next())
-		arrow->move((double)xavg, (double)yavg);
+	QList<Arrow *>::const_iterator arrow;
+	for (arrow = arrows.constBegin(); arrow != arrows.constEnd(); ++arrow)
+		(*arrow)->setPos((double)xavg, (double)yavg);
 
 	if (showingInfo)
 		showInfo();
 	else
 		hideInfo();
 
-	text->move((double)xavg - text->boundingRect().width() / 2, (double)yavg - text->boundingRect().height() / 2);
+	text->setPos((double)xavg - text->boundingRect().width() / 2, (double)yavg - text->boundingRect().height() / 2);
 }
 
 void Slope::editModeChanged(bool changed)
@@ -186,28 +186,28 @@ void Slope::editModeChanged(bool changed)
 	moveBy(0, 0);
 }
 
-void Slope::updateZ(Q3CanvasRectangle *vStrut)
+void Slope::updateZ(QGraphicsRectItem *vStrut)
 {
-	const int area = (height() * width());
+	const double area = (height() * width());
 	const int defaultz = -50;
 
 	double newZ = 0;
 
-	Q3CanvasRectangle *rect = 0;
+	QGraphicsRectItem *rect = 0;
 	if (!stuckOnGround)
 		rect = vStrut? vStrut : onVStrut();
 
 	if (rect)
 	{
-		if (area > (rect->width() * rect->height()))
+		if (area > (rect->rect().width() * rect->rect().height()))
 			newZ = defaultz;
 		else
-			newZ = rect->z();
+			newZ = rect->zValue();
 	}
 	else
 		newZ = defaultz;
 
-	setZ(((double)1 / (area == 0? 1 : area)) + newZ);
+	setZValue(((double)1 / (area == 0? 1 : area)) + newZ);
 }
 
 void Slope::load(KConfig *cfg)
@@ -217,7 +217,7 @@ void Slope::load(KConfig *cfg)
 	reversed = cfg->readEntry("reversed", reversed);
 
 	// bypass updatePixmap which newSize normally does
-	Q3CanvasRectangle::setSize(cfg->readEntry("width", width()), cfg->readEntry("height", height()));
+	QGraphicsRectItem::setRect(rect().x(), rect().y(), cfg->readEntry("width", width()), cfg->readEntry("height", height()));
 	updateZ();
 
 	QString gradientType = cfg->readEntry("gradient", gradientKeys[type]);
@@ -234,12 +234,54 @@ void Slope::save(KConfig *cfg)
 	cfg->writeEntry("stuckOnGround", stuckOnGround);
 }
 
-void Slope::draw(QPainter &painter)
+void Slope::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*option*/, QWidget * /*widget*/ ) 
 {
-	painter.drawPixmap(x(), y(), pixmap);
+	painter->drawPixmap(0, 0, pixmap);  
 }
 
-Q3PointArray Slope::areaPoints() const
+QPainterPath Slope::shape() const
+{       
+	switch (type)
+	{
+		case KImageEffect::CrossDiagonalGradient:
+		{
+			QPainterPath path;
+			QPolygonF polygon(3);
+			polygon[0] = QPointF(rect().x(), rect().y());
+			polygon[1] = QPointF(rect().x() + width(), rect().y() + height());
+			polygon[2] = reversed? QPointF(rect().x() + width(), rect().y()) : QPointF(rect().x(), rect().y() + height());
+			path.addPolygon(polygon);
+			return path;
+		}
+
+		case KImageEffect::DiagonalGradient:
+		{
+			QPainterPath path;
+			QPolygonF polygon(3);
+			polygon[0] = QPointF(rect().x() + width(), rect().y());
+			polygon[1] = QPointF(rect().x(), rect().y() + height());
+			polygon[2] = !reversed? QPointF(rect().x() + width(), rect().y() + height()) : QPointF(rect().x(), rect().y());
+			path.addPolygon(polygon);
+			return path;
+		}
+
+		case KImageEffect::EllipticGradient:
+		{
+			QPainterPath path;
+			path.addEllipse(rect().x(), rect().y(), width(), height());
+			return path;
+		}
+
+		default:
+		{
+			QPainterPath path;
+			path.addRect(rect().x(), rect().y(), width(), height());
+			return path;
+		}
+	}
+}
+
+Q3PointArray Slope::areaPoints() const //still using Q3PointArray areaPoints because it is needed to find the centre of the slope when placing arrows. Not sure of an easy alternative way to do this, and no need to because this code will probably be replaced when the graphics are updated
 {
 	switch (type)
 	{
@@ -247,8 +289,8 @@ Q3PointArray Slope::areaPoints() const
 		{
 			Q3PointArray ret(3);
 			ret[0] = QPoint((int)x(), (int)y());
-			ret[1] = QPoint((int)x() + width(), (int)y() + height());
-			ret[2] = reversed? QPoint((int)x() + width(), y()) : QPoint((int)x(), (int)y() + height());
+			ret[1] = QPoint((int)x() + (int)width(), (int)y() + (int)height());
+			ret[2] = reversed? QPoint((int)x() + (int)width(), (int)y()) : QPoint((int)x(), (int)y() + (int)height());
 
 			return ret;
 		}
@@ -256,9 +298,9 @@ Q3PointArray Slope::areaPoints() const
 		case KImageEffect::DiagonalGradient:
 		{
 			Q3PointArray ret(3);
-			ret[0] = QPoint((int)x() + width(), (int)y());
-			ret[1] = QPoint((int)x(), (int)y() + height());
-			ret[2] = !reversed? QPoint((int)x() + width(), y() + height()) : QPoint((int)x(), (int)y());
+			ret[0] = QPoint((int)x() + (int)width(), (int)y());
+			ret[1] = QPoint((int)x(), (int)y() + (int)height());
+			ret[2] = !reversed? QPoint((int)x() + (int)width(), (int)y() + (int)height()) : QPoint((int)x(), (int)y());
 
 			return ret;
 		}
@@ -266,12 +308,19 @@ Q3PointArray Slope::areaPoints() const
 		case KImageEffect::EllipticGradient:
 		{
 			Q3PointArray ret;
-			ret.makeEllipse((int)x(), (int)y(), width(), height());
+			ret.makeEllipse((int)x(), (int)y(), (int)width(), (int)height());
 			return ret;
 		}
 
 		default:
-			return Q3CanvasRectangle::areaPoints();
+		{
+			Q3PointArray ret(4);
+			ret[0] = QPoint((int)x() + (int)width(), (int)y());
+			ret[1] = QPoint((int)x(), (int)y());
+			ret[2] = QPoint((int)x(), (int)y() + (int)height());
+			ret[3] = QPoint((int)x() + (int)width(), (int)y() + (int)height());
+			return ret;
+		}
 	}
 }
 
@@ -280,8 +329,8 @@ bool Slope::collision(Ball *ball, long int /*id*/)
 	if (grade <= 0)
 		return false;
 
-	double vx = ball->xVelocity();
-	double vy = ball->yVelocity();
+	double vx = ball->getXVelocity();
+	double vy = ball->getYVelocity();
 	double addto = 0.013 * grade;
 
 	const bool diag = type == KImageEffect::DiagonalGradient || type == KImageEffect::CrossDiagonalGradient;
@@ -289,12 +338,12 @@ bool Slope::collision(Ball *ball, long int /*id*/)
 
 	double slopeAngle = 0;
 
-	if (diag)
+	if (diag) 
 		slopeAngle = atan((double)width() / (double)height());
 	else if (circle)
 	{
-		const QPoint start(x() + (int)width() / 2.0, y() + (int)height() / 2.0);
-		const QPoint end((int)ball->x(), (int)ball->y());
+		const QPointF start((x() + width() / 2.0), y() + height() / 2.0);
+		const QPointF end(ball->x(), ball->y());
 
 		Vector betweenVector(start, end);
 		const double factor = betweenVector.magnitude() / ((double)width() / 2.0);
@@ -333,12 +382,12 @@ bool Slope::collision(Ball *ball, long int /*id*/)
 	ball->setVelocity(vx, vy);
 	// check if the ball is at the center of a pit or mound
 	// or has otherwise stopped.
-	if (vx == 0 && vy ==0)
+	if (vx == 0 && vy ==0) 
 		ball->setState(Stopped);
-	else
+	else 
 		ball->setState(Rolling);
 
-	// do NOT do terrain collisions
+	// do NOT do terrain collidingItems
 	return false;
 }
 
@@ -380,7 +429,7 @@ void Slope::setType(KImageEffect::GradientType type)
 void Slope::updatePixmap()
 {
 	// make a gradient, make grass that's bright or dim
-	// merge into this->pixmap. This is drawn in draw()
+	// merge into this->pixmap. This is paintn in paint()
 
 	// we update the arrows in this function
 	clearArrows();
@@ -388,24 +437,24 @@ void Slope::updatePixmap()
 	const bool diag = type == KImageEffect::DiagonalGradient || type == KImageEffect::CrossDiagonalGradient;
 	const bool circle = type == KImageEffect::EllipticGradient;
 
-	const QColor darkColor = color.dark(100 + grade * (circle? 20 : 10));
-	const QColor lightColor = diag || circle? color.light(110 + (diag? 5 : .5) * grade) : color;
+	const QColor darkColor = color.dark((int)(100 + grade * (circle? 20 : 10)));
+	const QColor lightColor = diag || circle? color.light((int)(110 + (diag? 5 : .5) * grade)) : color;
 	// hack only for circles
 	const bool _reversed = circle? !reversed : reversed;
-	QImage gradientImage = KImageEffect::gradient(QSize(width(), height()), _reversed? darkColor : lightColor, _reversed? lightColor : darkColor, type);
+	QImage gradientImage = KImageEffect::gradient(QSize((int)width(), (int)height()), _reversed? darkColor : lightColor, _reversed? lightColor : darkColor, type);
 
-	QPixmap qpixmap(width(), height());
+	QPixmap qpixmap((int)width(), (int)height());
 	QPainter p(&qpixmap);
-	p.drawTiledPixmap(QRect(0, 0, width(), height()), grass);
+	p.drawTiledPixmap(QRect(0, 0, (int)width(), (int)height()), grass);
 	p.end();
 
 	const double length = sqrt(double(width() * width() + height() * height())) / 4;
 
 	if (circle)
 	{
-		const QColor otherLightColor = color.light(110 + 15 * grade);
-		const QColor otherDarkColor = darkColor.dark(110 + 20 * grade);
-		QImage otherGradientImage = KImageEffect::gradient(QSize(width(), height()), reversed? otherDarkColor : otherLightColor, reversed? otherLightColor : otherDarkColor, KImageEffect::DiagonalGradient);
+		const QColor otherLightColor = color.light((int)(110 + 15 * grade));
+		const QColor otherDarkColor = darkColor.dark((int)(110 + 20 * grade));
+		QImage otherGradientImage = KImageEffect::gradient(QSize((int)width(), (int)height()), reversed? otherDarkColor : otherLightColor, reversed? otherLightColor : otherDarkColor, KImageEffect::DiagonalGradient);
 
 		QImage grassImage(qpixmap.toImage());
 
@@ -417,7 +466,7 @@ void Slope::updatePixmap()
 		for (int i = 0; i < 4; ++i)
 		{
 			angle += M_PI / 2;
-			Arrow *arrow = new Arrow(canvas());
+			Arrow *arrow = new Arrow(0, scene());
 			arrow->setLength(length);
 			arrow->setAngle(angle);
 			arrow->setReversed(reversed);
@@ -427,7 +476,7 @@ void Slope::updatePixmap()
 	}
 	else
 	{
-		Arrow *arrow = new Arrow(canvas());
+		Arrow *arrow = new Arrow(0, scene());
 
 		float ratio = 0;
 		float factor = 1;
@@ -500,18 +549,13 @@ void Slope::updatePixmap()
                 bitmap.clear();
 		QPainter bpainter(&bitmap);
 		bpainter.setBrush(Qt::color1);
-		Q3PointArray r = areaPoints();
 
-		// shift all the points
-		for (unsigned int i = 0; i < r.count(); ++i)
-		{
-			QPoint &p = r[i];
-			p.setX(p.x() - x());
-			p.setY(p.y() - y());
-		}
-		bpainter.drawPolygon(r);
+		QPainterPath r = shape();
+		r.moveTo(x(), y());
+		bpainter.drawPath(r);
 
-		// mask is drawn
+
+		// mask is paintn
 		pixmap.setMask(bitmap);
 	}
 

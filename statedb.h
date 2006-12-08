@@ -10,13 +10,13 @@
 class StateDB
 {
 public:
-	void setPoint(const QPoint &point) { points[curName] = point; }
-	QPoint point() { return points[curName]; }
+	void setPoint(const QPointF &point) { points[curName] = point; }
+	QPointF point() { return points[curName]; }
 	void setName(const QString &name) { curName = name; }
 	void clear() { points.clear(); }
 
 private:
-	QMap<QString, QPoint> points;
+	QMap<QString, QPointF> points;
 	QString curName;
 };
 

@@ -1,21 +1,20 @@
-#include <q3canvas.h>
+#include <QGraphicsView>
 
 #include <kconfig.h>
 
 #include "game.h"
 #include "canvasitem.h"
 
-Q3CanvasRectangle *CanvasItem::onVStrut()
+QGraphicsRectItem *CanvasItem::onVStrut()
 {
-	Q3CanvasItem *qthis = dynamic_cast<Q3CanvasItem *>(this);
-	if (!qthis)
+	QGraphicsItem *qthis = dynamic_cast<QGraphicsItem *>(this);
+	if (!qthis) 
 		return 0;
-	Q3CanvasItemList l = qthis->collisions(true);
-	l.sort();
+	QList<QGraphicsItem *> l = qthis->collidingItems();
 	bool aboveVStrut = false;
 	CanvasItem *item = 0;
-	Q3CanvasItem *qitem = 0;
-	for (Q3CanvasItemList::Iterator it = l.begin(); it != l.end(); ++it)
+	QGraphicsItem *qitem = 0;
+	for (QList<QGraphicsItem *>::Iterator it = l.begin(); it != l.end(); ++it)
 	{
 		item = dynamic_cast<CanvasItem *>(*it);
 		if (item)
@@ -30,7 +29,7 @@ Q3CanvasRectangle *CanvasItem::onVStrut()
 		}
 	}
 
-	Q3CanvasRectangle *ritem = dynamic_cast<Q3CanvasRectangle *>(qitem);
+	QGraphicsRectItem *ritem = dynamic_cast<QGraphicsRectItem *>(qitem);
 
 	return aboveVStrut && ritem? ritem : 0;
 }

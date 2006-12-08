@@ -28,16 +28,16 @@ Editor::Editor(ObjectList *list, QWidget *parent)
 	hlayout->setStretchFactor(vlayout, 2);
 
 	QStringList items;
-	Object *obj = 0;
-	for (obj = list->first(); obj; obj = list->next())
-		items.append(obj->name());
+	QList<Object *>::const_iterator obj;
+	for (obj = list->constBegin(); obj != list->constEnd(); ++obj)
+		items.append((*obj)->name());
 
 	listbox->insertStringList(items);
 
-	connect(listbox, SIGNAL(executed(Q3ListBoxItem *)), SLOT(listboxExecuted(Q3ListBoxItem *)));
+	connect(listbox, SIGNAL(executed(Q3ListBoxItem *)), SLOT(listboxExecuted(Q3ListBoxItem *))); //Q3ListBoxItem used here because that is what KListBox uses
 }
 
-void Editor::listboxExecuted(Q3ListBoxItem * /*item*/)
+void Editor::listboxExecuted(Q3ListBoxItem * /*item*/) //again, Q3ListBoxItem used here because that is what KListBox uses
 {
 	int curItem = listbox->currentItem();
 	if (curItem < 0)
