@@ -2822,7 +2822,8 @@ void KolfGame::timeout()
 	// later undo the shot
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 	{
-		course->update();
+                //QGV handles management of dirtied rects for us
+		//course->update();
 
 		if (!course->sceneRect().contains(QPointF((*it).ball()->x(), ((*it).ball()->y()))))
 		{
