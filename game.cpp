@@ -248,14 +248,15 @@ Bridge::Bridge(QRect rect, QGraphicsItem *parent, QGraphicsScene *scene)
 	setBrush(QBrush(color));
 	setPen(Qt::NoPen);
 	setZValue(998);
-
-	topWall = new Wall(parent, scene);
+	
+	//not using antialiasing because it looks too blurry here
+	topWall = new Wall(parent, scene, false);
 	topWall->setAlwaysShow(true);
-	botWall = new Wall(parent, scene);
+	botWall = new Wall(parent, scene, false);
 	botWall->setAlwaysShow(true);
-	leftWall = new Wall(parent, scene);
+	leftWall = new Wall(parent, scene, false);
 	leftWall->setAlwaysShow(true);
-	rightWall = new Wall(parent, scene);
+	rightWall = new Wall(parent, scene, false);
 	rightWall->setAlwaysShow(true);
 
 	setWallZ(zValue() + 0.01);
@@ -461,10 +462,11 @@ Windmill::Windmill(QRect rect, QGraphicsItem * parent, QGraphicsScene *scene)
 	setSpeed(5);
 	guard->setZValue(wallZ() + .1);
 
-	left = new Wall(0, scene);
+	//not using antialiasing because it looks too blurry here
+	left = new Wall(0, scene, false);
 	left->setPen(wallPen());
 	left->setAlwaysShow(true);
-	right = new Wall(0, scene);
+	right = new Wall(0, scene, false);
 	right->setPen(wallPen());
 	right->setAlwaysShow(true);
 	left->setZValue(wallZ());
@@ -1241,7 +1243,7 @@ void BlackHole::paint(QPainter *painter, const QStyleOptionGraphicsItem * option
 void BlackHole::showInfo()
 {
 	delete infoLine;
-	infoLine = new QGraphicsLineItem(0, scene());
+	infoLine = new AntialisedLine(0, scene());
 	infoLine->setVisible(true);
 	infoLine->setPen(QPen(exitItem->pen().color(), 2));
 	infoLine->setZValue(10000);
@@ -1457,7 +1459,7 @@ HoleResult BlackHole::result(QPointF p, double s, bool * /*wasCenter*/)
 /////////////////////////
 
 BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QGraphicsItem * parent, QGraphicsScene *scene)
-: QGraphicsLineItem(parent, scene)
+: AntialisedLine(parent, scene)
 {
 	setData(0, Rtti_NoCollision);
 	this->blackHole = blackHole;
@@ -1581,6 +1583,20 @@ void BlackHoleConfig::maxChanged(double news)
 {
 	blackHole->setMaxSpeed(news);
 	changed();
+}
+
+/////////////////////////
+
+AntialisedLine::AntialisedLine(QGraphicsItem *parent, QGraphicsScene *scene)
+	: QGraphicsLineItem(parent, scene)
+{ 
+	;
+}
+
+void AntialisedLine::paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget)
+{
+	p->setRenderHint(QPainter::Antialiasing, true);
+	QGraphicsLineItem::paint(p, style, widget);
 }
 
 /////////////////////////
@@ -1759,9 +1775,10 @@ bool WallPoint::collision(Ball *ball, long int id)
 
 /////////////////////////
 
-Wall::Wall( QGraphicsItem *parent, QGraphicsScene *scene)
+Wall::Wall( QGraphicsItem *parent, QGraphicsScene *scene, bool antialiasing)
 : QGraphicsLineItem(parent, scene)
 {
+	this->antialiasing = antialiasing;
 	setData(0, Rtti_Wall);
 	editing = false;
 	lastId = INT_MAX - 10;
@@ -1785,6 +1802,13 @@ Wall::Wall( QGraphicsItem *parent, QGraphicsScene *scene)
 	moveBy(0, 0);
 
 	editModeChanged(false);
+}
+
+void Wall::paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget)
+{
+	if(antialiasing)
+		p->setRenderHint(QPainter::Antialiasing, true);
+	QGraphicsLineItem::paint(p, style, widget);
 }
 
 void Wall::selectedItem(QGraphicsItem *item)

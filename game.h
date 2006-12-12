@@ -102,6 +102,13 @@ private:
 
 typedef QList<Player> PlayerList;
 
+class AntialisedLine : public QGraphicsLineItem
+{
+public:
+	AntialisedLine(QGraphicsItem *parent, QGraphicsScene *scene);
+	void paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget);
+};
+
 class Arrow : public QGraphicsLineItem
 {
 public:
@@ -323,7 +330,7 @@ private slots:
 private:
 	BlackHole *blackHole;
 };
-class BlackHoleExit : public QGraphicsLineItem, public CanvasItem
+class BlackHoleExit : public AntialisedLine, public CanvasItem
 {
 public:
 	BlackHoleExit(BlackHole *blackHole, QGraphicsItem * parent, QGraphicsScene *scene);
@@ -413,9 +420,9 @@ protected:
 
 private:
 	QPixmap pixmap;
-	KolfSvgRenderer * renderer;
+	KolfSvgRenderer *renderer;
 	int runs;
-	QGraphicsLineItem *infoLine;
+	AntialisedLine *infoLine;
 	void finishMe();
 };
 class BlackHoleObj : public Object
@@ -429,11 +436,12 @@ class WallPoint;
 class Wall : public QGraphicsLineItem, public CanvasItem
 {
 public:
-	Wall( QGraphicsItem * parent, QGraphicsScene *scene);
+	Wall( QGraphicsItem * parent, QGraphicsScene *scene, bool antialiasing=1);
 	virtual void aboutToDie();
 	double dampening;
 
 	void setAlwaysShow(bool yes);
+	void paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget);
 	virtual void setZValue(double newz);
 	virtual void setPen(QPen p);
 	virtual bool collision(Ball *ball, long int id);
@@ -467,6 +475,7 @@ protected:
 	bool editing;
 
 private:
+	bool antialiasing;
 	long int lastId;
 
 	friend class WallPoint;
@@ -547,6 +556,7 @@ private:
 	QGraphicsLineItem *guideLine;
 	bool m_showGuideLine;
 };
+
 
 class Bridge;
 class BridgeConfig : public Config
