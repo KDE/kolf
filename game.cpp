@@ -2234,7 +2234,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	margin = 10;
 
 	setFocusPolicy(Qt::StrongFocus);
-	setFixedSize(width + 2 * margin, height + 2 * margin);
+	setFixedSize(width , height);
 
 	setContentsMargins(margin, margin, margin, margin);
 
@@ -2242,14 +2242,8 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	course->setBackgroundBrush(Qt::white);
 	course->setSceneRect(sceneRect().x(), sceneRect().y(), width, height);
 
-	//course->resize(width, height);
-
 	QPixmap pic;
-	if (!QPixmapCache::find("grass", pic))
-	{
-		pic.load(KStandardDirs::locate("appdata", "pics/grass.png"));
-		QPixmapCache::insert("grass", pic);
-	}
+	pic = renderer->renderSvg("grass", width, height, 1);
 	course->setBackgroundBrush(QBrush(pic));
 
 	setScene(course);

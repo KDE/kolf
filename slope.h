@@ -85,7 +85,6 @@ private:
 	QPixmap pixmap;
 	void updatePixmap();
 	bool stuckOnGround;
-	QPixmap grass;
 
 	void clearArrows();
 
