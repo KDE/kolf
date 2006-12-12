@@ -17,7 +17,7 @@
 #include "canvasitem.h"
 #include "ball.h"
 
-Ball::Ball(QGraphicsScene *scene)
+Ball::Ball(QGraphicsScene * scene)
 	: QGraphicsEllipseItem(0, scene)
 {
 	setData(0, Rtti_Ball);

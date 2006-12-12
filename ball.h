@@ -7,6 +7,7 @@
 
 #include "vector.h"
 #include "rtti.h"
+#include "game.h"
 
 
 enum BallState { Rolling = 0, Stopped, Holed };
@@ -14,7 +15,7 @@ enum BallState { Rolling = 0, Stopped, Holed };
 class Ball : public QGraphicsEllipseItem, public CanvasItem
 {
 public:
-	Ball(QGraphicsScene *scene);
+	Ball(QGraphicsScene *scene); 
 	virtual void aboutToDie();
 
 	BallState currentState();

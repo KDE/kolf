@@ -22,6 +22,7 @@
 #include "statedb.h"
 #include "rtti.h"
 #include <kolflib_export.h>
+#include "kolfsvgrenderer.h" 
 
 class QLabel;
 class QSlider;
@@ -158,7 +159,7 @@ private:
 class Ellipse : public QGraphicsEllipseItem, public CanvasItem, public RectItem
 {
 public:
-	Ellipse(QGraphicsItem * parent, QGraphicsScene *scene);
+	Ellipse(QGraphicsItem * parent, QGraphicsScene *scene, QString type, KolfSvgRenderer *renderer);
 	virtual void advance(int phase);
 
 	int changeEvery() const { return m_changeEvery; }
@@ -173,7 +174,9 @@ public:
 	virtual QList<QGraphicsItem *> moveableItems() const;
 
 	virtual void newSize(double width, double height);
-	void setSize(double width, double height) { setRect(rect().x(), rect().y(), width, height); }		
+	void setSize(double width, double height);
+	void paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *);
+
 	virtual void moveBy(double dx, double dy);
 
 	virtual void editModeChanged(bool changed);
@@ -194,6 +197,9 @@ protected:
 private:
 	int count;
 	bool dontHide;
+	KolfSvgRenderer * renderer;
+	QString type;
+	QPixmap pixmap;
 };
 class EllipseConfig : public Config
 {
@@ -224,27 +230,27 @@ private:
 class Puddle : public Ellipse
 {
 public:
-	Puddle(QGraphicsItem * parent, QGraphicsScene *scene);
+	Puddle(QGraphicsItem * parent, QGraphicsScene *scene, KolfSvgRenderer *renderer);
 	virtual bool collision(Ball *ball, long int id);
 };
 class PuddleObj : public Object
 {
 public:
 	PuddleObj() { m_name = i18n("Puddle"); m__name = "puddle"; }
-	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene) { return new Puddle(parent, scene); }
+	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene, KolfSvgRenderer *renderer) { return new Puddle(parent, scene, renderer); }
 };
 
 class Sand : public Ellipse
 {
 public:
-	Sand(QGraphicsItem * parent, QGraphicsScene *scene);
+	Sand(QGraphicsItem * parent, QGraphicsScene *scene, KolfSvgRenderer *renderer);
 	virtual bool collision(Ball *ball, long int id);
 };
 class SandObj : public Object
 {
 public:
 	SandObj() { m_name = i18n("Sand"); m__name = "sand"; }
-	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene) { return new Sand(parent, scene); }
+	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene, KolfSvgRenderer *renderer) { return new Sand(parent, scene, renderer); }
 };
 
 class Inside : public QGraphicsEllipseItem, public CanvasItem
@@ -258,23 +264,16 @@ protected:
 	CanvasItem *item;
 };
 
-class Bumper : public QGraphicsEllipseItem, public CanvasItem
+class Bumper : public QGraphicsPixmapItem, public CanvasItem
 {
 public:
-	Bumper(QGraphicsItem * parent, QGraphicsScene *scene);
+	Bumper(QGraphicsItem * parent, QGraphicsScene *scene, KolfSvgRenderer * renderer);
 
 	virtual void advance(int phase);
-	virtual void aboutToDie();
-	virtual void moveBy(double dx, double dy);
-	virtual void editModeChanged(bool changed);
-
 	virtual bool collision(Ball *ball, long int id);
-	double width() { return rect().width(); }
-	double height() { return rect().height(); }
 
 protected:
-	QColor firstColor;
-	QColor secondColor;
+	KolfSvgRenderer * renderer;
 	Inside *inside;
 
 private:
@@ -284,13 +283,13 @@ class BumperObj : public Object
 {
 public:
 	BumperObj() { m_name = i18n("Bumper"); m__name = "bumper"; }
-	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene) { return new Bumper(parent, scene); }
+	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene, KolfSvgRenderer * renderer) { return new Bumper(parent, scene, renderer); }
 };
 
  class Cup :  public QGraphicsPixmapItem, public CanvasItem 
 {
 public:
-	Cup(QGraphicsItem * parent, QGraphicsScene *scene);
+	Cup(QGraphicsItem * parent, QGraphicsScene *scene, KolfSvgRenderer *renderer);
 	virtual bool place(Ball *ball, bool wasCenter);
 	void moveBy(double x, double y);
 	virtual void save(KConfig *cfg);
@@ -305,7 +304,7 @@ class CupObj : public Object
 {
 public:
 	CupObj() { m_name = i18n("Cup"); m__name = "cup"; m_addOnNewHole = true; }
-	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene) { return new Cup(parent, scene); }
+	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene, KolfSvgRenderer *renderer) { return new Cup(parent, scene, renderer); }
 };
 
 class BlackHole;
@@ -368,8 +367,9 @@ class BlackHole : public QObject, public QGraphicsEllipseItem, public CanvasItem
 Q_OBJECT
 
 public:
-	BlackHole(QGraphicsItem * parent, QGraphicsScene *scene);
+	BlackHole(QGraphicsItem * parent, QGraphicsScene *scene, KolfSvgRenderer * renderer);
 	virtual bool canBeMovedByOthers() const { return true; }
+	void paint(QPainter *painter, const QStyleOptionGraphicsItem * option, QWidget * widget);
 	virtual void aboutToDie();
 	virtual void showInfo();
 	virtual void hideInfo();
@@ -393,9 +393,10 @@ public:
 
 	virtual void moveBy(double dx, double dy);
 
-	void setSize(double width, double height) { setRect(rect().x(), rect().y(), width, height); }
-	double width() { return rect().width(); }
-	double height() { return rect().height(); }
+        void setSize(double width, double height) { setRect(rect().x(), rect().y
+(), width, height); }
+        double width() { return rect().width(); }
+        double height() { return rect().height(); }
 
 	virtual bool collision(Ball *ball, long int id);
 
@@ -411,6 +412,8 @@ protected:
 	virtual HoleResult result(const QPointF, double, bool *wasCenter);
 
 private:
+	QPixmap pixmap;
+	KolfSvgRenderer * renderer;
 	int runs;
 	QGraphicsLineItem *infoLine;
 	void finishMe();
@@ -419,7 +422,7 @@ class BlackHoleObj : public Object
 {
 public:
 	BlackHoleObj() { m_name = i18n("Black Hole"); m__name = "blackhole"; }
-	virtual QGraphicsItem *newObject(QGraphicsItem * parent,  QGraphicsScene *scene) { return new BlackHole(parent, scene); }
+	virtual QGraphicsItem *newObject(QGraphicsItem * parent,  QGraphicsScene *scene, KolfSvgRenderer *renderer) { return new BlackHole(parent, scene, renderer); }
 };
 
 class WallPoint;
@@ -918,6 +921,7 @@ protected:
 
 private:
 	QGraphicsScene *course;
+	KolfSvgRenderer *renderer;
 	Putter *putter;
 	PlayerList *players;
 	PlayerList::Iterator curPlayer;

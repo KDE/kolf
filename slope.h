@@ -28,7 +28,8 @@ private:
 class Slope : public QGraphicsRectItem, public CanvasItem, public RectItem
 {
 public:
-	Slope(QRect rect, QGraphicsItem *parent, QGraphicsScene *scene);
+	Slope(QRect rect, QGraphicsItem *parent, QGraphicsScene *scene, KolfSvgRenderer *renderer);
+
 	virtual void aboutToDie();
 
 	virtual void showInfo();
@@ -46,7 +47,7 @@ public:
 	virtual Q3PointArray areaPoints() const;
 
 	void setGradient(QString text);
-	KImageEffect::GradientType curType() const { return type; }
+	QString curType() const { return type; }
 	void setGrade(double grade);
 
 	double curGrade() const { return grade; }
@@ -74,8 +75,9 @@ public:
 	double height() const { return rect().height(); }
 
 private:
-	KImageEffect::GradientType type;
-	inline void setType(KImageEffect::GradientType type);
+	KolfSvgRenderer *renderer;
+	QString type;
+	inline void setType(QString type);
 	bool showingInfo;
 	double grade;
 	bool reversed;
@@ -96,7 +98,7 @@ class SlopeObj : public Object
 {
 public:
 	SlopeObj() { m_name = i18n("Slope"); m__name = "slope"; }
-	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene) { return new Slope(QRect(0, 0, 40, 40), parent, scene); }
+	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene, KolfSvgRenderer *renderer) { return new Slope(QRect(0, 0, 40, 40), parent, scene, renderer); }
 };
 
 #endif

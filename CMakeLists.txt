@@ -26,6 +26,7 @@ set(kolf_LIB_SRCS
    printdialogpage.cpp 
    kcomboboxdialog.cpp 
    kvolumecontrol.cpp 
+   kolfsvgrenderer.cpp
    floater.cpp 
    slope.cpp )
 
@@ -53,5 +54,5 @@ install( FILES kolfui.rc intro tutorial.kolf tutorial.kolfgame  DESTINATION  ${D
 install( FILES kolf.magic  DESTINATION  ${CONFIG_INSTALL_DIR}/magic )
 install( FILES x-kourse.desktop x-kolf.desktop  DESTINATION  ${MIME_INSTALL_DIR}/application )
 install( FILES ball.h game.h statedb.h config.h canvasitem.h object.h rtti.h vector.h  	floater.h slope.h  DESTINATION  ${INCLUDE_INSTALL_DIR}/kolf )
-
+install( FILES default_theme.svgz  DESTINATION  ${DATA_INSTALL_DIR}/kolf/pics/ )
 

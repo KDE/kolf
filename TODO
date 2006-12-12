@@ -2,6 +2,8 @@ Minor Bugs:
 -----------
 in edit mode it is possible to make a course with no cup
 
+need a max turn time, so that the ball isn't left bouncing off bumpers for ages (or possibly on some holes forever)
+
 print needs fixing (see KolfGame::print)
 
 balls can go through walls
@@ -37,9 +39,23 @@ editing mode is very buggy and needs work, but probably best to wait till after 
 
 layout of the big buttons at the top of window is wrong, needs thinking about
 
+TIDYING TO DO WHEN SVG FULLY IMPLIMENTED:
+-----------------------------------------
+remove reduntant QGraphicsItem *newObject in object.h
+
+in KolfGame::openFile() remove custom newItem depending on item type
+
+also in KolfGame::openFile() remove moveBy() used by certain pixmaps
+
 IMPROVEMENTS:
 -------------
 improve graphics
+
+make slope image depend on slope angle again
+
+use ball.advance() to give ball a spin animation?
+
+give black holes an animation?
 
 add resizing
 

@@ -730,9 +730,11 @@ void EllipseConfig::check2Changed(bool on)
 
 /////////////////////////
 
-Ellipse::Ellipse(QGraphicsItem *parent, QGraphicsScene *scene)
+Ellipse::Ellipse(QGraphicsItem *parent, QGraphicsScene *scene, QString type, KolfSvgRenderer * renderer)
 : QGraphicsEllipseItem(parent, scene)
 {
+	this->renderer = renderer;
+	this->type = type;
 	savingDone();
 	setChangeEnabled(false);
 	setChangeEvery(50);
@@ -768,6 +770,18 @@ QList<QGraphicsItem *> Ellipse::moveableItems() const
 void Ellipse::newSize(double width, double height)
 {
 	setSize(width, height);
+}
+
+
+void Ellipse::setSize(double width, double height)
+{
+	setRect(rect().x(), rect().y(), width, height);
+	pixmap=renderer->renderSvg(type, (int)width, (int)height, 0);
+}
+
+void Ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*option*/, QWidget * /*widget*/ ) 
+{
+	painter->drawPixmap(0, 0, pixmap);  
 }
 
 void Ellipse::moveBy(double dx, double dy)
@@ -836,8 +850,8 @@ void Ellipse::savingDone()
 
 /////////////////////////
 
-Puddle::Puddle(QGraphicsItem * parent, QGraphicsScene *scene)
-: Ellipse(parent, scene)
+Puddle::Puddle(QGraphicsItem * parent, QGraphicsScene *scene, KolfSvgRenderer *renderer)
+: Ellipse(parent, scene, "puddle", renderer)
 {
 	setData(0, Rtti_DontPlaceOn);
 	setSize(45, 30);
@@ -890,8 +904,8 @@ bool Puddle::collision(Ball *ball, long int /*id*/)
 
 /////////////////////////
 
-Sand::Sand(QGraphicsItem *parent, QGraphicsScene *scene)
-: Ellipse(parent, scene)
+Sand::Sand(QGraphicsItem * parent, QGraphicsScene *scene, KolfSvgRenderer *renderer)
+: Ellipse(parent, scene, "sand", renderer)
 {
 	setSize(45, 40);
 
@@ -1061,47 +1075,28 @@ void Putter::finishMe()
 
 /////////////////////////
 
-Bumper::Bumper(QGraphicsItem * parent, QGraphicsScene *scene)
-: QGraphicsEllipseItem(parent, scene)
+Bumper::Bumper(QGraphicsItem * parent, QGraphicsScene *scene, KolfSvgRenderer *renderer)
+: QGraphicsPixmapItem(parent, scene)
 {
-	setRect(-10, -10, 20, 20);
+	this->renderer = renderer;
 	setZValue(-25);
 
-	firstColor = QColor("#E74804");
-	secondColor = firstColor.light();
+	//ensure the bumper_on image is in cache
+	if(!QPixmapCache::find("bumper_on"))
+		renderer->renderSvg("bumper_on", 20, 20, 1);
+
+	setPixmap(renderer->renderSvg("bumper_off", 20, 20, 1));
 
 	count = 0;
-	setBrush(firstColor);
-	setPen(Qt::NoPen);
 	setAnimated(false);
-
-	inside = new Inside(this, this, scene);
-	inside->setBrush(firstColor.light(109));
-	inside->setPen(Qt::NoPen);
-	inside->setRect(-4, -4, 8, 8);
-	inside->show();
-}
-
-void Bumper::aboutToDie()
-{
-	delete inside;
-}
-
-void Bumper::moveBy(double dx, double dy)
-{
-	QGraphicsEllipseItem::moveBy(dx, dy);
-	//const double insideLen = (double)(width() - inside->width()) / 2.0;
-	inside->setPos(x(), y());
-}
-
-void Bumper::editModeChanged(bool changed)
-{
-	inside->setVisible(!changed);
 }
 
 void Bumper::advance(int phase)
 {
-	QGraphicsEllipseItem::advance(phase);
+	if(!animated)
+		return;
+
+	QGraphicsPixmapItem::advance(phase);
 
 	if (phase == 1)
 	{
@@ -1109,7 +1104,7 @@ void Bumper::advance(int phase)
 		if (count > 2)
 		{
 			count = 0;
-			setBrush(firstColor);
+			setPixmap(renderer->renderSvg("bumper_off", 20, 20, 1));
 			setAnimated(false);
 		}
 	}
@@ -1117,7 +1112,7 @@ void Bumper::advance(int phase)
 
 bool Bumper::collision(Ball *ball, long int /*id*/)
 {
-	setBrush(secondColor);
+	setPixmap(renderer->renderSvg("bumper_on", 20, 20, 1));
 
 	double speed = 1.8 + ball->curVector().magnitude() * .9;
 	if (speed > 8)
@@ -1144,19 +1139,14 @@ bool Bumper::collision(Ball *ball, long int /*id*/)
 
 /////////////////////////
 
-Cup::Cup(QGraphicsItem * parent, QGraphicsScene *scene)
-: QGraphicsPixmapItem(parent, scene)
+Cup::Cup(QGraphicsItem * parent, QGraphicsScene * scene, KolfSvgRenderer * renderer)
+	: QGraphicsPixmapItem(parent, scene)
 {
-	if (!QPixmapCache::find("cup", pixmap))
-	{
-		pixmap.load(KStandardDirs::locate("appdata", "pics/cup.png"));
-		QPixmapCache::insert("cup", pixmap);
-	}
-
-	setPixmap(pixmap);
+	setPixmap(renderer->renderSvg("cup", 15, 15, 1));
 
 	setZValue(998.1);
 }
+
 
 bool Cup::place(Ball *ball, bool /*wasCenter*/)
 {
@@ -1212,9 +1202,10 @@ HoleResult Cup::result(QPointF p, double speed, bool * /*wasCenter*/)
 
 /////////////////////////
 
-BlackHole::BlackHole(QGraphicsItem * parent, QGraphicsScene *scene)
-: QGraphicsEllipseItem(-7.5, -7.5, 15, 15, parent, scene), exitDeg(0)
+BlackHole::BlackHole(QGraphicsItem * parent, QGraphicsScene *scene, KolfSvgRenderer *renderer)
+	: QGraphicsEllipseItem(-7.5, -7.5, 15, 15, parent, scene), exitDeg(0)
 {
+	this->renderer = renderer;
 	setZValue(998.1);
 
 	infoLine = 0;
@@ -1224,19 +1215,27 @@ BlackHole::BlackHole(QGraphicsItem * parent, QGraphicsScene *scene)
 
 	const QColor myColor((QRgb)(KRandom::random() % 0x01000000));
 	QPen pen(myColor);
-	pen.setWidth(2);
-	setPen(pen);
-	setBrush(QBrush(Qt::black));
+        setPen(Qt::NoPen);
+        setBrush(myColor);
 
 	exitItem = new BlackHoleExit(this, 0, scene);
 	exitItem->setPen(QPen(myColor, 6));
 	exitItem->setPos(300, 100);
 
 	setSize(width(), width() / .8);
+	setSize(16, 18);
 
-	moveBy(0, 0);
+
+	moveBy(0, 0); 
+	pixmap=renderer->renderSvg("black_hole", 16, 18, 1);
 
 	finishMe();
+}
+
+void BlackHole::paint(QPainter *painter, const QStyleOptionGraphicsItem * option, QWidget * widget ) 
+{
+	QGraphicsEllipseItem::paint(painter, option, widget);
+	painter->drawPixmap(-8, -9, pixmap);  
 }
 
 void BlackHole::showInfo()
@@ -2214,6 +2213,8 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	soundedOnce = false;
 	highestHole = 0;
 	recalcHighestHole = false;
+	
+	renderer = new KolfSvgRenderer( KStandardDirs::locate("appdata", "pics/default_theme.svgz") );
 
 	m_player = new Phonon::AudioPlayer( Phonon::GameCategory, this );
 
@@ -3586,7 +3587,12 @@ void KolfGame::openFile()
 			if (name != (*curObj)->_name())
 				continue;
 
-			QGraphicsItem *newItem = (*curObj)->newObject(0, course);
+			QGraphicsItem *newItem; 
+			if(name=="cup" || name=="slope" || name == "sand" || name == "puddle" || name=="blackhole" || name=="bumper")
+				newItem = (*curObj)->newObject(0, course, renderer); //this is an ugly soltion, needs to be changed when SVG are fully implimented
+			else
+				newItem = (*curObj)->newObject(0, course);
+
 			items.append(newItem);
 			CanvasItem *sceneItem = dynamic_cast<CanvasItem *>(newItem);
 
@@ -3602,8 +3608,12 @@ void KolfGame::openFile()
 				addItemToFastAdvancersList(sceneItem);
 
 			newItem->setPos(x, y); 
+
+			//pixmaps are not positioned correctly, this repositions them. Ugly soltion, needs changing
 			if(name == "cup")
 				newItem->moveBy(-6, -6);
+			else if(name == "bumper")
+				newItem->moveBy(-10, -10);
 
 			sceneItem->firstMove(x, y);
 			newItem->setVisible(true);
@@ -3731,7 +3741,9 @@ void KolfGame::addItemToFastAdvancersList(CanvasItem *item)
 
 void KolfGame::addNewObject(Object *newObj)
 {
-	QGraphicsItem *newItem = newObj->newObject(0, course);
+	QGraphicsItem *newItem;
+	newItem = newObj->newObject(0, course, renderer);
+
 	items.append(newItem);
 	if(!newItem->isVisible())
 		newItem->setVisible(true);
