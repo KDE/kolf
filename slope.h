@@ -28,7 +28,7 @@ private:
 class Slope : public QGraphicsRectItem, public CanvasItem, public RectItem
 {
 public:
-	Slope(QRect rect, QGraphicsItem *parent, QGraphicsScene *scene, KolfSvgRenderer *renderer);
+	Slope(QRect rect, QGraphicsItem *parent, QGraphicsScene *scene);
 
 	virtual void aboutToDie();
 
@@ -75,7 +75,6 @@ public:
 	double height() const { return rect().height(); }
 
 private:
-	KolfSvgRenderer *renderer;
 	QString type;
 	inline void setType(QString type);
 	bool showingInfo;
@@ -97,7 +96,7 @@ class SlopeObj : public Object
 {
 public:
 	SlopeObj() { m_name = i18n("Slope"); m__name = "slope"; }
-	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene, KolfSvgRenderer *renderer) { return new Slope(QRect(0, 0, 40, 40), parent, scene, renderer); }
+	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene) { return new Slope(QRect(0, 0, 40, 40), parent, scene); }
 };
 
 #endif

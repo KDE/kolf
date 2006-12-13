@@ -38,6 +38,7 @@ Ball::Ball(QGraphicsScene * scene)
 	label->setBrush(Qt::white);
 	label->setPos(5, 5);
 	label->setVisible(false);
+	pixmapInitialised=false; //it can't be initialised yet because when a ball is first created it has no game (and therefore no renderer to create the pixmap)
 
 	// this sets z
 	setState(Stopped);
@@ -60,7 +61,20 @@ void Ball::setState(BallState newState)
 
 void Ball::resetSize()
 {
-	setRect(rect().x()-3.5, rect().y()-3.5, 7, 7);
+	setRect(rect().x()-4, rect().y()-4, 8, 8);
+}
+
+void Ball::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*option*/, QWidget * /*widget*/ ) 
+{
+	if(pixmapInitialised == 0) {
+		if(game == 0)
+			return;
+		else {
+			pixmap=game->renderer->renderSvg("ball", 8, 8, 1);
+			pixmapInitialised=true;
+		}
+	}
+	painter->drawPixmap(-4, -4, pixmap);  
 }
 
 void Ball::advance(int phase)

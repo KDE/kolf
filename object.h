@@ -16,7 +16,6 @@ class Object : public QObject
 public:
 	Object(QObject *parent = 0) : QObject(parent) { m_addOnNewHole = false; }
 	virtual QGraphicsItem *newObject(QGraphicsItem *, QGraphicsScene * /*scene*/) { return 0; }
-	virtual QGraphicsItem *newObject(QGraphicsItem *, QGraphicsScene * /*scene*/, KolfSvgRenderer *) { return 0; }
 	QString name() { return m_name; }
 	QString _name() { return m__name; }
 	QString author() { return m_author; }

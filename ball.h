@@ -21,6 +21,7 @@ public:
 	BallState currentState();
 
 	virtual void resetSize(); 
+	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *); 
 	virtual void advance(int phase);
 	virtual void doAdvance();
 	virtual void moveBy(double dx, double dy);
@@ -80,6 +81,8 @@ public slots:
 private:
 	BallState state;
 	QColor m_color;
+	QPixmap pixmap;
+	bool pixmapInitialised;
 	long int collisionId;
 	double frictionMultiplier;
 

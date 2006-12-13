@@ -17,13 +17,12 @@
 
 #include "slope.h"
 
-Slope::Slope(QRect rect, QGraphicsItem * parent, QGraphicsScene *scene, KolfSvgRenderer *renderer)
+Slope::Slope(QRect rect, QGraphicsItem * parent, QGraphicsScene *scene)
 	: QGraphicsRectItem(rect, parent, scene), type("Vertical"), grade(4), reversed(false), color(QColor("#327501")) 
 {
 	setData(0, 1031);
 	stuckOnGround = false;
 	showingInfo = false;
-	this->renderer = renderer;
 
 	setZValue(-50);
 
@@ -395,7 +394,9 @@ void Slope::setType(QString type)
 
 void Slope::updatePixmap() //this needs work so that the slope colour depends on angle again
 {
-	pixmap=renderer->renderSvg(type, (int)width(), (int)height(), 0);
+	if(game == 0)
+		return;
+	pixmap=game->renderer->renderSvg(type, (int)width(), (int)height(), 0);
 
 	// we update the arrows in this function
 	clearArrows();
