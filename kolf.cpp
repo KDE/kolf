@@ -16,7 +16,7 @@
 #include <kstandarddirs.h>
 #include <kstatusbar.h>
 #include <kstdaccel.h>
-#include <kstdaction.h>
+#include <kstandardaction.h>
 #include <kstdgameaction.h>
 #include <kstdguiitem.h>
 #include <kicon.h>
@@ -77,9 +77,9 @@ void Kolf::initGUI()
 	printAction = KStdGameAction::print(this, SLOT(print()), actionCollection());
 
 	(void) KStdGameAction::quit(this, SLOT(close()), actionCollection());
-	saveAction = KStdAction::save(this, SLOT(save()), actionCollection(), "game_save");
+	saveAction = KStandardAction::save(this, SLOT(save()), actionCollection(), "game_save");
 	saveAction->setText(i18n("Save &Course"));
-	saveAsAction = KStdAction::saveAs(this, SLOT(saveAs()), actionCollection(), "game_save_as");
+	saveAsAction = KStandardAction::saveAs(this, SLOT(saveAs()), actionCollection(), "game_save_as");
 	saveAsAction->setText(i18n("Save &Course As..."));
 
 	saveGameAction = new KAction(i18n("&Save Game"), actionCollection(), "savegame");
@@ -104,7 +104,7 @@ void Kolf::initGUI()
 	resetHoleAction = new KAction(i18n("&Reset"), actionCollection(), "resethole");
 	connect(resetHoleAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	resetHoleAction->setShortcut(Qt::CTRL+Qt::Key_R);
-	undoShotAction = KStdAction::undo(this, SLOT(emptySlot()), actionCollection(), "undoshot");
+	undoShotAction = KStandardAction::undo(this, SLOT(emptySlot()), actionCollection(), "undoshot");
 	undoShotAction->setText(i18n("&Undo Shot"));
 	//replayShotAction = new KAction(i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 
