@@ -588,7 +588,8 @@ private:
 class Bridge : public QGraphicsRectItem, public CanvasItem, public RectItem
 {
 public:
-	Bridge(QRect rect, QGraphicsItem *parent, QGraphicsScene *scene);
+	Bridge(QRect rect, QGraphicsItem *parent, QGraphicsScene *scene, QString type);
+	void paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget=0);
 	virtual bool collision(Ball *ball, long int id);
 	virtual void aboutToDie();
 	virtual void editModeChanged(bool changed);
@@ -623,6 +624,9 @@ public:
 	double height() {return QGraphicsRectItem::rect().height(); }
 
 protected:
+	bool pixmapInitialised;
+	QPixmap pixmap;
+	QString type;
 	Wall *topWall;
 	Wall *botWall;
 	Wall *leftWall;
@@ -633,7 +637,7 @@ class BridgeObj : public Object
 {
 public:
 	BridgeObj() { m_name = i18n("Bridge"); m__name = "bridge"; }
-	virtual QGraphicsItem *newObject(QGraphicsItem *parent, QGraphicsScene *scene) { return new Bridge(QRect(0, 0, 80, 40), parent, scene); }
+	virtual QGraphicsItem *newObject(QGraphicsItem *parent, QGraphicsScene *scene) { return new Bridge(QRect(0, 0, 80, 40), parent, scene, "bridge"); }
 };
 
 class Sign;
@@ -1001,13 +1005,11 @@ private:
 	// sound
         Phonon::AudioPlayer *m_player;
 	bool m_sound;
-	bool soundedOnce;
 	QString soundDir;
 
 	bool m_ignoreEvents;
 
 	HoleInfo holeInfo;
-	QGraphicsTextItem *infoText;
 	StateDB stateDB;
 
 	BallStateList ballStateList;

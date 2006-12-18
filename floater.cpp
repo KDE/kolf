@@ -48,7 +48,7 @@ Config *FloaterGuide::config(QWidget *parent)
 /////////////////////////
 
 Floater::Floater(QRect rect,  QGraphicsItem *parent, QGraphicsScene *scene)
-	: Bridge(rect, parent, scene), speedfactor(16)
+	: Bridge(rect, parent, scene, "floater"), speedfactor(16)
 {
 	wall = 0;
 	setEnabled(true);

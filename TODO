@@ -1,7 +1,5 @@
 Minor Bugs:
 -----------
-in edit mode it is possible to make a course with no cup
-
 impossible 4, once you get the ball in the hole it skips the next two holes
 
 impossible 4, send ball off edge of course and the hole moves!
@@ -10,11 +8,17 @@ need a max turn time, so that the ball isn't left bouncing off bumpers for ages 
 
 print needs fixing (see KolfGame::print)
 
+when the ball falls into water then respawns onto a moving platform the putter does not move with the ball
+
+fix max power so that impossible 12 isn't too easy
+
 balls can go through walls
 	eg: classic 2, can get through connection with top diag and top wall (easliest from left)
 
 if on your first turn (in a multiplayer game) for a hole you fall into water and choose "Rehit from last location" then your ball wall spawn on top of your opponents, so that when they make their first hit they will instantly collide with yours
 	poss fix: check for collisions with ball and other balls when a player is making their first move.
+
+USA Pro 7, text for Golden Gate displays incorrectly. And Washington DC should be on one line in hole 8
 
 balls can sometimes go through each other:
 	go straigh in one dir with first player, then same with next and they will be able to go through opponent
@@ -31,19 +35,21 @@ apparently void KolfGame::startNextHole() needs tidying work since it is too com
 
 the names of menu items with checkboxs (eg in the Settings menu) seem wrong to me, need to think about what I want to change
 
-slowness, bad performace, espeicially when in Xgl (at least on my system)
-	
-wrong player selected in score table at start of game
+bad performace on levels with floaters. Also on the intro the ball seems to slow at the bottom of the first loop of the circular slope
 
-the edges of the course view should be hidden (or at least that is the way the levels are currently designed, see the margins in KolfGame::KolfGame
+wrong player selected in score table at start of game
 
 in strickt mode it is possible to select different holes, this is clearly cheating, but useful for debuging, so should be kept in for now
 
 editing mode is very buggy and needs work, but probably best to wait till after the graphics upgrade
 
+in edit mode it is possible to make a course with no cup
+
 check if KolfGame::viewportToViewport() is still needed
 
 layout of the big buttons at the top of window is wrong, needs thinking about
+
+make slope arrows above sand and stuff
 
 TIDYING TO DO WHEN SVG FULLY IMPLIMENTED:
 -----------------------------------------
@@ -58,6 +64,9 @@ make slope darkness depend on slope angle again
 use ball.advance() to give ball a spin animation?
 
 give black holes an animation?
+	ball falling into hole animation? (rather than just disappearing it coudl shrink to nothing)
 
 add resizing
+
+fix appearance of large buttons (there are too many!) by only showing one of "New", "Save Course" or "End Game" at a time, since only one of them is ever appropriate. Also remove the Show info button and move to the Settings menu if more space is needed.
 

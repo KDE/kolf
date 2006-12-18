@@ -241,12 +241,13 @@ void BridgeConfig::rightWallChanged(bool yes)
 
 /////////////////////////
 
-Bridge::Bridge(QRect rect, QGraphicsItem *parent, QGraphicsScene *scene)
+Bridge::Bridge(QRect rect, QGraphicsItem *parent, QGraphicsScene *scene, QString type)
 : QGraphicsRectItem(rect, parent, scene)
 {
+	this->type = type;
 	QColor color("#92772D");
-	setBrush(QBrush(color));
-	setPen(Qt::NoPen);
+	setBrush(Qt::NoBrush);
+        setPen(Qt::NoPen);
 	setZValue(998);
 	
 	//not using antialiasing because it looks too blurry here
@@ -267,10 +268,25 @@ Bridge::Bridge(QRect rect, QGraphicsItem *parent, QGraphicsScene *scene)
 	leftWall->setVisible(false);
 	rightWall->setVisible(false);
 
+	pixmapInitialised=false;
+
 	point = new RectPoint(color, this, parent, scene);
 	editModeChanged(false);
 
 	newSize(width(), height());
+}
+
+void Bridge::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *) 
+{
+	if(pixmapInitialised == false) {
+		if(game == 0)
+			return;
+		else {
+			pixmap=game->renderer->renderSvg(type, (int)rect().width(), (int)rect().height(), 0);
+			pixmapInitialised=true;
+		}
+	}
+	painter->drawPixmap((int)rect().x(), (int)rect().y(), pixmap);  
 }
 
 bool Bridge::collision(Ball *ball, long int /*id*/)
@@ -453,7 +469,7 @@ void WindmillConfig::endChanged(bool bottom)
 /////////////////////////
 
 Windmill::Windmill(QRect rect, QGraphicsItem * parent, QGraphicsScene *scene)
-: Bridge(rect, parent, scene), speedfactor(16), m_bottom(true)
+: Bridge(rect, parent, scene, "windmill"), speedfactor(16), m_bottom(true)
 {
 	guard = new WindmillGuard(0, scene);
 	guard->setPen(QPen(Qt::black, 5));
@@ -586,7 +602,7 @@ void WindmillGuard::advance(int phase)
 /////////////////////////
 
 Sign::Sign(QGraphicsItem * parent, QGraphicsScene *scene)
-: Bridge(QRect(0, 0, 110, 40), parent, scene)
+: Bridge(QRect(0, 0, 110, 40), parent, scene, "sign")
 {
 	setZValue(998.8);
 	m_text = m_untranslatedText = i18n("New Text");
@@ -1090,7 +1106,7 @@ Bumper::Bumper(QGraphicsItem * parent, QGraphicsScene *scene)
 
 void Bumper::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *) 
 {
-	if(pixmapInitialised == 0) {
+	if(pixmapInitialised == false) {
 		if(game == 0)
 			return;
 		else {
@@ -1165,7 +1181,7 @@ Cup::Cup(QGraphicsItem * parent, QGraphicsScene * scene)
 
 void Cup::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *) 
 {
-	if(pixmapInitialised == 0) {
+	if(pixmapInitialised == false) {
 		if(game == 0)
 			return;
 		else {
@@ -1259,7 +1275,7 @@ BlackHole::BlackHole(QGraphicsItem * parent, QGraphicsScene *scene)
 
 void BlackHole::paint(QPainter *painter, const QStyleOptionGraphicsItem * option, QWidget *widget) 
 {
-	if(pixmapInitialised == 0) {
+	if(pixmapInitialised == false) {
 		if(game == 0)
 			return;
 		else {
@@ -2265,7 +2281,6 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	m_useAdvancedPutting = true;
 	m_sound = true;
 	m_ignoreEvents = false;
-	soundedOnce = false;
 	highestHole = 0;
 	recalcHighestHole = false;
 	
