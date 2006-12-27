@@ -17,7 +17,7 @@
 #include <kstatusbar.h>
 #include <kstandardshortcut.h>
 #include <kstandardaction.h>
-#include <kstdgameaction.h>
+#include <kstandardgameaction.h>
 #include <KStandardGuiItem>
 #include <kicon.h>
 
@@ -70,13 +70,13 @@ Kolf::~Kolf()
 
 void Kolf::initGUI()
 {
-	newAction = KStdGameAction::gameNew(this, SLOT(newGame()), actionCollection());
+	newAction = KStandardGameAction::gameNew(this, SLOT(newGame()), actionCollection());
 	newAction->setText(newAction->text() + QString("..."));
 
-	endAction = KStdGameAction::end(this, SLOT(closeGame()), actionCollection());
-	printAction = KStdGameAction::print(this, SLOT(print()), actionCollection());
+	endAction = KStandardGameAction::end(this, SLOT(closeGame()), actionCollection());
+	printAction = KStandardGameAction::print(this, SLOT(print()), actionCollection());
 
-	(void) KStdGameAction::quit(this, SLOT(close()), actionCollection());
+	(void) KStandardGameAction::quit(this, SLOT(close()), actionCollection());
 	saveAction = KStandardAction::save(this, SLOT(save()), actionCollection(), "game_save");
 	saveAction->setText(i18n("Save &Course"));
 	saveAsAction = KStandardAction::saveAs(this, SLOT(saveAs()), actionCollection(), "game_save_as");
@@ -87,10 +87,10 @@ void Kolf::initGUI()
 	saveGameAsAction = new KAction(i18n("&Save Game As..."), actionCollection(), "savegameas");
 	connect(saveGameAsAction, SIGNAL(triggered(bool) ), SLOT(saveGameAs()));
 
-	loadGameAction = KStdGameAction::load(this, SLOT(loadGame()), actionCollection());
+	loadGameAction = KStandardGameAction::load(this, SLOT(loadGame()), actionCollection());
 	loadGameAction->setText(i18n("Load Saved Game..."));
 
-	highScoreAction = KStdGameAction::highscores(this, SLOT(showHighScores()), actionCollection());
+	highScoreAction = KStandardGameAction::highscores(this, SLOT(showHighScores()), actionCollection());
 
 	editingAction = new KToggleAction(KIcon("pencil"), i18n("&Edit"), actionCollection(), "editing");
 	connect(editingAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
