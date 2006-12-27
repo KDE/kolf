@@ -15,10 +15,10 @@
 #include <kscoredialog.h>
 #include <kstandarddirs.h>
 #include <kstatusbar.h>
-#include <kstdaccel.h>
+#include <kstandardshortcut.h>
 #include <kstandardaction.h>
 #include <kstdgameaction.h>
-#include <kstdguiitem.h>
+#include <KStandardGuiItem>
 #include <kicon.h>
 
 #include <QTimer>
@@ -98,7 +98,7 @@ void Kolf::initGUI()
 	newHoleAction = new KAction(KIcon("filenew"), i18n("&New"), actionCollection(), "newhole");
 	connect(newHoleAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	newHoleAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_N);
-	clearHoleAction = new KAction(KIcon("locationbar_erase"), KStdGuiItem::clear().text(), actionCollection(), "clearhole");
+	clearHoleAction = new KAction(KIcon("locationbar_erase"), KStandardGuiItem::clear().text(), actionCollection(), "clearhole");
 	connect(clearHoleAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	clearHoleAction->setShortcut(Qt::CTRL+Qt::Key_Delete);
 	resetHoleAction = new KAction(i18n("&Reset"), actionCollection(), "resethole");
@@ -112,13 +112,13 @@ void Kolf::initGUI()
 	connect(holeAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	nextAction = new KAction(KIcon("forward"), i18n("&Next Hole"), actionCollection(), "nexthole");
 	connect(nextAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
-	nextAction->setShortcut(KStdAccel::shortcut(KStdAccel::Forward));
+	nextAction->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::Forward));
 	prevAction = new KAction(KIcon("back"), i18n("&Previous Hole"), actionCollection(), "prevhole");
 	connect(prevAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
-	prevAction->setShortcut(KStdAccel::shortcut(KStdAccel::Back));
+	prevAction->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::Back));
 	firstAction = new KAction(KIcon("gohome"), i18n("&First Hole"), actionCollection(), "firsthole");
 	connect(firstAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
-	firstAction->setShortcut(KStdAccel::shortcut(KStdAccel::Home));
+	firstAction->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::Home));
 	lastAction = new KAction(i18n("&Last Hole"), actionCollection(), "lasthole");
 	connect(lastAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	lastAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_End);
