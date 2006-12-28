@@ -34,7 +34,7 @@ kde4_automoc(${kolf_LIB_SRCS})
 
 kde4_add_library(kolflib SHARED ${kolf_LIB_SRCS})
 
-target_link_libraries(kolflib  ${KDE4_KDEPRINT_LIBS} ${KDE4_KIO_LIBS} ${KDE4_PHONONCORE_LIBRARIES} kdegames )
+target_link_libraries(kolflib  ${KDE4_KDEPRINT_LIBS} ${KDE4_KIO_LIBS} ${KDE4_PHONONCORE_LIBS} kdegames )
 
 set_target_properties(kolflib PROPERTIES VERSION 1.2.0 SOVERSION 1 )
 install(TARGETS kolflib  DESTINATION ${LIB_INSTALL_DIR} )
