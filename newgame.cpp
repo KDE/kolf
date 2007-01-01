@@ -98,7 +98,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
                 coursePageLayout->setSpacing( spacingHint() );
 
 		KUrlLabel *coursesLink = new KUrlLabel("http://katzbrown.com/kolf/Courses/User Uploaded/", "katzbrown.com/kolf/Courses/User Uploaded/", coursePage);
-		connect(coursesLink, SIGNAL(leftClickedURL(const QString &)), this, SLOT(invokeBrowser(const QString &)));
+		connect(coursesLink, SIGNAL(leftClickedUrl(const QString &)), this, SLOT(invokeBrowser(const QString &)));
 		coursePageLayout->addWidget(coursesLink);
 
 		QHBoxLayout *hlayout = new QHBoxLayout;
