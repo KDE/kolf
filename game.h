@@ -163,10 +163,10 @@ private:
 	bool dontmove;
 };
 
-class Ellipse : public QGraphicsEllipseItem, public CanvasItem, public RectItem
+class KolfEllipse : public QGraphicsEllipseItem, public CanvasItem, public RectItem
 {
 public:
-	Ellipse(QGraphicsItem * parent, QGraphicsScene *scene, QString type);
+	KolfEllipse(QGraphicsItem * parent, QGraphicsScene *scene, QString type);
 	virtual void advance(int phase);
 
 	int changeEvery() const { return m_changeEvery; }
@@ -212,7 +212,7 @@ class EllipseConfig : public Config
 	Q_OBJECT
 
 public:
-	EllipseConfig(Ellipse *ellipse, QWidget *);
+	EllipseConfig(KolfEllipse *ellipse, QWidget *);
 
 private slots:
 	void value1Changed(int news);
@@ -230,10 +230,10 @@ private:
 	QLabel *fast2;
 	QSlider *slider1;
 	QSlider *slider2;
-	Ellipse *ellipse;
+	KolfEllipse *ellipse;
 };
 
-class Puddle : public Ellipse
+class Puddle : public KolfEllipse
 {
 public:
 	Puddle(QGraphicsItem * parent, QGraphicsScene *scene);
@@ -246,7 +246,7 @@ public:
 	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene) { return new Puddle(parent, scene); }
 };
 
-class Sand : public Ellipse
+class Sand : public KolfEllipse
 {
 public:
 	Sand(QGraphicsItem * parent, QGraphicsScene *scene);
