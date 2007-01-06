@@ -1,3 +1,4 @@
+#include "game.h"
 #include <kapplication.h>
 #include <kconfig.h>
 #include <kcursor.h>
@@ -12,7 +13,6 @@
 #include <kstandarddirs.h>
 #include <phonon/audioplayer.h>
 
-#include "game.h"
 #include <QGraphicsView>
 #include <QCheckBox>
 #include <QPixmapCache>
@@ -41,7 +41,6 @@
 #include "kcomboboxdialog.h"
 #include "kvolumecontrol.h"
 #include "vector.h"
-
 
 inline QString makeGroup(int id, int hole, QString name, int x, int y)
 {
@@ -673,7 +672,7 @@ void SignConfig::textChanged(const QString &text)
 }
 
 /////////////////////////
-EllipseConfig::EllipseConfig(Ellipse *_ellipse, QWidget *parent)
+EllipseConfig::EllipseConfig(KolfEllipse *_ellipse, QWidget *parent)
 : Config(parent), slow1(0), fast1(0), slow2(0), fast2(0), slider1(0), slider2(0)
 {
 	this->ellipse = _ellipse;
@@ -748,7 +747,7 @@ void EllipseConfig::check2Changed(bool on)
 
 /////////////////////////
 
-Ellipse::Ellipse(QGraphicsItem *parent, QGraphicsScene *scene, QString type)
+KolfEllipse::KolfEllipse(QGraphicsItem *parent, QGraphicsScene *scene, QString type)
 : QGraphicsEllipseItem(parent, scene)
 {
 	this->type = type;
@@ -763,12 +762,12 @@ Ellipse::Ellipse(QGraphicsItem *parent, QGraphicsScene *scene, QString type)
 	point->setSizeFactor(2.0);
 }
 
-void Ellipse::aboutToDie()
+void KolfEllipse::aboutToDie()
 {
 	delete point;
 }
 
-void Ellipse::setChangeEnabled(bool changeEnabled)
+void KolfEllipse::setChangeEnabled(bool changeEnabled)
 {
 	m_changeEnabled = changeEnabled;
 	setAnimated(m_changeEnabled);
@@ -777,32 +776,32 @@ void Ellipse::setChangeEnabled(bool changeEnabled)
 		setVisible(true);
 }
 
-QList<QGraphicsItem *> Ellipse::moveableItems() const
+QList<QGraphicsItem *> KolfEllipse::moveableItems() const
 {
 	QList<QGraphicsItem *> ret;
 	ret.append(point);
 	return ret;
 }
 
-void Ellipse::newSize(double width, double height)
+void KolfEllipse::newSize(double width, double height)
 {
 	setSize(width, height);
 }
 
 
-void Ellipse::setSize(double width, double height)
+void KolfEllipse::setSize(double width, double height)
 {
 	setRect(rect().x(), rect().y(), width, height);
 	if(game != 0)
 		pixmap=game->renderer->renderSvg(type, (int)width, (int)height, 0);
 }
 
-void Ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*option*/, QWidget * /*widget*/ ) 
+void KolfEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*option*/, QWidget * /*widget*/ ) 
 {
 	painter->drawPixmap(0, 0, pixmap);  
 }
 
-void Ellipse::moveBy(double dx, double dy)
+void KolfEllipse::moveBy(double dx, double dy)
 {
 	QGraphicsEllipseItem::moveBy(dx, dy);
 
@@ -810,13 +809,13 @@ void Ellipse::moveBy(double dx, double dy)
 	setPos(x() - width()/2 , y() - height()/2);
 }
 
-void Ellipse::editModeChanged(bool changed)
+void KolfEllipse::editModeChanged(bool changed)
 {
 	point->setVisible(changed);
 	moveBy(0, 0);
 }
 
-void Ellipse::advance(int phase)
+void KolfEllipse::advance(int phase)
 {
 	QGraphicsEllipseItem::advance(phase);
 
@@ -831,7 +830,7 @@ void Ellipse::advance(int phase)
 	}
 }
 
-void Ellipse::load(KConfig *cfg)
+void KolfEllipse::load(KConfig *cfg)
 {
 	setChangeEnabled(cfg->readEntry("changeEnabled", changeEnabled()));
 	setChangeEvery(cfg->readEntry("changeEvery", changeEvery()));
@@ -842,7 +841,7 @@ void Ellipse::load(KConfig *cfg)
 	moveBy(0, 0); 
 } 
 
-void Ellipse::save(KConfig *cfg)
+void KolfEllipse::save(KConfig *cfg)
 {
 	cfg->writeEntry("changeEvery", changeEvery());
 	cfg->writeEntry("changeEnabled", changeEnabled());
@@ -850,18 +849,18 @@ void Ellipse::save(KConfig *cfg)
 	cfg->writeEntry("height", height());
 }
 
-Config *Ellipse::config(QWidget *parent)
+Config *KolfEllipse::config(QWidget *parent)
 {
 	return new EllipseConfig(this, parent);
 }
 
-void Ellipse::aboutToSave()
+void KolfEllipse::aboutToSave()
 {
 	setVisible(true);
 	dontHide = true;
 }
 
-void Ellipse::savingDone()
+void KolfEllipse::savingDone()
 {
 	dontHide = false;
 }
@@ -869,7 +868,7 @@ void Ellipse::savingDone()
 /////////////////////////
 
 Puddle::Puddle(QGraphicsItem * parent, QGraphicsScene *scene)
-: Ellipse(parent, scene, "puddle")
+: KolfEllipse(parent, scene, "puddle")
 {
 	setData(0, Rtti_DontPlaceOn);
 	setSize(45, 30);
@@ -923,7 +922,7 @@ bool Puddle::collision(Ball *ball, long int /*id*/)
 /////////////////////////
 
 Sand::Sand(QGraphicsItem * parent, QGraphicsScene *scene)
-: Ellipse(parent, scene, "sand")
+: KolfEllipse(parent, scene, "sand")
 {
 	setSize(45, 40);
 
