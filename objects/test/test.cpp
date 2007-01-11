@@ -10,7 +10,6 @@
 
 #include <klocale.h>
 #include <klibloader.h>
-#include <kapplication.h>
 #include <kdebug.h>
 #include <kconfig.h>
 #include <krandom.h>

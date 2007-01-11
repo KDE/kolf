@@ -9,7 +9,6 @@
 
 #include <klocale.h>
 #include <klibloader.h>
-#include <kapplication.h>
 #include <kdebug.h>
 #include <knuminput.h>
 #include <kconfig.h>
