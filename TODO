@@ -1,16 +1,8 @@
 Minor Bugs:
 -----------
-impossible 4, once you get the ball in the hole it skips the next two holes
-
-impossible 4, send ball off edge of course and the hole moves!
-
 need a max turn time, so that the ball isn't left bouncing off bumpers for ages (or possibly on some holes forever)
 
 print needs fixing (see KolfGame::print)
-
-when the ball falls into water then respawns onto a moving platform the putter does not move with the ball
-
-fix max power so that impossible 12 isn't too easy
 
 balls can go through walls
 	eg: classic 2, can get through connection with top diag and top wall (easliest from left)
@@ -49,7 +41,10 @@ check if KolfGame::viewportToViewport() is still needed
 
 layout of the big buttons at the top of window is wrong, needs thinking about
 
-make slope arrows above sand and stuff
+make slope arrows above sand? Only wants to be above sand, if that, this needs to be thought about. 
+
+auto save when editing needs to be implimented, in game.cpp see:
+void KolfGame::autoSaveTimeout()
 
 TIDYING TO DO WHEN SVG FULLY IMPLIMENTED:
 -----------------------------------------

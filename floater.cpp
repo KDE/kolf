@@ -190,7 +190,7 @@ void Floater::moveBy(double dx, double dy)
 				{
 					//((Ball *)(*it))->setState(Rolling);
 					(*it)->moveBy(dx, dy);
-					if (game && game->hasFocus() && !game->isEditing() && game->curBall() == (Ball *)(*it))
+					if (game && /*game->hasFocus() &&*/ !game->isEditing() && game->curBall() == (Ball *)(*it))
 							game->ballMoved();
 				}
 				else if ((*it)->data(0) != Rtti_Putter) {

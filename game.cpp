@@ -1211,6 +1211,17 @@ void Cup::save(KConfig *cfg)
 	cfg->writeEntry("dummykey", true);
 }
 
+void Cup::saveState(StateDB *db)
+{
+	db->setPoint(QPointF(x(), y()));
+}
+
+void Cup::loadState(StateDB *db)
+{
+	const QPointF moveTo = db->point();
+	setPos(moveTo.x(), moveTo.y());
+}
+
 bool Cup::collision(Ball *ball, long int /*id*/)
 {
 	bool wasCenter = false;
@@ -1230,7 +1241,7 @@ bool Cup::collision(Ball *ball, long int /*id*/)
 
 HoleResult Cup::result(QPointF p, double speed, bool * /*wasCenter*/)
 {
-	if (speed > 5)
+	if (speed > 3.75)
 		return Result_Miss;
 
 	QPointF holeCentre(x() + boundingRect().width()/2, y() + boundingRect().height()/2);
@@ -2982,8 +2993,6 @@ void KolfGame::ballMoved()
 		putter->setPos((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 		updateMouse();
 	}
-	if(!inPlay && (*curPlayer).ball()->curState()==Holed) //needed incase somehow the ball rolls into a hole when not in play. this can only be correctly detected by the rest of the program when inPlay is true
-		inPlay = true;
 }
 
 void KolfGame::putterTimeout()

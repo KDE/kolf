@@ -301,6 +301,8 @@ public:
 	virtual bool place(Ball *ball, bool wasCenter);
 	void moveBy(double x, double y);
 	virtual void save(KConfig *cfg);
+	void saveState(StateDB *db);
+	void loadState(StateDB *db);
 	virtual bool canBeMovedByOthers() const { return true; }
 	virtual bool collision(Ball *ball, long int id);
 
