@@ -4,6 +4,7 @@ Encoding=UTF-8
 MimeType=application/x-kourse
 Comment=Kolf Course
 Comment[fr]=Parcours de Kolf
+Comment[ja]=Kolf コース
 Comment[x-test]=xxKolf Coursexx
 Icon=kolf
 Type=MimeType
