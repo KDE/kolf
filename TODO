@@ -7,23 +7,14 @@ print needs fixing (see KolfGame::print)
 balls can go through walls
 	eg: classic 2, can get through connection with top diag and top wall (easliest from left)
 
-if on your first turn (in a multiplayer game) for a hole you fall into water and choose "Rehit from last location" then your ball wall spawn on top of your opponents, so that when they make their first hit they will instantly collide with yours
-	poss fix: check for collisions with ball and other balls when a player is making their first move.
-
 USA Pro 7, text for Golden Gate displays incorrectly. And Washington DC should be on one line in hole 8
-
-balls can sometimes go through each other:
-	go straigh in one dir with first player, then same with next and they will be able to go through opponent
-
-minor info saving bug:
-	start a game with two players with diff names
-	end the game
-	start a new game, and both players will have the name of the first
 
 need to find a sound for getting a score below par, see game.cpp and find the line that contains:
 	//playSound("woohoo");
 
 apparently void KolfGame::startNextHole() needs tidying work since it is too complex (see game.cpp)
+
+apparently KolfGame::shotDone() needs changing, since it says // do hack stuff, shouldn't be done here
 
 the names of menu items with checkboxs (eg in the Settings menu) seem wrong to me, need to think about what I want to change
 
@@ -43,8 +34,17 @@ layout of the big buttons at the top of window is wrong, needs thinking about
 
 make slope arrows above sand? Only wants to be above sand, if that, this needs to be thought about. 
 
+obscure load game crash, steps to reproduce:
+1) load saved game
+2) Save the game
+3) End the game
+4) click load game (in Game menu)
+crash
+
 auto save when editing needs to be implimented, in game.cpp see:
 void KolfGame::autoSaveTimeout()
+
+ball Collision is wrong, sometimes when you hit your opponents ball on the side it goes in the opposite direction of where you would expect it to go
 
 TIDYING TO DO WHEN SVG FULLY IMPLIMENTED:
 -----------------------------------------

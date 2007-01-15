@@ -2051,8 +2051,8 @@ void Wall::load(KConfig *cfg)
 
 void Wall::save(KConfig *cfg)
 {
-	cfg->writeEntry("startPoint", QPointF(startItem->x(), startItem->y()));
-	cfg->writeEntry("endPoint", QPointF(endItem->x(), endItem->y()));
+	cfg->writeEntry("startPoint", QPoint((int)startItem->x(), (int)startItem->y()));
+	cfg->writeEntry("endPoint", QPoint((int)endItem->x(), (int)endItem->y()));
 }
 
 void Wall::doAdvance()
@@ -2916,7 +2916,6 @@ void KolfGame::timeout()
 	if (curState == Holed && inPlay)
 	{
 		emit inPlayEnd();
-		emit playerHoled(&(*curPlayer));
 
 		int curScore = (*curPlayer).score(curHole);
 		if (!dontAddStroke)
@@ -3392,6 +3391,8 @@ void KolfGame::shotStart()
 	if (!strength)
 		strength = 1;
 
+	(*curPlayer).ball()->collisionDetect((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
+
 	startBall(Vector(strength, putter->curAngle() + M_PI));
 
 	addHoleInfo(ballStateList);
@@ -3479,6 +3480,9 @@ void KolfGame::startNextHole()
 				{
 					for (int i = curHole - 1; i > 0; --i)
 					{
+						while(i > (*it).scores().size())
+							i--;
+
 						const int thisScore = (*it).score(i);
 						const int thatScore = (*curPlayer).score(i);
 						if (thisScore < thatScore)

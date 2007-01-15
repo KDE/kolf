@@ -97,6 +97,8 @@ private:
 	bool m_beginningOfHole;
 	bool m_forceStillGoing;
 
+	bool ignoreBallCollisions;
+
 	Vector m_vector;
 	Vector oldVector;
 	bool m_collisionLock;

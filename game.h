@@ -900,7 +900,6 @@ signals:
 	void largestHole(int);
 	void scoreChanged(int, int, int);
 	void newPlayersTurn(Player *);
-	void playerHoled(Player *);
 	void newSelectedItem(CanvasItem *);
 	void checkEditing();
 	void editingStarted();

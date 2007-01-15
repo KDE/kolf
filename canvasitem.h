@@ -148,7 +148,7 @@ public:
 	/**
 	 * called on ball's collision. Return if terrain collidingItems should be processed.
 	 */
-	virtual bool collision(Ball * /*ball*/, long int /*id*/) { kDebug(12007) << "Error: null coll" << endl; return false; }
+	virtual bool collision(Ball * /*ball*/, long int /*id*/) { return false; }
 
 	/**
 	 * reimplement if you want extra items to have access to the game object.

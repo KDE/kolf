@@ -228,8 +228,10 @@ void NewGameDialog::slotOk()
 
 	PlayerEditor *curEditor = 0;
 	int i = 0;
-	for (curEditor = editors.at(i); i < editors.count(); ++i)
+	for (; i < editors.count(); ++i) {
+		curEditor = editors.at(i);
 		config->writeEntry(QString::number(i) + curEditor->name(), curEditor->color().name());
+	}
 
 	config->sync();
 

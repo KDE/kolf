@@ -31,6 +31,7 @@ Ball::Ball(QGraphicsScene * scene)
 	m_addStroke = false;
 	m_placeOnGround = false;
 	m_forceStillGoing = false;
+	ignoreBallCollisions = false;
 	frictionMultiplier = 1.0;
 	QFont font(kapp->font());
 	label = new QGraphicsSimpleTextItem("", this, scene);
@@ -244,6 +245,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 	const double minSpeed = .06;
 
 	QList<QGraphicsItem *> m_list = collidingItems();
+	bool collidingWithABall=0;
 
 	this->m_list = m_list;
 
@@ -257,45 +259,57 @@ void Ball::collisionDetect(double oldx, double oldy)
 		if (item->data(0) == data(0) && !m_collisionLock)
 		{
 			// it's one of our own kind, a ball
+			collidingWithABall=1;
+			if(ignoreBallCollisions)
+				continue;
+
 			Ball *oball = dynamic_cast<Ball *>(item);
 			if (!oball || oball->collisionLock())
 				continue;
 			oball->setCollisionLock(true);
 
-			if ((oball->x() - x() != 0 && oball->y() - y() != 0) && state == Rolling && oball->curState() != Holed)
+			if (oball->curState() != Holed) 
 			{
-				m_collisionLock = true;
-				// move this ball to where it was barely touching
-				double ballAngle = m_vector.direction();
-				while (collidingItems().contains(item) > 0)
-					setPos(x() - cos(ballAngle) / 2.0, y() + sin(ballAngle) / 2.0);
+				if (oball->x() - x() == 0 && oball->y() - y() == 0 && state != Rolling) 
+				{
+					//both balls have same position, therefore other ball must have spawned on top of this one (possibly after going into water on the first shot, and then being reset)
+					ignoreBallCollisions=1;
+				}
+				else
+				{
+					m_collisionLock = true;
+					// move this ball to where it was barely touching
+					double ballAngle = m_vector.direction();
+					while (collidingItems().contains(item) > 0)
+						setPos(x() - cos(ballAngle) / 2.0, y() + sin(ballAngle) / 2.0);
 
-				// make a 2 pixel separation
-				setPos(x() - 2 * cos(ballAngle), y() + 2 * sin(ballAngle));
+					// make a 2 pixel separation
+					setPos(x() - 2 * cos(ballAngle), y() + 2 * sin(ballAngle));
 
-				Vector bvector = oball->curVector();
-				m_vector -= bvector;
+					Vector bvector = oball->curVector();
+					m_vector -= bvector;
 
-				Vector unit1 = Vector(QPointF(x(), y()), QPointF(oball->x(), oball->y()));
-				unit1 = unit1.unit();
+					Vector unit1 = Vector(QPointF(x(), y()), QPointF(oball->x(), oball->y()));
+					unit1 = unit1.unit();
 
-				Vector unit2 = m_vector.unit();
+					Vector unit2 = m_vector.unit();
 
-				double cos = unit1 * unit2;
+					double cos = unit1 * unit2;
 
-				unit1 *= m_vector.magnitude() * cos;
-				m_vector -= unit1;
-				m_vector += bvector;
+					unit1 *= m_vector.magnitude() * cos;
+					m_vector -= unit1;
+					m_vector += bvector;
 
-				bvector += unit1;
+					bvector += unit1;
 
-				oball->setVector(bvector);
-				setVector(m_vector);
+					oball->setVector(bvector);
+					setVector(m_vector);
 
-				oball->setState(Rolling);
-				setState(Rolling);
+					oball->setState(Rolling);
+					setState(Rolling);
 
-				oball->doAdvance();
+					oball->doAdvance();
+				}
 			}
 
 			continue;
@@ -386,6 +400,9 @@ void Ball::collisionDetect(double oldx, double oldy)
 			break;
 		}
 	}
+
+	if(ignoreBallCollisions && !collidingWithABall) 
+		ignoreBallCollisions=0; //bad ball collision must be over now  since we are no longer colliding with a ball, so stop ignoring ball collisions
 
 	for (QList<QGraphicsItem *>::Iterator it = m_list.begin(); it != m_list.end(); ++it)
 	{
