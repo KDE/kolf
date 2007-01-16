@@ -10,6 +10,7 @@ Icon=kolf
 MimeType=application/x-kourse;application/x-kolf
 
 GenericName=Miniature Golf
+GenericName[el]=Μίνι γκολφ
 GenericName[fr]=Golf miniature
 GenericName[ja]=ミニチュアゴルフ
 GenericName[x-test]=xxMiniature Golfxx

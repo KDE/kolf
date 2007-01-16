@@ -4,6 +4,7 @@ Encoding=UTF-8
 MimeType=application/x-kolf
 Type=MimeType
 Comment=Kolf Saved Game
+Comment[el]=Αποθηκευμένο παιχνίδι Kolf
 Comment[fr]=Partie enregistrée de Kolf
 Comment[ja]=Kolf の保存されたゲーム
 Comment[x-test]=xxKolf Saved Gamexx
