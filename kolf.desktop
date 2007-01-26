@@ -3,6 +3,7 @@ Encoding=UTF-8
 DocPath=kolf/index.html
 Name=Kolf
 Name[ar]=لعبة الجولف (Kolf)
+Name[be]=Гольф
 Name[bn]=কল্‌ফ
 Name[eo]=Golfo
 Name[hi]=कोल्फ
@@ -17,6 +18,7 @@ Icon=kolf
 MimeType=application/x-kourse;application/x-kolf
 
 GenericName=Miniature Golf
+GenericName[be]=Маленькі гольф
 GenericName[bg]=Миниатюрен голф
 GenericName[bn]=ছোটখাটো গলফ
 GenericName[bs]=Minijaturni golf
