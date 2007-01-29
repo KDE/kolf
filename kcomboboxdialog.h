@@ -27,6 +27,7 @@
 
 #include <kdialog.h>
 #include <kglobal.h>
+#include <kconfig.h>
 
 class QCheckBox;
 class KHistoryCombo;
@@ -101,7 +102,7 @@ public:
 	                       const QString &_value = QString::null,
 	                       bool *ok = 0, QWidget *parent = 0,
 	                       const QString &configName = QString::null,
-	                       KConfig *config = KGlobal::config());
+	                       KSharedConfigPtr config = KGlobal::config());
 
 protected:
 	KHistoryCombo *combo;

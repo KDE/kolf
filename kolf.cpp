@@ -154,7 +154,7 @@ void Kolf::initGUI()
 	connect(useMouseAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	useMouseAction->setCheckedState(KGuiItem(i18n("Disable &Mouse for Moving Putter")));
 	connect(useMouseAction, SIGNAL(toggled(bool)), this, SLOT(useMouseChanged(bool)));
-	KConfig *config = KGlobal::config();
+	KSharedConfig::Ptr config = KGlobal::config();
 	config->setGroup("Settings");
 	useMouseAction->setChecked(config->readEntry("useMouse", true));
 
@@ -782,27 +782,27 @@ void Kolf::titleChanged(const QString &newTitle)
 
 void Kolf::useMouseChanged(bool yes)
 {
-	KConfig *config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("useMouse", yes); config->sync();
+	KSharedConfig::Ptr config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("useMouse", yes); config->sync();
 }
 
 void Kolf::useAdvancedPuttingChanged(bool yes)
 {
-	KConfig *config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("useAdvancedPutting", yes); config->sync();
+	KSharedConfig::Ptr config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("useAdvancedPutting", yes); config->sync();
 }
 
 void Kolf::showInfoChanged(bool yes)
 {
-	KConfig *config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("showInfo", yes); config->sync();
+	KSharedConfig::Ptr config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("showInfo", yes); config->sync();
 }
 
 void Kolf::showGuideLineChanged(bool yes)
 {
-	KConfig *config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("showGuideLine", yes); config->sync();
+	KSharedConfig::Ptr config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("showGuideLine", yes); config->sync();
 }
 
 void Kolf::soundChanged(bool yes)
 {
-	KConfig *config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("sound", yes); config->sync();
+	KSharedConfig::Ptr config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("sound", yes); config->sync();
 }
 
 void Kolf::initPlugins()

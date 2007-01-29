@@ -94,7 +94,7 @@ QString KComboBoxDialog::getItem( const QString &_text, const QString &_caption,
 	QString prevAnswer;
 	if ( !dontAskAgainName.isEmpty() )
 	{
-		KConfig *config = KGlobal::config();
+		KSharedConfig::Ptr config = KGlobal::config();
 		config->setGroup( "Notification Messages" );
 		prevAnswer = config->readEntry( dontAskAgainName,QString() );
 		if ( !prevAnswer.isEmpty() )
@@ -114,7 +114,7 @@ QString KComboBoxDialog::getItem( const QString &_text, const QString &_caption,
 	{
 		if ( !dontAskAgainName.isEmpty() && !text.isEmpty() )
 		{
-			KConfig *config = KGlobal::config();
+			KSharedConfig::Ptr config = KGlobal::config();
 			config->setGroup ( "Notification Messages" );
 			config->writeEntry( dontAskAgainName, text );
 		}
@@ -123,7 +123,7 @@ QString KComboBoxDialog::getItem( const QString &_text, const QString &_caption,
 	return text;
 }
 
-QString KComboBoxDialog::getText(const QString &_caption, const QString &_text, const QString &_value, bool *ok, QWidget *parent, const QString &configName, KConfig *config)
+QString KComboBoxDialog::getText(const QString &_caption, const QString &_text, const QString &_value, bool *ok, QWidget *parent, const QString &configName, KSharedConfigPtr config)
 {
 	KComboBoxDialog dlg(_text, QStringList(), _value, false, parent);
 	if ( !_caption.isNull() )

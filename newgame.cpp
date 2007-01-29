@@ -34,7 +34,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 	setFaceType(KPageDialog::Tree);
 	this->enableCourses = enableCourses;
 
-	KConfig *config = KGlobal::config();
+	KSharedConfig::Ptr config = KGlobal::config();
 
 	// lots o' colors :)
 	startColors << Qt::yellow << Qt::blue << Qt::red << Qt::lightGray << Qt::cyan << Qt::darkBlue << Qt::magenta << Qt::darkGray << Qt::darkMagenta << Qt::darkYellow;
@@ -213,7 +213,7 @@ void NewGameDialog::invokeBrowser(const QString &_url)
 
 void NewGameDialog::slotOk()
 {
-	KConfig *config = KGlobal::config();
+	KSharedConfig::Ptr config = KGlobal::config();
 
 	config->setGroup("New Game Dialog Mode");
 	config->writeEntry("competition", mode->isChecked());
