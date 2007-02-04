@@ -5,7 +5,6 @@ MimeType=application/x-kourse
 Comment=Kolf Course
 Comment[el]=Πίστα kolf
 Comment[fr]=Parcours de Kolf
-Comment[ja]=Kolf コース
 Comment[x-test]=xxKolf Coursexx
 Icon=kolf
 Type=MimeType
