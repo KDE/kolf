@@ -11,7 +11,7 @@ ObjectList *PluginLoader::loadAll()
 	ObjectList *ret = new ObjectList;
 
 	QStringList libs;
-	QStringList files = KGlobal::dirs()->findAllResources("appdata", "*.plugin", false, true);
+	QStringList files = KGlobal::dirs()->findAllResources("appdata", "*.plugin", KStandardDirs::NoDuplicates);
 
 	for (QStringList::Iterator it = files.begin(); it != files.end(); ++it)
 	{
