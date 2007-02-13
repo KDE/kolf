@@ -5,7 +5,7 @@
 
 #include "game.h"
 
-class KListBox;
+class K3ListBox;
 class QHBoxLayout;
 class Q3ListBoxItem;
 class Config;
@@ -31,7 +31,7 @@ private slots:
 private:
 	ObjectList *list;
 	QHBoxLayout *hlayout;
-	KListBox *listbox; //note: this uses Q3 listbox
+	K3ListBox *listbox; //note: this uses Q3 listbox
 	Config *config;
 };
 

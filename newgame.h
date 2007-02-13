@@ -17,7 +17,7 @@
 class KLineEdit;
 class QVBoxLayout;
 class QPainter;
-class KListBox;
+class K3ListBox;
 class QEvent;
 class QScrollArea;
 
@@ -89,7 +89,7 @@ private:
 
 	QStringList extraCourses;
 
-	KListBox *courseList;
+	K3ListBox *courseList;
 	QLabel *name;
 	QLabel *author;
 	QLabel *par;

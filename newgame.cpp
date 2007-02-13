@@ -16,7 +16,7 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-#include <klistbox.h>
+#include <k3listbox.h>
 #include <QScrollArea>
 #include <QPixmapCache>
 
@@ -134,7 +134,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		names.append(QString::null);
 		nameList.append(newName);
 
-		courseList = new KListBox(coursePage);
+		courseList = new K3ListBox(coursePage);
 		hlayout->addWidget(courseList);
 		courseList->insertStringList(nameList);
 		courseList->setCurrentItem(curItem);

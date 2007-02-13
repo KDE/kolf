@@ -1,5 +1,5 @@
 #include <kdialog.h>
-#include <klistbox.h>
+#include <k3listbox.h>
 
 #include <QLabel>
 #include <QFrame>
@@ -23,7 +23,7 @@ Editor::Editor(ObjectList *list, QWidget *parent)
         vlayout->setSpacing( KDialog::spacingHint() );
         hlayout->addLayout( vlayout );
 	vlayout->addWidget(new QLabel(i18n("Add object:"), this));
-	listbox = new KListBox(this, "Listbox");
+	listbox = new K3ListBox(this, "Listbox");
 	vlayout->addWidget(listbox);
 	hlayout->setStretchFactor(vlayout, 2);
 
