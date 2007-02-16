@@ -37,6 +37,7 @@ class Floater : public Bridge
 {
 public:
 	Floater(QRect rect,  QGraphicsItem * parent, QGraphicsScene *scene);
+	void resize(double resizeFactor);
 	virtual bool collision(Ball *ball, long int id) { Bridge::collision(ball, id); return false; }
 	virtual void saveState(StateDB *db);
 	virtual void loadState(StateDB *db);
@@ -65,6 +66,15 @@ private:
 	int speedfactor;
 	int speed;
 	FloaterGuide *wall;
+	/*
+	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
+	 */
+	double baseStartX, baseStartY, baseEndX, baseEndY;
+	double baseXVelocity, baseYVelocity;
+	/*
+	 * resizeFactor is the number to multiply base numbers by to get their resized value (i.e. if it is 1 then use default size, if it is >1 then everything needs to be bigger, and if it is <1 then everything needs to be smaller)
+	 */
+	double resizeFactor;
 	QPoint origin;
 	Vector vector;
 	bool noUpdateZ;

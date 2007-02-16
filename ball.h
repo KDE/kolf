@@ -21,9 +21,25 @@ public:
 	BallState currentState();
 
 	virtual void resetSize(); 
+	void resize(double resizeFactor);
+	/*
+	 * set the position of the ball automatically modifying x and y to take into account resizing
+	 */
+	void setPos(qreal x, qreal y);
+	/*
+	 * set the position of the ball automatically modifying pos to take into account resizing
+	 */
+	void setPos(QPointF pos);
+	/*
+	 * set the position of the ball to exactly x and y, without taking into account resizing
+	 */
+	void setResizedPos(qreal x, qreal y);
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *); 
 	virtual void advance(int phase);
 	virtual void doAdvance();
+	/*
+	 * moves the ball, automatically modifying dx and dy to take into account resizing (so the input dx and dy can use the game's base 400x400 co-ordinated system, and do not need to be modified when the game is resized)
+	 */
 	virtual void moveBy(double dx, double dy);
 	virtual void setVelocity(double vx, double vy);
 
@@ -74,6 +90,8 @@ public:
 
 	double width() { return rect().width(); }
 	double height() { return rect().height(); }
+	double getBaseX() { return baseX; }
+	double getBaseY() { return baseY; }
 
 public slots:
 	void update() { doAdvance(); }
@@ -85,6 +103,16 @@ private:
 	bool pixmapInitialised;
 	long int collisionId;
 	double frictionMultiplier;
+	/*
+	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
+	 */
+	double baseDiameter;
+	double baseX, baseY; //position of the ball in origional 400x400 co-ordinate system
+	double baseFontPixelSize;
+	/*
+	 * resizeFactor is the number to multiply base numbers by to get their resized value (i.e. if it is 1 then use default size, if it is >1 then everything needs to be bigger, and if it is <1 then everything needs to be smaller)
+	 */
+	double resizeFactor;
 
 	bool m_blowUp;
 	int blowUpCount;

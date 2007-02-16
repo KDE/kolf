@@ -20,6 +20,8 @@
 Ball::Ball(QGraphicsScene * scene)
 	: QGraphicsEllipseItem(0, scene)
 {
+	baseDiameter = 8;
+	resizeFactor = 1;
 	setData(0, Rtti_Ball);
 	m_doDetect = true;
 	m_collisionLock = false;
@@ -33,7 +35,10 @@ Ball::Ball(QGraphicsScene * scene)
 	m_forceStillGoing = false;
 	ignoreBallCollisions = false;
 	frictionMultiplier = 1.0;
+
 	QFont font(kapp->font());
+	baseFontPixelSize=12;
+	font.setPixelSize((int)(baseFontPixelSize));
 	label = new QGraphicsSimpleTextItem("", this, scene);
 	label->setFont(font);
 	label->setBrush(Qt::white);
@@ -62,8 +67,44 @@ void Ball::setState(BallState newState)
 
 void Ball::resetSize()
 {
-	setRect(rect().x()-4, rect().y()-4, 8, 8);
+	setRect(baseDiameter*-0.5, baseDiameter*-0.5, baseDiameter, baseDiameter);
 }
+
+void Ball::resize(double resizeFactor)
+{
+	this->resizeFactor = resizeFactor;
+	QFont font = label->font();
+	font.setPixelSize((int)(baseFontPixelSize*resizeFactor));
+	label->setFont(font);
+	setPos(baseX, baseY); //not multiplied by resizeFactor since setPos takes care of that for the ball
+	setRect(-0.5*baseDiameter*resizeFactor, -0.5*baseDiameter*resizeFactor, baseDiameter*resizeFactor, baseDiameter*resizeFactor);	
+	pixmap=game->renderer->renderSvg("ball", (int)rect().width(), (int)rect().height(), 0);
+}
+
+void Ball::setPos(qreal x, qreal y)
+{
+	//for Ball (and only Ball) setPos() itself has been modified to take into account resizing
+	//for a procedure that does not automaticaly take into account resizing use setResizedPos()
+	setPos(QPointF(x, y));
+}
+
+void Ball::setPos(QPointF pos)
+{
+	//for Ball (and only Ball setPos) itself has been modified to take into account resizing
+	//for a procedure that does not automaticaly take into account resizing use setResizedPos
+	baseX = pos.x();
+	baseY = pos.y();
+	QGraphicsEllipseItem::setPos(pos.x()*resizeFactor, pos.y()*resizeFactor);
+}
+
+void Ball::setResizedPos(qreal x, qreal y)
+{
+	//unlike Ball::setPos this does not automatically take into account resizing but instead sets the ball's position to exactly that which is inputted in x and y 
+	baseX = x/resizeFactor;
+	baseY = y/resizeFactor;
+	QGraphicsEllipseItem::setPos(x, y);
+}
+
 
 void Ball::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*option*/, QWidget * /*widget*/ ) 
 {
@@ -71,18 +112,18 @@ void Ball::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*option*/,
 		if(game == 0)
 			return;
 		else {
-			pixmap=game->renderer->renderSvg("ball", 8, 8, 1);
+			pixmap=game->renderer->renderSvg("ball", (int)rect().width(), (int)rect().height(), 0);
 			pixmapInitialised=true;
 		}
 	}
-	painter->drawPixmap(-4, -4, pixmap);  
+	painter->drawPixmap(rect().x(), rect().y(), pixmap);  
 }
 
 void Ball::advance(int phase)
 {
 	// not used anymore
 	// can be used to make ball wobble
-	if (phase == 1 && m_blowUp)
+	/*if (phase == 1 && m_blowUp)
 	{
 		if (blowUpCount >= 50)
 		{
@@ -100,7 +141,7 @@ void Ball::advance(int phase)
 		const double height = 6 + randnum * (diff / RAND_MAX);
 		setRect(rect().x(), rect().y(), width, height);
 		blowUpCount++;
-	}
+	}*/
 }
 
 void Ball::friction()
@@ -150,13 +191,19 @@ void Ball::setVector(const Vector &newVector)
 	CanvasItem::setVelocity(cos(newVector.direction()) * newVector.magnitude(), -sin(newVector.direction()) * newVector.magnitude());
 }
 
-void Ball::moveBy(double dx, double dy)
+void Ball::moveBy(double baseDx, double baseDy)
 {
+	//this takes as an imput the distance to move in the game's base 400x400 co-ordinate system, so that everything that calls this (friction etc) does not have to worry about the resized co-ordinates
+	//NOTE: only Ball::moveBy does this, none of the moving procedures for other items in the game do this. This is inconsistent and likely to cause confusion and future bugs, sorry :(
+	double dx = baseDx*resizeFactor;
+	double dy = baseDy*resizeFactor;
 	double oldx;
 	double oldy;
 	oldx = x();
 	oldy = y();
 	QGraphicsEllipseItem::moveBy(dx, dy);
+	baseX += baseDx;
+	baseY += baseDy;
 
 	if (game && !game->isPaused())
 		collisionDetect(oldx, oldy);

@@ -37,6 +37,10 @@ public:
 	 */
 	virtual void firstMove(int /*x*/, int /*y*/) {}
 	/**
+	 * used for resizing, also moves the item appropriately
+	 */
+	virtual void resize(double /*resize factor*/) { kDebug(12007) << "Warning, empty resize used\n"; }
+	/**
 	 * save your settings.
 	 */
 	virtual void save(KConfig *cfg);
@@ -163,6 +167,7 @@ public:
 
 	QString name() const { return m_name; }
 	void setName(const QString &newname) { m_name = newname; }
+	virtual void setSize(double /*width*/, double /*height*/) {;}
 
 	/**
 	 * custom animation code

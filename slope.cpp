@@ -23,13 +23,15 @@ Slope::Slope(QRect rect, QGraphicsItem * parent, QGraphicsScene *scene)
 	setData(0, 1031);
 	stuckOnGround = false;
 	showingInfo = false;
+	baseArrowPenThickness = arrowPenThickness = 1;
 
 	setZValue(-50);
 
 	point = new RectPoint(color.light(), 0, parent, scene); //this is used in edit mode
 
 	QFont font(kapp->font());
-	font.setPixelSize(18);
+	baseFontPixelSize = 18;
+	font.setPixelSize(baseFontPixelSize);
 	text = new QGraphicsSimpleTextItem(0, scene);
 	text->setZValue(99999.99);
 	text->setFont(font);
@@ -67,6 +69,23 @@ void Slope::hideInfo()
 	for (arrow = arrows.constBegin(); arrow != arrows.constEnd(); ++arrow)
 		(*arrow)->setVisible(false);
 	text->setVisible(false);
+}
+
+void Slope::resize(double resizeFactor)
+{
+	QFont font = text->font();
+	font.setPixelSize((int)(baseFontPixelSize*resizeFactor));
+	text->setFont(font);
+	arrowPenThickness = baseArrowPenThickness*resizeFactor;
+	setPos(baseX*resizeFactor, baseY*resizeFactor);
+	setRect(0, 0, baseWidth*resizeFactor, baseHeight*resizeFactor);
+	updatePixmap();
+}
+
+void Slope::firstMove(int x, int y)
+{
+	baseX = (double)x;
+	baseY = (double)y;
 }
 
 void Slope::aboutToDie()
@@ -200,6 +219,8 @@ void Slope::load(KConfig *cfg)
 
 	// bypass updatePixmap which newSize normally does
 	QGraphicsRectItem::setRect(rect().x(), rect().y(), cfg->readEntry("width", width()), cfg->readEntry("height", height()));
+	baseWidth = rect().width();
+	baseHeight = rect().height();
 	updateZ();
 
 	QString gradientType = cfg->readEntry("gradient", "Vertical");
@@ -412,6 +433,7 @@ void Slope::updatePixmap() //this needs work so that the slope colour depends on
 			Arrow *arrow = new Arrow(0, scene());
 			arrow->setLength(length);
 			arrow->setAngle(angle);
+			arrow->setPen(QPen(Qt::black, arrowPenThickness));
 			arrow->setReversed(reversed);
 			arrow->updateSelf();
 			arrows.append(arrow);
@@ -436,6 +458,7 @@ void Slope::updatePixmap() //this needs work so that the slope colour depends on
 
 		arrow->setAngle(angle);
 		arrow->setLength(length);
+		arrow->setPen(QPen(Qt::black, arrowPenThickness));
 		arrow->updateSelf();
 
 		arrows.append(arrow);

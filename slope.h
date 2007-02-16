@@ -34,11 +34,13 @@ public:
 
 	virtual void showInfo();
 	virtual void hideInfo();
+	void resize(double resizeFactor);
+	void firstMove(int x, int y);
 	virtual void editModeChanged(bool changed);
 	virtual bool canBeMovedByOthers() const { return !stuckOnGround; }
 	virtual QList<QGraphicsItem *> moveableItems() const;
 	virtual Config *config(QWidget *parent) { return new SlopeConfig(this, parent); }
-	void setSize(int, int);
+	virtual void setSize(int, int);
 	virtual void newSize(double width, double height);
 	virtual void moveBy(double dx, double dy);
 
@@ -84,6 +86,11 @@ private:
 	QPixmap pixmap;
 	void updatePixmap();
 	bool stuckOnGround;
+	/*
+	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
+	 */
+	double baseX, baseY, baseWidth, baseHeight;
+	double baseFontPixelSize, baseArrowPenThickness, arrowPenThickness;
 
 	void clearArrows();
 

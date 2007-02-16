@@ -54,6 +54,7 @@ Floater::Floater(QRect rect,  QGraphicsItem *parent, QGraphicsScene *scene)
 	setEnabled(true);
 	noUpdateZ = false;
 	haventMoved = true;
+	resizeFactor = 1;
 	wall = new FloaterGuide(this, parent, scene);
 	wall->setPoints(100, 100, 200, 200);
 	wall->setPen(QPen(wall->pen().color().light(), wall->pen().width() - 1));
@@ -85,6 +86,14 @@ void Floater::editModeChanged(bool changed)
 		wall->editModeChanged(true);
 	Bridge::editModeChanged(changed);
 	wall->setVisible(changed);
+}
+
+void Floater::resize(double resizeFactor)
+{
+	this->resizeFactor = resizeFactor;
+	setSpeed(speed); //update speed taking into account new resizeFactor
+	wall->setPoints(baseStartX*resizeFactor, baseStartY*resizeFactor, baseEndX*resizeFactor, baseEndY*resizeFactor);
+	Bridge::resize(resizeFactor);
 }
 
 void Floater::advance(int phase)
@@ -153,7 +162,7 @@ void Floater::setSpeed(int news)
 	}
 
 	const double factor = (double)speed / 3.5;
-	setVelocity(-cos(vector.direction()) * factor, -sin(vector.direction()) * factor);
+	setVelocity(-cos(vector.direction()) * factor * resizeFactor, -sin(vector.direction()) * factor * resizeFactor);
 }
 
 void Floater::aboutToSave()
@@ -247,6 +256,11 @@ void Floater::load(KConfig *cfg)
 	end = cfg->readEntry("endPoint", end);
 	wall->setPoints(start.x(), start.y(), end.x(), end.y());
 	wall->setPos(0, 0);
+
+	baseStartX = start.x();
+	baseStartY = start.y();
+	baseEndX = end.x();
+	baseEndY = end.y();
 
 	setSpeed(cfg->readEntry("speed", -1));
 

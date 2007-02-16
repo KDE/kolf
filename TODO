@@ -1,8 +1,20 @@
+Edit mode:
+----------
+need a more intuitive way to select create new, and need to start in edit mode
+
+remove information on who's turn it is from the status bar when in edit mode
+
 Minor Bugs:
 -----------
 need a max turn time, so that the ball isn't left bouncing off bumpers for ages (or possibly on some holes forever)
 
 print needs fixing (see KolfGame::print)
+
+when resizing make it so some pixmaps are not painted new every time (store size like in Katom?)
+
+fix advanced putting and it's resizing
+
+fix scoreboard resizing, it can get too big, and can also get too small!
 
 balls can go through walls
 	eg: classic 2, can get through connection with top diag and top wall (easliest from left)
@@ -61,7 +73,7 @@ use ball.advance() to give ball a spin animation?
 give black holes an animation?
 	ball falling into hole animation? (rather than just disappearing it coudl shrink to nothing)
 
-add resizing
+have animations for the ball's interaction with sand and water?
 
 fix appearance of large buttons (there are too many!) by only showing one of "New", "Save Course" or "End Game" at a time, since only one of them is ever appropriate. Also remove the Show info button and move to the Settings menu if more space is needed.
 

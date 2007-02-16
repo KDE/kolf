@@ -30,6 +30,7 @@ class QCheckBox;
 class QTimer;
 class QKeyEvent;
 class QMouseEvent;
+class QResizeEvent;
 class QVBoxLayout;
 class QPainter;
 class KConfig;
@@ -72,7 +73,7 @@ public:
 	Player() : m_ball(new Ball(0)) {};
 	Ball *ball() const { return m_ball; }
 	void setBall(Ball *ball) { m_ball = ball; }
-	BallStateInfo stateInfo(int hole) const { BallStateInfo ret; ret.spot = QPoint((int)m_ball->x(), (int)m_ball->y()); ret.state = m_ball->curState(); ret.score = score(hole); ret.beginningOfHole = m_ball->beginningOfHole(); ret.id = m_id; return ret; }
+	BallStateInfo stateInfo(int hole) const { BallStateInfo ret; ret.spot = QPoint((int)m_ball->getBaseX(), (int)m_ball->getBaseY()); ret.state = m_ball->curState(); ret.score = score(hole); ret.beginningOfHole = m_ball->beginningOfHole(); ret.id = m_id; return ret; }
 
 	QList<int> scores() const { return m_scores; }
 	void setScores(const QList<int> &newScores) { m_scores = newScores; }
@@ -127,6 +128,10 @@ public:
 	virtual void setZValue(double newz);
 
 private:
+	/*
+	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
+	 */
+	double baseLineThickness;
 	double m_angle;
 	double m_length;
 	bool m_reversed;
@@ -153,7 +158,7 @@ public:
 	virtual bool cornerResize() const { return true; }
 	virtual CanvasItem *itemToDelete() { return dynamic_cast<CanvasItem *>(rect); }
 	void setSizeFactor(double newFactor) { m_sizeFactor = newFactor; }
-	void setSize(qreal, qreal);
+	void setSize(double, double);
 
 protected:
 	RectItem *rect;
@@ -167,7 +172,9 @@ class KolfEllipse : public QGraphicsEllipseItem, public CanvasItem, public RectI
 {
 public:
 	KolfEllipse(QGraphicsItem * parent, QGraphicsScene *scene, QString type);
+	void firstMove(int x, int y);
 	virtual void advance(int phase);
+	void resize(double resizeFactor);
 
 	int changeEvery() const { return m_changeEvery; }
 	void setChangeEvery(int news) { m_changeEvery = news; }
@@ -204,6 +211,10 @@ protected:
 private:
 	int count;
 	bool dontHide;
+	/*
+	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
+	 */
+	double baseX, baseY, baseHeight, baseWidth;
 	QString type;
 	QPixmap pixmap;
 };
@@ -276,6 +287,9 @@ public:
 	Bumper(QGraphicsItem * parent, QGraphicsScene *scene);
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem * option, QWidget * widget);
 	virtual void advance(int phase);
+	void moveBy(double x, double y);
+	void firstMove(int x, int y);
+	void resize(double resizeFactor);
 	virtual bool collision(Ball *ball, long int id);
 
 protected:
@@ -285,6 +299,11 @@ private:
 	int count;
 	QPixmap pixmap;
 	bool pixmapInitialised;
+	/*
+	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
+	 */
+	double baseX, baseY;
+	int baseDiameter; 
 };
 class BumperObj : public Object
 {
@@ -300,6 +319,8 @@ public:
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *);
 	virtual bool place(Ball *ball, bool wasCenter);
 	void moveBy(double x, double y);
+	void firstMove(int x, int y);
+	void resize(double resizeFactor);
 	virtual void save(KConfig *cfg);
 	void saveState(StateDB *db);
 	void loadState(StateDB *db);
@@ -309,6 +330,10 @@ public:
 protected:
 	QPixmap pixmap;
 	bool pixmapInitialised;
+	/*
+	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
+	 */
+	double baseX, baseY, baseDiameter;
 	virtual HoleResult result(const QPointF, double, bool *wasCenter);
 };
 
@@ -348,11 +373,17 @@ public:
 	virtual void showInfo();
 	virtual void hideInfo();
 	void updateArrowAngle();
-	void updateArrowLength();
+	void updateArrowLength(double resizeFactor=1);
+	void setArrowPen(QPen pen) { arrow->setPen(pen); }
 	virtual Config *config(QWidget *parent);
 	BlackHole *blackHole;
+	double getBaseArrowPenThickness() { return baseArrowPenThickness; }
 
 protected:
+	/*
+	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
+	 */
+	double baseArrowPenThickness;
 	Arrow *arrow;
 };
 class BlackHoleTimer : public QObject
@@ -383,6 +414,7 @@ public:
 	virtual bool canBeMovedByOthers() const { return true; }
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem * option, QWidget * widget);
 	virtual void aboutToDie();
+	void resize(double resizeFactor);
 	virtual void showInfo();
 	virtual void hideInfo();
 	virtual bool place(Ball *ball, bool wasCenter);
@@ -426,9 +458,15 @@ protected:
 private:
 	QPixmap pixmap;
 	bool pixmapInitialised;
+	/*
+	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
+	 */
+	double baseX, baseY, baseExitX, baseExitY;
+	double baseInfoLineThickness, baseExitLineWidth;
+	double baseWidth, baseHeight;
 	int runs;
 	AntialisedLine *infoLine;
-	void finishMe();
+	void finishMe(double width=0);
 };
 class BlackHoleObj : public Object
 {
@@ -448,6 +486,10 @@ public:
 	void setAlwaysShow(bool yes);
 	void paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget);
 	virtual void setZValue(double newz);
+	void resize(double resizeFactor);
+	void setBasePenWidth(double basePenWidth) { this->basePenWidth=basePenWidth; }
+	void setLine(const QLineF & line);
+	void setLine(qreal x1, qreal y1, qreal x2, qreal y2);
 	virtual void setPen(QPen p);
 	virtual bool collision(Ball *ball, long int id);
 	virtual void save(KConfig *cfg);
@@ -461,7 +503,7 @@ public:
 
 	// must reimp because we gotta move the end items,
 	// and we do that in moveBy()
-	virtual void setPoints(double xa, double ya, double xb, double yb) { QGraphicsLineItem::setLine(xa, ya, xb, yb); moveBy(0, 0); }
+	virtual void setPoints(double xa, double ya, double xb, double yb) { setLine(xa, ya, xb, yb); moveBy(0, 0); }
 
 	virtual QList<QGraphicsItem *> moveableItems() const;
 	virtual void setGame(KolfGame *game);
@@ -480,6 +522,11 @@ protected:
 	bool editing;
 
 private:
+	/*
+	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
+	 */
+	double baseX1, baseY1, baseX2, baseY2;
+	double basePenWidth;
 	bool antialiasing;
 	long int lastId;
 
@@ -530,9 +577,10 @@ class Putter : public QGraphicsLineItem, public CanvasItem
 {
 public:
 	Putter(QGraphicsScene *scene);
+	void resize(double resizeFactor);
 	void go(Direction, Amount amount = Amount_Normal);
 	void setOrigin(double x, double y);
-	int curLen() const { return len; }
+	int curLen() const { return guideLineLength; }
 	double curAngle() const { return angle; }
 	int curDeg() const { return rad2deg(angle); }
 	virtual void showInfo();
@@ -555,9 +603,18 @@ private:
 	double angle;
 	double oneDegree;
 	QMap<Ball *, double> angleMap;
-	int len;
+	/*
+	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
+	 */
+	double guideLineLength, baseGuideLineLength;
+	double baseGuideLineThickness;
+	double basePutterThickness;
+	double basePutterWidth, putterWidth;
+	/*
+	 * resizeFactor is the number to multiply base numbers by to get their resized value (i.e. if it is 1 then use default size, if it is >1 then everything needs to be bigger, and if it is <1 then everything needs to be smaller)
+	 */
+	double resizeFactor;
 	void finishMe();
-	int putterWidth;
 	QGraphicsLineItem *guideLine;
 	bool m_showGuideLine;
 };
@@ -593,6 +650,7 @@ public:
 	Bridge(QRect rect, QGraphicsItem *parent, QGraphicsScene *scene, QString type);
 	void paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget=0);
 	virtual bool collision(Ball *ball, long int id);
+	virtual void resize(double resizeFactor);
 	virtual void aboutToDie();
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
@@ -629,6 +687,14 @@ protected:
 	bool pixmapInitialised;
 	QPixmap pixmap;
 	QString type;
+	/*
+	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
+	 */
+	double baseX, baseY, baseWidth, baseHeight;
+	double baseTopWallX, baseTopWallY;
+	double baseBotWallX, baseBotWallY;
+	double baseLeftWallX, baseLeftWallY;
+	double baseRightWallX, baseRightWallY;
 	Wall *topWall;
 	Wall *botWall;
 	Wall *leftWall;
@@ -660,6 +726,7 @@ class Sign : public Bridge
 {
 public:
 	Sign(QGraphicsItem * parent, QGraphicsScene *scene);
+	void resize(double resizeFactor);
 	void setText(const QString &text);
 	QString text() const { return m_text; }
 	virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *);
@@ -669,6 +736,10 @@ public:
 	virtual void load(KConfig *cfg);
 
 protected:
+	/*
+	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
+	 */
+	double baseFontPixelSize, fontPixelSize;
 	QString m_text;
 	QString m_untranslatedText;
 };
@@ -686,6 +757,8 @@ public:
 	WindmillGuard(QGraphicsItem * parent, QGraphicsScene *scene) : Wall(parent, scene) {};
 	void setBetween(double newmin, double newmax) { max = newmax; min = newmin; }
 	virtual void advance(int phase);
+	double getMax() { return max; }
+	double getMin() { return min; }
 
 protected:
 	double max;
@@ -716,6 +789,7 @@ public:
 	virtual void setGame(KolfGame *game);
 	virtual Config *config(QWidget *parent) { return new WindmillConfig(this, parent); }
 	void setSize(double width, double height);
+	virtual void resize(double resizeFactor);
 	virtual void moveBy(double dx, double dy);
 	void setSpeed(int news);
 	int curSpeed() const { return speed; }
@@ -726,6 +800,11 @@ protected:
 	WindmillGuard *guard;
 	Wall *left;
 	Wall *right;
+	/*
+	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
+	 */
+	double baseGuardX, baseGuardY, baseGuardMin, baseGuardMax, baseGuardSpeed;
+	double baseLeftX, baseLeftY, baseRightX, baseRightY;
 	int speedfactor;
 	int speed;
 	bool m_bottom;
@@ -935,6 +1014,15 @@ protected:
 	void handleMouseReleaseEvent(QMouseEvent *e);
 	void keyPressEvent(QKeyEvent *e);
 	void keyReleaseEvent(QKeyEvent *e);
+
+	/*
+	 * resizes view to make sure it is square and calls resizeAllItems
+	 */
+	void resizeEvent(QResizeEvent *);
+	/*
+	 * resizes and moves all items in the game
+	 */
+	void resizeAllItems(double resizeFactor, bool resizeBorderWalls=1);
 
 	QPoint viewportToViewport(const QPoint &p);
 

@@ -320,7 +320,7 @@ void Kolf::startNewGame()
 	game->setShowGuideLine(showGuideLineAction->isChecked());
 	game->setSound(soundAction->isChecked());
 
-	layout->addWidget(game, 0, 0, Qt::AlignCenter);
+	layout->addWidget(game, 0, 0);//, Qt::AlignCenter);
 
 	game->show();
 	game->setFocus();
@@ -342,7 +342,6 @@ void Kolf::startNewGame()
 	newAction->setEnabled(false);
 	loadGameAction->setEnabled(false);
 	tutorialAction->setEnabled(false);
-
 
 	// so game can do stuff that needs to be done
 	// after things above are connected
@@ -428,7 +427,7 @@ void Kolf::createSpacer()
 	spacer = new KolfGame(obj, &spacerPlayers, KGlobal::dirs()->findResource("appdata", "intro"), dummy);
 	spacer->setSound(false);
 	spacer->startFirstHole(1);
-	layout->addWidget(spacer, 0, 0, Qt::AlignCenter);
+	layout->addWidget(spacer, 0, 0);//, Qt::AlignCenter);
 	spacer->hidePutter();
 	spacer->ignoreEvents(true);
 
