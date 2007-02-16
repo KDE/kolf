@@ -1,7 +1,7 @@
 #include <kdebug.h>
 #include <kglobal.h>
 #include <kstandarddirs.h>
-#include <ksimpleconfig.h>
+#include <kconfig.h>
 #include <klibloader.h>
 
 #include "pluginloader.h"
