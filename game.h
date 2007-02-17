@@ -580,7 +580,7 @@ public:
 	void resize(double resizeFactor);
 	void go(Direction, Amount amount = Amount_Normal);
 	void setOrigin(double x, double y);
-	int curLen() const { return guideLineLength; }
+	double curLen() const { return guideLineLength; }
 	double curAngle() const { return angle; }
 	int curDeg() const { return rad2deg(angle); }
 	virtual void showInfo();
@@ -791,8 +791,8 @@ public:
 	void setSize(double width, double height);
 	virtual void resize(double resizeFactor);
 	virtual void moveBy(double dx, double dy);
-	void setSpeed(int news);
-	int curSpeed() const { return speed; }
+	void setSpeed(double news);
+	double curSpeed() const { return speed; }
 	void setBottom(bool yes);
 	bool bottom() const { return m_bottom; }
 
@@ -806,7 +806,7 @@ protected:
 	double baseGuardX, baseGuardY, baseGuardMin, baseGuardMax, baseGuardSpeed;
 	double baseLeftX, baseLeftY, baseRightX, baseRightY;
 	int speedfactor;
-	int speed;
+	double speed;
 	bool m_bottom;
 };
 class WindmillObj : public Object

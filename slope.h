@@ -90,7 +90,8 @@ private:
 	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
 	 */
 	double baseX, baseY, baseWidth, baseHeight;
-	double baseFontPixelSize, baseArrowPenThickness, arrowPenThickness;
+	double baseArrowPenThickness, arrowPenThickness;
+	int baseFontPixelSize;
 
 	void clearArrows();
 

@@ -116,10 +116,10 @@ void Ball::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*option*/,
 			pixmapInitialised=true;
 		}
 	}
-	painter->drawPixmap(rect().x(), rect().y(), pixmap);  
+	painter->drawPixmap((int)rect().x(), (int)rect().y(), pixmap);  
 }
 
-void Ball::advance(int phase)
+void Ball::advance(int /*phase*/)
 {
 	// not used anymore
 	// can be used to make ball wobble
@@ -328,10 +328,10 @@ void Ball::collisionDetect(double oldx, double oldy)
 					// move this ball to where it was barely touching
 					double ballAngle = m_vector.direction();
 					while (collidingItems().contains(item) > 0)
-						setPos(x() - cos(ballAngle) / 2.0, y() + sin(ballAngle) / 2.0);
+						setResizedPos(x() - cos(ballAngle) / 2.0, y() + sin(ballAngle) / 2.0);
 
 					// make a 2 pixel separation
-					setPos(x() - 2 * cos(ballAngle), y() + 2 * sin(ballAngle));
+					setResizedPos(x() - 2 * cos(ballAngle), y() + 2 * sin(ballAngle));
 
 					Vector bvector = oball->curVector();
 					m_vector -= bvector;

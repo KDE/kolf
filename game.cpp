@@ -461,7 +461,7 @@ WindmillConfig::WindmillConfig(Windmill *windmill, QWidget *parent)
 	QSlider *slider = new QSlider(Qt::Horizontal, this);
 	slider->setRange( 1, 10 );
 	slider->setPageStep( 1 );
-	slider->setValue( windmill->curSpeed() );
+	slider->setValue( (int)windmill->curSpeed() );
 	hlayout->addWidget(slider);
 	hlayout->addWidget(new QLabel(i18n("Fast"), this));
 	connect(slider, SIGNAL(valueChanged(int)), this, SLOT(speedChanged(int)));
@@ -553,12 +553,12 @@ void Windmill::aboutToDie()
 	delete right;
 }
 
-void Windmill::setSpeed(int news)
+void Windmill::setSpeed(double news)
 {
 	if (news < 0)
 		return;
 	speed = news;
-	guard->setXVelocity(((double)news / (double)3) * (guard->getXVelocity() > 0? 1 : -1));
+	guard->setXVelocity((news/3) * (guard->getXVelocity() > 0? 1 : -1));
 }
 
 void Windmill::setGame(KolfGame *game)
@@ -1416,12 +1416,12 @@ void BlackHole::paint(QPainter *painter, const QStyleOptionGraphicsItem * option
 		if(game == 0)
 			return;
 		else {
-			pixmap=game->renderer->renderSvg("black_hole", rect().width(), rect().height(), 0);
+			pixmap=game->renderer->renderSvg("black_hole", (int)rect().width(), (int)rect().height(), 0);
 			pixmapInitialised=true;
 		}
 	}
 	QGraphicsEllipseItem::paint(painter, option, widget);
-	painter->drawPixmap(rect().x(), rect().y(), pixmap);  
+	painter->drawPixmap((int)rect().x(), (int)rect().y(), pixmap);  
 }
 
 void BlackHole::showInfo()
@@ -1455,7 +1455,7 @@ void BlackHole::resize(double resizeFactor)
 {
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
 	setRect(-0.5*baseWidth*resizeFactor, -0.5*baseHeight*resizeFactor, baseWidth*resizeFactor, baseHeight*resizeFactor);
-	pixmap=game->renderer->renderSvg("black_hole", baseWidth*resizeFactor, baseHeight*resizeFactor, 0);
+	pixmap=game->renderer->renderSvg("black_hole", (int)(baseWidth*resizeFactor), (int)(baseHeight*resizeFactor), 0);
 	exitItem->setPos(baseExitX*resizeFactor, baseExitY*resizeFactor);
 	finishMe(baseExitLineWidth*resizeFactor);
 	if(infoLine) {
@@ -2778,25 +2778,25 @@ QPoint KolfGame::viewportToViewport(const QPoint &p)
 
 void KolfGame::mouseReleaseEvent(QMouseEvent * e)
 {
-	QMouseEvent fixedEvent (QEvent::MouseButtonRelease, viewportToViewport(e->pos()), e->button(), e->state());
+	QMouseEvent fixedEvent (QEvent::MouseButtonRelease, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
 	handleMouseReleaseEvent(&fixedEvent);
 }
 
 void KolfGame::mousePressEvent(QMouseEvent * e)
 {
-	QMouseEvent fixedEvent (QEvent::MouseButtonPress, viewportToViewport(e->pos()), e->button(), e->state());
+	QMouseEvent fixedEvent (QEvent::MouseButtonPress, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
 	handleMousePressEvent(&fixedEvent);
 }
 
 void KolfGame::mouseDoubleClickEvent(QMouseEvent * e)
 {
-	QMouseEvent fixedEvent (QEvent::MouseButtonDblClick, viewportToViewport(e->pos()), e->button(), e->state());
+	QMouseEvent fixedEvent (QEvent::MouseButtonDblClick, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
 	handleMouseDoubleClickEvent(&fixedEvent);
 }
 
 void KolfGame::mouseMoveEvent(QMouseEvent * e)
 {
-	QMouseEvent fixedEvent (QEvent::MouseMove, viewportToViewport(e->pos()), e->button(), e->state());
+	QMouseEvent fixedEvent (QEvent::MouseMove, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
 	handleMouseMoveEvent(&fixedEvent);
 }
 
@@ -2901,7 +2901,7 @@ void KolfGame::keyPressEvent(QKeyEvent *e)
 		case Qt::Key_Right:
 			// don't move putter if in advanced putting sequence
 			if ((!stroking && !putting) || !m_useAdvancedPutting)
-				putter->go(e->key() == Qt::Key_Left? D_Left : D_Right, e->state() & Qt::ShiftModifier? Amount_More : e->state() & Qt::ControlModifier? Amount_Less : Amount_Normal);
+				putter->go(e->key() == Qt::Key_Left? D_Left : D_Right, e->modifiers() & Qt::ShiftModifier? Amount_More : e->modifiers() & Qt::ControlModifier? Amount_Less : Amount_Normal);
 			break;
 
 		case Qt::Key_Space: case Qt::Key_Down:
@@ -3006,7 +3006,7 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 
 	if (e->key() == Qt::Key_Space || e->key() == Qt::Key_Down)
 		puttRelease();
-	else if ((e->key() == Qt::Key_Backspace || e->key() == Qt::Key_Delete) && !(e->state() & Qt::ControlModifier))
+	else if ((e->key() == Qt::Key_Backspace || e->key() == Qt::Key_Delete) && !(e->modifiers() & Qt::ControlModifier))
 	{
 		if (editing && !moving && selectedItem)
 		{
@@ -3063,7 +3063,7 @@ void KolfGame::resizeAllItems(double resizeFactor, bool resizeBorderWalls)
 	//resizeFactor is the number to multiply default sizes and positions by to get their resized value (i.e. if it is 1 then use default size, if it is >1 then everything needs to be bigger, and if it is <1 then everything needs to be smaller)
 	course->setSceneRect(0, 0, 400*resizeFactor, 400*resizeFactor);
 
-	QPixmap pic = renderer->renderSvg("grass", width*resizeFactor, height*resizeFactor, 0);
+	QPixmap pic = renderer->renderSvg("grass", (int)(width*resizeFactor), (int)(height*resizeFactor), 0);
 	course->setBackgroundBrush(QBrush(pic));
 
 	QList<QGraphicsItem *>::const_iterator item;
@@ -3492,7 +3492,7 @@ void KolfGame::shotDone()
 					x -= cos(v.direction()) * movePixel;
 					y += sin(v.direction()) * movePixel;
 
-					ball->setPos(x, y);
+					ball->setResizedPos(x, y);
 				}
 
 				// move another two pixels away
