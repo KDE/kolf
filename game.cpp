@@ -2617,7 +2617,7 @@ void KolfGame::setFilename(const QString &filename)
 {
 	this->filename = filename;
 	delete cfg;
-	cfg = new KConfig(filename, false, false);
+	cfg = new KConfig(filename, KConfig::NoGlobals);
 }
 
 KolfGame::~KolfGame()

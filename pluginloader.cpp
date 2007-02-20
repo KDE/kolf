@@ -1,7 +1,7 @@
 #include <kdebug.h>
 #include <kglobal.h>
 #include <kstandarddirs.h>
-#include <ksimpleconfig.h>
+#include <kconfig.h>
 #include <klibloader.h>
 
 #include "pluginloader.h"
@@ -15,7 +15,7 @@ ObjectList *PluginLoader::loadAll()
 
 	for (QStringList::Iterator it = files.begin(); it != files.end(); ++it)
 	{
-		KSimpleConfig cfg(*it);
+		KConfig cfg(*it, KConfig::OnlyLocal);
 		QString filename(cfg.readEntry("Filename", ""));
 
 		libs.append(filename);
