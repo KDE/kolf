@@ -4572,7 +4572,7 @@ void KolfGame::scoresFromSaved(KConfig *config, PlayerList &players)
 void KolfGame::saveScores(KConfig *config)
 {
 	// wipe out old player info
-	QStringList groups = cfg->groupList();
+	QStringList groups = config->groupList();
 	for (QStringList::Iterator it = groups.begin(); it != groups.end(); ++it)
 	{
 		// this deletes all int groups, ie, the player info groups
