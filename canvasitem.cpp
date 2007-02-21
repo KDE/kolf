@@ -34,9 +34,9 @@ QGraphicsRectItem *CanvasItem::onVStrut()
 	return aboveVStrut && ritem? ritem : 0;
 }
 
-void CanvasItem::save(KConfig *cfg)
+void CanvasItem::save(KConfigGroup *cfgGroup)
 {
-	cfg->writeEntry("dummykey", true);
+	cfgGroup->writeEntry("dummykey", true);
 }
 
 void CanvasItem::playSound(QString file, double vol)

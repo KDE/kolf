@@ -375,18 +375,18 @@ void Bridge::moveBy(double dx, double dy)
 	}
 }
 
-void Bridge::load(KConfig *cfg)
+void Bridge::load(KConfigGroup *cfgGroup)
 {
-	doLoad(cfg);
+	doLoad(cfgGroup);
 }
 
-void Bridge::doLoad(KConfig *cfg)
+void Bridge::doLoad(KConfigGroup *cfgGroup)
 {
-	newSize(cfg->readEntry("width", width()), cfg->readEntry("height", height()));
-	setTopWallVisible(cfg->readEntry("topWallVisible", topWallVisible()));
-	setBotWallVisible(cfg->readEntry("botWallVisible", botWallVisible()));
-	setLeftWallVisible(cfg->readEntry("leftWallVisible", leftWallVisible()));
-	setRightWallVisible(cfg->readEntry("rightWallVisible", rightWallVisible()));
+	newSize(cfgGroup->readEntry("width", width()), cfgGroup->readEntry("height", height()));
+	setTopWallVisible(cfgGroup->readEntry("topWallVisible", topWallVisible()));
+	setBotWallVisible(cfgGroup->readEntry("botWallVisible", botWallVisible()));
+	setLeftWallVisible(cfgGroup->readEntry("leftWallVisible", leftWallVisible()));
+	setRightWallVisible(cfgGroup->readEntry("rightWallVisible", rightWallVisible()));
 
 	baseX = x();
 	baseY = y();
@@ -400,19 +400,19 @@ void Bridge::doLoad(KConfig *cfg)
 	baseRightWallY = rightWall->y();
 }
 
-void Bridge::save(KConfig *cfg)
+void Bridge::save(KConfigGroup *cfgGroup)
 {
-	doSave(cfg);
+	doSave(cfgGroup);
 }
 
-void Bridge::doSave(KConfig *cfg)
+void Bridge::doSave(KConfigGroup *cfgGroup)
 {
-	cfg->writeEntry("width", width());
-	cfg->writeEntry("height", height());
-	cfg->writeEntry("topWallVisible", topWallVisible());
-	cfg->writeEntry("botWallVisible", botWallVisible());
-	cfg->writeEntry("leftWallVisible", leftWallVisible());
-	cfg->writeEntry("rightWallVisible", rightWallVisible());
+	cfgGroup->writeEntry("width", width());
+	cfgGroup->writeEntry("height", height());
+	cfgGroup->writeEntry("topWallVisible", topWallVisible());
+	cfgGroup->writeEntry("botWallVisible", botWallVisible());
+	cfgGroup->writeEntry("leftWallVisible", leftWallVisible());
+	cfgGroup->writeEntry("rightWallVisible", rightWallVisible());
 }
 
 QList<QGraphicsItem *> Bridge::moveableItems() const
@@ -569,25 +569,25 @@ void Windmill::setGame(KolfGame *game)
 	right->setGame(game);
 }
 
-void Windmill::save(KConfig *cfg)
+void Windmill::save(KConfigGroup *cfgGroup)
 {
-	cfg->writeEntry("speed", speed);
-	cfg->writeEntry("bottom", m_bottom);
+	cfgGroup->writeEntry("speed", speed);
+	cfgGroup->writeEntry("bottom", m_bottom);
 
-	doSave(cfg);
+	doSave(cfgGroup);
 }
 
-void Windmill::load(KConfig *cfg)
+void Windmill::load(KConfigGroup *cfgGroup)
 {
-	setSpeed(cfg->readEntry("speed", -1));
+	setSpeed(cfgGroup->readEntry("speed", -1));
 
-	doLoad(cfg);
+	doLoad(cfgGroup);
 
 	left->editModeChanged(false);
 	right->editModeChanged(false);
 	guard->editModeChanged(false);
 
-	setBottom(cfg->readEntry("bottom", true));
+	setBottom(cfgGroup->readEntry("bottom", true));
 
 	baseGuardMin = guard->getMin();
 	baseGuardMax = guard->getMax();
@@ -674,19 +674,19 @@ void Sign::resize(double resizeFactor)
 	Bridge::resize(resizeFactor);
 }
 
-void Sign::load(KConfig *cfg)
+void Sign::load(KConfigGroup *cfgGroup)
 {
-	m_text = cfg->readEntry("Comment", m_text);
-	m_untranslatedText = cfg->readEntryUntranslated("Comment", m_untranslatedText);
+	m_text = cfgGroup->readEntry("Comment", m_text);
+	m_untranslatedText = cfgGroup->readEntryUntranslated("Comment", m_untranslatedText);
 
-	doLoad(cfg);
+	doLoad(cfgGroup);
 }
 
-void Sign::save(KConfig *cfg)
+void Sign::save(KConfigGroup *cfgGroup)
 {
-	cfg->writeEntry("Comment", m_untranslatedText);
+	cfgGroup->writeEntry("Comment", m_untranslatedText);
 
-	doSave(cfg);
+	doSave(cfgGroup);
 }
 
 void Sign::setText(const QString &text)
@@ -908,23 +908,23 @@ void KolfEllipse::advance(int phase)
 	}
 }
 
-void KolfEllipse::load(KConfig *cfg)
+void KolfEllipse::load(KConfigGroup *cfgGroup)
 {
-	setChangeEnabled(cfg->readEntry("changeEnabled", changeEnabled()));
-	setChangeEvery(cfg->readEntry("changeEvery", changeEvery()));
+	setChangeEnabled(cfgGroup->readEntry("changeEnabled", changeEnabled()));
+	setChangeEvery(cfgGroup->readEntry("changeEvery", changeEvery()));
 	double newWidth = width(), newHeight = height();
-	newWidth = cfg->readEntry("width", newWidth);
-	newHeight = cfg->readEntry("height", newHeight);
+	newWidth = cfgGroup->readEntry("width", newWidth);
+	newHeight = cfgGroup->readEntry("height", newHeight);
 	newSize(newWidth, newHeight);
 	moveBy(0, 0); 
 } 
 
-void KolfEllipse::save(KConfig *cfg)
+void KolfEllipse::save(KConfigGroup *cfgGroup)
 {
-	cfg->writeEntry("changeEvery", changeEvery());
-	cfg->writeEntry("changeEnabled", changeEnabled());
-	cfg->writeEntry("width", width());
-	cfg->writeEntry("height", height());
+	cfgGroup->writeEntry("changeEvery", changeEvery());
+	cfgGroup->writeEntry("changeEnabled", changeEnabled());
+	cfgGroup->writeEntry("width", width());
+	cfgGroup->writeEntry("height", height());
 }
 
 Config *KolfEllipse::config(QWidget *parent)
@@ -1330,9 +1330,9 @@ void Cup::resize(double resizeFactor)
 	pixmap=game->renderer->renderSvg("cup", (int)rect().width(), (int)rect().height(), 0);
 }
 
-void Cup::save(KConfig *cfg)
+void Cup::save(KConfigGroup *cfgGroup)
 {
-	cfg->writeEntry("dummykey", true);
+	cfgGroup->writeEntry("dummykey", true);
 }
 
 void Cup::saveState(StateDB *db)
@@ -1590,13 +1590,13 @@ void BlackHole::halfway()
 	playSound("blackhole");
 }
 
-void BlackHole::load(KConfig *cfg)
+void BlackHole::load(KConfigGroup *cfgGroup)
 {
-	QPoint exit = cfg->readEntry("exit", exit);
+	QPoint exit = cfgGroup->readEntry("exit", exit);
 	exitItem->setPos(exit.x(), exit.y());
-	exitDeg = cfg->readEntry("exitDeg", exitDeg);
-	m_minSpeed = cfg->readEntry("minspeed", m_minSpeed);
-	m_maxSpeed = cfg->readEntry("maxspeed", m_maxSpeed);
+	exitDeg = cfgGroup->readEntry("exitDeg", exitDeg);
+	m_minSpeed = cfgGroup->readEntry("minspeed", m_minSpeed);
+	m_maxSpeed = cfgGroup->readEntry("maxspeed", m_maxSpeed);
 	exitItem->updateArrowAngle();
 	exitItem->updateArrowLength();
 
@@ -1637,12 +1637,12 @@ void BlackHole::finishMe(double width)
 	exitItem->setVisible(true);
 }
 
-void BlackHole::save(KConfig *cfg)
+void BlackHole::save(KConfigGroup *cfgGroup)
 {
-	cfg->writeEntry("exit", QPointF(exitItem->x(), exitItem->y()));
-	cfg->writeEntry("exitDeg", exitDeg);
-	cfg->writeEntry("minspeed", m_minSpeed);
-	cfg->writeEntry("maxspeed", m_maxSpeed);
+	cfgGroup->writeEntry("exit", QPointF(exitItem->x(), exitItem->y()));
+	cfgGroup->writeEntry("exitDeg", exitDeg);
+	cfgGroup->writeEntry("minspeed", m_minSpeed);
+	cfgGroup->writeEntry("maxspeed", m_maxSpeed);
 }
 
 HoleResult BlackHole::result(QPointF p, double s, bool * /*wasCenter*/)
@@ -2213,12 +2213,12 @@ bool Wall::collision(Ball *ball, long int id)
 	return false;
 }
 
-void Wall::load(KConfig *cfg)
+void Wall::load(KConfigGroup *cfgGroup)
 {
 	QPoint start(startPoint());
-	start = cfg->readEntry("startPoint", start);
+	start = cfgGroup->readEntry("startPoint", start);
 	QPoint end(endPoint());
-	end = cfg->readEntry("endPoint", end);
+	end = cfgGroup->readEntry("endPoint", end);
 
 	setLine(start.x(), start.y(), end.x(), end.y());
 
@@ -2227,10 +2227,10 @@ void Wall::load(KConfig *cfg)
 	endItem->setPos(end.x()-1, end.y()-1);
 }
 
-void Wall::save(KConfig *cfg)
+void Wall::save(KConfigGroup *cfgGroup)
 {
-	cfg->writeEntry("startPoint", QPoint((int)startItem->x(), (int)startItem->y()));
-	cfg->writeEntry("endPoint", QPoint((int)endItem->x(), (int)endItem->y()));
+	cfgGroup->writeEntry("startPoint", QPoint((int)startItem->x(), (int)startItem->y()));
+	cfgGroup->writeEntry("endPoint", QPoint((int)endItem->x(), (int)endItem->y()));
 }
 
 void Wall::doAdvance()
@@ -2442,6 +2442,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	regAdv = false;
 	curHole = 0; // will get ++'d
 	cfg = 0;
+	cfgGroup = 0;
 	setFilename(filename);
 	this->players = players;
 	this->obj = obj;
@@ -2596,8 +2597,8 @@ void KolfGame::startFirstHole(int hole)
 	{
 		for (; scoreboardHoles < curHole; ++scoreboardHoles)
 		{
-			cfg->setGroup(QString("%1-hole@-50,-50|0").arg(scoreboardHoles + 1));
-			emit newHole(cfg->readEntry("par", 3));
+			cfgGroup = new KConfigGroup(cfg->group(QString("%1-hole@-50,-50|0").arg(scoreboardHoles + 1)));
+			emit newHole(cfgGroup->readEntry("par", 3));
 		}
 
 		// lets load all of the scores from saved game if there are any
@@ -3775,8 +3776,8 @@ void KolfGame::startNextHole()
 
 		for (; scoreboardHoles < curHole; ++scoreboardHoles)
 		{
-			cfg->setGroup(QString("%1-hole@-50,-50|0").arg(scoreboardHoles + 1));
-			emit newHole(cfg->readEntry("par", 3));
+			cfgGroup = new KConfigGroup(cfg->group(QString("%1-hole@-50,-50|0").arg(scoreboardHoles + 1)));
+			emit newHole(cfgGroup->readEntry("par", 3));
 		}
 
 		resetHoleScores();
@@ -3837,18 +3838,18 @@ void KolfGame::openFile()
 	// we do this here for the hell of it.
 	// there is no fake id, by the way,
 	// because it's old and when i added ids i forgot to change it.
-	cfg->setGroup("0-course@-50,-50");
-	holeInfo.setAuthor(cfg->readEntry("author", holeInfo.author()));
-	holeInfo.setName(cfg->readEntry("Name", holeInfo.name()));
-	holeInfo.setUntranslatedName(cfg->readEntryUntranslated("Name", holeInfo.untranslatedName()));
+	cfgGroup = new KConfigGroup(cfg->group(QString("0-course@-50,-50")));
+	holeInfo.setAuthor(cfgGroup->readEntry("author", holeInfo.author()));
+	holeInfo.setName(cfgGroup->readEntry("Name", holeInfo.name()));
+	holeInfo.setUntranslatedName(cfgGroup->readEntryUntranslated("Name", holeInfo.untranslatedName()));
 	emit titleChanged(holeInfo.name());
 
-	cfg->setGroup(QString("%1-hole@-50,-50|0").arg(curHole));
-	curPar = cfg->readEntry("par", 3);
+	cfgGroup = new KConfigGroup(KSharedConfig::openConfig(filename), QString("%1-hole@-50,-50|0").arg(curHole));
+	curPar = cfgGroup->readEntry("par", 3);
 	holeInfo.setPar(curPar);
-	holeInfo.borderWallsChanged(cfg->readEntry("borderWalls", holeInfo.borderWalls()));
-	holeInfo.setMaxStrokes(cfg->readEntry("maxstrokes", 10));
-	bool hasFinalLoad = cfg->readEntry("hasFinalLoad", true);
+	holeInfo.borderWallsChanged(cfgGroup->readEntry("borderWalls", holeInfo.borderWalls()));
+	holeInfo.setMaxStrokes(cfgGroup->readEntry("maxstrokes", 10));
+	bool hasFinalLoad = cfgGroup->readEntry("hasFinalLoad", true);
 
 	QStringList missingPlugins;
 	QStringList groups = cfg->groupList();
@@ -3859,7 +3860,7 @@ void KolfGame::openFile()
 	for (QStringList::Iterator it = groups.begin(); it != groups.end(); ++it)
 	{
 		// [<holeNum>-<name>@<x>,<y>|<id>]
-		cfg->setGroup(*it);
+		cfgGroup = new KConfigGroup(cfg->group(*it));
 
 		const int len = (*it).length();
 		const int dashIndex = (*it).indexOf("-");
@@ -3930,8 +3931,8 @@ void KolfGame::openFile()
 			// make things actually show
 			if (!hasFinalLoad)
 			{
-				cfg->setGroup(makeGroup(id, curHole, sceneItem->name(), x, y));
-				sceneItem->load(cfg);
+				cfgGroup = new KConfigGroup(cfg->group(makeGroup(id, curHole, sceneItem->name(), x, y)));
+				sceneItem->load(cfgGroup);
 			}
 
 			// we don't allow multiple items for the same thing in
@@ -3991,8 +3992,8 @@ void KolfGame::openFile()
 				else
 				{
 					QString group = makeGroup(item->curId(), curHole, item->name(), (int)(*qsceneItem)->x(), (int)(*qsceneItem)->y());
-					cfg->setGroup(group);
-					item->load(cfg);
+					cfgGroup = new KConfigGroup(cfg->group(group));
+					item->load(cfgGroup);
 				}
 			}
 		}
@@ -4001,8 +4002,8 @@ void KolfGame::openFile()
 		qsceneItem = qtodo.constBegin();
 		for (citem = todo.constBegin(); citem != todo.constEnd(); ++citem)
 		{
-			cfg->setGroup(makeGroup((*citem)->curId(), curHole, (*citem)->name(), (int)(*qsceneItem)->x(), (int)(*qsceneItem)->y()));
-			(*citem)->load(cfg);
+			cfgGroup = new KConfigGroup(cfg->group(makeGroup((*citem)->curId(), curHole, (*citem)->name(), (int)(*qsceneItem)->x(), (int)(*qsceneItem)->y())));
+			(*citem)->load(cfgGroup);
 
 			qsceneItem++;
 		}
@@ -4328,25 +4329,25 @@ void KolfGame::save()
 		{
 			citem->clean();
 
-			cfg->setGroup(makeGroup(citem->curId(), curHole, citem->name(), (int)(*item)->x(), (int)(*item)->y()));
-			citem->save(cfg);
+			cfgGroup = new KConfigGroup(cfg->group(makeGroup(citem->curId(), curHole, citem->name(), (int)(*item)->x(), (int)(*item)->y())));
+			citem->save(cfgGroup);
 		}
 	}
 
 	// save where ball starts (whiteBall tells all)
-	cfg->setGroup(QString("%1-ball@%2,%3").arg(curHole).arg((int)whiteBall->x()).arg((int)whiteBall->y()));
-	cfg->writeEntry("dummykey", true);
+	cfgGroup = new KConfigGroup(cfg->group(QString("%1-ball@%2,%3").arg(curHole).arg((int)whiteBall->x()).arg((int)whiteBall->y())));
+	cfgGroup->writeEntry("dummykey", true);
 
-	cfg->setGroup("0-course@-50,-50");
-	cfg->writeEntry("author", holeInfo.author());
-	cfg->writeEntry("Name", holeInfo.untranslatedName());
+	cfgGroup = new KConfigGroup(cfg->group(QString("0-course@-50,-50")));
+	cfgGroup->writeEntry("author", holeInfo.author());
+	cfgGroup->writeEntry("Name", holeInfo.untranslatedName());
 
 	// save hole info
-	cfg->setGroup(QString("%1-hole@-50,-50|0").arg(curHole));
-	cfg->writeEntry("par", holeInfo.par());
-	cfg->writeEntry("maxstrokes", holeInfo.maxStrokes());
-	cfg->writeEntry("borderWalls", holeInfo.borderWalls());
-	cfg->writeEntry("hasFinalLoad", hasFinalLoad);
+	cfgGroup = new KConfigGroup(cfg->group(QString("%1-hole@-50,-50|0").arg(curHole)));
+	cfgGroup->writeEntry("par", holeInfo.par());
+	cfgGroup->writeEntry("maxstrokes", holeInfo.maxStrokes());
+	cfgGroup->writeEntry("borderWalls", holeInfo.borderWalls());
+	cfgGroup->writeEntry("hasFinalLoad", hasFinalLoad);
 
 	cfg->sync();
 
@@ -4516,25 +4517,25 @@ void KolfGame::setSound(bool yes)
 
 void KolfGame::courseInfo(CourseInfo &info, const QString& filename)
 {
-	KConfig cfg(filename);
-	cfg.setGroup("0-course@-50,-50");
-	info.author = cfg.readEntry("author", info.author);
-	info.name = cfg.readEntry("Name", cfg.readEntry("name", info.name));
-	info.untranslatedName = cfg.readEntryUntranslated("Name", cfg.readEntryUntranslated("name", info.name));
+	KConfig config(filename);
+	KConfigGroup configGroup (config.group(QString("0-course@-50,-50")));
+	info.author = configGroup.readEntry("author", info.author);
+	info.name = configGroup.readEntry("Name", configGroup.readEntry("name", info.name));
+	info.untranslatedName = configGroup.readEntryUntranslated("Name", configGroup.readEntryUntranslated("name", info.name));
 
 	unsigned int hole = 1;
 	unsigned int par= 0;
 	while (1)
 	{
 		QString group = QString("%1-hole@-50,-50|0").arg(hole);
-		if (!cfg.hasGroup(group))
+		if (!config.hasGroup(group))
 		{
 			hole--;
 			break;
 		}
 
-		cfg.setGroup(group);
-		par += cfg.readEntry("par", 3);
+		configGroup = KConfigGroup(config.group(group));
+		par += configGroup.readEntry("par", 3);
 
 		hole++;
 	}
@@ -4545,21 +4546,21 @@ void KolfGame::courseInfo(CourseInfo &info, const QString& filename)
 
 void KolfGame::scoresFromSaved(KConfig *config, PlayerList &players)
 {
-	config->setGroup("0 Saved Game");
-	int numPlayers = config->readEntry("Players", 0);
+	KConfigGroup *configGroup  = new KConfigGroup(config->group(QString("0 Saved Game")));
+	int numPlayers = configGroup->readEntry("Players", 0);
 	if (numPlayers <= 0)
 		return;
 
 	for (int i = 1; i <= numPlayers; ++i)
 	{
 		// this is same as in kolf.cpp, but we use saved game values
-		config->setGroup(QString::number(i));
+		configGroup = new KConfigGroup(config->group(QString::number(i)));
 		players.append(Player());
-		players.last().ball()->setColor(config->readEntry("Color", "#ffffff"));
-		players.last().setName(config->readEntry("Name"));
+		players.last().ball()->setColor(configGroup->readEntry("Color", "#ffffff"));
+		players.last().setName(configGroup->readEntry("Name"));
 		players.last().setId(i);
 
-		QStringList scores(config->readEntry("Scores",QStringList()));
+		QStringList scores(configGroup->readEntry("Scores",QStringList()));
 		QList<int> intscores;
 		for (QStringList::Iterator it = scores.begin(); it != scores.end(); ++it)
 			intscores.append((*it).toInt());
@@ -4571,7 +4572,7 @@ void KolfGame::scoresFromSaved(KConfig *config, PlayerList &players)
 void KolfGame::saveScores(KConfig *config)
 {
 	// wipe out old player info
-	QStringList groups = config->groupList();
+	QStringList groups = cfg->groupList();
 	for (QStringList::Iterator it = groups.begin(); it != groups.end(); ++it)
 	{
 		// this deletes all int groups, ie, the player info groups
@@ -4581,23 +4582,23 @@ void KolfGame::saveScores(KConfig *config)
 			config->deleteGroup(*it);
 	}
 
-	config->setGroup("0 Saved Game");
-	config->writeEntry("Players", players->count());
-	config->writeEntry("Course", filename);
-	config->writeEntry("Current Hole", curHole);
+	KConfigGroup *configGroup  = new KConfigGroup(config->group(QString("0 Saved Game")));
+	configGroup->writeEntry("Players", players->count());
+	configGroup->writeEntry("Course", filename);
+	configGroup->writeEntry("Current Hole", curHole);
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 	{
-		config->setGroup(QString::number((*it).id()));
-		config->writeEntry("Name", (*it).name());
-		config->writeEntry("Color", (*it).ball()->color().name());
+		configGroup  = new KConfigGroup(config->group(QString::number((*it).id())));
+		configGroup->writeEntry("Name", (*it).name());
+		configGroup->writeEntry("Color", (*it).ball()->color().name());
 
 		QStringList scores;
 		QList<int> intscores = (*it).scores();
 		for (QList<int>::Iterator it = intscores.begin(); it != intscores.end(); ++it)
 			scores.append(QString::number(*it));
 
-		config->writeEntry("Scores", scores);
+		configGroup->writeEntry("Scores", scores);
 	}
 }
 

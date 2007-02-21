@@ -39,6 +39,7 @@ class QResizeEvent;
 class QVBoxLayout;
 class QPainter;
 class KConfig;
+class KConfigGroup;
 class KPrinter;
 class KolfGame;
 
@@ -54,8 +55,8 @@ enum HoleResult { Result_Holed, Result_Miss, Result_LipOut };
 class BallStateInfo
 {
 public:
-	void saveState(KConfig *cfg);
-	void loadState(KConfig *cfg);
+	void saveState(KConfigGroup *cfgGroup);
+	void loadState(KConfigGroup *cfgGroup);
 
 	int id;
 	QPoint spot;
@@ -200,8 +201,8 @@ public:
 
 	virtual void editModeChanged(bool changed);
 
-	virtual void save(KConfig *cfg);
-	virtual void load(KConfig *cfg);
+	virtual void save(KConfigGroup *cfgGroup);
+	virtual void load(KConfigGroup *cfgGroup);
 
 	virtual Config *config(QWidget *parent);
 
@@ -326,7 +327,7 @@ public:
 	void moveBy(double x, double y);
 	void firstMove(int x, int y);
 	void resize(double resizeFactor);
-	virtual void save(KConfig *cfg);
+	virtual void save(KConfigGroup *cfgGroup);
 	void saveState(StateDB *db);
 	void loadState(StateDB *db);
 	virtual bool canBeMovedByOthers() const { return true; }
@@ -423,8 +424,8 @@ public:
 	virtual void showInfo();
 	virtual void hideInfo();
 	virtual bool place(Ball *ball, bool wasCenter);
-	virtual void save(KConfig *cfg);
-	virtual void load(KConfig *cfg);
+	virtual void save(KConfigGroup *cfgGroup);
+	virtual void load(KConfigGroup *cfgGroup);
 	virtual Config *config(QWidget *parent) { return new BlackHoleConfig(this, parent); }
 	virtual QList<QGraphicsItem *> moveableItems() const;
 	double minSpeed() const { return m_minSpeed; }
@@ -497,8 +498,8 @@ public:
 	void setLine(qreal x1, qreal y1, qreal x2, qreal y2);
 	virtual void setPen(QPen p);
 	virtual bool collision(Ball *ball, long int id);
-	virtual void save(KConfig *cfg);
-	virtual void load(KConfig *cfg);
+	virtual void save(KConfigGroup *cfgGroup);
+	virtual void load(KConfigGroup *cfgGroup);
 	virtual void selectedItem(QGraphicsItem *item);
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
@@ -659,11 +660,11 @@ public:
 	virtual void aboutToDie();
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
-	virtual void load(KConfig *cfg);
-	virtual void save(KConfig *cfg);
+	virtual void load(KConfigGroup *cfgGroup);
+	virtual void save(KConfigGroup *cfgGroup);
 	virtual bool vStrut() const { return true; }
-	void doLoad(KConfig *cfg);
-	void doSave(KConfig *cfg);
+	void doLoad(KConfigGroup *cfgGroup);
+	void doSave(KConfigGroup *cfgGroup);
 	virtual void newSize(double width, double height);
 	virtual void setGame(KolfGame *game);
 	virtual Config *config(QWidget *parent) { return new BridgeConfig(this, parent); }
@@ -737,8 +738,8 @@ public:
 	virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *);
 	virtual bool vStrut() const { return false; }
 	virtual Config *config(QWidget *parent) { return new SignConfig(this, parent); }
-	virtual void save(KConfig *cfg);
-	virtual void load(KConfig *cfg);
+	virtual void save(KConfigGroup *cfgGroup);
+	virtual void load(KConfigGroup *cfgGroup);
 
 protected:
 	/*
@@ -789,8 +790,8 @@ public:
 	Windmill(QRect rect, QGraphicsItem * parent, QGraphicsScene *scene);
 	virtual void aboutToDie();
 	virtual void newSize(double width, double height);
-	virtual void save(KConfig *cfg);
-	virtual void load(KConfig *cfg);
+	virtual void save(KConfigGroup *cfgGroup);
+	virtual void load(KConfigGroup *cfgGroup);
 	virtual void setGame(KolfGame *game);
 	virtual Config *config(QWidget *parent) { return new WindmillConfig(this, parent); }
 	void setSize(double width, double height);
@@ -939,7 +940,7 @@ public:
 	void hidePutter() { putter->setVisible(false); }
 	void ignoreEvents(bool ignore) { m_ignoreEvents = ignore; }
 
-	static void scoresFromSaved(KConfig *, PlayerList &players);
+	static void scoresFromSaved(KConfig*, PlayerList &players);
 	static void courseInfo(CourseInfo &info, const QString &filename);
 	KolfSvgRenderer *renderer;
 
@@ -1124,6 +1125,7 @@ private:
 	bool infoShown;
 
 	KConfig *cfg;
+	KConfigGroup *cfgGroup;
 
 	inline void addBorderWall(QPoint start, QPoint end);
 	void shotStart();

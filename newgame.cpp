@@ -35,6 +35,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 	this->enableCourses = enableCourses;
 
 	KSharedConfig::Ptr config = KGlobal::config();
+	KConfigGroup *configGroup = 0;
 
 	// lots o' colors :)
 	startColors << Qt::yellow << Qt::blue << Qt::red << Qt::lightGray << Qt::cyan << Qt::darkBlue << Qt::magenta << Qt::darkGray << Qt::darkMagenta << Qt::darkYellow;
@@ -105,15 +106,15 @@ NewGameDialog::NewGameDialog(bool enableCourses)
                 coursePageLayout->addLayout( hlayout );
 
 		// following use this group
-		config->setGroup("New Game Dialog Mode");
+		configGroup = new KConfigGroup(config->group(QString("New Game Dialog Mode")));
 
 		// find other courses
-		externCourses = config->readEntry("extra",QStringList());
+		externCourses = configGroup->readEntry("extra",QStringList());
 
 		/// course loading
 		QStringList items = externCourses + KGlobal::dirs()->findAllResources("appdata", "courses/*");
 		QStringList nameList;
-		const QString lastCourse(config->readEntry("course", ""));
+		const QString lastCourse(configGroup->readEntry("course", ""));
 		int curItem = 0;
 		i = 0;
 		for (QStringList::Iterator it = items.begin(); it != items.end(); ++it, ++i)
@@ -193,7 +194,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 
 	mode = new QCheckBox(i18n("&Strict mode"), optionsPage);
 	vlayout->addWidget(mode);
-	mode->setChecked(config->readEntry("competition", false));
+	mode->setChecked(configGroup->readEntry("competition", false));
 
 	QLabel *desc = new QLabel(i18n("In strict mode, undo, editing, and switching holes is not allowed. This is generally for competition. Only in strict mode are highscores kept."), optionsPage);
 	desc->setTextFormat(Qt::RichText);
@@ -214,23 +215,23 @@ void NewGameDialog::invokeBrowser(const QString &_url)
 void NewGameDialog::slotOk()
 {
 	KSharedConfig::Ptr config = KGlobal::config();
+	KConfigGroup *configGroup = new KConfigGroup(config->group(QString("New Game Dialog Mode")));
 
-	config->setGroup("New Game Dialog Mode");
-	config->writeEntry("competition", mode->isChecked());
+	configGroup->writeEntry("competition", mode->isChecked());
 	if (enableCourses)
 	{
-		config->writeEntry("course", currentCourse);
-		config->writeEntry("extra", externCourses);
+		configGroup->writeEntry("course", currentCourse);
+		configGroup->writeEntry("extra", externCourses);
 	}
 
 	config->deleteGroup("New Game Dialog");
-	config->setGroup("New Game Dialog");
+	configGroup = new KConfigGroup(config->group(QString("New Game Dialog Mode")));
 
 	PlayerEditor *curEditor = 0;
 	int i = 0;
 	for (; i < editors.count(); ++i) {
 		curEditor = editors.at(i);
-		config->writeEntry(QString::number(i) + curEditor->name(), curEditor->color().name());
+		configGroup->writeEntry(QString::number(i) + curEditor->name(), curEditor->color().name());
 	}
 
 	config->sync();

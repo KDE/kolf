@@ -7,7 +7,7 @@
 #include "config.h"
 
 class Ball;
-class KConfig;
+class KConfigGroup;
 class StateDB;
 class KolfGame;
 
@@ -17,9 +17,9 @@ public:
 	CanvasItem() { game = 0; }
 	virtual ~CanvasItem() {}
 	/**
-	 * load your settings from the KConfig, which represents a course.
+	 * load your settings from the KConfigGroup, which represents a course.
 	 */
-	virtual void load(KConfig *) {}
+	virtual void load(KConfigGroup *) {}
 	/**
 	 * load a point if you wish. Rarely necessary.
 	 */
@@ -43,7 +43,7 @@ public:
 	/**
 	 * save your settings.
 	 */
-	virtual void save(KConfig *cfg);
+	virtual void save(KConfigGroup *cfg);
 	/**
 	 * save a point if you wish. Rarely necessary.
 	 */

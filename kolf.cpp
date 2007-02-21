@@ -154,16 +154,15 @@ void Kolf::initGUI()
 	connect(useMouseAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	useMouseAction->setCheckedState(KGuiItem(i18n("Disable &Mouse for Moving Putter")));
 	connect(useMouseAction, SIGNAL(toggled(bool)), this, SLOT(useMouseChanged(bool)));
-	KSharedConfig::Ptr config = KGlobal::config();
-	config->setGroup("Settings");
-	useMouseAction->setChecked(config->readEntry("useMouse", true));
+	KConfigGroup configGroup(KGlobal::config(), "Settings");
+	useMouseAction->setChecked(configGroup.readEntry("useMouse", true));
 
 	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Putting"), this);
         actionCollection()->addAction("useadvancedputting", useAdvancedPuttingAction);
 	connect(useAdvancedPuttingAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	useAdvancedPuttingAction->setCheckedState(KGuiItem(i18n("Disable &Advanced Putting")));
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
-	useAdvancedPuttingAction->setChecked(config->readEntry("useAdvancedPutting", false));
+	useAdvancedPuttingAction->setChecked(configGroup.readEntry("useAdvancedPutting", false));
 
 	showInfoAction = new KToggleAction(KIcon("info"), i18n("Show &Info"), this);
         actionCollection()->addAction("showinfo", showInfoAction);
@@ -171,14 +170,14 @@ void Kolf::initGUI()
 	showInfoAction->setShortcut(Qt::CTRL+Qt::Key_I);
 	showInfoAction->setCheckedState(KGuiItem(i18n("Hide &Info")));
 	connect(showInfoAction, SIGNAL(toggled(bool)), this, SLOT(showInfoChanged(bool)));
-	showInfoAction->setChecked(config->readEntry("showInfo", false));
+	showInfoAction->setChecked(configGroup.readEntry("showInfo", false));
 
 	showGuideLineAction = new KToggleAction(i18n("Show Putter &Guideline"), this);
         actionCollection()->addAction("showguideline", showGuideLineAction);
 	connect(showGuideLineAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	showGuideLineAction->setCheckedState(KGuiItem(i18n("Hide Putter &Guideline")));
 	connect(showGuideLineAction, SIGNAL(toggled(bool)), this, SLOT(showGuideLineChanged(bool)));
-	showGuideLineAction->setChecked(config->readEntry("showGuideLine", true));
+	showGuideLineAction->setChecked(configGroup.readEntry("showGuideLine", true));
 
 	KToggleAction *act = new KToggleAction(i18n("Enable All Dialog Boxes"), this);
         actionCollection()->addAction("enableAll", act);
@@ -189,7 +188,7 @@ void Kolf::initGUI()
         actionCollection()->addAction("sound", soundAction);
 	connect(soundAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	connect(soundAction, SIGNAL(toggled(bool)), this, SLOT(soundChanged(bool)));
-	soundAction->setChecked(config->readEntry("sound", true));
+	soundAction->setChecked(configGroup.readEntry("sound", true));
 
 	action = actionCollection()->addAction("reloadplugins");
         action->setText(i18n("&Reload Plugins"));
@@ -253,18 +252,18 @@ void Kolf::startNewGame()
 	else
 	{
 		KConfig config(loadedGame);
-		config.setGroup("0 Saved Game");
+		KConfigGroup configGroup(config.group("0 Saved Game"));
 
 		if (isTutorial)
 			filename = KGlobal::dirs()->findResource("appdata", "tutorial.kolf");
 		else
-			filename = config.readEntry("Course", QString());
+			filename = configGroup.readEntry("Course", QString());
 
 		if (filename.isNull())
 			return;
 
-		competition = config.readEntry("Competition", false);
-		firstHole = config.readEntry("Current Hole", 1);
+		competition = configGroup.readEntry("Competition", false);
+		firstHole = configGroup.readEntry("Current Hole", 1);
 
 		players.clear();
 		KolfGame::scoresFromSaved(&config, players);
@@ -583,14 +582,14 @@ void Kolf::saveGame()
 	}
 
 	KConfig config(loadedGame);
-	config.setGroup("0 Saved Game");
+	KConfigGroup configGroup(config.group("0 Saved Game"));
 
-	config.writeEntry("Competition", competition);
-	config.writeEntry("Course", filename);
+	configGroup.writeEntry("Competition", competition);
+	configGroup.writeEntry("Course", filename);
 
 	game->saveScores(&config);
 
-	config.sync();
+	configGroup.sync();
 }
 
 void Kolf::loadGame()
@@ -781,27 +780,27 @@ void Kolf::titleChanged(const QString &newTitle)
 
 void Kolf::useMouseChanged(bool yes)
 {
-	KSharedConfig::Ptr config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("useMouse", yes); config->sync();
+	KConfigGroup configGroup(KGlobal::config(), "Settings"); configGroup.writeEntry("useMouse", yes); configGroup.sync();
 }
 
 void Kolf::useAdvancedPuttingChanged(bool yes)
 {
-	KSharedConfig::Ptr config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("useAdvancedPutting", yes); config->sync();
+	KConfigGroup configGroup(KGlobal::config(), "Settings"); configGroup.writeEntry("useAdvancedPutting", yes); configGroup.sync();
 }
 
 void Kolf::showInfoChanged(bool yes)
 {
-	KSharedConfig::Ptr config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("showInfo", yes); config->sync();
+	KConfigGroup configGroup(KGlobal::config(), "Settings"); configGroup.writeEntry("showInfo", yes); configGroup.sync();
 }
 
 void Kolf::showGuideLineChanged(bool yes)
 {
-	KSharedConfig::Ptr config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("showGuideLine", yes); config->sync();
+	KConfigGroup configGroup(KGlobal::config(), "Settings"); configGroup.writeEntry("showGuideLine", yes); configGroup.sync();
 }
 
 void Kolf::soundChanged(bool yes)
 {
-	KSharedConfig::Ptr config = KGlobal::config(); config->setGroup("Settings"); config->writeEntry("sound", yes); config->sync();
+	KConfigGroup configGroup(KGlobal::config(), "Settings"); configGroup.writeEntry("sound", yes); configGroup.sync();
 }
 
 void Kolf::initPlugins()

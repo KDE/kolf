@@ -95,8 +95,8 @@ QString KComboBoxDialog::getItem( const QString &_text, const QString &_caption,
 	if ( !dontAskAgainName.isEmpty() )
 	{
 		KSharedConfig::Ptr config = KGlobal::config();
-		config->setGroup( "Notification Messages" );
-		prevAnswer = config->readEntry( dontAskAgainName,QString() );
+		KConfigGroup *configGroup = new KConfigGroup(config->group("Notification Messages"));
+		prevAnswer = configGroup->readEntry( dontAskAgainName,QString() );
 		if ( !prevAnswer.isEmpty() )
 			if ( _items.contains( prevAnswer ) > 0 )
 				return prevAnswer;
@@ -115,8 +115,8 @@ QString KComboBoxDialog::getItem( const QString &_text, const QString &_caption,
 		if ( !dontAskAgainName.isEmpty() && !text.isEmpty() )
 		{
 			KSharedConfig::Ptr config = KGlobal::config();
-			config->setGroup ( "Notification Messages" );
-			config->writeEntry( dontAskAgainName, text );
+			KConfigGroup *configGroup = new KConfigGroup(config->group("Notification Messages"));
+			configGroup->writeEntry( dontAskAgainName, text );
 		}
 	}
 
@@ -125,6 +125,7 @@ QString KComboBoxDialog::getItem( const QString &_text, const QString &_caption,
 
 QString KComboBoxDialog::getText(const QString &_caption, const QString &_text, const QString &_value, bool *ok, QWidget *parent, const QString &configName, KSharedConfigPtr config)
 {
+	KConfigGroup *configGroup = 0;
 	KComboBoxDialog dlg(_text, QStringList(), _value, false, parent);
 	if ( !_caption.isNull() )
 		dlg.setCaption( _caption );
@@ -137,9 +138,9 @@ QString KComboBoxDialog::getText(const QString &_caption, const QString &_text, 
 
 	if(!configName.isNull())
 	{
-		config->setGroup("KComboBoxDialog");
-		box->setHistoryItems(config->readEntry(historyItem,QStringList()));
-		box->completionObject()->setItems(config->readEntry(completionItem,QStringList()));
+		configGroup = new KConfigGroup(config->group("KComboBoxDialog"));
+		box->setHistoryItems(configGroup->readEntry(historyItem,QStringList()));
+		box->completionObject()->setItems(configGroup->readEntry(completionItem,QStringList()));
 	}
 
 	bool result = dlg.exec();
@@ -149,9 +150,9 @@ QString KComboBoxDialog::getText(const QString &_caption, const QString &_text, 
 	{
 		box->addToHistory(dlg.text());
 		box->completionObject()->addItem(dlg.text());
-		config->setGroup("KComboBoxDialog");
-		config->writeEntry(historyItem, box->historyItems());
-		config->writeEntry(completionItem, box->completionObject()->items());
+		configGroup = new KConfigGroup(config->group("KComboBoxDialog"));
+		configGroup->writeEntry(historyItem, box->historyItems());
+		configGroup->writeEntry(completionItem, box->completionObject()->items());
 	}
 
 	return dlg.text();

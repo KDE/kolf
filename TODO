@@ -58,6 +58,9 @@ void KolfGame::autoSaveTimeout()
 
 ball Collision is wrong, sometimes when you hit your opponents ball on the side it goes in the opposite direction of where you would expect it to go
 
+check the pluginloader.cpp group is correct, see first for loop in loadAll
+
+
 TIDYING TO DO WHEN SVG FULLY IMPLIMENTED:
 -----------------------------------------
 fix ball colours, probably need seperate balls

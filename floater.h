@@ -41,8 +41,8 @@ public:
 	virtual bool collision(Ball *ball, long int id) { Bridge::collision(ball, id); return false; }
 	virtual void saveState(StateDB *db);
 	virtual void loadState(StateDB *db);
-	virtual void save(KConfig *cfg);
-	virtual void load(KConfig *cfg);
+	virtual void save(KConfigGroup *cfgGroup);
+	virtual void load(KConfigGroup *cfgGroup);
 	virtual bool loadLast() const { return true; }
 	virtual void firstMove(int x, int y);
 	virtual void aboutToSave();

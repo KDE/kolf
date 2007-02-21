@@ -211,30 +211,30 @@ void Slope::updateZ(QGraphicsRectItem *vStrut)
 	setZValue(((double)1 / (area == 0? 1 : area)) + newZ);
 }
 
-void Slope::load(KConfig *cfg)
+void Slope::load(KConfigGroup *cfgGroup)
 {
-	stuckOnGround = cfg->readEntry("stuckOnGround", stuckOnGround);
-	grade = cfg->readEntry("grade", grade);
-	reversed = cfg->readEntry("reversed", reversed);
+	stuckOnGround = cfgGroup->readEntry("stuckOnGround", stuckOnGround);
+	grade = cfgGroup->readEntry("grade", grade);
+	reversed = cfgGroup->readEntry("reversed", reversed);
 
 	// bypass updatePixmap which newSize normally does
-	QGraphicsRectItem::setRect(rect().x(), rect().y(), cfg->readEntry("width", width()), cfg->readEntry("height", height()));
+	QGraphicsRectItem::setRect(rect().x(), rect().y(), cfgGroup->readEntry("width", width()), cfgGroup->readEntry("height", height()));
 	baseWidth = rect().width();
 	baseHeight = rect().height();
 	updateZ();
 
-	QString gradientType = cfg->readEntry("gradient", "Vertical");
+	QString gradientType = cfgGroup->readEntry("gradient", "Vertical");
 	setGradient(gradientType);
 }
 
-void Slope::save(KConfig *cfg)
+void Slope::save(KConfigGroup *cfgGroup)
 {
-	cfg->writeEntry("reversed", reversed);
-	cfg->writeEntry("width", width());
-	cfg->writeEntry("height", height());
-	cfg->writeEntry("gradient", type);;
-	cfg->writeEntry("grade", grade);
-	cfg->writeEntry("stuckOnGround", stuckOnGround);
+	cfgGroup->writeEntry("reversed", reversed);
+	cfgGroup->writeEntry("width", width());
+	cfgGroup->writeEntry("height", height());
+	cfgGroup->writeEntry("gradient", type);;
+	cfgGroup->writeEntry("grade", grade);
+	cfgGroup->writeEntry("stuckOnGround", stuckOnGround);
 }
 
 void Slope::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*option*/, QWidget * /*widget*/ ) 

@@ -237,23 +237,23 @@ void Floater::loadState(StateDB *db)
 	setPos(moveTo.x(), moveTo.y());
 }
 
-void Floater::save(KConfig *cfg)
+void Floater::save(KConfigGroup *cfgGroup)
 {
-	cfg->writeEntry("speed", speed);
-	cfg->writeEntry("startPoint", QPointF(wall->startPoint().x() + wall->x(), wall->startPoint().y() + wall->y()));
-	cfg->writeEntry("endPoint", QPointF(wall->endPoint().x() + wall->x(), wall->endPoint().y() + wall->y()));
+	cfgGroup->writeEntry("speed", speed);
+	cfgGroup->writeEntry("startPoint", QPointF(wall->startPoint().x() + wall->x(), wall->startPoint().y() + wall->y()));
+	cfgGroup->writeEntry("endPoint", QPointF(wall->endPoint().x() + wall->x(), wall->endPoint().y() + wall->y()));
 
-	doSave(cfg);
+	doSave(cfgGroup);
 }
 
-void Floater::load(KConfig *cfg)
+void Floater::load(KConfigGroup *cfgGroup)
 {
 	setPos(firstPoint.x(), firstPoint.y());
 
 	QPointF start(wall->startPoint() + QPointF(wall->x(), wall->y()));
-	start = cfg->readEntry("startPoint", start);
+	start = cfgGroup->readEntry("startPoint", start);
 	QPointF end(wall->endPoint() + QPointF(wall->x(), wall->y()));
-	end = cfg->readEntry("endPoint", end);
+	end = cfgGroup->readEntry("endPoint", end);
 	wall->setPoints(start.x(), start.y(), end.x(), end.y());
 	wall->setPos(0, 0);
 
@@ -262,9 +262,9 @@ void Floater::load(KConfig *cfg)
 	baseEndX = end.x();
 	baseEndY = end.y();
 
-	setSpeed(cfg->readEntry("speed", -1));
+	setSpeed(cfgGroup->readEntry("speed", -1));
 
-	doLoad(cfg);
+	doLoad(cfgGroup);
 	reset();
 }
 

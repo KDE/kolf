@@ -60,8 +60,8 @@ public:
 	bool isStuckOnGround() const { return stuckOnGround; }
 	void setStuckOnGround(bool yes) { stuckOnGround = yes; updateZ(); }
 
-	virtual void load(KConfig *cfg);
-	virtual void save(KConfig *cfg);
+	virtual void load(KConfigGroup *cfgGroup);
+	virtual void save(KConfigGroup *cfgGroup);
 
 	virtual bool collision(Ball *ball, long int id);
 	virtual bool terrainCollisions() const;
