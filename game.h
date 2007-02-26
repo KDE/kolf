@@ -13,9 +13,7 @@
 
 #include <QMap>
 #include <QPoint>
-#include <q3pointarray.h>
 #include <QRect>
-#include <q3valuelist.h>
 #include <QPixmap>
 #include <QKeyEvent>
 #include <QGraphicsScene>

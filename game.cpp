@@ -23,7 +23,6 @@
 #include <QLabel>
 #include <QPainter>
 #include <QPen>
-#include <q3simplerichtext.h>
 #include <QSlider>
 #include <QSpinBox>
 #include <QTimer>
