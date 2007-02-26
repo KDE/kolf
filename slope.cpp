@@ -159,26 +159,38 @@ void Slope::moveBy(double dx, double dy)
 
 void Slope::moveArrow()
 {
-	int xavg = 0, yavg = 0;
-	Q3PointArray r = areaPoints(); //still using Q3PointArray because I'm not sure of how to change this easily and this code will probably be replaced when the graphics are updated
-	for (int i = 0; i < r.size(); ++i)
-	{
-		xavg += r[i].x();
-		yavg += r[i].y();
+	double xavg, yavg;
+	if(type == "slope_ne"){
+		xavg = boundingRect().width()*1/4 + x();
+		yavg = boundingRect().height()*3/4 + y();
 	}
-	xavg /= r.size();
-	yavg /= r.size();
+	else if(type == "slope_nw"){
+		xavg = boundingRect().width()*3/4 + x();
+		yavg = boundingRect().height()*3/4 + y();
+	}
+	else if(type == "slope_se"){
+		xavg = boundingRect().width()*1/4 + x();
+		yavg = boundingRect().height()*1/4 + y();
+	}
+	else if(type == "slope_sw"){
+		xavg = boundingRect().width()*3/4 + x();
+		yavg = boundingRect().height()*1/4 + y();
+	}
+	else {
+		xavg = boundingRect().width()/2 + x();
+		yavg = boundingRect().height()/2 + y();
+	}
 
 	QList<Arrow *>::const_iterator arrow;
 	for (arrow = arrows.constBegin(); arrow != arrows.constEnd(); ++arrow)
-		(*arrow)->setPos((double)xavg, (double)yavg);
+		(*arrow)->setPos(xavg, yavg);
 
 	if (showingInfo)
 		showInfo();
 	else
 		hideInfo();
 
-	text->setPos((double)xavg - text->boundingRect().width() / 2, (double)yavg - text->boundingRect().height() / 2);
+	text->setPos(xavg - text->boundingRect().width() / 2, yavg - text->boundingRect().height() / 2);
 }
 
 void Slope::editModeChanged(bool changed)
@@ -271,39 +283,6 @@ QPainterPath Slope::shape() const
 		QPainterPath path;
 		path.addRect(rect().x(), rect().y(), width(), height());
 		return path;
-	}
-}
-
-Q3PointArray Slope::areaPoints() const //still using Q3PointArray areaPoints because it is needed to find the centre of the slope when placing arrows. Not sure of an easy alternative way to do this, and no need to because this code will probably be replaced when the graphics are updated
-{
-	if(type == "slope_ne" || type == "slope_sw") {
-		Q3PointArray ret(3);
-		ret[0] = QPoint((int)x(), (int)y());
-		ret[1] = QPoint((int)x() + (int)width(), (int)y() + (int)height());
-		ret[2] = reversed? QPoint((int)x() + (int)width(), (int)y()) : QPoint((int)x(), (int)y() + (int)height());
-
-		return ret;
-	}
-	else if(type == "slope_nw" || type == "slope_se") {
-		Q3PointArray ret(3);
-		ret[0] = QPoint((int)x() + (int)width(), (int)y());
-		ret[1] = QPoint((int)x(), (int)y() + (int)height());
-		ret[2] = !reversed? QPoint((int)x() + (int)width(), (int)y() + (int)height()) : QPoint((int)x(), (int)y());
-
-		return ret;
-	}
-	else if(type == "slope_bump" || type == "slope_dip") {
-		Q3PointArray ret;
-		ret.makeEllipse((int)x(), (int)y(), (int)width(), (int)height());
-		return ret;
-	}
-	else {
-		Q3PointArray ret(4);
-		ret[0] = QPoint((int)x() + (int)width(), (int)y());
-		ret[1] = QPoint((int)x(), (int)y());
-		ret[2] = QPoint((int)x(), (int)y() + (int)height());
-		ret[3] = QPoint((int)x() + (int)width(), (int)y() + (int)height());
-		return ret;
 	}
 }
 

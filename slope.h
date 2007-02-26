@@ -5,7 +5,6 @@
 
 #include "game.h"
 #include <QPixmap>
-#include <Q3PointArray> //needed to find centre of slope for the arrows, will be replaced when grphics are updated
 
 class Slope;
 class SlopeConfig : public Config
@@ -46,7 +45,6 @@ public:
 
 	virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem * option, QWidget * widget = 0 );
 	virtual QPainterPath shape () const;
-	virtual Q3PointArray areaPoints() const;
 
 	void setGradient(QString text);
 	QString curType() const { return type; }
