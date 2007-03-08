@@ -104,7 +104,7 @@ void Kolf::initGUI()
 	connect(editingAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	editingAction->setShortcut(Qt::CTRL+Qt::Key_E);
 	newHoleAction = actionCollection()->addAction("newhole");
-        newHoleAction->setIcon(KIcon("filenew"));
+        newHoleAction->setIcon(KIcon("document-new"));
         newHoleAction->setText(i18n("&New"));
 	connect(newHoleAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	newHoleAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_N);
@@ -126,17 +126,17 @@ void Kolf::initGUI()
         actionCollection()->addAction("switchhole", holeAction);
 	connect(holeAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	nextAction = actionCollection()->addAction("nexthole");
-        nextAction->setIcon(KIcon("forward"));
+        nextAction->setIcon(KIcon("go-next"));
         nextAction->setText(i18n("&Next Hole"));
 	connect(nextAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	nextAction->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Forward));
 	prevAction = actionCollection()->addAction("prevhole");
-        prevAction->setIcon(KIcon("back"));
+        prevAction->setIcon(KIcon("go-previous"));
         prevAction->setText(i18n("&Previous Hole"));
 	connect(prevAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	prevAction->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Back));
 	firstAction = actionCollection()->addAction("firsthole");
-        firstAction->setIcon(KIcon("gohome"));
+        firstAction->setIcon(KIcon("go-home"));
         firstAction->setText(i18n("&First Hole"));
 	connect(firstAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	firstAction->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Home));
@@ -145,7 +145,7 @@ void Kolf::initGUI()
 	connect(lastAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	lastAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_End);
 	randAction = actionCollection()->addAction("randhole");
-        randAction->setIcon(KIcon("goto"));
+        randAction->setIcon(KIcon("goto-page"));
         randAction->setText(i18n("&Random Hole"));
 	connect(randAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 
@@ -164,7 +164,7 @@ void Kolf::initGUI()
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
 	useAdvancedPuttingAction->setChecked(configGroup.readEntry("useAdvancedPutting", false));
 
-	showInfoAction = new KToggleAction(KIcon("info"), i18n("Show &Info"), this);
+	showInfoAction = new KToggleAction(KIcon("document-properties"), i18n("Show &Info"), this);
         actionCollection()->addAction("showinfo", showInfoAction);
 	connect(showInfoAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	showInfoAction->setShortcut(Qt::CTRL+Qt::Key_I);
