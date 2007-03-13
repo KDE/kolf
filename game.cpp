@@ -3792,11 +3792,11 @@ void KolfGame::startNextHole()
 		(*curPlayer).ball()->collisionDetect(oldx, oldy);
 	}
 
-	int newSize = qMin(size().width(), size().height());
-	QGraphicsView::resize(newSize, newSize); //make sure it is a square
-	if(newSize!=400) { //not default size, so resizing needed
-		double resizeFactor = (double)newSize/400.0;
-		resizeAllItems(resizeFactor, 0);
+	if(size().width()!=400 || size().height()!=400) { //not default size, so resizing needed
+		int newSize = qMin(size().width(), size().height());
+		//resize needs to be called for newSize+1 first because otherwise it doesn't seem to get called (not sure why) 
+		QGraphicsView::resize(newSize+1, newSize+1);
+		QGraphicsView::resize(newSize, newSize);
 	}
 
 	unPause();

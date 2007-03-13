@@ -425,12 +425,12 @@ void Kolf::createSpacer()
 	delete spacer;
 	spacer = new KolfGame(obj, &spacerPlayers, KGlobal::dirs()->findResource("appdata", "intro"), dummy);
 	spacer->setSound(false);
-	spacer->startFirstHole(1);
 	layout->addWidget(spacer, 0, 0);//, Qt::AlignCenter);
-	spacer->hidePutter();
 	spacer->ignoreEvents(true);
 
 	spacer->show();
+	spacer->startFirstHole(1);
+	spacer->hidePutter();
 }
 
 void Kolf::gameOver()
