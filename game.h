@@ -148,7 +148,7 @@ class RectItem
 {
 public:
 	virtual ~RectItem(){}
-	virtual void newSize(int /*width*/, int /*height*/) {};
+	virtual void newSize(double /*width*/, double /*height*/) {};
 };
 
 class RectPoint : public QGraphicsEllipseItem, public CanvasItem
@@ -758,7 +758,7 @@ class Windmill;
 class WindmillGuard : public Wall
 {
 public:
-	WindmillGuard(QGraphicsItem * parent, QGraphicsScene *scene) : Wall(parent, scene) {};
+	WindmillGuard(QGraphicsItem * parent, QGraphicsScene *scene) : Wall(parent, scene, false) {};
 	void setBetween(double newmin, double newmax) { max = newmax; min = newmin; }
 	virtual void advance(int phase);
 	double getMax() { return max; }
@@ -1092,6 +1092,7 @@ private:
 	bool moving;
 	bool dragging;
 	QGraphicsItem *movingItem;
+	CanvasItem *movingCanvasItem;
 	QGraphicsItem *selectedItem;
 	QGraphicsRectItem *highlighter;
 

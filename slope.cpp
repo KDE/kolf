@@ -27,7 +27,7 @@ Slope::Slope(QRect rect, QGraphicsItem * parent, QGraphicsScene *scene)
 
 	setZValue(-50);
 
-	point = new RectPoint(color.light(), 0, parent, scene); //this is used in edit mode
+	point = new RectPoint(color.light(), this, parent, scene);
 
 	QFont font(kapp->font());
 	baseFontPixelSize = 18;
@@ -123,7 +123,7 @@ void Slope::setGrade(double newGrade)
 	}
 }
 
-void Slope::setSize(int width, int height)
+void Slope::setSize(double width, double height)
 {
 	newSize(width, height);
 }

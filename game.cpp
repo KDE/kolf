@@ -84,7 +84,7 @@ void RectPoint::moveBy(double dx, double dy)
 	if (nw <= 0 || nh <= 0)
 		return;
 
-	rect->newSize( nw, nh);
+	rect->newSize(nw, nh);
 }
 
 Config *RectPoint::config(QWidget *parent)
@@ -434,6 +434,9 @@ void Bridge::setSize(double width, double height)
 	botWall->setPoints(0, height, width, height);
 	leftWall->setPoints(0, 0, 0, height);
 	rightWall->setPoints(width, 0, width, height);
+
+	if(game != 0)
+		pixmap=game->renderer->renderSvg(type, (int)width, (int)height, 0);
 	baseWidth = width;
 	baseHeight = height;
 
@@ -605,7 +608,8 @@ void Windmill::moveBy(double dx, double dy)
 	left->setPos(x(), y());
 	right->setPos(x(), y());
 
-	guard->moveBy(dx, dy);
+	//guard->moveBy(dx, dy);
+	guard->setPos(x(), y());
 	guard->setBetween(x(), x() + width());
 }
 
@@ -632,7 +636,8 @@ void Windmill::newSize(double width, double height)
 
 	guard->setBetween(x(), x() + width);
 	double guardY = m_bottom? height + 4 : -4;
-	guard->setPoints(x()+0, y()+guardY, x()+(double)indent / (double)1.07 - 2, y()+guardY);
+	guard->setPoints(0, guardY, (double)indent / (double)1.07 - 2, guardY);
+	//guard->setPoints(x()+0, y()+guardY, x()+(double)indent / (double)1.07 - 2, y()+guardY);
 }
 
 /////////////////////////
@@ -852,7 +857,7 @@ QList<QGraphicsItem *> KolfEllipse::moveableItems() const
 
 void KolfEllipse::resize(double resizeFactor)
 {
-	setRect(0, 0, baseWidth*resizeFactor, baseHeight*resizeFactor);
+	setRect(baseWidth*resizeFactor*-0.5, baseHeight*resizeFactor*-0.5, baseWidth*resizeFactor, baseHeight*resizeFactor);
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
 	moveBy(0, 0); 
 	pixmap=game->renderer->renderSvg(type, (int)rect().width(), (int)rect().height(), 0);
@@ -866,7 +871,7 @@ void KolfEllipse::newSize(double width, double height)
 
 void KolfEllipse::setSize(double width, double height)
 {
-	setRect(rect().x(), rect().y(), width, height);
+	setRect(width*-0.5, height*-0.5, width, height);
 	if(game != 0)
 		pixmap=game->renderer->renderSvg(type, (int)width, (int)height, 0);
 	baseWidth = width;
@@ -875,7 +880,7 @@ void KolfEllipse::setSize(double width, double height)
 
 void KolfEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*option*/, QWidget * /*widget*/ ) 
 {
-	painter->drawPixmap(0, 0, pixmap);  
+	painter->drawPixmap((int)rect().x(), (int)rect().y(), pixmap);  
 }
 
 void KolfEllipse::moveBy(double dx, double dy)
@@ -883,7 +888,7 @@ void KolfEllipse::moveBy(double dx, double dy)
 	QGraphicsEllipseItem::moveBy(dx, dy);
 
 	point->dontMove();
-	setPos(x() - width()/2 , y() - height()/2);
+	point->setPos(x() + width()/2, y() + height()/2);
 }
 
 void KolfEllipse::editModeChanged(bool changed)
@@ -914,7 +919,7 @@ void KolfEllipse::load(KConfigGroup *cfgGroup)
 	double newWidth = width(), newHeight = height();
 	newWidth = cfgGroup->readEntry("width", newWidth);
 	newHeight = cfgGroup->readEntry("height", newHeight);
-	newSize(newWidth, newHeight);
+	setSize(newWidth, newHeight);
 	moveBy(0, 0); 
 } 
 
@@ -2023,8 +2028,8 @@ void Wall::resize(double resizeFactor)
 	QGraphicsLineItem::setLine(baseX1*resizeFactor, baseY1*resizeFactor, baseX2*resizeFactor, baseY2*resizeFactor);
 	startItem->dontMove();
 	endItem->dontMove();
-	startItem->setPos(startPointF().x() + x() - 1, startPointF().y() + y() - 1);
-	endItem->setPos(endPointF().x() + x() - 1, endPointF().y() + y() - 1);
+	startItem->setPos(startPointF().x() + x(), startPointF().y() + y());
+	endItem->setPos(endPointF().x() + x(), endPointF().y() + y());
 
 	QPen newPen = pen();
 	newPen.setWidthF(basePenWidth*resizeFactor);
@@ -2133,8 +2138,8 @@ void Wall::setPos(double x, double y)
 
 	startItem->dontMove();
 	endItem->dontMove();
-	startItem->setPos(startPointF().x() + x - 1, startPointF().y() + y - 1);
-	endItem->setPos(endPointF().x() + x - 1, endPointF().y() + y - 1);
+	startItem->setPos(startPointF().x() + x, startPointF().y() + y);
+	endItem->setPos(endPointF().x() + x, endPointF().y() + y);
 }
 
 void Wall::setVelocity(double vx, double vy)
@@ -2160,8 +2165,8 @@ void Wall::editModeChanged(bool changed)
 	else
 		neww = pen().width();
 
-	startItem->setSize(neww, neww);
-	endItem->setSize(neww, neww);
+	startItem->setRect(-0.5*neww, -0.5*neww, neww, neww);
+	endItem->setRect(-0.5*neww, -0.5*neww, neww, neww);
 
 	moveBy(0, 0);
 }
@@ -2222,8 +2227,8 @@ void Wall::load(KConfigGroup *cfgGroup)
 	setLine(start.x(), start.y(), end.x(), end.y());
 
 	moveBy(0, 0);
-	startItem->setPos(start.x()-1, start.y()-1);
-	endItem->setPos(end.x()-1, end.y()-1);
+	startItem->setPos(start.x(), start.y());
+	endItem->setPos(end.x(), end.y());
 }
 
 void Wall::save(KConfigGroup *cfgGroup)
@@ -2711,6 +2716,7 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 		highlighter->setVisible(false);
 		selectedItem = 0;
 		movingItem = 0;
+		movingCanvasItem = 0;
 
 		if (list.count() < 1)
 		{
@@ -2738,6 +2744,7 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 				{
 					selectedItem = list.first();
 					movingItem = selectedItem;
+					movingCanvasItem = dynamic_cast<CanvasItem *>(movingItem);
 					moving = true;
 
 					if (citem->cornerResize())
@@ -2839,7 +2846,7 @@ void KolfGame::handleMouseMoveEvent(QMouseEvent *e)
 		setModified(true);
 
 	highlighter->moveBy(-(double)moveX, -(double)moveY);
-	movingItem->moveBy(-(double)moveX, -(double)moveY);
+	movingCanvasItem->moveBy(-(double)moveX, -(double)moveY);
 	QRectF brect = movingItem->boundingRect();
 	emit newStatusText(QString("%1x%2").arg(brect.x()).arg(brect.y()));
 	storedMousePos = mouse;
@@ -4090,7 +4097,6 @@ void KolfGame::addNewObject(Object *newObj)
 	sceneItem->setId(i);
 
 	sceneItem->setGame(this);
-	sceneItem->setSize(40, 40);
 
 	if (m_showInfo)
 		sceneItem->showInfo();
@@ -4106,6 +4112,9 @@ void KolfGame::addNewObject(Object *newObj)
 		addItemToFastAdvancersList(sceneItem);
 
 	newItem->setPos(width/2 - 18, height / 2 - 18);
+	sceneItem->firstMove(width/2 - 18, height/2 - 18); //do I need this?
+	sceneItem->moveBy(0, 0);
+	sceneItem->setSize(newItem->boundingRect().width(), newItem->boundingRect().height());
 
 	if (selectedItem)
 		sceneItem->selectedItem(selectedItem);
