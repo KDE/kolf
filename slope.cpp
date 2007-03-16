@@ -18,12 +18,24 @@
 #include "slope.h"
 
 Slope::Slope(QRect rect, QGraphicsItem * parent, QGraphicsScene *scene)
-	: QGraphicsRectItem(rect, parent, scene), type("Vertical"), grade(4), reversed(false), color(QColor("#327501")) 
+	: QGraphicsRectItem(rect, parent, scene), type(KImageEffect::VerticalGradient), grade(4), reversed(false), color(QColor("#327501")) 
 {
 	setData(0, 1031);
 	stuckOnGround = false;
 	showingInfo = false;
 	baseArrowPenThickness = arrowPenThickness = 1;
+
+	gradientKeys[KImageEffect::VerticalGradient] = "Vertical";
+	gradientKeys[KImageEffect::HorizontalGradient] = "Horizontal";
+	gradientKeys[KImageEffect::DiagonalGradient] = "Diagonal";
+	gradientKeys[KImageEffect::CrossDiagonalGradient] = "Opposite Diagonal";
+	gradientKeys[KImageEffect::EllipticGradient] = "Elliptic";
+
+	gradientI18nKeys[KImageEffect::VerticalGradient] = i18n("Vertical");
+	gradientI18nKeys[KImageEffect::HorizontalGradient] = i18n("Horizontal");
+	gradientI18nKeys[KImageEffect::DiagonalGradient] = i18n("Diagonal");
+	gradientI18nKeys[KImageEffect::CrossDiagonalGradient] = i18n("Opposite Diagonal");
+	gradientI18nKeys[KImageEffect::EllipticGradient] = i18n("Circular");
 
 	setZValue(-50);
 
@@ -130,7 +142,7 @@ void Slope::setSize(double width, double height)
 
 void Slope::newSize(double width, double height)
 {
-	if (type == "slope_bump" || type == "slope_dip")
+	if (type == KImageEffect::EllipticGradient)
 	{
 		QGraphicsRectItem::setRect(rect().x(), rect().y(), width, width);
 		// move point back to good spot
@@ -160,21 +172,26 @@ void Slope::moveBy(double dx, double dy)
 void Slope::moveArrow()
 {
 	double xavg, yavg;
-	if(type == "slope_ne"){
-		xavg = boundingRect().width()*1/4 + x();
-		yavg = boundingRect().height()*3/4 + y();
+
+	if(type == KImageEffect::DiagonalGradient) {
+		if(reversed) {
+			xavg = boundingRect().width()*1/4 + x();
+			yavg = boundingRect().height()*1/4 + y();
+		}
+		else {
+			xavg = boundingRect().width()*3/4 + x();
+			yavg = boundingRect().height()*3/4 + y();
+		}
 	}
-	else if(type == "slope_nw"){
-		xavg = boundingRect().width()*3/4 + x();
-		yavg = boundingRect().height()*3/4 + y();
-	}
-	else if(type == "slope_se"){
-		xavg = boundingRect().width()*1/4 + x();
-		yavg = boundingRect().height()*1/4 + y();
-	}
-	else if(type == "slope_sw"){
-		xavg = boundingRect().width()*3/4 + x();
-		yavg = boundingRect().height()*1/4 + y();
+	else if(type == KImageEffect::CrossDiagonalGradient) {
+		if(reversed) {
+			xavg = boundingRect().width()*3/4 + x();
+			yavg = boundingRect().height()*1/4 + y();
+		}
+		else {
+			xavg = boundingRect().width()*1/4 + x();
+			yavg = boundingRect().height()*3/4 + y();
+		}
 	}
 	else {
 		xavg = boundingRect().width()/2 + x();
@@ -235,7 +252,7 @@ void Slope::load(KConfigGroup *cfgGroup)
 	baseHeight = rect().height();
 	updateZ();
 
-	QString gradientType = cfgGroup->readEntry("gradient", "Vertical");
+	QString gradientType = cfgGroup->readEntry("gradient", gradientKeys[type]);
 	setGradient(gradientType);
 }
 
@@ -244,7 +261,7 @@ void Slope::save(KConfigGroup *cfgGroup)
 	cfgGroup->writeEntry("reversed", reversed);
 	cfgGroup->writeEntry("width", width());
 	cfgGroup->writeEntry("height", height());
-	cfgGroup->writeEntry("gradient", type);;
+	cfgGroup->writeEntry("gradient", gradientKeys[type]);
 	cfgGroup->writeEntry("grade", grade);
 	cfgGroup->writeEntry("stuckOnGround", stuckOnGround);
 }
@@ -256,7 +273,7 @@ void Slope::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*option*/
 
 QPainterPath Slope::shape() const
 {       
-	if(type == "slope_ne" || type == "slope_sw") {
+	if(type == KImageEffect::CrossDiagonalGradient) {
 		QPainterPath path;
 		QPolygonF polygon(3);
 		polygon[0] = QPointF(rect().x(), rect().y());
@@ -265,7 +282,7 @@ QPainterPath Slope::shape() const
 		path.addPolygon(polygon);
 		return path;
 	}
-	else if(type == "slope_nw" || type == "slope_se") {
+	else if(type == KImageEffect::DiagonalGradient) {
 		QPainterPath path;
 		QPolygonF polygon(3);
 		polygon[0] = QPointF(rect().x() + width(), rect().y());
@@ -274,7 +291,7 @@ QPainterPath Slope::shape() const
 		path.addPolygon(polygon);
 		return path;
 	}
-	else if(type == "slope_bump" || type == "slope_dip") {
+	else if(type == KImageEffect::EllipticGradient) {
 		QPainterPath path;
 		path.addEllipse(rect().x(), rect().y(), width(), height());
 		return path;
@@ -295,8 +312,8 @@ bool Slope::collision(Ball *ball, long int /*id*/)
 	double vy = ball->getYVelocity();
 	double addto = 0.013 * grade;
 
-	const bool diag = (type == "slope_ne" || type == "slope_nw" || type == "slope_sw" || type == "slope_se");
-	const bool circle = (type == "slope_bump" || type == "slope_dip");
+	const bool diag = type == KImageEffect::DiagonalGradient || type == KImageEffect::CrossDiagonalGradient;
+	const bool circle = type == KImageEffect::EllipticGradient;
 
 	double slopeAngle = 0;
 
@@ -316,17 +333,29 @@ bool Slope::collision(Ball *ball, long int /*id*/)
 		addto = sin(addto);
 	}
 
-	if(type == "slope_w" || type == "slope_e")
+	switch (type)
+	{
+		case KImageEffect::HorizontalGradient:
 			reversed? vx += addto : vx -= addto;
-	else if(type == "slope_n" || type == "slope_s")
+		break;
+
+		case KImageEffect::VerticalGradient:
 			reversed? vy += addto : vy -= addto;
-	else if(type == "slope_nw" || type == "slope_se" || type == "slope_bump" || type == "slope_dip") {
-		reversed? vx += cos(slopeAngle) * addto : vx -= cos(slopeAngle) * addto;
-		reversed? vy += sin(slopeAngle) * addto : vy -= sin(slopeAngle) * addto;
-	}
-	else if(type == "slope_ne" || type == "slope_sw") {
-		reversed? vx -= cos(slopeAngle) * addto : vx += cos(slopeAngle) * addto;
-		reversed? vy += sin(slopeAngle) * addto : vy -= sin(slopeAngle) * addto;
+		break;
+
+		case KImageEffect::DiagonalGradient:
+		case KImageEffect::EllipticGradient:
+			reversed? vx += cos(slopeAngle) * addto : vx -= cos(slopeAngle) * addto;
+			reversed? vy += sin(slopeAngle) * addto : vy -= sin(slopeAngle) * addto;
+		break;
+
+		case KImageEffect::CrossDiagonalGradient:
+			reversed? vx -= cos(slopeAngle) * addto : vx += cos(slopeAngle) * addto;
+			reversed? vy += sin(slopeAngle) * addto : vy -= sin(slopeAngle) * addto;
+		break;
+
+		default:
+		break;
 	}
 
 	ball->setVelocity(vx, vy);
@@ -343,47 +372,31 @@ bool Slope::collision(Ball *ball, long int /*id*/)
 
 void Slope::setGradient(QString text)
 {
-	if(text == "Vertical") {
-		if(reversed)
-			setType("slope_s");
-		else
-			setType("slope_n");
+	for (QMap<KImageEffect::GradientType, QString>::Iterator it = gradientKeys.begin(); it != gradientKeys.end(); ++it)
+	{
+		if (it.value() == text)
+		{
+			setType(it.key());
+			return;
+		}
 	}
-	else if(text == "Horizontal") {
-		if(reversed)
-			setType("slope_e");
-		else
-			setType("slope_w");
-	}
-	else if(text == "Diagonal") {
-		if(reversed)
-			setType("slope_se");
-		else
-			setType("slope_nw");
-	}
-	else if(text == "Opposite Diagonal") {
-		if(reversed)
-			setType("slope_sw");
-		else
-			setType("slope_ne");
-	}
-	else if(text == "Elliptic") {
-		if(reversed)
-			setType("slope_dip");
-		else
-			setType("slope_bump");
-	}
-	else   
-		kDebug(12007) << "Warning, slope type: " << text << endl;
 
-	return;
+	// extra forgiveness ;-) (note it's i18n keys)
+	for (QMap<KImageEffect::GradientType, QString>::Iterator it = gradientI18nKeys.begin(); it != gradientI18nKeys.end(); ++it)
+	{
+		if (it.value() == text)
+		{
+			setType(it.key());
+			return;
+		}
+	}
 }
 
-void Slope::setType(QString type)
+void Slope::setType(KImageEffect::GradientType type)
 {
 	this->type = type;
 
-	if (type == "slope_bump" || type == "slope_dip")
+	if (type == KImageEffect::EllipticGradient)
 	{
 		// calls updatePixmap
 		newSize(width(), height());
@@ -396,14 +409,55 @@ void Slope::updatePixmap() //this needs work so that the slope colour depends on
 {
 	if(game == 0)
 		return;
-	pixmap=game->renderer->renderSvg(type, (int)width(), (int)height(), 0);
+
+	QString slopeName;
+
+	switch(type) {
+		case KImageEffect::HorizontalGradient:
+			if(reversed)
+				slopeName = "slope_e";
+			else
+				slopeName = "slope_w";
+			break;
+
+		case KImageEffect::VerticalGradient:
+			if(reversed)
+				slopeName = "slope_s";
+			else
+				slopeName = "slope_n";
+			break;
+
+		case KImageEffect::DiagonalGradient:
+			if(reversed)
+				slopeName = "slope_se";
+			else
+				slopeName = "slope_nw";
+			break;
+
+		case KImageEffect::CrossDiagonalGradient:
+			if(reversed)
+				slopeName = "slope_sw";
+			else
+				slopeName = "slope_ne";
+			break;
+		case KImageEffect::EllipticGradient:
+			if(reversed)
+				slopeName = "slope_dip";
+			else
+				slopeName = "slope_bump";
+			break;
+		default:
+			break;
+	}
+
+	pixmap=game->renderer->renderSvg(slopeName, (int)width(), (int)height(), 0);
 
 	// we update the arrows in this function
 	clearArrows();
 
 	const double length = sqrt(double(width() * width() + height() * height())) / 4;
 
-	if (type == "slope_bump" || type == "slope_dip")
+	if (type == KImageEffect::EllipticGradient)
 	{
 		double angle = 0;
 		for (int i = 0; i < 4; ++i)
@@ -423,14 +477,22 @@ void Slope::updatePixmap() //this needs work so that the slope colour depends on
 		Arrow *arrow = new Arrow(0, scene());
 		double angle = 0;
 
-		if(type == "slope_w" || type == "slope_e")
-			angle = 0;
-		else if(type == "slope_n" || type == "slope_s")
+		switch(type) {
+			case KImageEffect::HorizontalGradient:
+				angle = 0;
+				break;
+			case KImageEffect::VerticalGradient:
 				angle = M_PI / 2;
-		else if(type == "slope_nw" || type == "slope_se")
+				break;
+			case KImageEffect::DiagonalGradient:
 				angle = atan((double)width() / (double)height());
-		else if(type == "slope_ne" || type == "slope_sw")
+				break;
+			case KImageEffect::CrossDiagonalGradient:
 				angle = M_PI - atan((double)width() / (double)height());
+				break;
+			default:
+				break;
+		}
 
 		if (!reversed)
 			angle += M_PI;
@@ -457,16 +519,18 @@ SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
 	QVBoxLayout *layout = new QVBoxLayout(this);
         layout->setMargin( marginHint() );
         layout->setSpacing( spacingHint() );
+
 	KComboBox *gradient = new KComboBox(this);
 	QStringList items;
 	QString curText;
-	items.append("Vertical");
-	items.append("Horizontal");
-	items.append("Diagonal");
-	items.append("Opposite Diagonal");
-	items.append("Elliptic");
+	for (QMap<KImageEffect::GradientType, QString>::Iterator it = slope->gradientI18nKeys.begin(); it != slope->gradientI18nKeys.end(); ++it)
+	{
+		if (it.key() == slope->curType())
+			curText = it.value();
+		items.append(it.value());
+	}
 	gradient->addItems(items);
-	gradient->setCurrentText(curText); //this is not yet set, needs to be changed when fixing editing mode
+	gradient->setCurrentItem(curText);
 	layout->addWidget(gradient);
 	connect(gradient, SIGNAL(activated(const QString &)), this, SLOT(setGradient(const QString &)));
 

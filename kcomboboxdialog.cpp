@@ -63,7 +63,7 @@ KComboBoxDialog::KComboBoxDialog( const QString &_text, const QStringList &_item
 		dontAskAgainCheckBox = 0;
 
 	if ( !_value.isNull() )
-		combo->setCurrentText( _value );
+		combo->setCurrentItem( _value );
 	combo->setFocus();
 }
 

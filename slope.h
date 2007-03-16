@@ -47,10 +47,10 @@ public:
 	virtual QPainterPath shape () const;
 
 	void setGradient(QString text);
-	QString curType() const { return type; }
 	void setGrade(double grade);
 
 	double curGrade() const { return grade; }
+	KImageEffect::GradientType curType() const { return type; }
 	void setColor(QColor color) { this->color = color; updatePixmap(); }
 	void setReversed(bool reversed) { this->reversed = reversed; updatePixmap(); }
 	bool isReversed() const { return reversed; }
@@ -75,8 +75,8 @@ public:
 	double height() const { return rect().height(); }
 
 private:
-	QString type;
-	inline void setType(QString type);
+	KImageEffect::GradientType type;
+	inline void setType(KImageEffect::GradientType type);
 	bool showingInfo;
 	double grade;
 	bool reversed;

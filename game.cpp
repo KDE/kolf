@@ -637,7 +637,6 @@ void Windmill::newSize(double width, double height)
 	guard->setBetween(x(), x() + width);
 	double guardY = m_bottom? height + 4 : -4;
 	guard->setPoints(0, guardY, (double)indent / (double)1.07 - 2, guardY);
-	//guard->setPoints(x()+0, y()+guardY, x()+(double)indent / (double)1.07 - 2, y()+guardY);
 }
 
 /////////////////////////
