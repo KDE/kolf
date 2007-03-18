@@ -38,8 +38,6 @@ wrong player selected in score table at start of game
 
 in strickt mode it is possible to select different holes, this is clearly cheating, but useful for debuging, so should be kept in for now
 
-editing mode is very buggy and needs work, but probably best to wait till after the graphics upgrade
-
 in edit mode it is possible to make a course with no cup
 
 check if KolfGame::viewportToViewport() is still needed
@@ -70,6 +68,8 @@ fix ball colours, probably need seperate balls
 IMPROVEMENTS:
 -------------
 improve graphics
+
+get new stuff option for kolf, not just for SVG graphics but also for courses (currently many storred on Jason Katz-Brown's website)
 
 make slope darkness depend on slope angle again
 

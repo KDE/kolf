@@ -1482,7 +1482,6 @@ void BlackHole::updateInfo()
 void BlackHole::moveBy(double dx, double dy)
 {
 	QGraphicsEllipseItem::moveBy(dx, dy);
-	exitItem->moveBy(dx, dy);
 	updateInfo();
 }
 
