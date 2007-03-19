@@ -1,5 +1,4 @@
 #include "game.h"
-#include <kapplication.h>
 #include <kconfig.h>
 #include <kcursor.h>
 #include <kdebug.h>
@@ -26,8 +25,8 @@
 #include <QSlider>
 #include <QSpinBox>
 #include <QTimer>
-#include <QToolTip>
 #include <QStyleOptionGraphicsItem>
+#include <QApplication>
 
 #include <QMouseEvent>
 #include <QKeyEvent>
@@ -705,8 +704,8 @@ void Sign::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 
 	painter->setPen(QPen(Qt::black, 1));
 	QGraphicsTextItem txt;
-	txt.setFont(kapp->font());
-	QFont font = kapp->font();
+	txt.setFont(QApplication::font());
+	QFont font = QApplication::font();
 	font.setPixelSize((int)fontPixelSize);
 	txt.setFont(font);
 	txt.setHtml(m_text);
@@ -2524,7 +2523,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	highlighter->setVisible(false);
 	highlighter->setZValue(10000);
 
-	QFont font = kapp->font();
+	QFont font = QApplication::font();
 	font.setPixelSize(12);
 
 	// create the advanced putting indicator
@@ -4475,7 +4474,7 @@ void KolfGame::print(KPrinter &pr) //note: this is currently broken, see comment
 	if (pr.option("kde-kolf-title") == "true")
 	{
 		QString text = i18n("%1 - Hole %2; by %3", holeInfo.name(), curHole, holeInfo.author());
-		QFont font(kapp->font());
+		QFont font(QApplication::font());
 		font.setPointSize(18);
 		QRect rect = QFontMetrics(font).boundingRect(text);
 		p.setFont(font);

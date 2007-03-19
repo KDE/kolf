@@ -1,8 +1,8 @@
 #include <QGraphicsView>
 #include <QColor>
 #include <QPen>
+#include <QApplication>
 
-#include <kapplication.h>
 #include <kdebug.h>
 #include "game.h"
 
@@ -36,7 +36,7 @@ Ball::Ball(QGraphicsScene * scene)
 	ignoreBallCollisions = false;
 	frictionMultiplier = 1.0;
 
-	QFont font(kapp->font());
+	QFont font(QApplication::font());
 	baseFontPixelSize=12;
 	font.setPixelSize((int)(baseFontPixelSize));
 	label = new QGraphicsSimpleTextItem("", this, scene);

@@ -7,8 +7,8 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QPainter>
+#include <QApplication>
 
-#include <kapplication.h>
 #include <kcombobox.h>
 #include <kconfig.h>
 #include <knuminput.h>
@@ -41,7 +41,7 @@ Slope::Slope(QRect rect, QGraphicsItem * parent, QGraphicsScene *scene)
 
 	point = new RectPoint(color.light(), this, parent, scene);
 
-	QFont font(kapp->font());
+	QFont font(QApplication::font());
 	baseFontPixelSize = 18;
 	font.setPixelSize(baseFontPixelSize);
 	text = new QGraphicsSimpleTextItem(0, scene);
