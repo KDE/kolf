@@ -70,7 +70,7 @@ protected slots:
 	void enableAllMessages();
 	void createSpacer();
 
-	void emptySlot() {};
+	void emptySlot() {}
 
 	void setCurrentHole(int);
 

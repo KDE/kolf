@@ -42,8 +42,8 @@ class Vector {
 	Vector(const Vector&);
 
 	// Accessors, sorta
-	double componentX() const { return (_magnitude * cos(_direction)); };
-	double componentY() const { return (_magnitude * sin(_direction)); };
+	double componentX() const { return (_magnitude * cos(_direction)); }
+	double componentY() const { return (_magnitude * sin(_direction)); }
 
 	// Sets individual components
 	// Wrappers around setComponents(double, double) - below

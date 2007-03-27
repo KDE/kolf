@@ -104,24 +104,24 @@ public:
 	/**
 	 * show extra item info
 	 */
-	virtual void showInfo() {};
+	virtual void showInfo() {}
 	/**
 	 * hide extra item info
 	 */
-	virtual void hideInfo() {};
+	virtual void hideInfo() {}
 	/**
 	 * update your Z value (this is called by various things when perhaps the value should change) if this is called by a vStrut, it will pass 'this'.
 	 */
-	virtual void updateZ(QGraphicsRectItem * /*vStrut*/ = 0) {};
+	virtual void updateZ(QGraphicsRectItem * /*vStrut*/ = 0) {}
 	/**
 	 * clean up for prettyness
 	 */
-	virtual void clean() {};
+	virtual void clean() {}
 	/**
 	 * scale factor changed (game->scaleFactor(), the world matrix is game->worldMatrix())
 	 * NOTE: not used in Kolf 1.1, which comes with KDE 3.1.
 	 */
-	virtual void scaleChanged() {};
+	virtual void scaleChanged() {}
 	/**
 	 * returns whether this item can be moved by others (if you want to move an item, you should honor this!)
 	 */

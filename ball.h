@@ -58,7 +58,7 @@ public:
 	void setBlowUp(bool yes) { m_blowUp = yes; blowUpCount = 0; }
 	bool blowUp() const { return m_blowUp; }
 
-	void setFrictionMultiplier(double news) { frictionMultiplier = news; };
+	void setFrictionMultiplier(double news) { frictionMultiplier = news; }
 	void friction();
 	void collisionDetect(double oldx, double oldy);
 

@@ -74,7 +74,7 @@ public:
 class Player
 {
 public:
-	Player() : m_ball(new Ball(0)) {};
+	Player() : m_ball(new Ball(0)) {}
 	Ball *ball() const { return m_ball; }
 	void setBall(Ball *ball) { m_ball = ball; }
 	BallStateInfo stateInfo(int hole) const { BallStateInfo ret; ret.spot = QPoint((int)m_ball->getBaseX(), (int)m_ball->getBaseY()); ret.state = m_ball->curState(); ret.score = score(hole); ret.beginningOfHole = m_ball->beginningOfHole(); ret.id = m_id; return ret; }
@@ -148,7 +148,7 @@ class RectItem
 {
 public:
 	virtual ~RectItem(){}
-	virtual void newSize(double /*width*/, double /*height*/) {};
+	virtual void newSize(double /*width*/, double /*height*/) {}
 };
 
 class RectPoint : public QGraphicsEllipseItem, public CanvasItem
@@ -437,7 +437,7 @@ public:
 	virtual void editModeChanged(bool editing) { exitItem->editModeChanged(editing); }
 	void updateInfo();
 
-	virtual void shotStarted() { runs = 0; };
+	virtual void shotStarted() { runs = 0; }
 
 	virtual void moveBy(double dx, double dy);
 
@@ -548,7 +548,7 @@ public:
 	virtual CanvasItem *itemToDelete() { return wall; }
 	virtual void clean();
 	virtual Config *config(QWidget *parent) { return wall->config(parent); }
-	void dontMove() { dontmove = true; };
+	void dontMove() { dontmove = true; }
 	void updateVisible();
 
 	void setSize(double width, double height) { setRect(rect().x(), rect().y(), width, height); }
@@ -758,7 +758,7 @@ class Windmill;
 class WindmillGuard : public Wall
 {
 public:
-	WindmillGuard(QGraphicsItem * parent, QGraphicsScene *scene) : Wall(parent, scene, false) {};
+	WindmillGuard(QGraphicsItem * parent, QGraphicsScene *scene) : Wall(parent, scene, false) {}
 	void setBetween(double newmin, double newmax) { max = newmax; min = newmin; }
 	virtual void advance(int phase);
 	double getMax() { return max; }
