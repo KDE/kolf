@@ -1,6 +1,5 @@
 #include "game.h"
 #include <kconfig.h>
-#include <kcursor.h>
 #include <kdebug.h>
 #include <knuminput.h>
 #include <kfiledialog.h>
@@ -2745,9 +2744,9 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 					moving = true;
 
 					if (citem->cornerResize())
-						setCursor(KCursor::sizeFDiagCursor());
+						setCursor(Qt::SizeFDiagCursor);
 					else
-						setCursor(KCursor::sizeAllCursor());
+						setCursor(Qt::SizeAllCursor);
 
 					emit newSelectedItem(citem);
 					highlighter->setVisible(true);
@@ -2829,9 +2828,9 @@ void KolfGame::handleMouseMoveEvent(QMouseEvent *e)
 
 		QList<QGraphicsItem *> list = course->items(e->pos());
 		if (list.count() > 0)
-			setCursor(KCursor::handCursor());
+			setCursor(Qt::PointingHandCursor);
 		else
-			setCursor(KCursor::arrowCursor());
+			setCursor(Qt::ArrowCursor);
 		return;
 	}
 
@@ -2862,7 +2861,7 @@ void KolfGame::updateMouse()
 
 void KolfGame::handleMouseReleaseEvent(QMouseEvent *e)
 {
-	setCursor(KCursor::arrowCursor());
+	setCursor(Qt::ArrowCursor);
 
 	if (editing)
 	{
@@ -4395,7 +4394,7 @@ void KolfGame::toggleEditMode()
 	else
 	{
 		emit editingEnded();
-		setCursor(KCursor::arrowCursor());
+		setCursor(Qt::ArrowCursor);
 	}
 
 	// alert our items
