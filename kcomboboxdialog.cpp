@@ -27,7 +27,7 @@
 #include <QVBoxLayout>
 
 #include <klocale.h>
-#include <kcombobox.h>
+#include <khistorycombobox.h>
 #include <kconfig.h>
 #include <kdebug.h>
 #include <kglobal.h>
@@ -49,7 +49,7 @@ KComboBoxDialog::KComboBoxDialog( const QString &_text, const QStringList &_item
 	QLabel *label = new QLabel(_text, frame );
 	topLayout->addWidget( label, 1 );
 
-	combo = new KHistoryCombo( frame);
+	combo = new KHistoryComboBox( frame);
 	combo->setEditable(false);
 	combo->addItems( _items );
 	topLayout->addWidget( combo, 1 );
@@ -130,7 +130,7 @@ QString KComboBoxDialog::getText(const QString &_caption, const QString &_text, 
 	if ( !_caption.isNull() )
 		dlg.setCaption( _caption );
 
-	KHistoryCombo * const box = dlg.comboBox();
+	KHistoryComboBox * const box = dlg.comboBox();
 	box->setEditable(true);
 
 	const QString historyItem = QString("%1History").arg(configName);

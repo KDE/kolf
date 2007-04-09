@@ -30,7 +30,7 @@
 #include <kconfig.h>
 
 class QCheckBox;
-class KHistoryCombo;
+class KHistoryComboBox;
 
 /**
  * Dialog for user to choose an item from a QStringList.
@@ -61,7 +61,7 @@ public:
 	/**
 	 * @return the line edit widget
 	 */
-	KHistoryCombo *comboBox() const { return combo; }
+	KHistoryComboBox *comboBox() const { return combo; }
 
 	/**
 	 * Static convenience function to get input from the user.
@@ -105,7 +105,7 @@ public:
 	                       KSharedConfigPtr config = KGlobal::config());
 
 protected:
-	KHistoryCombo *combo;
+	KHistoryComboBox *combo;
 	QCheckBox *dontAskAgainCheckBox;
 	bool dontAskAgainChecked();
 };
