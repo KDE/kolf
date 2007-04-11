@@ -86,7 +86,7 @@ bool KComboBoxDialog::dontAskAgainChecked()
 
 QString KComboBoxDialog::getItem( const QString &_text, const QStringList &_items, const QString& _value, const QString &dontAskAgainName, QWidget *parent )
 {
-	return getItem( _text, QString::null, _items, _value, dontAskAgainName, parent );
+	return getItem( _text, QString(), _items, _value, dontAskAgainName, parent );
 }
 
 QString KComboBoxDialog::getItem( const QString &_text, const QString &_caption, const QStringList &_items, const QString& _value, const QString &dontAskAgainName, QWidget *parent )

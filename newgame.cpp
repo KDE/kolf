@@ -131,8 +131,8 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		}
 
 		const QString newName(i18n("Create New"));
-		info[QString::null] = CourseInfo(newName, newName, i18n("You"), 0, 0);
-		names.append(QString::null);
+		info[QString()] = CourseInfo(newName, newName, i18n("You"), 0, 0);
+		names.append(QString());
 		nameList.append(newName);
 
 		courseList = new K3ListBox(coursePage);

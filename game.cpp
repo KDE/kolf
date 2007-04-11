@@ -2865,7 +2865,7 @@ void KolfGame::handleMouseReleaseEvent(QMouseEvent *e)
 
 	if (editing)
 	{
-		emit newStatusText(QString::null);
+		emit newStatusText(QString());
 		moving = false;
 	}
 
@@ -3812,7 +3812,7 @@ void KolfGame::showInfoDlg(bool addDontShowAgain)
 			+ i18n("Created by %1", holeInfo.author()) + QString("\n")
 			+ i18n("%1 holes", highestHole),
 			i18n("Course Information"),
-			addDontShowAgain? holeInfo.name() + QString(" ") + holeInfo.author() : QString::null);
+			addDontShowAgain? holeInfo.name() + QString(" ") + holeInfo.author() : QString());
 }
 
 void KolfGame::openFile()
@@ -3951,7 +3951,7 @@ void KolfGame::openFile()
 
 	if (!missingPlugins.empty())
 	{
-		KMessageBox::informationList(this, QString("<p>&lt;http://katzbrown.com/kolf/Plugins/&gt;</p><p>") + i18n("This hole uses the following plugins, which you do not have installed:") + QString("</p>"), missingPlugins, QString::null, QString("%1 warning").arg(holeInfo.untranslatedName() + QString::number(curHole)));
+		KMessageBox::informationList(this, QString("<p>&lt;http://katzbrown.com/kolf/Plugins/&gt;</p><p>") + i18n("This hole uses the following plugins, which you do not have installed:") + QString("</p>"), missingPlugins, QString(), QString("%1 warning").arg(holeInfo.untranslatedName() + QString::number(curHole)));
 	}
 
 	lastDelId = -1;

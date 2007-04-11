@@ -52,7 +52,7 @@ Kolf::Kolf()
 	obj = new ObjectList;
 	initPlugins();
 
-	filename = QString::null;
+	filename = QString();
 	dummy = new QWidget(this);
 	setCentralWidget(dummy);
 	layout = new QGridLayout(dummy);
@@ -353,7 +353,7 @@ void Kolf::startNewGame()
 void Kolf::newGame()
 {
 	isTutorial = false;
-	filename = QString::null;
+	filename = QString();
 	startNewGame();
 }
 
@@ -363,13 +363,13 @@ void Kolf::tutorial()
 	if (newfilename.isNull())
 	        return;
 
-	filename = QString::null;
+	filename = QString();
 	loadedGame = newfilename;
 	isTutorial = true;
 
 	startNewGame();
 
-	loadedGame = QString::null;
+	loadedGame = QString();
 }
 
 void Kolf::closeGame()
@@ -381,12 +381,12 @@ void Kolf::closeGame()
 		game->pause();
 	}
 
-	filename = QString::null;
+	filename = QString();
 
 	editingEnded();
 	delete game;
 	game = 0;
-	loadedGame = QString::null;
+	loadedGame = QString();
 
 	editingAction->setChecked(false);
 	setEditingEnabled(false);
@@ -407,7 +407,7 @@ void Kolf::closeGame()
 	loadGameAction->setEnabled(true);
 	tutorialAction->setEnabled(true);
 
-	titleChanged(QString::null);
+	titleChanged(QString());
 	updateModified(false);
 
 	QTimer::singleShot(100, this, SLOT(createSpacer()));

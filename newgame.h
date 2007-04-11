@@ -26,7 +26,7 @@ class PlayerEditor : public QWidget
 	Q_OBJECT
 	
 public:
-	PlayerEditor(QString name = QString::null, QColor = Qt::red, QWidget *parent = 0);
+	PlayerEditor(QString name = QString(), QColor = Qt::red, QWidget *parent = 0);
 	QColor color() { return colorButton->color(); }
 	QString name() { return editor->text(); }
 	void setColor(QColor col) { colorButton->setColor(col); }
