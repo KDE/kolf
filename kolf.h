@@ -2,7 +2,7 @@
 #define KOLF_H
 
 #include <kolflib_export.h>
-#include <kmainwindow.h>
+#include <kxmlguiwindow.h>
 #include <kurl.h>
 
 #include <kdemacros.h>
@@ -20,7 +20,7 @@ class Player;
 class QWidget;
 class Editor;
 
-class KOLFLIB_EXPORT Kolf : public KMainWindow
+class KOLFLIB_EXPORT Kolf : public KXmlGuiWindow
 {
 	Q_OBJECT
 

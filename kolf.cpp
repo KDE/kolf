@@ -8,7 +8,7 @@
 #include <kglobal.h>
 #include <kio/netaccess.h>
 #include <klocale.h>
-#include <kmainwindow.h>
+#include <kxmlguiwindow.h>
 #include <kmimetype.h>
 #include <kmessagebox.h>
 #include <kprinter.h>
@@ -37,7 +37,7 @@
 #include "kolf.h"
 
 Kolf::Kolf()
-    : KMainWindow(0)
+    : KXmlGuiWindow(0)
 {
 	setObjectName("Kolf");
 	competition = false;
