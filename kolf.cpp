@@ -508,10 +508,11 @@ void Kolf::gameOver()
 		for (HighScoreList::Iterator it = highScores.begin(); it != highScores.end(); ++it)
 		{
 			KScoreDialog::FieldInfo info;
-			info[KScoreDialog::Name] = (*it).name;
+                        info[KScoreDialog::Name] = (*it).name;
+                        info[KScoreDialog::Score] = (*it).score;
 			info[KScoreDialog::Custom1] = QString::number(curPar);
 
-                        scoreDialog->addScore((*it).score, info, KScoreDialog::LessIsMore);
+                        scoreDialog->addScore(info, KScoreDialog::LessIsMore);
 		}
 
 		scoreDialog->setComment(i18n("High Scores for %1", courseInfo.name));
