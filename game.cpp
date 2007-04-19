@@ -1639,7 +1639,7 @@ void BlackHole::finishMe(double width)
 
 void BlackHole::save(KConfigGroup *cfgGroup)
 {
-	cfgGroup->writeEntry("exit", QPointF(exitItem->x(), exitItem->y()));
+	cfgGroup->writeEntry("exit", QPoint((int)exitItem->x(), (int)exitItem->y()));
 	cfgGroup->writeEntry("exitDeg", exitDeg);
 	cfgGroup->writeEntry("minspeed", m_minSpeed);
 	cfgGroup->writeEntry("maxspeed", m_maxSpeed);

@@ -240,8 +240,8 @@ void Floater::loadState(StateDB *db)
 void Floater::save(KConfigGroup *cfgGroup)
 {
 	cfgGroup->writeEntry("speed", speed);
-	cfgGroup->writeEntry("startPoint", QPointF(wall->startPoint().x() + wall->x(), wall->startPoint().y() + wall->y()));
-	cfgGroup->writeEntry("endPoint", QPointF(wall->endPoint().x() + wall->x(), wall->endPoint().y() + wall->y()));
+	cfgGroup->writeEntry("startPoint", QPoint((int)(wall->startPoint().x() + wall->x()), (int)(wall->startPoint().y() + wall->y())));
+	cfgGroup->writeEntry("endPoint", QPoint((int)(wall->endPoint().x() + wall->x()), (int)(wall->endPoint().y() + wall->y())));
 
 	doSave(cfgGroup);
 }
