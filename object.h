@@ -4,7 +4,7 @@
 #define KOLF_OBJECT_H
 
 #include <QGraphicsView>
-#include <QString>
+
 #include <QObject>
 
 class KolfSvgRenderer;

@@ -7,7 +7,7 @@
 #include <kpushbutton.h>
 
 #include <QColor>
-#include <QString>
+
 #include <QPixmap>
 #include <QWidget>
 #include <QCheckBox>
