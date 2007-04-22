@@ -20,6 +20,7 @@
 #include <kstandardgameaction.h>
 #include <KStandardGuiItem>
 #include <kicon.h>
+#include <kselectaction.h>
 
 #include <QTimer>
 #include <QGridLayout>
