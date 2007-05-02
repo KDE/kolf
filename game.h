@@ -893,7 +893,7 @@ private:
 	int ithickness, iwidth, iheight;
 };
 
-struct KDE_EXPORT CourseInfo
+struct KOLFLIB_EXPORT CourseInfo
 {
 	CourseInfo(const QString &_name, const QString &_untranslatedName, const QString &_author, unsigned int _holes, unsigned int _par) { name = _name; untranslatedName = _untranslatedName, author = _author; holes = _holes; par = _par; }
 	CourseInfo();
