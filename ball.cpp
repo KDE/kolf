@@ -289,6 +289,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 	if (collisionId % 2 && !(getXVelocity() == 0 && getXVelocity() == 0))
 		friction();
 
+	double initialVector = m_vector.magnitude();
 	const double minSpeed = .06;
 
 	QList<QGraphicsItem *> m_list = collidingItems();
@@ -504,7 +505,12 @@ void Ball::collisionDetect(double oldx, double oldy)
 
 	end:
 
-	if (m_vector.magnitude() < minSpeed && m_vector.magnitude())
+
+	double vectorChange = initialVector - m_vector.magnitude();
+	if(vectorChange < 0 ) 
+		vectorChange *= -1;
+
+	if(m_vector.magnitude() < minSpeed && vectorChange < minSpeed && m_vector.magnitude())
 	{
 		setVelocity(0, 0);
 		setState(Stopped);

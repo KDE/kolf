@@ -2475,9 +2475,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidg
 	
 	renderer = new KolfSvgRenderer( KStandardDirs::locate("appdata", "pics/default_theme.svgz") );
 
-#ifdef SOUND
 	m_player = new Phonon::AudioPlayer( Phonon::GameCategory, this );
-#endif
 
 	holeInfo.setGame(this);
 	holeInfo.setAuthor(i18n("Course Author"));
@@ -2626,9 +2624,7 @@ void KolfGame::setFilename(const QString &filename)
 KolfGame::~KolfGame()
 {
 	delete cfg;
-#ifdef SOUND
 	delete m_player;
-#endif
 }
 
 void KolfGame::setModified(bool mod)
@@ -4440,9 +4436,7 @@ void KolfGame::playSound(const QString& file, float vol)
 		//return;
 		if (vol > 1)
 			vol = 1;
-#ifdef SOUND
 		m_player->play(KUrl::fromPath(resFile));
-#endif
 	}
 }
 

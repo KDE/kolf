@@ -1,11 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
 
-/*
- * uncomment this to enable sound
- */
-//#define SOUND 
-
 #include <kdebug.h>
 #include <klocale.h>
 
@@ -1096,10 +1091,7 @@ private:
 	QGraphicsItem *selectedItem;
 	QGraphicsRectItem *highlighter;
 
-	// sound
-#ifdef SOUND
-        Phonon::AudioPlayer *m_player;
-#endif
+    Phonon::AudioPlayer *m_player;
 	bool m_sound;
 	QString soundDir;
 

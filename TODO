@@ -10,7 +10,9 @@ need a max turn time, so that the ball isn't left bouncing off bumpers for ages 
 
 print needs fixing (see KolfGame::print)
 
-fix hard 13
+in edit mode if you attempt to delete the red line showing the path of a floater then it crashes
+
+moving the red line the floater moves with has no effect on it's motion
 
 when resizing make it so some pixmaps are not painted new every time (store size like in Katom?)
 
