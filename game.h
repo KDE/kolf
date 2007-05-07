@@ -871,21 +871,22 @@ class StrokeCircle : public QGraphicsItem
 public:
 	StrokeCircle(QGraphicsItem *parent, QGraphicsScene *scene);
 
+	void resize(double resizeFactor);
 	void setValue(double v);
 	double value();
 	void setMaxValue(double m);
-	void setSize(int w, int h);
-	void setThickness(int t);
-	int thickness() const;
-	int width() const;
-	int height() const;
+	void setSize(double w, double h);
+	void setThickness(double t);
+	double thickness() const;
+	double width() const;
+	double height() const;
 	virtual void paint (QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	virtual QRectF boundingRect() const;
 	virtual bool collidesWithItem(const QGraphicsItem*) const;
 
 private:
 	double dvalue, dmax;
-	int ithickness, iwidth, iheight;
+	double ithickness, iwidth, iheight;
 };
 
 struct KOLFLIB_EXPORT CourseInfo

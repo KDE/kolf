@@ -2342,11 +2342,22 @@ StrokeCircle::StrokeCircle(QGraphicsItem *parent, QGraphicsScene *scene)
 	setZValue(10000);
 }
 
+void StrokeCircle::resize(double resizeFactor)
+{
+	const double baseSize = 80;
+	const double baseThickness = 8;
+
+	setSize(resizeFactor * baseSize, resizeFactor * baseSize);
+	setThickness(resizeFactor * baseThickness);
+}
+
 void StrokeCircle::setValue(double v)
 {
 	dvalue = v;
 	if (dvalue > dmax)
 		dvalue = dmax;
+
+	update();
 }
 
 double StrokeCircle::value()
@@ -2364,30 +2375,30 @@ void StrokeCircle::setMaxValue(double m)
 	if (dvalue > dmax)
 		dvalue = dmax;
 }
-void StrokeCircle::setSize(int w, int h)
+void StrokeCircle::setSize(double w, double h)
 {
 	if (w > 0)
 		iwidth = w;
 	if (h > 0)
 		iheight = h;
 }
-void StrokeCircle::setThickness(int t)
+void StrokeCircle::setThickness(double t)
 {
 	if (t > 0)
 		ithickness = t;
 }
 
-int StrokeCircle::thickness() const
+double StrokeCircle::thickness() const
 {
 	return ithickness;
 }
 
-int StrokeCircle::width() const
+double StrokeCircle::width() const
 {
 	return iwidth;
 }
 
-int StrokeCircle::height() const
+double StrokeCircle::height() const
 {
 	return iheight;
 }
@@ -2528,8 +2539,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, const QString &filename
 	// create the advanced putting indicator
 	strokeCircle = new StrokeCircle(0, course);
 	strokeCircle->setPos(width - 90, height - 90);
-	strokeCircle->setSize(80, 80);
-	strokeCircle->setThickness(8);
+	strokeCircle->resize(1);
 	strokeCircle->setVisible(false);
 	strokeCircle->setValue(0);
 	strokeCircle->setMaxValue(360); 
@@ -3066,11 +3076,18 @@ void KolfGame::resizeEvent( QResizeEvent* ev )
 void KolfGame::resizeAllItems(double resizeFactor, bool resizeBorderWalls)
 {
 	//resizeFactor is the number to multiply default sizes and positions by to get their resized value (i.e. if it is 1 then use default size, if it is >1 then everything needs to be bigger, and if it is <1 then everything needs to be smaller)
+	
+	//sceneRect resize
 	course->setSceneRect(0, 0, 400*resizeFactor, 400*resizeFactor);
 
+	//background resize
 	QPixmap pic = renderer->renderSvg("grass", (int)(width*resizeFactor), (int)(height*resizeFactor), 0);
 	course->setBackgroundBrush(QBrush(pic));
 
+	//stroke circle resize
+	strokeCircle->resize(resizeFactor);
+
+	//items on course resize (items loaded from the course map)
 	QList<QGraphicsItem *>::const_iterator item;
 	for (item = items.constBegin(); item != items.constEnd(); ++item)
 	{
@@ -3079,12 +3096,15 @@ void KolfGame::resizeAllItems(double resizeFactor, bool resizeBorderWalls)
 			citem->resize(resizeFactor);
 	}
 
+	//ball resize
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 		(*it).ball()->resize(resizeFactor);
 	
+	//putter resize
 	putter->setPos((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 	putter->resize(resizeFactor);
 
+	//border wall resize
 	QList<Wall *>::const_iterator wall;
 	if(resizeBorderWalls) {
 		for (wall = borderWalls.constBegin(); wall != borderWalls.constEnd(); ++wall)
