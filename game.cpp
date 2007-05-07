@@ -42,7 +42,7 @@
 #include "vector.h"
 
 
-inline QString makeGroup(int id, int hole, QString name, int x, int y)
+inline QString makeGroup(int id, int hole, const QString &name, int x, int y)
 {
 	return QString("%1-%2@%3,%4|%5").arg(hole).arg(name).arg(x).arg(y).arg(id);
 }
@@ -240,7 +240,7 @@ void BridgeConfig::rightWallChanged(bool yes)
 
 /////////////////////////
 
-Bridge::Bridge(QRect rect, QGraphicsItem *parent, QGraphicsScene *scene, QString type)
+Bridge::Bridge(const QRect &rect, QGraphicsItem *parent, QGraphicsScene *scene, const QString &type)
 : QGraphicsRectItem(rect, parent, scene)
 {
 	this->type = type;
@@ -812,7 +812,7 @@ void EllipseConfig::check2Changed(bool on)
 
 /////////////////////////
 
-KolfEllipse::KolfEllipse(QGraphicsItem *parent, QGraphicsScene *scene, QString type)
+KolfEllipse::KolfEllipse(QGraphicsItem *parent, QGraphicsScene *scene, const QString &type)
 : QGraphicsEllipseItem(parent, scene)
 {
 	this->type = type;
@@ -2433,7 +2433,7 @@ void StrokeCircle::paint (QPainter *p, const QStyleOptionGraphicsItem *, QWidget
 }
 /////////////////////////////////////////
 
-KolfGame::KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidget *parent)
+KolfGame::KolfGame(ObjectList *obj, PlayerList *players, const QString &filename, QWidget *parent)
 : QGraphicsView(parent)
 {
 	// for mouse control

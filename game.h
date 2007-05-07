@@ -170,7 +170,7 @@ private:
 class KolfEllipse : public QGraphicsEllipseItem, public CanvasItem, public RectItem
 {
 public:
-	KolfEllipse(QGraphicsItem * parent, QGraphicsScene *scene, QString type);
+	KolfEllipse(QGraphicsItem * parent, QGraphicsScene *scene, const QString &type);
 	void firstMove(int x, int y);
 	virtual void advance(int phase);
 	void resize(double resizeFactor);
@@ -646,7 +646,7 @@ private:
 class Bridge : public QGraphicsRectItem, public CanvasItem, public RectItem
 {
 public:
-	Bridge(QRect rect, QGraphicsItem *parent, QGraphicsScene *scene, QString type);
+	Bridge(const QRect &rect, QGraphicsItem *parent, QGraphicsScene *scene, const QString &type);
 	void paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget=0);
 	virtual bool collision(Ball *ball, long int id);
 	virtual void resize(double resizeFactor);
@@ -905,7 +905,7 @@ class KOLFLIB_EXPORT KolfGame : public QGraphicsView
 	Q_OBJECT
 
 public:
-	KolfGame(ObjectList *obj, PlayerList *players, QString filename, QWidget *parent=0);
+	KolfGame(ObjectList *obj, PlayerList *players, const QString &filename, QWidget *parent=0);
 	~KolfGame();
 	void setObjects(ObjectList *obj) { this->obj = obj; }
 	void setFilename(const QString &filename);
