@@ -1,4 +1,5 @@
 #include "game.h"
+
 #include <kconfig.h>
 #include <kdebug.h>
 #include <knuminput.h>
@@ -39,6 +40,7 @@
 #include "kcomboboxdialog.h"
 #include "kvolumecontrol.h"
 #include "vector.h"
+
 
 inline QString makeGroup(int id, int hole, QString name, int x, int y)
 {

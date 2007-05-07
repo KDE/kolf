@@ -1,6 +1,8 @@
 #ifndef KOLF_CANVASITEM_H
 #define KOLF_CANVASITEM_H
 
+#include <kdebug.h>
+
 #include <QGraphicsView>
 #include <QGraphicsRectItem>
 

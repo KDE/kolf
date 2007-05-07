@@ -1,3 +1,5 @@
+#include "poolball.h"
+
 #include <qbrush.h>
 #include <QColor>
 #include <q3canvas.h>
@@ -15,7 +17,6 @@
 
 #include <kolf/statedb.h>
 #include <kolf/canvasitem.h>
-#include "poolball.h"
 
 K_EXPORT_COMPONENT_FACTORY(libkolfpoolball, PoolBallFactory)
 QObject *PoolBallFactory::createObject (QObject *, const char *, const char *, const QStringList &) { return new PoolBallObj; }

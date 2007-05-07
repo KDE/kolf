@@ -1,3 +1,5 @@
+#include "slope.h"
+
 #include <qbitmap.h>
 #include <QCheckBox>
 #include <QLabel>
@@ -14,8 +16,6 @@
 #include <knuminput.h>
 #include <kpixmapeffect.h>
 #include <kstandarddirs.h>
-
-#include "slope.h"
 
 Slope::Slope(QRect rect, QGraphicsItem * parent, QGraphicsScene *scene)
 	: QGraphicsRectItem(rect, parent, scene), type(KImageEffect::VerticalGradient), grade(4), reversed(false), color(QColor("#327501")) 

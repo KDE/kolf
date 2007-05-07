@@ -1,10 +1,10 @@
 #if 0
+#include "kvolumecontrol.h"
+
 #include <kdebug.h>
 
 #include <arts/soundserver.h>
 #include <arts/flowsystem.h>
-
-#include "kvolumecontrol.h"
 
 KVolumeControl::KVolumeControl(Arts::SoundServerV2 server, KPlayObject *parent)
 	: QObject(parent)

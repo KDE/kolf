@@ -25,6 +25,7 @@
 #ifndef KCOMBOBOX_DIALOG_H
 #define KCOMBOBOX_DIALOG_H
 
+#include <klocale.h>
 #include <kdialog.h>
 #include <kglobal.h>
 #include <kconfig.h>

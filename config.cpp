@@ -1,3 +1,5 @@
+#include "config.h"
+
 #include <QLabel>
 #include <QLayout>
 //Added by qt3to4:
@@ -5,8 +7,6 @@
 
 #include <kdialog.h>
 #include <klocale.h>
-
-#include "config.h"
 
 Config::Config(QWidget *parent)
 	: QFrame(parent)

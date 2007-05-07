@@ -22,6 +22,8 @@
 // used in advertising or otherwise to promote the sale, use or other dealings
 // in this Software without prior written authorization from the author(s).
 
+#include "kcomboboxdialog.h"
+
 #include <QCheckBox>
 #include <QLabel>
 #include <QVBoxLayout>
@@ -31,8 +33,6 @@
 #include <kconfig.h>
 #include <kdebug.h>
 #include <kglobal.h>
-
-#include "kcomboboxdialog.h"
 
 KComboBoxDialog::KComboBoxDialog( const QString &_text, const QStringList &_items, const QString& _value, bool showDontAskAgain, QWidget *parent )
 	: KDialog( parent)

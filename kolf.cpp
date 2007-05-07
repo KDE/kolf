@@ -1,3 +1,5 @@
+#include "kolf.h"
+
 #include <kaction.h>
 #include <kactioncollection.h>
 #include <ktoggleaction.h>
@@ -35,7 +37,6 @@
 #include "editor.h"
 #include "pluginloader.h"
 #include "printdialogpage.h"
-#include "kolf.h"
 
 Kolf::Kolf()
     : KXmlGuiWindow(0)

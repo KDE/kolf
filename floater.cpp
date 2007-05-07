@@ -1,10 +1,10 @@
+#include "floater.h"
+
 #include <QLabel>
 #include <qslider.h>
 #include <QHBoxLayout>
 
 #include <kconfig.h>
-
-#include "floater.h"
 
 void FloaterGuide::aboutToDelete()
 {

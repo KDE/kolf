@@ -1,9 +1,9 @@
+#include "kolfsvgrenderer.h"
+
 #include <ksvgrenderer.h>
 #include <QPixmap>
 #include <QPixmapCache>
 #include <QPainter>
-
-#include "kolfsvgrenderer.h"
 
 KolfSvgRenderer::KolfSvgRenderer(const QString& pathToSvg)
 {

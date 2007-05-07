@@ -1,11 +1,11 @@
+#include "printdialogpage.h"
+
 #include <QCheckBox>
 #include <QVBoxLayout>
 
 #include <klocale.h>
 #include <kdialog.h>
 #include <kdebug.h>
-
-#include "printdialogpage.h"
 
 PrintDialogPage::PrintDialogPage(QWidget *parent)
 	: KPrintDialogPage( parent )

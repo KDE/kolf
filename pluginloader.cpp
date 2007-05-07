@@ -1,10 +1,10 @@
+#include "pluginloader.h"
+
 #include <kdebug.h>
 #include <kglobal.h>
 #include <kstandarddirs.h>
 #include <kconfig.h>
 #include <klibloader.h>
-
-#include "pluginloader.h"
 
 ObjectList *PluginLoader::loadAll()
 {

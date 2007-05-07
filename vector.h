@@ -2,6 +2,7 @@
 #define KOLF_VECTOR_H
 
 #include <math.h>
+#include <QPoint>
 
 class Point
 {

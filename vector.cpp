@@ -1,7 +1,7 @@
+#include "vector.h"
+
 #include <kdebug.h>
 #include <QPointF>
-
-#include "vector.h"
 
 // this and vector.h by Ryan Cummings
 

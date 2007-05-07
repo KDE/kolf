@@ -1,6 +1,9 @@
 #ifndef KOLF_SVG_RENDERER_H
 #define KOLF_SVG_RENDERER_H
 
+#include <ksvgrenderer.h>
+#include <QPixmap>
+
 class KSvgRenderer;
 
 class KolfSvgRenderer

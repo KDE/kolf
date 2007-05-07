@@ -1,7 +1,7 @@
+#include "scoreboard.h"
+
 #include <kdebug.h>
 #include <klocale.h>
-
-#include "scoreboard.h"
 
 ScoreBoard::ScoreBoard(QWidget *parent)
 	: QTableWidget(1, 1, parent) 

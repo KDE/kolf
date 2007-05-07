@@ -1,9 +1,10 @@
-#include <QGraphicsView>
+#include "canvasitem.h"
 
 #include <kconfig.h>
 
+#include <QGraphicsView>
+
 #include "game.h"
-#include "canvasitem.h"
 
 QGraphicsRectItem *CanvasItem::onVStrut()
 {

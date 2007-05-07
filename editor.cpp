@@ -1,3 +1,5 @@
+#include "editor.h"
+
 #include <kdialog.h>
 #include <k3listbox.h>
 
@@ -6,7 +8,6 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 
-#include "editor.h"
 #include "game.h"
 
 Editor::Editor(ObjectList *list, QWidget *parent)

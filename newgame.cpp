@@ -1,3 +1,5 @@
+#include "newgame.h"
+
 #include <kconfig.h>
 #include <kdebug.h>
 #include <kdialog.h>
@@ -20,7 +22,6 @@
 #include <QScrollArea>
 #include <QPixmapCache>
 
-#include "newgame.h"
 #include "game.h"
 
 NewGameDialog::NewGameDialog(bool enableCourses)

@@ -1,3 +1,5 @@
+#include "ball.h"
+
 #include <QGraphicsView>
 #include <QColor>
 #include <QPen>
@@ -15,7 +17,6 @@
 #include "rtti.h"
 #include "vector.h"
 #include "canvasitem.h"
-#include "ball.h"
 
 Ball::Ball(QGraphicsScene * scene)
 	: QGraphicsEllipseItem(0, scene)
