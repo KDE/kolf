@@ -85,14 +85,14 @@ void Ball::resize(double resizeFactor)
 void Ball::setPos(qreal x, qreal y)
 {
 	//for Ball (and only Ball) setPos() itself has been modified to take into account resizing
-	//for a procedure that does not automaticaly take into account resizing use setResizedPos()
+	//for a procedure that does not automatically take into account resizing use setResizedPos()
 	setPos(QPointF(x, y));
 }
 
 void Ball::setPos(QPointF pos)
 {
 	//for Ball (and only Ball setPos) itself has been modified to take into account resizing
-	//for a procedure that does not automaticaly take into account resizing use setResizedPos
+	//for a procedure that does not automatically take into account resizing use setResizedPos
 	baseX = pos.x();
 	baseY = pos.y();
 	QGraphicsEllipseItem::setPos(pos.x()*resizeFactor, pos.y()*resizeFactor);
