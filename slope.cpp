@@ -370,7 +370,7 @@ bool Slope::collision(Ball *ball, long int /*id*/)
 	return false;
 }
 
-void Slope::setGradient(QString text)
+void Slope::setGradient(const QString &text)
 {
 	for (QMap<KImageEffect::GradientType, QString>::Iterator it = gradientKeys.begin(); it != gradientKeys.end(); ++it)
 	{

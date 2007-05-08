@@ -15,7 +15,7 @@ class Editor : public QWidget
 	Q_OBJECT
 
 public:
-	Editor(ObjectList *list, QWidget * = 0);
+	explicit Editor(ObjectList *list, QWidget * = 0);
 
 signals:
 	void changed();

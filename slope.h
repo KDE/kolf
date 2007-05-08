@@ -46,7 +46,7 @@ public:
 	virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem * option, QWidget * widget = 0 );
 	virtual QPainterPath shape () const;
 
-	void setGradient(QString text);
+        void setGradient(const QString &text);
 	void setGrade(double grade);
 
 	double curGrade() const { return grade; }

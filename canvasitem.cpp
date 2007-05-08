@@ -40,7 +40,7 @@ void CanvasItem::save(KConfigGroup *cfgGroup)
 	cfgGroup->writeEntry("dummykey", true);
 }
 
-void CanvasItem::playSound(QString file, double vol)
+void CanvasItem::playSound(const QString &file, double vol)
 {
 	if (game)
 		game->playSound(file, vol);

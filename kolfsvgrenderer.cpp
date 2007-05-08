@@ -15,7 +15,7 @@ KolfSvgRenderer::~KolfSvgRenderer()
 	delete renderer;
 }
 
-QPixmap KolfSvgRenderer::renderSvg(QString name, int width, int height, bool useCache)
+QPixmap KolfSvgRenderer::renderSvg(const QString &name, int width, int height, bool useCache)
 {
 	QPixmap pix;
 
@@ -27,7 +27,7 @@ QPixmap KolfSvgRenderer::renderSvg(QString name, int width, int height, bool use
 	return pix;
 }
 
-QPixmap KolfSvgRenderer::renderWithoutCache(QString name, int width, int height)
+QPixmap KolfSvgRenderer::renderWithoutCache(const QString &name, int width, int height)
 {
 	QImage baseImg = QImage(width, height, QImage::Format_ARGB32_Premultiplied);
 	baseImg.fill(0);
@@ -38,7 +38,7 @@ QPixmap KolfSvgRenderer::renderWithoutCache(QString name, int width, int height)
 	return pix;
 }
 
-QPixmap KolfSvgRenderer::renderWithCache(QString name, int width, int height)
+QPixmap KolfSvgRenderer::renderWithCache(const QString &name, int width, int height)
 {
 	if(!QPixmapCache::find(name))
 	{
