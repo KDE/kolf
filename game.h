@@ -149,7 +149,7 @@ public:
 class RectPoint : public QGraphicsEllipseItem, public CanvasItem
 {
 public:
-	RectPoint(QColor color, RectItem *, QGraphicsItem * parent, QGraphicsScene *scene);
+	RectPoint(const QColor &color, RectItem *, QGraphicsItem * parent, QGraphicsScene *scene);
 	void dontMove() { dontmove = true; }
 	virtual void moveBy(double dx, double dy);
 	virtual Config *config(QWidget *parent);
@@ -664,7 +664,7 @@ public:
 	void setSize(double width, double height);
 	virtual QList<QGraphicsItem *> moveableItems() const;
 
-	void setWallColor(QColor color);
+	void setWallColor(const QColor &color);
 	QPen wallPen() const { return topWall->pen(); }
 
 	double wallZ() const { return topWall->zValue(); }
@@ -780,7 +780,7 @@ private:
 class Windmill : public Bridge
 {
 public:
-	Windmill(QRect rect, QGraphicsItem * parent, QGraphicsScene *scene);
+	Windmill(const QRect &rect, QGraphicsItem * parent, QGraphicsScene *scene);
 	virtual void aboutToDie();
 	virtual void newSize(double width, double height);
 	virtual void save(KConfigGroup *cfgGroup);
@@ -1119,7 +1119,7 @@ private:
 	KConfig *cfg;
 	KConfigGroup *cfgGroup;
 
-	inline void addBorderWall(QPoint start, QPoint end);
+	inline void addBorderWall(const QPoint &start, const QPoint &end);
 	void shotStart();
 	void startBall(const Vector &vector);
 

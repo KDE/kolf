@@ -36,7 +36,7 @@ private:
 class Floater : public Bridge
 {
 public:
-	Floater(QRect rect,  QGraphicsItem * parent, QGraphicsScene *scene);
+	Floater(const QRect &rect,  QGraphicsItem * parent, QGraphicsScene *scene);
 	void resize(double resizeFactor);
 	virtual bool collision(Ball *ball, long int id) { Bridge::collision(ball, id); return false; }
 	virtual void saveState(StateDB *db);

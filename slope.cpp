@@ -17,7 +17,7 @@
 #include <kpixmapeffect.h>
 #include <kstandarddirs.h>
 
-Slope::Slope(QRect rect, QGraphicsItem * parent, QGraphicsScene *scene)
+Slope::Slope(const QRect &rect, QGraphicsItem * parent, QGraphicsScene *scene)
 	: QGraphicsRectItem(rect, parent, scene), type(KImageEffect::VerticalGradient), grade(4), reversed(false), color(QColor("#327501")) 
 {
 	setData(0, 1031);

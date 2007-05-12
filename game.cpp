@@ -54,7 +54,7 @@ inline QString makeStateGroup(int id, const QString &name)
 
 /////////////////////////
 
-RectPoint::RectPoint(QColor color, RectItem *rect, QGraphicsItem * parent, QGraphicsScene *scene)
+RectPoint::RectPoint(const QColor &color, RectItem *rect, QGraphicsItem * parent, QGraphicsScene *scene)
 : QGraphicsEllipseItem(parent, scene)
 {
 	setZValue(9999);
@@ -326,7 +326,7 @@ void Bridge::setGame(KolfGame *game)
 	rightWall->setGame(game);
 }
 
-void Bridge::setWallColor(QColor color)
+void Bridge::setWallColor(const QColor &color)
 {
 	topWall->setPen(QPen(color.dark(), 3));
 	botWall->setPen(topWall->pen());
@@ -498,7 +498,7 @@ void WindmillConfig::endChanged(bool bottom)
 
 /////////////////////////
 
-Windmill::Windmill(QRect rect, QGraphicsItem * parent, QGraphicsScene *scene)
+Windmill::Windmill(const QRect &rect, QGraphicsItem * parent, QGraphicsScene *scene)
 : Bridge(rect, parent, scene, "windmill"), speedfactor(16), m_bottom(true)
 {
 	baseGuardSpeed = 5;
@@ -2674,7 +2674,7 @@ void KolfGame::unPause()
 		putterTimer->start(putterTimerMsec);
 }
 
-void KolfGame::addBorderWall(QPoint start, QPoint end)
+void KolfGame::addBorderWall(const QPoint &start, const QPoint &end)
 {
 	Wall *wall = new Wall(0, course);
 	wall->setLine(start.x(), start.y(), end.x(), end.y());
