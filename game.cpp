@@ -4602,23 +4602,23 @@ void KolfGame::saveScores(KConfig *config)
 			config->deleteGroup(*it);
 	}
 
-	KConfigGroup *configGroup  = new KConfigGroup(config->group(QString("0 Saved Game")));
-	configGroup->writeEntry("Players", players->count());
-	configGroup->writeEntry("Course", filename);
-	configGroup->writeEntry("Current Hole", curHole);
+	KConfigGroup configGroup(config->group(QString("0 Saved Game")));
+	configGroup.writeEntry("Players", players->count());
+	configGroup.writeEntry("Course", filename);
+	configGroup.writeEntry("Current Hole", curHole);
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 	{
-		configGroup  = new KConfigGroup(config->group(QString::number((*it).id())));
-		configGroup->writeEntry("Name", (*it).name());
-		configGroup->writeEntry("Color", (*it).ball()->color().name());
+		KConfigGroup configGroup(config->group(QString::number((*it).id())));
+		configGroup.writeEntry("Name", (*it).name());
+		configGroup.writeEntry("Color", (*it).ball()->color().name());
 
 		QStringList scores;
 		QList<int> intscores = (*it).scores();
 		for (QList<int>::Iterator it = intscores.begin(); it != intscores.end(); ++it)
 			scores.append(QString::number(*it));
 
-		configGroup->writeEntry("Scores", scores);
+		configGroup.writeEntry("Scores", scores);
 	}
 }
 
