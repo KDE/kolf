@@ -2607,7 +2607,7 @@ void KolfGame::startFirstHole(int hole)
 	{
 		for (; scoreboardHoles < curHole; ++scoreboardHoles)
 		{
-			cfgGroup = new KConfigGroup(cfg->group(QString("%1-hole@-50,-50|0").arg(scoreboardHoles + 1)));
+			cfgGroup = KConfigGroup(cfg->group(QString("%1-hole@-50,-50|0").arg(scoreboardHoles + 1)));
 			emit newHole(cfgGroup->readEntry("par", 3));
 		}
 
@@ -3796,7 +3796,7 @@ void KolfGame::startNextHole()
 
 		for (; scoreboardHoles < curHole; ++scoreboardHoles)
 		{
-			cfgGroup = new KConfigGroup(cfg->group(QString("%1-hole@-50,-50|0").arg(scoreboardHoles + 1)));
+			cfgGroup = KConfigGroup(cfg->group(QString("%1-hole@-50,-50|0").arg(scoreboardHoles + 1)));
 			emit newHole(cfgGroup->readEntry("par", 3));
 		}
 
@@ -3858,13 +3858,13 @@ void KolfGame::openFile()
 	// we do this here for the hell of it.
 	// there is no fake id, by the way,
 	// because it's old and when i added ids i forgot to change it.
-	cfgGroup = new KConfigGroup(cfg->group(QString("0-course@-50,-50")));
+	cfgGroup = KConfigGroup(cfg->group(QString("0-course@-50,-50")));
 	holeInfo.setAuthor(cfgGroup->readEntry("author", holeInfo.author()));
 	holeInfo.setName(cfgGroup->readEntry("Name", holeInfo.name()));
 	holeInfo.setUntranslatedName(cfgGroup->readEntryUntranslated("Name", holeInfo.untranslatedName()));
 	emit titleChanged(holeInfo.name());
 
-	cfgGroup = new KConfigGroup(KSharedConfig::openConfig(filename), QString("%1-hole@-50,-50|0").arg(curHole));
+	cfgGroup = KConfigGroup(KSharedConfig::openConfig(filename), QString("%1-hole@-50,-50|0").arg(curHole));
 	curPar = cfgGroup->readEntry("par", 3);
 	holeInfo.setPar(curPar);
 	holeInfo.borderWallsChanged(cfgGroup->readEntry("borderWalls", holeInfo.borderWalls()));
@@ -3880,7 +3880,7 @@ void KolfGame::openFile()
 	for (QStringList::Iterator it = groups.begin(); it != groups.end(); ++it)
 	{
 		// [<holeNum>-<name>@<x>,<y>|<id>]
-		cfgGroup = new KConfigGroup(cfg->group(*it));
+		cfgGroup = KConfigGroup(cfg->group(*it));
 
 		const int len = (*it).length();
 		const int dashIndex = (*it).indexOf("-");
@@ -3951,7 +3951,7 @@ void KolfGame::openFile()
 			// make things actually show
 			if (!hasFinalLoad)
 			{
-				cfgGroup = new KConfigGroup(cfg->group(makeGroup(id, curHole, sceneItem->name(), x, y)));
+				cfgGroup = KConfigGroup(cfg->group(makeGroup(id, curHole, sceneItem->name(), x, y)));
 				sceneItem->load(cfgGroup);
 			}
 
@@ -4012,7 +4012,7 @@ void KolfGame::openFile()
 				else
 				{
 					QString group = makeGroup(item->curId(), curHole, item->name(), (int)(*qsceneItem)->x(), (int)(*qsceneItem)->y());
-					cfgGroup = new KConfigGroup(cfg->group(group));
+					cfgGroup = KConfigGroup(cfg->group(group));
 					item->load(cfgGroup);
 				}
 			}
@@ -4022,7 +4022,7 @@ void KolfGame::openFile()
 		qsceneItem = qtodo.constBegin();
 		for (citem = todo.constBegin(); citem != todo.constEnd(); ++citem)
 		{
-			cfgGroup = new KConfigGroup(cfg->group(makeGroup((*citem)->curId(), curHole, (*citem)->name(), (int)(*qsceneItem)->x(), (int)(*qsceneItem)->y())));
+			cfgGroup = KConfigGroup(cfg->group(makeGroup((*citem)->curId(), curHole, (*citem)->name(), (int)(*qsceneItem)->x(), (int)(*qsceneItem)->y())));
 			(*citem)->load(cfgGroup);
 
 			qsceneItem++;
@@ -4351,21 +4351,21 @@ void KolfGame::save()
 		{
 			citem->clean();
 
-			cfgGroup = new KConfigGroup(cfg->group(makeGroup(citem->curId(), curHole, citem->name(), (int)(*item)->x(), (int)(*item)->y())));
+			cfgGroup = KConfigGroup(cfg->group(makeGroup(citem->curId(), curHole, citem->name(), (int)(*item)->x(), (int)(*item)->y())));
 			citem->save(cfgGroup);
 		}
 	}
 
 	// save where ball starts (whiteBall tells all)
-	cfgGroup = new KConfigGroup(cfg->group(QString("%1-ball@%2,%3").arg(curHole).arg((int)whiteBall->x()).arg((int)whiteBall->y())));
+	cfgGroup = KConfigGroup(cfg->group(QString("%1-ball@%2,%3").arg(curHole).arg((int)whiteBall->x()).arg((int)whiteBall->y())));
 	cfgGroup->writeEntry("dummykey", true);
 
-	cfgGroup = new KConfigGroup(cfg->group(QString("0-course@-50,-50")));
+	cfgGroup = KConfigGroup(cfg->group(QString("0-course@-50,-50")));
 	cfgGroup->writeEntry("author", holeInfo.author());
 	cfgGroup->writeEntry("Name", holeInfo.untranslatedName());
 
 	// save hole info
-	cfgGroup = new KConfigGroup(cfg->group(QString("%1-hole@-50,-50|0").arg(curHole)));
+	cfgGroup = KConfigGroup(cfg->group(QString("%1-hole@-50,-50|0").arg(curHole)));
 	cfgGroup->writeEntry("par", holeInfo.par());
 	cfgGroup->writeEntry("maxstrokes", holeInfo.maxStrokes());
 	cfgGroup->writeEntry("borderWalls", holeInfo.borderWalls());

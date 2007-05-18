@@ -3,6 +3,7 @@
 
 #include <kdebug.h>
 #include <klocale.h>
+#include <KConfigGroup>
 
 #include <math.h>
 
@@ -32,7 +33,6 @@ class QResizeEvent;
 class QVBoxLayout;
 class QPainter;
 class KConfig;
-class KConfigGroup;
 class KPrinter;
 class KolfGame;
 
@@ -1117,7 +1117,7 @@ private:
 	bool infoShown;
 
 	KConfig *cfg;
-	KConfigGroup *cfgGroup;
+	KConfigGroup cfgGroup;
 
 	inline void addBorderWall(const QPoint &start, const QPoint &end);
 	void shotStart();
