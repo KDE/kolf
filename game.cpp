@@ -4566,15 +4566,15 @@ void KolfGame::courseInfo(CourseInfo &info, const QString& filename)
 
 void KolfGame::scoresFromSaved(KConfig *config, PlayerList &players)
 {
-	KConfigGroup *configGroup  = new KConfigGroup(config->group(QString("0 Saved Game")));
-	int numPlayers = configGroup->readEntry("Players", 0);
+	KConfigGroup configGroup(config->group(QString("0 Saved Game")));
+	int numPlayers = configGroup.readEntry("Players", 0);
 	if (numPlayers <= 0)
 		return;
 
 	for (int i = 1; i <= numPlayers; ++i)
 	{
 		// this is same as in kolf.cpp, but we use saved game values
-		configGroup = new KConfigGroup(config->group(QString::number(i)));
+		configGroup = KConfigGroup(config->group(QString::number(i)));
 		players.append(Player());
 		players.last().ball()->setColor(configGroup->readEntry("Color", "#ffffff"));
 		players.last().setName(configGroup->readEntry("Name"));
