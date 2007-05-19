@@ -224,7 +224,6 @@ void Kolf::initGUI()
 	action->setText(i18n("&Tutorial"));
 	connect(tutorialAction, SIGNAL(triggered(bool) ), SLOT(tutorial()));
 
-	statusBar();
 	setupGUI();
 }
 
