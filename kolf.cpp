@@ -1,3 +1,21 @@
+/*
+    Copyright (C) 2002-2005, Jason Katz-Brown <jasonkb@mit.edu>
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+*/
+
 #include "kolf.h"
 
 #include <kaction.h>
@@ -73,86 +91,86 @@ Kolf::~Kolf()
 void Kolf::initGUI()
 {
 	newAction = KStandardGameAction::gameNew(this, SLOT(newGame()), this);
-        actionCollection()->addAction(newAction->objectName(), newAction);
+	actionCollection()->addAction(newAction->objectName(), newAction);
 	newAction->setText(newAction->text() + QString("..."));
 
 	endAction = KStandardGameAction::end(this, SLOT(closeGame()), this);
-        actionCollection()->addAction(endAction->objectName(), endAction);
+	actionCollection()->addAction(endAction->objectName(), endAction);
 	printAction = KStandardGameAction::print(this, SLOT(print()), this);
-        actionCollection()->addAction(printAction->objectName(), printAction);
+	actionCollection()->addAction(printAction->objectName(), printAction);
 
 	QAction *action = KStandardGameAction::quit(this, SLOT(close()), this);
-        actionCollection()->addAction(action->objectName(), action);
+	actionCollection()->addAction(action->objectName(), action);
 	saveAction = actionCollection()->addAction(KStandardAction::Save, "game_save", this, SLOT(save()));
 	saveAction->setText(i18n("Save &Course"));
 	saveAsAction = actionCollection()->addAction(KStandardAction::SaveAs, "game_save_as", this, SLOT(saveAs()));
 	saveAsAction->setText(i18n("Save &Course As..."));
 
 	saveGameAction = actionCollection()->addAction("savegame");
-        saveGameAction->setText(i18n("&Save Game"));
+	saveGameAction->setText(i18n("&Save Game"));
 	connect(saveGameAction, SIGNAL(triggered(bool) ), SLOT(saveGame()));
 	saveGameAsAction = actionCollection()->addAction("savegameas");
-        saveGameAsAction->setText(i18n("&Save Game As..."));
+	saveGameAsAction->setText(i18n("&Save Game As..."));
 	connect(saveGameAsAction, SIGNAL(triggered(bool) ), SLOT(saveGameAs()));
 
 	loadGameAction = KStandardGameAction::load(this, SLOT(loadGame()), this);
-        actionCollection()->addAction(loadGameAction->objectName(), loadGameAction);
+	actionCollection()->addAction(loadGameAction->objectName(), loadGameAction);
 	loadGameAction->setText(i18n("Load Saved Game..."));
 
 	highScoreAction = KStandardGameAction::highscores(this, SLOT(showHighScores()), actionCollection());
 
 	editingAction = new KToggleAction(KIcon("pencil"), i18n("&Edit"), this);
-        actionCollection()->addAction("editing", editingAction);
+	actionCollection()->addAction("editing", editingAction);
 	connect(editingAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	editingAction->setShortcut(Qt::CTRL+Qt::Key_E);
 	newHoleAction = actionCollection()->addAction("newhole");
-        newHoleAction->setIcon(KIcon("document-new"));
-        newHoleAction->setText(i18n("&New"));
+	newHoleAction->setIcon(KIcon("document-new"));
+	newHoleAction->setText(i18n("&New"));
 	connect(newHoleAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	newHoleAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_N);
 	clearHoleAction = actionCollection()->addAction("clearhole");
-        clearHoleAction->setIcon(KIcon("locationbar-erase"));
-        clearHoleAction->setText(KStandardGuiItem::clear().text());
+	clearHoleAction->setIcon(KIcon("locationbar-erase"));
+	clearHoleAction->setText(KStandardGuiItem::clear().text());
 	connect(clearHoleAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	clearHoleAction->setShortcut(Qt::CTRL+Qt::Key_Delete);
 	resetHoleAction = actionCollection()->addAction("resethole");
-        resetHoleAction->setText(i18n("&Reset"));
+	resetHoleAction->setText(i18n("&Reset"));
 	connect(resetHoleAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	resetHoleAction->setShortcut(Qt::CTRL+Qt::Key_R);
 	undoShotAction = KStandardAction::undo(this, SLOT(emptySlot()), this);
-        actionCollection()->addAction("undoshot", undoShotAction);
+	actionCollection()->addAction("undoshot", undoShotAction);
 	undoShotAction->setText(i18n("&Undo Shot"));
 	//replayShotAction = new KAction(i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 
 	holeAction = new KSelectAction(i18n("Switch to Hole"), this);
-        actionCollection()->addAction("switchhole", holeAction);
+	actionCollection()->addAction("switchhole", holeAction);
 	connect(holeAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	nextAction = actionCollection()->addAction("nexthole");
-        nextAction->setIcon(KIcon("go-next"));
-        nextAction->setText(i18n("&Next Hole"));
+	nextAction->setIcon(KIcon("go-next"));
+	nextAction->setText(i18n("&Next Hole"));
 	connect(nextAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	nextAction->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Forward));
 	prevAction = actionCollection()->addAction("prevhole");
-        prevAction->setIcon(KIcon("go-previous"));
-        prevAction->setText(i18n("&Previous Hole"));
+	prevAction->setIcon(KIcon("go-previous"));
+	prevAction->setText(i18n("&Previous Hole"));
 	connect(prevAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	prevAction->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Back));
 	firstAction = actionCollection()->addAction("firsthole");
-        firstAction->setIcon(KIcon("go-home"));
-        firstAction->setText(i18n("&First Hole"));
+	firstAction->setIcon(KIcon("go-home"));
+	firstAction->setText(i18n("&First Hole"));
 	connect(firstAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	firstAction->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Home));
 	lastAction = actionCollection()->addAction("lasthole");
-        lastAction->setText(i18n("&Last Hole"));
+	lastAction->setText(i18n("&Last Hole"));
 	connect(lastAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	lastAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_End);
 	randAction = actionCollection()->addAction("randhole");
-        randAction->setIcon(KIcon("goto-page"));
-        randAction->setText(i18n("&Random Hole"));
+	randAction->setIcon(KIcon("goto-page"));
+	randAction->setText(i18n("&Random Hole"));
 	connect(randAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 
 	useMouseAction = new KToggleAction(i18n("Enable &Mouse for Moving Putter"), this);
-        actionCollection()->addAction("usemouse", useMouseAction);
+	actionCollection()->addAction("usemouse", useMouseAction);
 	connect(useMouseAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	useMouseAction->setCheckedState(KGuiItem(i18n("Disable &Mouse for Moving Putter")));
 	connect(useMouseAction, SIGNAL(toggled(bool)), this, SLOT(useMouseChanged(bool)));
@@ -160,14 +178,14 @@ void Kolf::initGUI()
 	useMouseAction->setChecked(configGroup.readEntry("useMouse", true));
 
 	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Putting"), this);
-        actionCollection()->addAction("useadvancedputting", useAdvancedPuttingAction);
+	actionCollection()->addAction("useadvancedputting", useAdvancedPuttingAction);
 	connect(useAdvancedPuttingAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	useAdvancedPuttingAction->setCheckedState(KGuiItem(i18n("Disable &Advanced Putting")));
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
 	useAdvancedPuttingAction->setChecked(configGroup.readEntry("useAdvancedPutting", false));
 
 	showInfoAction = new KToggleAction(KIcon("document-properties"), i18n("Show &Info"), this);
-        actionCollection()->addAction("showinfo", showInfoAction);
+	actionCollection()->addAction("showinfo", showInfoAction);
 	connect(showInfoAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	showInfoAction->setShortcut(Qt::CTRL+Qt::Key_I);
 	showInfoAction->setCheckedState(KGuiItem(i18n("Hide &Info")));
@@ -175,35 +193,35 @@ void Kolf::initGUI()
 	showInfoAction->setChecked(configGroup.readEntry("showInfo", false));
 
 	showGuideLineAction = new KToggleAction(i18n("Show Putter &Guideline"), this);
-        actionCollection()->addAction("showguideline", showGuideLineAction);
+	actionCollection()->addAction("showguideline", showGuideLineAction);
 	connect(showGuideLineAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	showGuideLineAction->setCheckedState(KGuiItem(i18n("Hide Putter &Guideline")));
 	connect(showGuideLineAction, SIGNAL(toggled(bool)), this, SLOT(showGuideLineChanged(bool)));
 	showGuideLineAction->setChecked(configGroup.readEntry("showGuideLine", true));
 
 	KToggleAction *act = new KToggleAction(i18n("Enable All Dialog Boxes"), this);
-        actionCollection()->addAction("enableAll", act);
+	actionCollection()->addAction("enableAll", act);
 	connect(act, SIGNAL(triggered(bool) ), SLOT(enableAllMessages()));
 	act->setCheckedState(KGuiItem(i18n("Disable All Dialog Boxes")));
 
 	soundAction = new KToggleAction(i18n("Play &Sounds"), this);
-        actionCollection()->addAction("sound", soundAction);
+	actionCollection()->addAction("sound", soundAction);
 	connect(soundAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	connect(soundAction, SIGNAL(toggled(bool)), this, SLOT(soundChanged(bool)));
 	soundAction->setChecked(configGroup.readEntry("sound", true));
 
 	action = actionCollection()->addAction("reloadplugins");
-        action->setText(i18n("&Reload Plugins"));
+	action->setText(i18n("&Reload Plugins"));
 	connect(action, SIGNAL(triggered(bool) ), SLOT(initPlugins()));
 	action = actionCollection()->addAction("showplugins");
-        action->setText(i18n("Show &Plugins"));
+	action->setText(i18n("Show &Plugins"));
 	connect(action, SIGNAL(triggered(bool) ), SLOT(showPlugins()));
 
 	aboutAction = actionCollection()->addAction("aboutcourse");
-        action->setText(i18n("&About Course"));
+	action->setText(i18n("&About Course"));
 	connect(aboutAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	tutorialAction = actionCollection()->addAction("tutorial");
-        action->setText(i18n("&Tutorial"));
+	action->setText(i18n("&Tutorial"));
 	connect(tutorialAction, SIGNAL(triggered(bool) ), SLOT(tutorial()));
 
 	statusBar();
@@ -244,7 +262,7 @@ void Kolf::startNewGame()
 		{
 			players.append(Player());
 			players.last().ball()->setColor(dialog->players()->at(newId-1)->color());
-                        players.last().setName(dialog->players()->at(newId-1)->name());
+			players.last().setName(dialog->players()->at(newId-1)->name());
 			players.last().setId(newId);
 		}
 
@@ -655,7 +673,7 @@ void Kolf::editingStarted()
 {
 	delete editor;
 	editor = new Editor(obj, dummy);
-        editor->setObjectName( "Editor" );
+	editor->setObjectName( "Editor" );
 	connect(editor, SIGNAL(addNewItem(Object *)), game, SLOT(addNewObject(Object *)));
 	connect(editor, SIGNAL(changed()), game, SLOT(setModified()));
 	connect(editor, SIGNAL(addNewItem(Object *)), this, SLOT(setHoleFocus()));
@@ -762,7 +780,7 @@ void Kolf::print()
 	KPrinter pr;
 	pr.addDialogPage(new PrintDialogPage());
 
-    if (pr.setup(this, i18n("Print %1 - Hole %2", game->courseName(), game->currentHole())))
+	if (pr.setup(this, i18n("Print %1 - Hole %2", game->courseName(), game->currentHole())))
 	{
 		pr.newPage();
 		game->print(pr);
@@ -831,11 +849,11 @@ void Kolf::initPlugins()
 
 	ObjectList *other = PluginLoader::loadAll();
 	QList<Object *>::const_iterator object;
-        for (object = other->constBegin(); object != other->constEnd(); ++object)
-        {
-                obj->append(*object);
-                plugins.append(*object);
-        }
+	for (object = other->constBegin(); object != other->constEnd(); ++object)
+	{
+		obj->append(*object);
+		plugins.append(*object);
+	}
 
 	if (game)
 	{
