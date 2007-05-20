@@ -56,7 +56,6 @@
 #include <krandom.h>
 
 #include "kcomboboxdialog.h"
-#include "kvolumecontrol.h"
 #include "vector.h"
 
 

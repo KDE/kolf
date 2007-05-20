@@ -26,7 +26,6 @@ set(kolf_LIB_SRCS
    vector.cpp 
    printdialogpage.cpp 
    kcomboboxdialog.cpp 
-   kvolumecontrol.cpp 
    kolfsvgrenderer.cpp
    floater.cpp 
    slope.cpp )
