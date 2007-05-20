@@ -67,7 +67,7 @@ Kolf::Kolf()
 	scoreboard = 0;
 	isTutorial = false;
 
-	initGUI();
+	setupActions();
 
 	obj = new ObjectList;
 	initPlugins();
@@ -88,19 +88,15 @@ Kolf::~Kolf()
 	delete obj;
 }
 
-void Kolf::initGUI()
+void Kolf::setupActions()
 {
-	newAction = KStandardGameAction::gameNew(this, SLOT(newGame()), this);
-	actionCollection()->addAction(newAction->objectName(), newAction);
+	// Game
+	newAction = KStandardGameAction::gameNew(this, SLOT(newGame()), actionCollection());
 	newAction->setText(newAction->text() + QString("..."));
+	endAction = KStandardGameAction::end(this, SLOT(closeGame()), actionCollection());
+	printAction = KStandardGameAction::print(this, SLOT(print()), actionCollection());
+	KStandardGameAction::quit(this, SLOT(close()), actionCollection());
 
-	endAction = KStandardGameAction::end(this, SLOT(closeGame()), this);
-	actionCollection()->addAction(endAction->objectName(), endAction);
-	printAction = KStandardGameAction::print(this, SLOT(print()), this);
-	actionCollection()->addAction(printAction->objectName(), printAction);
-
-	QAction *action = KStandardGameAction::quit(this, SLOT(close()), this);
-	actionCollection()->addAction(action->objectName(), action);
 	saveAction = actionCollection()->addAction(KStandardAction::Save, "game_save", this, SLOT(save()));
 	saveAction->setText(i18n("Save &Course"));
 	saveAsAction = actionCollection()->addAction(KStandardAction::SaveAs, "game_save_as", this, SLOT(saveAs()));
@@ -113,12 +109,10 @@ void Kolf::initGUI()
 	saveGameAsAction->setText(i18n("&Save Game As..."));
 	connect(saveGameAsAction, SIGNAL(triggered(bool) ), SLOT(saveGameAs()));
 
-	loadGameAction = KStandardGameAction::load(this, SLOT(loadGame()), this);
-	actionCollection()->addAction(loadGameAction->objectName(), loadGameAction);
-	loadGameAction->setText(i18n("Load Saved Game..."));
-
+	loadGameAction = KStandardGameAction::load(this, SLOT(loadGame()), actionCollection());
 	highScoreAction = KStandardGameAction::highscores(this, SLOT(showHighScores()), actionCollection());
 
+	// Hole
 	editingAction = new KToggleAction(KIcon("pencil"), i18n("&Edit"), this);
 	actionCollection()->addAction("editing", editingAction);
 	connect(editingAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
@@ -142,6 +136,7 @@ void Kolf::initGUI()
 	undoShotAction->setText(i18n("&Undo Shot"));
 	//replayShotAction = new KAction(i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 
+	// Go
 	holeAction = new KSelectAction(i18n("Switch to Hole"), this);
 	actionCollection()->addAction("switchhole", holeAction);
 	connect(holeAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
@@ -169,6 +164,7 @@ void Kolf::initGUI()
 	randAction->setText(i18n("&Random Hole"));
 	connect(randAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 
+	// Settings
 	useMouseAction = new KToggleAction(i18n("Enable &Mouse for Moving Putter"), this);
 	actionCollection()->addAction("usemouse", useMouseAction);
 	connect(useMouseAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
@@ -210,7 +206,7 @@ void Kolf::initGUI()
 	connect(soundAction, SIGNAL(toggled(bool)), this, SLOT(soundChanged(bool)));
 	soundAction->setChecked(configGroup.readEntry("sound", true));
 
-	action = actionCollection()->addAction("reloadplugins");
+	QAction *action = actionCollection()->addAction("reloadplugins");
 	action->setText(i18n("&Reload Plugins"));
 	connect(action, SIGNAL(triggered(bool) ), SLOT(initPlugins()));
 	action = actionCollection()->addAction("showplugins");

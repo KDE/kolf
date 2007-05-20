@@ -79,7 +79,7 @@ private:
 	KolfGame *game;
 	Editor *editor;
 	KolfGame *spacer;
-	void initGUI();
+	void setupActions();
 	QString filename;
 	PlayerList players;
 	PlayerList spacerPlayers;
