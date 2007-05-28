@@ -3620,8 +3620,6 @@ void KolfGame::shotDone()
 
 	inPlay = false;
 	(*curPlayer).ball()->collisionDetect(oldx, oldy);
-
-	undoShotAction->setEnabled(ballStateList.canUndo);
 }
 
 void KolfGame::emitMax()
