@@ -216,7 +216,8 @@ void Floater::moveBy(double dx, double dy)
 				if ((*it)->data(0) == Rtti_Ball)
 				{
 					//((Ball *)(*it))->setState(Rolling);
-					(*it)->moveBy(dx, dy);
+					Ball *ball = dynamic_cast<Ball *>(*it);
+					ball->moveBy(dx, dy);
 					if (game && /*game->hasFocus() &&*/ !game->isEditing() && game->curBall() == (Ball *)(*it))
 							game->ballMoved();
 				}
@@ -246,13 +247,13 @@ void Floater::moveBy(double dx, double dy)
 
 void Floater::saveState(StateDB *db)
 {
-	db->setPoint(QPointF(x(), y()));
+	db->setPoint(QPointF(x()/resizeFactor, y()/resizeFactor));
 }
 
 void Floater::loadState(StateDB *db)
 {
 	const QPointF moveTo = db->point();
-	setPos(moveTo.x(), moveTo.y());
+	moveBy(moveTo.x()*resizeFactor - x(), moveTo.y()*resizeFactor - y());
 }
 
 void Floater::save(KConfigGroup *cfgGroup)

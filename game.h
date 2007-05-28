@@ -332,7 +332,7 @@ protected:
 	/*
 	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
 	 */
-	double baseX, baseY, baseDiameter;
+	double baseX, baseY, baseDiameter, resizeFactor;
 	virtual HoleResult result(const QPointF, double, bool *wasCenter);
 };
 

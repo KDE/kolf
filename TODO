@@ -8,6 +8,8 @@ Minor Bugs:
 -----------
 need a max turn time, so that the ball isn't left bouncing off bumpers for ages (or possibly on some holes forever)
 
+undo button not greyed out when undo impossible
+
 print needs fixing (see KolfGame::print)
 
 in edit mode if you attempt to delete the red line showing the path of a floater then it crashes
@@ -15,8 +17,6 @@ in edit mode if you attempt to delete the red line showing the path of a floater
 moving the red line the floater moves with has no effect on it's motion
 
 when resizing make it so some pixmaps are not painted new every time (store size like in Katom?)
-
-fix advanced putting and it's resizing
 
 fix scoreboard resizing, it can get too big, and can also get too small!
 

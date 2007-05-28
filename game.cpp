@@ -1345,6 +1345,7 @@ void Cup::firstMove(int x, int y)
 
 void Cup::resize(double resizeFactor)
 {
+	this->resizeFactor = resizeFactor;
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
 	setRect(-0.5*baseDiameter*resizeFactor, -0.5*baseDiameter*resizeFactor, baseDiameter*resizeFactor, baseDiameter*resizeFactor);
 	pixmap=game->renderer->renderSvg("cup", (int)rect().width(), (int)rect().height(), 0);
@@ -1357,13 +1358,13 @@ void Cup::save(KConfigGroup *cfgGroup)
 
 void Cup::saveState(StateDB *db)
 {
-	db->setPoint(QPointF(x(), y()));
+	db->setPoint(QPointF(x()/resizeFactor, y()/resizeFactor));
 }
 
 void Cup::loadState(StateDB *db)
 {
 	const QPointF moveTo = db->point();
-	setPos(moveTo.x(), moveTo.y());
+	setPos(moveTo.x()*resizeFactor, moveTo.y()*resizeFactor);
 }
 
 bool Cup::collision(Ball *ball, long int /*id*/)
@@ -3619,6 +3620,8 @@ void KolfGame::shotDone()
 
 	inPlay = false;
 	(*curPlayer).ball()->collisionDetect(oldx, oldy);
+
+	undoShotAction->setEnabled(ballStateList.canUndo);
 }
 
 void KolfGame::emitMax()
