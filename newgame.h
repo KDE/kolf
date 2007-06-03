@@ -33,10 +33,7 @@
 #include "game.h"
 
 class KLineEdit;
-class QVBoxLayout;
-class QPainter;
 class K3ListBox;
-class QEvent;
 class QScrollArea;
 
 class PlayerEditor : public QWidget

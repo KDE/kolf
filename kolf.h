@@ -32,8 +32,6 @@ class KSelectAction;
 class QAction;
 class QGridLayout;
 class ScoreBoard;
-class QCloseEvent;
-class QEvent;
 class Player;
 class QWidget;
 class Editor;

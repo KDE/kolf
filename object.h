@@ -25,7 +25,6 @@
 
 #include <QObject>
 
-class KolfSvgRenderer;
 
 class Object : public QObject
 {
