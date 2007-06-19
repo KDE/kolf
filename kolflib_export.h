@@ -1,6 +1,5 @@
-/*
-    This file is part of kdegames
-    Copyright (c) 2006 kdegames Team
+/*  This file is part of the KDE project
+    Copyright (C) 2007 David Faure <faure@kde.org>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
@@ -18,24 +17,24 @@
     Boston, MA 02110-1301, USA.
 */
 
-#ifndef _LIBKOLF_EXPORT_H
-#define _LIBKOLF_EXPORT_H
+#ifndef KOLFLIB_EXPORT_H
+#define KOLFLIB_EXPORT_H
 
+/* needed for KDE_EXPORT and KDE_IMPORT macros */
 #include <kdemacros.h>
 
-#ifdef Q_WS_WIN
-
 #ifndef KOLFLIB_EXPORT
-# ifdef MAKE_KOLFLIB_LIB
+# if defined(MAKE_KOLFLIB_LIB)
+   /* We are building this library */ 
 #  define KOLFLIB_EXPORT KDE_EXPORT
 # else
+   /* We are using this library */ 
 #  define KOLFLIB_EXPORT KDE_IMPORT
 # endif
 #endif
 
-#else // not windows
+# ifndef KOLFLIB_EXPORT_DEPRECATED
+#  define KOLFLIB_EXPORT_DEPRECATED KDE_DEPRECATED KOLFLIB_EXPORT
+# endif
 
-#define KOLFLIB_EXPORT KDE_EXPORT
-#endif /* not windows */
-
-#endif /* _LIBKOLF_EXPORT_H */
+#endif
