@@ -15,7 +15,7 @@ Name[tg]=Колф
 Type=Application
 Exec=kolf %U
 Icon=kolf
-MimeType=application/x-kourse;application/x-kolf
+MimeType=application/x-kourse;application/x-kolf;
 
 GenericName=Miniature Golf
 GenericName[be]=Маленькі гольф
