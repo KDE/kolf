@@ -1,2 +1,2 @@
 #! /usr/bin/env bash
-$XGETTEXT *.cpp canvasitem.h game.h -o $podir/kolf.pot
+$XGETTEXT `find . -name \*.h -o -name \*.cpp` -o $podir/kolf.pot
