@@ -28,7 +28,7 @@ ScoreBoard::ScoreBoard(QWidget *parent)
 	setHorizontalHeaderItem(columnCount() -1, new QTableWidgetItem(i18n("Total")));
 
 	setFocusPolicy(Qt::NoFocus);
-	setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
+	setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred));
 	setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 

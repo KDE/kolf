@@ -28,7 +28,7 @@
 #include <kpixmapeffect.h>
 #include <kprinter.h>
 #include <kstandarddirs.h>
-#include <phonon/audioplayer.h>
+#include <Phonon/AudioPlayer>
 
 #include <QGraphicsView>
 #include <QResizeEvent>
@@ -2505,7 +2505,9 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, const QString &filename
 	
 	renderer = new KolfSvgRenderer( KStandardDirs::locate("appdata", "pics/default_theme.svgz") );
 
-	m_player = new Phonon::AudioPlayer( Phonon::GameCategory, this );
+#ifdef SOUND
+	m_player = new Phonon::AudioPlayer( Phonon::GameCategory );
+#endif
 
 	holeInfo.setGame(this);
 	holeInfo.setAuthor(i18n("Course Author"));
@@ -2653,7 +2655,9 @@ void KolfGame::setFilename(const QString &filename)
 KolfGame::~KolfGame()
 {
 	delete cfg;
+#ifdef SOUND
 	delete m_player;
+#endif
 }
 
 void KolfGame::setModified(bool mod)
@@ -3086,8 +3090,7 @@ void KolfGame::resizeEvent( QResizeEvent* ev )
 	double resizeFactor = (double)newSize/400.0;
 	QGraphicsView::resize(newSize, newSize); //make sure new size is square
 
-	if(newSize!=400) //not default size, so resizing is needed
-		resizeAllItems(resizeFactor);
+	resizeAllItems(resizeFactor);
 }
 
 void KolfGame::resizeAllItems(double resizeFactor, bool resizeBorderWalls)
@@ -4466,6 +4469,7 @@ void KolfGame::toggleEditMode()
 
 void KolfGame::playSound(const QString& file, float vol)
 {
+#ifdef SOUND
 	if (m_sound)
 	{
 		QString resFile = soundDir + file + QString::fromLatin1(".wav");
@@ -4477,6 +4481,7 @@ void KolfGame::playSound(const QString& file, float vol)
 			vol = 1;
 		m_player->play(KUrl::fromPath(resFile));
 	}
+#endif
 }
 
 void HoleInfo::borderWallsChanged(bool yes)
