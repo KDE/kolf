@@ -36,29 +36,26 @@ I18N_NOOP("KDE Minigolf Game");
 
 static const char version[] = "1.1";
 
-static KCmdLineOptions options[] =
-{
-	{ "+file", I18N_NOOP("File"), 0 },
-	{ "course-info ", I18N_NOOP("Print course information and exit"), 0 },
-	KCmdLineLastOption
-};
-
 
 int main(int argc, char **argv)
 {
-	KAboutData aboutData( "kolf", I18N_NOOP("Kolf"), version, description, KAboutData::License_GPL, "(c) 2002-2005, Jason Katz-Brown", 0, "http://www.katzbrown.com/kolf/");
+	KAboutData aboutData( "kolf", 0, ki18n("Kolf"), version, ki18n(description), KAboutData::License_GPL, ki18n("(c) 2002-2005, Jason Katz-Brown"), KLocalizedString(), "http://www.katzbrown.com/kolf/");
 
-	aboutData.addAuthor("Jason Katz-Brown", I18N_NOOP("Main author"), "jasonkb@mit.edu");
-	aboutData.addAuthor("Niklas Knutsson", I18N_NOOP("Advanced putting mode"), 0);
-	aboutData.addAuthor("Rik Hemsley", I18N_NOOP("Border around course"), 0);
-	aboutData.addAuthor("Ryan Cumming", I18N_NOOP("Vector class"), 0);
-	aboutData.addAuthor("Daniel Matza-Brown", I18N_NOOP("Working wall-bouncing algorithm"), 0);
-	aboutData.addAuthor("Timo A. Hummel", I18N_NOOP("Some good sound effects"), "timo.hummel@gmx.net");
+	aboutData.addAuthor(ki18n("Jason Katz-Brown"), ki18n("Main author"), "jasonkb@mit.edu");
+	aboutData.addAuthor(ki18n("Niklas Knutsson"), ki18n("Advanced putting mode"));
+	aboutData.addAuthor(ki18n("Rik Hemsley"), ki18n("Border around course"));
+	aboutData.addAuthor(ki18n("Ryan Cumming"), ki18n("Vector class"));
+	aboutData.addAuthor(ki18n("Daniel Matza-Brown"), ki18n("Working wall-bouncing algorithm"));
+	aboutData.addAuthor(ki18n("Timo A. Hummel"), ki18n("Some good sound effects"), "timo.hummel@gmx.net");
 
-	aboutData.addCredit("Rob Renaud", I18N_NOOP("Wall-bouncing help"), 0);
-	aboutData.addCredit("Aaron Seigo", I18N_NOOP("Suggestions, bug reports"), 0);
+	aboutData.addCredit(ki18n("Rob Renaud"), ki18n("Wall-bouncing help"));
+	aboutData.addCredit(ki18n("Aaron Seigo"), ki18n("Suggestions, bug reports"));
 
 	KCmdLineArgs::init(argc, argv, &aboutData);
+
+	KCmdLineOptions options;
+	options.add("+file", ki18n("File"));
+	options.add("course-info ", ki18n("Print course information and exit"));
 	KCmdLineArgs::addCmdLineOptions(options);
 
 	// I've actually added this for my web site uploaded courses display
@@ -67,7 +64,7 @@ int main(int argc, char **argv)
 	{
 		KCmdLineArgs::enable_i18n();
 
-		QString filename(QFile::decodeName(args->getOption("course-info")));
+		QString filename(args->getOption("course-info"));
 		if (QFile::exists(filename))
 		{
 			CourseInfo info;
@@ -83,7 +80,7 @@ int main(int argc, char **argv)
 		}
 		else
 		{
-			KCmdLineArgs::usage(i18n("Course %1 does not exist.", filename));
+			KCmdLineArgs::usageError(i18n("Course %1 does not exist.", filename));
 		}
 	}
 
