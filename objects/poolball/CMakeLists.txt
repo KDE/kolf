@@ -6,8 +6,6 @@
 
 set(kolfpoolball_LIB_SRCS poolball.cpp )
 
-kde4_automoc(${kolfpoolball_LIB_SRCS})
-
 kde4_add_library(kolfpoolball SHARED ${kolfpoolball_LIB_SRCS})
 
 target_link_libraries(kolfpoolball   ${KDE4_KIO_LIBS} kolf )

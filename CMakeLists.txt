@@ -30,8 +30,6 @@ set(kolf_LIB_SRCS
    floater.cpp 
    slope.cpp )
 
-kde4_automoc(${kolf_LIB_SRCS})
-
 kde4_add_library(kolflib SHARED ${kolf_LIB_SRCS})
 
 target_link_libraries(kolflib  ${KDE4_KDEPRINT_LIBS}  ${KDE4_PHONON_LIBS} kdegames)
