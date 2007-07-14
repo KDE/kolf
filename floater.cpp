@@ -217,6 +217,7 @@ void Floater::moveBy(double dx, double dy)
 				{
 					//((Ball *)(*it))->setState(Rolling);
 					Ball *ball = dynamic_cast<Ball *>(*it);
+                                        Q_ASSERT(ball);
 					ball->moveBy(dx, dy);
 					if (game && /*game->hasFocus() &&*/ !game->isEditing() && game->curBall() == (Ball *)(*it))
 							game->ballMoved();
