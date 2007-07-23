@@ -47,7 +47,7 @@ install(TARGETS kolf  DESTINATION ${BIN_INSTALL_DIR} )
 
 ########### install files ###############
 
-install( FILES kolf.desktop  DESTINATION  ${XDG_APPS_DIR} )
+install( FILES kolf.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
 install( FILES kolfui.rc intro tutorial.kolf tutorial.kolfgame  DESTINATION  ${DATA_INSTALL_DIR}/kolf )
 #install( FILES ball.h game.h statedb.h config.h canvasitem.h object.h rtti.h vector.h floater.h slope.h  DESTINATION  ${INCLUDE_INSTALL_DIR}/kolf )
 install( FILES default_theme.svgz  DESTINATION  ${DATA_INSTALL_DIR}/kolf/pics/ )
