@@ -821,7 +821,7 @@ void Kolf::soundChanged(bool yes)
 
 void Kolf::initPlugins()
 {
-	//kDebug(12007) << "initPlugins" << endl;
+	//kDebug(12007) << "initPlugins";
 	if (game)
 		game->pause();
 
@@ -856,7 +856,7 @@ void Kolf::initPlugins()
 		game->unPause();
 	}
 
-	//kDebug(12007) << "end of initPlugins" << endl;
+	//kDebug(12007) << "end of initPlugins";
 }
 
 void Kolf::showPlugins()

@@ -198,7 +198,7 @@ public:
 	void setYVelocity(double yVelocity) { this->yVelocity=yVelocity; }
 	double getXVelocity() { return xVelocity; }
 	double getYVelocity() { return yVelocity; }
-	virtual void moveBy(double , double) { kDebug(12007) << "Warning, empty moveBy used" << endl; } //needed so that float can call the own custom moveBy()s of everything on it
+	virtual void moveBy(double , double) { kDebug(12007) << "Warning, empty moveBy used";} //needed so that float can call the own custom moveBy()s of everything on it
 
 protected:
 	/**

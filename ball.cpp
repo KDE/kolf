@@ -300,8 +300,8 @@ void Ball::collisionDetect(double oldx, double oldy)
 	else
 		collisionId++;
 
-	//kDebug(12007) << "------" << endl;
-	//kDebug(12007) << "Ball::collisionDetect id " << collisionId << endl;
+	//kDebug(12007) << "------";
+	//kDebug(12007) << "Ball::collisionDetect id" << collisionId;
 
 	// every other time...
 	// do friction
@@ -419,11 +419,11 @@ void Ball::collisionDetect(double oldx, double oldy)
 
 				double wallDir = M_PI - v.direction();
 
-				//kDebug(12007) << "ourDir: " << rad2deg(ourDir) << endl;
-				//kDebug(12007) << "wallDir: " << rad2deg(wallDir) << endl;
+				//kDebug(12007) << "ourDir:" << rad2deg(ourDir);
+				//kDebug(12007) << "wallDir:" << rad2deg(wallDir);
 
 				const double angleDifference = fabs(M_PI - fabs(ourDir - wallDir));
-				//kDebug(12007) << "computed angleDifference: " << rad2deg(angleDifference) << endl;
+				//kDebug(12007) << "computed angleDifference:" << rad2deg(angleDifference);
 
 				// only if this one is the least of all
 				if (angleDifference < leastAngleDifference)

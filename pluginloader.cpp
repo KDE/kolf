@@ -56,7 +56,7 @@ Object *PluginLoader::load(const QString &filename)
 
 	if (!factory)
 	{
-		kWarning() << "no factory for " << filename << "!" << endl;
+		kWarning() << "no factory for" << filename << "!";
 		return 0;
 	}
 
@@ -64,7 +64,7 @@ Object *PluginLoader::load(const QString &filename)
 
 	if (!newObject)
 	{
-		kWarning() << "no newObject for " << filename << "!" << endl;
+		kWarning() << "no newObject for" << filename << "!";
 		return 0;
 	}
 
@@ -72,7 +72,7 @@ Object *PluginLoader::load(const QString &filename)
 	Object *ret = dynamic_cast<Object *>(newObject);
 
 	if (!ret)
-		kWarning() << "no ret for " << filename << "!" << endl;
+		kWarning() << "no ret for" << filename << "!";
 
 	return ret;
 }

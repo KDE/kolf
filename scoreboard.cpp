@@ -53,7 +53,7 @@ void ScoreBoard::newHole(int par)
 
 void ScoreBoard::newPlayer(const QString &name)
 {
-	//kDebug(12007) << "name of new player is " << name << endl;
+	//kDebug(12007) << "name of new player is" << name;
 	insertRow(rowCount() - 1);
 	setVerticalHeaderItem(rowCount() -2, new QTableWidgetItem(name));
 }
@@ -89,7 +89,7 @@ int ScoreBoard::total(int id, QString &name)
 		
 	name = verticalHeaderItem(id - 1)->text();
 
-	//kDebug(12007) << "tot is " << tot << endl;
+	//kDebug(12007) << "tot is" << tot;
 	return tot;
 }
 

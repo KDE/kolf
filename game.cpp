@@ -1938,10 +1938,10 @@ bool WallPoint::collision(Ball *ball, long int id)
 		}
 	}
 
-	//kDebug(12007) << "WallPoint::collision id: " << id << ", tempLastId: " << tempLastId << endl;
+	//kDebug(12007) << "WallPoint::collision id:" << id << ", tempLastId:" << tempLastId;
 	Vector ballVector(ball->curVector());
 
-	//kDebug(12007) << "Wall::collision ball speed: " << ball->curVector().magnitude() << endl;
+	//kDebug(12007) << "Wall::collision ball speed:" << ball->curVector().magnitude();
 	int allowableDifference = 1;
 	if (ballVector.magnitude() < .30)
 		allowableDifference = 8;
@@ -1993,7 +1993,7 @@ bool WallPoint::collision(Ball *ball, long int id)
 		ball->setVector(ballVector);
 		wall->lastId = id;
 
-		//kDebug(12007) << "WallPoint::collision - NOT skip, weirdBounce is " << weirdBounce << endl;
+		//kDebug(12007) << "WallPoint::collision - NOT skip, weirdBounce is" << weirdBounce;
 	} // end if that skips
 
 	wall->lastId = id;
@@ -2197,10 +2197,10 @@ bool Wall::collision(Ball *ball, long int id)
 	startItem->lastId = id;
 	endItem->lastId = id;
 
-	//kDebug(12007) << "Wall::collision id: " << id << ", tempLastId: " << tempLastId << endl;
+	//kDebug(12007) << "Wall::collision id:" << id << ", tempLastId:" << tempLastId;
 	Vector ballVector(ball->curVector());
 
-	//kDebug(12007) << "Wall::collision ball speed: " << ball->curVector().magnitude() << endl;
+	//kDebug(12007) << "Wall::collision ball speed:" << ball->curVector().magnitude();
 	int allowableDifference = 1;
 	if (ballVector.magnitude() < .30)
 		allowableDifference = 8;
@@ -2210,7 +2210,7 @@ bool Wall::collision(Ball *ball, long int id)
 		allowableDifference = 4;
 	else if (ballVector.magnitude() < .95)
 		allowableDifference = 2;
-	//kDebug(12007) << "Wall::collision allowableDifference is " << allowableDifference << endl;
+	//kDebug(12007) << "Wall::collision allowableDifference is" << allowableDifference;
 	if (abs(id - tempLastId) <= allowableDifference)
 	{
 		//kDebug(12007) << "Wall::collision - SKIP\n";
@@ -4492,7 +4492,7 @@ void HoleInfo::borderWallsChanged(bool yes)
 
 void KolfGame::print(KPrinter &pr) //note: this is currently broken, see comment below
 {
-	kDebug(12007) << "Printing Currently broken" << endl;
+	kDebug(12007) << "Printing Currently broken";
 	QPainter p(&pr);
 
 	// translate to center
