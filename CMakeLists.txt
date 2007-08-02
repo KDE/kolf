@@ -7,7 +7,7 @@ add_subdirectory( courses )
 add_subdirectory( pics ) 
 add_subdirectory( graphics ) 
 
-include_directories( ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/highscore  )
+include_directories( ${CMAKE_SOURCE_DIR}/libkdegames/highscore  )
 
 
 ########### next target ###############
