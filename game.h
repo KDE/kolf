@@ -40,7 +40,7 @@ class KolfGame;
 
 namespace Phonon
 {
-    class AudioPlayer;
+    class MediaObject;
 }
 
 enum Direction { D_Left, D_Right, Forwards, Backwards };
@@ -1095,7 +1095,7 @@ private:
 	QGraphicsRectItem *highlighter;
 
 #ifdef SOUND
-    Phonon::AudioPlayer *m_player;
+    Phonon::MediaObject *m_player;
 #endif
 	bool m_sound;
 	QString soundDir;

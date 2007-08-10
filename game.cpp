@@ -28,7 +28,7 @@
 #include <kpixmapeffect.h>
 #include <kprinter.h>
 #include <kstandarddirs.h>
-#include <Phonon/AudioPlayer>
+#include <Phonon/MediaObject>
 
 #include <QGraphicsView>
 #include <QResizeEvent>
@@ -2506,7 +2506,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, const QString &filename
 	renderer = new KolfSvgRenderer( KStandardDirs::locate("appdata", "pics/default_theme.svgz") );
 
 #ifdef SOUND
-	m_player = new Phonon::AudioPlayer( Phonon::GameCategory );
+	m_player = Phonon::createPlayer(Phonon::GameCategory);
 #endif
 
 	holeInfo.setGame(this);
@@ -4479,7 +4479,8 @@ void KolfGame::playSound(const QString& file, float vol)
 		//return;
 		if (vol > 1)
 			vol = 1;
-		m_player->play(KUrl::fromPath(resFile));
+		m_player->setCurrentSource(resFile);
+		m_player->play();
 	}
 #endif
 }
