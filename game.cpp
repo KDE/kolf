@@ -2463,7 +2463,7 @@ void StrokeCircle::paint (QPainter *p, const QStyleOptionGraphicsItem *, QWidget
 /////////////////////////////////////////
 
 KolfGame::KolfGame(ObjectList *obj, PlayerList *players, const QString &filename, QWidget *parent)
-: QGraphicsView(parent), cfgGroup(0, QString::null)
+: QGraphicsView(parent), cfgGroup(0, QString::null)	//krazy:exclude=nullstrassign for old broken gcc
 {
 	// for mouse control
 	setMouseTracking(true);
