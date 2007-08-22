@@ -307,6 +307,7 @@ void Bridge::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget 
 
 void Bridge::resize(double resizeFactor)
 {
+	this->resizeFactor = resizeFactor;
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
 	setRect(0, 0, baseWidth*resizeFactor, baseHeight*resizeFactor);
 	pixmap=game->renderer->renderSvg(type, (int)rect().width(), (int)rect().height(), 0);
@@ -373,6 +374,12 @@ void Bridge::editModeChanged(bool changed)
 void Bridge::moveBy(double dx, double dy)
 {
 	QGraphicsRectItem::moveBy(dx, dy);
+
+	if (game && game->isEditing())
+	{
+		baseX = x() / resizeFactor;
+		baseY = y() / resizeFactor;
+	}
 
 	point->dontMove();
 	point->setPos(x() + width(), y() + height());
@@ -873,6 +880,7 @@ QList<QGraphicsItem *> KolfEllipse::moveableItems() const
 
 void KolfEllipse::resize(double resizeFactor)
 {
+	this->resizeFactor = resizeFactor;
 	setRect(baseWidth*resizeFactor*-0.5, baseHeight*resizeFactor*-0.5, baseWidth*resizeFactor, baseHeight*resizeFactor);
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
 	moveBy(0, 0); 
@@ -902,6 +910,12 @@ void KolfEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*op
 void KolfEllipse::moveBy(double dx, double dy)
 {
 	QGraphicsEllipseItem::moveBy(dx, dy);
+
+	if (game && game->isEditing())
+	{
+		baseX = x() / resizeFactor;
+		baseY = y() / resizeFactor;
+	}
 
 	point->dontMove();
 	point->setPos(x() + width()/2, y() + height()/2);
@@ -1298,7 +1312,14 @@ bool Cup::place(Ball *ball, bool /*wasCenter*/)
 
 void Cup::moveBy(double x, double y)
 {
-        QGraphicsEllipseItem::moveBy(x, y);
+	kDebug( 12007 ) << "move by, baseX:" << (int)baseX;
+	QGraphicsEllipseItem::moveBy(x, y);
+
+	if (game && game->isEditing())
+	{
+		baseX = QGraphicsEllipseItem::x() / resizeFactor;
+		baseY = QGraphicsEllipseItem::y() / resizeFactor;
+	}
 }
 
 void Cup::firstMove(int x, int y)
@@ -1438,6 +1459,7 @@ void BlackHole::aboutToDie()
 
 void BlackHole::resize(double resizeFactor)
 {
+	this->resizeFactor = resizeFactor;
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
 	setRect(-0.5*baseWidth*resizeFactor, -0.5*baseHeight*resizeFactor, baseWidth*resizeFactor, baseHeight*resizeFactor);
 	pixmap=game->renderer->renderSvg("black_hole", (int)(baseWidth*resizeFactor), (int)(baseHeight*resizeFactor), 0);
@@ -1465,6 +1487,12 @@ void BlackHole::moveBy(double dx, double dy)
 {
 	QGraphicsEllipseItem::moveBy(dx, dy);
 	updateInfo();
+
+	if (game && game->isEditing())
+	{
+		baseX = x() / resizeFactor;
+		baseY = y() / resizeFactor;
+	}
 }
 
 void BlackHole::setExitDeg(int newdeg)
@@ -2005,6 +2033,7 @@ void Wall::paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *wi
 
 void Wall::resize(double resizeFactor)
 {
+	this->resizeFactor = resizeFactor;
 	QGraphicsLineItem::setLine(baseX1*resizeFactor, baseY1*resizeFactor, baseX2*resizeFactor, baseY2*resizeFactor);
 	startItem->dontMove();
 	endItem->dontMove();

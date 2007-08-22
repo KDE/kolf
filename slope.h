@@ -108,6 +108,7 @@ private:
 	double baseX, baseY, baseWidth, baseHeight;
 	double baseArrowPenThickness, arrowPenThickness;
 	int baseFontPixelSize;
+	double resizeFactor;
 
 	void clearArrows();
 

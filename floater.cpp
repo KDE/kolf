@@ -44,6 +44,7 @@ void FloaterGuide::aboutToDie()
 void FloaterGuide::moveBy(double dx, double dy)
 {
 	Wall::moveBy(dx, dy);
+
 	if (floater)
 		floater->reset();
 }
@@ -116,6 +117,10 @@ void Floater::resize(double resizeFactor)
 
 void Floater::advance(int phase)
 {
+	if (game)
+		if(game->isEditing())
+			return;
+
 	if (!isEnabled())
 		return;
 

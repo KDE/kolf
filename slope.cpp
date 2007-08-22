@@ -103,6 +103,7 @@ void Slope::hideInfo()
 
 void Slope::resize(double resizeFactor)
 {
+	this->resizeFactor = resizeFactor;
 	QFont font = text->font();
 	font.setPixelSize((int)(baseFontPixelSize*resizeFactor));
 	text->setFont(font);
@@ -179,6 +180,12 @@ void Slope::newSize(double width, double height)
 void Slope::moveBy(double dx, double dy)
 {
 	QGraphicsRectItem::moveBy(dx, dy);
+
+	if (game && game->isEditing())
+	{
+		baseX = x() / resizeFactor;
+		baseY = y() / resizeFactor;
+	}
 
 	point->dontMove();
 	point->setPos(x() + width(), y() + height());

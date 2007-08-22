@@ -215,7 +215,7 @@ private:
 	/*
 	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
 	 */
-	double baseX, baseY, baseHeight, baseWidth;
+	double baseX, baseY, baseHeight, baseWidth, resizeFactor;
 	QString type;
 	QPixmap pixmap;
 };
@@ -462,7 +462,7 @@ private:
 	/*
 	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
 	 */
-	double baseX, baseY, baseExitX, baseExitY;
+	double baseX, baseY, baseExitX, baseExitY, resizeFactor;
 	double baseInfoLineThickness, baseExitLineWidth;
 	double baseWidth, baseHeight;
 	int runs;
@@ -526,7 +526,7 @@ private:
 	/*
 	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
 	 */
-	double baseX1, baseY1, baseX2, baseY2;
+	double baseX1, baseY1, baseX2, baseY2, resizeFactor;
 	double basePenWidth;
 	bool antialiasing;
 	long int lastId;
@@ -696,6 +696,7 @@ protected:
 	double baseBotWallX, baseBotWallY;
 	double baseLeftWallX, baseLeftWallY;
 	double baseRightWallX, baseRightWallY;
+	double resizeFactor;
 	Wall *topWall;
 	Wall *botWall;
 	Wall *leftWall;
