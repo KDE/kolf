@@ -76,14 +76,6 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 	playersWidget = new QWidget(playerPage);
 	scroller->setWidget(playersWidget);
 	new QVBoxLayout(playersWidget);
-	if (!QPixmapCache::find("grass", grass))
-	{
-		grass.load(KStandardDirs::locate("appdata", "pics/grass.png"));
-		QPixmapCache::insert("grass", grass);
-	}
-        QPalette palette;
-        palette.setBrush( scroller->backgroundRole(), QBrush( grass ) );
-        scroller->setPalette( palette );
 
 	QMap<QString, QString> entries = config->entryMap("New Game Dialog");
 	int i = 0;
@@ -375,15 +367,6 @@ PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent
 {
 	QHBoxLayout *layout = new QHBoxLayout(this);
 	layout->setMargin( KDialog::spacingHint() );
-
-	if (!QPixmapCache::find("grass", grass))
-	{
-		grass.load(KStandardDirs::locate("appdata", "pics/grass.png"));
-		QPixmapCache::insert("grass", grass);
-	}
-        QPalette palette;
-        palette.setBrush( backgroundRole(), QBrush( grass ) );
-        setPalette( palette );
 
 	editor = new KLineEdit(this);
 	layout->addWidget(editor);

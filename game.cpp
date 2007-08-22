@@ -970,24 +970,6 @@ Puddle::Puddle(QGraphicsItem * parent, QGraphicsScene *scene)
 {
 	setData(0, Rtti_DontPlaceOn);
 	setSize(45, 30);
-
-	QBrush brush;
-	QPixmap pic;
-
-	if (!QPixmapCache::find("puddle", pic))
-	{
-		pic.load(KStandardDirs::locate("appdata", "pics/puddle.png"));
-		QPixmapCache::insert("puddle", pic);
-	}
-
-	brush.setTexture(pic);
-	setBrush(brush);
-
-	QPixmap pointPic(pic);
-	KPixmapEffect::intensity(pointPic, .45);
-	brush.setTexture(pointPic);
-	point->setBrush(QBrush(QColor("blue")));
-
 	setZValue(-25);
 }
 
@@ -1023,24 +1005,6 @@ Sand::Sand(QGraphicsItem * parent, QGraphicsScene *scene)
 : KolfEllipse(parent, scene, "sand")
 {
 	setSize(45, 40);
-
-	QBrush brush;
-	QPixmap pic;
-
-	if (!QPixmapCache::find("sand", pic))
-	{
-		pic.load(KStandardDirs::locate("appdata", "pics/sand.png"));
-		QPixmapCache::insert("sand", pic);
-	}
-
-	brush.setTexture(pic);
-	setBrush(brush);
-
-	QPixmap pointPic(pic);
-	KPixmapEffect::intensity(pointPic, .45);
-	brush.setTexture(pointPic);
-	point->setBrush(brush);
-
 	setZValue(-26);
 }
 
