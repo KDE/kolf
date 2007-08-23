@@ -1312,7 +1312,6 @@ bool Cup::place(Ball *ball, bool /*wasCenter*/)
 
 void Cup::moveBy(double x, double y)
 {
-	kDebug( 12007 ) << "move by, baseX:" << (int)baseX;
 	QGraphicsEllipseItem::moveBy(x, y);
 
 	if (game && game->isEditing())

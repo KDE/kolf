@@ -19,10 +19,10 @@
 #ifndef SLOPE_H
 #define SLOPE_H
 
-#include <kimageeffect.h>
-
 #include "game.h"
 #include <QPixmap>
+
+enum GradientType{ Vertical, Horizontal, Diagonal, CrossDiagonal, Elliptic };
 
 class Slope;
 class SlopeConfig : public Config
@@ -68,7 +68,7 @@ public:
 	void setGrade(double grade);
 
 	double curGrade() const { return grade; }
-	KImageEffect::GradientType curType() const { return type; }
+	GradientType curType() const { return type; }
 	void setColor(QColor color) { this->color = color; updatePixmap(); }
 	void setReversed(bool reversed) { this->reversed = reversed; updatePixmap(); }
 	bool isReversed() const { return reversed; }
@@ -82,8 +82,8 @@ public:
 	virtual bool collision(Ball *ball, long int id);
 	virtual bool terrainCollisions() const;
 
-	QMap<KImageEffect::GradientType, QString> gradientI18nKeys;
-	QMap<KImageEffect::GradientType, QString> gradientKeys;
+	QMap<GradientType, QString> gradientI18nKeys;
+	QMap<GradientType, QString> gradientKeys;
 
 	virtual void updateZ(QGraphicsRectItem *vStrut = 0);
 
@@ -93,8 +93,8 @@ public:
 	double height() const { return rect().height(); }
 
 private:
-	KImageEffect::GradientType type;
-	inline void setType(KImageEffect::GradientType type);
+	GradientType type;
+	inline void setType(GradientType type);
 	bool showingInfo;
 	double grade;
 	bool reversed;

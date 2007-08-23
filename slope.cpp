@@ -36,24 +36,24 @@
 #include <kstandarddirs.h>
 
 Slope::Slope(const QRect &rect, QGraphicsItem * parent, QGraphicsScene *scene)
-	: QGraphicsRectItem(rect, parent, scene), type(KImageEffect::VerticalGradient), grade(4), reversed(false), color(QColor("#327501")) 
+	: QGraphicsRectItem(rect, parent, scene), type(Vertical), grade(4), reversed(false), color(QColor("#327501")) 
 {
 	setData(0, 1031);
 	stuckOnGround = false;
 	showingInfo = false;
 	baseArrowPenThickness = arrowPenThickness = 1;
 
-	gradientKeys[KImageEffect::VerticalGradient] = "Vertical";
-	gradientKeys[KImageEffect::HorizontalGradient] = "Horizontal";
-	gradientKeys[KImageEffect::DiagonalGradient] = "Diagonal";
-	gradientKeys[KImageEffect::CrossDiagonalGradient] = "Opposite Diagonal";
-	gradientKeys[KImageEffect::EllipticGradient] = "Elliptic";
+	gradientKeys[Vertical] = "Vertical";
+	gradientKeys[Horizontal] = "Horizontal";
+	gradientKeys[Diagonal] = "Diagonal";
+	gradientKeys[CrossDiagonal] = "Opposite Diagonal";
+	gradientKeys[Elliptic] = "Elliptic";
 
-	gradientI18nKeys[KImageEffect::VerticalGradient] = i18n("Vertical");
-	gradientI18nKeys[KImageEffect::HorizontalGradient] = i18n("Horizontal");
-	gradientI18nKeys[KImageEffect::DiagonalGradient] = i18n("Diagonal");
-	gradientI18nKeys[KImageEffect::CrossDiagonalGradient] = i18n("Opposite Diagonal");
-	gradientI18nKeys[KImageEffect::EllipticGradient] = i18n("Circular");
+	gradientI18nKeys[Vertical] = i18n("Vertical");
+	gradientI18nKeys[Horizontal] = i18n("Horizontal");
+	gradientI18nKeys[Diagonal] = i18n("Diagonal");
+	gradientI18nKeys[CrossDiagonal] = i18n("Opposite Diagonal");
+	gradientI18nKeys[Elliptic] = i18n("Circular");
 
 	setZValue(-50);
 
@@ -161,7 +161,7 @@ void Slope::setSize(double width, double height)
 
 void Slope::newSize(double width, double height)
 {
-	if (type == KImageEffect::EllipticGradient)
+	if (type == Elliptic)
 	{
 		QGraphicsRectItem::setRect(rect().x(), rect().y(), width, width);
 		// move point back to good spot
@@ -198,7 +198,7 @@ void Slope::moveArrow()
 {
 	double xavg, yavg;
 
-	if(type == KImageEffect::DiagonalGradient) {
+	if(type == Diagonal) {
 		if(reversed) {
 			xavg = boundingRect().width()*1/4 + x();
 			yavg = boundingRect().height()*1/4 + y();
@@ -208,7 +208,7 @@ void Slope::moveArrow()
 			yavg = boundingRect().height()*3/4 + y();
 		}
 	}
-	else if(type == KImageEffect::CrossDiagonalGradient) {
+	else if(type == CrossDiagonal) {
 		if(reversed) {
 			xavg = boundingRect().width()*3/4 + x();
 			yavg = boundingRect().height()*1/4 + y();
@@ -298,7 +298,7 @@ void Slope::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*option*/
 
 QPainterPath Slope::shape() const
 {       
-	if(type == KImageEffect::CrossDiagonalGradient) {
+	if(type == CrossDiagonal) {
 		QPainterPath path;
 		QPolygonF polygon(3);
 		polygon[0] = QPointF(rect().x(), rect().y());
@@ -307,7 +307,7 @@ QPainterPath Slope::shape() const
 		path.addPolygon(polygon);
 		return path;
 	}
-	else if(type == KImageEffect::DiagonalGradient) {
+	else if(type == Diagonal) {
 		QPainterPath path;
 		QPolygonF polygon(3);
 		polygon[0] = QPointF(rect().x() + width(), rect().y());
@@ -316,7 +316,7 @@ QPainterPath Slope::shape() const
 		path.addPolygon(polygon);
 		return path;
 	}
-	else if(type == KImageEffect::EllipticGradient) {
+	else if(type == Elliptic) {
 		QPainterPath path;
 		path.addEllipse(rect().x(), rect().y(), width(), height());
 		return path;
@@ -337,8 +337,8 @@ bool Slope::collision(Ball *ball, long int /*id*/)
 	double vy = ball->getYVelocity();
 	double addto = 0.013 * grade;
 
-	const bool diag = type == KImageEffect::DiagonalGradient || type == KImageEffect::CrossDiagonalGradient;
-	const bool circle = type == KImageEffect::EllipticGradient;
+	const bool diag = type == Diagonal || type == CrossDiagonal;
+	const bool circle = type == Elliptic;
 
 	double slopeAngle = 0;
 
@@ -360,21 +360,21 @@ bool Slope::collision(Ball *ball, long int /*id*/)
 
 	switch (type)
 	{
-		case KImageEffect::HorizontalGradient:
+		case Horizontal:
 			reversed? vx += addto : vx -= addto;
 		break;
 
-		case KImageEffect::VerticalGradient:
+		case Vertical:
 			reversed? vy += addto : vy -= addto;
 		break;
 
-		case KImageEffect::DiagonalGradient:
-		case KImageEffect::EllipticGradient:
+		case Diagonal:
+		case Elliptic:
 			reversed? vx += cos(slopeAngle) * addto : vx -= cos(slopeAngle) * addto;
 			reversed? vy += sin(slopeAngle) * addto : vy -= sin(slopeAngle) * addto;
 		break;
 
-		case KImageEffect::CrossDiagonalGradient:
+		case CrossDiagonal:
 			reversed? vx -= cos(slopeAngle) * addto : vx += cos(slopeAngle) * addto;
 			reversed? vy += sin(slopeAngle) * addto : vy -= sin(slopeAngle) * addto;
 		break;
@@ -397,7 +397,7 @@ bool Slope::collision(Ball *ball, long int /*id*/)
 
 void Slope::setGradient(const QString &text)
 {
-	for (QMap<KImageEffect::GradientType, QString>::Iterator it = gradientKeys.begin(); it != gradientKeys.end(); ++it)
+	for (QMap<GradientType, QString>::Iterator it = gradientKeys.begin(); it != gradientKeys.end(); ++it)
 	{
 		if (it.value() == text)
 		{
@@ -407,7 +407,7 @@ void Slope::setGradient(const QString &text)
 	}
 
 	// extra forgiveness ;-) (note it's i18n keys)
-	for (QMap<KImageEffect::GradientType, QString>::Iterator it = gradientI18nKeys.begin(); it != gradientI18nKeys.end(); ++it)
+	for (QMap<GradientType, QString>::Iterator it = gradientI18nKeys.begin(); it != gradientI18nKeys.end(); ++it)
 	{
 		if (it.value() == text)
 		{
@@ -417,11 +417,11 @@ void Slope::setGradient(const QString &text)
 	}
 }
 
-void Slope::setType(KImageEffect::GradientType type)
+void Slope::setType(GradientType type)
 {
 	this->type = type;
 
-	if (type == KImageEffect::EllipticGradient)
+	if (type == Elliptic)
 	{
 		// calls updatePixmap
 		newSize(width(), height());
@@ -438,34 +438,34 @@ void Slope::updatePixmap() //this needs work so that the slope colour depends on
 	QString slopeName;
 
 	switch(type) {
-		case KImageEffect::HorizontalGradient:
+		case Horizontal:
 			if(reversed)
 				slopeName = "slope_e";
 			else
 				slopeName = "slope_w";
 			break;
 
-		case KImageEffect::VerticalGradient:
+		case Vertical:
 			if(reversed)
 				slopeName = "slope_s";
 			else
 				slopeName = "slope_n";
 			break;
 
-		case KImageEffect::DiagonalGradient:
+		case Diagonal:
 			if(reversed)
 				slopeName = "slope_se";
 			else
 				slopeName = "slope_nw";
 			break;
 
-		case KImageEffect::CrossDiagonalGradient:
+		case CrossDiagonal:
 			if(reversed)
 				slopeName = "slope_sw";
 			else
 				slopeName = "slope_ne";
 			break;
-		case KImageEffect::EllipticGradient:
+		case Elliptic:
 			if(reversed)
 				slopeName = "slope_dip";
 			else
@@ -482,7 +482,7 @@ void Slope::updatePixmap() //this needs work so that the slope colour depends on
 
 	const double length = sqrt(double(width() * width() + height() * height())) / 4;
 
-	if (type == KImageEffect::EllipticGradient)
+	if (type == Elliptic)
 	{
 		double angle = 0;
 		for (int i = 0; i < 4; ++i)
@@ -503,16 +503,16 @@ void Slope::updatePixmap() //this needs work so that the slope colour depends on
 		double angle = 0;
 
 		switch(type) {
-			case KImageEffect::HorizontalGradient:
+			case Horizontal:
 				angle = 0;
 				break;
-			case KImageEffect::VerticalGradient:
+			case Vertical:
 				angle = M_PI / 2;
 				break;
-			case KImageEffect::DiagonalGradient:
+			case Diagonal:
 				angle = atan((double)width() / (double)height());
 				break;
-			case KImageEffect::CrossDiagonalGradient:
+			case CrossDiagonal:
 				angle = M_PI - atan((double)width() / (double)height());
 				break;
 			default:
@@ -548,7 +548,7 @@ SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
 	KComboBox *gradient = new KComboBox(this);
 	QStringList items;
 	QString curText;
-	for (QMap<KImageEffect::GradientType, QString>::Iterator it = slope->gradientI18nKeys.begin(); it != slope->gradientI18nKeys.end(); ++it)
+	for (QMap<GradientType, QString>::Iterator it = slope->gradientI18nKeys.begin(); it != slope->gradientI18nKeys.end(); ++it)
 	{
 		if (it.key() == slope->curType())
 			curText = it.value();
@@ -557,7 +557,7 @@ SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
 	gradient->addItems(items);
 	gradient->setCurrentItem(curText);
 	layout->addWidget(gradient);
-	connect(gradient, SIGNAL(activated(const QString &)), this, SLOT(setGradient(const QString &)));
+	connect(gradient, SIGNAL(activated(const QString &)), this, SLOT(set(const QString &)));
 
 	layout->addStretch();
 
