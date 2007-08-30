@@ -146,6 +146,7 @@ class RectItem
 public:
 	virtual ~RectItem(){}
 	virtual void newSize(double /*width*/, double /*height*/) {}
+	virtual void updateBaseResizeInfo() {}
 };
 
 class RectPoint : public QGraphicsEllipseItem, public CanvasItem
@@ -160,6 +161,7 @@ public:
 	virtual CanvasItem *itemToDelete() { return dynamic_cast<CanvasItem *>(rect); }
 	void setSizeFactor(double newFactor) { m_sizeFactor = newFactor; }
 	void setSize(double, double);
+	void updateBaseResizeInfo();
 
 protected:
 	RectItem *rect;
@@ -203,6 +205,8 @@ public:
 
 	double width() { return rect().width(); }
 	double height() { return rect().height(); }
+
+	void updateBaseResizeInfo();
 
 protected:
 	RectPoint *point;
@@ -292,6 +296,7 @@ public:
 	void firstMove(int x, int y);
 	void resize(double resizeFactor);
 	virtual bool collision(Ball *ball, long int id);
+	void updateBaseResizeInfo();
 
 protected:
 	Inside *inside;
@@ -303,7 +308,7 @@ private:
 	/*
 	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
 	 */
-	double baseX, baseY;
+	double resizeFactor, baseX, baseY;
 	int baseDiameter; 
 };
 class BumperObj : public Object
@@ -327,6 +332,7 @@ public:
 	void loadState(StateDB *db);
 	virtual bool canBeMovedByOthers() const { return true; }
 	virtual bool collision(Ball *ball, long int id);
+	void updateBaseResizeInfo();
 
 protected:
 	QPixmap pixmap;
@@ -379,6 +385,8 @@ public:
 	virtual Config *config(QWidget *parent);
 	BlackHole *blackHole;
 	double getBaseArrowPenThickness() { return baseArrowPenThickness; }
+	void updateBaseResizeInfo();
+	double resizeFactor, baseX, baseY;
 
 protected:
 	/*
@@ -445,6 +453,8 @@ public:
 
 	virtual bool collision(Ball *ball, long int id);
 
+	void updateBaseResizeInfo();
+
 public slots:
 	void eject(Ball *ball, double speed);
 	void halfway();
@@ -462,7 +472,7 @@ private:
 	/*
 	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
 	 */
-	double baseX, baseY, baseExitX, baseExitY, resizeFactor;
+	double baseX, baseY, resizeFactor;
 	double baseInfoLineThickness, baseExitLineWidth;
 	double baseWidth, baseHeight;
 	int runs;
@@ -516,6 +526,7 @@ public:
 	QPoint endPoint() const { return QPoint((int)line().x2(), (int)line().y2() ); }
 
 	void doAdvance();
+	virtual void updateBaseResizeInfo() {}
 
 protected:
 	WallPoint *startItem;
@@ -526,7 +537,7 @@ private:
 	/*
 	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
 	 */
-	double baseX1, baseY1, baseX2, baseY2, resizeFactor;
+	double resizeFactor;
 	double basePenWidth;
 	bool antialiasing;
 	long int lastId;
@@ -553,6 +564,9 @@ public:
 	double height() { return rect().height(); }
 
 	Wall *parentWall() { return wall; }
+	void updateBaseResizeInfo();
+
+	double baseX, baseY, resizeFactor;
 
 protected:
 	Wall *wall;
@@ -684,6 +698,8 @@ public:
 	double width() {return QGraphicsRectItem::rect().width(); }
 	double height() {return QGraphicsRectItem::rect().height(); }
 
+	virtual void updateBaseResizeInfo();
+
 protected:
 	bool pixmapInitialised;
 	QPixmap pixmap;
@@ -797,6 +813,7 @@ public:
 	double curSpeed() const { return speed; }
 	void setBottom(bool yes);
 	bool bottom() const { return m_bottom; }
+	void updateBaseResizeInfo();
 
 protected:
 	WindmillGuard *guard;
@@ -807,6 +824,7 @@ protected:
 	 */
 	double baseGuardX, baseGuardY, baseGuardMin, baseGuardMax, baseGuardSpeed;
 	double baseLeftX, baseLeftY, baseRightX, baseRightY;
+	double resizeFactor;
 	int speedfactor;
 	double speed;
 	bool m_bottom;

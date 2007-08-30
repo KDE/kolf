@@ -189,6 +189,8 @@ public:
 	void setName(const QString &newname) { m_name = newname; }
 	virtual void setSize(double /*width*/, double /*height*/) {;}
 
+	virtual void updateBaseResizeInfo() {}
+
 	/**
 	 * custom animation code
 	 */

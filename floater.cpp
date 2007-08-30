@@ -64,6 +64,11 @@ Config *FloaterGuide::config(QWidget *parent)
 	return floater->config(parent);
 }
 
+void FloaterGuide::updateBaseResizeInfo()
+{
+	floater->updateBaseResizeInfo();
+}
+
 /////////////////////////
 
 Floater::Floater(const QRect &rect,  QGraphicsItem *parent, QGraphicsScene *scene)
@@ -111,15 +116,14 @@ void Floater::resize(double resizeFactor)
 {
 	this->resizeFactor = resizeFactor;
 	setSpeed(speed); //update speed taking into account new resizeFactor
-	wall->setPoints(baseStartX*resizeFactor, baseStartY*resizeFactor, baseEndX*resizeFactor, baseEndY*resizeFactor);
+	wall->resize( resizeFactor );
 	Bridge::resize(resizeFactor);
 }
 
 void Floater::advance(int phase)
 {
-	if (game)
-		if(game->isEditing())
-			return;
+	if (game && game->isEditing())
+		return;
 
 	if (!isEnabled())
 		return;
@@ -153,6 +157,7 @@ void Floater::reset()
 	origin = end;
 
 	setPos(origin.x(), origin.y());
+	moveBy(0, 0);
 	setSpeed(speed);
 }
 
@@ -282,11 +287,6 @@ void Floater::load(KConfigGroup *cfgGroup)
 	wall->setPoints(start.x(), start.y(), end.x(), end.y());
 	wall->setPos(0, 0);
 
-	baseStartX = start.x();
-	baseStartY = start.y();
-	baseEndX = end.x();
-	baseEndY = end.y();
-
 	setSpeed(cfgGroup->readEntry("speed", -1));
 
 	doLoad(cfgGroup);
@@ -296,6 +296,11 @@ void Floater::load(KConfigGroup *cfgGroup)
 void Floater::firstMove(int x, int y)
 {
 	firstPoint = QPoint(x, y);
+}
+
+void Floater::updateBaseResizeInfo()
+{
+	Bridge::updateBaseResizeInfo();
 }
 
 /////////////////////////

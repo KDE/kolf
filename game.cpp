@@ -118,6 +118,11 @@ void RectPoint::setSize(double width, double height)
 	setRect(x(), y(), width, height);
 }
 
+void RectPoint::updateBaseResizeInfo()
+{
+	rect->updateBaseResizeInfo();
+}
+
 
 /////////////////////////
 
@@ -375,12 +380,6 @@ void Bridge::moveBy(double dx, double dy)
 {
 	QGraphicsRectItem::moveBy(dx, dy);
 
-	if (game && game->isEditing())
-	{
-		baseX = x() / resizeFactor;
-		baseY = y() / resizeFactor;
-	}
-
 	point->dontMove();
 	point->setPos(x() + width(), y() + height());
 
@@ -465,6 +464,26 @@ void Bridge::setSize(double width, double height)
 	baseHeight = height;
 
 	moveBy(0, 0);
+}
+
+void Bridge::updateBaseResizeInfo()
+{
+	baseX = x() / resizeFactor;
+	baseY = y() / resizeFactor;
+	baseWidth = width() / resizeFactor;
+	baseHeight = height() / resizeFactor;
+
+	baseTopWallX = topWall->x();
+	baseTopWallY = topWall->y();
+
+	baseBotWallX = botWall->x();
+	baseBotWallY = botWall->y();
+
+	baseLeftWallX = leftWall->x();
+	baseLeftWallY = leftWall->y();
+
+	baseRightWallX = rightWall->x();
+	baseRightWallY = rightWall->y();
 }
 
 /////////////////////////
@@ -557,6 +576,7 @@ Windmill::Windmill(const QRect &rect, QGraphicsItem * parent, QGraphicsScene *sc
 
 void Windmill::resize(double resizeFactor)
 {
+	this->resizeFactor = resizeFactor;
 	Bridge::resize(resizeFactor);
 	guard->setBetween(baseGuardMin*resizeFactor, baseGuardMax*resizeFactor);
 	guard->QGraphicsLineItem::setPos(baseGuardX*resizeFactor, baseGuardY*resizeFactor);
@@ -663,6 +683,22 @@ void Windmill::newSize(double width, double height)
 	guard->setPoints(0, guardY, (double)indent / (double)1.07 - 2, guardY);
 }
 
+void Windmill::updateBaseResizeInfo()
+{
+	Bridge::updateBaseResizeInfo();
+
+	baseGuardX = guard->x() / resizeFactor;
+	baseGuardY = guard->y() / resizeFactor;
+	baseGuardMin = guard->getMin() / resizeFactor;
+	baseGuardMax = guard->getMax() / resizeFactor;
+	baseGuardSpeed = speed / resizeFactor;
+
+	baseLeftX = left->x() / resizeFactor;
+	baseLeftY = left->y() / resizeFactor;
+
+	baseRightX = right->x() / resizeFactor;
+	baseRightY = right->y() / resizeFactor;
+}
 /////////////////////////
 
 void WindmillGuard::advance(int phase)
@@ -911,12 +947,6 @@ void KolfEllipse::moveBy(double dx, double dy)
 {
 	QGraphicsEllipseItem::moveBy(dx, dy);
 
-	if (game && game->isEditing())
-	{
-		baseX = x() / resizeFactor;
-		baseY = y() / resizeFactor;
-	}
-
 	point->dontMove();
 	point->setPos(x() + width()/2, y() + height()/2);
 }
@@ -975,6 +1005,14 @@ void KolfEllipse::aboutToSave()
 void KolfEllipse::savingDone()
 {
 	dontHide = false;
+}
+
+void KolfEllipse::updateBaseResizeInfo()
+{
+	baseX = x() / resizeFactor;
+	baseY = y() / resizeFactor;
+	baseWidth = width() / resizeFactor;
+	baseHeight = height() / resizeFactor;
 }
 
 /////////////////////////
@@ -1221,6 +1259,7 @@ void Bumper::firstMove(int x, int y)
 
 void Bumper::resize(double resizeFactor)
 {
+	this->resizeFactor = resizeFactor;
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
 	setRect(-0.5*baseDiameter*resizeFactor, -0.5*baseDiameter*resizeFactor, baseDiameter*resizeFactor, baseDiameter*resizeFactor);
 	pixmapInitialised=false; //do I need this?
@@ -1273,6 +1312,12 @@ bool Bumper::collision(Ball *ball, long int /*id*/)
 	setAnimated(true);
 
 	return true;
+}
+
+void Bumper::updateBaseResizeInfo()
+{
+	baseX = x() / resizeFactor;
+	baseY = y() / resizeFactor;
 }
 
 /////////////////////////
@@ -1382,6 +1427,12 @@ HoleResult Cup::result(QPointF p, double speed, bool * /*wasCenter*/)
 		return Result_Miss;
 }
 
+void Cup::updateBaseResizeInfo()
+{
+	baseX = x() / resizeFactor;
+	baseY = y() / resizeFactor;
+}
+
 /////////////////////////
 
 BlackHole::BlackHole(QGraphicsItem * parent, QGraphicsScene *scene)
@@ -1459,10 +1510,11 @@ void BlackHole::aboutToDie()
 void BlackHole::resize(double resizeFactor)
 {
 	this->resizeFactor = resizeFactor;
+	exitItem->resizeFactor = resizeFactor;
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
 	setRect(-0.5*baseWidth*resizeFactor, -0.5*baseHeight*resizeFactor, baseWidth*resizeFactor, baseHeight*resizeFactor);
 	pixmap=game->renderer->renderSvg("black_hole", (int)(baseWidth*resizeFactor), (int)(baseHeight*resizeFactor), 0);
-	exitItem->setPos(baseExitX*resizeFactor, baseExitY*resizeFactor);
+	exitItem->setPos(exitItem->baseX*resizeFactor, exitItem->baseY*resizeFactor);
 	finishMe(baseExitLineWidth*resizeFactor);
 	if(infoLine) {
 		infoLine->setPen(QPen(exitItem->pen().color(), baseInfoLineThickness*resizeFactor));
@@ -1613,8 +1665,8 @@ void BlackHole::load(KConfigGroup *cfgGroup)
 
 	baseX = x();
 	baseY = y();
-	baseExitX = exit.x();
-	baseExitY = exit.y();
+	exitItem->baseX = exit.x();
+	exitItem->baseY = exit.y();
 
 	finishMe();
 }
@@ -1674,6 +1726,14 @@ HoleResult BlackHole::result(QPointF p, double s, bool * /*wasCenter*/)
 		return Result_Miss;
 }
 
+void BlackHole::updateBaseResizeInfo()
+{
+	baseX = x() / resizeFactor;
+	baseY = y() / resizeFactor;
+	baseWidth = width() / resizeFactor;
+	baseHeight = height() / resizeFactor;
+}
+
 /////////////////////////
 
 BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QGraphicsItem * parent, QGraphicsScene *scene)
@@ -1687,6 +1747,9 @@ BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QGraphicsItem * parent, QGrap
 	updateArrowLength();
 	arrow->setVisible(false);
 	baseArrowPenThickness = 1;
+
+	baseX = x();
+	baseY = y();
 }
 
 void BlackHoleExit::aboutToDie()
@@ -1741,6 +1804,12 @@ void BlackHoleExit::hideInfo()
 Config *BlackHoleExit::config(QWidget *parent)
 {
 	return blackHole->config(parent);
+}
+
+void BlackHoleExit::updateBaseResizeInfo()
+{
+	baseX = x() / resizeFactor;
+	baseY = y() / resizeFactor;
 }
 
 /////////////////////////
@@ -1882,6 +1951,7 @@ void WallPoint::moveBy(double dx, double dy)
 		wall->setLine(wall->startPointF().x() + wall->x(), wall->startPointF().y() + wall->y(), x(), y());
 	}
 	wall->setPos(0, 0);
+	wall->moveBy(0, 0);
 }
 
 void WallPoint::updateVisible()
@@ -1991,6 +2061,14 @@ bool WallPoint::collision(Ball *ball, long int id)
 	return false;
 }
 
+void WallPoint::updateBaseResizeInfo()
+{
+	baseX = x() / resizeFactor;
+	baseY = y() / resizeFactor;
+
+	wall->updateBaseResizeInfo();
+}
+
 /////////////////////////
 
 Wall::Wall( QGraphicsItem *parent, QGraphicsScene *scene, bool antialiasing)
@@ -2033,7 +2111,10 @@ void Wall::paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *wi
 void Wall::resize(double resizeFactor)
 {
 	this->resizeFactor = resizeFactor;
-	QGraphicsLineItem::setLine(baseX1*resizeFactor, baseY1*resizeFactor, baseX2*resizeFactor, baseY2*resizeFactor);
+	this->startItem->resizeFactor = resizeFactor;
+	this->endItem->resizeFactor = resizeFactor;
+
+	QGraphicsLineItem::setLine(startItem->baseX*resizeFactor, startItem->baseY*resizeFactor, endItem->baseX*resizeFactor, endItem->baseY*resizeFactor);
 	startItem->dontMove();
 	endItem->dontMove();
 	startItem->setPos(startPointF().x() + x(), startPointF().y() + y());
@@ -2051,10 +2132,12 @@ void Wall::setLine(const QLineF & line)
 
 void Wall::setLine(qreal x1, qreal y1, qreal x2, qreal y2)
 {
-	baseX1 = x1;
-	baseY1 = y1;
-	baseX2 = x2;
-	baseY2 = y2;
+	startItem->baseX = x1;
+	startItem->baseY = y1;
+
+	endItem->baseX = x2;
+	endItem->baseY = y2;
+
 	QGraphicsLineItem::setLine(x1, y1, x2, y2);
 }
 
@@ -2887,6 +2970,10 @@ void KolfGame::handleMouseReleaseEvent(QMouseEvent *e)
 	if (editing)
 	{
 		emit newStatusText(QString());
+		if( movingCanvasItem )
+		{
+			movingCanvasItem->updateBaseResizeInfo();
+		}
 		moving = false;
 	}
 
@@ -4459,9 +4546,9 @@ void KolfGame::toggleEditMode()
 	inPlay = false;
 }
 
+#ifdef SOUND
 void KolfGame::playSound(const QString& file, float vol)
 {
-#ifdef SOUND
 	if (m_sound)
 	{
 		QString resFile = soundDir + file + QString::fromLatin1(".wav");
@@ -4474,8 +4561,12 @@ void KolfGame::playSound(const QString& file, float vol)
 		m_player->setCurrentSource(resFile);
 		m_player->play();
 	}
-#endif
 }
+#else //SOUND
+void KolfGame::playSound( const QString&, float )
+{
+}
+#endif //SOUND
 
 void HoleInfo::borderWallsChanged(bool yes)
 {

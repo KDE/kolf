@@ -181,12 +181,6 @@ void Slope::moveBy(double dx, double dy)
 {
 	QGraphicsRectItem::moveBy(dx, dy);
 
-	if (game && game->isEditing())
-	{
-		baseX = x() / resizeFactor;
-		baseY = y() / resizeFactor;
-	}
-
 	point->dontMove();
 	point->setPos(x() + width(), y() + height());
 
@@ -535,6 +529,14 @@ void Slope::updatePixmap() //this needs work so that the slope colour depends on
 	moveArrow();
 }
 
+void Slope::updateBaseResizeInfo()
+{
+		baseX = x() / resizeFactor;
+		baseY = y() / resizeFactor;
+		baseWidth = width() / resizeFactor;
+		baseHeight = height() / resizeFactor;
+}
+
 /////////////////////////
 
 SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
@@ -606,5 +608,6 @@ void SlopeConfig::gradeChanged(double newgrade)
 	slope->setGrade(newgrade);
 	changed();
 }
+
 
 #include "slope.moc"

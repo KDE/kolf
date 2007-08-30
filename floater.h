@@ -45,6 +45,7 @@ public:
 	virtual Config *config(QWidget *parent);
 	virtual void aboutToDelete();
 	virtual void aboutToDie();
+	void updateBaseResizeInfo();
 
 private:
 	Floater *floater;
@@ -79,6 +80,7 @@ public:
 
 	// called by floaterguide when changed;
 	void reset();
+	void updateBaseResizeInfo();
 
 private:
 	int speedfactor;
@@ -87,7 +89,6 @@ private:
 	/*
 	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
 	 */
-	double baseStartX, baseStartY, baseEndX, baseEndY;
 	double baseXVelocity, baseYVelocity;
 	/*
 	 * resizeFactor is the number to multiply base numbers by to get their resized value (i.e. if it is 1 then use default size, if it is >1 then everything needs to be bigger, and if it is <1 then everything needs to be smaller)
