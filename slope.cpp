@@ -32,7 +32,6 @@
 #include <kcombobox.h>
 #include <kconfig.h>
 #include <knuminput.h>
-#include <kpixmapeffect.h>
 #include <kstandarddirs.h>
 
 Slope::Slope(const QRect &rect, QGraphicsItem * parent, QGraphicsScene *scene)

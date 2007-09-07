@@ -25,7 +25,6 @@
 #include <kglobal.h>
 #include <klineedit.h>
 #include <kmessagebox.h>
-#include <kpixmapeffect.h>
 #include <kprinter.h>
 #include <kstandarddirs.h>
 #include <Phonon/MediaObject>
