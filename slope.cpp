@@ -558,7 +558,7 @@ SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)
 	gradient->addItems(items);
 	gradient->setCurrentItem(curText);
 	layout->addWidget(gradient);
-	connect(gradient, SIGNAL(activated(const QString &)), this, SLOT(set(const QString &)));
+	connect(gradient, SIGNAL(activated(const QString &)), this, SLOT(setGradient(const QString &)));
 
 	layout->addStretch();
 
