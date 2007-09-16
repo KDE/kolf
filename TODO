@@ -4,9 +4,13 @@ need a more intuitive way to select create new, and need to start in edit mode
 
 remove information on who's turn it is from the status bar when in edit mode
 
+reszing is all broken
+
 Minor Bugs:
 -----------
 need a max turn time, so that the ball isn't left bouncing off bumpers for ages (or possibly on some holes forever)
+
+hard 13, is the pusher pushes you into the hole the game thinks it is your shot, but you can't hit because you are in the hole
 
 undo button not greyed out when undo impossible
 
@@ -38,7 +42,7 @@ bad performace on levels with floaters. Also on the intro the ball seems to slow
 
 wrong player selected in score table at start of game
 
-in strickt mode it is possible to select different holes, this is clearly cheating, but useful for debuging, so should be kept in for now
+in strict mode it is possible to select different holes, this is clearly cheating, but useful for debuging, so should be kept in for now
 
 in edit mode it is possible to make a course with no cup
 

@@ -2613,6 +2613,13 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, const QString &filename
 	pic = renderer->renderSvg("grass", width, height, 0);
 	course->setBackgroundBrush(QBrush(pic));
 
+	if( filename.contains( "intro" ) )
+	{
+		QPixmap introPic;
+		introPic = renderer->renderSvg("intro_foreground", 5, 5, 0);
+		course->setForegroundBrush(QBrush(introPic));
+	}
+
 	setScene(course);
 	adjustSize();
 
@@ -3181,6 +3188,14 @@ void KolfGame::resizeAllItems(double resizeFactor, bool resizeBorderWalls)
 	//background resize
 	QPixmap pic = renderer->renderSvg("grass", (int)(width*resizeFactor), (int)(height*resizeFactor), 0);
 	course->setBackgroundBrush(QBrush(pic));
+
+	//foreground resize
+	if( filename.contains( "intro" ) )
+	{
+		QPixmap introPic;
+		introPic = renderer->renderSvg("intro_foreground", 5, 5, 0);
+		course->setForegroundBrush(QBrush(introPic));
+	}
 
 	//stroke circle resize
 	strokeCircle->resize(resizeFactor);
