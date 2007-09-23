@@ -370,10 +370,12 @@ void Ball::collisionDetect(double oldx, double oldy)
 					bvector += unit1;
 
 					oball->setVector(bvector);
-					setVector(m_vector);
+					if(bvector.magnitude() != 0)
+							oball->setState(Rolling);
 
-					oball->setState(Rolling);
-					setState(Rolling);
+					setVector(m_vector);
+					if(m_vector.magnitude() != 0)
+						setState(Rolling);
 
 					oball->doAdvance();
 				}

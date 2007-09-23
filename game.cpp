@@ -3710,12 +3710,12 @@ void KolfGame::shotDone()
 
 	(*curPlayer).ball()->setVisible(true);
 
+	inPlay = false;
+	(*curPlayer).ball()->collisionDetect(oldx, oldy);
+
 	putter->setAngle((*curPlayer).ball());
 	putter->setOrigin((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 	updateMouse();
-
-	inPlay = false;
-	(*curPlayer).ball()->collisionDetect(oldx, oldy);
 }
 
 void KolfGame::emitMax()
