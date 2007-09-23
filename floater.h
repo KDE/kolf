@@ -39,17 +39,20 @@ private:
 class FloaterGuide : public Wall
 {
 public:
-	FloaterGuide(Floater *floater, QGraphicsItem *parent, QGraphicsScene *scene) : Wall(parent, scene) { this->floater = floater; almostDead = false; }
+	FloaterGuide(Floater *floater, QGraphicsItem *parent, QGraphicsScene *scene) : Wall(parent, scene) { this->floater = floater; almostDead = false; resizeFactor = 1; }
 	virtual void setPoints(double xa, double ya, double xb, double yb);
 	virtual void moveBy(double dx, double dy);
 	virtual Config *config(QWidget *parent);
 	virtual void aboutToDelete();
 	virtual void aboutToDie();
+	void resize(double resizeFactor);
 	void updateBaseResizeInfo();
 
 private:
 	Floater *floater;
 	bool almostDead;
+
+	double resizeFactor, baseX1, baseY1, baseX2, baseY2;
 };
 
 class Floater : public Bridge

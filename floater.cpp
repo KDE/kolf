@@ -51,6 +51,11 @@ void FloaterGuide::moveBy(double dx, double dy)
 
 void FloaterGuide::setPoints(double xa, double ya, double xb, double yb)
 {
+	baseX1 = xa / resizeFactor;
+	baseY1 = ya / resizeFactor;
+	baseX2 = xb / resizeFactor;
+	baseY2 = yb / resizeFactor;
+
 	if (qAbs(xa - xb) > 0 || qAbs(ya - yb) > 0)
 	{
 		Wall::setPoints(xa, ya, xb, yb);
@@ -62,6 +67,12 @@ void FloaterGuide::setPoints(double xa, double ya, double xb, double yb)
 Config *FloaterGuide::config(QWidget *parent)
 {
 	return floater->config(parent);
+}
+
+void FloaterGuide::resize(double resizeFactor)
+{
+	this->resizeFactor = resizeFactor;
+	setPoints(baseX1*resizeFactor, baseY1*resizeFactor, baseX2*resizeFactor, baseY2*resizeFactor);
 }
 
 void FloaterGuide::updateBaseResizeInfo()
