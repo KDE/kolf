@@ -88,6 +88,8 @@ public:
 	void setCollisionLock(bool yes) { m_collisionLock = yes; }
 	virtual void fastAdvanceDone() { setCollisionLock(false); }
 
+	void shotStarted() { maxBumperBounceSpeed = 8; }
+
 	void setDoDetect(bool yes) { m_doDetect = yes; }
 	bool doDetect() const { return m_doDetect; }
 
@@ -100,6 +102,9 @@ public:
 	double height() { return rect().height(); }
 	double getBaseX() { return baseX; }
 	double getBaseY() { return baseY; }
+
+	double getMaxBumperBounceSpeed() { return maxBumperBounceSpeed; }
+	void reduceMaxBumperBounceSpeed() { if(maxBumperBounceSpeed > 0.4) maxBumperBounceSpeed -= 0.35; }
 
 public slots:
 	void update() { doAdvance(); }
@@ -121,6 +126,11 @@ private:
 	 * resizeFactor is the number to multiply base numbers by to get their resized value (i.e. if it is 1 then use default size, if it is >1 then everything needs to be bigger, and if it is <1 then everything needs to be smaller)
 	 */
 	double resizeFactor;
+
+	/*
+	 * the maximum speed of the ball after hitting a bumper, this will decrease ith each bounce so that the ball does not bounce against bumpers forever
+	 */
+	double maxBumperBounceSpeed;
 
 	bool m_blowUp;
 	int blowUpCount;

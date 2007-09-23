@@ -1291,8 +1291,10 @@ bool Bumper::collision(Ball *ball, long int /*id*/)
 	update();
 
 	double speed = 1.8 + ball->curVector().magnitude() * .9;
-	if (speed > 8)
-		speed = 8;
+	double maxSpeed = ball->getMaxBumperBounceSpeed();
+	if (speed > maxSpeed)
+		speed = maxSpeed;
+	ball->reduceMaxBumperBounceSpeed();
 
 	const QPointF start(x(), y());
 	const QPointF end(ball->x(), ball->y());
@@ -3732,6 +3734,7 @@ void KolfGame::startBall(const Vector &vector)
 
 	(*curPlayer).ball()->setState(Rolling);
 	(*curPlayer).ball()->setVector(vector);
+	(*curPlayer).ball()->shotStarted();
 
 	QList<QGraphicsItem *>::const_iterator item;
 	for (item = items.constBegin(); item != items.constEnd(); ++item)
@@ -3895,6 +3898,13 @@ void KolfGame::startNextHole()
 	inPlay = false;
 	timer->start(timerMsec);
 
+	if(size().width()!=400 || size().height()!=400) { //not default size, so resizing needed
+		int newSize = qMin(size().width(), size().height());
+		//resize needs to be called for newSize+1 first because otherwise it doesn't seem to get called (not sure why) 
+		QGraphicsView::resize(newSize+1, newSize+1);
+		QGraphicsView::resize(newSize, newSize);
+	}
+
 	// if (false) { we're done with the round! }
 	if (oldCurHole != curHole)
 	{
@@ -3924,13 +3934,6 @@ void KolfGame::startNextHole()
 		ballStateList.canUndo = false;
 
 		(*curPlayer).ball()->collisionDetect(oldx, oldy);
-	}
-
-	if(size().width()!=400 || size().height()!=400) { //not default size, so resizing needed
-		int newSize = qMin(size().width(), size().height());
-		//resize needs to be called for newSize+1 first because otherwise it doesn't seem to get called (not sure why) 
-		QGraphicsView::resize(newSize+1, newSize+1);
-		QGraphicsView::resize(newSize, newSize);
 	}
 
 	unPause();

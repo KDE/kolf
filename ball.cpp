@@ -54,6 +54,7 @@ Ball::Ball(QGraphicsScene * scene)
 	m_forceStillGoing = false;
 	ignoreBallCollisions = false;
 	frictionMultiplier = 1.0;
+	maxBumperBounceSpeed = 8;
 
 	QFont font(QApplication::font());
 	baseFontPixelSize=12;
