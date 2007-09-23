@@ -110,7 +110,7 @@ private:
 	QAction *tutorialAction;
 	QAction *newAction;
 	QAction *endAction;
-	QAction *printAction;
+	//QAction *printAction;
 	QAction *saveAction;
 	QAction *saveAsAction;
 	QAction *saveGameAction;

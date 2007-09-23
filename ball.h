@@ -46,9 +46,13 @@ public:
 	virtual void advance(int phase);
 	virtual void doAdvance();
 	/*
+	 * moves the ball, by the number of pixels requested (like the normal moveBy() for everything else (I know this is bad design, need to fix by changing the names of these functions and checking that the appropriate one is called)
+	 */
+	void moveByResizedDistance(double dx, double dy);
+	/*
 	 * moves the ball, automatically modifying dx and dy to take into account resizing (so the input dx and dy can use the game's base 400x400 co-ordinated system, and do not need to be modified when the game is resized)
 	 */
-	virtual void moveBy(double dx, double dy);
+	virtual void moveBy(double baseDx, double baseDy);
 	virtual void setVelocity(double vx, double vy);
 
 	virtual bool deleteable() const { return false; }

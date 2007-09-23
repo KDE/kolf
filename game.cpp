@@ -3214,6 +3214,9 @@ void KolfGame::resizeAllItems(double resizeFactor, bool resizeBorderWalls)
 	//ball resize
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 		(*it).ball()->resize(resizeFactor);
+
+	//editor ball start position reszie
+	whiteBall->resize(resizeFactor);
 	
 	//putter resize
 	putter->setPos((*curPlayer).ball()->x(), (*curPlayer).ball()->y());

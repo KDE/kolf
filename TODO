@@ -10,15 +10,7 @@ Minor Bugs:
 -----------
 Easy 6 - z order issues
 
-easy 6, put ball on floater on slope, the ball has a life of it's own!
-
-water seems to be resized wrongly. Start really easy 4 in full screen and the ball goes straight in
-
-when resized in edit mode the ball does not have the correct posisition
-
-need a max turn time, so that the ball isn't left bouncing off bumpers for ages (or possibly on some holes forever)
-
-hard 13, is the pusher pushes you into the hole the game thinks it is your shot, but you can't hit because you are in the hole
+hard 13, if the pusher pushes you into the hole the game thinks it is your shot, but you can't hit because you are in the hole
 
 undo button not greyed out when undo impossible
 

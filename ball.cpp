@@ -211,6 +211,11 @@ void Ball::setVector(const Vector &newVector)
 	CanvasItem::setVelocity(cos(newVector.direction()) * newVector.magnitude(), -sin(newVector.direction()) * newVector.magnitude());
 }
 
+void Ball::moveByResizedDistance(double dx, double dy)
+{
+	moveBy( dx/resizeFactor, dy/resizeFactor );
+}
+
 void Ball::moveBy(double baseDx, double baseDy)
 {
 	//this takes as an imput the distance to move in the game's base 400x400 co-ordinate system, so that everything that calls this (friction etc) does not have to worry about the resized co-ordinates

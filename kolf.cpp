@@ -94,7 +94,7 @@ void Kolf::setupActions()
 	newAction = KStandardGameAction::gameNew(this, SLOT(newGame()), actionCollection());
 	newAction->setText(newAction->text() + QString("..."));
 	endAction = KStandardGameAction::end(this, SLOT(closeGame()), actionCollection());
-	printAction = KStandardGameAction::print(this, SLOT(print()), actionCollection());
+	//printAction = KStandardGameAction::print(this, SLOT(print()), actionCollection());
 	KStandardGameAction::quit(this, SLOT(close()), actionCollection());
 
 	saveAction = actionCollection()->addAction(KStandardAction::Save, "game_save", this, SLOT(save()));
@@ -345,7 +345,7 @@ void Kolf::startNewGame()
 	setHoleOtherEnabled(true);
 	aboutAction->setEnabled(true);
 	highScoreAction->setEnabled(true);
-	printAction->setEnabled(true);
+	//printAction->setEnabled(true);
 	saveAction->setEnabled(true);
 	saveAsAction->setEnabled(true);
 	saveGameAction->setEnabled(true);
@@ -408,7 +408,7 @@ void Kolf::closeGame()
 	endAction->setEnabled(false);
 	aboutAction->setEnabled(false);
 	highScoreAction->setEnabled(false);
-	printAction->setEnabled(false);
+	//printAction->setEnabled(false);
 	saveAction->setEnabled(false);
 	saveAsAction->setEnabled(false);
 	saveGameAction->setEnabled(false);
