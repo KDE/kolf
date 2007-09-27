@@ -214,10 +214,10 @@ void Kolf::setupActions()
 	connect(action, SIGNAL(triggered(bool) ), SLOT(showPlugins()));
 
 	aboutAction = actionCollection()->addAction("aboutcourse");
-	action->setText(i18n("&About Course"));
+	aboutAction->setText(i18n("&About Course"));
 	connect(aboutAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	tutorialAction = actionCollection()->addAction("tutorial");
-	action->setText(i18n("&Tutorial"));
+	tutorialAction->setText(i18n("&Tutorial"));
 	connect(tutorialAction, SIGNAL(triggered(bool) ), SLOT(tutorial()));
 
 	setupGUI();
