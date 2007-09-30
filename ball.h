@@ -17,6 +17,7 @@
 #include "vector.h"
 #include "rtti.h"
 
+class Wall;
 
 enum BallState { Rolling = 0, Stopped, Holed };
 
@@ -73,6 +74,7 @@ public:
 	void setFrictionMultiplier(double news) { frictionMultiplier = news; }
 	void friction();
 	void collisionDetect(double oldx, double oldy);
+	void collideWithHaloCollisions( QList< Wall* >& haloWallCollisions );
 
 	int addStroke() const { return m_addStroke; }
 	bool placeOnGround(Vector &v) { v = oldVector; return m_placeOnGround; }

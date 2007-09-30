@@ -54,7 +54,6 @@ Ball::Ball(QGraphicsScene * scene)
 	m_forceStillGoing = false;
 	ignoreBallCollisions = false;
 	frictionMultiplier = 1.0;
-	maxBumperBounceSpeed = 8;
 
 	QFont font(QApplication::font());
 	baseFontPixelSize=12;
@@ -376,12 +375,10 @@ void Ball::collisionDetect(double oldx, double oldy)
 					bvector += unit1;
 
 					oball->setVector(bvector);
-					if(bvector.magnitude() != 0)
-							oball->setState(Rolling);
-
 					setVector(m_vector);
-					if(m_vector.magnitude() != 0)
-						setState(Rolling);
+
+					oball->setState(Rolling);
+					setState(Rolling);
 
 					oball->doAdvance();
 				}
@@ -389,71 +386,87 @@ void Ball::collisionDetect(double oldx, double oldy)
 
 			continue;
 		}
-		else if (item->data(0) == Rtti_WallPoint)
+		else if (item->data(0) == Rtti_WallPoint || item->data(0) == Rtti_Wall )
 		{
-			//kDebug(12007) << "collided with WallPoint\n";
-			// iterate through the rst
-			QList<WallPoint *> points;
-			for (QList<QGraphicsItem *>::Iterator pit = it; pit != m_list.end(); ++pit)
+			static int tempLastId = collisionId - 25;
+			double ballVectorMagnitude = m_vector.magnitude();
+			int allowableDifference = 1;
+			if (ballVectorMagnitude < .30)
+				allowableDifference = 8;
+			else if (ballVectorMagnitude < .50)
+				allowableDifference = 6;
+			else if (ballVectorMagnitude < .75)
+				allowableDifference = 4;
+			else if (ballVectorMagnitude < .95)
+				allowableDifference = 2;
+
+			if (abs(collisionId - tempLastId) <= allowableDifference)
 			{
-				if ((*pit)->data(0) == Rtti_WallPoint)
+				//kDebug(12007) << "Clever wall and wall point collision detection is skipping. AllowableDifference is:" << abs(collisionId - tempLastId);
+				goto end; //skip this AND smart wall collision
+			}
+
+			//Create the halo. This is an ellipse centered around the ball, and bigger than it. This allows us to detect walls which we could be about to collide into, and react intelligently to them, even though we are not colliding with them quite yet
+			const double haloSizeFactor = 2;
+
+			static QGraphicsEllipseItem* halo = NULL;
+			if( halo )
+				delete halo;
+			halo = new QGraphicsEllipseItem( rect().x() * haloSizeFactor, rect().y() * haloSizeFactor, rect().width() * haloSizeFactor, rect().height() * haloSizeFactor, this, scene() );
+			halo->hide();
+
+			QList<QGraphicsItem *> haloCollisions = halo->collidingItems();
+			QList< Wall* > haloWallCollisions;
+
+			for( QList<QGraphicsItem *>::Iterator hIter = haloCollisions.begin(); hIter != haloCollisions.end(); ++hIter )
+			{
+				if ((*hIter)->data(0) == Rtti_Wall)
 				{
-					WallPoint *point = (WallPoint *)(*pit);
-					if (point)
-						points.prepend(point);
+					Wall* wall = dynamic_cast< Wall* >(*hIter);
+					if( wall )
+					{
+						haloWallCollisions.push_back( wall );
+					}
 				}
 			}
 
-			// ok now we have a list of wall points we are on
-
-			QList<WallPoint *>::const_iterator iterpoint;
-			QList<WallPoint *>::const_iterator finalPoint;
-
-			// this wont be least when we're done hopefully
-			double leastAngleDifference = 9999;
-
-			for (iterpoint = points.constBegin(); iterpoint != points.constEnd(); ++iterpoint)
+			if( haloWallCollisions.size() == 0 )
 			{
-				//kDebug(12007) << "-----\n";
-				const Wall *parentWall = (*iterpoint)->parentWall();
-				const QPointF p(((*iterpoint)->x() + parentWall->x()), ((*iterpoint)->y() + parentWall->y()));
-				const QPointF other = QPointF(parentWall->startPoint() == p? parentWall->endPoint() : parentWall->startPoint()) + QPointF(parentWall->x(), parentWall->y());
-
-				// vector of wall
-				Vector v = Vector(p, other);
-
-				// difference between our path and the wall path
-				double ourDir = m_vector.direction();
-
-				double wallDir = M_PI - v.direction();
-
-				//kDebug(12007) << "ourDir:" << rad2deg(ourDir);
-				//kDebug(12007) << "wallDir:" << rad2deg(wallDir);
-
-				const double angleDifference = fabs(M_PI - fabs(ourDir - wallDir));
-				//kDebug(12007) << "computed angleDifference:" << rad2deg(angleDifference);
-
-				// only if this one is the least of all
-				if (angleDifference < leastAngleDifference)
+				//not found any walls to collide off, so I must be colliding with a wall point already, will collide off that instead
+				WallPoint* wp = dynamic_cast< WallPoint* >(item);
+				if( wp )
 				{
-					leastAngleDifference = angleDifference;
-					finalPoint = iterpoint;
-					//kDebug(12007) << "it's the one\n";
+					wp->collision(this, collisionId);
+				}
+				else
+				{
+					//this should not happen
+					break;
 				}
 			}
+			else if( haloWallCollisions.size() == 1 )
+			{
+				Wall* w = dynamic_cast< Wall* >(haloWallCollisions[0]);
+				if( w )
+				{
+					w->collision(this, collisionId);
+					goto end;
+				}
+				else
+				{
+					//this should not happen
+					break;
+				}
+			}
+			else //haloWallCollisions.size() >= 2
+			{
+				tempLastId = collisionId;
+				collideWithHaloCollisions( haloWallCollisions );
+			}
 
-			// this'll never happen
-			if (!(*finalPoint))
-				continue;
-
-			// collide with our chosen point
-			(*finalPoint)->collision(this, collisionId);
-
-			// don't worry about colliding with walls
-			// wall points are ok alone
 			goto end;
 		}
-
+	
 		if (!isVisible() || state == Holed)
 			return;
 
@@ -525,8 +538,6 @@ void Ball::collisionDetect(double oldx, double oldy)
 				wall->collision(this, collisionId);
 				break;
 			}
-
-		
 		}
 	}
 
@@ -542,6 +553,118 @@ void Ball::collisionDetect(double oldx, double oldy)
 		setVelocity(0, 0);
 		setState(Stopped);
 	}
+}
+
+//this rather ugly bit of code takes list of walls that the ball is very close to. It then looks at their angles relative to the ball and works out which two are closest to the ball in each direction (clockwise and anti-clockwise)
+//it then works out the average angle of those two walls and collides with them as if that were the only wall here.
+void Ball::collideWithHaloCollisions( QList< Wall* >& haloWallCollisions )
+{
+	double ballAngle = -m_vector.direction();
+
+	double closestNegativeAngleDiff = -181;
+	double furthestNegativeAngleDiff = 1;
+	double closestPositiveAngleDiff = 181;
+	double furthestPositiveAngleDiff = -1;
+
+	for ( QList< Wall* >::iterator Iter = haloWallCollisions.begin(); Iter != haloWallCollisions.end(); ++Iter )
+	{
+		//find which point on the wall is closest to the ball and get the wall's vector accordingly (need this to get the right angle of the wall relative to the ball)
+		//kDebug(12007) << "------";
+		QPointF p1 = (*Iter)->startPoint();
+		QPointF p2 = (*Iter)->endPoint();
+		QPointF ballPos = QPointF( x(), y() );
+
+		int dist1 = abs((int)( ballPos.x() - p1.x() )) + abs((int)( ballPos.y() - p1.y() ));
+		int dist2 = abs((int)( ballPos.x() - p2.x() )) + abs((int)( ballPos.y() - p2.y() ));
+
+		double wallAngle;
+		if( dist1 < dist2 )
+		{
+			wallAngle = Vector(p1, p2).direction();
+		}
+		else
+		{
+			wallAngle = Vector(p2, p1).direction();
+		}
+
+		//kDebug(12007) << "ballAngle:" << rad2deg(ballAngle);
+		//kDebug(12007) << "wallAngle:" << rad2deg(wallAngle);
+
+		double angleDiff = rad2deg(ballAngle) - rad2deg(wallAngle);
+		while( angleDiff > 180 ) 
+		{
+			angleDiff -= 360;
+		}
+		while( angleDiff < -180 )
+		{
+			angleDiff += 360;
+		}
+		//kDebug(12007) << "computed angleDifference:" << angleDiff;
+
+		if( angleDiff > 0 )
+		{
+			if( angleDiff < closestPositiveAngleDiff )
+			{
+				closestPositiveAngleDiff = angleDiff;
+			}
+			if( angleDiff > furthestPositiveAngleDiff )
+			{
+				furthestPositiveAngleDiff = angleDiff;
+			}
+		}
+		else
+		{
+			if( angleDiff > closestNegativeAngleDiff )
+			{
+				closestNegativeAngleDiff = angleDiff;
+			}
+			if( angleDiff < furthestNegativeAngleDiff )
+			{
+				furthestNegativeAngleDiff = angleDiff;
+			}
+		}
+	}
+
+	//if all the walls have a negative angle difference or a positive angle difference then we want to collide with the two walls at each extreme of the angel difference type we do have
+	float closestNegativeAngle, closestPositiveAngle;
+	if( closestNegativeAngleDiff == -181 )
+	{
+		closestNegativeAngle = rad2deg(ballAngle) - furthestPositiveAngleDiff;
+	}
+	else
+	{
+		closestNegativeAngle = rad2deg(ballAngle) - closestPositiveAngleDiff;
+	}
+
+	if( closestPositiveAngleDiff == 181 )
+	{
+		closestPositiveAngle = rad2deg(ballAngle) - furthestNegativeAngleDiff;
+	}
+	else
+	{
+		closestPositiveAngle = rad2deg(ballAngle) - closestNegativeAngleDiff;
+	}
+
+	//kDebug(12007) << "closest pos:" << closestPositiveAngle << "closest neg:" << closestNegativeAngle;
+
+	double averageAngleOfTwoClosestWalls = ( closestPositiveAngle + closestNegativeAngle ) / 2;
+
+	//kDebug(12007) << "average angle:" << averageAngleOfTwoClosestWalls;
+
+	ballAngle = m_vector.direction();
+	//kDebug(12007) << "old ball angle:" << rad2deg(ballAngle);
+
+	double newBallAngle = M_PI + ballAngle  - 2 * ( ballAngle + deg2rad( averageAngleOfTwoClosestWalls ) );
+
+	//kDebug(12007) << "new ball angle:" << rad2deg(newBallAngle);
+
+	Vector ballVector(curVector());
+	const double dampening = 1.2;
+	ballVector /= dampening;
+	ballVector.setDirection(newBallAngle);
+	setVector(ballVector);
+
+	playSound("wall", curVector().magnitude() / 10.0);
 }
 
 BallState Ball::currentState()
