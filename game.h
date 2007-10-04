@@ -18,6 +18,7 @@
 
 #include "object.h"
 #include "config.h"
+#include "kconfiggroup.h"
 #include "canvasitem.h"
 #include "ball.h"
 #include "statedb.h"
