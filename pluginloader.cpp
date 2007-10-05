@@ -22,6 +22,7 @@
 #include <kglobal.h>
 #include <kstandarddirs.h>
 #include <kconfig.h>
+#include <kconfiggroup.h>
 #include <klibloader.h>
 
 ObjectList *PluginLoader::loadAll()
