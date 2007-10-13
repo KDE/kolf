@@ -92,7 +92,6 @@ void Kolf::setupActions()
 {
 	// Game
 	newAction = KStandardGameAction::gameNew(this, SLOT(newGame()), actionCollection());
-	newAction->setText(newAction->text() + QString("..."));
 	endAction = KStandardGameAction::end(this, SLOT(closeGame()), actionCollection());
 	//printAction = KStandardGameAction::print(this, SLOT(print()), actionCollection());
 	KStandardGameAction::quit(this, SLOT(close()), actionCollection());
