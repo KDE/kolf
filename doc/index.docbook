@@ -19,13 +19,19 @@
 <address><email>jasonkb@mit.edu</email></address>
 </affiliation>
 </author>
+
+<othercredit role="reviewer">
+&Paul.Broadbent; &Paul.Broadent.mail;
+<!-- <contrib>Reviewer</contrib> -->
+</othercredit>
+
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2005-12-18</date>
-<releaseinfo>1.1</releaseinfo>
+<date>2007-10-14</date>
+<releaseinfo>1.2</releaseinfo>
 
 <abstract>
 <para>
@@ -70,12 +76,12 @@ feel for speed.</para>
 <para>To stop abort the putt while you are still holding moving the putter back in your stroke, press <keycap>Escape</keycap>.</para>
 </tip>
 
-<para>Hit the ball into the hole (gray circle) to move on the next.</para>
+<para>Hit the ball into the hole to move on to the next.</para>
 </sect1>
 
 <sect1 id="slopes"> 
 <title>Slopes</title>
-<para>Slopes are areas of slanted down that the golf ball rolls down in an expected manner. The light of the golf course is from the upper-left, so the brightest slopes will push the ball towards the upper-left corner of the hole. Choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>Show Info</guimenuitem></menuchoice> to see an arrow that points in the direction the slope will roll the ball.</para>
+<para>Slopes are slanted areas of the course that the golf ball rolls down in an expected manner. The light of the golf course is from the upper-left, so the brightest slopes will push the ball towards the upper-left corner of the hole. Choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>Show Info</guimenuitem></menuchoice> to see an arrow that points in the direction the slope will roll the ball.</para>
 <para>On this tutorial hole, hit the ball onto the upward-pointing
 slope and let it roll into the cup to move onto the next hole.</para>
 
@@ -83,7 +89,7 @@ slope and let it roll into the cup to move onto the next hole.</para>
 <para>On the next hole, experiment with the other kinds of slopes. There are elliptical, vertical, horizontal, and diagonal slopes in &kolf;. Hit the ball into the hole.</para>
 </sect2>
 <sect2> <title>Steepness</title>
-<para>The next tutorial hole has two slopes of differing steepness. If you choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>Show Info</guimenuitem></menuchoice>, the steepness of the slope will appear as a number from 1-8, where 8 is steepest and 1 is shallowest. Also, the more extreme shading the slope has, the steeper it is. Hit the ball into the hole and continue to the next hole.</para>
+<para>The next tutorial hole has two slopes of differing steepness. If you choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>Show Info</guimenuitem></menuchoice>, the steepness of the slope will appear as a number from 1-8, where 8 is steepest and 1 is shallowest. Hit the ball into the hole and continue to the next hole.</para>
 </sect2>
 </sect1>
 
@@ -93,7 +99,7 @@ slope and let it roll into the cup to move onto the next hole.</para>
 
 <sect1 id="puddles-sand"> <title>Puddles and Sand</title>
 <sect2> <title>Puddles</title>
-<para>Puddles are blue. When your ball rolls into a puddle, a penalty stroke is added to your score and your ball is placed outside the puddle.</para>
+	<para>Puddles are blue. When your ball rolls into a puddle, a penalty stroke is added to your score and you must then choose where you want to take your next shot from: either next to the puddle or from the same place as where you just took the last shot.</para>
 </sect2>
 <sect2> <title>Sand</title>
 <para>Sand is yellow. Balls roll through sand very slowly.</para>
@@ -102,11 +108,11 @@ slope and let it roll into the cup to move onto the next hole.</para>
 </sect1>
 
 <sect1 id="windmills"> <title>Windmills</title>
-<para>Windmills are compound objects with brown border walls and a moving arm at either the top or bottom of the object. Half-walls create the opening to the windmill, which a black arm swings across. It takes practice to be able to time stroke of the ball to pass through the opening. Hit the ball through the windmill into the hole to continue.</para>
+<para>Windmills are compound objects with brown border walls and a moving arm on one side. Half-walls create the opening to the windmill, which the black arm swings across. It takes practice to be able to time the stroke of the ball to pass through the opening. Hit the ball through the windmill into the hole to continue.</para>
 </sect1>
 
 <sect1 id="black-holes"> <title>Black Holes</title>
-<para>When you hit your ball into a black hole, it is transported to the exit and ejected at the angle of the exit at a speed directly relational to the speed your ball was going. Choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>Show Info</guimenuitem></menuchoice> to see which Black Hole goes to which exit and which direction the ball will come out of the exit. The rim around Black Holes and their corresponding exits are also the same color. Hit the ball into the black hole, which will then eject the ball into the cup so you can go to the next hole.</para>
+<para>When you hit your ball into a black hole, it is transported to the exit and ejected at the angle of the exit at a speed directly relational to the speed your ball was going. Choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>Show Info</guimenuitem></menuchoice> to see which Black Hole goes to which exit and which direction the ball will come out of the exit. The rim around Black Holes are the same color as their corresponding exits. Hit the ball into the black hole, which will then eject the ball into the cup so you can go to the next hole.</para>
 </sect1>
 
 <sect1 id="floaters"> <title>Floaters</title>
@@ -808,6 +814,9 @@ section</link>.</para>
 </listitem>
 <listitem>
 <para>Daniel Matza-Brown</para>
+</listitem>
+<listitem>
+<para>Paul Broadbent</para>
 </listitem>
 </itemizedlist>
 
