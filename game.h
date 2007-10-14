@@ -35,8 +35,8 @@ class QMouseEvent;
 class QResizeEvent;
 class QVBoxLayout;
 class QPainter;
+class QPrinter;
 class KConfig;
-class KPrinter;
 class KolfGame;
 
 namespace Phonon
@@ -979,7 +979,7 @@ public slots:
 	void showInfoDlg(bool = false);
 	void resetHole();
 	void clearHole();
-	void print(KPrinter &);
+	void print(QPrinter &, bool printTitle);
 	void setShowInfo(bool yes);
 	void toggleShowInfo();
 	void updateShowInfo();

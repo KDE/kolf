@@ -23,18 +23,17 @@
 #include <QMap>
 
 class QCheckBox;
-class QWidget;
 
-class PrintDialogPage : public KPrintDialogPage
+class PrintDialogPage : public QWidget
 {
 	Q_OBJECT
 
 	public:
 		PrintDialogPage(QWidget *parent = 0);
 
-		//reimplement virtual functions
-		void getOptions(QMap<QString, QString> &opts, bool incldef = false);
-		void setOptions(const QMap<QString, QString> &opts);
+		bool printTitle();
+		void setPrintTitle(bool status);
+
 
 	private:
 		QCheckBox *bgCheck;

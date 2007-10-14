@@ -26,9 +26,9 @@
 #include <kdebug.h>
 
 PrintDialogPage::PrintDialogPage(QWidget *parent)
-	: KPrintDialogPage( parent )
+	: QWidget( parent )
 {
-	setTitle(i18n("Kolf Options"));
+	setWindowTitle(i18n("Kolf Options"));
 
 	QVBoxLayout *layout = new QVBoxLayout(this);
         layout->setMargin( KDialog::marginHint() );
@@ -39,16 +39,14 @@ PrintDialogPage::PrintDialogPage(QWidget *parent)
 	layout->addWidget(titleCheck);
 }
 
-void PrintDialogPage::getOptions(QMap<QString, QString> &opts, bool /*incldef*/)
+bool PrintDialogPage::printTitle()
 {
-	opts["kde-kolf-title"] = titleCheck->isChecked()? "true" : "false";
+	return titleCheck->isChecked();
 }
 
-void PrintDialogPage::setOptions(const QMap<QString, QString> &opts)
+void PrintDialogPage::setPrintTitle(bool status)
 {
-	QString setting = opts["kde-kolf-title"];
-	if (!setting.isEmpty())
-		titleCheck->setChecked(setting == "true");
+	titleCheck->setChecked(status);
 }
 
 #include "printdialogpage.moc"

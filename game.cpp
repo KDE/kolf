@@ -25,7 +25,6 @@
 #include <kglobal.h>
 #include <klineedit.h>
 #include <kmessagebox.h>
-#include <kprinter.h>
 #include <kstandarddirs.h>
 #include <Phonon/MediaObject>
 
@@ -44,6 +43,7 @@
 #include <QTimer>
 #include <QStyleOptionGraphicsItem>
 #include <QApplication>
+#include <QtGui/QPrinter>
 
 #include <QMouseEvent>
 #include <QKeyEvent>
@@ -4594,7 +4594,7 @@ void HoleInfo::borderWallsChanged(bool yes)
 	game->setBorderWalls(yes);
 }
 
-void KolfGame::print(KPrinter &pr) //note: this is currently broken, see comment below
+void KolfGame::print(QPrinter &pr, bool printTitle) //note: this is currently broken, see comment below
 {
 	kDebug(12007) << "Printing Currently broken";
 	QPainter p(&pr);
@@ -4612,7 +4612,7 @@ void KolfGame::print(KPrinter &pr) //note: this is currently broken, see comment
 
 	p.resetMatrix();
 
-	if (pr.option("kde-kolf-title") == "true")
+	if (printTitle)
 	{
 		QString text = i18n("%1 - Hole %2; by %3", holeInfo.name(), curHole, holeInfo.author());
 		QFont font(QApplication::font());

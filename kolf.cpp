@@ -31,7 +31,6 @@
 #include <kxmlguiwindow.h>
 #include <kmimetype.h>
 #include <kmessagebox.h>
-#include <kprinter.h>
 #include <kscoredialog.h>
 #include <kstandarddirs.h>
 #include <kstatusbar.h>
@@ -41,9 +40,12 @@
 #include <KStandardGuiItem>
 #include <kicon.h>
 #include <kselectaction.h>
+#include <kdeprintdialog.h>
 
 #include <QTimer>
 #include <QGridLayout>
+#include <QtGui/QPrinter>
+#include <QtGui/QPrintDialog>
 
 #include <stdlib.h>
 
@@ -771,13 +773,16 @@ void Kolf::print()
 	if (!game)
 		return;
 
-	KPrinter pr;
-	pr.addDialogPage(new PrintDialogPage());
+	QPrinter pr;
+	PrintDialogPage prPage;
 
-	if (pr.setup(this, i18n("Print %1 - Hole %2", game->courseName(), game->currentHole())))
+	QPrintDialog *printDialog = KdePrint::createPrintDialog(&pr, QList<QWidget*>() << &prPage, this);
+	printDialog->setWindowTitle(i18n("Print %1 - Hole %2", game->courseName(), game->currentHole()));
+
+	if (printDialog->exec())
 	{
 		pr.newPage();
-		game->print(pr);
+		game->print(pr, prPage.printTitle());
 	}
 }
 
