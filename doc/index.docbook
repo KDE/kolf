@@ -21,7 +21,11 @@
 </author>
 
 <othercredit role="reviewer">
-&Paul.Broadbent; &Paul.Broadent.mail;
+<firstname>Paul</firstname>
+<surname>Broadbent</surname>
+<affiliation>
+<address><email>dbd@myrealbox.com</email></address>
+</affiliation>
 <!-- <contrib>Reviewer</contrib> -->
 </othercredit>
 
