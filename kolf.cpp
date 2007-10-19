@@ -124,7 +124,7 @@ void Kolf::setupActions()
 	connect(newHoleAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	newHoleAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_N);
 	clearHoleAction = actionCollection()->addAction("clearhole");
-	clearHoleAction->setIcon(KIcon("locationbar-erase"));
+	clearHoleAction->setIcon(KIcon("edit-clear-locationbar"));
 	clearHoleAction->setText(KStandardGuiItem::clear().text());
 	connect(clearHoleAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	clearHoleAction->setShortcut(Qt::CTRL+Qt::Key_Delete);
