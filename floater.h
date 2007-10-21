@@ -47,6 +47,7 @@ public:
 	virtual void aboutToDie();
 	void resize(double resizeFactor);
 	void updateBaseResizeInfo();
+	virtual CanvasItem *itemToDelete() { return NULL; }
 
 private:
 	Floater *floater;

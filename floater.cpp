@@ -77,6 +77,10 @@ void FloaterGuide::resize(double resizeFactor)
 
 void FloaterGuide::updateBaseResizeInfo()
 {
+	baseX1 = line().x1() / resizeFactor;
+	baseY1 = line().y1() / resizeFactor;
+	baseX2 = line().x2() / resizeFactor;
+	baseY2 = line().y2() / resizeFactor;
 	floater->updateBaseResizeInfo();
 }
 

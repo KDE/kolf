@@ -16,10 +16,6 @@ undo button not greyed out when undo impossible
 
 print needs fixing (see KolfGame::print)
 
-in edit mode if you attempt to delete the red line showing the path of a floater then it crashes
-
-moving the red line the floater moves with has no effect on it's motion
-
 when resizing make it so some pixmaps are not painted new every time (store size like in Katom?)
 
 fix scoreboard resizing, it can get too big, and can also get too small!
