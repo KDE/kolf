@@ -155,11 +155,11 @@ void Kolf::setupActions()
 	firstAction->setIcon(KIcon("go-home"));
 	firstAction->setText(i18n("&First Hole"));
 	connect(firstAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
-	firstAction->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Home));
+	firstAction->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Begin));
 	lastAction = actionCollection()->addAction("lasthole");
 	lastAction->setText(i18n("&Last Hole"));
 	connect(lastAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
-	lastAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_End);
+	lastAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_End); // why not KStandardShortcut::End (Ctrl+End)?
 	randAction = actionCollection()->addAction("randhole");
 	randAction->setIcon(KIcon("goto-page"));
 	randAction->setText(i18n("&Random Hole"));
