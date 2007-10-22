@@ -19,7 +19,7 @@
 #ifndef PRINTDIALOGPAGE_H
 #define PRINTDIALOGPAGE_H
 
-#include <kdeprint/kprintdialogpage.h>
+#include <QWidget>
 #include <QMap>
 
 class QCheckBox;
