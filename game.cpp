@@ -3765,9 +3765,24 @@ void KolfGame::shotStart()
 	if (!strength)
 		strength = 1;
 
-	(*curPlayer).ball()->collisionDetect((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
+	//kDebug(12007) << "Start started. BallX:" << (*curPlayer).ball()->x() << ", BallY:" << (*curPlayer).ball()->y() << ", Putter Angle:" << putter->curAngle() << ", Vector Strength: " << strength;
 
-	startBall(Vector(strength, putter->curAngle() + M_PI));
+	if( false )
+	{ //debug code for reproducing shots, remove
+		(*curPlayer).ball()->setPos( 200, 360 );
+		strength = 6.9375;
+		float angle = -1.39094;
+
+		(*curPlayer).ball()->collisionDetect((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
+
+		startBall(Vector(strength, angle + M_PI));
+	}
+	else 
+	{
+		(*curPlayer).ball()->collisionDetect((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
+
+		startBall(Vector(strength, putter->curAngle() + M_PI));
+	}
 
 	addHoleInfo(ballStateList);
 }

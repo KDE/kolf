@@ -315,6 +315,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 
 	double initialVector = m_vector.magnitude();
 	const double minSpeed = .06;
+	bool justCollidedWithWall = false;
 
 	QList<QGraphicsItem *> m_list = collidingItems();
 	bool collidingWithABall=0;
@@ -432,11 +433,13 @@ void Ball::collisionDetect(double oldx, double oldy)
 
 			if( haloWallCollisions.size() == 0 )
 			{
+				tempLastId = collisionId;
 				//not found any walls to collide off, so I must be colliding with a wall point already, will collide off that instead
 				WallPoint* wp = dynamic_cast< WallPoint* >(item);
 				if( wp )
 				{
 					wp->collision(this, collisionId);
+					justCollidedWithWall = true;
 				}
 				else
 				{
@@ -446,10 +449,12 @@ void Ball::collisionDetect(double oldx, double oldy)
 			}
 			else if( haloWallCollisions.size() == 1 )
 			{
+				tempLastId = collisionId;
 				Wall* w = dynamic_cast< Wall* >(haloWallCollisions[0]);
 				if( w )
 				{
 					w->collision(this, collisionId);
+					justCollidedWithWall = true;
 					goto end;
 				}
 				else
@@ -462,6 +467,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 			{
 				tempLastId = collisionId;
 				collideWithHaloCollisions( haloWallCollisions );
+				justCollidedWithWall = true;
 			}
 
 			goto end;
@@ -536,6 +542,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 			{
 				//kDebug(12007) << "smart wall collision\n";
 				wall->collision(this, collisionId);
+				justCollidedWithWall = true;
 				break;
 			}
 		}
@@ -550,8 +557,16 @@ void Ball::collisionDetect(double oldx, double oldy)
 
 	if(m_vector.magnitude() < minSpeed && vectorChange < minSpeed && m_vector.magnitude())
 	{
-		setVelocity(0, 0);
-		setState(Stopped);
+		if( justCollidedWithWall )
+		{ //don't want to stop if just hit a wall as may be in the wall
+			//problem: could this cause endless ball bouncing between 2 walls?
+			m_vector.setMagnitude( minSpeed );
+		}
+		else
+		{
+			setVelocity(0, 0);
+			setState(Stopped);
+		}
 	}
 }
 
