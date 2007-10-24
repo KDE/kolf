@@ -34,7 +34,7 @@ ObjectList *PluginLoader::loadAll()
 
 	for (QStringList::Iterator it = files.begin(); it != files.end(); ++it)
 	{
-		KConfig cfg(*it, KConfig::OnlyLocal);
+		KConfig cfg(*it, KConfig::SimpleConfig);
 		KConfigGroup cfgGroup(cfg.group("General")); //probably a bug here, come back and test
 		QString filename(cfgGroup.readEntry("Filename", ""));
 
