@@ -169,7 +169,6 @@ void Kolf::setupActions()
 	useMouseAction = new KToggleAction(i18n("Enable &Mouse for Moving Putter"), this);
 	actionCollection()->addAction("usemouse", useMouseAction);
 	connect(useMouseAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
-	useMouseAction->setCheckedState(KGuiItem(i18n("Disable &Mouse for Moving Putter")));
 	connect(useMouseAction, SIGNAL(toggled(bool)), this, SLOT(useMouseChanged(bool)));
 	KConfigGroup configGroup(KGlobal::config(), "Settings");
 	useMouseAction->setChecked(configGroup.readEntry("useMouse", true));
@@ -177,7 +176,6 @@ void Kolf::setupActions()
 	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Putting"), this);
 	actionCollection()->addAction("useadvancedputting", useAdvancedPuttingAction);
 	connect(useAdvancedPuttingAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
-	useAdvancedPuttingAction->setCheckedState(KGuiItem(i18n("Disable &Advanced Putting")));
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
 	useAdvancedPuttingAction->setChecked(configGroup.readEntry("useAdvancedPutting", false));
 
@@ -185,21 +183,18 @@ void Kolf::setupActions()
 	actionCollection()->addAction("showinfo", showInfoAction);
 	connect(showInfoAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	showInfoAction->setShortcut(Qt::CTRL+Qt::Key_I);
-	showInfoAction->setCheckedState(KGuiItem(i18n("Hide &Info")));
 	connect(showInfoAction, SIGNAL(toggled(bool)), this, SLOT(showInfoChanged(bool)));
 	showInfoAction->setChecked(configGroup.readEntry("showInfo", false));
 
 	showGuideLineAction = new KToggleAction(i18n("Show Putter &Guideline"), this);
 	actionCollection()->addAction("showguideline", showGuideLineAction);
 	connect(showGuideLineAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
-	showGuideLineAction->setCheckedState(KGuiItem(i18n("Hide Putter &Guideline")));
 	connect(showGuideLineAction, SIGNAL(toggled(bool)), this, SLOT(showGuideLineChanged(bool)));
 	showGuideLineAction->setChecked(configGroup.readEntry("showGuideLine", true));
 
 	KToggleAction *act = new KToggleAction(i18n("Enable All Dialog Boxes"), this);
 	actionCollection()->addAction("enableAll", act);
 	connect(act, SIGNAL(triggered(bool) ), SLOT(enableAllMessages()));
-	act->setCheckedState(KGuiItem(i18n("Disable All Dialog Boxes")));
 
 	soundAction = new KToggleAction(i18n("Play &Sounds"), this);
 	actionCollection()->addAction("sound", soundAction);
