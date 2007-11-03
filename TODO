@@ -14,14 +14,9 @@ hard 13, if the pusher pushes you into the hole the game thinks it is your shot,
 
 undo button not greyed out when undo impossible
 
-print needs fixing (see KolfGame::print)
-
 when resizing make it so some pixmaps are not painted new every time (store size like in Katom?)
 
 fix scoreboard resizing, it can get too big, and can also get too small!
-
-balls can go through walls
-	eg: classic 2, can get through connection with top diag and top wall (easliest from left)
 
 USA Pro 7, text for Golden Gate displays incorrectly. And Washington DC should be on one line in hole 8
 

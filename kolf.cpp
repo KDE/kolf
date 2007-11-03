@@ -184,7 +184,7 @@ void Kolf::setupActions()
 	connect(showInfoAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	showInfoAction->setShortcut(Qt::CTRL+Qt::Key_I);
 	connect(showInfoAction, SIGNAL(toggled(bool)), this, SLOT(showInfoChanged(bool)));
-	showInfoAction->setChecked(configGroup.readEntry("showInfo", false));
+	showInfoAction->setChecked(configGroup.readEntry("showInfo", true));
 
 	showGuideLineAction = new KToggleAction(i18n("Show Putter &Guideline"), this);
 	actionCollection()->addAction("showguideline", showGuideLineAction);
