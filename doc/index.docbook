@@ -1,16 +1,18 @@
 <?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
   <!ENTITY kappname "&kolf;">
-  <!ENTITY package "kdegames">
-  <!ENTITY % addindex "IGNORE">
-  <!ENTITY % English "INCLUDE">
+  <!ENTITY kappversion "1.9"><!--Applicaion version. Use this variable everywhere it's needed.-->
+  <!ENTITY docversion "1.2"><!--Document version. Use this variable everywhere it's needed.-->
+  <!ENTITY docupdate "2007-10-14"><!--Document version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames">  <!-- do not change this! -->
+  <!ENTITY % English "INCLUDE" > <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
 ]>
-
-<book lang="&language;">
-
+ 
+<book lang="&language;"> <!-- do not change this! -->
 <bookinfo>
-<title>The &kolf; Handbook</title>
-
+	<title>The &kappname; Handbook</title> <!-- This is the title of the docbook. Live as is unless change is necessary.-->
 <authorgroup>
 <author>
 <firstname>Jason</firstname>
@@ -33,36 +35,42 @@
 </authorgroup>
 
 <legalnotice>&FDLNotice;</legalnotice>
-
-<date>2007-10-14</date>
-<releaseinfo>1.2</releaseinfo>
-
+ 
+<date>&docupdate;</date><!-- Date of (re)writing, ro update. Use the variable definitions within header to change this value.-->
+<releaseinfo>&docversion;</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
+ 
+<!--Short description of this document. Do not change unless necessary!-->
 <abstract>
-<para>
-&kolf; is a miniature golf game for &kde;.
-</para>
+	<para>This documentation describes the game of &kappname; version &kappversion;</para>
 </abstract>
-
-
+ 
+<!--List of relevan keywords-->
 <keywordset>
-<keyword>KDE</keyword>
-<keyword>golf</keyword>
-<keyword>miniature</keyword>
-<keyword>arcade</keyword>
+	<keyword>KDE</keyword> <!-- do not change this! -->
+	<keyword>kdegames</keyword> <!-- do not change this! -->
+	<keyword>game</keyword> <!-- do not change this! -->
+	<keyword>Kolf</keyword><!--Application name goes here-->
+	<keyword>golf</keyword>
+	<keyword>miniature</keyword>
+	<keyword>arcade</keyword>
+	<keyword>sport</keyword>
+	<keyword>ten players</keyword>
 </keywordset>
-
 </bookinfo>
-
-<chapter id="introduction"> <title>Introduction</title>
-<para>&kolf; is a miniature golf game with block graphics and a 2d top-down view. Courses are dynamic, and up to 10 people can play at once in competition.</para>
-<para>&kolf; comes with a tutorial course. <link linkend="tutorial">Playing this course</link> is the easiest way to get started.</para>
-
+<!--Content begins here: -->
+<chapter id="introduction"><title>Introduction</title> <!-- do not change this! -->
+	<note><title>Gametype:</title><para>Arcade, Sport</para></note>
+	<note><title>Number of possible players:</title><para>Ten</para></note> 
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para>&kappname; is a miniature golf game with 2d top-down view. Courses are dynamic, and up to 10 people can play at once in competition.</para>
+<para>&kappname; comes with a tutorial course. <link linkend="howto">Playing this course</link> is the easiest way to get started.</para>
 </chapter>
-
-<chapter id="tutorial"> 
-<title>Tutorial</title>
-
-<para>&kolf;'s game-play is simple. It is easiest to learn how to play hands-on, and thus a tutorial course is included to guide you through the basics. This chapter will guide you through this tutorial. To start the tutorial, choose <menuchoice><guimenu>Help</guimenu><guimenuitem>Tutorial</guimenuitem></menuchoice>.</para>
+ 
+<chapter id="howto"><title>How to play</title> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note><title>Objective:</title><para>Put the ball into the hole with the least possible hits.</para></note><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para>&kappname;'s game-play is simple. It is the easiest to learn how to play hands-on, and thus a tutorial course is included to guide you through the basics. This chapter will guide you through this tutorial. To start the tutorial, choose <menuchoice><guimenu>Help</guimenu><guimenuitem>Tutorial</guimenuitem></menuchoice>.</para>
 
 <sect1 id="hitting"> 
 <title>Hitting the Ball</title>
@@ -90,7 +98,7 @@ feel for speed.</para>
 slope and let it roll into the cup to move onto the next hole.</para>
 
 <sect2> <title>Directions</title>
-<para>On the next hole, experiment with the other kinds of slopes. There are elliptical, vertical, horizontal, and diagonal slopes in &kolf;. Hit the ball into the hole.</para>
+<para>On the next hole, experiment with the other kinds of slopes. There are elliptical, vertical, horizontal, and diagonal slopes in &kappname;. Hit the ball into the hole.</para>
 </sect2>
 <sect2> <title>Steepness</title>
 <para>The next tutorial hole has two slopes of differing steepness. If you choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>Show Info</guimenuitem></menuchoice>, the steepness of the slope will appear as a number from 1-8, where 8 is steepest and 1 is shallowest. Hit the ball into the hole and continue to the next hole.</para>
@@ -127,9 +135,10 @@ slope and let it roll into the cup to move onto the next hole.</para>
 <para>Bridges are simple - they just lift the ball above the things below them, like slopes, sand, and puddles. They can have brown walls on their perimeter.</para>
 </sect1>
 </chapter>
-
-<chapter id="basics"> <title>Basics</title>
-<para>Here's in-depth description of &kolf;'s basic features.</para>
+ 
+<chapter id="rules_and_tips"><title>Game Rules, Strategies and Tips</title> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+<para>Here's in-depth description of &kappname;'s basic features.</para>
 
 <sect1 id="starting"> 
 <title>Starting a Game</title>
@@ -139,8 +148,8 @@ slope and let it roll into the cup to move onto the next hole.</para>
 This opens a dialog where you can configure your new game.</para>
 
 <tip>
-<para>More third-party &kolf; courses are available at the &kolf; website. See <ulink 
-url="http://web.mit.edu/jasonkb/www/kolf/">the &kolf; user-uploaded courses page</ulink>.</para>
+<para>More third-party &kappname; courses are available at the &kappname; website. See <ulink 
+url="http://web.mit.edu/jasonkb/www/kolf/">the &kappname; user-uploaded courses page</ulink>.</para>
 </tip>
 
 <sect2> 
@@ -161,7 +170,7 @@ button next to the player's name.</para>
 </sect2>
 
 <sect2> <title><guilabel>Course</guilabel> Page</title>
-<para>To choose the course that you want to play, click its entry in the list box on the left of this page. &kolf; comes with many built-in courses that you can play.</para>
+<para>To choose the course that you want to play, click its entry in the list box on the left of this page. &kappname; comes with many built-in courses that you can play.</para>
 <para>To add a course that you have downloaded or made, click on the <guibutton>Add...</guibutton> button on the bottom of this page, and choose the course file in the file dialog.</para>
 </sect2>
 <sect2> <title><guilabel>Options</guilabel> Page</title>
@@ -170,7 +179,7 @@ button next to the player's name.</para>
 </sect1>
 
 <sect1 id="saved-games"> <title>Saved Games</title>
-<para>&kolf; can keep a history of your rounds that are still in progress and save them to disk so you can load them and play them later. Saved games include the current hole, names and colors of all players in game, and the scores of the players.</para>
+<para>&kappname; can keep a history of your rounds that are still in progress and save them to disk so you can load them and play them later. Saved games include the current hole, names and colors of all players in game, and the scores of the players.</para>
 <sect2> <title>Saving Your Game</title>
 <para>To save your game while still playing, choose <menuchoice><guimenu>Game</guimenu><guimenuitem>Save Game</guimenuitem>
 </menuchoice>. If you have not saved a game on this game before, you will be prompted for the file to save to.</para>
@@ -192,7 +201,7 @@ button next to the player's name.</para>
 </sect1>
 
 <sect1 id="putting-options"> <title>Putting Options</title>
-<para>&kolf; has a few ways to putt. The basic putting method is <link linkend="hitting">described above</link>.</para>
+<para>&kappname; has a few ways to putt. The basic putting method is <link linkend="hitting">described above</link>.</para>
 <para>The mouse is enabled by default. This means that whenever the mouse is moved, the putter aligns to the line between the mouse and ball.</para>
 <para>If you prefer to only use the keyboard and arrow keys, you can disable mouse putting by unchecking <menuchoice><guimenu>Settings</guimenu><guimenuitem>Enable Mouse for Moving Putter</guimenuitem></menuchoice>.</para>
 
@@ -216,180 +225,11 @@ button next to the player's name.</para>
 </sect2>
 </sect1>
 </chapter>
-
-<chapter id="editing"> <title>Editing Courses</title>
-<para>&kolf; comes with a versatile editor for its course file format. Courses can have any number of holes, and there is no limiting the creativity of the course designer.</para>
-
-<sect1 id="creating"> <title>Creating a New Course</title>
-<para>To create a new course, choose <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice>. Go to the <guilabel>Course</guilabel> page of the dialog, and choose the <guilabel>Create New</guilabel> course. Make sure that, under the <guilabel>Options</guilabel> page of the dialog, <guilabel>Strict mode</guilabel> is unchecked.</para>
-
-<note>
-<para>To play this new course later, click the <guibutton>Add...</guibutton> button to add the course to your list of courses.</para>
-</note>
-</sect1>
-
-<sect1 id="adding-holes"> <title>Adding Holes</title>
-<para>Choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>New</guimenuitem></menuchoice> to add a new hole at the end of the course.</para>
-<tip>
-<para>You can restore a hole to a blank state, similar to when it was first created, by choosing <menuchoice><guimenu>Hole</guimenu><guimenuitem>Clear</guimenuitem></menuchoice>.</para>
-</tip>
-<para>Two items will appear on new holes: a cup, and a white ball. The white ball marks where players' balls start the hole.</para>
-</sect1>
-
-<sect1 id="editing-basics"> <title>Editing Basics</title>
-<para>The basic building block of &kolf; courses is the <quote>object</quote>. Holes are made up of a bunch of objects. Objects can be moved to any location, and the different kinds of objects each have different properties you can set.</para>
-<para>To start editing a hole, toggle the <menuchoice><guimenu>Hole</guimenu><guimenuitem>Edit</guimenuitem></menuchoice> menu item, or press the pencil icon on the toolbar. To leave editing mode, uncheck this menu item (or the toolbar icon).</para>
-
-<sect2> <title>Adding Objects</title>
-<para>To add a new object to the course, choose its name in the list box labeled <guilabel>Add object:</guilabel>. The object will appear in the center of the course.</para>
-<caution>
-<para>Bridges and signs will cover up new objects if they were already in the center of the hole.</para>
-</caution>
-<tip>
-<para>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
-</tip>
-<para>Some &kolf; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
-<para>Third-party &kolf; plugins are available at the &kolf; website. See <ulink url="http://web.mit.edu/jasonkb/www/kolf/">the &kolf; plugins download page</ulink>.</para>
-</sect2>
-
-<sect2> <title>Moving and Resizing Objects</title>
-<para>Move your mouse cursor over the object that you want to move, and the mouse cursor will change to a hand cursor. Then click and drag the object to where you want it.</para>
-<para>Puddles, sand, floaters, bridges, and signs can be resized by dragging the small circle at their lower-right corner.</para>
-
-<note>
-<para>Walls can be moved by clicking and dragging their endpoints, or you can move the whole wall by clicking and dragging on the middle part of the wall as normal.</para>
-</note>
-</sect2>
-
-<sect2> <title>Objects' Settings</title>
-<para>Objects' properties can be changed in the area at the lower-right corner of the &kolf; window. To edit an object, move your mouse cursor over it until the cursor changes to the hand cursor. Then click. Various controls for that object will appear in the lower-right corner of the &kolf; window.</para>
-<sect3> <title>General Hole Settings</title>
-<para>To edit general hole settings, click an area of the hole that is not covered by an object. When this is possible, the cursor will be the normal pointer cursor.</para>
-
-<variablelist>
-<varlistentry> <term><guilabel>Course name:</guilabel></term>
-<listitem>
-<para>This is the name that is shown in the new game dialog and in the <guimenuitem>About Course</guimenuitem> dialog.</para>
-</listitem>
-</varlistentry>
-<varlistentry> <term><guilabel>Course author:</guilabel></term>
-<listitem>
-<para>This is the author name that is shown in the <guimenuitem>About Course</guimenuitem> dialog.</para>
-</listitem>
-</varlistentry>
-<varlistentry> <term><guilabel>Par:</guilabel></term>
-<listitem>
-<para>The par of the hole.</para>
-</listitem>
-</varlistentry>
-<varlistentry> <term><guilabel>Maximum:</guilabel></term>
-<listitem>
-<para>The maximum number of strokes a player can take on the hole.</para>
-</listitem>
-</varlistentry>
-<varlistentry> <term><guilabel>Show border walls</guilabel></term>
-<listitem>
-<para>Whether or not to show walls around the border of the hole.</para>
-</listitem>
-</varlistentry>
-</variablelist>
-
-</sect3>
-<sect3> <title>Slopes</title>
-
-<variablelist>
-<varlistentry> <term>Type</term>
-<listitem>
-<para>Choose the type of the slope - <guilabel>Vertical</guilabel>, <guilabel>Horizontal</guilabel>, <guilabel>Diagonal</guilabel>, <guilabel>Opposite Diagonal</guilabel>, <guilabel>Circular</guilabel>. Diagonal and opposite diagonal slopes are triangles, while circular slopes are circles. Vertical and horizontal slopes are rectangles of course.</para>
-</listitem>
-</varlistentry>
-<varlistentry> <term><guilabel>Reverse direction</guilabel></term>
-<listitem>
-<para>Whether or not to reverse the slant of the slope. For example, consider an elliptical slope (a circular slope). When it is not reversed, it pushes balls outward like a mound. When it is reversed, it sucks balls inward like a hole.</para>
-</listitem>
-</varlistentry>
-<varlistentry> <term><guilabel>Grade:</guilabel></term>
-<listitem>
-<para>Choose the grade (steepness) of the slope by moving the slider so the grade moves towards 0 or 8, where 8 is steepest and 0 is flat. Steeper slopes push the ball more.</para>
-</listitem>
-</varlistentry>
-<varlistentry> <term><guilabel>Unmovable</guilabel></term>
-<listitem>
-<para>Whether or not this can be moved by other objects, like floaters.</para>
-<caution>
-<para>If a floater overlaps with this object at any point on this path, and the slope is large and thus won't move the floater, you <emphasis>must</emphasis> make the slope <guilabel>Unmovable</guilabel>, or &kolf; will suffer poor performance!</para>
-</caution>
-</listitem>
-</varlistentry>
-</variablelist>
-
-</sect3>
-<sect3> <title>Puddles and Sand</title>
-<para>Puddles and Sand have the same configuration options as each other.</para>
-
-<variablelist>
-<varlistentry> <term><guilabel>Enable show/hide</guilabel></term>
-<listitem>
-<para>Checking this enables the flashing of this puddle or sand.</para>
-</listitem>
-</varlistentry>
-<varlistentry> <term>Show/Hide speed</term>
-<listitem>
-<para>The more towards <guilabel>Fast</guilabel> the slider is, the faster the puddle or sand flashes.</para>
-</listitem>
-</varlistentry>
-</variablelist>
-
-</sect3>
-<sect3> <title>Bridges, Windmills, Floaters, and Signs</title>
-<para>Bridges, windmills, floaters, and signs all have similar settings for configuring on which sides there are border walls. To show the wall on a side, check the check box for that side.</para>
-<para>There are also some more specific options for windmills, floaters, and signs.</para>
-
-<sect4> <title>Windmills</title>
-<variablelist>
-<varlistentry> <term><guilabel>Windmill on bottom</guilabel></term>
-<listitem>
-<para>Whether or not the black windmill arm is on bottom or top - the default is that it is on the bottom. The two half-walls will always be with the arm. Note that you cannot enable a border wall on the side that the arm is.</para>
-</listitem>
-</varlistentry>
-<varlistentry> <term>Speed</term>
-<listitem>
-<para>The more towards <guilabel>Fast</guilabel> the slider is, the faster the black windmill arm moves.</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect4>
-
-<sect4> <title>Floaters</title>
-<para>The path the floater moves along is shown by the wall it's connected to.</para>
-<variablelist>
-<varlistentry> <term><guilabel>Moving speed</guilabel></term>
-<listitem>
-<para>The more towards <guilabel>Fast</guilabel> the slider is, the faster the floater moves. If the slider is all the way at the <guilabel>Slow</guilabel> end, the floater will stop.</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect4>
-
-<sect4> <title>Signs</title>
-<variablelist>
-<varlistentry> <term><guilabel>Sign HTML:</guilabel></term>
-<listitem>
-<para>You can enter any valid &HTML; here. For example, entering <markup>Hit it &lt;i&gt;softly&lt;/i&gt; towards the slope!</markup> will create the text <quote>Hit it <emphasis>softly</emphasis> towards the slope!</quote>.</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect4>
-
-</sect3>
-</sect2>
-</sect1>
-</chapter>
-
-<chapter id="command-reference">
-<title>Command and Menu Reference</title>
-
-<sect1 id="game-menu">
+ 
+ 
+<chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist> and <varlistentry>. Split the chapter into sections using <sect1(2,3)> for better viewing.-->
+ <sect1 id="game-menu">
 <title>The <guimenu>Game</guimenu> Menu</title>
 
 <variablelist>
@@ -410,7 +250,7 @@ button next to the player's name.</para>
 <keycombo action="simul">&Ctrl;<keycap>O</keycap></keycombo>
 </shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Load Saved Game...</guimenuitem>
+<guimenuitem>Load...</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para><action>Load a previously saved game.</action></para>
@@ -468,7 +308,7 @@ game with a filename of your choice.</action></para>
 <guimenuitem>End Game</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>End the current game, without closing</action> &kolf;</para>
+<para><action>End the current game, without closing</action> &kappname;</para>
 </listitem>
 </varlistentry>
 
@@ -481,17 +321,6 @@ game with a filename of your choice.</action></para>
 </menuchoice></term>
 <listitem>
 <para><action>Display the high score table.</action></para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><shortcut>
-<keycombo action="simul">&Ctrl;<keycap>P</keycap></keycombo>
-</shortcut>
-<guimenu>Game</guimenu><guimenuitem>Print...</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para><action>Print the current screen.</action></para>
 </listitem>
 </varlistentry>
 
@@ -510,7 +339,7 @@ game with a filename of your choice.</action></para>
 </shortcut>
 <guimenu>Game</guimenu><guimenuitem>Quit</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Quit</action> &kolf;</para></listitem>
+<listitem><para><action>Quit</action> &kappname;</para></listitem>
 </varlistentry>
 </variablelist>
 
@@ -786,24 +615,251 @@ section</link>.</para>
 <guimenuitem>Configure Toolbars...</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>Open a dialog where you can configure the toolbars</action> for &kolf;.</para>
+<para><action>Open a dialog where you can configure the toolbars</action> for &kappname;.</para>
 </listitem>
 </varlistentry>
 
 </variablelist>
 </sect1>
-
-<sect1 id="help-menu">
-<title>The <guimenu>Help</guimenu> Menu</title>
-
+<sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
+<title>The <guimenuitem>Help</guimenuitem> Menu</title>
 &help.menu.documentation;
-
 </sect1>
 </chapter>
-<chapter id="credits-and-license">
-<title>Credits and Licenses</title>
+ 
+ 
+<chapter id="faq"><title>Frequently asked questions</title> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset> <qandaentry> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+<question><para>Who made this game?</para></question>
+ <answer><para>The kdegames team. You can find their website here.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>Where can I get cheatcodes? </para></question>
+ <answer><para>You can't get cheatcodes for KDE games.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>How do I start a new game? </para></question>
+ <answer><para>To start a new game use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></shortcut><guimenu>Game</guimenu><guimenuitem>New...</guimenuitem></menuchoice> on the menubar. This will open the new game dialog whre you will be able to set the number of players, teh course to play, and the game options.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>How do I pause the game? </para></question>
+ <answer><para>&kappname; does not need to be paused.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I want to change the way this game looks. Can I? </para></question>
+ <answer><para>No. At this moment &kappname; features only one theme.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I have made a mistake. Can I undo? </para></question>
+ <answer><para>Yes. To undo your last move use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></shortcut><guimenu>Hole</guimenu><guimenuitem>Undo Shot</guimenuitem></menuchoice> on the menubar.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>Can I use keyboard? </para></question>
+ <answer><para>Yes. Use the directional keys to control the putter.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I can't figure out what to do here! Are there hints? </para></question>
+ <answer><para>No. &kappname; does not have a hint feature.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I have to quit the game now, but I'm not finished yet. Can I save my progress?</para></question>
+  <answer><para>Yes. To save your current game progress use <menuchoice><guimenu>Game</guimenu><guimenuitem>Save Game</guimenuitem></menuchoice> on the menubar.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>Where are the highscores?</para></question>
+ <answer><para>To view the highscore board use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></shortcut><guimenu>Game</guimenu><guimenuitem>Show Highscores</guimenuitem></menuchoice> on the menubar.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I want to change the game configuration. Where do I go? </para></question>
+ <answer><para>You can change the game configuration every time you start a new game. Use the new game dialog to change settings.</para></answer><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+</qandaentry>
+<qandaentry>
+ <question><para>I want to design my own golfcourse. Can I? </para></question>
+ <answer><para>Yes, you can. To enter the edit mode use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>E</keycap></keycombo></shortcut><guimenu>Hole</guimenu><guimenuitem>Edit</guimenuitem></menuchoice> on the menubar. Click <link linkend="creating">here</link> for more details.</para></answer><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+</qandaentry>
+ 
+</qandaset>
+</chapter>
+ 
+<chapter id="configuration"><title>Course Editor</title> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+<para>&kappname; comes with a versatile editor for its course file format. Courses can have any number of holes, and there is no limiting the creativity of the course designer.</para>
 
-<para>&kolf; copyright 2001, 2002 &Jason.Katz-Brown;</para>
+<sect1 id="creating"> <title>Creating a New Course</title>
+<para>To create a new course, choose <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice>. Go to the <guilabel>Course</guilabel> page of the dialog, and choose the <guilabel>Create New</guilabel> course. Make sure that, under the <guilabel>Options</guilabel> page of the dialog, <guilabel>Strict mode</guilabel> is unchecked.</para>
+
+<note>
+<para>To play this new course later, click the <guibutton>Add...</guibutton> button to add the course to your list of courses.</para>
+</note>
+</sect1>
+
+<sect1 id="adding-holes"> <title>Adding Holes</title>
+<para>Choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>New</guimenuitem></menuchoice> to add a new hole at the end of the course.</para>
+<tip>
+<para>You can restore a hole to a blank state, similar to when it was first created, by choosing <menuchoice><guimenu>Hole</guimenu><guimenuitem>Clear</guimenuitem></menuchoice>.</para>
+</tip>
+<para>Two items will appear on new holes: a cup, and a white ball. The white ball marks where players' balls start the hole.</para>
+</sect1>
+
+<sect1 id="editing-basics"> <title>Editing Basics</title>
+<para>The basic building block of &kappname; courses is the <quote>object</quote>. Holes are made up of a bunch of objects. Objects can be moved to any location, and the different kinds of objects each have different properties you can set.</para>
+<para>To start editing a hole, toggle the <menuchoice><guimenu>Hole</guimenu><guimenuitem>Edit</guimenuitem></menuchoice> menu item, or press the pencil icon on the toolbar. To leave editing mode, uncheck this menu item (or the toolbar icon).</para>
+
+<sect2> <title>Adding Objects</title>
+<para>To add a new object to the course, choose its name in the list box labeled <guilabel>Add object:</guilabel>. The object will appear in the center of the course.</para>
+<caution>
+<para>Bridges and signs will cover up new objects if they were already in the center of the hole.</para>
+</caution>
+<tip>
+<para>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
+</tip>
+<para>Some &kappname; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
+<para>Third-party &kappname; plugins are available at the &kappname; website. See <ulink url="http://web.mit.edu/jasonkb/www/kolf/">the &kappname; plugins download page</ulink>.</para>
+</sect2>
+
+<sect2> <title>Moving and Resizing Objects</title>
+<para>Move your mouse cursor over the object that you want to move, and the mouse cursor will change to a hand cursor. Then click and drag the object to where you want it.</para>
+<para>Puddles, sand, floaters, bridges, and signs can be resized by dragging the small circle at their lower-right corner.</para>
+
+<note>
+<para>Walls can be moved by clicking and dragging their endpoints, or you can move the whole wall by clicking and dragging on the middle part of the wall as normal.</para>
+</note>
+</sect2>
+
+<sect2> <title>Objects' Settings</title>
+<para>Objects' properties can be changed in the area at the lower-right corner of the &kappname; window. To edit an object, move your mouse cursor over it until the cursor changes to the hand cursor. Then click. Various controls for that object will appear in the lower-right corner of the &kappname; window.</para>
+<sect3> <title>General Hole Settings</title>
+<para>To edit general hole settings, click an area of the hole that is not covered by an object. When this is possible, the cursor will be the normal pointer cursor.</para>
+
+<variablelist>
+<varlistentry> <term><guilabel>Course name:</guilabel></term>
+<listitem>
+<para>This is the name that is shown in the new game dialog and in the <guimenuitem>About Course</guimenuitem> dialog.</para>
+</listitem>
+</varlistentry>
+<varlistentry> <term><guilabel>Course author:</guilabel></term>
+<listitem>
+<para>This is the author name that is shown in the <guimenuitem>About Course</guimenuitem> dialog.</para>
+</listitem>
+</varlistentry>
+<varlistentry> <term><guilabel>Par:</guilabel></term>
+<listitem>
+<para>The par of the hole.</para>
+</listitem>
+</varlistentry>
+<varlistentry> <term><guilabel>Maximum:</guilabel></term>
+<listitem>
+<para>The maximum number of strokes a player can take on the hole.</para>
+</listitem>
+</varlistentry>
+<varlistentry> <term><guilabel>Show border walls</guilabel></term>
+<listitem>
+<para>Whether or not to show walls around the border of the hole.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3> <title>Slopes</title>
+
+<variablelist>
+<varlistentry> <term>Type</term>
+<listitem>
+<para>Choose the type of the slope - <guilabel>Vertical</guilabel>, <guilabel>Horizontal</guilabel>, <guilabel>Diagonal</guilabel>, <guilabel>Opposite Diagonal</guilabel>, <guilabel>Circular</guilabel>. Diagonal and opposite diagonal slopes are triangles, while circular slopes are circles. Vertical and horizontal slopes are rectangles of course.</para>
+</listitem>
+</varlistentry>
+<varlistentry> <term><guilabel>Reverse direction</guilabel></term>
+<listitem>
+<para>Whether or not to reverse the slant of the slope. For example, consider an elliptical slope (a circular slope). When it is not reversed, it pushes balls outward like a mound. When it is reversed, it sucks balls inward like a hole.</para>
+</listitem>
+</varlistentry>
+<varlistentry> <term><guilabel>Grade:</guilabel></term>
+<listitem>
+<para>Choose the grade (steepness) of the slope by moving the slider so the grade moves towards 0 or 8, where 8 is steepest and 0 is flat. Steeper slopes push the ball more.</para>
+</listitem>
+</varlistentry>
+<varlistentry> <term><guilabel>Unmovable</guilabel></term>
+<listitem>
+<para>Whether or not this can be moved by other objects, like floaters.</para>
+<caution>
+<para>If a floater overlaps with this object at any point on this path, and the slope is large and thus won't move the floater, you <emphasis>must</emphasis> make the slope <guilabel>Unmovable</guilabel>, or &kappname; will suffer poor performance!</para>
+</caution>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3> <title>Puddles and Sand</title>
+<para>Puddles and Sand have the same configuration options as each other.</para>
+
+<variablelist>
+<varlistentry> <term><guilabel>Enable show/hide</guilabel></term>
+<listitem>
+<para>Checking this enables the flashing of this puddle or sand.</para>
+</listitem>
+</varlistentry>
+<varlistentry> <term>Show/Hide speed</term>
+<listitem>
+<para>The more towards <guilabel>Fast</guilabel> the slider is, the faster the puddle or sand flashes.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3> <title>Bridges, Windmills, Floaters, and Signs</title>
+<para>Bridges, windmills, floaters, and signs all have similar settings for configuring on which sides there are border walls. To show the wall on a side, check the check box for that side.</para>
+<para>There are also some more specific options for windmills, floaters, and signs.</para>
+
+<sect4> <title>Windmills</title>
+<variablelist>
+<varlistentry> <term><guilabel>Windmill on bottom</guilabel></term>
+<listitem>
+<para>Whether or not the black windmill arm is on bottom or top - the default is that it is on the bottom. The two half-walls will always be with the arm. Note that you cannot enable a border wall on the side that the arm is.</para>
+</listitem>
+</varlistentry>
+<varlistentry> <term>Speed</term>
+<listitem>
+<para>The more towards <guilabel>Fast</guilabel> the slider is, the faster the black windmill arm moves.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4> <title>Floaters</title>
+<para>The path the floater moves along is shown by the wall it's connected to.</para>
+<variablelist>
+<varlistentry> <term><guilabel>Moving speed</guilabel></term>
+<listitem>
+<para>The more towards <guilabel>Fast</guilabel> the slider is, the faster the floater moves. If the slider is all the way at the <guilabel>Slow</guilabel> end, the floater will stop.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4> <title>Signs</title>
+<variablelist>
+<varlistentry> <term><guilabel>Sign HTML:</guilabel></term>
+<listitem>
+<para>You can enter any valid &HTML; here. For example, entering <markup>Hit it &lt;i&gt;softly&lt;/i&gt; towards the slope!</markup> will create the text <quote>Hit it <emphasis>softly</emphasis> towards the slope!</quote>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+</sect3>
+</sect2>
+</sect1>
+</chapter>
+ 
+<chapter id="credits"><title>Credits and License</title> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+ 
+<para>&kappname;</para>
+
+<para>&kappname; copyright 2001, 2002 &Jason.Katz-Brown;</para>
 
 <itemizedlist>
 <title>Developers</title>
@@ -825,22 +881,46 @@ section</link>.</para>
 </itemizedlist>
 
 <para>Documentation copyright 2002, &Jason.Katz-Brown;</para>
-
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
-
+ 
+ 
+<!-- !!!do not change ANYTHING after this line!!!! -->
 &underFDL;
 &underGPL;
-
+ 
 </chapter>
-
+ 
+ 
 <appendix id="installation">
 <title>Installation</title>
-
+ 
 &install.intro.documentation;
+ 
+ 
+<sect1 id="Compilation">
+<title>Compilation and Installation</title>
+ 
 &install.compile.documentation;
-
+ 
+</sect1>
 </appendix>
-
+ 
 &documentation.index; 
-
 </book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
