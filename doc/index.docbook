@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" ?>
+<?xml version="1.0" ?>
 <!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
   <!ENTITY kappname "&kolf;">
@@ -66,7 +66,7 @@
 <para>&kappname; comes with a tutorial course. <link linkend="howto">Playing this course</link> is the easiest way to get started.</para>
 </chapter>
  
-<chapter id="howto"><title>How to play</title> <!-- do not change this! -->
+<chapter id="howto"><title>How to Play</title> <!-- do not change this! -->
 <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
 	<note><title>Objective:</title><para>Put the ball into the hole with the least possible hits.</para></note><!--Describe the objective of the game.-->
 <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
@@ -185,7 +185,7 @@ button next to the player's name.</para>
 </menuchoice>. If you have not saved a game on this game before, you will be prompted for the file to save to.</para>
 </sect2>
 <sect2> <title>Loading Your Game</title>
-<para>To load the game that you saved, choose <menuchoice><guimenu>Game</guimenu><guimenuitem>Load Saved Game...</guimenuitem>
+<para>To load the game that you saved, choose <menuchoice><guimenu>Game</guimenu><guimenuitem>Load...</guimenuitem>
 </menuchoice>. You can then choose the saved game to open.</para>
 </sect2>
 </sect1>
@@ -237,7 +237,7 @@ button next to the player's name.</para>
 <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
 </shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>New...</guimenuitem>
+<guimenuitem>New</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para><action>Start a new game</action></para>
@@ -316,7 +316,7 @@ game with a filename of your choice.</action></para>
 <keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo>
 </shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Show Highscores</guimenuitem>
+<guimenuitem>Show High Scores...</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para><action>Display the high score table.</action></para>
@@ -374,7 +374,7 @@ game with a filename of your choice.</action></para>
 
 <varlistentry>
 <term><menuchoice><shortcut>
-<keycombo action="simul">&Ctrl;<keycap>Delete</keycap>
+<keycombo action="simul">&Ctrl;<keycap>Del</keycap>
 </keycombo></shortcut>
 <guimenu>Hole</guimenu>
 <guimenuitem>Clear</guimenuitem>
@@ -622,6 +622,22 @@ section</link>.</para>
 </sect1>
 <sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
 <title>The <guimenuitem>Help</guimenuitem> Menu</title>
+<para>&kappname; has a default &kde; <guimenu>Help</guimenu> menu as described
+below, with one addition:</para>
+
+<variablelist>
+<varlistentry>
+<term><menuchoice><guimenu>Help</guimenu>
+<guimenuitem>Tutorial</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para>Start the tutorial course of &kappname;.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para>The default &kde; <guimenu>Help</guimenu> entries are:</para>
+
 &help.menu.documentation;
 </sect1>
 </chapter>
@@ -640,7 +656,7 @@ section</link>.</para>
 </qandaentry>
 <qandaentry>
  <question><para>How do I start a new game? </para></question>
- <answer><para>To start a new game use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></shortcut><guimenu>Game</guimenu><guimenuitem>New...</guimenuitem></menuchoice> on the menubar. This will open the new game dialog whre you will be able to set the number of players, teh course to play, and the game options.</para></answer>
+ <answer><para>To start a new game use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></shortcut><guimenu>Game</guimenu><guimenuitem>New...</guimenuitem></menuchoice> on the menubar. This will open the new game dialog where you will be able to set the number of players, the course to play, and the game options.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>How do I pause the game? </para></question>
@@ -659,11 +675,11 @@ section</link>.</para>
  <answer><para>Yes. Use the directional keys to control the putter.</para></answer>
 </qandaentry>
 <qandaentry>
- <question><para>I can't figure out what to do here! Are there hints? </para></question>
+ <question><para>I cannot figure out what to do here! Are there hints? </para></question>
  <answer><para>No. &kappname; does not have a hint feature.</para></answer>
 </qandaentry>
 <qandaentry>
- <question><para>I have to quit the game now, but I'm not finished yet. Can I save my progress?</para></question>
+ <question><para>I have to quit the game now, but I am not finished yet. Can I save my progress?</para></question>
   <answer><para>Yes. To save your current game progress use <menuchoice><guimenu>Game</guimenu><guimenuitem>Save Game</guimenuitem></menuchoice> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
