@@ -1,5 +1,10 @@
 [0-course@-50,-50]
 Name=Medium Course
+Name[ga]=Cúrsa Measartha Deacair
+Name[pt]=Campo Médio
+Name[pt_BR]=Campo Médio
+Name[sv]=Medelsvår bana
+Name[zh_TW]=中等課程
 author=Jason Katz-Brown
 name=Medium Course
 

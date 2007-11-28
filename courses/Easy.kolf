@@ -1,5 +1,10 @@
 [0-course@-50,-50]
 Name=Easy Course
+Name[ga]=Cúrsa Éasca
+Name[pt]=Campo Fácil
+Name[pt_BR]=Campo Fácil
+Name[sv]=Enkel bana
+Name[zh_TW]=簡單課程
 author=Jason Katz-Brown
 name=Easy Course
 
@@ -568,6 +573,10 @@ width=10
 
 [13-sign@219,247|14]
 Comment=Hit slowly...
+Comment[pt]=Bata devagar...
+Comment[pt_BR]=Bata devagar...
+Comment[sv]=Slå långsamt ...
+Comment[zh_TW]=慢慢打...
 botWallVisible=true
 height=55
 leftWallVisible=true

@@ -1,5 +1,8 @@
 [0-course@-50,-50]
 Name=USA Pro
+Name[pt]=Pro EUA
+Name[pt_BR]=Pro EUA
+Name[zh_TW]=USA 專家
 author=Rob Kaper
 
 [1-ball@22,350]
@@ -42,6 +45,9 @@ width=840
 
 [1-sign@4,371|14]
 Comment=Daytona Beach, FL
+Comment[ga]=Daytona Beach, Florida
+Comment[sv]=Daytona Beach, Florida
+Comment[zh_TW]=Daytona 海灘，佛羅里達
 botWallVisible=false
 height=34
 leftWallVisible=true
@@ -226,6 +232,9 @@ width=36
 
 [10-sign@-1,360|42]
 Comment=Washington DC (Pentagon)
+Comment[pt]=Washington DC (Pentágono)
+Comment[pt_BR]=Washington DC (Pentágono)
+Comment[zh_TW]=華盛頓特區（五角大廈）
 botWallVisible=true
 height=49
 leftWallVisible=true
@@ -373,6 +382,9 @@ width=84
 
 [11-sign@-2,370|24]
 Comment=Palm Springs, CO
+Comment[ga]=Palm Springs, Colorado
+Comment[sv]=Palm Springs, Colorado
+Comment[zh_TW]=棕櫚泉，科羅拉多
 botWallVisible=true
 height=36
 leftWallVisible=true
@@ -525,6 +537,9 @@ width=38
 
 [2-sign@26,345|31]
 Comment=Las Vegas, NV
+Comment[ga]=Las Vegas, Nevada
+Comment[sv]=Las Vegas, Nevada
+Comment[zh_TW]=拉斯維加斯，內華達
 botWallVisible=true
 height=34
 leftWallVisible=true
@@ -674,6 +689,11 @@ par=2
 
 [3-sign@-4,358|9]
 Comment=San Francisco, CA
+Comment[ga]=San Francisco, California
+Comment[pt]=São Francisco, CA
+Comment[pt_BR]=São Francisco, CA
+Comment[sv]=San Francisco, Kalifornien
+Comment[zh_TW]=舊金山，加州
 botWallVisible=true
 height=48
 leftWallVisible=true
@@ -755,6 +775,7 @@ par=3
 
 [4-sign@201,171|8]
 Comment=Grand Canyon
+Comment[zh_TW]=大峽谷
 botWallVisible=true
 height=23
 leftWallVisible=true
@@ -862,6 +883,11 @@ width=48
 
 [5-sign@219,344|10]
 Comment=Lake Tahoe, CA/NV
+Comment[ga]=Lake Tahoe, California/Nevada
+Comment[pt]=Lago Tahoe, CA/NV
+Comment[pt_BR]=Lago Tahoe, CA/NV
+Comment[sv]=Lake Tahoe, Kalifornien, Nevada
+Comment[zh_TW]=Lake Tahoe, 加州/內華達
 botWallVisible=true
 height=27
 leftWallVisible=true
@@ -1001,6 +1027,9 @@ width=368
 
 [6-sign@3,101|17]
 Comment=Florida Keys, FL
+Comment[ga]=Florida Keys, Florida
+Comment[sv]=Florida Keys, Florida
+Comment[zh_TW]=Florida Keys, 佛羅里達
 botWallVisible=true
 height=30
 leftWallVisible=true
@@ -1144,6 +1173,7 @@ width=178
 
 [7-sign@11,116|7]
 Comment=Golden Gate
+Comment[zh_TW]=金門
 botWallVisible=false
 height=97
 leftWallVisible=true
@@ -1153,6 +1183,11 @@ width=40
 
 [7-sign@135,364|25]
 Comment=San Francisco, CA
+Comment[ga]=San Francisco, California
+Comment[pt]=São Francisco, CA
+Comment[pt_BR]=São Francisco, CA
+Comment[sv]=San Francisco, Kalifornien
+Comment[zh_TW]=舊金山，加州
 botWallVisible=true
 height=40
 leftWallVisible=true
@@ -1162,6 +1197,7 @@ width=159
 
 [7-sign@98,209|24]
 Comment=Bay Bridge
+Comment[zh_TW]=海灣大橋
 botWallVisible=true
 height=24
 leftWallVisible=false
@@ -1301,6 +1337,7 @@ width=98
 
 [8-sign@147,370|19]
 Comment=Washington DC
+Comment[zh_TW]=華盛頓特區
 botWallVisible=true
 height=32
 leftWallVisible=true
@@ -1514,6 +1551,11 @@ width=20
 
 [9-sign@291,368|28]
 Comment=Niagara Falls, NY
+Comment[ga]=Niagara Falls, Nua-Eabhrac
+Comment[pt]=Cataratas do Niagara, NY
+Comment[pt_BR]=Cataratas do Niagara, NY
+Comment[sv]=Niagarafallen, New York
+Comment[zh_TW]=Niagara Falls, 紐約
 botWallVisible=true
 height=36
 leftWallVisible=true

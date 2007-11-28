@@ -1,5 +1,9 @@
 [0-course@-50,-50]
 Name=Impossible Course
+Name[pt]=Campo Impossível
+Name[pt_BR]=Campo Impossível
+Name[sv]=Omöjlig bana
+Name[zh_TW]=不可能的任務
 author=Jason Katz-Brown
 
 [1-ball@31,330]
@@ -782,6 +786,10 @@ width=66
 
 [13-sign@142,193|1]
 Comment=Reprieve
+Comment[pt]=Reprovação
+Comment[pt_BR]=Reprovação
+Comment[sv]=Uppskov
+Comment[zh_TW]=暫停
 botWallVisible=false
 height=47
 leftWallVisible=false
@@ -1494,6 +1502,10 @@ width=50
 
 [17-sign@23,152|20]
 Comment=Luck
+Comment[pt]=Sorte
+Comment[pt_BR]=Sorte
+Comment[sv]=Tur
+Comment[zh_TW]=好運
 botWallVisible=false
 height=51
 leftWallVisible=false
@@ -3260,6 +3272,10 @@ width=66
 
 [9-sign@146,329|23]
 Comment=Chaos
+Comment[pt]=Caos
+Comment[pt_BR]=Caos
+Comment[sv]=Kaos
+Comment[zh_TW]=瘋狂
 botWallVisible=true
 height=38
 leftWallVisible=false

@@ -1,5 +1,10 @@
 [0-course@-50,-50]
 Name=Really Easy
+Name[ga]=An-Éasca
+Name[pt]=Realmente Fácil
+Name[pt_BR]=Realmente Fácil
+Name[sv]=Mycket enkel
+Name[zh_TW]=非常簡單
 author=Neil Stevens
 name=Really Easy
 
