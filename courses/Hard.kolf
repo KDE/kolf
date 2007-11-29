@@ -4,6 +4,7 @@ Name[ga]=Cúrsa Deacair
 Name[pt]=Campo Difícil
 Name[pt_BR]=Campo Difícil
 Name[sv]=Svår bana
+Name[zh_CN]=困难课程
 Name[zh_TW]=困難課程
 author=Jason Katz-Brown
 
@@ -1072,6 +1073,7 @@ Comment=Let the floaters <strong>push</strong> you!
 Comment[pt]=Deixe as bóias <strong>empurrá-lo</strong> a si!
 Comment[pt_BR]=Deixe as bóias <strong>empurrá-lo</strong> a si!
 Comment[sv]=Låt flottarna <strong>knuffa</strong> dig.
+Comment[zh_CN]=让漂移物<strong>推</strong>着你走！
 Comment[zh_TW]=您會被追著跑！
 botWallVisible=true
 height=196
