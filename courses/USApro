@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=USA Pro
+Name[ja]=USA プロ
 Name[pt]=Pro EUA
 Name[pt_BR]=Pro EUA
 Name[zh_CN]=USA 专家
@@ -47,6 +48,7 @@ width=840
 [1-sign@4,371|14]
 Comment=Daytona Beach, FL
 Comment[ga]=Daytona Beach, Florida
+Comment[ja]=デイトナビーチ, FL
 Comment[sv]=Daytona Beach, Florida
 Comment[zh_CN]=佛罗里达州德通纳海滩
 Comment[zh_TW]=Daytona 海灘，佛羅里達
@@ -234,6 +236,7 @@ width=36
 
 [10-sign@-1,360|42]
 Comment=Washington DC (Pentagon)
+Comment[ja]=ワシントン DC (ペンタゴン)
 Comment[pt]=Washington DC (Pentágono)
 Comment[pt_BR]=Washington DC (Pentágono)
 Comment[zh_CN]=华盛顿特区(五角大楼)
@@ -386,6 +389,7 @@ width=84
 [11-sign@-2,370|24]
 Comment=Palm Springs, CO
 Comment[ga]=Palm Springs, Colorado
+Comment[ja]=パームスプリング, CO
 Comment[sv]=Palm Springs, Colorado
 Comment[zh_CN]=科罗拉多棕榈泉
 Comment[zh_TW]=棕櫚泉，科羅拉多
@@ -542,6 +546,7 @@ width=38
 [2-sign@26,345|31]
 Comment=Las Vegas, NV
 Comment[ga]=Las Vegas, Nevada
+Comment[ja]=ラスベガス, NV
 Comment[sv]=Las Vegas, Nevada
 Comment[zh_CN]=内华达州拉斯维加斯
 Comment[zh_TW]=拉斯維加斯，內華達
@@ -695,6 +700,7 @@ par=2
 [3-sign@-4,358|9]
 Comment=San Francisco, CA
 Comment[ga]=San Francisco, California
+Comment[ja]=サンフランシスコ, CA
 Comment[pt]=São Francisco, CA
 Comment[pt_BR]=São Francisco, CA
 Comment[sv]=San Francisco, Kalifornien
@@ -781,6 +787,7 @@ par=3
 
 [4-sign@201,171|8]
 Comment=Grand Canyon
+Comment[ja]=グランドキャニオン
 Comment[zh_CN]=大峡谷
 Comment[zh_TW]=大峽谷
 botWallVisible=true
@@ -891,6 +898,7 @@ width=48
 [5-sign@219,344|10]
 Comment=Lake Tahoe, CA/NV
 Comment[ga]=Lake Tahoe, California/Nevada
+Comment[ja]=レイク・タホ, CA/NV
 Comment[pt]=Lago Tahoe, CA/NV
 Comment[pt_BR]=Lago Tahoe, CA/NV
 Comment[sv]=Lake Tahoe, Kalifornien, Nevada
@@ -1036,6 +1044,7 @@ width=368
 [6-sign@3,101|17]
 Comment=Florida Keys, FL
 Comment[ga]=Florida Keys, Florida
+Comment[ja]=フロリダキーズ, FL
 Comment[sv]=Florida Keys, Florida
 Comment[zh_CN]=佛罗里达礁岛群
 Comment[zh_TW]=Florida Keys, 佛羅里達
@@ -1182,6 +1191,7 @@ width=178
 
 [7-sign@11,116|7]
 Comment=Golden Gate
+Comment[ja]=ゴールデンゲート
 Comment[zh_CN]=金门
 Comment[zh_TW]=金門
 botWallVisible=false
@@ -1194,6 +1204,7 @@ width=40
 [7-sign@135,364|25]
 Comment=San Francisco, CA
 Comment[ga]=San Francisco, California
+Comment[ja]=サンフランシスコ, CA
 Comment[pt]=São Francisco, CA
 Comment[pt_BR]=São Francisco, CA
 Comment[sv]=San Francisco, Kalifornien
@@ -1208,6 +1219,7 @@ width=159
 
 [7-sign@98,209|24]
 Comment=Bay Bridge
+Comment[ja]=ベイブリッジ
 Comment[zh_CN]=海湾大桥
 Comment[zh_TW]=海灣大橋
 botWallVisible=true
@@ -1349,6 +1361,7 @@ width=98
 
 [8-sign@147,370|19]
 Comment=Washington DC
+Comment[ja]=ワシントン DC
 Comment[zh_CN]=华盛顿特区
 Comment[zh_TW]=華盛頓特區
 botWallVisible=true
@@ -1565,6 +1578,7 @@ width=20
 [9-sign@291,368|28]
 Comment=Niagara Falls, NY
 Comment[ga]=Niagara Falls, Nua-Eabhrac
+Comment[ja]=ナイアガラの滝, NY
 Comment[pt]=Cataratas do Niagara, NY
 Comment[pt_BR]=Cataratas do Niagara, NY
 Comment[sv]=Niagarafallen, New York

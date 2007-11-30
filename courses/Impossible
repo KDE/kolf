@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=Impossible Course
+Name[ja]=不可能なコース
 Name[pt]=Campo Impossível
 Name[pt_BR]=Campo Impossível
 Name[sv]=Omöjlig bana
@@ -787,6 +788,7 @@ width=66
 
 [13-sign@142,193|1]
 Comment=Reprieve
+Comment[ja]=猶予
 Comment[pt]=Reprovação
 Comment[pt_BR]=Reprovação
 Comment[sv]=Uppskov
@@ -1504,6 +1506,7 @@ width=50
 
 [17-sign@23,152|20]
 Comment=Luck
+Comment[ja]=運
 Comment[pt]=Sorte
 Comment[pt_BR]=Sorte
 Comment[sv]=Tur
@@ -3275,6 +3278,7 @@ width=66
 
 [9-sign@146,329|23]
 Comment=Chaos
+Comment[ja]=カオス
 Comment[pt]=Caos
 Comment[pt_BR]=Caos
 Comment[sv]=Kaos

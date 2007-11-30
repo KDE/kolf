@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=Tutorial Course
+Name[ja]=チュートリアルコース
 Name[pt]=Campo Tutorial
 Name[pt_BR]=Campo Tutorial
 Name[sv]=Övningsbana
@@ -21,6 +22,7 @@ par=2
 
 [1-sign@2,2|3]
 Comment=<h3>Welcome</h3> to the tutorial course for Kolf!
+Comment[ja]=<h3>ようこそ</h3> Kolf チュートリアルコースへ!
 Comment[pt]=<h3>Bem-vindo</h3> ao campo de exemplo do Kolf!
 Comment[pt_BR]=<h3>Bem-vindo</h3> ao campo de exemplo do Kolf!
 Comment[sv]=<h3>Välkommen</h3> till Kolfs övningsbana!
@@ -35,6 +37,7 @@ width=319
 
 [1-sign@73,81|4]
 Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
+Comment[ja]=ボールを打つには、下矢印キーかマウスの左ボタンを押します。長く押し続けるほど、強いショットになります。
 Comment[pt]=Para acertar na bola, carregue e mantenha pressionada a tecla para Baixo ou o botão esquerdo do rato. O tempo de permanência do botão do rato ou da tecla determinam a força da tacada.
 Comment[pt_BR]=Para acertar na bola, carregue e mantenha pressionada a tecla para Baixo ou o botão esquerdo do rato. O tempo de permanência do botão do rato ou da tecla determinam a força da tacada.
 Comment[sv]=Tryck och håll nere neråtpilen eller vänster musknapp för att slå bollen. Hur länge du håller nere musknappen eller tangenten bestämmer hur hårt slaget blir.
@@ -49,6 +52,7 @@ width=319
 
 [1-sign@74,251|7]
 Comment=To aim the putter, press the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use the mouse.
+Comment[ja]=左矢印キーを押すとパターが左 (反時計回り) に回り、右矢印キーを押すと右 (時計回り) に回ります。マウスも使えます。
 Comment[pt]=Para apontar o taco, carregue nas teclas de cursores Esquerda (rodar no sentido anti-horário) ou Direita (rodar no sentido horário) ou use o rato.
 Comment[pt_BR]=Para apontar o taco, carregue nas teclas de cursores Esquerda (rodar no sentido anti-horário) ou Direita (rodar no sentido horário) ou use o rato.
 Comment[sv]=Tryck på vänster piltangent (rotera moturs) eller höger piltangent (rotera medurs), eller använd musen för att sikta med klubban.
@@ -117,6 +121,7 @@ width=112
 
 [10-sign@7,9|4]
 Comment=<h3>Bridges</h3>Bridges can have walls on the top, bottom, left, or right.
+Comment[ja]=<h3>橋</h3>橋には上下左右の一部に壁がある場合があります。
 Comment[pt]=<h3>Pontes</h3>As pontes poderão ter paredes por cima, baixo, esquerda ou direita.
 Comment[pt_BR]=<h3>Pontes</h3>As pontes poderão ter paredes por cima, baixo, esquerda ou direita.
 Comment[sv]=<h3>Broar</h3>Broar kan ha väggar ovanför, under, till vänster eller till höger.
@@ -198,6 +203,7 @@ width=172
 
 [11-sign@145,4|3]
 Comment=<h3>Everything</h3>Here's a hole that has it all. Have fun with Kolf!<br><center>-- Jason Katz-Brown</center>
+Comment[ja]=<h3>全部</h3>これはすべてのオブジェクトがあるホールです。Kolf を楽しんでください!<br/><center>-- Jason Katz-Brown</center>
 Comment[pt]=<h3>Tudo</h3>Aqui está um buraco que tem de tudo. Divirta-se com o Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[pt_BR]=<h3>Tudo</h3>Aqui está um buraco que tem de tudo. Divirta-se com o Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[sv]=<h3>Allting</h3>Här är ett hål som har allting. Ha det så roligt med Kolf!<br><center>Jason Katz-Brown</center>
@@ -270,6 +276,7 @@ par=2
 
 [2-sign@1,5|3]
 Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you choose <u>Hole->Show Info</u>.
+Comment[ja]=<h3>斜面</h3>斜面では傾斜している方向にボールが動きます。「ホール」→「情報を表示」を有効にすると、傾斜の方向が表示されます。
 Comment[pt]=<h3>Rampas</h3>As rampas são áreas inclinadas que empurram a bola na direcção da sua inclinação. A direcção aparece quando você escolhe a opção <u>Buraco->Mostrar a Informação</u>.
 Comment[pt_BR]=<h3>Rampas</h3>As rampas são áreas inclinadas que empurram a bola na direcção da sua inclinação. A direcção aparece quando você escolhe a opção <u>Buraco->Mostrar a Informação</u>.
 Comment[sv]=<h3>Sluttningar</h3>Sluttningar är lutande markområden som styr bollen i riktningen de lutar. Riktningen visas när du väljer <u>Hål -> Visa information</u>.
@@ -284,6 +291,7 @@ width=392
 
 [2-sign@197,198|5]
 Comment=Hit the ball onto the slope and let it roll into cup.
+Comment[ja]=斜面に向けてボールを打って、カップに入れてください。
 Comment[pt]=Mande a bola para a rampa e deixe-a rolar para o buraco.
 Comment[pt_BR]=Mande a bola para a rampa e deixe-a rolar para o buraco.
 Comment[sv]=Slå bollen mot sluttningen och låt den rulla ner i hålet.
@@ -318,6 +326,7 @@ par=3
 
 [3-sign@4,4|4]
 Comment=Try out these different types of slopes.
+Comment[ja]=これらのさまざまなタイプの斜面で試してみてください。
 Comment[pt]=Experimenet estes tipos de rampas diferentes.
 Comment[pt_BR]=Experimenet estes tipos de rampas diferentes.
 Comment[sv]=Prova följande olika sorters sluttningar.
@@ -416,6 +425,7 @@ par=3
 
 [4-sign@6,3|3]
 Comment=The steepness of a slope is shown when you choose <u>Hole->Show Info</u>. Steepness goes from 8 (steepest) to 1 (shallowest).
+Comment[ja]=「ホール」→「情報を表示」を有効にすると、斜面の傾斜の強さが表示されます。傾斜の強さは 8 (急) から 1 (緩やか) まであります。
 Comment[pt]=A inclinação de uma rampa aparece quando escolhe a opção <u>Buraco->Mostrar a Informação</u>. A inclinação vai de 8 (o mais inclinado) até 1 (o mais plano).
 Comment[pt_BR]=A inclinação de uma rampa aparece quando escolhe a opção <u>Buraco->Mostrar a Informação</u>. A inclinação vai de 8 (o mais inclinado) até 1 (o mais plano).
 Comment[sv]=Hur brant sluttningen är visas när du väljer <u>Hål -> Visa information</u>. Lutningen går från 8 (brantast) till 1 (minst brant).
@@ -458,6 +468,7 @@ par=2
 
 [5-sign@3,5|3]
 Comment=<h3>Walls</h3>Bounce the ball off of the red walls.
+Comment[ja]=<h3>壁</h3>赤い壁にボールを当ててバウンドさせてください。
 Comment[pt]=<h3>Paredes</h3>Rebata a bola para fora das paredes vermelhas.
 Comment[pt_BR]=<h3>Paredes</h3>Rebata a bola para fora das paredes vermelhas.
 Comment[sv]=<h3>Väggar</h3>Studsa bollen mot de röda väggarna.
@@ -526,6 +537,7 @@ width=78
 
 [6-sign@3,152|37]
 Comment=<h3>Sand</h3>Sand is yellow, and slows your ball down.
+Comment[ja]=<h3>砂地</h3>砂地 (黄色) に入るとボールの速度が落ちます。
 Comment[pt]=<h3>Areia</h3>A areia é amarela e torna a sua bola mais lenta.
 Comment[pt_BR]=<h3>Areia</h3>A areia é amarela e torna a sua bola mais lenta.
 Comment[sv]=<h3>Bunker</h3>Bunkerns sand är gul, och gör att bollen saktar in.
@@ -540,6 +552,7 @@ width=138
 
 [6-sign@3,5|4]
 Comment=<h3>Puddles (Water)</h3>Hitting into a puddle (blue) adds a penalty stroke to your score, and your ball is placed outside the puddle.
+Comment[ja]=<h3>池 (水)</h3>池 (青) に入ると、ペナルティとしてスコアに 1 ストローク追加され、池の近くにボールが置かれます。
 Comment[pt]=<h3>Poças (Água)</h3>Se acertar numa poça (a azul), terá uma tacada de penalização na sua pontuação e a sua bola será colocada fora da poça.
 Comment[pt_BR]=<h3>Poças (Água)</h3>Se acertar numa poça (a azul), terá uma tacada de penalização na sua pontuação e a sua bola será colocada fora da poça.
 Comment[sv]=<h3>Vattenhinder</h3>Att slå i ett vattenhinder (blått) lägger till ett straffslag till dina poäng, och bollen släpps utanför hindret.
@@ -570,6 +583,7 @@ par=2
 
 [7-sign@130,2|4]
 Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The windmill arm's speed may vary by hole.
+Comment[ja]=<h3>風車</h3>風車 (動くアームの付いた茶色のオブジェクト) には、茶色の壁があります。アームが動く速度はホールによって異なります。
 Comment[pt]=<h3>Moinhos</h3>Os moinhos (base castanha com braço móvel) têm paredes castanhas (ou meias-paredes). A velocidade do braço do moinho poderá variar de buraco para buraco.
 Comment[pt_BR]=<h3>Moinhos</h3>Os moinhos (base castanha com braço móvel) têm paredes castanhas (ou meias-paredes). A velocidade do braço do moinho poderá variar de buraco para buraco.
 Comment[sv]=<h3>Väderkvarnar</h3>Väderkvarnar (brun grund med rörlig vinge) har bruna väggar (eller murar). Hastigheten på väderkvarnens vinge kan variera per hål.
@@ -612,6 +626,7 @@ par=2
 
 [8-sign@5,5|3]
 Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out at.
+Comment[ja]=<h3>ブラックホール</h3>ブラックホールに入ったボールは、入った速度に応じた速度で出口から出てきます。「ホール」→「情報を表示」を有効にすると、ブラックホールの入口と出口の関係と、ボールが出る方向が表示されます。
 Comment[pt]=<h3>Buracos Negros</h3>Os Buracos Negros transportam a bola para a sua saída, expulsando-a com uma velocidade directamente proporcional à velocidade com que a sua bola ia. Escolha a opção <u>Buraco->Mostrar a Informação</u> para ver para onde vai o Buraco Negro e a direcção com que a bola irá sair.
 Comment[pt_BR]=<h3>Buracos Negros</h3>Os Buracos Negros transportam a bola para a sua saída, expulsando-a com uma velocidade directamente proporcional à velocidade com que a sua bola ia. Escolha a opção <u>Buraco->Mostrar a Informação</u> para ver para onde vai o Buraco Negro e a direcção com que a bola irá sair.
 Comment[sv]=<h3>Svarta hål</h3>Svarta hål transporterar bollen till deras utgång, och slungar ut den med en hastighet som är direkt proportionell till hastigheten bollen hade. Välj <u>Hål -> Visa information</u> för att se vilket svart hål som går till vilken utgång, och vilken riktning bollen har när den kommer ut.
@@ -657,6 +672,7 @@ par=2
 
 [9-sign@5,6|3]
 Comment=<h3>Floaters</h3>Floaters are moving platforms that carry a ball that lands on it. Floaters' speeds vary.
+Comment[ja]=<h3>フローター</h3>フローターはボールを運ぶ、動く台です。フローターが動く速度はホールによって異なります。
 Comment[pt]=<h3>Bóias</h3>As bóias são plataformas móveis que transportam uma bola que aterre em cima destas. A velocidade das mesmas varia.
 Comment[pt_BR]=<h3>Bóias</h3>As bóias são plataformas móveis que transportam uma bola que aterre em cima destas. A velocidade das mesmas varia.
 Comment[sv]=<h3>Flottar</h3>Flottar är rörliga plattformar som bär bollar som landar på dem. Flottarnas hastighet varierar.
