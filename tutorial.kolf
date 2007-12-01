@@ -37,6 +37,7 @@ width=319
 
 [1-sign@73,81|4]
 Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
+Comment[el]=Για να χτυπήσετε την μπάλα, κρατήστε πατημένο το Κάτω Βέλος ή το αριστερό πλήκτρο του ποντικιού. Η δύναμη του χτυπήματος είναι ανάλογη από το χρόνο που θα το κρατήσετε πατημένο.
 Comment[ja]=ボールを打つには、下矢印キーかマウスの左ボタンを押します。長く押し続けるほど、強いショットになります。
 Comment[pt]=Para acertar na bola, carregue e mantenha pressionada a tecla para Baixo ou o botão esquerdo do rato. O tempo de permanência do botão do rato ou da tecla determinam a força da tacada.
 Comment[pt_BR]=Para acertar na bola, carregue e mantenha pressionada a tecla para Baixo ou o botão esquerdo do rato. O tempo de permanência do botão do rato ou da tecla determinam a força da tacada.
@@ -121,6 +122,7 @@ width=112
 
 [10-sign@7,9|4]
 Comment=<h3>Bridges</h3>Bridges can have walls on the top, bottom, left, or right.
+Comment[el]=<h3>Γέφυρες</h3>Οι Γέφυρες μπορεί να έχουν τοίχους πάνω, κάτω αριστερά ή δεξιά.
 Comment[ja]=<h3>橋</h3>橋には上下左右の一部に壁がある場合があります。
 Comment[pt]=<h3>Pontes</h3>As pontes poderão ter paredes por cima, baixo, esquerda ou direita.
 Comment[pt_BR]=<h3>Pontes</h3>As pontes poderão ter paredes por cima, baixo, esquerda ou direita.
@@ -203,6 +205,7 @@ width=172
 
 [11-sign@145,4|3]
 Comment=<h3>Everything</h3>Here's a hole that has it all. Have fun with Kolf!<br><center>-- Jason Katz-Brown</center>
+Comment[el]=<h3>Όλα</h3>Αυτή είναι μια τρύπα που έχει τα πάντα. Καλή διασκέδαση με το Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[ja]=<h3>全部</h3>これはすべてのオブジェクトがあるホールです。Kolf を楽しんでください!<br/><center>-- Jason Katz-Brown</center>
 Comment[pt]=<h3>Tudo</h3>Aqui está um buraco que tem de tudo. Divirta-se com o Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[pt_BR]=<h3>Tudo</h3>Aqui está um buraco que tem de tudo. Divirta-se com o Kolf!<br><center>-- Jason Katz-Brown</center>
@@ -537,6 +540,7 @@ width=78
 
 [6-sign@3,152|37]
 Comment=<h3>Sand</h3>Sand is yellow, and slows your ball down.
+Comment[el]=<h3>Άμμος</h3>Η άμμος είναι κίτρινη, και επιβραδύνει την μπάλα.
 Comment[ja]=<h3>砂地</h3>砂地 (黄色) に入るとボールの速度が落ちます。
 Comment[pt]=<h3>Areia</h3>A areia é amarela e torna a sua bola mais lenta.
 Comment[pt_BR]=<h3>Areia</h3>A areia é amarela e torna a sua bola mais lenta.
@@ -626,6 +630,7 @@ par=2
 
 [8-sign@5,5|3]
 Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out at.
+Comment[el]=<h3>Μαύρες τρύπες</h3>Οι Μαύρες τρύπες μεταφέρουν την μπάλα στην έξοδό τους, με την ίδια ταχύτητα με την οποία μπήκε, Επιλέξτε <u>Τρύπα->Εμφάνιση πληροφοριών</u> για να δείτε ποια έξοδος αντιστοιχεί στην κάθε Μαύρη τρύπα και την κατεύθυνση που θα ακολουθήσει η μπάλα κατά την έξοδό της.
 Comment[ja]=<h3>ブラックホール</h3>ブラックホールに入ったボールは、入った速度に応じた速度で出口から出てきます。「ホール」→「情報を表示」を有効にすると、ブラックホールの入口と出口の関係と、ボールが出る方向が表示されます。
 Comment[pt]=<h3>Buracos Negros</h3>Os Buracos Negros transportam a bola para a sua saída, expulsando-a com uma velocidade directamente proporcional à velocidade com que a sua bola ia. Escolha a opção <u>Buraco->Mostrar a Informação</u> para ver para onde vai o Buraco Negro e a direcção com que a bola irá sair.
 Comment[pt_BR]=<h3>Buracos Negros</h3>Os Buracos Negros transportam a bola para a sua saída, expulsando-a com uma velocidade directamente proporcional à velocidade com que a sua bola ia. Escolha a opção <u>Buraco->Mostrar a Informação</u> para ver para onde vai o Buraco Negro e a direcção com que a bola irá sair.
@@ -672,6 +677,7 @@ par=2
 
 [9-sign@5,6|3]
 Comment=<h3>Floaters</h3>Floaters are moving platforms that carry a ball that lands on it. Floaters' speeds vary.
+Comment[el]=<h3>Πλωτήρες</h3>Οι πλωτήρες είναι κινούμενες πλατφόρμες που μεταφέρουν την μπάλα που θα προσγειωθεί πάνω τους. Οι ταχύτητά τους ποικίλει.
 Comment[ja]=<h3>フローター</h3>フローターはボールを運ぶ、動く台です。フローターが動く速度はホールによって異なります。
 Comment[pt]=<h3>Bóias</h3>As bóias são plataformas móveis que transportam uma bola que aterre em cima destas. A velocidade das mesmas varia.
 Comment[pt_BR]=<h3>Bóias</h3>As bóias são plataformas móveis que transportam uma bola que aterre em cima destas. A velocidade das mesmas varia.
