@@ -1,10 +1,13 @@
 [0-course@-50,-50]
 Name=Hard Course
+Name[es]=Campo difícil
 Name[ga]=Cúrsa Deacair
 Name[ja]=難しいコース
+Name[nl]=Moeilijke baan
 Name[pt]=Campo Difícil
 Name[pt_BR]=Campo Difícil
 Name[sv]=Svår bana
+Name[x-test]=xxHard Coursexx
 Name[zh_CN]=困难课程
 Name[zh_TW]=困難課程
 author=Jason Katz-Brown
@@ -1071,10 +1074,13 @@ par=3
 
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
+Comment[es]=¡Deje que los flotadores <strong>empujen</strong>!
 Comment[ja]=フローターでボールをプッシュさせよう!
+Comment[nl]=Laat de drijvers u <strong>duwen</strong>!
 Comment[pt]=Deixe as bóias <strong>empurrá-lo</strong> a si!
 Comment[pt_BR]=Deixe as bóias <strong>empurrá-lo</strong> a si!
 Comment[sv]=Låt flottarna <strong>knuffa</strong> dig.
+Comment[x-test]=xxLet the floaters <strong>push</strong> you!xx
 Comment[zh_CN]=让漂移物<strong>推</strong>着你走！
 Comment[zh_TW]=您會被追著跑！
 botWallVisible=true

@@ -3,6 +3,7 @@ Name=USA Pro
 Name[ja]=USA プロ
 Name[pt]=Pro EUA
 Name[pt_BR]=Pro EUA
+Name[x-test]=xxUSA Proxx
 Name[zh_CN]=USA 专家
 Name[zh_TW]=USA 專家
 author=Rob Kaper
@@ -47,9 +48,11 @@ width=840
 
 [1-sign@4,371|14]
 Comment=Daytona Beach, FL
+Comment[es]=Playa de Daytona, FL
 Comment[ga]=Daytona Beach, Florida
 Comment[ja]=デイトナビーチ, FL
 Comment[sv]=Daytona Beach, Florida
+Comment[x-test]=xxDaytona Beach, FLxx
 Comment[zh_CN]=佛罗里达州德通纳海滩
 Comment[zh_TW]=Daytona 海灘，佛羅里達
 botWallVisible=false
@@ -236,9 +239,11 @@ width=36
 
 [10-sign@-1,360|42]
 Comment=Washington DC (Pentagon)
+Comment[es]=Washington DC (Pentágono)
 Comment[ja]=ワシントン DC (ペンタゴン)
 Comment[pt]=Washington DC (Pentágono)
 Comment[pt_BR]=Washington DC (Pentágono)
+Comment[x-test]=xxWashington DC (Pentagon)xx
 Comment[zh_CN]=华盛顿特区(五角大楼)
 Comment[zh_TW]=華盛頓特區（五角大廈）
 botWallVisible=true
@@ -391,6 +396,7 @@ Comment=Palm Springs, CO
 Comment[ga]=Palm Springs, Colorado
 Comment[ja]=パームスプリング, CO
 Comment[sv]=Palm Springs, Colorado
+Comment[x-test]=xxPalm Springs, COxx
 Comment[zh_CN]=科罗拉多棕榈泉
 Comment[zh_TW]=棕櫚泉，科羅拉多
 botWallVisible=true
@@ -548,6 +554,7 @@ Comment=Las Vegas, NV
 Comment[ga]=Las Vegas, Nevada
 Comment[ja]=ラスベガス, NV
 Comment[sv]=Las Vegas, Nevada
+Comment[x-test]=xxLas Vegas, NVxx
 Comment[zh_CN]=内华达州拉斯维加斯
 Comment[zh_TW]=拉斯維加斯，內華達
 botWallVisible=true
@@ -704,6 +711,7 @@ Comment[ja]=サンフランシスコ, CA
 Comment[pt]=São Francisco, CA
 Comment[pt_BR]=São Francisco, CA
 Comment[sv]=San Francisco, Kalifornien
+Comment[x-test]=xxSan Francisco, CAxx
 Comment[zh_CN]=加州旧金山
 Comment[zh_TW]=舊金山，加州
 botWallVisible=true
@@ -787,7 +795,9 @@ par=3
 
 [4-sign@201,171|8]
 Comment=Grand Canyon
+Comment[es]=Gran Cañón
 Comment[ja]=グランドキャニオン
+Comment[x-test]=xxGrand Canyonxx
 Comment[zh_CN]=大峡谷
 Comment[zh_TW]=大峽谷
 botWallVisible=true
@@ -897,11 +907,13 @@ width=48
 
 [5-sign@219,344|10]
 Comment=Lake Tahoe, CA/NV
+Comment[es]=Lago Tahoe, CA/NV
 Comment[ga]=Lake Tahoe, California/Nevada
 Comment[ja]=レイク・タホ, CA/NV
 Comment[pt]=Lago Tahoe, CA/NV
 Comment[pt_BR]=Lago Tahoe, CA/NV
 Comment[sv]=Lake Tahoe, Kalifornien, Nevada
+Comment[x-test]=xxLake Tahoe, CA/NVxx
 Comment[zh_CN]=加州/内华达州太浩湖
 Comment[zh_TW]=Lake Tahoe, 加州/內華達
 botWallVisible=true
@@ -1043,9 +1055,11 @@ width=368
 
 [6-sign@3,101|17]
 Comment=Florida Keys, FL
+Comment[es]=Cayos de Florida, FL
 Comment[ga]=Florida Keys, Florida
 Comment[ja]=フロリダキーズ, FL
 Comment[sv]=Florida Keys, Florida
+Comment[x-test]=xxFlorida Keys, FLxx
 Comment[zh_CN]=佛罗里达礁岛群
 Comment[zh_TW]=Florida Keys, 佛羅里達
 botWallVisible=true
@@ -1192,6 +1206,7 @@ width=178
 [7-sign@11,116|7]
 Comment=Golden Gate
 Comment[ja]=ゴールデンゲート
+Comment[x-test]=xxGolden Gatexx
 Comment[zh_CN]=金门
 Comment[zh_TW]=金門
 botWallVisible=false
@@ -1208,6 +1223,7 @@ Comment[ja]=サンフランシスコ, CA
 Comment[pt]=São Francisco, CA
 Comment[pt_BR]=São Francisco, CA
 Comment[sv]=San Francisco, Kalifornien
+Comment[x-test]=xxSan Francisco, CAxx
 Comment[zh_CN]=加州旧金山
 Comment[zh_TW]=舊金山，加州
 botWallVisible=true
@@ -1220,6 +1236,7 @@ width=159
 [7-sign@98,209|24]
 Comment=Bay Bridge
 Comment[ja]=ベイブリッジ
+Comment[x-test]=xxBay Bridgexx
 Comment[zh_CN]=海湾大桥
 Comment[zh_TW]=海灣大橋
 botWallVisible=true
@@ -1363,6 +1380,7 @@ width=98
 Comment=Washington DC
 Comment[el]=Ουάσιγκτον DC
 Comment[ja]=ワシントン DC
+Comment[x-test]=xxWashington DCxx
 Comment[zh_CN]=华盛顿特区
 Comment[zh_TW]=華盛頓特區
 botWallVisible=true
@@ -1578,11 +1596,13 @@ width=20
 
 [9-sign@291,368|28]
 Comment=Niagara Falls, NY
+Comment[es]=Cataratas del Niágara, NY
 Comment[ga]=Niagara Falls, Nua-Eabhrac
 Comment[ja]=ナイアガラの滝, NY
 Comment[pt]=Cataratas do Niagara, NY
 Comment[pt_BR]=Cataratas do Niagara, NY
 Comment[sv]=Niagarafallen, New York
+Comment[x-test]=xxNiagara Falls, NYxx
 Comment[zh_CN]=纽约尼亚加拉大瀑布
 Comment[zh_TW]=Niagara Falls, 紐約
 botWallVisible=true

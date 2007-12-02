@@ -1,9 +1,12 @@
 [0-course@-50,-50]
 Name=Tutorial Course
+Name[es]=Campo de tutorial
 Name[ja]=チュートリアルコース
+Name[nl]=Oefenbaan
 Name[pt]=Campo Tutorial
 Name[pt_BR]=Campo Tutorial
 Name[sv]=Övningsbana
+Name[x-test]=xxTutorial Coursexx
 Name[zh_CN]=教学课程
 Name[zh_TW]=教學課程
 author=Jason Katz-Brown
@@ -22,10 +25,13 @@ par=2
 
 [1-sign@2,2|3]
 Comment=<h3>Welcome</h3> to the tutorial course for Kolf!
+Comment[es]=¡<h3>Bienvenido</h3> al tutorial del campo Kolf!
 Comment[ja]=<h3>ようこそ</h3> Kolf チュートリアルコースへ!
+Comment[nl]=<h3>Welkom</h3> bij de oefenbaan voor Kolf!
 Comment[pt]=<h3>Bem-vindo</h3> ao campo de exemplo do Kolf!
 Comment[pt_BR]=<h3>Bem-vindo</h3> ao campo de exemplo do Kolf!
 Comment[sv]=<h3>Välkommen</h3> till Kolfs övningsbana!
+Comment[x-test]=xx<h3>Welcome</h3> to the tutorial course for Kolf!xx
 Comment[zh_CN]=<h3>欢迎</h3>来到 Kolf 教学课程！
 Comment[zh_TW]=<h3>歡迎</h3>來到 Kolf 的教學課程！
 botWallVisible=true
@@ -38,10 +44,13 @@ width=319
 [1-sign@73,81|4]
 Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
 Comment[el]=Για να χτυπήσετε την μπάλα, κρατήστε πατημένο το Κάτω Βέλος ή το αριστερό πλήκτρο του ποντικιού. Η δύναμη του χτυπήματος είναι ανάλογη από το χρόνο που θα το κρατήσετε πατημένο.
+Comment[es]=Para golpear la bola, pulse y mantenga pulsada la fecha abajo o el botón izquierdo del ratón. El golpe será tanto más fuerte cuanto más tiempo mantenga pulsada la tecla o el botón del ratón.
 Comment[ja]=ボールを打つには、下矢印キーかマウスの左ボタンを押します。長く押し続けるほど、強いショットになります。
+Comment[nl]=Om de bal te raken, houdt de toets 'Pijl omlaag' of de linker muisknop ingedrukt. De tijdsduur dat u de muisknop of toets ingedrukt houdt bepaalt de kracht van de slag.
 Comment[pt]=Para acertar na bola, carregue e mantenha pressionada a tecla para Baixo ou o botão esquerdo do rato. O tempo de permanência do botão do rato ou da tecla determinam a força da tacada.
 Comment[pt_BR]=Para acertar na bola, carregue e mantenha pressionada a tecla para Baixo ou o botão esquerdo do rato. O tempo de permanência do botão do rato ou da tecla determinam a força da tacada.
 Comment[sv]=Tryck och håll nere neråtpilen eller vänster musknapp för att slå bollen. Hur länge du håller nere musknappen eller tangenten bestämmer hur hårt slaget blir.
+Comment[x-test]=xxTo hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.xx
 Comment[zh_CN]=要打击那个球，按住下箭头或鼠标左键。按的时间长度会决定打击力度。
 Comment[zh_TW]=要打到球，按住下方向鍵或滑鼠左鍵，按得越久，力量越大。
 botWallVisible=true
@@ -53,10 +62,13 @@ width=319
 
 [1-sign@74,251|7]
 Comment=To aim the putter, press the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use the mouse.
+Comment[es]=Para cambiar al putter, pulse las flechas izquierda (en sentido contrario a las agujas del reloj) y derecha (en el sentido de las agujas del reloj) o utilice el ratón.
 Comment[ja]=左矢印キーを押すとパターが左 (反時計回り) に回り、右矢印キーを押すと右 (時計回り) に回ります。マウスも使えます。
+Comment[nl]=Om de putter te richten, druk op de toets 'Pijl links' (linksom draaien) of 'Pijl rechts' (rechtsom draaien) of gebruik de muis.
 Comment[pt]=Para apontar o taco, carregue nas teclas de cursores Esquerda (rodar no sentido anti-horário) ou Direita (rodar no sentido horário) ou use o rato.
 Comment[pt_BR]=Para apontar o taco, carregue nas teclas de cursores Esquerda (rodar no sentido anti-horário) ou Direita (rodar no sentido horário) ou use o rato.
 Comment[sv]=Tryck på vänster piltangent (rotera moturs) eller höger piltangent (rotera medurs), eller använd musen för att sikta med klubban.
+Comment[x-test]=xxTo aim the putter, press the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use the mouse.xx
 Comment[zh_CN]=要瞄准推杆，按住左箭头(逆时针)或右箭头(顺时针)或使用鼠标。
 Comment[zh_TW]=要瞄準推杆，按左方向鍵（逆時針）或右方向鍵（順時針），或用滑鼠。
 botWallVisible=true
@@ -123,10 +135,13 @@ width=112
 [10-sign@7,9|4]
 Comment=<h3>Bridges</h3>Bridges can have walls on the top, bottom, left, or right.
 Comment[el]=<h3>Γέφυρες</h3>Οι Γέφυρες μπορεί να έχουν τοίχους πάνω, κάτω αριστερά ή δεξιά.
+Comment[es]=<h3>Puentes</h3>Los puentes puede tener muros en la parte superior, inferior, izquierda o derecha.
 Comment[ja]=<h3>橋</h3>橋には上下左右の一部に壁がある場合があります。
+Comment[nl]=<h3>Bruggen</h3>Bruggen hebben muurtjes aan de bovenzijde, onderzijde, linkerzijde of rechterzijde.
 Comment[pt]=<h3>Pontes</h3>As pontes poderão ter paredes por cima, baixo, esquerda ou direita.
 Comment[pt_BR]=<h3>Pontes</h3>As pontes poderão ter paredes por cima, baixo, esquerda ou direita.
 Comment[sv]=<h3>Broar</h3>Broar kan ha väggar ovanför, under, till vänster eller till höger.
+Comment[x-test]=xx<h3>Bridges</h3>Bridges can have walls on the top, bottom, left, or right.xx
 Comment[zh_CN]=<h3>桥</h3>在桥的四周可能有墙。
 Comment[zh_TW]=<h3>橋</h3>橋有可能在上下左右有牆。
 botWallVisible=true
@@ -206,10 +221,13 @@ width=172
 [11-sign@145,4|3]
 Comment=<h3>Everything</h3>Here's a hole that has it all. Have fun with Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[el]=<h3>Όλα</h3>Αυτή είναι μια τρύπα που έχει τα πάντα. Καλή διασκέδαση με το Kolf!<br><center>-- Jason Katz-Brown</center>
+Comment[es]=<h3>Todo</h3>Aquí tenemos un hoyo que lo tiene todo. ¡Diviértase con Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[ja]=<h3>全部</h3>これはすべてのオブジェクトがあるホールです。Kolf を楽しんでください!<br/><center>-- Jason Katz-Brown</center>
+Comment[nl]=<h3>Alles</h3>Dit is een hole die alles bevat. Veel plezier met Kolf!
 Comment[pt]=<h3>Tudo</h3>Aqui está um buraco que tem de tudo. Divirta-se com o Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[pt_BR]=<h3>Tudo</h3>Aqui está um buraco que tem de tudo. Divirta-se com o Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[sv]=<h3>Allting</h3>Här är ett hål som har allting. Ha det så roligt med Kolf!<br><center>Jason Katz-Brown</center>
+Comment[x-test]=xx<h3>Everything</h3>Here's a hole that has it all. Have fun with Kolf!<br><center>-- Jason Katz-Brown</center>xx
 Comment[zh_CN]=<h3>一切</h3>这里有一个球洞，一切尽在其中。祝玩得愉快！<br><center>-- Jason Katz-Brown</center>
 Comment[zh_TW]=<h3>每樣東西</h3>這裡有一個洞，有每樣東西。祝您玩得愉快。<br><center>-- Jason Katz-Brown</center>
 botWallVisible=true
@@ -279,10 +297,13 @@ par=2
 
 [2-sign@1,5|3]
 Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you choose <u>Hole->Show Info</u>.
+Comment[es]=<h3>Pendientes</h3>Las pendientes son áreas con una inclinación del suelo que empujan la bola en la dirección de la pendiente. Esta dirección se muestra cuando elige <u>Hoyo->Mostrar info</u>.
 Comment[ja]=<h3>斜面</h3>斜面では傾斜している方向にボールが動きます。「ホール」→「情報を表示」を有効にすると、傾斜の方向が表示されます。
+Comment[nl]=<h3>Hellingen</h3>Hellingen zijn aflopende gebieden die de bal in de richting waarin de helling afloopt duwen. Deze richting wordt getoond als u menuoptie <u>Hole ->Informatie tonen</u> selecteert.
 Comment[pt]=<h3>Rampas</h3>As rampas são áreas inclinadas que empurram a bola na direcção da sua inclinação. A direcção aparece quando você escolhe a opção <u>Buraco->Mostrar a Informação</u>.
 Comment[pt_BR]=<h3>Rampas</h3>As rampas são áreas inclinadas que empurram a bola na direcção da sua inclinação. A direcção aparece quando você escolhe a opção <u>Buraco->Mostrar a Informação</u>.
 Comment[sv]=<h3>Sluttningar</h3>Sluttningar är lutande markområden som styr bollen i riktningen de lutar. Riktningen visas när du väljer <u>Hål -> Visa information</u>.
+Comment[x-test]=xx<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you choose <u>Hole->Show Info</u>.xx
 Comment[zh_CN]=<h3>斜坡</h3>斜坡这种区域会使球朝倾斜的方向滚过去。您可以选择<u>球洞->显示信息</u>以看到其方向。
 Comment[zh_TW]=<h3>斜坡</h3>若您選擇「洞」─「顯示資訊」會顯示斜坡的方向。
 botWallVisible=true
@@ -294,10 +315,13 @@ width=392
 
 [2-sign@197,198|5]
 Comment=Hit the ball onto the slope and let it roll into cup.
+Comment[es]=Golpee la bola hacia la pendiente y déjela rodar hasta el vaso.
 Comment[ja]=斜面に向けてボールを打って、カップに入れてください。
+Comment[nl]=Sla de bal de helling op en laat deze vervolgens in de cup rollen.
 Comment[pt]=Mande a bola para a rampa e deixe-a rolar para o buraco.
 Comment[pt_BR]=Mande a bola para a rampa e deixe-a rolar para o buraco.
 Comment[sv]=Slå bollen mot sluttningen och låt den rulla ner i hålet.
+Comment[x-test]=xxHit the ball onto the slope and let it roll into cup.xx
 Comment[zh_CN]=把球打上斜坡并让它滚进杯中。
 Comment[zh_TW]=打擊在斜坡上的球，讓它滾到杯子中。
 botWallVisible=true
@@ -329,10 +353,13 @@ par=3
 
 [3-sign@4,4|4]
 Comment=Try out these different types of slopes.
+Comment[es]=Pruebe estos tipos de pendientes diferentes.
 Comment[ja]=これらのさまざまなタイプの斜面で試してみてください。
+Comment[nl]=Probeer deze verschillende hellingen uit.
 Comment[pt]=Experimenet estes tipos de rampas diferentes.
 Comment[pt_BR]=Experimenet estes tipos de rampas diferentes.
 Comment[sv]=Prova följande olika sorters sluttningar.
+Comment[x-test]=xxTry out these different types of slopes.xx
 Comment[zh_CN]=试试不同的斜坡类型。
 Comment[zh_TW]=試試這些不同型態的斜坡。
 botWallVisible=true
@@ -428,10 +455,13 @@ par=3
 
 [4-sign@6,3|3]
 Comment=The steepness of a slope is shown when you choose <u>Hole->Show Info</u>. Steepness goes from 8 (steepest) to 1 (shallowest).
+Comment[es]=La inclinación de la pendiente se muestra cuando elige <u>Hoyo->Mostrar info</u>. La inclinación puede tomar un valor entre 8 (máximo) y 1 (mínimo).
 Comment[ja]=「ホール」→「情報を表示」を有効にすると、斜面の傾斜の強さが表示されます。傾斜の強さは 8 (急) から 1 (緩やか) まであります。
+Comment[nl]=De stijlheid van de helling wordt getoond als u menuoptie <u>Hole -> Informatie tonen</u> kiest. De stijlheid gaat van 8 (meest stijl) tot 1 (minst stijl).
 Comment[pt]=A inclinação de uma rampa aparece quando escolhe a opção <u>Buraco->Mostrar a Informação</u>. A inclinação vai de 8 (o mais inclinado) até 1 (o mais plano).
 Comment[pt_BR]=A inclinação de uma rampa aparece quando escolhe a opção <u>Buraco->Mostrar a Informação</u>. A inclinação vai de 8 (o mais inclinado) até 1 (o mais plano).
 Comment[sv]=Hur brant sluttningen är visas när du väljer <u>Hål -> Visa information</u>. Lutningen går från 8 (brantast) till 1 (minst brant).
+Comment[x-test]=xxThe steepness of a slope is shown when you choose <u>Hole->Show Info</u>. Steepness goes from 8 (steepest) to 1 (shallowest).xx
 Comment[zh_CN]=选择<u>球洞->显示信息</u>可以看到斜坡的倾角。其值从最险峻的 8 到最平缓的 1。
 Comment[zh_TW]=當您選擇「洞」─「顯示資訊」時，會顯示斜坡的斜度。從 8（最斜）到 1（一點點斜）。
 botWallVisible=true
@@ -471,10 +501,13 @@ par=2
 
 [5-sign@3,5|3]
 Comment=<h3>Walls</h3>Bounce the ball off of the red walls.
+Comment[es]=<h3>Muros</h3>Rebota la bola fuera de las murallas rojas.
 Comment[ja]=<h3>壁</h3>赤い壁にボールを当ててバウンドさせてください。
+Comment[nl]=<h3>Muurtjes</h3>Laat de bal tegen de rode muurtjes kaatsen.
 Comment[pt]=<h3>Paredes</h3>Rebata a bola para fora das paredes vermelhas.
 Comment[pt_BR]=<h3>Paredes</h3>Rebata a bola para fora das paredes vermelhas.
 Comment[sv]=<h3>Väggar</h3>Studsa bollen mot de röda väggarna.
+Comment[x-test]=xx<h3>Walls</h3>Bounce the ball off of the red walls.xx
 Comment[zh_CN]=<h3>墙</h3>球碰到红墙会反弹。
 Comment[zh_TW]=<h3>牆</h3>讓球對紅牆反彈回來。
 botWallVisible=true
@@ -541,10 +574,13 @@ width=78
 [6-sign@3,152|37]
 Comment=<h3>Sand</h3>Sand is yellow, and slows your ball down.
 Comment[el]=<h3>Άμμος</h3>Η άμμος είναι κίτρινη, και επιβραδύνει την μπάλα.
+Comment[es]=<h3>Arena</h3>La arena es amarilla, y ralentiza su bola.
 Comment[ja]=<h3>砂地</h3>砂地 (黄色) に入るとボールの速度が落ちます。
+Comment[nl]=<h3>Zand</h3>Zand is geel en vertraagt uw bal.
 Comment[pt]=<h3>Areia</h3>A areia é amarela e torna a sua bola mais lenta.
 Comment[pt_BR]=<h3>Areia</h3>A areia é amarela e torna a sua bola mais lenta.
 Comment[sv]=<h3>Bunker</h3>Bunkerns sand är gul, och gör att bollen saktar in.
+Comment[x-test]=xx<h3>Sand</h3>Sand is yellow, and slows your ball down.xx
 Comment[zh_CN]=<h3>沙地</h3>沙地以黄色显示，它会减缓球的移动速度。
 Comment[zh_TW]=<h3>沙地</h3>沙地是黃色的，會讓您的球慢下來。
 botWallVisible=true
@@ -556,10 +592,13 @@ width=138
 
 [6-sign@3,5|4]
 Comment=<h3>Puddles (Water)</h3>Hitting into a puddle (blue) adds a penalty stroke to your score, and your ball is placed outside the puddle.
+Comment[es]=<h3>Lagos (agua)</h3>Si golpea la bola dentro del lago (azul) añade un golpe de penalización a su puntuación, y su bola se situará fuera del lago.
 Comment[ja]=<h3>池 (水)</h3>池 (青) に入ると、ペナルティとしてスコアに 1 ストローク追加され、池の近くにボールが置かれます。
+Comment[nl]=<h3>Poelen (water)</h3>Als u de bal in een poel (blauw) slaat wordt er een strafpunt aan uw score toegevoegd en wordt uw bal buiten de poel geplaatst.
 Comment[pt]=<h3>Poças (Água)</h3>Se acertar numa poça (a azul), terá uma tacada de penalização na sua pontuação e a sua bola será colocada fora da poça.
 Comment[pt_BR]=<h3>Poças (Água)</h3>Se acertar numa poça (a azul), terá uma tacada de penalização na sua pontuação e a sua bola será colocada fora da poça.
 Comment[sv]=<h3>Vattenhinder</h3>Att slå i ett vattenhinder (blått) lägger till ett straffslag till dina poäng, och bollen släpps utanför hindret.
+Comment[x-test]=xx<h3>Puddles (Water)</h3>Hitting into a puddle (blue) adds a penalty stroke to your score, and your ball is placed outside the puddle.xx
 Comment[zh_CN]=<h3>水坑</h3>将球打进蓝色的水坑会遭到罚分，然后球会被重放到水坑外缘。
 Comment[zh_TW]=<h3>水坑</h3>把球打進水坑的話，會罰杆數，您的球要改放到水坑外。
 botWallVisible=true
@@ -587,10 +626,13 @@ par=2
 
 [7-sign@130,2|4]
 Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The windmill arm's speed may vary by hole.
+Comment[es]=<h3>Molinos de viento</h3>Los molinos de viento (base marrón con brazos en movimiento) tienen muros marrones (o medios muros). La velocidad de los brazos del molino de viento varía en cada hoyo.
 Comment[ja]=<h3>風車</h3>風車 (動くアームの付いた茶色のオブジェクト) には、茶色の壁があります。アームが動く速度はホールによって異なります。
+Comment[nl]=<h3>Windmolens</h3>Windmolens hebben bruine muren. De snelheid van de wieken verschilt per hole.
 Comment[pt]=<h3>Moinhos</h3>Os moinhos (base castanha com braço móvel) têm paredes castanhas (ou meias-paredes). A velocidade do braço do moinho poderá variar de buraco para buraco.
 Comment[pt_BR]=<h3>Moinhos</h3>Os moinhos (base castanha com braço móvel) têm paredes castanhas (ou meias-paredes). A velocidade do braço do moinho poderá variar de buraco para buraco.
 Comment[sv]=<h3>Väderkvarnar</h3>Väderkvarnar (brun grund med rörlig vinge) har bruna väggar (eller murar). Hastigheten på väderkvarnens vinge kan variera per hål.
+Comment[x-test]=xx<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The windmill arm's speed may vary by hole.xx
 Comment[zh_CN]=<h3>风车</h3>棕色的转板就是风车，有些是双墙面有些是单墙面。每个洞的风车对球速的影响都不一样。
 Comment[zh_TW]=<h3>風車</h3>風車有棕色的牆（或一半的牆）。速度會每個洞不一樣。
 botWallVisible=true
@@ -631,10 +673,13 @@ par=2
 [8-sign@5,5|3]
 Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out at.
 Comment[el]=<h3>Μαύρες τρύπες</h3>Οι Μαύρες τρύπες μεταφέρουν την μπάλα στην έξοδό τους, με την ίδια ταχύτητα με την οποία μπήκε, Επιλέξτε <u>Τρύπα->Εμφάνιση πληροφοριών</u> για να δείτε ποια έξοδος αντιστοιχεί στην κάθε Μαύρη τρύπα και την κατεύθυνση που θα ακολουθήσει η μπάλα κατά την έξοδό της.
+Comment[es]=<h3>Agujeros negros</h3>Los agujeros negros transportan la bola a su salida y la expulsan a una velocidad directamente relacionada con la que tenía la bola. Elija <u>Hoyo->Mostrar info</u> para ver qué agujero negro va a qué salida y la dirección con la que saldrá la bola.
 Comment[ja]=<h3>ブラックホール</h3>ブラックホールに入ったボールは、入った速度に応じた速度で出口から出てきます。「ホール」→「情報を表示」を有効にすると、ブラックホールの入口と出口の関係と、ボールが出る方向が表示されます。
+Comment[nl]=<h3>Zwarte gaten</h3>Zwarte gaten transporteren de bal naar hun uitgang en spuwen deze uit op dezelfde snelheid als waarmee de bal het gat binnenging. Kies <u>Hole -> Informatie tonen</u> om te zien welk zwart gat bij welke uitgang hoort en in welke richting de bal de uitgang verlaat.
 Comment[pt]=<h3>Buracos Negros</h3>Os Buracos Negros transportam a bola para a sua saída, expulsando-a com uma velocidade directamente proporcional à velocidade com que a sua bola ia. Escolha a opção <u>Buraco->Mostrar a Informação</u> para ver para onde vai o Buraco Negro e a direcção com que a bola irá sair.
 Comment[pt_BR]=<h3>Buracos Negros</h3>Os Buracos Negros transportam a bola para a sua saída, expulsando-a com uma velocidade directamente proporcional à velocidade com que a sua bola ia. Escolha a opção <u>Buraco->Mostrar a Informação</u> para ver para onde vai o Buraco Negro e a direcção com que a bola irá sair.
 Comment[sv]=<h3>Svarta hål</h3>Svarta hål transporterar bollen till deras utgång, och slungar ut den med en hastighet som är direkt proportionell till hastigheten bollen hade. Välj <u>Hål -> Visa information</u> för att se vilket svart hål som går till vilken utgång, och vilken riktning bollen har när den kommer ut.
+Comment[x-test]=xx<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out at.xx
 Comment[zh_CN]=<h3>黑洞</h3>黑洞会把球传送到出口，并根据其进入速度决定弹出速度。选择<u>球洞->显示信息</u>可以看到每个黑洞的出口以及球的弹出方向。
 Comment[zh_TW]=<h3>黑洞</h3>黑洞會將球傳送到出口，並根據您打進去的速度計算送出去的速度。用「洞」─「顯示資訊」來看看哪個黑洞跑到哪個出口，以及其出口方向。
 botWallVisible=true
@@ -678,10 +723,13 @@ par=2
 [9-sign@5,6|3]
 Comment=<h3>Floaters</h3>Floaters are moving platforms that carry a ball that lands on it. Floaters' speeds vary.
 Comment[el]=<h3>Πλωτήρες</h3>Οι πλωτήρες είναι κινούμενες πλατφόρμες που μεταφέρουν την μπάλα που θα προσγειωθεί πάνω τους. Οι ταχύτητά τους ποικίλει.
+Comment[es]=<h3>Flotadores</h3>Los flotadores son plataformas móviles que transportan la bola que cae sobre ellos. La velocidad de los flotadores varía.
 Comment[ja]=<h3>フローター</h3>フローターはボールを運ぶ、動く台です。フローターが動く速度はホールによって異なります。
+Comment[nl]=<h3>Drijvers</h3>Drijvers zijn bewegende platformen die een bal die er op is geland voortbewegen. De snelheid van de platformen verschilt.
 Comment[pt]=<h3>Bóias</h3>As bóias são plataformas móveis que transportam uma bola que aterre em cima destas. A velocidade das mesmas varia.
 Comment[pt_BR]=<h3>Bóias</h3>As bóias são plataformas móveis que transportam uma bola que aterre em cima destas. A velocidade das mesmas varia.
 Comment[sv]=<h3>Flottar</h3>Flottar är rörliga plattformar som bär bollar som landar på dem. Flottarnas hastighet varierar.
+Comment[x-test]=xx<h3>Floaters</h3>Floaters are moving platforms that carry a ball that lands on it. Floaters' speeds vary.xx
 Comment[zh_CN]=<h3>漂移物</h3>漂移物是一种浮动平台，被碰触的球速度会产生变化。
 Comment[zh_TW]=<h3>漂浮器</h3>漂浮器是移動的平台，球放在上面。速度會變化。
 botWallVisible=true
