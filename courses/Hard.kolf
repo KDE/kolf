@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=Hard Course
+Name[de]=Schwieriger Platz
 Name[es]=Campo difícil
 Name[ga]=Cúrsa Deacair
 Name[ja]=難しいコース
@@ -1074,6 +1075,7 @@ par=3
 
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
+Comment[de]=Lassen Sie sich von den Flößen <strong>weiterschubsen</strong>!
 Comment[es]=¡Deje que los flotadores <strong>empujen</strong>!
 Comment[ja]=フローターでボールをプッシュさせよう!
 Comment[nl]=Laat de drijvers u <strong>duwen</strong>!

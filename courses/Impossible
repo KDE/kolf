@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=Impossible Course
+Name[de]=Unmöglicher Platz
 Name[es]=Campo imposible
 Name[ja]=不可能なコース
 Name[nl]=Onmogelijke baan
@@ -791,6 +792,7 @@ width=66
 
 [13-sign@142,193|1]
 Comment=Reprieve
+Comment[de]=Gnadenfrist
 Comment[es]=Aplazamiento
 Comment[ja]=猶予
 Comment[nl]=Opschorten
@@ -1512,6 +1514,7 @@ width=50
 
 [17-sign@23,152|20]
 Comment=Luck
+Comment[de]=Glück
 Comment[es]=Suerte
 Comment[ja]=運
 Comment[nl]=Geluk

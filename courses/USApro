@@ -907,6 +907,7 @@ width=48
 
 [5-sign@219,344|10]
 Comment=Lake Tahoe, CA/NV
+Comment[de]=Tahoe See, CA/NV
 Comment[es]=Lago Tahoe, CA/NV
 Comment[ga]=Lake Tahoe, California/Nevada
 Comment[ja]=レイク・タホ, CA/NV
@@ -1235,6 +1236,7 @@ width=159
 
 [7-sign@98,209|24]
 Comment=Bay Bridge
+Comment[de]=Bay-Brücke
 Comment[ja]=ベイブリッジ
 Comment[x-test]=xxBay Bridgexx
 Comment[zh_CN]=海湾大桥
@@ -1596,6 +1598,7 @@ width=20
 
 [9-sign@291,368|28]
 Comment=Niagara Falls, NY
+Comment[de]=Niagara-Fälle, NY
 Comment[es]=Cataratas del Niágara, NY
 Comment[ga]=Niagara Falls, Nua-Eabhrac
 Comment[ja]=ナイアガラの滝, NY

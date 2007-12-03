@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=Tutorial Course
+Name[de]=Übungsplatz
 Name[es]=Campo de tutorial
 Name[ja]=チュートリアルコース
 Name[nl]=Oefenbaan
@@ -25,6 +26,7 @@ par=2
 
 [1-sign@2,2|3]
 Comment=<h3>Welcome</h3> to the tutorial course for Kolf!
+Comment[de]=<h3>Willkommen</h3> beim Übungsplatz in Kolf!
 Comment[es]=¡<h3>Bienvenido</h3> al tutorial del campo Kolf!
 Comment[ja]=<h3>ようこそ</h3> Kolf チュートリアルコースへ!
 Comment[nl]=<h3>Welkom</h3> bij de oefenbaan voor Kolf!
@@ -43,6 +45,7 @@ width=319
 
 [1-sign@73,81|4]
 Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
+Comment[de]=Halten Sie die linke Maustaste oder die Pfeiltaste abwärts gedrückt, um den Ball zu schlagen. Die Dauer des Tastendrucks entscheidet über die Wucht.
 Comment[el]=Για να χτυπήσετε την μπάλα, κρατήστε πατημένο το Κάτω Βέλος ή το αριστερό πλήκτρο του ποντικιού. Η δύναμη του χτυπήματος είναι ανάλογη από το χρόνο που θα το κρατήσετε πατημένο.
 Comment[es]=Para golpear la bola, pulse y mantenga pulsada la fecha abajo o el botón izquierdo del ratón. El golpe será tanto más fuerte cuanto más tiempo mantenga pulsada la tecla o el botón del ratón.
 Comment[ja]=ボールを打つには、下矢印キーかマウスの左ボタンを押します。長く押し続けるほど、強いショットになります。
@@ -62,6 +65,7 @@ width=319
 
 [1-sign@74,251|7]
 Comment=To aim the putter, press the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use the mouse.
+Comment[de]=Um den Putter auszurichten, verwendet man entweder die linke (entgegen dem Uhrzeigersinn) bzw. rechte (im Uhrzeigersinn)Pfeiltaste oder die Maus.
 Comment[es]=Para cambiar al putter, pulse las flechas izquierda (en sentido contrario a las agujas del reloj) y derecha (en el sentido de las agujas del reloj) o utilice el ratón.
 Comment[ja]=左矢印キーを押すとパターが左 (反時計回り) に回り、右矢印キーを押すと右 (時計回り) に回ります。マウスも使えます。
 Comment[nl]=Om de putter te richten, druk op de toets 'Pijl links' (linksom draaien) of 'Pijl rechts' (rechtsom draaien) of gebruik de muis.
@@ -134,6 +138,7 @@ width=112
 
 [10-sign@7,9|4]
 Comment=<h3>Bridges</h3>Bridges can have walls on the top, bottom, left, or right.
+Comment[de]=<h3>Brücken</h3>Brücken können oben, links, rechts oder unten Wände haben.
 Comment[el]=<h3>Γέφυρες</h3>Οι Γέφυρες μπορεί να έχουν τοίχους πάνω, κάτω αριστερά ή δεξιά.
 Comment[es]=<h3>Puentes</h3>Los puentes puede tener muros en la parte superior, inferior, izquierda o derecha.
 Comment[ja]=<h3>橋</h3>橋には上下左右の一部に壁がある場合があります。
@@ -220,6 +225,7 @@ width=172
 
 [11-sign@145,4|3]
 Comment=<h3>Everything</h3>Here's a hole that has it all. Have fun with Kolf!<br><center>-- Jason Katz-Brown</center>
+Comment[de]=<h3>Alles</h3>Hier ist ein Loch, das hat alles in sich. Viel Vergnügen mit Kolf!<br> <center>-- Jason Katz-Brown</center>
 Comment[el]=<h3>Όλα</h3>Αυτή είναι μια τρύπα που έχει τα πάντα. Καλή διασκέδαση με το Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[es]=<h3>Todo</h3>Aquí tenemos un hoyo que lo tiene todo. ¡Diviértase con Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[ja]=<h3>全部</h3>これはすべてのオブジェクトがあるホールです。Kolf を楽しんでください!<br/><center>-- Jason Katz-Brown</center>
@@ -297,6 +303,7 @@ par=2
 
 [2-sign@1,5|3]
 Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you choose <u>Hole->Show Info</u>.
+Comment[de]=<h3>Hügel</h3>Hügel sind kurvige Bodenstücke, die den Ball in die eine oder andere Richtung ablenken. Diese Richtung ist sichtbar, wenn man <u>Loch->Informationen anzeigen</u> auswählt.
 Comment[es]=<h3>Pendientes</h3>Las pendientes son áreas con una inclinación del suelo que empujan la bola en la dirección de la pendiente. Esta dirección se muestra cuando elige <u>Hoyo->Mostrar info</u>.
 Comment[ja]=<h3>斜面</h3>斜面では傾斜している方向にボールが動きます。「ホール」→「情報を表示」を有効にすると、傾斜の方向が表示されます。
 Comment[nl]=<h3>Hellingen</h3>Hellingen zijn aflopende gebieden die de bal in de richting waarin de helling afloopt duwen. Deze richting wordt getoond als u menuoptie <u>Hole ->Informatie tonen</u> selecteert.
@@ -315,6 +322,7 @@ width=392
 
 [2-sign@197,198|5]
 Comment=Hit the ball onto the slope and let it roll into cup.
+Comment[de]=Spielen Sie den Ball auf den Hügel und lassen Sie ihn ins Loch rollen.
 Comment[es]=Golpee la bola hacia la pendiente y déjela rodar hasta el vaso.
 Comment[ja]=斜面に向けてボールを打って、カップに入れてください。
 Comment[nl]=Sla de bal de helling op en laat deze vervolgens in de cup rollen.
@@ -353,6 +361,7 @@ par=3
 
 [3-sign@4,4|4]
 Comment=Try out these different types of slopes.
+Comment[de]=Probieren Sie diese verschiedenen Typen von Hügeln aus.
 Comment[es]=Pruebe estos tipos de pendientes diferentes.
 Comment[ja]=これらのさまざまなタイプの斜面で試してみてください。
 Comment[nl]=Probeer deze verschillende hellingen uit.
@@ -455,6 +464,7 @@ par=3
 
 [4-sign@6,3|3]
 Comment=The steepness of a slope is shown when you choose <u>Hole->Show Info</u>. Steepness goes from 8 (steepest) to 1 (shallowest).
+Comment[de]=Die Steigung eines Hügels bekommen Sie angezeigt, wenn Sie <u>Loch->Informationen anzeigen</u> auswählen. Steigungen gehen von 8 (sehr steil) bis 1 (sehr flach).
 Comment[es]=La inclinación de la pendiente se muestra cuando elige <u>Hoyo->Mostrar info</u>. La inclinación puede tomar un valor entre 8 (máximo) y 1 (mínimo).
 Comment[ja]=「ホール」→「情報を表示」を有効にすると、斜面の傾斜の強さが表示されます。傾斜の強さは 8 (急) から 1 (緩やか) まであります。
 Comment[nl]=De stijlheid van de helling wordt getoond als u menuoptie <u>Hole -> Informatie tonen</u> kiest. De stijlheid gaat van 8 (meest stijl) tot 1 (minst stijl).
@@ -501,6 +511,7 @@ par=2
 
 [5-sign@3,5|3]
 Comment=<h3>Walls</h3>Bounce the ball off of the red walls.
+Comment[de]=<h3>Wände</h3>Schlagen den Ball von den roten Wänden zurück.
 Comment[es]=<h3>Muros</h3>Rebota la bola fuera de las murallas rojas.
 Comment[ja]=<h3>壁</h3>赤い壁にボールを当ててバウンドさせてください。
 Comment[nl]=<h3>Muurtjes</h3>Laat de bal tegen de rode muurtjes kaatsen.
@@ -573,6 +584,7 @@ width=78
 
 [6-sign@3,152|37]
 Comment=<h3>Sand</h3>Sand is yellow, and slows your ball down.
+Comment[de]=<h3>Sand</h3>Sand ist gelb, und verlangsamt Ihren Ball.
 Comment[el]=<h3>Άμμος</h3>Η άμμος είναι κίτρινη, και επιβραδύνει την μπάλα.
 Comment[es]=<h3>Arena</h3>La arena es amarilla, y ralentiza su bola.
 Comment[ja]=<h3>砂地</h3>砂地 (黄色) に入るとボールの速度が落ちます。
@@ -592,6 +604,7 @@ width=138
 
 [6-sign@3,5|4]
 Comment=<h3>Puddles (Water)</h3>Hitting into a puddle (blue) adds a penalty stroke to your score, and your ball is placed outside the puddle.
+Comment[de]=<h3>Pfützen (Wasser)</h3>Wenn Sie in eine Pfütze hineinspielen (blau dargestellt), bekommen Sie einen zusätzlichen Strafpunkt, und Ihr Ball wird außerhalb der Pfütze auf dem Spielfeld platziert.
 Comment[es]=<h3>Lagos (agua)</h3>Si golpea la bola dentro del lago (azul) añade un golpe de penalización a su puntuación, y su bola se situará fuera del lago.
 Comment[ja]=<h3>池 (水)</h3>池 (青) に入ると、ペナルティとしてスコアに 1 ストローク追加され、池の近くにボールが置かれます。
 Comment[nl]=<h3>Poelen (water)</h3>Als u de bal in een poel (blauw) slaat wordt er een strafpunt aan uw score toegevoegd en wordt uw bal buiten de poel geplaatst.
@@ -626,6 +639,7 @@ par=2
 
 [7-sign@130,2|4]
 Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The windmill arm's speed may vary by hole.
+Comment[de]=<h3>Windmühlen</h3>Windmühlen (braune Gebäude mit sich bewegenden "Armen") haben braune Wände (oder Halbwände). Die Geschwindigkeit der "Arme" kann sich von Loch zu Loch ändern.
 Comment[es]=<h3>Molinos de viento</h3>Los molinos de viento (base marrón con brazos en movimiento) tienen muros marrones (o medios muros). La velocidad de los brazos del molino de viento varía en cada hoyo.
 Comment[ja]=<h3>風車</h3>風車 (動くアームの付いた茶色のオブジェクト) には、茶色の壁があります。アームが動く速度はホールによって異なります。
 Comment[nl]=<h3>Windmolens</h3>Windmolens hebben bruine muren. De snelheid van de wieken verschilt per hole.
@@ -672,6 +686,7 @@ par=2
 
 [8-sign@5,5|3]
 Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out at.
+Comment[de]=<h3>Schwarze Löcher</h3>Schwarze Löcher teleportieren den Ball zu ihrem Ausgang, und werfen den Ball mit einer Geschwindigkeit, die zu seiner ursprünglichen Geschwindigkeit direkt im Verhältnis steht, wieder auf das Spielfeld. Wählen Sie <u>Loch->Info anzeigen</u> um zu sehen, welches Schwarze Loch zu welchem Ausgang gehört, und in welcher Richtung der Ball herauskommt.
 Comment[el]=<h3>Μαύρες τρύπες</h3>Οι Μαύρες τρύπες μεταφέρουν την μπάλα στην έξοδό τους, με την ίδια ταχύτητα με την οποία μπήκε, Επιλέξτε <u>Τρύπα->Εμφάνιση πληροφοριών</u> για να δείτε ποια έξοδος αντιστοιχεί στην κάθε Μαύρη τρύπα και την κατεύθυνση που θα ακολουθήσει η μπάλα κατά την έξοδό της.
 Comment[es]=<h3>Agujeros negros</h3>Los agujeros negros transportan la bola a su salida y la expulsan a una velocidad directamente relacionada con la que tenía la bola. Elija <u>Hoyo->Mostrar info</u> para ver qué agujero negro va a qué salida y la dirección con la que saldrá la bola.
 Comment[ja]=<h3>ブラックホール</h3>ブラックホールに入ったボールは、入った速度に応じた速度で出口から出てきます。「ホール」→「情報を表示」を有効にすると、ブラックホールの入口と出口の関係と、ボールが出る方向が表示されます。
@@ -722,6 +737,7 @@ par=2
 
 [9-sign@5,6|3]
 Comment=<h3>Floaters</h3>Floaters are moving platforms that carry a ball that lands on it. Floaters' speeds vary.
+Comment[de]=<h3>Floß</h3>Flöße sind bewegliche Plattformen, die einen Ball weitertragen, wenn er auf ihnen landet. Es gibt Flöße mit unterschiedlichen Geschwindigkeiten.
 Comment[el]=<h3>Πλωτήρες</h3>Οι πλωτήρες είναι κινούμενες πλατφόρμες που μεταφέρουν την μπάλα που θα προσγειωθεί πάνω τους. Οι ταχύτητά τους ποικίλει.
 Comment[es]=<h3>Flotadores</h3>Los flotadores son plataformas móviles que transportan la bola que cae sobre ellos. La velocidad de los flotadores varía.
 Comment[ja]=<h3>フローター</h3>フローターはボールを運ぶ、動く台です。フローターが動く速度はホールによって異なります。
