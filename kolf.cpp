@@ -114,7 +114,7 @@ void Kolf::setupActions()
 	highScoreAction = KStandardGameAction::highscores(this, SLOT(showHighScores()), actionCollection());
 
 	// Hole
-	editingAction = new KToggleAction(KIcon("pencil"), i18n("&Edit"), this);
+	editingAction = new KToggleAction(KIcon("document-properties"), i18n("&Edit"), this);
 	actionCollection()->addAction("editing", editingAction);
 	connect(editingAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	editingAction->setShortcut(Qt::CTRL+Qt::Key_E);
@@ -161,7 +161,7 @@ void Kolf::setupActions()
 	connect(lastAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	lastAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_End); // why not KStandardShortcut::End (Ctrl+End)?
 	randAction = actionCollection()->addAction("randhole");
-	randAction->setIcon(KIcon("goto-page"));
+	randAction->setIcon(KIcon("go-jump"));
 	randAction->setText(i18n("&Random Hole"));
 	connect(randAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 
@@ -179,7 +179,7 @@ void Kolf::setupActions()
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
 	useAdvancedPuttingAction->setChecked(configGroup.readEntry("useAdvancedPutting", false));
 
-	showInfoAction = new KToggleAction(KIcon("document-properties"), i18n("Show &Info"), this);
+	showInfoAction = new KToggleAction(KIcon("help-about"), i18n("Show &Info"), this);
 	actionCollection()->addAction("showinfo", showInfoAction);
 	connect(showInfoAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	showInfoAction->setShortcut(Qt::CTRL+Qt::Key_I);
