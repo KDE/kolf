@@ -30,19 +30,19 @@ set(kolf_LIB_SRCS
    floater.cpp 
    slope.cpp )
 
-kde4_add_library(kolflib SHARED ${kolf_LIB_SRCS})
+kde4_add_library(kolfprivate SHARED ${kolf_LIB_SRCS})
 
-target_link_libraries(kolflib  ${KDE4_KIO_LIBS} ${KDE4_KDE3SUPPORT_LIBS} ${KDE4_PHONON_LIBS} kdegames)
+target_link_libraries(kolfprivate  ${KDE4_KIO_LIBS} ${KDE4_KDE3SUPPORT_LIBS} ${KDE4_PHONON_LIBS} kdegames)
 
-set_target_properties(kolflib PROPERTIES VERSION 1.2.0 SOVERSION 1 )
-install(TARGETS kolflib  DESTINATION ${LIB_INSTALL_DIR})
+set_target_properties(kolfprivate PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
+install(TARGETS kolfprivate  DESTINATION ${LIB_INSTALL_DIR})
 
 
 ########### next target ###############
 
 kde4_add_executable( kolf main.cpp )
 
-target_link_libraries( kolf kolflib )
+target_link_libraries( kolf kolfprivate )
 install(TARGETS kolf  DESTINATION ${BIN_INSTALL_DIR} )
 
 ########### install files ###############
