@@ -1,6 +1,7 @@
 [0-course@-50,-50]
 Name=Tutorial Course
 Name[de]=Übungsplatz
+Name[el]=Μάθημα εκμάθησης
 Name[eo]=Prilerna vetkuro
 Name[es]=Campo de tutorial
 Name[ja]=チュートリアルコース
@@ -28,6 +29,7 @@ par=2
 [1-sign@2,2|3]
 Comment=<h3>Welcome</h3> to the tutorial course for Kolf!
 Comment[de]=<h3>Willkommen</h3> beim Übungsplatz in Kolf!
+Comment[el]=<h3>Καλώς ήρθατε</h3> στο μάθημα εκμάθησης του Kolf!
 Comment[es]=¡<h3>Bienvenido</h3> al tutorial del campo Kolf!
 Comment[ja]=<h3>ようこそ</h3> Kolf チュートリアルコースへ!
 Comment[nl]=<h3>Welkom</h3> bij de oefenbaan voor Kolf!
@@ -67,6 +69,7 @@ width=319
 [1-sign@74,251|7]
 Comment=To aim the putter, press the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use the mouse.
 Comment[de]=Um den Putter auszurichten, verwendet man entweder die linke (entgegen dem Uhrzeigersinn) bzw. rechte (im Uhrzeigersinn)Pfeiltaste oder die Maus.
+Comment[el]=Για να στοχεύσετε, πιέστε το αριστερό (αριστερόστροφα) και το δεξί (δεξιόστροφα) πλήκτρο ή χρησιμοποιήστε το ποντίκι.
 Comment[es]=Para cambiar al putter, pulse las flechas izquierda (en sentido contrario a las agujas del reloj) y derecha (en el sentido de las agujas del reloj) o utilice el ratón.
 Comment[ja]=左矢印キーを押すとパターが左 (反時計回り) に回り、右矢印キーを押すと右 (時計回り) に回ります。マウスも使えます。
 Comment[nl]=Om de putter te richten, druk op de toets 'Pijl links' (linksom draaien) of 'Pijl rechts' (rechtsom draaien) of gebruik de muis.
@@ -305,6 +308,7 @@ par=2
 [2-sign@1,5|3]
 Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you choose <u>Hole->Show Info</u>.
 Comment[de]=<h3>Hügel</h3>Hügel sind kurvige Bodenstücke, die den Ball in die eine oder andere Richtung ablenken. Diese Richtung ist sichtbar, wenn man <u>Loch->Informationen anzeigen</u> auswählt.
+Comment[el]=<h3>Κλίσεις</h3>Κεκλιμένες περιοχές του εδάφους που ωθούν την μπάλα στην κατεύθυνση της κλίσης τους. Η κατεύθυνση εμφανίζεται όταν επιλέξετε <u>Τρύπα->Εμφάνιση πληροφοριών</u>.
 Comment[es]=<h3>Pendientes</h3>Las pendientes son áreas con una inclinación del suelo que empujan la bola en la dirección de la pendiente. Esta dirección se muestra cuando elige <u>Hoyo->Mostrar info</u>.
 Comment[ja]=<h3>斜面</h3>斜面では傾斜している方向にボールが動きます。「ホール」→「情報を表示」を有効にすると、傾斜の方向が表示されます。
 Comment[nl]=<h3>Hellingen</h3>Hellingen zijn aflopende gebieden die de bal in de richting waarin de helling afloopt duwen. Deze richting wordt getoond als u menuoptie <u>Hole ->Informatie tonen</u> selecteert.
@@ -324,6 +328,7 @@ width=392
 [2-sign@197,198|5]
 Comment=Hit the ball onto the slope and let it roll into cup.
 Comment[de]=Spielen Sie den Ball auf den Hügel und lassen Sie ihn ins Loch rollen.
+Comment[el]=Χτυπήστε την μπάλα στην κλίση και αφήστε την να κυλίσει στο κύπελλο.
 Comment[es]=Golpee la bola hacia la pendiente y déjela rodar hasta el vaso.
 Comment[ja]=斜面に向けてボールを打って、カップに入れてください。
 Comment[nl]=Sla de bal de helling op en laat deze vervolgens in de cup rollen.
@@ -363,6 +368,7 @@ par=3
 [3-sign@4,4|4]
 Comment=Try out these different types of slopes.
 Comment[de]=Probieren Sie diese verschiedenen Typen von Hügeln aus.
+Comment[el]=Δοκιμάστε διαφορετικούς τύπους κλίσεων.
 Comment[es]=Pruebe estos tipos de pendientes diferentes.
 Comment[ja]=これらのさまざまなタイプの斜面で試してみてください。
 Comment[nl]=Probeer deze verschillende hellingen uit.
@@ -466,6 +472,7 @@ par=3
 [4-sign@6,3|3]
 Comment=The steepness of a slope is shown when you choose <u>Hole->Show Info</u>. Steepness goes from 8 (steepest) to 1 (shallowest).
 Comment[de]=Die Steigung eines Hügels bekommen Sie angezeigt, wenn Sie <u>Loch->Informationen anzeigen</u> auswählen. Steigungen gehen von 8 (sehr steil) bis 1 (sehr flach).
+Comment[el]=Το πόσο απότομη είναι μια κλίση εμφανίζεται αν επιλέξετε <u>Τρύπα->Εμφάνιση πληροφοριών</u>. Η διαβάθμιση είναι από 8 (πιο απότομο) έως 1 (ομαλότερο).
 Comment[es]=La inclinación de la pendiente se muestra cuando elige <u>Hoyo->Mostrar info</u>. La inclinación puede tomar un valor entre 8 (máximo) y 1 (mínimo).
 Comment[ja]=「ホール」→「情報を表示」を有効にすると、斜面の傾斜の強さが表示されます。傾斜の強さは 8 (急) から 1 (緩やか) まであります。
 Comment[nl]=De stijlheid van de helling wordt getoond als u menuoptie <u>Hole -> Informatie tonen</u> kiest. De stijlheid gaat van 8 (meest stijl) tot 1 (minst stijl).
@@ -513,6 +520,7 @@ par=2
 [5-sign@3,5|3]
 Comment=<h3>Walls</h3>Bounce the ball off of the red walls.
 Comment[de]=<h3>Wände</h3>Schlagen den Ball von den roten Wänden zurück.
+Comment[el]=<h3>Τοίχοι</h3>Αναπηδήστε την μπάλα στους κόκκινους τοίχους.
 Comment[es]=<h3>Muros</h3>Rebota la bola fuera de las murallas rojas.
 Comment[ja]=<h3>壁</h3>赤い壁にボールを当ててバウンドさせてください。
 Comment[nl]=<h3>Muurtjes</h3>Laat de bal tegen de rode muurtjes kaatsen.
@@ -606,6 +614,7 @@ width=138
 [6-sign@3,5|4]
 Comment=<h3>Puddles (Water)</h3>Hitting into a puddle (blue) adds a penalty stroke to your score, and your ball is placed outside the puddle.
 Comment[de]=<h3>Pfützen (Wasser)</h3>Wenn Sie in eine Pfütze hineinspielen (blau dargestellt), bekommen Sie einen zusätzlichen Strafpunkt, und Ihr Ball wird außerhalb der Pfütze auf dem Spielfeld platziert.
+Comment[el]=<h3>Λίμνες (νερό)</h3>Χτυπώντας μέσα από μια λίμνη (μπλε) προσθέτει μια δυσκολία στο βαθμό χτυπήματος και η μπάλα τοποθετείται εκτός της λίμνης.
 Comment[es]=<h3>Lagos (agua)</h3>Si golpea la bola dentro del lago (azul) añade un golpe de penalización a su puntuación, y su bola se situará fuera del lago.
 Comment[ja]=<h3>池 (水)</h3>池 (青) に入ると、ペナルティとしてスコアに 1 ストローク追加され、池の近くにボールが置かれます。
 Comment[nl]=<h3>Poelen (water)</h3>Als u de bal in een poel (blauw) slaat wordt er een strafpunt aan uw score toegevoegd en wordt uw bal buiten de poel geplaatst.
@@ -641,6 +650,7 @@ par=2
 [7-sign@130,2|4]
 Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The windmill arm's speed may vary by hole.
 Comment[de]=<h3>Windmühlen</h3>Windmühlen (braune Gebäude mit sich bewegenden "Armen") haben braune Wände (oder Halbwände). Die Geschwindigkeit der "Arme" kann sich von Loch zu Loch ändern.
+Comment[el]=<h3>Ανεμόμυλοι</h3>Οι ανεμόμυλοι έχουν καφέ τοίχους (ή μισούς τοίχους). Η ταχύτητα του βραχίονα του ανεμόμυλου διαφοροποιείται από τρύπα σε τρύπα.
 Comment[es]=<h3>Molinos de viento</h3>Los molinos de viento (base marrón con brazos en movimiento) tienen muros marrones (o medios muros). La velocidad de los brazos del molino de viento varía en cada hoyo.
 Comment[ja]=<h3>風車</h3>風車 (動くアームの付いた茶色のオブジェクト) には、茶色の壁があります。アームが動く速度はホールによって異なります。
 Comment[nl]=<h3>Windmolens</h3>Windmolens hebben bruine muren. De snelheid van de wieken verschilt per hole.

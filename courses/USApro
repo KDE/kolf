@@ -48,6 +48,7 @@ width=840
 
 [1-sign@4,371|14]
 Comment=Daytona Beach, FL
+Comment[el]=παραλία Ντεϊτόνα, FL
 Comment[es]=Playa de Daytona, FL
 Comment[ga]=Daytona Beach, Florida
 Comment[ja]=デイトナビーチ, FL
@@ -239,6 +240,7 @@ width=36
 
 [10-sign@-1,360|42]
 Comment=Washington DC (Pentagon)
+Comment[el]=Ουάσιγκτον DC (πεντάγωνο)
 Comment[es]=Washington DC (Pentágono)
 Comment[ja]=ワシントン DC (ペンタゴン)
 Comment[pt]=Washington DC (Pentágono)
@@ -393,6 +395,7 @@ width=84
 
 [11-sign@-2,370|24]
 Comment=Palm Springs, CO
+Comment[el]=Παλμ Σπρινγκς, CO
 Comment[ga]=Palm Springs, Colorado
 Comment[ja]=パームスプリング, CO
 Comment[sv]=Palm Springs, Colorado
@@ -551,6 +554,7 @@ width=38
 
 [2-sign@26,345|31]
 Comment=Las Vegas, NV
+Comment[el]=Λας Βέγκας, NV
 Comment[ga]=Las Vegas, Nevada
 Comment[ja]=ラスベガス, NV
 Comment[sv]=Las Vegas, Nevada
@@ -706,6 +710,7 @@ par=2
 
 [3-sign@-4,358|9]
 Comment=San Francisco, CA
+Comment[el]=Σαν Φρανσίσκο, CA
 Comment[ga]=San Francisco, California
 Comment[ja]=サンフランシスコ, CA
 Comment[pt]=São Francisco, CA
@@ -795,6 +800,7 @@ par=3
 
 [4-sign@201,171|8]
 Comment=Grand Canyon
+Comment[el]=Γκραν Κάνιον
 Comment[eo]=Granda Kanjono
 Comment[es]=Gran Cañón
 Comment[ja]=グランドキャニオン
@@ -909,6 +915,7 @@ width=48
 [5-sign@219,344|10]
 Comment=Lake Tahoe, CA/NV
 Comment[de]=Tahoe See, CA/NV
+Comment[el]=Λίμνη Ταχόη, CA/NV
 Comment[es]=Lago Tahoe, CA/NV
 Comment[ga]=Lake Tahoe, California/Nevada
 Comment[ja]=レイク・タホ, CA/NV
@@ -1057,6 +1064,7 @@ width=368
 
 [6-sign@3,101|17]
 Comment=Florida Keys, FL
+Comment[el]=Φλώριδα Κιζ, FL
 Comment[es]=Cayos de Florida, FL
 Comment[ga]=Florida Keys, Florida
 Comment[ja]=フロリダキーズ, FL
@@ -1207,6 +1215,7 @@ width=178
 
 [7-sign@11,116|7]
 Comment=Golden Gate
+Comment[el]=Γκόλντεν Γκέιτ
 Comment[ja]=ゴールデンゲート
 Comment[x-test]=xxGolden Gatexx
 Comment[zh_CN]=金门
@@ -1220,6 +1229,7 @@ width=40
 
 [7-sign@135,364|25]
 Comment=San Francisco, CA
+Comment[el]=Σαν Φρανσίσκο, CA
 Comment[ga]=San Francisco, California
 Comment[ja]=サンフランシスコ, CA
 Comment[pt]=São Francisco, CA
@@ -1238,6 +1248,7 @@ width=159
 [7-sign@98,209|24]
 Comment=Bay Bridge
 Comment[de]=Bay-Brücke
+Comment[el]=Μπέι Μπριτζ
 Comment[ja]=ベイブリッジ
 Comment[x-test]=xxBay Bridgexx
 Comment[zh_CN]=海湾大桥
@@ -1600,6 +1611,7 @@ width=20
 [9-sign@291,368|28]
 Comment=Niagara Falls, NY
 Comment[de]=Niagara-Fälle, NY
+Comment[el]=Καταρράκτες Νιαγάρα, NY
 Comment[es]=Cataratas del Niágara, NY
 Comment[ga]=Niagara Falls, Nua-Eabhrac
 Comment[ja]=ナイアガラの滝, NY
