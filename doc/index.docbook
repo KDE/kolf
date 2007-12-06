@@ -443,7 +443,7 @@ which hole you wish to go to.</para>
 
 <varlistentry>
 <term><menuchoice><shortcut><keycombo action="simul">
-&Alt;<keycap>Right Arrow</keycap></keycombo></shortcut>
+&Alt;<keycap>Right</keycap></keycombo></shortcut>
 <guimenu>Go</guimenu>
 <guimenuitem>Next Hole</guimenuitem>
 </menuchoice></term>
@@ -454,7 +454,7 @@ which hole you wish to go to.</para>
 
 <varlistentry>
 <term><menuchoice><shortcut><keycombo action="simul">
-&Alt;<keycap>Left Arrow</keycap></keycombo></shortcut>
+&Alt;<keycap>Left</keycap></keycombo></shortcut>
 <guimenu>Go</guimenu>
 <guimenuitem>Previous Hole</guimenuitem>
 </menuchoice></term>
@@ -621,7 +621,7 @@ section</link>.</para>
 </variablelist>
 </sect1>
 <sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
-<title>The <guimenuitem>Help</guimenuitem> Menu</title>
+<title>The <guimenu>Help</guimenu> Menu</title>
 <para>&kappname; has a default &kde; <guimenu>Help</guimenu> menu as described
 below, with one addition:</para>
 
@@ -684,7 +684,7 @@ below, with one addition:</para>
 </qandaentry>
 <qandaentry>
  <question><para>Where are the high scores?</para></question>
- <answer><para>To view the high score board use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></shortcut><guimenu>Game</guimenu><guimenuitem>Show Highscores</guimenuitem></menuchoice> on the menubar.</para></answer>
+ <answer><para>To view the high score board use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></shortcut><guimenu>Game</guimenu><guimenuitem>Show High Scores...</guimenuitem></menuchoice> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I want to change the game configuration. Where do I go? </para></question>
