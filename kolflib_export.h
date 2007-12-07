@@ -24,7 +24,7 @@
 #include <kdemacros.h>
 
 #ifndef KOLFLIB_EXPORT
-# if defined(MAKE_KOLFLIB_LIB)
+# if defined(MAKE_KOLFPRIVATE_LIB)
    /* We are building this library */ 
 #  define KOLFLIB_EXPORT KDE_EXPORT
 # else
