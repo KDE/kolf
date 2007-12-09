@@ -2459,7 +2459,7 @@ double StrokeCircle::value()
 	return dvalue;
 }
 
-bool StrokeCircle::collidesWithItem(const QGraphicsItem*) const { return false; }
+bool StrokeCircle::collidesWithItem(const QGraphicsItem*, Qt::ItemSelectionMode) const { return false; }
 
 QRectF StrokeCircle::boundingRect() const { return QRectF(x(), y(), iwidth, iheight); }
 

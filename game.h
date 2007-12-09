@@ -904,7 +904,7 @@ public:
 	double height() const;
 	virtual void paint (QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	virtual QRectF boundingRect() const;
-	virtual bool collidesWithItem(const QGraphicsItem*) const;
+	virtual bool collidesWithItem(const QGraphicsItem*, Qt::ItemSelectionMode mode = Qt::IntersectsItemShape) const;
 
 private:
 	double dvalue, dmax;
