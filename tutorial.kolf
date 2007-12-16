@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=Tutorial Course
+Name[ca]=Camp d'aprenentage
 Name[de]=Übungsplatz
 Name[el]=Μάθημα εκμάθησης
 Name[eo]=Prilerna vetkuro
@@ -32,6 +33,7 @@ par=2
 
 [1-sign@2,2|3]
 Comment=<h3>Welcome</h3> to the tutorial course for Kolf!
+Comment[ca]=<h3>Benvingut</h3> al camp d'aprenentatge de Kolf!
 Comment[de]=<h3>Willkommen</h3> beim Übungsplatz in Kolf!
 Comment[el]=<h3>Καλώς ήρθατε</h3> στο μάθημα εκμάθησης του Kolf!
 Comment[es]=¡<h3>Bienvenido</h3> al tutorial del campo Kolf!

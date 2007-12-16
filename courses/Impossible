@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=Impossible Course
+Name[ca]=Camp impossible
 Name[de]=Unmöglicher Platz
 Name[el]=Αδύνατο μάθημα
 Name[es]=Campo imposible
@@ -1520,6 +1521,7 @@ width=50
 
 [17-sign@23,152|20]
 Comment=Luck
+Comment[ca]=Sort
 Comment[de]=Glück
 Comment[el]=Τύχη
 Comment[es]=Suerte
@@ -3300,6 +3302,7 @@ width=66
 
 [9-sign@146,329|23]
 Comment=Chaos
+Comment[ca]=Caos
 Comment[el]=Χάος
 Comment[eo]=Ĥaoso
 Comment[es]=Caos
