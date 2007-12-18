@@ -42,11 +42,11 @@ install(TARGETS kolfprivate  DESTINATION ${LIB_INSTALL_DIR})
 
 set(kolf_SRCS main.cpp)
 set(kolf_icons
-	pics/hi16-app-kolf.png
-	pics/hi32-app-kolf.png
-	pics/hi48-app-kolf.png
-	pics/hi64-app-kolf.png
-	pics/hi128-app-kolf.png
+	${CMAKE_CURRENT_SOURCE_DIR}/pics/hi16-app-kolf.png
+	${CMAKE_CURRENT_SOURCE_DIR}/pics/hi32-app-kolf.png
+	${CMAKE_CURRENT_SOURCE_DIR}/pics/hi48-app-kolf.png
+	${CMAKE_CURRENT_SOURCE_DIR}/pics/hi64-app-kolf.png
+	${CMAKE_CURRENT_SOURCE_DIR}/pics/hi128-app-kolf.png
 )
 kde4_add_win32_app_icon(kolf_SRCS ${kolf_icons})
 kde4_add_executable( kolf ${kolf_SRCS} )
