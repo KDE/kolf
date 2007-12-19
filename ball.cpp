@@ -19,7 +19,6 @@
 #include "ball.h"
 
 #include <QGraphicsView>
-#include <QColor>
 #include <QPen>
 #include <QApplication>
 

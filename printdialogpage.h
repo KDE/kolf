@@ -20,7 +20,6 @@
 #define PRINTDIALOGPAGE_H
 
 #include <QWidget>
-#include <QMap>
 
 class QCheckBox;
 

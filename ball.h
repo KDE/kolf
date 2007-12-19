@@ -2,12 +2,9 @@
 #define KOLF_BALL_H
 
 #include <QColor>
-#include <QMap>
 #include <QPoint>
 #include <QPointF>
-#include <QRect>
 #include <QPixmap>
-#include <QKeyEvent>
 #include <QGraphicsScene>
 
 #include <math.h>

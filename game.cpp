@@ -43,11 +43,12 @@
 #include <QTimer>
 #include <QStyleOptionGraphicsItem>
 #include <QApplication>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QtGui/QPrinter>
 
 #include <QMouseEvent>
 #include <QKeyEvent>
-#include <QLayout>
 
 #include <math.h>
 #include <stdlib.h>

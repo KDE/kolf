@@ -1,10 +1,8 @@
 #include "poolball.h"
 
 #include <qbrush.h>
-#include <QColor>
 #include <q3canvas.h>
 #include <QLabel>
-#include <QLayout>
 #include <qpainter.h>
 //Added by qt3to4:
 #include <QVBoxLayout>
