@@ -2,6 +2,7 @@
 X-DocPath=kolf/index.html
 Name=Kolf
 Name[be]=Гольф
+Name[bn]=কল্‌ফ
 Name[ne]=कोल्फ
 Name[pa]=ਕੇ-ਗੋਲਫ਼
 Name[ru]=Гольф
@@ -17,6 +18,7 @@ MimeType=application/x-kourse;application/x-kolf;
 
 GenericName=Miniature Golf
 GenericName[be]=Маленькі гольф
+GenericName[bn]=ছোটখাটো গলফ
 GenericName[ca]=Golf en miniatura
 GenericName[cs]=Miniaturní golf
 GenericName[cy]=Golff Bach
@@ -54,6 +56,7 @@ GenericName[pt_BR]=Mini-Golf
 GenericName[ro]=Golf în miniatură
 GenericName[ru]=Гольф в миниатюре
 GenericName[se]=Minigolfa
+GenericName[sk]=Miniatúrny golf
 GenericName[sl]=Mini golf
 GenericName[sr]=Минијатурни голф
 GenericName[sr@latin]=Minijaturni golf
