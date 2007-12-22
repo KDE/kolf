@@ -1,6 +1,7 @@
 [0-course@-50,-50]
 Name=USA Pro
 Name[ja]=USA プロ
+Name[nds]=USA-Pro
 Name[pt]=Pro EUA
 Name[pt_BR]=Pro EUA
 Name[x-test]=xxUSA Proxx
@@ -1270,6 +1271,7 @@ Comment[de]=Bay-Brücke
 Comment[el]=Μπέι Μπριτζ
 Comment[ja]=ベイブリッジ
 Comment[lv]=Līča tilts
+Comment[nds]=Buchtbrüch
 Comment[x-test]=xxBay Bridgexx
 Comment[zh_CN]=海湾大桥
 Comment[zh_TW]=海灣大橋
@@ -1636,8 +1638,10 @@ Comment[de]=Niagara-Fälle, NY
 Comment[el]=Καταρράκτες Νιαγάρα, NY
 Comment[es]=Cataratas del Niágara, NY
 Comment[ga]=Niagara Falls, Nua-Eabhrac
+Comment[it]=Cascate del Niagara, NY
 Comment[ja]=ナイアガラの滝, NY
 Comment[lv]=Niagāras ūdenskritums, NY
+Comment[nds]=Niagara-Fäll, NY
 Comment[pt]=Cataratas do Niagara, NY
 Comment[pt_BR]=Cataratas do Niagara, NY
 Comment[sl]=Niagara Falls, New York
