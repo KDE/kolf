@@ -51,6 +51,7 @@ QPixmap KolfSvgRenderer::renderWithoutCache(const QString &name, int width, int 
 	baseImg.fill(0);
 	QPainter p(&baseImg);
 	renderer->render(&p, name, QRectF(0, 0, width, height));
+	p.end();
 	QPixmap pix = QPixmap::fromImage(baseImg);
 
 	return pix;
@@ -64,6 +65,7 @@ QPixmap KolfSvgRenderer::renderWithCache(const QString &name, int width, int hei
 		baseImg.fill(0);
 		QPainter p(&baseImg);
 		renderer->render(&p, name, QRectF(0, 0, width, height));
+		p.end();
 		QPixmap pix = QPixmap::fromImage(baseImg);
 		QPixmapCache::insert(name, pix);
 	}
