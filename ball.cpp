@@ -296,6 +296,8 @@ namespace Lines
 
 void Ball::collisionDetect(double oldx, double oldy)
 {
+	QGraphicsEllipseItem* halo = NULL;
+
 	if (!isVisible() || state == Holed || !m_doDetect)
 		return;
 
@@ -409,9 +411,6 @@ void Ball::collisionDetect(double oldx, double oldy)
 			//Create the halo. This is an ellipse centered around the ball, and bigger than it. This allows us to detect walls which we could be about to collide into, and react intelligently to them, even though we are not colliding with them quite yet
 			const double haloSizeFactor = 2;
 
-			static QGraphicsEllipseItem* halo = NULL;
-			if( halo )
-				delete halo;
 			halo = new QGraphicsEllipseItem( rect().x() * haloSizeFactor, rect().y() * haloSizeFactor, rect().width() * haloSizeFactor, rect().height() * haloSizeFactor, this, scene() );
 			halo->hide();
 
@@ -567,6 +566,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 			setState(Stopped);
 		}
 	}
+	delete halo;
 }
 
 //this rather ugly bit of code takes list of walls that the ball is very close to. It then looks at their angles relative to the ball and works out which two are closest to the ball in each direction (clockwise and anti-clockwise)
