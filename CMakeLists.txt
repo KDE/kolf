@@ -41,14 +41,8 @@ install(TARGETS kolfprivate  DESTINATION ${LIB_INSTALL_DIR})
 ########### next target ###############
 
 set(kolf_SRCS main.cpp)
-set(kolf_icons
-	${CMAKE_CURRENT_SOURCE_DIR}/pics/hi16-app-kolf.png
-	${CMAKE_CURRENT_SOURCE_DIR}/pics/hi32-app-kolf.png
-	${CMAKE_CURRENT_SOURCE_DIR}/pics/hi48-app-kolf.png
-	${CMAKE_CURRENT_SOURCE_DIR}/pics/hi64-app-kolf.png
-	${CMAKE_CURRENT_SOURCE_DIR}/pics/hi128-app-kolf.png
-)
-kde4_add_win32_app_icon(kolf_SRCS ${kolf_icons})
+
+kde4_add_app_icon(kolf_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/hi*-app-kolf.png")
 kde4_add_executable( kolf ${kolf_SRCS} )
 
 target_link_libraries( kolf kolfprivate )
@@ -59,4 +53,5 @@ install(TARGETS kolf  DESTINATION ${BIN_INSTALL_DIR} )
 install( FILES kolf.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
 install( FILES kolfui.rc intro tutorial.kolf tutorial.kolfgame  DESTINATION  ${DATA_INSTALL_DIR}/kolf )
 #install( FILES ball.h game.h statedb.h config.h canvasitem.h object.h rtti.h vector.h floater.h slope.h  DESTINATION  ${INCLUDE_INSTALL_DIR}/kolf )
+
 
