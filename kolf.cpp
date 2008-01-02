@@ -202,12 +202,14 @@ void Kolf::setupActions()
 	connect(soundAction, SIGNAL(toggled(bool)), this, SLOT(soundChanged(bool)));
 	soundAction->setChecked(configGroup.readEntry("sound", true));
 
-	QAction *action = actionCollection()->addAction("reloadplugins");
-	action->setText(i18n("&Reload Plugins"));
-	connect(action, SIGNAL(triggered(bool) ), SLOT(initPlugins()));
-	action = actionCollection()->addAction("showplugins");
-	action->setText(i18n("Show &Plugins"));
-	connect(action, SIGNAL(triggered(bool) ), SLOT(showPlugins()));
+	//There are no external plugins in 4.0 and no ported instructions on how to write them
+	//Plugins will still be loaded at startup IF one is made, but reduce interface options for now
+	//QAction *action = actionCollection()->addAction("reloadplugins");
+	//action->setText(i18n("&Reload Plugins"));
+	//connect(action, SIGNAL(triggered(bool) ), SLOT(initPlugins()));
+	//action = actionCollection()->addAction("showplugins");
+	//action->setText(i18n("Show &Plugins"));
+	//connect(action, SIGNAL(triggered(bool) ), SLOT(showPlugins()));
 
 	aboutAction = actionCollection()->addAction("aboutcourse");
 	aboutAction->setText(i18n("&About Course"));

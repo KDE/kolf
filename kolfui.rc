@@ -43,8 +43,6 @@
 			<Separator append="save_merge"/>
 			<Action name="enableAll" append="save_merge"/>
 			<Separator append="save_merge"/>
-			<Action name="reloadplugins" append="save_merge"/>
-			<Action name="showplugins" append="save_merge"/>
 		</Menu>
 
 		<Menu name="help">
