@@ -54,15 +54,10 @@
 		<Action name="game_new" />
 		<Action name="game_save" />
 		<Separator />
-		<Action name="game_end" />
-		<Separator />
 		<Action name="undoshot" />
-		<Action name="editing" />
 		<Separator />
 		<Action name="prevhole" />
 		<Action name="nexthole" />
-		<Separator />
-		<Action name="switchhole" />
 	</ToolBar>
 
 	<StatusBar />

@@ -374,6 +374,7 @@ PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent
 	editor->setText(startName);
 	layout->addStretch();
 	layout->addWidget(colorButton = new KColorButton(startColor, this));
+	colorButton->hide();
 	KPushButton *remove = new KPushButton(i18n("Remove"), this);
 	layout->addWidget(remove);
 	connect(remove, SIGNAL(clicked()), this, SLOT(removeMe()));
