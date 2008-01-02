@@ -59,15 +59,6 @@ changeEvery=50
 height=326
 width=102
 
-[1-sign@296,8|32]
-Comment=<h1 style="color:white;background-color:black;">K<br>O<br>L<br>F</h1>
-botWallVisible=true
-height=123
-leftWallVisible=true
-rightWallVisible=true
-topWallVisible=true
-width=22
-
 [1-slope@132,237|28]
 grade=4
 gradient=Vertical

@@ -1113,6 +1113,9 @@ private:
 	CanvasItem *movingCanvasItem;
 	QGraphicsItem *selectedItem;
 	QGraphicsRectItem *highlighter;
+	
+	//For intro banner
+	QGraphicsPixmapItem *banner;
 
 #ifdef SOUND
     Phonon::MediaObject *m_player;

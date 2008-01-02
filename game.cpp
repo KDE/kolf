@@ -2579,6 +2579,7 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, const QString &filename
 	m_ignoreEvents = false;
 	highestHole = 0;
 	recalcHighestHole = false;
+	banner = 0;
 	
 	renderer = new KolfSvgRenderer( KStandardDirs::locate("appdata", "pics/default_theme.svgz") );
 
@@ -2619,8 +2620,9 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, const QString &filename
 	if( filename.contains( "intro" ) )
 	{
 		QPixmap introPic;
-		introPic = renderer->renderSvg("intro_foreground", 5, 5, 0);
-		course->setForegroundBrush(QBrush(introPic));
+		introPic = renderer->renderSvg("intro_foreground", 400, 132, 0);
+		banner = new QGraphicsPixmapItem(introPic, 0, course);
+		banner->setPos(0.0,32.0);
 	}
 
 	setScene(course);
@@ -3196,8 +3198,11 @@ void KolfGame::resizeAllItems(double resizeFactor, bool resizeBorderWalls)
 	if( filename.contains( "intro" ) )
 	{
 		QPixmap introPic;
-		introPic = renderer->renderSvg("intro_foreground", 5, 5, 0);
-		course->setForegroundBrush(QBrush(introPic));
+		introPic = renderer->renderSvg("intro_foreground", 400.0*resizeFactor, 132.0*resizeFactor, 0);
+		//course->setForegroundBrush(QBrush(introPic));
+		delete banner;
+		banner = new QGraphicsPixmapItem(introPic, 0, course);
+		banner->setPos(0.0*resizeFactor,32.0*resizeFactor);
 	}
 
 	//stroke circle resize
