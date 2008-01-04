@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=USA Pro
+Name[ga]=Proifisiúnta S.A.M.
 Name[ja]=USA プロ
 Name[nds]=USA-Pro
 Name[pt]=Pro EUA
@@ -246,6 +247,7 @@ width=36
 Comment=Washington DC (Pentagon)
 Comment[el]=Ουάσιγκτον DC (πεντάγωνο)
 Comment[es]=Washington DC (Pentágono)
+Comment[fr]=Washington DC (Pentagone)
 Comment[it]=Washington DC (Pentagono)
 Comment[ja]=ワシントン DC (ペンタゴン)
 Comment[pt]=Washington DC (Pentágono)
