@@ -21,6 +21,8 @@
 #include <kdebug.h>
 #include <klocale.h>
 
+#include <QHeaderView>
+
 ScoreBoard::ScoreBoard(QWidget *parent)
 	: QTableWidget(1, 1, parent) 
 {
@@ -28,8 +30,13 @@ ScoreBoard::ScoreBoard(QWidget *parent)
 	setHorizontalHeaderItem(columnCount() -1, new QTableWidgetItem(i18n("Total")));
 
 	setFocusPolicy(Qt::NoFocus);
-	setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred));
 	setEditTriggers(QAbstractItemView::NoEditTriggers);
+	
+	resizeColumnToContents(columnCount() - 1);
+	
+	verticalHeader()->setResizeMode(QHeaderView::Fixed);
+	
+	doUpdateHeight();
 }
 
 void ScoreBoard::newHole(int par)
@@ -56,6 +63,8 @@ void ScoreBoard::newPlayer(const QString &name)
 	//kDebug(12007) << "name of new player is" << name;
 	insertRow(rowCount() - 1);
 	setVerticalHeaderItem(rowCount() -2, new QTableWidgetItem(name));
+
+	doUpdateHeight();
 }
 
 void ScoreBoard::setScore(int id, int hole, int score)
@@ -91,6 +100,16 @@ int ScoreBoard::total(int id, QString &name)
 
 	//kDebug(12007) << "tot is" << tot;
 	return tot;
+}
+
+void ScoreBoard::doUpdateHeight()
+{
+	int height = 0;
+	
+	height += horizontalHeader()->height();
+	for (int i = 0; i < qMin(3, rowCount()); ++i) height += verticalHeader()->sectionSize(i);
+	height += size().height() - horizontalHeader()->height() - viewport()->height();
+	setFixedHeight(height);
 }
 
 #include "scoreboard.moc"
