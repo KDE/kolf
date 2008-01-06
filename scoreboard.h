@@ -38,7 +38,7 @@ public slots:
 	void parChanged(int hole, int par);
 
 private:
-	QTableWidget *table;
+	void doUpdateHeight();
 };
 
 #endif
