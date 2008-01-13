@@ -1,6 +1,6 @@
 [0-course@-50,-50]
 Name=Tutorial Course
-Name[ca]=Camp d'aprenentage
+Name[ca]=Camp d'aprenentatge
 Name[de]=Übungsplatz
 Name[el]=Μάθημα εκμάθησης
 Name[eo]=Prilerna vetkuro
@@ -68,6 +68,7 @@ width=319
 
 [1-sign@73,81|4]
 Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
+Comment[ca]=Per colpejar la pilota, premeu i aguanteu la fletxa avall o el botó esquerre del ratolí. La força del tir es determinarà segons el temps que aguanteu premut el botó del ratolí o la tecla.
 Comment[de]=Halten Sie die linke Maustaste oder die Pfeiltaste abwärts gedrückt, um den Ball zu schlagen. Die Dauer des Tastendrucks entscheidet über die Wucht.
 Comment[el]=Για να χτυπήσετε την μπάλα, κρατήστε πατημένο το Κάτω Βέλος ή το αριστερό πλήκτρο του ποντικιού. Η δύναμη του χτυπήματος είναι ανάλογη από το χρόνο που θα το κρατήσετε πατημένο.
 Comment[es]=Para golpear la bola, pulse y mantenga pulsada la fecha abajo o el botón izquierdo del ratón. El golpe será tanto más fuerte cuanto más tiempo mantenga pulsada la tecla o el botón del ratón.
@@ -95,6 +96,7 @@ width=319
 
 [1-sign@74,251|7]
 Comment=To aim the putter, press the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use the mouse.
+Comment[ca]=Per apuntar el pal premeu les tecles esquerra (gira en sentit anti-horari) o dreta (gira en sentit horari) o useu el ratolí.
 Comment[de]=Um den Putter auszurichten, verwendet man entweder die linke (entgegen dem Uhrzeigersinn) bzw. rechte (im Uhrzeigersinn)Pfeiltaste oder die Maus.
 Comment[el]=Για να στοχεύσετε, πιέστε το αριστερό (αριστερόστροφα) και το δεξί (δεξιόστροφα) πλήκτρο ή χρησιμοποιήστε το ποντίκι.
 Comment[es]=Para cambiar al putter, pulse las flechas izquierda (en sentido contrario a las agujas del reloj) y derecha (en el sentido de las agujas del reloj) o utilice el ratón.
@@ -176,6 +178,7 @@ width=112
 
 [10-sign@7,9|4]
 Comment=<h3>Bridges</h3>Bridges can have walls on the top, bottom, left, or right.
+Comment[ca]=<h3>Ponts</h3>Els ponts poden tenir parets a dalt, baix, esquerra o dreta.
 Comment[de]=<h3>Brücken</h3>Brücken können oben, links, rechts oder unten Wände haben.
 Comment[el]=<h3>Γέφυρες</h3>Οι Γέφυρες μπορεί να έχουν τοίχους πάνω, κάτω αριστερά ή δεξιά.
 Comment[es]=<h3>Puentes</h3>Los puentes puede tener muros en la parte superior, inferior, izquierda o derecha.
@@ -271,6 +274,7 @@ width=172
 
 [11-sign@145,4|3]
 Comment=<h3>Everything</h3>Here's a hole that has it all. Have fun with Kolf!<br><center>-- Jason Katz-Brown</center>
+Comment[ca]=<h3>Tot</h3>Aquí hi ha un forat que ho té tot. Divertiu-vos amb el Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[de]=<h3>Alles</h3>Hier ist ein Loch, das hat alles in sich. Viel Vergnügen mit Kolf!<br> <center>-- Jason Katz-Brown</center>
 Comment[el]=<h3>Όλα</h3>Αυτή είναι μια τρύπα που έχει τα πάντα. Καλή διασκέδαση με το Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[es]=<h3>Todo</h3>Aquí tenemos un hoyo que lo tiene todo. ¡Diviértase con Kolf!<br><center>-- Jason Katz-Brown</center>
@@ -357,6 +361,7 @@ par=2
 
 [2-sign@1,5|3]
 Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you choose <u>Hole->Show Info</u>.
+Comment[ca]=<h3>Desnivells</h3>Els desnivells són àrees inclinades del camp que empenyen la pilota en la direcció del desnivell. Aquesta direcció es mostra quan seleccioneu <u>Forat->Mostra informació</u>.
 Comment[de]=<h3>Hügel</h3>Hügel sind kurvige Bodenstücke, die den Ball in die eine oder andere Richtung ablenken. Diese Richtung ist sichtbar, wenn man <u>Loch->Informationen anzeigen</u> auswählt.
 Comment[el]=<h3>Κλίσεις</h3>Κεκλιμένες περιοχές του εδάφους που ωθούν την μπάλα στην κατεύθυνση της κλίσης τους. Η κατεύθυνση εμφανίζεται όταν επιλέξετε <u>Τρύπα->Εμφάνιση πληροφοριών</u>.
 Comment[es]=<h3>Pendientes</h3>Las pendientes son áreas con una inclinación del suelo que empujan la bola en la dirección de la pendiente. Esta dirección se muestra cuando elige <u>Hoyo->Mostrar info</u>.
@@ -385,6 +390,7 @@ width=392
 
 [2-sign@197,198|5]
 Comment=Hit the ball onto the slope and let it roll into cup.
+Comment[ca]=Colpegeu la pilota cap al desnivell i deixeu-la que rodi fins al forat.
 Comment[de]=Spielen Sie den Ball auf den Hügel und lassen Sie ihn ins Loch rollen.
 Comment[el]=Χτυπήστε την μπάλα στην κλίση και αφήστε την να κυλίσει στο κύπελλο.
 Comment[es]=Golpee la bola hacia la pendiente y déjela rodar hasta el vaso.
@@ -433,6 +439,7 @@ par=3
 
 [3-sign@4,4|4]
 Comment=Try out these different types of slopes.
+Comment[ca]=Proveu aquest tipus diferents de desnivells.
 Comment[de]=Probieren Sie diese verschiedenen Typen von Hügeln aus.
 Comment[el]=Δοκιμάστε διαφορετικούς τύπους κλίσεων.
 Comment[es]=Pruebe estos tipos de pendientes diferentes.

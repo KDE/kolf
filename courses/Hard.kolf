@@ -1084,6 +1084,7 @@ par=3
 
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
+Comment[ca]=Deixeu que els flotadors us <strong>empenyin</strong>!
 Comment[de]=Lassen Sie sich von den Flößen <strong>weiterschubsen</strong>!
 Comment[el]=Αφήστε τους ανελκυστήρες να σας <strong>σπρώξουν</strong>!
 Comment[es]=¡Deje que los flotadores <strong>empujen</strong>!
