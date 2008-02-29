@@ -2,6 +2,7 @@
 Name=Hard Course
 Name[ca]=Camp difícil
 Name[cs]=Těžký kurz
+Name[da]=Svær bane
 Name[de]=Schwieriger Platz
 Name[el]=Δύσκολο μάθημα
 Name[es]=Campo difícil
@@ -1089,6 +1090,7 @@ par=3
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
 Comment[ca]=Deixeu que els flotadors us <strong>empenyin</strong>!
+Comment[da]=Lad flyderne <strong>skubbe</strong> til dig!
 Comment[de]=Lassen Sie sich von den Flößen <strong>weiterschubsen</strong>!
 Comment[el]=Αφήστε τους ανελκυστήρες να σας <strong>σπρώξουν</strong>!
 Comment[es]=¡Deje que los flotadores <strong>empujen</strong>!

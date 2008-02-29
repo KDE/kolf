@@ -2,6 +2,7 @@
 Name=Impossible Course
 Name[ca]=Camp impossible
 Name[cs]=Nesplnitelný kurz
+Name[da]=Umulig bane
 Name[de]=Unmöglicher Platz
 Name[el]=Αδύνατο μάθημα
 Name[es]=Campo imposible
@@ -807,6 +808,7 @@ width=66
 [13-sign@142,193|1]
 Comment=Reprieve
 Comment[ca]=Indult
+Comment[da]=Giv udsættelse
 Comment[de]=Gnadenfrist
 Comment[el]=Αναστολή
 Comment[es]=Aplazamiento
@@ -1540,6 +1542,7 @@ width=50
 [17-sign@23,152|20]
 Comment=Luck
 Comment[ca]=Sort
+Comment[da]=Held
 Comment[de]=Glück
 Comment[el]=Τύχη
 Comment[es]=Suerte
@@ -3330,6 +3333,7 @@ width=66
 [9-sign@146,329|23]
 Comment=Chaos
 Comment[ca]=Caos
+Comment[da]=Kaos
 Comment[el]=Χάος
 Comment[eo]=Ĥaoso
 Comment[es]=Caos
