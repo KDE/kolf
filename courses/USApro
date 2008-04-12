@@ -1,6 +1,7 @@
 [0-course@-50,-50]
 Name=USA Pro
 Name[ga]=Proifisiúnta S.A.M.
+Name[hu]=USA pro
 Name[ja]=USA プロ
 Name[ko]=미국 프로
 Name[nds]=USA-Pro
@@ -1643,6 +1644,7 @@ Comment[de]=Niagara-Fälle, NY
 Comment[el]=Καταρράκτες Νιαγάρα, NY
 Comment[es]=Cataratas del Niágara, NY
 Comment[ga]=Niagara Falls, Nua-Eabhrac
+Comment[hu]=Niagara-vízesés, NY
 Comment[it]=Cascate del Niagara, NY
 Comment[ja]=ナイアガラの滝, NY
 Comment[ko]=나이아가라 폭포, 뉴욕
