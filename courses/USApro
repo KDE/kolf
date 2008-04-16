@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=USA Pro
+Name[fa]=حرفه‌ای آمریکا
 Name[ga]=Proifisiúnta S.A.M.
 Name[ja]=USA プロ
 Name[ko]=미국 프로
@@ -249,6 +250,7 @@ width=36
 Comment=Washington DC (Pentagon)
 Comment[el]=Ουάσιγκτον DC (πεντάγωνο)
 Comment[es]=Washington DC (Pentágono)
+Comment[fa]=واشنگتن (پنتاگون)
 Comment[fr]=Washington DC (Pentagone)
 Comment[it]=Washington DC (Pentagono)
 Comment[ja]=ワシントン DC (ペンタゴン)
@@ -571,6 +573,7 @@ width=38
 [2-sign@26,345|31]
 Comment=Las Vegas, NV
 Comment[el]=Λας Βέγκας, NV
+Comment[fa]=لاس وگاس
 Comment[ga]=Las Vegas, Nevada
 Comment[ja]=ラスベガス, NV
 Comment[km]=ឡាស វេហ្កាស, NV
@@ -731,6 +734,7 @@ par=2
 [3-sign@-4,358|9]
 Comment=San Francisco, CA
 Comment[el]=Σαν Φρανσίσκο, CA
+Comment[fa]=سان فرانسیسکو
 Comment[ga]=San Francisco, California
 Comment[ja]=サンフランシスコ, CA
 Comment[km]=ស៊ែន​ហ្វ្រែន​ស៊ីស្កូ, CA
@@ -1265,6 +1269,7 @@ width=40
 [7-sign@135,364|25]
 Comment=San Francisco, CA
 Comment[el]=Σαν Φρανσίσκο, CA
+Comment[fa]=سان فرانسیسکو
 Comment[ga]=San Francisco, California
 Comment[ja]=サンフランシスコ, CA
 Comment[km]=ស៊ែន​ហ្វ្រែន​ស៊ីស្កូ, CA
@@ -1426,6 +1431,7 @@ width=98
 [8-sign@137,370|19]
 Comment=Washington DC
 Comment[el]=Ουάσιγκτον DC
+Comment[fa]=واشنگتن
 Comment[ja]=ワシントン DC
 Comment[km]=វ៉ាស៊ីនតោន ឌីស៊ី
 Comment[ko]=워싱턴 DC
