@@ -39,7 +39,7 @@ static const char version[] = "1.9";
 
 int main(int argc, char **argv)
 {
-	KAboutData aboutData( "kolf", 0, ki18n("Kolf"), version, ki18n(description), KAboutData::License_GPL, ki18n("(c) 2002-2005, Jason Katz-Brown"), KLocalizedString(), "http://www.katzbrown.com/kolf/");
+	KAboutData aboutData( "kolf", 0, ki18n("Kolf"), version, ki18n(description), KAboutData::License_GPL, ki18n("(c) 2002-2005, Jason Katz-Brown"), KLocalizedString(), "http://games.kde.org/kolf");
 
 	aboutData.addAuthor(ki18n("Jason Katz-Brown"), ki18n("Main author"), "jasonkb@mit.edu");
 	aboutData.addAuthor(ki18n("Niklas Knutsson"), ki18n("Advanced putting mode"));
