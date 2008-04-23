@@ -12,7 +12,7 @@
  
 <book lang="&language;"> <!-- do not change this! -->
 <bookinfo>
-	<title>The &kappname; Handbook</title> <!-- This is the title of the docbook. Live as is unless change is necessary.-->
+	<title>The ""&kappname;"" Handbook</title> <!-- This is the title of the docbook. Live as is unless change is necessary.-->
 <authorgroup>
 <author>
 <firstname>Jason</firstname>
@@ -41,7 +41,7 @@
  
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
-	<para>This documentation describes the game of &kappname; version &kappversion;</para>
+	<para>This documentation describes the game of "&kappname;" version &kappversion;</para>
 </abstract>
  
 <!--List of relevan keywords-->
@@ -62,15 +62,15 @@
 	<note><title>Gametype:</title><para>Arcade, Sport</para></note>
 	<note><title>Number of possible players:</title><para>Ten</para></note> 
 <!--Short game description starts here. 3-4 sentences (paragraphs)-->
-	<para>&kappname; is a miniature golf game with 2d top-down view. Courses are dynamic, and up to 10 people can play at once in competition.</para>
-<para>&kappname; comes with a tutorial course. <link linkend="howto">Playing this course</link> is the easiest way to get started.</para>
+	<para>"&kappname;" is a miniature golf game with 2d top-down view. Courses are dynamic, and up to 10 people can play at once in competition.</para>
+<para>"&kappname;" comes with a tutorial course. <link linkend="howto">Playing this course</link> is the easiest way to get started.</para>
 </chapter>
  
 <chapter id="howto"><title>How to Play</title> <!-- do not change this! -->
 <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
 	<note><title>Objective:</title><para>Put the ball into the hole with the least possible hits.</para></note><!--Describe the objective of the game.-->
 <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
-	<para>&kappname;'s game-play is simple. It is the easiest to learn how to play hands-on, and thus a tutorial course is included to guide you through the basics. This chapter will guide you through this tutorial. To start the tutorial, choose <menuchoice><guimenu>Help</guimenu><guimenuitem>Tutorial</guimenuitem></menuchoice>.</para>
+	<para>"&kappname;"'s game-play is simple. It is the easiest to learn how to play hands-on, and thus a tutorial course is included to guide you through the basics. This chapter will guide you through this tutorial. To start the tutorial, choose <menuchoice><guimenu>Help</guimenu><guimenuitem>Tutorial</guimenuitem></menuchoice>.</para>
 
 <sect1 id="hitting"> 
 <title>Hitting the Ball</title>
@@ -98,7 +98,7 @@ feel for speed.</para>
 slope and let it roll into the cup to move onto the next hole.</para>
 
 <sect2> <title>Directions</title>
-<para>On the next hole, experiment with the other kinds of slopes. There are elliptical, vertical, horizontal, and diagonal slopes in &kappname;. Hit the ball into the hole.</para>
+<para>On the next hole, experiment with the other kinds of slopes. There are elliptical, vertical, horizontal, and diagonal slopes in "&kappname;". Hit the ball into the hole.</para>
 </sect2>
 <sect2> <title>Steepness</title>
 <para>The next tutorial hole has two slopes of differing steepness. If you choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>Show Info</guimenuitem></menuchoice>, the steepness of the slope will appear as a number from 1-8, where 8 is steepest and 1 is shallowest. Hit the ball into the hole and continue to the next hole.</para>
@@ -138,7 +138,7 @@ slope and let it roll into the cup to move onto the next hole.</para>
  
 <chapter id="rules_and_tips"><title>Game Rules, Strategies and Tips</title> <!-- do not change this! -->
 	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
-<para>Here's in-depth description of &kappname;'s basic features.</para>
+<para>Here's in-depth description of "&kappname;"'s basic features.</para>
 
 <sect1 id="starting"> 
 <title>Starting a Game</title>
@@ -148,8 +148,8 @@ slope and let it roll into the cup to move onto the next hole.</para>
 This opens a dialog where you can configure your new game.</para>
 
 <tip>
-<para>More third-party &kappname; courses are available at the &kappname; website. See <ulink 
-url="http://web.mit.edu/jasonkb/www/kolf/">the &kappname; user-uploaded courses page</ulink>.</para>
+<para>More third-party "&kappname;" courses are available at the "&kappname;" website. See <ulink 
+url="http://web.mit.edu/jasonkb/www/kolf/">the "&kappname;" user-uploaded courses page</ulink>.</para>
 </tip>
 
 <sect2> 
@@ -170,7 +170,7 @@ button next to the player's name.</para>
 </sect2>
 
 <sect2> <title><guilabel>Course</guilabel> Page</title>
-<para>To choose the course that you want to play, click its entry in the list box on the left of this page. &kappname; comes with many built-in courses that you can play.</para>
+<para>To choose the course that you want to play, click its entry in the list box on the left of this page. "&kappname;" comes with many built-in courses that you can play.</para>
 <para>To add a course that you have downloaded or made, click on the <guibutton>Add...</guibutton> button on the bottom of this page, and choose the course file in the file dialog.</para>
 </sect2>
 <sect2> <title><guilabel>Options</guilabel> Page</title>
@@ -179,7 +179,7 @@ button next to the player's name.</para>
 </sect1>
 
 <sect1 id="saved-games"> <title>Saved Games</title>
-<para>&kappname; can keep a history of your rounds that are still in progress and save them to disk so you can load them and play them later. Saved games include the current hole, names and colors of all players in game, and the scores of the players.</para>
+<para>"&kappname;" can keep a history of your rounds that are still in progress and save them to disk so you can load them and play them later. Saved games include the current hole, names and colors of all players in game, and the scores of the players.</para>
 <sect2> <title>Saving Your Game</title>
 <para>To save your game while still playing, choose <menuchoice><guimenu>Game</guimenu><guimenuitem>Save Game</guimenuitem>
 </menuchoice>. If you have not saved a game on this game before, you will be prompted for the file to save to.</para>
@@ -201,7 +201,7 @@ button next to the player's name.</para>
 </sect1>
 
 <sect1 id="putting-options"> <title>Putting Options</title>
-<para>&kappname; has a few ways to putt. The basic putting method is <link linkend="hitting">described above</link>.</para>
+<para>"&kappname;" has a few ways to putt. The basic putting method is <link linkend="hitting">described above</link>.</para>
 <para>The mouse is enabled by default. This means that whenever the mouse is moved, the putter aligns to the line between the mouse and ball.</para>
 <para>If you prefer to only use the keyboard and arrow keys, you can disable mouse putting by unchecking <menuchoice><guimenu>Settings</guimenu><guimenuitem>Enable Mouse for Moving Putter</guimenuitem></menuchoice>.</para>
 
@@ -307,7 +307,7 @@ game with a filename of your choice.</action></para>
 <guimenuitem>End Game</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>End the current game, without closing</action> &kappname;</para>
+<para><action>End the current game, without closing</action> "&kappname;"</para>
 </listitem>
 </varlistentry>
 
@@ -338,7 +338,7 @@ game with a filename of your choice.</action></para>
 </shortcut>
 <guimenu>Game</guimenu><guimenuitem>Quit</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Quit</action> &kappname;</para></listitem>
+<listitem><para><action>Quit</action> "&kappname;"</para></listitem>
 </varlistentry>
 </variablelist>
 
@@ -614,7 +614,7 @@ section</link>.</para>
 <guimenuitem>Configure Toolbars...</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>Open a dialog where you can configure the toolbars</action> for &kappname;.</para>
+<para><action>Open a dialog where you can configure the toolbars</action> for "&kappname;".</para>
 </listitem>
 </varlistentry>
 
@@ -622,7 +622,7 @@ section</link>.</para>
 </sect1>
 <sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
 <title>The <guimenu>Help</guimenu> Menu</title>
-<para>&kappname; has a default &kde; <guimenu>Help</guimenu> menu as described
+<para>"&kappname;" has a default &kde; <guimenu>Help</guimenu> menu as described
 below, with one addition:</para>
 
 <variablelist>
@@ -631,7 +631,7 @@ below, with one addition:</para>
 <guimenuitem>Tutorial</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para>Start the tutorial course of &kappname;.</para>
+<para>Start the tutorial course of "&kappname;".</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -660,11 +660,11 @@ below, with one addition:</para>
 </qandaentry>
 <qandaentry>
  <question><para>How do I pause the game? </para></question>
- <answer><para>&kappname; does not need to be paused.</para></answer>
+ <answer><para>"&kappname;" does not need to be paused.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I want to change the way this game looks. Can I? </para></question>
- <answer><para>No. At this moment &kappname; features only one theme.</para></answer>
+ <answer><para>No. At this moment "&kappname;" features only one theme.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I have made a mistake. Can I undo? </para></question>
@@ -676,7 +676,7 @@ below, with one addition:</para>
 </qandaentry>
 <qandaentry>
  <question><para>I cannot figure out what to do here! Are there hints? </para></question>
- <answer><para>No. &kappname; does not have a hint feature.</para></answer>
+ <answer><para>No. "&kappname;" does not have a hint feature.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I have to quit the game now, but I am not finished yet. Can I save my progress?</para></question>
@@ -700,7 +700,7 @@ below, with one addition:</para>
  
 <chapter id="configuration"><title>Course Editor</title> <!-- do not change this! -->
 <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
-<para>&kappname; comes with a versatile editor for its course file format. Courses can have any number of holes, and there is no limiting the creativity of the course designer.</para>
+<para>"&kappname;" comes with a versatile editor for its course file format. Courses can have any number of holes, and there is no limiting the creativity of the course designer.</para>
 
 <sect1 id="creating"> <title>Creating a New Course</title>
 <para>To create a new course, choose <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice>. Go to the <guilabel>Course</guilabel> page of the dialog, and choose the <guilabel>Create New</guilabel> course. Make sure that, under the <guilabel>Options</guilabel> page of the dialog, <guilabel>Strict mode</guilabel> is unchecked.</para>
@@ -719,7 +719,7 @@ below, with one addition:</para>
 </sect1>
 
 <sect1 id="editing-basics"> <title>Editing Basics</title>
-<para>The basic building block of &kappname; courses is the <quote>object</quote>. Holes are made up of a bunch of objects. Objects can be moved to any location, and the different kinds of objects each have different properties you can set.</para>
+<para>The basic building block of "&kappname;" courses is the <quote>object</quote>. Holes are made up of a bunch of objects. Objects can be moved to any location, and the different kinds of objects each have different properties you can set.</para>
 <para>To start editing a hole, toggle the <menuchoice><guimenu>Hole</guimenu><guimenuitem>Edit</guimenuitem></menuchoice> menu item, or press the pencil icon on the toolbar. To leave editing mode, uncheck this menu item (or the toolbar icon).</para>
 
 <sect2> <title>Adding Objects</title>
@@ -730,8 +730,8 @@ below, with one addition:</para>
 <tip>
 <para>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
 </tip>
-<para>Some &kappname; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
-<para>Third-party &kappname; plugins are available at the &kappname; website. See <ulink url="http://web.mit.edu/jasonkb/www/kolf/">the &kappname; plugins download page</ulink>.</para>
+<para>Some "&kappname;" objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
+<para>Third-party "&kappname;" plugins are available at the "&kappname;" website. See <ulink url="http://web.mit.edu/jasonkb/www/kolf/">the "&kappname;" plugins download page</ulink>.</para>
 </sect2>
 
 <sect2> <title>Moving and Resizing Objects</title>
@@ -744,7 +744,7 @@ below, with one addition:</para>
 </sect2>
 
 <sect2> <title>Objects' Settings</title>
-<para>Objects' properties can be changed in the area at the lower-right corner of the &kappname; window. To edit an object, move your mouse cursor over it until the cursor changes to the hand cursor. Then click. Various controls for that object will appear in the lower-right corner of the &kappname; window.</para>
+<para>Objects' properties can be changed in the area at the lower-right corner of the "&kappname;" window. To edit an object, move your mouse cursor over it until the cursor changes to the hand cursor. Then click. Various controls for that object will appear in the lower-right corner of the "&kappname;" window.</para>
 <sect3> <title>General Hole Settings</title>
 <para>To edit general hole settings, click an area of the hole that is not covered by an object. When this is possible, the cursor will be the normal pointer cursor.</para>
 
@@ -799,7 +799,7 @@ below, with one addition:</para>
 <listitem>
 <para>Whether or not this can be moved by other objects, like floaters.</para>
 <caution>
-<para>If a floater overlaps with this object at any point on this path, and the slope is large and thus won't move the floater, you <emphasis>must</emphasis> make the slope <guilabel>Unmovable</guilabel>, or &kappname; will suffer poor performance!</para>
+<para>If a floater overlaps with this object at any point on this path, and the slope is large and thus won't move the floater, you <emphasis>must</emphasis> make the slope <guilabel>Unmovable</guilabel>, or "&kappname;" will suffer poor performance!</para>
 </caution>
 </listitem>
 </varlistentry>
@@ -871,9 +871,9 @@ below, with one addition:</para>
 <chapter id="credits"><title>Credits and License</title> <!-- do not change this! -->
 <!--This chapter is for credits and licenses.-->
  
-<para>&kappname;</para>
+<para>"&kappname;"</para>
 
-<para>&kappname; copyright 2001, 2002 &Jason.Katz-Brown;</para>
+<para>"&kappname;" copyright 2001, 2002 &Jason.Katz-Brown;</para>
 
 <itemizedlist>
 <title>Developers</title>
@@ -895,12 +895,12 @@ below, with one addition:</para>
 </itemizedlist>
 
 <para>Documentation copyright 2002, &Jason.Katz-Brown;</para>
+
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
- 
- 
-<!-- !!!do not change ANYTHING after this line!!!! -->
 &underFDL;
 &underGPL;
+
+<!-- !!!do not change ANYTHING after this line!!!! -->
  
 </chapter>
   
