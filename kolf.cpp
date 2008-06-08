@@ -781,6 +781,7 @@ void Kolf::print()
 		pr.newPage();
 		game->print(pr, prPage.printTitle());
 	}
+	delete printDialog;
 }
 
 void Kolf::updateModified(bool mod)
