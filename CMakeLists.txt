@@ -52,6 +52,6 @@ install(TARGETS kolf  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 install( FILES kolf.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
 install( FILES kolfui.rc intro tutorial.kolf tutorial.kolfgame  DESTINATION  ${DATA_INSTALL_DIR}/kolf )
-#install( FILES ball.h game.h statedb.h config.h canvasitem.h object.h rtti.h vector.h floater.h slope.h  DESTINATION  ${INCLUDE_INSTALL_DIR}/kolf )
+#install( FILES ball.h game.h statedb.h config.h canvasitem.h object.h rtti.h vector.h floater.h slope.h  DESTINATION  ${INCLUDE_INSTALL_DIR}/kolf COMPONENT Devel )
 
 
