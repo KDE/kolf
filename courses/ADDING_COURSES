@@ -2,7 +2,7 @@ Hi!
 
 To add a course to the default distribution, first email me at jason@katzbrown.com.
 
-If I say 'sure!', cvs add it here (with or without file extension, preferably without), add it to the Makefile.am, and add it to kolf/courses.list.
+If I say 'sure!', svn add it here (with or without file extension, preferably without), add it to the CMakeLists.txt, and add it to kolf/courses.list.
 
 Thanks!
 Jason
