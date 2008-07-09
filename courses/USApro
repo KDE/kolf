@@ -52,6 +52,7 @@ width=840
 
 [1-sign@4,371|14]
 Comment=Daytona Beach, FL
+Comment[ar]=دايتوبيتش ، فلوريدا
 Comment[el]=παραλία Ντεϊτόνα, FL
 Comment[es]=Playa de Daytona, FL
 Comment[ga]=Daytona Beach, Florida
@@ -249,6 +250,7 @@ width=36
 
 [10-sign@-1,360|42]
 Comment=Washington DC (Pentagon)
+Comment[ar]=واشنطن العاصمة (البنتاغون)
 Comment[el]=Ουάσιγκτον DC (πεντάγωνο)
 Comment[es]=Washington DC (Pentágono)
 Comment[fr]=Washington DC (Pentagone)
@@ -411,6 +413,7 @@ width=84
 
 [11-sign@-2,370|24]
 Comment=Palm Springs, CO
+Comment[ar]=النخيل الينابيع ، CO
 Comment[el]=Παλμ Σπρινγκς, CO
 Comment[ga]=Palm Springs, Colorado
 Comment[ja]=パームスプリング, CO
@@ -574,6 +577,7 @@ width=38
 
 [2-sign@26,345|31]
 Comment=Las Vegas, NV
+Comment[ar]=لاس فيغاس ، نيفادا
 Comment[el]=Λας Βέγκας, NV
 Comment[ga]=Las Vegas, Nevada
 Comment[ja]=ラスベガス, NV
@@ -734,6 +738,7 @@ par=2
 
 [3-sign@-4,358|9]
 Comment=San Francisco, CA
+Comment[ar]=سان فرانسيسكو ، كاليفورنيا
 Comment[el]=Σαν Φρανσίσκο, CA
 Comment[ga]=San Francisco, California
 Comment[ja]=サンフランシスコ, CA
@@ -950,6 +955,7 @@ width=48
 
 [5-sign@219,344|10]
 Comment=Lake Tahoe, CA/NV
+Comment[ar]=بحيره تاهو ، كاليفورنيا / نيفادا
 Comment[de]=Tahoe See, CA/NV
 Comment[el]=Λίμνη Ταχόη, CA/NV
 Comment[es]=Lago Tahoe, CA/NV
@@ -1106,6 +1112,7 @@ width=368
 
 [6-sign@3,101|17]
 Comment=Florida Keys, FL
+Comment[ar]=مفاتيح فلوريدا ، فلوريدا
 Comment[el]=Φλώριδα Κιζ, FL
 Comment[es]=Cayos de Florida, FL
 Comment[ga]=Florida Keys, Florida
@@ -1271,6 +1278,7 @@ width=40
 
 [7-sign@135,364|25]
 Comment=San Francisco, CA
+Comment[ar]=سان فرانسيسكو ، كاليفورنيا
 Comment[el]=Σαν Φρανσίσκο, CA
 Comment[ga]=San Francisco, California
 Comment[ja]=サンフランシスコ, CA
@@ -1432,6 +1440,7 @@ width=98
 
 [8-sign@137,370|19]
 Comment=Washington DC
+Comment[ar]=واشنطن العاصمة
 Comment[el]=Ουάσιγκτον DC
 Comment[ja]=ワシントン DC
 Comment[km]=វ៉ាស៊ីនតោន ឌីស៊ី
@@ -1654,6 +1663,7 @@ width=20
 
 [9-sign@291,368|28]
 Comment=Niagara Falls, NY
+Comment[ar]=شلالات نياغارا ، نيويورك
 Comment[de]=Niagara-Fälle, NY
 Comment[el]=Καταρράκτες Νιαγάρα, NY
 Comment[es]=Cataratas del Niágara, NY

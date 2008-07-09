@@ -45,6 +45,7 @@ par=2
 
 [1-sign@2,2|3]
 Comment=<h3>Welcome</h3> to the tutorial course for Kolf!
+Comment[ar]=<h3>مرحبا</h3>الى البرنامج التعليمي لkolf!
 Comment[ca]=<h3>Benvingut</h3> al camp d'aprenentatge de Kolf!
 Comment[da]=<h3>Velkommen</h3> til Kolfs øvelsesbane!
 Comment[de]=<h3>Willkommen</h3> beim Übungsplatz in Kolf!
@@ -80,6 +81,7 @@ width=319
 
 [1-sign@73,81|4]
 Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
+Comment[ar]=لتصل الى الكرة ، انقر السهم لأسفل أو زر الماوس الايسر. الى متى انت ابق ضاغطا على زر الماوس او القوة الرئيسية التي تحدد من اطلق النار.
 Comment[ca]=Per colpejar la pilota, premeu i aguanteu la fletxa avall o el botó esquerre del ratolí. La força del tir es determinarà segons el temps que aguanteu premut el botó del ratolí o la tecla.
 Comment[da]=For at slå til bolden trykkes og holdes på venstre museknap eller piletast. Hvor længe du holder museknappen eller tasten nede afgør slagets styrke.
 Comment[de]=Halten Sie die linke Maustaste oder die Pfeiltaste abwärts gedrückt, um den Ball zu schlagen. Die Dauer des Tastendrucks entscheidet über die Wucht.
@@ -115,6 +117,7 @@ width=319
 
 [1-sign@74,251|7]
 Comment=To aim the putter, press the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use the mouse.
+Comment[ar]=تهدف إلى مضرب الجولف ، زر الماوس الايسر (تدوير بعكس عقرب الساعة) وألحق(تدوير في إتجاه عقارب الساعة) مفاتيح الاسهم او استخدام الماوس.
 Comment[ca]=Per apuntar el pal premeu les tecles esquerra (gira en sentit anti-horari) o dreta (gira en sentit horari) o useu el ratolí.
 Comment[da]=For at sigte med putteren trykkes venstre (rotér mod uret) og højre (rotér med uret) piletast. Musen kan også bruges.
 Comment[de]=Um den Putter auszurichten, verwendet man entweder die linke (entgegen dem Uhrzeigersinn) bzw. rechte (im Uhrzeigersinn)Pfeiltaste oder die Maus.
@@ -204,6 +207,7 @@ width=112
 
 [10-sign@7,9|4]
 Comment=<h3>Bridges</h3>Bridges can have walls on the top, bottom, left, or right.
+Comment[ar]=<h3>جسور</h3>الجسور والجدران يمكن ان يكون على اعلى ، اسفل ، واليسار ، أو الحق.
 Comment[ca]=<h3>Ponts</h3>Els ponts poden tenir parets a dalt, baix, esquerra o dreta.
 Comment[da]=<h3>Broer</h3>Broer kan have vægge på toppen, bunden, til venstre eller til højre.
 Comment[de]=<h3>Brücken</h3>Brücken können oben, links, rechts oder unten Wände haben.
@@ -306,6 +310,7 @@ width=172
 
 [11-sign@145,4|3]
 Comment=<h3>Everything</h3>Here's a hole that has it all. Have fun with Kolf!<br><center>-- Jason Katz-Brown</center>
+Comment[ar]=<h3>كل شيء</h3>فيما يلى مجموعة من ثقب التي كلها. استمتع مع kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[ca]=<h3>Tot</h3>Aquí hi ha un forat que ho té tot. Divertiu-vos amb el Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[da]=<h3>Alt</h3>Her er et hul som har det hele. Hav det sjovt med Kolf! <br><center>-- Jason Katz-Brown</center>
 Comment[de]=<h3>Alles</h3>Hier ist ein Loch, das hat alles in sich. Viel Vergnügen mit Kolf!<br> <center>-- Jason Katz-Brown</center>
@@ -399,6 +404,7 @@ par=2
 
 [2-sign@1,5|3]
 Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you choose <u>Hole->Show Info</u>.
+Comment[ar]=<h3>المنحدرات</h3>المنحدرات slanted مجالات هي ارض الواقع ان دفع الكرة في اتجاه انها المنحدر. ويبين هذا الاتجاه عندما تختار<u>Hole->تبين المعلومات</u>.
 Comment[ca]=<h3>Desnivells</h3>Els desnivells són àrees inclinades del camp que empenyen la pilota en la direcció del desnivell. Aquesta direcció es mostra quan seleccioneu <u>Forat->Mostra informació</u>.
 Comment[da]=<h3>Skråninger</h3>Skråninger er jordområder med hældning som skubber bolden i den retning som de hælder. Denne retning er vist når du vælger <u>Hul->Vis info</u>.
 Comment[de]=<h3>Hügel</h3>Hügel sind kurvige Bodenstücke, die den Ball in die eine oder andere Richtung ablenken. Diese Richtung ist sichtbar, wenn man <u>Loch->Informationen anzeigen</u> auswählt.
@@ -434,6 +440,7 @@ width=392
 
 [2-sign@197,198|5]
 Comment=Hit the ball onto the slope and let it roll into cup.
+Comment[ar]=تصل الكرة على المنحدر ووليكن في   لفة كأس.
 Comment[ca]=Colpegeu la pilota cap al desnivell i deixeu-la que rodi fins al forat.
 Comment[da]=Slå bolden op på skråningen og lad den rullen ned i cuppen.
 Comment[de]=Spielen Sie den Ball auf den Hügel und lassen Sie ihn ins Loch rollen.
@@ -489,6 +496,7 @@ par=3
 
 [3-sign@4,4|4]
 Comment=Try out these different types of slopes.
+Comment[ar]=جرب هذه الانواع المختلفة من المنحدرات.
 Comment[ca]=Proveu aquest tipus diferents de desnivells.
 Comment[da]=Prøv disse forskellige typer af skråninger.
 Comment[de]=Probieren Sie diese verschiedenen Typen von Hügeln aus.
@@ -608,6 +616,7 @@ par=3
 
 [4-sign@6,3|3]
 Comment=The steepness of a slope is shown when you choose <u>Hole->Show Info</u>. Steepness goes from 8 (steepest) to 1 (shallowest).
+Comment[ar]=الانحدار من المنحدر ويرد عندما تختار <u>هول -> عرض المعلومات</u>. غني عن الانحدار في الفترة من 8 (اشد) الى 1 (اكثر ضحاله).
 Comment[ca]=La verticalitat d'un desnivell es veu quan trieu <u>Forat->Mostra informació</u>. La verticalitat va des de 8 (més vertical) fins a 1 (més pla).
 Comment[da]=En skrånings stejlhed vises når du vælger <u>Hul->Vis info</u>. Stejlhed går fra 8 (mest stejl) til 1 (mindst stejl).
 Comment[de]=Die Steigung eines Hügels bekommen Sie angezeigt, wenn Sie <u>Loch->Informationen anzeigen</u> auswählen. Steigungen gehen von 8 (sehr steil) bis 1 (sehr flach).
@@ -671,6 +680,7 @@ par=2
 
 [5-sign@3,5|3]
 Comment=<h3>Walls</h3>Bounce the ball off of the red walls.
+Comment[ar]=<h3>الحوائط</h3>تنطط الكرة من الاحمر من الجدران..
 Comment[ca]=<h3>Parets</h3>Feu rebotar la pilota a les parets vermelles.
 Comment[da]=<h3>Vægge</h3>lad bolden prelle af på de røde vægge.
 Comment[de]=<h3>Wände</h3>Schlagen den Ball von den roten Wänden zurück.
@@ -760,6 +770,7 @@ width=78
 
 [6-sign@3,152|37]
 Comment=<h3>Sand</h3>Sand is yellow, and slows your ball down.
+Comment[ar]=<h3>الرمل</h3>رمل أصفر ، ويبطئ الكرة الخاصة بك الى اسفل.
 Comment[ca]=<h3>Sorra</h3>La sorra és groga, i atura la pilota.
 Comment[da]=<h3>Grus</h3>Grus er gult, og sænker hastigheden på din bold.
 Comment[de]=<h3>Sand</h3>Sand ist gelb, und verlangsamt Ihren Ball.
@@ -795,6 +806,7 @@ width=138
 
 [6-sign@3,5|4]
 Comment=<h3>Puddles (Water)</h3>Hitting into a puddle (blue) adds a penalty stroke to your score, and your ball is placed outside the puddle.
+Comment[ar]=<h3>البرك (المياه)</h3>لتصل الى بركة (اللون الأزرق) ويضيف إلى حسابك في العقوبه والسكته الدماغيه والنتيجة ، وكلمتك والكرة خارج بركة.
 Comment[ca]=<h3>Bassals (aigua)</h3>Si tireu a una bassa (blau) s'afegeix un punt de falta a la puntuació, i la pilota es col·loca fora del bassal.
 Comment[da]=<h3>Pytter (vand)</h3>At ramme ind i en pyt (blå) giver et strafslag til din score og din bold placeres udenfor pytten.
 Comment[de]=<h3>Pfützen (Wasser)</h3>Wenn Sie in eine Pfütze hineinspielen (blau dargestellt), bekommen Sie einen zusätzlichen Strafpunkt, und Ihr Ball wird außerhalb der Pfütze auf dem Spielfeld platziert.
@@ -846,6 +858,7 @@ par=2
 
 [7-sign@130,2|4]
 Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The windmill arm's speed may vary by hole.
+Comment[ar]=<h3>طواحين</h3>طواحين (براون مع قاعدة تتحرك الذراع (براون الجدران(او نصف الجدران). فان طاحونه الذراع قد تختلف سرعة من قبل فتحه.
 Comment[ca]=<h3>Molinets</h3>Els molinets (una base marró amb un braç mòbil) tenen parets marrons (o mitges parets). La velocitat del braç del molinet pot variar en cada forat.
 Comment[da]=<h3>Vindmøller</h3>Vindmøller (brunt fundament med bevægelige vinger) har brune vægge (eller halve vægge). Vindmøllens vingehastighed kan variere efter hullerne.
 Comment[de]=<h3>Windmühlen</h3>Windmühlen (braune Gebäude mit sich bewegenden „Armen“) haben braune Wände (oder Halbwände). Die Geschwindigkeit der „Arme“ kann sich von Loch zu Loch ändern.
@@ -909,6 +922,7 @@ par=2
 
 [8-sign@5,5|3]
 Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out at.
+Comment[ar]=<h3>الثقوب السوداء</h3>الثقوب السوداء نقل الكرة الى الخروج ، وانه طرد في سرعة مباشرة الى العلاقات سرعة الكرة كانت متجهه الخاص بك. يختار<u>Hole->Show Info</u> انظر الى الثقب الاسود الذي يذهب الى الخروج التي واتجاه الكرة .
 Comment[ca]=<h3>Forats negres</h3>Els forats negres transporten la pilota a la seva sortida, i l'expulsen amb una velocitat directament proporcional a la velocitat que anava la pilota. Seleccioneu <u>Forat->Mostra informació</u> per a veure la sortida que correspon a un forat negre i la direcció de sortida de la pilota.
 Comment[da]=<h3>Sorte huller</h3>Sorte huller transporterer bolden til deres udgang og skyder bolden ud med en hastighed som er direkte relateret til den hastighed din bold havde. Vælg <u>Hul->Vis info</u> for at se hvilket sort hul der fører til hvilken udgang og retningen som bolden vil komme ud i.
 Comment[de]=<h3>Schwarze Löcher</h3>Schwarze Löcher teleportieren den Ball zu ihrem Ausgang, und werfen den Ball mit einer Geschwindigkeit, die zu seiner ursprünglichen Geschwindigkeit direkt im Verhältnis steht, wieder auf das Spielfeld. Wählen Sie <u>Loch->Info anzeigen</u> um zu sehen, welches Schwarze Loch zu welchem Ausgang gehört, und in welcher Richtung der Ball herauskommt.
@@ -975,6 +989,7 @@ par=2
 
 [9-sign@5,6|3]
 Comment=<h3>Floaters</h3>Floaters are moving platforms that carry a ball that lands on it. Floaters' speeds vary.
+Comment[ar]=<h3>عوامات</h3>عوامات تتحرك المنصات التي تنطوي على الأراضي على ان الكرة. عوامات 'بسرعة متفاوتة.
 Comment[ca]=<h3>Flotadors</h3>Els flotadors són plataformes mòbils que transporten les pilotes que hi aterren. La velocitat del flotadors varia.
 Comment[da]=<h3>Flydere</h3>Flydere er bevægelige platforme som bærer en bold der lander på den. Flyderes hastigheder varierer.
 Comment[de]=<h3>Floß</h3>Flöße sind bewegliche Plattformen, die einen Ball weitertragen, wenn er auf ihnen landet. Es gibt Flöße mit unterschiedlichen Geschwindigkeiten.
