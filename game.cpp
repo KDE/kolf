@@ -2741,6 +2741,7 @@ void KolfGame::setFilename(const QString &filename)
 KolfGame::~KolfGame()
 {
 	delete cfg;
+        delete renderer;
 #ifdef SOUND
 	delete m_player;
 #endif
