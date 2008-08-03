@@ -294,7 +294,7 @@ course using a new file name.</action></para>
 <guimenuitem>Save Game As...</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para>Opens a file dialog allowing you to <action>save the current
+<para>Open a file dialog allowing you to <action>save the current
 game with a filename of your choice.</action></para>
 </listitem>
 </varlistentry>
@@ -573,7 +573,7 @@ section</link>.</para>
 <guimenuitem>Enable All Dialog Boxes</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>Re-enables any dialog boxes that you disabled by clicking on
+<para><action>Re-enable any dialog boxes that you disabled by clicking on
 <guilabel>Do not show this message again</guilabel> or similar</action>.</para>
 </listitem>
 </varlistentry>
@@ -684,7 +684,7 @@ below, with one addition:</para>
 </qandaentry>
 <qandaentry>
  <question><para>Where are the high scores?</para></question>
- <answer><para>To view the high score board use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></shortcut><guimenu>Game</guimenu><guimenuitem>Show High Scores...</guimenuitem></menuchoice> on the menubar.</para></answer>
+ <answer><para>To view the high scores board use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></shortcut><guimenu>Game</guimenu><guimenuitem>Show High Scores...</guimenuitem></menuchoice> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I want to change the game configuration. Where do I go? </para></question>
