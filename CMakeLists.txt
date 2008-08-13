@@ -45,7 +45,7 @@ set(kolf_SRCS main.cpp)
 kde4_add_app_icon(kolf_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/hi*-app-kolf.png")
 kde4_add_executable( kolf ${kolf_SRCS} )
 
-target_link_libraries( kolf kolfprivate )
+target_link_libraries( kolf kolfprivate ${KDE4_KDEUI_LIBS})
 install(TARGETS kolf  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### install files ###############
