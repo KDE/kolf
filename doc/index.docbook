@@ -2,7 +2,7 @@
 <!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
   <!ENTITY kappname "&kolf;">
-  <!ENTITY kappversion "1.9"><!--Applicaion version. Use this variable everywhere it's needed.-->
+  <!ENTITY kappversion "1.9"><!--Application version. Use this variable everywhere it's needed.-->
   <!ENTITY docversion "1.2"><!--Document version. Use this variable everywhere it's needed.-->
   <!ENTITY docupdate "2007-10-14"><!--Document version. Use this variable everywhere it's needed.-->
   <!ENTITY package "kdegames">  <!-- do not change this! -->
@@ -12,7 +12,7 @@
  
 <book lang="&language;"> <!-- do not change this! -->
 <bookinfo>
-	<title>The ""&kappname;"" Handbook</title> <!-- This is the title of the docbook. Live as is unless change is necessary.-->
+	<title>The &kolf; Handbook</title> <!-- This is the title of the docbook. Live as is unless change is necessary.-->
 <authorgroup>
 <author>
 <firstname>Jason</firstname>
@@ -78,7 +78,7 @@
 putter aims in the direction you want to hit it or press one of the
 <keycap>Left Arrow</keycap> (counterclockwise) or <keycap>Right Arrow</keycap> (clockwise) keys, to rotate the putter.</para>
 <tip>
-<para>To rotate the putter more quickly with the keyboard, hold down <keycap>Shift</keycap> while pressing or holding the arrow keys. To rotate more slowly, hold down <keycap>Control</keycap>.</para>
+<para>To rotate the putter more quickly with the keyboard, hold down &Shift; while pressing or holding the arrow keys. To rotate more slowly, hold down &Ctrl;.</para>
 </tip>
 <para>To hit the ball, press and hold either the &LMB; or <keycap>Down
 Arrow</keycap> key. The longer you hold down the key or button, the
@@ -294,7 +294,7 @@ course using a new file name.</action></para>
 <guimenuitem>Save Game As...</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para>Opens a file dialog allowing you to <action>save the current
+<para>Open a file dialog allowing you to <action>save the current
 game with a filename of your choice.</action></para>
 </listitem>
 </varlistentry>
@@ -573,7 +573,7 @@ section</link>.</para>
 <guimenuitem>Enable All Dialog Boxes</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>Re-enables any dialog boxes that you disabled by clicking on
+<para><action>Re-enable any dialog boxes that you disabled by clicking on
 <guilabel>Do not show this message again</guilabel> or similar</action>.</para>
 </listitem>
 </varlistentry>
@@ -684,7 +684,7 @@ below, with one addition:</para>
 </qandaentry>
 <qandaentry>
  <question><para>Where are the high scores?</para></question>
- <answer><para>To view the high score board use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></shortcut><guimenu>Game</guimenu><guimenuitem>Show High Scores...</guimenuitem></menuchoice> on the menubar.</para></answer>
+ <answer><para>To view the high scores board use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></shortcut><guimenu>Game</guimenu><guimenuitem>Show High Scores...</guimenuitem></menuchoice> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I want to change the game configuration. Where do I go? </para></question>
