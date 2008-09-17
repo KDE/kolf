@@ -4018,7 +4018,7 @@ void KolfGame::openFile()
 	int numItems = 0;
 	int _highestHole = 0;
 
-	for (QStringList::Iterator it = groups.begin(); it != groups.end(); ++it)
+	for (QStringList::const_iterator it = groups.begin(); it != groups.end(); ++it)
 	{
 		// [<holeNum>-<name>@<x>,<y>|<id>]
 		cfgGroup = KConfigGroup(cfg->group(*it));
@@ -4479,7 +4479,7 @@ void KolfGame::save()
 	QStringList groups = cfg->groupList();
 
 	// wipe out all groups from this hole
-	for (QStringList::Iterator it = groups.begin(); it != groups.end(); ++it)
+	for (QStringList::const_iterator it = groups.begin(); it != groups.end(); ++it)
 	{
 		int holeNum = (*it).left((*it).indexOf("-")).toInt();
 		if (holeNum == curHole)
@@ -4730,7 +4730,7 @@ void KolfGame::scoresFromSaved(KConfig *config, PlayerList &players)
 
 		QStringList scores(configGroup.readEntry("Scores",QStringList()));
 		QList<int> intscores;
-		for (QStringList::Iterator it = scores.begin(); it != scores.end(); ++it)
+		for (QStringList::const_iterator it = scores.begin(); it != scores.end(); ++it)
 			intscores.append((*it).toInt());
 
 		players.last().setScores(intscores);
@@ -4741,7 +4741,7 @@ void KolfGame::saveScores(KConfig *config)
 {
 	// wipe out old player info
 	QStringList groups = config->groupList();
-	for (QStringList::Iterator it = groups.begin(); it != groups.end(); ++it)
+	for (QStringList::const_iterator it = groups.begin(); it != groups.end(); ++it)
 	{
 		// this deletes all int groups, ie, the player info groups
 		bool ok = false;

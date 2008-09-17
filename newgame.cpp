@@ -127,7 +127,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		const QString lastCourse(configGroup.readEntry("course", ""));
 		int curItem = 0;
 		i = 0;
-		for (QStringList::Iterator it = items.begin(); it != items.end(); ++it, ++i)
+		for (QStringList::const_iterator it = items.begin(); it != items.end(); ++it, ++i)
 		{
 			QString file = *it;
 			CourseInfo curinfo;
@@ -300,7 +300,7 @@ void NewGameDialog::addCourse()
 
 	bool hasDuplicates = false;
 
-	for (QStringList::Iterator fileIt = files.begin(); fileIt != files.end(); ++fileIt)
+	for (QStringList::const_iterator fileIt = files.begin(); fileIt != files.end(); ++fileIt)
 	{
 		if (names.contains(*fileIt) > 0)
 		{

@@ -32,7 +32,7 @@ ObjectList *PluginLoader::loadAll()
 	QStringList libs;
 	QStringList files = KGlobal::dirs()->findAllResources("appdata", "*.plugin", KStandardDirs::NoDuplicates);
 
-	for (QStringList::Iterator it = files.begin(); it != files.end(); ++it)
+	for (QStringList::const_iterator it = files.begin(); it != files.end(); ++it)
 	{
 		KConfig cfg(*it, KConfig::SimpleConfig);
 		KConfigGroup cfgGroup(cfg.group("General")); //probably a bug here, come back and test
@@ -41,7 +41,7 @@ ObjectList *PluginLoader::loadAll()
 		libs.append(filename);
 	}
 
-	for (QStringList::Iterator it = libs.begin(); it != libs.end(); ++it)
+	for (QStringList::const_iterator it = libs.begin(); it != libs.end(); ++it)
 	{
 		Object *newObject = load(*it);
 		if (newObject)
