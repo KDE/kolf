@@ -122,7 +122,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		externCourses = configGroup.readEntry("extra",QStringList());
 
 		/// course loading
-		QStringList items = externCourses + KGlobal::dirs()->findAllResources("appdata", "courses/*");
+		const QStringList items = externCourses + KGlobal::dirs()->findAllResources("appdata", "courses/*");
 		QStringList nameList;
 		const QString lastCourse(configGroup.readEntry("course", ""));
 		int curItem = 0;
@@ -295,7 +295,7 @@ void NewGameDialog::selectionChanged()
 
 void NewGameDialog::addCourse()
 {
-	QStringList files = KFileDialog::getOpenFileNames( KUrl("kfiledialog:///kourses"),
+	const QStringList files = KFileDialog::getOpenFileNames( KUrl("kfiledialog:///kourses"),
 			 QString::fromLatin1("application/x-kourse"), this, i18n("Pick Kolf Course"));
 
 	bool hasDuplicates = false;

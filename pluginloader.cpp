@@ -30,7 +30,7 @@ ObjectList *PluginLoader::loadAll()
 	ObjectList *ret = new ObjectList;
 
 	QStringList libs;
-	QStringList files = KGlobal::dirs()->findAllResources("appdata", "*.plugin", KStandardDirs::NoDuplicates);
+	const QStringList files = KGlobal::dirs()->findAllResources("appdata", "*.plugin", KStandardDirs::NoDuplicates);
 
 	for (QStringList::const_iterator it = files.begin(); it != files.end(); ++it)
 	{
@@ -41,7 +41,7 @@ ObjectList *PluginLoader::loadAll()
 		libs.append(filename);
 	}
 
-	for (QStringList::const_iterator it = libs.begin(); it != libs.end(); ++it)
+	for (QStringList::const_iterator it = libs.constBegin(); it != libs.constEnd(); ++it)
 	{
 		Object *newObject = load(*it);
 		if (newObject)
