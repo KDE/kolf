@@ -316,7 +316,7 @@ game with a filename of your choice.</action></para>
 <keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo>
 </shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Show High Scores...</guimenuitem>
+<guimenuitem>Show High Scores</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para><action>Display the high score table.</action></para>
@@ -684,7 +684,7 @@ below, with one addition:</para>
 </qandaentry>
 <qandaentry>
  <question><para>Where are the high scores?</para></question>
- <answer><para>To view the high scores board use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></shortcut><guimenu>Game</guimenu><guimenuitem>Show High Scores...</guimenuitem></menuchoice> on the menubar.</para></answer>
+ <answer><para>To view the high scores board use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></shortcut><guimenu>Game</guimenu><guimenuitem>Show High Scores</guimenuitem></menuchoice> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I want to change the game configuration. Where do I go? </para></question>
