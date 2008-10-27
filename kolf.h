@@ -35,6 +35,7 @@ class ScoreBoard;
 class Player;
 class QWidget;
 class Editor;
+class KAction;
 
 class KOLFLIB_EXPORT Kolf : public KXmlGuiWindow
 {
@@ -102,11 +103,11 @@ private:
 	QGridLayout *layout;
 	ScoreBoard *scoreboard;
 	KToggleAction *editingAction;
-	QAction *newHoleAction;
-	QAction *resetHoleAction;
+	KAction *newHoleAction;
+	KAction *resetHoleAction;
 	QAction *undoShotAction;
 	//QAction *replayShotAction;
-	QAction *clearHoleAction;
+	KAction *clearHoleAction;
 	QAction *tutorialAction;
 	QAction *newAction;
 	QAction *endAction;
@@ -119,10 +120,10 @@ private:
 	QAction *aboutAction;
 	KSelectAction *holeAction;
 	QAction *highScoreAction;
-	QAction *nextAction;
-	QAction *prevAction;
-	QAction *firstAction;
-	QAction *lastAction;
+	KAction *nextAction;
+	KAction *prevAction;
+	KAction *firstAction;
+	KAction *lastAction;
 	QAction *randAction;
 	KToggleAction *showInfoAction;
 	KToggleAction *useMouseAction;
