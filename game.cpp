@@ -127,10 +127,10 @@ void RectPoint::updateBaseResizeInfo()
 /////////////////////////
 
 Arrow::Arrow(QGraphicsItem * parent, QGraphicsScene *scene)
-: QGraphicsLineItem(parent, scene)
+    : AntiAliasedLine(parent, scene)
 {
-	line1 = new QGraphicsLineItem(this, scene);
-	line2 = new QGraphicsLineItem(this, scene);
+	line1 = new AntiAliasedLine(this, scene);
+	line2 = new AntiAliasedLine(this, scene);
 
 	m_angle = 0;
 	m_length = 20;
@@ -1083,7 +1083,7 @@ bool Sand::collision(Ball *ball, long int /*id*/)
 /////////////////////////
 
 Putter::Putter(QGraphicsScene *scene)
-: QGraphicsLineItem(0, scene)
+: AntiAliasedLine(0, scene)
 {
 	setData(0, Rtti_Putter);
 	m_showGuideLine = true;
@@ -1095,8 +1095,8 @@ Putter::Putter(QGraphicsScene *scene)
 	basePutterWidth = putterWidth = 11;
 	angle = 0;
 
-	guideLine = new QGraphicsLineItem(this, scene);
-	guideLine->setPen(QPen(Qt::white, baseGuideLineThickness, Qt::DotLine));
+	guideLine = new AntiAliasedLine(this, scene);
+	guideLine->setPen(QPen(Qt::white, baseGuideLineThickness));
 	guideLine->setZValue(998.8);
 
 	setPen(QPen(Qt::black, basePutterThickness));
@@ -1485,7 +1485,7 @@ void BlackHole::paint(QPainter *painter, const QStyleOptionGraphicsItem * option
 void BlackHole::showInfo()
 {
 	delete infoLine;
-	infoLine = new AntialisedLine(0, scene());
+	infoLine = new AntiAliasedLine(0, scene());
 	infoLine->setVisible(true);
 	infoLine->setPen(QPen(exitItem->pen().color(), baseInfoLineThickness));
 	infoLine->setZValue(10000);
@@ -1739,7 +1739,7 @@ void BlackHole::updateBaseResizeInfo()
 /////////////////////////
 
 BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QGraphicsItem * parent, QGraphicsScene *scene)
-: AntialisedLine(parent, scene)
+: AntiAliasedLine(parent, scene)
 {
 	setData(0, Rtti_NoCollision);
 	this->blackHole = blackHole;
@@ -1876,13 +1876,13 @@ void BlackHoleConfig::maxChanged(double news)
 
 /////////////////////////
 
-AntialisedLine::AntialisedLine(QGraphicsItem *parent, QGraphicsScene *scene)
+AntiAliasedLine::AntiAliasedLine(QGraphicsItem *parent, QGraphicsScene *scene)
 	: QGraphicsLineItem(parent, scene)
 { 
 	;
 }
 
-void AntialisedLine::paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget)
+void AntiAliasedLine::paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget)
 {
 	p->setRenderHint(QPainter::Antialiasing, true);
 	QGraphicsLineItem::paint(p, style, widget);
@@ -2074,7 +2074,7 @@ void WallPoint::updateBaseResizeInfo()
 /////////////////////////
 
 Wall::Wall( QGraphicsItem *parent, QGraphicsScene *scene, bool antialiasing)
-: QGraphicsLineItem(parent, scene)
+: AntiAliasedLine(parent, scene)
 {
 	basePenWidth = 3;
 	this->antialiasing = antialiasing;

@@ -105,14 +105,14 @@ private:
 
 typedef QList<Player> PlayerList;
 
-class AntialisedLine : public QGraphicsLineItem
+class AntiAliasedLine : public QGraphicsLineItem
 {
 public:
-	AntialisedLine(QGraphicsItem *parent, QGraphicsScene *scene);
+	AntiAliasedLine(QGraphicsItem *parent, QGraphicsScene *scene);
 	void paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget);
 };
 
-class Arrow : public QGraphicsLineItem
+class Arrow : public AntiAliasedLine
 {
 public:
 	Arrow(QGraphicsItem * parent, QGraphicsScene *scene);
@@ -368,7 +368,8 @@ private slots:
 private:
 	BlackHole *blackHole;
 };
-class BlackHoleExit : public AntialisedLine, public CanvasItem
+
+class BlackHoleExit : public AntiAliasedLine, public CanvasItem
 {
 public:
 	BlackHoleExit(BlackHole *blackHole, QGraphicsItem * parent, QGraphicsScene *scene);
@@ -477,7 +478,7 @@ private:
 	double baseInfoLineThickness, baseExitLineWidth;
 	double baseWidth, baseHeight;
 	int runs;
-	AntialisedLine *infoLine;
+	QGraphicsLineItem *infoLine;
 	void finishMe(double width=0);
 };
 class BlackHoleObj : public Object
@@ -488,7 +489,7 @@ public:
 };
 
 class WallPoint;
-class Wall : public QGraphicsLineItem, public CanvasItem
+class Wall : public AntiAliasedLine, public CanvasItem
 {
 public:
 	Wall( QGraphicsItem * parent, QGraphicsScene *scene, bool antialiasing=1);
@@ -589,7 +590,7 @@ public:
 	virtual QGraphicsItem *newObject( QGraphicsItem * parent, QGraphicsScene *scene) { return new Wall(parent, scene); }
 };
 
-class Putter : public QGraphicsLineItem, public CanvasItem
+class Putter : public AntiAliasedLine, public CanvasItem
 {
 public:
 	Putter(QGraphicsScene *scene);
@@ -611,7 +612,6 @@ public:
 	virtual bool canBeMovedByOthers() const { return true; }
 	virtual void moveBy(double dx, double dy);
 	void setShowGuideLine(bool yes);
-
 
 private:
 	QPointF midPoint;
