@@ -4110,7 +4110,7 @@ void KolfGame::openFile()
 
 	if (!missingPlugins.empty())
 	{
-		KMessageBox::informationList(this, QString("<p>&lt;http://katzbrown.com/kolf/Plugins/&gt;</p><p>") + i18n("This hole uses the following plugins, which you do not have installed:") + QString("</p>"), missingPlugins, QString(), QString("%1 warning").arg(holeInfo.untranslatedName() + QString::number(curHole)));
+		KMessageBox::informationList(this, QString("<p>Kolf plugins</p><p>") + i18n("This hole uses the following plugins, which you do not have installed:") + QString("</p>"), missingPlugins, QString(), QString("%1 warning").arg(holeInfo.untranslatedName() + QString::number(curHole)));
 	}
 
 	lastDelId = -1;
