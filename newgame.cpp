@@ -48,6 +48,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 	setCaption(i18n("New Game"));
 	setButtons(Ok | Cancel);
 	setDefaultButton(Ok);
+	setMinimumSize(640,310);
         connect(this, SIGNAL(okClicked()), this, SLOT(slotOk()));
 
 	setFaceType(KPageDialog::Tree);
