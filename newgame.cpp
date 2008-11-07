@@ -109,10 +109,6 @@ NewGameDialog::NewGameDialog(bool enableCourses)
                 coursePageLayout->setMargin( marginHint() );
                 coursePageLayout->setSpacing( spacingHint() );
 
-		KUrlLabel *coursesLink = new KUrlLabel("http://katzbrown.com/kolf/Courses/User Uploaded/", "katzbrown.com/kolf/Courses/User Uploaded/", coursePage);
-		connect(coursesLink, SIGNAL(leftClickedUrl(const QString &)), this, SLOT(invokeBrowser(const QString &)));
-		coursePageLayout->addWidget(coursesLink);
-
 		QHBoxLayout *hlayout = new QHBoxLayout;
                 hlayout->setSpacing( spacingHint() );
                 coursePageLayout->addLayout( hlayout );
@@ -215,11 +211,6 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 NewGameDialog::~NewGameDialog()
 {
 	qDeleteAll(editors);
-}
-
-void NewGameDialog::invokeBrowser(const QString &_url)
-{
-	KToolInvocation::invokeBrowser(_url);
 }
 
 void NewGameDialog::slotOk()
