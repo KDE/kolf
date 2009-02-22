@@ -3778,7 +3778,7 @@ void KolfGame::shotStart()
 	{ //debug code for reproducing shots, remove
 		(*curPlayer).ball()->setPos( 200, 360 );
 		strength = 6.9375;
-		float angle = -1.39094;
+		double angle = -1.39094;
 
 		(*curPlayer).ball()->collisionDetect((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 
