@@ -36,7 +36,7 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
  
-<date>&docupdate;</date><!-- Date of (re)writing, ro update. Use the variable definitions within header to change this value.-->
+<date>&docupdate;</date><!-- Date of (re)writing, or update. Use the variable definitions within header to change this value.-->
 <releaseinfo>&docversion;</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
  
 <!--Short description of this document. Do not change unless necessary!-->
