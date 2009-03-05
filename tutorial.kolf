@@ -859,7 +859,7 @@ maxstrokes=10
 par=2
 
 [7-sign@130,2|4]
-Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The windmill arm's speed may vary by hole.
+Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The speed of the windmill arm may vary for each hole.
 Comment[da]=<h3>Vindmøller</h3>Vindmøller (brunt fundament med bevægelige vinger) har brune vægge (eller halve vægge). Vindmøllens vingehastighed kan variere efter hullerne.
 Comment[de]=<h3>Windmühlen</h3>Windmühlen (braune Gebäude mit sich bewegenden „Armen“) haben braune Wände (oder Halbwände). Die Geschwindigkeit der „Arme“ kann sich von Bahn zu Bahn ändern.
 Comment[el]=<h3>Ανεμόμυλοι</h3>Οι ανεμόμυλοι έχουν καφέ τοίχους (ή μισούς τοίχους). Η ταχύτητα του βραχίονα του ανεμόμυλου διαφοροποιείται από τρύπα σε τρύπα.
@@ -922,7 +922,7 @@ maxstrokes=10
 par=2
 
 [8-sign@5,5|3]
-Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed directly relational to the speed your ball was going. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out at.
+Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed in direct relation to the speed your ball was traveling. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out.
 Comment[da]=<h3>Sorte huller</h3>Sorte huller transporterer bolden til deres udgang og skyder bolden ud med en hastighed som er direkte relateret til den hastighed din bold havde. Vælg <u>Hul->Vis info</u> for at se hvilket sort hul der fører til hvilken udgang og retningen som bolden vil komme ud i.
 Comment[de]=<h3>Schwarze Löcher</h3>Schwarze Löcher teleportieren den Ball zu ihrem Ausgang, und werfen den Ball mit einer Geschwindigkeit, die zu seiner ursprünglichen Geschwindigkeit direkt im Verhältnis steht, wieder auf das Spielfeld. Wählen Sie <u>Bahn->Informationen anzeigen</u> um zu sehen, welches Schwarze Loch zu welchem Ausgang gehört, und in welcher Richtung der Ball herauskommt.
 Comment[el]=<h3>Μαύρες τρύπες</h3>Οι Μαύρες τρύπες μεταφέρουν την μπάλα στην έξοδό τους, με την ίδια ταχύτητα με την οποία μπήκε, Επιλέξτε <u>Τρύπα->Εμφάνιση πληροφοριών</u> για να δείτε ποια έξοδος αντιστοιχεί στην κάθε Μαύρη τρύπα και την κατεύθυνση που θα ακολουθήσει η μπάλα κατά την έξοδό της.
