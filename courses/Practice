@@ -1,35 +1,5 @@
 [0-course@-50,-50]
 Name=Slope Practise
-Name[da]=Skråningsøvelse
-Name[de]=Hügel-Übungsplatz
-Name[el]=Εξάσκηση κλίσης
-Name[es]=Practicar pendiente
-Name[et]=Kallakute treening
-Name[fa]=تمرین سرازیری
-Name[fi]=Mäkiharjoitus
-Name[fr]=Entraînement aux pentes
-Name[ga]=Cleachtadh ar Fhána
-Name[gl]=Prática de pendentes
-Name[hu]=Gyakorlás lejtős terepen
-Name[it]=Pratica dei pendii
-Name[ja]=斜面の練習
-Name[km]=អនុវត្ត​ជ្រាល
-Name[ko]=경사 연습
-Name[lv]=Praktizēšanās uz nogāzes
-Name[nds]=Stiegen öven
-Name[nl]=Hellingoefening
-Name[nn]=Bakkeøving
-Name[pl]=Ćwiczenie nachylenia
-Name[pt]=Exercício de Rampas
-Name[pt_BR]=Praticar Ladeiras
-Name[ru]=Практика уклонов
-Name[sl]=Vaja na pobočjih
-Name[sv]=Sluttningsövning
-Name[tr]=Eğim Çalışması
-Name[uk]=Вправляння на схилі
-Name[x-test]=xxSlope Practicexx
-Name[zh_CN]=斜坡练习
-Name[zh_TW]=斜坡練習
 author=Jason Katz-Brown
 name=Slope Practice
 
