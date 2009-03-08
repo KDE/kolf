@@ -13,6 +13,7 @@ Name[fi]=Harjoittelurata
 Name[fr]=Parcours d'initiation
 Name[ga]=Cúrsa Teagaisc
 Name[gl]=Campo de titorial
+Name[hne]=ट्यूटोरियल कोर्स
 Name[hu]=Gyakorlópálya
 Name[it]=Percorso introduttivo
 Name[ja]=チュートリアルコース
@@ -132,7 +133,7 @@ Comment[es]=Para cambiar al putter, pulse las flechas izquierda (en sentido cont
 Comment[et]=Putteri suunamiseks kasuta klahve "Nool vasakule" (pöörab vastupäeva) või "Nool paremale" (päripäeva) või hiirt. 
 Comment[fi]=Tähdätäksesi paina vasenta tai oikeaa nuolinäppäintä, tai vaihtoehtoisesti käytä hiirtä.
 Comment[fr]=Pour viser avec le putter, appuyez sur les flèches gauche (pour tourner vers la gauche) et droite (pour tourner vers la droite), ou utilisez la souris.
-Comment[ga]=Chun an t-amasán a dhíriú, brúigh an tSaighead Clé (tuathalach) nó an tSaighead Dheas (deisealach), nó bain úsáid as an luch.
+Comment[ga]=Chun an t-amasán a dhíriú, brúigh an tSaighead Chlé (tuathalach) nó an tSaighead Dheas (deisealach), nó bain úsáid as an luch.
 Comment[gl]=Para mover o pau, preme os cursores Esquerda (xiro antihorario) e Dereita (xiro horario) ou emprega o rato.
 Comment[hu]=Az ütés irányát a jobbra és balra kurzorbillentyűkkel lehet beállítani (balra illetve jobbra forgatás).
 Comment[it]=Per prendere la mira col putter, premi i tasti freccia sinistro (per ruotare in senso antiorario) e destro (per ruotare in senso orario) o usa il mouse.
@@ -905,6 +906,7 @@ par=2
 
 [8-sign@5,5|3]
 Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed in direct relation to the speed your ball was traveling. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out.
+Comment[en_GB]=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed in direct relation to the speed your ball was travelling. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out.
 Comment[ga]=<h3>Dúphoill</h3>Iompraíonn dúpholl liathróid go dtí an tslí amach, agus caitheann sé é amach le luas i gcomhréir díreach leis an luas nuair a chuaigh sé isteach sa pholl.  Roghnaigh <u>Poll->Taispeáin Eolas</u> chun slí amach gach poill a fheiceáil, agus treo na liathróide nuair a thiocfaidh sé amach.
 Comment[nds]=<h3>Swatt Löcker</h3>En Swatt Lock överdreegt den Ball na sien Utgang. De Gauigkeit, mit de dor de Ball rutkummt, hangt direktemang vun de Gauigkeit af, mit de he dor rinrullt is. Mit <u>Bahn -> Informatschonen wiesen</u> kannst Du de Utgäng vun de Swatten Löcker ankieken, un ok de Richt, de de Ball dor hett.
 Comment[pt]=<h3>Buracos Negros</h3>Os Buracos Negros transportam a bola para a sua saída, expulsando-a com uma velocidade directamente proporcional à velocidade com que a sua bola ia. Escolha a opção <u>Buraco->Mostrar a Informação</u> para ver para onde vai o Buraco Negro e a direcção com que a bola irá sair.
