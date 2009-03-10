@@ -1,12 +1,14 @@
 [0-course@-50,-50]
 Name=Slope Practise
 Name[en_GB]=Slope Practice
+Name[et]=Kallakute treening
 Name[ga]=Cleachtadh ar Fhána
 Name[nds]=Stiegen öven
 Name[pt]=Exercício de Rampas
 Name[pt_BR]=Praticar ladeiras
 Name[sv]=Sluttningsövning
 Name[uk]=Вправляння на схилі
+Name[zh_TW]=斜坡練習
 author=Jason Katz-Brown
 name=Slope Practice
 
