@@ -1827,7 +1827,7 @@ BlackHoleConfig::BlackHoleConfig(BlackHole *blackHole, QWidget *parent)
 	QSpinBox *deg = new QSpinBox(this);
 	deg->setRange( 0, 359 );
 	deg->setSingleStep( 10 );
-	deg->setSuffix(QString(" ") + i18n("degrees"));
+	deg->setSuffix(i18n(" degrees"));
 	deg->setValue(blackHole->curExitDeg());
 	deg->setWrapping(true);
 	layout->addWidget(deg);
