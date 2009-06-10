@@ -995,6 +995,7 @@ width=48
 
 [5-sign@219,344|10]
 Comment=Lake Tahoe, CA/NV
+Comment[ca]=Llac Tahoe, CA/NV
 Comment[de]=Tahoexsee, CA/NV
 Comment[el]=Λίμνη Ταχόη, CA/NV
 Comment[es]=Lago Tahoe, CA/NV
@@ -1157,6 +1158,7 @@ width=368
 
 [6-sign@3,101|17]
 Comment=Florida Keys, FL
+Comment[ca]=Els calls de Florida, FL
 Comment[el]=Φλώριδα Κιζ, FL
 Comment[es]=Cayos de Florida, FL
 Comment[ga]=Florida Keys, Florida
@@ -1723,6 +1725,7 @@ width=20
 
 [9-sign@291,368|28]
 Comment=Niagara Falls, NY
+Comment[ca]=Cataractes del Niagara, NY
 Comment[de]=Niagara-Fälle, NY
 Comment[el]=Καταρράκτες Νιαγάρα, NY
 Comment[es]=Cataratas del Niágara, NY
