@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 /*
     Copyright (C) 2002-2005, Jason Katz-Brown <jasonkb@mit.edu>
 
