@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 /*
     Copyright (C) 2002-2005, Jason Katz-Brown <jasonkb@mit.edu>
 
@@ -4013,14 +4015,17 @@ void KolfGame::openFile()
 	bool hasFinalLoad = cfgGroup.readEntry("hasFinalLoad", true);
 
 	QStringList missingPlugins;
-	const QStringList groups = cfg->groupList();
+
+	// The "for" loop depends on the list of groups being in sorted order.
+	QStringList groups = cfg->groupList();
+	groups.sort();
 
 	int numItems = 0;
 	int _highestHole = 0;
 
 	for (QStringList::const_iterator it = groups.begin(); it != groups.end(); ++it)
 	{
-		// [<holeNum>-<name>@<x>,<y>|<id>]
+		// Format of group name is [<holeNum>-<name>@<x>,<y>|<id>]
 		cfgGroup = KConfigGroup(cfg->group(*it));
 
 		const int len = (*it).length();
@@ -4034,8 +4039,8 @@ void KolfGame::openFile()
 
 		if (holeNum != curHole)
 		{
-			// if we've had one, break, cause list is sorted
-			// erps, no, cause we need to know highest hole!
+			// Break before reading all groups, if the highest hole
+			// number is known and all items in curHole are done.
 			if (numItems && !recalcHighestHole)
 				break;
 			continue;
