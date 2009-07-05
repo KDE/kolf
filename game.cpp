@@ -4021,7 +4021,7 @@ void KolfGame::openFile()
 	int numItems = 0;
 	int _highestHole = 0;
 
-	for (QStringList::const_iterator it = groups.begin(); it != groups.end(); ++it)
+	for (QStringList::const_iterator it = groups.constBegin(); it != groups.constEnd(); ++it)
 	{
 		// Format of group name is [<holeNum>-<name>@<x>,<y>|<id>]
 		cfgGroup = KConfigGroup(cfg->group(*it));
