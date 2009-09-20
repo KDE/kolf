@@ -39,7 +39,6 @@
 #include <QPainter>
 #include <QPen>
 #include <QSlider>
-#include <QSpinBox>
 #include <QTimer>
 #include <QStyleOptionGraphicsItem>
 #include <QApplication>
@@ -1824,10 +1823,10 @@ BlackHoleConfig::BlackHoleConfig(BlackHole *blackHole, QWidget *parent)
 	layout->setMargin( marginHint() );
 	layout->setSpacing( spacingHint() );
 	layout->addWidget(new QLabel(i18n("Exiting ball angle:"), this));
-	QSpinBox *deg = new QSpinBox(this);
+	KIntSpinBox *deg = new KIntSpinBox(this);
 	deg->setRange( 0, 359 );
 	deg->setSingleStep( 10 );
-	deg->setSuffix(i18n(" degrees"));
+	deg->setSuffix(ki18np(" degree", " degrees"));
 	deg->setValue(blackHole->curExitDeg());
 	deg->setWrapping(true);
 	layout->addWidget(deg);
@@ -2368,7 +2367,7 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	hlayout->setSpacing( spacingHint() );
 	layout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Par:"), this));
-	QSpinBox *par = new QSpinBox(this);
+	KIntSpinBox *par = new KIntSpinBox(this);
 	par->setRange( 1, 15 );
 	par->setSingleStep( 1 );
 	par->setValue(holeInfo->par());
@@ -2377,7 +2376,7 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	hlayout->addStretch();
 
 	hlayout->addWidget(new QLabel(i18n("Maximum:"), this));
-	QSpinBox *maxstrokes = new QSpinBox(this);
+	KIntSpinBox *maxstrokes = new KIntSpinBox(this);
 	maxstrokes->setRange( holeInfo->lowestMaxStrokes(), 30 );
 	maxstrokes->setSingleStep( 1 );
 	maxstrokes->setWhatsThis( i18n("Maximum number of strokes player can take on this hole."));
