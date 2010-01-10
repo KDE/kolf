@@ -1,6 +1,7 @@
 [0-course@-50,-50]
 Name=USA Pro
 Name[ca]=USA Pro
+Name[ca@valencia]=USA Pro
 Name[cs]=USA Pro
 Name[da]=USA Pro
 Name[de]=USA Pro
@@ -84,6 +85,7 @@ width=840
 [1-sign@4,371|14]
 Comment=Daytona Beach, FL
 Comment[ca]=Daytona Beach, FL
+Comment[ca@valencia]=Daytona Beach, FL
 Comment[cs]=Daytona Beach, FL
 Comment[da]=Daytona Beach, FL
 Comment[de]=Daytona Beach, FL
@@ -307,6 +309,7 @@ width=36
 [10-sign@-1,360|42]
 Comment=Washington DC (Pentagon)
 Comment[ca]=Washington DC (Pentagon)
+Comment[ca@valencia]=Washington DC (Pentagon)
 Comment[cs]=Washington DC (Pentagon)
 Comment[da]=Washington DC (Pentagon)
 Comment[de]=Washington DC (Pentagon)
@@ -495,6 +498,7 @@ width=84
 [11-sign@-2,370|24]
 Comment=Palm Springs, CO
 Comment[ca]=Palm Springs, CO
+Comment[ca@valencia]=Palm Springs, CO
 Comment[cs]=Palm Springs, CO
 Comment[da]=Palm Springs, CO
 Comment[de]=Palm Springs, CO
@@ -686,6 +690,7 @@ width=38
 [2-sign@26,345|31]
 Comment=Las Vegas, NV
 Comment[ca]=Las Vegas, NV
+Comment[ca@valencia]=Las Vegas, NV
 Comment[cs]=Las Vegas, NV
 Comment[da]=Las Vegas, NV
 Comment[de]=Las Vegas, NV
@@ -876,6 +881,7 @@ par=2
 [3-sign@-4,358|9]
 Comment=San Francisco, CA
 Comment[ca]=San Francisco, CA
+Comment[ca@valencia]=San Francisco, CA
 Comment[cs]=San Francisco, CA
 Comment[da]=San Francisco, CA
 Comment[de]=San Francisco, CA
@@ -998,6 +1004,7 @@ par=3
 [4-sign@201,171|8]
 Comment=Grand Canyon
 Comment[ca]=Grand Canyon
+Comment[ca@valencia]=Grand Canyon
 Comment[cs]=Grand Canyon
 Comment[da]=Grand Canyon
 Comment[de]=Grand Canyon
@@ -1147,6 +1154,7 @@ width=48
 [5-sign@219,344|10]
 Comment=Lake Tahoe, CA/NV
 Comment[ca]=Llac Tahoe, CA/NV
+Comment[ca@valencia]=Llac Tahoe, CA/NV
 Comment[cs]=Lake Tahoe, CA/NV
 Comment[da]=Lake Tahoe, CA/NV
 Comment[de]=Tahoesee, CA/NV
@@ -1325,6 +1333,7 @@ width=368
 [6-sign@3,101|17]
 Comment=Florida Keys, FL
 Comment[ca]=Els calls de Florida, FL
+Comment[ca@valencia]=Els calls de Florida, FL
 Comment[cs]=Florida Keys, FL
 Comment[da]=Florida Keys, FL
 Comment[de]=Florida Keys, FL
@@ -1516,6 +1525,7 @@ width=40
 [7-sign@135,364|25]
 Comment=San Francisco, CA
 Comment[ca]=San Francisco, CA
+Comment[ca@valencia]=San Francisco, CA
 Comment[cs]=San Francisco, CA
 Comment[da]=San Francisco, CA
 Comment[de]=San Francisco, CA
@@ -1704,6 +1714,7 @@ width=98
 [8-sign@137,370|19]
 Comment=Washington DC
 Comment[ca]=Washington DC
+Comment[ca@valencia]=Washington DC
 Comment[cs]=Washington DC
 Comment[da]=Washington DC
 Comment[de]=Washington DC
@@ -1959,6 +1970,7 @@ width=20
 [9-sign@291,368|28]
 Comment=Niagara Falls, NY
 Comment[ca]=Cataractes del Niagara, NY
+Comment[ca@valencia]=Cataractes del Niagara, NY
 Comment[cs]=Niagara Falls, NY
 Comment[da]=Niagara Falls, NY
 Comment[de]=Niagara-Fälle, NY
