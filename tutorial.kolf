@@ -1,6 +1,7 @@
 [0-course@-50,-50]
 Name=Tutorial Course
 Name[ca]=Camp d'aprenentatge
+Name[ca@valencia]=Camp d'aprenentatge
 Name[cs]=Výukový kurz
 Name[da]=Øvelsesbane
 Name[de]=Übungsplatz
@@ -56,6 +57,7 @@ par=2
 [1-sign@2,2|3]
 Comment=<h3>Welcome</h3> to the tutorial course for Kolf!
 Comment[ca]=<h3>Benvingut</h3> al camp d'aprenentatge de Kolf!
+Comment[ca@valencia]=<h3>Benvingut</h3> al camp d'aprenentatge de Kolf!
 Comment[da]=<h3>Velkommen</h3> til Kolfs øvelsesbane!
 Comment[de]=<h3>Willkommen</h3> beim Übungsplatz in Kolf!
 Comment[el]=<h3>Καλώς ήρθατε</h3> στο μάθημα εκμάθησης του Kolf!
@@ -100,6 +102,7 @@ width=319
 [1-sign@73,81|4]
 Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
 Comment[ca]=Per colpejar la bola, prem la fletxa cap avall o el botó esquerre del ratolí. Com més temps mantinguis pressionat el botó del ratolí o la tecla determina la força del cop.
+Comment[ca@valencia]=Per colpejar la bola, prem la fletxa cap avall o el botó esquerre del ratolí. Com més temps mantinguis pressionat el botó del ratolí o la tecla determina la força del cop.
 Comment[da]=For at slå til bolden trykkes og holdes på venstre museknap eller piletast "ned". Hvor længe du holder museknappen eller tasten nede afgør slagets styrke.
 Comment[de]=Halten Sie die linke Maustaste oder die Taste „Pfeil runter“ gedrückt, um den Ball zu schlagen. Die Dauer des Tastendrucks entscheidet über die Stärke.
 Comment[el]=Για να χτυπήσετε την μπάλα, κρατήστε πατημένο το Κάτω Βέλος ή το αριστερό πλήκτρο του ποντικιού. Η δύναμη του χτυπήματος είναι ανάλογη από το χρόνο που θα το κρατήσετε πατημένο.
@@ -141,6 +144,7 @@ width=319
 [1-sign@74,251|7]
 Comment=To aim the putter, press the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use the mouse.
 Comment[ca]=Per canviar al putter, prem cursor esquerra (en sentit contrari a les agulles del rellotge) i dret (girar en sentit de les agulles del rellotge) o usa el ratolí.
+Comment[ca@valencia]=Per canviar al putter, prem cursor esquerra (en sentit contrari a les agulles del rellotge) i dret (girar en sentit de les agulles del rellotge) o usa el ratolí.
 Comment[da]=For at sigte med putteren trykkes venstre (rotér mod uret) og højre (rotér med uret) piletast. Musen kan også bruges.
 Comment[de]=Um den Putter auszurichten, verwenden Sie entweder die linke (gegen den Uhrzeigersinn) oder rechte (im Uhrzeigersinn) Pfeiltaste oder die Maus.
 Comment[el]=Για να στοχεύσετε, πιέστε το αριστερό (αριστερόστροφα) και το δεξί (δεξιόστροφα) πλήκτρο ή χρησιμοποιήστε το ποντίκι.
@@ -235,6 +239,7 @@ width=112
 [10-sign@7,9|4]
 Comment=<h3>Bridges</h3>Bridges can have walls on the top, bottom, left, or right.
 Comment[ca]=<h3>Ponts</h3>Els ponts poden tenir parets a la part superior, inferior, esquerra o dreta.
+Comment[ca@valencia]=<h3>Ponts</h3>Els ponts poden tindre parets a la part superior, inferior, esquerra o dreta.
 Comment[da]=<h3>Broer</h3>Broer kan have vægge på toppen, bunden, til venstre eller til højre.
 Comment[de]=<h3>Brücken</h3>Brücken können oben, links, rechts oder unten Wände haben.
 Comment[el]=<h3>Γέφυρες</h3>Οι Γέφυρες μπορεί να έχουν τοίχους πάνω, κάτω αριστερά ή δεξιά.
@@ -343,6 +348,7 @@ width=172
 [11-sign@145,4|3]
 Comment=<h3>Everything</h3>Here's a hole that has it all. Have fun with Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[ca]=<h3>Tot</h3>Aquí tenim un forat que ho té tot. Diverteix-te amb Kolf!<br><center>-- Jason Katz-Brown</center>
+Comment[ca@valencia]=<h3>Tot</h3>Ací tenim un forat que ho té tot. Diverteix-te amb Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[da]=<h3>Alt</h3>Her er et hul som har det hele. Hav det sjovt med Kolf! <br><center>-- Jason Katz-Brown</center>
 Comment[de]=<h3>Alles</h3>Hier ist eine Bahn, die alles in sich hat. Viel Vergnügen mit Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[el]=<h3>Όλα</h3>Αυτή είναι μια τρύπα που έχει τα πάντα. Καλή διασκέδαση με το Kolf!<br><center>-- Jason Katz-Brown</center>
@@ -442,6 +448,7 @@ par=2
 [2-sign@1,5|3]
 Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you choose <u>Hole->Show Info</u>.
 Comment[ca]=<h3>Pendents</h3>Les pendents son àrees de terreny inclinat que empenyen la bola al la direcció de la pendent. Aquesta direcció es mostra quan tries <u>Forat->Mostra informació</u>.
+Comment[ca@valencia]=<h3>Pendents</h3>Les pendents son àrees de terreny inclinat que empenyen la bola al la direcció de la pendent. Esta direcció es mostra quan tries <u>Forat->Mostra informació</u>.
 Comment[da]=<h3>Skråninger</h3>Skråninger er jordområder med hældning som skubber bolden i den retning som de hælder. Denne retning er vist når du vælger <u>Hul->Vis info</u>.
 Comment[de]=<h3>Hügel</h3>Hügel sind kurvige Bodenstücke, die den Ball in die eine oder andere Richtung ablenken. Diese Richtung ist sichtbar, wenn Sie <u>Bahn->Informationen anzeigen</u> auswählen.
 Comment[el]=<h3>Κλίσεις</h3>Κεκλιμένες περιοχές του εδάφους που ωθούν την μπάλα στην κατεύθυνση της κλίσης τους. Η κατεύθυνση εμφανίζεται όταν επιλέξετε <u>Τρύπα->Εμφάνιση πληροφοριών</u>.
@@ -483,6 +490,7 @@ width=392
 [2-sign@197,198|5]
 Comment=Hit the ball onto the slope and let it roll into cup.
 Comment[ca]=Colpeja la bola cap a la pendent i deixa que rodi fins la tassa.
+Comment[ca@valencia]=Colpeja la bola cap a la pendent i deixa que rodi fins la tassa.
 Comment[da]=Slå bolden op på skråningen og lad den rullen ned i cuppen.
 Comment[de]=Spielen Sie den Ball auf den Hügel und lassen Sie ihn in das Loch rollen.
 Comment[el]=Χτυπήστε την μπάλα στην κλίση και αφήστε την να κυλίσει στο κύπελλο.
@@ -543,6 +551,7 @@ par=3
 [3-sign@4,4|4]
 Comment=Try out these different types of slopes.
 Comment[ca]=Prova aquests diferents tipus de pistes.
+Comment[ca@valencia]=Prova estos diferents tipus de pistes.
 Comment[da]=Prøv disse forskellige typer af skråninger.
 Comment[de]=Probieren Sie diese verschiedenen Hügelarten aus.
 Comment[el]=Δοκιμάστε διαφορετικούς τύπους κλίσεων.
@@ -668,6 +677,7 @@ par=3
 [4-sign@6,3|3]
 Comment=The steepness of a slope is shown when you choose <u>Hole->Show Info</u>. Steepness goes from 8 (steepest) to 1 (shallowest).
 Comment[ca]=La inclinació d'una pendent, es mostra en triar <u>Forat->Mostra informació</u>. La inclinació va des de 8 (més) a 1 (menys).
+Comment[ca@valencia]=La inclinació d'una pendent, es mostra en triar <u>Forat->Mostra informació</u>. La inclinació va des de 8 (més) a 1 (menys).
 Comment[da]=En skrånings stejlhed vises når du vælger <u>Hul->Vis info</u>. Stejlhed går fra 8 (mest stejl) til 1 (mindst stejl).
 Comment[de]=Die Steigung eines Hügels bekommen Sie angezeigt, wenn Sie <u>Bahn->Informationen anzeigen</u> auswählen. Steigungen gehen von 8 (sehr steil) bis 1 (sehr flach).
 Comment[el]=Το πόσο απότομη είναι μια κλίση εμφανίζεται αν επιλέξετε <u>Τρύπα->Εμφάνιση πληροφοριών</u>. Η διαβάθμιση είναι από 8 (πιο απότομο) έως 1 (ομαλότερο).
@@ -736,6 +746,7 @@ par=2
 [5-sign@3,5|3]
 Comment=<h3>Walls</h3>Bounce the ball off of the red walls.
 Comment[ca]=<h3>Parets</h3>Rebota la bola fora de les parets vermelles.
+Comment[ca@valencia]=<h3>Parets</h3>Rebota la bola fora de les parets vermelles.
 Comment[da]=<h3>Vægge</h3>lad bolden prelle af på de røde vægge.
 Comment[de]=<h3>Wände</h3>Schlagen den Ball von den roten Wänden zurück.
 Comment[el]=<h3>Τοίχοι</h3>Αναπηδήστε την μπάλα στους κόκκινους τοίχους.
@@ -830,6 +841,7 @@ width=78
 [6-sign@3,152|37]
 Comment=<h3>Sand</h3>Sand is yellow, and slows your ball down.
 Comment[ca]=<h3>Sorra</h3>La sorra és groga, i alenteix la bola.
+Comment[ca@valencia]=<h3>Sorra</h3>La sorra és groga, i alenteix la bola.
 Comment[da]=<h3>Grus</h3>Grus er gult, og sænker hastigheden på din bold.
 Comment[de]=<h3>Sand</h3>Sand ist gelb, und verlangsamt Ihren Ball.
 Comment[el]=<h3>Άμμος</h3>Η άμμος είναι κίτρινη, και επιβραδύνει την μπάλα.
@@ -871,6 +883,7 @@ width=138
 [6-sign@3,5|4]
 Comment=<h3>Puddles (Water)</h3>Hitting into a puddle (blue) adds a penalty stroke to your score, and your ball is placed outside the puddle.
 Comment[ca]=<h3>Llacs (aigua)</h3>Si colpeges la bola dins del llac (blau) s'afegeix un cop de penalització a la teva puntuació i la bola es situarà fora del llac.
+Comment[ca@valencia]=<h3>Llacs (aigua)</h3>Si colpeges la bola dins del llac (blau) s'afig un cop de penalització a la teva puntuació i la bola es situarà fora del llac.
 Comment[da]=<h3>Pytter (vand)</h3>At ramme ind i en pyt (blå) giver et strafslag til din score og din bold placeres udenfor pytten.
 Comment[de]=<h3>Wasserpfützen</h3>Wenn Sie in eine Pfütze hineinspielen (blau dargestellt), bekommen Sie einen zusätzlichen Strafpunkt, und Ihr Ball wird außerhalb der Pfütze auf dem Spielfeld platziert.
 Comment[el]=<h3>Λίμνες (νερό)</h3>Χτυπώντας μέσα από μια λίμνη (μπλε) προσθέτει μια δυσκολία στο βαθμό χτυπήματος και η μπάλα τοποθετείται εκτός της λίμνης.
@@ -927,6 +940,7 @@ par=2
 [7-sign@130,2|4]
 Comment=<h3>Windmills</h3>Windmills (brown base with moving arm) have brown walls (or half walls). The speed of the windmill arm may vary for each hole.
 Comment[ca]=<h3>Molins de vent</h3>Els molins de vent (base marró amb braços en moviment) tenen parets marrons (o mitges parets).La velocitat dels braços del molí de vent pot variar a cada forat.
+Comment[ca@valencia]=<h3>Molins de vent</h3>Els molins de vent (base marró amb braços en moviment) tenen parets marrons (o mitges parets).La velocitat dels braços del molí de vent pot variar a cada forat.
 Comment[da]=<h3>Vindmøller</h3>Vindmøller (brunt fundament med bevægelige vinger) har brune vægge (eller halve vægge). Vindmøllens vingehastighed kan variere for hvert hul.
 Comment[de]=<h3>Windmühlen</h3>Windmühlen (braune Gebäude mit sich bewegenden „Armen“) haben braune Wände (oder Halbwände). Die Geschwindigkeit der „Arme“ kann sich von Bahn zu Bahn ändern.
 Comment[el]=<h3>Ανεμόμυλοι</h3>Οι ανεμόμυλοι έχουν καφέ τοίχους (ή μισούς τοίχους). Η ταχύτητα του βραχίονα του ανεμόμυλου διαφοροποιείται από τρύπα σε τρύπα.
@@ -993,6 +1007,7 @@ par=2
 [8-sign@5,5|3]
 Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed in direct relation to the speed your ball was traveling. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out.
 Comment[ca]=<h3>Forats negres</h3>Els forats negres transporten la bola a la seva sortida i l'expulsen a una velocitat directament relacionada amb la que tenia la bola.Tria <u>Forat->Mostra informació</u> per veure quin forat negre va a quina sortida i la direcció amb la que sortirà la bola.
+Comment[ca@valencia]=<h3>Forats negres</h3>Els forats negres transporten la bola a la seua eixida i l'expulsen a una velocitat directament relacionada amb la que tenia la bola.Tria <u>Forat->Mostra informació</u> per veure quin forat negre va a quina eixida i la direcció amb la que eixirà la bola.
 Comment[da]=<h3>Sorte huller</h3>Sorte huller transporterer bolden til deres udgang og skyder bolden ud med en hastighed som er direkte relateret til den hastighed din bold havde. Vælg <u>Hul->Vis info</u> for at se hvilket sort hul der fører til hvilken udgang og retningen som bolden vil komme ud i.
 Comment[de]=<h3>Schwarze Löcher</h3>Schwarze Löcher teleportieren den Ball zu ihrem Ausgang und werfen den Ball mit einer Geschwindigkeit, die zu seiner ursprünglichen Geschwindigkeit direkt im Verhältnis steht, wieder auf das Spielfeld. Wählen Sie <u>Bahn->Informationen anzeigen</u> um zu sehen, welches Schwarze Loch zu welchem Ausgang gehört und in welcher Richtung der Ball herauskommt.
 Comment[el]=<h3>Μαύρες τρύπες</h3>Οι Μαύρες τρύπες μεταφέρουν την μπάλα στην έξοδό τους, με την ίδια ταχύτητα με την οποία μπήκε, Επιλέξτε <u>Τρύπα->Εμφάνιση πληροφοριών</u> για να δείτε ποια έξοδος αντιστοιχεί στην κάθε Μαύρη τρύπα και την κατεύθυνση που θα ακολουθήσει η μπάλα κατά την έξοδό της.
@@ -1062,6 +1077,7 @@ par=2
 [9-sign@5,6|3]
 Comment=<h3>Floaters</h3>Floaters are moving platforms that carry a ball that lands on it. Floaters' speeds vary.
 Comment[ca]=<h3>Flotadors</h3>Els flotadors son plataformes mòbils que transporten la bola que cau sobre ells. La velocitat dels flotadors és variable.
+Comment[ca@valencia]=<h3>Flotadors</h3>Els flotadors son plataformes mòbils que transporten la bola que cau sobre ells. La velocitat dels flotadors és variable.
 Comment[da]=<h3>Flydere</h3>Flydere er bevægelige platforme som bærer en bold der lander på den. Flyderes hastigheder varierer.
 Comment[de]=<h3>Floß</h3>Flöße sind bewegliche Plattformen, die einen Ball weitertragen, wenn er auf ihnen landet. Es gibt Flöße mit unterschiedlichen Geschwindigkeiten.
 Comment[el]=<h3>Πλωτήρες</h3>Οι πλωτήρες είναι κινούμενες πλατφόρμες που μεταφέρουν την μπάλα που θα προσγειωθεί πάνω τους. Οι ταχύτητά τους ποικίλει.
