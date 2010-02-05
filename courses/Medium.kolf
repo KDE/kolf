@@ -1,6 +1,7 @@
 [0-course@-50,-50]
 Name=Medium Course
 Name[ca]=Camp normal
+Name[ca@valencia]=Camp normal
 Name[da]=Mellem bane
 Name[de]=Mittlerer Platz
 Name[el]=Μεσαίο μάθημα
@@ -28,8 +29,11 @@ Name[pt]=Campo Médio
 Name[pt_BR]=Percurso Médio
 Name[ro]=Cale medie
 Name[ru]=Средняя площадка
+Name[sk]=Stredný kurz
 Name[sl]=Srednje igrišče
 Name[sr]=Средњи терен
+Name[sr@ijekavian]=Средњи терен
+Name[sr@ijekavianlatin]=Srednji teren
 Name[sr@latin]=Srednji teren
 Name[sv]=Medelsvår bana
 Name[tr]=Orta Seviye Pist

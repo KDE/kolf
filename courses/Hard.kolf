@@ -1,6 +1,7 @@
 [0-course@-50,-50]
 Name=Hard Course
 Name[ca]=Camp difícil
+Name[ca@valencia]=Camp difícil
 Name[cs]=Těžký kurz
 Name[da]=Svær bane
 Name[de]=Schwieriger Platz
@@ -29,8 +30,11 @@ Name[pt]=Campo Difícil
 Name[pt_BR]=Percurso Difícil
 Name[ro]=Cale grea
 Name[ru]=Тяжёлая площадка
+Name[sk]=Ťažký kurz
 Name[sl]=Težko igrišče
 Name[sr]=Тежак терен
+Name[sr@ijekavian]=Тежак терен
+Name[sr@ijekavianlatin]=Težak teren
 Name[sr@latin]=Težak teren
 Name[sv]=Svår bana
 Name[tr]=Zor Kurs
@@ -1103,6 +1107,7 @@ par=3
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
 Comment[ca]=Deixa que els flotadors <strong>t'empenyin</strong>!
+Comment[ca@valencia]=Deixa que els flotadors <strong>t'empenyin</strong>!
 Comment[da]=Lad flyderne <strong>skubbe</strong> til dig!
 Comment[de]=Lassen Sie sich von den Flößen <strong>weiterschubsen</strong>!
 Comment[el]=Αφήστε τους ανελκυστήρες να σας <strong>σπρώξουν</strong>!
@@ -1126,6 +1131,8 @@ Comment[pt]=Deixe as bóias <strong>empurrá-lo</strong> a si!
 Comment[pt_BR]=Deixe as boias <strong>levarem</strong> você! 
 Comment[sl]=Naj vas <strong>ponesejo</strong> lebdeče ploščadi!
 Comment[sr]=Нека вас плутачи <strong>гурају</strong>!
+Comment[sr@ijekavian]=Нека вас плутачи <strong>гурају</strong>!
+Comment[sr@ijekavianlatin]=Neka vas plutači <strong>guraju</strong>!
 Comment[sr@latin]=Neka vas plutači <strong>guraju</strong>!
 Comment[sv]=Låt flottarna <strong>knuffa</strong> dig.
 Comment[tr]=Yüzücülerin size <strong>vurmasına</strong> izin verin!

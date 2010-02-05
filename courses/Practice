@@ -1,6 +1,7 @@
 [0-course@-50,-50]
 Name=Slope Practise
 Name[ca]=Pràctiques de pendents
+Name[ca@valencia]=Pràctiques de pendents
 Name[da]=Skråningsøvelse
 Name[de]=Übungshügel
 Name[el]=Εξάσκηση κλίσης
@@ -24,6 +25,8 @@ Name[pt_BR]=Praticar ladeiras
 Name[ru]=Практика уклонов
 Name[sl]=Vaja na pobočjih
 Name[sr]=Вежба на падини
+Name[sr@ijekavian]=Вјежба на падини
+Name[sr@ijekavianlatin]=Vježba na padini
 Name[sr@latin]=Vežba na padini
 Name[sv]=Sluttningsövning
 Name[tr]=Yamaç Çalışması
