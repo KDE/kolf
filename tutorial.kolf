@@ -460,7 +460,7 @@ par=2
 [2-sign@1,5|3]
 Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you choose <u>Hole->Show Info</u>.
 Comment[ca]=<h3>Pendents</h3>Les pendents són àrees de terreny inclinat que empenyen la bola en la direcció de la pendent. Aquesta direcció es mostra quan tries <u>Forat->Mostra informació</u>.
-Comment[ca@valencia]=<h3>Pendents</h3>Les pendents son àrees de terreny inclinat que empenyen la bola a la direcció de la pendent. Esta direcció es mostra quan tries <u>Forat->Mostra informació</u>.
+Comment[ca@valencia]=<h3>Pendents</h3>Les pendents són àrees de terreny inclinat que empenyen la bola en la direcció de la pendent. Esta direcció es mostra quan tries <u>Forat->Mostra informació</u>.
 Comment[da]=<h3>Skråninger</h3>Skråninger er jordområder med hældning som skubber bolden i den retning som de hælder. Denne retning er vist når du vælger <u>Hul->Vis info</u>.
 Comment[de]=<h3>Hügel</h3>Hügel sind kurvige Bodenstücke, die den Ball in die eine oder andere Richtung ablenken. Diese Richtung ist sichtbar, wenn Sie <u>Bahn->Informationen anzeigen</u> auswählen.
 Comment[el]=<h3>Κλίσεις</h3>Κεκλιμένες περιοχές του εδάφους που ωθούν την μπάλα στην κατεύθυνση της κλίσης τους. Η κατεύθυνση εμφανίζεται όταν επιλέξετε <u>Τρύπα->Εμφάνιση πληροφοριών</u>.
@@ -1110,7 +1110,7 @@ par=2
 [9-sign@5,6|3]
 Comment=<h3>Floaters</h3>Floaters are moving platforms that carry a ball that lands on it. Floaters' speeds vary.
 Comment[ca]=<h3>Flotadors</h3>Els flotadors són plataformes mòbils que transporten la bola que cau sobre ells. La velocitat dels flotadors és variable.
-Comment[ca@valencia]=<h3>Flotadors</h3>Els flotadors son plataformes mòbils que transporten la bola que cau sobre ells. La velocitat dels flotadors és variable.
+Comment[ca@valencia]=<h3>Flotadors</h3>Els flotadors són plataformes mòbils que transporten la bola que cau sobre ells. La velocitat dels flotadors és variable.
 Comment[da]=<h3>Flydere</h3>Flydere er bevægelige platforme som bærer en bold der lander på den. Flyderes hastigheder varierer.
 Comment[de]=<h3>Floß</h3>Flöße sind bewegliche Plattformen, die einen Ball weitertragen, wenn er auf ihnen landet. Es gibt Flöße mit unterschiedlichen Geschwindigkeiten.
 Comment[el]=<h3>Πλωτήρες</h3>Οι πλωτήρες είναι κινούμενες πλατφόρμες που μεταφέρουν την μπάλα που θα προσγειωθεί πάνω τους. Οι ταχύτητά τους ποικίλει.
