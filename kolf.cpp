@@ -85,8 +85,7 @@ Kolf::Kolf()
 Kolf::~Kolf()
 {
 	// wipe out our objects
-	while (!obj->isEmpty())
-		delete obj->takeFirst();
+	qDeleteAll(*obj);
 	delete obj;
 }
 
@@ -827,8 +826,8 @@ void Kolf::initPlugins()
 	if (game)
 		game->pause();
 
-	while (!obj->isEmpty())
-		delete obj->takeFirst();
+	qDeleteAll(*obj);
+	obj->clear();
 	plugins.clear();
 
 	// add prefab objects

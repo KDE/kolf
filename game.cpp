@@ -3984,8 +3984,8 @@ void KolfGame::openFile()
 		}
 	}
 
-	while (!items.isEmpty())
-		delete items.takeFirst();
+	qDeleteAll(items);
+	items.clear();
 
 	extraMoveable.clear();
 	fastAdvancers.clear();
@@ -4372,8 +4372,8 @@ void KolfGame::clearHole()
 			citem->aboutToDie();
 	}
 
-	while (!items.isEmpty())
-		delete items.takeFirst();
+	qDeleteAll(items);
+	items.clear();
 
 	emit newSelectedItem(&holeInfo);
 

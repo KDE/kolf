@@ -133,8 +133,8 @@ void Slope::clearArrows()
 		(*arrow)->setVisible(false);
 		(*arrow)->aboutToDie();
 	}
-        while (!arrows.isEmpty())
-            delete arrows.takeFirst();
+	qDeleteAll(arrows);
+	arrows.clear();
 }
 
 QList<QGraphicsItem *> Slope::moveableItems() const
