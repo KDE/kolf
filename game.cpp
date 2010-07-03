@@ -1236,7 +1236,7 @@ void Bumper::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget 
 			return;
 		else {
 			//ensure the bumper_on pixmap is in the cache so it will be immediately available when required
-			if(!QPixmapCache::find("bumper_on"))
+			if(!QPixmapCache::find("bumper_on", &pixmap))
 				pixmap=game->renderer->renderSvg("bumper_on", (int)rect().width(), (int)rect().height(), 0);
 			pixmap=game->renderer->renderSvg("bumper_off", (int)rect().width(), (int)rect().height(), 0);
 			pixmapInitialised=true;

@@ -59,19 +59,18 @@ QPixmap KolfSvgRenderer::renderWithoutCache(const QString &name, int width, int 
 
 QPixmap KolfSvgRenderer::renderWithCache(const QString &name, int width, int height)
 {
-	if(!QPixmapCache::find(name))
-	{
-		QImage baseImg = QImage(width, height, QImage::Format_ARGB32_Premultiplied);
-		baseImg.fill(0);
-		QPainter p(&baseImg);
-		renderer->render(&p, name, QRectF(0, 0, width, height));
-		p.end();
-		QPixmap pix = QPixmap::fromImage(baseImg);
-		QPixmapCache::insert(name, pix);
-	}
-
 	QPixmap pix;
-	QPixmapCache::find(name, pix);
+	if(QPixmapCache::find(name, &pix))
+	{
+		return pix;
+	}
+	QImage baseImg = QImage(width, height, QImage::Format_ARGB32_Premultiplied);
+	baseImg.fill(0);
+	QPainter p(&baseImg);
+	renderer->render(&p, name, QRectF(0, 0, width, height));
+	p.end();
+	pix = QPixmap::fromImage(baseImg);
+	QPixmapCache::insert(name, pix);
 	return pix;
 }
 

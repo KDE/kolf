@@ -38,7 +38,6 @@
 #include <QHBoxLayout>
 #include <k3listbox.h>
 #include <QScrollArea>
-#include <QPixmapCache>
 
 #include "game.h"
 
