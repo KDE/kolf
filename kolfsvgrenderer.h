@@ -19,10 +19,10 @@
 #ifndef KOLF_SVG_RENDERER_H
 #define KOLF_SVG_RENDERER_H
 
-#include <ksvgrenderer.h>
+#include <qsvgrenderer.h>
 #include <QPixmap>
 
-class KSvgRenderer;
+class QSvgRenderer;
 
 class KolfSvgRenderer
 {
@@ -34,7 +34,7 @@ public:
         QPixmap renderWithCache(const QString &cacheName, int width, int height);
 
 private:
-	KSvgRenderer *renderer;
+	QSvgRenderer *renderer;
 };
 
 #endif

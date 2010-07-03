@@ -18,14 +18,14 @@
 
 #include "kolfsvgrenderer.h"
 
-#include <ksvgrenderer.h>
+#include <qsvgrenderer.h>
 #include <QPixmap>
 #include <QPixmapCache>
 #include <QPainter>
 
 KolfSvgRenderer::KolfSvgRenderer(const QString& pathToSvg)
 {
-	renderer = new KSvgRenderer(pathToSvg);
+	renderer = new QSvgRenderer(pathToSvg);
 }
 
 KolfSvgRenderer::~KolfSvgRenderer()
