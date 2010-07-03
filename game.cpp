@@ -1963,11 +1963,9 @@ void WallPoint::updateVisible()
 		return;
 	}
 
-	if (alwaysShow)
-		visible = true;
-	else
+	visible = true;
+	if (!alwaysShow)
 	{
-		visible = true;
 		QList<QGraphicsItem *> l = collidingItems();
 		for (QList<QGraphicsItem *>::Iterator it = l.begin(); it != l.end(); ++it)
 			if ((*it)->data(0) == data(0))
@@ -2572,7 +2570,6 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, const QString &filename
 	scoreboardHoles = 0;
 	infoShown = false;
 	m_useMouse = true;
-	m_useAdvancedPutting = false;
 	m_useAdvancedPutting = true;
 	m_sound = true;
 	m_ignoreEvents = false;
