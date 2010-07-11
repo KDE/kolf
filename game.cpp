@@ -2902,24 +2902,28 @@ void KolfGame::mouseReleaseEvent(QMouseEvent * e)
 {
 	QMouseEvent fixedEvent (QEvent::MouseButtonRelease, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
 	handleMouseReleaseEvent(&fixedEvent);
+	e->accept();
 }
 
 void KolfGame::mousePressEvent(QMouseEvent * e)
 {
 	QMouseEvent fixedEvent (QEvent::MouseButtonPress, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
 	handleMousePressEvent(&fixedEvent);
+	e->accept();
 }
 
 void KolfGame::mouseDoubleClickEvent(QMouseEvent * e)
 {
 	QMouseEvent fixedEvent (QEvent::MouseButtonDblClick, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
 	handleMouseDoubleClickEvent(&fixedEvent);
+	e->accept();
 }
 
 void KolfGame::mouseMoveEvent(QMouseEvent * e)
 {
 	QMouseEvent fixedEvent (QEvent::MouseMove, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
 	handleMouseMoveEvent(&fixedEvent);
+	e->accept();
 }
 
 void KolfGame::handleMouseMoveEvent(QMouseEvent *e)
