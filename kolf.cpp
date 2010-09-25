@@ -61,7 +61,7 @@
 Kolf::Kolf()
     : KXmlGuiWindow(0)
 {
-	setObjectName("Kolf");
+	setObjectName( QLatin1String("Kolf" ));
 	competition = false;
 	game = 0;
 	editor = 0;
@@ -113,17 +113,17 @@ void Kolf::setupActions()
 	highScoreAction = KStandardGameAction::highscores(this, SLOT(showHighScores()), actionCollection());
 
 	// Hole
-	editingAction = new KToggleAction(KIcon("document-properties"), i18n("&Edit"), this);
+	editingAction = new KToggleAction(KIcon( QLatin1String( "document-properties") ), i18n("&Edit"), this);
 	actionCollection()->addAction("editing", editingAction);
 	connect(editingAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	editingAction->setShortcut(Qt::CTRL+Qt::Key_E);
 	newHoleAction = actionCollection()->addAction("newhole");
-	newHoleAction->setIcon(KIcon("document-new"));
+	newHoleAction->setIcon(KIcon( QLatin1String( "document-new" )));
 	newHoleAction->setText(i18n("&New"));
 	connect(newHoleAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	newHoleAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_N);
 	clearHoleAction = actionCollection()->addAction("clearhole");
-	clearHoleAction->setIcon(KIcon("edit-clear-locationbar-ltr"));
+	clearHoleAction->setIcon(KIcon( QLatin1String( "edit-clear-locationbar-ltr" )));
 	clearHoleAction->setText(KStandardGuiItem::clear().text());
 	connect(clearHoleAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	clearHoleAction->setShortcut(Qt::CTRL+Qt::Key_Delete);
@@ -141,17 +141,17 @@ void Kolf::setupActions()
 	actionCollection()->addAction("switchhole", holeAction);
 	connect(holeAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	nextAction = actionCollection()->addAction("nexthole");
-	nextAction->setIcon(KIcon("go-next"));
+	nextAction->setIcon(KIcon( QLatin1String( "go-next" )));
 	nextAction->setText(i18n("&Next Hole"));
 	connect(nextAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	nextAction->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Forward));
 	prevAction = actionCollection()->addAction("prevhole");
-	prevAction->setIcon(KIcon("go-previous"));
+	prevAction->setIcon(KIcon( QLatin1String( "go-previous" )));
 	prevAction->setText(i18n("&Previous Hole"));
 	connect(prevAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	prevAction->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Back));
 	firstAction = actionCollection()->addAction("firsthole");
-	firstAction->setIcon(KIcon("go-home"));
+	firstAction->setIcon(KIcon( QLatin1String( "go-home" )));
 	firstAction->setText(i18n("&First Hole"));
 	connect(firstAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	firstAction->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Begin));
@@ -160,7 +160,7 @@ void Kolf::setupActions()
 	connect(lastAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	lastAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_End); // why not KStandardShortcut::End (Ctrl+End)?
 	randAction = actionCollection()->addAction("randhole");
-	randAction->setIcon(KIcon("go-jump"));
+	randAction->setIcon(KIcon( QLatin1String( "go-jump" )));
 	randAction->setText(i18n("&Random Hole"));
 	connect(randAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 
@@ -178,7 +178,7 @@ void Kolf::setupActions()
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
 	useAdvancedPuttingAction->setChecked(configGroup.readEntry("useAdvancedPutting", false));
 
-	showInfoAction = new KToggleAction(KIcon("help-about"), i18n("Show &Info"), this);
+	showInfoAction = new KToggleAction(KIcon( QLatin1String( "help-about")), i18n("Show &Info"), this);
 	actionCollection()->addAction("showinfo", showInfoAction);
 	connect(showInfoAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
 	showInfoAction->setShortcut(Qt::CTRL+Qt::Key_I);
@@ -497,7 +497,7 @@ void Kolf::gameOver()
 	{
 		if (names.count() > 1)
 		{
-			QString winners = names.join(i18n(" and "));
+			QString winners = names.join( i18n(" and " ));
 			KMessageBox::information(this, i18n("%1 tied", winners));
 		}
 		else
@@ -665,7 +665,7 @@ void Kolf::editingStarted()
 {
 	delete editor;
 	editor = new Editor(obj, dummy);
-	editor->setObjectName( "Editor" );
+	editor->setObjectName( QLatin1String( "Editor" ) );
 	connect(editor, SIGNAL(addNewItem(Object *)), game, SLOT(addNewObject(Object *)));
 	connect(editor, SIGNAL(changed()), game, SLOT(setModified()));
 	connect(editor, SIGNAL(addNewItem(Object *)), this, SLOT(setHoleFocus()));
