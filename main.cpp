@@ -86,7 +86,7 @@ int main(int argc, char **argv)
 
 	QApplication::setColorSpec(QApplication::ManyColor);
 	KApplication a;
-	KGlobal::locale()->insertCatalog("libkdegames");
+	KGlobal::locale()->insertCatalog( QLatin1String( "libkdegames" ));
 
 	Kolf *top = new Kolf;
 

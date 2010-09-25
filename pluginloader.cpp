@@ -69,7 +69,7 @@ Object *PluginLoader::load(const QString &filename)
 		return 0;
 	}
 
-	newObject->setObjectName("objectInstance");
+	newObject->setObjectName( QLatin1String("objectInstance" ));
 	Object *ret = dynamic_cast<Object *>(newObject);
 
 	if (!ret)
