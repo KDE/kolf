@@ -227,7 +227,7 @@ button next to the player's name.</para>
 <chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
 <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist> and <varlistentry>. Split the chapter into sections using <sect1(2,3)> for better viewing.-->
  <sect1 id="game-menu">
-<title>The <guimenu>Game</guimenu> Menu</title>
+<title>The Game Menu</title>
 
 <variablelist>
 <varlistentry>
@@ -343,7 +343,7 @@ game with a filename of your choice.</action></para>
 </sect1>
 
 <sect1 id="hole-menu">
-<title>The <guimenu>Hole</guimenu> Menu</title>
+<title>The Hole Menu</title>
 
 <variablelist>
 <varlistentry>
@@ -424,7 +424,7 @@ position</action>, so that you can start over.</para>
 </sect1>
 
 <sect1 id="go-menu">
-<title>The <guimenu>Go</guimenu> Menu</title>
+<title>The Go Menu</title>
 
 <variablelist>
 <varlistentry>
@@ -500,7 +500,7 @@ which hole you wish to go to.</para>
 </sect1>
 
 <sect1 id="settings-menu">
-<title>The <guimenu>Settings</guimenu> Menu</title>
+<title>The Settings Menu</title>
 
 <variablelist>
 <varlistentry>
@@ -619,7 +619,7 @@ section</link>.</para>
 </variablelist>
 </sect1>
 <sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
-<title>The <guimenu>Help</guimenu> Menu</title>
+<title>The Help Menu</title>
 <para>&kappname; has a default &kde; <guimenu>Help</guimenu> menu as described
 below, with one addition:</para>
 
