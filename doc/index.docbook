@@ -34,8 +34,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
  
-<date>2007-10-14</date><!-- Date of (re)writing, or update.-->
-<releaseinfo>&kappversion;</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
+<date>2010-10-01</date><!-- Date of (re)writing, or update.-->
+<releaseinfo>&kappversion; (&kde; 4.5)</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
  
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
@@ -144,23 +144,23 @@ slope and let it roll into the cup to move onto the next hole.</para>
 <para>To start a game, choose
 <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice>.
 This opens a dialog where you can configure your new game.</para>
-
+<!--
 <tip>
 <para>More third-party &kappname; courses are available at the &kappname; website. See <ulink 
 url="http://web.mit.edu/jasonkb/www/kolf/">the &kappname; user-uploaded courses page</ulink>.</para>
 </tip>
-
+-->
 <sect2> 
 <title><guilabel>Players</guilabel> Page</title>
 <para>To add a player to your game, click the <guibutton>New
 Player</guibutton> button.</para>
 
-<para>The text boxes in the grass area are the names of the players in
-this game. To change the name of the players, change the text in the
-text boxes. To change the ball color of the players' balls, click the
+<para><!--The text boxes in the grass area are the names of the players in
+  this game. -->To change the name of the players, change the text in the
+text boxes.<!-- To change the ball color of the players' balls, click the
 middle button that has a color rectangle, and a dialog will open where
 you can select the new ball color. The rectangle on the button is the
-current player's ball color.</para>
+  current player's ball color.--></para>
 
 <para>To remove a player, click the <guibutton>Remove</guibutton>
 button next to the player's name.</para>
@@ -326,7 +326,7 @@ game with a filename of your choice.</action></para>
 <guimenu>Game</guimenu><guimenuitem>About Course</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>Show name, author, and par of course.</action></para>
+<para><action>Show name, author, and number of holes of the course.</action></para>
 </listitem>
 </varlistentry>
 
@@ -575,7 +575,7 @@ section</link>.</para>
 <guilabel>Do not show this message again</guilabel> or similar</action>.</para>
 </listitem>
 </varlistentry>
-
+<!--
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
@@ -595,7 +595,7 @@ section</link>.</para>
 <para><action>Display the currently loaded plugins.</action></para>
 </listitem>
 </varlistentry>
-
+-->
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
@@ -677,7 +677,7 @@ below, with one addition:</para>
 </sect1>
 
 <sect1 id="adding-holes"> <title>Adding Holes</title>
-<para>Choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>New</guimenuitem></menuchoice> to add a new hole at the end of the course.</para>
+<para>Switch to the edit mode using <menuchoice><guimenu>Hole</guimenu><guimenuitem>Edit</guimenuitem></menuchoice>. Choose <menuchoice><guimenu>Hole</guimenu><guimenuitem>New</guimenuitem></menuchoice> to add a new hole at the end of the course.</para>
 <tip>
 <para>You can restore a hole to a blank state, similar to when it was first created, by choosing <menuchoice><guimenu>Hole</guimenu><guimenuitem>Clear</guimenuitem></menuchoice>.</para>
 </tip>
@@ -693,11 +693,13 @@ below, with one addition:</para>
 <caution>
 <para>Bridges and signs will cover up new objects if they were already in the center of the hole.</para>
 </caution>
+<!--
 <tip>
 <para>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
 </tip>
 <para>Some &kappname; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
 <para>Third-party &kappname; plugins are available at the &kappname; website. See <ulink url="http://web.mit.edu/jasonkb/www/kolf/">the &kappname; plugins download page</ulink>.</para>
+-->
 </sect2>
 
 <sect2> <title>Moving and Resizing Objects</title>
@@ -779,10 +781,12 @@ below, with one addition:</para>
 <varlistentry> <term><guilabel>Enable show/hide</guilabel></term>
 <listitem>
 <para>Checking this enables the flashing of this puddle or sand.</para>
+<!--
 </listitem>
 </varlistentry>
 <varlistentry> <term>Show/Hide speed</term>
 <listitem>
+  -->
 <para>The more towards <guilabel>Fast</guilabel> the slider is, the faster the puddle or sand flashes.</para>
 </listitem>
 </varlistentry>
@@ -823,7 +827,7 @@ below, with one addition:</para>
 <variablelist>
 <varlistentry> <term><guilabel>Sign HTML:</guilabel></term>
 <listitem>
-<para>You can enter any valid &HTML; here. For example, entering <markup>Hit it &lt;i&gt;softly&lt;/i&gt; towards the slope!</markup> will create the text <quote>Hit it <emphasis>softly</emphasis> towards the slope!</quote>.</para>
+<para>You can enter any valid &HTML; here. For example, entering <userinput>Hit it &lt;i&gt;softly&lt;/i&gt; towards the slope!</userinput> will create the text <quote>Hit it <emphasis>softly</emphasis> towards the slope!</quote>.</para>
 </listitem>
 </varlistentry>
 </variablelist>
