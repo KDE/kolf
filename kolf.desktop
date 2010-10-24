@@ -1,6 +1,7 @@
 [Desktop Entry]
 X-DocPath=kolf/index.html
 Name=Kolf
+Name[ast]=Kolf
 Name[be]=Гольф
 Name[bn]=কল্‌ফ
 Name[br]=Kolf
@@ -70,6 +71,7 @@ Icon=kolf
 MimeType=application/x-kourse;application/x-kolf;
 
 GenericName=Miniature Golf
+GenericName[ast]=Golf en miniatura
 GenericName[be]=Маленькі гольф
 GenericName[bn]=ছোটখাটো গলফ
 GenericName[ca]=Golf en miniatura
