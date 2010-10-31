@@ -1,7 +1,6 @@
 project(kolf)
 
 
-add_subdirectory( objects ) 
 add_subdirectory( sounds ) 
 add_subdirectory( courses ) 
 add_subdirectory( pics ) 
@@ -21,7 +20,6 @@ set(kolf_LIB_SRCS
    config.cpp 
    scoreboard.cpp 
    editor.cpp 
-   pluginloader.cpp 
    object.cpp 
    vector.cpp 
    printdialogpage.cpp 

@@ -77,7 +77,6 @@ protected slots:
 	void showGuideLineChanged(bool);
 	void soundChanged(bool);
 	void initPlugins();
-	void showPlugins();
 	void showHighScores();
 	void enableAllMessages();
 	void createSpacer();
@@ -130,10 +129,7 @@ private:
 	inline void setEditingEnabled(bool);
 	bool competition;
 
-	// contains everything
-	ObjectList *obj;
-	// contains subset of obj
-	ObjectList plugins;
+	ObjectList obj;
 
 	QString loadedGame;
 

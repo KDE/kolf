@@ -20,7 +20,6 @@
 #include "editor.h"
 #include "floater.h"
 #include "newgame.h"
-#include "pluginloader.h"
 #include "printdialogpage.h"
 #include "scoreboard.h"
 #include "slope.h"
@@ -56,8 +55,6 @@ Kolf::Kolf()
 	isTutorial = false;
 
 	setupActions();
-
-	obj = new ObjectList;
 	initPlugins();
 
 	filename = QString();
@@ -70,9 +67,7 @@ Kolf::Kolf()
 
 Kolf::~Kolf()
 {
-	// wipe out our objects
-	qDeleteAll(*obj);
-	delete obj;
+	qDeleteAll(obj);
 }
 
 void Kolf::setupActions()
@@ -187,15 +182,6 @@ void Kolf::setupActions()
 	connect(soundAction, SIGNAL(toggled(bool)), this, SLOT(soundChanged(bool)));
 	soundAction->setChecked(configGroup.readEntry("sound", true));
 
-	//There are no external plugins in 4.0 and no ported instructions on how to write them
-	//Plugins will still be loaded at startup IF one is made, but reduce interface options for now
-	//QAction *action = actionCollection()->addAction("reloadplugins");
-	//action->setText(i18n("&Reload Plugins"));
-	//connect(action, SIGNAL(triggered(bool) ), SLOT(initPlugins()));
-	//action = actionCollection()->addAction("showplugins");
-	//action->setText(i18n("Show &Plugins"));
-	//connect(action, SIGNAL(triggered(bool) ), SLOT(showPlugins()));
-
 	aboutAction = actionCollection()->addAction("aboutcourse");
 	aboutAction->setText(i18n("&About Course"));
 	connect(aboutAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
@@ -273,7 +259,7 @@ void Kolf::startNewGame()
 	delete spacer;
 	spacer = 0;
 	delete game;
-	game = new KolfGame(obj, &players, filename, dummy);
+	game = new KolfGame(&obj, &players, filename, dummy);
 	game->setStrict(competition);
 
 	connect(game, SIGNAL(newHole(int)), scoreboard, SLOT(newHole(int)));
@@ -421,7 +407,7 @@ void Kolf::createSpacer()
 	spacerPlayers.last().setId(1);
 
 	delete spacer;
-	spacer = new KolfGame(obj, &spacerPlayers, KGlobal::dirs()->findResource("appdata", "intro"), dummy);
+	spacer = new KolfGame(&obj, &spacerPlayers, KGlobal::dirs()->findResource("appdata", "intro"), dummy);
 	spacer->setSound(false);
 	layout->addWidget(spacer, 0, 0);//, Qt::AlignCenter);
 	spacer->ignoreEvents(true);
@@ -650,7 +636,7 @@ void Kolf::newStatusText(const QString &text)
 void Kolf::editingStarted()
 {
 	delete editor;
-	editor = new Editor(obj, dummy);
+	editor = new Editor(&obj, dummy);
 	editor->setObjectName( QLatin1String( "Editor" ) );
 	connect(editor, SIGNAL(addNewItem(Object *)), game, SLOT(addNewObject(Object *)));
 	connect(editor, SIGNAL(changed()), game, SLOT(setModified()));
@@ -812,63 +798,24 @@ void Kolf::initPlugins()
 	if (game)
 		game->pause();
 
-	qDeleteAll(*obj);
-	obj->clear();
-	plugins.clear();
+	qDeleteAll(obj);
+	obj.clear();
 
 	// add prefab objects
-	obj->append(new SlopeObj());
-	obj->append(new PuddleObj());
-	obj->append(new WallObj());
-	obj->append(new CupObj());
-	obj->append(new SandObj());
-	obj->append(new WindmillObj());
-	obj->append(new BlackHoleObj());
-	obj->append(new FloaterObj());
-	obj->append(new BridgeObj());
-	obj->append(new SignObj());
-	obj->append(new BumperObj());
-
-	ObjectList *other = PluginLoader::loadAll();
-	QList<Object *>::const_iterator object;
-	for (object = other->constBegin(); object != other->constEnd(); ++object)
-	{
-		obj->append(*object);
-		plugins.append(*object);
-	}
-
-	if (game)
-	{
-		game->setObjects(obj);
-		game->unPause();
-	}
+	obj.append(new SlopeObj);
+	obj.append(new PuddleObj);
+	obj.append(new WallObj);
+	obj.append(new CupObj);
+	obj.append(new SandObj);
+	obj.append(new WindmillObj);
+	obj.append(new BlackHoleObj);
+	obj.append(new FloaterObj);
+	obj.append(new BridgeObj);
+	obj.append(new SignObj);
+	obj.append(new BumperObj);
+	//NOTE: The plugin mechanism has been removed because it is not used anyway.
 
 	//kDebug(12007) << "end of initPlugins";
-}
-
-void Kolf::showPlugins()
-{
-	QString text = QString("<h2>%1</h2><ol>").arg(i18n("Currently Loaded Plugins"));
-	QList<Object *>::const_iterator object;
-        for (object = plugins.constBegin(); object != plugins.constEnd(); ++object)
-	{
-		text.append("<li>");
-		text.append((*object)->name());
-		text.append(" - ");
-		text.append(i18n("by %1", (*object)->author()));
-		text.append("</li>");
-	}
-	/*Object *object = 0;
-	for (object = plugins.first(); object; object = plugins.next())
-	{
-		text.append("<li>");
-		text.append(object->name());
-		text.append(" - ");
-		text.append(i18n("by %1", object->author()));
-		text.append("</li>");
-	}*/
-	text.append("</ol>");
-	KMessageBox::information(this, text, i18n("Plugins"));
 }
 
 void Kolf::enableAllMessages()
