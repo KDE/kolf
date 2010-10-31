@@ -295,21 +295,6 @@ Bridge::Bridge(QGraphicsItem *parent, const QString &type)
 	setSize(width(), height());
 }
 
-void Bridge::resize(double resizeFactor)
-{
-	this->resizeFactor = resizeFactor;
-	setPos(baseX*resizeFactor, baseY*resizeFactor);
-// 	setRect(0, 0, baseWidth*resizeFactor, baseHeight*resizeFactor);
-	botWall->setPos(baseBotWallX*resizeFactor, baseBotWallY*resizeFactor);
-// 	botWall->resize(resizeFactor);
-	topWall->setPos(baseTopWallX*resizeFactor, baseTopWallY*resizeFactor);
-// 	topWall->resize(resizeFactor);
-	leftWall->setPos(baseLeftWallX*resizeFactor, baseLeftWallY*resizeFactor);
-// 	leftWall->resize(resizeFactor);
-	rightWall->setPos(baseRightWallX*resizeFactor, baseRightWallY*resizeFactor);
-// 	rightWall->resize(resizeFactor);
-}
-
 bool Bridge::collision(Ball *ball, long int /*id*/)
 {
 	ball->setFrictionMultiplier(.63);
@@ -335,10 +320,11 @@ void Bridge::setGame(KolfGame *game)
 
 void Bridge::setWallColor(const QColor &color)
 {
-	topWall->setPen(QPen(color.dark(), 3));
-	botWall->setPen(topWall->pen());
-	leftWall->setPen(topWall->pen());
-	rightWall->setPen(topWall->pen());
+	QPen pen(color.dark(), 3);
+	topWall->setPen(pen);
+	botWall->setPen(pen);
+	leftWall->setPen(pen);
+	rightWall->setPen(pen);
 }
 
 void Bridge::aboutToDie()
@@ -364,13 +350,14 @@ void Bridge::moveBy(double dx, double dy)
 {
 	QGraphicsItem::moveBy(dx, dy);
 
+	const QPointF pos = this->pos();
 	point->dontMove();
-	point->setPos(x() + width(), y() + height());
+	point->setPos(pos.x() + width(), pos.y() + height());
 
-	topWall->setPos(x(), y());
-	botWall->setPos(x(), y() - 1);
-	leftWall->setPos(x(), y());
-	rightWall->setPos(x(), y());
+	topWall->setPos(pos);
+	botWall->setPos(pos);
+	leftWall->setPos(pos);
+	rightWall->setPos(pos);
 
 	QList<QGraphicsItem *> list = collidingItems();
 	for (QList<QGraphicsItem *>::Iterator it = list.begin(); it != list.end(); ++it)
@@ -393,17 +380,6 @@ void Bridge::doLoad(KConfigGroup *cfgGroup)
 	setBotWallVisible(cfgGroup->readEntry("botWallVisible", botWallVisible()));
 	setLeftWallVisible(cfgGroup->readEntry("leftWallVisible", leftWallVisible()));
 	setRightWallVisible(cfgGroup->readEntry("rightWallVisible", rightWallVisible()));
-
-	baseX = x();
-	baseY = y();
-	baseTopWallX = topWall->x();
-	baseTopWallY = topWall->y();
-	baseBotWallX = botWall->x();
-	baseBotWallY = botWall->y();
-	baseLeftWallX = leftWall->x();
-	baseLeftWallY = leftWall->y();
-	baseRightWallX = rightWall->x();
-	baseRightWallY = rightWall->y();
 }
 
 void Bridge::save(KConfigGroup *cfgGroup)
@@ -436,9 +412,6 @@ void Bridge::setSize(double width, double height)
 	botWall->setPoints(0, height, width, height);
 	leftWall->setPoints(0, 0, 0, height);
 	rightWall->setPoints(width, 0, width, height);
-
-	baseWidth = width;
-	baseHeight = height;
 
 	moveBy(0, 0);
 }
@@ -501,12 +474,11 @@ void WindmillConfig::endChanged(bool bottom)
 Windmill::Windmill(QGraphicsItem * parent)
 : Bridge(parent, "windmill"), speedfactor(16), m_bottom(true)
 {
-	baseGuardSpeed = 5;
 	guard = new WindmillGuard(Kolf::findBoard(this));
 	guard->setPen(QPen(Qt::black, 5));
 	guard->setVisible(true);
 	guard->setAlwaysShow(true);
-	setSpeed(baseGuardSpeed);
+	setSpeed(5);
 	guard->setZValue(wallZ() + .1);
 
 	//not using antialiasing because it looks too blurry here
@@ -528,20 +500,6 @@ Windmill::Windmill(QGraphicsItem * parent)
 
 	setSize(width(), height());
 	moveBy(0, 0);
-}
-
-void Windmill::resize(double resizeFactor)
-{
-	this->resizeFactor = resizeFactor;
-	Bridge::resize(resizeFactor);
-	guard->setBetween(baseGuardMin*resizeFactor, baseGuardMax*resizeFactor);
-	guard->QGraphicsLineItem::setPos(baseGuardX*resizeFactor, baseGuardY*resizeFactor);
-// 	guard->resize(resizeFactor);
-	setSpeed(baseGuardSpeed*resizeFactor);
-	left->QGraphicsLineItem::setPos(baseLeftX*resizeFactor, baseLeftY*resizeFactor);
-// 	left->resize(resizeFactor);
-	right->QGraphicsLineItem::setPos(baseRightX*resizeFactor, baseRightY*resizeFactor);
-// 	right->resize(resizeFactor);
 }
 
 void Windmill::aboutToDie()
@@ -593,26 +551,17 @@ void Windmill::load(KConfigGroup *cfgGroup)
 	guard->editModeChanged(false);
 
 	setBottom(cfgGroup->readEntry("bottom", true));
-
-	baseGuardMin = guard->getMin();
-	baseGuardMax = guard->getMax();
-	baseGuardX = guard->x();
-	baseGuardY = guard->y();
-	baseLeftX = left->x();
-	baseLeftY = left->y();
-	baseRightX = right->x();
-	baseRightY = right->y();
 }
 
 void Windmill::moveBy(double dx, double dy)
 {
 	Bridge::moveBy(dx, dy);
 
-	left->setPos(x(), y());
-	right->setPos(x(), y());
+	left->setPos(pos());
+	right->setPos(pos());
 
 	//guard->moveBy(dx, dy);
-	guard->setPos(x(), y());
+	guard->setPos(pos());
 	guard->setBetween(x(), x() + width());
 }
 
@@ -634,7 +583,7 @@ void Windmill::setSize(double width, double height)
 
 	guard->setBetween(x(), x() + width);
 	double guardY = m_bottom? height + 4 : -4;
-	guard->setPoints(0, guardY, (double)indent / (double)1.07 - 2, guardY);
+	guard->setPoints(0, guardY, indent / 1.07 - 2, guardY);
 }
 
 /////////////////////////
@@ -661,18 +610,11 @@ Sign::Sign(QGraphicsItem * parent)
 	m_text = m_untranslatedText = i18n("New Text");
 	setWallColor(Qt::black);
 	setWallZ(zValue() + .01);
-	baseFontPixelSize = fontPixelSize = 12;
 
 	setTopWallVisible(true);
 	setBotWallVisible(true);
 	setLeftWallVisible(true);
 	setRightWallVisible(true);
-}
-
-void Sign::resize(double resizeFactor)
-{
-	fontPixelSize = baseFontPixelSize*resizeFactor;
-	Bridge::resize(resizeFactor);
 }
 
 void Sign::load(KConfigGroup *cfgGroup)
@@ -700,11 +642,11 @@ void Sign::paint(QPainter *painter, const QStyleOptionGraphicsItem *style, QWidg
 {
 	Bridge::paint(painter, style, parent);
 
-	painter->setPen(QPen(Qt::black, 1));
+	painter->setPen(QPen(Qt::black));
 	QGraphicsTextItem txt;
 	txt.setFont(QApplication::font());
 	QFont font = QApplication::font();
-	font.setPixelSize((int)fontPixelSize);
+	font.setPixelSize(12);
 	txt.setFont(font);
 	txt.setHtml(m_text);
 	const int indent = wallPen().width() + 13;
@@ -1844,7 +1786,6 @@ bool WallPoint::collision(Ball *ball, long int id)
 Wall::Wall(QGraphicsItem *parent, bool antialiased)
 : HintedLineItem(antialiased, parent)
 {
-	this->antialiasing = antialiasing;
 	setData(0, Rtti_Wall);
 	editing = false;
 	lastId = INT_MAX - 10;

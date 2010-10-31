@@ -51,11 +51,6 @@ void FloaterGuide::moveBy(double dx, double dy)
 
 void FloaterGuide::setPoints(double xa, double ya, double xb, double yb)
 {
-	baseX1 = xa / resizeFactor;
-	baseY1 = ya / resizeFactor;
-	baseX2 = xb / resizeFactor;
-	baseY2 = yb / resizeFactor;
-
 	if (qAbs(xa - xb) > 0 || qAbs(ya - yb) > 0)
 	{
 		Wall::setPoints(xa, ya, xb, yb);
@@ -69,12 +64,6 @@ Config *FloaterGuide::config(QWidget *parent)
 	return floater->config(parent);
 }
 
-void FloaterGuide::resize(double resizeFactor)
-{
-	this->resizeFactor = resizeFactor;
-	setPoints(baseX1*resizeFactor, baseY1*resizeFactor, baseX2*resizeFactor, baseY2*resizeFactor);
-}
-
 /////////////////////////
 
 Floater::Floater(QGraphicsItem *parent)
@@ -84,7 +73,6 @@ Floater::Floater(QGraphicsItem *parent)
 	setEnabled(true);
 	noUpdateZ = false;
 	haventMoved = true;
-	resizeFactor = 1;
 	wall = new FloaterGuide(this, parent);
 	wall->setPoints(100, 100, 200, 200);
 	wall->setPen(QPen(wall->pen().color().light(), wall->pen().width() - 1));
@@ -116,14 +104,6 @@ void Floater::editModeChanged(bool changed)
 		wall->editModeChanged(true);
 	Bridge::editModeChanged(changed);
 	wall->setVisible(changed);
-}
-
-void Floater::resize(double resizeFactor)
-{
-	this->resizeFactor = resizeFactor;
-	setSpeed(speed); //update speed taking into account new resizeFactor
-	wall->resize( resizeFactor );
-	Bridge::resize(resizeFactor);
 }
 
 void Floater::advance(int phase)
@@ -195,8 +175,7 @@ void Floater::setSpeed(int news)
 		return;
 	}
 
-	const double factor = (double)speed / 3.5;
-	setVelocity(-Vector::fromMagnitudeDirection(factor * resizeFactor, vector.direction()));
+	setVelocity(-Vector::fromMagnitudeDirection(speed / 3.5, vector.direction()));
 }
 
 void Floater::aboutToSave()
@@ -264,20 +243,20 @@ void Floater::moveBy(double dx, double dy)
 
 void Floater::saveState(StateDB *db)
 {
-	db->setPoint(QPointF(x()/resizeFactor, y()/resizeFactor));
+	db->setPoint(pos());
 }
 
 void Floater::loadState(StateDB *db)
 {
-	const QPointF moveTo = db->point();
-	moveBy(moveTo.x()*resizeFactor - x(), moveTo.y()*resizeFactor - y());
+	const QPointF diff = db->point() - pos();
+	moveBy(diff.x(), diff.y());
 }
 
 void Floater::save(KConfigGroup *cfgGroup)
 {
 	cfgGroup->writeEntry("speed", speed);
-	cfgGroup->writeEntry("startPoint", QPoint((int)(wall->startPoint().x() + wall->x()), (int)(wall->startPoint().y() + wall->y())));
-	cfgGroup->writeEntry("endPoint", QPoint((int)(wall->endPoint().x() + wall->x()), (int)(wall->endPoint().y() + wall->y())));
+	cfgGroup->writeEntry("startPoint", (wall->startPointF() + wall->pos()).toPoint());
+	cfgGroup->writeEntry("endPoint", (wall->endPointF() + wall->pos()).toPoint());
 
 	doSave(cfgGroup);
 }
@@ -286,9 +265,9 @@ void Floater::load(KConfigGroup *cfgGroup)
 {
 	setPos(firstPoint.x(), firstPoint.y());
 
-	QPointF start(wall->startPoint() + QPointF(wall->x(), wall->y()));
+	QPointF start = wall->startPointF() + wall->pos();
 	start = cfgGroup->readEntry("startPoint", start);
-	QPointF end(wall->endPoint() + QPointF(wall->x(), wall->y()));
+	QPointF end = wall->endPointF() + wall->pos();
 	end = cfgGroup->readEntry("endPoint", end);
 	wall->setPoints(start.x(), start.y(), end.x(), end.y());
 	wall->setPos(0, 0);
@@ -297,11 +276,6 @@ void Floater::load(KConfigGroup *cfgGroup)
 
 	doLoad(cfgGroup);
 	reset();
-}
-
-void Floater::firstMove(int x, int y)
-{
-	firstPoint = QPoint(x, y);
 }
 
 /////////////////////////

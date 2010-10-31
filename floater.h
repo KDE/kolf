@@ -40,34 +40,32 @@ private:
 class FloaterGuide : public Wall
 {
 public:
-	FloaterGuide(Floater *floater, QGraphicsItem *parent) : Wall(parent) { this->floater = floater; almostDead = false; resizeFactor = 1; }
+	FloaterGuide(Floater *floater, QGraphicsItem *parent) : Wall(parent) { this->floater = floater; almostDead = false; }
 	virtual void setPoints(double xa, double ya, double xb, double yb);
 	virtual void moveBy(double dx, double dy);
 	virtual Config *config(QWidget *parent);
 	virtual void aboutToDelete();
 	virtual void aboutToDie();
-	void resize(double resizeFactor);
+
 	virtual CanvasItem *itemToDelete() { return NULL; }
 
 private:
 	Floater *floater;
 	bool almostDead;
-
-	double resizeFactor, baseX1, baseY1, baseX2, baseY2;
 };
 
 class Floater : public Bridge
 {
 public:
 	Floater(QGraphicsItem * parent);
-	void resize(double resizeFactor);
+
 	virtual bool collision(Ball *ball, long int id) { Bridge::collision(ball, id); return false; }
 	virtual void saveState(StateDB *db);
 	virtual void loadState(StateDB *db);
 	virtual void save(KConfigGroup *cfgGroup);
 	virtual void load(KConfigGroup *cfgGroup);
 	virtual bool loadLast() const { return true; }
-	virtual void firstMove(int x, int y);
+
 	virtual void aboutToSave();
 	virtual void aboutToDie();
 	virtual void savingDone();
@@ -89,14 +87,7 @@ private:
 	int speedfactor;
 	int speed;
 	FloaterGuide *wall;
-	/*
-	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
-	 */
-	double baseXVelocity, baseYVelocity;
-	/*
-	 * resizeFactor is the number to multiply base numbers by to get their resized value (i.e. if it is 1 then use default size, if it is >1 then everything needs to be bigger, and if it is <1 then everything needs to be smaller)
-	 */
-	double resizeFactor;
+
 	QPoint origin;
 	Vector vector;
 	bool noUpdateZ;

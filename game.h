@@ -447,6 +447,7 @@ public:
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
 	virtual void setPos(double x, double y);
+	void setPos(const QPointF& p) { setPos(p.x(), p.y()); }
 	virtual void clean();
 
 	// must reimp because we gotta move the end items,
@@ -469,7 +470,6 @@ protected:
 	bool editing;
 
 private:
-	bool antialiasing;
 	long int lastId;
 
 	friend class WallPoint;
@@ -585,7 +585,6 @@ public:
 	Bridge(QGraphicsItem *parent, const QString &type = QLatin1String("bridge"));
 
 	virtual bool collision(Ball *ball, long int id);
-	virtual void resize(double resizeFactor);
 	virtual void aboutToDie();
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
@@ -618,16 +617,6 @@ public:
 	double height() {return Tagaro::SpriteObjectItem::size().height(); }
 
 protected:
-	bool pixmapInitialised;
-	/*
-	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
-	 */
-	double baseX, baseY, baseWidth, baseHeight;
-	double baseTopWallX, baseTopWallY;
-	double baseBotWallX, baseBotWallY;
-	double baseLeftWallX, baseLeftWallY;
-	double baseRightWallX, baseRightWallY;
-	double resizeFactor;
 	Wall *topWall;
 	Wall *botWall;
 	Wall *leftWall;
@@ -653,7 +642,7 @@ class Sign : public Bridge
 {
 public:
 	Sign(QGraphicsItem *parent);
-	void resize(double resizeFactor);
+
 	void setText(const QString &text);
 	QString text() const { return m_text; }
 	virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *);
@@ -663,10 +652,6 @@ public:
 	virtual void load(KConfigGroup *cfgGroup);
 
 protected:
-	/*
-	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
-	 */
-	double baseFontPixelSize, fontPixelSize;
 	QString m_text;
 	QString m_untranslatedText;
 };
@@ -708,8 +693,8 @@ public:
 	virtual void load(KConfigGroup *cfgGroup);
 	virtual void setGame(KolfGame *game);
 	virtual Config *config(QWidget *parent) { return new WindmillConfig(this, parent); }
+
 	void setSize(double width, double height);
-	virtual void resize(double resizeFactor);
 	virtual void moveBy(double dx, double dy);
 	void setSpeed(double news);
 	double curSpeed() const { return speed; }
@@ -720,12 +705,7 @@ protected:
 	WindmillGuard *guard;
 	Wall *left;
 	Wall *right;
-	/*
-	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
-	 */
-	double baseGuardX, baseGuardY, baseGuardMin, baseGuardMax, baseGuardSpeed;
-	double baseLeftX, baseLeftY, baseRightX, baseRightY;
-	double resizeFactor;
+
 	int speedfactor;
 	double speed;
 	bool m_bottom;
