@@ -32,11 +32,17 @@ class Ball;
 class KConfigGroup;
 class KolfGame;
 
+namespace Kolf
+{
+	class Overlay;
+	class Shape;
+}
+
 class CanvasItem
 {
 public:
-	CanvasItem() { game = 0; }
-	virtual ~CanvasItem() {}
+	CanvasItem() : game(0), m_overlay(0) { }
+	virtual ~CanvasItem();
 	///load your settings from the KConfigGroup, which represents a course.
 	virtual void load(KConfigGroup *) {}
 	///returns a bool that is true if your item needs to load after other items
@@ -52,7 +58,7 @@ public:
 	///called right after all items are saved.
 	virtual void savingDone() {}
 	///called when the edit mode has been changed.
-	virtual void editModeChanged(bool /*editing*/) {}
+	virtual void editModeChanged(bool editing);
 	///The item should delete any other objects it's created. DO NOT DO THIS KIND OF STUFF IN THE DESTRUCTOR!
 	virtual void aboutToDie() {}
 	///Returns the object to get rid of when the delete button is pressed on this item.
@@ -109,7 +115,6 @@ public:
 	virtual void setVelocity(const Vector& velocity) { m_velocity = velocity; }
 	Vector velocity() const { return m_velocity; }
 	virtual void moveBy(double , double) { kDebug(12007) << "Warning, empty moveBy used";} //needed so that float can call the own custom moveBy()s of everything on it
-
 protected:
 	///pointer to main KolfGame
 	KolfGame *game;
@@ -121,6 +126,21 @@ private:
 	///custom animation code
 	bool m_animated;
 	Vector m_velocity;
+
+//AFTER THIS LINE follows what I have inserted during the refactoring
+	public:
+		QList<Kolf::Shape*> shapes() const { return m_shapes; }
+		Kolf::Overlay* overlay(bool createIfNecessary = true);
+	protected:
+		void addShape(Kolf::Shape* shape);
+		///Creates the optimal overlay for this object. The implementation does not have to propagate its properties to the overlay, as the overlay is updated just after it has been created.
+		///@warning Do not actually call this function from subclass implementations. Use overlay() instead.
+		virtual Kolf::Overlay* createOverlay() { return 0; } //TODO: make this pure virtual when all CanvasItems are QGraphicsItems and implement createOverlay() (and then disallow createOverlay() == 0)
+		///This function should be called whenever the value of an object's property changes. This will most prominently cause the overlay to be updated (if it exists).
+		void propagateUpdate();
+	private:
+		Kolf::Overlay* m_overlay;
+		QList<Kolf::Shape*> m_shapes;
 };
 
 //WARNING: pos() is at center (not at top-left edge of bounding rect!)

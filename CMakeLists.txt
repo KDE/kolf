@@ -27,6 +27,9 @@ set(kolf_LIB_SRCS
    floater.cpp
    slope.cpp
    itemfactory.cpp
+   overlay.cpp
+   shape.cpp
+   utils-animateditem.cpp
    tagaro/board.cpp
    tagaro/scene.cpp
    tagaro/spriteobjectitem.cpp

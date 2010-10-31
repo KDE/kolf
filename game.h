@@ -37,6 +37,10 @@ class QVBoxLayout;
 class KolfGame;
 class KGameRenderer;
 
+namespace Kolf
+{
+	class LineShape;
+};
 namespace Tagaro
 {
 	class Board;
@@ -264,6 +268,7 @@ public Q_SLOTS:
 public:
 	Cup(QGraphicsItem *parent);
 
+	virtual Kolf::Overlay* createOverlay();
 	virtual bool place(Ball *ball, bool wasCenter);
 	virtual bool canBeMovedByOthers() const { return true; }
 	virtual bool collision(Ball *ball, long int id);
@@ -401,7 +406,7 @@ public:
 
 	// must reimp because we gotta move the end items,
 	// and we do that in moveBy()
-	virtual void setPoints(double xa, double ya, double xb, double yb) { setLine(xa, ya, xb, yb); moveBy(0, 0); }
+	virtual void setPoints(double xa, double ya, double xb, double yb) { setLine(QLineF(xa, ya, xb, yb)); moveBy(0, 0); }
 
 	virtual QList<QGraphicsItem *> moveableItems() const;
 	virtual void setGame(KolfGame *game);
@@ -413,11 +418,16 @@ public:
 	QPoint endPoint() const { return line().p2().toPoint(); }
 
 	void doAdvance();
+
+	void setLine(const QLineF& line);
+
 protected:
 	WallPoint *startItem;
 	WallPoint *endItem;
 	bool editing;
+	Kolf::LineShape* shape;
 
+	virtual Kolf::Overlay* createOverlay();
 private:
 	long int lastId;
 

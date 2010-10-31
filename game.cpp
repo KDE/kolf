@@ -20,7 +20,9 @@
 #include "game.h"
 #include "itemfactory.h"
 #include "kcomboboxdialog.h"
+#include "overlay.h"
 #include "rtti.h"
+#include "shape.h"
 
 #include "tagaro/board.h"
 
@@ -1071,8 +1073,14 @@ Cup::Cup(QGraphicsItem * parent)
 {
 	const int diameter = 16;
 	setSize(QSizeF(diameter, diameter));
+	addShape(new Kolf::CircleShape(diameter / 2));
 
 	setZValue(998.1);
+}
+
+Kolf::Overlay* Cup::createOverlay()
+{
+	return new Kolf::Overlay(this, this);
 }
 
 bool Cup::place(Ball *ball, bool /*wasCenter*/)
@@ -1674,7 +1682,9 @@ Wall::Wall(QGraphicsItem *parent, bool antialiased)
 	endItem->setVisible(true);
 	setPen(QPen(Qt::darkRed, 3));
 
-	setLine(-15, 10, 15, -5);
+	HintedLineItem::setLine(QLineF(-15, 10, 15, -5));
+	shape = new Kolf::LineShape(line());
+	addShape(shape);
 
 	moveBy(0, 0);
 
@@ -1777,6 +1787,7 @@ void Wall::editModeChanged(bool changed)
 	const bool debugPoints = false;
 
 	editing = changed;
+	CanvasItem::editModeChanged(editing);
 
 	startItem->setZValue(zValue() + .002);
 	endItem->setZValue(zValue() + .001);
@@ -1793,6 +1804,17 @@ void Wall::editModeChanged(bool changed)
 	endItem->setRect(-0.5*neww, -0.5*neww, neww, neww);
 
 	moveBy(0, 0);
+}
+
+void Wall::setLine(const QLineF& line)
+{
+	HintedLineItem::setLine(line);
+	shape->setLine(line);
+}
+
+Kolf::Overlay* Wall::createOverlay()
+{
+	return new Kolf::Overlay(this, this);
 }
 
 bool Wall::collision(Ball *ball, long int id)
@@ -2300,7 +2322,7 @@ void KolfGame::unPause()
 void KolfGame::addBorderWall(const QPoint &start, const QPoint &end)
 {
 	Wall *wall = new Wall(courseBoard);
-	wall->setLine(start.x(), start.y(), end.x(), end.y());
+	wall->setLine(QLineF(start, end));
 	wall->setVisible(true);
 	wall->setGame(this);
 	wall->setZValue(998.7);

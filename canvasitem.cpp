@@ -19,6 +19,17 @@
 
 #include "canvasitem.h"
 #include "game.h"
+#include "overlay.h"
+#include "shape.h"
+
+CanvasItem::~CanvasItem()
+{
+	//The overlay is deleted first, because it might interact with all other parts of the object.
+	delete m_overlay;
+	//NOTE: Box2D objects will need to be destroyed in the following order:
+	//subobjects, shapes, own b2Body
+	qDeleteAll(m_shapes);
+}
 
 QGraphicsRectItem *CanvasItem::onVStrut()
 {
@@ -58,6 +69,42 @@ void CanvasItem::playSound(const QString &file, double vol)
 {
 	if (game)
 		game->playSound(file, vol);
+}
+
+void CanvasItem::editModeChanged(bool editing)
+{
+	Kolf::Overlay* overlay = this->overlay();
+	if (overlay)
+		overlay->setVisible(editing);
+}
+
+void CanvasItem::addShape(Kolf::Shape* shape)
+{
+	if (shape->attach(this)) //this will fail if the shape is already attached to some object
+		m_shapes << shape;
+}
+
+Kolf::Overlay* CanvasItem::overlay(bool createIfNecessary)
+{
+	//the overlay is created once it is requested
+	if (!m_overlay && createIfNecessary)
+	{
+		m_overlay = createOverlay();
+		if (m_overlay)
+		{
+			//should be above object representation
+			m_overlay->setZValue(m_overlay->qitem()->zValue() + 100);
+			//initialize the overlay's parameters
+			m_overlay->update();
+		}
+	}
+	return m_overlay;
+}
+
+void CanvasItem::propagateUpdate()
+{
+	if (m_overlay)
+		m_overlay->update();
 }
 
 //BEGIN EllipticalCanvasItem
