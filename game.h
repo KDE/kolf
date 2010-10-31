@@ -1,3 +1,22 @@
+/*
+    Copyright (C) 2002-2005, Jason Katz-Brown <jasonkb@mit.edu>
+    Copyright 2010 Stefan Majewsky <majewsky@gmx.net>
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+*/
+
 #ifndef GAME_H
 #define GAME_H
 
@@ -5,7 +24,6 @@
 
 #include <kolflib_export.h>
 #include "ball.h"
-#include "object.h"
 #include "statedb.h"
 
 #include <KLocale>
@@ -21,6 +39,10 @@ class KolfSvgRenderer;
 namespace Phonon
 {
     class MediaObject;
+}
+namespace Kolf
+{
+	class ItemFactory;
 }
 
 enum Direction { D_Left, D_Right, Forwards, Backwards };
@@ -235,24 +257,12 @@ public:
 	Puddle(QGraphicsItem * parent, QGraphicsScene *scene);
 	virtual bool collision(Ball *ball, long int id);
 };
-class PuddleObj : public Object
-{
-public:
-	PuddleObj() { m_name = i18n("Puddle"); m__name = "puddle"; }
-	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene) { return new Puddle(parent, scene); }
-};
 
 class Sand : public KolfEllipse
 {
 public:
 	Sand(QGraphicsItem * parent, QGraphicsScene *scene);
 	virtual bool collision(Ball *ball, long int id);
-};
-class SandObj : public Object
-{
-public:
-	SandObj() { m_name = i18n("Sand"); m__name = "sand"; }
-	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene) { return new Sand(parent, scene); }
 };
 
 class Inside : public QGraphicsEllipseItem, public CanvasItem
@@ -291,12 +301,6 @@ private:
 	double resizeFactor, baseX, baseY;
 	int baseDiameter; 
 };
-class BumperObj : public Object
-{
-public:
-	BumperObj() { m_name = i18n("Bumper"); m__name = "bumper"; }
-	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene) { return new Bumper(parent, scene); }
-};
 
  class Cup :  public QGraphicsEllipseItem, public CanvasItem 
 {
@@ -322,13 +326,6 @@ protected:
 	 */
 	double baseX, baseY, baseDiameter, resizeFactor;
 	virtual HoleResult result(const QPointF, double, bool *wasCenter);
-};
-
-class CupObj : public Object
-{
-public:
-	CupObj() { m_name = i18n("Cup"); m__name = "cup"; m_addOnNewHole = true; }
-	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene) { return new Cup(parent, scene); }
 };
 
 class BlackHole;
@@ -460,12 +457,6 @@ private:
 	QGraphicsLineItem *infoLine;
 	void finishMe(double width=0);
 };
-class BlackHoleObj : public Object
-{
-public:
-	BlackHoleObj() { m_name = i18n("Black Hole"); m__name = "blackhole"; }
-	virtual QGraphicsItem *newObject(QGraphicsItem * parent,  QGraphicsScene *scene) { return new BlackHole(parent, scene); }
-};
 
 class WallPoint;
 class Wall : public AntiAliasedLine, public CanvasItem
@@ -562,12 +553,6 @@ private:
 
 	friend class Wall;
 };
-class WallObj : public Object
-{
-public:
-	WallObj() { m_name = i18n("Wall"); m__name = "wall"; }
-	virtual QGraphicsItem *newObject( QGraphicsItem * parent, QGraphicsScene *scene) { return new Wall(parent, scene); }
-};
 
 class Putter : public AntiAliasedLine, public CanvasItem
 {
@@ -642,7 +627,7 @@ private:
 class Bridge : public QGraphicsRectItem, public CanvasItem, public RectItem
 {
 public:
-	Bridge(const QRect &rect, QGraphicsItem *parent, QGraphicsScene *scene, const QString &type);
+	Bridge(QGraphicsItem *parent, QGraphicsScene *scene, const QString &type = "bridge");
 	void paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget=0);
 	virtual bool collision(Ball *ball, long int id);
 	virtual void resize(double resizeFactor);
@@ -699,12 +684,6 @@ protected:
 	Wall *rightWall;
 	RectPoint *point;
 };
-class BridgeObj : public Object
-{
-public:
-	BridgeObj() { m_name = i18n("Bridge"); m__name = "bridge"; }
-	virtual QGraphicsItem *newObject(QGraphicsItem *parent, QGraphicsScene *scene) { return new Bridge(QRect(0, 0, 80, 40), parent, scene, "bridge"); }
-};
 
 class Sign;
 class SignConfig : public BridgeConfig
@@ -741,12 +720,6 @@ protected:
 	QString m_text;
 	QString m_untranslatedText;
 };
-class SignObj : public Object
-{
-public:
-	SignObj() { m_name = i18n("Sign"); m__name = "sign"; }
-	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene) { return new Sign(parent, scene); }
-};
 
 class Windmill;
 class WindmillGuard : public Wall
@@ -779,7 +752,7 @@ private:
 class Windmill : public Bridge
 {
 public:
-	Windmill(const QRect &rect, QGraphicsItem * parent, QGraphicsScene *scene);
+	Windmill(QGraphicsItem * parent, QGraphicsScene *scene);
 	virtual void aboutToDie();
 	virtual void newSize(double width, double height);
 	virtual void save(KConfigGroup *cfgGroup);
@@ -808,12 +781,6 @@ protected:
 	int speedfactor;
 	double speed;
 	bool m_bottom;
-};
-class WindmillObj : public Object
-{
-public:
-	WindmillObj() { m_name = i18n("Windmill"); m__name = "windmill"; }
-	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene) { return new Windmill(QRect(0, 0, 80, 40), parent, scene); }
 };
 
 class HoleInfo;
@@ -907,9 +874,8 @@ class KOLFLIB_EXPORT KolfGame : public QGraphicsView
 	Q_OBJECT
 
 public:
-	KolfGame(ObjectList *obj, PlayerList *players, const QString &filename, QWidget *parent=0);
+	KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const QString &filename, QWidget *parent=0);
 	~KolfGame();
-	void setObjects(ObjectList *obj) { this->obj = obj; }
 	void setFilename(const QString &filename);
 	QString curFilename() const { return filename; }
 	void emitLargestHole() { emit largestHole(highestHole); }
@@ -945,7 +911,7 @@ public slots:
 	void save();
 	void toggleEditMode();
 	void setModified(bool mod = true);
-	void addNewObject(Object *newObj);
+	void addNewObject(const QString& identifier);
 	void addNewHole();
 	void switchHole(int);
 	void switchHole(const QString &);
@@ -1041,7 +1007,7 @@ private:
 	QTimer *putterTimer;
 	bool regAdv;
 
-	ObjectList *obj;
+	const Kolf::ItemFactory& m_factory;
 	QList<QGraphicsItem *> items;
 	QList<QGraphicsItem *> extraMoveable;
 	QList<Wall *> borderWalls;

@@ -85,8 +85,8 @@ void FloaterGuide::updateBaseResizeInfo()
 
 /////////////////////////
 
-Floater::Floater(const QRect &rect,  QGraphicsItem *parent, QGraphicsScene *scene)
-	: Bridge(rect, parent, scene, "floater"), speedfactor(16)
+Floater::Floater(QGraphicsItem *parent, QGraphicsScene *scene)
+	: Bridge(parent, scene, "floater"), speedfactor(16)
 {
 	wall = 0;
 	setEnabled(true);

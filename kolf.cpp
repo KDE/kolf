@@ -1,5 +1,6 @@
 /*
     Copyright (C) 2002-2005, Jason Katz-Brown <jasonkb@mit.edu>
+    Copyright 2010 Stefan Majewsky <majewsky@gmx.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -43,7 +44,7 @@
 #include <QPrinter>
 #include <QTimer>
 
-Kolf::Kolf()
+KolfWindow::KolfWindow()
     : KXmlGuiWindow(0)
 {
 	setObjectName( QLatin1String("Kolf" ));
@@ -55,7 +56,19 @@ Kolf::Kolf()
 	isTutorial = false;
 
 	setupActions();
-	initPlugins();
+
+	m_itemFactory.registerType<Slope>("slope", i18n("Slope"));
+	m_itemFactory.registerType<Puddle>("puddle", i18n("Puddle"));
+	m_itemFactory.registerType<Wall>("wall", i18n("Wall"));
+	m_itemFactory.registerType<Cup>("cup", i18n("Cup"), true); //true == addOnNewHole
+	m_itemFactory.registerType<Sand>("sand", i18n("Sand"));
+	m_itemFactory.registerType<Windmill>("windmill", i18n("Windmill"));
+	m_itemFactory.registerType<BlackHole>("blackhole", i18n("Black Hole"));
+	m_itemFactory.registerType<Floater>("floater", i18n("Floater"));
+	m_itemFactory.registerType<Bridge>("bridge", i18n("Bridge"));
+	m_itemFactory.registerType<Sign>("sign", i18n("Sign"));
+	m_itemFactory.registerType<Bumper>("bumper", i18n("Bumper"));
+	//NOTE: The plugin mechanism has been removed because it is not used anyway.
 
 	filename = QString();
 	dummy = new QWidget(this);
@@ -65,12 +78,11 @@ Kolf::Kolf()
 	resize(420, 480);
 }
 
-Kolf::~Kolf()
+KolfWindow::~KolfWindow()
 {
-	qDeleteAll(obj);
 }
 
-void Kolf::setupActions()
+void KolfWindow::setupActions()
 {
 	// Game
 	newAction = KStandardGameAction::gameNew(this, SLOT(newGame()), actionCollection());
@@ -192,7 +204,7 @@ void Kolf::setupActions()
 	setupGUI();
 }
 
-bool Kolf::queryClose()
+bool KolfWindow::queryClose()
 {
 	if (game)
 		if (game->askSave(true))
@@ -200,7 +212,7 @@ bool Kolf::queryClose()
 	return true;
 }
 
-void Kolf::startNewGame()
+void KolfWindow::startNewGame()
 {
 	NewGameDialog *dialog = 0;
 	int firstHole = 1;
@@ -259,7 +271,7 @@ void Kolf::startNewGame()
 	delete spacer;
 	spacer = 0;
 	delete game;
-	game = new KolfGame(&obj, &players, filename, dummy);
+	game = new KolfGame(m_itemFactory, &players, filename, dummy);
 	game->setStrict(competition);
 
 	connect(game, SIGNAL(newHole(int)), scoreboard, SLOT(newHole(int)));
@@ -334,14 +346,14 @@ void Kolf::startNewGame()
 	delete dialog;
 }
 
-void Kolf::newGame()
+void KolfWindow::newGame()
 {
 	isTutorial = false;
 	filename = QString();
 	startNewGame();
 }
 
-void Kolf::tutorial()
+void KolfWindow::tutorial()
 {
 	QString newfilename = KGlobal::dirs()->findResource("appdata", "tutorial.kolfgame");
 	if (newfilename.isNull())
@@ -356,7 +368,7 @@ void Kolf::tutorial()
 	loadedGame = QString();
 }
 
-void Kolf::closeGame()
+void KolfWindow::closeGame()
 {
 	if (game)
 	{
@@ -397,7 +409,7 @@ void Kolf::closeGame()
 	QTimer::singleShot(100, this, SLOT(createSpacer()));
 }
 
-void Kolf::createSpacer()
+void KolfWindow::createSpacer()
 {
 	// make a player to play the spacer hole
 	spacerPlayers.clear();
@@ -407,7 +419,7 @@ void Kolf::createSpacer()
 	spacerPlayers.last().setId(1);
 
 	delete spacer;
-	spacer = new KolfGame(&obj, &spacerPlayers, KGlobal::dirs()->findResource("appdata", "intro"), dummy);
+	spacer = new KolfGame(m_itemFactory, &spacerPlayers, KGlobal::dirs()->findResource("appdata", "intro"), dummy);
 	spacer->setSound(false);
 	layout->addWidget(spacer, 0, 0);//, Qt::AlignCenter);
 	spacer->ignoreEvents(true);
@@ -417,7 +429,7 @@ void Kolf::createSpacer()
 	spacer->hidePutter();
 }
 
-void Kolf::gameOver()
+void KolfWindow::gameOver()
 {
 	int curPar = 0;
 	int lowScore = INT_MAX; // let's hope it doesn't stay this way!
@@ -506,7 +518,7 @@ void Kolf::gameOver()
 	QTimer::singleShot(700, this, SLOT(closeGame()));
 }
 
-void Kolf::showHighScores()
+void KolfWindow::showHighScores()
 {
 	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Custom1 | KScoreDialog::Score, this);
 	scoreDialog->addField(KScoreDialog::Custom1, i18n("Par"), "Par");
@@ -519,7 +531,7 @@ void Kolf::showHighScores()
 	scoreDialog->show();
 }
 
-void Kolf::save()
+void KolfWindow::save()
 {
 	if (filename.isNull())
 	{
@@ -533,7 +545,7 @@ void Kolf::save()
 	}
 }
 
-void Kolf::saveAs()
+void KolfWindow::saveAs()
 {
 	QString newfilename = KFileDialog::getSaveFileName( KUrl("kfiledialog:///kourses"),
                                   "application/x-kourse", this, i18n("Pick Kolf Course to Save To"));
@@ -546,7 +558,7 @@ void Kolf::saveAs()
 	}
 }
 
-void Kolf::saveGameAs()
+void KolfWindow::saveGameAs()
 {
 	QString newfilename = KFileDialog::getSaveFileName( KUrl("kfiledialog:///savedkolf"),
                                     "application/x-kolf", this, i18n("Pick Saved Game to Save To"));
@@ -558,7 +570,7 @@ void Kolf::saveGameAs()
 	saveGame();
 }
 
-void Kolf::saveGame()
+void KolfWindow::saveGame()
 {
 	if (loadedGame.isNull())
 	{
@@ -577,7 +589,7 @@ void Kolf::saveGame()
 	configGroup.sync();
 }
 
-void Kolf::loadGame()
+void KolfWindow::loadGame()
 {
 	loadedGame = KFileDialog::getOpenFileName( KUrl("kfiledialog:///savedkolf"),
 			 QLatin1String("application/x-kolf"), this, i18n("Pick Kolf Saved Game"));
@@ -590,7 +602,7 @@ void Kolf::loadGame()
 }
 
 // called by main for command line files
-void Kolf::openUrl(KUrl url)
+void KolfWindow::openUrl(KUrl url)
 {
 	QString target;
 	if (KIO::NetAccess::download(url, target, this))
@@ -613,7 +625,7 @@ void Kolf::openUrl(KUrl url)
 		closeGame();
 }
 
-void Kolf::newPlayersTurn(Player *player)
+void KolfWindow::newPlayersTurn(Player *player)
 {
 	tempStatusBarText = i18n("%1's turn", player->name());
 
@@ -625,7 +637,7 @@ void Kolf::newPlayersTurn(Player *player)
 	scoreboard->setCurrentCell(player->id() - 1, game->currentHole() - 1);
 }
 
-void Kolf::newStatusText(const QString &text)
+void KolfWindow::newStatusText(const QString &text)
 {
 	if (text.isEmpty())
 		statusBar()->showMessage(tempStatusBarText);
@@ -633,14 +645,14 @@ void Kolf::newStatusText(const QString &text)
 		statusBar()->showMessage(text);
 }
 
-void Kolf::editingStarted()
+void KolfWindow::editingStarted()
 {
 	delete editor;
-	editor = new Editor(&obj, dummy);
+	editor = new Editor(m_itemFactory, dummy);
 	editor->setObjectName( QLatin1String( "Editor" ) );
-	connect(editor, SIGNAL(addNewItem(Object *)), game, SLOT(addNewObject(Object *)));
+	connect(editor, SIGNAL(addNewItem(QString)), game, SLOT(addNewObject(QString)));
 	connect(editor, SIGNAL(changed()), game, SLOT(setModified()));
-	connect(editor, SIGNAL(addNewItem(Object *)), this, SLOT(setHoleFocus()));
+	connect(editor, SIGNAL(addNewItem(QString)), this, SLOT(setHoleFocus()));
 	connect(game, SIGNAL(newSelectedItem(CanvasItem *)), editor, SLOT(setItem(CanvasItem *)));
 
 	scoreboard->hide();
@@ -655,7 +667,7 @@ void Kolf::editingStarted()
 	game->setFocus();
 }
 
-void Kolf::editingEnded()
+void KolfWindow::editingEnded()
 {
 	delete editor;
 	editor = 0;
@@ -671,26 +683,26 @@ void Kolf::editingEnded()
 		game->setFocus();
 }
 
-void Kolf::inPlayStart()
+void KolfWindow::inPlayStart()
 {
 	setEditingEnabled(false);
 	setHoleOtherEnabled(false);
 	setHoleMovementEnabled(false);
 }
 
-void Kolf::inPlayEnd()
+void KolfWindow::inPlayEnd()
 {
 	setEditingEnabled(true);
 	setHoleOtherEnabled(true);
 	setHoleMovementEnabled(true);
 }
 
-void Kolf::maxStrokesReached(const QString &name)
+void KolfWindow::maxStrokesReached(const QString &name)
 {
 	KMessageBox::sorry(this, i18n("%1's score has reached the maximum for this hole.", name));
 }
 
-void Kolf::updateHoleMenu(int largest)
+void KolfWindow::updateHoleMenu(int largest)
 {
 	QStringList items;
 	for (int i = 1; i <= largest; ++i)
@@ -702,7 +714,7 @@ void Kolf::updateHoleMenu(int largest)
 	holeAction->setEnabled(shouldbe);
 }
 
-void Kolf::setHoleMovementEnabled(bool yes)
+void KolfWindow::setHoleMovementEnabled(bool yes)
 {
 	if (competition)
 		yes = false;
@@ -716,7 +728,7 @@ void Kolf::setHoleMovementEnabled(bool yes)
 	randAction->setEnabled(yes);
 }
 
-void Kolf::setHoleOtherEnabled(bool yes)
+void KolfWindow::setHoleOtherEnabled(bool yes)
 {
 	if (competition)
 		yes = false;
@@ -726,17 +738,17 @@ void Kolf::setHoleOtherEnabled(bool yes)
 	//replayShotAction->setEnabled(yes);
 }
 
-void Kolf::setEditingEnabled(bool yes)
+void KolfWindow::setEditingEnabled(bool yes)
 {
 	editingAction->setEnabled(competition? false : yes);
 }
 
-void Kolf::checkEditing()
+void KolfWindow::checkEditing()
 {
 	editingAction->setChecked(true);
 }
 
-void Kolf::print()
+void KolfWindow::print()
 {
 	if (!game)
 		return;
@@ -755,75 +767,49 @@ void Kolf::print()
 	delete printDialog;
 }
 
-void Kolf::updateModified(bool mod)
+void KolfWindow::updateModified(bool mod)
 {
 	courseModified = mod;
 	titleChanged(title);
 }
 
-void Kolf::titleChanged(const QString &newTitle)
+void KolfWindow::titleChanged(const QString &newTitle)
 {
 	title = newTitle;
 	setCaption(title, courseModified);
 }
 
-void Kolf::useMouseChanged(bool yes)
+void KolfWindow::useMouseChanged(bool yes)
 {
 	KConfigGroup configGroup(KGlobal::config(), "Settings"); configGroup.writeEntry("useMouse", yes); configGroup.sync();
 }
 
-void Kolf::useAdvancedPuttingChanged(bool yes)
+void KolfWindow::useAdvancedPuttingChanged(bool yes)
 {
 	KConfigGroup configGroup(KGlobal::config(), "Settings"); configGroup.writeEntry("useAdvancedPutting", yes); configGroup.sync();
 }
 
-void Kolf::showInfoChanged(bool yes)
+void KolfWindow::showInfoChanged(bool yes)
 {
 	KConfigGroup configGroup(KGlobal::config(), "Settings"); configGroup.writeEntry("showInfo", yes); configGroup.sync();
 }
 
-void Kolf::showGuideLineChanged(bool yes)
+void KolfWindow::showGuideLineChanged(bool yes)
 {
 	KConfigGroup configGroup(KGlobal::config(), "Settings"); configGroup.writeEntry("showGuideLine", yes); configGroup.sync();
 }
 
-void Kolf::soundChanged(bool yes)
+void KolfWindow::soundChanged(bool yes)
 {
 	KConfigGroup configGroup(KGlobal::config(), "Settings"); configGroup.writeEntry("sound", yes); configGroup.sync();
 }
 
-void Kolf::initPlugins()
-{
-	//kDebug(12007) << "initPlugins";
-	if (game)
-		game->pause();
-
-	qDeleteAll(obj);
-	obj.clear();
-
-	// add prefab objects
-	obj.append(new SlopeObj);
-	obj.append(new PuddleObj);
-	obj.append(new WallObj);
-	obj.append(new CupObj);
-	obj.append(new SandObj);
-	obj.append(new WindmillObj);
-	obj.append(new BlackHoleObj);
-	obj.append(new FloaterObj);
-	obj.append(new BridgeObj);
-	obj.append(new SignObj);
-	obj.append(new BumperObj);
-	//NOTE: The plugin mechanism has been removed because it is not used anyway.
-
-	//kDebug(12007) << "end of initPlugins";
-}
-
-void Kolf::enableAllMessages()
+void KolfWindow::enableAllMessages()
 {
 	KMessageBox::enableAllMessages();
 }
 
-void Kolf::setCurrentHole(int hole)
+void KolfWindow::setCurrentHole(int hole)
 {
 	if (!holeAction || holeAction->items().count() < hole)
 		return;

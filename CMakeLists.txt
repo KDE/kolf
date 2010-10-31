@@ -20,13 +20,14 @@ set(kolf_LIB_SRCS
    config.cpp 
    scoreboard.cpp 
    editor.cpp 
-   object.cpp 
    vector.cpp 
    printdialogpage.cpp 
    kcomboboxdialog.cpp 
    kolfsvgrenderer.cpp
    floater.cpp 
-   slope.cpp )
+   slope.cpp
+   itemfactory.cpp
+)
 
 kde4_add_library(kolfprivate SHARED ${kolf_LIB_SRCS})
 

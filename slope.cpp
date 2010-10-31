@@ -26,8 +26,8 @@
 #include <KComboBox>
 #include <KNumInput>
 
-Slope::Slope(const QRect &rect, QGraphicsItem * parent, QGraphicsScene *scene)
-	: QGraphicsRectItem(rect, parent, scene), type(Vertical), grade(4), reversed(false), color(QColor("#327501")) 
+Slope::Slope(QGraphicsItem * parent, QGraphicsScene *scene)
+	: QGraphicsRectItem(QRect(0, 0, 40, 40), parent, scene), type(Vertical), grade(4), reversed(false), color(QColor("#327501"))
 {
 	setData(0, 1031);
 	stuckOnGround = false;

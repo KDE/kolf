@@ -1,5 +1,4 @@
 /*
-    Copyright (C) 2002-2005, Jason Katz-Brown <jasonkb@mit.edu>
     Copyright 2010 Stefan Majewsky <majewsky@gmx.net>
 
     This program is free software; you can redistribute it and/or modify
@@ -17,40 +16,27 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef EDITOR_H_INCLUDED
-#define EDITOR_H_INCLUDED
+#include "itemfactory.h"
 
-#include <QWidget>
-
-#include "game.h"
-
-class KListWidget;
-class QHBoxLayout;
-class QListWidgetItem;
-class Config;
-
-namespace Kolf
+QList<Kolf::ItemMetadata> Kolf::ItemFactory::knownTypes() const
 {
-	class ItemFactory;
+	QList<Kolf::ItemMetadata> result;
+	QList<Entry>::const_iterator it1 = m_entries.begin(), it2 = m_entries.end();
+	for (; it1 != it2; ++it1)
+		result << it1->first;
+	return result;
 }
 
-class Editor : public QWidget
+QGraphicsItem* Kolf::ItemFactory::createInstance(const QString& identifier, QGraphicsItem* parent, QGraphicsScene* scene) const
 {
-	Q_OBJECT
-public:
-	explicit Editor(const Kolf::ItemFactory& factory, QWidget * = 0);
-signals:
-	void changed();
-	void addNewItem(const QString&);
-public Q_SLOTS:
-	void setItem(CanvasItem *);
-private Q_SLOTS:
-	void listboxExecuted(QListWidgetItem*);
-private:
-	const Kolf::ItemFactory& m_factory;
-	QHBoxLayout *hlayout;
-	KListWidget* m_typeList;
-	Config *config;
-};
+	QList<Entry>::const_iterator it1 = m_entries.begin(), it2 = m_entries.end();
+	for (; it1 != it2; ++it1)
+		if (it1->first.identifier == identifier)
+			return (it1->second)(parent, scene);
+	return 0;
+}
 
-#endif
+void Kolf::ItemFactory::registerType(const Kolf::ItemMetadata& metadata, ItemCreator creator)
+{
+	m_entries << Entry(metadata, creator);
+}

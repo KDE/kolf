@@ -59,7 +59,7 @@ private:
 class Floater : public Bridge
 {
 public:
-	Floater(const QRect &rect,  QGraphicsItem * parent, QGraphicsScene *scene);
+	Floater(QGraphicsItem * parent, QGraphicsScene *scene);
 	void resize(double resizeFactor);
 	virtual bool collision(Ball *ball, long int id) { Bridge::collision(ball, id); return false; }
 	virtual void saveState(StateDB *db);
@@ -103,14 +103,6 @@ private:
 	bool noUpdateZ;
 	bool haventMoved;
 	QPoint firstPoint;
-};
-
-class FloaterObj : public Object
-{
-public:
-	FloaterObj() { m_name = i18n("Floater"); m__name = "floater"; }
-	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene) { return new Floater(QRect(0, 0, 80, 40), parent, scene); }
-
 };
 
 #endif

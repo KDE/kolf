@@ -88,7 +88,7 @@ int main(int argc, char **argv)
 	KApplication a;
 	KGlobal::locale()->insertCatalog( QLatin1String( "libkdegames" ));
 
-	Kolf *top = new Kolf;
+	KolfWindow *top = new KolfWindow;
 
 	if (args->count() >= 1)
 	{

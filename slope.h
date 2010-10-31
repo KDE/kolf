@@ -44,7 +44,7 @@ private:
 class Slope : public QGraphicsRectItem, public CanvasItem, public RectItem
 {
 public:
-	Slope(const QRect &rect, QGraphicsItem *parent, QGraphicsScene *scene);
+	Slope(QGraphicsItem *parent, QGraphicsScene *scene);
 
 	virtual void aboutToDie();
 
@@ -116,13 +116,6 @@ private:
 	QList<Arrow *> arrows;
 	QGraphicsSimpleTextItem *text;
 	RectPoint *point;
-};
-
-class SlopeObj : public Object
-{
-public:
-	SlopeObj() { m_name = i18n("Slope"); m__name = "slope"; }
-	virtual QGraphicsItem *newObject(QGraphicsItem * parent, QGraphicsScene *scene) { return new Slope(QRect(0, 0, 40, 40), parent, scene); }
 };
 
 #endif

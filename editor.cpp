@@ -1,5 +1,6 @@
 /*
     Copyright (C) 2002-2005, Jason Katz-Brown <jasonkb@mit.edu>
+    Copyright 2010 Stefan Majewsky <majewsky@gmx.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,47 +19,44 @@
 
 #include "editor.h"
 #include "game.h"
+#include "itemfactory.h"
 
 #include <QBoxLayout>
 #include <QLabel>
 #include <KDialog>
-#include <K3ListBox>
+#include <KListWidget>
 
-Editor::Editor(ObjectList *list, QWidget *parent)
+Editor::Editor(const Kolf::ItemFactory& factory, QWidget *parent)
 	: QWidget(parent)
+	, m_factory(factory)
 {
-	this->list = list;
 	config = 0;
 
 	hlayout = new QHBoxLayout(this);
-        hlayout->setMargin( KDialog::marginHint() );
-        hlayout->setSpacing( KDialog::spacingHint() );
+	hlayout->setMargin( KDialog::marginHint() );
+	hlayout->setSpacing( KDialog::spacingHint() );
 
 	QVBoxLayout *vlayout = new QVBoxLayout;
-        vlayout->setSpacing( KDialog::spacingHint() );
-        hlayout->addLayout( vlayout );
+	vlayout->setSpacing( KDialog::spacingHint() );
+	hlayout->addLayout( vlayout );
 	vlayout->addWidget(new QLabel(i18n("Add object:"), this));
-	listbox = new K3ListBox(this, "Listbox");
-	vlayout->addWidget(listbox);
+	m_typeList = new KListWidget(this);
+	vlayout->addWidget(m_typeList);
 	hlayout->setStretchFactor(vlayout, 2);
 
-	QStringList items;
-	QList<Object *>::const_iterator obj;
-	for (obj = list->constBegin(); obj != list->constEnd(); ++obj)
-		items.append((*obj)->name());
-
-	listbox->insertStringList(items);
-
-	connect(listbox, SIGNAL(executed(Q3ListBoxItem *)), SLOT(listboxExecuted(Q3ListBoxItem *))); //Q3ListBoxItem used here because that is what KListBox uses
+	//populate type list
+	foreach (const Kolf::ItemMetadata& metadata, factory.knownTypes())
+	{
+		QListWidgetItem* item = new QListWidgetItem(metadata.name);
+		item->setData(Qt::UserRole, metadata.identifier);
+		m_typeList->addItem(item);
+	}
+	connect(m_typeList, SIGNAL(executed(QListWidgetItem*)), SLOT(listboxExecuted(QListWidgetItem*)));
 }
 
-void Editor::listboxExecuted(Q3ListBoxItem * /*item*/) //again, Q3ListBoxItem used here because that is what KListBox uses
+void Editor::listboxExecuted(QListWidgetItem* item)
 {
-	int curItem = listbox->currentItem();
-	if (curItem < 0)
-		return;
-
-	emit addNewItem(list->at(curItem));
+	emit addNewItem(item->data(Qt::UserRole).toString()); //data(UserRole) contains the type identifier
 }
 
 void Editor::setItem(CanvasItem *item)

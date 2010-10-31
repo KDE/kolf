@@ -1,5 +1,6 @@
 /*
     Copyright (C) 2002-2005, Jason Katz-Brown <jasonkb@mit.edu>
+    Copyright 2010 Stefan Majewsky <majewsky@gmx.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -23,6 +24,7 @@
 #include <KXmlGuiWindow>
 
 #include "game.h"
+#include "itemfactory.h"
 
 class QGridLayout;
 class KAction;
@@ -32,13 +34,13 @@ class KToggleAction;
 class Editor;
 class ScoreBoard;
 
-class KOLFLIB_EXPORT Kolf : public KXmlGuiWindow
+class KOLFLIB_EXPORT KolfWindow : public KXmlGuiWindow
 {
 	Q_OBJECT
 
 public:
-	Kolf();
-	~Kolf();
+	KolfWindow();
+	~KolfWindow();
 
 	void openUrl(KUrl url);
 
@@ -76,7 +78,6 @@ protected slots:
 	void useAdvancedPuttingChanged(bool);
 	void showGuideLineChanged(bool);
 	void soundChanged(bool);
-	void initPlugins();
 	void showHighScores();
 	void enableAllMessages();
 	void createSpacer();
@@ -129,7 +130,7 @@ private:
 	inline void setEditingEnabled(bool);
 	bool competition;
 
-	ObjectList obj;
+	Kolf::ItemFactory m_itemFactory;
 
 	QString loadedGame;
 

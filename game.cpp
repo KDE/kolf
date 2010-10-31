@@ -1,5 +1,6 @@
 /*
     Copyright (C) 2002-2005, Jason Katz-Brown <jasonkb@mit.edu>
+    Copyright 2010 Stefan Majewsky <majewsky@gmx.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -17,6 +18,7 @@
 */
 
 #include "game.h"
+#include "itemfactory.h"
 #include "kcomboboxdialog.h"
 #include "kolfsvgrenderer.h"
 #include "rtti.h"
@@ -242,8 +244,14 @@ void BridgeConfig::rightWallChanged(bool yes)
 
 /////////////////////////
 
-Bridge::Bridge(const QRect &rect, QGraphicsItem *parent, QGraphicsScene *scene, const QString &type)
-: QGraphicsRectItem(rect, parent, scene)
+//TODO: HACK
+QRect Bridge_defaultRect(const QString& type)
+{
+	return type == "sign" ? QRect(0, 0, 110, 40) : QRect(0, 0, 80, 40);
+}
+
+Bridge::Bridge(QGraphicsItem *parent, QGraphicsScene *scene, const QString &type)
+: QGraphicsRectItem(Bridge_defaultRect(type), parent, scene)
 {
 	this->type = type;
 	QColor color("#92772D");
@@ -521,8 +529,8 @@ void WindmillConfig::endChanged(bool bottom)
 
 /////////////////////////
 
-Windmill::Windmill(const QRect &rect, QGraphicsItem * parent, QGraphicsScene *scene)
-: Bridge(rect, parent, scene, "windmill"), speedfactor(16), m_bottom(true)
+Windmill::Windmill(QGraphicsItem * parent, QGraphicsScene *scene)
+: Bridge(parent, scene, "windmill"), speedfactor(16), m_bottom(true)
 {
 	baseGuardSpeed = 5;
 	guard = new WindmillGuard(0, scene);
@@ -696,7 +704,7 @@ void WindmillGuard::advance(int phase)
 /////////////////////////
 
 Sign::Sign(QGraphicsItem * parent, QGraphicsScene *scene)
-: Bridge(QRect(0, 0, 110, 40), parent, scene, "sign")
+: Bridge(parent, scene, "sign")
 {
 	setZValue(998.8);
 	m_text = m_untranslatedText = i18n("New Text");
@@ -2517,8 +2525,9 @@ void StrokeCircle::paint (QPainter *p, const QStyleOptionGraphicsItem *, QWidget
 }
 /////////////////////////////////////////
 
-KolfGame::KolfGame(ObjectList *obj, PlayerList *players, const QString &filename, QWidget *parent)
+KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const QString &filename, QWidget *parent)
 : QGraphicsView(parent)
+, m_factory(factory)
 {
 	// for mouse control
 	setMouseTracking(true);
@@ -2530,7 +2539,6 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, const QString &filename
 	cfg = 0;
 	setFilename(filename);
 	this->players = players;
-	this->obj = obj;
 	curPlayer = players->end();
 	curPlayer--; // will get ++'d to end and sent back
 	// to beginning
@@ -4043,17 +4051,9 @@ void KolfGame::openFile()
 
 		const int id = (*it).right(len - (pipeIndex + 1)).toInt();
 
-		bool loaded = false;
-
-		QList<Object *>::const_iterator curObj;
-		for (curObj = obj->constBegin(); curObj != obj->constEnd(); ++curObj)
+		QGraphicsItem* newItem = m_factory.createInstance(name, 0, course);
+		if (newItem)
 		{
-			if (name != (*curObj)->_name())
-				continue;
-
-			QGraphicsItem *newItem; 
-			newItem = (*curObj)->newObject(0, course);
-
 			items.append(newItem);
 			CanvasItem *sceneItem = dynamic_cast<CanvasItem *>(newItem);
 
@@ -4063,7 +4063,7 @@ void KolfGame::openFile()
 			sceneItem->setId(id);
 			sceneItem->setGame(this);
 			sceneItem->editModeChanged(editing);
-			sceneItem->setName((*curObj)->_name());
+			sceneItem->setName(name);
 			addItemsToMoveableList(sceneItem->moveableItems());
 			if (sceneItem->fastAdvance())
 				addItemToFastAdvancersList(sceneItem);
@@ -4079,15 +4079,8 @@ void KolfGame::openFile()
 				cfgGroup = KConfigGroup(cfg->group(makeGroup(id, curHole, sceneItem->name(), x, y)));
 				sceneItem->load(&cfgGroup);
 			}
-
-			// we don't allow multiple items for the same thing in
-			// the file!
-
-			loaded = true;
-			break;
 		}
-
-		if (!loaded && name != "hole" && missingPlugins.contains(name) <= 0)
+		else if (name != "hole" && !missingPlugins.contains(name))
 			missingPlugins.append(name);
 
 	}
@@ -4194,10 +4187,9 @@ void KolfGame::addItemToFastAdvancersList(CanvasItem *item)
 	fastAdvancedExist = fastAdvancers.count() > 0;
 }
 
-void KolfGame::addNewObject(Object *newObj)
+void KolfGame::addNewObject(const QString& identifier)
 {
-	QGraphicsItem *newItem;
-	newItem = newObj->newObject(0, course);
+	QGraphicsItem *newItem = m_factory.createInstance(identifier, 0, course);
 
 	items.append(newItem);
 	if(!newItem->isVisible())
@@ -4244,7 +4236,7 @@ void KolfGame::addNewObject(Object *newObj)
 
 	sceneItem->editModeChanged(editing);
 
-	sceneItem->setName(newObj->_name());
+	sceneItem->setName(identifier);
 	addItemsToMoveableList(sceneItem->moveableItems());
 
 	if (sceneItem->fastAdvance())
@@ -4319,10 +4311,9 @@ void KolfGame::addNewHole()
 	inPlay = false;
 
 	// add default objects
-	QList<Object *>::const_iterator curObj;
-	for (curObj = obj->constBegin(); curObj != obj->constEnd(); ++curObj)
-		if ((*curObj)->addOnNewHole())
-			addNewObject(*curObj);
+	foreach (const Kolf::ItemMetadata& metadata, m_factory.knownTypes())
+		if (metadata.addOnNewHole)
+			addNewObject(metadata.identifier);
 
 	save();
 }
@@ -4363,10 +4354,9 @@ void KolfGame::clearHole()
 	emit newSelectedItem(&holeInfo);
 
 	// add default objects
-	QList<Object *>::const_iterator curObj;
-	for (curObj = obj->constBegin(); curObj != obj->constEnd(); ++curObj)
-		if ((*curObj)->addOnNewHole())
-			addNewObject(*curObj);
+	foreach (const Kolf::ItemMetadata& metadata, m_factory.knownTypes())
+		if (metadata.addOnNewHole)
+			addNewObject(metadata.identifier);
 
 	setModified(true);
 }
