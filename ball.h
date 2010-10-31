@@ -72,7 +72,6 @@ public:
 
 	bool collisionLock() const { return m_collisionLock; }
 	void setCollisionLock(bool yes) { m_collisionLock = yes; }
-	virtual void fastAdvanceDone() { setCollisionLock(false); }
 
 	void shotStarted() { maxBumperBounceSpeed = 8; }
 

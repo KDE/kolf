@@ -2127,7 +2127,6 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 	lastDelId = -1;
 	m_showInfo = false;
 	ballStateList.canUndo = false;
-	fastAdvancedExist = false;
 	soundDir = KStandardDirs::locate("appdata", "sounds/");
 	dontAddStroke = false;
 	addingNewHole = false;
@@ -2839,26 +2838,10 @@ void KolfGame::fastTimeout()
 
 	if (!editing)
 	{
-		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it) {
-			(*it).ball()->doAdvance();
-		}
-
-		if (fastAdvancedExist)
-		{
-			QList<CanvasItem *>::const_iterator citem;
-			for (citem = fastAdvancers.constBegin(); citem != fastAdvancers.constEnd(); ++citem)
-				(*citem)->doAdvance();
-		}
-
 		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-			(*it).ball()->fastAdvanceDone();
-
-		if (fastAdvancedExist)
-		{
-			QList<CanvasItem *>::const_iterator citem;
-			for (citem = fastAdvancers.constBegin(); citem != fastAdvancers.constEnd(); ++citem)
-				(*citem)->fastAdvanceDone();
-		}
+			(*it).ball()->doAdvance();
+		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+			(*it).ball()->setCollisionLock(false);
 	}
 }
 
@@ -3489,7 +3472,6 @@ void KolfGame::openFile()
 	items.clear();
 
 	extraMoveable.clear();
-	fastAdvancers.clear();
 	selectedItem = 0;
 
 	// will tell basic course info
@@ -3573,8 +3555,6 @@ void KolfGame::openFile()
 			sceneItem->editModeChanged(editing);
 			sceneItem->setName(name);
 			addItemsToMoveableList(sceneItem->moveableItems());
-			if (sceneItem->fastAdvance())
-				addItemToFastAdvancersList(sceneItem);
 
 			newItem->setPos(x, y); 
 			newItem->setVisible(true);
@@ -3687,12 +3667,6 @@ void KolfGame::addItemsToMoveableList(QList<QGraphicsItem *> list)
 		extraMoveable.append(*item);
 }
 
-void KolfGame::addItemToFastAdvancersList(CanvasItem *item)
-{
-	fastAdvancers.append(item);
-	fastAdvancedExist = fastAdvancers.count() > 0;
-}
-
 void KolfGame::addNewObject(const QString& identifier)
 {
 	QGraphicsItem *newItem = m_factory.createInstance(identifier, courseBoard);
@@ -3744,9 +3718,6 @@ void KolfGame::addNewObject(const QString& identifier)
 
 	sceneItem->setName(identifier);
 	addItemsToMoveableList(sceneItem->moveableItems());
-
-	if (sceneItem->fastAdvance())
-		addItemToFastAdvancersList(sceneItem);
 
 	newItem->setPos(width/2 - 18, height / 2 - 18);
 	sceneItem->moveBy(0, 0);
@@ -3941,7 +3912,6 @@ void KolfGame::save()
 	// we use this bool for optimization
 	// in openFile().
 	bool hasFinalLoad = false;
-	fastAdvancedExist = false;
 
 	QList<QGraphicsItem *>::const_iterator item;
 	for (item = items.constBegin(); item != items.constEnd(); ++item)

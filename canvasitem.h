@@ -66,10 +66,6 @@ public:
 	virtual void aboutToDelete() {}
 	///Returns whether this item should be able to be deleted by user while editing.
 	virtual bool deleteable() const { return true; }
-	///Returns whether this item should get doAdvance called -- it is called in sync with ball advancing (which is twice as fast as the advance() calling rate)
-	virtual bool fastAdvance() const { return false; }
-	///Called when all items have had their chance at a doAdvance.
-	virtual void fastAdvanceDone() {}
 	///called if fastAdvance is enabled
 	virtual void doAdvance() {}
 	///Returns whether all items of this type of item (based on data()) that are "colliding" (ie, in the same spot) with ball should get collision() called.

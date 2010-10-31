@@ -833,7 +833,6 @@ private slots:
 	void putterTimeout();
 	void autoSaveTimeout();
 	void addItemsToMoveableList(QList<QGraphicsItem *>);
-	void addItemToFastAdvancersList(CanvasItem *);
 
 	void emitMax();
 
@@ -963,9 +962,6 @@ private:
 
 	bool m_useMouse;
 	bool m_useAdvancedPutting;
-
-	QList<CanvasItem *> fastAdvancers;
-	bool fastAdvancedExist;
 
 	QString playerWhoMaxed;
 };
