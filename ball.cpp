@@ -109,7 +109,6 @@ void Ball::moveBy(double dx, double dy)
 void Ball::setVelocity(const Vector& velocity)
 {
 	CanvasItem::setPhysicalVelocity(velocity);
-	kDebug() << velocity;
 }
 #endif
 

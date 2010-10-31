@@ -29,11 +29,12 @@ CanvasItem::CanvasItem(b2World* world)
 	: game(0)
 	, m_body(0)
 	, m_overlay(0)
-	, m_simulationType(CanvasItem::CollisionSimulation)
+	, m_simulationType((CanvasItem::SimulationType) -1)
 {
 	b2BodyDef bodyDef;
 	bodyDef.userData = this;
 	m_body = world->CreateBody(&bodyDef);
+	setSimulationType(CanvasItem::CollisionSimulation);
 }
 
 CanvasItem::~CanvasItem()
@@ -133,7 +134,7 @@ void CanvasItem::setSimulationType(CanvasItem::SimulationType type)
 QPointF CanvasItem::physicalVelocity() const
 {
 	b2Vec2 v = m_body->GetLinearVelocity();
-	return QPointF(v.x, v.y) / Kolf::Box2DScaleFactor;
+	return QPointF(v.x, v.y);
 }
 
 void CanvasItem::setPhysicalVelocity(const QPointF& newVelocity)
@@ -142,16 +143,15 @@ void CanvasItem::setPhysicalVelocity(const QPointF& newVelocity)
 	if (newVelocity != currentVelocity)
 	{
 		const qreal mass = m_body->GetMass();
-		if (mass == 0)
+		//WARNING: Velocities are NOT scaled. The timestep is scaled, instead.
+		//See where b2World::Step() gets called for more info.
+		if (mass == 0 || m_simulationType != CanvasItem::DynamicSimulation)
 		{
-			m_body->SetLinearVelocity(b2Vec2(
-				newVelocity.x() * Kolf::Box2DScaleFactor,
-				newVelocity.y() * Kolf::Box2DScaleFactor
-			));
+			m_body->SetLinearVelocity(b2Vec2(newVelocity.x(), newVelocity.y()));
 		}
 		else
 		{
-			const QPointF impulse = (newVelocity - currentVelocity) * mass * Kolf::Box2DScaleFactor;
+			const QPointF impulse = (newVelocity - currentVelocity) * mass;
 			m_body->ApplyLinearImpulse(b2Vec2(impulse.x(), impulse.y()), m_body->GetPosition());
 		}
 	}

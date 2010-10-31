@@ -1639,6 +1639,7 @@ void Wall::setAlwaysShow(bool yes)
 void Wall::setVisible(bool yes)
 {
 	QGraphicsLineItem::setVisible(yes);
+	setSimulationType(yes ? CanvasItem::CollisionSimulation : CanvasItem::NoSimulation);
 
 	startItem->setVisible(yes);
 	endItem->setVisible(yes);
@@ -2740,7 +2741,12 @@ void KolfGame::fastTimeout()
 		}
 	}
 	//step world
-	const double timeStep = 1.0; //so that CanvasItem::physicalVelocity() corresponds to the position change per step
+	//NOTE: I previously set timeStep to 1.0 so that CItem's physicalVelocity()
+	//corresponds to the position change per step. In this case, the physical
+	//velocity would be scaled by Kolf::Box2DScaleFactor, which would result in
+	//very small velocities (below Box2D's internal cutoff thresholds!) for
+	//usual movements. Therefore, we apply the scaling to the timestep instead.
+	const double timeStep = 1.0 * Kolf::Box2DScaleFactor;
 	g_world->Step(timeStep, 10, 10); //parameters 2/3 = iteration counts (TODO: optimize)
 	//conclude simulation
 	for (b2Body* body = g_world->GetBodyList(); body; body = body->GetNext())
