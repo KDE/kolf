@@ -511,14 +511,6 @@ void Slope::updatePixmap() //this needs work so that the slope colour depends on
 	moveArrow();
 }
 
-void Slope::updateBaseResizeInfo()
-{
-		baseX = x() / resizeFactor;
-		baseY = y() / resizeFactor;
-		baseWidth = width() / resizeFactor;
-		baseHeight = height() / resizeFactor;
-}
-
 /////////////////////////
 
 SlopeConfig::SlopeConfig(Slope *slope, QWidget *parent)

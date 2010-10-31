@@ -46,7 +46,6 @@ public:
 	virtual void aboutToDelete();
 	virtual void aboutToDie();
 	void resize(double resizeFactor);
-	void updateBaseResizeInfo();
 	virtual CanvasItem *itemToDelete() { return NULL; }
 
 private:
@@ -84,7 +83,6 @@ public:
 
 	// called by floaterguide when changed;
 	void reset();
-	void updateBaseResizeInfo();
 
 private:
 	int speedfactor;

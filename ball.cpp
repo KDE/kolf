@@ -26,17 +26,15 @@
 Ball::Ball(QGraphicsItem* parent)
 	: Tagaro::SpriteObjectItem(Kolf::renderer(), QLatin1String("ball"), parent)
 {
-	baseDiameter = 8;
-	resizeFactor = 1;
-	setOffset(-0.5 * baseDiameter, -0.5 * baseDiameter);
-	Tagaro::SpriteObjectItem::setSize(baseDiameter, baseDiameter);
+	const int diameter = 8;
+	setOffset(-0.5 * diameter, -0.5 * diameter);
+	Tagaro::SpriteObjectItem::setSize(diameter, diameter);
 
 	setData(0, Rtti_Ball);
 	m_doDetect = true;
 	m_collisionLock = false;
 	setBeginningOfHole(false);
 	setBlowUp(false);
-	resetSize();
 	collisionId = 0;
 	m_addStroke = false;
 	m_placeOnGround = false;
@@ -45,8 +43,7 @@ Ball::Ball(QGraphicsItem* parent)
 	frictionMultiplier = 1.0;
 
 	QFont font(QApplication::font());
-	baseFontPixelSize=12;
-	font.setPixelSize((int)(baseFontPixelSize));
+	font.setPixelSize(12);
 	label = new QGraphicsSimpleTextItem(QString(), this);
 	label->setFont(font);
 	label->setBrush(Qt::white);
@@ -70,46 +67,6 @@ void Ball::setState(BallState newState)
 		setZValue(1000);
 	else
 		setBeginningOfHole(false);
-}
-
-void Ball::resetSize()
-{
-	setOffset(-0.5 * baseDiameter, -0.5 * baseDiameter);
-	Tagaro::SpriteObjectItem::setSize(baseDiameter, baseDiameter);
-}
-
-void Ball::resize(double resizeFactor)
-{
-	this->resizeFactor = resizeFactor;
-	QFont font = label->font();
-	font.setPixelSize((int)(baseFontPixelSize*resizeFactor));
-	label->setFont(font);
-	setPos(baseX, baseY); //not multiplied by resizeFactor since setPos takes care of that for the ball
-// 	setRect(-0.5*baseDiameter*resizeFactor, -0.5*baseDiameter*resizeFactor, baseDiameter*resizeFactor, baseDiameter*resizeFactor);	
-}
-
-void Ball::setPos(qreal x, qreal y)
-{
-	//for Ball (and only Ball) setPos() itself has been modified to take into account resizing
-	//for a procedure that does not automatically take into account resizing use setResizedPos()
-	setPos(QPointF(x, y));
-}
-
-void Ball::setPos(QPointF pos)
-{
-	//for Ball (and only Ball setPos) itself has been modified to take into account resizing
-	//for a procedure that does not automatically take into account resizing use setResizedPos
-	baseX = pos.x();
-	baseY = pos.y();
-	Tagaro::SpriteObjectItem::setPos(pos.x()*resizeFactor, pos.y()*resizeFactor);
-}
-
-void Ball::setResizedPos(qreal x, qreal y)
-{
-	//unlike Ball::setPos this does not automatically take into account resizing but instead sets the ball's position to exactly that which is inputted in x and y 
-	baseX = x/resizeFactor;
-	baseY = y/resizeFactor;
-	Tagaro::SpriteObjectItem::setPos(x, y);
 }
 
 void Ball::advance(int /*phase*/)
@@ -170,24 +127,13 @@ void Ball::setVector(const Vector& newVector)
 	CanvasItem::setVelocity(Vector(newVector.x(), -newVector.y()));
 }
 
-void Ball::moveByResizedDistance(double dx, double dy)
+void Ball::moveBy(double dx, double dy)
 {
-	moveBy( dx/resizeFactor, dy/resizeFactor );
-}
-
-void Ball::moveBy(double baseDx, double baseDy)
-{
-	//this takes as an imput the distance to move in the game's base 400x400 co-ordinate system, so that everything that calls this (friction etc) does not have to worry about the resized co-ordinates
-	//NOTE: only Ball::moveBy does this, none of the moving procedures for other items in the game do this. This is inconsistent and likely to cause confusion and future bugs, sorry :(
-	double dx = baseDx*resizeFactor;
-	double dy = baseDy*resizeFactor;
 	double oldx;
 	double oldy;
 	oldx = x();
 	oldy = y();
 	Tagaro::SpriteObjectItem::moveBy(dx, dy);
-	baseX += baseDx;
-	baseY += baseDy;
 
 	if (game && !game->isPaused())
 		collisionDetect(oldx, oldy);
@@ -263,10 +209,10 @@ void Ball::collisionDetect(double oldx, double oldy)
 					// move this ball to where it was barely touching
 					double ballAngle = m_vector.direction();
 					while (collidingItems().contains(item) > 0)
-						setResizedPos(x() - cos(ballAngle) / 2.0, y() + sin(ballAngle) / 2.0);
+						setPos(x() - cos(ballAngle) / 2.0, y() + sin(ballAngle) / 2.0);
 
 					// make a 2 pixel separation
-					setResizedPos(x() - 2 * cos(ballAngle), y() + 2 * sin(ballAngle));
+					setPos(x() - 2 * cos(ballAngle), y() + 2 * sin(ballAngle));
 
 					Vector bvector = oball->curVector();
 					m_vector -= bvector;

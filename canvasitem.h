@@ -46,8 +46,6 @@ public:
 	virtual void selectedItem(QGraphicsItem * /*item*/) {}
 	///called after the item is moved the very first time by the game
 	virtual void firstMove(int /*x*/, int /*y*/) {}
-	///used for resizing, also moves the item appropriately
-	virtual void resize(double /*resize factor*/) { kDebug(12007) << "Warning, empty resize used\n"; }
 	///save your settings.
 	virtual void save(KConfigGroup *cfg);
 	///save a point if you wish. Rarely necessary.
@@ -113,8 +111,6 @@ public:
 	QString name() const { return m_name; }
 	void setName(const QString &newname) { m_name = newname; }
 	virtual void setSize(double /*width*/, double /*height*/) {}
-
-	virtual void updateBaseResizeInfo() {}
 
 	///custom animation code
 	bool isAnimated() const { return m_animated; }

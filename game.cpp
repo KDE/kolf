@@ -125,12 +125,6 @@ void RectPoint::setSize(double width, double height)
 	setRect(x(), y(), width, height);
 }
 
-void RectPoint::updateBaseResizeInfo()
-{
-	rect->updateBaseResizeInfo();
-}
-
-
 /////////////////////////
 
 Arrow::Arrow(QGraphicsItem * parent)
@@ -455,26 +449,6 @@ void Bridge::setSize(double width, double height)
 	moveBy(0, 0);
 }
 
-void Bridge::updateBaseResizeInfo()
-{
-	baseX = x() / resizeFactor;
-	baseY = y() / resizeFactor;
-	baseWidth = width() / resizeFactor;
-	baseHeight = height() / resizeFactor;
-
-	baseTopWallX = topWall->x();
-	baseTopWallY = topWall->y();
-
-	baseBotWallX = botWall->x();
-	baseBotWallY = botWall->y();
-
-	baseLeftWallX = leftWall->x();
-	baseLeftWallY = leftWall->y();
-
-	baseRightWallX = rightWall->x();
-	baseRightWallY = rightWall->y();
-}
-
 /////////////////////////
 
 WindmillConfig::WindmillConfig(Windmill *windmill, QWidget *parent)
@@ -675,22 +649,6 @@ void Windmill::newSize(double width, double height)
 	guard->setPoints(0, guardY, (double)indent / (double)1.07 - 2, guardY);
 }
 
-void Windmill::updateBaseResizeInfo()
-{
-	Bridge::updateBaseResizeInfo();
-
-	baseGuardX = guard->x() / resizeFactor;
-	baseGuardY = guard->y() / resizeFactor;
-	baseGuardMin = guard->getMin() / resizeFactor;
-	baseGuardMax = guard->getMax() / resizeFactor;
-	baseGuardSpeed = speed / resizeFactor;
-
-	baseLeftX = left->x() / resizeFactor;
-	baseLeftY = left->y() / resizeFactor;
-
-	baseRightX = right->x() / resizeFactor;
-	baseRightY = right->y() / resizeFactor;
-}
 /////////////////////////
 
 void WindmillGuard::advance(int phase)
@@ -989,14 +947,6 @@ void KolfEllipse::savingDone()
 	dontHide = false;
 }
 
-void KolfEllipse::updateBaseResizeInfo()
-{
-	baseX = x() / resizeFactor;
-	baseY = y() / resizeFactor;
-	baseWidth = width() / resizeFactor;
-	baseHeight = height() / resizeFactor;
-}
-
 /////////////////////////
 
 Puddle::Puddle(QGraphicsItem * parent)
@@ -1269,12 +1219,6 @@ bool Bumper::collision(Ball *ball, long int /*id*/)
 	return true;
 }
 
-void Bumper::updateBaseResizeInfo()
-{
-	baseX = x() / resizeFactor;
-	baseY = y() / resizeFactor;
-}
-
 /////////////////////////
 
 Cup::Cup(QGraphicsItem * parent)
@@ -1292,7 +1236,7 @@ bool Cup::place(Ball *ball, bool /*wasCenter*/)
 	ball->setState(Holed);
 	playSound("holed");
 
-	ball->setResizedPos(x(), y());
+	ball->setPos(pos());
 	ball->setVelocity(Vector());
 	return true;
 }
@@ -1363,12 +1307,6 @@ HoleResult Cup::result(QPointF p, double speed, bool * /*wasCenter*/)
 	const double distanceSquared = posDiff.x() * posDiff.x() + posDiff.y() * posDiff.y();
 	const double radiusSquared = boundingRect().width() * boundingRect().width() / 4;
 	return distanceSquared < radiusSquared ? Result_Holed : Result_Miss;
-}
-
-void Cup::updateBaseResizeInfo()
-{
-	baseX = x() / resizeFactor;
-	baseY = y() / resizeFactor;
 }
 
 /////////////////////////
@@ -1564,7 +1502,7 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 
 void BlackHole::eject(Ball *ball, double speed)
 {
-	ball->setResizedPos(exitItem->x(), exitItem->y());
+	ball->setPos(exitItem->pos());
 
 	Vector v = Vector::fromMagnitudeDirection(10, deg2rad(exitDeg));
 	ball->setVector(v);
@@ -1654,14 +1592,6 @@ HoleResult BlackHole::result(QPointF p, double s, bool * /*wasCenter*/)
 	return contains(p-pos()) ? Result_Holed : Result_Miss;
 }
 
-void BlackHole::updateBaseResizeInfo()
-{
-	baseX = x() / resizeFactor;
-	baseY = y() / resizeFactor;
-	baseWidth = width() / resizeFactor;
-	baseHeight = height() / resizeFactor;
-}
-
 /////////////////////////
 
 BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QGraphicsItem * parent)
@@ -1732,12 +1662,6 @@ void BlackHoleExit::hideInfo()
 Config *BlackHoleExit::config(QWidget *parent)
 {
 	return blackHole->config(parent);
-}
-
-void BlackHoleExit::updateBaseResizeInfo()
-{
-	baseX = x() / resizeFactor;
-	baseY = y() / resizeFactor;
 }
 
 /////////////////////////
@@ -1985,14 +1909,6 @@ bool WallPoint::collision(Ball *ball, long int id)
 
 	wall->lastId = id;
 	return false;
-}
-
-void WallPoint::updateBaseResizeInfo()
-{
-	baseX = x() / resizeFactor;
-	baseY = y() / resizeFactor;
-
-	wall->updateBaseResizeInfo();
 }
 
 /////////////////////////
@@ -2891,10 +2807,6 @@ void KolfGame::handleMouseReleaseEvent(QMouseEvent *e)
 	if (editing)
 	{
 		emit newStatusText(QString());
-		if( movingCanvasItem )
-		{
-			movingCanvasItem->updateBaseResizeInfo();
-		}
 		moving = false;
 	}
 
@@ -3101,22 +3013,6 @@ void KolfGame::resizeAllItems(double resizeFactor, bool resizeBorderWalls)
 	//stroke circle resize
 	strokeCircle->resize(resizeFactor);
 
-	//items on course resize (items loaded from the course map)
-	QList<QGraphicsItem *>::const_iterator item;
-	for (item = items.constBegin(); item != items.constEnd(); ++item)
-	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
-		if (citem) 
-			citem->resize(resizeFactor);
-	}
-
-	//ball resize
-	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-		(*it).ball()->resize(resizeFactor);
-
-	//editor ball start position reszie
-	whiteBall->resize(resizeFactor);
-	
 	//putter resize
 	putter->setPos((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 	putter->resize(resizeFactor);
@@ -3534,7 +3430,7 @@ void KolfGame::shotDone()
 					x -= cos(v.direction()) * movePixel;
 					y += sin(v.direction()) * movePixel;
 
-					ball->setResizedPos(x, y);
+					ball->setPos(x, y);
 				}
 
 				// move another two pixels away

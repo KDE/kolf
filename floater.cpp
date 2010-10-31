@@ -74,15 +74,6 @@ void FloaterGuide::resize(double resizeFactor)
 	setPoints(baseX1*resizeFactor, baseY1*resizeFactor, baseX2*resizeFactor, baseY2*resizeFactor);
 }
 
-void FloaterGuide::updateBaseResizeInfo()
-{
-	baseX1 = line().x1() / resizeFactor;
-	baseY1 = line().y1() / resizeFactor;
-	baseX2 = line().x2() / resizeFactor;
-	baseY2 = line().y2() / resizeFactor;
-	floater->updateBaseResizeInfo();
-}
-
 /////////////////////////
 
 Floater::Floater(QGraphicsItem *parent)
@@ -242,7 +233,7 @@ void Floater::moveBy(double dx, double dy)
 					//((Ball *)(*it))->setState(Rolling);
 					Ball *ball = dynamic_cast<Ball *>(*it);
 					Q_ASSERT(ball);
-					ball->moveByResizedDistance(dx, dy);
+					ball->moveBy(dx, dy);
 					if (game && /*game->hasFocus() &&*/ !game->isEditing() && game->curBall() == (Ball *)(*it))
 						game->ballMoved();
 				}
@@ -310,11 +301,6 @@ void Floater::load(KConfigGroup *cfgGroup)
 void Floater::firstMove(int x, int y)
 {
 	firstPoint = QPoint(x, y);
-}
-
-void Floater::updateBaseResizeInfo()
-{
-	Bridge::updateBaseResizeInfo();
 }
 
 /////////////////////////

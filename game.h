@@ -85,7 +85,7 @@ public:
 	Player() : m_ball(new Ball(0)) {}
 	Ball *ball() const { return m_ball; }
 	void setBall(Ball *ball) { m_ball = ball; }
-	BallStateInfo stateInfo(int hole) const { BallStateInfo ret; ret.spot = QPoint((int)m_ball->getBaseX(), (int)m_ball->getBaseY()); ret.state = m_ball->curState(); ret.score = score(hole); ret.beginningOfHole = m_ball->beginningOfHole(); ret.id = m_id; return ret; }
+	BallStateInfo stateInfo(int hole) const { BallStateInfo ret; ret.spot = m_ball->pos().toPoint(); ret.state = m_ball->curState(); ret.score = score(hole); ret.beginningOfHole = m_ball->beginningOfHole(); ret.id = m_id; return ret; }
 
 	QList<int> scores() const { return m_scores; }
 	void setScores(const QList<int> &newScores) { m_scores = newScores; }
@@ -157,7 +157,6 @@ class RectItem
 public:
 	virtual ~RectItem(){}
 	virtual void newSize(double /*width*/, double /*height*/) {}
-	virtual void updateBaseResizeInfo() {}
 };
 
 class RectPoint : public QGraphicsEllipseItem, public CanvasItem
@@ -172,7 +171,6 @@ public:
 	virtual CanvasItem *itemToDelete() { return dynamic_cast<CanvasItem *>(rect); }
 	void setSizeFactor(double newFactor) { m_sizeFactor = newFactor; }
 	void setSize(double, double);
-	void updateBaseResizeInfo();
 
 protected:
 	RectItem *rect;
@@ -215,8 +213,6 @@ public:
 
 	double width() { return boundingRect().width(); }
 	double height() { return boundingRect().height(); }
-
-	void updateBaseResizeInfo();
 
 protected:
 	RectPoint *point;
@@ -292,7 +288,6 @@ public:
 	void firstMove(int x, int y);
 	void resize(double resizeFactor);
 	virtual bool collision(Ball *ball, long int id);
-	void updateBaseResizeInfo();
 
 protected:
 	Inside *inside;
@@ -320,7 +315,6 @@ public:
 	void loadState(StateDB *db);
 	virtual bool canBeMovedByOthers() const { return true; }
 	virtual bool collision(Ball *ball, long int id);
-	void updateBaseResizeInfo();
 
 protected:
 	QPixmap pixmap;
@@ -367,7 +361,6 @@ public:
 	virtual Config *config(QWidget *parent);
 	BlackHole *blackHole;
 	double getBaseArrowPenThickness() { return baseArrowPenThickness; }
-	void updateBaseResizeInfo();
 	double resizeFactor, baseX, baseY;
 
 protected:
@@ -435,8 +428,6 @@ public:
 
 	virtual bool collision(Ball *ball, long int id);
 
-	void updateBaseResizeInfo();
-
 public slots:
 	void eject(Ball *ball, double speed);
 	void halfway();
@@ -500,7 +491,6 @@ public:
 	QPoint endPoint() const { return QPoint((int)line().x2(), (int)line().y2() ); }
 
 	void doAdvance();
-	virtual void updateBaseResizeInfo() {}
 
 protected:
 	WallPoint *startItem;
@@ -538,7 +528,6 @@ public:
 	double height() { return rect().height(); }
 
 	Wall *parentWall() { return wall; }
-	void updateBaseResizeInfo();
 
 	double baseX, baseY, resizeFactor;
 
@@ -666,8 +655,6 @@ public:
 	double width() {return Tagaro::SpriteObjectItem::size().width(); }
 	double height() {return Tagaro::SpriteObjectItem::size().height(); }
 
-	virtual void updateBaseResizeInfo();
-
 protected:
 	bool pixmapInitialised;
 	/*
@@ -767,7 +754,6 @@ public:
 	double curSpeed() const { return speed; }
 	void setBottom(bool yes);
 	bool bottom() const { return m_bottom; }
-	void updateBaseResizeInfo();
 
 protected:
 	WindmillGuard *guard;

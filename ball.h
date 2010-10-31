@@ -35,31 +35,9 @@ public:
 
 	BallState currentState();
 
-	virtual void resetSize(); 
-	void resize(double resizeFactor);
-	/*
-	 * set the position of the ball automatically modifying x and y to take into account resizing
-	 */
-	void setPos(qreal x, qreal y);
-	/*
-	 * set the position of the ball automatically modifying pos to take into account resizing
-	 */
-	void setPos(QPointF pos);
-	/*
-	 * set the position of the ball to exactly x and y, without taking into account resizing
-	 */
-	void setResizedPos(qreal x, qreal y);
-
 	virtual void advance(int phase);
 	virtual void doAdvance();
-	/*
-	 * moves the ball, by the number of pixels requested (like the normal moveBy() for everything else (I know this is bad design, need to fix by changing the names of these functions and checking that the appropriate one is called)
-	 */
-	void moveByResizedDistance(double dx, double dy);
-	/*
-	 * moves the ball, automatically modifying dx and dy to take into account resizing (so the input dx and dy can use the game's base 400x400 co-ordinated system, and do not need to be modified when the game is resized)
-	 */
-	virtual void moveBy(double baseDx, double baseDy);
+	virtual void moveBy(double dx, double dy);
 	virtual void setVelocity(const Vector& velocity);
 
 	virtual bool deleteable() const { return false; }
@@ -112,8 +90,6 @@ public:
 
 	double width() { return size().width(); }
 	double height() { return size().height(); }
-	double getBaseX() { return baseX; }
-	double getBaseY() { return baseY; }
 
 	double getMaxBumperBounceSpeed() { return maxBumperBounceSpeed; }
 	void reduceMaxBumperBounceSpeed() { if(maxBumperBounceSpeed > 0.4) maxBumperBounceSpeed -= 0.35; }
@@ -127,12 +103,6 @@ private:
 
 	long int collisionId;
 	double frictionMultiplier;
-	//base numbers are the size or position when no resizing has taken place (i.e. the defaults)
-	double baseDiameter;
-	double baseX, baseY; //position of the ball in original 400x400 coordinate system
-	double baseFontPixelSize;
-	//resizeFactor is the number to multiply base numbers by to get their resized value (i.e. if it is 1 then use default size, if it is >1 then everything needs to be bigger, and if it is <1 then everything needs to be smaller)
-	double resizeFactor;
 
 	//the maximum speed of the ball after hitting a bumper, this will decrease ith each bounce so that the ball does not bounce against bumpers forever
 	double maxBumperBounceSpeed;

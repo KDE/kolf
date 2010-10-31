@@ -88,8 +88,6 @@ public:
 
 	void moveArrow();
 
-	void updateBaseResizeInfo();
-
 	double width() const { return rect().width(); }
 	double height() const { return rect().height(); }
 
