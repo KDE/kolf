@@ -8,20 +8,23 @@ add_subdirectory( graphics )
 
 include_directories( ${CMAKE_SOURCE_DIR}/libkdegames/highscore  )
 
+# we have a static copy of Box2D in our source tree
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external)
+add_subdirectory(external)
 
 ########### next target ###############
 
-set(kolf_LIB_SRCS 
-   kolf.cpp 
-   game.cpp 
-   canvasitem.cpp 
-   ball.cpp 
-   newgame.cpp 
-   config.cpp 
-   scoreboard.cpp 
-   editor.cpp 
-   kcomboboxdialog.cpp 
-   floater.cpp 
+set(kolf_LIB_SRCS
+   game.cpp
+   kolf.cpp
+   newgame.cpp
+   canvasitem.cpp
+   ball.cpp
+   config.cpp
+   scoreboard.cpp
+   editor.cpp
+   kcomboboxdialog.cpp
+   floater.cpp
    slope.cpp
    itemfactory.cpp
    tagaro/board.cpp
@@ -31,7 +34,7 @@ set(kolf_LIB_SRCS
 
 kde4_add_library(kolfprivate SHARED ${kolf_LIB_SRCS})
 
-target_link_libraries(kolfprivate  ${KDE4_KIO_LIBS} ${KDE4_KDE3SUPPORT_LIBS} ${KDE4_PHONON_LIBS} kdegames)
+target_link_libraries(kolfprivate  ${KDE4_KIO_LIBS} ${KDE4_KDE3SUPPORT_LIBS} ${KDE4_PHONON_LIBS} kdegames box2d)
 
 set_target_properties(kolfprivate PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 install(TARGETS kolfprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
