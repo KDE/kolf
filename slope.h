@@ -84,7 +84,7 @@ public:
 	QMap<GradientType, QString> gradientI18nKeys;
 	QMap<GradientType, QString> gradientKeys;
 
-	virtual void updateZ(QGraphicsRectItem *vStrut = 0);
+	virtual void updateZ(QGraphicsItem *vStrut = 0);
 
 	void moveArrow();
 

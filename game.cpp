@@ -23,7 +23,6 @@
 #include "rtti.h"
 
 #include "tagaro/board.h"
-#include "tagaro/spriteobjectitem.h"
 
 #include <QApplication>
 #include <QGridLayout>
@@ -270,21 +269,14 @@ void BridgeConfig::rightWallChanged(bool yes)
 
 /////////////////////////
 
-//TODO: HACK
-QRect Bridge_defaultRect(const QString& type)
-{
-	return type == "sign" ? QRect(0, 0, 110, 40) : QRect(0, 0, 80, 40);
-}
-
 Bridge::Bridge(QGraphicsItem *parent, const QString &type)
-: QGraphicsRectItem(Bridge_defaultRect(type), parent)
+	: Tagaro::SpriteObjectItem(Kolf::renderer(), type, parent)
 {
-	this->type = type;
+	const QSize defaultSize = type == "sign" ? QSize(110, 40) : QSize(80, 40);
+
 	QColor color("#92772D");
-	setBrush(Qt::NoBrush);
-        setPen(Qt::NoPen);
 	setZValue(998);
-	
+
 	//not using antialiasing because it looks too blurry here
 	topWall = new Wall(parent, false);
 	topWall->setAlwaysShow(true);
@@ -303,33 +295,18 @@ Bridge::Bridge(QGraphicsItem *parent, const QString &type)
 	leftWall->setVisible(false);
 	rightWall->setVisible(false);
 
-	pixmapInitialised=false;
-
 	point = new RectPoint(color, this, parent);
 	editModeChanged(false);
 
+	setSize(defaultSize.width(), defaultSize.height());
 	newSize(width(), height());
-}
-
-void Bridge::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *) 
-{
-	if(pixmapInitialised == false) {
-		if(game == 0)
-			return;
-		else {
-			pixmap = Kolf::renderer()->spritePixmap(type, rect().size().toSize());
-			pixmapInitialised=true;
-		}
-	}
-	painter->drawPixmap((int)rect().x(), (int)rect().y(), pixmap);  
 }
 
 void Bridge::resize(double resizeFactor)
 {
 	this->resizeFactor = resizeFactor;
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
-	setRect(0, 0, baseWidth*resizeFactor, baseHeight*resizeFactor);
-	pixmap = Kolf::renderer()->spritePixmap(type, rect().size().toSize());
+// 	setRect(0, 0, baseWidth*resizeFactor, baseHeight*resizeFactor);
 	botWall->setPos(baseBotWallX*resizeFactor, baseBotWallY*resizeFactor);
 	botWall->resize(resizeFactor);
 	topWall->setPos(baseTopWallX*resizeFactor, baseTopWallY*resizeFactor);
@@ -392,7 +369,7 @@ void Bridge::editModeChanged(bool changed)
 
 void Bridge::moveBy(double dx, double dy)
 {
-	QGraphicsRectItem::moveBy(dx, dy);
+	QGraphicsItem::moveBy(dx, dy);
 
 	point->dontMove();
 	point->setPos(x() + width(), y() + height());
@@ -465,15 +442,13 @@ void Bridge::newSize(double width, double height)
 
 void Bridge::setSize(double width, double height)
 {
-	setRect(rect().x(), rect().y(), width, height);
+	Tagaro::SpriteObjectItem::setSize(width, height);
 
 	topWall->setPoints(0, 0, width, 0);
 	botWall->setPoints(0, height, width, height);
 	leftWall->setPoints(0, 0, 0, height);
 	rightWall->setPoints(width, 0, width, height);
 
-	if(game != 0)
-		pixmap = Kolf::renderer()->spritePixmap(type, rect().size().toSize());
 	baseWidth = width;
 	baseHeight = height;
 
@@ -738,7 +713,6 @@ Sign::Sign(QGraphicsItem * parent)
 {
 	setZValue(998.8);
 	m_text = m_untranslatedText = i18n("New Text");
-	setBrush(QBrush(Qt::white));
 	setWallColor(Qt::black);
 	setWallZ(zValue() + .01);
 	baseFontPixelSize = fontPixelSize = 12;
@@ -776,10 +750,9 @@ void Sign::setText(const QString &text)
 	m_untranslatedText = text;
 }
 
-void Sign::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
+void Sign::paint(QPainter *painter, const QStyleOptionGraphicsItem *style, QWidget *parent)
 {
-	const QStyleOptionGraphicsItem * style = new QStyleOptionGraphicsItem();
-	Bridge::paint(painter, style);
+	Bridge::paint(painter, style, parent);
 
 	painter->setPen(QPen(Qt::black, 1));
 	QGraphicsTextItem txt;
@@ -790,7 +763,7 @@ void Sign::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 	txt.setHtml(m_text);
 	const int indent = wallPen().width() + 13;
 	txt.setTextWidth(width() - 2*indent); 
-	txt.paint(painter, style, 0);
+	txt.paint(painter, style, parent);
 	//txt.paint(painter, x() + indent, y(), QRect(x() + indent, y(), width() - indent, height() - indent), colorGroup); 
 	// minor problem, can't find how to set the start the rect for html text, so the next is right next to the egde of the text box
 }
@@ -891,15 +864,13 @@ void EllipseConfig::check2Changed(bool on)
 /////////////////////////
 
 KolfEllipse::KolfEllipse(QGraphicsItem *parent, const QString &type)
-: QGraphicsEllipseItem(parent)
+	: Tagaro::SpriteObjectItem(Kolf::renderer(), type, parent)
 {
-	this->type = type;
 	savingDone();
 	setChangeEnabled(false);
 	setChangeEvery(50);
 	count = 0;
 	setVisible(true);
-	setPen(QPen(Qt::NoPen));
 
 	point = new RectPoint(Qt::black, this, parent);
 	point->setSizeFactor(2.0);
@@ -935,10 +906,9 @@ QList<QGraphicsItem *> KolfEllipse::moveableItems() const
 void KolfEllipse::resize(double resizeFactor)
 {
 	this->resizeFactor = resizeFactor;
-	setRect(baseWidth*resizeFactor*-0.5, baseHeight*resizeFactor*-0.5, baseWidth*resizeFactor, baseHeight*resizeFactor);
+	//setRect(baseWidth*resizeFactor*-0.5, baseHeight*resizeFactor*-0.5, baseWidth*resizeFactor, baseHeight*resizeFactor);
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
 	moveBy(0, 0); 
-	pixmap=Kolf::renderer()->spritePixmap(type, rect().size().toSize());
 }
 
 void KolfEllipse::newSize(double width, double height)
@@ -949,21 +919,15 @@ void KolfEllipse::newSize(double width, double height)
 
 void KolfEllipse::setSize(double width, double height)
 {
-	setRect(width*-0.5, height*-0.5, width, height);
-	if(game != 0)
-		pixmap=Kolf::renderer()->spritePixmap(type, rect().size().toSize());
+	setOffset(-0.5 * width, -0.5 * height);
+	Tagaro::SpriteObjectItem::setSize(width, height);
 	baseWidth = width;
 	baseHeight = height;
 }
 
-void KolfEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*option*/, QWidget * /*widget*/ ) 
-{
-	painter->drawPixmap((int)rect().x(), (int)rect().y(), pixmap);  
-}
-
 void KolfEllipse::moveBy(double dx, double dy)
 {
-	QGraphicsEllipseItem::moveBy(dx, dy);
+	QGraphicsItem::moveBy(dx, dy);
 
 	point->dontMove();
 	point->setPos(x() + width()/2, y() + height()/2);
@@ -977,7 +941,7 @@ void KolfEllipse::editModeChanged(bool changed)
 
 void KolfEllipse::advance(int phase)
 {
-	QGraphicsEllipseItem::advance(phase);
+	QGraphicsItem::advance(phase);
 
 	if (phase == 1 && m_changeEnabled && !dontHide)
 	{
@@ -1047,8 +1011,12 @@ bool Puddle::collision(Ball *ball, long int /*id*/)
 {
 	if (ball->isVisible())
 	{
-		// is center of ball in?
-		if (contains(ball->pos()-pos())/* && ball->curVector().magnitude() < 4*/)
+		// is center of ball in? (calculation based on assumption of precise ellipse shape)
+		const QPointF posDiff = ball->pos() - pos();
+		const QSizeF halfSize = boundingRect().size() / 2;
+		const qreal dxScaled = posDiff.x() / halfSize.width();
+		const qreal dyScaled = posDiff.y() / halfSize.height();
+		if (dxScaled * dxScaled + dxScaled * dyScaled < 1/* && ball->curVector().magnitude() < 4*/)
 		{
 			playSound("puddle");
 			ball->setAddStroke(ball->addStroke() + 1);
@@ -1231,33 +1199,20 @@ void Putter::finishMe()
 /////////////////////////
 
 Bumper::Bumper(QGraphicsItem * parent)
-: QGraphicsEllipseItem(parent)
+: Tagaro::SpriteObjectItem(Kolf::renderer(), QLatin1String("bumper_off"), parent)
 {
 	baseDiameter=20;
-	setRect(-0.5*baseDiameter, -0.5*baseDiameter, baseDiameter, baseDiameter);
+	setOffset(-0.5 * baseDiameter, -0.5 * baseDiameter);
+	Tagaro::SpriteObjectItem::setSize(baseDiameter, baseDiameter);
 	setZValue(-25);
-	pixmapInitialised=false;
 
 	count = 0;
 	setAnimated(false);
 }
 
-void Bumper::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *) 
-{
-	if(pixmapInitialised == false) {
-		if(game == 0)
-			return;
-		else {
-			pixmap=Kolf::renderer()->spritePixmap("bumper_off", rect().size().toSize());
-			pixmapInitialised=true;
-		}
-	}
-	painter->drawPixmap((int)rect().x(), (int)rect().y(), pixmap);  
-}
-
 void Bumper::moveBy(double x, double y)
 {
-        QGraphicsEllipseItem::moveBy(x, y);
+	QGraphicsItem::moveBy(x, y);
 }
 
 void Bumper::firstMove(int x, int y)
@@ -1270,9 +1225,7 @@ void Bumper::resize(double resizeFactor)
 {
 	this->resizeFactor = resizeFactor;
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
-	setRect(-0.5*baseDiameter*resizeFactor, -0.5*baseDiameter*resizeFactor, baseDiameter*resizeFactor, baseDiameter*resizeFactor);
-	pixmapInitialised=false; //do I need this?
-	pixmap=Kolf::renderer()->spritePixmap("bumper_off", rect().size().toSize());
+// 	setRect(-0.5*baseDiameter*resizeFactor, -0.5*baseDiameter*resizeFactor, baseDiameter*resizeFactor, baseDiameter*resizeFactor);
 }
 
 void Bumper::advance(int phase)
@@ -1280,16 +1233,14 @@ void Bumper::advance(int phase)
 	if(!isAnimated())
 		return;
 
-	QGraphicsEllipseItem::advance(phase);
+	QGraphicsItem::advance(phase);
 
 	if (phase == 1)
 	{
-		count++;
-		if (count > 2)
+		if (++count > 2)
 		{
 			count = 0;
-			pixmap=Kolf::renderer()->spritePixmap("bumper_off", rect().size().toSize());
-			update(); 
+			setSpriteKey(QLatin1String("bumper_off"));
 			setAnimated(false);
 		}
 	}
@@ -1297,19 +1248,11 @@ void Bumper::advance(int phase)
 
 bool Bumper::collision(Ball *ball, long int /*id*/)
 {
-	pixmap=Kolf::renderer()->spritePixmap("bumper_on", rect().size().toSize());
-	update();
-
-	double speed = 1.8 + ball->curVector().magnitude() * .9;
 	double maxSpeed = ball->getMaxBumperBounceSpeed();
-	if (speed > maxSpeed)
-		speed = maxSpeed;
+	double speed = qMin(maxSpeed, 1.8 + ball->curVector().magnitude() * .9);
 	ball->reduceMaxBumperBounceSpeed();
 
-	const QPointF start(x(), y());
-	const QPointF end(ball->x(), ball->y());
-
-	Vector betweenVector(start - end);
+	Vector betweenVector(pos() - ball->pos());
 	betweenVector.setMagnitudeDirection(speed,
 		// add some randomness so we don't go indefinetely
 		betweenVector.direction() + deg2rad((KRandom::random() % 3) - 1)
@@ -1320,6 +1263,7 @@ bool Bumper::collision(Ball *ball, long int /*id*/)
 	ball->setVelocity(Vector(-ball->velocity().x(), ball->velocity().y()));
 	ball->setState(Rolling);
 
+	setSpriteKey(QLatin1String("bumper_on"));
 	setAnimated(true);
 
 	return true;
@@ -1334,26 +1278,13 @@ void Bumper::updateBaseResizeInfo()
 /////////////////////////
 
 Cup::Cup(QGraphicsItem * parent)
-	: QGraphicsEllipseItem(parent)
+	: Tagaro::SpriteObjectItem(Kolf::renderer(), "cup", parent)
 {
 	baseDiameter = 16;
-	setRect(-0.5*baseDiameter, -0.5*baseDiameter, baseDiameter, baseDiameter);
-	pixmapInitialised=false;
+	setOffset(-0.5 * baseDiameter, -0.5 * baseDiameter);
+	Tagaro::SpriteObjectItem::setSize(baseDiameter, baseDiameter);
 
 	setZValue(998.1);
-}
-
-void Cup::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *) 
-{
-	if(pixmapInitialised == false) {
-		if(game == 0)
-			return;
-		else {
-			pixmap=Kolf::renderer()->spritePixmap("cup", rect().size().toSize());
-			pixmapInitialised=true;
-		}
-	}
-	painter->drawPixmap((int)rect().x(), (int)rect().y(), pixmap);  
 }
 
 bool Cup::place(Ball *ball, bool /*wasCenter*/)
@@ -1368,12 +1299,12 @@ bool Cup::place(Ball *ball, bool /*wasCenter*/)
 
 void Cup::moveBy(double x, double y)
 {
-	QGraphicsEllipseItem::moveBy(x, y);
+	QGraphicsItem::moveBy(x, y);
 
 	if (game && game->isEditing())
 	{
-		baseX = QGraphicsEllipseItem::x() / resizeFactor;
-		baseY = QGraphicsEllipseItem::y() / resizeFactor;
+		baseX = QGraphicsItem::x() / resizeFactor;
+		baseY = QGraphicsItem::y() / resizeFactor;
 	}
 }
 
@@ -1387,8 +1318,7 @@ void Cup::resize(double resizeFactor)
 {
 	this->resizeFactor = resizeFactor;
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
-	setRect(-0.5*baseDiameter*resizeFactor, -0.5*baseDiameter*resizeFactor, baseDiameter*resizeFactor, baseDiameter*resizeFactor);
-	pixmap=Kolf::renderer()->spritePixmap("cup", rect().size().toSize());
+// 	setRect(-0.5*baseDiameter*resizeFactor, -0.5*baseDiameter*resizeFactor, baseDiameter*resizeFactor, baseDiameter*resizeFactor);
 }
 
 void Cup::save(KConfigGroup *cfgGroup)
@@ -1411,7 +1341,7 @@ bool Cup::collision(Ball *ball, long int /*id*/)
 {
 	bool wasCenter = false;
 
-	switch (result(QPointF(ball->x() + ball->width()/2, ball->y() + ball->height()/2), ball->curVector().magnitude(), &wasCenter))
+	switch (result(ball->pos(), ball->curVector().magnitude(), &wasCenter))
 	{
 		case Result_Holed:
 			place(ball, wasCenter);
@@ -1429,13 +1359,10 @@ HoleResult Cup::result(QPointF p, double speed, bool * /*wasCenter*/)
 	if (speed > 3.75)
 		return Result_Miss;
 
-	QPointF holeCentre(x() + boundingRect().width()/2, y() + boundingRect().height()/2);
-	double distanceSquared = (holeCentre.x() - p.x())*(holeCentre.x() - p.x()) + (holeCentre.y() - p.y())*(holeCentre.y() - p.y());
-
-	if(distanceSquared < (boundingRect().width()/2)*(boundingRect().width()/2))
-		return Result_Holed;
-	else
-		return Result_Miss;
+	const QPointF posDiff = pos() - p;
+	const double distanceSquared = posDiff.x() * posDiff.x() + posDiff.y() * posDiff.y();
+	const double radiusSquared = boundingRect().width() * boundingRect().width() / 4;
+	return distanceSquared < radiusSquared ? Result_Holed : Result_Miss;
 }
 
 void Cup::updateBaseResizeInfo()
@@ -1637,7 +1564,6 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 
 void BlackHole::eject(Ball *ball, double speed)
 {
-	kDebug();
 	ball->setResizedPos(exitItem->x(), exitItem->y());
 
 	Vector v = Vector::fromMagnitudeDirection(10, deg2rad(exitDeg));

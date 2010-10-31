@@ -227,20 +227,20 @@ void Slope::editModeChanged(bool changed)
 	moveBy(0, 0);
 }
 
-void Slope::updateZ(QGraphicsRectItem *vStrut)
+void Slope::updateZ(QGraphicsItem *vStrut)
 {
 	const double area = (height() * width());
 	const int defaultz = -50;
 
 	double newZ = 0;
 
-	QGraphicsRectItem *rect = 0;
+	QGraphicsItem *rect = 0;
 	if (!stuckOnGround)
 		rect = vStrut? vStrut : onVStrut();
 
 	if (rect)
 	{
-		if (area > (rect->rect().width() * rect->rect().height()))
+		if (area > (rect->boundingRect().width() * rect->boundingRect().height()))
 			newZ = defaultz;
 		else
 			newZ = rect->zValue();

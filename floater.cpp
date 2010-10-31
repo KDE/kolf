@@ -258,7 +258,7 @@ void Floater::moveBy(double dx, double dy)
 
 	// this call must come after we have tested for collidingItems, otherwise we skip them when saving!
 	// that's a bad thing
-	QGraphicsRectItem::moveBy(dx, dy);
+	QGraphicsItem::moveBy(dx, dy);
 
 	// because we don't do Bridge::moveBy();
 	topWall->setPos(x(), y());

@@ -27,6 +27,7 @@
 #include "statedb.h"
 
 #include "tagaro/scene.h"
+#include "tagaro/spriteobjectitem.h"
 
 #include <KLocale>
 #include <KConfigGroup>
@@ -41,7 +42,6 @@ class KGameRenderer;
 namespace Tagaro
 {
 	class Board;
-	class SpriteObjectItem;
 }
 namespace Phonon
 {
@@ -182,7 +182,7 @@ private:
 	bool dontmove;
 };
 
-class KolfEllipse : public QGraphicsEllipseItem, public CanvasItem, public RectItem
+class KolfEllipse : public Tagaro::SpriteObjectItem, public CanvasItem, public RectItem
 {
 public:
 	KolfEllipse(QGraphicsItem *parent, const QString &type);
@@ -203,7 +203,6 @@ public:
 
 	virtual void newSize(double width, double height);
 	void setSize(double width, double height);
-	void paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *);
 
 	virtual void moveBy(double dx, double dy);
 
@@ -214,8 +213,8 @@ public:
 
 	virtual Config *config(QWidget *parent);
 
-	double width() { return rect().width(); }
-	double height() { return rect().height(); }
+	double width() { return boundingRect().width(); }
+	double height() { return boundingRect().height(); }
 
 	void updateBaseResizeInfo();
 
@@ -231,8 +230,6 @@ private:
 	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
 	 */
 	double baseX, baseY, baseHeight, baseWidth, resizeFactor;
-	QString type;
-	QPixmap pixmap;
 };
 class EllipseConfig : public Config
 {
@@ -285,11 +282,11 @@ protected:
 	CanvasItem *item;
 };
 
-class Bumper : public QGraphicsEllipseItem, public CanvasItem
+class Bumper : public Tagaro::SpriteObjectItem, public CanvasItem
 {
 public:
 	Bumper(QGraphicsItem *parent);
-	void paint(QPainter *painter, const QStyleOptionGraphicsItem * option, QWidget * widget);
+
 	virtual void advance(int phase);
 	void moveBy(double x, double y);
 	void firstMove(int x, int y);
@@ -302,8 +299,6 @@ protected:
 
 private:
 	int count;
-	QPixmap pixmap;
-	bool pixmapInitialised;
 	/*
 	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
 	 */
@@ -311,11 +306,11 @@ private:
 	int baseDiameter; 
 };
 
- class Cup :  public QGraphicsEllipseItem, public CanvasItem 
+ class Cup :  public Tagaro::SpriteObjectItem, public CanvasItem
 {
 public:
 	Cup(QGraphicsItem *parent);
-	void paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *);
+
 	virtual bool place(Ball *ball, bool wasCenter);
 	void moveBy(double x, double y);
 	void firstMove(int x, int y);
@@ -632,11 +627,12 @@ protected:
 private:
 	Bridge *bridge;
 };
-class Bridge : public QGraphicsRectItem, public CanvasItem, public RectItem
+
+class Bridge : public Tagaro::SpriteObjectItem, public CanvasItem, public RectItem
 {
 public:
-	Bridge(QGraphicsItem *parent, const QString &type = "bridge");
-	void paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget=0);
+	Bridge(QGraphicsItem *parent, const QString &type = QLatin1String("bridge"));
+
 	virtual bool collision(Ball *ball, long int id);
 	virtual void resize(double resizeFactor);
 	virtual void aboutToDie();
@@ -668,15 +664,13 @@ public:
 	bool leftWallVisible() const { return leftWall->isVisible(); }
 	bool rightWallVisible() const { return rightWall->isVisible(); }
 	
-	double width() {return QGraphicsRectItem::rect().width(); }
-	double height() {return QGraphicsRectItem::rect().height(); }
+	double width() {return Tagaro::SpriteObjectItem::size().width(); }
+	double height() {return Tagaro::SpriteObjectItem::size().height(); }
 
 	virtual void updateBaseResizeInfo();
 
 protected:
 	bool pixmapInitialised;
-	QPixmap pixmap;
-	QString type;
 	/*
 	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
 	 */

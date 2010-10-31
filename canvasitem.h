@@ -83,7 +83,7 @@ public:
 	///Hide extra item info
 	virtual void hideInfo() {}
 	///update your Z value (this is called by various things when perhaps the value should change) if this is called by a vStrut, it will pass 'this'.
-	virtual void updateZ(QGraphicsRectItem * /*vStrut*/ = 0) {}
+	virtual void updateZ(QGraphicsItem * /*vStrut*/ = 0) {}
 	///clean up for prettyness
 	virtual void clean() {}
 	///returns whether this item can be moved by others (if you want to move an item, you should honor this!)
