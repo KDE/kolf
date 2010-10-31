@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2002-2005, Jason Katz-Brown <jasonkb@mit.edu>
+    Copyright (C) 2010 Stefan Majewsky <majewsky@gmx.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,73 +19,72 @@
 #ifndef KOLF_VECTOR_H
 #define KOLF_VECTOR_H
 
-#include <math.h>
-#include <QPoint>
+#include <QPointF>
+#include <cmath>
 
-// This and vector.cpp by Ryan Cummings
-
-class QPointF;
-
-// Implements a vector in 2D
-class Vector
+class Vector : public QPointF
 {
-public:
-	// Normal constructors
-	Vector(double magnitude, double direction) { _magnitude = magnitude; _direction = direction; }
-	Vector(const QPoint& source, const QPoint& dest);
-	Vector(const QPointF& source, const QPointF& dest);
-	Vector();
+	public:
+		inline Vector(const QPointF& point = QPointF()) : QPointF(point) {}
+		inline Vector(qreal x, qreal y) : QPointF(x, y) {}
+		inline Vector& operator=(const QPointF& point) { setX(point.x()); setY(point.y()); return *this; }
 
-	// Copy constructor
-	Vector(const Vector&);
+		//dot product
+		inline qreal operator*(const Vector& rhs) const;
 
-	// Accessors, sorta
-	double componentX() const { return (_magnitude * cos(_direction)); }
-	double componentY() const { return (_magnitude * sin(_direction)); }
+		//getters and setters for polar coordinates
+		inline qreal magnitude() const;
+		inline qreal direction() const; //in radians!
+		inline void setMagnitude(qreal magnitude);
+		inline void setDirection(qreal direction);
+		inline void setMagnitudeDirection(qreal magnitude, qreal direction);
+		static inline Vector fromMagnitudeDirection(qreal magnitude, qreal direction);
 
-	// Sets individual components
-	// Wrappers around setComponents(double, double) - below
-	void setComponentX(double x);
-	void setComponentY(double y);
-
-	// Sets both components at once
-	void setComponents(double x, double y);
-
-	// Accessors
-	double magnitude() const { return _magnitude; }
-	double direction() const { return _direction; }
-	void setMagnitude(double m) { _magnitude = m; }
-	void setDirection(double d) { _direction = d; }
-
-	// Vector math
-	Vector operator+(const Vector&);
-	Vector operator-(const Vector&);
-
-	Vector& operator+=(const Vector&);
-	Vector& operator-=(const Vector&);
-
-	// Dot product
-	double operator*(const Vector&);
-
-	// Magnitude math
-	Vector operator+(double m) { return Vector(_magnitude + m, _direction); }
-	Vector operator-(double m) { return Vector(_magnitude - m, _direction); }
-	Vector operator*(double m) { return Vector(_magnitude * m, _direction); }
-	Vector operator/(double m) { return Vector(_magnitude / m, _direction); }
-
-	Vector& operator+=(double m);
-	Vector& operator-=(double m);
-	Vector& operator*=(double m);
-	Vector& operator/=(double m);
-
-	// Return the vector's equalivent on the unit circle
-	Vector unit() const { return Vector(1.0, _direction); }
-
-protected:
-	double _magnitude;
-	double _direction;
+		//some further convenience
+		inline Vector unitVector() const;
 };
 
-void debugVector(const QString &, const Vector &);
+qreal Vector::operator*(const Vector& rhs) const
+{
+	return x() * rhs.x() + y() * rhs.y();
+}
 
-#endif
+qreal Vector::magnitude() const
+{
+	return sqrt(*this * *this);
+}
+
+qreal Vector::direction() const
+{
+	return atan2(y(), x());
+}
+
+void Vector::setMagnitude(qreal magnitude)
+{
+	setMagnitudeDirection(magnitude, this->direction());
+}
+
+void Vector::setDirection(qreal direction)
+{
+	setMagnitudeDirection(this->magnitude(), direction);
+}
+
+void Vector::setMagnitudeDirection(qreal magnitude, qreal direction)
+{
+	setX(magnitude * cos(direction));
+	setY(magnitude * sin(direction));
+}
+
+Vector Vector::fromMagnitudeDirection(qreal magnitude, qreal direction)
+{
+	Vector v;
+	v.setMagnitudeDirection(magnitude, direction);
+	return v;
+}
+
+Vector Vector::unitVector() const
+{
+	return *this / magnitude();
+}
+
+#endif // KOLF_VECTOR_H

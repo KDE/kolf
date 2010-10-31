@@ -334,7 +334,7 @@ bool Slope::collision(Ball *ball, long int /*id*/)
 		const QPointF start((x() + width() / 2.0), y() + height() / 2.0);
 		const QPointF end(ball->x(), ball->y());
 
-		Vector betweenVector(start, end);
+		Vector betweenVector = start - end;
 		const double factor = betweenVector.magnitude() / ((double)width() / 2.0);
 		slopeAngle = betweenVector.direction();
 

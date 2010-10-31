@@ -145,7 +145,7 @@ void Floater::advance(int phase)
 	if (phase == 1 && (getXVelocity() || getXVelocity()))
 	{
 		doAdvance();
-		if (Vector(origin, QPointF(x(), y())).magnitude() > vector.magnitude())
+		if (Vector(origin - QPointF(x(), y())).magnitude() > vector.magnitude())
 		{
 			vector.setDirection(vector.direction() + M_PI);
 			origin = (origin == wall->startPoint()? wall->endPoint() : wall->startPoint());
@@ -167,7 +167,7 @@ void Floater::reset()
 	QPoint start = (QPoint((int)startf.x(), (int)startf.y()));
 	QPoint end = (QPoint((int)endf.x(), (int)endf.y()));
 
-	vector = Vector(end, start);
+	vector = end - start;
 	origin = end;
 
 	setPos(origin.x(), origin.y());

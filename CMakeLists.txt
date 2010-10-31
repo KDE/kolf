@@ -20,7 +20,6 @@ set(kolf_LIB_SRCS
    config.cpp 
    scoreboard.cpp 
    editor.cpp 
-   vector.cpp 
    printdialogpage.cpp 
    kcomboboxdialog.cpp 
    kolfsvgrenderer.cpp

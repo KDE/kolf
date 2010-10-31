@@ -170,31 +170,13 @@ void Ball::friction()
 void Ball::setVelocity(double vx, double vy)
 {
 	CanvasItem::setVelocity(vx, vy);
-
-	if (vx == 0 && vy == 0)
-	{
-		m_vector.setDirection(0);
-		m_vector.setMagnitude(0);
-		return;
-	}
-
-	double ballAngle = atan2(-vy, vx);
-
-	m_vector.setDirection(ballAngle);
-	m_vector.setMagnitude(sqrt(pow(vx, 2) + pow(vy, 2)));
+	m_vector = QPointF(vx, -vy);
 }
 
 void Ball::setVector(const Vector &newVector)
 {
 	m_vector = newVector;
-
-	if (newVector.magnitude() == 0)
-	{
-		setVelocity(0, 0);
-		return;
-	}
-
-	CanvasItem::setVelocity(cos(newVector.direction()) * newVector.magnitude(), -sin(newVector.direction()) * newVector.magnitude());
+	CanvasItem::setVelocity(newVector.x(), -newVector.y());
 }
 
 void Ball::moveByResizedDistance(double dx, double dy)
@@ -298,10 +280,10 @@ void Ball::collisionDetect(double oldx, double oldy)
 					Vector bvector = oball->curVector();
 					m_vector -= bvector;
 
-					Vector unit1 = Vector(QPointF(x(), y()), QPointF(oball->x(), oball->y()));
-					unit1 = unit1.unit();
+					Vector unit1(x() - oball->x(), y() - oball->y());
+					unit1 = unit1.unitVector();
 
-					Vector unit2 = m_vector.unit();
+					Vector unit2 = m_vector.unitVector();
 
 					double cos = unit1 * unit2;
 
@@ -493,7 +475,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 		if( justCollidedWithWall )
 		{ //don't want to stop if just hit a wall as may be in the wall
 			//problem: could this cause endless ball bouncing between 2 walls?
-			m_vector.setMagnitude( minSpeed );
+			m_vector.setMagnitude(minSpeed);
 		}
 		else
 		{
@@ -529,11 +511,11 @@ void Ball::collideWithHaloCollisions( QList< Wall* >& haloWallCollisions )
 		double wallAngle;
 		if( dist1 < dist2 )
 		{
-			wallAngle = Vector(p1, p2).direction();
+			wallAngle = Vector(p1 - p2).direction();
 		}
 		else
 		{
-			wallAngle = Vector(p2, p1).direction();
+			wallAngle = Vector(p2 - p1).direction();
 		}
 
 		//kDebug(12007) << "ballAngle:" << rad2deg(ballAngle);

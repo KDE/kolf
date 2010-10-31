@@ -1288,11 +1288,11 @@ bool Bumper::collision(Ball *ball, long int /*id*/)
 	const QPointF start(x(), y());
 	const QPointF end(ball->x(), ball->y());
 
-	Vector betweenVector(start, end);
-	betweenVector.setMagnitude(speed);
-
-	// add some randomness so we don't go indefinetely
-	betweenVector.setDirection(betweenVector.direction() + deg2rad((KRandom::random() % 3) - 1));
+	Vector betweenVector(start - end);
+	betweenVector.setMagnitudeDirection(speed,
+		// add some randomness so we don't go indefinetely
+		betweenVector.direction() + deg2rad((KRandom::random() % 3) - 1)
+	);
 
 	ball->setVector(betweenVector);
 	// for some reason, x is always switched...
@@ -1604,7 +1604,7 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 	ball->setVisible(false);
 	ball->setForceStillGoing(true);
 
-	double magnitude = Vector(QPointF(x(), y()), QPointF(exitItem->x(), exitItem->y())).magnitude();
+	double magnitude = Vector(x() - exitItem->x(), y() - exitItem->y()).magnitude();
 	BlackHoleTimer *timer = new BlackHoleTimer(ball, speed, (int)(magnitude * 2.5 - speed * 35 + 500));
 
 	connect(timer, SIGNAL(eject(Ball *, double)), this, SLOT(eject(Ball *, double)));
@@ -1618,9 +1618,7 @@ void BlackHole::eject(Ball *ball, double speed)
 {
 	ball->setResizedPos(exitItem->x(), exitItem->y());
 
-	Vector v;
-	v.setMagnitude(10);
-	v.setDirection(deg2rad(exitDeg));
+	Vector v = Vector::fromMagnitudeDirection(10, deg2rad(exitDeg));
 	ball->setVector(v);
 
 	// advance ball 10
@@ -2011,7 +2009,7 @@ bool WallPoint::collision(Ball *ball, long int id)
 
 		QPoint relStart(start? wall->startPoint() : wall->endPoint());
 		QPoint relEnd(start? wall->endPoint() : wall->startPoint());
-		Vector wallVector(relStart, relEnd);
+		Vector wallVector(relStart - relEnd);
 		wallVector.setDirection(-wallVector.direction());
 
 		// find the angle between vectors, between 0 and PI
@@ -2285,7 +2283,7 @@ bool Wall::collision(Ball *ball, long int id)
 	ballVector /= dampening;
 	const double ballAngle = ballVector.direction();
 
-	const double wallAngle = -Vector(startPoint(), endPoint()).direction();
+	const double wallAngle = -Vector(startPoint() - endPoint()).direction();
 	const double collisionAngle = ballAngle - wallAngle;
 	const double leavingAngle = wallAngle - collisionAngle;
 
@@ -2961,7 +2959,7 @@ void KolfGame::updateMouse()
 
 	const QPointF cursor = viewportToViewport(mapFromGlobal(QCursor::pos()));
 	const QPointF ball((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
-	putter->setAngle(-Vector(cursor, ball).direction());
+	putter->setAngle(-Vector(cursor - ball).direction());
 }
 
 void KolfGame::handleMouseReleaseEvent(QMouseEvent *e)
@@ -3771,13 +3769,13 @@ void KolfGame::shotStart()
 
 		(*curPlayer).ball()->collisionDetect((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 
-		startBall(Vector(strength, angle + M_PI));
+		startBall(Vector::fromMagnitudeDirection(strength, angle + M_PI));
 	}
 	else 
 	{
 		(*curPlayer).ball()->collisionDetect((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 
-		startBall(Vector(strength, putter->curAngle() + M_PI));
+		startBall(Vector::fromMagnitudeDirection(strength, putter->curAngle() + M_PI));
 	}
 
 	addHoleInfo(ballStateList);
