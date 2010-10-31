@@ -40,7 +40,7 @@ private:
 class FloaterGuide : public Wall
 {
 public:
-	FloaterGuide(Floater *floater, QGraphicsItem *parent) : Wall(parent) { this->floater = floater; almostDead = false; }
+	FloaterGuide(Floater *floater, QGraphicsItem *parent, b2World* world) : Wall(parent, world) { this->floater = floater; almostDead = false; }
 	virtual void setPoints(double xa, double ya, double xb, double yb);
 	virtual void moveBy(double dx, double dy);
 	virtual Config *config(QWidget *parent);
@@ -57,7 +57,7 @@ private:
 class Floater : public Bridge
 {
 public:
-	Floater(QGraphicsItem * parent);
+	Floater(QGraphicsItem * parent, b2World* world);
 
 	virtual bool collision(Ball *ball, long int id) { Bridge::collision(ball, id); return false; }
 	virtual void save(KConfigGroup *cfgGroup);

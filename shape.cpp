@@ -21,18 +21,38 @@
 #include "overlay.h"
 
 #include <QtCore/qmath.h>
+#include <Box2D/Collision/Shapes/b2CircleShape.h>
+#include <Box2D/Collision/Shapes/b2EdgeShape.h>
+#include <Box2D/Collision/Shapes/b2PolygonShape.h>
+#include <Box2D/Dynamics/b2Fixture.h>
+
+static inline b2Vec2 toB2Vec2(const QPointF& p)
+{
+	return b2Vec2(p.x(), p.y());
+}
 
 //BEGIN Kolf::Shape
 
 const qreal Kolf::Shape::ActivationOutlinePadding = 5;
 
 Kolf::Shape::Shape()
-	: m_citem(0)
+	: m_traits(Kolf::Shape::ParticipatesInPhysicalSimulation)
+	, m_citem(0)
+	, m_body(0)
+	, m_fixtureDef(new b2FixtureDef)
+	, m_fixture(0)
+	, m_shape(0)
 {
+	m_fixtureDef->density = 1;
+	m_fixtureDef->restitution = 0.8;
+	m_fixtureDef->friction = 0;
+	m_fixtureDef->userData = this;
 }
 
 Kolf::Shape::~Shape()
 {
+	delete m_fixtureDef;
+	updateFixture(0); //clear fixture and shape
 }
 
 QPainterPath Kolf::Shape::activationOutline() const
@@ -50,13 +70,55 @@ bool Kolf::Shape::attach(CanvasItem* item)
 	if (m_citem)
 		return false;
 	m_citem = item;
+	m_body = item->m_body;
+	updateFixture(createShape());
 	return true;
+}
+
+Kolf::Shape::Traits Kolf::Shape::traits() const
+{
+	return m_traits;
+}
+
+void Kolf::Shape::setTraits(Kolf::Shape::Traits traits)
+{
+	if (m_traits == traits)
+		return;
+	m_traits = traits;
+	updateFixture(createShape());
+}
+
+void Kolf::Shape::updateFixture(b2Shape* newShape)
+{
+	if (!m_body)
+		return;
+	//destroy old fixture
+	if (m_fixture)
+		m_body->DestroyFixture(m_fixture);
+	delete m_shape;
+	m_shape = 0;
+	//create new fixture
+	if (m_traits & Kolf::Shape::CollisionDetectionFlag)
+	{
+		m_shape = newShape;
+		if (m_shape)
+		{
+			b2FixtureDef fixtureDef = *m_fixtureDef;
+			fixtureDef.shape = m_shape;
+			fixtureDef.isSensor = !(m_traits & Kolf::Shape::PhysicalSimulationFlag);
+			m_fixture = m_body->CreateFixture(&fixtureDef);
+		}
+	}
+	else
+		delete newShape; //TODO: inefficient
 }
 
 void Kolf::Shape::update()
 {
+	updateFixture(createShape());
 	m_interactionOutline = m_activationOutline = QPainterPath();
 	createOutlines(m_activationOutline, m_interactionOutline);
+	//propagate update to overlays
 	if (m_citem)
 	{
 		Kolf::Overlay* overlay = m_citem->overlay(false);
@@ -85,6 +147,38 @@ void Kolf::EllipseShape::setRect(const QRectF& rect)
 	{
 		m_rect = rect;
 		update();
+	}
+}
+
+b2Shape* Kolf::EllipseShape::createShape()
+{
+	const b2Vec2 c = toB2Vec2(m_rect.center());
+	const qreal rx = m_rect.width() / 2, ry = m_rect.height() / 2;
+	if (rx == ry)
+	{
+		//use circle shape when possible because it's cheaper and exact
+		b2CircleShape* shape = new b2CircleShape;
+		shape->m_p = c;
+		shape->m_radius = rx;
+		return shape;
+	}
+	else
+	{
+		//elliptical shape is not pre-made in Box2D, so create a polygon instead
+		b2PolygonShape* shape = new b2PolygonShape;
+		static const int N = 20;
+		//increase N if the approximation turns out to be too bad
+		//TODO: calculate the (cos, sin) pairs only once
+		b2Vec2 vertices[N];
+		static const qreal angleStep = 2 * M_PI / N;
+		for (int i = 0; i < N; ++i)
+		{
+			const qreal angle = -i * angleStep; //CCW order as required by Box2D
+			vertices[i].x = c.x + rx * cos(angle);
+			vertices[i].y = c.y + ry * sin(angle);
+		}
+		shape->Set(vertices, N);
+		return shape;
 	}
 }
 
@@ -118,6 +212,17 @@ void Kolf::RectShape::setRect(const QRectF& rect)
 	}
 }
 
+b2Shape* Kolf::RectShape::createShape()
+{
+	b2PolygonShape* shape = new b2PolygonShape;
+	shape->SetAsBox(
+		m_rect.width() / 2, m_rect.height() / 2,
+		toB2Vec2(m_rect.center()),
+		0 //intrinsic rotation angle
+	);
+	return shape;
+}
+
 void Kolf::RectShape::createOutlines(QPainterPath& activationOutline, QPainterPath& interactionOutline)
 {
 	interactionOutline.addRect(m_rect);
@@ -146,6 +251,13 @@ void Kolf::LineShape::setLine(const QLineF& line)
 		m_line = line;
 		update();
 	}
+}
+
+b2Shape* Kolf::LineShape::createShape()
+{
+	b2EdgeShape* shape = new b2EdgeShape;
+	shape->Set(toB2Vec2(m_line.p1()), toB2Vec2(m_line.p2()));
+	return shape;
 }
 
 void Kolf::LineShape::createOutlines(QPainterPath& activationOutline, QPainterPath& interactionOutline)

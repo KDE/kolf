@@ -28,8 +28,10 @@
 #include <KGameRenderer>
 #include <KNumInput>
 
-Slope::Slope(QGraphicsItem * parent)
-	: Tagaro::SpriteObjectItem(Kolf::renderer(), QString(), parent), type(Vertical), grade(4), reversed(false), color(QColor("#327501"))
+Slope::Slope(QGraphicsItem * parent, b2World* world)
+	: Tagaro::SpriteObjectItem(Kolf::renderer(), QString(), parent)
+	, CanvasItem(world)
+	, type(Vertical), grade(4), reversed(false), color(QColor("#327501"))
 {
 	Tagaro::SpriteObjectItem::setSize(QSizeF(40, 40));
 
@@ -51,7 +53,7 @@ Slope::Slope(QGraphicsItem * parent)
 
 	setZValue(-50);
 
-	point = new RectPoint(color.light(), this, parent);
+	point = new RectPoint(color.light(), this, parent, world);
 
 	QFont font(QApplication::font());
 	font.setPixelSize(18);

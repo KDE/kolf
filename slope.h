@@ -45,7 +45,7 @@ private:
 class Slope : public Tagaro::SpriteObjectItem, public CanvasItem
 {
 public:
-	Slope(QGraphicsItem *parent);
+	Slope(QGraphicsItem *parent, b2World* world);
 
 	virtual void aboutToDie();
 

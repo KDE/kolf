@@ -66,14 +66,14 @@ Config *FloaterGuide::config(QWidget *parent)
 
 /////////////////////////
 
-Floater::Floater(QGraphicsItem *parent)
-	: Bridge(parent, "floater"), speedfactor(16)
+Floater::Floater(QGraphicsItem *parent, b2World* world)
+	: Bridge(parent, world, "floater"), speedfactor(16)
 {
 	wall = 0;
 	setEnabled(true);
 	noUpdateZ = false;
 	haventMoved = true;
-	wall = new FloaterGuide(this, parent);
+	wall = new FloaterGuide(this, parent, world);
 	wall->setPoints(100, 100, 200, 200);
 	wall->setPen(QPen(wall->pen().color().light(), wall->pen().width() - 1));
 	setPos(wall->endPoint().x(), wall->endPoint().y());

@@ -20,6 +20,11 @@
 #define KOLF_SHAPE_H
 
 #include <QPainterPath>
+class b2Body;
+class b2Fixture;
+class b2FixtureDef;
+class b2Shape;
+
 class CanvasItem;
 
 namespace Kolf
@@ -32,10 +37,32 @@ namespace Kolf
 	class Shape
 	{
 		Q_DISABLE_COPY(Shape)
+		private:
+			enum TraitBits
+			{
+				CollisionDetectionFlag = 1 << 0,
+				PhysicalSimulationFlag = 1 << 1
+			};
 		public:
+			///Defines how a shape behaves.
+			enum Trait
+			{
+				///This shape is not represented in the physics engine in any way. It only provides an activation and interaction area for the editor interface.
+				VirtualShape = 0,
+				///During each step of the physical simulation, this shape is checked for intersections with other shapes, and the registered Kolf::ContactCallback methods are called as appropriate.
+				ParticipatesInCollisionDetection = CollisionDetectionFlag,
+				///The shape behaves like physical matter, i.e. it allows the body to move and interact with other bodies through collisions.
+				ParticipatesInPhysicalSimulation = CollisionDetectionFlag | PhysicalSimulationFlag
+			};
+			Q_DECLARE_FLAGS(Traits, Trait)
 			///@warning Any subclass constructor *must* call update() before it exits.
 			Shape();
 			virtual ~Shape();
+
+			///Returns how this shape behaves.
+			Kolf::Shape::Traits traits() const;
+			///Configures the behavior of this shape.
+			void setTraits(Kolf::Shape::Traits traits);
 
 			///Returns the two-dimensional activation outline, i.e. the area of this geometry (plus some defined padding). The editor overlay is supposed to activate the editor interface of the object associated with this geometry, if a mouse click occurs inside the activation outline.
 			///@see ActivationOutlinePadding
@@ -50,12 +77,23 @@ namespace Kolf
 
 			///Call this method when the parameters of this geometry change (usually in setter methods of the subclass).
 			void update();
+			///Reimplement this method to provide a new b2Shape instance based on the current configuration of the shape.
+			///@warning Stuff will break if you return a null pointer.
+			virtual b2Shape* createShape() = 0;
 			///Reimplement this method to create the outlines of this geometry and pass them to the caller via the arguments. You will not have to call this function in subclass implementations, it's invoked by Kolf::Geometry::update.
 			virtual void createOutlines(QPainterPath& activationOutline, QPainterPath& interactionOutline) = 0;
 			///Use this padding as distance between the exact InteractionOutline and the fuzzy ActivationOutline.
 			static const qreal ActivationOutlinePadding;
 		private:
+			///A submethod of update().
+			void updateFixture(b2Shape* newShape);
+		private:
+			Kolf::Shape::Traits m_traits;
 			CanvasItem* m_citem;
+			b2Body* m_body;
+			b2FixtureDef* m_fixtureDef;
+			b2Fixture* m_fixture;
+			b2Shape* m_shape;
 			QPainterPath m_activationOutline, m_interactionOutline;
 	};
 
@@ -67,6 +105,7 @@ namespace Kolf
 			QRectF rect() const;
 			void setRect(const QRectF& rect);
 		protected:
+			virtual b2Shape* createShape();
 			virtual void createOutlines(QPainterPath& activationOutline, QPainterPath& interactionOutline);
 		private:
 			QRectF m_rect;
@@ -80,6 +119,7 @@ namespace Kolf
 			QRectF rect() const;
 			void setRect(const QRectF& rect);
 		protected:
+			virtual b2Shape* createShape();
 			virtual void createOutlines(QPainterPath& activationOutline, QPainterPath& interactionOutline);
 		private:
 			QRectF m_rect;
@@ -93,10 +133,13 @@ namespace Kolf
 			QLineF line() const;
 			void setLine(const QLineF& line);
 		protected:
+			virtual b2Shape* createShape();
 			virtual void createOutlines(QPainterPath& activationOutline, QPainterPath& interactionOutline);
 		private:
 			QLineF m_line;
 	};
 }
+
+Q_DECLARE_OPERATORS_FOR_FLAGS(Kolf::Shape::Traits)
 
 #endif // KOLF_SHAPE_H

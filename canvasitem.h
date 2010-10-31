@@ -27,6 +27,8 @@
 #include <QGraphicsRectItem>
 #include <QGraphicsView>
 #include <KDebug>
+class b2Body;
+class b2World;
 
 class Ball;
 class KConfigGroup;
@@ -41,7 +43,7 @@ namespace Kolf
 class CanvasItem
 {
 public:
-	CanvasItem() : game(0), m_overlay(0) { }
+	CanvasItem(b2World* world);
 	virtual ~CanvasItem();
 	///load your settings from the KConfigGroup, which represents a course.
 	virtual void load(KConfigGroup *) {}
@@ -129,25 +131,49 @@ private:
 
 //AFTER THIS LINE follows what I have inserted during the refactoring
 	public:
+		enum SimulationFlag
+		{
+			CollisionFlag = 1 << 0,
+			KinematicSimulationFlag = 1 << 1,
+			DynamicSimulationFlag = 1 << 2
+		};
+		enum SimulationType
+		{
+			///The object is immovable.
+			NoSimulation = 0,
+			///The object is immovable, but other objects can interact with it.
+			CollisionSimulation = CollisionFlag,
+			///The object moves according to its kinematic state.
+			KinematicSimulation = CollisionSimulation | KinematicSimulationFlag,
+			///Other objects can collide with the shape of this object.
+			DynamicSimulation = KinematicSimulation | DynamicSimulationFlag
+		};
+
 		QList<Kolf::Shape*> shapes() const { return m_shapes; }
 		Kolf::Overlay* overlay(bool createIfNecessary = true);
 	protected:
 		void addShape(Kolf::Shape* shape);
+		///Configure how this object will participate in physical simulation.
+		void setSimulationType(CanvasItem::SimulationType type);
 		///Creates the optimal overlay for this object. The implementation does not have to propagate its properties to the overlay, as the overlay is updated just after it has been created.
 		///@warning Do not actually call this function from subclass implementations. Use overlay() instead.
 		virtual Kolf::Overlay* createOverlay() { return 0; } //TODO: make this pure virtual when all CanvasItems are QGraphicsItems and implement createOverlay() (and then disallow createOverlay() == 0)
 		///This function should be called whenever the value of an object's property changes. This will most prominently cause the overlay to be updated (if it exists).
 		void propagateUpdate();
 	private:
+		friend class Kolf::Shape; //for access to m_body
+		b2Body* m_body;
+
 		Kolf::Overlay* m_overlay;
 		QList<Kolf::Shape*> m_shapes;
+		CanvasItem::SimulationType m_simulationType;
 };
 
 //WARNING: pos() is at center (not at top-left edge of bounding rect!)
 class EllipticalCanvasItem : public Tagaro::SpriteObjectItem, public CanvasItem
 {
 	public:
-		EllipticalCanvasItem(bool withEllipse, const QString& spriteKey, QGraphicsItem* parent = 0);
+		EllipticalCanvasItem(bool withEllipse, const QString& spriteKey, QGraphicsItem* parent, b2World* world);
 		QGraphicsEllipseItem* ellipseItem() const { return m_ellipseItem; }
 
 		virtual bool contains(const QPointF& point) const;

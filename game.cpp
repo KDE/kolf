@@ -42,6 +42,7 @@
 #include <KNumInput>
 #include <KRandom>
 #include <KStandardDirs>
+#include <Box2D/Dynamics/b2World.h>
 
 inline QString makeGroup(int id, int hole, const QString &name, int x, int y)
 {
@@ -65,6 +66,7 @@ class KolfRenderer : public KGameRenderer
 };
 
 K_GLOBAL_STATIC(KolfRenderer, g_renderer)
+K_GLOBAL_STATIC_WITH_ARGS(b2World, g_world, (b2Vec2(0, 0), true)) //parameters: no gravity, objects are allowed to sleep
 
 KGameRenderer* Kolf::renderer()
 {
@@ -77,10 +79,16 @@ Tagaro::Board* Kolf::findBoard(QGraphicsItem* item_)
 	return item_ ? dynamic_cast<Tagaro::Board*>(item_->topLevelItem()) : 0;
 }
 
+b2World* Kolf::world()
+{
+	return g_world;
+}
+
 /////////////////////////
 
-RectPoint::RectPoint(const QColor &color, Tagaro::SpriteObjectItem *rect, QGraphicsItem * parent)
+RectPoint::RectPoint(const QColor &color, Tagaro::SpriteObjectItem *rect, QGraphicsItem * parent, b2World* world)
 : QGraphicsEllipseItem(parent)
+, CanvasItem(world)
 {
 	setZValue(9999);
 	setSize(QSizeF(10, 10));
@@ -264,8 +272,9 @@ void BridgeConfig::rightWallChanged(bool yes)
 
 /////////////////////////
 
-Bridge::Bridge(QGraphicsItem *parent, const QString &type)
+Bridge::Bridge(QGraphicsItem *parent, b2World* world, const QString &type)
 	: Tagaro::SpriteObjectItem(Kolf::renderer(), type, parent)
+	, CanvasItem(world)
 {
 	const QSize defaultSize = type == "sign" ? QSize(110, 40) : QSize(80, 40);
 
@@ -273,13 +282,13 @@ Bridge::Bridge(QGraphicsItem *parent, const QString &type)
 	setZValue(998);
 
 	//not using antialiasing because it looks too blurry here
-	topWall = new Wall(parent, false);
+	topWall = new Wall(parent, world, false);
 	topWall->setAlwaysShow(true);
-	botWall = new Wall(parent, false);
+	botWall = new Wall(parent, world, false);
 	botWall->setAlwaysShow(true);
-	leftWall = new Wall(parent, false);
+	leftWall = new Wall(parent, world, false);
 	leftWall->setAlwaysShow(true);
-	rightWall = new Wall(parent, false);
+	rightWall = new Wall(parent, world, false);
 	rightWall->setAlwaysShow(true);
 
 	setWallZ(zValue() + 0.01);
@@ -290,7 +299,7 @@ Bridge::Bridge(QGraphicsItem *parent, const QString &type)
 	leftWall->setVisible(false);
 	rightWall->setVisible(false);
 
-	point = new RectPoint(color, this, parent);
+	point = new RectPoint(color, this, parent, world);
 	editModeChanged(false);
 
 	setSize(defaultSize);
@@ -472,10 +481,10 @@ void WindmillConfig::endChanged(bool bottom)
 
 /////////////////////////
 
-Windmill::Windmill(QGraphicsItem * parent)
-: Bridge(parent, "windmill"), speedfactor(16), m_bottom(true)
+Windmill::Windmill(QGraphicsItem * parent, b2World* world)
+: Bridge(parent, world, "windmill"), speedfactor(16), m_bottom(true)
 {
-	guard = new WindmillGuard(Kolf::findBoard(this));
+	guard = new WindmillGuard(Kolf::findBoard(this), world);
 	guard->setPen(QPen(Qt::black, 5));
 	guard->setVisible(true);
 	guard->setAlwaysShow(true);
@@ -483,10 +492,10 @@ Windmill::Windmill(QGraphicsItem * parent)
 	guard->setZValue(wallZ() + .1);
 
 	//not using antialiasing because it looks too blurry here
-	left = new Wall(Kolf::findBoard(this), false);
+	left = new Wall(Kolf::findBoard(this), world, false);
 	left->setPen(wallPen());
 	left->setAlwaysShow(true);
-	right = new Wall(Kolf::findBoard(this), false);
+	right = new Wall(Kolf::findBoard(this), world, false);
 	right->setPen(wallPen());
 	right->setAlwaysShow(true);
 	left->setZValue(wallZ());
@@ -605,8 +614,8 @@ void WindmillGuard::advance(int phase)
 
 /////////////////////////
 
-Sign::Sign(QGraphicsItem * parent)
-: Bridge(parent, "sign")
+Sign::Sign(QGraphicsItem * parent, b2World* world)
+: Bridge(parent, world, "sign")
 {
 	setZValue(998.8);
 	m_text = m_untranslatedText = i18n("New Text");
@@ -753,8 +762,8 @@ void EllipseConfig::check2Changed(bool on)
 
 /////////////////////////
 
-KolfEllipse::KolfEllipse(QGraphicsItem *parent, const QString &type)
-	: EllipticalCanvasItem(false, type, parent)
+KolfEllipse::KolfEllipse(QGraphicsItem *parent, b2World* world, const QString &type)
+	: EllipticalCanvasItem(false, type, parent, world)
 {
 	savingDone();
 	setChangeEnabled(false);
@@ -762,7 +771,7 @@ KolfEllipse::KolfEllipse(QGraphicsItem *parent, const QString &type)
 	count = 0;
 	setVisible(true);
 
-	point = new RectPoint(Qt::black, this, parent);
+	point = new RectPoint(Qt::black, this, parent, world);
 	point->setSizeFactor(2.0);
 }
 
@@ -847,8 +856,8 @@ void KolfEllipse::savingDone()
 
 /////////////////////////
 
-Puddle::Puddle(QGraphicsItem * parent)
-: KolfEllipse(parent, "puddle")
+Puddle::Puddle(QGraphicsItem * parent, b2World* world)
+: KolfEllipse(parent, world, "puddle")
 {
 	setData(0, Rtti_DontPlaceOn);
 	setSize(QSizeF(45, 30));
@@ -880,8 +889,8 @@ bool Puddle::collision(Ball *ball, long int /*id*/)
 
 /////////////////////////
 
-Sand::Sand(QGraphicsItem * parent)
-: KolfEllipse(parent, "sand")
+Sand::Sand(QGraphicsItem * parent, b2World* world)
+: KolfEllipse(parent, world, "sand")
 {
 	setSize(QSizeF(45, 40));
 	setZValue(-26);
@@ -906,8 +915,9 @@ bool Sand::collision(Ball *ball, long int /*id*/)
 
 /////////////////////////
 
-Putter::Putter(QGraphicsItem* parent)
+Putter::Putter(QGraphicsItem* parent, b2World* world)
 : HintedLineItem(true, parent)
+, CanvasItem(world)
 {
 	setData(0, Rtti_Putter);
 	m_showGuideLine = true;
@@ -1030,8 +1040,8 @@ void Putter::finishMe()
 
 /////////////////////////
 
-Bumper::Bumper(QGraphicsItem * parent)
-: EllipticalCanvasItem(false, QLatin1String("bumper_off"), parent)
+Bumper::Bumper(QGraphicsItem * parent, b2World* world)
+: EllipticalCanvasItem(false, QLatin1String("bumper_off"), parent, world)
 {
 	const int diameter = 20;
 	setSize(QSizeF(diameter, diameter));
@@ -1068,8 +1078,8 @@ void Bumper::turnBumperOff()
 
 /////////////////////////
 
-Cup::Cup(QGraphicsItem * parent)
-	: EllipticalCanvasItem(false, QLatin1String("cup"), parent)
+Cup::Cup(QGraphicsItem * parent, b2World* world)
+	: EllipticalCanvasItem(false, QLatin1String("cup"), parent, world)
 {
 	const int diameter = 16;
 	setSize(QSizeF(diameter, diameter));
@@ -1123,8 +1133,8 @@ HoleResult Cup::result(QPointF p, double speed, bool * /*wasCenter*/)
 
 /////////////////////////
 
-BlackHole::BlackHole(QGraphicsItem * parent)
-	: EllipticalCanvasItem(true, QLatin1String("black_hole"), parent)
+BlackHole::BlackHole(QGraphicsItem * parent, b2World* world)
+	: EllipticalCanvasItem(true, QLatin1String("black_hole"), parent, world)
 	, exitDeg(0)
 {
 	setSize(QSizeF(16, 18));
@@ -1138,7 +1148,7 @@ BlackHole::BlackHole(QGraphicsItem * parent)
 	const QColor myColor((QRgb)(KRandom::random() % 0x01000000));
 	ellipseItem()->setBrush(myColor);
 
-	exitItem = new BlackHoleExit(this, Kolf::findBoard(this));
+	exitItem = new BlackHoleExit(this, Kolf::findBoard(this), world);
 	exitItem->setPen(QPen(myColor, 6));
 	exitItem->setPos(300, 100);
 
@@ -1354,8 +1364,9 @@ HoleResult BlackHole::result(QPointF p, double s, bool * /*wasCenter*/)
 
 /////////////////////////
 
-BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QGraphicsItem * parent)
+BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QGraphicsItem * parent, b2World* world)
 : HintedLineItem(true, parent)
+, CanvasItem(world)
 {
 	setData(0, Rtti_NoCollision);
 	this->blackHole = blackHole;
@@ -1493,8 +1504,9 @@ void HintedLineItem::paint(QPainter *p, const QStyleOptionGraphicsItem *style, Q
 
 /////////////////////////
 
-WallPoint::WallPoint(bool start, Wall *wall, QGraphicsItem * parent)
+WallPoint::WallPoint(bool start, Wall *wall, QGraphicsItem * parent, b2World* world)
 : QGraphicsEllipseItem(parent)
+, CanvasItem(world)
 {
 	setData(0, Rtti_WallPoint);
 	this->wall = wall;
@@ -1661,8 +1673,9 @@ bool WallPoint::collision(Ball *ball, long int id)
 
 /////////////////////////
 
-Wall::Wall(QGraphicsItem *parent, bool antialiased)
+Wall::Wall(QGraphicsItem *parent, b2World* world, bool antialiased)
 : HintedLineItem(antialiased, parent)
+, CanvasItem(world)
 {
 	setData(0, Rtti_Wall);
 	editing = false;
@@ -1676,8 +1689,8 @@ Wall::Wall(QGraphicsItem *parent, bool antialiased)
 	moveBy(0, 0);
 	setZValue(50);
 
-	startItem = new WallPoint(true, this, parent);
-	endItem = new WallPoint(false, this, parent);
+	startItem = new WallPoint(true, this, parent, world);
+	endItem = new WallPoint(false, this, parent, world);
 	startItem->setVisible(true);
 	endItem->setVisible(true);
 	setPen(QPen(Qt::darkRed, 3));
@@ -2089,6 +2102,7 @@ void StrokeCircle::paint (QPainter *p, const QStyleOptionGraphicsItem *, QWidget
 KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const QString &filename, QWidget *parent)
 : QGraphicsView(parent)
 , m_factory(factory)
+, holeInfo(g_world)
 {
 	setRenderHint(QPainter::Antialiasing);
 	// for mouse control
@@ -2188,7 +2202,7 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 	strokeCircle->setMaxValue(360); 
 
 	// whiteBall marks the spot of the whole whilst editing
-	whiteBall = new Ball(courseBoard);
+	whiteBall = new Ball(courseBoard, g_world);
 	whiteBall->setGame(this);
 	whiteBall->setColor(Qt::white);
 	whiteBall->setVisible(false);
@@ -2210,7 +2224,7 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 	if (highestLog)
 		curHole = highestLog;
 
-	putter = new Putter(courseBoard);
+	putter = new Putter(courseBoard, g_world);
 
 	// border walls:
 
@@ -2321,7 +2335,7 @@ void KolfGame::unPause()
 
 void KolfGame::addBorderWall(const QPoint &start, const QPoint &end)
 {
-	Wall *wall = new Wall(courseBoard);
+	Wall *wall = new Wall(courseBoard, g_world);
 	wall->setLine(QLineF(start, end));
 	wall->setVisible(true);
 	wall->setGame(this);
@@ -3547,7 +3561,7 @@ void KolfGame::openFile()
 
 		const int id = (*it).right(len - (pipeIndex + 1)).toInt();
 
-		QGraphicsItem* newItem = m_factory.createInstance(name, courseBoard);
+		QGraphicsItem* newItem = m_factory.createInstance(name, courseBoard, g_world);
 		if (newItem)
 		{
 			items.append(newItem);
@@ -3668,7 +3682,7 @@ void KolfGame::openFile()
 
 void KolfGame::addNewObject(const QString& identifier)
 {
-	QGraphicsItem *newItem = m_factory.createInstance(identifier, courseBoard);
+	QGraphicsItem *newItem = m_factory.createInstance(identifier, courseBoard, g_world);
 
 	items.append(newItem);
 	if(!newItem->isVisible())

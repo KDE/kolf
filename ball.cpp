@@ -23,8 +23,8 @@
 
 #include <QApplication>
 
-Ball::Ball(QGraphicsItem* parent)
-	: EllipticalCanvasItem(true, QLatin1String("ball"), parent)
+Ball::Ball(QGraphicsItem* parent, b2World* world)
+	: EllipticalCanvasItem(true, QLatin1String("ball"), parent, world)
 {
 	const int diameter = 8;
 	setSize(QSizeF(diameter, diameter));

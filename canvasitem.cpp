@@ -1,6 +1,6 @@
 /*
     Copyright (C) 2002-2005, Jason Katz-Brown <jasonkb@mit.edu>
-    Copyright 2010 Stefan Majewsky <majewsky@gmx.net>
+    Copyright 2008, 2009, 2010 Stefan Majewsky <majewsky@gmx.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -22,6 +22,20 @@
 #include "overlay.h"
 #include "shape.h"
 
+#include <Box2D/Dynamics/b2Body.h>
+#include <Box2D/Dynamics/b2World.h>
+
+CanvasItem::CanvasItem(b2World* world)
+	: game(0)
+	, m_body(0)
+	, m_overlay(0)
+	, m_simulationType(CanvasItem::CollisionSimulation)
+{
+	b2BodyDef bodyDef;
+	bodyDef.userData = this;
+	m_body = world->CreateBody(&bodyDef);
+}
+
 CanvasItem::~CanvasItem()
 {
 	//The overlay is deleted first, because it might interact with all other parts of the object.
@@ -29,6 +43,7 @@ CanvasItem::~CanvasItem()
 	//NOTE: Box2D objects will need to be destroyed in the following order:
 	//subobjects, shapes, own b2Body
 	qDeleteAll(m_shapes);
+	m_body->GetWorld()->DestroyBody(m_body);
 }
 
 QGraphicsRectItem *CanvasItem::onVStrut()
@@ -84,6 +99,37 @@ void CanvasItem::addShape(Kolf::Shape* shape)
 		m_shapes << shape;
 }
 
+void CanvasItem::setSimulationType(CanvasItem::SimulationType type)
+{
+	if (m_simulationType != type)
+	{
+		m_simulationType = type;
+		//write type into b2Body
+		b2BodyType b2type; bool b2active;
+		switch (type)
+		{
+			case CanvasItem::NoSimulation:
+				b2type = b2_staticBody;
+				b2active = false;
+				break;
+			case CanvasItem::CollisionSimulation:
+				b2type = b2_staticBody;
+				b2active = true;
+				break;
+			case CanvasItem::KinematicSimulation:
+				b2type = b2_kinematicBody;
+				b2active = true;
+				break;
+			case CanvasItem::DynamicSimulation: default:
+				b2type = b2_dynamicBody;
+				b2active = true;
+				break;
+		}
+		m_body->SetType(b2type);
+		m_body->SetActive(b2active);
+	}
+}
+
 Kolf::Overlay* CanvasItem::overlay(bool createIfNecessary)
 {
 	//the overlay is created once it is requested
@@ -109,8 +155,9 @@ void CanvasItem::propagateUpdate()
 
 //BEGIN EllipticalCanvasItem
 
-EllipticalCanvasItem::EllipticalCanvasItem(bool withEllipse, const QString& spriteKey, QGraphicsItem* parent)
+EllipticalCanvasItem::EllipticalCanvasItem(bool withEllipse, const QString& spriteKey, QGraphicsItem* parent, b2World* world)
 	: Tagaro::SpriteObjectItem(Kolf::renderer(), spriteKey, parent)
+	, CanvasItem(world)
 	, m_ellipseItem(0)
 {
 	if (withEllipse)

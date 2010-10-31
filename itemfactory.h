@@ -20,6 +20,7 @@
 #define KOLF_ITEMFACTORY_H
 
 #include <QGraphicsItem>
+class b2World;
 
 namespace Kolf
 {
@@ -34,7 +35,7 @@ namespace Kolf
 	{
 		public:
 			QList<Kolf::ItemMetadata> knownTypes() const;
-			QGraphicsItem* createInstance(const QString& identifier, QGraphicsItem* parent = 0) const;
+			QGraphicsItem* createInstance(const QString& identifier, QGraphicsItem* parent, b2World* world) const;
 
 			template<typename T> void registerType(const QString& identifier, const QString& name, bool addOnNewHole = false)
 			{
@@ -42,11 +43,11 @@ namespace Kolf
 				registerType(metadata, &Kolf::ItemFactory::create<T>);
 			}
 		private:
-			typedef QGraphicsItem* (*ItemCreator)(QGraphicsItem* parent);
+			typedef QGraphicsItem* (*ItemCreator)(QGraphicsItem* parent, b2World* world);
 			void registerType(const Kolf::ItemMetadata& metadata, ItemCreator creator);
-			template<typename T> static QGraphicsItem* create(QGraphicsItem* parent)
+			template<typename T> static QGraphicsItem* create(QGraphicsItem* parent, b2World* world)
 			{
-				return new T(parent);
+				return new T(parent, world);
 			}
 		private:
 			typedef QPair<Kolf::ItemMetadata, ItemCreator> Entry;

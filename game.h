@@ -54,6 +54,7 @@ namespace Kolf
 	class ItemFactory;
 	KGameRenderer* renderer();
 	Tagaro::Board* findBoard(QGraphicsItem* item); //TODO: temporary HACK
+	b2World* world(); //TODO: temporary HACK (should be inside KolfGame, but various places outside the game need to create CanvasItems)
 }
 
 enum Direction { D_Left, D_Right, Forwards, Backwards };
@@ -84,7 +85,7 @@ public:
 class Player
 {
 public:
-	Player() : m_ball(new Ball(0)) {}
+	Player() : m_ball(new Ball(0, Kolf::world())) {}
 	Ball *ball() const { return m_ball; }
 	void setBall(Ball *ball) { m_ball = ball; }
 	BallStateInfo stateInfo(int hole) const { BallStateInfo ret; ret.spot = m_ball->pos().toPoint(); ret.state = m_ball->curState(); ret.score = score(hole); ret.beginningOfHole = m_ball->beginningOfHole(); ret.id = m_id; return ret; }
@@ -159,7 +160,7 @@ private:
 class RectPoint : public QGraphicsEllipseItem, public CanvasItem
 {
 public:
-	RectPoint(const QColor &color, Tagaro::SpriteObjectItem *rect, QGraphicsItem *parent);
+	RectPoint(const QColor &color, Tagaro::SpriteObjectItem *rect, QGraphicsItem *parent, b2World* world);
 	void dontMove() { dontmove = true; }
 	virtual void moveBy(double dx, double dy);
 	virtual Config *config(QWidget *parent);
@@ -180,7 +181,7 @@ private:
 class KolfEllipse : public EllipticalCanvasItem
 {
 public:
-	KolfEllipse(QGraphicsItem *parent, const QString &type);
+	KolfEllipse(QGraphicsItem *parent, b2World* world, const QString &type);
 	virtual void advance(int phase);
 
 	int changeEvery() const { return m_changeEvery; }
@@ -241,14 +242,14 @@ private:
 class Puddle : public KolfEllipse
 {
 public:
-	Puddle(QGraphicsItem *parent);
+	Puddle(QGraphicsItem *parent, b2World* world);
 	virtual bool collision(Ball *ball, long int id);
 };
 
 class Sand : public KolfEllipse
 {
 public:
-	Sand(QGraphicsItem *parent);
+	Sand(QGraphicsItem *parent, b2World* world);
 	virtual bool collision(Ball *ball, long int id);
 };
 
@@ -256,7 +257,7 @@ class Bumper : public EllipticalCanvasItem
 {
 Q_OBJECT
 public:
-	Bumper(QGraphicsItem *parent);
+	Bumper(QGraphicsItem *parent, b2World* world);
 
 	virtual bool collision(Ball *ball, long int id);
 public Q_SLOTS:
@@ -266,7 +267,7 @@ public Q_SLOTS:
  class Cup : public EllipticalCanvasItem
 {
 public:
-	Cup(QGraphicsItem *parent);
+	Cup(QGraphicsItem *parent, b2World* world);
 
 	virtual Kolf::Overlay* createOverlay();
 	virtual bool place(Ball *ball, bool wasCenter);
@@ -297,7 +298,7 @@ private:
 class BlackHoleExit : public HintedLineItem, public CanvasItem
 {
 public:
-	BlackHoleExit(BlackHole *blackHole, QGraphicsItem *parent);
+	BlackHoleExit(BlackHole *blackHole, QGraphicsItem *parent, b2World* world);
 	virtual void aboutToDie();
 	virtual void moveBy(double dx, double dy);
 	virtual bool deleteable() const { return false; }
@@ -338,7 +339,7 @@ class BlackHole : public EllipticalCanvasItem
 Q_OBJECT
 
 public:
-	BlackHole(QGraphicsItem *parent);
+	BlackHole(QGraphicsItem *parent, b2World* world);
 	virtual bool canBeMovedByOthers() const { return true; }
 
 	virtual void aboutToDie();
@@ -387,7 +388,7 @@ class WallPoint;
 class Wall : public HintedLineItem, public CanvasItem
 {
 public:
-	Wall(QGraphicsItem *parent, bool antialiasing = true);
+	Wall(QGraphicsItem *parent, b2World* world, bool antialiasing = true);
 	virtual void aboutToDie();
 	double dampening;
 
@@ -436,7 +437,7 @@ private:
 class WallPoint : public QGraphicsEllipseItem, public CanvasItem
 {
 public:
-	WallPoint(bool start, Wall *wall, QGraphicsItem *parent);
+	WallPoint(bool start, Wall *wall, QGraphicsItem *parent, b2World* world);
 	void setAlwaysShow(bool yes) { alwaysShow = yes; updateVisible(); }
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
@@ -470,7 +471,7 @@ private:
 class Putter : public HintedLineItem, public CanvasItem
 {
 public:
-	Putter(QGraphicsItem* parent);
+	Putter(QGraphicsItem* parent, b2World* world);
 
 	void go(Direction, Amount amount = Amount_Normal);
 	void setOrigin(double x, double y);
@@ -531,7 +532,7 @@ private:
 class Bridge : public Tagaro::SpriteObjectItem, public CanvasItem
 {
 public:
-	Bridge(QGraphicsItem *parent, const QString &type = QLatin1String("bridge"));
+	Bridge(QGraphicsItem *parent, b2World* world, const QString &type = QLatin1String("bridge"));
 
 	virtual bool collision(Ball *ball, long int id);
 	virtual void aboutToDie();
@@ -590,7 +591,7 @@ private:
 class Sign : public Bridge
 {
 public:
-	Sign(QGraphicsItem *parent);
+	Sign(QGraphicsItem *parent, b2World* world);
 
 	void setText(const QString &text);
 	QString text() const { return m_text; }
@@ -609,7 +610,7 @@ class Windmill;
 class WindmillGuard : public Wall
 {
 public:
-	WindmillGuard(QGraphicsItem *parent) : Wall(parent, false) {}
+	WindmillGuard(QGraphicsItem *parent, b2World* world) : Wall(parent, world, false) {}
 	void setBetween(double newmin, double newmax) { max = newmax; min = newmin; }
 	virtual void advance(int phase);
 	double getMax() { return max; }
@@ -636,7 +637,7 @@ private:
 class Windmill : public Bridge
 {
 public:
-	Windmill(QGraphicsItem *parent);
+	Windmill(QGraphicsItem *parent, b2World* world);
 	virtual void aboutToDie();
 	virtual void save(KConfigGroup *cfgGroup);
 	virtual void load(KConfigGroup *cfgGroup);
@@ -681,7 +682,7 @@ private:
 class HoleInfo : public CanvasItem
 {
 public:
-	HoleInfo() { m_lowestMaxStrokes = 4; }
+	HoleInfo(b2World* world) : CanvasItem(world) { setSimulationType(CanvasItem::NoSimulation); m_lowestMaxStrokes = 4; }
 	virtual ~HoleInfo() {}
 	void setPar(int newpar) { m_par = newpar; }
 	int par() const { return m_par; }
