@@ -1073,7 +1073,7 @@ Cup::Cup(QGraphicsItem * parent)
 {
 	const int diameter = 16;
 	setSize(QSizeF(diameter, diameter));
-	addShape(new Kolf::CircleShape(diameter / 2));
+	addShape(new Kolf::EllipseShape(QRectF(-diameter / 2, -diameter / 2, diameter, diameter)));
 
 	setZValue(998.1);
 }

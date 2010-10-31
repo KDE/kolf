@@ -59,21 +59,17 @@ namespace Kolf
 			QPainterPath m_activationOutline, m_interactionOutline;
 	};
 
-	class CircleShape : public Kolf::Shape
+	class EllipseShape : public Kolf::Shape
 	{
 		public:
-			CircleShape(qreal radius, const QPointF& center = QPointF());
+			EllipseShape(const QRectF& rect);
 
-			QPointF center() const;
-			void setCenter(const QPointF& center);
-
-			qreal radius() const;
-			void setRadius(qreal radius);
+			QRectF rect() const;
+			void setRect(const QRectF& rect);
 		protected:
 			virtual void createOutlines(QPainterPath& activationOutline, QPainterPath& interactionOutline);
 		private:
-			QPointF m_center;
-			qreal m_radius;
+			QRectF m_rect;
 	};
 
 	class RectShape : public Kolf::Shape

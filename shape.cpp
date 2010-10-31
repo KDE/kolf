@@ -66,51 +66,36 @@ void Kolf::Shape::update()
 }
 
 //END Kolf::Shape
-//BEGIN Kolf::CircleShape
+//BEGIN Kolf::EllipseShape
 
-Kolf::CircleShape::CircleShape(qreal radius, const QPointF& center)
-	: m_center(center)
-	, m_radius(radius)
+Kolf::EllipseShape::EllipseShape(const QRectF& rect)
+	: m_rect(rect)
 {
 	update();
 }
 
-QPointF Kolf::CircleShape::center() const
+QRectF Kolf::EllipseShape::rect() const
 {
-	return m_center;
+	return m_rect;
 }
 
-void Kolf::CircleShape::setCenter(const QPointF& center)
+void Kolf::EllipseShape::setRect(const QRectF& rect)
 {
-	if (m_center != center)
+	if (m_rect != rect)
 	{
-		m_center = center;
+		m_rect = rect;
 		update();
 	}
 }
 
-qreal Kolf::CircleShape::radius() const
+void Kolf::EllipseShape::createOutlines(QPainterPath& activationOutline, QPainterPath& interactionOutline)
 {
-	return m_radius;
+	interactionOutline.addEllipse(m_rect);
+	const qreal& p = Kolf::Shape::ActivationOutlinePadding;
+	activationOutline.addEllipse(m_rect.adjusted(-p, -p, p, p));
 }
 
-void Kolf::CircleShape::setRadius(qreal radius)
-{
-	if (m_radius != radius)
-	{
-		m_radius = radius;
-		update();
-	}
-}
-
-void Kolf::CircleShape::createOutlines(QPainterPath& activationOutline, QPainterPath& interactionOutline)
-{
-	const qreal activationRadius = m_radius + Kolf::Shape::ActivationOutlinePadding;
-	interactionOutline.addEllipse(m_center, m_radius, m_radius);
-	activationOutline.addEllipse(m_center, activationRadius, activationRadius);
-}
-
-//END Kolf::CircleShape
+//END Kolf::EllipseShape
 //BEGIN Kolf::RectShape
 
 Kolf::RectShape::RectShape(const QRectF& rect)
