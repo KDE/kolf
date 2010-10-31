@@ -251,13 +251,13 @@ public:
 
 class Bumper : public EllipticalCanvasItem
 {
+Q_OBJECT
 public:
 	Bumper(QGraphicsItem *parent);
 
-	virtual void advance(int phase);
 	virtual bool collision(Ball *ball, long int id);
-private:
-	int count;
+public Q_SLOTS:
+	void turnBumperOff();
 };
 
  class Cup : public EllipticalCanvasItem

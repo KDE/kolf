@@ -1034,27 +1034,6 @@ Bumper::Bumper(QGraphicsItem * parent)
 	const int diameter = 20;
 	setSize(QSizeF(diameter, diameter));
 	setZValue(-25);
-
-	count = 0;
-	setAnimated(false);
-}
-
-void Bumper::advance(int phase)
-{
-	if(!isAnimated())
-		return;
-
-	QGraphicsItem::advance(phase);
-
-	if (phase == 1)
-	{
-		if (++count > 2)
-		{
-			count = 0;
-			setSpriteKey(QLatin1String("bumper_off"));
-			setAnimated(false);
-		}
-	}
 }
 
 bool Bumper::collision(Ball *ball, long int /*id*/)
@@ -1075,9 +1054,14 @@ bool Bumper::collision(Ball *ball, long int /*id*/)
 	ball->setState(Rolling);
 
 	setSpriteKey(QLatin1String("bumper_on"));
-	setAnimated(true);
+	QTimer::singleShot(100, this, SLOT(turnBumperOff()));
 
 	return true;
+}
+
+void Bumper::turnBumperOff()
+{
+	setSpriteKey(QLatin1String("bumper_off"));
 }
 
 /////////////////////////
