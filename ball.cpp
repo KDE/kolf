@@ -229,59 +229,6 @@ void Ball::doAdvance()
 		moveBy(getXVelocity(), getYVelocity());
 }
 
-namespace Lines
-{
-	// provides a point made of doubles
-
-	struct Line
-	{
-		Point p1, p2;
-	};
-
-	int ccw(const Point &p0, const Point &p1, const Point &p2)
-	{
-		double dx1, dx2, dy1, dy2;
-		dx1 = p1.x - p0.x; dy1 = p1.y - p0.y;
-		dx2 = p2.x - p0.x; dy2 = p2.y - p0.y;
-		if (dx1*dy2 > dy1*dx2) return +1;
-		if (dx1*dy2 < dy1*dx2) return -1;
-		if ((dx1*dx2 < 0) || (dy1*dy2 < 0)) return -1;
-		if ((dx1*dx1+dy1*dy1) < (dx2*dx2+dy2*dy2))
-			return +1;
-		return 0;
-	}
-
-	int intersects(const Line &l1, const Line &l2)
-	{
-		// Charles says, TODO: Account for vertical lines
-		// Jason says, in my testing vertical lines work
-		return ((ccw(l1.p1, l1.p2, l2.p1)
-				*ccw(l1.p1, l1.p2, l2.p2)) <= 0)
-				&& ((ccw(l2.p1, l2.p2, l1.p1)
-				*ccw(l2.p1, l2.p2, l1.p2)) <= 0);
-	}
-
-	
-	bool intersects(
-			double xa1, double ya1, double xb1, double yb1,
-			double xa2, double ya2, double xb2, double yb2
-		)
-	{
-		Line l1, l2;
-		l1.p1.x = xa1;
-		l1.p1.y = ya1;
-		l1.p2.x = xb1;
-		l1.p2.y = yb1;
-		
-		l2.p1.x = xa2;
-		l2.p1.y = ya2;
-		l2.p2.x = xb2;
-		l2.p2.y = yb2;
-
-		return intersects(l1, l2);
-	}
-}
-
 void Ball::collisionDetect(double oldx, double oldy)
 {
 	QGraphicsEllipseItem* halo = NULL;
@@ -519,12 +466,12 @@ void Ball::collisionDetect(double oldx, double oldy)
 			if (!wall || !wall->isVisible())
 				continue;
 
-			if (Lines::intersects(
-					wall->startPoint().x() + wall->x(), wall->startPoint().y() + wall->y(),
-					wall->endPoint().x() + wall->x(),   wall->endPoint().y() + wall->y(),
-				
-					oldx, oldy, x(), y()
-				))
+			const QLineF wallLine(
+				wall->startPoint().x() + wall->x(), wall->startPoint().y() + wall->y(),
+				wall->endPoint().x() + wall->x(), wall->endPoint().y() + wall->y()
+			);
+			const QLineF localTrajectory(oldx, oldy, x(), y());
+			if (wallLine.intersect(localTrajectory, 0) == QLineF::BoundedIntersection)
 			{
 				//kDebug(12007) << "smart wall collision\n";
 				wall->collision(this, collisionId);

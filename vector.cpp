@@ -34,12 +34,6 @@ Vector::Vector(const QPointF &source, const QPointF &dest) {
 	_direction = atan2(double(source.y() - dest.y()), double(source.x() - dest.x()));
 }
 
-// Creates a vector with between two points
-Vector::Vector(const Point &source, const Point &dest) {
-	_magnitude = sqrt(pow(source.x - dest.x, 2.) + pow(source.y - dest.y, 2.));
-	_direction = atan2(source.y - dest.y, source.x - dest.x);
-}
-
 // Creates an empty Vector
 Vector::Vector() {
 	_magnitude = 0.0;
@@ -116,11 +110,6 @@ Vector& Vector::operator/= (double m) {
 void Vector::setComponents(double x, double y) {
 	_direction = atan2(y, x);
 	_magnitude = sqrt((x * x) + (y * y));
-}
-
-void debugPoint(const QString &text, const Point &p)
-{
-	kDebug(12007) << text << " (" << p.x << "," << p.y << ")";
 }
 
 void debugVector(const QString &text, const Vector &p)

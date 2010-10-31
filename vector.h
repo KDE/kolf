@@ -22,39 +22,18 @@
 #include <math.h>
 #include <QPoint>
 
-class Point
-{
-public:
-	Point(double _x, double _y)
-	{
-		x = _x;
-		y = _y;
-	}
-
-	Point()
-	{
-		x = 0;
-		y = 0;
-	}
-
-	double x;
-	double y;
-};
-
-void debugPoint(const QString &, const Point &);
-
 // This and vector.cpp by Ryan Cummings
 
 class QPointF;
 
 // Implements a vector in 2D
-class Vector {
-  public:
+class Vector
+{
+public:
 	// Normal constructors
 	Vector(double magnitude, double direction) { _magnitude = magnitude; _direction = direction; }
 	Vector(const QPoint& source, const QPoint& dest);
 	Vector(const QPointF& source, const QPointF& dest);
-	Vector(const Point& source, const Point& dest);
 	Vector();
 
 	// Copy constructor
@@ -102,7 +81,7 @@ class Vector {
 	// Return the vector's equalivent on the unit circle
 	Vector unit() const { return Vector(1.0, _direction); }
 
-  protected:
+protected:
 	double _magnitude;
 	double _direction;
 };
