@@ -156,7 +156,14 @@ QRectF Tagaro::SpriteObjectItem::boundingRect() const
 
 bool Tagaro::SpriteObjectItem::contains(const QPointF& point) const
 {
-	return d->QGraphicsPixmapItem::contains(d->mapFromParent(point));
+	//return d->QGraphicsPixmapItem::contains(d->mapFromParent(point));
+	//This does not work because QGraphicsPixmapItem::contains is actually not
+	//implemented. (It is, but it just calls QGraphicsItem::contains as of 4.7.)
+	const QPixmap& pixmap = d->pixmap();
+	if (pixmap.isNull())
+		return false;
+	const QPoint pixmapPoint = d->mapFromParent(point).toPoint();
+	return pixmap.copy(QRect(pixmapPoint, QSize(1, 1))).toImage().pixel(0, 0);
 }
 
 bool Tagaro::SpriteObjectItem::isObscuredBy(const QGraphicsItem* item) const
