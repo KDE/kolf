@@ -34,7 +34,7 @@ using namespace std;
 static const char description[] =
 I18N_NOOP("KDE Minigolf Game");
 
-static const char version[] = "1.9";
+static const char version[] = "1.10"; // = KDE 4.6 Release
 
 
 int main(int argc, char **argv)

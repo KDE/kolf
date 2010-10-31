@@ -1,5 +1,6 @@
 /*
     Copyright (C) 2002-2005, Jason Katz-Brown <jasonkb@mit.edu>
+    Copyright 2010 Stefan Majewsky <majewsky@gmx.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
