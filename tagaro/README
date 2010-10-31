@@ -5,7 +5,7 @@ stable.
 The given code has been copied from the libtagaro repository, which was, at the
 time of this writing, available from git://git.kde.org/libtagaro.git. The code
 was taken from the directories tagaro/interface/ and tagaro/graphics/ at commit
-5219d1bdcf96270ce9aa01b776eb96518462820e.
+a137e9b266dba51b3cb9fcbf32dd8a2a3a5976d5.
 
 Code that integrates with Tagaro::MessageOverlay has been removed, and
 Tagaro::Renderer and Tagaro::RendererClient have been replaced by KGameRenderer.

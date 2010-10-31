@@ -209,7 +209,7 @@ QVariant Tagaro::Board::itemChange(QGraphicsItem::GraphicsItemChange change, con
 	{
 		QGraphicsItem* item = value.value<QGraphicsItem*>();
 		d->m_pendingItems.removeAll(item);
-		QGraphicsObject* object = qgraphicsitem_cast<QGraphicsObject*>(item);
+		QGraphicsObject* object = item->toGraphicsObject();
 		Tagaro::SpriteObjectItem* objectItem = qobject_cast<Tagaro::SpriteObjectItem*>(object);
 		disconnect(objectItem, 0, this, 0);
 		d->m_items.removeAll(objectItem);
@@ -218,7 +218,7 @@ QVariant Tagaro::Board::itemChange(QGraphicsItem::GraphicsItemChange change, con
 	{
 		//check if this is a Tagaro::SpriteObjectItem
 		QGraphicsItem* item = value.value<QGraphicsItem*>();
-		QGraphicsObject* object = qgraphicsitem_cast<QGraphicsObject*>(item);
+		QGraphicsObject* object = item->toGraphicsObject();
 		Tagaro::SpriteObjectItem* objectItem = qobject_cast<Tagaro::SpriteObjectItem*>(object);
 		if (objectItem)
 		{
@@ -267,7 +267,7 @@ void Tagaro::Board::timerEvent(QTimerEvent* event)
 		for (; it1 != it2; ++it1)
 		{
 			QGraphicsItem* item = *it1;
-			QGraphicsObject* object = qgraphicsitem_cast<QGraphicsObject*>(item);
+			QGraphicsObject* object = item->toGraphicsObject();
 			Tagaro::SpriteObjectItem* objectItem = qobject_cast<Tagaro::SpriteObjectItem*>(object);
 			if (objectItem)
 			{
