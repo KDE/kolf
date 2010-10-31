@@ -88,6 +88,8 @@ public:
 	double width() const { return size().width(); }
 	double height() const { return size().height(); }
 
+	virtual void setPosition(const QPointF& pos) { QGraphicsItem::setPos(pos); }
+	virtual QPointF getPosition() const { return QGraphicsItem::pos(); }
 private:
 	GradientType type;
 	inline void setType(GradientType type);

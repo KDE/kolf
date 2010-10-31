@@ -30,6 +30,7 @@ CanvasItem::CanvasItem(b2World* world)
 	, m_body(0)
 	, m_overlay(0)
 	, m_simulationType(CanvasItem::CollisionSimulation)
+	, m_velocityChanged(true)
 {
 	b2BodyDef bodyDef;
 	bodyDef.userData = this;
@@ -128,6 +129,43 @@ void CanvasItem::setSimulationType(CanvasItem::SimulationType type)
 		m_body->SetType(b2type);
 		m_body->SetActive(b2active);
 	}
+}
+
+QPointF CanvasItem::physicalVelocity() const
+{
+	return m_physicalVelocity;
+}
+
+void CanvasItem::setPhysicalVelocity(const QPointF& physicalVelocity)
+{
+	if (m_physicalVelocity != physicalVelocity)
+	{
+		m_physicalVelocity = physicalVelocity;
+		m_velocityChanged = true;
+	}
+}
+
+void CanvasItem::startSimulation()
+{
+	const QPointF position = getPosition();
+	m_body->SetTransform(b2Vec2(position.x(), position.y()), 0);
+	if (m_velocityChanged)
+		m_body->SetLinearVelocity(b2Vec2(m_physicalVelocity.x(), m_physicalVelocity.y()));
+	m_velocityChanged = false;
+}
+
+void CanvasItem::endSimulation()
+{
+	//read position
+	b2Vec2 v = m_body->GetPosition();
+	setPosition(QPointF(v.x, v.y));
+	//read velocity
+	v = m_body->GetLinearVelocity();
+	const QPointF velocity(v.x, v.y);
+	setVelocity(velocity);
+	//unset m_velocityChanged if there was no manual change since last simulation step (TODO: necessary?)
+	if (velocity == m_physicalVelocity)
+		m_velocityChanged = false;
 }
 
 Kolf::Overlay* CanvasItem::overlay(bool createIfNecessary)

@@ -170,6 +170,8 @@ public:
 	void setSizeFactor(double newFactor) { m_sizeFactor = newFactor; }
 	virtual void setSize(const QSizeF& size);
 
+	virtual void setPosition(const QPointF& pos) { QGraphicsItem::setPos(pos); }
+	virtual QPointF getPosition() const { return QGraphicsItem::pos(); }
 protected:
 	Tagaro::SpriteObjectItem *rect;
 	double m_sizeFactor;
@@ -312,6 +314,9 @@ public:
 	void setArrowPen(QPen pen) { arrow->setPen(pen); }
 	virtual Config *config(QWidget *parent);
 	BlackHole *blackHole;
+
+	virtual void setPosition(const QPointF& pos) { QGraphicsItem::setPos(pos); }
+	virtual QPointF getPosition() const { return QGraphicsItem::pos(); }
 protected:
 	Arrow *arrow;
 };
@@ -422,6 +427,8 @@ public:
 
 	void setLine(const QLineF& line);
 
+	virtual void setPosition(const QPointF& pos) { QGraphicsItem::setPos(pos); }
+	virtual QPointF getPosition() const { return QGraphicsItem::pos(); }
 protected:
 	WallPoint *startItem;
 	WallPoint *endItem;
@@ -454,6 +461,9 @@ public:
 	double height() { return rect().height(); }
 
 	Wall *parentWall() { return wall; }
+
+	virtual void setPosition(const QPointF& pos) { QGraphicsItem::setPos(pos); }
+	virtual QPointF getPosition() const { return QGraphicsItem::pos(); }
 protected:
 	Wall *wall;
 	bool editing;
@@ -491,6 +501,8 @@ public:
 	virtual void moveBy(double dx, double dy);
 	void setShowGuideLine(bool yes);
 
+	virtual void setPosition(const QPointF& pos) { QGraphicsItem::setPos(pos); }
+	virtual QPointF getPosition() const { return QGraphicsItem::pos(); }
 private:
 	QPointF midPoint;
 	double maxAngle;
@@ -566,6 +578,8 @@ public:
 	double width() {return Tagaro::SpriteObjectItem::size().width(); }
 	double height() {return Tagaro::SpriteObjectItem::size().height(); }
 
+	virtual void setPosition(const QPointF& pos) { QGraphicsItem::setPos(pos); }
+	virtual QPointF getPosition() const { return QGraphicsItem::pos(); }
 protected:
 	Wall *topWall;
 	Wall *botWall;
@@ -702,6 +716,8 @@ public:
 	void borderWallsChanged(bool yes);
 	bool borderWalls() const { return m_borderWalls; }
 
+	virtual void setPosition(const QPointF& pos) { Q_UNUSED(pos) }
+	virtual QPointF getPosition() const { return QPointF(); }
 private:
 	QString m_author;
 	QString m_name;

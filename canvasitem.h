@@ -117,6 +117,10 @@ public:
 	virtual void setVelocity(const Vector& velocity) { m_velocity = velocity; }
 	Vector velocity() const { return m_velocity; }
 	virtual void moveBy(double , double) { kDebug(12007) << "Warning, empty moveBy used";} //needed so that float can call the own custom moveBy()s of everything on it
+
+	//The following is needed temporarily while CanvasItem is not a QGraphicsItem by itself.
+	virtual void setPosition(const QPointF& pos) = 0;
+	virtual QPointF getPosition() const = 0;
 protected:
 	///pointer to main KolfGame
 	KolfGame *game;
@@ -151,10 +155,21 @@ private:
 
 		QList<Kolf::Shape*> shapes() const { return m_shapes; }
 		Kolf::Overlay* overlay(bool createIfNecessary = true);
+
+		///This is the velocity used by the physics engine: In each time step,
+		///the position of this canvas item changes by the value of this property.
+		QPointF physicalVelocity() const;
+		void setPhysicalVelocity(const QPointF& physicalVelocity);
 	protected:
 		void addShape(Kolf::Shape* shape);
 		///Configure how this object will participate in physical simulation.
 		void setSimulationType(CanvasItem::SimulationType type);
+
+		///The physics engine calls this method to prepare the object for the following simulation step. Subclass implementations have to call the base implementation just before returning.
+		virtual void startSimulation();
+		///The physics engine calls this method after calculating the next frame, to let the objects update their representation. Subclass implementations have to call the base implementation before anything else.
+		virtual void endSimulation();
+
 		///Creates the optimal overlay for this object. The implementation does not have to propagate its properties to the overlay, as the overlay is updated just after it has been created.
 		///@warning Do not actually call this function from subclass implementations. Use overlay() instead.
 		virtual Kolf::Overlay* createOverlay() { return 0; } //TODO: make this pure virtual when all CanvasItems are QGraphicsItems and implement createOverlay() (and then disallow createOverlay() == 0)
@@ -167,6 +182,9 @@ private:
 		Kolf::Overlay* m_overlay;
 		QList<Kolf::Shape*> m_shapes;
 		CanvasItem::SimulationType m_simulationType;
+		QPointF m_physicalVelocity;
+		bool m_velocityChanged; //tells whether velocity has been changed programmatically after last simulation step
+		//The rationale behind this variable is that Box2D sometimes has very low velocities (~1e-10) during contacts. The QPointF conversion could create rounding errors on some platforms.
 };
 
 //WARNING: pos() is at center (not at top-left edge of bounding rect!)
@@ -189,6 +207,9 @@ class EllipticalCanvasItem : public Tagaro::SpriteObjectItem, public CanvasItem
 
 		void saveSize(KConfigGroup* group);
 		void loadSize(KConfigGroup* group);
+
+		virtual void setPosition(const QPointF& pos) { QGraphicsItem::setPos(pos); }
+		virtual QPointF getPosition() const { return QGraphicsItem::pos(); }
 	private:
 		QGraphicsEllipseItem* m_ellipseItem;
 };
