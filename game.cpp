@@ -926,33 +926,21 @@ Putter::Putter(QGraphicsItem* parent)
 	setData(0, Rtti_Putter);
 	m_showGuideLine = true;
 	oneDegree = M_PI / 180;
-	resizeFactor = 1;
-	baseGuideLineLength = guideLineLength = 9;
-	baseGuideLineThickness = 1;
-	basePutterThickness = 4;
-	basePutterWidth = putterWidth = 11;
+	guideLineLength = 9;
+	putterWidth = 11;
 	angle = 0;
 
 	guideLine = new HintedLineItem(true, this);
-	guideLine->setPen(QPen(Qt::white, baseGuideLineThickness));
+	guideLine->setPen(QPen(Qt::white));
 	guideLine->setZValue(998.8);
 
-	setPen(QPen(Qt::black, basePutterThickness));
+	setPen(QPen(Qt::black, 4));
 	maxAngle = 2 * M_PI;
 
 	hideInfo();
 
 	// this also sets Z
 	resetAngles();
-}
-
-void Putter::resize(double resizeFactor)
-{
-	this->resizeFactor = resizeFactor;
-	guideLineLength = baseGuideLineLength * resizeFactor;
-	guideLine->setPen(QPen(Qt::white, baseGuideLineThickness*resizeFactor, Qt::DotLine));
-	putterWidth = basePutterWidth * resizeFactor;
-	setPen(QPen(Qt::black, basePutterThickness*resizeFactor));
 }
 
 void Putter::showInfo()
@@ -987,7 +975,7 @@ void Putter::setOrigin(double _x, double _y)
 {
 	setVisible(true);
 	setPos(_x, _y);
-	guideLineLength = baseGuideLineLength * resizeFactor;
+	guideLineLength = 9; //reset to default
 	finishMe();
 }
 
@@ -1004,11 +992,11 @@ void Putter::go(Direction d, Amount amount)
 	switch (d)
 	{
 		case Forwards:
-			guideLineLength -= 1*resizeFactor;
+			guideLineLength -= 1;
 			guideLine->setVisible(false);
 			break;
 		case Backwards:
-			guideLineLength += 1*resizeFactor;
+			guideLineLength += 1;
 			guideLine->setVisible(false);
 			break;
 		case D_Left:
@@ -2099,15 +2087,9 @@ StrokeCircle::StrokeCircle(QGraphicsItem *parent)
 	iheight = 100;
 	ithickness = 8;
 	setZValue(10000);
-}
 
-void StrokeCircle::resize(double resizeFactor)
-{
-	const double baseSize = 80;
-	const double baseThickness = 8;
-
-	setSize(resizeFactor * baseSize, resizeFactor * baseSize);
-	setThickness(resizeFactor * baseThickness);
+	setSize(80, 80);
+	setThickness(8);
 }
 
 void StrokeCircle::setValue(double v)
@@ -2300,7 +2282,6 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 	// create the advanced putting indicator
 	strokeCircle = new StrokeCircle(courseBoard);
 	strokeCircle->setPos(width - 90, height - 90);
-	strokeCircle->resize(1);
 	strokeCircle->setVisible(false);
 	strokeCircle->setValue(0);
 	strokeCircle->setMaxValue(360); 
@@ -2836,23 +2817,6 @@ void KolfGame::resizeEvent( QResizeEvent* ev )
 
 	int setSize = qMin(newW, newH);
 	QGraphicsView::resize(setSize, setSize); //make sure new size is square
-
-// 	resizeAllItems((double)setSize/400.0);
-	resizeAllItems(1); //item scaling is now done automatically by Tagaro::Board
-	//TODO: Remove all the manual scaling code.
-}
-
-void KolfGame::resizeAllItems(double resizeFactor, bool resizeBorderWalls)
-{
-	Q_UNUSED(resizeBorderWalls);
-	//resizeFactor is the number to multiply default sizes and positions by to get their resized value (i.e. if it is 1 then use default size, if it is >1 then everything needs to be bigger, and if it is <1 then everything needs to be smaller)
-	
-	//stroke circle resize
-	strokeCircle->resize(resizeFactor);
-
-	//putter resize
-	putter->setPos((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
-	putter->resize(resizeFactor);
 }
 
 void KolfGame::puttRelease()

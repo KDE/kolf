@@ -512,7 +512,7 @@ class Putter : public HintedLineItem, public CanvasItem
 {
 public:
 	Putter(QGraphicsItem* parent);
-	void resize(double resizeFactor);
+
 	void go(Direction, Amount amount = Amount_Normal);
 	void setOrigin(double x, double y);
 	double curLen() const { return guideLineLength; }
@@ -537,17 +537,7 @@ private:
 	double angle;
 	double oneDegree;
 	QMap<Ball *, double> angleMap;
-	/*
-	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
-	 */
-	double guideLineLength, baseGuideLineLength;
-	double baseGuideLineThickness;
-	double basePutterThickness;
-	double basePutterWidth, putterWidth;
-	/*
-	 * resizeFactor is the number to multiply base numbers by to get their resized value (i.e. if it is 1 then use default size, if it is >1 then everything needs to be bigger, and if it is <1 then everything needs to be smaller)
-	 */
-	double resizeFactor;
+	double guideLineLength, putterWidth;
 	void finishMe();
 	QGraphicsLineItem *guideLine;
 	bool m_showGuideLine;
@@ -767,7 +757,6 @@ class StrokeCircle : public QGraphicsItem
 public:
 	StrokeCircle(QGraphicsItem *parent);
 
-	void resize(double resizeFactor);
 	void setValue(double v);
 	double value();
 	void setMaxValue(double m);
@@ -910,8 +899,6 @@ protected:
 
 	//resizes view to make sure it is square and calls resizeAllItems
 	void resizeEvent(QResizeEvent *);
-	//resizes and moves all items in the game
-	void resizeAllItems(double resizeFactor, bool resizeBorderWalls=1);
 
 	QPoint viewportToViewport(const QPoint &p);
 
