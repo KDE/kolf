@@ -131,11 +131,6 @@ void Slope::setGrade(double newGrade)
 
 void Slope::setSize(double width, double height)
 {
-	newSize(width, height);
-}
-
-void Slope::newSize(double width, double height)
-{
 	if (type == Elliptic)
 	{
 		const double size = qMin(width, height);
@@ -242,7 +237,7 @@ void Slope::load(KConfigGroup *cfgGroup)
 	grade = cfgGroup->readEntry("grade", grade);
 	reversed = cfgGroup->readEntry("reversed", reversed);
 
-	// bypass updatePixmap which newSize normally does
+	// bypass updatePixmap which setSize normally does
 	Tagaro::SpriteObjectItem::setSize(QSizeF(cfgGroup->readEntry("width", width()), cfgGroup->readEntry("height", height())));
 	updateZ();
 
@@ -379,7 +374,7 @@ void Slope::setType(GradientType type)
 	if (type == Elliptic)
 	{
 		//ensure quadratic shape
-		newSize(width(), height());
+		setSize(width(), height());
 	}
 
 	updatePixmap();

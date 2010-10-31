@@ -42,7 +42,7 @@ private:
 	Slope *slope;
 };
 
-class Slope : public Tagaro::SpriteObjectItem, public CanvasItem, public RectItem
+class Slope : public Tagaro::SpriteObjectItem, public CanvasItem
 {
 public:
 	Slope(QGraphicsItem *parent);
@@ -56,7 +56,6 @@ public:
 	virtual QList<QGraphicsItem *> moveableItems() const;
 	virtual Config *config(QWidget *parent) { return new SlopeConfig(this, parent); }
 	virtual void setSize(double width, double height);
-	virtual void newSize(double width, double height);
 	virtual void moveBy(double dx, double dy);
 
 	virtual QPainterPath shape () const;

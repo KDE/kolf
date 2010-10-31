@@ -77,7 +77,7 @@ Tagaro::Board* Kolf::findBoard(QGraphicsItem* item_)
 
 /////////////////////////
 
-RectPoint::RectPoint(const QColor &color, RectItem *rect, QGraphicsItem * parent)
+RectPoint::RectPoint(const QColor &color, Tagaro::SpriteObjectItem *rect, QGraphicsItem * parent)
 : QGraphicsEllipseItem(parent)
 {
 	setZValue(9999);
@@ -107,7 +107,7 @@ void RectPoint::moveBy(double dx, double dy)
 	if (nw <= 0 || nh <= 0)
 		return;
 
-	rect->newSize(nw, nh);
+	rect->setSize(nw, nh);
 }
 
 Config *RectPoint::config(QWidget *parent)
@@ -292,7 +292,7 @@ Bridge::Bridge(QGraphicsItem *parent, const QString &type)
 	editModeChanged(false);
 
 	setSize(defaultSize.width(), defaultSize.height());
-	newSize(width(), height());
+	setSize(width(), height());
 }
 
 void Bridge::resize(double resizeFactor)
@@ -388,7 +388,7 @@ void Bridge::load(KConfigGroup *cfgGroup)
 
 void Bridge::doLoad(KConfigGroup *cfgGroup)
 {
-	newSize(cfgGroup->readEntry("width", width()), cfgGroup->readEntry("height", height()));
+	setSize(cfgGroup->readEntry("width", width()), cfgGroup->readEntry("height", height()));
 	setTopWallVisible(cfgGroup->readEntry("topWallVisible", topWallVisible()));
 	setBotWallVisible(cfgGroup->readEntry("botWallVisible", botWallVisible()));
 	setLeftWallVisible(cfgGroup->readEntry("leftWallVisible", leftWallVisible()));
@@ -426,11 +426,6 @@ QList<QGraphicsItem *> Bridge::moveableItems() const
 	QList<QGraphicsItem *> ret;
 	ret.append(point);
 	return ret;
-}
-
-void Bridge::newSize(double width, double height)
-{
-	Bridge::setSize(width, height);
 }
 
 void Bridge::setSize(double width, double height)
@@ -532,7 +527,7 @@ Windmill::Windmill(QGraphicsItem * parent)
 	setLeftWallVisible(true);
 	setRightWallVisible(true);
 
-	newSize(width(), height());
+	setSize(width(), height());
 	moveBy(0, 0);
 }
 
@@ -622,20 +617,15 @@ void Windmill::moveBy(double dx, double dy)
 	guard->setBetween(x(), x() + width());
 }
 
-void Windmill::setSize(double width, double height)
-{
-	newSize(width, height);
-}
-
 void Windmill::setBottom(bool yes)
 {
 	m_bottom = yes;
-	newSize(width(), height());
+	setSize(width(), height());
 }
 
-void Windmill::newSize(double width, double height)
+void Windmill::setSize(double width, double height)
 {
-	Bridge::newSize(width, height);
+	Bridge::setSize(width, height);
 
 	const double indent = width / 4;
 
@@ -867,12 +857,6 @@ void KolfEllipse::resize(double resizeFactor)
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
 	moveBy(0, 0); 
 }
-
-void KolfEllipse::newSize(double width, double height)
-{
-	setSize(width, height);
-}
-
 
 void KolfEllipse::setSize(double width, double height)
 {
@@ -2997,10 +2981,10 @@ void KolfGame::resizeEvent( QResizeEvent* ev )
 	else if( (oldW==newW) && (oldH==newH) )
 		return;
 
-	int newSize = qMin(newW, newH);
-	QGraphicsView::resize(newSize, newSize); //make sure new size is square
+	int setSize = qMin(newW, newH);
+	QGraphicsView::resize(setSize, setSize); //make sure new size is square
 
-// 	resizeAllItems((double)newSize/400.0);
+// 	resizeAllItems((double)setSize/400.0);
 	resizeAllItems(1); //item scaling is now done automatically by Tagaro::Board
 	//TODO: Remove all the manual scaling code.
 }
@@ -3711,10 +3695,10 @@ void KolfGame::startNextHole()
 	timer->start(timerMsec);
 
 	if(size().width()!=400 || size().height()!=400) { //not default size, so resizing needed
-		int newSize = qMin(size().width(), size().height());
-		//resize needs to be called for newSize+1 first because otherwise it doesn't seem to get called (not sure why) 
-		QGraphicsView::resize(newSize+1, newSize+1);
-		QGraphicsView::resize(newSize, newSize);
+		int setSize = qMin(size().width(), size().height());
+		//resize needs to be called for setSize+1 first because otherwise it doesn't seem to get called (not sure why)
+		QGraphicsView::resize(setSize+1, setSize+1);
+		QGraphicsView::resize(setSize, setSize);
 	}
 
 	// if (false) { we're done with the round! }

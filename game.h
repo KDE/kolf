@@ -151,18 +151,10 @@ private:
 	QGraphicsLineItem *line2;
 };
 
-class RectPoint;
-class RectItem
-{
-public:
-	virtual ~RectItem(){}
-	virtual void newSize(double /*width*/, double /*height*/) {}
-};
-
 class RectPoint : public QGraphicsEllipseItem, public CanvasItem
 {
 public:
-	RectPoint(const QColor &color, RectItem *, QGraphicsItem *parent);
+	RectPoint(const QColor &color, Tagaro::SpriteObjectItem *rect, QGraphicsItem *parent);
 	void dontMove() { dontmove = true; }
 	virtual void moveBy(double dx, double dy);
 	virtual Config *config(QWidget *parent);
@@ -173,14 +165,14 @@ public:
 	void setSize(double, double);
 
 protected:
-	RectItem *rect;
+	Tagaro::SpriteObjectItem *rect;
 	double m_sizeFactor;
 
 private:
 	bool dontmove;
 };
 
-class KolfEllipse : public Tagaro::SpriteObjectItem, public CanvasItem, public RectItem
+class KolfEllipse : public Tagaro::SpriteObjectItem, public CanvasItem
 {
 public:
 	KolfEllipse(QGraphicsItem *parent, const QString &type);
@@ -199,7 +191,6 @@ public:
 
 	virtual QList<QGraphicsItem *> moveableItems() const;
 
-	virtual void newSize(double width, double height);
 	void setSize(double width, double height);
 
 	virtual void moveBy(double dx, double dy);
@@ -616,7 +607,7 @@ private:
 	Bridge *bridge;
 };
 
-class Bridge : public Tagaro::SpriteObjectItem, public CanvasItem, public RectItem
+class Bridge : public Tagaro::SpriteObjectItem, public CanvasItem
 {
 public:
 	Bridge(QGraphicsItem *parent, const QString &type = QLatin1String("bridge"));
@@ -631,7 +622,6 @@ public:
 	virtual bool vStrut() const { return true; }
 	void doLoad(KConfigGroup *cfgGroup);
 	void doSave(KConfigGroup *cfgGroup);
-	virtual void newSize(double width, double height);
 	virtual void setGame(KolfGame *game);
 	virtual Config *config(QWidget *parent) { return new BridgeConfig(this, parent); }
 	void setSize(double width, double height);
@@ -742,7 +732,6 @@ class Windmill : public Bridge
 public:
 	Windmill(QGraphicsItem *parent);
 	virtual void aboutToDie();
-	virtual void newSize(double width, double height);
 	virtual void save(KConfigGroup *cfgGroup);
 	virtual void load(KConfigGroup *cfgGroup);
 	virtual void setGame(KolfGame *game);
