@@ -283,7 +283,7 @@ void Bridge::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget 
 		if(game == 0)
 			return;
 		else {
-			pixmap=game->renderer->renderSvg(type, (int)rect().width(), (int)rect().height(), 0);
+			pixmap=game->renderer->render(type, rect().size().toSize(), 0);
 			pixmapInitialised=true;
 		}
 	}
@@ -295,7 +295,7 @@ void Bridge::resize(double resizeFactor)
 	this->resizeFactor = resizeFactor;
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
 	setRect(0, 0, baseWidth*resizeFactor, baseHeight*resizeFactor);
-	pixmap=game->renderer->renderSvg(type, (int)rect().width(), (int)rect().height(), 0);
+	pixmap=game->renderer->render(type, rect().size().toSize(), 0);
 	botWall->setPos(baseBotWallX*resizeFactor, baseBotWallY*resizeFactor);
 	botWall->resize(resizeFactor);
 	topWall->setPos(baseTopWallX*resizeFactor, baseTopWallY*resizeFactor);
@@ -439,7 +439,7 @@ void Bridge::setSize(double width, double height)
 	rightWall->setPoints(width, 0, width, height);
 
 	if(game != 0)
-		pixmap=game->renderer->renderSvg(type, (int)width, (int)height, 0);
+		pixmap=game->renderer->render(type, rect().size().toSize(), 0);
 	baseWidth = width;
 	baseHeight = height;
 
@@ -900,7 +900,7 @@ void KolfEllipse::resize(double resizeFactor)
 	setRect(baseWidth*resizeFactor*-0.5, baseHeight*resizeFactor*-0.5, baseWidth*resizeFactor, baseHeight*resizeFactor);
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
 	moveBy(0, 0); 
-	pixmap=game->renderer->renderSvg(type, (int)rect().width(), (int)rect().height(), 0);
+	pixmap=game->renderer->render(type, rect().size().toSize(), 0);
 }
 
 void KolfEllipse::newSize(double width, double height)
@@ -913,7 +913,7 @@ void KolfEllipse::setSize(double width, double height)
 {
 	setRect(width*-0.5, height*-0.5, width, height);
 	if(game != 0)
-		pixmap=game->renderer->renderSvg(type, (int)width, (int)height, 0);
+		pixmap=game->renderer->render(type, rect().size().toSize(), 0);
 	baseWidth = width;
 	baseHeight = height;
 }
@@ -1218,8 +1218,8 @@ void Bumper::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget 
 		else {
 			//ensure the bumper_on pixmap is in the cache so it will be immediately available when required
 			if(!QPixmapCache::find("bumper_on", &pixmap))
-				pixmap=game->renderer->renderSvg("bumper_on", (int)rect().width(), (int)rect().height(), 0);
-			pixmap=game->renderer->renderSvg("bumper_off", (int)rect().width(), (int)rect().height(), 0);
+				pixmap=game->renderer->render("bumper_on", rect().size().toSize(), 0);
+			pixmap=game->renderer->render("bumper_off", rect().size().toSize(), 0);
 			pixmapInitialised=true;
 		}
 	}
@@ -1243,7 +1243,7 @@ void Bumper::resize(double resizeFactor)
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
 	setRect(-0.5*baseDiameter*resizeFactor, -0.5*baseDiameter*resizeFactor, baseDiameter*resizeFactor, baseDiameter*resizeFactor);
 	pixmapInitialised=false; //do I need this?
-	pixmap=game->renderer->renderSvg("bumper_off", (int)rect().width(), (int)rect().height(), 0);
+	pixmap=game->renderer->render("bumper_off", rect().size().toSize(), 0);
 }
 
 void Bumper::advance(int phase)
@@ -1259,7 +1259,7 @@ void Bumper::advance(int phase)
 		if (count > 2)
 		{
 			count = 0;
-			pixmap=game->renderer->renderSvg("bumper_off", (int)rect().width(), (int)rect().height(), 0);
+			pixmap=game->renderer->render("bumper_off", rect().size().toSize(), 0);
 			update(); 
 			setAnimated(false);
 		}
@@ -1268,7 +1268,7 @@ void Bumper::advance(int phase)
 
 bool Bumper::collision(Ball *ball, long int /*id*/)
 {
-	pixmap=game->renderer->renderSvg("bumper_on", (int)rect().width(), (int)rect().width(), 0);
+	pixmap=game->renderer->render("bumper_on", rect().size().toSize(), 0);
 	update();
 
 	double speed = 1.8 + ball->curVector().magnitude() * .9;
@@ -1320,7 +1320,7 @@ void Cup::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 		if(game == 0)
 			return;
 		else {
-			pixmap=game->renderer->renderSvg("cup", (int)rect().width(), (int)rect().height(), 0);
+			pixmap=game->renderer->render("cup", rect().size().toSize(), 0);
 			pixmapInitialised=true;
 		}
 	}
@@ -1359,7 +1359,7 @@ void Cup::resize(double resizeFactor)
 	this->resizeFactor = resizeFactor;
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
 	setRect(-0.5*baseDiameter*resizeFactor, -0.5*baseDiameter*resizeFactor, baseDiameter*resizeFactor, baseDiameter*resizeFactor);
-	pixmap=game->renderer->renderSvg("cup", (int)rect().width(), (int)rect().height(), 0);
+	pixmap=game->renderer->render("cup", rect().size().toSize(), 0);
 }
 
 void Cup::save(KConfigGroup *cfgGroup)
@@ -1454,7 +1454,7 @@ void BlackHole::paint(QPainter *painter, const QStyleOptionGraphicsItem * option
 		if(game == 0)
 			return;
 		else {
-			pixmap=game->renderer->renderSvg("black_hole", (int)rect().width(), (int)rect().height(), 0);
+			pixmap=game->renderer->render("black_hole", rect().size().toSize(), 0);
 			pixmapInitialised=true;
 		}
 	}
@@ -1495,7 +1495,7 @@ void BlackHole::resize(double resizeFactor)
 	exitItem->resizeFactor = resizeFactor;
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
 	setRect(-0.5*baseWidth*resizeFactor, -0.5*baseHeight*resizeFactor, baseWidth*resizeFactor, baseHeight*resizeFactor);
-	pixmap=game->renderer->renderSvg("black_hole", (int)(baseWidth*resizeFactor), (int)(baseHeight*resizeFactor), 0);
+	pixmap=game->renderer->render("black_hole", QSize(baseWidth*resizeFactor, baseHeight*resizeFactor), 0);
 	exitItem->setPos(exitItem->baseX*resizeFactor, exitItem->baseY*resizeFactor);
 	finishMe(baseExitLineWidth*resizeFactor);
 	if(infoLine) {
@@ -2591,13 +2591,13 @@ KolfGame::KolfGame(ObjectList *obj, PlayerList *players, const QString &filename
 	course->setSceneRect(0, 0, width, height);
 
 	QPixmap pic;
-	pic = renderer->renderSvg("grass", width, height, 0);
+	pic = renderer->render("grass", QSize(width, height), 0);
 	course->setBackgroundBrush(QBrush(pic));
 
 	if( filename.contains( "intro" ) )
 	{
 		QPixmap introPic;
-		introPic = renderer->renderSvg("intro_foreground", 400, 132, 0);
+		introPic = renderer->render("intro_foreground", QSize(400, 132), 0);
 		banner = new QGraphicsPixmapItem(introPic, 0, course);
 		banner->setPos(0.0,32.0);
 	}
@@ -3173,14 +3173,14 @@ void KolfGame::resizeAllItems(double resizeFactor, bool resizeBorderWalls)
 	course->setSceneRect(0, 0, 400*resizeFactor, 400*resizeFactor);
 
 	//background resize
-	QPixmap pic = renderer->renderSvg("grass", (int)(width*resizeFactor), (int)(height*resizeFactor), 0);
+	QPixmap pic = renderer->render("grass", QSize(width*resizeFactor, height*resizeFactor), 0);
 	course->setBackgroundBrush(QBrush(pic));
 
 	//foreground resize
 	if( filename.contains( "intro" ) )
 	{
 		QPixmap introPic;
-		introPic = renderer->renderSvg("intro_foreground", 400.0*resizeFactor, 132.0*resizeFactor, 0);
+		introPic = renderer->render("intro_foreground", QSize(400.0*resizeFactor, 132.0*resizeFactor), 0);
 		//course->setForegroundBrush(QBrush(introPic));
 		delete banner;
 		banner = new QGraphicsPixmapItem(introPic, 0, course);

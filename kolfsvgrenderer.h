@@ -1,5 +1,6 @@
 /*
     Copyright (C) 2006 KDE Game Team
+    Copyright 2010 Stefan Majewsky <majewsky@gmx.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -28,12 +29,9 @@ class KolfSvgRenderer
 public:
 	explicit KolfSvgRenderer(const QString& pathToSvg);
 	~KolfSvgRenderer();
-        QPixmap renderSvg(const QString &cacheName, int width, int height, bool useCache);
-        QPixmap renderWithoutCache(const QString &cacheName, int width, int height);
-        QPixmap renderWithCache(const QString &cacheName, int width, int height);
-
+	QPixmap render(const QString& name, const QSize& size, bool useCache);
 private:
-	QSvgRenderer *renderer;
+	QSvgRenderer *m_renderer;
 };
 
 #endif

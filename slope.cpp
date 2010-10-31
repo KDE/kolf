@@ -460,7 +460,7 @@ void Slope::updatePixmap() //this needs work so that the slope colour depends on
 			break;
 	}
 
-	pixmap=game->renderer->renderSvg(slopeName, (int)width(), (int)height(), 0);
+	pixmap=game->renderer->render(slopeName, rect().size().toSize(), 0);
 
 	// we update the arrows in this function
 	clearArrows();

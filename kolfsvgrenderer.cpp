@@ -1,5 +1,6 @@
 /*
     Copyright (C) 2006 KDE Game Team
+    Copyright 2010 Stefan Majewsky <majewsky@gmx.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,59 +19,36 @@
 
 #include "kolfsvgrenderer.h"
 
-#include <qsvgrenderer.h>
-#include <QPixmap>
 #include <QPixmapCache>
 #include <QPainter>
+#include <QSvgRenderer>
 
 KolfSvgRenderer::KolfSvgRenderer(const QString& pathToSvg)
+	: m_renderer(new QSvgRenderer(pathToSvg))
 {
-	renderer = new QSvgRenderer(pathToSvg);
 }
 
 KolfSvgRenderer::~KolfSvgRenderer()
 {
-	delete renderer;
+	delete m_renderer;
 }
 
-QPixmap KolfSvgRenderer::renderSvg(const QString &name, int width, int height, bool useCache)
+QPixmap KolfSvgRenderer::render(const QString& name, const QSize& size, bool useCache)
 {
 	QPixmap pix;
-
-	if(useCache)
-		pix=renderWithCache(name, width, height);
-	else
-		pix=renderWithoutCache(name, width, height);
-
-	return pix;
-}
-
-QPixmap KolfSvgRenderer::renderWithoutCache(const QString &name, int width, int height)
-{
-	QImage baseImg = QImage(width, height, QImage::Format_ARGB32_Premultiplied);
+	//try to obtain from cache
+	if (useCache)
+		if (QPixmapCache::find(name, &pix))
+			return pix;
+	//render from SVG
+	QImage baseImg = QImage(size, QImage::Format_ARGB32_Premultiplied);
 	baseImg.fill(0);
 	QPainter p(&baseImg);
-	renderer->render(&p, name, QRectF(0, 0, width, height));
-	p.end();
-	QPixmap pix = QPixmap::fromImage(baseImg);
-
-	return pix;
-}
-
-QPixmap KolfSvgRenderer::renderWithCache(const QString &name, int width, int height)
-{
-	QPixmap pix;
-	if(QPixmapCache::find(name, &pix))
-	{
-		return pix;
-	}
-	QImage baseImg = QImage(width, height, QImage::Format_ARGB32_Premultiplied);
-	baseImg.fill(0);
-	QPainter p(&baseImg);
-	renderer->render(&p, name, QRectF(0, 0, width, height));
+	m_renderer->render(&p, name, QRect(QPoint(), size));
 	p.end();
 	pix = QPixmap::fromImage(baseImg);
-	QPixmapCache::insert(name, pix);
+	//serve pixmap
+	if (useCache)
+		QPixmapCache::insert(name, pix);
 	return pix;
 }
-
