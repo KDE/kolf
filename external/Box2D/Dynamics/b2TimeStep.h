@@ -24,9 +24,9 @@
 /// This is an internal structure.
 struct b2TimeStep
 {
-	float32 dt;			// time step
-	float32 inv_dt;		// inverse time step (0 if dt == 0).
-	float32 dtRatio;	// dt * inv_dt0
+	qreal dt;			// time step
+	qreal inv_dt;		// inverse time step (0 if dt == 0).
+	qreal dtRatio;	// dt * inv_dt0
 	int32 velocityIterations;
 	int32 positionIterations;
 	bool warmStarting;

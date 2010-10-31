@@ -175,7 +175,7 @@ b2Fixture* b2Body::CreateFixture(const b2FixtureDef* def)
 	return fixture;
 }
 
-b2Fixture* b2Body::CreateFixture(const b2Shape* shape, float32 density)
+b2Fixture* b2Body::CreateFixture(const b2Shape* shape, qreal density)
 {
 	b2FixtureDef def;
 	def.shape = shape;
@@ -385,7 +385,7 @@ bool b2Body::ShouldCollide(const b2Body* other) const
 	return true;
 }
 
-void b2Body::SetTransform(const b2Vec2& position, float32 angle)
+void b2Body::SetTransform(const b2Vec2& position, qreal angle)
 {
 	b2Assert(m_world->IsLocked() == false);
 	if (m_world->IsLocked() == true)

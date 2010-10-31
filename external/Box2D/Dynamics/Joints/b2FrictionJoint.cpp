@@ -71,8 +71,8 @@ void b2FrictionJoint::InitVelocityConstraints(const b2TimeStep& step)
 	//     [  -r1y*iA*r1x-r2y*iB*r2x, mA+r1x^2*iA+mB+r2x^2*iB,           r1x*iA+r2x*iB]
 	//     [          -r1y*iA-r2y*iB,           r1x*iA+r2x*iB,                   iA+iB]
 
-	float32 mA = bA->m_invMass, mB = bB->m_invMass;
-	float32 iA = bA->m_invI, iB = bB->m_invI;
+	qreal mA = bA->m_invMass, mB = bB->m_invMass;
+	qreal iA = bA->m_invI, iB = bB->m_invI;
 
 	b2Mat22 K1;
 	K1.col1.x = mA + mB;	K1.col2.x = 0.0f;
@@ -124,23 +124,23 @@ void b2FrictionJoint::SolveVelocityConstraints(const b2TimeStep& step)
 	b2Body* bB = m_bodyB;
 
 	b2Vec2 vA = bA->m_linearVelocity;
-	float32 wA = bA->m_angularVelocity;
+	qreal wA = bA->m_angularVelocity;
 	b2Vec2 vB = bB->m_linearVelocity;
-	float32 wB = bB->m_angularVelocity;
+	qreal wB = bB->m_angularVelocity;
 
-	float32 mA = bA->m_invMass, mB = bB->m_invMass;
-	float32 iA = bA->m_invI, iB = bB->m_invI;
+	qreal mA = bA->m_invMass, mB = bB->m_invMass;
+	qreal iA = bA->m_invI, iB = bB->m_invI;
 
 	b2Vec2 rA = b2Mul(bA->GetTransform().R, m_localAnchorA - bA->GetLocalCenter());
 	b2Vec2 rB = b2Mul(bB->GetTransform().R, m_localAnchorB - bB->GetLocalCenter());
 
 	// Solve angular friction
 	{
-		float32 Cdot = wB - wA;
-		float32 impulse = -m_angularMass * Cdot;
+		qreal Cdot = wB - wA;
+		qreal impulse = -m_angularMass * Cdot;
 
-		float32 oldImpulse = m_angularImpulse;
-		float32 maxImpulse = step.dt * m_maxTorque;
+		qreal oldImpulse = m_angularImpulse;
+		qreal maxImpulse = step.dt * m_maxTorque;
 		m_angularImpulse = b2Clamp(m_angularImpulse + impulse, -maxImpulse, maxImpulse);
 		impulse = m_angularImpulse - oldImpulse;
 
@@ -156,7 +156,7 @@ void b2FrictionJoint::SolveVelocityConstraints(const b2TimeStep& step)
 		b2Vec2 oldImpulse = m_linearImpulse;
 		m_linearImpulse += impulse;
 
-		float32 maxImpulse = step.dt * m_maxForce;
+		qreal maxImpulse = step.dt * m_maxForce;
 
 		if (m_linearImpulse.LengthSquared() > maxImpulse * maxImpulse)
 		{
@@ -179,7 +179,7 @@ void b2FrictionJoint::SolveVelocityConstraints(const b2TimeStep& step)
 	bB->m_angularVelocity = wB;
 }
 
-bool b2FrictionJoint::SolvePositionConstraints(float32 baumgarte)
+bool b2FrictionJoint::SolvePositionConstraints(qreal baumgarte)
 {
 	B2_NOT_USED(baumgarte);
 
@@ -196,34 +196,34 @@ b2Vec2 b2FrictionJoint::GetAnchorB() const
 	return m_bodyB->GetWorldPoint(m_localAnchorB);
 }
 
-b2Vec2 b2FrictionJoint::GetReactionForce(float32 inv_dt) const
+b2Vec2 b2FrictionJoint::GetReactionForce(qreal inv_dt) const
 {
 	return inv_dt * m_linearImpulse;
 }
 
-float32 b2FrictionJoint::GetReactionTorque(float32 inv_dt) const
+qreal b2FrictionJoint::GetReactionTorque(qreal inv_dt) const
 {
 	return inv_dt * m_angularImpulse;
 }
 
-void b2FrictionJoint::SetMaxForce(float32 force)
+void b2FrictionJoint::SetMaxForce(qreal force)
 {
 	b2Assert(b2IsValid(force) && force >= 0.0f);
 	m_maxForce = force;
 }
 
-float32 b2FrictionJoint::GetMaxForce() const
+qreal b2FrictionJoint::GetMaxForce() const
 {
 	return m_maxForce;
 }
 
-void b2FrictionJoint::SetMaxTorque(float32 torque)
+void b2FrictionJoint::SetMaxTorque(qreal torque)
 {
 	b2Assert(b2IsValid(torque) && torque >= 0.0f);
 	m_maxTorque = torque;
 }
 
-float32 b2FrictionJoint::GetMaxTorque() const
+qreal b2FrictionJoint::GetMaxTorque() const
 {
 	return m_maxTorque;
 }

@@ -158,12 +158,12 @@ void b2LineJoint::InitVelocityConstraints(const b2TimeStep& step)
 		m_s1 = b2Cross(d + r1, m_perp);
 		m_s2 = b2Cross(r2, m_perp);
 
-		float32 m1 = m_invMassA, m2 = m_invMassB;
-		float32 i1 = m_invIA, i2 = m_invIB;
+		qreal m1 = m_invMassA, m2 = m_invMassB;
+		qreal i1 = m_invIA, i2 = m_invIB;
 
-		float32 k11 = m1 + m2 + i1 * m_s1 * m_s1 + i2 * m_s2 * m_s2;
-		float32 k12 = i1 * m_s1 * m_a1 + i2 * m_s2 * m_a2;
-		float32 k22 = m1 + m2 + i1 * m_a1 * m_a1 + i2 * m_a2 * m_a2;
+		qreal k11 = m1 + m2 + i1 * m_s1 * m_s1 + i2 * m_s2 * m_s2;
+		qreal k12 = i1 * m_s1 * m_a1 + i2 * m_s2 * m_a2;
+		qreal k22 = m1 + m2 + i1 * m_a1 * m_a1 + i2 * m_a2 * m_a2;
 
 		m_K.col1.Set(k11, k12);
 		m_K.col2.Set(k12, k22);
@@ -172,7 +172,7 @@ void b2LineJoint::InitVelocityConstraints(const b2TimeStep& step)
 	// Compute motor and limit terms.
 	if (m_enableLimit)
 	{
-		float32 jointTranslation = b2Dot(m_axis, d);
+		qreal jointTranslation = b2Dot(m_axis, d);
 		if (b2Abs(m_upperTranslation - m_lowerTranslation) < 2.0f * b2_linearSlop)
 		{
 			m_limitState = e_equalLimits;
@@ -216,8 +216,8 @@ void b2LineJoint::InitVelocityConstraints(const b2TimeStep& step)
 		m_motorImpulse *= step.dtRatio;
 
 		b2Vec2 P = m_impulse.x * m_perp + (m_motorImpulse + m_impulse.y) * m_axis;
-		float32 L1 = m_impulse.x * m_s1 + (m_motorImpulse + m_impulse.y) * m_a1;
-		float32 L2 = m_impulse.x * m_s2 + (m_motorImpulse + m_impulse.y) * m_a2;
+		qreal L1 = m_impulse.x * m_s1 + (m_motorImpulse + m_impulse.y) * m_a1;
+		qreal L2 = m_impulse.x * m_s2 + (m_motorImpulse + m_impulse.y) * m_a2;
 
 		b1->m_linearVelocity -= m_invMassA * P;
 		b1->m_angularVelocity -= m_invIA * L1;
@@ -238,23 +238,23 @@ void b2LineJoint::SolveVelocityConstraints(const b2TimeStep& step)
 	b2Body* b2 = m_bodyB;
 
 	b2Vec2 v1 = b1->m_linearVelocity;
-	float32 w1 = b1->m_angularVelocity;
+	qreal w1 = b1->m_angularVelocity;
 	b2Vec2 v2 = b2->m_linearVelocity;
-	float32 w2 = b2->m_angularVelocity;
+	qreal w2 = b2->m_angularVelocity;
 
 	// Solve linear motor constraint.
 	if (m_enableMotor && m_limitState != e_equalLimits)
 	{
-		float32 Cdot = b2Dot(m_axis, v2 - v1) + m_a2 * w2 - m_a1 * w1;
-		float32 impulse = m_motorMass * (m_motorSpeed - Cdot);
-		float32 oldImpulse = m_motorImpulse;
-		float32 maxImpulse = step.dt * m_maxMotorForce;
+		qreal Cdot = b2Dot(m_axis, v2 - v1) + m_a2 * w2 - m_a1 * w1;
+		qreal impulse = m_motorMass * (m_motorSpeed - Cdot);
+		qreal oldImpulse = m_motorImpulse;
+		qreal maxImpulse = step.dt * m_maxMotorForce;
 		m_motorImpulse = b2Clamp(m_motorImpulse + impulse, -maxImpulse, maxImpulse);
 		impulse = m_motorImpulse - oldImpulse;
 
 		b2Vec2 P = impulse * m_axis;
-		float32 L1 = impulse * m_a1;
-		float32 L2 = impulse * m_a2;
+		qreal L1 = impulse * m_a1;
+		qreal L2 = impulse * m_a2;
 
 		v1 -= m_invMassA * P;
 		w1 -= m_invIA * L1;
@@ -263,12 +263,12 @@ void b2LineJoint::SolveVelocityConstraints(const b2TimeStep& step)
 		w2 += m_invIB * L2;
 	}
 
-	float32 Cdot1 = b2Dot(m_perp, v2 - v1) + m_s2 * w2 - m_s1 * w1;
+	qreal Cdot1 = b2Dot(m_perp, v2 - v1) + m_s2 * w2 - m_s1 * w1;
 
 	if (m_enableLimit && m_limitState != e_inactiveLimit)
 	{
 		// Solve prismatic and limit constraint in block form.
-		float32 Cdot2 = b2Dot(m_axis, v2 - v1) + m_a2 * w2 - m_a1 * w1;
+		qreal Cdot2 = b2Dot(m_axis, v2 - v1) + m_a2 * w2 - m_a1 * w1;
 		b2Vec2 Cdot(Cdot1, Cdot2);
 
 		b2Vec2 f1 = m_impulse;
@@ -285,8 +285,8 @@ void b2LineJoint::SolveVelocityConstraints(const b2TimeStep& step)
 		}
 
 		// f2(1) = invK(1,1) * (-Cdot(1) - K(1,2) * (f2(2) - f1(2))) + f1(1)
-		float32 b = -Cdot1 - (m_impulse.y - f1.y) * m_K.col2.x;
-		float32 f2r;
+		qreal b = -Cdot1 - (m_impulse.y - f1.y) * m_K.col2.x;
+		qreal f2r;
 		if (m_K.col1.x != 0.0f)
 		{
 			f2r = b / m_K.col1.x + f1.x;
@@ -301,8 +301,8 @@ void b2LineJoint::SolveVelocityConstraints(const b2TimeStep& step)
 		df = m_impulse - f1;
 
 		b2Vec2 P = df.x * m_perp + df.y * m_axis;
-		float32 L1 = df.x * m_s1 + df.y * m_a1;
-		float32 L2 = df.x * m_s2 + df.y * m_a2;
+		qreal L1 = df.x * m_s1 + df.y * m_a1;
+		qreal L2 = df.x * m_s2 + df.y * m_a2;
 
 		v1 -= m_invMassA * P;
 		w1 -= m_invIA * L1;
@@ -313,7 +313,7 @@ void b2LineJoint::SolveVelocityConstraints(const b2TimeStep& step)
 	else
 	{
 		// Limit is inactive, just solve the prismatic constraint in block form.
-		float32 df;
+		qreal df;
 		if (m_K.col1.x != 0.0f)
 		{
 			df = - Cdot1 / m_K.col1.x;
@@ -325,8 +325,8 @@ void b2LineJoint::SolveVelocityConstraints(const b2TimeStep& step)
 		m_impulse.x += df;
 
 		b2Vec2 P = df * m_perp;
-		float32 L1 = df * m_s1;
-		float32 L2 = df * m_s2;
+		qreal L1 = df * m_s1;
+		qreal L2 = df * m_s2;
 
 		v1 -= m_invMassA * P;
 		w1 -= m_invIA * L1;
@@ -341,7 +341,7 @@ void b2LineJoint::SolveVelocityConstraints(const b2TimeStep& step)
 	b2->m_angularVelocity = w2;
 }
 
-bool b2LineJoint::SolvePositionConstraints(float32 baumgarte)
+bool b2LineJoint::SolvePositionConstraints(qreal baumgarte)
 {
 	B2_NOT_USED(baumgarte);
 
@@ -349,15 +349,15 @@ bool b2LineJoint::SolvePositionConstraints(float32 baumgarte)
 	b2Body* b2 = m_bodyB;
 
 	b2Vec2 c1 = b1->m_sweep.c;
-	float32 a1 = b1->m_sweep.a;
+	qreal a1 = b1->m_sweep.a;
 
 	b2Vec2 c2 = b2->m_sweep.c;
-	float32 a2 = b2->m_sweep.a;
+	qreal a2 = b2->m_sweep.a;
 
 	// Solve linear limit constraint.
-	float32 linearError = 0.0f, angularError = 0.0f;
+	qreal linearError = 0.0f, angularError = 0.0f;
 	bool active = false;
-	float32 C2 = 0.0f;
+	qreal C2 = 0.0f;
 
 	b2Mat22 R1(a1), R2(a2);
 
@@ -372,7 +372,7 @@ bool b2LineJoint::SolvePositionConstraints(float32 baumgarte)
 		m_a1 = b2Cross(d + r1, m_axis);
 		m_a2 = b2Cross(r2, m_axis);
 
-		float32 translation = b2Dot(m_axis, d);
+		qreal translation = b2Dot(m_axis, d);
 		if (b2Abs(m_upperTranslation - m_lowerTranslation) < 2.0f * b2_linearSlop)
 		{
 			// Prevent large angular corrections
@@ -402,7 +402,7 @@ bool b2LineJoint::SolvePositionConstraints(float32 baumgarte)
 	m_s2 = b2Cross(r2, m_perp);
 
 	b2Vec2 impulse;
-	float32 C1;
+	qreal C1;
 	C1 = b2Dot(m_perp, d);
 
 	linearError = b2Max(linearError, b2Abs(C1));
@@ -410,12 +410,12 @@ bool b2LineJoint::SolvePositionConstraints(float32 baumgarte)
 
 	if (active)
 	{
-		float32 m1 = m_invMassA, m2 = m_invMassB;
-		float32 i1 = m_invIA, i2 = m_invIB;
+		qreal m1 = m_invMassA, m2 = m_invMassB;
+		qreal i1 = m_invIA, i2 = m_invIB;
 
-		float32 k11 = m1 + m2 + i1 * m_s1 * m_s1 + i2 * m_s2 * m_s2;
-		float32 k12 = i1 * m_s1 * m_a1 + i2 * m_s2 * m_a2;
-		float32 k22 = m1 + m2 + i1 * m_a1 * m_a1 + i2 * m_a2 * m_a2;
+		qreal k11 = m1 + m2 + i1 * m_s1 * m_s1 + i2 * m_s2 * m_s2;
+		qreal k12 = i1 * m_s1 * m_a1 + i2 * m_s2 * m_a2;
+		qreal k22 = m1 + m2 + i1 * m_a1 * m_a1 + i2 * m_a2 * m_a2;
 
 		m_K.col1.Set(k11, k12);
 		m_K.col2.Set(k12, k22);
@@ -428,12 +428,12 @@ bool b2LineJoint::SolvePositionConstraints(float32 baumgarte)
 	}
 	else
 	{
-		float32 m1 = m_invMassA, m2 = m_invMassB;
-		float32 i1 = m_invIA, i2 = m_invIB;
+		qreal m1 = m_invMassA, m2 = m_invMassB;
+		qreal i1 = m_invIA, i2 = m_invIB;
 
-		float32 k11 = m1 + m2 + i1 * m_s1 * m_s1 + i2 * m_s2 * m_s2;
+		qreal k11 = m1 + m2 + i1 * m_s1 * m_s1 + i2 * m_s2 * m_s2;
 
-		float32 impulse1;
+		qreal impulse1;
 		if (k11 != 0.0f)
 		{
 			impulse1 = - C1 / k11;
@@ -448,8 +448,8 @@ bool b2LineJoint::SolvePositionConstraints(float32 baumgarte)
 	}
 
 	b2Vec2 P = impulse.x * m_perp + impulse.y * m_axis;
-	float32 L1 = impulse.x * m_s1 + impulse.y * m_a1;
-	float32 L2 = impulse.x * m_s2 + impulse.y * m_a2;
+	qreal L1 = impulse.x * m_s1 + impulse.y * m_a1;
+	qreal L2 = impulse.x * m_s2 + impulse.y * m_a2;
 
 	c1 -= m_invMassA * P;
 	a1 -= m_invIA * L1;
@@ -477,18 +477,18 @@ b2Vec2 b2LineJoint::GetAnchorB() const
 	return m_bodyB->GetWorldPoint(m_localAnchor2);
 }
 
-b2Vec2 b2LineJoint::GetReactionForce(float32 inv_dt) const
+b2Vec2 b2LineJoint::GetReactionForce(qreal inv_dt) const
 {
 	return inv_dt * (m_impulse.x * m_perp + (m_motorImpulse + m_impulse.y) * m_axis);
 }
 
-float32 b2LineJoint::GetReactionTorque(float32 inv_dt) const
+qreal b2LineJoint::GetReactionTorque(qreal inv_dt) const
 {
 	B2_NOT_USED(inv_dt);
 	return 0.0f;
 }
 
-float32 b2LineJoint::GetJointTranslation() const
+qreal b2LineJoint::GetJointTranslation() const
 {
 	b2Body* b1 = m_bodyA;
 	b2Body* b2 = m_bodyB;
@@ -498,11 +498,11 @@ float32 b2LineJoint::GetJointTranslation() const
 	b2Vec2 d = p2 - p1;
 	b2Vec2 axis = b1->GetWorldVector(m_localXAxis1);
 
-	float32 translation = b2Dot(d, axis);
+	qreal translation = b2Dot(d, axis);
 	return translation;
 }
 
-float32 b2LineJoint::GetJointSpeed() const
+qreal b2LineJoint::GetJointSpeed() const
 {
 	b2Body* b1 = m_bodyA;
 	b2Body* b2 = m_bodyB;
@@ -516,10 +516,10 @@ float32 b2LineJoint::GetJointSpeed() const
 
 	b2Vec2 v1 = b1->m_linearVelocity;
 	b2Vec2 v2 = b2->m_linearVelocity;
-	float32 w1 = b1->m_angularVelocity;
-	float32 w2 = b2->m_angularVelocity;
+	qreal w1 = b1->m_angularVelocity;
+	qreal w2 = b2->m_angularVelocity;
 
-	float32 speed = b2Dot(d, b2Cross(w1, axis)) + b2Dot(axis, v2 + b2Cross(w2, r2) - v1 - b2Cross(w1, r1));
+	qreal speed = b2Dot(d, b2Cross(w1, axis)) + b2Dot(axis, v2 + b2Cross(w2, r2) - v1 - b2Cross(w1, r1));
 	return speed;
 }
 
@@ -535,17 +535,17 @@ void b2LineJoint::EnableLimit(bool flag)
 	m_enableLimit = flag;
 }
 
-float32 b2LineJoint::GetLowerLimit() const
+qreal b2LineJoint::GetLowerLimit() const
 {
 	return m_lowerTranslation;
 }
 
-float32 b2LineJoint::GetUpperLimit() const
+qreal b2LineJoint::GetUpperLimit() const
 {
 	return m_upperTranslation;
 }
 
-void b2LineJoint::SetLimits(float32 lower, float32 upper)
+void b2LineJoint::SetLimits(qreal lower, qreal upper)
 {
 	b2Assert(lower <= upper);
 	m_bodyA->SetAwake(true);
@@ -566,21 +566,21 @@ void b2LineJoint::EnableMotor(bool flag)
 	m_enableMotor = flag;
 }
 
-void b2LineJoint::SetMotorSpeed(float32 speed)
+void b2LineJoint::SetMotorSpeed(qreal speed)
 {
 	m_bodyA->SetAwake(true);
 	m_bodyB->SetAwake(true);
 	m_motorSpeed = speed;
 }
 
-void b2LineJoint::SetMaxMotorForce(float32 force)
+void b2LineJoint::SetMaxMotorForce(qreal force)
 {
 	m_bodyA->SetAwake(true);
 	m_bodyB->SetAwake(true);
 	m_maxMotorForce = force;
 }
 
-float32 b2LineJoint::GetMotorForce(float32 inv_dt) const
+qreal b2LineJoint::GetMotorForce(qreal inv_dt) const
 {
 	return inv_dt * m_motorImpulse;
 }

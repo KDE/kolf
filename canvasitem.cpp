@@ -158,14 +158,17 @@ void CanvasItem::endSimulation()
 {
 	//read position
 	b2Vec2 v = m_body->GetPosition();
-	setPosition(QPointF(v.x, v.y));
+	QPointF position(v.x, v.y);
+	if (position != getPosition())
+		//HACK: The above condition can be removed later, but for now we need to
+		//prevent moveBy() from being called with (0, 0) arguments because such
+		//have a non-standard behavior with some classes (e.g. Ball), i.e. these
+		//arguments trigger some black magic
+		setPosition(position);
 	//read velocity
 	v = m_body->GetLinearVelocity();
-	const QPointF velocity(v.x, v.y);
-	setVelocity(velocity);
-	//unset m_velocityChanged if there was no manual change since last simulation step (TODO: necessary?)
-	if (velocity == m_physicalVelocity)
-		m_velocityChanged = false;
+	setPhysicalVelocity(QPointF(v.x, v.y));
+	m_velocityChanged = false; //this was no manual change
 }
 
 Kolf::Overlay* CanvasItem::overlay(bool createIfNecessary)

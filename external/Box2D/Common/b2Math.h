@@ -28,7 +28,7 @@
 
 /// This function is used to ensure that a floating point number is
 /// not a NaN or infinity.
-inline bool b2IsValid(float32 x)
+inline bool b2IsValid(qreal x)
 {
 	if (x != x)
 	{
@@ -36,22 +36,26 @@ inline bool b2IsValid(float32 x)
 		return false;
 	}
 
-	float32 infinity = std::numeric_limits<float32>::infinity();
+	qreal infinity = std::numeric_limits<qreal>::infinity();
 	return -infinity < x && x < infinity;
 }
 
+template<size_t size> struct b2InvSqrt_magic;
+template<> struct b2InvSqrt_magic<4> { static inline int32_t value() { return 0x5f3759df; } };
+template<> struct b2InvSqrt_magic<8> { static inline int64_t value() { return 0x5fe6eb50c7aa19f9; } };
+
 /// This is a approximate yet fast inverse square-root.
-inline float32 b2InvSqrt(float32 x)
+inline qreal b2InvSqrt(qreal x)
 {
 	union
 	{
-		float32 x;
+		qreal x;
 		int32 i;
 	} convert;
 
 	convert.x = x;
-	float32 xhalf = 0.5f * x;
-	convert.i = 0x5f3759df - (convert.i >> 1);
+	qreal xhalf = 0.5f * x;
+	convert.i = b2InvSqrt_magic<sizeof(qreal)>::value() - (convert.i >> 1);
 	x = convert.x;
 	x = x * (1.5f - xhalf * x * x);
 	return x;
@@ -60,7 +64,7 @@ inline float32 b2InvSqrt(float32 x)
 #define	b2Sqrt(x)	std::sqrt(x)
 #define	b2Atan2(y, x)	std::atan2(y, x)
 
-inline float32 b2Abs(float32 a)
+inline qreal b2Abs(qreal a)
 {
 	return a > 0.0f ? a : -a;
 }
@@ -72,25 +76,25 @@ struct b2Vec2
 	b2Vec2() {}
 
 	/// Construct using coordinates.
-	b2Vec2(float32 x, float32 y) : x(x), y(y) {}
+	b2Vec2(qreal x, qreal y) : x(x), y(y) {}
 
 	/// Set this vector to all zeros.
 	void SetZero() { x = 0.0f; y = 0.0f; }
 
 	/// Set this vector to some specified coordinates.
-	void Set(float32 x_, float32 y_) { x = x_; y = y_; }
+	void Set(qreal x_, qreal y_) { x = x_; y = y_; }
 
 	/// Negate this vector.
 	b2Vec2 operator -() const { b2Vec2 v; v.Set(-x, -y); return v; }
 	
 	/// Read from and indexed element.
-	float32 operator () (int32 i) const
+	qreal operator () (int32 i) const
 	{
 		return (&x)[i];
 	}
 
 	/// Write to an indexed element.
-	float32& operator () (int32 i)
+	qreal& operator () (int32 i)
 	{
 		return (&x)[i];
 	}
@@ -108,33 +112,33 @@ struct b2Vec2
 	}
 
 	/// Multiply this vector by a scalar.
-	void operator *= (float32 a)
+	void operator *= (qreal a)
 	{
 		x *= a; y *= a;
 	}
 
 	/// Get the length of this vector (the norm).
-	float32 Length() const
+	qreal Length() const
 	{
 		return b2Sqrt(x * x + y * y);
 	}
 
 	/// Get the length squared. For performance, use this instead of
 	/// b2Vec2::Length (if possible).
-	float32 LengthSquared() const
+	qreal LengthSquared() const
 	{
 		return x * x + y * y;
 	}
 
 	/// Convert this vector into a unit vector. Returns the length.
-	float32 Normalize()
+	qreal Normalize()
 	{
-		float32 length = Length();
+		qreal length = Length();
 		if (length < b2_epsilon)
 		{
 			return 0.0f;
 		}
-		float32 invLength = 1.0f / length;
+		qreal invLength = 1.0f / length;
 		x *= invLength;
 		y *= invLength;
 
@@ -147,7 +151,7 @@ struct b2Vec2
 		return b2IsValid(x) && b2IsValid(y);
 	}
 
-	float32 x, y;
+	qreal x, y;
 };
 
 /// A 2D column vector with 3 elements.
@@ -157,13 +161,13 @@ struct b2Vec3
 	b2Vec3() {}
 
 	/// Construct using coordinates.
-	b2Vec3(float32 x, float32 y, float32 z) : x(x), y(y), z(z) {}
+	b2Vec3(qreal x, qreal y, qreal z) : x(x), y(y), z(z) {}
 
 	/// Set this vector to all zeros.
 	void SetZero() { x = 0.0f; y = 0.0f; z = 0.0f; }
 
 	/// Set this vector to some specified coordinates.
-	void Set(float32 x_, float32 y_, float32 z_) { x = x_; y = y_; z = z_; }
+	void Set(qreal x_, qreal y_, qreal z_) { x = x_; y = y_; z = z_; }
 
 	/// Negate this vector.
 	b2Vec3 operator -() const { b2Vec3 v; v.Set(-x, -y, -z); return v; }
@@ -181,12 +185,12 @@ struct b2Vec3
 	}
 
 	/// Multiply this vector by a scalar.
-	void operator *= (float32 s)
+	void operator *= (qreal s)
 	{
 		x *= s; y *= s; z *= s;
 	}
 
-	float32 x, y, z;
+	qreal x, y, z;
 };
 
 /// A 2-by-2 matrix. Stored in column-major order.
@@ -203,7 +207,7 @@ struct b2Mat22
 	}
 
 	/// Construct this matrix using scalars.
-	b2Mat22(float32 a11, float32 a12, float32 a21, float32 a22)
+	b2Mat22(qreal a11, qreal a12, qreal a21, qreal a22)
 	{
 		col1.x = a11; col1.y = a21;
 		col2.x = a12; col2.y = a22;
@@ -211,10 +215,10 @@ struct b2Mat22
 
 	/// Construct this matrix using an angle. This matrix becomes
 	/// an orthonormal rotation matrix.
-	explicit b2Mat22(float32 angle)
+	explicit b2Mat22(qreal angle)
 	{
 		// TODO_ERIN compute sin+cos together.
-		float32 c = cosf(angle), s = sinf(angle);
+		qreal c = cosf(angle), s = sinf(angle);
 		col1.x = c; col2.x = -s;
 		col1.y = s; col2.y = c;
 	}
@@ -228,9 +232,9 @@ struct b2Mat22
 
 	/// Initialize this matrix using an angle. This matrix becomes
 	/// an orthonormal rotation matrix.
-	void Set(float32 angle)
+	void Set(qreal angle)
 	{
-		float32 c = cosf(angle), s = sinf(angle);
+		qreal c = cosf(angle), s = sinf(angle);
 		col1.x = c; col2.x = -s;
 		col1.y = s; col2.y = c;
 	}
@@ -251,16 +255,16 @@ struct b2Mat22
 
 	/// Extract the angle from this matrix (assumed to be
 	/// a rotation matrix).
-	float32 GetAngle() const
+	qreal GetAngle() const
 	{
 		return b2Atan2(col1.y, col1.x);
 	}
 
 	b2Mat22 GetInverse() const
 	{
-		float32 a = col1.x, b = col2.x, c = col1.y, d = col2.y;
+		qreal a = col1.x, b = col2.x, c = col1.y, d = col2.y;
 		b2Mat22 B;
-		float32 det = a * d - b * c;
+		qreal det = a * d - b * c;
 		if (det != 0.0f)
 		{
 			det = 1.0f / det;
@@ -274,8 +278,8 @@ struct b2Mat22
 	/// than computing the inverse in one-shot cases.
 	b2Vec2 Solve(const b2Vec2& b) const
 	{
-		float32 a11 = col1.x, a12 = col2.x, a21 = col1.y, a22 = col2.y;
-		float32 det = a11 * a22 - a12 * a21;
+		qreal a11 = col1.x, a12 = col2.x, a21 = col1.y, a22 = col2.y;
+		qreal det = a11 * a22 - a12 * a21;
 		if (det != 0.0f)
 		{
 			det = 1.0f / det;
@@ -341,14 +345,14 @@ struct b2Transform
 	}
 
 	/// Set this based on the position and angle.
-	void Set(const b2Vec2& p, float32 angle)
+	void Set(const b2Vec2& p, qreal angle)
 	{
 		position = p;
 		R.Set(angle);
 	}
 
 	/// Calculate the angle that the rotation matrix represents.
-	float32 GetAngle() const
+	qreal GetAngle() const
 	{
 		return b2Atan2(R.col1.y, R.col1.x);
 	}
@@ -365,22 +369,22 @@ struct b2Sweep
 {
 	/// Get the interpolated transform at a specific time.
 	/// @param beta is a factor in [0,1], where 0 indicates alpha0.
-	void GetTransform(b2Transform* xf, float32 beta) const;
+	void GetTransform(b2Transform* xf, qreal beta) const;
 
 	/// Advance the sweep forward, yielding a new initial state.
 	/// @param alpha the new initial time.
-	void Advance(float32 alpha);
+	void Advance(qreal alpha);
 
 	/// Normalize the angles.
 	void Normalize();
 
 	b2Vec2 localCenter;	///< local center of mass position
 	b2Vec2 c0, c;		///< center world positions
-	float32 a0, a;		///< world angles
+	qreal a0, a;		///< world angles
 
 	/// Fraction of the current time step in the range [0,1]
 	/// c0 and a0 are the positions at alpha0.
-	float32 alpha0;
+	qreal alpha0;
 };
 
 
@@ -389,27 +393,27 @@ extern const b2Mat22 b2Mat22_identity;
 extern const b2Transform b2Transform_identity;
 
 /// Perform the dot product on two vectors.
-inline float32 b2Dot(const b2Vec2& a, const b2Vec2& b)
+inline qreal b2Dot(const b2Vec2& a, const b2Vec2& b)
 {
 	return a.x * b.x + a.y * b.y;
 }
 
 /// Perform the cross product on two vectors. In 2D this produces a scalar.
-inline float32 b2Cross(const b2Vec2& a, const b2Vec2& b)
+inline qreal b2Cross(const b2Vec2& a, const b2Vec2& b)
 {
 	return a.x * b.y - a.y * b.x;
 }
 
 /// Perform the cross product on a vector and a scalar. In 2D this produces
 /// a vector.
-inline b2Vec2 b2Cross(const b2Vec2& a, float32 s)
+inline b2Vec2 b2Cross(const b2Vec2& a, qreal s)
 {
 	return b2Vec2(s * a.y, -s * a.x);
 }
 
 /// Perform the cross product on a scalar and a vector. In 2D this produces
 /// a vector.
-inline b2Vec2 b2Cross(float32 s, const b2Vec2& a)
+inline b2Vec2 b2Cross(qreal s, const b2Vec2& a)
 {
 	return b2Vec2(-s * a.y, s * a.x);
 }
@@ -440,7 +444,7 @@ inline b2Vec2 operator - (const b2Vec2& a, const b2Vec2& b)
 	return b2Vec2(a.x - b.x, a.y - b.y);
 }
 
-inline b2Vec2 operator * (float32 s, const b2Vec2& a)
+inline b2Vec2 operator * (qreal s, const b2Vec2& a)
 {
 	return b2Vec2(s * a.x, s * a.y);
 }
@@ -450,19 +454,19 @@ inline bool operator == (const b2Vec2& a, const b2Vec2& b)
 	return a.x == b.x && a.y == b.y;
 }
 
-inline float32 b2Distance(const b2Vec2& a, const b2Vec2& b)
+inline qreal b2Distance(const b2Vec2& a, const b2Vec2& b)
 {
 	b2Vec2 c = a - b;
 	return c.Length();
 }
 
-inline float32 b2DistanceSquared(const b2Vec2& a, const b2Vec2& b)
+inline qreal b2DistanceSquared(const b2Vec2& a, const b2Vec2& b)
 {
 	b2Vec2 c = a - b;
 	return b2Dot(c, c);
 }
 
-inline b2Vec3 operator * (float32 s, const b2Vec3& a)
+inline b2Vec3 operator * (qreal s, const b2Vec3& a)
 {
 	return b2Vec3(s * a.x, s * a.y, s * a.z);
 }
@@ -480,7 +484,7 @@ inline b2Vec3 operator - (const b2Vec3& a, const b2Vec3& b)
 }
 
 /// Perform the dot product on two vectors.
-inline float32 b2Dot(const b2Vec3& a, const b2Vec3& b)
+inline qreal b2Dot(const b2Vec3& a, const b2Vec3& b)
 {
 	return a.x * b.x + a.y * b.y + a.z * b.z;
 }
@@ -518,8 +522,8 @@ inline b2Vec3 b2Mul(const b2Mat33& A, const b2Vec3& v)
 
 inline b2Vec2 b2Mul(const b2Transform& T, const b2Vec2& v)
 {
-	float32 x = T.position.x + T.R.col1.x * v.x + T.R.col2.x * v.y;
-	float32 y = T.position.y + T.R.col1.y * v.x + T.R.col2.y * v.y;
+	qreal x = T.position.x + T.R.col1.x * v.x + T.R.col2.x * v.y;
+	qreal y = T.position.y + T.R.col1.y * v.x + T.R.col2.y * v.y;
 
 	return b2Vec2(x, y);
 }
@@ -554,6 +558,11 @@ inline T b2Min(T a, T b)
 	return a < b ? a : b;
 }
 
+inline qreal b2Min(qreal a, qreal b)
+{
+	return a < b ? a : b;
+}
+
 inline b2Vec2 b2Min(const b2Vec2& a, const b2Vec2& b)
 {
 	return b2Vec2(b2Min(a.x, b.x), b2Min(a.y, b.y));
@@ -565,6 +574,11 @@ inline T b2Max(T a, T b)
 	return a > b ? a : b;
 }
 
+inline qreal b2Max(qreal a, qreal b)
+{
+	return a > b ? a : b;
+}
+
 inline b2Vec2 b2Max(const b2Vec2& a, const b2Vec2& b)
 {
 	return b2Vec2(b2Max(a.x, b.x), b2Max(a.y, b.y));
@@ -572,6 +586,11 @@ inline b2Vec2 b2Max(const b2Vec2& a, const b2Vec2& b)
 
 template <typename T>
 inline T b2Clamp(T a, T low, T high)
+{
+	return b2Max(low, b2Min(a, high));
+}
+
+inline qreal b2Clamp(qreal a, qreal low, qreal high)
 {
 	return b2Max(low, b2Min(a, high));
 }
@@ -609,20 +628,20 @@ inline bool b2IsPowerOfTwo(uint32 x)
 	return result;
 }
 
-inline void b2Sweep::GetTransform(b2Transform* xf, float32 beta) const
+inline void b2Sweep::GetTransform(b2Transform* xf, qreal beta) const
 {
 	xf->position = (1.0f - beta) * c0 + beta * c;
-	float32 angle = (1.0f - beta) * a0 + beta * a;
+	qreal angle = (1.0f - beta) * a0 + beta * a;
 	xf->R.Set(angle);
 
 	// Shift to origin
 	xf->position -= b2Mul(xf->R, localCenter);
 }
 
-inline void b2Sweep::Advance(float32 alpha)
+inline void b2Sweep::Advance(qreal alpha)
 {
 	b2Assert(alpha0 < 1.0f);
-	float32 beta = (alpha - alpha0) / (1.0f - alpha0);
+	qreal beta = (alpha - alpha0) / (1.0f - alpha0);
 	c0 = (1.0f - beta) * c0 + beta * c;
 	a0 = (1.0f - beta) * a0 + beta * a;
 	alpha0 = alpha;
@@ -631,8 +650,8 @@ inline void b2Sweep::Advance(float32 alpha)
 /// Normalize an angle in radians to be between -pi and pi
 inline void b2Sweep::Normalize()
 {
-	float32 twoPi = 2.0f * b2_pi;
-	float32 d =  twoPi * floorf(a0 / twoPi);
+	qreal twoPi = 2.0f * b2_pi;
+	qreal d =  twoPi * floorf(a0 / twoPi);
 	a0 -= d;
 	a -= d;
 }

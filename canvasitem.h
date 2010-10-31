@@ -119,7 +119,7 @@ public:
 	virtual void moveBy(double , double) { kDebug(12007) << "Warning, empty moveBy used";} //needed so that float can call the own custom moveBy()s of everything on it
 
 	//The following is needed temporarily while CanvasItem is not a QGraphicsItem by itself.
-	virtual void setPosition(const QPointF& pos) = 0;
+	void setPosition(const QPointF& pos) { const QPointF diff = pos - getPosition(); moveBy(diff.x(), diff.y()); }
 	virtual QPointF getPosition() const = 0;
 protected:
 	///pointer to main KolfGame
@@ -165,6 +165,7 @@ private:
 		///Configure how this object will participate in physical simulation.
 		void setSimulationType(CanvasItem::SimulationType type);
 
+		friend class ::KolfGame; //for the following two methods
 		///The physics engine calls this method to prepare the object for the following simulation step. Subclass implementations have to call the base implementation just before returning.
 		virtual void startSimulation();
 		///The physics engine calls this method after calculating the next frame, to let the objects update their representation. Subclass implementations have to call the base implementation before anything else.
@@ -208,7 +209,6 @@ class EllipticalCanvasItem : public Tagaro::SpriteObjectItem, public CanvasItem
 		void saveSize(KConfigGroup* group);
 		void loadSize(KConfigGroup* group);
 
-		virtual void setPosition(const QPointF& pos) { QGraphicsItem::setPos(pos); }
 		virtual QPointF getPosition() const { return QGraphicsItem::pos(); }
 	private:
 		QGraphicsEllipseItem* m_ellipseItem;

@@ -43,8 +43,8 @@ b2ContactSolver::b2ContactSolver(b2ContactSolverDef* def)
 		b2Fixture* fixtureB = contact->m_fixtureB;
 		b2Shape* shapeA = fixtureA->GetShape();
 		b2Shape* shapeB = fixtureB->GetShape();
-		float32 radiusA = shapeA->m_radius;
-		float32 radiusB = shapeB->m_radius;
+		qreal radiusA = shapeA->m_radius;
+		qreal radiusB = shapeB->m_radius;
 		b2Body* bodyA = fixtureA->GetBody();
 		b2Body* bodyB = fixtureB->GetBody();
 		b2Manifold* manifold = contact->GetManifold();
@@ -107,16 +107,16 @@ void b2ContactSolver::InitializeVelocityConstraints()
 	{
 		b2ContactConstraint* cc = m_constraints + i;
 
-		float32 radiusA = cc->radiusA;
-		float32 radiusB = cc->radiusB;
+		qreal radiusA = cc->radiusA;
+		qreal radiusB = cc->radiusB;
 		b2Body* bodyA = cc->bodyA;
 		b2Body* bodyB = cc->bodyB;
 		b2Manifold* manifold = cc->manifold;
 
 		b2Vec2 vA = bodyA->m_linearVelocity;
 		b2Vec2 vB = bodyB->m_linearVelocity;
-		float32 wA = bodyA->m_angularVelocity;
-		float32 wB = bodyB->m_angularVelocity;
+		qreal wA = bodyA->m_angularVelocity;
+		qreal wB = bodyB->m_angularVelocity;
 
 		b2Assert(manifold->pointCount > 0);
 
@@ -133,31 +133,31 @@ void b2ContactSolver::InitializeVelocityConstraints()
 			ccp->rA = worldManifold.points[j] - bodyA->m_sweep.c;
 			ccp->rB = worldManifold.points[j] - bodyB->m_sweep.c;
 
-			float32 rnA = b2Cross(ccp->rA, cc->normal);
-			float32 rnB = b2Cross(ccp->rB, cc->normal);
+			qreal rnA = b2Cross(ccp->rA, cc->normal);
+			qreal rnB = b2Cross(ccp->rB, cc->normal);
 			rnA *= rnA;
 			rnB *= rnB;
 
-			float32 kNormal = bodyA->m_invMass + bodyB->m_invMass + bodyA->m_invI * rnA + bodyB->m_invI * rnB;
+			qreal kNormal = bodyA->m_invMass + bodyB->m_invMass + bodyA->m_invI * rnA + bodyB->m_invI * rnB;
 
 			b2Assert(kNormal > b2_epsilon);
 			ccp->normalMass = 1.0f / kNormal;
 
 			b2Vec2 tangent = b2Cross(cc->normal, 1.0f);
 
-			float32 rtA = b2Cross(ccp->rA, tangent);
-			float32 rtB = b2Cross(ccp->rB, tangent);
+			qreal rtA = b2Cross(ccp->rA, tangent);
+			qreal rtB = b2Cross(ccp->rB, tangent);
 			rtA *= rtA;
 			rtB *= rtB;
 
-			float32 kTangent = bodyA->m_invMass + bodyB->m_invMass + bodyA->m_invI * rtA + bodyB->m_invI * rtB;
+			qreal kTangent = bodyA->m_invMass + bodyB->m_invMass + bodyA->m_invI * rtA + bodyB->m_invI * rtB;
 
 			b2Assert(kTangent > b2_epsilon);
 			ccp->tangentMass = 1.0f /  kTangent;
 
 			// Setup a velocity bias for restitution.
 			ccp->velocityBias = 0.0f;
-			float32 vRel = b2Dot(cc->normal, vB + b2Cross(wB, ccp->rB) - vA - b2Cross(wA, ccp->rA));
+			qreal vRel = b2Dot(cc->normal, vB + b2Cross(wB, ccp->rB) - vA - b2Cross(wA, ccp->rA));
 			if (vRel < -b2_velocityThreshold)
 			{
 				ccp->velocityBias = -cc->restitution * vRel;
@@ -170,22 +170,22 @@ void b2ContactSolver::InitializeVelocityConstraints()
 			b2ContactConstraintPoint* ccp1 = cc->points + 0;
 			b2ContactConstraintPoint* ccp2 = cc->points + 1;
 
-			float32 invMassA = bodyA->m_invMass;
-			float32 invIA = bodyA->m_invI;
-			float32 invMassB = bodyB->m_invMass;
-			float32 invIB = bodyB->m_invI;
+			qreal invMassA = bodyA->m_invMass;
+			qreal invIA = bodyA->m_invI;
+			qreal invMassB = bodyB->m_invMass;
+			qreal invIB = bodyB->m_invI;
 
-			float32 rn1A = b2Cross(ccp1->rA, cc->normal);
-			float32 rn1B = b2Cross(ccp1->rB, cc->normal);
-			float32 rn2A = b2Cross(ccp2->rA, cc->normal);
-			float32 rn2B = b2Cross(ccp2->rB, cc->normal);
+			qreal rn1A = b2Cross(ccp1->rA, cc->normal);
+			qreal rn1B = b2Cross(ccp1->rB, cc->normal);
+			qreal rn2A = b2Cross(ccp2->rA, cc->normal);
+			qreal rn2B = b2Cross(ccp2->rB, cc->normal);
 
-			float32 k11 = invMassA + invMassB + invIA * rn1A * rn1A + invIB * rn1B * rn1B;
-			float32 k22 = invMassA + invMassB + invIA * rn2A * rn2A + invIB * rn2B * rn2B;
-			float32 k12 = invMassA + invMassB + invIA * rn1A * rn2A + invIB * rn1B * rn2B;
+			qreal k11 = invMassA + invMassB + invIA * rn1A * rn1A + invIB * rn1B * rn1B;
+			qreal k22 = invMassA + invMassB + invIA * rn2A * rn2A + invIB * rn2B * rn2B;
+			qreal k12 = invMassA + invMassB + invIA * rn1A * rn2A + invIB * rn1B * rn2B;
 
 			// Ensure a reasonable condition number.
-			const float32 k_maxConditionNumber = 100.0f;
+			const qreal k_maxConditionNumber = 100.0f;
 			if (k11 * k11 < k_maxConditionNumber * (k11 * k22 - k12 * k12))
 			{
 				// K is safe to invert.
@@ -212,10 +212,10 @@ void b2ContactSolver::WarmStart()
 
 		b2Body* bodyA = c->bodyA;
 		b2Body* bodyB = c->bodyB;
-		float32 invMassA = bodyA->m_invMass;
-		float32 invIA = bodyA->m_invI;
-		float32 invMassB = bodyB->m_invMass;
-		float32 invIB = bodyB->m_invI;
+		qreal invMassA = bodyA->m_invMass;
+		qreal invIA = bodyA->m_invI;
+		qreal invMassB = bodyB->m_invMass;
+		qreal invIB = bodyB->m_invI;
 		b2Vec2 normal = c->normal;
 		b2Vec2 tangent = b2Cross(normal, 1.0f);
 
@@ -238,17 +238,17 @@ void b2ContactSolver::SolveVelocityConstraints()
 		b2ContactConstraint* c = m_constraints + i;
 		b2Body* bodyA = c->bodyA;
 		b2Body* bodyB = c->bodyB;
-		float32 wA = bodyA->m_angularVelocity;
-		float32 wB = bodyB->m_angularVelocity;
+		qreal wA = bodyA->m_angularVelocity;
+		qreal wB = bodyB->m_angularVelocity;
 		b2Vec2 vA = bodyA->m_linearVelocity;
 		b2Vec2 vB = bodyB->m_linearVelocity;
-		float32 invMassA = bodyA->m_invMass;
-		float32 invIA = bodyA->m_invI;
-		float32 invMassB = bodyB->m_invMass;
-		float32 invIB = bodyB->m_invI;
+		qreal invMassA = bodyA->m_invMass;
+		qreal invIA = bodyA->m_invI;
+		qreal invMassB = bodyB->m_invMass;
+		qreal invIB = bodyB->m_invI;
 		b2Vec2 normal = c->normal;
 		b2Vec2 tangent = b2Cross(normal, 1.0f);
-		float32 friction = c->friction;
+		qreal friction = c->friction;
 
 		b2Assert(c->pointCount == 1 || c->pointCount == 2);
 
@@ -261,12 +261,12 @@ void b2ContactSolver::SolveVelocityConstraints()
 			b2Vec2 dv = vB + b2Cross(wB, ccp->rB) - vA - b2Cross(wA, ccp->rA);
 
 			// Compute tangent force
-			float32 vt = b2Dot(dv, tangent);
-			float32 lambda = ccp->tangentMass * (-vt);
+			qreal vt = b2Dot(dv, tangent);
+			qreal lambda = ccp->tangentMass * (-vt);
 
 			// b2Clamp the accumulated force
-			float32 maxFriction = friction * ccp->normalImpulse;
-			float32 newImpulse = b2Clamp(ccp->tangentImpulse + lambda, -maxFriction, maxFriction);
+			qreal maxFriction = friction * ccp->normalImpulse;
+			qreal newImpulse = b2Clamp(ccp->tangentImpulse + lambda, -maxFriction, maxFriction);
 			lambda = newImpulse - ccp->tangentImpulse;
 
 			// Apply contact impulse
@@ -290,11 +290,11 @@ void b2ContactSolver::SolveVelocityConstraints()
 			b2Vec2 dv = vB + b2Cross(wB, ccp->rB) - vA - b2Cross(wA, ccp->rA);
 
 			// Compute normal impulse
-			float32 vn = b2Dot(dv, normal);
-			float32 lambda = -ccp->normalMass * (vn - ccp->velocityBias);
+			qreal vn = b2Dot(dv, normal);
+			qreal lambda = -ccp->normalMass * (vn - ccp->velocityBias);
 
 			// b2Clamp the accumulated impulse
-			float32 newImpulse = b2Max(ccp->normalImpulse + lambda, 0.0f);
+			qreal newImpulse = b2Max(ccp->normalImpulse + lambda, 0.0f);
 			lambda = newImpulse - ccp->normalImpulse;
 
 			// Apply contact impulse
@@ -347,15 +347,15 @@ void b2ContactSolver::SolveVelocityConstraints()
 			b2Vec2 dv2 = vB + b2Cross(wB, cp2->rB) - vA - b2Cross(wA, cp2->rA);
 
 			// Compute normal velocity
-			float32 vn1 = b2Dot(dv1, normal);
-			float32 vn2 = b2Dot(dv2, normal);
+			qreal vn1 = b2Dot(dv1, normal);
+			qreal vn2 = b2Dot(dv2, normal);
 
 			b2Vec2 b;
 			b.x = vn1 - cp1->velocityBias;
 			b.y = vn2 - cp2->velocityBias;
 			b -= b2Mul(c->K, a);
 
-			const float32 k_errorTol = 1e-3f;
+			const qreal k_errorTol = 1e-3f;
 			B2_NOT_USED(k_errorTol);
 
 			for (;;)
@@ -601,13 +601,13 @@ struct b2PositionSolverManifold
 
 	b2Vec2 normal;
 	b2Vec2 point;
-	float32 separation;
+	qreal separation;
 };
 
 // Sequential solver.
-bool b2ContactSolver::SolvePositionConstraints(float32 baumgarte)
+bool b2ContactSolver::SolvePositionConstraints(qreal baumgarte)
 {
-	float32 minSeparation = 0.0f;
+	qreal minSeparation = 0.0f;
 
 	for (int32 i = 0; i < m_count; ++i)
 	{
@@ -615,10 +615,10 @@ bool b2ContactSolver::SolvePositionConstraints(float32 baumgarte)
 		b2Body* bodyA = c->bodyA;
 		b2Body* bodyB = c->bodyB;
 
-		float32 invMassA = bodyA->m_mass * bodyA->m_invMass;
-		float32 invIA = bodyA->m_mass * bodyA->m_invI;
-		float32 invMassB = bodyB->m_mass * bodyB->m_invMass;
-		float32 invIB = bodyB->m_mass * bodyB->m_invI;
+		qreal invMassA = bodyA->m_mass * bodyA->m_invMass;
+		qreal invIA = bodyA->m_mass * bodyA->m_invI;
+		qreal invMassB = bodyB->m_mass * bodyB->m_invMass;
+		qreal invIB = bodyB->m_mass * bodyB->m_invI;
 
 		// Solve normal constraints
 		for (int32 j = 0; j < c->pointCount; ++j)
@@ -628,7 +628,7 @@ bool b2ContactSolver::SolvePositionConstraints(float32 baumgarte)
 			b2Vec2 normal = psm.normal;
 
 			b2Vec2 point = psm.point;
-			float32 separation = psm.separation;
+			qreal separation = psm.separation;
 
 			b2Vec2 rA = point - bodyA->m_sweep.c;
 			b2Vec2 rB = point - bodyB->m_sweep.c;
@@ -637,15 +637,15 @@ bool b2ContactSolver::SolvePositionConstraints(float32 baumgarte)
 			minSeparation = b2Min(minSeparation, separation);
 
 			// Prevent large corrections and allow slop.
-			float32 C = b2Clamp(baumgarte * (separation + b2_linearSlop), -b2_maxLinearCorrection, 0.0f);
+			qreal C = b2Clamp(baumgarte * (separation + b2_linearSlop), -b2_maxLinearCorrection, 0.0f);
 
 			// Compute the effective mass.
-			float32 rnA = b2Cross(rA, normal);
-			float32 rnB = b2Cross(rB, normal);
-			float32 K = invMassA + invMassB + invIA * rnA * rnA + invIB * rnB * rnB;
+			qreal rnA = b2Cross(rA, normal);
+			qreal rnB = b2Cross(rB, normal);
+			qreal K = invMassA + invMassB + invIA * rnA * rnA + invIB * rnB * rnB;
 
 			// Compute normal impulse
-			float32 impulse = K > 0.0f ? - C / K : 0.0f;
+			qreal impulse = K > 0.0f ? - C / K : 0.0f;
 
 			b2Vec2 P = impulse * normal;
 
@@ -665,9 +665,9 @@ bool b2ContactSolver::SolvePositionConstraints(float32 baumgarte)
 }
 
 // Sequential position solver for position constraints.
-bool b2ContactSolver::SolveTOIPositionConstraints(float32 baumgarte, const b2Body* toiBodyA, const b2Body* toiBodyB)
+bool b2ContactSolver::SolveTOIPositionConstraints(qreal baumgarte, const b2Body* toiBodyA, const b2Body* toiBodyB)
 {
-	float32 minSeparation = 0.0f;
+	qreal minSeparation = 0.0f;
 
 	for (int32 i = 0; i < m_count; ++i)
 	{
@@ -675,22 +675,22 @@ bool b2ContactSolver::SolveTOIPositionConstraints(float32 baumgarte, const b2Bod
 		b2Body* bodyA = c->bodyA;
 		b2Body* bodyB = c->bodyB;
 
-		float32 massA = 0.0f;
+		qreal massA = 0.0f;
 		if (bodyA == toiBodyA || bodyA == toiBodyB)
 		{
 			massA = bodyA->m_mass;
 		}
 
-		float32 massB = 0.0f;
+		qreal massB = 0.0f;
 		if (bodyB == toiBodyA || bodyB == toiBodyB)
 		{
 			massB = bodyB->m_mass;
 		}
 
-		float32 invMassA = bodyA->m_mass * bodyA->m_invMass;
-		float32 invIA = bodyA->m_mass * bodyA->m_invI;
-		float32 invMassB = bodyB->m_mass * bodyB->m_invMass;
-		float32 invIB = bodyB->m_mass * bodyB->m_invI;
+		qreal invMassA = bodyA->m_mass * bodyA->m_invMass;
+		qreal invIA = bodyA->m_mass * bodyA->m_invI;
+		qreal invMassB = bodyB->m_mass * bodyB->m_invMass;
+		qreal invIB = bodyB->m_mass * bodyB->m_invI;
 
 		// Solve normal constraints
 		for (int32 j = 0; j < c->pointCount; ++j)
@@ -700,7 +700,7 @@ bool b2ContactSolver::SolveTOIPositionConstraints(float32 baumgarte, const b2Bod
 			b2Vec2 normal = psm.normal;
 
 			b2Vec2 point = psm.point;
-			float32 separation = psm.separation;
+			qreal separation = psm.separation;
 
 			b2Vec2 rA = point - bodyA->m_sweep.c;
 			b2Vec2 rB = point - bodyB->m_sweep.c;
@@ -709,15 +709,15 @@ bool b2ContactSolver::SolveTOIPositionConstraints(float32 baumgarte, const b2Bod
 			minSeparation = b2Min(minSeparation, separation);
 
 			// Prevent large corrections and allow slop.
-			float32 C = b2Clamp(baumgarte * (separation + b2_linearSlop), -b2_maxLinearCorrection, 0.0f);
+			qreal C = b2Clamp(baumgarte * (separation + b2_linearSlop), -b2_maxLinearCorrection, 0.0f);
 
 			// Compute the effective mass.
-			float32 rnA = b2Cross(rA, normal);
-			float32 rnB = b2Cross(rB, normal);
-			float32 K = invMassA + invMassB + invIA * rnA * rnA + invIB * rnB * rnB;
+			qreal rnA = b2Cross(rA, normal);
+			qreal rnB = b2Cross(rB, normal);
+			qreal K = invMassA + invMassB + invIA * rnA * rnA + invIB * rnB * rnB;
 
 			// Compute normal impulse
-			float32 impulse = K > 0.0f ? - C / K : 0.0f;
+			qreal impulse = K > 0.0f ? - C / K : 0.0f;
 
 			b2Vec2 P = impulse * normal;
 

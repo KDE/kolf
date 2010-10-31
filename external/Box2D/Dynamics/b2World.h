@@ -90,7 +90,7 @@ public:
 	/// @param timeStep the amount of time to simulate, this should not vary.
 	/// @param velocityIterations for the velocity constraint solver.
 	/// @param positionIterations for the position constraint solver.
-	void Step(	float32 timeStep,
+	void Step(	qreal timeStep,
 				int32 velocityIterations,
 				int32 positionIterations);
 
@@ -219,7 +219,7 @@ private:
 
 	// This is used to compute the time step ratio to
 	// support a variable time step.
-	float32 m_inv_dt0;
+	qreal m_inv_dt0;
 
 	// These are for debugging the solver.
 	bool m_warmStarting;

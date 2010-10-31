@@ -20,7 +20,11 @@
 #define B2_SETTINGS_H
 
 #include <cassert>
+#include <cfloat>
 #include <cmath>
+#include <climits>
+#include <stdint.h>
+#include <QtCore/qmath.h>
 
 #define B2_NOT_USED(x) ((void)(x))
 #define b2Assert(A) assert(A)
@@ -31,11 +35,22 @@ typedef signed int int32;
 typedef unsigned char uint8;
 typedef unsigned short uint16;
 typedef unsigned int uint32;
-typedef float float32;
 
-#define	b2_maxFloat		FLT_MAX
-#define	b2_epsilon		FLT_EPSILON
-#define b2_pi			3.14159265359f
+template<size_t fltsize> struct b2_floatValues;
+template<> struct b2_floatValues<4> {
+	static inline float maxFloat() { return FLT_MAX; }
+	static inline float epsilon() { return FLT_EPSILON; }
+	static inline float pi() { return 3.14159265359f; }
+};
+template<> struct b2_floatValues<8> {
+	static inline double maxFloat() { return DBL_MAX; }
+	static inline double epsilon() { return DBL_EPSILON; }
+	static inline double pi() { return M_PI; }
+};
+
+#define	b2_maxFloat		b2_floatValues<sizeof(qreal)>::maxFloat()
+#define	b2_epsilon		b2_floatValues<sizeof(qreal)>::epsilon()
+#define b2_pi			b2_floatValues<sizeof(qreal)>::pi()
 
 /// @file
 /// Global tuning constants based on meters-kilograms-seconds (MKS) units.
@@ -142,13 +157,13 @@ struct b2Version
 extern b2Version b2_version;
 
 /// Friction mixing law. Feel free to customize this.
-inline float32 b2MixFriction(float32 friction1, float32 friction2)
+inline qreal b2MixFriction(qreal friction1, qreal friction2)
 {
 	return std::sqrt(friction1 * friction2);
 }
 
 /// Restitution mixing law. Feel free to customize this.
-inline float32 b2MixRestitution(float32 restitution1, float32 restitution2)
+inline qreal b2MixRestitution(qreal restitution1, qreal restitution2)
 {
 	return restitution1 > restitution2 ? restitution1 : restitution2;
 }

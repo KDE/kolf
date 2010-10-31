@@ -56,7 +56,7 @@ void b2RopeJoint::InitVelocityConstraints(const b2TimeStep& step)
 
 	m_length = m_u.Length();
 
-	float32 C = m_length - m_maxLength;
+	qreal C = m_length - m_maxLength;
 	if (C > 0.0f)
 	{
 		m_state = e_atUpperLimit;
@@ -79,9 +79,9 @@ void b2RopeJoint::InitVelocityConstraints(const b2TimeStep& step)
 	}
 
 	// Compute effective mass.
-	float32 crA = b2Cross(m_rA, m_u);
-	float32 crB = b2Cross(m_rB, m_u);
-	float32 invMass = bA->m_invMass + bA->m_invI * crA * crA + bB->m_invMass + bB->m_invI * crB * crB;
+	qreal crA = b2Cross(m_rA, m_u);
+	qreal crB = b2Cross(m_rB, m_u);
+	qreal invMass = bA->m_invMass + bA->m_invI * crA * crA + bB->m_invMass + bB->m_invI * crB * crB;
 
 	m_mass = invMass != 0.0f ? 1.0f / invMass : 0.0f;
 
@@ -112,8 +112,8 @@ void b2RopeJoint::SolveVelocityConstraints(const b2TimeStep& step)
 	// Cdot = dot(u, v + cross(w, r))
 	b2Vec2 vA = bA->m_linearVelocity + b2Cross(bA->m_angularVelocity, m_rA);
 	b2Vec2 vB = bB->m_linearVelocity + b2Cross(bB->m_angularVelocity, m_rB);
-	float32 C = m_length - m_maxLength;
-	float32 Cdot = b2Dot(m_u, vB - vA);
+	qreal C = m_length - m_maxLength;
+	qreal Cdot = b2Dot(m_u, vB - vA);
 
 	// Predictive constraint.
 	if (C < 0.0f)
@@ -121,8 +121,8 @@ void b2RopeJoint::SolveVelocityConstraints(const b2TimeStep& step)
 		Cdot += step.inv_dt * C;
 	}
 
-	float32 impulse = -m_mass * Cdot;
-	float32 oldImpulse = m_impulse;
+	qreal impulse = -m_mass * Cdot;
+	qreal oldImpulse = m_impulse;
 	m_impulse = b2Min(0.0f, m_impulse + impulse);
 	impulse = m_impulse - oldImpulse;
 
@@ -133,7 +133,7 @@ void b2RopeJoint::SolveVelocityConstraints(const b2TimeStep& step)
 	bB->m_angularVelocity += bB->m_invI * b2Cross(m_rB, P);
 }
 
-bool b2RopeJoint::SolvePositionConstraints(float32 baumgarte)
+bool b2RopeJoint::SolvePositionConstraints(qreal baumgarte)
 {
 	B2_NOT_USED(baumgarte);
 
@@ -145,12 +145,12 @@ bool b2RopeJoint::SolvePositionConstraints(float32 baumgarte)
 
 	b2Vec2 u = bB->m_sweep.c + rB - bA->m_sweep.c - rA;
 
-	float32 length = u.Normalize();
-	float32 C = length - m_maxLength;
+	qreal length = u.Normalize();
+	qreal C = length - m_maxLength;
 
 	C = b2Clamp(C, 0.0f, b2_maxLinearCorrection);
 
-	float32 impulse = -m_mass * C;
+	qreal impulse = -m_mass * C;
 	b2Vec2 P = impulse * u;
 
 	bA->m_sweep.c -= bA->m_invMass * P;
@@ -174,19 +174,19 @@ b2Vec2 b2RopeJoint::GetAnchorB() const
 	return m_bodyB->GetWorldPoint(m_localAnchorB);
 }
 
-b2Vec2 b2RopeJoint::GetReactionForce(float32 inv_dt) const
+b2Vec2 b2RopeJoint::GetReactionForce(qreal inv_dt) const
 {
 	b2Vec2 F = (inv_dt * m_impulse) * m_u;
 	return F;
 }
 
-float32 b2RopeJoint::GetReactionTorque(float32 inv_dt) const
+qreal b2RopeJoint::GetReactionTorque(qreal inv_dt) const
 {
 	B2_NOT_USED(inv_dt);
 	return 0.0f;
 }
 
-float32 b2RopeJoint::GetMaxLength() const
+qreal b2RopeJoint::GetMaxLength() const
 {
 	return m_maxLength;
 }

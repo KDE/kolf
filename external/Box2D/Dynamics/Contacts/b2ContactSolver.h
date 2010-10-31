@@ -32,11 +32,11 @@ struct b2ContactConstraintPoint
 	b2Vec2 localPoint;
 	b2Vec2 rA;
 	b2Vec2 rB;
-	float32 normalImpulse;
-	float32 tangentImpulse;
-	float32 normalMass;
-	float32 tangentMass;
-	float32 velocityBias;
+	qreal normalImpulse;
+	qreal tangentImpulse;
+	qreal normalMass;
+	qreal tangentMass;
+	qreal velocityBias;
 };
 
 struct b2ContactConstraint
@@ -50,9 +50,9 @@ struct b2ContactConstraint
 	b2Body* bodyA;
 	b2Body* bodyB;
 	b2Manifold::Type type;
-	float32 radiusA, radiusB;
-	float32 friction;
-	float32 restitution;
+	qreal radiusA, radiusB;
+	qreal friction;
+	qreal restitution;
 	int32 pointCount;
 	b2Manifold* manifold;
 };
@@ -62,7 +62,7 @@ struct b2ContactSolverDef
 	b2Contact** contacts;
 	int32 count;
 	b2StackAllocator* allocator;
-	float32 impulseRatio;
+	qreal impulseRatio;
 	bool warmStarting;
 };
 
@@ -78,8 +78,8 @@ public:
 	void SolveVelocityConstraints();
 	void StoreImpulses();
 
-	bool SolvePositionConstraints(float32 baumgarte);
-	bool SolveTOIPositionConstraints(float32 baumgarte, const b2Body* toiBodyA, const b2Body* toiBodyB);
+	bool SolvePositionConstraints(qreal baumgarte);
+	bool SolveTOIPositionConstraints(qreal baumgarte, const b2Body* toiBodyA, const b2Body* toiBodyB);
 
 	b2StackAllocator* m_allocator;
 	b2ContactConstraint* m_constraints;

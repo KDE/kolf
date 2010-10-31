@@ -52,13 +52,13 @@ enum b2LimitState
 struct b2Jacobian
 {
 	b2Vec2 linearA;
-	float32 angularA;
+	qreal angularA;
 	b2Vec2 linearB;
-	float32 angularB;
+	qreal angularB;
 
 	void SetZero();
-	void Set(const b2Vec2& x1, float32 a1, const b2Vec2& x2, float32 a2);
-	float32 Compute(const b2Vec2& x1, float32 a1, const b2Vec2& x2, float32 a2);
+	void Set(const b2Vec2& x1, qreal a1, const b2Vec2& x2, qreal a2);
+	qreal Compute(const b2Vec2& x1, qreal a1, const b2Vec2& x2, qreal a2);
 };
 
 /// A joint edge is used to connect bodies and joints together
@@ -124,10 +124,10 @@ public:
 	virtual b2Vec2 GetAnchorB() const = 0;
 
 	/// Get the reaction force on body2 at the joint anchor in Newtons.
-	virtual b2Vec2 GetReactionForce(float32 inv_dt) const = 0;
+	virtual b2Vec2 GetReactionForce(qreal inv_dt) const = 0;
 
 	/// Get the reaction torque on body2 in N*m.
-	virtual float32 GetReactionTorque(float32 inv_dt) const = 0;
+	virtual qreal GetReactionTorque(qreal inv_dt) const = 0;
 
 	/// Get the next joint the world joint list.
 	b2Joint* GetNext();
@@ -157,7 +157,7 @@ protected:
 	virtual void SolveVelocityConstraints(const b2TimeStep& step) = 0;
 
 	// This returns true if the position errors are within tolerance.
-	virtual bool SolvePositionConstraints(float32 baumgarte) = 0;
+	virtual bool SolvePositionConstraints(qreal baumgarte) = 0;
 
 	b2JointType m_type;
 	b2Joint* m_prev;
@@ -175,8 +175,8 @@ protected:
 	// Cache here per time step to reduce cache misses.
 	// TODO_ERIN will be wrong if the mass changes.
 	b2Vec2 m_localCenterA, m_localCenterB;
-	float32 m_invMassA, m_invIA;
-	float32 m_invMassB, m_invIB;
+	qreal m_invMassA, m_invIA;
+	qreal m_invMassB, m_invIB;
 };
 
 inline void b2Jacobian::SetZero()
@@ -185,13 +185,13 @@ inline void b2Jacobian::SetZero()
 	linearB.SetZero(); angularB = 0.0f;
 }
 
-inline void b2Jacobian::Set(const b2Vec2& x1, float32 a1, const b2Vec2& x2, float32 a2)
+inline void b2Jacobian::Set(const b2Vec2& x1, qreal a1, const b2Vec2& x2, qreal a2)
 {
 	linearA = x1; angularA = a1;
 	linearB = x2; angularB = a2;
 }
 
-inline float32 b2Jacobian::Compute(const b2Vec2& x1, float32 a1, const b2Vec2& x2, float32 a2)
+inline qreal b2Jacobian::Compute(const b2Vec2& x1, qreal a1, const b2Vec2& x2, qreal a2)
 {
 	return b2Dot(linearA, x1) + angularA * a1 + b2Dot(linearB, x2) + angularB * a2;
 }

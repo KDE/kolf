@@ -59,26 +59,26 @@ struct b2RevoluteJointDef : public b2JointDef
 	b2Vec2 localAnchorB;
 
 	/// The body2 angle minus body1 angle in the reference state (radians).
-	float32 referenceAngle;
+	qreal referenceAngle;
 
 	/// A flag to enable joint limits.
 	bool enableLimit;
 
 	/// The lower angle for the joint limit (radians).
-	float32 lowerAngle;
+	qreal lowerAngle;
 
 	/// The upper angle for the joint limit (radians).
-	float32 upperAngle;
+	qreal upperAngle;
 
 	/// A flag to enable the joint motor.
 	bool enableMotor;
 
 	/// The desired motor speed. Usually in radians per second.
-	float32 motorSpeed;
+	qreal motorSpeed;
 
 	/// The maximum motor torque used to achieve the desired motor speed.
 	/// Usually in N-m.
-	float32 maxMotorTorque;
+	qreal maxMotorTorque;
 };
 
 /// A revolute joint constrains two bodies to share a common point while they
@@ -94,10 +94,10 @@ public:
 	b2Vec2 GetAnchorB() const;
 
 	/// Get the current joint angle in radians.
-	float32 GetJointAngle() const;
+	qreal GetJointAngle() const;
 
 	/// Get the current joint angle speed in radians per second.
-	float32 GetJointSpeed() const;
+	qreal GetJointSpeed() const;
 
 	/// Is the joint limit enabled?
 	bool IsLimitEnabled() const;
@@ -106,13 +106,13 @@ public:
 	void EnableLimit(bool flag);
 
 	/// Get the lower joint limit in radians.
-	float32 GetLowerLimit() const;
+	qreal GetLowerLimit() const;
 
 	/// Get the upper joint limit in radians.
-	float32 GetUpperLimit() const;
+	qreal GetUpperLimit() const;
 
 	/// Set the joint limits in radians.
-	void SetLimits(float32 lower, float32 upper);
+	void SetLimits(qreal lower, qreal upper);
 
 	/// Is the joint motor enabled?
 	bool IsMotorEnabled() const;
@@ -121,25 +121,25 @@ public:
 	void EnableMotor(bool flag);
 
 	/// Set the motor speed in radians per second.
-	void SetMotorSpeed(float32 speed);
+	void SetMotorSpeed(qreal speed);
 
 	/// Get the motor speed in radians per second.
-	float32 GetMotorSpeed() const;
+	qreal GetMotorSpeed() const;
 
 	/// Set the maximum motor torque, usually in N-m.
-	void SetMaxMotorTorque(float32 torque);
+	void SetMaxMotorTorque(qreal torque);
 
 	/// Get the reaction force given the inverse time step.
 	/// Unit is N.
-	b2Vec2 GetReactionForce(float32 inv_dt) const;
+	b2Vec2 GetReactionForce(qreal inv_dt) const;
 
 	/// Get the reaction torque due to the joint limit given the inverse time step.
 	/// Unit is N*m.
-	float32 GetReactionTorque(float32 inv_dt) const;
+	qreal GetReactionTorque(qreal inv_dt) const;
 
 	/// Get the current motor torque given the inverse time step.
 	/// Unit is N*m.
-	float32 GetMotorTorque(float32 inv_dt) const;
+	qreal GetMotorTorque(qreal inv_dt) const;
 
 protected:
 	
@@ -151,28 +151,28 @@ protected:
 	void InitVelocityConstraints(const b2TimeStep& step);
 	void SolveVelocityConstraints(const b2TimeStep& step);
 
-	bool SolvePositionConstraints(float32 baumgarte);
+	bool SolvePositionConstraints(qreal baumgarte);
 
 	b2Vec2 m_localAnchor1;	// relative
 	b2Vec2 m_localAnchor2;
 	b2Vec3 m_impulse;
-	float32 m_motorImpulse;
+	qreal m_motorImpulse;
 
 	b2Mat33 m_mass;			// effective mass for point-to-point constraint.
-	float32 m_motorMass;	// effective mass for motor/limit angular constraint.
+	qreal m_motorMass;	// effective mass for motor/limit angular constraint.
 	
 	bool m_enableMotor;
-	float32 m_maxMotorTorque;
-	float32 m_motorSpeed;
+	qreal m_maxMotorTorque;
+	qreal m_motorSpeed;
 
 	bool m_enableLimit;
-	float32 m_referenceAngle;
-	float32 m_lowerAngle;
-	float32 m_upperAngle;
+	qreal m_referenceAngle;
+	qreal m_lowerAngle;
+	qreal m_upperAngle;
 	b2LimitState m_limitState;
 };
 
-inline float32 b2RevoluteJoint::GetMotorSpeed() const
+inline qreal b2RevoluteJoint::GetMotorSpeed() const
 {
 	return m_motorSpeed;
 }

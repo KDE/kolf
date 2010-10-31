@@ -44,10 +44,10 @@ void b2CollideEdgeAndCircle(b2Manifold* manifold,
 	b2Vec2 e = B - A;
 
 	// Barycentric coordinates
-	float32 u = b2Dot(e, B - Q);
-	float32 v = b2Dot(e, Q - A);
+	qreal u = b2Dot(e, B - Q);
+	qreal v = b2Dot(e, Q - A);
 
-	float32 radius = edgeA->m_radius + circleB->m_radius;
+	qreal radius = edgeA->m_radius + circleB->m_radius;
 
 	b2ContactFeature cf;
 	cf.indexB = 0;
@@ -58,7 +58,7 @@ void b2CollideEdgeAndCircle(b2Manifold* manifold,
 	{
 		b2Vec2 P = A;
 		b2Vec2 d = Q - P;
-		float32 dd = b2Dot(d, d);
+		qreal dd = b2Dot(d, d);
 		if (dd > radius * radius)
 		{
 			return;
@@ -70,7 +70,7 @@ void b2CollideEdgeAndCircle(b2Manifold* manifold,
 			b2Vec2 A1 = edgeA->m_vertex0;
 			b2Vec2 B1 = A;
 			b2Vec2 e1 = B1 - A1;
-			float32 u1 = b2Dot(e1, B1 - Q);
+			qreal u1 = b2Dot(e1, B1 - Q);
 
 			// Is the circle in Region AB of the previous edge?
 			if (u1 > 0.0f)
@@ -96,7 +96,7 @@ void b2CollideEdgeAndCircle(b2Manifold* manifold,
 	{
 		b2Vec2 P = B;
 		b2Vec2 d = Q - P;
-		float32 dd = b2Dot(d, d);
+		qreal dd = b2Dot(d, d);
 		if (dd > radius * radius)
 		{
 			return;
@@ -108,7 +108,7 @@ void b2CollideEdgeAndCircle(b2Manifold* manifold,
 			b2Vec2 B2 = edgeA->m_vertex3;
 			b2Vec2 A2 = B;
 			b2Vec2 e2 = B2 - A2;
-			float32 v2 = b2Dot(e2, Q - A2);
+			qreal v2 = b2Dot(e2, Q - A2);
 
 			// Is the circle in Region AB of the next edge?
 			if (v2 > 0.0f)
@@ -130,11 +130,11 @@ void b2CollideEdgeAndCircle(b2Manifold* manifold,
 	}
 
 	// Region AB
-	float32 den = b2Dot(e, e);
+	qreal den = b2Dot(e, e);
 	b2Assert(den > 0.0f);
 	b2Vec2 P = (1.0f / den) * (u * A + v * B);
 	b2Vec2 d = Q - P;
-	float32 dd = b2Dot(d, d);
+	qreal dd = b2Dot(d, d);
 	if (dd > radius * radius)
 	{
 		return;
@@ -169,7 +169,7 @@ struct b2EPAxis
 
 	Type type;
 	int32 index;
-	float32 separation;
+	qreal separation;
 };
 
 // Edge shape plus more stuff.
@@ -211,7 +211,7 @@ struct b2EPCollider
 	b2Vec2 m_normal0, m_normal2;
 	b2Vec2 m_limit11, m_limit12;
 	b2Vec2 m_limit21, m_limit22;
-	float32 m_radius;
+	qreal m_radius;
 };
 
 b2EPCollider::b2EPCollider(const b2EdgeShape* edgeA, const b2Transform& xfA,
@@ -299,8 +299,8 @@ void b2EPCollider::Collide(b2Manifold* manifold)
 	}
 
 	// Use hysteresis for jitter reduction.
-	const float32 k_relativeTol = 0.98f;
-	const float32 k_absoluteTol = 0.001f;
+	const qreal k_relativeTol = 0.98f;
+	const qreal k_absoluteTol = 0.001f;
 
 	b2EPAxis primaryAxis;
 	if (polygonAxis.type == b2EPAxis::e_unknown)
@@ -351,11 +351,11 @@ void b2EPCollider::Collide(b2Manifold* manifold)
 	b2Vec2 planePoint = 0.5f * (v11 + v12);
 
 	// Face offset.
-	float32 frontOffset = b2Dot(normal, v11);
+	qreal frontOffset = b2Dot(normal, v11);
 
 	// Side offsets, extended by polytope skin thickness.
-	float32 sideOffset1 = -b2Dot(tangent, v11) + m_radius;
-	float32 sideOffset2 = b2Dot(tangent, v12) + m_radius;
+	qreal sideOffset1 = -b2Dot(tangent, v11) + m_radius;
+	qreal sideOffset2 = b2Dot(tangent, v12) + m_radius;
 
 	// Clip incident edge against extruded edge1 side edges.
 	b2ClipVertex clipPoints1[2];
@@ -393,7 +393,7 @@ void b2EPCollider::Collide(b2Manifold* manifold)
 	int32 pointCount = 0;
 	for (int32 i = 0; i < b2_maxManifoldPoints; ++i)
 	{
-		float32 separation;
+		qreal separation;
 		
 		separation = b2Dot(normal, clipPoints2[i].v) - frontOffset;
 
@@ -558,7 +558,7 @@ b2EPAxis b2EPCollider::ComputeEdgeSeparation()
 
 		for (int32 j = 0; j < m_proxyB.count; ++j)
 		{
-			float32 s = b2Dot(n, m_proxyB.vertices[j] - m_edgeA.v1);
+			qreal s = b2Dot(n, m_proxyB.vertices[j] - m_edgeA.v1);
 			if (s < axis.separation)
 			{
 				axis.separation = s;
@@ -598,9 +598,9 @@ b2EPAxis b2EPCollider::ComputePolygonSeparation()
 			continue;
 		}
 
-		float32 s1 = b2Dot(n, m_proxyB.vertices[i] - m_edgeA.v1);
-		float32 s2 = b2Dot(n, m_proxyB.vertices[i] - m_edgeA.v2);
-		float32 s = b2Min(s1, s2);
+		qreal s1 = b2Dot(n, m_proxyB.vertices[i] - m_edgeA.v1);
+		qreal s2 = b2Dot(n, m_proxyB.vertices[i] - m_edgeA.v2);
+		qreal s = b2Min(s1, s2);
 
 		if (s > m_radius)
 		{
@@ -636,10 +636,10 @@ void b2EPCollider::FindIncidentEdge(b2ClipVertex c[2], const b2EPProxy* proxy1, 
 
 	// Find the incident edge on proxy2.
 	int32 index = 0;
-	float32 minDot = b2_maxFloat;
+	qreal minDot = b2_maxFloat;
 	for (int32 i = 0; i < count2; ++i)
 	{
-		float32 dot = b2Dot(normal1, normals2[i]);
+		qreal dot = b2Dot(normal1, normals2[i]);
 		if (dot < minDot)
 		{
 			minDot = dot;

@@ -61,7 +61,7 @@ public:
 
 	/// Chains have zero mass.
 	/// @see b2Shape::ComputeMass
-	void ComputeMass(b2MassData* massData, float32 density) const;
+	void ComputeMass(b2MassData* massData, qreal density) const;
 
 	/// Get the number of vertices.
 	int32 GetCount() const { return m_count; }

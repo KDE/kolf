@@ -64,8 +64,8 @@ public:
 /// match up one-to-one with the contact points in b2Manifold.
 struct b2ContactImpulse
 {
-	float32 normalImpulses[b2_maxManifoldPoints];
-	float32 tangentImpulses[b2_maxManifoldPoints];
+	qreal normalImpulses[b2_maxManifoldPoints];
+	qreal tangentImpulses[b2_maxManifoldPoints];
 };
 
 /// Implement this class to get contact information. You can use these results for
@@ -147,17 +147,17 @@ public:
 	/// @param normal the normal vector at the point of intersection
 	/// @return -1 to filter, 0 to terminate, fraction to clip the ray for
 	/// closest hit, 1 to continue
-	virtual float32 ReportFixture(	b2Fixture* fixture, const b2Vec2& point,
-									const b2Vec2& normal, float32 fraction) = 0;
+	virtual qreal ReportFixture(	b2Fixture* fixture, const b2Vec2& point,
+									const b2Vec2& normal, qreal fraction) = 0;
 };
 
 /// Color for debug drawing. Each value has the range [0,1].
 struct b2Color
 {
 	b2Color() {}
-	b2Color(float32 r, float32 g, float32 b) : r(r), g(g), b(b) {}
-	void Set(float32 ri, float32 gi, float32 bi) { r = ri; g = gi; b = bi; }
-	float32 r, g, b;
+	b2Color(qreal r, qreal g, qreal b) : r(r), g(g), b(b) {}
+	void Set(qreal ri, qreal gi, qreal bi) { r = ri; g = gi; b = bi; }
+	qreal r, g, b;
 };
 
 /// Implement and register this class with a b2World to provide debug drawing of physics
@@ -197,10 +197,10 @@ public:
 	virtual void DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color) = 0;
 
 	/// Draw a circle.
-	virtual void DrawCircle(const b2Vec2& center, float32 radius, const b2Color& color) = 0;
+	virtual void DrawCircle(const b2Vec2& center, qreal radius, const b2Color& color) = 0;
 	
 	/// Draw a solid circle.
-	virtual void DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Vec2& axis, const b2Color& color) = 0;
+	virtual void DrawSolidCircle(const b2Vec2& center, qreal radius, const b2Vec2& axis, const b2Color& color) = 0;
 	
 	/// Draw a line segment.
 	virtual void DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color) = 0;

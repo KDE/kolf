@@ -71,7 +71,7 @@ void b2DistanceJoint::InitVelocityConstraints(const b2TimeStep& step)
 	m_u = b2->m_sweep.c + r2 - b1->m_sweep.c - r1;
 
 	// Handle singularity.
-	float32 length = m_u.Length();
+	qreal length = m_u.Length();
 	if (length > b2_linearSlop)
 	{
 		m_u *= 1.0f / length;
@@ -81,24 +81,24 @@ void b2DistanceJoint::InitVelocityConstraints(const b2TimeStep& step)
 		m_u.Set(0.0f, 0.0f);
 	}
 
-	float32 cr1u = b2Cross(r1, m_u);
-	float32 cr2u = b2Cross(r2, m_u);
-	float32 invMass = b1->m_invMass + b1->m_invI * cr1u * cr1u + b2->m_invMass + b2->m_invI * cr2u * cr2u;
+	qreal cr1u = b2Cross(r1, m_u);
+	qreal cr2u = b2Cross(r2, m_u);
+	qreal invMass = b1->m_invMass + b1->m_invI * cr1u * cr1u + b2->m_invMass + b2->m_invI * cr2u * cr2u;
 
 	m_mass = invMass != 0.0f ? 1.0f / invMass : 0.0f;
 
 	if (m_frequencyHz > 0.0f)
 	{
-		float32 C = length - m_length;
+		qreal C = length - m_length;
 
 		// Frequency
-		float32 omega = 2.0f * b2_pi * m_frequencyHz;
+		qreal omega = 2.0f * b2_pi * m_frequencyHz;
 
 		// Damping coefficient
-		float32 d = 2.0f * m_mass * m_dampingRatio * omega;
+		qreal d = 2.0f * m_mass * m_dampingRatio * omega;
 
 		// Spring stiffness
-		float32 k = m_mass * omega * omega;
+		qreal k = m_mass * omega * omega;
 
 		// magic formulas
 		m_gamma = step.dt * (d + step.dt * k);
@@ -139,9 +139,9 @@ void b2DistanceJoint::SolveVelocityConstraints(const b2TimeStep& step)
 	// Cdot = dot(u, v + cross(w, r))
 	b2Vec2 v1 = b1->m_linearVelocity + b2Cross(b1->m_angularVelocity, r1);
 	b2Vec2 v2 = b2->m_linearVelocity + b2Cross(b2->m_angularVelocity, r2);
-	float32 Cdot = b2Dot(m_u, v2 - v1);
+	qreal Cdot = b2Dot(m_u, v2 - v1);
 
-	float32 impulse = -m_mass * (Cdot + m_bias + m_gamma * m_impulse);
+	qreal impulse = -m_mass * (Cdot + m_bias + m_gamma * m_impulse);
 	m_impulse += impulse;
 
 	b2Vec2 P = impulse * m_u;
@@ -151,7 +151,7 @@ void b2DistanceJoint::SolveVelocityConstraints(const b2TimeStep& step)
 	b2->m_angularVelocity += b2->m_invI * b2Cross(r2, P);
 }
 
-bool b2DistanceJoint::SolvePositionConstraints(float32 baumgarte)
+bool b2DistanceJoint::SolvePositionConstraints(qreal baumgarte)
 {
 	B2_NOT_USED(baumgarte);
 
@@ -169,11 +169,11 @@ bool b2DistanceJoint::SolvePositionConstraints(float32 baumgarte)
 
 	b2Vec2 d = b2->m_sweep.c + r2 - b1->m_sweep.c - r1;
 
-	float32 length = d.Normalize();
-	float32 C = length - m_length;
+	qreal length = d.Normalize();
+	qreal C = length - m_length;
 	C = b2Clamp(C, -b2_maxLinearCorrection, b2_maxLinearCorrection);
 
-	float32 impulse = -m_mass * C;
+	qreal impulse = -m_mass * C;
 	m_u = d;
 	b2Vec2 P = impulse * m_u;
 
@@ -198,13 +198,13 @@ b2Vec2 b2DistanceJoint::GetAnchorB() const
 	return m_bodyB->GetWorldPoint(m_localAnchor2);
 }
 
-b2Vec2 b2DistanceJoint::GetReactionForce(float32 inv_dt) const
+b2Vec2 b2DistanceJoint::GetReactionForce(qreal inv_dt) const
 {
 	b2Vec2 F = (inv_dt * m_impulse) * m_u;
 	return F;
 }
 
-float32 b2DistanceJoint::GetReactionTorque(float32 inv_dt) const
+qreal b2DistanceJoint::GetReactionTorque(qreal inv_dt) const
 {
 	B2_NOT_USED(inv_dt);
 	return 0.0f;

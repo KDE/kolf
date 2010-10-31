@@ -71,8 +71,8 @@ void b2WeldJoint::InitVelocityConstraints(const b2TimeStep& step)
 	//     [  -r1y*iA*r1x-r2y*iB*r2x, mA+r1x^2*iA+mB+r2x^2*iB,           r1x*iA+r2x*iB]
 	//     [          -r1y*iA-r2y*iB,           r1x*iA+r2x*iB,                   iA+iB]
 
-	float32 mA = bA->m_invMass, mB = bB->m_invMass;
-	float32 iA = bA->m_invI, iB = bB->m_invI;
+	qreal mA = bA->m_invMass, mB = bB->m_invMass;
+	qreal iA = bA->m_invI, iB = bB->m_invI;
 
 	m_mass.col1.x = mA + mB + rA.y * rA.y * iA + rB.y * rB.y * iB;
 	m_mass.col2.x = -rA.y * rA.x * iA - rB.y * rB.x * iB;
@@ -111,19 +111,19 @@ void b2WeldJoint::SolveVelocityConstraints(const b2TimeStep& step)
 	b2Body* bB = m_bodyB;
 
 	b2Vec2 vA = bA->m_linearVelocity;
-	float32 wA = bA->m_angularVelocity;
+	qreal wA = bA->m_angularVelocity;
 	b2Vec2 vB = bB->m_linearVelocity;
-	float32 wB = bB->m_angularVelocity;
+	qreal wB = bB->m_angularVelocity;
 
-	float32 mA = bA->m_invMass, mB = bB->m_invMass;
-	float32 iA = bA->m_invI, iB = bB->m_invI;
+	qreal mA = bA->m_invMass, mB = bB->m_invMass;
+	qreal iA = bA->m_invI, iB = bB->m_invI;
 
 	b2Vec2 rA = b2Mul(bA->GetTransform().R, m_localAnchorA - bA->GetLocalCenter());
 	b2Vec2 rB = b2Mul(bB->GetTransform().R, m_localAnchorB - bB->GetLocalCenter());
 
 	// Solve point-to-point constraint
 	b2Vec2 Cdot1 = vB + b2Cross(wB, rB) - vA - b2Cross(wA, rA);
-	float32 Cdot2 = wB - wA;
+	qreal Cdot2 = wB - wA;
 	b2Vec3 Cdot(Cdot1.x, Cdot1.y, Cdot2);
 
 	b2Vec3 impulse = m_mass.Solve33(-Cdot);
@@ -143,26 +143,26 @@ void b2WeldJoint::SolveVelocityConstraints(const b2TimeStep& step)
 	bB->m_angularVelocity = wB;
 }
 
-bool b2WeldJoint::SolvePositionConstraints(float32 baumgarte)
+bool b2WeldJoint::SolvePositionConstraints(qreal baumgarte)
 {
 	B2_NOT_USED(baumgarte);
 
 	b2Body* bA = m_bodyA;
 	b2Body* bB = m_bodyB;
 
-	float32 mA = bA->m_invMass, mB = bB->m_invMass;
-	float32 iA = bA->m_invI, iB = bB->m_invI;
+	qreal mA = bA->m_invMass, mB = bB->m_invMass;
+	qreal iA = bA->m_invI, iB = bB->m_invI;
 
 	b2Vec2 rA = b2Mul(bA->GetTransform().R, m_localAnchorA - bA->GetLocalCenter());
 	b2Vec2 rB = b2Mul(bB->GetTransform().R, m_localAnchorB - bB->GetLocalCenter());
 
 	b2Vec2 C1 =  bB->m_sweep.c + rB - bA->m_sweep.c - rA;
-	float32 C2 = bB->m_sweep.a - bA->m_sweep.a - m_referenceAngle;
+	qreal C2 = bB->m_sweep.a - bA->m_sweep.a - m_referenceAngle;
 
 	// Handle large detachment.
-	const float32 k_allowedStretch = 10.0f * b2_linearSlop;
-	float32 positionError = C1.Length();
-	float32 angularError = b2Abs(C2);
+	const qreal k_allowedStretch = 10.0f * b2_linearSlop;
+	qreal positionError = C1.Length();
+	qreal angularError = b2Abs(C2);
 	if (positionError > k_allowedStretch)
 	{
 		iA *= 1.0f;
@@ -207,13 +207,13 @@ b2Vec2 b2WeldJoint::GetAnchorB() const
 	return m_bodyB->GetWorldPoint(m_localAnchorB);
 }
 
-b2Vec2 b2WeldJoint::GetReactionForce(float32 inv_dt) const
+b2Vec2 b2WeldJoint::GetReactionForce(qreal inv_dt) const
 {
 	b2Vec2 P(m_impulse.x, m_impulse.y);
 	return inv_dt * P;
 }
 
-float32 b2WeldJoint::GetReactionTorque(float32 inv_dt) const
+qreal b2WeldJoint::GetReactionTorque(qreal inv_dt) const
 {
 	return inv_dt * m_impulse.z;
 }

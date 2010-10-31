@@ -1,1 +1,5 @@
 This directory contains a source snapshot of Box2D, taken from revision 141 of http://box2d.googlecode.com/svn/trunk/Box2D/Box2D
+
+The following modifications have been made to the imported source files:
+* converted line-endings with dos2unix
+* changed from single-precision floats to qreal everywhere (this is basically the text replacement s/float32/qreal/g plus some mildly obscure additions in b2Math.h)

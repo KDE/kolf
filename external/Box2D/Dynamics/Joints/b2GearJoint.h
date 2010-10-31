@@ -45,7 +45,7 @@ struct b2GearJointDef : public b2JointDef
 
 	/// The gear ratio.
 	/// @see b2GearJoint for explanation.
-	float32 ratio;
+	qreal ratio;
 };
 
 /// A gear joint is used to connect two joints together. Either joint
@@ -63,12 +63,12 @@ public:
 	b2Vec2 GetAnchorA() const;
 	b2Vec2 GetAnchorB() const;
 
-	b2Vec2 GetReactionForce(float32 inv_dt) const;
-	float32 GetReactionTorque(float32 inv_dt) const;
+	b2Vec2 GetReactionForce(qreal inv_dt) const;
+	qreal GetReactionTorque(qreal inv_dt) const;
 
 	/// Set/Get the gear ratio.
-	void SetRatio(float32 ratio);
-	float32 GetRatio() const;
+	void SetRatio(qreal ratio);
+	qreal GetRatio() const;
 
 protected:
 
@@ -77,7 +77,7 @@ protected:
 
 	void InitVelocityConstraints(const b2TimeStep& step);
 	void SolveVelocityConstraints(const b2TimeStep& step);
-	bool SolvePositionConstraints(float32 baumgarte);
+	bool SolvePositionConstraints(qreal baumgarte);
 
 	b2Body* m_ground1;
 	b2Body* m_ground2;
@@ -98,14 +98,14 @@ protected:
 
 	b2Jacobian m_J;
 
-	float32 m_constant;
-	float32 m_ratio;
+	qreal m_constant;
+	qreal m_ratio;
 
 	// Effective mass
-	float32 m_mass;
+	qreal m_mass;
 
 	// Impulse for accumulation/warm starting.
-	float32 m_impulse;
+	qreal m_impulse;
 };
 
 #endif

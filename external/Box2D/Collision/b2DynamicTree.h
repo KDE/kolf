@@ -199,7 +199,7 @@ inline void b2DynamicTree::RayCast(T* callback, const b2RayCastInput& input) con
 	// Separating axis for segment (Gino, p80).
 	// |dot(v, p1 - c)| > dot(|v|, h)
 
-	float32 maxFraction = input.maxFraction;
+	qreal maxFraction = input.maxFraction;
 
 	// Build a bounding box for the segment.
 	b2AABB segmentAABB;
@@ -231,7 +231,7 @@ inline void b2DynamicTree::RayCast(T* callback, const b2RayCastInput& input) con
 		// |dot(v, p1 - c)| > dot(|v|, h)
 		b2Vec2 c = node->aabb.GetCenter();
 		b2Vec2 h = node->aabb.GetExtents();
-		float32 separation = b2Abs(b2Dot(v, p1 - c)) - b2Dot(abs_v, h);
+		qreal separation = b2Abs(b2Dot(v, p1 - c)) - b2Dot(abs_v, h);
 		if (separation > 0.0f)
 		{
 			continue;
@@ -244,7 +244,7 @@ inline void b2DynamicTree::RayCast(T* callback, const b2RayCastInput& input) con
 			subInput.p2 = input.p2;
 			subInput.maxFraction = maxFraction;
 
-			float32 value = callback->RayCastCallback(subInput, nodeId);
+			qreal value = callback->RayCastCallback(subInput, nodeId);
 
 			if (value == 0.0f)
 			{

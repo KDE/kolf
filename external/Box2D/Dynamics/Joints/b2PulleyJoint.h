@@ -21,7 +21,7 @@
 
 #include <Box2D/Dynamics/Joints/b2Joint.h>
 
-const float32 b2_minPulleyLength = 2.0f;
+const qreal b2_minPulleyLength = 2.0f;
 
 /// Pulley joint definition. This requires two ground anchors,
 /// two dynamic body anchor points, max lengths for each side,
@@ -47,7 +47,7 @@ struct b2PulleyJointDef : public b2JointDef
 	void Initialize(b2Body* bodyA, b2Body* bodyB,
 					const b2Vec2& groundAnchorA, const b2Vec2& groundAnchorB,
 					const b2Vec2& anchorA, const b2Vec2& anchorB,
-					float32 ratio);
+					qreal ratio);
 
 	/// The first ground anchor in world coordinates. This point never moves.
 	b2Vec2 groundAnchorA;
@@ -62,19 +62,19 @@ struct b2PulleyJointDef : public b2JointDef
 	b2Vec2 localAnchorB;
 
 	/// The a reference length for the segment attached to bodyA.
-	float32 lengthA;
+	qreal lengthA;
 
 	/// The maximum length of the segment attached to bodyA.
-	float32 maxLengthA;
+	qreal maxLengthA;
 
 	/// The a reference length for the segment attached to bodyB.
-	float32 lengthB;
+	qreal lengthB;
 
 	/// The maximum length of the segment attached to bodyB.
-	float32 maxLengthB;
+	qreal maxLengthB;
 
 	/// The pulley ratio, used to simulate a block-and-tackle.
-	float32 ratio;
+	qreal ratio;
 };
 
 /// The pulley joint is connected to two bodies and two fixed ground points.
@@ -89,8 +89,8 @@ public:
 	b2Vec2 GetAnchorA() const;
 	b2Vec2 GetAnchorB() const;
 
-	b2Vec2 GetReactionForce(float32 inv_dt) const;
-	float32 GetReactionTorque(float32 inv_dt) const;
+	b2Vec2 GetReactionForce(qreal inv_dt) const;
+	qreal GetReactionTorque(qreal inv_dt) const;
 
 	/// Get the first ground anchor.
 	b2Vec2 GetGroundAnchorA() const;
@@ -99,13 +99,13 @@ public:
 	b2Vec2 GetGroundAnchorB() const;
 
 	/// Get the current length of the segment attached to body1.
-	float32 GetLength1() const;
+	qreal GetLength1() const;
 
 	/// Get the current length of the segment attached to body2.
-	float32 GetLength2() const;
+	qreal GetLength2() const;
 
 	/// Get the pulley ratio.
-	float32 GetRatio() const;
+	qreal GetRatio() const;
 
 protected:
 
@@ -114,7 +114,7 @@ protected:
 
 	void InitVelocityConstraints(const b2TimeStep& step);
 	void SolveVelocityConstraints(const b2TimeStep& step);
-	bool SolvePositionConstraints(float32 baumgarte);
+	bool SolvePositionConstraints(qreal baumgarte);
 
 	b2Vec2 m_groundAnchor1;
 	b2Vec2 m_groundAnchor2;
@@ -124,21 +124,21 @@ protected:
 	b2Vec2 m_u1;
 	b2Vec2 m_u2;
 	
-	float32 m_constant;
-	float32 m_ratio;
+	qreal m_constant;
+	qreal m_ratio;
 	
-	float32 m_maxLength1;
-	float32 m_maxLength2;
+	qreal m_maxLength1;
+	qreal m_maxLength2;
 
 	// Effective masses
-	float32 m_pulleyMass;
-	float32 m_limitMass1;
-	float32 m_limitMass2;
+	qreal m_pulleyMass;
+	qreal m_limitMass1;
+	qreal m_limitMass2;
 
 	// Impulses for accumulation/warm starting.
-	float32 m_impulse;
-	float32 m_limitImpulse1;
-	float32 m_limitImpulse2;
+	qreal m_impulse;
+	qreal m_limitImpulse1;
+	qreal m_limitImpulse2;
 
 	b2LimitState m_state;
 	b2LimitState m_limitState1;

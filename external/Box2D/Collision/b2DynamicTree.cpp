@@ -192,15 +192,15 @@ void b2DynamicTree::InsertLeaf(int32 leaf)
 		m_nodes[sibling].aabb.Combine(leafAABB);
 		m_nodes[sibling].leafCount += 1;
 
-		float32 siblingArea = m_nodes[sibling].aabb.GetPerimeter();
+		qreal siblingArea = m_nodes[sibling].aabb.GetPerimeter();
 		b2AABB parentAABB;
 		parentAABB.Combine(m_nodes[sibling].aabb, leafAABB);
-		float32 parentArea = parentAABB.GetPerimeter();
-		float32 cost1 = 2.0f * parentArea;
+		qreal parentArea = parentAABB.GetPerimeter();
+		qreal cost1 = 2.0f * parentArea;
 
-		float32 inheritanceCost = 2.0f * (parentArea - siblingArea);
+		qreal inheritanceCost = 2.0f * (parentArea - siblingArea);
 
-		float32 cost2;
+		qreal cost2;
 		if (m_nodes[child1].IsLeaf())
 		{
 			b2AABB aabb;
@@ -211,12 +211,12 @@ void b2DynamicTree::InsertLeaf(int32 leaf)
 		{
 			b2AABB aabb;
 			aabb.Combine(leafAABB, m_nodes[child1].aabb);
-			float32 oldArea = m_nodes[child1].aabb.GetPerimeter();
-			float32 newArea = aabb.GetPerimeter();
+			qreal oldArea = m_nodes[child1].aabb.GetPerimeter();
+			qreal newArea = aabb.GetPerimeter();
 			cost2 = (newArea - oldArea) + inheritanceCost;
 		}
 
-		float32 cost3;
+		qreal cost3;
 		if (m_nodes[child2].IsLeaf())
 		{
 			b2AABB aabb;
@@ -227,8 +227,8 @@ void b2DynamicTree::InsertLeaf(int32 leaf)
 		{
 			b2AABB aabb;
 			aabb.Combine(leafAABB, m_nodes[child2].aabb);
-			float32 oldArea = m_nodes[child2].aabb.GetPerimeter();
-			float32 newArea = aabb.GetPerimeter();
+			qreal oldArea = m_nodes[child2].aabb.GetPerimeter();
+			qreal newArea = aabb.GetPerimeter();
 			cost3 = newArea - oldArea + inheritanceCost;
 		}
 

@@ -63,32 +63,32 @@ const b2Vec2& b2MouseJoint::GetTarget() const
 	return m_target;
 }
 
-void b2MouseJoint::SetMaxForce(float32 force)
+void b2MouseJoint::SetMaxForce(qreal force)
 {
 	m_maxForce = force;
 }
 
-float32 b2MouseJoint::GetMaxForce() const
+qreal b2MouseJoint::GetMaxForce() const
 {
 	return m_maxForce;
 }
 
-void b2MouseJoint::SetFrequency(float32 hz)
+void b2MouseJoint::SetFrequency(qreal hz)
 {
 	m_frequencyHz = hz;
 }
 
-float32 b2MouseJoint::GetFrequency() const
+qreal b2MouseJoint::GetFrequency() const
 {
 	return m_frequencyHz;
 }
 
-void b2MouseJoint::SetDampingRatio(float32 ratio)
+void b2MouseJoint::SetDampingRatio(qreal ratio)
 {
 	m_dampingRatio = ratio;
 }
 
-float32 b2MouseJoint::GetDampingRatio() const
+qreal b2MouseJoint::GetDampingRatio() const
 {
 	return m_dampingRatio;
 }
@@ -97,16 +97,16 @@ void b2MouseJoint::InitVelocityConstraints(const b2TimeStep& step)
 {
 	b2Body* b = m_bodyB;
 
-	float32 mass = b->GetMass();
+	qreal mass = b->GetMass();
 
 	// Frequency
-	float32 omega = 2.0f * b2_pi * m_frequencyHz;
+	qreal omega = 2.0f * b2_pi * m_frequencyHz;
 
 	// Damping coefficient
-	float32 d = 2.0f * mass * m_dampingRatio * omega;
+	qreal d = 2.0f * mass * m_dampingRatio * omega;
 
 	// Spring stiffness
-	float32 k = mass * (omega * omega);
+	qreal k = mass * (omega * omega);
 
 	// magic formulas
 	// gamma has units of inverse mass.
@@ -125,8 +125,8 @@ void b2MouseJoint::InitVelocityConstraints(const b2TimeStep& step)
 	// K    = [(1/m1 + 1/m2) * eye(2) - skew(r1) * invI1 * skew(r1) - skew(r2) * invI2 * skew(r2)]
 	//      = [1/m1+1/m2     0    ] + invI1 * [r1.y*r1.y -r1.x*r1.y] + invI2 * [r1.y*r1.y -r1.x*r1.y]
 	//        [    0     1/m1+1/m2]           [-r1.x*r1.y r1.x*r1.x]           [-r1.x*r1.y r1.x*r1.x]
-	float32 invMass = b->m_invMass;
-	float32 invI = b->m_invI;
+	qreal invMass = b->m_invMass;
+	qreal invI = b->m_invI;
 
 	b2Mat22 K1;
 	K1.col1.x = invMass;	K1.col2.x = 0.0f;
@@ -165,7 +165,7 @@ void b2MouseJoint::SolveVelocityConstraints(const b2TimeStep& step)
 
 	b2Vec2 oldImpulse = m_impulse;
 	m_impulse += impulse;
-	float32 maxImpulse = step.dt * m_maxForce;
+	qreal maxImpulse = step.dt * m_maxForce;
 	if (m_impulse.LengthSquared() > maxImpulse * maxImpulse)
 	{
 		m_impulse *= maxImpulse / m_impulse.Length();
@@ -186,12 +186,12 @@ b2Vec2 b2MouseJoint::GetAnchorB() const
 	return m_bodyB->GetWorldPoint(m_localAnchor);
 }
 
-b2Vec2 b2MouseJoint::GetReactionForce(float32 inv_dt) const
+b2Vec2 b2MouseJoint::GetReactionForce(qreal inv_dt) const
 {
 	return inv_dt * m_impulse;
 }
 
-float32 b2MouseJoint::GetReactionTorque(float32 inv_dt) const
+qreal b2MouseJoint::GetReactionTorque(qreal inv_dt) const
 {
 	return inv_dt * 0.0f;
 }

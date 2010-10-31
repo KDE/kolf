@@ -33,14 +33,14 @@ struct b2ContactConstraint;
 struct b2Position
 {
 	b2Vec2 x;
-	float32 a;
+	qreal a;
 };
 
 /// This is an internal structure.
 struct b2Velocity
 {
 	b2Vec2 v;
-	float32 w;
+	qreal w;
 };
 
 /// This is an internal class.

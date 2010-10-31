@@ -272,14 +272,14 @@ void b2Island::Solve(const b2TimeStep& step, const b2Vec2& gravity, bool allowSl
 		b2Vec2 translation = step.dt * b->m_linearVelocity;
 		if (b2Dot(translation, translation) > b2_maxTranslationSquared)
 		{
-			float32 ratio = b2_maxTranslation / translation.Length();
+			qreal ratio = b2_maxTranslation / translation.Length();
 			b->m_linearVelocity *= ratio;
 		}
 
-		float32 rotation = step.dt * b->m_angularVelocity;
+		qreal rotation = step.dt * b->m_angularVelocity;
 		if (rotation * rotation > b2_maxRotationSquared)
 		{
-			float32 ratio = b2_maxRotation / b2Abs(rotation);
+			qreal ratio = b2_maxRotation / b2Abs(rotation);
 			b->m_angularVelocity *= ratio;
 		}
 
@@ -320,10 +320,10 @@ void b2Island::Solve(const b2TimeStep& step, const b2Vec2& gravity, bool allowSl
 
 	if (allowSleep)
 	{
-		float32 minSleepTime = b2_maxFloat;
+		qreal minSleepTime = b2_maxFloat;
 
-		const float32 linTolSqr = b2_linearSleepTolerance * b2_linearSleepTolerance;
-		const float32 angTolSqr = b2_angularSleepTolerance * b2_angularSleepTolerance;
+		const qreal linTolSqr = b2_linearSleepTolerance * b2_linearSleepTolerance;
+		const qreal angTolSqr = b2_angularSleepTolerance * b2_angularSleepTolerance;
 
 		for (int32 i = 0; i < m_bodyCount; ++i)
 		{
@@ -375,7 +375,7 @@ void b2Island::SolveTOI(const b2TimeStep& subStep, const b2Body* bodyA, const b2
 	b2ContactSolver contactSolver(&solverDef);
 
 	// Solve position constraints.
-	const float32 k_toiBaumgarte = 0.75f;
+	const qreal k_toiBaumgarte = 0.75f;
 	for (int32 i = 0; i < subStep.positionIterations; ++i)
 	{
 		bool contactsOkay = contactSolver.SolveTOIPositionConstraints(k_toiBaumgarte, bodyA, bodyB);
@@ -461,7 +461,7 @@ void b2Island::SolveTOI(const b2TimeStep& subStep, const b2Body* bodyA, const b2
 			b->m_linearVelocity = (b2_maxTranslation * subStep.inv_dt) * translation;
 		}
 
-		float32 rotation = subStep.dt * b->m_angularVelocity;
+		qreal rotation = subStep.dt * b->m_angularVelocity;
 		if (rotation * rotation > b2_maxRotationSquared)
 		{
 			if (rotation < 0.0)

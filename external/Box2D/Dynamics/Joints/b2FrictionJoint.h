@@ -44,10 +44,10 @@ struct b2FrictionJointDef : public b2JointDef
 	b2Vec2 localAnchorB;
 
 	/// The maximum friction force in N.
-	float32 maxForce;
+	qreal maxForce;
 
 	/// The maximum friction torque in N-m.
-	float32 maxTorque;
+	qreal maxTorque;
 };
 
 /// Friction joint. This is used for top-down friction.
@@ -58,20 +58,20 @@ public:
 	b2Vec2 GetAnchorA() const;
 	b2Vec2 GetAnchorB() const;
 
-	b2Vec2 GetReactionForce(float32 inv_dt) const;
-	float32 GetReactionTorque(float32 inv_dt) const;
+	b2Vec2 GetReactionForce(qreal inv_dt) const;
+	qreal GetReactionTorque(qreal inv_dt) const;
 
 	/// Set the maximum friction force in N.
-	void SetMaxForce(float32 force);
+	void SetMaxForce(qreal force);
 
 	/// Get the maximum friction force in N.
-	float32 GetMaxForce() const;
+	qreal GetMaxForce() const;
 
 	/// Set the maximum friction torque in N*m.
-	void SetMaxTorque(float32 torque);
+	void SetMaxTorque(qreal torque);
 
 	/// Get the maximum friction torque in N*m.
-	float32 GetMaxTorque() const;
+	qreal GetMaxTorque() const;
 
 protected:
 
@@ -81,19 +81,19 @@ protected:
 
 	void InitVelocityConstraints(const b2TimeStep& step);
 	void SolveVelocityConstraints(const b2TimeStep& step);
-	bool SolvePositionConstraints(float32 baumgarte);
+	bool SolvePositionConstraints(qreal baumgarte);
 
 	b2Vec2 m_localAnchorA;
 	b2Vec2 m_localAnchorB;
 
 	b2Mat22 m_linearMass;
-	float32 m_angularMass;
+	qreal m_angularMass;
 
 	b2Vec2 m_linearImpulse;
-	float32 m_angularImpulse;
+	qreal m_angularImpulse;
 
-	float32 m_maxForce;
-	float32 m_maxTorque;
+	qreal m_maxForce;
+	qreal m_maxTorque;
 };
 
 #endif

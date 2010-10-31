@@ -120,7 +120,7 @@ void b2LoopShape::ComputeAABB(b2AABB* aabb, const b2Transform& xf, int32 childIn
 	aabb->upperBound = b2Max(v1, v2);
 }
 
-void b2LoopShape::ComputeMass(b2MassData* massData, float32 density) const
+void b2LoopShape::ComputeMass(b2MassData* massData, qreal density) const
 {
 	B2_NOT_USED(density);
 

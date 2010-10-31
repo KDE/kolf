@@ -44,7 +44,7 @@ struct b2RopeJointDef : public b2JointDef
 	/// The maximum length of the rope.
 	/// Warning: this must be larger than b2_linearSlop or
 	/// the joint will have no effect.
-	float32 maxLength;
+	qreal maxLength;
 };
 
 /// A rope joint enforces a maximum distance between two points
@@ -61,11 +61,11 @@ public:
 	b2Vec2 GetAnchorA() const;
 	b2Vec2 GetAnchorB() const;
 
-	b2Vec2 GetReactionForce(float32 inv_dt) const;
-	float32 GetReactionTorque(float32 inv_dt) const;
+	b2Vec2 GetReactionForce(qreal inv_dt) const;
+	qreal GetReactionTorque(qreal inv_dt) const;
 
 	/// Get the maximum length of the rope.
-	float32 GetMaxLength() const;
+	qreal GetMaxLength() const;
 
 	b2LimitState GetLimitState() const;
 
@@ -76,22 +76,22 @@ protected:
 
 	void InitVelocityConstraints(const b2TimeStep& step);
 	void SolveVelocityConstraints(const b2TimeStep& step);
-	bool SolvePositionConstraints(float32 baumgarte);
+	bool SolvePositionConstraints(qreal baumgarte);
 
 	b2Vec2 m_localAnchorA;
 	b2Vec2 m_localAnchorB;
 
-	float32 m_maxLength;
-	float32 m_length;
+	qreal m_maxLength;
+	qreal m_length;
 
 	// Jacobian info
 	b2Vec2 m_u, m_rA, m_rB;
 
 	// Effective mass
-	float32 m_mass;
+	qreal m_mass;
 
 	// Impulses for accumulation/warm starting.
-	float32 m_impulse;
+	qreal m_impulse;
 
 	b2LimitState m_state;
 };

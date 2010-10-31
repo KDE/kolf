@@ -45,7 +45,7 @@ struct b2WeldJointDef : public b2JointDef
 	b2Vec2 localAnchorB;
 
 	/// The body2 angle minus body1 angle in the reference state (radians).
-	float32 referenceAngle;
+	qreal referenceAngle;
 };
 
 /// A weld joint essentially glues two bodies together. A weld joint may
@@ -56,8 +56,8 @@ public:
 	b2Vec2 GetAnchorA() const;
 	b2Vec2 GetAnchorB() const;
 
-	b2Vec2 GetReactionForce(float32 inv_dt) const;
-	float32 GetReactionTorque(float32 inv_dt) const;
+	b2Vec2 GetReactionForce(qreal inv_dt) const;
+	qreal GetReactionTorque(qreal inv_dt) const;
 
 protected:
 
@@ -68,11 +68,11 @@ protected:
 	void InitVelocityConstraints(const b2TimeStep& step);
 	void SolveVelocityConstraints(const b2TimeStep& step);
 
-	bool SolvePositionConstraints(float32 baumgarte);
+	bool SolvePositionConstraints(qreal baumgarte);
 
 	b2Vec2 m_localAnchorA;
 	b2Vec2 m_localAnchorB;
-	float32 m_referenceAngle;
+	qreal m_referenceAngle;
 
 	b2Vec3 m_impulse;
 

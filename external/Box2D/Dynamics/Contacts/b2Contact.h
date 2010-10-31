@@ -171,7 +171,7 @@ protected:
 	b2Manifold m_manifold;
 
 	int32 m_toiCount;
-	float32 m_toi;
+	qreal m_toi;
 };
 
 inline b2Manifold* b2Contact::GetManifold()

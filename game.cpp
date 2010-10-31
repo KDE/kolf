@@ -42,6 +42,7 @@
 #include <KNumInput>
 #include <KRandom>
 #include <KStandardDirs>
+#include <Box2D/Dynamics/b2Body.h>
 #include <Box2D/Dynamics/b2World.h>
 
 inline QString makeGroup(int id, int hole, const QString &name, int x, int y)
@@ -2850,6 +2851,9 @@ void KolfGame::timeout()
 	}
 }
 
+#include <iostream>
+#include <iomanip>
+
 void KolfGame::fastTimeout()
 {
 	// do regular advance every other time
@@ -2857,6 +2861,7 @@ void KolfGame::fastTimeout()
 		course->advance();
 	regAdv = !regAdv;
 
+	// do home-grown advance
 	if (!editing)
 	{
 		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
@@ -2864,6 +2869,37 @@ void KolfGame::fastTimeout()
 		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 			(*it).ball()->setCollisionLock(false);
 	}
+
+	std::cerr << std::setprecision(12);
+	foreach (const Player& player, *players) std::cerr << "A: " << player.ball()->pos().x() << " " << player.ball()->pos().y() << std::endl;
+
+	// do Box2D advance
+	//Because there are so much CanvasItems out there, there is currently no
+	//easy and/or systematic approach to iterate over all of them, except for
+	//using the b2Bodies available on the world.
+
+	//prepare simulation
+	for (b2Body* body = g_world->GetBodyList(); body; body = body->GetNext())
+	{
+		CanvasItem* citem = static_cast<CanvasItem*>(body->GetUserData());
+		if (citem)
+		{
+			citem->startSimulation();
+		}
+	}
+	//step world
+	const double timeStep = 1.0; //so that CanvasItem::physicalVelocity() corresponds to the position change per step
+	g_world->Step(timeStep, 10, 10); //parameters 2/3 = iteration counts (TODO: optimize)
+	//conclude simulation
+	for (b2Body* body = g_world->GetBodyList(); body; body = body->GetNext())
+	{
+		CanvasItem* citem = static_cast<CanvasItem*>(body->GetUserData());
+		if (citem)
+		{
+			citem->endSimulation();
+		}
+	}
+	foreach (const Player& player, *players) std::cerr << "Z: " << player.ball()->pos().x() << " " << player.ball()->pos().y() << std::endl;
 }
 
 void KolfGame::ballMoved()

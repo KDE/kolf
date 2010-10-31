@@ -26,7 +26,7 @@ const b2Transform b2Transform_identity(b2Vec2_zero, b2Mat22_identity);
 /// than computing the inverse in one-shot cases.
 b2Vec3 b2Mat33::Solve33(const b2Vec3& b) const
 {
-	float32 det = b2Dot(col1, b2Cross(col2, col3));
+	qreal det = b2Dot(col1, b2Cross(col2, col3));
 	if (det != 0.0f)
 	{
 		det = 1.0f / det;
@@ -42,8 +42,8 @@ b2Vec3 b2Mat33::Solve33(const b2Vec3& b) const
 /// than computing the inverse in one-shot cases.
 b2Vec2 b2Mat33::Solve22(const b2Vec2& b) const
 {
-	float32 a11 = col1.x, a12 = col2.x, a21 = col1.y, a22 = col2.y;
-	float32 det = a11 * a22 - a12 * a21;
+	qreal a11 = col1.x, a12 = col2.x, a21 = col1.y, a22 = col2.y;
+	qreal det = a11 * a22 - a12 * a21;
 	if (det != 0.0f)
 	{
 		det = 1.0f / det;
