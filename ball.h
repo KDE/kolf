@@ -48,13 +48,9 @@ public:
 	QColor color() const { return ellipseItem()->brush().color(); }
 	void setColor(const QColor& color) { ellipseItem()->setBrush(color); }
 
-	void setMoved(bool yes) { m_moved = yes; }
-	bool moved() const { return m_moved; }
-
 	void setFrictionMultiplier(double news) { frictionMultiplier = news; }
 	void friction();
-	void collisionDetect(double oldx, double oldy);
-	void collideWithHaloCollisions( QList< Wall* >& haloWallCollisions );
+	void collisionDetect();
 
 	int addStroke() const { return m_addStroke; }
 	bool placeOnGround(Vector &v) { v = oldVector; return m_placeOnGround; }
@@ -69,9 +65,6 @@ public:
 
 	Vector curVector() const { return m_vector; }
 	void setVector(const Vector &newVector);
-
-	bool collisionLock() const { return m_collisionLock; }
-	void setCollisionLock(bool yes) { m_collisionLock = yes; }
 
 	void shotStarted() { maxBumperBounceSpeed = 8; }
 
@@ -91,9 +84,8 @@ public slots:
 
 private:
 	BallState state;
-	QColor m_color;
 
-	long int collisionId;
+	int m_collisionId;
 	double frictionMultiplier;
 
 	//the maximum speed of the ball after hitting a bumper, this will decrease ith each bounce so that the ball does not bounce against bumpers forever
@@ -101,21 +93,14 @@ private:
 
 	int m_addStroke;
 	bool m_placeOnGround;
-	double m_oldvx;
-	double m_oldvy;
 
-	bool m_moved;
 	bool m_beginningOfHole;
 	bool m_forceStillGoing;
 
-	bool ignoreBallCollisions;
-
 	Vector m_vector;
 	Vector oldVector;
-	bool m_collisionLock;
 
 	bool m_doDetect;
-	QList<QGraphicsItem *> m_list;
 
 	QGraphicsSimpleTextItem *label;
 };

@@ -99,7 +99,7 @@ public:
 	void playSound(const QString &file, double vol = 1);
 
 	///Called on ball's collision. Return if terrain collidingItems should be processed.
-	virtual bool collision(Ball * /*ball*/, long int /*id*/) { return false; }
+	virtual bool collision(Ball *ball) { Q_UNUSED(ball) return false; }
 
 	///Reimplement if you want extra items to have access to the game object. playSound() relies on having this.
 	virtual void setGame(KolfGame *game) { this->game = game; }

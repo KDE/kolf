@@ -288,7 +288,7 @@ QPainterPath Slope::shape() const
 	}
 }
 
-bool Slope::collision(Ball *ball, long int /*id*/)
+bool Slope::collision(Ball *ball)
 {
 	if (grade <= 0)
 		return false;

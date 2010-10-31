@@ -75,7 +75,7 @@ public:
 	virtual void load(KConfigGroup *cfgGroup);
 	virtual void save(KConfigGroup *cfgGroup);
 
-	virtual bool collision(Ball *ball, long int id);
+	virtual bool collision(Ball *ball);
 	virtual bool terrainCollisions() const;
 
 	QMap<GradientType, QString> gradientI18nKeys;

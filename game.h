@@ -244,14 +244,14 @@ class Puddle : public KolfEllipse
 {
 public:
 	Puddle(QGraphicsItem *parent, b2World* world);
-	virtual bool collision(Ball *ball, long int id);
+	virtual bool collision(Ball *ball);
 };
 
 class Sand : public KolfEllipse
 {
 public:
 	Sand(QGraphicsItem *parent, b2World* world);
-	virtual bool collision(Ball *ball, long int id);
+	virtual bool collision(Ball *ball);
 };
 
 class Bumper : public EllipticalCanvasItem
@@ -260,7 +260,7 @@ Q_OBJECT
 public:
 	Bumper(QGraphicsItem *parent, b2World* world);
 
-	virtual bool collision(Ball *ball, long int id);
+	virtual bool collision(Ball *ball);
 public Q_SLOTS:
 	void turnBumperOff();
 };
@@ -273,7 +273,7 @@ public:
 	virtual Kolf::Overlay* createOverlay();
 	virtual bool place(Ball *ball, bool wasCenter);
 	virtual bool canBeMovedByOthers() const { return true; }
-	virtual bool collision(Ball *ball, long int id);
+	virtual bool collision(Ball *ball);
 
 protected:
 	virtual HoleResult result(const QPointF, double, bool *wasCenter);
@@ -368,7 +368,7 @@ public:
 
 	virtual void moveBy(double dx, double dy);
 
-	virtual bool collision(Ball *ball, long int id);
+	virtual bool collision(Ball *ball);
 
 public slots:
 	void eject(Ball *ball, double speed);
@@ -398,7 +398,6 @@ public:
 	void setAlwaysShow(bool yes);
 	virtual void setZValue(double newz);
 	virtual void setPen(QPen p);
-	virtual bool collision(Ball *ball, long int id);
 	virtual void save(KConfigGroup *cfgGroup);
 	virtual void load(KConfigGroup *cfgGroup);
 	virtual void selectedItem(QGraphicsItem *item);
@@ -434,8 +433,6 @@ protected:
 
 	virtual Kolf::Overlay* createOverlay();
 private:
-	long int lastId;
-
 	friend class WallPoint;
 };
 class WallPoint : public QGraphicsEllipseItem, public CanvasItem
@@ -446,7 +443,6 @@ public:
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
 	virtual bool deleteable() const { return false; }
-	virtual bool collision(Ball *ball, long int id);
 	virtual CanvasItem *itemToDelete() { return wall; }
 	virtual void clean();
 	virtual Config *config(QWidget *parent) { return wall->config(parent); }
@@ -469,7 +465,6 @@ private:
 	bool alwaysShow;
 	bool start;
 	bool dontmove;
-	long int lastId;
 
 	friend class Wall;
 };
@@ -541,7 +536,7 @@ class Bridge : public Tagaro::SpriteObjectItem, public CanvasItem
 public:
 	Bridge(QGraphicsItem *parent, b2World* world, const QString &type = QLatin1String("bridge"));
 
-	virtual bool collision(Ball *ball, long int id);
+	virtual bool collision(Ball *ball);
 	virtual void aboutToDie();
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);

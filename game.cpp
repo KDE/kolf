@@ -307,7 +307,7 @@ Bridge::Bridge(QGraphicsItem *parent, b2World* world, const QString &type)
 	setSize(Tagaro::SpriteObjectItem::size());
 }
 
-bool Bridge::collision(Ball *ball, long int /*id*/)
+bool Bridge::collision(Ball *ball)
 {
 	ball->setFrictionMultiplier(.63);
 	return false;
@@ -865,7 +865,7 @@ Puddle::Puddle(QGraphicsItem * parent, b2World* world)
 	setZValue(-25);
 }
 
-bool Puddle::collision(Ball *ball, long int /*id*/)
+bool Puddle::collision(Ball *ball)
 {
 	if (ball->isVisible())
 	{
@@ -897,7 +897,7 @@ Sand::Sand(QGraphicsItem * parent, b2World* world)
 	setZValue(-26);
 }
 
-bool Sand::collision(Ball *ball, long int /*id*/)
+bool Sand::collision(Ball *ball)
 {
 	// is center of ball in?
 	if (contains(ball->pos()-pos())/* && ball->curVector().magnitude() < 4*/)
@@ -1049,7 +1049,7 @@ Bumper::Bumper(QGraphicsItem * parent, b2World* world)
 	setZValue(-25);
 }
 
-bool Bumper::collision(Ball *ball, long int /*id*/)
+bool Bumper::collision(Ball *ball)
 {
 	double maxSpeed = ball->getMaxBumperBounceSpeed();
 	double speed = qMin(maxSpeed, 1.8 + ball->curVector().magnitude() * .9);
@@ -1104,7 +1104,7 @@ bool Cup::place(Ball *ball, bool /*wasCenter*/)
 	return true;
 }
 
-bool Cup::collision(Ball *ball, long int /*id*/)
+bool Cup::collision(Ball *ball)
 {
 	bool wasCenter = false;
 
@@ -1216,7 +1216,7 @@ QList<QGraphicsItem *> BlackHole::moveableItems() const
 	return QList<QGraphicsItem*>() << exitItem;
 }
 
-bool BlackHole::collision(Ball *ball, long int /*id*/)
+bool BlackHole::collision(Ball *ball)
 {
 	bool wasCenter = false;
 
@@ -1509,13 +1509,12 @@ WallPoint::WallPoint(bool start, Wall *wall, QGraphicsItem * parent, b2World* wo
 : QGraphicsEllipseItem(parent)
 , CanvasItem(world)
 {
-	setData(0, Rtti_WallPoint);
+	setData(0, Rtti_NoCollision);
 	this->wall = wall;
 	this->start = start;
 	alwaysShow = false;
 	editing = false;
 	visible = false;
-	lastId = INT_MAX - 10;
 	dontmove = false;
 
 	setPos(start ? wall->startPointF() : wall->endPointF());
@@ -1593,94 +1592,14 @@ void WallPoint::editModeChanged(bool changed)
 		updateVisible();
 }
 
-bool WallPoint::collision(Ball *ball, long int id)
-{
-	if (ball->curVector().magnitude() <= 0)
-		return false;
-
-	long int tempLastId = lastId;
-	lastId = id;
-	QList<QGraphicsItem *> l = collidingItems();
-	for (QList<QGraphicsItem *>::Iterator it = l.begin(); it != l.end(); ++it)
-	{
-		if ((*it)->data(0) == data(0))
-		{
-			WallPoint *point = (WallPoint *)(*it);
-			point->lastId = id;
-		}
-	}
-
-	//kDebug(12007) << "WallPoint::collision id:" << id << ", tempLastId:" << tempLastId;
-	Vector ballVector(ball->curVector());
-
-	//kDebug(12007) << "Wall::collision ball speed:" << ball->curVector().magnitude();
-	int allowableDifference = 1;
-	if (ballVector.magnitude() < .30)
-		allowableDifference = 8;
-	else if (ballVector.magnitude() < .50)
-		allowableDifference = 6;
-	else if (ballVector.magnitude() < .65)
-		allowableDifference = 4;
-	else if (ballVector.magnitude() < .95)
-		allowableDifference = 2;
-
-	if (abs(id - tempLastId) <= allowableDifference)
-	{
-		//kDebug(12007) << "WallPoint::collision - SKIP\n";
-	}
-	else
-	{
-		bool weirdBounce = visible;
-
-		QPoint relStart(start? wall->startPoint() : wall->endPoint());
-		QPoint relEnd(start? wall->endPoint() : wall->startPoint());
-		Vector wallVector(relStart - relEnd);
-		wallVector.setDirection(-wallVector.direction());
-
-		// find the angle between vectors, between 0 and PI
-		{
-			double difference = fabs(wallVector.direction() - ballVector.direction());
-			while (difference > 2 * M_PI)
-				difference -= 2 * M_PI;
-
-			if (difference < M_PI / 2 || difference > 3 * M_PI / 2)
-				weirdBounce = false;
-		}
-
-		playSound("wall", ball->curVector().magnitude() / 10.0);
-
-		ballVector /= wall->dampening;
-		const double ballAngle = ballVector.direction();
-
-		double wallAngle = wallVector.direction();
-
-		// opposite bounce, because we're the endpoint
-		if (weirdBounce)
-			wallAngle += M_PI / 2;
-
-		const double collisionAngle = ballAngle - wallAngle;
-		const double leavingAngle = wallAngle - collisionAngle;
-
-		ballVector.setDirection(leavingAngle);
-		ball->setVector(ballVector);
-		wall->lastId = id;
-
-		//kDebug(12007) << "WallPoint::collision - NOT skip, weirdBounce is" << weirdBounce;
-	} // end if that skips
-
-	wall->lastId = id;
-	return false;
-}
-
 /////////////////////////
 
 Wall::Wall(QGraphicsItem *parent, b2World* world, bool antialiased)
 : HintedLineItem(antialiased, parent)
 , CanvasItem(world)
 {
-	setData(0, Rtti_Wall);
+	setData(0, Rtti_NoCollision);
 	editing = false;
-	lastId = INT_MAX - 10;
 
 	dampening = 1.2;
 
@@ -1707,12 +1626,9 @@ Wall::Wall(QGraphicsItem *parent, b2World* world, bool antialiased)
 
 void Wall::selectedItem(QGraphicsItem *item)
 {
-	if (item->data(0) == Rtti_WallPoint)
-	{
-		WallPoint *wallPoint = dynamic_cast<WallPoint *>(item);
-		if (wallPoint) {
-			setLine(QLineF(startPointF(), wallPoint->pos() - pos()));
-		}
+	WallPoint *wallPoint = dynamic_cast<WallPoint *>(item);
+	if (wallPoint) {
+		setLine(QLineF(startPointF(), wallPoint->pos() - pos()));
 	}
 }
 
@@ -1829,52 +1745,6 @@ void Wall::setLine(const QLineF& line)
 Kolf::Overlay* Wall::createOverlay()
 {
 	return new Kolf::Overlay(this, this);
-}
-
-bool Wall::collision(Ball *ball, long int id)
-{
-	if (ball->curVector().magnitude() <= 0)
-		return false;
-
-	long int tempLastId = lastId;
-	lastId = id;
-	startItem->lastId = id;
-	endItem->lastId = id;
-
-	//kDebug(12007) << "Wall::collision id:" << id << ", tempLastId:" << tempLastId;
-	Vector ballVector(ball->curVector());
-
-	//kDebug(12007) << "Wall::collision ball speed:" << ball->curVector().magnitude();
-	int allowableDifference = 1;
-	if (ballVector.magnitude() < .30)
-		allowableDifference = 8;
-	else if (ballVector.magnitude() < .50)
-		allowableDifference = 6;
-	else if (ballVector.magnitude() < .75)
-		allowableDifference = 4;
-	else if (ballVector.magnitude() < .95)
-		allowableDifference = 2;
-	//kDebug(12007) << "Wall::collision allowableDifference is" << allowableDifference;
-	if (abs(id - tempLastId) <= allowableDifference)
-	{
-		//kDebug(12007) << "Wall::collision - SKIP\n";
-		return false;
-	}
-
-	playSound("wall", ball->curVector().magnitude() / 10.0);
-
-	ballVector /= dampening;
-	const double ballAngle = ballVector.direction();
-
-	const double wallAngle = -Vector(startPoint() - endPoint()).direction();
-	const double collisionAngle = ballAngle - wallAngle;
-	const double leavingAngle = wallAngle - collisionAngle;
-
-	ballVector.setDirection(leavingAngle);
-	ball->setVector(ballVector);
-
-	//kDebug(12007) << "Wall::collision - NOT skip\n";
-	return false;
 }
 
 void Wall::load(KConfigGroup *cfgGroup)
@@ -2851,9 +2721,6 @@ void KolfGame::timeout()
 	}
 }
 
-#include <iostream>
-#include <iomanip>
-
 void KolfGame::fastTimeout()
 {
 	// do regular advance every other time
@@ -2863,15 +2730,8 @@ void KolfGame::fastTimeout()
 
 	// do home-grown advance
 	if (!editing)
-	{
 		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 			(*it).ball()->doAdvance();
-		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-			(*it).ball()->setCollisionLock(false);
-	}
-
-	std::cerr << std::setprecision(12);
-	foreach (const Player& player, *players) std::cerr << "A: " << player.ball()->pos().x() << " " << player.ball()->pos().y() << std::endl;
 
 	// do Box2D advance
 	//Because there are so much CanvasItems out there, there is currently no
@@ -2899,7 +2759,6 @@ void KolfGame::fastTimeout()
 			citem->endSimulation();
 		}
 	}
-	foreach (const Player& player, *players) std::cerr << "Z: " << player.ball()->pos().x() << " " << player.ball()->pos().y() << std::endl;
 }
 
 void KolfGame::ballMoved()
@@ -3113,7 +2972,6 @@ void KolfGame::shotDone()
 	setFocus();
 
 	Ball *ball = (*curPlayer).ball();
-	double oldx = ball->x(), oldy = ball->y();
 
 	if (!dontAddStroke && (*curPlayer).numHoles())
 		(*curPlayer).addStrokeToHole(curHole);
@@ -3205,7 +3063,7 @@ void KolfGame::shotDone()
 			ball->setState(Stopped); 
 
 			(*it).ball()->setDoDetect(true);
-			ball->collisionDetect(oldx, oldy);
+			ball->collisionDetect();
 		}
 	}
 
@@ -3259,7 +3117,7 @@ void KolfGame::shotDone()
 	(*curPlayer).ball()->setVisible(true);
 
 	inPlay = false;
-	(*curPlayer).ball()->collisionDetect(oldx, oldy);
+	(*curPlayer).ball()->collisionDetect();
 
 	putter->setAngle((*curPlayer).ball());
 	putter->setOrigin((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
@@ -3310,22 +3168,9 @@ void KolfGame::shotStart()
 
 	//kDebug(12007) << "Start started. BallX:" << (*curPlayer).ball()->x() << ", BallY:" << (*curPlayer).ball()->y() << ", Putter Angle:" << putter->curAngle() << ", Vector Strength: " << strength;
 
-	if( false )
-	{ //debug code for reproducing shots, remove
-		(*curPlayer).ball()->setPos( 200, 360 );
-		strength = 6.9375;
-		double angle = -1.39094;
+	(*curPlayer).ball()->collisionDetect();
 
-		(*curPlayer).ball()->collisionDetect((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
-
-		startBall(Vector::fromMagnitudeDirection(strength, angle + M_PI));
-	}
-	else 
-	{
-		(*curPlayer).ball()->collisionDetect((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
-
-		startBall(Vector::fromMagnitudeDirection(strength, putter->curAngle() + M_PI));
-	}
+	startBall(Vector::fromMagnitudeDirection(strength, putter->curAngle() + M_PI));
 
 	addHoleInfo(ballStateList);
 }
@@ -3397,7 +3242,6 @@ void KolfGame::startNextHole()
 	// to get the first player to go first on every hole,
 	// don't do the score stuff below
 	curPlayer = players->begin();
-	double oldx=(*curPlayer).ball()->x(), oldy=(*curPlayer).ball()->y();
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 	{
@@ -3494,7 +3338,7 @@ void KolfGame::startNextHole()
 
 		ballStateList.canUndo = false;
 
-		(*curPlayer).ball()->collisionDetect(oldx, oldy);
+		(*curPlayer).ball()->collisionDetect();
 	}
 
 	unPause();

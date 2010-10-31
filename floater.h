@@ -59,7 +59,7 @@ class Floater : public Bridge
 public:
 	Floater(QGraphicsItem * parent, b2World* world);
 
-	virtual bool collision(Ball *ball, long int id) { Bridge::collision(ball, id); return false; }
+	virtual bool collision(Ball *ball) { Bridge::collision(ball); return false; }
 	virtual void save(KConfigGroup *cfgGroup);
 	virtual void load(KConfigGroup *cfgGroup);
 	virtual bool loadLast() const { return true; }
