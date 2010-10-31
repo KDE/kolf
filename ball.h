@@ -36,7 +36,6 @@ public:
 
 	BallState currentState();
 
-	virtual void advance(int phase);
 	virtual void doAdvance();
 	virtual void moveBy(double dx, double dy);
 	virtual void setVelocity(const Vector& velocity);
@@ -53,8 +52,6 @@ public:
 
 	void setMoved(bool yes) { m_moved = yes; }
 	bool moved() const { return m_moved; }
-	void setBlowUp(bool yes) { m_blowUp = yes; blowUpCount = 0; }
-	bool blowUp() const { return m_blowUp; }
 
 	void setFrictionMultiplier(double news) { frictionMultiplier = news; }
 	void friction();
@@ -108,8 +105,6 @@ private:
 	//the maximum speed of the ball after hitting a bumper, this will decrease ith each bounce so that the ball does not bounce against bumpers forever
 	double maxBumperBounceSpeed;
 
-	bool m_blowUp;
-	int blowUpCount;
 	int m_addStroke;
 	bool m_placeOnGround;
 	double m_oldvx;

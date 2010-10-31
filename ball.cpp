@@ -35,7 +35,6 @@ Ball::Ball(QGraphicsItem* parent)
 	m_doDetect = true;
 	m_collisionLock = false;
 	setBeginningOfHole(false);
-	setBlowUp(false);
 	collisionId = 0;
 	m_addStroke = false;
 	m_placeOnGround = false;
@@ -68,31 +67,6 @@ void Ball::setState(BallState newState)
 		setZValue(1000);
 	else
 		setBeginningOfHole(false);
-}
-
-void Ball::advance(int /*phase*/)
-{
-	// not used anymore
-	// can be used to make ball wobble
-	/*if (phase == 1 && m_blowUp)
-	{
-		if (blowUpCount >= 50)
-		{
-			// i should make this a config option
-			//setAddStroke(addStroke() + 1);
-			setBlowUp(false);
-			resetSize();
-			return;
-		}
-
-		const double diff = 8;
-		double randnum = KRandom::random();
-		const double width = 6 + randnum * (diff / RAND_MAX);
-		randnum = KRandom::random();
-		const double height = 6 + randnum * (diff / RAND_MAX);
-		setRect(rect().x(), rect().y(), width, height);
-		blowUpCount++;
-	}*/
 }
 
 void Ball::friction()
