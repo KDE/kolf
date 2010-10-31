@@ -1083,6 +1083,7 @@ Cup::Cup(QGraphicsItem * parent, b2World* world)
 	const int diameter = 16;
 	setSize(QSizeF(diameter, diameter));
 	addShape(new Kolf::EllipseShape(QRectF(-diameter / 2, -diameter / 2, diameter, diameter)));
+	setSimulationType(CanvasItem::CollisionSimulation);
 
 	setZValue(998.1);
 }
@@ -2156,6 +2157,8 @@ void KolfGame::setFilename(const QString &filename)
 
 KolfGame::~KolfGame()
 {
+	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+		(*it).ball()->setGame(0);
 	delete cfg;
 #ifdef SOUND
 	delete m_player;
