@@ -133,25 +133,20 @@ void Floater::doAdvance()
 
 void Floater::reset()
 {
-	QPointF startf = wall->startPoint() + QPointF(wall->x(), wall->y());
-	QPointF endf = wall->endPoint() + QPointF(wall->x(), wall->y());
-	QPoint start = (QPoint((int)startf.x(), (int)startf.y()));
-	QPoint end = (QPoint((int)endf.x(), (int)endf.y()));
+	QPointF start = wall->startPointF() + QPointF(wall->x(), wall->y());
+	QPointF end = wall->endPointF() + QPointF(wall->x(), wall->y());
 
 	vector = end - start;
 	origin = end;
 
-	setPos(origin.x(), origin.y());
+	setPos(origin);
 	moveBy(0, 0);
 	setSpeed(speed);
 }
 
 QList<QGraphicsItem *> Floater::moveableItems() const
 {
-	QList<QGraphicsItem *> ret(wall->moveableItems());
-	ret.append(wall);
-	ret.append(point);
-	return ret;
+	return wall->moveableItems() << wall << point;
 }
 
 void Floater::aboutToDie()

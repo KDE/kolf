@@ -115,9 +115,7 @@ void Slope::clearArrows()
 
 QList<QGraphicsItem *> Slope::moveableItems() const
 {
-	QList<QGraphicsItem *> ret;
-	ret.append(point);
-	return ret;
+	return QList<QGraphicsItem*>() << point;
 }
 
 void Slope::setGrade(double newGrade)

@@ -399,9 +399,7 @@ void Bridge::doSave(KConfigGroup *cfgGroup)
 
 QList<QGraphicsItem *> Bridge::moveableItems() const
 {
-	QList<QGraphicsItem *> ret;
-	ret.append(point);
-	return ret;
+	return QList<QGraphicsItem*>() << point;
 }
 
 void Bridge::setSize(const QSizeF& size)
@@ -782,9 +780,7 @@ void KolfEllipse::setChangeEnabled(bool changeEnabled)
 
 QList<QGraphicsItem *> KolfEllipse::moveableItems() const
 {
-	QList<QGraphicsItem *> ret;
-	ret.append(point);
-	return ret;
+	return QList<QGraphicsItem*>() << point;
 }
 
 void KolfEllipse::moveBy(double dx, double dy)
@@ -1224,9 +1220,7 @@ void BlackHole::setExitDeg(int newdeg)
 
 QList<QGraphicsItem *> BlackHole::moveableItems() const
 {
-	QList<QGraphicsItem *> ret;
-	ret.append(exitItem);
-	return ret;
+	return QList<QGraphicsItem*>() << exitItem;
 }
 
 bool BlackHole::collision(Ball *ball, long int /*id*/)
@@ -1780,10 +1774,7 @@ void Wall::setGame(KolfGame *game)
 
 QList<QGraphicsItem *> Wall::moveableItems() const
 {
-	QList<QGraphicsItem *> ret;
-	ret.append(startItem);
-	ret.append(endItem);
-	return ret;
+	return QList<QGraphicsItem*>() << startItem << endItem;
 }
 
 void Wall::moveBy(double dx, double dy)

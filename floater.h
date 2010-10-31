@@ -88,7 +88,7 @@ private:
 	int speed;
 	FloaterGuide *wall;
 
-	QPoint origin;
+	QPointF origin;
 	Vector vector;
 	bool noUpdateZ;
 	bool haventMoved;
