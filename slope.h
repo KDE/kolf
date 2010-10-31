@@ -41,7 +41,7 @@ private:
 	Slope *slope;
 };
 
-class Slope : public QGraphicsRectItem, public CanvasItem, public RectItem
+class Slope : public Tagaro::SpriteObjectItem, public CanvasItem, public RectItem
 {
 public:
 	Slope(QGraphicsItem *parent);
@@ -60,7 +60,6 @@ public:
 	virtual void newSize(double width, double height);
 	virtual void moveBy(double dx, double dy);
 
-	virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem * option, QWidget * widget = 0 );
 	virtual QPainterPath shape () const;
 
         void setGradient(const QString &text);
@@ -88,8 +87,8 @@ public:
 
 	void moveArrow();
 
-	double width() const { return rect().width(); }
-	double height() const { return rect().height(); }
+	double width() const { return size().width(); }
+	double height() const { return size().height(); }
 
 private:
 	GradientType type;
@@ -98,7 +97,6 @@ private:
 	double grade;
 	bool reversed;
 	QColor color;
-	QPixmap pixmap;
 	void updatePixmap();
 	bool stuckOnGround;
 	//base numbers are the size or position when no resizing has taken place (i.e. the defaults)

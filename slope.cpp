@@ -28,8 +28,10 @@
 #include <KNumInput>
 
 Slope::Slope(QGraphicsItem * parent)
-	: QGraphicsRectItem(QRect(0, 0, 40, 40), parent), type(Vertical), grade(4), reversed(false), color(QColor("#327501"))
+	: Tagaro::SpriteObjectItem(Kolf::renderer(), QString(), parent), type(Vertical), grade(4), reversed(false), color(QColor("#327501"))
 {
+	Tagaro::SpriteObjectItem::setSize(QSizeF(40, 40));
+
 	setData(0, 1031);
 	stuckOnGround = false;
 	showingInfo = false;
@@ -62,7 +64,7 @@ Slope::Slope(QGraphicsItem * parent)
 	editModeChanged(false);
 	hideInfo();
 
-        // this does updatePixmap
+	// this does setSpriteKey
 	setGradient("Vertical");
 }
 
@@ -101,8 +103,7 @@ void Slope::resize(double resizeFactor)
 	text->setFont(font);
 	arrowPenThickness = baseArrowPenThickness*resizeFactor;
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
-	setRect(0, 0, baseWidth*resizeFactor, baseHeight*resizeFactor);
-	updatePixmap();
+// 	setRect(0, 0, baseWidth*resizeFactor, baseHeight*resizeFactor);
 }
 
 void Slope::firstMove(int x, int y)
@@ -155,7 +156,8 @@ void Slope::newSize(double width, double height)
 {
 	if (type == Elliptic)
 	{
-		QGraphicsRectItem::setRect(rect().x(), rect().y(), width, width);
+		const double size = qMin(width, height);
+		Tagaro::SpriteObjectItem::setSize(size, size);
 		// move point back to good spot
 		moveBy(0, 0);
 
@@ -163,15 +165,16 @@ void Slope::newSize(double width, double height)
 			game->updateHighlighter();
 	}
 	else
-		QGraphicsRectItem::setRect(rect().x(), rect().y(), width, height);
+	{
+		Tagaro::SpriteObjectItem::setSize(width, height);
+	}
 
-	updatePixmap();
 	updateZ();
 }
 
 void Slope::moveBy(double dx, double dy)
 {
-	QGraphicsRectItem::moveBy(dx, dy);
+	Tagaro::SpriteObjectItem::moveBy(dx, dy);
 
 	point->dontMove();
 	point->setPos(x() + width(), y() + height());
@@ -258,9 +261,9 @@ void Slope::load(KConfigGroup *cfgGroup)
 	reversed = cfgGroup->readEntry("reversed", reversed);
 
 	// bypass updatePixmap which newSize normally does
-	QGraphicsRectItem::setRect(rect().x(), rect().y(), cfgGroup->readEntry("width", width()), cfgGroup->readEntry("height", height()));
-	baseWidth = rect().width();
-	baseHeight = rect().height();
+	Tagaro::SpriteObjectItem::setSize(QSizeF(cfgGroup->readEntry("width", width()), cfgGroup->readEntry("height", height())));
+	baseWidth = size().width();
+	baseHeight = size().height();
 	updateZ();
 
 	QString gradientType = cfgGroup->readEntry("gradient", gradientKeys[type]);
@@ -277,39 +280,35 @@ void Slope::save(KConfigGroup *cfgGroup)
 	cfgGroup->writeEntry("stuckOnGround", stuckOnGround);
 }
 
-void Slope::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*option*/, QWidget * /*widget*/ ) 
-{
-	painter->drawPixmap(0, 0, pixmap);  
-}
-
 QPainterPath Slope::shape() const
-{       
+{
+	const QRectF rect = boundingRect();
 	if(type == CrossDiagonal) {
 		QPainterPath path;
 		QPolygonF polygon(3);
-		polygon[0] = QPointF(rect().x(), rect().y());
-		polygon[1] = QPointF(rect().x() + width(), rect().y() + height());
-		polygon[2] = reversed? QPointF(rect().x() + width(), rect().y()) : QPointF(rect().x(), rect().y() + height());
+		polygon[0] = QPointF(rect.x(), rect.y());
+		polygon[1] = QPointF(rect.x() + rect.width(), rect.y() + rect.height());
+		polygon[2] = reversed? QPointF(rect.x() + rect.width(), rect.y()) : QPointF(rect.x(), rect.y() + rect.height());
 		path.addPolygon(polygon);
 		return path;
 	}
 	else if(type == Diagonal) {
 		QPainterPath path;
 		QPolygonF polygon(3);
-		polygon[0] = QPointF(rect().x() + width(), rect().y());
-		polygon[1] = QPointF(rect().x(), rect().y() + height());
-		polygon[2] = !reversed? QPointF(rect().x() + width(), rect().y() + height()) : QPointF(rect().x(), rect().y());
+		polygon[0] = QPointF(rect.x() + rect.width(), rect.y());
+		polygon[1] = QPointF(rect.x(), rect.y() + rect.height());
+		polygon[2] = !reversed? QPointF(rect.x() + rect.width(), rect.y() + rect.height()) : QPointF(rect.x(), rect.y());
 		path.addPolygon(polygon);
 		return path;
 	}
 	else if(type == Elliptic) {
 		QPainterPath path;
-		path.addEllipse(rect().x(), rect().y(), width(), height());
+		path.addEllipse(rect.x(), rect.y(), rect.width(), rect.height());
 		return path;
 	}
 	else {
 		QPainterPath path;
-		path.addRect(rect().x(), rect().y(), width(), height());
+		path.addRect(rect.x(), rect.y(), rect.width(), rect.height());
 		return path;
 	}
 }
@@ -399,59 +398,52 @@ void Slope::setType(GradientType type)
 
 	if (type == Elliptic)
 	{
-		// calls updatePixmap
+		//ensure quadratic shape
 		newSize(width(), height());
 	}
-	else
-		updatePixmap();
+
+	updatePixmap();
 }
 
 void Slope::updatePixmap() //this needs work so that the slope colour depends on angle again
 {
-	if(game == 0)
-		return;
-
-	QString slopeName;
-
 	switch(type) {
 		case Horizontal:
 			if(reversed)
-				slopeName = "slope_e";
+				setSpriteKey(QLatin1String("slope_e"));
 			else
-				slopeName = "slope_w";
+				setSpriteKey(QLatin1String("slope_w"));
 			break;
 
 		case Vertical:
 			if(reversed)
-				slopeName = "slope_s";
+				setSpriteKey(QLatin1String("slope_s"));
 			else
-				slopeName = "slope_n";
+				setSpriteKey(QLatin1String("slope_n"));
 			break;
 
 		case Diagonal:
 			if(reversed)
-				slopeName = "slope_se";
+				setSpriteKey(QLatin1String("slope_se"));
 			else
-				slopeName = "slope_nw";
+				setSpriteKey(QLatin1String("slope_nw"));
 			break;
 
 		case CrossDiagonal:
 			if(reversed)
-				slopeName = "slope_sw";
+				setSpriteKey(QLatin1String("slope_sw"));
 			else
-				slopeName = "slope_ne";
+				setSpriteKey(QLatin1String("slope_ne"));
 			break;
 		case Elliptic:
 			if(reversed)
-				slopeName = "slope_dip";
+				setSpriteKey(QLatin1String("slope_dip"));
 			else
-				slopeName = "slope_bump";
+				setSpriteKey(QLatin1String("slope_bump"));
 			break;
 		default:
 			break;
 	}
-
-	pixmap=Kolf::renderer()->spritePixmap(slopeName, rect().size().toSize());
 
 	// we update the arrows in this function
 	clearArrows();
