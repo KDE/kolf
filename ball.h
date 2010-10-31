@@ -20,7 +20,6 @@
 #ifndef KOLF_BALL_H
 #define KOLF_BALL_H
 
-#define BALL_BOX2D_STEPPING 1
 #include "canvasitem.h"
 
 class Wall;
@@ -35,7 +34,6 @@ public:
 
 	BallState currentState();
 
-	virtual void doAdvance();
 	virtual void moveBy(double dx, double dy);
 
 	virtual bool deleteable() const { return false; }
@@ -52,10 +50,8 @@ public:
 	void friction();
 	void collisionDetect();
 
-#if BALL_BOX2D_STEPPING
 	virtual void setVelocity(const Vector& velocity);
 	Vector velocity() const { return CanvasItem::physicalVelocity(); }
-#endif
 
 	int addStroke() const { return m_addStroke; }
 	bool placeOnGround(Vector &v) { v = m_pogOldVelocity; return m_placeOnGround; }
@@ -82,7 +78,7 @@ public:
 	void reduceMaxBumperBounceSpeed() { if(maxBumperBounceSpeed > 0.4) maxBumperBounceSpeed -= 0.35; }
 
 public slots:
-	void update() { doAdvance(); }
+	void update() { }
 
 private:
 	BallState state;

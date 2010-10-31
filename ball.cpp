@@ -105,19 +105,9 @@ void Ball::moveBy(double dx, double dy)
 		game->ballMoved();
 }
 
-#if BALL_BOX2D_STEPPING
 void Ball::setVelocity(const Vector& velocity)
 {
 	CanvasItem::setPhysicalVelocity(velocity);
-}
-#endif
-
-void Ball::doAdvance()
-{
-#if BALL_BOX2D_STEPPING == 0
-	if (!velocity().isNull())
-		moveBy(velocity().x(), velocity().y());
-#endif
 }
 
 void Ball::collisionDetect()
