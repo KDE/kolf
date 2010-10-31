@@ -302,22 +302,15 @@ public:
 	virtual bool deleteable() const { return false; }
 	virtual bool canBeMovedByOthers() const { return true; }
 	virtual void editModeChanged(bool editing);
-	virtual void setPen(QPen p);
+	virtual void setPen(const QPen& p);
 	virtual void showInfo();
 	virtual void hideInfo();
 	void updateArrowAngle();
-	void updateArrowLength(double resizeFactor=1);
+	void updateArrowLength();
 	void setArrowPen(QPen pen) { arrow->setPen(pen); }
 	virtual Config *config(QWidget *parent);
 	BlackHole *blackHole;
-	double getBaseArrowPenThickness() { return baseArrowPenThickness; }
-	double resizeFactor, baseX, baseY;
-
 protected:
-	/*
-	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
-	 */
-	double baseArrowPenThickness;
 	Arrow *arrow;
 };
 class BlackHoleTimer : public QObject
@@ -339,16 +332,15 @@ protected:
 	double m_speed;
 	Ball *m_ball;
 };
-class BlackHole : public QObject, public QGraphicsEllipseItem, public CanvasItem
+class BlackHole : public EllipticalCanvasItem
 {
 Q_OBJECT
 
 public:
 	BlackHole(QGraphicsItem *parent);
 	virtual bool canBeMovedByOthers() const { return true; }
-	void paint(QPainter *painter, const QStyleOptionGraphicsItem * option, QWidget * widget);
+
 	virtual void aboutToDie();
-	void resize(double resizeFactor);
 	virtual void showInfo();
 	virtual void hideInfo();
 	virtual bool place(Ball *ball, bool wasCenter);
@@ -371,10 +363,6 @@ public:
 
 	virtual void moveBy(double dx, double dy);
 
-	virtual void setSize(const QSizeF& size) { setRect(QRectF(rect().topLeft(), size)); }
-	double width() { return rect().width(); }
-	double height() { return rect().height(); }
-
 	virtual bool collision(Ball *ball, long int id);
 
 public slots:
@@ -389,17 +377,9 @@ protected:
 	virtual HoleResult result(const QPointF, double, bool *wasCenter);
 
 private:
-	QPixmap pixmap;
-	bool pixmapInitialised;
-	/*
-	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
-	 */
-	double baseX, baseY, resizeFactor;
-	double baseInfoLineThickness, baseExitLineWidth;
-	double baseWidth, baseHeight;
 	int runs;
 	QGraphicsLineItem *infoLine;
-	void finishMe(double width=0);
+	void finishMe();
 };
 
 class WallPoint;

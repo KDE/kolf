@@ -1146,48 +1146,27 @@ HoleResult Cup::result(QPointF p, double speed, bool * /*wasCenter*/)
 /////////////////////////
 
 BlackHole::BlackHole(QGraphicsItem * parent)
-	: QGraphicsEllipseItem(-8, -9, 16, 18, parent), exitDeg(0)
+	: EllipticalCanvasItem(true, QLatin1String("black_hole"), parent)
+	, exitDeg(0)
 {
+	setSize(QSizeF(16, 18));
 	setZValue(998.1);
 
 	infoLine = 0;
 	m_minSpeed = 3.0;
 	m_maxSpeed = 5.0;
 	runs = 0;
-	baseInfoLineThickness = 2;
-	baseExitLineWidth = 15;
-	baseWidth = rect().width();
-	baseHeight = rect().height();
 
 	const QColor myColor((QRgb)(KRandom::random() % 0x01000000));
-	QPen pen(myColor);
-        setPen(Qt::NoPen);
-        setBrush(myColor);
+	ellipseItem()->setBrush(myColor);
 
 	exitItem = new BlackHoleExit(this, Kolf::findBoard(this));
 	exitItem->setPen(QPen(myColor, 6));
 	exitItem->setPos(300, 100);
 
-	setSize(QSizeF(baseWidth, baseHeight));
-	pixmapInitialised=false;
-
 	moveBy(0, 0); 
 
 	finishMe();
-}
-
-void BlackHole::paint(QPainter *painter, const QStyleOptionGraphicsItem * option, QWidget *widget) 
-{
-	if(pixmapInitialised == false) {
-		if(game == 0)
-			return;
-		else {
-			pixmap=Kolf::renderer()->spritePixmap("black_hole", rect().size().toSize());
-			pixmapInitialised=true;
-		}
-	}
-	QGraphicsEllipseItem::paint(painter, option, widget);
-	painter->drawPixmap((int)rect().x(), (int)rect().y(), pixmap);  
 }
 
 void BlackHole::showInfo()
@@ -1195,9 +1174,9 @@ void BlackHole::showInfo()
 	delete infoLine;
 	infoLine = new HintedLineItem(true, Kolf::findBoard(this));
 	infoLine->setVisible(true);
-	infoLine->setPen(QPen(exitItem->pen().color(), baseInfoLineThickness));
+	infoLine->setPen(QPen(exitItem->pen().color(), 2));
 	infoLine->setZValue(10000);
-	infoLine->setLine(x(), y(), exitItem->x(), exitItem->y());
+	infoLine->setLine(QLineF(pos(), exitItem->pos()));
 
 	exitItem->showInfo();
 }
@@ -1217,43 +1196,20 @@ void BlackHole::aboutToDie()
 	delete exitItem;
 }
 
-void BlackHole::resize(double resizeFactor)
-{
-	this->resizeFactor = resizeFactor;
-	exitItem->resizeFactor = resizeFactor;
-	setPos(baseX*resizeFactor, baseY*resizeFactor);
-	setRect(-0.5*baseWidth*resizeFactor, -0.5*baseHeight*resizeFactor, baseWidth*resizeFactor, baseHeight*resizeFactor);
-	pixmap=Kolf::renderer()->spritePixmap("black_hole", QSize(baseWidth*resizeFactor, baseHeight*resizeFactor));
-	exitItem->setPos(exitItem->baseX*resizeFactor, exitItem->baseY*resizeFactor);
-	finishMe(baseExitLineWidth*resizeFactor);
-	if(infoLine) {
-		infoLine->setPen(QPen(exitItem->pen().color(), baseInfoLineThickness*resizeFactor));
-		infoLine->setLine(x(), y(), exitItem->x(), exitItem->y());
-	}
-	exitItem->setArrowPen(QPen(exitItem->pen().color(), exitItem->getBaseArrowPenThickness()*resizeFactor));
-	exitItem->updateArrowLength(resizeFactor);
-}
-
 void BlackHole::updateInfo()
 {
 	if (infoLine)
 	{
 		infoLine->setVisible(true);
-		infoLine->setLine(x(), y(), exitItem->x(), exitItem->y());
+		infoLine->setLine(QLineF(pos(), exitItem->pos()));
 		exitItem->showInfo();
 	}
 }
 
 void BlackHole::moveBy(double dx, double dy)
 {
-	QGraphicsEllipseItem::moveBy(dx, dy);
+	EllipticalCanvasItem::moveBy(dx, dy);
 	updateInfo();
-
-	if (game && game->isEditing())
-	{
-		baseX = x() / resizeFactor;
-		baseY = y() / resizeFactor;
-	}
 }
 
 void BlackHole::setExitDeg(int newdeg)
@@ -1371,18 +1327,12 @@ void BlackHole::load(KConfigGroup *cfgGroup)
 	exitItem->updateArrowAngle();
 	exitItem->updateArrowLength();
 
-	baseX = x();
-	baseY = y();
-	exitItem->baseX = exit.x();
-	exitItem->baseY = exit.y();
-
 	finishMe();
 }
 
-void BlackHole::finishMe(double width)
+void BlackHole::finishMe()
 {
-	if(width==0) //default value
-		width=baseExitLineWidth;
+	const double width = 15; //width of exit line
 
 	double radians = deg2rad(exitDeg);
 	QPointF midPoint(0, 0);
@@ -1438,10 +1388,6 @@ BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QGraphicsItem * parent)
 	arrow->setZValue(zValue() - .00001);
 	updateArrowLength();
 	arrow->setVisible(false);
-	baseArrowPenThickness = 1;
-
-	baseX = x();
-	baseY = y();
 }
 
 void BlackHoleExit::aboutToDie()
@@ -1456,10 +1402,10 @@ void BlackHoleExit::moveBy(double dx, double dy)
 	blackHole->updateInfo();
 }
 
-void BlackHoleExit::setPen(QPen p)
+void BlackHoleExit::setPen(const QPen& p)
 {
 	QGraphicsLineItem::setPen(p);
-	arrow->setPen(QPen(p.color(), baseArrowPenThickness));
+	arrow->setPen(QPen(p.color()));
 }
 
 void BlackHoleExit::updateArrowAngle()
@@ -1469,18 +1415,15 @@ void BlackHoleExit::updateArrowAngle()
 	arrow->updateSelf();
 }
 
-void BlackHoleExit::updateArrowLength(double resizeFactor)
+void BlackHoleExit::updateArrowLength()
 {
-	arrow->setLength(resizeFactor * (10.0 + 5.0 * (double)(blackHole->minSpeed() + blackHole->maxSpeed()) / 2.0));
+	arrow->setLength(10.0 + 5.0 * (double)(blackHole->minSpeed() + blackHole->maxSpeed()) / 2.0);
 	arrow->updateSelf();
 }
 
 void BlackHoleExit::editModeChanged(bool editing)
 {
-	if (editing)
-		showInfo();
-	else
-		hideInfo();
+	arrow->setVisible(editing);
 }
 
 void BlackHoleExit::showInfo()
