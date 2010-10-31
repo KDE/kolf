@@ -24,7 +24,6 @@
 
 #include <kolflib_export.h>
 #include "ball.h"
-#include "statedb.h"
 
 #include "tagaro/scene.h"
 
@@ -266,9 +265,6 @@ public:
 	Cup(QGraphicsItem *parent);
 
 	virtual bool place(Ball *ball, bool wasCenter);
-
-	virtual void saveState(StateDB *db);
-	virtual void loadState(StateDB *db);
 	virtual bool canBeMovedByOthers() const { return true; }
 	virtual bool collision(Ball *ball, long int id);
 
@@ -932,7 +928,7 @@ private:
 	bool m_ignoreEvents;
 
 	HoleInfo holeInfo;
-	StateDB stateDB;
+	QMap<QString, QPointF> savedState;
 
 	BallStateList ballStateList;
 	void loadStateList();

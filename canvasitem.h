@@ -30,7 +30,6 @@
 
 class Ball;
 class KConfigGroup;
-class StateDB;
 class KolfGame;
 
 class CanvasItem
@@ -40,16 +39,12 @@ public:
 	virtual ~CanvasItem() {}
 	///load your settings from the KConfigGroup, which represents a course.
 	virtual void load(KConfigGroup *) {}
-	///load a point if you wish. Rarely necessary.
-	virtual void loadState(StateDB * /*db*/) {}
 	///returns a bool that is true if your item needs to load after other items
 	virtual bool loadLast() const { return false; }
 	///called if the item is made by user while editing, with the item that was selected on the hole;
 	virtual void selectedItem(QGraphicsItem * /*item*/) {}
 	///save your settings.
 	virtual void save(KConfigGroup *cfg);
-	///save a point if you wish. Rarely necessary.
-	virtual void saveState(StateDB * /*db*/) {}
 	///called for information when shot started
 	virtual void shotStarted() {}
 	///called right before any items are saved.

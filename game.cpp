@@ -1085,16 +1085,6 @@ bool Cup::place(Ball *ball, bool /*wasCenter*/)
 	return true;
 }
 
-void Cup::saveState(StateDB *db)
-{
-	db->setPoint(pos());
-}
-
-void Cup::loadState(StateDB *db)
-{
-	setPos(db->point());
-}
-
 bool Cup::collision(Ball *ball, long int /*id*/)
 {
 	bool wasCenter = false;
@@ -2970,16 +2960,14 @@ void KolfGame::autoSaveTimeout()
 
 void KolfGame::recreateStateList()
 {
-	stateDB.clear();
-
-	QList<QGraphicsItem *>::const_iterator item;
-	for (item = items.constBegin(); item != items.constEnd(); ++item)
+	savedState.clear();
+	foreach (QGraphicsItem* item, items)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
+		CanvasItem* citem = dynamic_cast<CanvasItem*>(item);
 		if (citem)
 		{
-			stateDB.setName(makeStateGroup(citem->curId(), citem->name()));
-			citem->saveState(&stateDB);
+			const QString key = makeStateGroup(citem->curId(), citem->name());
+			savedState.insert(key, item->pos());
 		}
 	}
 
@@ -2998,14 +2986,15 @@ void KolfGame::undoShot()
 
 void KolfGame::loadStateList()
 {
-	QList<QGraphicsItem *>::const_iterator item;
-	for (item = items.constBegin(); item != items.constEnd(); ++item)
+	foreach (QGraphicsItem* item, items)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
+		CanvasItem* citem = dynamic_cast<CanvasItem*>(item);
 		if (citem)
 		{
-			stateDB.setName(makeStateGroup(citem->curId(), citem->name()));
-			citem->loadState(&stateDB);
+			const QString key = makeStateGroup(citem->curId(), citem->name());
+			const QPointF currentPos = item->pos();
+			const QPointF posDiff = savedState.value(key, currentPos) - currentPos;
+			citem->moveBy(posDiff.x(), posDiff.y());
 		}
 	}
 

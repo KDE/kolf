@@ -235,17 +235,6 @@ void Floater::moveBy(double dx, double dy)
 		game->updateHighlighter();
 }
 
-void Floater::saveState(StateDB *db)
-{
-	db->setPoint(pos());
-}
-
-void Floater::loadState(StateDB *db)
-{
-	const QPointF diff = db->point() - pos();
-	moveBy(diff.x(), diff.y());
-}
-
 void Floater::save(KConfigGroup *cfgGroup)
 {
 	cfgGroup->writeEntry("speed", speed);
