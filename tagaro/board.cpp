@@ -211,8 +211,11 @@ QVariant Tagaro::Board::itemChange(QGraphicsItem::GraphicsItemChange change, con
 		d->m_pendingItems.removeAll(item);
 		QGraphicsObject* object = item->toGraphicsObject();
 		Tagaro::SpriteObjectItem* objectItem = qobject_cast<Tagaro::SpriteObjectItem*>(object);
-		disconnect(objectItem, 0, this, 0);
-		d->m_items.removeAll(objectItem);
+		if (objectItem)
+		{
+			disconnect(objectItem, 0, this, 0);
+			d->m_items.removeAll(objectItem);
+		}
 	}
 	else if (change == ItemChildAddedChange)
 	{

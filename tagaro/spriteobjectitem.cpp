@@ -19,6 +19,7 @@
 #include "spriteobjectitem.h"
 
 #include <QtCore/qmath.h>
+#include <QtGui/QGraphicsScene>
 
 #include <KGameRenderer>
 
@@ -65,6 +66,18 @@ Tagaro::SpriteObjectItem::SpriteObjectItem(KGameRenderer* renderer, const QStrin
 
 Tagaro::SpriteObjectItem::~SpriteObjectItem()
 {
+	//QGraphicsItem does not remove itself from the scene upon destruction
+	//(although one is advised to do this manually by calling removeItem before
+	//delete); this is in general not a problem, but if the SpriteObjectItem is
+	//embedded in a Tagaro::Board, the board needs the ItemChildRemovedChange
+	//message to remove the item from its internal data structures, so we do it
+	//manually
+	QGraphicsScene* scene = this->scene();
+	if (scene)
+	{
+		scene->removeItem(this);
+	}
+	//usual cleanup
 	delete d;
 }
 
