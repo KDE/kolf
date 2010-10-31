@@ -176,9 +176,7 @@ class KolfEllipse : public Tagaro::SpriteObjectItem, public CanvasItem
 {
 public:
 	KolfEllipse(QGraphicsItem *parent, const QString &type);
-	void firstMove(int x, int y);
 	virtual void advance(int phase);
-	void resize(double resizeFactor);
 
 	int changeEvery() const { return m_changeEvery; }
 	void setChangeEvery(int news) { m_changeEvery = news; }
@@ -213,10 +211,6 @@ protected:
 private:
 	int count;
 	bool dontHide;
-	/*
-	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
-	 */
-	double baseX, baseY, baseHeight, baseWidth, resizeFactor;
 };
 class EllipseConfig : public Config
 {
@@ -276,8 +270,6 @@ public:
 
 	virtual void advance(int phase);
 	void moveBy(double x, double y);
-	void firstMove(int x, int y);
-	void resize(double resizeFactor);
 	virtual bool collision(Ball *ball, long int id);
 
 protected:
@@ -285,11 +277,6 @@ protected:
 
 private:
 	int count;
-	/*
-	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
-	 */
-	double resizeFactor, baseX, baseY;
-	int baseDiameter; 
 };
 
  class Cup :  public Tagaro::SpriteObjectItem, public CanvasItem
@@ -299,8 +286,7 @@ public:
 
 	virtual bool place(Ball *ball, bool wasCenter);
 	void moveBy(double x, double y);
-	void firstMove(int x, int y);
-	void resize(double resizeFactor);
+
 	virtual void save(KConfigGroup *cfgGroup);
 	void saveState(StateDB *db);
 	void loadState(StateDB *db);
@@ -310,10 +296,6 @@ public:
 protected:
 	QPixmap pixmap;
 	bool pixmapInitialised;
-	/*
-	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
-	 */
-	double baseX, baseY, baseDiameter, resizeFactor;
 	virtual HoleResult result(const QPointF, double, bool *wasCenter);
 };
 

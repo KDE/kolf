@@ -823,12 +823,6 @@ KolfEllipse::KolfEllipse(QGraphicsItem *parent, const QString &type)
 	point->setSizeFactor(2.0);
 }
 
-void KolfEllipse::firstMove(int x, int y)
-{
-	baseX = (double)x;
-	baseY = (double)y;
-}
-
 void KolfEllipse::aboutToDie()
 {
 	delete point;
@@ -850,20 +844,10 @@ QList<QGraphicsItem *> KolfEllipse::moveableItems() const
 	return ret;
 }
 
-void KolfEllipse::resize(double resizeFactor)
-{
-	this->resizeFactor = resizeFactor;
-	//setRect(baseWidth*resizeFactor*-0.5, baseHeight*resizeFactor*-0.5, baseWidth*resizeFactor, baseHeight*resizeFactor);
-	setPos(baseX*resizeFactor, baseY*resizeFactor);
-	moveBy(0, 0); 
-}
-
 void KolfEllipse::setSize(double width, double height)
 {
 	setOffset(-0.5 * width, -0.5 * height);
 	Tagaro::SpriteObjectItem::setSize(width, height);
-	baseWidth = width;
-	baseHeight = height;
 }
 
 void KolfEllipse::moveBy(double dx, double dy)
@@ -1134,9 +1118,9 @@ void Putter::finishMe()
 Bumper::Bumper(QGraphicsItem * parent)
 : Tagaro::SpriteObjectItem(Kolf::renderer(), QLatin1String("bumper_off"), parent)
 {
-	baseDiameter=20;
-	setOffset(-0.5 * baseDiameter, -0.5 * baseDiameter);
-	Tagaro::SpriteObjectItem::setSize(baseDiameter, baseDiameter);
+	const int diameter = 20;
+	setOffset(-0.5 * diameter, -0.5 * diameter);
+	Tagaro::SpriteObjectItem::setSize(diameter, diameter);
 	setZValue(-25);
 
 	count = 0;
@@ -1146,19 +1130,6 @@ Bumper::Bumper(QGraphicsItem * parent)
 void Bumper::moveBy(double x, double y)
 {
 	QGraphicsItem::moveBy(x, y);
-}
-
-void Bumper::firstMove(int x, int y)
-{
-	baseX = (double)x;
-	baseY = (double)y;
-}
-
-void Bumper::resize(double resizeFactor)
-{
-	this->resizeFactor = resizeFactor;
-	setPos(baseX*resizeFactor, baseY*resizeFactor);
-// 	setRect(-0.5*baseDiameter*resizeFactor, -0.5*baseDiameter*resizeFactor, baseDiameter*resizeFactor, baseDiameter*resizeFactor);
 }
 
 void Bumper::advance(int phase)
@@ -1207,9 +1178,9 @@ bool Bumper::collision(Ball *ball, long int /*id*/)
 Cup::Cup(QGraphicsItem * parent)
 	: Tagaro::SpriteObjectItem(Kolf::renderer(), "cup", parent)
 {
-	baseDiameter = 16;
-	setOffset(-0.5 * baseDiameter, -0.5 * baseDiameter);
-	Tagaro::SpriteObjectItem::setSize(baseDiameter, baseDiameter);
+	const int diameter = 16;
+	setOffset(-0.5 * diameter, -0.5 * diameter);
+	Tagaro::SpriteObjectItem::setSize(diameter, diameter);
 
 	setZValue(998.1);
 }
@@ -1227,25 +1198,6 @@ bool Cup::place(Ball *ball, bool /*wasCenter*/)
 void Cup::moveBy(double x, double y)
 {
 	QGraphicsItem::moveBy(x, y);
-
-	if (game && game->isEditing())
-	{
-		baseX = QGraphicsItem::x() / resizeFactor;
-		baseY = QGraphicsItem::y() / resizeFactor;
-	}
-}
-
-void Cup::firstMove(int x, int y)
-{
-	baseX = (double)x;
-	baseY = (double)y;
-}
-
-void Cup::resize(double resizeFactor)
-{
-	this->resizeFactor = resizeFactor;
-	setPos(baseX*resizeFactor, baseY*resizeFactor);
-// 	setRect(-0.5*baseDiameter*resizeFactor, -0.5*baseDiameter*resizeFactor, baseDiameter*resizeFactor, baseDiameter*resizeFactor);
 }
 
 void Cup::save(KConfigGroup *cfgGroup)
@@ -1255,13 +1207,12 @@ void Cup::save(KConfigGroup *cfgGroup)
 
 void Cup::saveState(StateDB *db)
 {
-	db->setPoint(QPointF(x()/resizeFactor, y()/resizeFactor));
+	db->setPoint(pos());
 }
 
 void Cup::loadState(StateDB *db)
 {
-	const QPointF moveTo = db->point();
-	setPos(moveTo.x()*resizeFactor, moveTo.y()*resizeFactor);
+	setPos(db->point());
 }
 
 bool Cup::collision(Ball *ball, long int /*id*/)
