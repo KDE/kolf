@@ -20,6 +20,7 @@
 #ifndef KOLF_BALL_H
 #define KOLF_BALL_H
 
+#define BALL_BOX2D_STEPPING 1
 #include "canvasitem.h"
 
 class Wall;
@@ -50,6 +51,11 @@ public:
 	void setFrictionMultiplier(double news) { frictionMultiplier = news; }
 	void friction();
 	void collisionDetect();
+
+#if BALL_BOX2D_STEPPING
+	virtual void setVelocity(const Vector& velocity);
+	Vector velocity() const { return CanvasItem::physicalVelocity(); }
+#endif
 
 	int addStroke() const { return m_addStroke; }
 	bool placeOnGround(Vector &v) { v = m_pogOldVelocity; return m_placeOnGround; }
