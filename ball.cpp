@@ -61,7 +61,7 @@ void Ball::aboutToDie()
 void Ball::setState(BallState newState)
 {
 	state = newState;
-	if (state == Holed)
+	if (state == Holed || !EllipticalCanvasItem::isVisible())
 		setSimulationType(CanvasItem::NoSimulation);
 	else
 		setSimulationType(CanvasItem::DynamicSimulation);
@@ -210,6 +210,7 @@ void Ball::setName(const QString &name)
 void Ball::setVisible(bool yes)
 {
 	EllipticalCanvasItem::setVisible(yes);
+	setState(state);
 
 	label->setVisible(yes && game && game->isInfoShowing());
 }

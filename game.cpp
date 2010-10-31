@@ -1277,13 +1277,13 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 
 void BlackHole::eject(Ball *ball, double speed)
 {
+	ball->setVisible(true);
 	//place ball 10 units after exit, and set exit velocity
 	const Vector direction = Vector::fromMagnitudeDirection(1, -deg2rad(exitDeg));
 	ball->setPos(exitItem->pos() + 10 * direction);
 	ball->setVelocity(speed * direction);
 
 	ball->setForceStillGoing(false);
-	ball->setVisible(true);
 	ball->setState(Rolling);
 
 	runs++;

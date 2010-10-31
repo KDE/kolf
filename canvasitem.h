@@ -149,7 +149,8 @@ private:
 			CollisionSimulation = CollisionFlag,
 			///The object moves according to its kinematic state.
 			KinematicSimulation = CollisionSimulation | KinematicSimulationFlag,
-			///Other objects can collide with the shape of this object.
+			///This object collides with the shapes of other objects, and forces
+			///can act on it.
 			DynamicSimulation = KinematicSimulation | DynamicSimulationFlag
 		};
 
