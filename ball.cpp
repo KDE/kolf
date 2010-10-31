@@ -152,12 +152,16 @@ void Ball::advance(int /*phase*/)
 
 void Ball::friction()
 {
-	if (state == Stopped || state == Holed || !isVisible()) { setVelocity(0, 0); return; }
+	if (state == Stopped || state == Holed || !isVisible())
+	{
+		setVelocity(Vector());
+		return;
+	}
 	const double subtractAmount = .027 * frictionMultiplier;
 	if (m_vector.magnitude() <= subtractAmount)
 	{
 		state = Stopped;
-		setVelocity(0, 0);
+		setVelocity(Vector());
 		game->timeout();
 		return;
 	}
@@ -167,16 +171,16 @@ void Ball::friction()
 	frictionMultiplier = 1.0;
 }
 
-void Ball::setVelocity(double vx, double vy)
+void Ball::setVelocity(const Vector& velocity)
 {
-	CanvasItem::setVelocity(vx, vy);
-	m_vector = QPointF(vx, -vy);
+	CanvasItem::setVelocity(velocity);
+	m_vector = QPointF(velocity.x(), -velocity.y());
 }
 
-void Ball::setVector(const Vector &newVector)
+void Ball::setVector(const Vector& newVector)
 {
 	m_vector = newVector;
-	CanvasItem::setVelocity(newVector.x(), -newVector.y());
+	CanvasItem::setVelocity(Vector(newVector.x(), -newVector.y()));
 }
 
 void Ball::moveByResizedDistance(double dx, double dy)
@@ -207,8 +211,8 @@ void Ball::moveBy(double baseDx, double baseDy)
 
 void Ball::doAdvance()
 {
-	if(getXVelocity()!=0 || getYVelocity()!=0) 
-		moveBy(getXVelocity(), getYVelocity());
+	if (!velocity().isNull())
+		moveBy(velocity().x(), velocity().y());
 }
 
 void Ball::collisionDetect(double oldx, double oldy)
@@ -228,7 +232,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 
 	// every other time...
 	// do friction
-	if (collisionId % 2 && !(getXVelocity() == 0 && getXVelocity() == 0))
+	if (collisionId % 2 && !velocity().isNull())
 		friction();
 
 	double initialVector = m_vector.magnitude();
@@ -479,7 +483,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 		}
 		else
 		{
-			setVelocity(0, 0);
+			setVelocity(Vector());
 			setState(Stopped);
 		}
 	}
@@ -624,4 +628,3 @@ void Ball::setVisible(bool yes)
 
 	label->setVisible(yes && game && game->isInfoShowing());
 }
-

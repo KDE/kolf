@@ -20,6 +20,7 @@
 #define KOLF_CANVASITEM_H
 
 #include "config.h"
+#include "vector.h"
 
 #include <QGraphicsRectItem>
 #include <QGraphicsView>
@@ -94,8 +95,8 @@ public:
 	///Returns whether this can be moved by the user while editing.
 	virtual bool moveable() const { return true; }
 
-	void setId(int newId) { id = newId; }
-	int curId() const { return id; }
+	void setId(int newId) { m_id = newId; }
+	int curId() const { return m_id; }
 
 	///Play a sound (e.g. playSound("wall") plays kdedir/share/apps/kolf/sounds/wall.wav). Optionally, specify \a vol to be between 0-1, for no sound to full volume, respectively.
 	void playSound(const QString &file, double vol = 1);
@@ -116,12 +117,10 @@ public:
 	virtual void updateBaseResizeInfo() {}
 
 	///custom animation code
-	void setAnimated(bool animated) { this->animated=animated; }
-	void setVelocity(double xv, double yv) { setXVelocity(xv); setYVelocity(yv); }
-	void setXVelocity(double xVelocity) { this->xVelocity=xVelocity; }
-	void setYVelocity(double yVelocity) { this->yVelocity=yVelocity; }
-	double getXVelocity() { return xVelocity; }
-	double getYVelocity() { return yVelocity; }
+	bool isAnimated() const { return m_animated; }
+	void setAnimated(bool animated) { m_animated = animated; }
+	virtual void setVelocity(const Vector& velocity) { m_velocity = velocity; }
+	Vector velocity() const { return m_velocity; }
 	virtual void moveBy(double , double) { kDebug(12007) << "Warning, empty moveBy used";} //needed so that float can call the own custom moveBy()s of everything on it
 
 protected:
@@ -129,13 +128,12 @@ protected:
 	KolfGame *game;
 	///returns the highest vertical strut the item is on
 	QGraphicsRectItem *onVStrut();
-	///custom animation code
-	bool animated;
-	double xVelocity;
-	double yVelocity;
 private:
 	QString m_name;
-	int id;
+	int m_id;
+	///custom animation code
+	bool m_animated;
+	Vector m_velocity;
 };
 
 #endif

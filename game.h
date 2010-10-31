@@ -481,7 +481,6 @@ public:
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
 	virtual void setPos(double x, double y);
-	virtual void setVelocity(double vx, double vy);
 	virtual void clean();
 
 	// must reimp because we gotta move the end items,

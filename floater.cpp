@@ -142,7 +142,7 @@ void Floater::advance(int phase)
 	if (!isEnabled())
 		return;
 
-	if (phase == 1 && (getXVelocity() || getXVelocity()))
+	if (phase == 1 && !velocity().isNull())
 	{
 		doAdvance();
 		if (Vector(origin - QPointF(x(), y())).magnitude() > vector.magnitude())
@@ -150,14 +150,14 @@ void Floater::advance(int phase)
 			vector.setDirection(vector.direction() + M_PI);
 			origin = (origin == wall->startPoint()? wall->endPoint() : wall->startPoint());
 
-			setVelocity(-getXVelocity(), -getYVelocity());
+			setVelocity(-velocity());
 		}
 	}
 }
 
 void Floater::doAdvance()
 {
-	moveBy(getXVelocity(), getYVelocity());
+	moveBy(velocity().x(), velocity().y());
 }
 
 void Floater::reset()
@@ -199,17 +199,17 @@ void Floater::setSpeed(int news)
 
 	if (news == 0)
 	{
-		setVelocity(0, 0);
+		setVelocity(Vector());
 		return;
 	}
 
 	const double factor = (double)speed / 3.5;
-	setVelocity(-cos(vector.direction()) * factor * resizeFactor, -sin(vector.direction()) * factor * resizeFactor);
+	setVelocity(-Vector::fromMagnitudeDirection(factor * resizeFactor, vector.direction()));
 }
 
 void Floater::aboutToSave()
 {
-	setVelocity(0, 0);
+	setVelocity(velocity());
 	noUpdateZ = true;
 	setPos(wall->endPoint().x() + wall->x(), wall->endPoint().y() + wall->y());
 	noUpdateZ = false;
@@ -241,10 +241,10 @@ void Floater::moveBy(double dx, double dy)
 				{
 					//((Ball *)(*it))->setState(Rolling);
 					Ball *ball = dynamic_cast<Ball *>(*it);
-                                        Q_ASSERT(ball);
+					Q_ASSERT(ball);
 					ball->moveByResizedDistance(dx, dy);
 					if (game && /*game->hasFocus() &&*/ !game->isEditing() && game->curBall() == (Ball *)(*it))
-							game->ballMoved();
+						game->ballMoved();
 				}
 				else if ((*it)->data(0) != Rtti_Putter) {
 					item->moveBy(dx, dy);

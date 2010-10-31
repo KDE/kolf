@@ -59,7 +59,7 @@ public:
 	 * moves the ball, automatically modifying dx and dy to take into account resizing (so the input dx and dy can use the game's base 400x400 co-ordinated system, and do not need to be modified when the game is resized)
 	 */
 	virtual void moveBy(double baseDx, double baseDy);
-	virtual void setVelocity(double vx, double vy);
+	virtual void setVelocity(const Vector& velocity);
 
 	virtual bool deleteable() const { return false; }
 

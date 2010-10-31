@@ -318,8 +318,7 @@ bool Slope::collision(Ball *ball, long int /*id*/)
 	if (grade <= 0)
 		return false;
 
-	double vx = ball->getXVelocity();
-	double vy = ball->getYVelocity();
+	Vector v = ball->velocity();
 	double addto = 0.013 * grade;
 
 	const bool diag = type == Diagonal || type == CrossDiagonal;
@@ -343,39 +342,30 @@ bool Slope::collision(Ball *ball, long int /*id*/)
 		addto = sin(addto);
 	}
 
-	switch (type)
+	if (!reversed)
+		addto = -addto;
+	switch ((int) type)
 	{
 		case Horizontal:
-			reversed? vx += addto : vx -= addto;
-		break;
-
+			v.rx() += addto;
+			break;
 		case Vertical:
-			reversed? vy += addto : vy -= addto;
-		break;
-
+			v.ry() += addto;
+			break;
 		case Diagonal:
 		case Elliptic:
-			reversed? vx += cos(slopeAngle) * addto : vx -= cos(slopeAngle) * addto;
-			reversed? vy += sin(slopeAngle) * addto : vy -= sin(slopeAngle) * addto;
-		break;
-
+			v.rx() += cos(slopeAngle) * addto;
+			v.ry() += sin(slopeAngle) * addto;
+			break;
 		case CrossDiagonal:
-			reversed? vx -= cos(slopeAngle) * addto : vx += cos(slopeAngle) * addto;
-			reversed? vy += sin(slopeAngle) * addto : vy -= sin(slopeAngle) * addto;
-		break;
-
-		default:
-		break;
+			v.rx() -= cos(slopeAngle) * addto;
+			v.ry() += sin(slopeAngle) * addto;
+			break;
 	}
+	ball->setVelocity(v);
 
-	ball->setVelocity(vx, vy);
-	// check if the ball is at the center of a pit or mound
-	// or has otherwise stopped.
-	if (vx == 0 && vy ==0) 
-		ball->setState(Stopped);
-	else 
-		ball->setState(Rolling);
-
+	// check if the ball is at the center of a pit or mound or has otherwise stopped.
+	ball->setState(v.isNull() ? Stopped : Rolling);
 	// do NOT do terrain collidingItems
 	return false;
 }

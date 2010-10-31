@@ -592,7 +592,10 @@ void Windmill::setSpeed(double news)
 	if (news < 0)
 		return;
 	speed = news;
-	guard->setXVelocity((news/3) * (guard->getXVelocity() > 0? 1 : -1));
+	qreal newVelocity = news / 3;
+	if (guard->velocity().x() < 0)
+		newVelocity = -newVelocity;
+	guard->setVelocity(Vector(newVelocity, 0));
 }
 
 void Windmill::setGame(KolfGame *game)
@@ -694,10 +697,11 @@ void WindmillGuard::advance(int phase)
 	if (phase == 1)
 	{
 		Wall::doAdvance();
+		const Vector velocity = this->velocity();
 		if (x() + line().x1() <= min)
-			setXVelocity(fabs(getXVelocity()));
+			setVelocity(Vector(qAbs(velocity.x()), 0));
 		else if (x() + line().x2() >= max)
-			setXVelocity(-fabs(getXVelocity()));
+			setVelocity(Vector(-qAbs(velocity.x()), 0));
 	}
 }
 
@@ -1028,7 +1032,7 @@ bool Puddle::collision(Ball *ball, long int /*id*/)
 			ball->setPlaceOnGround(true);
 			ball->setVisible(false);
 			ball->setState(Stopped);
-			ball->setVelocity(0, 0);
+			ball->setVelocity(Vector());
 			if (game && game->curBall() == ball)
 				game->stoppedBall();
 		}
@@ -1060,7 +1064,7 @@ bool Sand::collision(Ball *ball, long int /*id*/)
 			ball->setFrictionMultiplier(7);
 		else
 		{
-			ball->setVelocity(0, 0);
+			ball->setVelocity(Vector());
 			ball->setState(Stopped);
 		}
 	}
@@ -1256,7 +1260,7 @@ void Bumper::resize(double resizeFactor)
 
 void Bumper::advance(int phase)
 {
-	if(!animated)
+	if(!isAnimated())
 		return;
 
 	QGraphicsEllipseItem::advance(phase);
@@ -1296,7 +1300,7 @@ bool Bumper::collision(Ball *ball, long int /*id*/)
 
 	ball->setVector(betweenVector);
 	// for some reason, x is always switched...
-	ball->setXVelocity(-ball->getXVelocity());
+	ball->setVelocity(Vector(-ball->velocity().x(), ball->velocity().y()));
 	ball->setState(Rolling);
 
 	setAnimated(true);
@@ -1341,7 +1345,7 @@ bool Cup::place(Ball *ball, bool /*wasCenter*/)
 	playSound("holed");
 
 	ball->setResizedPos(x(), y());
-	ball->setVelocity(0, 0);
+	ball->setVelocity(Vector());
 	return true;
 }
 
@@ -1599,7 +1603,7 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 	const double diff = (m_maxSpeed - m_minSpeed);
 	const double speed = m_minSpeed + ball->curVector().magnitude() * (diff / 3.75);
 
-	ball->setVelocity(0, 0);
+	ball->setVelocity(Vector());
 	ball->setState(Stopped);
 	ball->setVisible(false);
 	ball->setForceStillGoing(true);
@@ -2219,11 +2223,6 @@ void Wall::setPos(double x, double y)
 	endItem->setPos(endPointF().x() + x, endPointF().y() + y);
 }
 
-void Wall::setVelocity(double vx, double vy)
-{
-	CanvasItem::setVelocity(vx, vy);
-}
-
 void Wall::editModeChanged(bool changed)
 {
 	// make big for debugging?
@@ -2316,7 +2315,7 @@ void Wall::save(KConfigGroup *cfgGroup)
 
 void Wall::doAdvance()
 {
-	moveBy(getXVelocity(), getYVelocity());
+	moveBy(velocity().x(), velocity().y());
 }
 
 /////////////////////////
@@ -3668,7 +3667,7 @@ void KolfGame::shotDone()
 		return;
 	}
 
-	ball->setVelocity(0, 0);
+	ball->setVelocity(Vector());
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 	{
@@ -3898,7 +3897,7 @@ void KolfGame::startNextHole()
 		(*it).ball()->setBeginningOfHole(true);
 		if ((int)(*it).scores().count() < curHole)
 			(*it).addHole();
-		(*it).ball()->setVelocity(0, 0);
+		(*it).ball()->setVelocity(Vector());
 		(*it).ball()->setVisible(false);
 	}
 
