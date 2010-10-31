@@ -2418,6 +2418,11 @@ QPoint KolfGame::viewportToViewport(const QPoint &p)
 
 void KolfGame::mouseReleaseEvent(QMouseEvent * e)
 {
+	e->setAccepted(false);
+	QGraphicsView::mouseReleaseEvent(e);
+	if (e->isAccepted())
+		return;
+
 	QMouseEvent fixedEvent (QEvent::MouseButtonRelease, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
 	handleMouseReleaseEvent(&fixedEvent);
 	e->accept();
@@ -2425,6 +2430,11 @@ void KolfGame::mouseReleaseEvent(QMouseEvent * e)
 
 void KolfGame::mousePressEvent(QMouseEvent * e)
 {
+	e->setAccepted(false);
+	QGraphicsView::mousePressEvent(e);
+	if (e->isAccepted())
+		return;
+
 	QMouseEvent fixedEvent (QEvent::MouseButtonPress, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
 	handleMousePressEvent(&fixedEvent);
 	e->accept();
@@ -2432,6 +2442,11 @@ void KolfGame::mousePressEvent(QMouseEvent * e)
 
 void KolfGame::mouseDoubleClickEvent(QMouseEvent * e)
 {
+	e->setAccepted(false);
+	QGraphicsView::mouseDoubleClickEvent(e);
+	if (e->isAccepted())
+		return;
+
 	QMouseEvent fixedEvent (QEvent::MouseButtonDblClick, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
 	handleMouseDoubleClickEvent(&fixedEvent);
 	e->accept();
@@ -2439,6 +2454,11 @@ void KolfGame::mouseDoubleClickEvent(QMouseEvent * e)
 
 void KolfGame::mouseMoveEvent(QMouseEvent * e)
 {
+	e->setAccepted(false);
+	QGraphicsView::mouseMoveEvent(e);
+	if (e->isAccepted())
+		return;
+
 	QMouseEvent fixedEvent (QEvent::MouseMove, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
 	handleMouseMoveEvent(&fixedEvent);
 	e->accept();
