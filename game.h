@@ -115,14 +115,17 @@ private:
 
 typedef QList<Player> PlayerList;
 
-class AntiAliasedLine : public QGraphicsLineItem
+class HintedLineItem : public QGraphicsLineItem
 {
 public:
-	AntiAliasedLine(QGraphicsItem *parent);
-	void paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget);
+	HintedLineItem(bool antialiased, QGraphicsItem *parent);
+
+	virtual void paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget);
+private:
+	bool m_antialiased;
 };
 
-class Arrow : public AntiAliasedLine
+class Arrow : public HintedLineItem
 {
 public:
 	Arrow(QGraphicsItem *parent);
@@ -316,7 +319,7 @@ private:
 	BlackHole *blackHole;
 };
 
-class BlackHoleExit : public AntiAliasedLine, public CanvasItem
+class BlackHoleExit : public HintedLineItem, public CanvasItem
 {
 public:
 	BlackHoleExit(BlackHole *blackHole, QGraphicsItem *parent);
@@ -427,19 +430,15 @@ private:
 };
 
 class WallPoint;
-class Wall : public AntiAliasedLine, public CanvasItem
+class Wall : public HintedLineItem, public CanvasItem
 {
 public:
-	Wall( QGraphicsItem *parent, bool antialiasing=1);
+	Wall(QGraphicsItem *parent, bool antialiasing = true);
 	virtual void aboutToDie();
 	double dampening;
 
 	void setAlwaysShow(bool yes);
 	virtual void setZValue(double newz);
-	void resize(double resizeFactor);
-	void setBasePenWidth(double basePenWidth) { this->basePenWidth=basePenWidth; }
-	void setLine(const QLineF & line);
-	void setLine(qreal x1, qreal y1, qreal x2, qreal y2);
 	virtual void setPen(QPen p);
 	virtual bool collision(Ball *ball, long int id);
 	virtual void save(KConfigGroup *cfgGroup);
@@ -458,24 +457,18 @@ public:
 	virtual void setGame(KolfGame *game);
 	virtual void setVisible(bool);
 
-	QPointF startPointF() const { return QPointF(line().x1(), line().y1() ); }
-	QPointF endPointF() const { return QPointF(line().x2(), line().y2() ); }
-	QPoint startPoint() const { return QPoint((int)line().x1(), (int)line().y1() ); }
-	QPoint endPoint() const { return QPoint((int)line().x2(), (int)line().y2() ); }
+	QPointF startPointF() const { return line().p1(); }
+	QPointF endPointF() const { return line().p2(); }
+	QPoint startPoint() const { return line().p1().toPoint(); }
+	QPoint endPoint() const { return line().p2().toPoint(); }
 
 	void doAdvance();
-
 protected:
 	WallPoint *startItem;
 	WallPoint *endItem;
 	bool editing;
 
 private:
-	/*
-	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
-	 */
-	double resizeFactor;
-	double basePenWidth;
 	bool antialiasing;
 	long int lastId;
 
@@ -501,9 +494,6 @@ public:
 	double height() { return rect().height(); }
 
 	Wall *parentWall() { return wall; }
-
-	double baseX, baseY, resizeFactor;
-
 protected:
 	Wall *wall;
 	bool editing;
@@ -518,7 +508,7 @@ private:
 	friend class Wall;
 };
 
-class Putter : public AntiAliasedLine, public CanvasItem
+class Putter : public HintedLineItem, public CanvasItem
 {
 public:
 	Putter(QGraphicsItem* parent);

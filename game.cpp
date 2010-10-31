@@ -127,10 +127,10 @@ void RectPoint::setSize(double width, double height)
 /////////////////////////
 
 Arrow::Arrow(QGraphicsItem * parent)
-    : AntiAliasedLine(parent)
+    : HintedLineItem(true, parent)
 {
-	line1 = new AntiAliasedLine(this);
-	line2 = new AntiAliasedLine(this);
+	line1 = new HintedLineItem(true, this);
+	line2 = new HintedLineItem(true, this);
 
 	m_angle = 0;
 	m_length = 20;
@@ -301,13 +301,13 @@ void Bridge::resize(double resizeFactor)
 	setPos(baseX*resizeFactor, baseY*resizeFactor);
 // 	setRect(0, 0, baseWidth*resizeFactor, baseHeight*resizeFactor);
 	botWall->setPos(baseBotWallX*resizeFactor, baseBotWallY*resizeFactor);
-	botWall->resize(resizeFactor);
+// 	botWall->resize(resizeFactor);
 	topWall->setPos(baseTopWallX*resizeFactor, baseTopWallY*resizeFactor);
-	topWall->resize(resizeFactor);
+// 	topWall->resize(resizeFactor);
 	leftWall->setPos(baseLeftWallX*resizeFactor, baseLeftWallY*resizeFactor);
-	leftWall->resize(resizeFactor);
+// 	leftWall->resize(resizeFactor);
 	rightWall->setPos(baseRightWallX*resizeFactor, baseRightWallY*resizeFactor);
-	rightWall->resize(resizeFactor);
+// 	rightWall->resize(resizeFactor);
 }
 
 bool Bridge::collision(Ball *ball, long int /*id*/)
@@ -504,7 +504,6 @@ Windmill::Windmill(QGraphicsItem * parent)
 	baseGuardSpeed = 5;
 	guard = new WindmillGuard(Kolf::findBoard(this));
 	guard->setPen(QPen(Qt::black, 5));
-	guard->setBasePenWidth(5);
 	guard->setVisible(true);
 	guard->setAlwaysShow(true);
 	setSpeed(baseGuardSpeed);
@@ -537,12 +536,12 @@ void Windmill::resize(double resizeFactor)
 	Bridge::resize(resizeFactor);
 	guard->setBetween(baseGuardMin*resizeFactor, baseGuardMax*resizeFactor);
 	guard->QGraphicsLineItem::setPos(baseGuardX*resizeFactor, baseGuardY*resizeFactor);
-	guard->resize(resizeFactor);
+// 	guard->resize(resizeFactor);
 	setSpeed(baseGuardSpeed*resizeFactor);
 	left->QGraphicsLineItem::setPos(baseLeftX*resizeFactor, baseLeftY*resizeFactor);
-	left->resize(resizeFactor);
+// 	left->resize(resizeFactor);
 	right->QGraphicsLineItem::setPos(baseRightX*resizeFactor, baseRightY*resizeFactor);
-	right->resize(resizeFactor);
+// 	right->resize(resizeFactor);
 }
 
 void Windmill::aboutToDie()
@@ -980,7 +979,7 @@ bool Sand::collision(Ball *ball, long int /*id*/)
 /////////////////////////
 
 Putter::Putter(QGraphicsItem* parent)
-: AntiAliasedLine(parent)
+: HintedLineItem(true, parent)
 {
 	setData(0, Rtti_Putter);
 	m_showGuideLine = true;
@@ -992,7 +991,7 @@ Putter::Putter(QGraphicsItem* parent)
 	basePutterWidth = putterWidth = 11;
 	angle = 0;
 
-	guideLine = new AntiAliasedLine(this);
+	guideLine = new HintedLineItem(true, this);
 	guideLine->setPen(QPen(Qt::white, baseGuideLineThickness));
 	guideLine->setZValue(998.8);
 
@@ -1293,7 +1292,7 @@ void BlackHole::paint(QPainter *painter, const QStyleOptionGraphicsItem * option
 void BlackHole::showInfo()
 {
 	delete infoLine;
-	infoLine = new AntiAliasedLine(Kolf::findBoard(this));
+	infoLine = new HintedLineItem(true, Kolf::findBoard(this));
 	infoLine->setVisible(true);
 	infoLine->setPen(QPen(exitItem->pen().color(), baseInfoLineThickness));
 	infoLine->setZValue(10000);
@@ -1529,7 +1528,7 @@ HoleResult BlackHole::result(QPointF p, double s, bool * /*wasCenter*/)
 /////////////////////////
 
 BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QGraphicsItem * parent)
-: AntiAliasedLine(parent)
+: HintedLineItem(true, parent)
 {
 	setData(0, Rtti_NoCollision);
 	this->blackHole = blackHole;
@@ -1660,15 +1659,15 @@ void BlackHoleConfig::maxChanged(double news)
 
 /////////////////////////
 
-AntiAliasedLine::AntiAliasedLine(QGraphicsItem *parent)
+HintedLineItem::HintedLineItem(bool antialiased, QGraphicsItem *parent)
 	: QGraphicsLineItem(parent)
-{ 
-	;
+	, m_antialiased(antialiased)
+{
 }
 
-void AntiAliasedLine::paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget)
+void HintedLineItem::paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget)
 {
-	p->setRenderHint(QPainter::Antialiasing, true);
+	p->setRenderHint(QPainter::Antialiasing, m_antialiased);
 	QGraphicsLineItem::paint(p, style, widget);
 }
 
@@ -1686,13 +1685,7 @@ WallPoint::WallPoint(bool start, Wall *wall, QGraphicsItem * parent)
 	lastId = INT_MAX - 10;
 	dontmove = false;
 
-	setPos(0, 0);
-	QPointF p;
-	if (start)
-		p = wall->startPointF();
-	else
-		p = wall->endPointF();
-	setPos(p.x(), p.y());
+	setPos(start ? wall->startPointF() : wall->endPointF());
 	setPen(QPen(Qt::NoPen));
 }
 
@@ -1701,14 +1694,15 @@ void WallPoint::clean()
 	double oldWidth = width();
 	setSize(7, 7);
 
-	QGraphicsItem *onPoint = 0;
 	QList<QGraphicsItem *> l = collidingItems();
 	for (QList<QGraphicsItem *>::Iterator it = l.begin(); it != l.end(); ++it)
+	{
 		if ((*it)->data(0) == data(0))
-			onPoint = (*it);
-
-	if (onPoint)
-		setPos(onPoint->x(), onPoint->y());
+		{
+			setPos((*it)->pos());
+			break;
+		}
+	}
 
 	setSize(oldWidth, oldWidth);
 }
@@ -1730,11 +1724,11 @@ void WallPoint::moveBy(double dx, double dy)
 
 	if (start)
 	{
-		wall->setLine(x(), y(), wall->endPoint().x() + wall->x(), wall->endPoint().y() + wall->y());
+		wall->setLine(QLineF(pos(), wall->endPointF() + wall->pos()));
 	}
 	else
 	{
-		wall->setLine(wall->startPointF().x() + wall->x(), wall->startPointF().y() + wall->y(), x(), y());
+		wall->setLine(QLineF(wall->startPointF() + wall->pos(), pos()));
 	}
 	wall->setPos(0, 0);
 	wall->moveBy(0, 0);
@@ -1847,10 +1841,9 @@ bool WallPoint::collision(Ball *ball, long int id)
 
 /////////////////////////
 
-Wall::Wall( QGraphicsItem *parent, bool antialiasing)
-: AntiAliasedLine(parent)
+Wall::Wall(QGraphicsItem *parent, bool antialiased)
+: HintedLineItem(antialiased, parent)
 {
-	basePenWidth = 3;
 	this->antialiasing = antialiasing;
 	setData(0, Rtti_Wall);
 	editing = false;
@@ -1868,7 +1861,7 @@ Wall::Wall( QGraphicsItem *parent, bool antialiasing)
 	endItem = new WallPoint(false, this, parent);
 	startItem->setVisible(true);
 	endItem->setVisible(true);
-	setPen(QPen(Qt::darkRed, basePenWidth));
+	setPen(QPen(Qt::darkRed, 3));
 
 	setLine(-15, 10, 15, -5);
 
@@ -1877,46 +1870,13 @@ Wall::Wall( QGraphicsItem *parent, bool antialiasing)
 	editModeChanged(false);
 }
 
-void Wall::resize(double resizeFactor)
-{
-	this->resizeFactor = resizeFactor;
-	this->startItem->resizeFactor = resizeFactor;
-	this->endItem->resizeFactor = resizeFactor;
-
-	QGraphicsLineItem::setLine(startItem->baseX*resizeFactor, startItem->baseY*resizeFactor, endItem->baseX*resizeFactor, endItem->baseY*resizeFactor);
-	startItem->dontMove();
-	endItem->dontMove();
-	startItem->setPos(startPointF().x() + x(), startPointF().y() + y());
-	endItem->setPos(endPointF().x() + x(), endPointF().y() + y());
-
-	QPen newPen = pen();
-	newPen.setWidthF(basePenWidth*resizeFactor);
-	setPen(newPen);
-}
-
-void Wall::setLine(const QLineF & line)
-{
-	setLine(line.x1(), line.y1(), line.x2(), line.y2());
-}
-
-void Wall::setLine(qreal x1, qreal y1, qreal x2, qreal y2)
-{
-	startItem->baseX = x1;
-	startItem->baseY = y1;
-
-	endItem->baseX = x2;
-	endItem->baseY = y2;
-
-	QGraphicsLineItem::setLine(x1, y1, x2, y2);
-}
-
 void Wall::selectedItem(QGraphicsItem *item)
 {
 	if (item->data(0) == Rtti_WallPoint)
 	{
 		WallPoint *wallPoint = dynamic_cast<WallPoint *>(item);
 		if (wallPoint) {
-			setLine(startPointF().x(), startPointF().y(), wallPoint->x() - x(), wallPoint->y() - y());
+			setLine(QLineF(startPointF(), wallPoint->pos() - pos()));
 		}
 	}
 }
@@ -1957,9 +1917,9 @@ void Wall::setPen(QPen p)
 	QGraphicsLineItem::setPen(p);
 
 	if (startItem)
-		startItem->setBrush(QBrush(p.color()));
+		startItem->setBrush(p.brush());
 	if (endItem)
-		endItem->setBrush(QBrush(p.color()));
+		endItem->setBrush(p.brush());
 }
 
 void Wall::aboutToDie()
@@ -1991,15 +1951,16 @@ void Wall::moveBy(double dx, double dy)
 
 void Wall::setPos(double x, double y)
 {
-	QGraphicsLineItem::setPos(x, y);
+	const QPointF pos(x ,y);
+	QGraphicsLineItem::setPos(pos);
 
 	if (!startItem || !endItem)
 		return;
 
 	startItem->dontMove();
 	endItem->dontMove();
-	startItem->setPos(startPointF().x() + x, startPointF().y() + y);
-	endItem->setPos(endPointF().x() + x, endPointF().y() + y);
+	startItem->setPos(startPointF() + pos);
+	endItem->setPos(endPointF() + pos);
 }
 
 void Wall::editModeChanged(bool changed)
@@ -2079,17 +2040,17 @@ void Wall::load(KConfigGroup *cfgGroup)
 	QPoint end(endPoint());
 	end = cfgGroup->readEntry("endPoint", end);
 
-	setLine(start.x(), start.y(), end.x(), end.y());
+	setLine(QLineF(start, end));
 
 	moveBy(0, 0);
-	startItem->setPos(start.x(), start.y());
-	endItem->setPos(end.x(), end.y());
+	startItem->setPos(start);
+	endItem->setPos(end);
 }
 
 void Wall::save(KConfigGroup *cfgGroup)
 {
-	cfgGroup->writeEntry("startPoint", QPoint((int)startItem->x(), (int)startItem->y()));
-	cfgGroup->writeEntry("endPoint", QPoint((int)endItem->x(), (int)endItem->y()));
+	cfgGroup->writeEntry("startPoint", startItem->pos().toPoint());
+	cfgGroup->writeEntry("endPoint", endItem->pos().toPoint());
 }
 
 void Wall::doAdvance()
@@ -2942,6 +2903,7 @@ void KolfGame::resizeEvent( QResizeEvent* ev )
 
 void KolfGame::resizeAllItems(double resizeFactor, bool resizeBorderWalls)
 {
+	Q_UNUSED(resizeBorderWalls);
 	//resizeFactor is the number to multiply default sizes and positions by to get their resized value (i.e. if it is 1 then use default size, if it is >1 then everything needs to be bigger, and if it is <1 then everything needs to be smaller)
 	
 	//stroke circle resize
@@ -2950,13 +2912,6 @@ void KolfGame::resizeAllItems(double resizeFactor, bool resizeBorderWalls)
 	//putter resize
 	putter->setPos((*curPlayer).ball()->x(), (*curPlayer).ball()->y());
 	putter->resize(resizeFactor);
-
-	//border wall resize
-	QList<Wall *>::const_iterator wall;
-	if(resizeBorderWalls) {
-		for (wall = borderWalls.constBegin(); wall != borderWalls.constEnd(); ++wall)
-			(*wall)->resize(resizeFactor);
-	}
 }
 
 void KolfGame::puttRelease()
