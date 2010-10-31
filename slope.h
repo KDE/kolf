@@ -55,7 +55,7 @@ public:
 	virtual bool canBeMovedByOthers() const { return !stuckOnGround; }
 	virtual QList<QGraphicsItem *> moveableItems() const;
 	virtual Config *config(QWidget *parent) { return new SlopeConfig(this, parent); }
-	virtual void setSize(double width, double height);
+	virtual void setSize(const QSizeF& size);
 	virtual void moveBy(double dx, double dy);
 
 	virtual QPainterPath shape () const;

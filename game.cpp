@@ -81,7 +81,7 @@ RectPoint::RectPoint(const QColor &color, Tagaro::SpriteObjectItem *rect, QGraph
 : QGraphicsEllipseItem(parent)
 {
 	setZValue(9999);
-	setSize(10, 10);
+	setSize(QSizeF(10, 10));
 	this->rect = rect;
 	setBrush(QBrush(color));
 	setSizeFactor(1.0);
@@ -102,12 +102,12 @@ void RectPoint::moveBy(double dx, double dy)
 	if (!qitem)
 		return;
 
-	int nw = ( int )( m_sizeFactor * fabs(x() - qitem->x()) );
-	int nh = ( int )( m_sizeFactor * fabs(y() - qitem->y()) );
+	int nw = ( int )( m_sizeFactor * qAbs(x() - qitem->x()) );
+	int nh = ( int )( m_sizeFactor * qAbs(y() - qitem->y()) );
 	if (nw <= 0 || nh <= 0)
 		return;
 
-	rect->setSize(nw, nh);
+	rect->setSize(QSizeF(nw, nh));
 }
 
 Config *RectPoint::config(QWidget *parent)
@@ -119,9 +119,9 @@ Config *RectPoint::config(QWidget *parent)
 		return CanvasItem::config(parent);
 }
 
-void RectPoint::setSize(double width, double height)
+void RectPoint::setSize(const QSizeF& size)
 {
-	setRect(x(), y(), width, height);
+	setRect(QRectF(pos(), size));
 }
 
 /////////////////////////
@@ -291,8 +291,8 @@ Bridge::Bridge(QGraphicsItem *parent, const QString &type)
 	point = new RectPoint(color, this, parent);
 	editModeChanged(false);
 
-	setSize(defaultSize.width(), defaultSize.height());
-	setSize(width(), height());
+	setSize(defaultSize);
+	setSize(Tagaro::SpriteObjectItem::size());
 }
 
 bool Bridge::collision(Ball *ball, long int /*id*/)
@@ -375,7 +375,7 @@ void Bridge::load(KConfigGroup *cfgGroup)
 
 void Bridge::doLoad(KConfigGroup *cfgGroup)
 {
-	setSize(cfgGroup->readEntry("width", width()), cfgGroup->readEntry("height", height()));
+	setSize(QSizeF(cfgGroup->readEntry("width", width()), cfgGroup->readEntry("height", height())));
 	setTopWallVisible(cfgGroup->readEntry("topWallVisible", topWallVisible()));
 	setBotWallVisible(cfgGroup->readEntry("botWallVisible", botWallVisible()));
 	setLeftWallVisible(cfgGroup->readEntry("leftWallVisible", leftWallVisible()));
@@ -404,10 +404,11 @@ QList<QGraphicsItem *> Bridge::moveableItems() const
 	return ret;
 }
 
-void Bridge::setSize(double width, double height)
+void Bridge::setSize(const QSizeF& size)
 {
-	Tagaro::SpriteObjectItem::setSize(width, height);
+	Tagaro::SpriteObjectItem::setSize(size);
 
+	const qreal width = size.width(), height = size.height();
 	topWall->setPoints(0, 0, width, 0);
 	botWall->setPoints(0, height, width, height);
 	leftWall->setPoints(0, 0, 0, height);
@@ -498,7 +499,7 @@ Windmill::Windmill(QGraphicsItem * parent)
 	setLeftWallVisible(true);
 	setRightWallVisible(true);
 
-	setSize(width(), height());
+	setSize(Tagaro::SpriteObjectItem::size());
 	moveBy(0, 0);
 }
 
@@ -568,13 +569,14 @@ void Windmill::moveBy(double dx, double dy)
 void Windmill::setBottom(bool yes)
 {
 	m_bottom = yes;
-	setSize(width(), height());
+	setSize(Tagaro::SpriteObjectItem::size());
 }
 
-void Windmill::setSize(double width, double height)
+void Windmill::setSize(const QSizeF& size)
 {
-	Bridge::setSize(width, height);
+	Bridge::setSize(size);
 
+	const double width = size.width(), height = size.height();
 	const double indent = width / 4;
 
 	double indentY = m_bottom? height : 0;
@@ -785,10 +787,10 @@ QList<QGraphicsItem *> KolfEllipse::moveableItems() const
 	return ret;
 }
 
-void KolfEllipse::setSize(double width, double height)
+void KolfEllipse::setSize(const QSizeF& size)
 {
-	setOffset(-0.5 * width, -0.5 * height);
-	Tagaro::SpriteObjectItem::setSize(width, height);
+	setOffset(-0.5 * size.width(), -0.5 * size.height());
+	Tagaro::SpriteObjectItem::setSize(size);
 }
 
 void KolfEllipse::moveBy(double dx, double dy)
@@ -827,7 +829,7 @@ void KolfEllipse::load(KConfigGroup *cfgGroup)
 	double newWidth = width(), newHeight = height();
 	newWidth = cfgGroup->readEntry("width", newWidth);
 	newHeight = cfgGroup->readEntry("height", newHeight);
-	setSize(newWidth, newHeight);
+	setSize(QSizeF(newWidth, newHeight));
 	moveBy(0, 0); 
 } 
 
@@ -861,7 +863,7 @@ Puddle::Puddle(QGraphicsItem * parent)
 : KolfEllipse(parent, "puddle")
 {
 	setData(0, Rtti_DontPlaceOn);
-	setSize(45, 30);
+	setSize(QSizeF(45, 30));
 	setZValue(-25);
 }
 
@@ -897,7 +899,7 @@ bool Puddle::collision(Ball *ball, long int /*id*/)
 Sand::Sand(QGraphicsItem * parent)
 : KolfEllipse(parent, "sand")
 {
-	setSize(45, 40);
+	setSize(QSizeF(45, 40));
 	setZValue(-26);
 }
 
@@ -1049,7 +1051,7 @@ Bumper::Bumper(QGraphicsItem * parent)
 {
 	const int diameter = 20;
 	setOffset(-0.5 * diameter, -0.5 * diameter);
-	Tagaro::SpriteObjectItem::setSize(diameter, diameter);
+	Tagaro::SpriteObjectItem::setSize(QSizeF(diameter, diameter));
 	setZValue(-25);
 
 	count = 0;
@@ -1109,7 +1111,7 @@ Cup::Cup(QGraphicsItem * parent)
 {
 	const int diameter = 16;
 	setOffset(-0.5 * diameter, -0.5 * diameter);
-	Tagaro::SpriteObjectItem::setSize(diameter, diameter);
+	Tagaro::SpriteObjectItem::setSize(QSizeF(diameter, diameter));
 
 	setZValue(998.1);
 }
@@ -1197,7 +1199,7 @@ BlackHole::BlackHole(QGraphicsItem * parent)
 	exitItem->setPen(QPen(myColor, 6));
 	exitItem->setPos(300, 100);
 
-	setSize(baseWidth, baseHeight);
+	setSize(QSizeF(baseWidth, baseHeight));
 	pixmapInitialised=false;
 
 	moveBy(0, 0); 
@@ -1622,7 +1624,7 @@ WallPoint::WallPoint(bool start, Wall *wall, QGraphicsItem * parent)
 void WallPoint::clean()
 {
 	double oldWidth = width();
-	setSize(7, 7);
+	setSize(QSizeF(7, 7));
 
 	QList<QGraphicsItem *> l = collidingItems();
 	for (QList<QGraphicsItem *>::Iterator it = l.begin(); it != l.end(); ++it)
@@ -1634,7 +1636,7 @@ void WallPoint::clean()
 		}
 	}
 
-	setSize(oldWidth, oldWidth);
+	setSize(QSizeF(oldWidth, oldWidth));
 }
 
 void WallPoint::moveBy(double dx, double dy)
@@ -2088,7 +2090,7 @@ StrokeCircle::StrokeCircle(QGraphicsItem *parent)
 	ithickness = 8;
 	setZValue(10000);
 
-	setSize(80, 80);
+	setSize(QSizeF(80, 80));
 	setThickness(8);
 }
 
@@ -2116,12 +2118,12 @@ void StrokeCircle::setMaxValue(double m)
 	if (dvalue > dmax)
 		dvalue = dmax;
 }
-void StrokeCircle::setSize(double w, double h)
+void StrokeCircle::setSize(const QSizeF& size)
 {
-	if (w > 0)
-		iwidth = w;
-	if (h > 0)
-		iheight = h;
+	if (size.width() > 0)
+		iwidth = size.width();
+	if (size.height() > 0)
+		iheight = size.height();
 }
 void StrokeCircle::setThickness(double t)
 {
@@ -3835,7 +3837,7 @@ void KolfGame::addNewObject(const QString& identifier)
 
 	newItem->setPos(width/2 - 18, height / 2 - 18);
 	sceneItem->moveBy(0, 0);
-	sceneItem->setSize(newItem->boundingRect().width(), newItem->boundingRect().height());
+	sceneItem->setSize(newItem->boundingRect().size());
 
 	if (selectedItem)
 		sceneItem->selectedItem(selectedItem);

@@ -165,7 +165,7 @@ public:
 	virtual bool cornerResize() const { return true; }
 	virtual CanvasItem *itemToDelete() { return dynamic_cast<CanvasItem *>(rect); }
 	void setSizeFactor(double newFactor) { m_sizeFactor = newFactor; }
-	void setSize(double, double);
+	virtual void setSize(const QSizeF& size);
 
 protected:
 	Tagaro::SpriteObjectItem *rect;
@@ -192,7 +192,7 @@ public:
 
 	virtual QList<QGraphicsItem *> moveableItems() const;
 
-	void setSize(double width, double height);
+	virtual void setSize(const QSizeF& size);
 
 	virtual void moveBy(double dx, double dy);
 
@@ -260,7 +260,7 @@ class Inside : public QGraphicsEllipseItem, public CanvasItem
 public:
 	Inside(CanvasItem *item, QGraphicsItem *parent) : QGraphicsEllipseItem(parent) { this->item = item; }
 	virtual bool collision(Ball *ball, long int id) { return item->collision(ball, id); }
-	void setSize(double width, double height) { setRect(rect().x(), rect().y(), width, height); }
+	virtual void setSize(const QSizeF& size) { setRect(QRectF(rect().topLeft(), size)); }
 
 protected:
 	CanvasItem *item;
@@ -397,10 +397,9 @@ public:
 
 	virtual void moveBy(double dx, double dy);
 
-        void setSize(double width, double height) { setRect(rect().x(), rect().y
-(), width, height); }
-        double width() { return rect().width(); }
-        double height() { return rect().height(); }
+	virtual void setSize(const QSizeF& size) { setRect(QRectF(rect().topLeft(), size)); }
+	double width() { return rect().width(); }
+	double height() { return rect().height(); }
 
 	virtual bool collision(Ball *ball, long int id);
 
@@ -489,7 +488,7 @@ public:
 	void dontMove() { dontmove = true; }
 	void updateVisible();
 
-	void setSize(double width, double height) { setRect(rect().x(), rect().y(), width, height); }
+	virtual void setSize(const QSizeF& size) { setRect(QRectF(rect().topLeft(), size)); }
 	double width() { return rect().width(); }
 	double height() { return rect().height(); }
 
@@ -585,7 +584,7 @@ public:
 	void doSave(KConfigGroup *cfgGroup);
 	virtual void setGame(KolfGame *game);
 	virtual Config *config(QWidget *parent) { return new BridgeConfig(this, parent); }
-	void setSize(double width, double height);
+	virtual void setSize(const QSizeF& size);
 	virtual QList<QGraphicsItem *> moveableItems() const;
 
 	void setWallColor(const QColor &color);
@@ -684,7 +683,7 @@ public:
 	virtual void setGame(KolfGame *game);
 	virtual Config *config(QWidget *parent) { return new WindmillConfig(this, parent); }
 
-	void setSize(double width, double height);
+	virtual void setSize(const QSizeF& size);
 	virtual void moveBy(double dx, double dy);
 	void setSpeed(double news);
 	double curSpeed() const { return speed; }
@@ -760,7 +759,7 @@ public:
 	void setValue(double v);
 	double value();
 	void setMaxValue(double m);
-	void setSize(double w, double h);
+	void setSize(const QSizeF& size);
 	void setThickness(double t);
 	double thickness() const;
 	double width() const;

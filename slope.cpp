@@ -129,12 +129,12 @@ void Slope::setGrade(double newGrade)
 	}
 }
 
-void Slope::setSize(double width, double height)
+void Slope::setSize(const QSizeF& size)
 {
 	if (type == Elliptic)
 	{
-		const double size = qMin(width, height);
-		Tagaro::SpriteObjectItem::setSize(size, size);
+		const double extent = qMin(size.width(), size.height());
+		Tagaro::SpriteObjectItem::setSize(extent, extent);
 		// move point back to good spot
 		moveBy(0, 0);
 
@@ -143,7 +143,7 @@ void Slope::setSize(double width, double height)
 	}
 	else
 	{
-		Tagaro::SpriteObjectItem::setSize(width, height);
+		Tagaro::SpriteObjectItem::setSize(size);
 	}
 
 	updateZ();
@@ -238,7 +238,7 @@ void Slope::load(KConfigGroup *cfgGroup)
 	reversed = cfgGroup->readEntry("reversed", reversed);
 
 	// bypass updatePixmap which setSize normally does
-	Tagaro::SpriteObjectItem::setSize(QSizeF(cfgGroup->readEntry("width", width()), cfgGroup->readEntry("height", height())));
+	Tagaro::SpriteObjectItem::setSize(cfgGroup->readEntry("width", width()), cfgGroup->readEntry("height", height()));
 	updateZ();
 
 	QString gradientType = cfgGroup->readEntry("gradient", gradientKeys[type]);
@@ -374,7 +374,7 @@ void Slope::setType(GradientType type)
 	if (type == Elliptic)
 	{
 		//ensure quadratic shape
-		setSize(width(), height());
+		setSize(size());
 	}
 
 	updatePixmap();

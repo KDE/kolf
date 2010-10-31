@@ -109,7 +109,7 @@ public:
 
 	QString name() const { return m_name; }
 	void setName(const QString &newname) { m_name = newname; }
-	virtual void setSize(double /*width*/, double /*height*/) {}
+	virtual void setSize(const QSizeF&) {}
 
 	///custom animation code
 	bool isAnimated() const { return m_animated; }

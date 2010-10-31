@@ -83,7 +83,6 @@ Floater::Floater(QGraphicsItem *parent)
 	setLeftWallVisible(false);
 	setRightWallVisible(false);
 
-	setSize(width(), height());
 	moveBy(0, 0);
 	setSpeed(0);
 
