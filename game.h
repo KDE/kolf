@@ -26,6 +26,8 @@
 #include "ball.h"
 #include "statedb.h"
 
+#include "tagaro/scene.h"
+
 #include <KLocale>
 #include <KConfigGroup>
 
@@ -36,6 +38,11 @@ class QVBoxLayout;
 class KolfGame;
 class KGameRenderer;
 
+namespace Tagaro
+{
+	class Board;
+	class SpriteObjectItem;
+}
 namespace Phonon
 {
     class MediaObject;
@@ -989,7 +996,8 @@ protected:
 	QPoint viewportToViewport(const QPoint &p);
 
 private:
-	QGraphicsScene *course;
+	Tagaro::Scene *course;
+	Tagaro::Board *courseBoard;
 	Putter *putter;
 	PlayerList *players;
 	PlayerList::Iterator curPlayer;
@@ -1031,7 +1039,6 @@ private:
 	int height;
 	int width;
 	int margin;
-	QColor grass;
 
 	int advancePeriod;
 
@@ -1055,7 +1062,7 @@ private:
 	QGraphicsRectItem *highlighter;
 	
 	//For intro banner
-	QGraphicsPixmapItem *banner;
+	Tagaro::SpriteObjectItem *banner;
 
 #ifdef SOUND
     Phonon::MediaObject *m_player;

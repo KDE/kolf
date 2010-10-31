@@ -22,6 +22,9 @@
 #include "kcomboboxdialog.h"
 #include "rtti.h"
 
+#include "tagaro/board.h"
+#include "tagaro/spriteobjectitem.h"
+
 #include <QApplication>
 #include <QGridLayout>
 #include <QCheckBox>
@@ -50,7 +53,18 @@ inline QString makeStateGroup(int id, const QString &name)
 	return QString("%1|%2").arg(name).arg(id);
 }
 
-K_GLOBAL_STATIC_WITH_ARGS(KGameRenderer, g_renderer, (QLatin1String("pics/default_theme.desktop")))
+class KolfRenderer : public KGameRenderer
+{
+	public:
+		KolfRenderer()
+			: KGameRenderer(QLatin1String("pics/default_theme.desktop"))
+		{
+			setStrategyEnabled(KGameRenderer::UseDiskCache, false);
+			setStrategyEnabled(KGameRenderer::UseRenderingThreads, false);
+		}
+};
+
+K_GLOBAL_STATIC(KolfRenderer, g_renderer)
 
 KGameRenderer* Kolf::renderer()
 {
@@ -2581,7 +2595,6 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 	// in easy storage
 	width = 400;
 	height = 400;
-	grass = QColor("#35760D");
 
 	margin = 10;
 
@@ -2592,23 +2605,19 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 
 	setContentsMargins(margin, margin, margin, margin);
 
-	course = new QGraphicsScene(this);
-	course->setBackgroundBrush(Qt::white);
-	course->setSceneRect(0, 0, width, height);
-
-	QPixmap pic;
-	pic = Kolf::renderer()->spritePixmap("grass", QSize(width, height));
-	course->setBackgroundBrush(QBrush(pic));
+	course = new Tagaro::Scene(Kolf::renderer(), "grass");
+	course->setMainView(this); //this does this->setScene(course)
+	courseBoard = new Tagaro::Board;
+	courseBoard->setLogicalSize(QSizeF(400, 400));
+	course->addItem(courseBoard);
 
 	if( filename.contains( "intro" ) )
 	{
-		QPixmap introPic;
-		introPic = Kolf::renderer()->spritePixmap("intro_foreground", QSize(400, 132));
-		banner = new QGraphicsPixmapItem(introPic, 0, course);
-		banner->setPos(0.0,32.0);
+		banner = new Tagaro::SpriteObjectItem(Kolf::renderer(), "intro_foreground", courseBoard);
+		banner->setSize(400, 132);
+		banner->setPos(0, 32);
 	}
 
-	setScene(course);
 	adjustSize();
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
@@ -3174,24 +3183,6 @@ void KolfGame::resizeAllItems(double resizeFactor, bool resizeBorderWalls)
 {
 	//resizeFactor is the number to multiply default sizes and positions by to get their resized value (i.e. if it is 1 then use default size, if it is >1 then everything needs to be bigger, and if it is <1 then everything needs to be smaller)
 	
-	//sceneRect resize
-	course->setSceneRect(0, 0, 400*resizeFactor, 400*resizeFactor);
-
-	//background resize
-	QPixmap pic = Kolf::renderer()->spritePixmap("grass", QSize(width*resizeFactor, height*resizeFactor));
-	course->setBackgroundBrush(QBrush(pic));
-
-	//foreground resize
-	if( filename.contains( "intro" ) )
-	{
-		QPixmap introPic;
-		introPic = Kolf::renderer()->spritePixmap("intro_foreground", QSize(400.0*resizeFactor, 132.0*resizeFactor));
-		//course->setForegroundBrush(QBrush(introPic));
-		delete banner;
-		banner = new QGraphicsPixmapItem(introPic, 0, course);
-		banner->setPos(0.0*resizeFactor,32.0*resizeFactor);
-	}
-
 	//stroke circle resize
 	strokeCircle->resize(resizeFactor);
 
