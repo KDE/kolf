@@ -25,6 +25,9 @@ set(kolf_LIB_SRCS
    floater.cpp 
    slope.cpp
    itemfactory.cpp
+   tagaro/board.cpp
+   tagaro/scene.cpp
+   tagaro/spriteobjectitem.cpp
 )
 
 kde4_add_library(kolfprivate SHARED ${kolf_LIB_SRCS})
