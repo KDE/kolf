@@ -76,33 +76,22 @@ void Ball::friction()
 {
 	if (state == Stopped || state == Holed || !isVisible())
 	{
-		setVelocity(Vector());
+		setVelocity(QPointF());
 		return;
 	}
 	const double subtractAmount = .027 * frictionMultiplier;
-	if (m_vector.magnitude() <= subtractAmount)
+	Vector velocity = this->velocity();
+	if (velocity.magnitude() <= subtractAmount)
 	{
 		state = Stopped;
-		setVelocity(Vector());
+		setVelocity(QPointF());
 		game->timeout();
 		return;
 	}
-	m_vector.setMagnitude(m_vector.magnitude() - subtractAmount);
-	setVector(m_vector);
+	velocity.setMagnitude(velocity.magnitude() - subtractAmount);
+	setVelocity(velocity);
 
 	frictionMultiplier = 1.0;
-}
-
-void Ball::setVelocity(const Vector& velocity)
-{
-	CanvasItem::setVelocity(velocity);
-	m_vector = QPointF(velocity.x(), -velocity.y());
-}
-
-void Ball::setVector(const Vector& newVector)
-{
-	m_vector = newVector;
-	CanvasItem::setVelocity(Vector(newVector.x(), -newVector.y()));
 }
 
 void Ball::moveBy(double dx, double dy)
@@ -111,7 +100,7 @@ void Ball::moveBy(double dx, double dy)
 
 	if (game && !game->isPaused())
 		collisionDetect();
-		
+
 	if ((dx || dy) && game && game->curBall() == this)
 		game->ballMoved();
 }
@@ -132,9 +121,8 @@ void Ball::collisionDetect()
 	if (m_collisionId == 1 && !velocity().isNull())
 		friction();
 
-	double initialVector = m_vector.magnitude();
+	const double initialVelocity = velocity().magnitude();
 	const double minSpeed = .06;
-	bool justCollidedWithWall = false;
 
 	QList<QGraphicsItem *> items = collidingItems();
 
@@ -178,22 +166,14 @@ void Ball::collisionDetect()
 		}
 	}
 
-	double vectorChange = initialVector - m_vector.magnitude();
-	if(vectorChange < 0 ) 
-		vectorChange *= -1;
+	const double currentVelocity = velocity().magnitude();
+	const double velocityChange = qAbs(initialVelocity - currentVelocity);
 
-	if(m_vector.magnitude() < minSpeed && vectorChange < minSpeed && m_vector.magnitude())
+	if(currentVelocity < minSpeed && velocityChange < minSpeed && currentVelocity)
 	{
-		if( justCollidedWithWall )
-		{ //don't want to stop if just hit a wall as may be in the wall
-			//problem: could this cause endless ball bouncing between 2 walls?
-			m_vector.setMagnitude(minSpeed);
-		}
-		else
-		{
-			setVelocity(Vector());
-			setState(Stopped);
-		}
+		//cutoff low velocities
+		setVelocity(Vector());
+		setState(Stopped);
 	}
 }
 

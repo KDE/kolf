@@ -870,7 +870,7 @@ bool Puddle::collision(Ball *ball)
 	if (ball->isVisible())
 	{
 		// is center of ball in?
-		if (contains(ball->pos() - pos()) /* && ball->curVector().magnitude() < 4*/)
+		if (contains(ball->pos() - pos()))
 		{
 			playSound("puddle");
 			ball->setAddStroke(ball->addStroke() + 1);
@@ -900,9 +900,9 @@ Sand::Sand(QGraphicsItem * parent, b2World* world)
 bool Sand::collision(Ball *ball)
 {
 	// is center of ball in?
-	if (contains(ball->pos()-pos())/* && ball->curVector().magnitude() < 4*/)
+	if (contains(ball->pos()-pos()))
 	{
-		if (ball->curVector().magnitude() > 0)
+		if (ball->velocity().magnitude() > 0)
 			ball->setFrictionMultiplier(7);
 		else
 		{
@@ -1052,18 +1052,16 @@ Bumper::Bumper(QGraphicsItem * parent, b2World* world)
 bool Bumper::collision(Ball *ball)
 {
 	double maxSpeed = ball->getMaxBumperBounceSpeed();
-	double speed = qMin(maxSpeed, 1.8 + ball->curVector().magnitude() * .9);
+	double speed = qMin(maxSpeed, 1.8 + ball->velocity().magnitude() * .9);
 	ball->reduceMaxBumperBounceSpeed();
 
-	Vector betweenVector(pos() - ball->pos());
+	Vector betweenVector(ball->pos() - pos());
 	betweenVector.setMagnitudeDirection(speed,
 		// add some randomness so we don't go indefinetely
 		betweenVector.direction() + deg2rad((KRandom::random() % 3) - 1)
 	);
 
-	ball->setVector(betweenVector);
-	// for some reason, x is always switched...
-	ball->setVelocity(Vector(-ball->velocity().x(), ball->velocity().y()));
+	ball->setVelocity(betweenVector);
 	ball->setState(Rolling);
 
 	setSpriteKey(QLatin1String("bumper_on"));
@@ -1108,7 +1106,7 @@ bool Cup::collision(Ball *ball)
 {
 	bool wasCenter = false;
 
-	switch (result(ball->pos(), ball->curVector().magnitude(), &wasCenter))
+	switch (result(ball->pos(), ball->velocity().magnitude(), &wasCenter))
 	{
 		case Result_Holed:
 			place(ball, wasCenter);
@@ -1220,7 +1218,7 @@ bool BlackHole::collision(Ball *ball)
 {
 	bool wasCenter = false;
 
-	switch (result(ball->pos(), ball->curVector().magnitude(), &wasCenter))
+	switch (result(ball->pos(), ball->velocity().magnitude(), &wasCenter))
 	{
 		case Result_Holed:
 			place(ball, wasCenter);
@@ -1260,7 +1258,7 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 	playSound("blackholeputin");
 
 	const double diff = (m_maxSpeed - m_minSpeed);
-	const double speed = m_minSpeed + ball->curVector().magnitude() * (diff / 3.75);
+	const double speed = m_minSpeed + ball->velocity().magnitude() * (diff / 3.75);
 
 	ball->setVelocity(Vector());
 	ball->setState(Stopped);
@@ -1281,14 +1279,14 @@ void BlackHole::eject(Ball *ball, double speed)
 {
 	ball->setPos(exitItem->pos());
 
-	Vector v = Vector::fromMagnitudeDirection(10, deg2rad(exitDeg));
-	ball->setVector(v);
+	Vector v = Vector::fromMagnitudeDirection(10, -deg2rad(exitDeg));
+	ball->setVelocity(v);
 
-	// advance ball 10
+	// advance ball by 10 units
 	ball->doAdvance();
 
 	v.setMagnitude(speed);
-	ball->setVector(v);
+	ball->setVelocity(v);
 
 	ball->setForceStillGoing(false);
 	ball->setVisible(true);
@@ -2671,7 +2669,7 @@ void KolfGame::timeout()
 	}
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-		if ((*it).ball()->forceStillGoing() || ((*it).ball()->curState() == Rolling && (*it).ball()->curVector().magnitude() > 0 && (*it).ball()->isVisible()))
+		if ((*it).ball()->forceStillGoing() || ((*it).ball()->curState() == Rolling && (*it).ball()->velocity().magnitude() > 0 && (*it).ball()->isVisible()))
 			return;
 
 	int curState = curBall->curState();
@@ -3000,8 +2998,8 @@ void KolfGame::shotDone()
 		if (ball->curState() == Holed)
 			continue;
 
-		Vector v;
-		if (ball->placeOnGround(v))
+		Vector oldVelocity;
+		if (ball->placeOnGround(oldVelocity))
 		{
 			ball->setPlaceOnGround(false);
 
@@ -3015,7 +3013,9 @@ void KolfGame::shotDone()
 			{
 				(*it).ball()->setDoDetect(false);
 
-				double x = ball->x(), y = ball->y();
+				QPointF pos = ball->pos();
+				//normalize old velocity
+				const QPointF v = oldVelocity / oldVelocity.magnitude();
 
 				while (1)
 				{
@@ -3023,25 +3023,17 @@ void KolfGame::shotDone()
 					bool keepMoving = false;
 					while (!list.isEmpty())
 					{
-						QGraphicsItem *item = list.first();
+						QGraphicsItem *item = list.takeFirst();
 						if (item->data(0) == Rtti_DontPlaceOn)
 							keepMoving = true;
-
-						list.pop_front();
 					}
 					if (!keepMoving)
 						break;
 
-					const float movePixel = 3.0;
-					x -= cos(v.direction()) * movePixel;
-					y += sin(v.direction()) * movePixel;
-
-					ball->setPos(x, y);
+					const qreal movePixel = 3.0;
+					pos -= v * movePixel;
+					ball->setPos(pos);
 				}
-
-				// move another two pixels away
-				x -= cos(v.direction()) * 2;
-				y += sin(v.direction()) * 2;
 			}
 			else if (choice == rehit)
 			{
@@ -3129,7 +3121,7 @@ void KolfGame::emitMax()
 	emit maxStrokesReached(playerWhoMaxed);
 }
 
-void KolfGame::startBall(const Vector &vector)
+void KolfGame::startBall(const Vector &velocity)
 {
 	playSound("hit");
 
@@ -3137,7 +3129,7 @@ void KolfGame::startBall(const Vector &vector)
 	putter->setVisible(false);
 
 	(*curPlayer).ball()->setState(Rolling);
-	(*curPlayer).ball()->setVector(vector);
+	(*curPlayer).ball()->setVelocity(velocity);
 	(*curPlayer).ball()->shotStarted();
 
 	QList<QGraphicsItem *>::const_iterator item;
@@ -3170,7 +3162,7 @@ void KolfGame::shotStart()
 
 	(*curPlayer).ball()->collisionDetect();
 
-	startBall(Vector::fromMagnitudeDirection(strength, putter->curAngle() + M_PI));
+	startBall(Vector::fromMagnitudeDirection(strength, -(putter->curAngle() + M_PI)));
 
 	addHoleInfo(ballStateList);
 }
@@ -3178,7 +3170,7 @@ void KolfGame::shotStart()
 void KolfGame::addHoleInfo(BallStateList &list)
 {
 	list.player = (*curPlayer).id();
-	list.vector = (*curPlayer).ball()->curVector();
+	list.vector = (*curPlayer).ball()->velocity();
 	list.hole = curHole;
 }
 

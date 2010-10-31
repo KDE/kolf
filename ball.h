@@ -36,7 +36,6 @@ public:
 
 	virtual void doAdvance();
 	virtual void moveBy(double dx, double dy);
-	virtual void setVelocity(const Vector& velocity);
 
 	virtual bool deleteable() const { return false; }
 
@@ -53,18 +52,15 @@ public:
 	void collisionDetect();
 
 	int addStroke() const { return m_addStroke; }
-	bool placeOnGround(Vector &v) { v = oldVector; return m_placeOnGround; }
+	bool placeOnGround(Vector &v) { v = m_pogOldVelocity; return m_placeOnGround; }
 	void setAddStroke(int newStrokes) { m_addStroke = newStrokes; }
-	void setPlaceOnGround(bool placeOnGround) { m_placeOnGround = placeOnGround; oldVector = m_vector; }
+	void setPlaceOnGround(bool placeOnGround) { m_placeOnGround = placeOnGround; m_pogOldVelocity = velocity(); }
 
 	bool beginningOfHole() const { return m_beginningOfHole; }
 	void setBeginningOfHole(bool yes) { m_beginningOfHole = yes; }
 
 	bool forceStillGoing() const { return m_forceStillGoing; }
 	void setForceStillGoing(bool yes) { m_forceStillGoing = yes; }
-
-	Vector curVector() const { return m_vector; }
-	void setVector(const Vector &newVector);
 
 	void shotStarted() { maxBumperBounceSpeed = 8; }
 
@@ -93,12 +89,10 @@ private:
 
 	int m_addStroke;
 	bool m_placeOnGround;
+	Vector m_pogOldVelocity;
 
 	bool m_beginningOfHole;
 	bool m_forceStillGoing;
-
-	Vector m_vector;
-	Vector oldVector;
 
 	bool m_doDetect;
 
