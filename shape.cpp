@@ -44,7 +44,7 @@ Kolf::Shape::Shape()
 	, m_shape(0)
 {
 	m_fixtureDef->density = 1;
-	m_fixtureDef->restitution = 0.8;
+	m_fixtureDef->restitution = 1;
 	m_fixtureDef->friction = 0;
 	m_fixtureDef->userData = this;
 }
@@ -152,8 +152,9 @@ void Kolf::EllipseShape::setRect(const QRectF& rect)
 
 b2Shape* Kolf::EllipseShape::createShape()
 {
-	const b2Vec2 c = toB2Vec2(m_rect.center());
-	const qreal rx = m_rect.width() / 2, ry = m_rect.height() / 2;
+	const b2Vec2 c = toB2Vec2(m_rect.center() * Kolf::Box2DScaleFactor);
+	const qreal rx = m_rect.width() * Kolf::Box2DScaleFactor / 2;
+	const qreal ry = m_rect.height() * Kolf::Box2DScaleFactor / 2;
 	if (rx == ry)
 	{
 		//use circle shape when possible because it's cheaper and exact
@@ -216,8 +217,9 @@ b2Shape* Kolf::RectShape::createShape()
 {
 	b2PolygonShape* shape = new b2PolygonShape;
 	shape->SetAsBox(
-		m_rect.width() / 2, m_rect.height() / 2,
-		toB2Vec2(m_rect.center()),
+		m_rect.width() * Kolf::Box2DScaleFactor / 2,
+		m_rect.height() * Kolf::Box2DScaleFactor / 2,
+		toB2Vec2(m_rect.center() * Kolf::Box2DScaleFactor),
 		0 //intrinsic rotation angle
 	);
 	return shape;
@@ -256,7 +258,10 @@ void Kolf::LineShape::setLine(const QLineF& line)
 b2Shape* Kolf::LineShape::createShape()
 {
 	b2EdgeShape* shape = new b2EdgeShape;
-	shape->Set(toB2Vec2(m_line.p1()), toB2Vec2(m_line.p2()));
+	shape->Set(
+		toB2Vec2(m_line.p1() * Kolf::Box2DScaleFactor),
+		toB2Vec2(m_line.p2() * Kolf::Box2DScaleFactor)
+	);
 	return shape;
 }
 

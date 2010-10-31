@@ -29,6 +29,11 @@ class CanvasItem;
 
 namespace Kolf
 {
+	//All coordinates and units of Kolf's coordinate system are internally
+	//scaled with the following factor before using them with Box2D, because
+	//Box2D works best with lengths between 0.1 and 10 metres.
+	static const qreal Box2DScaleFactor = 0.025;
+
 	/**
 	 * @class Kolf::Shape
 	 *

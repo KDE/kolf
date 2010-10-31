@@ -133,7 +133,7 @@ void CanvasItem::setSimulationType(CanvasItem::SimulationType type)
 QPointF CanvasItem::physicalVelocity() const
 {
 	b2Vec2 v = m_body->GetLinearVelocity();
-	return QPointF(v.x, v.y);
+	return QPointF(v.x, v.y) / Kolf::Box2DScaleFactor;
 }
 
 void CanvasItem::setPhysicalVelocity(const QPointF& newVelocity)
@@ -143,10 +143,15 @@ void CanvasItem::setPhysicalVelocity(const QPointF& newVelocity)
 	{
 		const qreal mass = m_body->GetMass();
 		if (mass == 0)
-			m_body->SetLinearVelocity(b2Vec2(newVelocity.x(), newVelocity.y()));
+		{
+			m_body->SetLinearVelocity(b2Vec2(
+				newVelocity.x() * Kolf::Box2DScaleFactor,
+				newVelocity.y() * Kolf::Box2DScaleFactor
+			));
+		}
 		else
 		{
-			const QPointF impulse = (newVelocity - currentVelocity) * mass;
+			const QPointF impulse = (newVelocity - currentVelocity) * mass * Kolf::Box2DScaleFactor;
 			m_body->ApplyLinearImpulse(b2Vec2(impulse.x(), impulse.y()), m_body->GetPosition());
 		}
 	}
@@ -154,7 +159,7 @@ void CanvasItem::setPhysicalVelocity(const QPointF& newVelocity)
 
 void CanvasItem::startSimulation()
 {
-	const QPointF position = getPosition();
+	const QPointF position = getPosition() * Kolf::Box2DScaleFactor;
 	m_body->SetTransform(b2Vec2(position.x(), position.y()), 0);
 }
 
@@ -162,7 +167,7 @@ void CanvasItem::endSimulation()
 {
 	//read position
 	b2Vec2 v = m_body->GetPosition();
-	QPointF position(v.x, v.y);
+	QPointF position = QPointF(v.x, v.y) / Kolf::Box2DScaleFactor;
 	if (position != getPosition())
 		//HACK: The above condition can be removed later, but for now we need to
 		//prevent moveBy() from being called with (0, 0) arguments because such
