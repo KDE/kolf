@@ -838,7 +838,6 @@ private slots:
 	void fastTimeout();
 	void putterTimeout();
 	void autoSaveTimeout();
-	void addItemsToMoveableList(QList<QGraphicsItem *>);
 
 	void emitMax();
 

@@ -3560,7 +3560,7 @@ void KolfGame::openFile()
 			sceneItem->setGame(this);
 			sceneItem->editModeChanged(editing);
 			sceneItem->setName(name);
-			addItemsToMoveableList(sceneItem->moveableItems());
+			extraMoveable.append(sceneItem->moveableItems());
 
 			newItem->setPos(x, y); 
 			newItem->setVisible(true);
@@ -3666,13 +3666,6 @@ void KolfGame::openFile()
 	setModified(false);
 }
 
-void KolfGame::addItemsToMoveableList(QList<QGraphicsItem *> list)
-{
-	QList<QGraphicsItem *>::const_iterator item;
-	for (item = list.constBegin(); item != list.constEnd(); ++item)
-		extraMoveable.append(*item);
-}
-
 void KolfGame::addNewObject(const QString& identifier)
 {
 	QGraphicsItem *newItem = m_factory.createInstance(identifier, courseBoard);
@@ -3723,7 +3716,7 @@ void KolfGame::addNewObject(const QString& identifier)
 	sceneItem->editModeChanged(editing);
 
 	sceneItem->setName(identifier);
-	addItemsToMoveableList(sceneItem->moveableItems());
+	extraMoveable.append(sceneItem->moveableItems());
 
 	newItem->setPos(width/2 - 18, height / 2 - 18);
 	sceneItem->moveBy(0, 0);
