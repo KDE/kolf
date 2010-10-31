@@ -35,7 +35,6 @@ Slope::Slope(QGraphicsItem * parent)
 	setData(0, 1031);
 	stuckOnGround = false;
 	showingInfo = false;
-	baseArrowPenThickness = arrowPenThickness = 1;
 
 	gradientKeys[Vertical] = "Vertical";
 	gradientKeys[Horizontal] = "Horizontal";
@@ -54,8 +53,7 @@ Slope::Slope(QGraphicsItem * parent)
 	point = new RectPoint(color.light(), this, parent);
 
 	QFont font(QApplication::font());
-	baseFontPixelSize = 18;
-	font.setPixelSize(baseFontPixelSize);
+	font.setPixelSize(18);
 	text = new QGraphicsSimpleTextItem(Kolf::findBoard(this));
 	text->setZValue(99999.99);
 	text->setFont(font);
@@ -93,23 +91,6 @@ void Slope::hideInfo()
 	for (arrow = arrows.constBegin(); arrow != arrows.constEnd(); ++arrow)
 		(*arrow)->setVisible(false);
 	text->setVisible(false);
-}
-
-void Slope::resize(double resizeFactor)
-{
-	this->resizeFactor = resizeFactor;
-	QFont font = text->font();
-	font.setPixelSize((int)(baseFontPixelSize*resizeFactor));
-	text->setFont(font);
-	arrowPenThickness = baseArrowPenThickness*resizeFactor;
-	setPos(baseX*resizeFactor, baseY*resizeFactor);
-// 	setRect(0, 0, baseWidth*resizeFactor, baseHeight*resizeFactor);
-}
-
-void Slope::firstMove(int x, int y)
-{
-	baseX = (double)x;
-	baseY = (double)y;
 }
 
 void Slope::aboutToDie()
@@ -262,8 +243,6 @@ void Slope::load(KConfigGroup *cfgGroup)
 
 	// bypass updatePixmap which newSize normally does
 	Tagaro::SpriteObjectItem::setSize(QSizeF(cfgGroup->readEntry("width", width()), cfgGroup->readEntry("height", height())));
-	baseWidth = size().width();
-	baseHeight = size().height();
 	updateZ();
 
 	QString gradientType = cfgGroup->readEntry("gradient", gradientKeys[type]);
@@ -459,7 +438,7 @@ void Slope::updatePixmap() //this needs work so that the slope colour depends on
 			Arrow *arrow = new Arrow(Kolf::findBoard(this));
 			arrow->setLength(length);
 			arrow->setAngle(angle);
-			arrow->setPen(QPen(Qt::black, arrowPenThickness));
+			arrow->setPen(QPen(Qt::black));
 			arrow->setReversed(reversed);
 			arrow->updateSelf();
 			arrows.append(arrow);
@@ -492,7 +471,7 @@ void Slope::updatePixmap() //this needs work so that the slope colour depends on
 
 		arrow->setAngle(angle);
 		arrow->setLength(length);
-		arrow->setPen(QPen(Qt::black, arrowPenThickness));
+		arrow->setPen(QPen(Qt::black));
 		arrow->updateSelf();
 
 		arrows.append(arrow);

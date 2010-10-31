@@ -50,8 +50,6 @@ public:
 
 	virtual void showInfo();
 	virtual void hideInfo();
-	void resize(double resizeFactor);
-	void firstMove(int x, int y);
 	virtual void editModeChanged(bool changed);
 	virtual bool canBeMovedByOthers() const { return !stuckOnGround; }
 	virtual QList<QGraphicsItem *> moveableItems() const;
@@ -99,11 +97,6 @@ private:
 	QColor color;
 	void updatePixmap();
 	bool stuckOnGround;
-	//base numbers are the size or position when no resizing has taken place (i.e. the defaults)
-	double baseX, baseY, baseWidth, baseHeight;
-	double baseArrowPenThickness, arrowPenThickness;
-	int baseFontPixelSize;
-	double resizeFactor;
 
 	void clearArrows();
 

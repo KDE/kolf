@@ -3868,8 +3868,6 @@ void KolfGame::openFile()
 				addItemToFastAdvancersList(sceneItem);
 
 			newItem->setPos(x, y); 
-
-			sceneItem->firstMove(x, y);
 			newItem->setVisible(true);
 
 			// make things actually show
@@ -4042,7 +4040,6 @@ void KolfGame::addNewObject(const QString& identifier)
 		addItemToFastAdvancersList(sceneItem);
 
 	newItem->setPos(width/2 - 18, height / 2 - 18);
-	sceneItem->firstMove(width/2 - 18, height/2 - 18); //do I need this?
 	sceneItem->moveBy(0, 0);
 	sceneItem->setSize(newItem->boundingRect().width(), newItem->boundingRect().height());
 
