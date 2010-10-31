@@ -18,10 +18,10 @@
 
 #include "ball.h"
 #include "game.h"
-#include "kolfsvgrenderer.h"
 #include "rtti.h"
 
 #include <QApplication>
+#include <KGameRenderer>
 
 Ball::Ball(QGraphicsScene * scene)
 	: QGraphicsEllipseItem(0, scene)
@@ -84,7 +84,7 @@ void Ball::resize(double resizeFactor)
 	label->setFont(font);
 	setPos(baseX, baseY); //not multiplied by resizeFactor since setPos takes care of that for the ball
 	setRect(-0.5*baseDiameter*resizeFactor, -0.5*baseDiameter*resizeFactor, baseDiameter*resizeFactor, baseDiameter*resizeFactor);	
-	pixmap=game->renderer->render("ball", rect().size().toSize(), 0);
+	pixmap=Kolf::renderer()->spritePixmap("ball", rect().size().toSize());
 }
 
 void Ball::setPos(qreal x, qreal y)
@@ -118,7 +118,7 @@ void Ball::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*option*/,
 		if(game == 0)
 			return;
 		else {
-			pixmap=game->renderer->render("ball", rect().size().toSize(), 0);
+			pixmap=Kolf::renderer()->spritePixmap("ball", rect().size().toSize());
 			pixmapInitialised=true;
 		}
 	}

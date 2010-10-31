@@ -17,13 +17,13 @@
 */
 
 #include "slope.h"
-#include "kolfsvgrenderer.h"
 
 #include <QApplication>
 #include <QCheckBox>
 #include <QLabel>
 #include <QVBoxLayout>
 #include <KComboBox>
+#include <KGameRenderer>
 #include <KNumInput>
 
 Slope::Slope(QGraphicsItem * parent, QGraphicsScene *scene)
@@ -450,7 +450,7 @@ void Slope::updatePixmap() //this needs work so that the slope colour depends on
 			break;
 	}
 
-	pixmap=game->renderer->render(slopeName, rect().size().toSize(), 0);
+	pixmap=Kolf::renderer()->spritePixmap(slopeName, rect().size().toSize());
 
 	// we update the arrows in this function
 	clearArrows();

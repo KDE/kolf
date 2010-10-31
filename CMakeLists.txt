@@ -22,7 +22,6 @@ set(kolf_LIB_SRCS
    editor.cpp 
    printdialogpage.cpp 
    kcomboboxdialog.cpp 
-   kolfsvgrenderer.cpp
    floater.cpp 
    slope.cpp
    itemfactory.cpp

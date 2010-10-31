@@ -34,7 +34,7 @@ class QSlider;
 class QCheckBox;
 class QVBoxLayout;
 class KolfGame;
-class KolfSvgRenderer;
+class KGameRenderer;
 
 namespace Phonon
 {
@@ -43,6 +43,7 @@ namespace Phonon
 namespace Kolf
 {
 	class ItemFactory;
+	KGameRenderer* renderer();
 }
 
 enum Direction { D_Left, D_Right, Forwards, Backwards };
@@ -902,7 +903,6 @@ public:
 
 	static void scoresFromSaved(KConfig*, PlayerList &players);
 	static void courseInfo(CourseInfo &info, const QString &filename);
-	KolfSvgRenderer *renderer;
 
 public slots:
 	void pause();
