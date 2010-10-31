@@ -30,7 +30,6 @@ CanvasItem::CanvasItem(b2World* world)
 	, m_body(0)
 	, m_overlay(0)
 	, m_simulationType(CanvasItem::CollisionSimulation)
-	, m_velocityChanged(true)
 {
 	b2BodyDef bodyDef;
 	bodyDef.userData = this;
@@ -133,15 +132,23 @@ void CanvasItem::setSimulationType(CanvasItem::SimulationType type)
 
 QPointF CanvasItem::physicalVelocity() const
 {
-	return m_physicalVelocity;
+	b2Vec2 v = m_body->GetLinearVelocity();
+	return QPointF(v.x, v.y);
 }
 
-void CanvasItem::setPhysicalVelocity(const QPointF& physicalVelocity)
+void CanvasItem::setPhysicalVelocity(const QPointF& newVelocity)
 {
-	if (m_physicalVelocity != physicalVelocity)
+	const QPointF currentVelocity = this->physicalVelocity();
+	if (newVelocity != currentVelocity)
 	{
-		m_physicalVelocity = physicalVelocity;
-		m_velocityChanged = true;
+		const qreal mass = m_body->GetMass();
+		if (mass == 0)
+			m_body->SetLinearVelocity(b2Vec2(newVelocity.x(), newVelocity.y()));
+		else
+		{
+			const QPointF impulse = (newVelocity - currentVelocity) * mass;
+			m_body->ApplyLinearImpulse(b2Vec2(impulse.x(), impulse.y()), m_body->GetPosition());
+		}
 	}
 }
 
@@ -149,9 +156,6 @@ void CanvasItem::startSimulation()
 {
 	const QPointF position = getPosition();
 	m_body->SetTransform(b2Vec2(position.x(), position.y()), 0);
-	if (m_velocityChanged)
-		m_body->SetLinearVelocity(b2Vec2(m_physicalVelocity.x(), m_physicalVelocity.y()));
-	m_velocityChanged = false;
 }
 
 void CanvasItem::endSimulation()
@@ -165,10 +169,6 @@ void CanvasItem::endSimulation()
 		//have a non-standard behavior with some classes (e.g. Ball), i.e. these
 		//arguments trigger some black magic
 		setPosition(position);
-	//read velocity
-	v = m_body->GetLinearVelocity();
-	setPhysicalVelocity(QPointF(v.x, v.y));
-	m_velocityChanged = false; //this was no manual change
 }
 
 Kolf::Overlay* CanvasItem::overlay(bool createIfNecessary)

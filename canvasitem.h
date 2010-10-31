@@ -183,9 +183,6 @@ private:
 		Kolf::Overlay* m_overlay;
 		QList<Kolf::Shape*> m_shapes;
 		CanvasItem::SimulationType m_simulationType;
-		QPointF m_physicalVelocity;
-		bool m_velocityChanged; //tells whether velocity has been changed programmatically after last simulation step
-		//The rationale behind this variable is that Box2D sometimes has very low velocities (~1e-10) during contacts. The QPointF conversion could create rounding errors on some platforms.
 };
 
 //WARNING: pos() is at center (not at top-left edge of bounding rect!)
