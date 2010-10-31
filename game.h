@@ -982,13 +982,9 @@ protected:
 	void keyPressEvent(QKeyEvent *e);
 	void keyReleaseEvent(QKeyEvent *e);
 
-	/*
-	 * resizes view to make sure it is square and calls resizeAllItems
-	 */
+	//resizes view to make sure it is square and calls resizeAllItems
 	void resizeEvent(QResizeEvent *);
-	/*
-	 * resizes and moves all items in the game
-	 */
+	//resizes and moves all items in the game
 	void resizeAllItems(double resizeFactor, bool resizeBorderWalls=1);
 
 	QPoint viewportToViewport(const QPoint &p);

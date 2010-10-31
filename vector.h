@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2010 Stefan Majewsky <majewsky@gmx.net>
+    Copyright 2010 Stefan Majewsky <majewsky@gmx.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -21,6 +21,16 @@
 
 #include <QPointF>
 #include <cmath>
+
+inline int rad2deg(double radians)
+{
+    return (180 / M_PI) * radians;
+}
+
+inline double deg2rad(int degrees)
+{
+	return (M_PI / 180) * degrees;
+}
 
 class Vector : public QPointF
 {

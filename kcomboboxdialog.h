@@ -32,10 +32,7 @@
 class QCheckBox;
 class KHistoryComboBox;
 
-/**
- * Dialog for user to choose an item from a QStringList.
- */
-
+///Dialog for user to choose an item from a QStringList.
 class KComboBoxDialog : public KDialog
 {
 Q_OBJECT
@@ -53,14 +50,10 @@ public:
 	KComboBoxDialog( const QString &_text, const QStringList& _items, const QString& _value = QString(), bool showDontAskAgain = false, QWidget *parent = 0 );
 	virtual ~KComboBoxDialog();
 
-	/**
-	 * @return the value the user chose
-	 */
+	///@return the value the user chose
 	QString text() const;
 
-	/**
-	 * @return the line edit widget
-	 */
+	///@return the line edit widget
 	KHistoryComboBox *comboBox() const { return combo; }
 
 	/**

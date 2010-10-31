@@ -103,9 +103,7 @@ private:
 	QPixmap pixmap;
 	void updatePixmap();
 	bool stuckOnGround;
-	/*
-	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
-	 */
+	//base numbers are the size or position when no resizing has taken place (i.e. the defaults)
 	double baseX, baseY, baseWidth, baseHeight;
 	double baseArrowPenThickness, arrowPenThickness;
 	int baseFontPixelSize;

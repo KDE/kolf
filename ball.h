@@ -127,20 +127,14 @@ private:
 	bool pixmapInitialised;
 	long int collisionId;
 	double frictionMultiplier;
-	/*
-	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
-	 */
+	//base numbers are the size or position when no resizing has taken place (i.e. the defaults)
 	double baseDiameter;
-	double baseX, baseY; //position of the ball in origional 400x400 co-ordinate system
+	double baseX, baseY; //position of the ball in original 400x400 coordinate system
 	double baseFontPixelSize;
-	/*
-	 * resizeFactor is the number to multiply base numbers by to get their resized value (i.e. if it is 1 then use default size, if it is >1 then everything needs to be bigger, and if it is <1 then everything needs to be smaller)
-	 */
+	//resizeFactor is the number to multiply base numbers by to get their resized value (i.e. if it is 1 then use default size, if it is >1 then everything needs to be bigger, and if it is <1 then everything needs to be smaller)
 	double resizeFactor;
 
-	/*
-	 * the maximum speed of the ball after hitting a bumper, this will decrease ith each bounce so that the ball does not bounce against bumpers forever
-	 */
+	//the maximum speed of the ball after hitting a bumper, this will decrease ith each bounce so that the ball does not bounce against bumpers forever
 	double maxBumperBounceSpeed;
 
 	bool m_blowUp;
@@ -165,16 +159,5 @@ private:
 
 	QGraphicsSimpleTextItem *label;
 };
-
-
-inline int rad2deg(double theDouble)
-{
-    return (int)((360L / (2L * M_PI)) * theDouble);
-}
-
-inline double deg2rad(double theDouble)
-{
-	return (((2L * M_PI) / 360L) * theDouble);
-}
 
 #endif
