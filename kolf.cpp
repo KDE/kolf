@@ -21,7 +21,6 @@
 #include "editor.h"
 #include "floater.h"
 #include "newgame.h"
-#include "printdialogpage.h"
 #include "scoreboard.h"
 #include "slope.h"
 
@@ -37,11 +36,8 @@
 #include <KStandardGameAction>
 #include <KStandardGuiItem>
 #include <KToggleAction>
-#include <kdeprintdialog.h>
 
 #include <QGridLayout>
-#include <QPrintDialog>
-#include <QPrinter>
 #include <QTimer>
 
 KolfWindow::KolfWindow()
@@ -87,7 +83,6 @@ void KolfWindow::setupActions()
 	// Game
 	newAction = KStandardGameAction::gameNew(this, SLOT(newGame()), actionCollection());
 	endAction = KStandardGameAction::end(this, SLOT(closeGame()), actionCollection());
-	//printAction = KStandardGameAction::print(this, SLOT(print()), actionCollection());
 	KStandardGameAction::quit(this, SLOT(close()), actionCollection());
 
 	saveAction = actionCollection()->addAction(KStandardAction::Save, "game_save", this, SLOT(save()));
@@ -326,7 +321,6 @@ void KolfWindow::startNewGame()
 	setHoleOtherEnabled(true);
 	aboutAction->setEnabled(true);
 	highScoreAction->setEnabled(true);
-	//printAction->setEnabled(true);
 	saveAction->setEnabled(true);
 	saveAsAction->setEnabled(true);
 	saveGameAction->setEnabled(true);
@@ -389,7 +383,6 @@ void KolfWindow::closeGame()
 	endAction->setEnabled(false);
 	aboutAction->setEnabled(false);
 	highScoreAction->setEnabled(false);
-	//printAction->setEnabled(false);
 	saveAction->setEnabled(false);
 	saveAsAction->setEnabled(false);
 	saveGameAction->setEnabled(false);
@@ -746,25 +739,6 @@ void KolfWindow::setEditingEnabled(bool yes)
 void KolfWindow::checkEditing()
 {
 	editingAction->setChecked(true);
-}
-
-void KolfWindow::print()
-{
-	if (!game)
-		return;
-
-	QPrinter pr;
-	PrintDialogPage prPage;
-
-	QPrintDialog *printDialog = KdePrint::createPrintDialog(&pr, QList<QWidget*>() << &prPage, this);
-	printDialog->setWindowTitle(i18n("Print %1 - Hole %2", game->courseName(), game->currentHole()));
-
-	if (printDialog->exec())
-	{
-		pr.newPage();
-		game->print(pr, prPage.printTitle());
-	}
-	delete printDialog;
 }
 
 void KolfWindow::updateModified(bool mod)

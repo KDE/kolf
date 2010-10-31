@@ -910,7 +910,6 @@ public slots:
 	void showInfoDlg(bool = false);
 	void resetHole();
 	void clearHole();
-	void print(QPrinter &, bool printTitle);
 	void setShowInfo(bool yes);
 	void toggleShowInfo();
 	void updateShowInfo();

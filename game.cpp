@@ -29,7 +29,6 @@
 #include <QCheckBox>
 #include <QLabel>
 #include <QMouseEvent>
-#include <QPrinter>
 #include <QSlider>
 #include <QStyleOptionGraphicsItem>
 #include <QTimer>
@@ -4384,37 +4383,6 @@ void HoleInfo::borderWallsChanged(bool yes)
 {
 	m_borderWalls = yes;
 	game->setBorderWalls(yes);
-}
-
-void KolfGame::print(QPrinter &pr, bool printTitle) //note: this is currently broken, see comment below
-{
-	kDebug(12007) << "Printing Currently broken";
-	QPainter p(&pr);
-
-	// translate to center
-	// TODO: This is broken since the port to Tagaro::Board.
-	p.translate(pr.width() / 2 - course->sceneRect().width() / 2, pr.height() / 2 - course->sceneRect().height() / 2);
-
-	QPixmap pix(width, height);
-	QPainter pixp(&pix);
-	//course->drawArea(course->sceneRect(), &pixp); //not sure how to fix this line to work with QGV, so just commenting for now. This will break printing
-	p.drawPixmap(0, 0, pix);
-
-	p.setPen(QPen(Qt::black, 2));
-	p.drawRect(course->sceneRect());
-
-	p.resetMatrix();
-
-	if (printTitle)
-	{
-		QString text = i18n("%1 - Hole %2; by %3", holeInfo.name(), curHole, holeInfo.author());
-		QFont font(QApplication::font());
-		font.setPointSize(18);
-		QRect rect = QFontMetrics(font).boundingRect(text);
-		p.setFont(font);
-
-		p.drawText(QPointF(pr.width() / 2 - rect.width() / 2, pr.height() / 2 - course->sceneRect().height() / 2 -20 - rect.height()), text);
-	}
 }
 
 bool KolfGame::allPlayersDone()

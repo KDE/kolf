@@ -60,7 +60,6 @@ protected slots:
 	void saveAs();
 	void saveGame();
 	void saveGameAs();
-	void print();
 	void newPlayersTurn(Player *);
 	void gameOver();
 	void editingStarted();
@@ -106,7 +105,6 @@ private:
 	QAction *tutorialAction;
 	QAction *newAction;
 	QAction *endAction;
-	//QAction *printAction;
 	QAction *saveAction;
 	QAction *saveAsAction;
 	QAction *saveGameAction;
