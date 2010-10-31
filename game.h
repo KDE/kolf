@@ -51,6 +51,7 @@ namespace Kolf
 {
 	class ItemFactory;
 	KGameRenderer* renderer();
+	Tagaro::Board* findBoard(QGraphicsItem* item); //TODO: temporary HACK
 }
 
 enum Direction { D_Left, D_Right, Forwards, Backwards };
@@ -117,14 +118,14 @@ typedef QList<Player> PlayerList;
 class AntiAliasedLine : public QGraphicsLineItem
 {
 public:
-	AntiAliasedLine(QGraphicsItem *parent, QGraphicsScene *scene);
+	AntiAliasedLine(QGraphicsItem *parent);
 	void paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget);
 };
 
 class Arrow : public AntiAliasedLine
 {
 public:
-	Arrow(QGraphicsItem * parent, QGraphicsScene *scene);
+	Arrow(QGraphicsItem *parent);
 	void setAngle(double newAngle) { m_angle = newAngle; }
 	double angle() const { return m_angle; }
 	void setLength(double newLength) { m_length = newLength; }
@@ -162,7 +163,7 @@ public:
 class RectPoint : public QGraphicsEllipseItem, public CanvasItem
 {
 public:
-	RectPoint(const QColor &color, RectItem *, QGraphicsItem * parent, QGraphicsScene *scene);
+	RectPoint(const QColor &color, RectItem *, QGraphicsItem *parent);
 	void dontMove() { dontmove = true; }
 	virtual void moveBy(double dx, double dy);
 	virtual Config *config(QWidget *parent);
@@ -184,7 +185,7 @@ private:
 class KolfEllipse : public QGraphicsEllipseItem, public CanvasItem, public RectItem
 {
 public:
-	KolfEllipse(QGraphicsItem * parent, QGraphicsScene *scene, const QString &type);
+	KolfEllipse(QGraphicsItem *parent, const QString &type);
 	void firstMove(int x, int y);
 	virtual void advance(int phase);
 	void resize(double resizeFactor);
@@ -262,21 +263,21 @@ private:
 class Puddle : public KolfEllipse
 {
 public:
-	Puddle(QGraphicsItem * parent, QGraphicsScene *scene);
+	Puddle(QGraphicsItem *parent);
 	virtual bool collision(Ball *ball, long int id);
 };
 
 class Sand : public KolfEllipse
 {
 public:
-	Sand(QGraphicsItem * parent, QGraphicsScene *scene);
+	Sand(QGraphicsItem *parent);
 	virtual bool collision(Ball *ball, long int id);
 };
 
 class Inside : public QGraphicsEllipseItem, public CanvasItem
 {
 public:
-	Inside(CanvasItem *item, QGraphicsItem * parent, QGraphicsScene *scene) : QGraphicsEllipseItem(parent, scene) { this->item = item; }
+	Inside(CanvasItem *item, QGraphicsItem *parent) : QGraphicsEllipseItem(parent) { this->item = item; }
 	virtual bool collision(Ball *ball, long int id) { return item->collision(ball, id); }
 	void setSize(double width, double height) { setRect(rect().x(), rect().y(), width, height); }
 
@@ -287,7 +288,7 @@ protected:
 class Bumper : public QGraphicsEllipseItem, public CanvasItem
 {
 public:
-	Bumper(QGraphicsItem * parent, QGraphicsScene *scene);
+	Bumper(QGraphicsItem *parent);
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem * option, QWidget * widget);
 	virtual void advance(int phase);
 	void moveBy(double x, double y);
@@ -313,7 +314,7 @@ private:
  class Cup :  public QGraphicsEllipseItem, public CanvasItem 
 {
 public:
-	Cup(QGraphicsItem * parent, QGraphicsScene *scene);
+	Cup(QGraphicsItem *parent);
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *);
 	virtual bool place(Ball *ball, bool wasCenter);
 	void moveBy(double x, double y);
@@ -356,7 +357,7 @@ private:
 class BlackHoleExit : public AntiAliasedLine, public CanvasItem
 {
 public:
-	BlackHoleExit(BlackHole *blackHole, QGraphicsItem * parent, QGraphicsScene *scene);
+	BlackHoleExit(BlackHole *blackHole, QGraphicsItem *parent);
 	virtual void aboutToDie();
 	virtual void moveBy(double dx, double dy);
 	virtual bool deleteable() const { return false; }
@@ -405,7 +406,7 @@ class BlackHole : public QObject, public QGraphicsEllipseItem, public CanvasItem
 Q_OBJECT
 
 public:
-	BlackHole(QGraphicsItem * parent, QGraphicsScene *scene);
+	BlackHole(QGraphicsItem *parent);
 	virtual bool canBeMovedByOthers() const { return true; }
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem * option, QWidget * widget);
 	virtual void aboutToDie();
@@ -470,7 +471,7 @@ class WallPoint;
 class Wall : public AntiAliasedLine, public CanvasItem
 {
 public:
-	Wall( QGraphicsItem * parent, QGraphicsScene *scene, bool antialiasing=1);
+	Wall( QGraphicsItem *parent, bool antialiasing=1);
 	virtual void aboutToDie();
 	double dampening;
 
@@ -526,7 +527,7 @@ private:
 class WallPoint : public QGraphicsEllipseItem, public CanvasItem
 {
 public:
-	WallPoint(bool start, Wall *wall, QGraphicsItem * parent, QGraphicsScene *scene);
+	WallPoint(bool start, Wall *wall, QGraphicsItem *parent);
 	void setAlwaysShow(bool yes) { alwaysShow = yes; updateVisible(); }
 	virtual void editModeChanged(bool changed);
 	virtual void moveBy(double dx, double dy);
@@ -564,7 +565,7 @@ private:
 class Putter : public AntiAliasedLine, public CanvasItem
 {
 public:
-	Putter(QGraphicsScene *scene);
+	Putter(QGraphicsItem* parent);
 	void resize(double resizeFactor);
 	void go(Direction, Amount amount = Amount_Normal);
 	void setOrigin(double x, double y);
@@ -634,7 +635,7 @@ private:
 class Bridge : public QGraphicsRectItem, public CanvasItem, public RectItem
 {
 public:
-	Bridge(QGraphicsItem *parent, QGraphicsScene *scene, const QString &type = "bridge");
+	Bridge(QGraphicsItem *parent, const QString &type = "bridge");
 	void paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget=0);
 	virtual bool collision(Ball *ball, long int id);
 	virtual void resize(double resizeFactor);
@@ -709,7 +710,7 @@ private:
 class Sign : public Bridge
 {
 public:
-	Sign(QGraphicsItem * parent, QGraphicsScene *scene);
+	Sign(QGraphicsItem *parent);
 	void resize(double resizeFactor);
 	void setText(const QString &text);
 	QString text() const { return m_text; }
@@ -732,7 +733,7 @@ class Windmill;
 class WindmillGuard : public Wall
 {
 public:
-	WindmillGuard(QGraphicsItem * parent, QGraphicsScene *scene) : Wall(parent, scene, false) {}
+	WindmillGuard(QGraphicsItem *parent) : Wall(parent, false) {}
 	void setBetween(double newmin, double newmax) { max = newmax; min = newmin; }
 	virtual void advance(int phase);
 	double getMax() { return max; }
@@ -759,7 +760,7 @@ private:
 class Windmill : public Bridge
 {
 public:
-	Windmill(QGraphicsItem * parent, QGraphicsScene *scene);
+	Windmill(QGraphicsItem *parent);
 	virtual void aboutToDie();
 	virtual void newSize(double width, double height);
 	virtual void save(KConfigGroup *cfgGroup);
@@ -844,7 +845,7 @@ private:
 class StrokeCircle : public QGraphicsItem
 {
 public:
-	StrokeCircle(QGraphicsItem *parent, QGraphicsScene *scene);
+	StrokeCircle(QGraphicsItem *parent);
 
 	void resize(double resizeFactor);
 	void setValue(double v);

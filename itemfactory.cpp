@@ -27,12 +27,12 @@ QList<Kolf::ItemMetadata> Kolf::ItemFactory::knownTypes() const
 	return result;
 }
 
-QGraphicsItem* Kolf::ItemFactory::createInstance(const QString& identifier, QGraphicsItem* parent, QGraphicsScene* scene) const
+QGraphicsItem* Kolf::ItemFactory::createInstance(const QString& identifier, QGraphicsItem* parent) const
 {
 	QList<Entry>::const_iterator it1 = m_entries.begin(), it2 = m_entries.end();
 	for (; it1 != it2; ++it1)
 		if (it1->first.identifier == identifier)
-			return (it1->second)(parent, scene);
+			return (it1->second)(parent);
 	return 0;
 }
 

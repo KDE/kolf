@@ -17,6 +17,7 @@
 */
 
 #include "slope.h"
+#include "tagaro/board.h"
 
 #include <QApplication>
 #include <QCheckBox>
@@ -26,8 +27,8 @@
 #include <KGameRenderer>
 #include <KNumInput>
 
-Slope::Slope(QGraphicsItem * parent, QGraphicsScene *scene)
-	: QGraphicsRectItem(QRect(0, 0, 40, 40), parent, scene), type(Vertical), grade(4), reversed(false), color(QColor("#327501"))
+Slope::Slope(QGraphicsItem * parent)
+	: QGraphicsRectItem(QRect(0, 0, 40, 40), parent), type(Vertical), grade(4), reversed(false), color(QColor("#327501"))
 {
 	setData(0, 1031);
 	stuckOnGround = false;
@@ -48,12 +49,12 @@ Slope::Slope(QGraphicsItem * parent, QGraphicsScene *scene)
 
 	setZValue(-50);
 
-	point = new RectPoint(color.light(), this, parent, scene);
+	point = new RectPoint(color.light(), this, parent);
 
 	QFont font(QApplication::font());
 	baseFontPixelSize = 18;
 	font.setPixelSize(baseFontPixelSize);
-	text = new QGraphicsSimpleTextItem(0, scene);
+	text = new QGraphicsSimpleTextItem(Kolf::findBoard(this));
 	text->setZValue(99999.99);
 	text->setFont(font);
 	text->setBrush(Qt::white);
@@ -463,7 +464,7 @@ void Slope::updatePixmap() //this needs work so that the slope colour depends on
 		for (int i = 0; i < 4; ++i)
 		{
 			angle += M_PI / 2;
-			Arrow *arrow = new Arrow(0, scene());
+			Arrow *arrow = new Arrow(Kolf::findBoard(this));
 			arrow->setLength(length);
 			arrow->setAngle(angle);
 			arrow->setPen(QPen(Qt::black, arrowPenThickness));
@@ -474,7 +475,7 @@ void Slope::updatePixmap() //this needs work so that the slope colour depends on
 	}
 	else
 	{
-		Arrow *arrow = new Arrow(0, scene());
+		Arrow *arrow = new Arrow(Kolf::findBoard(this));
 		double angle = 0;
 
 		switch(type) {

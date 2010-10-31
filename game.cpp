@@ -71,10 +71,16 @@ KGameRenderer* Kolf::renderer()
 	return g_renderer;
 }
 
+Tagaro::Board* Kolf::findBoard(QGraphicsItem* item_)
+{
+	//This returns the toplevel board instance in which the given parent resides.
+	return item_ ? dynamic_cast<Tagaro::Board*>(item_->topLevelItem()) : 0;
+}
+
 /////////////////////////
 
-RectPoint::RectPoint(const QColor &color, RectItem *rect, QGraphicsItem * parent, QGraphicsScene *scene)
-: QGraphicsEllipseItem(parent, scene)
+RectPoint::RectPoint(const QColor &color, RectItem *rect, QGraphicsItem * parent)
+: QGraphicsEllipseItem(parent)
 {
 	setZValue(9999);
 	setSize(10, 10);
@@ -128,11 +134,11 @@ void RectPoint::updateBaseResizeInfo()
 
 /////////////////////////
 
-Arrow::Arrow(QGraphicsItem * parent, QGraphicsScene *scene)
-    : AntiAliasedLine(parent, scene)
+Arrow::Arrow(QGraphicsItem * parent)
+    : AntiAliasedLine(parent)
 {
-	line1 = new AntiAliasedLine(this, scene);
-	line2 = new AntiAliasedLine(this, scene);
+	line1 = new AntiAliasedLine(this);
+	line2 = new AntiAliasedLine(this);
 
 	m_angle = 0;
 	m_length = 20;
@@ -270,8 +276,8 @@ QRect Bridge_defaultRect(const QString& type)
 	return type == "sign" ? QRect(0, 0, 110, 40) : QRect(0, 0, 80, 40);
 }
 
-Bridge::Bridge(QGraphicsItem *parent, QGraphicsScene *scene, const QString &type)
-: QGraphicsRectItem(Bridge_defaultRect(type), parent, scene)
+Bridge::Bridge(QGraphicsItem *parent, const QString &type)
+: QGraphicsRectItem(Bridge_defaultRect(type), parent)
 {
 	this->type = type;
 	QColor color("#92772D");
@@ -280,13 +286,13 @@ Bridge::Bridge(QGraphicsItem *parent, QGraphicsScene *scene, const QString &type
 	setZValue(998);
 	
 	//not using antialiasing because it looks too blurry here
-	topWall = new Wall(parent, scene, false);
+	topWall = new Wall(parent, false);
 	topWall->setAlwaysShow(true);
-	botWall = new Wall(parent, scene, false);
+	botWall = new Wall(parent, false);
 	botWall->setAlwaysShow(true);
-	leftWall = new Wall(parent, scene, false);
+	leftWall = new Wall(parent, false);
 	leftWall->setAlwaysShow(true);
-	rightWall = new Wall(parent, scene, false);
+	rightWall = new Wall(parent, false);
 	rightWall->setAlwaysShow(true);
 
 	setWallZ(zValue() + 0.01);
@@ -299,7 +305,7 @@ Bridge::Bridge(QGraphicsItem *parent, QGraphicsScene *scene, const QString &type
 
 	pixmapInitialised=false;
 
-	point = new RectPoint(color, this, parent, scene);
+	point = new RectPoint(color, this, parent);
 	editModeChanged(false);
 
 	newSize(width(), height());
@@ -549,11 +555,11 @@ void WindmillConfig::endChanged(bool bottom)
 
 /////////////////////////
 
-Windmill::Windmill(QGraphicsItem * parent, QGraphicsScene *scene)
-: Bridge(parent, scene, "windmill"), speedfactor(16), m_bottom(true)
+Windmill::Windmill(QGraphicsItem * parent)
+: Bridge(parent, "windmill"), speedfactor(16), m_bottom(true)
 {
 	baseGuardSpeed = 5;
-	guard = new WindmillGuard(0, scene);
+	guard = new WindmillGuard(Kolf::findBoard(this));
 	guard->setPen(QPen(Qt::black, 5));
 	guard->setBasePenWidth(5);
 	guard->setVisible(true);
@@ -562,10 +568,10 @@ Windmill::Windmill(QGraphicsItem * parent, QGraphicsScene *scene)
 	guard->setZValue(wallZ() + .1);
 
 	//not using antialiasing because it looks too blurry here
-	left = new Wall(0, scene, false);
+	left = new Wall(Kolf::findBoard(this), false);
 	left->setPen(wallPen());
 	left->setAlwaysShow(true);
-	right = new Wall(0, scene, false);
+	right = new Wall(Kolf::findBoard(this), false);
 	right->setPen(wallPen());
 	right->setAlwaysShow(true);
 	left->setZValue(wallZ());
@@ -727,8 +733,8 @@ void WindmillGuard::advance(int phase)
 
 /////////////////////////
 
-Sign::Sign(QGraphicsItem * parent, QGraphicsScene *scene)
-: Bridge(parent, scene, "sign")
+Sign::Sign(QGraphicsItem * parent)
+: Bridge(parent, "sign")
 {
 	setZValue(998.8);
 	m_text = m_untranslatedText = i18n("New Text");
@@ -884,8 +890,8 @@ void EllipseConfig::check2Changed(bool on)
 
 /////////////////////////
 
-KolfEllipse::KolfEllipse(QGraphicsItem *parent, QGraphicsScene *scene, const QString &type)
-: QGraphicsEllipseItem(parent, scene)
+KolfEllipse::KolfEllipse(QGraphicsItem *parent, const QString &type)
+: QGraphicsEllipseItem(parent)
 {
 	this->type = type;
 	savingDone();
@@ -895,7 +901,7 @@ KolfEllipse::KolfEllipse(QGraphicsItem *parent, QGraphicsScene *scene, const QSt
 	setVisible(true);
 	setPen(QPen(Qt::NoPen));
 
-	point = new RectPoint(Qt::black, this, parent, scene);
+	point = new RectPoint(Qt::black, this, parent);
 	point->setSizeFactor(2.0);
 }
 
@@ -1029,8 +1035,8 @@ void KolfEllipse::updateBaseResizeInfo()
 
 /////////////////////////
 
-Puddle::Puddle(QGraphicsItem * parent, QGraphicsScene *scene)
-: KolfEllipse(parent, scene, "puddle")
+Puddle::Puddle(QGraphicsItem * parent)
+: KolfEllipse(parent, "puddle")
 {
 	setData(0, Rtti_DontPlaceOn);
 	setSize(45, 30);
@@ -1041,11 +1047,8 @@ bool Puddle::collision(Ball *ball, long int /*id*/)
 {
 	if (ball->isVisible())
 	{
-		QGraphicsRectItem i(QRectF(ball->x(), ball->y(), 1, 1), 0, 0);
-		i.setVisible(true);
-
 		// is center of ball in?
-		if (i.collidesWithItem(this)/* && ball->curVector().magnitude() < 4*/)
+		if (contains(ball->pos()-pos())/* && ball->curVector().magnitude() < 4*/)
 		{
 			playSound("puddle");
 			ball->setAddStroke(ball->addStroke() + 1);
@@ -1065,8 +1068,8 @@ bool Puddle::collision(Ball *ball, long int /*id*/)
 
 /////////////////////////
 
-Sand::Sand(QGraphicsItem * parent, QGraphicsScene *scene)
-: KolfEllipse(parent, scene, "sand")
+Sand::Sand(QGraphicsItem * parent)
+: KolfEllipse(parent, "sand")
 {
 	setSize(45, 40);
 	setZValue(-26);
@@ -1074,11 +1077,8 @@ Sand::Sand(QGraphicsItem * parent, QGraphicsScene *scene)
 
 bool Sand::collision(Ball *ball, long int /*id*/)
 {
-	QGraphicsRectItem i(QRectF(ball->x(), ball->y(), 1, 1), 0, 0);
-	i.setVisible(true);
-
 	// is center of ball in?
-	if (i.collidesWithItem(this)/* && ball->curVector().magnitude() < 4*/)
+	if (contains(ball->pos()-pos())/* && ball->curVector().magnitude() < 4*/)
 	{
 		if (ball->curVector().magnitude() > 0)
 			ball->setFrictionMultiplier(7);
@@ -1094,8 +1094,8 @@ bool Sand::collision(Ball *ball, long int /*id*/)
 
 /////////////////////////
 
-Putter::Putter(QGraphicsScene *scene)
-: AntiAliasedLine(0, scene)
+Putter::Putter(QGraphicsItem* parent)
+: AntiAliasedLine(parent)
 {
 	setData(0, Rtti_Putter);
 	m_showGuideLine = true;
@@ -1107,7 +1107,7 @@ Putter::Putter(QGraphicsScene *scene)
 	basePutterWidth = putterWidth = 11;
 	angle = 0;
 
-	guideLine = new AntiAliasedLine(this, scene);
+	guideLine = new AntiAliasedLine(this);
 	guideLine->setPen(QPen(Qt::white, baseGuideLineThickness));
 	guideLine->setZValue(998.8);
 
@@ -1230,8 +1230,8 @@ void Putter::finishMe()
 
 /////////////////////////
 
-Bumper::Bumper(QGraphicsItem * parent, QGraphicsScene *scene)
-: QGraphicsEllipseItem(parent, scene)
+Bumper::Bumper(QGraphicsItem * parent)
+: QGraphicsEllipseItem(parent)
 {
 	baseDiameter=20;
 	setRect(-0.5*baseDiameter, -0.5*baseDiameter, baseDiameter, baseDiameter);
@@ -1333,8 +1333,8 @@ void Bumper::updateBaseResizeInfo()
 
 /////////////////////////
 
-Cup::Cup(QGraphicsItem * parent, QGraphicsScene * scene)
-	: QGraphicsEllipseItem(parent, scene)
+Cup::Cup(QGraphicsItem * parent)
+	: QGraphicsEllipseItem(parent)
 {
 	baseDiameter = 16;
 	setRect(-0.5*baseDiameter, -0.5*baseDiameter, baseDiameter, baseDiameter);
@@ -1446,8 +1446,8 @@ void Cup::updateBaseResizeInfo()
 
 /////////////////////////
 
-BlackHole::BlackHole(QGraphicsItem * parent, QGraphicsScene *scene)
-	: QGraphicsEllipseItem(-8, -9, 16, 18, parent, scene), exitDeg(0)
+BlackHole::BlackHole(QGraphicsItem * parent)
+	: QGraphicsEllipseItem(-8, -9, 16, 18, parent), exitDeg(0)
 {
 	setZValue(998.1);
 
@@ -1465,7 +1465,7 @@ BlackHole::BlackHole(QGraphicsItem * parent, QGraphicsScene *scene)
         setPen(Qt::NoPen);
         setBrush(myColor);
 
-	exitItem = new BlackHoleExit(this, 0, scene);
+	exitItem = new BlackHoleExit(this, Kolf::findBoard(this));
 	exitItem->setPen(QPen(myColor, 6));
 	exitItem->setPos(300, 100);
 
@@ -1494,7 +1494,7 @@ void BlackHole::paint(QPainter *painter, const QStyleOptionGraphicsItem * option
 void BlackHole::showInfo()
 {
 	delete infoLine;
-	infoLine = new AntiAliasedLine(0, scene());
+	infoLine = new AntiAliasedLine(Kolf::findBoard(this));
 	infoLine->setVisible(true);
 	infoLine->setPen(QPen(exitItem->pen().color(), baseInfoLineThickness));
 	infoLine->setZValue(10000);
@@ -1578,7 +1578,7 @@ bool BlackHole::collision(Ball *ball, long int /*id*/)
 {
 	bool wasCenter = false;
 
-	switch (result(QPointF(ball->x(), ball->y()), ball->curVector().magnitude(), &wasCenter))
+	switch (result(ball->pos(), ball->curVector().magnitude(), &wasCenter))
 	{
 		case Result_Holed:
 			place(ball, wasCenter);
@@ -1637,6 +1637,7 @@ bool BlackHole::place(Ball *ball, bool /*wasCenter*/)
 
 void BlackHole::eject(Ball *ball, double speed)
 {
+	kDebug();
 	ball->setResizedPos(exitItem->x(), exitItem->y());
 
 	Vector v = Vector::fromMagnitudeDirection(10, deg2rad(exitDeg));
@@ -1711,7 +1712,7 @@ void BlackHole::finishMe(double width)
 
 void BlackHole::save(KConfigGroup *cfgGroup)
 {
-	cfgGroup->writeEntry("exit", QPoint((int)exitItem->x(), (int)exitItem->y()));
+	cfgGroup->writeEntry("exit", exitItem->pos().toPoint());
 	cfgGroup->writeEntry("exitDeg", exitDeg);
 	cfgGroup->writeEntry("minspeed", m_minSpeed);
 	cfgGroup->writeEntry("maxspeed", m_maxSpeed);
@@ -1719,20 +1720,12 @@ void BlackHole::save(KConfigGroup *cfgGroup)
 
 HoleResult BlackHole::result(QPointF p, double s, bool * /*wasCenter*/)
 {
-	const double longestRadius = width() > height()? width() : height();
+	const double longestRadius = qMax(width(),  height());
 	if (s > longestRadius / 5.0)
 		return Result_Miss;
 
-	QGraphicsRectItem i(QRectF(p, QSize(1, 1)), 0, 0);
-	i.setVisible(true);
-
 	// is center of ball in cup?
-	if (i.collidesWithItem(this))
-	{
-		return Result_Holed;
-	}
-	else
-		return Result_Miss;
+	return contains(p-pos()) ? Result_Holed : Result_Miss;
 }
 
 void BlackHole::updateBaseResizeInfo()
@@ -1745,12 +1738,12 @@ void BlackHole::updateBaseResizeInfo()
 
 /////////////////////////
 
-BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QGraphicsItem * parent, QGraphicsScene *scene)
-: AntiAliasedLine(parent, scene)
+BlackHoleExit::BlackHoleExit(BlackHole *blackHole, QGraphicsItem * parent)
+: AntiAliasedLine(parent)
 {
 	setData(0, Rtti_NoCollision);
 	this->blackHole = blackHole;
-	arrow = new Arrow(this, scene);
+	arrow = new Arrow(this);
 	setZValue(blackHole->zValue());
 	arrow->setZValue(zValue() - .00001);
 	updateArrowLength();
@@ -1883,8 +1876,8 @@ void BlackHoleConfig::maxChanged(double news)
 
 /////////////////////////
 
-AntiAliasedLine::AntiAliasedLine(QGraphicsItem *parent, QGraphicsScene *scene)
-	: QGraphicsLineItem(parent, scene)
+AntiAliasedLine::AntiAliasedLine(QGraphicsItem *parent)
+	: QGraphicsLineItem(parent)
 { 
 	;
 }
@@ -1897,8 +1890,8 @@ void AntiAliasedLine::paint(QPainter *p, const QStyleOptionGraphicsItem *style, 
 
 /////////////////////////
 
-WallPoint::WallPoint(bool start, Wall *wall, QGraphicsItem * parent, QGraphicsScene *scene)
-: QGraphicsEllipseItem(parent, scene)
+WallPoint::WallPoint(bool start, Wall *wall, QGraphicsItem * parent)
+: QGraphicsEllipseItem(parent)
 {
 	setData(0, Rtti_WallPoint);
 	this->wall = wall;
@@ -2078,8 +2071,8 @@ void WallPoint::updateBaseResizeInfo()
 
 /////////////////////////
 
-Wall::Wall( QGraphicsItem *parent, QGraphicsScene *scene, bool antialiasing)
-: AntiAliasedLine(parent, scene)
+Wall::Wall( QGraphicsItem *parent, bool antialiasing)
+: AntiAliasedLine(parent)
 {
 	basePenWidth = 3;
 	this->antialiasing = antialiasing;
@@ -2095,8 +2088,8 @@ Wall::Wall( QGraphicsItem *parent, QGraphicsScene *scene, bool antialiasing)
 	moveBy(0, 0);
 	setZValue(50);
 
-	startItem = new WallPoint(true, this, parent, scene);
-	endItem = new WallPoint(false, this, parent, scene);
+	startItem = new WallPoint(true, this, parent);
+	endItem = new WallPoint(false, this, parent);
 	startItem->setVisible(true);
 	endItem->setVisible(true);
 	setPen(QPen(Qt::darkRed, basePenWidth));
@@ -2426,8 +2419,8 @@ void HoleConfig::borderWallsChanged(bool yes)
 
 /////////////////////////
 
-StrokeCircle::StrokeCircle(QGraphicsItem *parent, QGraphicsScene *scene)
-: QGraphicsItem(parent, scene)
+StrokeCircle::StrokeCircle(QGraphicsItem *parent)
+: QGraphicsItem(parent)
 {
 	dvalue = 0;
 	dmax = 360;
@@ -2621,10 +2614,10 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 	adjustSize();
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-		course->addItem((*it).ball());
+		(*it).ball()->setParentItem(courseBoard);
 
 	// highlighter shows current item when editing
-	highlighter = new QGraphicsRectItem(0, course);
+	highlighter = new QGraphicsRectItem(courseBoard);
 	highlighter->setPen(QPen(Qt::yellow, 1));
 	highlighter->setBrush(QBrush(Qt::NoBrush));
 	highlighter->setVisible(false);
@@ -2634,7 +2627,7 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 	font.setPixelSize(12);
 
 	// create the advanced putting indicator
-	strokeCircle = new StrokeCircle(0, course);
+	strokeCircle = new StrokeCircle(courseBoard);
 	strokeCircle->setPos(width - 90, height - 90);
 	strokeCircle->resize(1);
 	strokeCircle->setVisible(false);
@@ -2642,7 +2635,7 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 	strokeCircle->setMaxValue(360); 
 
 	// whiteBall marks the spot of the whole whilst editing
-	whiteBall = new Ball(course);
+	whiteBall = new Ball(courseBoard);
 	whiteBall->setGame(this);
 	whiteBall->setColor(Qt::white);
 	whiteBall->setVisible(false);
@@ -2664,7 +2657,7 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 	if (highestLog)
 		curHole = highestLog;
 
-	putter = new Putter(course);
+	putter = new Putter(courseBoard);
 
 	// border walls:
 
@@ -2775,7 +2768,7 @@ void KolfGame::unPause()
 
 void KolfGame::addBorderWall(const QPoint &start, const QPoint &end)
 {
-	Wall *wall = new Wall(0, course);
+	Wall *wall = new Wall(courseBoard);
 	wall->setLine(start.x(), start.y(), end.x(), end.y());
 	wall->setVisible(true);
 	wall->setGame(this);
@@ -2810,10 +2803,12 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 
 		storedMousePos = e->pos();
 
-		QList<QGraphicsItem *> list = course->items(e->pos());
+		QList<QGraphicsItem *> list = course->items(courseBoard->mapToScene(e->pos()));
 		if(list.count() > 0)
-			if (list.first() == highlighter)
-				list.pop_front();
+		{
+			list.removeAll(courseBoard);
+			list.removeAll(highlighter);
+		}
 
 		moving = false;
 		highlighter->setVisible(false);
@@ -2883,8 +2878,8 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 
 QPoint KolfGame::viewportToViewport(const QPoint &p)
 {
-	// for some reason viewportToContents doesn't work right
-	return p;// - QPoint(margin, margin);
+	//convert viewport coordinates to board coordinates
+	return courseBoard->deviceTransform(viewportTransform()).inverted().map(p);
 }
 
 // the following four functions are needed to handle both
@@ -2937,8 +2932,8 @@ void KolfGame::handleMouseMoveEvent(QMouseEvent *e)
 		// lets change the cursor to a hand
 		// if we're hovering over something
 
-		QList<QGraphicsItem *> list = course->items(e->pos());
-		if (list.count() > 0)
+		QList<QGraphicsItem *> list = course->items(courseBoard->mapToScene(e->pos()));
+		if (list.count() > 1) //list always contains courseBoard
 			setCursor(Qt::PointingHandCursor);
 		else
 			setCursor(Qt::ArrowCursor);
@@ -3173,10 +3168,11 @@ void KolfGame::resizeEvent( QResizeEvent* ev )
 		return;
 
 	int newSize = qMin(newW, newH);
-	double resizeFactor = (double)newSize/400.0;
 	QGraphicsView::resize(newSize, newSize); //make sure new size is square
 
-	resizeAllItems(resizeFactor);
+// 	resizeAllItems((double)newSize/400.0);
+	resizeAllItems(1); //item scaling is now done automatically by Tagaro::Board
+	//TODO: Remove all the manual scaling code.
 }
 
 void KolfGame::resizeAllItems(double resizeFactor, bool resizeBorderWalls)
@@ -3244,7 +3240,7 @@ void KolfGame::timeout()
                 //QGV handles management of dirtied rects for us
 		//course->update();
 
-		if (!course->sceneRect().contains(QPointF((*it).ball()->x(), ((*it).ball()->y()))))
+		if (!QRectF(QPointF(), courseBoard->logicalSize()).contains((*it).ball()->pos()))
 		{
 			(*it).ball()->setState(Stopped);
 
@@ -4039,7 +4035,7 @@ void KolfGame::openFile()
 
 		const int id = (*it).right(len - (pipeIndex + 1)).toInt();
 
-		QGraphicsItem* newItem = m_factory.createInstance(name, 0, course);
+		QGraphicsItem* newItem = m_factory.createInstance(name, courseBoard);
 		if (newItem)
 		{
 			items.append(newItem);
@@ -4177,7 +4173,7 @@ void KolfGame::addItemToFastAdvancersList(CanvasItem *item)
 
 void KolfGame::addNewObject(const QString& identifier)
 {
-	QGraphicsItem *newItem = m_factory.createInstance(identifier, 0, course);
+	QGraphicsItem *newItem = m_factory.createInstance(identifier, courseBoard);
 
 	items.append(newItem);
 	if(!newItem->isVisible())
@@ -4584,6 +4580,7 @@ void KolfGame::print(QPrinter &pr, bool printTitle) //note: this is currently br
 	QPainter p(&pr);
 
 	// translate to center
+	// TODO: This is broken since the port to Tagaro::Board.
 	p.translate(pr.width() / 2 - course->sceneRect().width() / 2, pr.height() / 2 - course->sceneRect().height() / 2);
 
 	QPixmap pix(width, height);

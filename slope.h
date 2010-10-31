@@ -44,7 +44,7 @@ private:
 class Slope : public QGraphicsRectItem, public CanvasItem, public RectItem
 {
 public:
-	Slope(QGraphicsItem *parent, QGraphicsScene *scene);
+	Slope(QGraphicsItem *parent);
 
 	virtual void aboutToDie();
 

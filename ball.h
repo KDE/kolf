@@ -29,7 +29,7 @@ enum BallState { Rolling = 0, Stopped, Holed };
 class Ball : public QGraphicsEllipseItem, public CanvasItem
 {
 public:
-	Ball(QGraphicsScene *scene); 
+	Ball(QGraphicsItem* parent);
 	virtual void aboutToDie();
 
 	BallState currentState();

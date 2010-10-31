@@ -23,8 +23,8 @@
 #include <QApplication>
 #include <KGameRenderer>
 
-Ball::Ball(QGraphicsScene * scene)
-	: QGraphicsEllipseItem(0, scene)
+Ball::Ball(QGraphicsItem* parent)
+	: QGraphicsEllipseItem(parent)
 {
 	baseDiameter = 8;
 	resizeFactor = 1;
@@ -45,7 +45,7 @@ Ball::Ball(QGraphicsScene * scene)
 	QFont font(QApplication::font());
 	baseFontPixelSize=12;
 	font.setPixelSize((int)(baseFontPixelSize));
-	label = new QGraphicsSimpleTextItem("", this, scene);
+	label = new QGraphicsSimpleTextItem(QString(), this);
 	label->setFont(font);
 	label->setBrush(Qt::white);
 	label->setPos(5, 5);
@@ -332,7 +332,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 			//Create the halo. This is an ellipse centered around the ball, and bigger than it. This allows us to detect walls which we could be about to collide into, and react intelligently to them, even though we are not colliding with them quite yet
 			const double haloSizeFactor = 2;
 
-			halo = new QGraphicsEllipseItem( rect().x() * haloSizeFactor, rect().y() * haloSizeFactor, rect().width() * haloSizeFactor, rect().height() * haloSizeFactor, this, scene() );
+			halo = new QGraphicsEllipseItem( rect().x() * haloSizeFactor, rect().y() * haloSizeFactor, rect().width() * haloSizeFactor, rect().height() * haloSizeFactor, this );
 			halo->hide();
 
 			QList<QGraphicsItem *> haloCollisions = halo->collidingItems();
@@ -439,9 +439,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 	wallCheck:
 
 	{ // check if I went through a wall
-		QList<QGraphicsItem *> items;
-		if (game)
-			items = game->scene()->items();
+		QList<QGraphicsItem *> items = parentItem()->children();
 		for (QList<QGraphicsItem *>::Iterator i = items.begin(); i != items.end(); ++i)
 		{
 			if ((*i)->data(0) != Rtti_Wall)

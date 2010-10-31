@@ -85,15 +85,15 @@ void FloaterGuide::updateBaseResizeInfo()
 
 /////////////////////////
 
-Floater::Floater(QGraphicsItem *parent, QGraphicsScene *scene)
-	: Bridge(parent, scene, "floater"), speedfactor(16)
+Floater::Floater(QGraphicsItem *parent)
+	: Bridge(parent, "floater"), speedfactor(16)
 {
 	wall = 0;
 	setEnabled(true);
 	noUpdateZ = false;
 	haventMoved = true;
 	resizeFactor = 1;
-	wall = new FloaterGuide(this, parent, scene);
+	wall = new FloaterGuide(this, parent);
 	wall->setPoints(100, 100, 200, 200);
 	wall->setPen(QPen(wall->pen().color().light(), wall->pen().width() - 1));
 	setPos(wall->endPoint().x(), wall->endPoint().y());

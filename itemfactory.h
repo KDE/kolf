@@ -34,7 +34,7 @@ namespace Kolf
 	{
 		public:
 			QList<Kolf::ItemMetadata> knownTypes() const;
-			QGraphicsItem* createInstance(const QString& identifier, QGraphicsItem* parent = 0, QGraphicsScene* scene = 0) const;
+			QGraphicsItem* createInstance(const QString& identifier, QGraphicsItem* parent = 0) const;
 
 			template<typename T> void registerType(const QString& identifier, const QString& name, bool addOnNewHole = false)
 			{
@@ -42,11 +42,11 @@ namespace Kolf
 				registerType(metadata, &Kolf::ItemFactory::create<T>);
 			}
 		private:
-			typedef QGraphicsItem* (*ItemCreator)(QGraphicsItem* parent, QGraphicsScene* scene);
+			typedef QGraphicsItem* (*ItemCreator)(QGraphicsItem* parent);
 			void registerType(const Kolf::ItemMetadata& metadata, ItemCreator creator);
-			template<typename T> static QGraphicsItem* create(QGraphicsItem* parent, QGraphicsScene* scene)
+			template<typename T> static QGraphicsItem* create(QGraphicsItem* parent)
 			{
-				return new T(parent, scene);
+				return new T(parent);
 			}
 		private:
 			typedef QPair<Kolf::ItemMetadata, ItemCreator> Entry;
