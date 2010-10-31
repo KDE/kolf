@@ -2027,13 +2027,6 @@ Wall::Wall( QGraphicsItem *parent, bool antialiasing)
 	editModeChanged(false);
 }
 
-void Wall::paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget)
-{
-	if(antialiasing)
-		p->setRenderHint(QPainter::Antialiasing, true);
-	QGraphicsLineItem::paint(p, style, widget);
-}
-
 void Wall::resize(double resizeFactor)
 {
 	this->resizeFactor = resizeFactor;

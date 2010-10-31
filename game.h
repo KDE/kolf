@@ -471,7 +471,6 @@ public:
 	double dampening;
 
 	void setAlwaysShow(bool yes);
-	void paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget);
 	virtual void setZValue(double newz);
 	void resize(double resizeFactor);
 	void setBasePenWidth(double basePenWidth) { this->basePenWidth=basePenWidth; }

@@ -21,12 +21,13 @@
 
 #include "canvasitem.h"
 #include "vector.h"
+#include "tagaro/spriteobjectitem.h"
 
 class Wall;
 
 enum BallState { Rolling = 0, Stopped, Holed };
 
-class Ball : public QGraphicsEllipseItem, public CanvasItem
+class Ball : public Tagaro::SpriteObjectItem, public CanvasItem
 {
 public:
 	Ball(QGraphicsItem* parent);
@@ -48,7 +49,7 @@ public:
 	 * set the position of the ball to exactly x and y, without taking into account resizing
 	 */
 	void setResizedPos(qreal x, qreal y);
-	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *); 
+
 	virtual void advance(int phase);
 	virtual void doAdvance();
 	/*
@@ -69,7 +70,7 @@ public:
 	void setState(BallState newState);
 
 	QColor color() const { return m_color; }
-	void setColor(QColor color) { m_color = color; setBrush(color); setPen(color); }
+	void setColor(QColor color) { m_color = color; }
 
 	void setMoved(bool yes) { m_moved = yes; }
 	bool moved() const { return m_moved; }
@@ -109,8 +110,8 @@ public:
 	virtual void setName(const QString &);
 	virtual void setVisible(bool yes);
 
-	double width() { return rect().width(); }
-	double height() { return rect().height(); }
+	double width() { return size().width(); }
+	double height() { return size().height(); }
 	double getBaseX() { return baseX; }
 	double getBaseY() { return baseY; }
 
@@ -123,8 +124,7 @@ public slots:
 private:
 	BallState state;
 	QColor m_color;
-	QPixmap pixmap;
-	bool pixmapInitialised;
+
 	long int collisionId;
 	double frictionMultiplier;
 	//base numbers are the size or position when no resizing has taken place (i.e. the defaults)

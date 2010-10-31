@@ -24,16 +24,18 @@
 #include <KGameRenderer>
 
 Ball::Ball(QGraphicsItem* parent)
-	: QGraphicsEllipseItem(parent)
+	: Tagaro::SpriteObjectItem(Kolf::renderer(), QLatin1String("ball"), parent)
 {
 	baseDiameter = 8;
 	resizeFactor = 1;
+	setOffset(-0.5 * baseDiameter, -0.5 * baseDiameter);
+	Tagaro::SpriteObjectItem::setSize(baseDiameter, baseDiameter);
+
 	setData(0, Rtti_Ball);
 	m_doDetect = true;
 	m_collisionLock = false;
 	setBeginningOfHole(false);
 	setBlowUp(false);
-	setPen(QPen(Qt::black));
 	resetSize();
 	collisionId = 0;
 	m_addStroke = false;
@@ -50,7 +52,6 @@ Ball::Ball(QGraphicsItem* parent)
 	label->setBrush(Qt::white);
 	label->setPos(5, 5);
 	label->setVisible(false);
-	pixmapInitialised=false; //it can't be initialised yet because when a ball is first created it has no game (and therefore no renderer to create the pixmap)
 
 	// this sets z
 	setState(Stopped);
@@ -73,7 +74,8 @@ void Ball::setState(BallState newState)
 
 void Ball::resetSize()
 {
-	setRect(baseDiameter*-0.5, baseDiameter*-0.5, baseDiameter, baseDiameter);
+	setOffset(-0.5 * baseDiameter, -0.5 * baseDiameter);
+	Tagaro::SpriteObjectItem::setSize(baseDiameter, baseDiameter);
 }
 
 void Ball::resize(double resizeFactor)
@@ -83,8 +85,7 @@ void Ball::resize(double resizeFactor)
 	font.setPixelSize((int)(baseFontPixelSize*resizeFactor));
 	label->setFont(font);
 	setPos(baseX, baseY); //not multiplied by resizeFactor since setPos takes care of that for the ball
-	setRect(-0.5*baseDiameter*resizeFactor, -0.5*baseDiameter*resizeFactor, baseDiameter*resizeFactor, baseDiameter*resizeFactor);	
-	pixmap=Kolf::renderer()->spritePixmap("ball", rect().size().toSize());
+// 	setRect(-0.5*baseDiameter*resizeFactor, -0.5*baseDiameter*resizeFactor, baseDiameter*resizeFactor, baseDiameter*resizeFactor);	
 }
 
 void Ball::setPos(qreal x, qreal y)
@@ -100,7 +101,7 @@ void Ball::setPos(QPointF pos)
 	//for a procedure that does not automatically take into account resizing use setResizedPos
 	baseX = pos.x();
 	baseY = pos.y();
-	QGraphicsEllipseItem::setPos(pos.x()*resizeFactor, pos.y()*resizeFactor);
+	Tagaro::SpriteObjectItem::setPos(pos.x()*resizeFactor, pos.y()*resizeFactor);
 }
 
 void Ball::setResizedPos(qreal x, qreal y)
@@ -108,21 +109,7 @@ void Ball::setResizedPos(qreal x, qreal y)
 	//unlike Ball::setPos this does not automatically take into account resizing but instead sets the ball's position to exactly that which is inputted in x and y 
 	baseX = x/resizeFactor;
 	baseY = y/resizeFactor;
-	QGraphicsEllipseItem::setPos(x, y);
-}
-
-
-void Ball::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*option*/, QWidget * /*widget*/ ) 
-{
-	if(pixmapInitialised == 0) {
-		if(game == 0)
-			return;
-		else {
-			pixmap=Kolf::renderer()->spritePixmap("ball", rect().size().toSize());
-			pixmapInitialised=true;
-		}
-	}
-	painter->drawPixmap((int)rect().x(), (int)rect().y(), pixmap);  
+	Tagaro::SpriteObjectItem::setPos(x, y);
 }
 
 void Ball::advance(int /*phase*/)
@@ -198,7 +185,7 @@ void Ball::moveBy(double baseDx, double baseDy)
 	double oldy;
 	oldx = x();
 	oldy = y();
-	QGraphicsEllipseItem::moveBy(dx, dy);
+	Tagaro::SpriteObjectItem::moveBy(dx, dy);
 	baseX += baseDx;
 	baseY += baseDy;
 
@@ -332,7 +319,7 @@ void Ball::collisionDetect(double oldx, double oldy)
 			//Create the halo. This is an ellipse centered around the ball, and bigger than it. This allows us to detect walls which we could be about to collide into, and react intelligently to them, even though we are not colliding with them quite yet
 			const double haloSizeFactor = 2;
 
-			halo = new QGraphicsEllipseItem( rect().x() * haloSizeFactor, rect().y() * haloSizeFactor, rect().width() * haloSizeFactor, rect().height() * haloSizeFactor, this );
+			halo = new QGraphicsEllipseItem( QRectF(pos() * haloSizeFactor, size() * haloSizeFactor), this );
 			halo->hide();
 
 			QList<QGraphicsItem *> haloCollisions = halo->collidingItems();
@@ -622,7 +609,7 @@ void Ball::setName(const QString &name)
 
 void Ball::setVisible(bool yes)
 {
-	QGraphicsEllipseItem::setVisible(yes);
+	Tagaro::SpriteObjectItem::setVisible(yes);
 
 	label->setVisible(yes && game && game->isInfoShowing());
 }
