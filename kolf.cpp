@@ -17,46 +17,32 @@
 */
 
 #include "kolf.h"
-
-#include <kaction.h>
-#include <kactioncollection.h>
-#include <ktoggleaction.h>
-#include <kconfig.h>
-#include <kdebug.h>
-#include <kdeversion.h>
-#include <kfiledialog.h>
-#include <kglobal.h>
-#include <kio/netaccess.h>
-#include <klocale.h>
-#include <kxmlguiwindow.h>
-#include <kmimetype.h>
-#include <kmessagebox.h>
-#include <kscoredialog.h>
-#include <kstandarddirs.h>
-#include <kstatusbar.h>
-#include <kstandardshortcut.h>
-#include <kstandardaction.h>
-#include <kstandardgameaction.h>
-#include <KStandardGuiItem>
-#include <kicon.h>
-#include <kselectaction.h>
-#include <kdeprintdialog.h>
-
-#include <QTimer>
-#include <QGridLayout>
-#include <QtGui/QPrinter>
-#include <QtGui/QPrintDialog>
-
-#include <stdlib.h>
-
-#include "game.h"
-#include "floater.h"
-#include "slope.h"
-#include "newgame.h"
-#include "scoreboard.h"
 #include "editor.h"
+#include "floater.h"
+#include "newgame.h"
 #include "pluginloader.h"
 #include "printdialogpage.h"
+#include "scoreboard.h"
+#include "slope.h"
+
+#include <KActionCollection>
+#include <KFileDialog>
+#include <KIO/NetAccess>
+#include <KMessageBox>
+#include <KScoreDialog>
+#include <KSelectAction>
+#include <KStandardDirs>
+#include <KStatusBar>
+#include <KStandardAction>
+#include <KStandardGameAction>
+#include <KStandardGuiItem>
+#include <KToggleAction>
+#include <kdeprintdialog.h>
+
+#include <QGridLayout>
+#include <QPrintDialog>
+#include <QPrinter>
+#include <QTimer>
 
 Kolf::Kolf()
     : KXmlGuiWindow(0)

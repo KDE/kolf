@@ -17,23 +17,11 @@
 */
 
 #include "ball.h"
-
-#include <QGraphicsView>
-#include <QPen>
-#include <QApplication>
-
-#include <kdebug.h>
 #include "game.h"
-
-#include <math.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <limits.h>
-#include <krandom.h>
-
+#include "kolfsvgrenderer.h"
 #include "rtti.h"
-#include "vector.h"
-#include "canvasitem.h"
+
+#include <QApplication>
 
 Ball::Ball(QGraphicsScene * scene)
 	: QGraphicsEllipseItem(0, scene)

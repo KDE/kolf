@@ -17,12 +17,11 @@
 */
 
 #include "floater.h"
+#include "rtti.h"
 
-#include <QLabel>
-#include <qslider.h>
 #include <QHBoxLayout>
-
-#include <kconfig.h>
+#include <QLabel>
+#include <QSlider>
 
 void FloaterGuide::aboutToDelete()
 {

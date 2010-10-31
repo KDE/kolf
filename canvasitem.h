@@ -19,12 +19,11 @@
 #ifndef KOLF_CANVASITEM_H
 #define KOLF_CANVASITEM_H
 
-#include <kdebug.h>
-
-#include <QGraphicsView>
-#include <QGraphicsRectItem>
-
 #include "config.h"
+
+#include <QGraphicsRectItem>
+#include <QGraphicsView>
+#include <KDebug>
 
 class Ball;
 class KConfigGroup;

@@ -18,12 +18,12 @@
 
 #include "pluginloader.h"
 
-#include <kdebug.h>
-#include <kglobal.h>
-#include <kstandarddirs.h>
-#include <kconfig.h>
-#include <kconfiggroup.h>
-#include <klibloader.h>
+#include <KConfig>
+#include <KConfigGroup>
+#include <KDebug>
+#include <KGlobal>
+#include <KLibLoader>
+#include <KStandardDirs>
 
 ObjectList *PluginLoader::loadAll()
 {

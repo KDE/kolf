@@ -16,15 +16,11 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-// it seems that OBJECT_H is used by something else
-
 #ifndef KOLF_OBJECT_H
 #define KOLF_OBJECT_H
 
 #include <QGraphicsView>
-
 #include <QObject>
-
 
 class Object : public QObject
 {

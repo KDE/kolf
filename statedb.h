@@ -20,7 +20,6 @@
 #define KOLF_STATEDB_H
 
 #include <QMap>
-
 #include <QPoint>
 
 // items can save their per-game states here

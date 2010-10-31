@@ -20,22 +20,17 @@
 #define KOLF_H
 
 #include <kolflib_export.h>
-#include <kxmlguiwindow.h>
-#include <kurl.h>
+#include <KXmlGuiWindow>
 
-#include <kdemacros.h>
 #include "game.h"
 
-class KolfGame;
-class KToggleAction;
-class KSelectAction;
-class QAction;
 class QGridLayout;
-class ScoreBoard;
-class Player;
-class QWidget;
-class Editor;
 class KAction;
+class KSelectAction;
+class KToggleAction;
+
+class Editor;
+class ScoreBoard;
 
 class KOLFLIB_EXPORT Kolf : public KXmlGuiWindow
 {

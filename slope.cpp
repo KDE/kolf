@@ -17,22 +17,14 @@
 */
 
 #include "slope.h"
+#include "kolfsvgrenderer.h"
 
-#include <qbitmap.h>
+#include <QApplication>
 #include <QCheckBox>
 #include <QLabel>
-#include <qimage.h>
-#include <qpixmapcache.h>
-
-#include <QHBoxLayout>
 #include <QVBoxLayout>
-#include <QPainter>
-#include <QApplication>
-
-#include <kcombobox.h>
-#include <kconfig.h>
-#include <knuminput.h>
-#include <kstandarddirs.h>
+#include <KComboBox>
+#include <KNumInput>
 
 Slope::Slope(const QRect &rect, QGraphicsItem * parent, QGraphicsScene *scene)
 	: QGraphicsRectItem(rect, parent, scene), type(Vertical), grade(4), reversed(false), color(QColor("#327501")) 

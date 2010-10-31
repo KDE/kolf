@@ -19,11 +19,9 @@
 #include "config.h"
 
 #include <QLabel>
-//Added by qt3to4:
 #include <QVBoxLayout>
-
-#include <kdialog.h>
-#include <klocale.h>
+#include <KDialog>
+#include <KLocale>
 
 Config::Config(QWidget *parent)
 	: QFrame(parent)

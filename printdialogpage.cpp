@@ -20,10 +20,8 @@
 
 #include <QCheckBox>
 #include <QVBoxLayout>
-
-#include <klocale.h>
-#include <kdialog.h>
-#include <kdebug.h>
+#include <KDialog>
+#include <KLocale>
 
 PrintDialogPage::PrintDialogPage(QWidget *parent)
 	: QWidget( parent )

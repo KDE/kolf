@@ -17,46 +17,27 @@
 */
 
 #include "game.h"
-
-#include <kconfig.h>
-#include <kdebug.h>
-#include <knuminput.h>
-#include <kfiledialog.h>
-#include <kglobal.h>
-#include <klineedit.h>
-#include <kmessagebox.h>
-#include <kstandarddirs.h>
-#include <Phonon/MediaObject>
-
-#include <QGraphicsView>
-#include <QResizeEvent>
-#include <QCheckBox>
-#include <QPixmapCache>
-#include <QPixmap>
-#include <QCursor>
-#include <qimage.h>
-#include <QLabel>
-#include <QPainter>
-#include <QPen>
-#include <QSlider>
-#include <QTimer>
-#include <QStyleOptionGraphicsItem>
-#include <QApplication>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QtGui/QPrinter>
-
-#include <QMouseEvent>
-#include <QKeyEvent>
-
-#include <math.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <krandom.h>
-
 #include "kcomboboxdialog.h"
-#include "vector.h"
+#include "kolfsvgrenderer.h"
+#include "rtti.h"
 
+#include <QApplication>
+#include <QGridLayout>
+#include <QCheckBox>
+#include <QLabel>
+#include <QMouseEvent>
+#include <QPixmapCache>
+#include <QPrinter>
+#include <QSlider>
+#include <QStyleOptionGraphicsItem>
+#include <QTimer>
+#include <QVBoxLayout>
+#include <KFileDialog>
+#include <KLineEdit>
+#include <KMessageBox>
+#include <KNumInput>
+#include <KRandom>
+#include <KStandardDirs>
 
 inline QString makeGroup(int id, int hole, const QString &name, int x, int y)
 {

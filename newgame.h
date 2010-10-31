@@ -19,22 +19,17 @@
 #ifndef NEWGAME_H
 #define NEWGAME_H
 
-#include <kpagedialog.h>
-#include <klineedit.h>
-#include <kcolorbutton.h>
-#include <kpushbutton.h>
-
-#include <QColor>
-
-#include <QPixmap>
-#include <QWidget>
 #include <QCheckBox>
+#include <QWidget>
+#include <KColorButton>
+#include <KLineEdit>
+#include <KPageDialog>
 
-#include "game.h"
-
-class KLineEdit;
-class K3ListBox;
+class QLabel;
 class QScrollArea;
+class K3ListBox;
+class KPushButton;
+class CourseInfo;
 
 class PlayerEditor : public QWidget
 {

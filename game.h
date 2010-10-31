@@ -3,41 +3,20 @@
 
 //#define SOUND
 
-#include <kdebug.h>
-#include <klocale.h>
-#include <KConfigGroup>
-
-#include <math.h>
-
-#include <QMap>
-#include <QPoint>
-#include <QRect>
-#include <QPixmap>
-#include <QKeyEvent>
-#include <QGraphicsScene>
-
-#include "object.h"
-#include "config.h"
-#include "kconfiggroup.h"
-#include "canvasitem.h"
-#include "ball.h"
-#include "statedb.h"
-#include "rtti.h"
 #include <kolflib_export.h>
-#include "kolfsvgrenderer.h" 
+#include "ball.h"
+#include "object.h"
+#include "statedb.h"
+
+#include <KLocale>
+#include <KConfigGroup>
 
 class QLabel;
 class QSlider;
 class QCheckBox;
-class QTimer;
-class QKeyEvent;
-class QMouseEvent;
-class QResizeEvent;
 class QVBoxLayout;
-class QPainter;
-class QPrinter;
-class KConfig;
 class KolfGame;
+class KolfSvgRenderer;
 
 namespace Phonon
 {

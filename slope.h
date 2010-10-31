@@ -20,7 +20,6 @@
 #define SLOPE_H
 
 #include "game.h"
-#include <QPixmap>
 
 enum GradientType{ Vertical, Horizontal, Diagonal, CrossDiagonal, Elliptic };
 

@@ -17,16 +17,12 @@
 */
 
 #include "editor.h"
-
-#include <kdialog.h>
-#include <k3listbox.h>
-
-#include <QLabel>
-#include <QFrame>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-
 #include "game.h"
+
+#include <QBoxLayout>
+#include <QLabel>
+#include <KDialog>
+#include <K3ListBox>
 
 Editor::Editor(ObjectList *list, QWidget *parent)
 	: QWidget(parent)

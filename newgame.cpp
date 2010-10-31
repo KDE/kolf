@@ -17,29 +17,17 @@
 */
 
 #include "newgame.h"
-
-#include <kconfig.h>
-#include <kdebug.h>
-#include <kdialog.h>
-#include <kmessagebox.h>
-#include <kglobal.h>
-#include <kscoredialog.h>
-#include <kstandarddirs.h>
-#include <kseparator.h>
-#include <klineedit.h>
-#include <klocale.h>
-#include <kfiledialog.h>
-#include <kurllabel.h>
-#include <ktoolinvocation.h>
-
-#include <QCheckBox>
-#include <QLabel>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <k3listbox.h>
-#include <QScrollArea>
-
 #include "game.h"
+
+#include <QBoxLayout>
+#include <QLabel>
+#include <KFileDialog>
+#include <KMessageBox>
+#include <KPushButton>
+#include <KScoreDialog>
+#include <KSeparator>
+#include <KStandardDirs>
+#include <K3ListBox>
 
 NewGameDialog::NewGameDialog(bool enableCourses)
 	: KPageDialog()

@@ -27,12 +27,8 @@
 #include <QCheckBox>
 #include <QLabel>
 #include <QVBoxLayout>
-
-#include <klocale.h>
-#include <khistorycombobox.h>
-#include <kconfig.h>
-#include <kdebug.h>
-#include <kglobal.h>
+#include <KHistoryComboBox>
+#include <KLocale>
 
 KComboBoxDialog::KComboBoxDialog( const QString &_text, const QStringList &_items, const QString& _value, bool showDontAskAgain, QWidget *parent )
 	: KDialog( parent)

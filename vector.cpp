@@ -18,8 +18,7 @@
 
 #include "vector.h"
 
-#include <kdebug.h>
-#include <QPointF>
+#include <KDebug>
 
 // this and vector.h by Ryan Cummings
 

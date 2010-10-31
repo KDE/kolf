@@ -18,10 +18,8 @@
 
 #include "scoreboard.h"
 
-#include <kdebug.h>
-#include <klocale.h>
-
 #include <QHeaderView>
+#include <KLocale>
 
 ScoreBoard::ScoreBoard(QWidget *parent)
 	: QTableWidget(1, 1, parent) 

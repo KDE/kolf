@@ -1,18 +1,8 @@
 #ifndef KOLF_BALL_H
 #define KOLF_BALL_H
 
-#include <QColor>
-#include <QPoint>
-#include <QPointF>
-#include <QPixmap>
-#include <QGraphicsScene>
-
-#include <math.h>
-
 #include "canvasitem.h"
-
 #include "vector.h"
-#include "rtti.h"
 
 class Wall;
 

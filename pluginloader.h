@@ -19,7 +19,7 @@
 #ifndef PLUGINLOADER_H
 #define PLUGINLOADER_H
 
-#include <object.h>
+#include "object.h"
 
 namespace PluginLoader
 {

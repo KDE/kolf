@@ -21,8 +21,6 @@
 
 #include <QTableWidget>
 
-class QWidget;
-
 class ScoreBoard : public QTableWidget
 {
 	Q_OBJECT

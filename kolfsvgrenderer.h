@@ -19,7 +19,6 @@
 #ifndef KOLF_SVG_RENDERER_H
 #define KOLF_SVG_RENDERER_H
 
-#include <qsvgrenderer.h>
 #include <QPixmap>
 
 class QSvgRenderer;
