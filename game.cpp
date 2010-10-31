@@ -754,7 +754,7 @@ void EllipseConfig::check2Changed(bool on)
 /////////////////////////
 
 KolfEllipse::KolfEllipse(QGraphicsItem *parent, const QString &type)
-	: Tagaro::SpriteObjectItem(Kolf::renderer(), type, parent)
+	: EllipticalCanvasItem(false, type, parent)
 {
 	savingDone();
 	setChangeEnabled(false);
@@ -787,15 +787,9 @@ QList<QGraphicsItem *> KolfEllipse::moveableItems() const
 	return ret;
 }
 
-void KolfEllipse::setSize(const QSizeF& size)
-{
-	setOffset(-0.5 * size.width(), -0.5 * size.height());
-	Tagaro::SpriteObjectItem::setSize(size);
-}
-
 void KolfEllipse::moveBy(double dx, double dy)
 {
-	QGraphicsItem::moveBy(dx, dy);
+	EllipticalCanvasItem::moveBy(dx, dy);
 
 	point->dontMove();
 	point->setPos(x() + width()/2, y() + height()/2);
@@ -826,19 +820,15 @@ void KolfEllipse::load(KConfigGroup *cfgGroup)
 {
 	setChangeEnabled(cfgGroup->readEntry("changeEnabled", changeEnabled()));
 	setChangeEvery(cfgGroup->readEntry("changeEvery", changeEvery()));
-	double newWidth = width(), newHeight = height();
-	newWidth = cfgGroup->readEntry("width", newWidth);
-	newHeight = cfgGroup->readEntry("height", newHeight);
-	setSize(QSizeF(newWidth, newHeight));
-	moveBy(0, 0); 
+	EllipticalCanvasItem::loadSize(cfgGroup);
+	moveBy(0, 0); //adjust point
 } 
 
 void KolfEllipse::save(KConfigGroup *cfgGroup)
 {
 	cfgGroup->writeEntry("changeEvery", changeEvery());
 	cfgGroup->writeEntry("changeEnabled", changeEnabled());
-	cfgGroup->writeEntry("width", width());
-	cfgGroup->writeEntry("height", height());
+	EllipticalCanvasItem::saveSize(cfgGroup);
 }
 
 Config *KolfEllipse::config(QWidget *parent)
@@ -871,12 +861,8 @@ bool Puddle::collision(Ball *ball, long int /*id*/)
 {
 	if (ball->isVisible())
 	{
-		// is center of ball in? (calculation based on assumption of precise ellipse shape)
-		const QPointF posDiff = ball->pos() - pos();
-		const QSizeF halfSize = boundingRect().size() / 2;
-		const qreal dxScaled = posDiff.x() / halfSize.width();
-		const qreal dyScaled = posDiff.y() / halfSize.height();
-		if (dxScaled * dxScaled + dxScaled * dyScaled < 1/* && ball->curVector().magnitude() < 4*/)
+		// is center of ball in?
+		if (contains(ball->pos() - pos()) /* && ball->curVector().magnitude() < 4*/)
 		{
 			playSound("puddle");
 			ball->setAddStroke(ball->addStroke() + 1);
@@ -1047,20 +1033,14 @@ void Putter::finishMe()
 /////////////////////////
 
 Bumper::Bumper(QGraphicsItem * parent)
-: Tagaro::SpriteObjectItem(Kolf::renderer(), QLatin1String("bumper_off"), parent)
+: EllipticalCanvasItem(false, QLatin1String("bumper_off"), parent)
 {
 	const int diameter = 20;
-	setOffset(-0.5 * diameter, -0.5 * diameter);
-	Tagaro::SpriteObjectItem::setSize(QSizeF(diameter, diameter));
+	setSize(QSizeF(diameter, diameter));
 	setZValue(-25);
 
 	count = 0;
 	setAnimated(false);
-}
-
-void Bumper::moveBy(double x, double y)
-{
-	QGraphicsItem::moveBy(x, y);
 }
 
 void Bumper::advance(int phase)
@@ -1107,11 +1087,10 @@ bool Bumper::collision(Ball *ball, long int /*id*/)
 /////////////////////////
 
 Cup::Cup(QGraphicsItem * parent)
-	: Tagaro::SpriteObjectItem(Kolf::renderer(), "cup", parent)
+	: EllipticalCanvasItem(false, QLatin1String("cup"), parent)
 {
 	const int diameter = 16;
-	setOffset(-0.5 * diameter, -0.5 * diameter);
-	Tagaro::SpriteObjectItem::setSize(QSizeF(diameter, diameter));
+	setSize(QSizeF(diameter, diameter));
 
 	setZValue(998.1);
 }
@@ -1124,16 +1103,6 @@ bool Cup::place(Ball *ball, bool /*wasCenter*/)
 	ball->setPos(pos());
 	ball->setVelocity(Vector());
 	return true;
-}
-
-void Cup::moveBy(double x, double y)
-{
-	QGraphicsItem::moveBy(x, y);
-}
-
-void Cup::save(KConfigGroup *cfgGroup)
-{
-	cfgGroup->writeEntry("dummykey", true);
 }
 
 void Cup::saveState(StateDB *db)
@@ -2191,6 +2160,7 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 : QGraphicsView(parent)
 , m_factory(factory)
 {
+	setRenderHint(QPainter::Antialiasing);
 	// for mouse control
 	setMouseTracking(true);
 	viewport()->setMouseTracking(true);

@@ -21,14 +21,12 @@
 #define KOLF_BALL_H
 
 #include "canvasitem.h"
-#include "vector.h"
-#include "tagaro/spriteobjectitem.h"
 
 class Wall;
 
 enum BallState { Rolling = 0, Stopped, Holed };
 
-class Ball : public Tagaro::SpriteObjectItem, public CanvasItem
+class Ball : public EllipticalCanvasItem
 {
 public:
 	Ball(QGraphicsItem* parent);
@@ -47,8 +45,8 @@ public:
 	BallState curState() const { return state; }
 	void setState(BallState newState);
 
-	QColor color() const { return m_color; }
-	void setColor(QColor color) { m_color = color; }
+	QColor color() const { return ellipseItem()->brush().color(); }
+	void setColor(const QColor& color) { ellipseItem()->setBrush(color); }
 
 	void setMoved(bool yes) { m_moved = yes; }
 	bool moved() const { return m_moved; }
@@ -85,9 +83,6 @@ public:
 	virtual void hideInfo();
 	virtual void setName(const QString &);
 	virtual void setVisible(bool yes);
-
-	double width() { return size().width(); }
-	double height() { return size().height(); }
 
 	double getMaxBumperBounceSpeed() { return maxBumperBounceSpeed; }
 	void reduceMaxBumperBounceSpeed() { if(maxBumperBounceSpeed > 0.4) maxBumperBounceSpeed -= 0.35; }

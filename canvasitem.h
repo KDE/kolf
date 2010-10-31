@@ -22,6 +22,7 @@
 
 #include "config.h"
 #include "vector.h"
+#include "tagaro/spriteobjectitem.h"
 
 #include <QGraphicsRectItem>
 #include <QGraphicsView>
@@ -129,6 +130,30 @@ private:
 	///custom animation code
 	bool m_animated;
 	Vector m_velocity;
+};
+
+//WARNING: pos() is at center (not at top-left edge of bounding rect!)
+class EllipticalCanvasItem : public Tagaro::SpriteObjectItem, public CanvasItem
+{
+	public:
+		EllipticalCanvasItem(bool withEllipse, const QString& spriteKey, QGraphicsItem* parent = 0);
+		QGraphicsEllipseItem* ellipseItem() const { return m_ellipseItem; }
+
+		virtual bool contains(const QPointF& point) const;
+		virtual QPainterPath shape() const;
+
+		QRectF rect() const;
+		double width() const { return Tagaro::SpriteObjectItem::size().width(); }
+		double height() const { return Tagaro::SpriteObjectItem::size().height(); }
+
+		virtual void setSize(const QSizeF& size);
+		void setSize(qreal width, qreal height) { setSize(QSizeF(width, height)); }
+		virtual void moveBy(double x, double y);
+
+		void saveSize(KConfigGroup* group);
+		void loadSize(KConfigGroup* group);
+	private:
+		QGraphicsEllipseItem* m_ellipseItem;
 };
 
 #endif

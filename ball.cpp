@@ -22,14 +22,12 @@
 #include "rtti.h"
 
 #include <QApplication>
-#include <KGameRenderer>
 
 Ball::Ball(QGraphicsItem* parent)
-	: Tagaro::SpriteObjectItem(Kolf::renderer(), QLatin1String("ball"), parent)
+	: EllipticalCanvasItem(true, QLatin1String("ball"), parent)
 {
 	const int diameter = 8;
-	setOffset(-0.5 * diameter, -0.5 * diameter);
-	Tagaro::SpriteObjectItem::setSize(diameter, diameter);
+	setSize(QSizeF(diameter, diameter));
 
 	setData(0, Rtti_Ball);
 	m_doDetect = true;
@@ -104,14 +102,11 @@ void Ball::setVector(const Vector& newVector)
 
 void Ball::moveBy(double dx, double dy)
 {
-	double oldx;
-	double oldy;
-	oldx = x();
-	oldy = y();
-	Tagaro::SpriteObjectItem::moveBy(dx, dy);
+	const QPointF oldPos = pos();
+	EllipticalCanvasItem::moveBy(dx, dy);
 
 	if (game && !game->isPaused())
-		collisionDetect(oldx, oldy);
+		collisionDetect(oldPos.x(), oldPos.y());
 		
 	if ((dx || dy) && game && game->curBall() == this)
 		game->ballMoved();
@@ -530,7 +525,7 @@ void Ball::setName(const QString &name)
 
 void Ball::setVisible(bool yes)
 {
-	Tagaro::SpriteObjectItem::setVisible(yes);
+	EllipticalCanvasItem::setVisible(yes);
 
 	label->setVisible(yes && game && game->isInfoShowing());
 }

@@ -60,3 +60,68 @@ void CanvasItem::playSound(const QString &file, double vol)
 		game->playSound(file, vol);
 }
 
+//BEGIN EllipticalCanvasItem
+
+EllipticalCanvasItem::EllipticalCanvasItem(bool withEllipse, const QString& spriteKey, QGraphicsItem* parent)
+	: Tagaro::SpriteObjectItem(Kolf::renderer(), spriteKey, parent)
+	, m_ellipseItem(0)
+{
+	if (withEllipse)
+	{
+		m_ellipseItem = new QGraphicsEllipseItem(this);
+		m_ellipseItem->setFlag(QGraphicsItem::ItemStacksBehindParent);
+		//won't appear unless pen/brush is configured
+		m_ellipseItem->setPen(Qt::NoPen);
+		m_ellipseItem->setBrush(Qt::NoBrush);
+	}
+}
+
+bool EllipticalCanvasItem::contains(const QPointF& point) const
+{
+	const QSizeF halfSize = size() / 2;
+	const qreal xScaled = point.x() / halfSize.width();
+	const qreal yScaled = point.y() / halfSize.height();
+	return xScaled * xScaled + yScaled * yScaled < 1;
+}
+
+QPainterPath EllipticalCanvasItem::shape() const
+{
+	QPainterPath path;
+	path.addEllipse(rect());
+	return path;
+}
+
+QRectF EllipticalCanvasItem::rect() const
+{
+	return Tagaro::SpriteObjectItem::boundingRect();
+}
+
+void EllipticalCanvasItem::setSize(const QSizeF& size)
+{
+	setOffset(QPointF(-0.5 * size.width(), -0.5 * size.height()));
+	Tagaro::SpriteObjectItem::setSize(size);
+	if (m_ellipseItem)
+		m_ellipseItem->setRect(this->rect());
+}
+
+void EllipticalCanvasItem::moveBy(double dx, double dy)
+{
+	Tagaro::SpriteObjectItem::moveBy(dx, dy);
+}
+
+void EllipticalCanvasItem::saveSize(KConfigGroup* group)
+{
+	const QSizeF size = this->size();
+	group->writeEntry("width", size.width());
+	group->writeEntry("height", size.height());
+}
+
+void EllipticalCanvasItem::loadSize(KConfigGroup* group)
+{
+	QSizeF size = this->size();
+	size.rwidth() = group->readEntry("width", size.width());
+	size.rheight() = group->readEntry("height", size.height());
+	setSize(size);
+}
+
+//END EllipticalCanvasItem

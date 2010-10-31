@@ -27,7 +27,6 @@
 #include "statedb.h"
 
 #include "tagaro/scene.h"
-#include "tagaro/spriteobjectitem.h"
 
 #include <KLocale>
 #include <KConfigGroup>
@@ -175,7 +174,7 @@ private:
 	bool dontmove;
 };
 
-class KolfEllipse : public Tagaro::SpriteObjectItem, public CanvasItem
+class KolfEllipse : public EllipticalCanvasItem
 {
 public:
 	KolfEllipse(QGraphicsItem *parent, const QString &type);
@@ -192,8 +191,6 @@ public:
 
 	virtual QList<QGraphicsItem *> moveableItems() const;
 
-	virtual void setSize(const QSizeF& size);
-
 	virtual void moveBy(double dx, double dy);
 
 	virtual void editModeChanged(bool changed);
@@ -202,9 +199,6 @@ public:
 	virtual void load(KConfigGroup *cfgGroup);
 
 	virtual Config *config(QWidget *parent);
-
-	double width() { return boundingRect().width(); }
-	double height() { return boundingRect().height(); }
 
 protected:
 	RectPoint *point;
@@ -255,50 +249,30 @@ public:
 	virtual bool collision(Ball *ball, long int id);
 };
 
-class Inside : public QGraphicsEllipseItem, public CanvasItem
-{
-public:
-	Inside(CanvasItem *item, QGraphicsItem *parent) : QGraphicsEllipseItem(parent) { this->item = item; }
-	virtual bool collision(Ball *ball, long int id) { return item->collision(ball, id); }
-	virtual void setSize(const QSizeF& size) { setRect(QRectF(rect().topLeft(), size)); }
-
-protected:
-	CanvasItem *item;
-};
-
-class Bumper : public Tagaro::SpriteObjectItem, public CanvasItem
+class Bumper : public EllipticalCanvasItem
 {
 public:
 	Bumper(QGraphicsItem *parent);
 
 	virtual void advance(int phase);
-	void moveBy(double x, double y);
 	virtual bool collision(Ball *ball, long int id);
-
-protected:
-	Inside *inside;
-
 private:
 	int count;
 };
 
- class Cup :  public Tagaro::SpriteObjectItem, public CanvasItem
+ class Cup : public EllipticalCanvasItem
 {
 public:
 	Cup(QGraphicsItem *parent);
 
 	virtual bool place(Ball *ball, bool wasCenter);
-	void moveBy(double x, double y);
 
-	virtual void save(KConfigGroup *cfgGroup);
-	void saveState(StateDB *db);
-	void loadState(StateDB *db);
+	virtual void saveState(StateDB *db);
+	virtual void loadState(StateDB *db);
 	virtual bool canBeMovedByOthers() const { return true; }
 	virtual bool collision(Ball *ball, long int id);
 
 protected:
-	QPixmap pixmap;
-	bool pixmapInitialised;
 	virtual HoleResult result(const QPointF, double, bool *wasCenter);
 };
 
