@@ -1083,7 +1083,7 @@ Cup::Cup(QGraphicsItem * parent, b2World* world)
 	const int diameter = 16;
 	setSize(QSizeF(diameter, diameter));
 	addShape(new Kolf::EllipseShape(QRectF(-diameter / 2, -diameter / 2, diameter, diameter)));
-	setSimulationType(CanvasItem::CollisionSimulation);
+	setSimulationType(CanvasItem::NoSimulation);
 
 	setZValue(998.1);
 }
@@ -2157,6 +2157,29 @@ void KolfGame::setFilename(const QString &filename)
 
 KolfGame::~KolfGame()
 {
+	//HACK: destroy everything which has a shape, except for balls
+	bool destroyedSomething = true;
+	while (destroyedSomething)
+	{
+		destroyedSomething = false;
+		//find first item which is not a ball, and delete that
+		for (b2Body* body = g_world->GetBodyList(); body; body = body->GetNext())
+		{
+			CanvasItem* citem = static_cast<CanvasItem*>(body->GetUserData());
+			if (citem && !citem->m_shapes.isEmpty() && !dynamic_cast<Ball*>(citem))
+			{
+				citem->aboutToDelete();
+				citem->aboutToDie();
+				delete citem;
+				//because this has invalidated the b2Body* iterator and possibly
+				//destroyed more bodies, we start over with the iteration
+				destroyedSomething = true;
+				break;
+			}
+		}
+	}
+	//NOTE: Before I introduced this code, the items were actually not deleted at
+
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 		(*it).ball()->setGame(0);
 	delete cfg;
