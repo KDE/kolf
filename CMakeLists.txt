@@ -10,9 +10,54 @@ include_directories( ${CMAKE_SOURCE_DIR}/libkdegames/highscore  )
 
 # we have a static copy of Box2D in our source tree
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external)
-add_subdirectory(external)
 
 ########### next target ###############
+
+set(box2d_SRCS
+        external/Box2D/Common/b2StackAllocator.cpp
+        external/Box2D/Common/b2Settings.cpp
+        external/Box2D/Common/b2Math.cpp
+        external/Box2D/Common/b2BlockAllocator.cpp
+        external/Box2D/Dynamics/b2Island.cpp
+        external/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp
+        external/Box2D/Dynamics/Contacts/b2LoopAndCircleContact.cpp
+        external/Box2D/Dynamics/Contacts/b2CircleContact.cpp
+        external/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp
+        external/Box2D/Dynamics/Contacts/b2Contact.cpp
+        external/Box2D/Dynamics/Contacts/b2LoopAndPolygonContact.cpp
+        external/Box2D/Dynamics/Contacts/b2PolygonContact.cpp
+        external/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp
+        external/Box2D/Dynamics/Contacts/b2ContactSolver.cpp
+        external/Box2D/Dynamics/b2WorldCallbacks.cpp
+        external/Box2D/Dynamics/b2Body.cpp
+        external/Box2D/Dynamics/b2ContactManager.cpp
+        external/Box2D/Dynamics/Joints/b2MouseJoint.cpp
+        external/Box2D/Dynamics/Joints/b2PulleyJoint.cpp
+        external/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp
+        external/Box2D/Dynamics/Joints/b2WeldJoint.cpp
+        external/Box2D/Dynamics/Joints/b2Joint.cpp
+        external/Box2D/Dynamics/Joints/b2FrictionJoint.cpp
+        external/Box2D/Dynamics/Joints/b2LineJoint.cpp
+        external/Box2D/Dynamics/Joints/b2RopeJoint.cpp
+        external/Box2D/Dynamics/Joints/b2GearJoint.cpp
+        external/Box2D/Dynamics/Joints/b2DistanceJoint.cpp
+        external/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp
+        external/Box2D/Dynamics/b2World.cpp
+        external/Box2D/Dynamics/b2Fixture.cpp
+        external/Box2D/Collision/b2DynamicTree.cpp
+        external/Box2D/Collision/b2Distance.cpp
+        external/Box2D/Collision/b2CollideCircle.cpp
+        external/Box2D/Collision/Shapes/b2CircleShape.cpp
+        external/Box2D/Collision/Shapes/b2EdgeShape.cpp
+        external/Box2D/Collision/Shapes/b2PolygonShape.cpp
+        external/Box2D/Collision/Shapes/b2LoopShape.cpp
+        external/Box2D/Collision/b2BroadPhase.cpp
+        external/Box2D/Collision/b2Collision.cpp
+        external/Box2D/Collision/b2TimeOfImpact.cpp
+        external/Box2D/Collision/b2CollidePolygon.cpp
+        external/Box2D/Collision/b2CollideEdge.cpp
+)
+
 
 set(kolf_LIB_SRCS
    game.cpp
@@ -33,11 +78,12 @@ set(kolf_LIB_SRCS
    tagaro/board.cpp
    tagaro/scene.cpp
    tagaro/spriteobjectitem.cpp
+   ${box2d_SRCS}
 )
 
 kde4_add_library(kolfprivate SHARED ${kolf_LIB_SRCS})
 
-target_link_libraries(kolfprivate  ${KDE4_KIO_LIBS} ${KDE4_KDE3SUPPORT_LIBS} ${KDE4_PHONON_LIBS} kdegames box2d)
+target_link_libraries(kolfprivate  ${KDE4_KIO_LIBS} ${KDE4_KDE3SUPPORT_LIBS} ${KDE4_PHONON_LIBS} kdegames )
 
 set_target_properties(kolfprivate PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 install(TARGETS kolfprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
