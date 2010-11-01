@@ -29,7 +29,6 @@ class b2Contact;
 class b2Fixture;
 class b2World;
 class b2BlockAllocator;
-class b2StackAllocator;
 class b2ContactListener;
 
 typedef b2Contact* b2ContactCreateFcn(	b2Fixture* fixtureA, int32 indexA,

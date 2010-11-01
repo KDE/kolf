@@ -24,7 +24,6 @@
 struct b2Vec2;
 struct b2Transform;
 class b2Fixture;
-class b2Body;
 class b2Joint;
 class b2Contact;
 struct b2ContactResult;

@@ -22,7 +22,6 @@
 
 #include "canvasitem.h"
 
-class Wall;
 
 enum BallState { Rolling = 0, Stopped, Holed };
 

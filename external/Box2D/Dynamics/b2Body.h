@@ -26,7 +26,6 @@
 class b2Fixture;
 class b2Joint;
 class b2Contact;
-class b2Controller;
 class b2World;
 struct b2FixtureDef;
 struct b2JointEdge;
