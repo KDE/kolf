@@ -762,7 +762,7 @@ public:
 	QString curFilename() const { return filename; }
 	void emitLargestHole() { emit largestHole(highestHole); }
 	QGraphicsScene *scene() const { return course; }
-	void removeItem(QGraphicsItem *item) { items.removeAll(item); }
+	void removeItem(QGraphicsItem *item) { m_topLevelQItems.removeAll(item); }
 	bool askSave(bool);
 	bool isEditing() const { return editing; }
 	int currentHole() { return curHole; }
@@ -881,8 +881,9 @@ private:
 	bool regAdv;
 
 	const Kolf::ItemFactory& m_factory;
-	QList<QGraphicsItem *> items;
-	QList<QGraphicsItem *> extraMoveable;
+	QList<QGraphicsItem*> m_topLevelQItems; //includes balls, but not putter and highlighter
+	QList<QGraphicsItem*> m_moveableQItems;
+
 	QList<Wall *> borderWalls;
 
 	int timerMsec;

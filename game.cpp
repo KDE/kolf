@@ -1749,6 +1749,7 @@ void Wall::load(KConfigGroup *cfgGroup)
 	end = cfgGroup->readEntry("endPoint", end);
 
 	setLine(QLineF(start, end));
+	setPos(QPointF());
 
 	moveBy(0, 0);
 	startItem->setPos(start);
@@ -2047,7 +2048,12 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 	adjustSize();
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-		(*it).ball()->setParentItem(courseBoard);
+	{
+		Ball* ball = (*it).ball();
+		ball->setParentItem(courseBoard);
+		m_topLevelQItems << ball;
+		m_moveableQItems << ball;
+	}
 
 	// highlighter shows current item when editing
 	highlighter = new QGraphicsRectItem(courseBoard);
@@ -2072,6 +2078,8 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 	whiteBall->setColor(Qt::white);
 	whiteBall->setVisible(false);
 	whiteBall->setDoDetect(false);
+	m_topLevelQItems << whiteBall;
+	m_moveableQItems << whiteBall;
 
 	int highestLog = 0;
 
@@ -2157,31 +2165,21 @@ void KolfGame::setFilename(const QString &filename)
 
 KolfGame::~KolfGame()
 {
-	//HACK: destroy everything which has a shape, except for balls
-	bool destroyedSomething = true;
-	while (destroyedSomething)
+	QList<QGraphicsItem*> itemsCopy(m_topLevelQItems); //this list will be modified soon, so take a copy
+	foreach (QGraphicsItem* item, itemsCopy)
 	{
-		destroyedSomething = false;
-		//find first item which is not a ball, and delete that
-		for (b2Body* body = g_world->GetBodyList(); body; body = body->GetNext())
+		CanvasItem* citem = dynamic_cast<CanvasItem*>(item);
+		if (citem)
 		{
-			CanvasItem* citem = static_cast<CanvasItem*>(body->GetUserData());
-			if (citem && !citem->m_shapes.isEmpty() && !dynamic_cast<Ball*>(citem))
-			{
-				citem->aboutToDelete();
-				citem->aboutToDie();
-				delete citem;
-				//because this has invalidated the b2Body* iterator and possibly
-				//destroyed more bodies, we start over with the iteration
-				destroyedSomething = true;
-				break;
-			}
+			citem->hideInfo();
+			citem->aboutToDelete();
+			citem->aboutToDie();
+			delete citem;
 		}
 	}
-	//NOTE: Before I introduced this code, the items were actually not deleted at
 
-	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-		(*it).ball()->setGame(0);
+// 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+// 		(*it).ball()->setGame(0);
 	delete cfg;
 #ifdef SOUND
 	delete m_player;
@@ -2279,7 +2277,7 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 			return;
 		}
 		// only items we keep track of
-		if ((!(items.count(list.first()) || list.first() == whiteBall || extraMoveable.count(list.first()))))
+		if (!m_moveableQItems.contains(list.first()))
 		{
 			emit newSelectedItem(&holeInfo);
 			return;
@@ -2519,29 +2517,21 @@ void KolfGame::setShowInfo(bool yes)
 
 	if (m_showInfo)
 	{
-		QList<QGraphicsItem *>::const_iterator item;
-		for (item = items.constBegin(); item != items.constEnd(); ++item)
+		foreach (QGraphicsItem* qitem, m_topLevelQItems)
 		{
-			CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
+			CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 			if (citem)
 				citem->showInfo();
 		}
-
-		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-			(*it).ball()->showInfo();
 	}
 	else
 	{
-		QList<QGraphicsItem *>::const_iterator item;
-		for (item = items.constBegin(); item != items.constEnd(); ++item)
+		foreach (QGraphicsItem* qitem, m_topLevelQItems)
 		{
-			CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
+			CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 			if (citem)
 				citem->hideInfo();
 		}
-
-		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-			(*it).ball()->hideInfo();
 	}
 }
 
@@ -2612,7 +2602,8 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 				lastDelId = citem->curId();
 
 				highlighter->setVisible(false);
-				items.removeAll(item);
+				m_topLevelQItems.removeAll(item);
+				m_moveableQItems.removeAll(item);
 				citem->hideInfo();
 				citem->aboutToDelete();
 				citem->aboutToDie();
@@ -2747,10 +2738,12 @@ void KolfGame::fastTimeout()
 		course->advance();
 	regAdv = !regAdv;
 
+	if (editing)
+		return;
+
 	// do home-grown advance
-	if (!editing)
-		for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-			(*it).ball()->doAdvance();
+	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
+		(*it).ball()->doAdvance();
 
 	// do Box2D advance
 	//Because there are so much CanvasItems out there, there is currently no
@@ -2936,8 +2929,9 @@ void KolfGame::autoSaveTimeout()
 void KolfGame::recreateStateList()
 {
 	savedState.clear();
-	foreach (QGraphicsItem* item, items)
+	foreach (QGraphicsItem* item, m_topLevelQItems)
 	{
+		if (dynamic_cast<Ball*>(item)) continue; //see below
 		CanvasItem* citem = dynamic_cast<CanvasItem*>(item);
 		if (citem)
 		{
@@ -2961,8 +2955,9 @@ void KolfGame::undoShot()
 
 void KolfGame::loadStateList()
 {
-	foreach (QGraphicsItem* item, items)
+	foreach (QGraphicsItem* item, m_topLevelQItems)
 	{
+		if (dynamic_cast<Ball*>(item)) continue; //see below
 		CanvasItem* citem = dynamic_cast<CanvasItem*>(item);
 		if (citem)
 		{
@@ -3158,10 +3153,9 @@ void KolfGame::startBall(const Vector &velocity)
 	(*curPlayer).ball()->setVelocity(velocity);
 	(*curPlayer).ball()->shotStarted();
 
-	QList<QGraphicsItem *>::const_iterator item;
-	for (item = items.constBegin(); item != items.constEnd(); ++item)
+	foreach (QGraphicsItem* qitem, m_topLevelQItems)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 		if (citem)
 			citem->shotStarted();
 	}
@@ -3374,22 +3368,26 @@ void KolfGame::showInfoDlg(bool addDontShowAgain)
 
 void KolfGame::openFile()
 {
-	QList<QGraphicsItem *>::const_iterator item;
-	for (item = items.constBegin(); item != items.constEnd(); ++item)
+	QList<QGraphicsItem*> newTopLevelQItems;
+	foreach (QGraphicsItem* qitem, m_topLevelQItems)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
+		if (dynamic_cast<Ball*>(qitem))
+		{
+			//do not delete balls
+			newTopLevelQItems << qitem;
+			continue;
+		}
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 		if (citem)
 		{
 			// sometimes info is still showing
 			citem->hideInfo();
 			citem->aboutToDie();
+			delete citem;
 		}
 	}
 
-	qDeleteAll(items);
-	items.clear();
-
-	extraMoveable.clear();
+	m_moveableQItems = m_topLevelQItems = newTopLevelQItems;
 	selectedItem = 0;
 
 	// will tell basic course info
@@ -3462,7 +3460,8 @@ void KolfGame::openFile()
 		QGraphicsItem* newItem = m_factory.createInstance(name, courseBoard, g_world);
 		if (newItem)
 		{
-			items.append(newItem);
+			m_topLevelQItems << newItem;
+			m_moveableQItems << newItem;
 			CanvasItem *sceneItem = dynamic_cast<CanvasItem *>(newItem);
 
 			if (!sceneItem)
@@ -3472,7 +3471,7 @@ void KolfGame::openFile()
 			sceneItem->setGame(this);
 			sceneItem->editModeChanged(editing);
 			sceneItem->setName(name);
-			extraMoveable.append(sceneItem->moveableItems());
+			m_moveableQItems.append(sceneItem->moveableItems());
 
 			newItem->setPos(x, y); 
 			newItem->setVisible(true);
@@ -3521,8 +3520,9 @@ void KolfGame::openFile()
 	QList<QGraphicsItem *> qtodo;
 	if (hasFinalLoad)
 	{
-		for (qsceneItem = items.constBegin(); qsceneItem != items.constEnd(); ++qsceneItem)
+		for (qsceneItem = m_topLevelQItems.constBegin(); qsceneItem != m_topLevelQItems.constEnd(); ++qsceneItem)
 		{
+			if (dynamic_cast<Ball*>(*qsceneItem)) continue; //skip balls
 			CanvasItem *item = dynamic_cast<CanvasItem *>(*qsceneItem);
 			if (item)
 			{
@@ -3551,8 +3551,9 @@ void KolfGame::openFile()
 		}
 	}
 
-	for (qsceneItem = items.constBegin(); qsceneItem != items.constEnd(); ++qsceneItem)
+	for (qsceneItem = m_topLevelQItems.constBegin(); qsceneItem != m_topLevelQItems.constEnd(); ++qsceneItem)
 	{
+		if (dynamic_cast<Ball*>(*qsceneItem)) continue; //skip balls
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(*qsceneItem);
 		if (citem)
 			citem->updateZ();
@@ -3582,7 +3583,8 @@ void KolfGame::addNewObject(const QString& identifier)
 {
 	QGraphicsItem *newItem = m_factory.createInstance(identifier, courseBoard, g_world);
 
-	items.append(newItem);
+	m_topLevelQItems << newItem;
+	m_moveableQItems << newItem;
 	if(!newItem->isVisible())
 		newItem->setVisible(true);
 
@@ -3591,17 +3593,16 @@ void KolfGame::addNewObject(const QString& identifier)
 		return;
 
 	// we need to find a number that isn't taken
-	int i = lastDelId > 0? lastDelId : items.count() - 30;
+	int i = lastDelId > 0? lastDelId : m_topLevelQItems.count() - 30;
 	if (i <= 0)
 		i = 0;
 
 	for (;; ++i)
 	{
 		bool found = false;
-		QList<QGraphicsItem *>::const_iterator item;
-		for (item = items.constBegin(); item != items.constEnd(); ++item)
+		foreach (QGraphicsItem* qitem, m_topLevelQItems)
 		{
-			CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
+			CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 			if (citem)
 			{
 				if (citem->curId() == i)
@@ -3628,7 +3629,7 @@ void KolfGame::addNewObject(const QString& identifier)
 	sceneItem->editModeChanged(editing);
 
 	sceneItem->setName(identifier);
-	extraMoveable.append(sceneItem->moveableItems());
+	m_moveableQItems.append(sceneItem->moveableItems());
 
 	newItem->setPos(width/2 - 18, height / 2 - 18);
 	sceneItem->moveBy(0, 0);
@@ -3727,16 +3728,27 @@ void KolfGame::resetHoleScores()
 
 void KolfGame::clearHole()
 {
-	QList<QGraphicsItem *>::const_iterator qsceneItem;
-	for (qsceneItem = items.constBegin(); qsceneItem != items.constEnd(); ++qsceneItem)
+	QList<QGraphicsItem*> newTopLevelQItems;
+	foreach (QGraphicsItem* qitem, m_topLevelQItems)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(*qsceneItem);
+		if (dynamic_cast<Ball*>(qitem))
+		{
+			//do not delete balls
+			newTopLevelQItems << qitem;
+			continue;
+		}
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 		if (citem)
+		{
+			// sometimes info is still showing
+			citem->hideInfo();
 			citem->aboutToDie();
+			delete citem;
+		}
 	}
 
-	qDeleteAll(items);
-	items.clear();
+	m_moveableQItems = m_topLevelQItems = newTopLevelQItems;
+	selectedItem = 0;
 
 	emit newSelectedItem(&holeInfo);
 
@@ -3824,10 +3836,9 @@ void KolfGame::save()
 	// in openFile().
 	bool hasFinalLoad = false;
 
-	QList<QGraphicsItem *>::const_iterator item;
-	for (item = items.constBegin(); item != items.constEnd(); ++item)
+	foreach (QGraphicsItem* qitem, m_topLevelQItems)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 		if (citem)
 		{
 			citem->aboutToSave();
@@ -3845,14 +3856,14 @@ void KolfGame::save()
 		if (holeNum == curHole)
 			cfg->deleteGroup(*it);
 	}
-	for (item = items.constBegin(); item != items.constEnd(); ++item)
+	foreach (QGraphicsItem* qitem, m_topLevelQItems)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 		if (citem)
 		{
 			citem->clean();
 
-			cfgGroup = KConfigGroup(cfg->group(makeGroup(citem->curId(), curHole, citem->name(), (int)(*item)->x(), (int)(*item)->y())));
+			cfgGroup = KConfigGroup(cfg->group(makeGroup(citem->curId(), curHole, citem->name(), (int)qitem->x(), (int)qitem->y())));
 			citem->save(&cfgGroup);
 		}
 	}
@@ -3874,9 +3885,10 @@ void KolfGame::save()
 
 	cfg->sync();
 
-	for (item = items.constBegin(); item != items.constEnd(); ++item)
+	foreach (QGraphicsItem* qitem, m_topLevelQItems)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
+		if (!dynamic_cast<Ball*>(qitem)) continue;
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 		if (citem)
 			citem->savingDone();
 	}
@@ -3917,10 +3929,10 @@ void KolfGame::toggleEditMode()
 	}
 
 	// alert our items
-	QList<QGraphicsItem *>::const_iterator item;
-	for (item = items.constBegin(); item != items.constEnd(); ++item)
+	foreach (QGraphicsItem* qitem, m_topLevelQItems)
 	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(*item);
+		if (!dynamic_cast<Ball*>(qitem)) continue;
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 		if (citem)
 			citem->editModeChanged(editing);
 	}
