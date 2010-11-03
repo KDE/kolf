@@ -2178,8 +2178,6 @@ KolfGame::~KolfGame()
 		}
 	}
 
-// 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-// 		(*it).ball()->setGame(0);
 	delete cfg;
 #ifdef SOUND
 	delete m_player;
@@ -3931,7 +3929,7 @@ void KolfGame::toggleEditMode()
 	// alert our items
 	foreach (QGraphicsItem* qitem, m_topLevelQItems)
 	{
-		if (!dynamic_cast<Ball*>(qitem)) continue;
+		if (dynamic_cast<Ball*>(qitem)) continue;
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 		if (citem)
 			citem->editModeChanged(editing);
