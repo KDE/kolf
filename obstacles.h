@@ -55,7 +55,6 @@ namespace Kolf
 			virtual void load(KConfigGroup* cfgGroup);
 			virtual void save(KConfigGroup* cfgGroup);
 			void setVisible(bool visible);
-			void doAdvance();
 
 			virtual void setLine(const QLineF& line);
 			virtual void moveBy(double dx, double dy);

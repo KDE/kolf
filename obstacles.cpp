@@ -107,11 +107,6 @@ void Kolf::Wall::setVisible(bool visible)
 	setSimulationType(visible ? CanvasItem::CollisionSimulation : CanvasItem::NoSimulation);
 }
 
-void Kolf::Wall::doAdvance()
-{
-	moveBy(velocity().x(), velocity().y());
-}
-
 void Kolf::Wall::setLine(const QLineF& line)
 {
 	QGraphicsLineItem::setLine(line);
