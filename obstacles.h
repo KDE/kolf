@@ -26,9 +26,13 @@
 #include "canvasitem.h"
 #include "overlay.h"
 
+class QCheckBox;
+class QGridLayout;
+
 namespace Kolf
 {
 	class LineShape;
+	class RectShape;
 
 	class Bumper : public EllipticalCanvasItem
 	{
@@ -114,6 +118,33 @@ namespace Kolf
 
 			QPen m_wallPen;
 			QVector<Kolf::Wall*> m_walls;
+			Kolf::RectShape* m_shape;
+	};
+
+	class RectangleOverlay : public Kolf::Overlay
+	{
+		Q_OBJECT
+		public:
+			RectangleOverlay(Kolf::RectangleItem* item);
+			virtual void update();
+		private Q_SLOTS:
+			//interface to handles
+			void moveHandle(const QPointF& handleScenePos);
+		private:
+			QList<Kolf::OverlayHandle*> m_handles;
+	};
+
+	class RectangleConfig : public Config
+	{
+		Q_OBJECT
+		public:
+			RectangleConfig(Kolf::RectangleItem* item, QWidget* parent);
+		protected Q_SLOTS:	
+			void setWall(bool hasWall);
+		protected:
+			QGridLayout* m_layout;
+			QVector<QCheckBox*> m_wallCheckBoxes;
+			Kolf::RectangleItem* const m_item;
 	};
 
 	class Bridge : public Kolf::RectangleItem
@@ -121,6 +152,25 @@ namespace Kolf
 		public:
 			Bridge(QGraphicsItem* parent, b2World* world);
 			virtual bool collision(Ball* ball);
+	};
+
+	class Sign : public Kolf::RectangleItem
+	{
+		Q_OBJECT
+		public:
+			Sign(QGraphicsItem* parent, b2World* world);
+			virtual bool vStrut() const { return false; }
+
+			QString text() const;
+			virtual void setSize(const QSizeF& size);
+
+			virtual void load(KConfigGroup* group);
+			virtual void save(KConfigGroup* group);
+		public Q_SLOTS:
+			void setText(const QString& text);
+		private:
+			QString m_text;
+			QGraphicsTextItem* m_textItem;
 	};
 }
 

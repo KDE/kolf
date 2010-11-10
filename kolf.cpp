@@ -64,7 +64,7 @@ KolfWindow::KolfWindow()
 	m_itemFactory.registerType<Kolf::BlackHole>("blackhole", i18n("Black Hole"));
 	m_itemFactory.registerType<Floater>("floater", i18n("Floater"));
 	m_itemFactory.registerType<Kolf::Bridge>("bridge", i18n("Bridge"));
-	m_itemFactory.registerType<Sign>("sign", i18n("Sign"));
+	m_itemFactory.registerType<Kolf::Sign>("sign", i18n("Sign"));
 	m_itemFactory.registerType<Kolf::Bumper>("bumper", i18n("Bumper"));
 	//NOTE: The plugin mechanism has been removed because it is not used anyway.
 

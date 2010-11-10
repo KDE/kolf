@@ -22,8 +22,12 @@
 #include "game.h"
 #include "shape.h"
 
+#include <QCheckBox>
+#include <QGridLayout>
+#include <QLabel>
 #include <QTimer>
 #include <KConfigGroup>
+#include <KLineEdit>
 #include <KRandom>
 
 //BEGIN Kolf::Bumper
@@ -186,8 +190,10 @@ Kolf::RectangleItem::RectangleItem(const QString& type, QGraphicsItem* parent, b
 	, CanvasItem(world)
 	, m_wallPen(QColor("#92772D").darker(), 3)
 	, m_walls(Kolf::RectangleWallCount, 0)
+	, m_shape(new Kolf::RectShape(QRectF(0, 0, 1, 1)))
 {
 	setZValue(998);
+	addShape(m_shape);
 	//default size
 	setSize(type == "sign" ? QSize(110, 40) : QSize(80, 40));
 }
@@ -242,6 +248,7 @@ void Kolf::RectangleItem::updateWallPosition()
 void Kolf::RectangleItem::setSize(const QSizeF& size)
 {
 	Tagaro::SpriteObjectItem::setSize(size);
+	m_shape->setRect(QRectF(QPointF(), size));
 	updateWallPosition();
 	propagateUpdate();
 }
@@ -320,17 +327,104 @@ void Kolf::RectangleItem::save(KConfigGroup* group)
 
 Config* Kolf::RectangleItem::config(QWidget* parent)
 {
-	return CanvasItem::config(parent);
-	//return new Kolf::RectangleConfig(parent);
+	return new Kolf::RectangleConfig(this, parent);
 }
 
 Kolf::Overlay* Kolf::RectangleItem::createOverlay()
 {
-	return new Kolf::Overlay(this, this);
-	//return new Kolf::RectangleOverlay(this);
+	return new Kolf::RectangleOverlay(this);
 }
 
 //END Kolf::RectangleItem
+//BEGIN Kolf::RectangleOverlay
+
+Kolf::RectangleOverlay::RectangleOverlay(Kolf::RectangleItem* item)
+	: Kolf::Overlay(item, item)
+{
+	//TODO: code duplication to Kolf::LandscapeOverlay
+	for (int i = 0; i < 4; ++i)
+	{
+		Kolf::OverlayHandle* handle = new Kolf::OverlayHandle(Kolf::OverlayHandle::CircleShape, this);
+		m_handles << handle;
+		addHandle(handle);
+		connect(handle, SIGNAL(moveRequest(QPointF)), this, SLOT(moveHandle(QPointF)));
+	}
+}
+
+void Kolf::RectangleOverlay::update()
+{
+	Kolf::Overlay::update();
+	const QRectF rect = qitem()->boundingRect();
+	m_handles[0]->setPos(rect.topLeft());
+	m_handles[1]->setPos(rect.topRight());
+	m_handles[2]->setPos(rect.bottomLeft());
+	m_handles[3]->setPos(rect.bottomRight());
+}
+
+void Kolf::RectangleOverlay::moveHandle(const QPointF& handleScenePos)
+{
+	Kolf::OverlayHandle* handle = qobject_cast<Kolf::OverlayHandle*>(sender());
+	const int handleIndex = m_handles.indexOf(handle);
+	Kolf::RectangleItem* item = dynamic_cast<Kolf::RectangleItem*>(qitem());
+	const QPointF handlePos = mapFromScene(handleScenePos);
+	//modify bounding rect using new handlePos
+	QRectF rect(QPointF(), item->size());
+	if (handleIndex % 2 == 0)
+		rect.setLeft(qMin(handlePos.x(), rect.right()));
+	else
+		rect.setRight(qMax(handlePos.x(), rect.left()));
+	if (handleIndex < 2)
+		rect.setTop(qMin(handlePos.y(), rect.bottom()));
+	else
+		rect.setBottom(qMax(handlePos.y(), rect.top()));
+	item->moveBy(rect.x(), rect.y());
+	item->setSize(rect.size());
+}
+
+//END Kolf::RectangleOverlay
+//BEGIN Kolf::RectangleConfig
+
+Kolf::RectangleConfig::RectangleConfig(Kolf::RectangleItem* item, QWidget* parent)
+	: Config(parent)
+	, m_layout(new QGridLayout(this))
+	, m_wallCheckBoxes(Kolf::RectangleWallCount, 0)
+	, m_item(item)
+{
+	static const char* captions[] = { I18N_NOOP("&Top"), I18N_NOOP("&Left"), I18N_NOOP("&Right"), I18N_NOOP("&Bottom") };
+	for (int i = 0; i < Kolf::RectangleWallCount; ++i)
+	{
+		QCheckBox* checkBox = m_wallCheckBoxes[i] = new QCheckBox(i18n(captions[i]), this);
+		checkBox->setChecked(item->hasWall((Kolf::WallIndex) i));
+		connect(checkBox, SIGNAL(toggled(bool)), SLOT(setWall(bool)));
+	}
+	m_layout->addWidget(new QLabel(i18n("Walls on:")), 0, 0);
+	m_layout->addWidget(m_wallCheckBoxes[0], 0, 1);
+	m_layout->addWidget(m_wallCheckBoxes[1], 1, 0);
+	m_layout->addWidget(m_wallCheckBoxes[2], 1, 2);
+	m_layout->addWidget(m_wallCheckBoxes[3], 1, 1);
+	m_layout->setRowStretch(2, 10);
+	//Kolf::Sign does not have a special Config class
+	Kolf::Sign* sign = qobject_cast<Kolf::Sign*>(item);
+	if (sign)
+	{
+		m_layout->addWidget(new QLabel(i18n("Sign HTML:")), 3, 0, 1, 3);
+		KLineEdit* edit = new KLineEdit(sign->text(), this);
+		m_layout->addWidget(edit, 4, 0, 1, 3);
+		connect(edit, SIGNAL(textChanged(QString)), sign, SLOT(setText(QString)));
+	}
+}
+
+void Kolf::RectangleConfig::setWall(bool hasWall)
+{
+	const int wallIndex = m_wallCheckBoxes.indexOf(qobject_cast<QCheckBox*>(sender()));
+	if (wallIndex >= 0)
+	{
+		m_item->setWall((Kolf::WallIndex) wallIndex, hasWall);
+		changed();
+	}
+}
+
+//END Kolf::RectangleConfig
 //BEGIN Kolf::Bridge
 
 Kolf::Bridge::Bridge(QGraphicsItem* parent, b2World* world)
@@ -345,5 +439,51 @@ bool Kolf::Bridge::collision(Ball* ball)
 }
 
 //END Kolf::Bridge
+//BEGIN Kolf::Sign
+
+Kolf::Sign::Sign(QGraphicsItem* parent, b2World* world)
+	: Kolf::RectangleItem(QLatin1String("sign"), parent, world)
+	, m_text(i18n("New Text"))
+	, m_textItem(new QGraphicsTextItem(m_text, this))
+{
+	setZValue(998.8);
+	setWallColor(Qt::black);
+	for (int i = 0; i < Kolf::RectangleWallCount; ++i)
+		setWall((Kolf::WallIndex) i, true);
+	//Z value 1 should be enough to keep text above overlay
+	m_textItem->setZValue(1);
+	m_textItem->setAcceptedMouseButtons(0);
+	//TODO: activate QGraphicsItem::ItemClipsChildrenToShape flag after
+	//refactoring (only after it is clear that the text is the only child)
+}
+
+QString Kolf::Sign::text() const
+{
+	return m_text;
+}
+
+void Kolf::Sign::setText(const QString& text)
+{
+	m_text = text;
+	m_textItem->setHtml(text);
+}
+
+void Kolf::Sign::setSize(const QSizeF& size)
+{
+	Kolf::RectangleItem::setSize(size);
+	m_textItem->setTextWidth(size.width());
+}
+
+void Kolf::Sign::load(KConfigGroup* group)
+{
+	setText(group->readEntry("Comment", m_text));
+}
+
+void Kolf::Sign::save(KConfigGroup* group)
+{
+	group->writeEntry("Comment", m_text);
+}
+
+//END Kolf::Sign
 
 #include "obstacles.moc"

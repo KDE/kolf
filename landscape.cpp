@@ -106,6 +106,7 @@ Kolf::Overlay* Kolf::LandscapeItem::createOverlay()
 Kolf::LandscapeOverlay::LandscapeOverlay(Kolf::LandscapeItem* item)
 	: Kolf::Overlay(item, item)
 {
+	//TODO: code duplication to Kolf::RectangleOverlay
 	for (int i = 0; i < 4; ++i)
 	{
 		Kolf::OverlayHandle* handle = new Kolf::OverlayHandle(Kolf::OverlayHandle::CircleShape, this);
