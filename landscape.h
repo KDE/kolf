@@ -40,7 +40,7 @@ namespace Kolf
 
 			virtual void load(KConfigGroup* group);
 			virtual void save(KConfigGroup* group);
-			
+
 			virtual Config* config(QWidget* parent);
 		public Q_SLOTS:
 			void setBlinkEnabled(bool blinkEnabled);
@@ -88,6 +88,76 @@ namespace Kolf
 		public:
 			Sand(QGraphicsItem* parent, b2World* world);
 			virtual bool collision(Ball* ball);
+	};
+
+	enum SlopeType
+	{
+		VerticalSlope = 0,
+		HorizontalSlope,
+		DiagonalSlope,
+		CrossDiagonalSlope,
+		EllipticSlope
+	};
+
+	class Slope : public Tagaro::SpriteObjectItem, public CanvasItem
+	{
+		Q_OBJECT
+		public:
+			Slope(QGraphicsItem* parent, b2World* world);
+
+			double grade() const;
+			bool isReversed() const;
+			Kolf::SlopeType slopeType() const;
+			bool isStuckOnGround() const;
+
+			virtual QPainterPath shape() const;
+			virtual void setSize(const QSizeF& size);
+			virtual QPointF getPosition() const;
+			virtual void moveBy(double dx, double dy);
+
+			virtual void load(KConfigGroup* group);
+			virtual void save(KConfigGroup* group);
+
+			virtual bool collision(Ball* ball);
+			virtual bool terrainCollisions() const;
+			virtual QList<QGraphicsItem*> infoItems() const;
+			virtual Config* config(QWidget* parent);
+		public Q_SLOTS:
+			void setGrade(double grade);
+			void setReversed(bool reversed);
+			void setSlopeType(int type);
+			void setStuckOnGround(bool stuckOnGround);
+		protected:
+			virtual Kolf::Overlay* createOverlay();
+		private:
+			void updateAppearance();
+			void updateInfo();
+
+			double m_grade;
+			bool m_reversed, m_stuckOnGround;
+			Kolf::SlopeType m_type;
+
+			QGraphicsSimpleTextItem* m_gradeItem;
+			QList<ArrowItem*> m_arrows;
+	};
+
+	class SlopeConfig : public Config
+	{
+		public:
+			SlopeConfig(Kolf::Slope* slope, QWidget* parent);
+	};
+
+	class SlopeOverlay : public Kolf::Overlay
+	{
+		Q_OBJECT
+		public:
+			SlopeOverlay(Kolf::Slope* slope);
+			virtual void update();
+		private Q_SLOTS:
+			//interface to handles
+			void moveHandle(const QPointF& handleScenePos);
+		private:
+			QList<Kolf::OverlayHandle*> m_handles;
 	};
 }
 

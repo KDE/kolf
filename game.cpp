@@ -84,56 +84,6 @@ b2World* Kolf::world()
 
 /////////////////////////
 
-RectPoint::RectPoint(const QColor &color, Tagaro::SpriteObjectItem *rect, QGraphicsItem * parent, b2World* world)
-: QGraphicsEllipseItem(parent)
-, CanvasItem(world)
-{
-	setZValue(9999);
-	setSize(QSizeF(10, 10));
-	this->rect = rect;
-	setBrush(QBrush(color));
-	setSizeFactor(1.0);
-	dontmove = false;
-}
-
-void RectPoint::moveBy(double dx, double dy)
-{
-	QGraphicsEllipseItem::moveBy(dx, dy);
-
-	if (dontmove)
-	{
-		dontmove = false;
-		return;
-	}
-
-	QGraphicsItem *qitem = dynamic_cast<QGraphicsItem *>(rect);
-	if (!qitem)
-		return;
-
-	int nw = ( int )( m_sizeFactor * qAbs(x() - qitem->x()) );
-	int nh = ( int )( m_sizeFactor * qAbs(y() - qitem->y()) );
-	if (nw <= 0 || nh <= 0)
-		return;
-
-	rect->setSize(QSizeF(nw, nh));
-}
-
-Config *RectPoint::config(QWidget *parent)
-{
-	CanvasItem *citem = dynamic_cast<CanvasItem *>(rect);
-	if (citem)
-		return citem->config(parent);
-	else
-		return CanvasItem::config(parent);
-}
-
-void RectPoint::setSize(const QSizeF& size)
-{
-	setRect(QRectF(pos(), size));
-}
-
-/////////////////////////
-
 Putter::Putter(QGraphicsItem* parent, b2World* world)
 : QGraphicsLineItem(parent)
 , CanvasItem(world)

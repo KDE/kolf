@@ -335,12 +335,19 @@ Vector ArrowItem::vector() const
 
 void ArrowItem::updatePath()
 {
+	if (m_length == 0)
+	{
+		setPath(QPainterPath());
+		return;
+	}
 	//the following three points define the arrow tip
-	const QPointF endPoint = Vector::fromMagnitudeDirection(m_length, m_angle);
+	const QPointF extent = Vector::fromMagnitudeDirection(m_length, m_angle);
+	const QPointF startPoint = m_reversed ? extent : QPointF();
+	const QPointF endPoint = m_reversed ? QPointF() : extent;
 	const QPointF point1 = endPoint - Vector::fromMagnitudeDirection(m_length / 2, m_angle + M_PI / 12);
 	const QPointF point2 = endPoint - Vector::fromMagnitudeDirection(m_length / 2, m_angle - M_PI / 12);
 	QPainterPath path;
-	path.addPolygon(QPolygonF() << QPointF() << endPoint);
+	path.addPolygon(QPolygonF() << startPoint << endPoint);
 	path.addPolygon(QPolygonF() << point1 << endPoint << point2);
 	setPath(path);
 }

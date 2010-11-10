@@ -23,7 +23,6 @@
 #include "newgame.h"
 #include "objects.h"
 #include "scoreboard.h"
-#include "slope.h"
 
 #include <KActionCollection>
 #include <KFileDialog>
@@ -54,7 +53,7 @@ KolfWindow::KolfWindow()
 
 	setupActions();
 
-	m_itemFactory.registerType<Slope>("slope", i18n("Slope"));
+	m_itemFactory.registerType<Kolf::Slope>("slope", i18n("Slope"));
 	m_itemFactory.registerType<Kolf::Puddle>("puddle", i18n("Puddle"));
 	m_itemFactory.registerType<Kolf::Wall>("wall", i18n("Wall"));
 	m_itemFactory.registerType<Kolf::Cup>("cup", i18n("Cup"), true); //true == addOnNewHole

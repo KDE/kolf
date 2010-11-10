@@ -176,10 +176,11 @@ void Kolf::OverlayAreaItem::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
 //END Kolf::OverlayAreaItem
 //BEGIN Kolf::Overlay
 
-Kolf::Overlay::Overlay(CanvasItem* citem, QGraphicsItem* qitem)
+Kolf::Overlay::Overlay(CanvasItem* citem, QGraphicsItem* qitem, bool hack_addQitemShapeToOutlines)
 	: QGraphicsItem(qitem)
 	, m_citem(citem), m_qitem(qitem)
 	, m_state(Kolf::Overlay::Passive)
+	, m_addQitemShapeToOutlines(hack_addQitemShapeToOutlines)
 	, m_activatorItem(new Kolf::OverlayAreaItem(Kolf::OverlayAreaItem::Clickable | Kolf::OverlayAreaItem::Hoverable, this))
 	, m_interactorAnimator(new Utils::AnimatedItem(this))
 	, m_interactorItem(new Kolf::OverlayAreaItem(Kolf::OverlayAreaItem::Clickable | Kolf::OverlayAreaItem::Draggable, m_interactorAnimator))
@@ -228,6 +229,13 @@ void Kolf::Overlay::update()
 	{
 		activationOutline.addPath(shape->activationOutline());
 		interactionOutline.addPath(shape->interactionOutline());
+	}
+	//HACK for Kolf::Shape
+	if (m_addQitemShapeToOutlines)
+	{
+		const QPainterPath shape = m_qitem->shape();
+		activationOutline.addPath(shape);
+		interactionOutline.addPath(shape);
 	}
 	activationOutline.setFillRule(Qt::WindingFill);
 	interactionOutline.setFillRule(Qt::WindingFill);

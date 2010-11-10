@@ -108,7 +108,7 @@ namespace Kolf
 				Active = 2   ///< The interaction area is shown at a high opacity, and the overlay's handles are visible.
 			};
 
-			Overlay(CanvasItem* citem, QGraphicsItem* qitem);
+			Overlay(CanvasItem* citem, QGraphicsItem* qitem, bool hack_addQitemShapeToOutlines = false);
 			///Returns a reference to the CanvasItem that this overlay is associated with.
 			CanvasItem* citem() const;
 			///Returns a reference to the QGraphicsItem that is the CanvasItem that this overlay is associated with.
@@ -141,6 +141,7 @@ namespace Kolf
 			CanvasItem* m_citem;
 			QGraphicsItem* m_qitem;
 			Kolf::Overlay::State m_state;
+			bool m_addQitemShapeToOutlines;
 			//pre-defined handles and area items
 			Kolf::OverlayAreaItem* m_activatorItem;
 			Utils::AnimatedItem* m_interactorAnimator;

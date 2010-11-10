@@ -25,8 +25,11 @@
 #include <QCheckBox>
 #include <QLabel>
 #include <QSlider>
+#include <KComboBox>
 #include <KConfigGroup>
+#include <KGlobal>
 #include <KLocale>
+#include <KNumInput>
 
 //BEGIN Kolf::LandscapeItem
 //END Kolf::LandscapeItem
@@ -106,7 +109,7 @@ Kolf::Overlay* Kolf::LandscapeItem::createOverlay()
 Kolf::LandscapeOverlay::LandscapeOverlay(Kolf::LandscapeItem* item)
 	: Kolf::Overlay(item, item)
 {
-	//TODO: code duplication to Kolf::RectangleOverlay
+	//TODO: code duplication to Kolf::RectangleOverlay and Kolf::SlopeOverlay
 	for (int i = 0; i < 4; ++i)
 	{
 		Kolf::OverlayHandle* handle = new Kolf::OverlayHandle(Kolf::OverlayHandle::CircleShape, this);
@@ -220,5 +223,448 @@ bool Kolf::Sand::collision(Ball* ball)
 }
 
 //END Kolf::Sand
+//BEGIN Kolf::Slope
+
+struct SlopeData
+{
+	QStringList gradientKeys, translatedGradientKeys;
+	QStringList spriteKeys, reversedSpriteKeys;
+	SlopeData()
+	{
+		gradientKeys << QLatin1String("Vertical")
+		             << QLatin1String("Horizontal")
+		             << QLatin1String("Diagonal")
+		             << QLatin1String("Opposite Diagonal")
+		             << QLatin1String("Elliptic");
+		translatedGradientKeys << i18n("Vertical")
+		             << i18n("Horizontal")
+		             << i18n("Diagonal")
+		             << i18n("Opposite Diagonal")
+		             << i18n("Elliptic");
+		spriteKeys   << QLatin1String("slope_n")
+			         << QLatin1String("slope_w")
+			         << QLatin1String("slope_nw")
+			         << QLatin1String("slope_ne")
+			         << QLatin1String("slope_bump");
+		reversedSpriteKeys << QLatin1String("slope_s")
+			         << QLatin1String("slope_e")
+			         << QLatin1String("slope_se")
+			         << QLatin1String("slope_sw")
+			         << QLatin1String("slope_dip");
+	}
+};
+K_GLOBAL_STATIC(SlopeData, g_slopeData)
+
+Kolf::Slope::Slope(QGraphicsItem* parent, b2World* world)
+	: Tagaro::SpriteObjectItem(Kolf::renderer(), QString(), parent)
+	, CanvasItem(world)
+	, m_grade(4)
+	, m_reversed(false)
+	, m_stuckOnGround(false)
+	, m_type(Kolf::VerticalSlope)
+	, m_gradeItem(new QGraphicsSimpleTextItem(this))
+{
+	m_gradeItem->setBrush(Qt::white);
+	m_gradeItem->setVisible(false);
+	m_gradeItem->setZValue(1);
+	for (int i = 0; i < 4; ++i)
+	{
+		ArrowItem* arrow = new ArrowItem(this);
+		arrow->setLength(0);
+		arrow->setVisible(false);
+		m_arrows << arrow;
+	}
+	setSize(QSizeF(40, 40));
+	setZValue(-50);
+	updateAppearance();
+}
+
+double Kolf::Slope::grade() const
+{
+	return m_grade;
+}
+
+void Kolf::Slope::setGrade(double grade)
+{
+	if (m_grade != grade && grade > 0)
+	{
+		m_grade = grade;
+		updateAppearance();
+		propagateUpdate();
+	}
+}
+
+bool Kolf::Slope::isReversed() const
+{
+	return m_reversed;
+}
+
+void Kolf::Slope::setReversed(bool reversed)
+{
+	if (m_reversed != reversed)
+	{
+		m_reversed = reversed;
+		updateAppearance();
+		propagateUpdate();
+	}
+}
+
+Kolf::SlopeType Kolf::Slope::slopeType() const
+{
+	return m_type;
+}
+
+void Kolf::Slope::setSlopeType(int type)
+{
+	if (m_type != type && type >= 0)
+	{
+		m_type = (Kolf::SlopeType) type;
+		updateAppearance();
+		propagateUpdate();
+	}
+}
+
+bool Kolf::Slope::isStuckOnGround() const
+{
+	return m_stuckOnGround;
+}
+
+void Kolf::Slope::setStuckOnGround(bool stuckOnGround)
+{
+	if (m_stuckOnGround != stuckOnGround)
+	{
+		m_stuckOnGround = stuckOnGround;
+		//TODO: update Z order
+		propagateUpdate();
+	}
+}
+
+QPainterPath Kolf::Slope::shape() const
+{
+	const QRectF rect = boundingRect();
+	QPainterPath path;
+	if (m_type == Kolf::CrossDiagonalSlope) {
+		QPolygonF polygon(3);
+		polygon[0] = rect.topLeft();
+		polygon[1] = rect.bottomRight();
+		polygon[2] = m_reversed ? rect.topRight() : rect.bottomLeft();
+		path.addPolygon(polygon);
+	} else if (m_type == Kolf::DiagonalSlope) {
+		QPolygonF polygon(3);
+		polygon[0] = rect.topRight();
+		polygon[1] = rect.bottomLeft();
+		polygon[2] = m_reversed ? rect.topLeft() : rect.bottomRight();
+		path.addPolygon(polygon);
+	} else if (m_type == Kolf::EllipticSlope) {
+		path.addEllipse(rect);
+	} else {
+		path.addRect(rect);
+	}
+	return path;
+}
+
+void Kolf::Slope::setSize(const QSizeF& size)
+{
+	if (m_type == Kolf::EllipticSlope)
+	{
+		const double extent = qMin(size.width(), size.height());
+		Tagaro::SpriteObjectItem::setSize(extent, extent);
+	}
+	else
+		Tagaro::SpriteObjectItem::setSize(size);
+	updateInfo();
+	propagateUpdate();
+	//TODO: update Z order
+}
+
+QPointF Kolf::Slope::getPosition() const
+{
+	return Tagaro::SpriteObjectItem::pos();
+}
+
+void Kolf::Slope::moveBy(double dx, double dy)
+{
+	Tagaro::SpriteObjectItem::moveBy(dx, dy);
+}
+
+void Kolf::Slope::load(KConfigGroup* group)
+{
+	setGrade(group->readEntry("grade", m_grade));
+	setReversed(group->readEntry("reversed", m_reversed));
+	setStuckOnGround(group->readEntry("stuckOnGround", m_stuckOnGround));
+	//gradient is a bit more complicated
+	const QString type = group->readEntry("gradient", g_slopeData->gradientKeys.value(m_type));
+	setSlopeType(g_slopeData->gradientKeys.indexOf(type));
+	//read size
+	QSizeF size = Tagaro::SpriteObjectItem::size();
+	size.setWidth(group->readEntry("width", size.width()));
+	size.setHeight(group->readEntry("height", size.height()));
+	setSize(size);
+}
+
+void Kolf::Slope::save(KConfigGroup* group)
+{
+	group->writeEntry("grade", m_grade);
+	group->writeEntry("reversed", m_reversed);
+	group->writeEntry("stuckOnGround", m_stuckOnGround);
+	group->writeEntry("gradient", g_slopeData->gradientKeys.value(m_type));
+	const QSizeF size = Tagaro::SpriteObjectItem::size();
+	group->writeEntry("width", size.width());
+	group->writeEntry("height", size.height());
+}
+
+void Kolf::Slope::updateAppearance()
+{
+	updateInfo();
+	//set pixmap
+	setSpriteKey((m_reversed ? g_slopeData->reversedSpriteKeys : g_slopeData->spriteKeys).value(m_type));
+}
+
+void Kolf::Slope::updateInfo()
+{
+	m_gradeItem->setText(QString::number(m_grade));
+	const QPointF textOffset = m_gradeItem->boundingRect().center();
+	//update arrows
+	const QSizeF size = Tagaro::SpriteObjectItem::size();
+	const double width = size.width(), height = size.height();
+	const double length = sqrt(width * width + height * height) / 4;
+	if (m_type == Kolf::EllipticSlope)
+	{
+		double angle = 0;
+		for (int i = 0; i < 4; ++i, angle += M_PI / 2)
+		{
+			ArrowItem* arrow = m_arrows[i];
+			arrow->setLength(length);
+			arrow->setAngle(angle);
+			arrow->setReversed(m_reversed);
+			arrow->setPos(QPointF(width / 2, height / 2));
+		}
+		m_gradeItem->setPos(QPointF(width / 2, height / 2) - textOffset);
+	}
+	else
+	{
+		double angle = 0;
+		double x = .5 * width, y = .5 * height;
+		switch ((int) m_type)
+		{
+			case Kolf::HorizontalSlope:
+				angle = 0;
+				break;
+			case Kolf::VerticalSlope:
+				angle = M_PI / 2;
+				break;
+			case Kolf::DiagonalSlope:
+				angle = atan(width / height);
+				x = m_reversed ? .25 * width : .75 * width;
+				y = m_reversed ? .25 * height : .75 * height;
+				break;
+			case Kolf::CrossDiagonalSlope:
+				angle = M_PI - atan(width / height);
+				x = m_reversed ? .75 * width : .25 * width;
+				y = m_reversed ? .25 * height : .75 * height;
+				break;
+		}
+		//only one arrow needed - hide all others
+		for (int i = 1; i < 4; ++i)
+			m_arrows[i]->setLength(0);
+		ArrowItem* arrow = m_arrows[0];
+		arrow->setLength(length);
+		arrow->setAngle(m_reversed ? angle : angle + M_PI);
+		arrow->setPos(QPointF(x, y));
+		m_gradeItem->setPos(QPointF(x, y) - textOffset);
+	}
+}
+
+bool Kolf::Slope::collision(Ball* ball)
+{
+	Vector v = ball->velocity();
+	double addto = 0.013 * m_grade;
+
+	const bool diag = m_type == Kolf::DiagonalSlope || m_type == Kolf::CrossDiagonalSlope;
+	const bool circle = m_type == Kolf::EllipticSlope;
+
+	double slopeAngle = 0;
+	const double width = size().width(), height = size().height();
+
+	if (diag) 
+		slopeAngle = atan(width / height);
+	else if (circle)
+	{
+		const QPointF start = pos() + QPointF(width, height) / 2.0;
+		const QPointF end = ball->pos();
+
+		Vector betweenVector = start - end;
+		const double factor = betweenVector.magnitude() / (width / 2.0);
+		slopeAngle = betweenVector.direction();
+
+		// this little bit by Daniel
+		addto *= factor * M_PI / 2;
+		addto = sin(addto);
+	}
+
+	if (!m_reversed)
+		addto = -addto;
+	switch ((int) m_type)
+	{
+		case Kolf::HorizontalSlope:
+			v.rx() += addto;
+			break;
+		case Kolf::VerticalSlope:
+			v.ry() += addto;
+			break;
+		case Kolf::DiagonalSlope:
+		case Kolf::EllipticSlope:
+			v.rx() += cos(slopeAngle) * addto;
+			v.ry() += sin(slopeAngle) * addto;
+			break;
+		case Kolf::CrossDiagonalSlope:
+			v.rx() -= cos(slopeAngle) * addto;
+			v.ry() += sin(slopeAngle) * addto;
+			break;
+	}
+	ball->setVelocity(v);
+	ball->setState(v.isNull() ? Stopped : Rolling);
+	// do NOT do terrain collidingItems
+	return false;
+}
+
+bool Kolf::Slope::terrainCollisions() const
+{
+	return true;
+}
+
+QList<QGraphicsItem*> Kolf::Slope::infoItems() const
+{
+	QList<QGraphicsItem*> result;
+	foreach (ArrowItem* arrow, m_arrows)
+		result << arrow;
+	result << m_gradeItem;
+	return result;
+}
+
+Config* Kolf::Slope::config(QWidget* parent)
+{
+	return new Kolf::SlopeConfig(this, parent);
+}
+
+Kolf::Overlay* Kolf::Slope::createOverlay()
+{
+	return new Kolf::SlopeOverlay(this);
+}
+
+#if 0
+
+//NOTE: This is code from the old Z ordering. I keep this around until
+//the Z ordering has been refactored.
+
+void Slope::updateZ(QGraphicsItem *vStrut)
+{
+	const double area = (height() * width());
+	const int defaultz = -50;
+
+	double newZ = 0;
+
+	QGraphicsItem *rect = 0;
+	if (!stuckOnGround)
+		rect = vStrut? vStrut : onVStrut();
+
+	if (rect)
+	{
+		if (area > (rect->boundingRect().width() * rect->boundingRect().height()))
+			newZ = defaultz;
+		else
+			newZ = rect->zValue();
+	}
+	else
+		newZ = defaultz;
+
+	setZValue(((double)1 / (area == 0? 1 : area)) + newZ);
+}
+
+#endif
+
+//END Kolf::Slope
+//BEGIN Kolf::SlopeConfig
+
+Kolf::SlopeConfig::SlopeConfig(Kolf::Slope* slope, QWidget* parent)
+	: Config(parent)
+{
+	QGridLayout* layout = new QGridLayout(this);
+
+	KComboBox* typeBox = new KComboBox(this);
+	typeBox->addItems(g_slopeData->translatedGradientKeys);
+	typeBox->setCurrentIndex(slope->slopeType());
+	connect(typeBox, SIGNAL(currentIndexChanged(int)), slope, SLOT(setSlopeType(int)));
+	layout->addWidget(typeBox, 0, 0, 1, 2);
+
+	QCheckBox* reversed = new QCheckBox(i18n("Reverse direction"), this);
+	reversed->setChecked(slope->isReversed());
+	connect(reversed, SIGNAL(toggled(bool)), slope, SLOT(setReversed(bool)));
+	layout->addWidget(reversed, 1, 0);
+
+	QCheckBox* stuck = new QCheckBox(i18n("Unmovable"), this);
+	stuck->setChecked(slope->isStuckOnGround());
+	stuck->setWhatsThis(i18n("Whether or not this slope can be moved by other objects, like floaters."));
+	connect(stuck, SIGNAL(toggled(bool)), slope, SLOT(setStuckOnGround(bool)));
+	layout->addWidget(stuck, 1, 1);
+
+	layout->addWidget(new QLabel(i18n("Grade:"), this), 2, 0);
+
+	KDoubleNumInput* grade = new KDoubleNumInput(this);
+	grade->setRange(0, 8, 1, true);
+	grade->setValue(slope->grade());
+	connect(grade, SIGNAL(valueChanged(double)), slope, SLOT(setGrade(double)));
+	layout->addWidget(grade, 2, 1);
+
+	layout->setRowStretch(4, 10);
+}
+
+//END Kolf::SlopeConfig
+//BEGIN Kolf::SlopeOverlay
+
+Kolf::SlopeOverlay::SlopeOverlay(Kolf::Slope* slope)
+	: Kolf::Overlay(slope, slope, true) //true = add shape to outlines
+{
+	//TODO: code duplication to Kolf::LandscapeOverlay and Kolf::RectangleOverlay
+	for (int i = 0; i < 4; ++i)
+	{
+		Kolf::OverlayHandle* handle = new Kolf::OverlayHandle(Kolf::OverlayHandle::CircleShape, this);
+		m_handles << handle;
+		addHandle(handle);
+		connect(handle, SIGNAL(moveRequest(QPointF)), this, SLOT(moveHandle(QPointF)));
+	}
+}
+
+void Kolf::SlopeOverlay::update()
+{
+	Kolf::Overlay::update();
+	const QRectF rect = qitem()->boundingRect();
+	m_handles[0]->setPos(rect.topLeft());
+	m_handles[1]->setPos(rect.topRight());
+	m_handles[2]->setPos(rect.bottomLeft());
+	m_handles[3]->setPos(rect.bottomRight());
+}
+
+void Kolf::SlopeOverlay::moveHandle(const QPointF& handleScenePos)
+{
+	Kolf::OverlayHandle* handle = qobject_cast<Kolf::OverlayHandle*>(sender());
+	const int handleIndex = m_handles.indexOf(handle);
+	Kolf::Slope* item = dynamic_cast<Kolf::Slope*>(qitem());
+	const QPointF handlePos = mapFromScene(handleScenePos);
+	//modify bounding rect using new handlePos
+	QRectF rect(QPointF(), item->size());
+	if (handleIndex % 2 == 0)
+		rect.setLeft(qMin(handlePos.x(), rect.right()));
+	else
+		rect.setRight(qMax(handlePos.x(), rect.left()));
+	if (handleIndex < 2)
+		rect.setTop(qMin(handlePos.y(), rect.bottom()));
+	else
+		rect.setBottom(qMax(handlePos.y(), rect.top()));
+	item->moveBy(rect.x(), rect.y());
+	item->setSize(rect.size());
+}
+
+//END Kolf::SlopeOverlay
 
 #include "landscape.moc"

@@ -118,28 +118,6 @@ private:
 
 typedef QList<Player> PlayerList;
 
-class RectPoint : public QGraphicsEllipseItem, public CanvasItem
-{
-public:
-	RectPoint(const QColor &color, Tagaro::SpriteObjectItem *rect, QGraphicsItem *parent, b2World* world);
-	void dontMove() { dontmove = true; }
-	virtual void moveBy(double dx, double dy);
-	virtual Config *config(QWidget *parent);
-	virtual bool deleteable() const { return false; }
-	virtual bool cornerResize() const { return true; }
-	virtual CanvasItem *itemToDelete() { return dynamic_cast<CanvasItem *>(rect); }
-	void setSizeFactor(double newFactor) { m_sizeFactor = newFactor; }
-	virtual void setSize(const QSizeF& size);
-
-	virtual QPointF getPosition() const { return QGraphicsItem::pos(); }
-protected:
-	Tagaro::SpriteObjectItem *rect;
-	double m_sizeFactor;
-
-private:
-	bool dontmove;
-};
-
 class Putter : public QGraphicsLineItem, public CanvasItem
 {
 public:
