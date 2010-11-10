@@ -118,16 +118,6 @@ private:
 
 typedef QList<Player> PlayerList;
 
-class HintedLineItem : public QGraphicsLineItem
-{
-public:
-	HintedLineItem(bool antialiased, QGraphicsItem *parent);
-
-	virtual void paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget);
-private:
-	bool m_antialiased;
-};
-
 class RectPoint : public QGraphicsEllipseItem, public CanvasItem
 {
 public:
@@ -225,7 +215,7 @@ public:
 	virtual bool collision(Ball *ball);
 };
 
-class Putter : public HintedLineItem, public CanvasItem
+class Putter : public QGraphicsLineItem, public CanvasItem
 {
 public:
 	Putter(QGraphicsItem* parent, b2World* world);

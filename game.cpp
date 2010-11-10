@@ -32,7 +32,6 @@
 #include <QLabel>
 #include <QMouseEvent>
 #include <QSlider>
-#include <QStyleOptionGraphicsItem>
 #include <QTimer>
 #include <QVBoxLayout>
 #include <KFileDialog>
@@ -828,7 +827,7 @@ bool Sand::collision(Ball *ball)
 /////////////////////////
 
 Putter::Putter(QGraphicsItem* parent, b2World* world)
-: HintedLineItem(true, parent)
+: QGraphicsLineItem(parent)
 , CanvasItem(world)
 {
 	setData(0, Rtti_Putter);
@@ -838,7 +837,7 @@ Putter::Putter(QGraphicsItem* parent, b2World* world)
 	putterWidth = 11;
 	angle = 0;
 
-	guideLine = new HintedLineItem(true, this);
+	guideLine = new QGraphicsLineItem(this);
 	guideLine->setPen(QPen(Qt::white));
 	guideLine->setZValue(998.8);
 
@@ -948,20 +947,6 @@ void Putter::finishMe()
 	guideLine->setLine(midPoint.x(), midPoint.y(), -cos(angle) * guideLineLength * 4, sin(angle) * guideLineLength * 4);
 
 	setLine(start.x(), start.y(), end.x(), end.y());
-}
-
-/////////////////////////
-
-HintedLineItem::HintedLineItem(bool antialiased, QGraphicsItem *parent)
-	: QGraphicsLineItem(parent)
-	, m_antialiased(antialiased)
-{
-}
-
-void HintedLineItem::paint(QPainter *p, const QStyleOptionGraphicsItem *style, QWidget *widget)
-{
-	p->setRenderHint(QPainter::Antialiasing, m_antialiased);
-	QGraphicsLineItem::paint(p, style, widget);
 }
 
 /////////////////////////
