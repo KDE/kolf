@@ -215,4 +215,21 @@ class EllipticalCanvasItem : public Tagaro::SpriteObjectItem, public CanvasItem
 		Kolf::EllipseShape* m_shape;
 };
 
+class ArrowItem : public QGraphicsPathItem
+{
+	public:
+		ArrowItem(QGraphicsItem* parent);
+
+		qreal angle() const;
+		void setAngle(qreal angle);
+		qreal length() const;
+		void setLength(qreal length);
+		bool isReversed() const;
+		void setReversed(bool reversed);
+	private:
+		void updatePath();
+		qreal m_angle, m_length;
+		bool m_reversed;
+};
+
 #endif

@@ -99,9 +99,7 @@ private:
 	void updatePixmap();
 	bool stuckOnGround;
 
-	void clearArrows();
-
-	QList<Arrow *> arrows;
+	QList<ArrowItem*> m_arrows;
 	QGraphicsSimpleTextItem *text;
 	RectPoint *point;
 };

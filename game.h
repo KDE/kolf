@@ -128,35 +128,6 @@ private:
 	bool m_antialiased;
 };
 
-class Arrow : public HintedLineItem
-{
-public:
-	Arrow(QGraphicsItem *parent);
-	void setAngle(double newAngle) { m_angle = newAngle; }
-	double angle() const { return m_angle; }
-	void setLength(double newLength) { m_length = newLength; }
-	double length() const { return m_length; }
-	void setReversed(bool yes) { m_reversed = yes; }
-	bool reversed() const { return m_reversed; }
-	virtual void setVisible(bool);
-	virtual void setPen(QPen p);
-	void aboutToDie();
-	virtual void moveBy(double, double);
-	void updateSelf();
-	virtual void setZValue(double newz);
-
-private:
-	/*
-	 * base numbers are the size or position when no resizing has taken place (i.e. the defaults)
-	 */
-	double baseLineThickness;
-	double m_angle;
-	double m_length;
-	bool m_reversed;
-	QGraphicsLineItem *line1;
-	QGraphicsLineItem *line2;
-};
-
 class RectPoint : public QGraphicsEllipseItem, public CanvasItem
 {
 public:

@@ -32,7 +32,6 @@ namespace Kolf
 	{
 		public:
 			BlackHoleExit(Kolf::BlackHole* blackHole, QGraphicsItem* parent, b2World* world);
-			virtual void aboutToDie();
 			virtual void moveBy(double dx, double dy);
 			virtual bool deleteable() const { return false; }
 			virtual bool canBeMovedByOthers() const { return true; }
@@ -42,13 +41,12 @@ namespace Kolf
 			virtual void hideInfo();
 			void updateArrowAngle();
 			void updateArrowLength();
-			void setArrowPen(const QPen& pen);
 			virtual Config* config(QWidget* parent);
 
 			virtual QPointF getPosition() const { return QGraphicsItem::pos(); }
 		protected:
 			BlackHole* m_blackHole;
-			Arrow* m_arrow;
+			ArrowItem* m_arrow;
 	};
 
 	class BlackHoleTimer : public QObject

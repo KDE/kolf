@@ -269,3 +269,70 @@ void EllipticalCanvasItem::loadSize(KConfigGroup* group)
 }
 
 //END EllipticalCanvasItem
+//BEGIN ArrowItem
+
+ArrowItem::ArrowItem(QGraphicsItem* parent)
+	: QGraphicsPathItem(parent)
+	, m_angle(0), m_length(20)
+	, m_reversed(false)
+{
+	updatePath();
+	setPen(QPen(Qt::black));
+	setBrush(Qt::NoBrush);
+}
+
+qreal ArrowItem::angle() const
+{
+	return m_angle;
+}
+
+void ArrowItem::setAngle(qreal angle)
+{
+	if (m_angle != angle)
+	{
+		m_angle = angle;
+		updatePath();
+	}
+}
+
+qreal ArrowItem::length() const
+{
+	return m_length;
+}
+
+void ArrowItem::setLength(qreal length)
+{
+	if (m_length != length)
+	{
+		m_length = qMax<qreal>(length, 0.0);
+		updatePath();
+	}
+}
+
+bool ArrowItem::isReversed() const
+{
+	return m_reversed;
+}
+
+void ArrowItem::setReversed(bool reversed)
+{
+	if (m_reversed != reversed)
+	{
+		m_reversed = reversed;
+		updatePath();
+	}
+}
+
+void ArrowItem::updatePath()
+{
+	//the following three points define the arrow tip
+	const QPointF endPoint = Vector::fromMagnitudeDirection(m_length, m_angle);
+	const QPointF point1 = endPoint - Vector::fromMagnitudeDirection(m_length / 2, m_angle + M_PI / 12);
+	const QPointF point2 = endPoint - Vector::fromMagnitudeDirection(m_length / 2, m_angle - M_PI / 12);
+	QPainterPath path;
+	path.addPolygon(QPolygonF() << QPointF() << endPoint);
+	path.addPolygon(QPolygonF() << point1 << endPoint << point2);
+	setPath(path);
+}
+
+//END ArrowItem

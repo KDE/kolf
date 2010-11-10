@@ -78,41 +78,23 @@ bool Slope::terrainCollisions() const
 void Slope::showInfo()
 {
 	showingInfo = true;
-	QList<Arrow *>::const_iterator arrow;
-	for (arrow = arrows.constBegin(); arrow != arrows.constEnd(); ++arrow)
-	{
-		(*arrow)->setZValue(zValue() + .01);
-		(*arrow)->setVisible(true);
-	}
+	foreach (ArrowItem* arrow, m_arrows)
+		arrow->setVisible(true);
 	text->setVisible(true);
 }
 
 void Slope::hideInfo()
 {
 	showingInfo = false;
-	QList<Arrow *>::const_iterator arrow;
-	for (arrow = arrows.constBegin(); arrow != arrows.constEnd(); ++arrow)
-		(*arrow)->setVisible(false);
+	foreach (ArrowItem* arrow, m_arrows)
+		arrow->setVisible(false);
 	text->setVisible(false);
 }
 
 void Slope::aboutToDie()
 {
 	delete point;
-	clearArrows();
 	delete text;
-}
-
-void Slope::clearArrows()
-{
-	QList<Arrow *>::const_iterator arrow;
-	for (arrow = arrows.constBegin(); arrow != arrows.constEnd(); ++arrow)
-	{
-		(*arrow)->setVisible(false);
-		(*arrow)->aboutToDie();
-	}
-	qDeleteAll(arrows);
-	arrows.clear();
 }
 
 QList<QGraphicsItem *> Slope::moveableItems() const
@@ -166,39 +148,38 @@ void Slope::moveArrow()
 
 	if(type == Diagonal) {
 		if(reversed) {
-			xavg = boundingRect().width()*1/4 + x();
-			yavg = boundingRect().height()*1/4 + y();
+			xavg = boundingRect().width()*1/4;
+			yavg = boundingRect().height()*1/4;
 		}
 		else {
-			xavg = boundingRect().width()*3/4 + x();
-			yavg = boundingRect().height()*3/4 + y();
+			xavg = boundingRect().width()*3/4;
+			yavg = boundingRect().height()*3/4;
 		}
 	}
 	else if(type == CrossDiagonal) {
 		if(reversed) {
-			xavg = boundingRect().width()*3/4 + x();
-			yavg = boundingRect().height()*1/4 + y();
+			xavg = boundingRect().width()*3/4;
+			yavg = boundingRect().height()*1/4;
 		}
 		else {
-			xavg = boundingRect().width()*1/4 + x();
-			yavg = boundingRect().height()*3/4 + y();
+			xavg = boundingRect().width()*1/4;
+			yavg = boundingRect().height()*3/4;
 		}
 	}
 	else {
-		xavg = boundingRect().width()/2 + x();
-		yavg = boundingRect().height()/2 + y();
+		xavg = boundingRect().width()/2;
+		yavg = boundingRect().height()/2;
 	}
 
-	QList<Arrow *>::const_iterator arrow;
-	for (arrow = arrows.constBegin(); arrow != arrows.constEnd(); ++arrow)
-		(*arrow)->setPos(xavg, yavg);
+	foreach (ArrowItem* arrow, m_arrows)
+		arrow->setPos(xavg, yavg);
 
 	if (showingInfo)
 		showInfo();
 	else
 		hideInfo();
 
-	text->setPos(xavg - text->boundingRect().width() / 2, yavg - text->boundingRect().height() / 2);
+	text->setPos(x() + xavg - text->boundingRect().width() / 2, y() + yavg - text->boundingRect().height() / 2);
 }
 
 void Slope::editModeChanged(bool changed)
@@ -421,7 +402,8 @@ void Slope::updatePixmap() //this needs work so that the slope colour depends on
 	}
 
 	// we update the arrows in this function
-	clearArrows();
+	qDeleteAll(m_arrows);
+	m_arrows.clear();
 
 	const double length = sqrt(double(width() * width() + height() * height())) / 4;
 
@@ -431,20 +413,17 @@ void Slope::updatePixmap() //this needs work so that the slope colour depends on
 		for (int i = 0; i < 4; ++i)
 		{
 			angle += M_PI / 2;
-			Arrow *arrow = new Arrow(Kolf::findBoard(this));
+			ArrowItem* arrow = new ArrowItem(this);
 			arrow->setLength(length);
 			arrow->setAngle(angle);
-			arrow->setPen(QPen(Qt::black));
 			arrow->setReversed(reversed);
-			arrow->updateSelf();
-			arrows.append(arrow);
+			m_arrows << arrow;
 		}
 	}
 	else
 	{
-		Arrow *arrow = new Arrow(Kolf::findBoard(this));
+		ArrowItem* arrow = new ArrowItem(this);
 		double angle = 0;
-
 		switch(type) {
 			case Horizontal:
 				angle = 0;
@@ -461,20 +440,12 @@ void Slope::updatePixmap() //this needs work so that the slope colour depends on
 			default:
 				break;
 		}
-
-		if (!reversed)
-			angle += M_PI;
-
-		arrow->setAngle(angle);
+		arrow->setAngle(reversed ? angle : angle + M_PI);
 		arrow->setLength(length);
-		arrow->setPen(QPen(Qt::black));
-		arrow->updateSelf();
-
-		arrows.append(arrow);
+		m_arrows << arrow;
 	}
 
 	text->setText(QString::number(grade));
-
 	moveArrow();
 }
 

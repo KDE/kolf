@@ -264,17 +264,10 @@ Kolf::BlackHoleExit::BlackHoleExit(Kolf::BlackHole* blackHole, QGraphicsItem* pa
 	, m_blackHole(blackHole)
 {
 	setData(0, Rtti_NoCollision);
-	m_arrow = new Arrow(this);
+	m_arrow = new ArrowItem(this);
 	setZValue(m_blackHole->zValue());
-	m_arrow->setZValue(zValue() - .00001);
 	updateArrowLength();
 	m_arrow->setVisible(false);
-}
-
-void Kolf::BlackHoleExit::aboutToDie()
-{
-	m_arrow->aboutToDie();
-	delete m_arrow;
 }
 
 void Kolf::BlackHoleExit::moveBy(double dx, double dy)
@@ -293,18 +286,11 @@ void Kolf::BlackHoleExit::updateArrowAngle()
 {
 	// arrows work in a different angle system
 	m_arrow->setAngle(-deg2rad(m_blackHole->curExitDeg()));
-	m_arrow->updateSelf();
 }
 
 void Kolf::BlackHoleExit::updateArrowLength()
 {
 	m_arrow->setLength(10.0 + 5.0 * (double)(m_blackHole->minSpeed() + m_blackHole->maxSpeed()) / 2.0);
-	m_arrow->updateSelf();
-}
-
-void Kolf::BlackHoleExit::setArrowPen(const QPen& pen)
-{
-	m_arrow->setPen(pen);
 }
 
 void Kolf::BlackHoleExit::editModeChanged(bool editing)
