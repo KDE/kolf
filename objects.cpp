@@ -39,7 +39,6 @@ Kolf::BlackHole::BlackHole(QGraphicsItem* parent, b2World* world)
 	setZValue(998.1);
 	setSimulationType(CanvasItem::NoSimulation);
 
-	infoLine = 0;
 	m_minSpeed = 3.0;
 	m_maxSpeed = 5.0;
 	runs = 0;
@@ -50,6 +49,11 @@ Kolf::BlackHole::BlackHole(QGraphicsItem* parent, b2World* world)
 	exitItem = new BlackHoleExit(this, Kolf::findBoard(this), world);
 	exitItem->setPen(QPen(myColor, 6));
 	exitItem->setPos(300, 100);
+
+	m_infoLine = new QGraphicsLineItem(this);
+	m_infoLine->setVisible(false);
+	m_infoLine->setPen(QPen(myColor, 2));
+	m_infoLine->setLine(QLineF(QPointF(), exitItem->pos() - pos()));
 
 	moveBy(0, 0);
 
@@ -66,24 +70,11 @@ void Kolf::BlackHole::setMaxSpeed(double news)
 	m_maxSpeed = news; exitItem->updateArrowLength();
 }
 
-void Kolf::BlackHole::showInfo()
+QList<QGraphicsItem*> Kolf::BlackHole::infoItems() const
 {
-	delete infoLine;
-	infoLine = new QGraphicsLineItem(Kolf::findBoard(this));
-	infoLine->setVisible(true);
-	infoLine->setPen(QPen(exitItem->pen().color(), 2));
-	infoLine->setZValue(10000);
-	infoLine->setLine(QLineF(pos(), exitItem->pos()));
-
-	exitItem->showInfo();
-}
-
-void Kolf::BlackHole::hideInfo()
-{
-	delete infoLine;
-	infoLine = 0;
-
-	exitItem->hideInfo();
+	//HACK: For some reason, updateInfo() is not called as often as it should be.
+	const_cast<Kolf::BlackHole*>(this)->updateInfo();
+	return exitItem->infoItems() << m_infoLine;
 }
 
 void Kolf::BlackHole::editModeChanged(bool editing)
@@ -105,12 +96,7 @@ void Kolf::BlackHole::aboutToDie()
 
 void Kolf::BlackHole::updateInfo()
 {
-	if (infoLine)
-	{
-		infoLine->setVisible(true);
-		infoLine->setLine(QLineF(pos(), exitItem->pos()));
-		exitItem->showInfo();
-	}
+	m_infoLine->setLine(QLineF(QPointF(), exitItem->pos() - pos()));
 }
 
 void Kolf::BlackHole::moveBy(double dx, double dy)
@@ -298,14 +284,9 @@ void Kolf::BlackHoleExit::editModeChanged(bool editing)
 	m_arrow->setVisible(editing);
 }
 
-void Kolf::BlackHoleExit::showInfo()
+QList<QGraphicsItem*> Kolf::BlackHoleExit::infoItems() const
 {
-	m_arrow->setVisible(true);
-}
-
-void Kolf::BlackHoleExit::hideInfo()
-{
-	m_arrow->setVisible(false);
+	return QList<QGraphicsItem*>() << m_arrow;
 }
 
 Config* Kolf::BlackHoleExit::config(QWidget* parent)

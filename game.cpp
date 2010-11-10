@@ -1353,7 +1353,6 @@ KolfGame::~KolfGame()
 		CanvasItem* citem = dynamic_cast<CanvasItem*>(item);
 		if (citem)
 		{
-			citem->hideInfo();
 			citem->aboutToDelete();
 			citem->aboutToDie();
 			delete citem;
@@ -1694,25 +1693,15 @@ void KolfGame::updateShowInfo()
 void KolfGame::setShowInfo(bool yes)
 {
 	m_showInfo = yes;
-
-	if (m_showInfo)
+	QList<QGraphicsItem*> infoItems;
+	foreach (QGraphicsItem* qitem, m_topLevelQItems)
 	{
-		foreach (QGraphicsItem* qitem, m_topLevelQItems)
-		{
-			CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
-			if (citem)
-				citem->showInfo();
-		}
+		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
+		if (citem)
+			infoItems << citem->infoItems();
 	}
-	else
-	{
-		foreach (QGraphicsItem* qitem, m_topLevelQItems)
-		{
-			CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
-			if (citem)
-				citem->hideInfo();
-		}
-	}
+	foreach (QGraphicsItem* qitem, infoItems)
+		qitem->setVisible(m_showInfo);
 }
 
 void KolfGame::puttPress()
@@ -1784,7 +1773,6 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 				highlighter->setVisible(false);
 				m_topLevelQItems.removeAll(item);
 				m_moveableQItems.removeAll(item);
-				citem->hideInfo();
 				citem->aboutToDelete();
 				citem->aboutToDie();
 				delete citem;
@@ -2560,8 +2548,6 @@ void KolfGame::openFile()
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 		if (citem)
 		{
-			// sometimes info is still showing
-			citem->hideInfo();
 			citem->aboutToDie();
 			delete citem;
 		}
@@ -2801,10 +2787,8 @@ void KolfGame::addNewObject(const QString& identifier)
 
 	sceneItem->setGame(this);
 
-	if (m_showInfo)
-		sceneItem->showInfo();
-	else
-		sceneItem->hideInfo();
+	foreach (QGraphicsItem* qitem, sceneItem->infoItems())
+		qitem->setVisible(m_showInfo);
 
 	sceneItem->editModeChanged(editing);
 
@@ -2920,8 +2904,6 @@ void KolfGame::clearHole()
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 		if (citem)
 		{
-			// sometimes info is still showing
-			citem->hideInfo();
 			citem->aboutToDie();
 			delete citem;
 		}

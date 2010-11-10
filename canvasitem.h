@@ -76,10 +76,6 @@ public:
 	virtual bool terrainCollisions() const { return false; }
 	///Returns whether or not this item lifts items on top of it.
 	virtual bool vStrut() const { return false; }
-	///Show extra item info
-	virtual void showInfo() {}
-	///Hide extra item info
-	virtual void hideInfo() {}
 	///update your Z value (this is called by various things when perhaps the value should change) if this is called by a vStrut, it will pass 'this'.
 	virtual void updateZ(QGraphicsItem * /*vStrut*/ = 0) {}
 	///clean up for prettyness
@@ -158,6 +154,9 @@ private:
 
 		QList<Kolf::Shape*> shapes() const { return m_shapes; }
 		Kolf::Overlay* overlay(bool createIfNecessary = true);
+		///@return items inside this CanvasItem which shall only be shown when
+		///the user toggles additional info. Hide these items by default!
+		virtual QList<QGraphicsItem*> infoItems() const { return QList<QGraphicsItem*>(); }
 
 		///This is the velocity used by the physics engine: In each time step,
 		///the position of this canvas item changes by the value of this property.

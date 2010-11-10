@@ -37,8 +37,7 @@ namespace Kolf
 			virtual bool canBeMovedByOthers() const { return true; }
 			virtual void editModeChanged(bool editing);
 			virtual void setPen(const QPen& p);
-			virtual void showInfo();
-			virtual void hideInfo();
+			virtual QList<QGraphicsItem*> infoItems() const;
 			void updateArrowAngle();
 			void updateArrowLength();
 			virtual Config* config(QWidget* parent);
@@ -78,8 +77,7 @@ namespace Kolf
 			virtual bool canBeMovedByOthers() const { return true; }
 
 			virtual void aboutToDie();
-			virtual void showInfo();
-			virtual void hideInfo();
+			virtual QList<QGraphicsItem*> infoItems() const;
 			virtual void save(KConfigGroup* cfgGroup);
 			virtual void load(KConfigGroup* cfgGroup);
 			virtual Config* config(QWidget* parent);
@@ -113,7 +111,7 @@ namespace Kolf
 
 		private:
 			int runs;
-			QGraphicsLineItem* infoLine;
+			QGraphicsLineItem* m_infoLine;
 			void finishMe();
 	};
 

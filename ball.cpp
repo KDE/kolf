@@ -49,12 +49,6 @@ Ball::Ball(QGraphicsItem* parent, b2World* world)
 
 	// this sets z
 	setState(Stopped);
-	label->setZValue(zValue() - .1);
-}
-
-void Ball::aboutToDie()
-{
-	delete label;
 }
 
 void Ball::setState(BallState newState)
@@ -180,14 +174,9 @@ BallState Ball::currentState()
 	return state;
 }
 
-void Ball::showInfo()
+QList<QGraphicsItem*> Ball::infoItems() const
 {
-	label->setVisible(isVisible());
-}
-
-void Ball::hideInfo()
-{
-	label->setVisible(false);
+	return QList<QGraphicsItem*>() << label;
 }
 
 void Ball::setName(const QString &name)
@@ -199,6 +188,4 @@ void Ball::setVisible(bool yes)
 {
 	EllipticalCanvasItem::setVisible(yes);
 	setState(state);
-
-	label->setVisible(yes && game && game->isInfoShowing());
 }

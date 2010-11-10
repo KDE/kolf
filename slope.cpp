@@ -37,7 +37,6 @@ Slope::Slope(QGraphicsItem * parent, b2World* world)
 
 	setData(0, 1031);
 	stuckOnGround = false;
-	showingInfo = false;
 
 	gradientKeys[Vertical] = "Vertical";
 	gradientKeys[Horizontal] = "Horizontal";
@@ -57,13 +56,10 @@ Slope::Slope(QGraphicsItem * parent, b2World* world)
 
 	QFont font(QApplication::font());
 	font.setPixelSize(18);
-	text = new QGraphicsSimpleTextItem(Kolf::findBoard(this));
-	text->setZValue(99999.99);
+	text = new QGraphicsSimpleTextItem(this);
 	text->setFont(font);
 	text->setBrush(Qt::white);
-
-	editModeChanged(false);
-	hideInfo();
+	text->setVisible(false);
 
 	// this does setSpriteKey
 	setGradient("Vertical");
@@ -75,26 +71,17 @@ bool Slope::terrainCollisions() const
 	return true;
 }
 
-void Slope::showInfo()
+QList<QGraphicsItem*> Slope::infoItems() const
 {
-	showingInfo = true;
+	QList<QGraphicsItem*> result;
 	foreach (ArrowItem* arrow, m_arrows)
-		arrow->setVisible(true);
-	text->setVisible(true);
-}
-
-void Slope::hideInfo()
-{
-	showingInfo = false;
-	foreach (ArrowItem* arrow, m_arrows)
-		arrow->setVisible(false);
-	text->setVisible(false);
+		result << arrow;
+	return result << text;
 }
 
 void Slope::aboutToDie()
 {
 	delete point;
-	delete text;
 }
 
 QList<QGraphicsItem *> Slope::moveableItems() const
@@ -172,14 +159,12 @@ void Slope::moveArrow()
 	}
 
 	foreach (ArrowItem* arrow, m_arrows)
+	{
 		arrow->setPos(xavg, yavg);
+		arrow->setVisible(text->isVisible());
+	}
 
-	if (showingInfo)
-		showInfo();
-	else
-		hideInfo();
-
-	text->setPos(x() + xavg - text->boundingRect().width() / 2, y() + yavg - text->boundingRect().height() / 2);
+	text->setPos(xavg - text->boundingRect().width() / 2, yavg - text->boundingRect().height() / 2);
 }
 
 void Slope::editModeChanged(bool changed)

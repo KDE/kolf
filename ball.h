@@ -29,7 +29,6 @@ class Ball : public EllipticalCanvasItem
 {
 public:
 	Ball(QGraphicsItem* parent, b2World* world);
-	virtual void aboutToDie();
 
 	BallState currentState();
 
@@ -68,8 +67,7 @@ public:
 	void setDoDetect(bool yes) { m_doDetect = yes; }
 	bool doDetect() const { return m_doDetect; }
 
-	virtual void showInfo();
-	virtual void hideInfo();
+	virtual QList<QGraphicsItem*> infoItems() const;
 	virtual void setName(const QString &);
 	virtual void setVisible(bool yes);
 

@@ -49,8 +49,7 @@ public:
 
 	virtual void aboutToDie();
 
-	virtual void showInfo();
-	virtual void hideInfo();
+	virtual QList<QGraphicsItem*> infoItems() const;
 	virtual void editModeChanged(bool changed);
 	virtual bool canBeMovedByOthers() const { return !stuckOnGround; }
 	virtual QList<QGraphicsItem *> moveableItems() const;
@@ -92,7 +91,6 @@ public:
 private:
 	GradientType type;
 	inline void setType(GradientType type);
-	bool showingInfo;
 	double grade;
 	bool reversed;
 	QColor color;
