@@ -263,7 +263,6 @@ public:
 	void updateMouse();
 	void ballMoved();
 	void updateHighlighter();
-	QGraphicsItem *curSelectedItem() const { return selectedItem; }
 	void setBorderWalls(bool);
 	void setInPlay(bool yes) { inPlay = yes; }
 	bool isInPlay() { return inPlay; }

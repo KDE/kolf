@@ -98,11 +98,6 @@ void Ball::moveBy(double dx, double dy)
 		game->ballMoved();
 }
 
-void Ball::setVelocity(const Vector& velocity)
-{
-	CanvasItem::setPhysicalVelocity(velocity);
-}
-
 void Ball::collisionDetect()
 {
 	if (!isVisible() || state == Holed || !m_doDetect)
@@ -113,7 +108,7 @@ void Ball::collisionDetect()
 	if (m_collisionId == 1 && !velocity().isNull())
 		friction();
 
-	const double initialVelocity = velocity().magnitude();
+	const double initialVelocity = Vector(velocity()).magnitude();
 	const double minSpeed = .06;
 
 	QList<QGraphicsItem *> items = collidingItems();
@@ -158,7 +153,7 @@ void Ball::collisionDetect()
 		}
 	}
 
-	const double currentVelocity = velocity().magnitude();
+	const double currentVelocity = Vector(velocity()).magnitude();
 	const double velocityChange = qAbs(initialVelocity - currentVelocity);
 
 	if(currentVelocity < minSpeed && velocityChange < minSpeed && currentVelocity)

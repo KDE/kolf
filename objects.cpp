@@ -147,7 +147,7 @@ void Kolf::BlackHole::shotStarted()
 bool Kolf::BlackHole::collision(Ball* ball)
 {
 	//miss if speed too high
-	const double speed = ball->velocity().magnitude();
+	const double speed = Vector(ball->velocity()).magnitude();
 	if (speed > 3.75)
 		return true;
 	// is center of ball in cup?
@@ -339,7 +339,7 @@ Kolf::Overlay* Kolf::Cup::createOverlay()
 bool Kolf::Cup::collision(Ball* ball)
 {
 	//miss if speed too high
-	const double speed = ball->velocity().magnitude();
+	const double speed = Vector(ball->velocity()).magnitude();
 	if (speed > 3.75)
 		return true;
 	//miss if center of ball not inside cup

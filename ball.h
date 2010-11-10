@@ -48,9 +48,6 @@ public:
 	void friction();
 	void collisionDetect();
 
-	virtual void setVelocity(const Vector& velocity);
-	Vector velocity() const { return CanvasItem::physicalVelocity(); }
-
 	int addStroke() const { return m_addStroke; }
 	bool placeOnGround(Vector &v) { v = m_pogOldVelocity; return m_placeOnGround; }
 	void setAddStroke(int newStrokes) { m_addStroke = newStrokes; }

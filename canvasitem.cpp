@@ -136,15 +136,15 @@ void CanvasItem::setSimulationType(CanvasItem::SimulationType type)
 	}
 }
 
-QPointF CanvasItem::physicalVelocity() const
+QPointF CanvasItem::velocity() const
 {
 	b2Vec2 v = m_body->GetLinearVelocity();
 	return QPointF(v.x, v.y);
 }
 
-void CanvasItem::setPhysicalVelocity(const QPointF& newVelocity)
+void CanvasItem::setVelocity(const QPointF& newVelocity)
 {
-	const QPointF currentVelocity = this->physicalVelocity();
+	const QPointF currentVelocity = this->velocity();
 	if (newVelocity != currentVelocity)
 	{
 		const qreal mass = m_body->GetMass();

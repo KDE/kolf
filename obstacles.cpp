@@ -45,7 +45,7 @@ Kolf::Bumper::Bumper(QGraphicsItem* parent, b2World* world)
 bool Kolf::Bumper::collision(Ball* ball)
 {
 	const double maxSpeed = ball->getMaxBumperBounceSpeed();
-	const double speed = qMin(maxSpeed, 1.8 + ball->velocity().magnitude() * .9);
+	const double speed = qMin(maxSpeed, 1.8 + Vector(ball->velocity()).magnitude() * .9);
 	ball->reduceMaxBumperBounceSpeed();
 
 	Vector betweenVector(ball->pos() - pos());
@@ -512,15 +512,15 @@ Kolf::Floater::Floater(QGraphicsItem* parent, b2World* world)
 	, m_velocity(0)
 	, m_position(0)
 	, m_moveByMovesMotionLine(true)
+	, m_animated(true)
 {
 	setMlPosition(m_position);
-	setAnimated(true);
 }
 
 void Kolf::Floater::editModeChanged(bool editing)
 {
 	Kolf::RectangleItem::editModeChanged(editing);
-	setAnimated(!editing);
+	m_animated = !editing;
 	if (editing)
 		setMlPosition(0);
 }
@@ -622,7 +622,7 @@ void Floater::moveBy(double dx, double dy)
 
 void Kolf::Floater::advance(int phase)
 {
-	if (phase != 1 || !isAnimated())
+	if (phase != 1 || !m_animated)
 		return;
 	//determine movement step
 	const qreal mlLength = m_motionLine.length();
@@ -792,7 +792,6 @@ Kolf::Windmill::Windmill(QGraphicsItem* parent, b2World* world)
 	setWallAllowed(Kolf::BottomWallIndex, false);
 	m_guardWall->setLine(QLineF());
 	updateWallPosition();
-	setAnimated(true);
 }
 
 bool Kolf::Windmill::guardAtTop() const

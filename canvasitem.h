@@ -50,26 +50,14 @@ public:
 	virtual ~CanvasItem();
 	///load your settings from the KConfigGroup, which represents a course.
 	virtual void load(KConfigGroup *) {}
-	///returns a bool that is true if your item needs to load after other items
-	virtual bool loadLast() const { return false; }
-	///called if the item is made by user while editing, with the item that was selected on the hole;
-	virtual void selectedItem(QGraphicsItem * /*item*/) {}
 	///save your settings.
 	virtual void save(KConfigGroup *cfg);
 	///called for information when shot started
 	virtual void shotStarted() {}
-	///called right before any items are saved.
-	virtual void aboutToSave() {}
-	///called right after all items are saved.
-	virtual void savingDone() {}
 	///called when the edit mode has been changed.
 	virtual void editModeChanged(bool editing);
-	///The item should delete any other objects it's created. DO NOT DO THIS KIND OF STUFF IN THE DESTRUCTOR!
-	virtual void aboutToDie() {}
 	///Returns the object to get rid of when the delete button is pressed on this item.
 	virtual CanvasItem *itemToDelete() { return this; }
-	///called when user presses delete key while editing. This is very rarely reimplemented, and generally shouldn't be.
-	virtual void aboutToDelete() {}
 	///Returns whether this item should be able to be deleted by user while editing.
 	virtual bool deleteable() const { return true; }
 	///called if fastAdvance is enabled
@@ -80,16 +68,12 @@ public:
 	virtual bool vStrut() const { return false; }
 	///update your Z value (this is called by various things when perhaps the value should change) if this is called by a vStrut, it will pass 'this'.
 	virtual void updateZ(QGraphicsItem * /*vStrut*/ = 0) {}
-	///clean up for prettyness
-	virtual void clean() {}
 	///returns whether this item can be moved by others (if you want to move an item, you should honor this!)
 	virtual bool canBeMovedByOthers() const { return false; }
 	///Returns a Config that can be used to configure this item by the user. The default implementation returns one that says 'No configuration options'.
 	virtual Config *config(QWidget *parent) { return new DefaultConfig(parent); }
 	///Returns other items that should be moveable (besides this one of course).
 	virtual QList<QGraphicsItem *> moveableItems() const { return QList<QGraphicsItem *>(); }
-	///Returns whether this can be moved by the user while editing.
-	virtual bool moveable() const { return true; }
 
 	void setId(int newId) { m_id = newId; }
 	int curId() const { return m_id; }
@@ -103,18 +87,10 @@ public:
 	///Reimplement if you want extra items to have access to the game object. playSound() relies on having this.
 	virtual void setGame(KolfGame *game) { this->game = game; }
 
-	///returns whether this is a corner resizer
-	virtual bool cornerResize() const { return false; }
-
 	QString name() const { return m_name; }
 	void setName(const QString &newname) { m_name = newname; }
 	virtual void setSize(const QSizeF&) {}
 
-	///custom animation code
-	bool isAnimated() const { return m_animated; }
-	void setAnimated(bool animated) { m_animated = animated; }
-	virtual void setVelocity(const Vector& velocity) { m_velocity = velocity; }
-	Vector velocity() const { return m_velocity; }
 	virtual void moveBy(double , double) { kDebug(12007) << "Warning, empty moveBy used";} //needed so that float can call the own custom moveBy()s of everything on it
 
 	//The following is needed temporarily while CanvasItem is not a QGraphicsItem by itself.
@@ -129,9 +105,6 @@ protected:
 private:
 	QString m_name;
 	int m_id;
-	///custom animation code
-	bool m_animated;
-	Vector m_velocity;
 
 //AFTER THIS LINE follows what I have inserted during the refactoring
 	public:
@@ -163,8 +136,8 @@ private:
 
 		///This is the velocity used by the physics engine: In each time step,
 		///the position of this canvas item changes by the value of this property.
-		QPointF physicalVelocity() const;
-		void setPhysicalVelocity(const QPointF& physicalVelocity);
+		QPointF velocity() const;
+		void setVelocity(const QPointF& velocity);
 	protected:
 		void addShape(Kolf::Shape* shape);
 		///Configure how this object will participate in physical simulation.

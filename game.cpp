@@ -530,7 +530,6 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 			highestLog = (*it).scores().count();
 
 		(*it).ball()->setGame(this);
-		(*it).ball()->setAnimated(true);
 	}
 
 	// here only for saved games
@@ -609,12 +608,7 @@ KolfGame::~KolfGame()
 	foreach (QGraphicsItem* item, itemsCopy)
 	{
 		CanvasItem* citem = dynamic_cast<CanvasItem*>(item);
-		if (citem)
-		{
-			citem->aboutToDelete();
-			citem->aboutToDie();
-			delete citem;
-		}
+		delete citem;
 	}
 
 	delete cfg;
@@ -721,7 +715,7 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 		}
 
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(list.first());
-		if (!citem || !citem->moveable())
+		if (!citem)
 		{
 			emit newSelectedItem(&holeInfo);
 			return;
@@ -736,11 +730,7 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 					movingItem = selectedItem;
 					movingCanvasItem = dynamic_cast<CanvasItem *>(movingItem);
 					moving = true;
-
-					if (citem->cornerResize())
-						setCursor(Qt::SizeFDiagCursor);
-					else
-						setCursor(Qt::SizeAllCursor);
+					setCursor(Qt::SizeAllCursor);
 
 					emit newSelectedItem(citem);
 					highlighter->setVisible(true);
@@ -1031,8 +1021,6 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 				highlighter->setVisible(false);
 				m_topLevelQItems.removeAll(item);
 				m_moveableQItems.removeAll(item);
-				citem->aboutToDelete();
-				citem->aboutToDie();
 				delete citem;
 				selectedItem = 0;
 				emit newSelectedItem(&holeInfo);
@@ -1107,7 +1095,7 @@ void KolfGame::timeout()
 	}
 
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-		if ((*it).ball()->forceStillGoing() || ((*it).ball()->curState() == Rolling && (*it).ball()->velocity().magnitude() > 0 && (*it).ball()->isVisible()))
+		if ((*it).ball()->forceStillGoing() || ((*it).ball()->curState() == Rolling && Vector((*it).ball()->velocity()).magnitude() > 0 && (*it).ball()->isVisible()))
 			return;
 
 	int curState = curBall->curState();
@@ -1186,8 +1174,8 @@ void KolfGame::fastTimeout()
 		}
 	}
 	//step world
-	//NOTE: I previously set timeStep to 1.0 so that CItem's physicalVelocity()
-	//corresponds to the position change per step. In this case, the physical
+	//NOTE: I previously set timeStep to 1.0 so that CItem's velocity()
+	//corresponds to the position change per step. In this case, the
 	//velocity would be scaled by Kolf::Box2DScaleFactor, which would result in
 	//very small velocities (below Box2D's internal cutoff thresholds!) for
 	//usual movements. Therefore, we apply the scaling to the timestep instead.
@@ -1806,7 +1794,6 @@ void KolfGame::openFile()
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 		if (citem)
 		{
-			citem->aboutToDie();
 			delete citem;
 		}
 	}
@@ -1829,7 +1816,6 @@ void KolfGame::openFile()
 	holeInfo.setPar(curPar);
 	holeInfo.borderWallsChanged(cfgGroup.readEntry("borderWalls", holeInfo.borderWalls()));
 	holeInfo.setMaxStrokes(cfgGroup.readEntry("maxstrokes", 10));
-	bool hasFinalLoad = cfgGroup.readEntry("hasFinalLoad", true);
 
 	QStringList missingPlugins;
 
@@ -1901,11 +1887,8 @@ void KolfGame::openFile()
 			newItem->setVisible(true);
 
 			// make things actually show
-			if (!hasFinalLoad)
-			{
-				cfgGroup = KConfigGroup(cfg->group(makeGroup(id, curHole, sceneItem->name(), x, y)));
-				sceneItem->load(&cfgGroup);
-			}
+			cfgGroup = KConfigGroup(cfg->group(makeGroup(id, curHole, sceneItem->name(), x, y)));
+			sceneItem->load(&cfgGroup);
 		}
 		else if (name != "hole" && !missingPlugins.contains(name))
 			missingPlugins.append(name);
@@ -1942,38 +1925,6 @@ void KolfGame::openFile()
 	QList<QGraphicsItem *>::const_iterator qsceneItem;
 	QList<CanvasItem *> todo;
 	QList<QGraphicsItem *> qtodo;
-	if (hasFinalLoad)
-	{
-		for (qsceneItem = m_topLevelQItems.constBegin(); qsceneItem != m_topLevelQItems.constEnd(); ++qsceneItem)
-		{
-			if (dynamic_cast<Ball*>(*qsceneItem)) continue; //skip balls
-			CanvasItem *item = dynamic_cast<CanvasItem *>(*qsceneItem);
-			if (item)
-			{
-				if (item->loadLast())
-				{
-					qtodo.append(*qsceneItem);
-					todo.append(item);
-				}
-				else
-				{
-					QString group = makeGroup(item->curId(), curHole, item->name(), (int)(*qsceneItem)->x(), (int)(*qsceneItem)->y());
-					cfgGroup = KConfigGroup(cfg->group(group));
-					item->load(&cfgGroup);
-				}
-			}
-		}
-
-		QList<CanvasItem *>::const_iterator citem;
-		qsceneItem = qtodo.constBegin();
-		for (citem = todo.constBegin(); citem != todo.constEnd(); ++citem)
-		{
-			cfgGroup = KConfigGroup(cfg->group(makeGroup((*citem)->curId(), curHole, (*citem)->name(), (int)(*qsceneItem)->x(), (int)(*qsceneItem)->y())));
-			(*citem)->load(&cfgGroup);
-
-			qsceneItem++;
-		}
-	}
 
 	for (qsceneItem = m_topLevelQItems.constBegin(); qsceneItem != m_topLevelQItems.constEnd(); ++qsceneItem)
 	{
@@ -2056,9 +2007,6 @@ void KolfGame::addNewObject(const QString& identifier)
 	newItem->setPos(width/2 - 18, height / 2 - 18);
 	sceneItem->moveBy(0, 0);
 	sceneItem->setSize(newItem->boundingRect().size());
-
-	if (selectedItem)
-		sceneItem->selectedItem(selectedItem);
 
 	setModified(true);
 }
@@ -2162,7 +2110,6 @@ void KolfGame::clearHole()
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 		if (citem)
 		{
-			citem->aboutToDie();
 			delete citem;
 		}
 	}
@@ -2252,21 +2199,6 @@ void KolfGame::save()
 	emit parChanged(curHole, holeInfo.par());
 	emit titleChanged(holeInfo.name());
 
-	// we use this bool for optimization
-	// in openFile().
-	bool hasFinalLoad = false;
-
-	foreach (QGraphicsItem* qitem, m_topLevelQItems)
-	{
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
-		if (citem)
-		{
-			citem->aboutToSave();
-			if (citem->loadLast())
-				hasFinalLoad = true;
-		}
-	}
-
 	const QStringList groups = cfg->groupList();
 
 	// wipe out all groups from this hole
@@ -2281,8 +2213,6 @@ void KolfGame::save()
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 		if (citem)
 		{
-			citem->clean();
-
 			cfgGroup = KConfigGroup(cfg->group(makeGroup(citem->curId(), curHole, citem->name(), (int)qitem->x(), (int)qitem->y())));
 			citem->save(&cfgGroup);
 		}
@@ -2301,17 +2231,8 @@ void KolfGame::save()
 	cfgGroup.writeEntry("par", holeInfo.par());
 	cfgGroup.writeEntry("maxstrokes", holeInfo.maxStrokes());
 	cfgGroup.writeEntry("borderWalls", holeInfo.borderWalls());
-	cfgGroup.writeEntry("hasFinalLoad", hasFinalLoad);
 
 	cfg->sync();
-
-	foreach (QGraphicsItem* qitem, m_topLevelQItems)
-	{
-		if (!dynamic_cast<Ball*>(qitem)) continue;
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
-		if (citem)
-			citem->savingDone();
-	}
 
 	setModified(false);
 }

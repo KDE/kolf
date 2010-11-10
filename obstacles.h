@@ -143,7 +143,7 @@ namespace Kolf
 		Q_OBJECT
 		public:
 			RectangleConfig(Kolf::RectangleItem* item, QWidget* parent);
-		protected Q_SLOTS:	
+		protected Q_SLOTS:
 			void setWall(bool hasWall);
 			void wallChanged(Kolf::WallIndex index, bool hasWall, bool wallAllowed);
 		protected:
@@ -185,7 +185,7 @@ namespace Kolf
 			int m_speed;
 			qreal m_velocity;
 			qreal m_position; //parameter on motion line (see QLineF::pointAt)
-			bool m_moveByMovesMotionLine;
+			bool m_moveByMovesMotionLine, m_animated;
 	};
 
 	class FloaterOverlay : public Kolf::RectangleOverlay
