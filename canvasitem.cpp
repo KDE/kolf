@@ -323,6 +323,11 @@ void ArrowItem::setReversed(bool reversed)
 	}
 }
 
+Vector ArrowItem::vector() const
+{
+	return Vector::fromMagnitudeDirection(m_length, m_angle);
+}
+
 void ArrowItem::updatePath()
 {
 	//the following three points define the arrow tip

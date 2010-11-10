@@ -23,11 +23,13 @@
 //NOTE: Only refactored stuff goes into this header.
 
 #include "canvasitem.h"
-#include "game.h" //TODO: remove
+#include "overlay.h"
 
 namespace Kolf
 {
 	class BlackHole;
+	class BlackHoleOverlay;
+
 	class BlackHoleExit : public QGraphicsLineItem, public CanvasItem
 	{
 		public:
@@ -35,7 +37,6 @@ namespace Kolf
 			virtual void moveBy(double dx, double dy);
 			virtual bool deleteable() const { return false; }
 			virtual bool canBeMovedByOthers() const { return true; }
-			virtual void editModeChanged(bool editing);
 			virtual void setPen(const QPen& p);
 			virtual QList<QGraphicsItem*> infoItems() const;
 			void updateArrowAngle();
@@ -45,25 +46,21 @@ namespace Kolf
 			virtual QPointF getPosition() const { return QGraphicsItem::pos(); }
 		protected:
 			BlackHole* m_blackHole;
+			friend class Kolf::BlackHoleOverlay;
 			ArrowItem* m_arrow;
 	};
 
 	class BlackHoleTimer : public QObject
 	{
 		Q_OBJECT
-
 		public:
 			BlackHoleTimer(Ball* ball, double speed, int msec);
-
-		signals:
+		Q_SIGNALS:
 			void eject(Ball* ball, double speed);
 			void halfway();
-
-		protected slots:
-			void mySlot();
-			void myMidSlot();
-
-		protected:
+		private Q_SLOTS:
+			void emitEject();
+		private:
 			double m_speed;
 			Ball* m_ball;
 	};
@@ -82,35 +79,34 @@ namespace Kolf
 			virtual void load(KConfigGroup* cfgGroup);
 			virtual Config* config(QWidget* parent);
 			virtual QList<QGraphicsItem*> moveableItems() const;
-			double minSpeed() const { return m_minSpeed; }
-			double maxSpeed() const { return m_maxSpeed; }
+			double minSpeed() const;
+			double maxSpeed() const;
 			void setMinSpeed(double news);
 			void setMaxSpeed(double news);
 
-			int curExitDeg() const { return exitDeg; }
+			int curExitDeg() const;
 			void setExitDeg(int newdeg);
 
-			virtual void editModeChanged(bool editing);
 			void updateInfo();
-
-			virtual void shotStarted() { runs = 0; }
 
 			virtual void moveBy(double dx, double dy);
 
+			virtual void shotStarted();
 			virtual bool collision(Ball* ball);
-
 		public slots:
 			void eject(Ball* ball, double speed);
 			void halfway();
-
 		protected:
-			int exitDeg;
-			BlackHoleExit* exitItem;
+			virtual Kolf::Overlay* createOverlay();
+
+			int m_exitDeg;
+			friend class Kolf::BlackHoleOverlay;
+			BlackHoleExit* m_exitItem;
 			double m_minSpeed;
 			double m_maxSpeed;
 
 		private:
-			int runs;
+			int m_runs;
 			QGraphicsLineItem* m_infoLine;
 			void finishMe();
 	};
@@ -120,14 +116,27 @@ namespace Kolf
 		Q_OBJECT
 		public:
 			BlackHoleConfig(BlackHole* blackHole, QWidget* parent);
-
-		private slots:
+		private Q_SLOTS:
 			void degChanged(int);
 			void minChanged(double);
 			void maxChanged(double);
-
 		private:
 			BlackHole* m_blackHole;
+	};
+
+	class BlackHoleOverlay : public Kolf::Overlay
+	{
+		Q_OBJECT
+		public:
+			BlackHoleOverlay(Kolf::BlackHole* blackHole);
+			virtual void update();
+		private Q_SLOTS:
+			//interface to handles
+			void moveHandle(const QPointF& handleScenePos);
+		private:
+			QGraphicsLineItem* m_exitIndicator;
+			Kolf::OverlayHandle* m_exitHandle;
+			Kolf::OverlayHandle* m_speedHandle;
 	};
 
 	class Cup : public EllipticalCanvasItem

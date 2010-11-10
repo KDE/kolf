@@ -225,6 +225,8 @@ class ArrowItem : public QGraphicsPathItem
 		void setLength(qreal length);
 		bool isReversed() const;
 		void setReversed(bool reversed);
+
+		Vector vector() const;
 	private:
 		void updatePath();
 		qreal m_angle, m_length;
