@@ -91,6 +91,7 @@ namespace Kolf
 
 	class RectangleItem : public Tagaro::SpriteObjectItem, public CanvasItem
 	{
+		Q_OBJECT
 		public:
 			RectangleItem(const QString& type, QGraphicsItem* parent, b2World* world);
 			virtual ~RectangleItem();
@@ -98,7 +99,9 @@ namespace Kolf
 			virtual bool vStrut() const { return true; }
 
 			bool hasWall(Kolf::WallIndex index) const;
+			bool isWallAllowed(Kolf::WallIndex index) const;
 			void setWall(Kolf::WallIndex index, bool hasWall);
+			void setWallAllowed(Kolf::WallIndex index, bool wallAllowed);
 			virtual void setSize(const QSizeF& size);
 			virtual QPointF getPosition() const;
 			virtual void moveBy(double dx, double dy); 
@@ -111,12 +114,14 @@ namespace Kolf
 			virtual void save(KConfigGroup* group);
 
 			virtual Config* config(QWidget* parent);
+		Q_SIGNALS:
+			void wallChanged(Kolf::WallIndex index, bool hasWall, bool wallAllowed);
 		protected:
 			virtual Kolf::Overlay* createOverlay();
+			virtual void updateWallPosition();
 		private:
-			void updateWallPosition();
-
 			QPen m_wallPen;
+			QVector<bool> m_wallAllowed;
 			QVector<Kolf::Wall*> m_walls;
 			Kolf::RectShape* m_shape;
 	};
@@ -141,6 +146,7 @@ namespace Kolf
 			RectangleConfig(Kolf::RectangleItem* item, QWidget* parent);
 		protected Q_SLOTS:	
 			void setWall(bool hasWall);
+			void wallChanged(Kolf::WallIndex index, bool hasWall, bool wallAllowed);
 		protected:
 			QGridLayout* m_layout;
 			QVector<QCheckBox*> m_wallCheckBoxes;
@@ -171,6 +177,32 @@ namespace Kolf
 		private:
 			QString m_text;
 			QGraphicsTextItem* m_textItem;
+	};
+
+	class Windmill : public Kolf::RectangleItem
+	{
+		Q_OBJECT
+		public:
+			Windmill(QGraphicsItem* parent, b2World* world);
+
+			bool guardAtTop() const;
+			double speed() const;
+			virtual void advance(int phase);
+			virtual void moveBy(double dx, double dy);
+
+			virtual void load(KConfigGroup* group);
+			virtual void save(KConfigGroup* group);
+		public Q_SLOTS:
+			void setGuardAtTop(bool guardAtTop);
+			void setSpeed(int speed);
+		protected:
+			virtual void updateWallPosition();
+		private:
+			Kolf::Wall* m_leftWall;
+			Kolf::Wall* m_rightWall;
+			Kolf::Wall* m_guardWall;
+			bool m_guardAtTop;
+			double m_speed, m_velocity;
 	};
 }
 

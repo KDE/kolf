@@ -25,6 +25,7 @@
 #include <QCheckBox>
 #include <QGridLayout>
 #include <QLabel>
+#include <QSlider>
 #include <QTimer>
 #include <KConfigGroup>
 #include <KLineEdit>
@@ -189,11 +190,13 @@ Kolf::RectangleItem::RectangleItem(const QString& type, QGraphicsItem* parent, b
 	: Tagaro::SpriteObjectItem(Kolf::renderer(), type, parent)
 	, CanvasItem(world)
 	, m_wallPen(QColor("#92772D").darker(), 3)
+	, m_wallAllowed(Kolf::RectangleWallCount, true)
 	, m_walls(Kolf::RectangleWallCount, 0)
 	, m_shape(new Kolf::RectShape(QRectF(0, 0, 1, 1)))
 {
 	setZValue(998);
 	addShape(m_shape);
+	setSimulationType(CanvasItem::NoSimulation);
 	//default size
 	setSize(type == "sign" ? QSize(110, 40) : QSize(80, 40));
 }
@@ -208,10 +211,17 @@ bool Kolf::RectangleItem::hasWall(Kolf::WallIndex index) const
 	return (bool) m_walls[index];
 }
 
+bool Kolf::RectangleItem::isWallAllowed(Kolf::WallIndex index) const
+{
+	return m_wallAllowed[index];
+}
+
 void Kolf::RectangleItem::setWall(Kolf::WallIndex index, bool hasWall)
 {
 	const bool oldHasWall = (bool) m_walls[index];
 	if (oldHasWall == hasWall)
+		return;
+	if (hasWall && !m_wallAllowed[index])
 		return;
 	if (hasWall)
 	{
@@ -226,6 +236,16 @@ void Kolf::RectangleItem::setWall(Kolf::WallIndex index, bool hasWall)
 		m_walls[index] = 0;
 	}
 	propagateUpdate();
+	emit wallChanged(index, hasWall, m_wallAllowed[index]);
+}
+
+void Kolf::RectangleItem::setWallAllowed(Kolf::WallIndex index, bool wallAllowed)
+{
+	m_wallAllowed[index] = wallAllowed;
+	//delete wall if one exists at this position currently
+	if (!wallAllowed)
+		setWall(index, false);
+	emit wallChanged(index, hasWall(index), wallAllowed);
 }
 
 void Kolf::RectangleItem::updateWallPosition()
@@ -267,12 +287,13 @@ void Kolf::RectangleItem::moveBy(double dx, double dy)
 		if (wall)
 			wall->setPos(pos);
 	//update Z order of items on top of vStrut
-	foreach (QGraphicsItem* qitem, collidingItems())
-	{
-		CanvasItem* citem = dynamic_cast<CanvasItem*>(qitem);
-		if (citem)
-			citem->updateZ();
-	}
+	if (vStrut())
+		foreach (QGraphicsItem* qitem, collidingItems())
+		{
+			CanvasItem* citem = dynamic_cast<CanvasItem*>(qitem);
+			if (citem)
+				citem->updateZ();
+		}
 }
 
 void Kolf::RectangleItem::setWallColor(const QColor& color)
@@ -394,9 +415,11 @@ Kolf::RectangleConfig::RectangleConfig(Kolf::RectangleItem* item, QWidget* paren
 	for (int i = 0; i < Kolf::RectangleWallCount; ++i)
 	{
 		QCheckBox* checkBox = m_wallCheckBoxes[i] = new QCheckBox(i18n(captions[i]), this);
+		checkBox->setEnabled(item->isWallAllowed((Kolf::WallIndex) i));
 		checkBox->setChecked(item->hasWall((Kolf::WallIndex) i));
 		connect(checkBox, SIGNAL(toggled(bool)), SLOT(setWall(bool)));
 	}
+	connect(item, SIGNAL(wallChanged(Kolf::WallIndex, bool,bool)), SLOT(wallChanged(Kolf::WallIndex, bool,bool)));
 	m_layout->addWidget(new QLabel(i18n("Walls on:")), 0, 0);
 	m_layout->addWidget(m_wallCheckBoxes[0], 0, 1);
 	m_layout->addWidget(m_wallCheckBoxes[1], 1, 0);
@@ -412,6 +435,27 @@ Kolf::RectangleConfig::RectangleConfig(Kolf::RectangleItem* item, QWidget* paren
 		m_layout->addWidget(edit, 4, 0, 1, 3);
 		connect(edit, SIGNAL(textChanged(QString)), sign, SLOT(setText(QString)));
 	}
+	//Kolf::Windmill does not have a special Config class
+	Kolf::Windmill* windmill = qobject_cast<Kolf::Windmill*>(item);
+	if (windmill)
+	{
+		QCheckBox* checkBox = new QCheckBox(i18n("Windmill on top"), this);
+		m_layout->addWidget(checkBox, 4, 0, 1, 3);
+		checkBox->setChecked(windmill->guardAtTop());
+		connect(checkBox, SIGNAL(toggled(bool)), windmill, SLOT(setGuardAtTop(bool)));
+		QHBoxLayout* hlayout = new QHBoxLayout;
+		m_layout->addLayout(hlayout, 5, 0, 1, 3);
+		QLabel* label1 = new QLabel(i18n("Slow"), this);
+		hlayout->addWidget(label1);
+		QSlider* slider = new QSlider(Qt::Horizontal, this);
+		hlayout->addWidget(slider);
+		QLabel* label2 = new QLabel(i18n("Fast"), this);
+		hlayout->addWidget(label2);
+		slider->setRange(1, 10);
+		slider->setPageStep(1);
+		slider->setValue(windmill->speed());
+		connect(slider, SIGNAL(valueChanged(int)), windmill, SLOT(setSpeed(int)));
+	}
 }
 
 void Kolf::RectangleConfig::setWall(bool hasWall)
@@ -422,6 +466,12 @@ void Kolf::RectangleConfig::setWall(bool hasWall)
 		m_item->setWall((Kolf::WallIndex) wallIndex, hasWall);
 		changed();
 	}
+}
+
+void Kolf::RectangleConfig::wallChanged(Kolf::WallIndex index, bool hasWall, bool wallAllowed)
+{
+	m_wallCheckBoxes[index]->setEnabled(wallAllowed);
+	m_wallCheckBoxes[index]->setChecked(hasWall);
 }
 
 //END Kolf::RectangleConfig
@@ -485,5 +535,146 @@ void Kolf::Sign::save(KConfigGroup* group)
 }
 
 //END Kolf::Sign
+//BEGIN Kolf::Windmill
+
+Kolf::Windmill::Windmill(QGraphicsItem* parent, b2World* world)
+	: Kolf::RectangleItem(QLatin1String("windmill"), parent, world)
+	  , m_leftWall(new Kolf::Wall(parent, world))
+	  , m_rightWall(new Kolf::Wall(parent, world))
+	  , m_guardWall(new Kolf::Wall(parent, world))
+	  , m_guardAtTop(false)
+	  , m_speed(0), m_velocity(0)
+{
+	setSpeed(5); //initialize m_speed and m_velocity properly
+	applyWallStyle(m_leftWall);
+	applyWallStyle(m_rightWall);
+	applyWallStyle(m_guardWall); //Z-ordering!
+	m_guardWall->setPen(QPen(Qt::black, 5));
+	setWall(Kolf::TopWallIndex, false);
+	setWall(Kolf::LeftWallIndex, true);
+	setWall(Kolf::RightWallIndex, true);
+	setWallAllowed(Kolf::BottomWallIndex, false);
+	m_guardWall->setLine(QLineF());
+	updateWallPosition();
+	setAnimated(true);
+}
+
+bool Kolf::Windmill::guardAtTop() const
+{
+	return m_guardAtTop;
+}
+
+void Kolf::Windmill::setGuardAtTop(bool guardAtTop)
+{
+	if (m_guardAtTop == guardAtTop)
+		return;
+	m_guardAtTop = guardAtTop;
+	//exchange top and bottom walls
+	if (guardAtTop)
+	{
+		const bool hasWall = this->hasWall(Kolf::TopWallIndex);
+		setWallAllowed(Kolf::BottomWallIndex, true);
+		setWallAllowed(Kolf::TopWallIndex, false);
+		setWall(Kolf::BottomWallIndex, hasWall);
+	}
+	else
+	{
+		const bool hasWall = this->hasWall(Kolf::BottomWallIndex);
+		setWallAllowed(Kolf::BottomWallIndex, false);
+		setWallAllowed(Kolf::TopWallIndex, true);
+		setWall(Kolf::TopWallIndex, hasWall);
+	}
+	//recalculate position of guard walls etc.
+	updateWallPosition();
+	propagateUpdate();
+}
+
+double Kolf::Windmill::speed() const
+{
+	return m_speed;
+}
+
+void Kolf::Windmill::setSpeed(int speed)
+{
+	m_speed = speed;
+	const qreal velocity = speed / 3.0;
+	m_velocity = (m_velocity < 0) ? -velocity : velocity;
+	propagateUpdate();
+}
+
+void Kolf::Windmill::advance(int phase)
+{
+	if (phase == 1)
+	{
+		QLineF guardLine = m_guardWall->line().translated(m_velocity, 0);
+		const qreal maxX = qMax(guardLine.x1(), guardLine.x2());
+		const qreal minX = qMin(guardLine.x1(), guardLine.x2());
+		QRectF rect(QPointF(), size());
+		if (minX < rect.left())
+		{
+			guardLine.translate(rect.left() - minX, 0);
+			m_velocity = qAbs(m_velocity);
+		}
+		else if (maxX > rect.right())
+		{
+			guardLine.translate(rect.right() - maxX, 0);
+			m_velocity = -qAbs(m_velocity);
+		}
+		m_guardWall->setLine(guardLine);
+	}
+}
+
+void Kolf::Windmill::moveBy(double dx, double dy)
+{
+	Kolf::RectangleItem::moveBy(dx, dy);
+	const QPointF pos = this->pos();
+	m_leftWall->setPos(pos);
+	m_rightWall->setPos(pos);
+	m_guardWall->setPos(pos);
+}
+
+void Kolf::Windmill::updateWallPosition()
+{
+	Kolf::RectangleItem::updateWallPosition();
+	//parametrize position of guard relative to old rect
+	qreal t = 0.5;
+	if (!m_guardWall->line().isNull())
+	{
+		//this branch is taken unless this method gets called from the ctor
+		const qreal oldLeft = m_leftWall->line().x1();
+		const qreal oldRight = m_rightWall->line().x1();
+		const qreal oldGCenter = m_guardWall->line().pointAt(0.5).x();
+		t = (oldGCenter - oldLeft) / (oldRight - oldLeft);
+	}
+	//set new positions
+	const QRectF rect(QPointF(), size());
+	const QPointF leftEnd = m_guardAtTop ? rect.topLeft() : rect.bottomLeft();
+	const QPointF rightEnd = m_guardAtTop ? rect.topRight() : rect.bottomRight();
+	const QPointF wallExtent(rect.width() / 4, 0);
+	m_leftWall->setLine(QLineF(leftEnd, leftEnd + wallExtent));
+	m_rightWall->setLine(QLineF(rightEnd, rightEnd - wallExtent));
+	//set position of guard to the same relative coordinate as before
+	const qreal gWidth = wallExtent.x() / 1.07 - 2;
+	const qreal gY = m_guardAtTop ? rect.top() - 4 : rect.bottom() + 4;
+	QLineF gLine(rect.left(), gY, rect.left() + gWidth, gY);
+	const qreal currentGCenter = gLine.pointAt(0.5).x();
+	const qreal desiredGCenter = rect.left() + t * rect.width();
+	gLine.translate(desiredGCenter - currentGCenter, 0);
+	m_guardWall->setLine(gLine);
+}
+
+void Kolf::Windmill::load(KConfigGroup* group)
+{
+	setSpeed(group->readEntry("speed", m_speed));
+	setGuardAtTop(!group->readEntry("bottom", !m_guardAtTop));
+}
+
+void Kolf::Windmill::save(KConfigGroup* group)
+{
+	group->writeEntry("speed", m_speed);
+	group->writeEntry("bottom", !m_guardAtTop);
+}
+
+//END Kolf::Windmill
 
 #include "obstacles.moc"
