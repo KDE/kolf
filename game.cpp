@@ -2622,6 +2622,7 @@ void KolfGame::toggleEditMode()
 	}
 
 	whiteBall->setVisible(editing);
+	whiteBall->editModeChanged(editing);
 	highlighter->setVisible(false);
 
 	// shouldn't see putter whilst editing

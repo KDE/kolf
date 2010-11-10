@@ -77,6 +77,9 @@ public:
 public slots:
 	void update() { }
 
+protected:
+	virtual Kolf::Overlay* createOverlay();
+
 private:
 	BallState state;
 

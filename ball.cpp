@@ -19,6 +19,7 @@
 
 #include "ball.h"
 #include "game.h"
+#include "overlay.h"
 #include "shape.h"
 
 #include <QApplication>
@@ -187,4 +188,9 @@ void Ball::setVisible(bool yes)
 {
 	EllipticalCanvasItem::setVisible(yes);
 	setState(state);
+}
+
+Kolf::Overlay* Ball::createOverlay()
+{
+	return new Kolf::Overlay(this, this);
 }
