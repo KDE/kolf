@@ -20,17 +20,16 @@
 #include "game.h"
 #include "itemfactory.h"
 #include "kcomboboxdialog.h"
-#include "overlay.h"
+#include "obstacles.h"
 #include "shape.h"
 
 #include "tagaro/board.h"
 
 #include <QApplication>
-#include <QGridLayout>
+#include <QBoxLayout>
 #include <QCheckBox>
 #include <QLabel>
 #include <QMouseEvent>
-#include <QSlider>
 #include <QTimer>
 #include <KFileDialog>
 #include <KGameRenderer>

@@ -227,6 +227,7 @@ namespace Kolf
 		Q_OBJECT
 		public:
 			Windmill(QGraphicsItem* parent, b2World* world);
+			virtual ~Windmill();
 
 			bool guardAtTop() const;
 			int speed() const;

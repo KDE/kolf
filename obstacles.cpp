@@ -794,6 +794,13 @@ Kolf::Windmill::Windmill(QGraphicsItem* parent, b2World* world)
 	updateWallPosition();
 }
 
+Kolf::Windmill::~Windmill()
+{
+	delete m_leftWall;
+	delete m_rightWall;
+	delete m_guardWall;
+}
+
 bool Kolf::Windmill::guardAtTop() const
 {
 	return m_guardAtTop;

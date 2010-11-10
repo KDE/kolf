@@ -22,6 +22,7 @@
 #include "landscape.h"
 #include "newgame.h"
 #include "objects.h"
+#include "obstacles.h"
 #include "scoreboard.h"
 
 #include <KActionCollection>

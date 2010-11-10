@@ -24,7 +24,6 @@
 
 #include <kolflib_export.h>
 #include "ball.h"
-#include "obstacles.h"
 
 #include "tagaro/scene.h"
 
@@ -40,7 +39,7 @@ class KGameRenderer;
 
 namespace Kolf
 {
-	class LineShape;
+	class Wall;
 };
 namespace Tagaro
 {
