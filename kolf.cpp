@@ -55,7 +55,7 @@ KolfWindow::KolfWindow()
 
 	m_itemFactory.registerType<Slope>("slope", i18n("Slope"));
 	m_itemFactory.registerType<Puddle>("puddle", i18n("Puddle"));
-	m_itemFactory.registerType<Wall>("wall", i18n("Wall"));
+	m_itemFactory.registerType<Kolf::Wall>("wall", i18n("Wall"));
 	m_itemFactory.registerType<Cup>("cup", i18n("Cup"), true); //true == addOnNewHole
 	m_itemFactory.registerType<Sand>("sand", i18n("Sand"));
 	m_itemFactory.registerType<Windmill>("windmill", i18n("Windmill"));

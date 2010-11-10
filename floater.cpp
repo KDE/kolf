@@ -49,11 +49,11 @@ void FloaterGuide::moveBy(double dx, double dy)
 		floater->reset();
 }
 
-void FloaterGuide::setPoints(double xa, double ya, double xb, double yb)
+void FloaterGuide::setLine(const QLineF& line)
 {
-	if (qAbs(xa - xb) > 0 || qAbs(ya - yb) > 0)
+	if (line.p1() != line.p2())
 	{
-		Wall::setPoints(xa, ya, xb, yb);
+		Wall::setLine(line);
 		if (floater)
 			floater->reset();
 	}
@@ -74,9 +74,9 @@ Floater::Floater(QGraphicsItem *parent, b2World* world)
 	noUpdateZ = false;
 	haventMoved = true;
 	wall = new FloaterGuide(this, parent, world);
-	wall->setPoints(100, 100, 200, 200);
+	wall->setLine(QLineF(100, 100, 200, 200));
 	wall->setPen(QPen(wall->pen().color().light(), wall->pen().width() - 1));
-	setPos(wall->endPoint().x(), wall->endPoint().y());
+	setPos(wall->line().p2());
 
 	setTopWallVisible(false);
 	setBotWallVisible(false);
@@ -119,7 +119,8 @@ void Floater::advance(int phase)
 		if (Vector(origin - QPointF(x(), y())).magnitude() > vector.magnitude())
 		{
 			vector.setDirection(vector.direction() + M_PI);
-			origin = (origin == wall->startPoint()? wall->endPoint() : wall->startPoint());
+			const QLineF line = wall->line();
+			origin = (origin == line.p1() ? line.p2() : line.p1());
 
 			setVelocity(-velocity());
 		}
@@ -133,11 +134,10 @@ void Floater::doAdvance()
 
 void Floater::reset()
 {
-	QPointF start = wall->startPointF() + QPointF(wall->x(), wall->y());
-	QPointF end = wall->endPointF() + QPointF(wall->x(), wall->y());
+	const QLineF motionLine = wall->line().translated(wall->pos());
 
-	vector = end - start;
-	origin = end;
+	vector = motionLine.p2() - motionLine.p1();
+	origin = motionLine.p2();
 
 	setPos(origin);
 	moveBy(0, 0);
@@ -176,7 +176,7 @@ void Floater::aboutToSave()
 {
 	setVelocity(velocity());
 	noUpdateZ = true;
-	setPos(wall->endPoint().x() + wall->x(), wall->endPoint().y() + wall->y());
+	setPos(wall->line().p2() + wall->pos());
 	noUpdateZ = false;
 }
 
@@ -236,8 +236,9 @@ void Floater::moveBy(double dx, double dy)
 void Floater::save(KConfigGroup *cfgGroup)
 {
 	cfgGroup->writeEntry("speed", speed);
-	cfgGroup->writeEntry("startPoint", (wall->startPointF() + wall->pos()).toPoint());
-	cfgGroup->writeEntry("endPoint", (wall->endPointF() + wall->pos()).toPoint());
+	const QLineF motionLine = wall->line().translated(wall->pos());
+	cfgGroup->writeEntry("startPoint", motionLine.p1().toPoint());
+	cfgGroup->writeEntry("endPoint", motionLine.p2().toPoint());
 
 	doSave(cfgGroup);
 }
@@ -246,12 +247,11 @@ void Floater::load(KConfigGroup *cfgGroup)
 {
 	setPos(firstPoint.x(), firstPoint.y());
 
-	QPointF start = wall->startPointF() + wall->pos();
-	start = cfgGroup->readEntry("startPoint", start);
-	QPointF end = wall->endPointF() + wall->pos();
-	end = cfgGroup->readEntry("endPoint", end);
-	wall->setPoints(start.x(), start.y(), end.x(), end.y());
-	wall->setPos(0, 0);
+	QLineF motionLine = wall->line().translated(wall->pos());
+	motionLine.setP1(cfgGroup->readEntry("startPoint", motionLine.p1()));
+	motionLine.setP2(cfgGroup->readEntry("endPoint", motionLine.p2()));
+	wall->setLine(motionLine);
+	wall->setPos(QPointF());
 
 	setSpeed(cfgGroup->readEntry("speed", -1));
 

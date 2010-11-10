@@ -37,11 +37,11 @@ private:
 	Floater *floater;
 };
 
-class FloaterGuide : public Wall
+class FloaterGuide : public Kolf::Wall
 {
 public:
 	FloaterGuide(Floater *floater, QGraphicsItem *parent, b2World* world) : Wall(parent, world) { this->floater = floater; almostDead = false; }
-	virtual void setPoints(double xa, double ya, double xb, double yb);
+	virtual void setLine(const QLineF& line);
 	virtual void moveBy(double dx, double dy);
 	virtual Config *config(QWidget *parent);
 	virtual void aboutToDelete();

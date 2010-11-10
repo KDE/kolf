@@ -24,6 +24,7 @@
 
 #include <kolflib_export.h>
 #include "ball.h"
+#include "obstacles.h"
 
 #include "tagaro/scene.h"
 
@@ -387,88 +388,6 @@ private:
 	void finishMe();
 };
 
-class WallPoint;
-class Wall : public HintedLineItem, public CanvasItem
-{
-public:
-	Wall(QGraphicsItem *parent, b2World* world, bool antialiasing = true);
-	virtual void aboutToDie();
-	double dampening;
-
-	void setAlwaysShow(bool yes);
-	virtual void setZValue(double newz);
-	virtual void setPen(QPen p);
-	virtual void save(KConfigGroup *cfgGroup);
-	virtual void load(KConfigGroup *cfgGroup);
-	virtual void selectedItem(QGraphicsItem *item);
-	virtual void editModeChanged(bool changed);
-	virtual void moveBy(double dx, double dy);
-	virtual void setPos(double x, double y);
-	void setPos(const QPointF& p) { setPos(p.x(), p.y()); }
-	virtual void clean();
-
-	// must reimp because we gotta move the end items,
-	// and we do that in moveBy()
-	virtual void setPoints(double xa, double ya, double xb, double yb) { setLine(QLineF(xa, ya, xb, yb)); moveBy(0, 0); }
-
-	virtual QList<QGraphicsItem *> moveableItems() const;
-	virtual void setGame(KolfGame *game);
-	virtual void setVisible(bool);
-
-	QPointF startPointF() const { return line().p1(); }
-	QPointF endPointF() const { return line().p2(); }
-	QPoint startPoint() const { return line().p1().toPoint(); }
-	QPoint endPoint() const { return line().p2().toPoint(); }
-
-	void doAdvance();
-
-	void setLine(const QLineF& line);
-
-	virtual QPointF getPosition() const { return QGraphicsItem::pos(); }
-protected:
-	WallPoint *startItem;
-	WallPoint *endItem;
-	bool editing;
-	Kolf::LineShape* shape;
-
-	virtual Kolf::Overlay* createOverlay();
-private:
-	friend class WallPoint;
-};
-class WallPoint : public QGraphicsEllipseItem, public CanvasItem
-{
-public:
-	WallPoint(bool start, Wall *wall, QGraphicsItem *parent, b2World* world);
-	void setAlwaysShow(bool yes) { alwaysShow = yes; updateVisible(); }
-	virtual void editModeChanged(bool changed);
-	virtual void moveBy(double dx, double dy);
-	virtual bool deleteable() const { return false; }
-	virtual CanvasItem *itemToDelete() { return wall; }
-	virtual void clean();
-	virtual Config *config(QWidget *parent) { return wall->config(parent); }
-	void dontMove() { dontmove = true; }
-	void updateVisible();
-
-	virtual void setSize(const QSizeF& size) { setRect(QRectF(rect().topLeft(), size)); }
-	double width() { return rect().width(); }
-	double height() { return rect().height(); }
-
-	Wall *parentWall() { return wall; }
-
-	virtual QPointF getPosition() const { return QGraphicsItem::pos(); }
-protected:
-	Wall *wall;
-	bool editing;
-	bool visible;
-
-private:
-	bool alwaysShow;
-	bool start;
-	bool dontmove;
-
-	friend class Wall;
-};
-
 class Putter : public HintedLineItem, public CanvasItem
 {
 public:
@@ -570,10 +489,10 @@ public:
 
 	virtual QPointF getPosition() const { return QGraphicsItem::pos(); }
 protected:
-	Wall *topWall;
-	Wall *botWall;
-	Wall *leftWall;
-	Wall *rightWall;
+	Kolf::Wall *topWall;
+	Kolf::Wall *botWall;
+	Kolf::Wall *leftWall;
+	Kolf::Wall *rightWall;
 	RectPoint *point;
 };
 
@@ -610,10 +529,10 @@ protected:
 };
 
 class Windmill;
-class WindmillGuard : public Wall
+class WindmillGuard : public Kolf::Wall
 {
 public:
-	WindmillGuard(QGraphicsItem *parent, b2World* world) : Wall(parent, world, false) {}
+	WindmillGuard(QGraphicsItem *parent, b2World* world) : Kolf::Wall(parent, world) {}
 	void setBetween(double newmin, double newmax) { max = newmax; min = newmin; }
 	virtual void advance(int phase);
 	double getMax() { return max; }
@@ -656,8 +575,8 @@ public:
 
 protected:
 	WindmillGuard *guard;
-	Wall *left;
-	Wall *right;
+	Kolf::Wall *left;
+	Kolf::Wall *right;
 
 	int speedfactor;
 	double speed;
@@ -886,7 +805,7 @@ private:
 	QList<QGraphicsItem*> m_topLevelQItems; //includes balls, but not putter and highlighter
 	QList<QGraphicsItem*> m_moveableQItems;
 
-	QList<Wall *> borderWalls;
+	QList<Kolf::Wall *> borderWalls;
 
 	int timerMsec;
 	int autoSaveMsec;

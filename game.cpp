@@ -282,15 +282,10 @@ Bridge::Bridge(QGraphicsItem *parent, b2World* world, const QString &type)
 	QColor color("#92772D");
 	setZValue(998);
 
-	//not using antialiasing because it looks too blurry here
-	topWall = new Wall(parent, world, false);
-	topWall->setAlwaysShow(true);
-	botWall = new Wall(parent, world, false);
-	botWall->setAlwaysShow(true);
-	leftWall = new Wall(parent, world, false);
-	leftWall->setAlwaysShow(true);
-	rightWall = new Wall(parent, world, false);
-	rightWall->setAlwaysShow(true);
+	topWall = new Kolf::Wall(parent, world);
+	botWall = new Kolf::Wall(parent, world);
+	leftWall = new Kolf::Wall(parent, world);
+	rightWall = new Kolf::Wall(parent, world);
 
 	setWallZ(zValue() + 0.01);
 	setWallColor(color);
@@ -419,10 +414,10 @@ void Bridge::setSize(const QSizeF& size)
 	Tagaro::SpriteObjectItem::setSize(size);
 
 	const qreal width = size.width(), height = size.height();
-	topWall->setPoints(0, 0, width, 0);
-	botWall->setPoints(0, height, width, height);
-	leftWall->setPoints(0, 0, 0, height);
-	rightWall->setPoints(width, 0, width, height);
+	topWall->setLine(QLineF(0, 0, width, 0));
+	botWall->setLine(QLineF(0, height, width, height));
+	leftWall->setLine(QLineF(0, 0, 0, height));
+	rightWall->setLine(QLineF(width, 0, width, height));
 
 	moveBy(0, 0);
 }
@@ -488,17 +483,13 @@ Windmill::Windmill(QGraphicsItem * parent, b2World* world)
 	guard = new WindmillGuard(Kolf::findBoard(this), world);
 	guard->setPen(QPen(Qt::black, 5));
 	guard->setVisible(true);
-	guard->setAlwaysShow(true);
 	setSpeed(5);
 	guard->setZValue(wallZ() + .1);
 
-	//not using antialiasing because it looks too blurry here
-	left = new Wall(Kolf::findBoard(this), world, false);
+	left = new Kolf::Wall(Kolf::findBoard(this), world);
 	left->setPen(wallPen());
-	left->setAlwaysShow(true);
-	right = new Wall(Kolf::findBoard(this), world, false);
+	right = new Kolf::Wall(Kolf::findBoard(this), world);
 	right->setPen(wallPen());
-	right->setAlwaysShow(true);
 	left->setZValue(wallZ());
 	right->setZValue(wallZ());
 	left->setVisible(true);
@@ -590,12 +581,12 @@ void Windmill::setSize(const QSizeF& size)
 	const double indent = width / 4;
 
 	double indentY = m_bottom? height : 0;
-	left->setPoints(0, indentY, indent, indentY);
-	right->setPoints(width - indent, indentY, width, indentY);
+	left->setLine(QLineF(0, indentY, indent, indentY));
+	right->setLine(QLineF(width - indent, indentY, width, indentY));
 
 	guard->setBetween(x(), x() + width);
 	double guardY = m_bottom? height + 4 : -4;
-	guard->setPoints(0, guardY, indent / 1.07 - 2, guardY);
+	guard->setLine(QLineF(0, guardY, indent / 1.07 - 2, guardY));
 }
 
 /////////////////////////
@@ -1498,274 +1489,6 @@ void HintedLineItem::paint(QPainter *p, const QStyleOptionGraphicsItem *style, Q
 
 /////////////////////////
 
-WallPoint::WallPoint(bool start, Wall *wall, QGraphicsItem * parent, b2World* world)
-: QGraphicsEllipseItem(parent)
-, CanvasItem(world)
-{
-	setData(0, Rtti_NoCollision);
-	this->wall = wall;
-	this->start = start;
-	alwaysShow = false;
-	editing = false;
-	visible = false;
-	dontmove = false;
-
-	setPos(start ? wall->startPointF() : wall->endPointF());
-	setPen(QPen(Qt::NoPen));
-}
-
-void WallPoint::clean()
-{
-	double oldWidth = width();
-	setSize(QSizeF(7, 7));
-
-	QList<QGraphicsItem *> l = collidingItems();
-	for (QList<QGraphicsItem *>::Iterator it = l.begin(); it != l.end(); ++it)
-	{
-		if ((*it)->data(0) == data(0))
-		{
-			setPos((*it)->pos());
-			break;
-		}
-	}
-
-	setSize(QSizeF(oldWidth, oldWidth));
-}
-
-void WallPoint::moveBy(double dx, double dy)
-{
-	QGraphicsEllipseItem::moveBy(dx, dy);
-	if (!editing)
-		updateVisible();
-
-	if (dontmove)
-	{
-		dontmove = false;
-		return;
-	}
-
-	if (!wall)
-		return;
-
-	if (start)
-	{
-		wall->setLine(QLineF(pos(), wall->endPointF() + wall->pos()));
-	}
-	else
-	{
-		wall->setLine(QLineF(wall->startPointF() + wall->pos(), pos()));
-	}
-	wall->setPos(0, 0);
-	wall->moveBy(0, 0);
-}
-
-void WallPoint::updateVisible()
-{
-	if (!wall->isVisible())
-	{
-		visible = false;
-		return;
-	}
-
-	visible = true;
-	if (!alwaysShow)
-	{
-		QList<QGraphicsItem *> l = collidingItems();
-		for (QList<QGraphicsItem *>::Iterator it = l.begin(); it != l.end(); ++it)
-			if ((*it)->data(0) == data(0))
-				visible = false;
-	}
-}
-
-void WallPoint::editModeChanged(bool changed)
-{
-	editing = changed;
-	setVisible(true);
-	if (!editing)
-		updateVisible();
-}
-
-/////////////////////////
-
-Wall::Wall(QGraphicsItem *parent, b2World* world, bool antialiased)
-: HintedLineItem(antialiased, parent)
-, CanvasItem(world)
-{
-	setData(0, Rtti_NoCollision);
-	editing = false;
-
-	dampening = 1.2;
-
-	startItem = 0;
-	endItem = 0;
-
-	moveBy(0, 0);
-	setZValue(50);
-
-	startItem = new WallPoint(true, this, parent, world);
-	endItem = new WallPoint(false, this, parent, world);
-	startItem->setVisible(true);
-	endItem->setVisible(true);
-	setPen(QPen(Qt::darkRed, 3));
-
-	HintedLineItem::setLine(QLineF(-15, 10, 15, -5));
-	shape = new Kolf::LineShape(line());
-	addShape(shape);
-
-	moveBy(0, 0);
-
-	editModeChanged(false);
-}
-
-void Wall::selectedItem(QGraphicsItem *item)
-{
-	WallPoint *wallPoint = dynamic_cast<WallPoint *>(item);
-	if (wallPoint) {
-		setLine(QLineF(startPointF(), wallPoint->pos() - pos()));
-	}
-}
-
-void Wall::clean()
-{
-	startItem->clean();
-	endItem->clean();
-}
-
-void Wall::setAlwaysShow(bool yes)
-{
-	startItem->setAlwaysShow(yes);
-	endItem->setAlwaysShow(yes);
-}
-
-void Wall::setVisible(bool yes)
-{
-	QGraphicsLineItem::setVisible(yes);
-	setSimulationType(yes ? CanvasItem::CollisionSimulation : CanvasItem::NoSimulation);
-
-	startItem->setVisible(yes);
-	endItem->setVisible(yes);
-	startItem->updateVisible();
-	endItem->updateVisible();
-}
-
-void Wall::setZValue(double newz)
-{
-	QGraphicsLineItem::setZValue(newz);
-	if (startItem)
-		startItem->setZValue(newz + .002);
-	if (endItem)
-		endItem->setZValue(newz + .001);
-}
-
-void Wall::setPen(QPen p)
-{
-	QGraphicsLineItem::setPen(p);
-
-	if (startItem)
-		startItem->setBrush(p.brush());
-	if (endItem)
-		endItem->setBrush(p.brush());
-}
-
-void Wall::aboutToDie()
-{
-	delete startItem;
-	delete endItem;
-}
-
-void Wall::setGame(KolfGame *game)
-{
-	CanvasItem::setGame(game);
-	startItem->setGame(game);
-	endItem->setGame(game);
-}
-
-QList<QGraphicsItem *> Wall::moveableItems() const
-{
-	return QList<QGraphicsItem*>() << startItem << endItem;
-}
-
-void Wall::moveBy(double dx, double dy)
-{
-	setPos(x() + dx, y() + dy);
-	return;
-}
-
-void Wall::setPos(double x, double y)
-{
-	const QPointF pos(x ,y);
-	QGraphicsLineItem::setPos(pos);
-
-	if (!startItem || !endItem)
-		return;
-
-	startItem->dontMove();
-	endItem->dontMove();
-	startItem->setPos(startPointF() + pos);
-	endItem->setPos(endPointF() + pos);
-}
-
-void Wall::editModeChanged(bool changed)
-{
-	// make big for debugging?
-	const bool debugPoints = false;
-
-	editing = changed;
-	CanvasItem::editModeChanged(editing);
-
-	startItem->setZValue(zValue() + .002);
-	endItem->setZValue(zValue() + .001);
-	startItem->editModeChanged(editing);
-	endItem->editModeChanged(editing);
-
-	double neww = 0;
-	if (changed || debugPoints)
-		neww = 10;
-	else
-		neww = pen().width();
-
-	startItem->setRect(-0.5*neww, -0.5*neww, neww, neww);
-	endItem->setRect(-0.5*neww, -0.5*neww, neww, neww);
-
-	moveBy(0, 0);
-}
-
-void Wall::setLine(const QLineF& line)
-{
-	HintedLineItem::setLine(line);
-	shape->setLine(line);
-}
-
-Kolf::Overlay* Wall::createOverlay()
-{
-	return new Kolf::Overlay(this, this);
-}
-
-void Wall::load(KConfigGroup *cfgGroup)
-{
-	QPoint start(startPoint());
-	start = cfgGroup->readEntry("startPoint", start);
-	QPoint end(endPoint());
-	end = cfgGroup->readEntry("endPoint", end);
-
-	setLine(QLineF(start, end));
-	setPos(QPointF());
-
-	moveBy(0, 0);
-	startItem->setPos(start);
-	endItem->setPos(end);
-}
-
-void Wall::save(KConfigGroup *cfgGroup)
-{
-	cfgGroup->writeEntry("startPoint", startItem->pos().toPoint());
-	cfgGroup->writeEntry("endPoint", endItem->pos().toPoint());
-}
-
-void Wall::doAdvance()
-{
-	moveBy(velocity().x(), velocity().y());
-}
 
 /////////////////////////
 
@@ -2221,7 +1944,7 @@ void KolfGame::unPause()
 
 void KolfGame::addBorderWall(const QPoint &start, const QPoint &end)
 {
-	Wall *wall = new Wall(courseBoard, g_world);
+	Kolf::Wall *wall = new Kolf::Wall(courseBoard, g_world);
 	wall->setLine(QLineF(start, end));
 	wall->setVisible(true);
 	wall->setGame(this);
@@ -4019,9 +3742,8 @@ bool KolfGame::allPlayersDone()
 
 void KolfGame::setBorderWalls(bool showing)
 {
-	QList<Wall *>::const_iterator wall;
-	for (wall = borderWalls.constBegin(); wall != borderWalls.constEnd(); ++wall)
-		(*wall)->setVisible(showing);
+	foreach (Kolf::Wall* wall, borderWalls)
+		wall->setVisible(showing);
 }
 
 void KolfGame::setUseAdvancedPutting(bool yes)
