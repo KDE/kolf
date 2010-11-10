@@ -122,6 +122,7 @@ public:
 	void setPosition(const QPointF& pos) { const QPointF diff = pos - getPosition(); moveBy(diff.x(), diff.y()); }
 	virtual QPointF getPosition() const = 0;
 protected:
+	friend class Kolf::Overlay; //for delivery of Kolf::Overlay::stateChanged signal
 	///pointer to main KolfGame
 	KolfGame *game;
 	///returns the highest vertical strut the item is on

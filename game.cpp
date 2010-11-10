@@ -3958,6 +3958,28 @@ void KolfGame::toggleEditMode()
 	inPlay = false;
 }
 
+void KolfGame::overlayStateChanged(CanvasItem* citem)
+{
+	Kolf::Overlay* overlay = citem->overlay(false);
+	if (!overlay) //HACK: looks weird, but can happen in the setState() call in the Overlay ctor
+		return;
+	if (overlay->state() == Kolf::Overlay::Active)
+	{
+		//only one overlay may be active at one time, so deactivate the others
+		foreach (QGraphicsItem* qitem, m_topLevelQItems)
+		{
+			CanvasItem* otherCitem = dynamic_cast<CanvasItem*>(qitem);
+			if (otherCitem && otherCitem != citem)
+			{
+				//false = do not create overlay if it does not exist yet
+				Kolf::Overlay* otherOverlay = otherCitem->overlay(false);
+				if (otherOverlay)
+					otherOverlay->setState(Kolf::Overlay::Passive);
+			}
+		}
+	}
+}
+
 #ifdef SOUND
 void KolfGame::playSound(const QString& file, float vol)
 {

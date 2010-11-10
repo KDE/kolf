@@ -18,6 +18,7 @@
 
 #include "overlay.h"
 #include "canvasitem.h"
+#include "game.h"
 #include "shape.h"
 #include "utils-animateditem.h"
 
@@ -266,6 +267,7 @@ void Kolf::Overlay::setState(Kolf::Overlay::State state)
 	m_handleAnimator->setOpacityAnimated(state == Active ? 1.0 : 0.0);
 	//propagate changes
 	emit stateChanged();
+	m_citem->game->overlayStateChanged(m_citem);
 }
 
 void Kolf::Overlay::activatorEntered()
