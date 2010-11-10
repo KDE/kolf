@@ -29,6 +29,19 @@ namespace Kolf
 {
 	class LineShape;
 
+	class Bumper : public EllipticalCanvasItem
+	{
+		Q_OBJECT
+		public:
+			Bumper(QGraphicsItem* parent, b2World* world);
+
+			virtual bool collision(Ball* ball);
+		protected:
+			virtual Kolf::Overlay* createOverlay();
+		public Q_SLOTS:
+			void turnBumperOff();
+	};
+
 	class Wall : public QGraphicsLineItem, public CanvasItem
 	{
 		public:

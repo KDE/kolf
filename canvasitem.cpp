@@ -205,6 +205,7 @@ EllipticalCanvasItem::EllipticalCanvasItem(bool withEllipse, const QString& spri
 	: Tagaro::SpriteObjectItem(Kolf::renderer(), spriteKey, parent)
 	, CanvasItem(world)
 	, m_ellipseItem(0)
+	, m_shape(0)
 {
 	if (withEllipse)
 	{
@@ -214,6 +215,8 @@ EllipticalCanvasItem::EllipticalCanvasItem(bool withEllipse, const QString& spri
 		m_ellipseItem->setPen(Qt::NoPen);
 		m_ellipseItem->setBrush(Qt::NoBrush);
 	}
+	m_shape = new Kolf::EllipseShape(QRectF());
+	addShape(m_shape);
 }
 
 bool EllipticalCanvasItem::contains(const QPointF& point) const
@@ -242,6 +245,7 @@ void EllipticalCanvasItem::setSize(const QSizeF& size)
 	Tagaro::SpriteObjectItem::setSize(size);
 	if (m_ellipseItem)
 		m_ellipseItem->setRect(this->rect());
+	m_shape->setRect(this->rect());
 }
 
 void EllipticalCanvasItem::moveBy(double dx, double dy)

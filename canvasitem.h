@@ -36,6 +36,7 @@ class KolfGame;
 
 namespace Kolf
 {
+	class EllipseShape;
 	class Overlay;
 	class Shape;
 }
@@ -211,6 +212,7 @@ class EllipticalCanvasItem : public Tagaro::SpriteObjectItem, public CanvasItem
 		virtual QPointF getPosition() const { return QGraphicsItem::pos(); }
 	private:
 		QGraphicsEllipseItem* m_ellipseItem;
+		Kolf::EllipseShape* m_shape;
 };
 
 #endif

@@ -18,11 +18,56 @@
 */
 
 #include "obstacles.h"
+#include "ball.h"
 #include "rtti.h"
 #include "shape.h"
 
+#include <QTimer>
 #include <KConfigGroup>
+#include <KRandom>
 
+//BEGIN Kolf::Bumper
+
+Kolf::Bumper::Bumper(QGraphicsItem* parent, b2World* world)
+	: EllipticalCanvasItem(false, QLatin1String("bumper_off"), parent, world)
+{
+	const int diameter = 20;
+	setSize(QSizeF(diameter, diameter));
+	setZValue(-25);
+	setSimulationType(CanvasItem::NoSimulation);
+}
+
+bool Kolf::Bumper::collision(Ball* ball)
+{
+	const double maxSpeed = ball->getMaxBumperBounceSpeed();
+	const double speed = qMin(maxSpeed, 1.8 + ball->velocity().magnitude() * .9);
+	ball->reduceMaxBumperBounceSpeed();
+
+	Vector betweenVector(ball->pos() - pos());
+	betweenVector.setMagnitudeDirection(speed,
+		// add some randomness so we don't go indefinetely
+		betweenVector.direction() + deg2rad((KRandom::random() % 3) - 1)
+	);
+
+	ball->setVelocity(betweenVector);
+	ball->setState(Rolling);
+
+	setSpriteKey(QLatin1String("bumper_on"));
+	QTimer::singleShot(100, this, SLOT(turnBumperOff()));
+	return true;
+}
+
+void Kolf::Bumper::turnBumperOff()
+{
+	setSpriteKey(QLatin1String("bumper_off"));
+}
+
+Kolf::Overlay* Kolf::Bumper::createOverlay()
+{
+	return new Kolf::Overlay(this, this);
+}
+
+//END Kolf::Bumper
 //BEGIN Kolf::Wall
 
 Kolf::Wall::Wall(QGraphicsItem* parent, b2World* world)

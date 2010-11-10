@@ -29,7 +29,6 @@ Ball::Ball(QGraphicsItem* parent, b2World* world)
 {
 	const int diameter = 8;
 	setSize(QSizeF(diameter, diameter));
-	addShape(new Kolf::EllipseShape(QRectF(-diameter / 2, -diameter / 2, diameter, diameter)));
 
 	setData(0, Rtti_NoCollision);
 	m_doDetect = true;

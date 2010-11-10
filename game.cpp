@@ -854,6 +854,7 @@ Puddle::Puddle(QGraphicsItem * parent, b2World* world)
 	setData(0, Rtti_DontPlaceOn);
 	setSize(QSizeF(45, 30));
 	setZValue(-25);
+	setSimulationType(CanvasItem::NoSimulation);
 }
 
 bool Puddle::collision(Ball *ball)
@@ -886,6 +887,7 @@ Sand::Sand(QGraphicsItem * parent, b2World* world)
 {
 	setSize(QSizeF(45, 40));
 	setZValue(-26);
+	setSimulationType(CanvasItem::NoSimulation);
 }
 
 bool Sand::collision(Ball *ball)
@@ -1032,48 +1034,11 @@ void Putter::finishMe()
 
 /////////////////////////
 
-Bumper::Bumper(QGraphicsItem * parent, b2World* world)
-: EllipticalCanvasItem(false, QLatin1String("bumper_off"), parent, world)
-{
-	const int diameter = 20;
-	setSize(QSizeF(diameter, diameter));
-	setZValue(-25);
-}
-
-bool Bumper::collision(Ball *ball)
-{
-	double maxSpeed = ball->getMaxBumperBounceSpeed();
-	double speed = qMin(maxSpeed, 1.8 + ball->velocity().magnitude() * .9);
-	ball->reduceMaxBumperBounceSpeed();
-
-	Vector betweenVector(ball->pos() - pos());
-	betweenVector.setMagnitudeDirection(speed,
-		// add some randomness so we don't go indefinetely
-		betweenVector.direction() + deg2rad((KRandom::random() % 3) - 1)
-	);
-
-	ball->setVelocity(betweenVector);
-	ball->setState(Rolling);
-
-	setSpriteKey(QLatin1String("bumper_on"));
-	QTimer::singleShot(100, this, SLOT(turnBumperOff()));
-
-	return true;
-}
-
-void Bumper::turnBumperOff()
-{
-	setSpriteKey(QLatin1String("bumper_off"));
-}
-
-/////////////////////////
-
 Cup::Cup(QGraphicsItem * parent, b2World* world)
 	: EllipticalCanvasItem(false, QLatin1String("cup"), parent, world)
 {
 	const int diameter = 16;
 	setSize(QSizeF(diameter, diameter));
-	addShape(new Kolf::EllipseShape(QRectF(-diameter / 2, -diameter / 2, diameter, diameter)));
 	setSimulationType(CanvasItem::NoSimulation);
 
 	setZValue(998.1);
@@ -1130,6 +1095,7 @@ BlackHole::BlackHole(QGraphicsItem * parent, b2World* world)
 {
 	setSize(QSizeF(16, 18));
 	setZValue(998.1);
+	setSimulationType(CanvasItem::NoSimulation);
 
 	infoLine = 0;
 	m_minSpeed = 3.0;

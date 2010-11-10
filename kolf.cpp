@@ -63,7 +63,7 @@ KolfWindow::KolfWindow()
 	m_itemFactory.registerType<Floater>("floater", i18n("Floater"));
 	m_itemFactory.registerType<Bridge>("bridge", i18n("Bridge"));
 	m_itemFactory.registerType<Sign>("sign", i18n("Sign"));
-	m_itemFactory.registerType<Bumper>("bumper", i18n("Bumper"));
+	m_itemFactory.registerType<Kolf::Bumper>("bumper", i18n("Bumper"));
 	//NOTE: The plugin mechanism has been removed because it is not used anyway.
 
 	filename = QString();

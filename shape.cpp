@@ -167,7 +167,7 @@ b2Shape* Kolf::EllipseShape::createShape()
 	{
 		//elliptical shape is not pre-made in Box2D, so create a polygon instead
 		b2PolygonShape* shape = new b2PolygonShape;
-		static const int N = 20;
+		static const int N = qMin(20, b2_maxPolygonVertices);
 		//increase N if the approximation turns out to be too bad
 		//TODO: calculate the (cos, sin) pairs only once
 		b2Vec2 vertices[N];
