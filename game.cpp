@@ -33,7 +33,6 @@
 #include <QMouseEvent>
 #include <QSlider>
 #include <QTimer>
-#include <QVBoxLayout>
 #include <KFileDialog>
 #include <KGameRenderer>
 #include <KLineEdit>
@@ -593,235 +592,6 @@ void SignConfig::textChanged(const QString &text)
 {
 	sign->setText(text);
 	changed();
-}
-
-/////////////////////////
-EllipseConfig::EllipseConfig(KolfEllipse *_ellipse, QWidget *parent)
-: Config(parent), slow1(0), fast1(0), slow2(0), fast2(0), slider1(0), slider2(0)
-{
-	this->ellipse = _ellipse;
-
-	m_vlayout = new QVBoxLayout(this);
-	m_vlayout->setMargin( marginHint() );
-	m_vlayout->setSpacing( spacingHint() );
-
-	QCheckBox *check = new QCheckBox(i18n("Enable show/hide"), this);
-	m_vlayout->addWidget(check);
-	connect(check, SIGNAL(toggled(bool)), this, SLOT(check1Changed(bool)));
-	check->setChecked(ellipse->changeEnabled());
-
-	QHBoxLayout *hlayout = new QHBoxLayout;
-	hlayout->setSpacing( spacingHint() );
-	m_vlayout->addLayout( hlayout );
-	slow1 = new QLabel(i18n("Slow"), this);
-	hlayout->addWidget(slow1);
-	slider1 = new QSlider(Qt::Horizontal, this);
-	slider1->setRange( 1, 100 );
-	slider1->setPageStep( 5 );
-	slider1->setValue( 100 - ellipse->changeEvery() );
-	hlayout->addWidget(slider1);
-	fast1 = new QLabel(i18n("Fast"), this);
-	hlayout->addWidget(fast1);
-
-	connect(slider1, SIGNAL(valueChanged(int)), this, SLOT(value1Changed(int)));
-
-	check1Changed(ellipse->changeEnabled());
-
-	// TODO add slider2 and friends and make it possible for ellipses to grow and contract
-
-	m_vlayout->addStretch();
-}
-
-void EllipseConfig::value1Changed(int news)
-{
-	ellipse->setChangeEvery(100 - news);
-	changed();
-}
-
-void EllipseConfig::value2Changed(int /*news*/)
-{
-	changed();
-}
-
-void EllipseConfig::check1Changed(bool on)
-{
-	ellipse->setChangeEnabled(on);
-	if (slider1)
-		slider1->setEnabled(on);
-	if (slow1)
-		slow1->setEnabled(on);
-	if (fast1)
-		fast1->setEnabled(on);
-
-	changed();
-}
-
-void EllipseConfig::check2Changed(bool on)
-{
-	//ellipse->setChangeEnabled(on);
-	if (slider2)
-		slider2->setEnabled(on);
-	if (slow2)
-		slow2->setEnabled(on);
-	if (fast2)
-		fast2->setEnabled(on);
-
-	changed();
-}
-
-/////////////////////////
-
-KolfEllipse::KolfEllipse(QGraphicsItem *parent, b2World* world, const QString &type)
-	: EllipticalCanvasItem(false, type, parent, world)
-{
-	savingDone();
-	setChangeEnabled(false);
-	setChangeEvery(50);
-	count = 0;
-	setVisible(true);
-
-	point = new RectPoint(Qt::black, this, parent, world);
-	point->setSizeFactor(2.0);
-}
-
-void KolfEllipse::aboutToDie()
-{
-	delete point;
-}
-
-void KolfEllipse::setChangeEnabled(bool changeEnabled)
-{
-	m_changeEnabled = changeEnabled;
-	setAnimated(m_changeEnabled);
-
-	if (!m_changeEnabled)
-		setVisible(true);
-}
-
-QList<QGraphicsItem *> KolfEllipse::moveableItems() const
-{
-	return QList<QGraphicsItem*>() << point;
-}
-
-void KolfEllipse::moveBy(double dx, double dy)
-{
-	EllipticalCanvasItem::moveBy(dx, dy);
-
-	point->dontMove();
-	point->setPos(x() + width()/2, y() + height()/2);
-}
-
-void KolfEllipse::editModeChanged(bool changed)
-{
-	point->setVisible(changed);
-	moveBy(0, 0);
-}
-
-void KolfEllipse::advance(int phase)
-{
-	QGraphicsItem::advance(phase);
-
-	if (phase == 1 && m_changeEnabled && !dontHide)
-	{
-		if (count > (m_changeEvery + 10) * 1.8)
-			count = 0;
-		if (count == 0)
-			setVisible(!isVisible());
-
-		count++;
-	}
-}
-
-void KolfEllipse::load(KConfigGroup *cfgGroup)
-{
-	setChangeEnabled(cfgGroup->readEntry("changeEnabled", changeEnabled()));
-	setChangeEvery(cfgGroup->readEntry("changeEvery", changeEvery()));
-	EllipticalCanvasItem::loadSize(cfgGroup);
-	moveBy(0, 0); //adjust point
-} 
-
-void KolfEllipse::save(KConfigGroup *cfgGroup)
-{
-	cfgGroup->writeEntry("changeEvery", changeEvery());
-	cfgGroup->writeEntry("changeEnabled", changeEnabled());
-	EllipticalCanvasItem::saveSize(cfgGroup);
-}
-
-Config *KolfEllipse::config(QWidget *parent)
-{
-	return new EllipseConfig(this, parent);
-}
-
-void KolfEllipse::aboutToSave()
-{
-	setVisible(true);
-	dontHide = true;
-}
-
-void KolfEllipse::savingDone()
-{
-	dontHide = false;
-}
-
-/////////////////////////
-
-Puddle::Puddle(QGraphicsItem * parent, b2World* world)
-: KolfEllipse(parent, world, "puddle")
-{
-	setData(0, Rtti_DontPlaceOn);
-	setSize(QSizeF(45, 30));
-	setZValue(-25);
-	setSimulationType(CanvasItem::NoSimulation);
-}
-
-bool Puddle::collision(Ball *ball)
-{
-	if (ball->isVisible())
-	{
-		// is center of ball in?
-		if (contains(ball->pos() - pos()))
-		{
-			playSound("puddle");
-			ball->setAddStroke(ball->addStroke() + 1);
-			ball->setPlaceOnGround(true);
-			ball->setVisible(false);
-			ball->setState(Stopped);
-			ball->setVelocity(Vector());
-			if (game && game->curBall() == ball)
-				game->stoppedBall();
-		}
-		else
-			return true;
-	}
-
-	return false;
-}
-
-/////////////////////////
-
-Sand::Sand(QGraphicsItem * parent, b2World* world)
-: KolfEllipse(parent, world, "sand")
-{
-	setSize(QSizeF(45, 40));
-	setZValue(-26);
-	setSimulationType(CanvasItem::NoSimulation);
-}
-
-bool Sand::collision(Ball *ball)
-{
-	// is center of ball in?
-	if (contains(ball->pos()-pos()))
-	{
-		if (ball->velocity().magnitude() > 0)
-			ball->setFrictionMultiplier(7);
-		else
-		{
-			ball->setVelocity(Vector());
-			ball->setState(Stopped);
-		}
-	}
-
-	return true;
 }
 
 /////////////////////////
@@ -3129,6 +2899,14 @@ void KolfGame::overlayStateChanged(CanvasItem* citem)
 		return;
 	if (overlay->state() == Kolf::Overlay::Active)
 	{
+		//update selectedItem
+		selectedItem = overlay->qitem();
+		movingItem = 0; movingCanvasItem = 0;
+		emit newSelectedItem(overlay->citem());
+		highlighter->setVisible(true);
+		QRectF rect = selectedItem->boundingRect();
+		highlighter->setPos(0, 0);
+		highlighter->setRect(rect.x() + selectedItem->x() + 1, rect.y() + selectedItem->y() + 1, rect.width(), rect.height());
 		//only one overlay may be active at one time, so deactivate the others
 		foreach (QGraphicsItem* qitem, m_topLevelQItems)
 		{
