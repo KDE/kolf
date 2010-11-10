@@ -19,6 +19,7 @@
 
 #include "obstacles.h"
 #include "ball.h"
+#include "game.h"
 #include "shape.h"
 
 #include <QTimer>
@@ -178,5 +179,171 @@ void Kolf::WallOverlay::moveHandle(const QPointF& handleScenePos)
 }
 
 //END Kolf::WallOverlay
+//BEGIN Kolf::RectangleItem
+
+Kolf::RectangleItem::RectangleItem(const QString& type, QGraphicsItem* parent, b2World* world)
+	: Tagaro::SpriteObjectItem(Kolf::renderer(), type, parent)
+	, CanvasItem(world)
+	, m_wallPen(QColor("#92772D").darker(), 3)
+	, m_walls(Kolf::RectangleWallCount, 0)
+{
+	setZValue(998);
+	//default size
+	setSize(type == "sign" ? QSize(110, 40) : QSize(80, 40));
+}
+
+Kolf::RectangleItem::~RectangleItem()
+{
+	qDeleteAll(m_walls);
+}
+
+bool Kolf::RectangleItem::hasWall(Kolf::WallIndex index) const
+{
+	return (bool) m_walls[index];
+}
+
+void Kolf::RectangleItem::setWall(Kolf::WallIndex index, bool hasWall)
+{
+	const bool oldHasWall = (bool) m_walls[index];
+	if (oldHasWall == hasWall)
+		return;
+	if (hasWall)
+	{
+		Kolf::Wall* wall = m_walls[index] = new Kolf::Wall(parentItem(), world());
+		wall->setPos(pos());
+		applyWallStyle(wall);
+		updateWallPosition();
+	}
+	else
+	{
+		delete m_walls[index];
+		m_walls[index] = 0;
+	}
+	propagateUpdate();
+}
+
+void Kolf::RectangleItem::updateWallPosition()
+{
+	const QRectF rect(QPointF(), size());
+	Kolf::Wall* const topWall = m_walls[Kolf::TopWallIndex];
+	Kolf::Wall* const leftWall = m_walls[Kolf::LeftWallIndex];
+	Kolf::Wall* const rightWall = m_walls[Kolf::RightWallIndex];
+	Kolf::Wall* const bottomWall = m_walls[Kolf::BottomWallIndex];
+	if (topWall)
+		topWall->setLine(QLineF(rect.topLeft(), rect.topRight()));
+	if (leftWall)
+		leftWall->setLine(QLineF(rect.topLeft(), rect.bottomLeft()));
+	if (rightWall)
+		rightWall->setLine(QLineF(rect.topRight(), rect.bottomRight()));
+	if (bottomWall)
+		bottomWall->setLine(QLineF(rect.bottomLeft(), rect.bottomRight()));
+}
+
+void Kolf::RectangleItem::setSize(const QSizeF& size)
+{
+	Tagaro::SpriteObjectItem::setSize(size);
+	updateWallPosition();
+	propagateUpdate();
+}
+
+QPointF Kolf::RectangleItem::getPosition() const
+{
+	return QGraphicsItem::pos();
+}
+
+void Kolf::RectangleItem::moveBy(double dx, double dy)
+{
+	Tagaro::SpriteObjectItem::moveBy(dx, dy);
+	//move myself
+	const QPointF pos = this->pos();
+	foreach (Kolf::Wall* wall, m_walls)
+		if (wall)
+			wall->setPos(pos);
+	//update Z order of items on top of vStrut
+	foreach (QGraphicsItem* qitem, collidingItems())
+	{
+		CanvasItem* citem = dynamic_cast<CanvasItem*>(qitem);
+		if (citem)
+			citem->updateZ();
+	}
+}
+
+void Kolf::RectangleItem::setWallColor(const QColor& color)
+{
+	m_wallPen = QPen(color.darker(), 3);
+	foreach (Kolf::Wall* wall, m_walls)
+		applyWallStyle(wall);
+}
+
+void Kolf::RectangleItem::applyWallStyle(Kolf::Wall* wall)
+{
+	if (!wall) //explicitly allowed, see e.g. setWallColor()
+		return;
+	wall->setPen(m_wallPen);
+	wall->setZValue(zValue() + 0.001);
+}
+
+void Kolf::RectangleItem::setZValue(qreal zValue)
+{
+	QGraphicsItem::setZValue(zValue);
+	foreach (Kolf::Wall* wall, m_walls)
+		applyWallStyle(wall);
+}
+
+static const char* wallPropNames[] = { "topWallVisible", "leftWallVisible", "rightWallVisible", "botWallVisible" };
+
+void Kolf::RectangleItem::load(KConfigGroup* group)
+{
+	QSize size = Tagaro::SpriteObjectItem::size().toSize();
+	size.setWidth(group->readEntry("width", size.width()));
+	size.setHeight(group->readEntry("height", size.height()));
+	setSize(size);
+	for (int i = 0; i < Kolf::RectangleWallCount; ++i)
+	{
+		bool hasWall = this->hasWall((Kolf::WallIndex) i);
+		hasWall = group->readEntry(wallPropNames[i], hasWall);
+		setWall((Kolf::WallIndex) i, hasWall);
+	}
+}
+
+void Kolf::RectangleItem::save(KConfigGroup* group)
+{
+	const QSize size = Tagaro::SpriteObjectItem::size().toSize();
+	group->writeEntry("width", size.width());
+	group->writeEntry("height", size.height());
+	for (int i = 0; i < Kolf::RectangleWallCount; ++i)
+	{
+		const bool hasWall = this->hasWall((Kolf::WallIndex) i);
+		group->writeEntry(wallPropNames[i], hasWall);
+	}
+}
+
+Config* Kolf::RectangleItem::config(QWidget* parent)
+{
+	return CanvasItem::config(parent);
+	//return new Kolf::RectangleConfig(parent);
+}
+
+Kolf::Overlay* Kolf::RectangleItem::createOverlay()
+{
+	return new Kolf::Overlay(this, this);
+	//return new Kolf::RectangleOverlay(this);
+}
+
+//END Kolf::RectangleItem
+//BEGIN Kolf::Bridge
+
+Kolf::Bridge::Bridge(QGraphicsItem* parent, b2World* world)
+	: Kolf::RectangleItem(QLatin1String("bridge"), parent, world)
+{
+}
+
+bool Kolf::Bridge::collision(Ball* ball)
+{
+	ball->setFrictionMultiplier(.63);
+	return false;
+}
+
+//END Kolf::Bridge
 
 #include "obstacles.moc"

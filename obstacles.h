@@ -22,6 +22,7 @@
 
 //NOTE: Only refactored stuff goes into this header.
 
+#include "config.h"
 #include "canvasitem.h"
 #include "overlay.h"
 
@@ -73,6 +74,53 @@ namespace Kolf
 		private:
 			Kolf::OverlayHandle* m_handle1;
 			Kolf::OverlayHandle* m_handle2;
+	};
+
+	//WARNING: WallIndex and WallFlag have to stay in sync like they are now!
+	enum WallIndex {
+		TopWallIndex = 0,
+		LeftWallIndex = 1,
+		RightWallIndex = 2,
+		BottomWallIndex = 3,
+		RectangleWallCount = 4
+	};
+
+	class RectangleItem : public Tagaro::SpriteObjectItem, public CanvasItem
+	{
+		public:
+			RectangleItem(const QString& type, QGraphicsItem* parent, b2World* world);
+			virtual ~RectangleItem();
+
+			virtual bool vStrut() const { return true; }
+
+			bool hasWall(Kolf::WallIndex index) const;
+			void setWall(Kolf::WallIndex index, bool hasWall);
+			virtual void setSize(const QSizeF& size);
+			virtual QPointF getPosition() const;
+			virtual void moveBy(double dx, double dy); 
+
+			void setWallColor(const QColor& color);
+			void applyWallStyle(Kolf::Wall* wall);
+			void setZValue(qreal zValue);
+
+			virtual void load(KConfigGroup* group);
+			virtual void save(KConfigGroup* group);
+
+			virtual Config* config(QWidget* parent);
+		protected:
+			virtual Kolf::Overlay* createOverlay();
+		private:
+			void updateWallPosition();
+
+			QPen m_wallPen;
+			QVector<Kolf::Wall*> m_walls;
+	};
+
+	class Bridge : public Kolf::RectangleItem
+	{
+		public:
+			Bridge(QGraphicsItem* parent, b2World* world);
+			virtual bool collision(Ball* ball);
 	};
 }
 

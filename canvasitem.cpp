@@ -94,6 +94,11 @@ void CanvasItem::editModeChanged(bool editing)
 		overlay->setVisible(editing);
 }
 
+b2World* CanvasItem::world() const
+{
+	return m_body->GetWorld();
+}
+
 void CanvasItem::addShape(Kolf::Shape* shape)
 {
 	if (shape->attach(this)) //this will fail if the shape is already attached to some object

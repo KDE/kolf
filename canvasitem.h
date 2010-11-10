@@ -154,6 +154,7 @@ private:
 			DynamicSimulation = KinematicSimulation | DynamicSimulationFlag
 		};
 
+		b2World* world() const;
 		QList<Kolf::Shape*> shapes() const { return m_shapes; }
 		Kolf::Overlay* overlay(bool createIfNecessary = true);
 		///@return items inside this CanvasItem which shall only be shown when
