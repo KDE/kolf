@@ -19,7 +19,6 @@
 
 #include "obstacles.h"
 #include "ball.h"
-#include "rtti.h"
 #include "shape.h"
 
 #include <QTimer>

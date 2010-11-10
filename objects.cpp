@@ -20,7 +20,6 @@
 #include "objects.h"
 #include "ball.h"
 #include "game.h"
-#include "rtti.h"
 #include "tagaro/board.h"
 
 #include <QFormLayout>

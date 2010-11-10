@@ -19,7 +19,6 @@
 
 #include "ball.h"
 #include "game.h"
-#include "rtti.h"
 #include "shape.h"
 
 #include <QApplication>

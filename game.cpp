@@ -21,7 +21,6 @@
 #include "itemfactory.h"
 #include "kcomboboxdialog.h"
 #include "overlay.h"
-#include "rtti.h"
 #include "shape.h"
 
 #include "tagaro/board.h"

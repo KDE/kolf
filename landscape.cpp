@@ -20,7 +20,6 @@
 #include "landscape.h"
 #include "ball.h"
 #include "game.h"
-#include "rtti.h"
 
 #include <QBoxLayout>
 #include <QCheckBox>

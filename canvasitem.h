@@ -41,6 +41,8 @@ namespace Kolf
 	class Shape;
 }
 
+enum RttiCodes { Rtti_NoCollision = 1001, Rtti_DontPlaceOn = 1002, Rtti_Putter = 1004 };
+
 class CanvasItem
 {
 public:

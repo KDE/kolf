@@ -18,7 +18,6 @@
 */
 
 #include "floater.h"
-#include "rtti.h"
 
 #include <QHBoxLayout>
 #include <QLabel>
