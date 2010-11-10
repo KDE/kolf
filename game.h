@@ -60,7 +60,6 @@ namespace Kolf
 
 enum Direction { D_Left, D_Right, Forwards, Backwards };
 enum Amount { Amount_Less, Amount_Normal, Amount_More };
-enum HoleResult { Result_Holed, Result_Miss, Result_LipOut };
 
 class BallStateInfo
 {
@@ -253,114 +252,6 @@ class Sand : public KolfEllipse
 public:
 	Sand(QGraphicsItem *parent, b2World* world);
 	virtual bool collision(Ball *ball);
-};
-
-class BlackHole;
-class BlackHoleConfig : public Config
-{
-	Q_OBJECT
-
-public:
-	BlackHoleConfig(BlackHole *blackHole, QWidget *parent);
-
-private slots:
-	void degChanged(int);
-	void minChanged(double);
-	void maxChanged(double);
-
-private:
-	BlackHole *blackHole;
-};
-
-class BlackHoleExit : public HintedLineItem, public CanvasItem
-{
-public:
-	BlackHoleExit(BlackHole *blackHole, QGraphicsItem *parent, b2World* world);
-	virtual void aboutToDie();
-	virtual void moveBy(double dx, double dy);
-	virtual bool deleteable() const { return false; }
-	virtual bool canBeMovedByOthers() const { return true; }
-	virtual void editModeChanged(bool editing);
-	virtual void setPen(const QPen& p);
-	virtual void showInfo();
-	virtual void hideInfo();
-	void updateArrowAngle();
-	void updateArrowLength();
-	void setArrowPen(QPen pen) { arrow->setPen(pen); }
-	virtual Config *config(QWidget *parent);
-	BlackHole *blackHole;
-
-	virtual QPointF getPosition() const { return QGraphicsItem::pos(); }
-protected:
-	Arrow *arrow;
-};
-class BlackHoleTimer : public QObject
-{
-Q_OBJECT
-
-public:
-	BlackHoleTimer(Ball *ball, double speed, int msec);
-
-signals:
-	void eject(Ball *ball, double speed);
-	void halfway();
-
-protected slots:
-	void mySlot();
-	void myMidSlot();
-
-protected:
-	double m_speed;
-	Ball *m_ball;
-};
-class BlackHole : public EllipticalCanvasItem
-{
-Q_OBJECT
-
-public:
-	BlackHole(QGraphicsItem *parent, b2World* world);
-	virtual bool canBeMovedByOthers() const { return true; }
-
-	virtual void aboutToDie();
-	virtual void showInfo();
-	virtual void hideInfo();
-	virtual bool place(Ball *ball, bool wasCenter);
-	virtual void save(KConfigGroup *cfgGroup);
-	virtual void load(KConfigGroup *cfgGroup);
-	virtual Config *config(QWidget *parent) { return new BlackHoleConfig(this, parent); }
-	virtual QList<QGraphicsItem *> moveableItems() const;
-	double minSpeed() const { return m_minSpeed; }
-	double maxSpeed() const { return m_maxSpeed; }
-	void setMinSpeed(double news) { m_minSpeed = news; exitItem->updateArrowLength(); }
-	void setMaxSpeed(double news) { m_maxSpeed = news; exitItem->updateArrowLength(); }
-
-	int curExitDeg() const { return exitDeg; }
-	void setExitDeg(int newdeg);
-
-	virtual void editModeChanged(bool editing) { exitItem->editModeChanged(editing); }
-	void updateInfo();
-
-	virtual void shotStarted() { runs = 0; }
-
-	virtual void moveBy(double dx, double dy);
-
-	virtual bool collision(Ball *ball);
-
-public slots:
-	void eject(Ball *ball, double speed);
-	void halfway();
-
-protected:
-	int exitDeg;
-	BlackHoleExit *exitItem;
-	double m_minSpeed;
-	double m_maxSpeed;
-	virtual HoleResult result(const QPointF, double, bool *wasCenter);
-
-private:
-	int runs;
-	QGraphicsLineItem *infoLine;
-	void finishMe();
 };
 
 class Putter : public HintedLineItem, public CanvasItem

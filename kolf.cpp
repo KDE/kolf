@@ -60,7 +60,7 @@ KolfWindow::KolfWindow()
 	m_itemFactory.registerType<Kolf::Cup>("cup", i18n("Cup"), true); //true == addOnNewHole
 	m_itemFactory.registerType<Sand>("sand", i18n("Sand"));
 	m_itemFactory.registerType<Windmill>("windmill", i18n("Windmill"));
-	m_itemFactory.registerType<BlackHole>("blackhole", i18n("Black Hole"));
+	m_itemFactory.registerType<Kolf::BlackHole>("blackhole", i18n("Black Hole"));
 	m_itemFactory.registerType<Floater>("floater", i18n("Floater"));
 	m_itemFactory.registerType<Bridge>("bridge", i18n("Bridge"));
 	m_itemFactory.registerType<Sign>("sign", i18n("Sign"));
