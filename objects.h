@@ -30,24 +30,48 @@ namespace Kolf
 	class BlackHole;
 	class BlackHoleOverlay;
 
-	class BlackHoleExit : public QGraphicsLineItem, public CanvasItem
+	class BlackHole : public EllipticalCanvasItem
 	{
-		public:
-			BlackHoleExit(Kolf::BlackHole* blackHole, QGraphicsItem* parent, b2World* world);
-			virtual void moveBy(double dx, double dy);
-			virtual bool deleteable() const { return false; }
-			virtual bool canBeMovedByOthers() const { return true; }
-			virtual void setPen(const QPen& p);
-			virtual QList<QGraphicsItem*> infoItems() const;
-			void updateArrowAngle();
-			void updateArrowLength();
-			virtual Config* config(QWidget* parent);
+		Q_OBJECT
 
-			virtual QPointF getPosition() const { return QGraphicsItem::pos(); }
+		public:
+			BlackHole(QGraphicsItem* parent, b2World* world);
+			~BlackHole();
+			//FIXME: canBeMovedByOthers() of exit is broken since refactoring.
+			virtual bool canBeMovedByOthers() const { return true; }
+
+			virtual QList<QGraphicsItem*> infoItems() const;
+			virtual void save(KConfigGroup* cfgGroup);
+			virtual void load(KConfigGroup* cfgGroup);
+			virtual Config* config(QWidget* parent);
+			double minSpeed() const;
+			double maxSpeed() const;
+			void setMinSpeed(double news);
+			void setMaxSpeed(double news);
+
+			QPointF exitPos() const;
+			void setExitPos(const QPointF& exitPos);
+			int curExitDeg() const;
+			void setExitDeg(int newdeg);
+			Vector exitDirection() const; //for overlay
+
+			void updateInfo();
+
+			virtual void moveBy(double dx, double dy);
+
+			virtual void shotStarted();
+			virtual bool collision(Ball* ball);
+		public Q_SLOTS:
+			void eject(Ball* ball, double speed);
+			void halfway();
 		protected:
-			BlackHole* m_blackHole;
-			friend class Kolf::BlackHoleOverlay;
-			ArrowItem* m_arrow;
+			virtual Kolf::Overlay* createOverlay();
+		private:
+			double m_minSpeed, m_maxSpeed;
+			int m_runs, m_exitDeg;
+			QGraphicsLineItem* m_exitItem;
+			ArrowItem* m_directionItem;
+			QGraphicsLineItem* m_infoLine;
 	};
 
 	class BlackHoleTimer : public QObject
@@ -63,52 +87,6 @@ namespace Kolf
 		private:
 			double m_speed;
 			Ball* m_ball;
-	};
-
-	class BlackHole : public EllipticalCanvasItem
-	{
-		Q_OBJECT
-
-		public:
-			BlackHole(QGraphicsItem* parent, b2World* world);
-			virtual bool canBeMovedByOthers() const { return true; }
-
-			virtual void aboutToDie();
-			virtual QList<QGraphicsItem*> infoItems() const;
-			virtual void save(KConfigGroup* cfgGroup);
-			virtual void load(KConfigGroup* cfgGroup);
-			virtual Config* config(QWidget* parent);
-			virtual QList<QGraphicsItem*> moveableItems() const;
-			double minSpeed() const;
-			double maxSpeed() const;
-			void setMinSpeed(double news);
-			void setMaxSpeed(double news);
-
-			int curExitDeg() const;
-			void setExitDeg(int newdeg);
-
-			void updateInfo();
-
-			virtual void moveBy(double dx, double dy);
-
-			virtual void shotStarted();
-			virtual bool collision(Ball* ball);
-		public slots:
-			void eject(Ball* ball, double speed);
-			void halfway();
-		protected:
-			virtual Kolf::Overlay* createOverlay();
-
-			int m_exitDeg;
-			friend class Kolf::BlackHoleOverlay;
-			BlackHoleExit* m_exitItem;
-			double m_minSpeed;
-			double m_maxSpeed;
-
-		private:
-			int m_runs;
-			QGraphicsLineItem* m_infoLine;
-			void finishMe();
 	};
 
 	class BlackHoleConfig : public Config

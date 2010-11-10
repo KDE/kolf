@@ -33,31 +33,35 @@
 
 Kolf::BlackHole::BlackHole(QGraphicsItem* parent, b2World* world)
 	: EllipticalCanvasItem(true, QLatin1String("black_hole"), parent, world)
+	, m_minSpeed(3.0)
+	, m_maxSpeed(5.0)
+	, m_runs(0)
 	, m_exitDeg(0)
+	, m_exitItem(new QGraphicsLineItem(0, -15, 0, 15, Kolf::findBoard(this)))
+	, m_directionItem(new ArrowItem(Kolf::findBoard(this)))
+	, m_infoLine(new QGraphicsLineItem(this))
 {
 	setSize(QSizeF(16, 18));
 	setZValue(998.1);
 	setSimulationType(CanvasItem::NoSimulation);
 
-	m_minSpeed = 3.0;
-	m_maxSpeed = 5.0;
-	m_runs = 0;
-
 	const QColor myColor((QRgb)(KRandom::random() % 0x01000000));
 	ellipseItem()->setBrush(myColor);
-
-	m_exitItem = new BlackHoleExit(this, Kolf::findBoard(this), world);
 	m_exitItem->setPen(QPen(myColor, 6));
-	m_exitItem->setPos(300, 100);
-
-	m_infoLine = new QGraphicsLineItem(this);
-	m_infoLine->setVisible(false);
+	m_directionItem->setPen(myColor);
 	m_infoLine->setPen(QPen(myColor, 2));
-	m_infoLine->setLine(QLineF(QPointF(), m_exitItem->pos() - pos()));
 
-	moveBy(0, 0);
+	setExitPos(QPointF(300, 100));
+	m_directionItem->setVisible(false);
+	m_infoLine->setVisible(false);
+	moveBy(0, 0); //initializes line item
+}
 
-	finishMe();
+Kolf::BlackHole::~BlackHole()
+{
+	//these items are not direct childs
+	delete m_directionItem;
+	delete m_exitItem;
 }
 
 double Kolf::BlackHole::minSpeed() const
@@ -67,8 +71,9 @@ double Kolf::BlackHole::minSpeed() const
 
 void Kolf::BlackHole::setMinSpeed(double news)
 {
-	m_minSpeed = news; m_exitItem->updateArrowLength();
-	updateInfo();
+	m_minSpeed = news;
+	m_directionItem->setLength(10.0 + 2.5 * (m_minSpeed + m_maxSpeed));
+	propagateUpdate();
 }
 
 double Kolf::BlackHole::maxSpeed() const
@@ -78,15 +83,14 @@ double Kolf::BlackHole::maxSpeed() const
 
 void Kolf::BlackHole::setMaxSpeed(double news)
 {
-	m_maxSpeed = news; m_exitItem->updateArrowLength();
-	updateInfo();
+	m_maxSpeed = news;
+	m_directionItem->setLength(10.0 + 2.5 * (m_minSpeed + m_maxSpeed));
+	propagateUpdate();
 }
 
 QList<QGraphicsItem*> Kolf::BlackHole::infoItems() const
 {
-	//HACK: For some reason, updateInfo() is not called as often as it should be.
-	const_cast<Kolf::BlackHole*>(this)->updateInfo();
-	return m_exitItem->infoItems() << m_infoLine;
+	return QList<QGraphicsItem*>() << m_infoLine << m_directionItem;
 }
 
 Kolf::Overlay* Kolf::BlackHole::createOverlay()
@@ -99,24 +103,11 @@ Config* Kolf::BlackHole::config(QWidget* parent)
 	return new Kolf::BlackHoleConfig(this, parent);
 }
 
-void Kolf::BlackHole::aboutToDie()
-{
-	//Hole::aboutToDie();
-	m_exitItem->aboutToDie();
-	delete m_exitItem;
-}
-
-void Kolf::BlackHole::updateInfo()
-{
-	m_infoLine->setLine(QLineF(QPointF(), m_exitItem->pos() - pos()));
-	propagateUpdate();
-}
-
 void Kolf::BlackHole::moveBy(double dx, double dy)
 {
 	EllipticalCanvasItem::moveBy(dx, dy);
+	m_infoLine->setLine(QLineF(QPointF(), m_exitItem->pos() - pos()));
 	propagateUpdate();
-	updateInfo();
 }
 
 int Kolf::BlackHole::curExitDeg() const
@@ -127,17 +118,26 @@ int Kolf::BlackHole::curExitDeg() const
 void Kolf::BlackHole::setExitDeg(int newdeg)
 {
 	m_exitDeg = newdeg;
-	if (game && game->isEditing() && game->curSelectedItem() == m_exitItem)
-		game->updateHighlighter();
-
-	m_exitItem->updateArrowAngle();
+	m_exitItem->setRotation(-newdeg);
+	m_directionItem->setAngle(-deg2rad(newdeg));
 	propagateUpdate();
-	finishMe();
 }
 
-QList<QGraphicsItem*> Kolf::BlackHole::moveableItems() const
+QPointF Kolf::BlackHole::exitPos() const
 {
-	return QList<QGraphicsItem*>() << m_exitItem;
+	return m_exitItem->pos();
+}
+
+void Kolf::BlackHole::setExitPos(const QPointF& exitPos)
+{
+	m_exitItem->setPos(exitPos);
+	m_directionItem->setPos(exitPos);
+	moveBy(0, 0); //updates line item, and calls propagateUpdate()
+}
+
+Vector Kolf::BlackHole::exitDirection() const
+{
+	return m_directionItem->vector();
 }
 
 void Kolf::BlackHole::shotStarted()
@@ -214,43 +214,10 @@ void Kolf::BlackHole::halfway()
 
 void Kolf::BlackHole::load(KConfigGroup* cfgGroup)
 {
-	QPoint exit = cfgGroup->readEntry("exit", exit);
-	m_exitItem->setPos(exit.x(), exit.y());
-	m_exitDeg = cfgGroup->readEntry("exitDeg", m_exitDeg);
-	m_minSpeed = cfgGroup->readEntry("minspeed", m_minSpeed);
-	m_maxSpeed = cfgGroup->readEntry("maxspeed", m_maxSpeed);
-	m_exitItem->updateArrowAngle();
-	m_exitItem->updateArrowLength();
-
-	finishMe();
-}
-
-void Kolf::BlackHole::finishMe()
-{
-	const double width = 15; //width of exit line
-
-	double radians = deg2rad(m_exitDeg);
-	QPointF midPoint(0, 0);
-	QPointF start;
-	QPointF end;
-
-	if (midPoint.y() || !midPoint.x())
-	{
-		start.setX(midPoint.x() - width*sin(radians));
-		start.setY(midPoint.y() - width*cos(radians));
-		end.setX(midPoint.x() + width*sin(radians));
-		end.setY(midPoint.y() + width*cos(radians));
-	}
-	else
-	{
-		start.setX(midPoint.x());
-		start.setY(midPoint.y() + width);
-		end.setX(midPoint.y() - width);
-		end.setY(midPoint.x());
-	}
-
-	m_exitItem->setLine(start.x(), start.y(), end.x(), end.y());
-	m_exitItem->setVisible(true);
+	setExitPos(cfgGroup->readEntry("exit", exitPos().toPoint()));
+	setExitDeg(cfgGroup->readEntry("exitDeg", m_exitDeg));
+	setMinSpeed(cfgGroup->readEntry("minspeed", m_minSpeed));
+	setMaxSpeed(cfgGroup->readEntry("maxspeed", m_maxSpeed));
 }
 
 void Kolf::BlackHole::save(KConfigGroup* cfgGroup)
@@ -262,54 +229,6 @@ void Kolf::BlackHole::save(KConfigGroup* cfgGroup)
 }
 
 //END Kolf::BlackHole
-//BEGIN Kolf::BlackHoleExit
-
-Kolf::BlackHoleExit::BlackHoleExit(Kolf::BlackHole* blackHole, QGraphicsItem* parent, b2World* world)
-	: QGraphicsLineItem(parent)
-	, CanvasItem(world)
-	, m_blackHole(blackHole)
-{
-	setData(0, Rtti_NoCollision);
-	m_arrow = new ArrowItem(this);
-	setZValue(m_blackHole->zValue());
-	updateArrowLength();
-	m_arrow->setVisible(false);
-}
-
-void Kolf::BlackHoleExit::moveBy(double dx, double dy)
-{
-	QGraphicsLineItem::moveBy(dx, dy);
-	m_blackHole->updateInfo();
-}
-
-void Kolf::BlackHoleExit::setPen(const QPen& p)
-{
-	QGraphicsLineItem::setPen(p);
-	m_arrow->setPen(QPen(p.color()));
-}
-
-void Kolf::BlackHoleExit::updateArrowAngle()
-{
-	// arrows work in a different angle system
-	m_arrow->setAngle(-deg2rad(m_blackHole->curExitDeg()));
-}
-
-void Kolf::BlackHoleExit::updateArrowLength()
-{
-	m_arrow->setLength(10.0 + 5.0 * (double)(m_blackHole->minSpeed() + m_blackHole->maxSpeed()) / 2.0);
-}
-
-QList<QGraphicsItem*> Kolf::BlackHoleExit::infoItems() const
-{
-	return QList<QGraphicsItem*>() << m_arrow;
-}
-
-Config* Kolf::BlackHoleExit::config(QWidget* parent)
-{
-	return m_blackHole->config(parent);
-}
-
-//END Kolf::BlackHoleExit
 //BEGIN Kolf::BlackHoleConfig
 
 Kolf::BlackHoleConfig::BlackHoleConfig(BlackHole* blackHole, QWidget* parent)
@@ -380,9 +299,8 @@ void Kolf::BlackHoleOverlay::update()
 {
 	Kolf::Overlay::update();
 	Kolf::BlackHole* blackHole = dynamic_cast<Kolf::BlackHole*>(qitem());
-	m_exitHandle->setPos(blackHole->m_exitItem->pos() - blackHole->pos());
-	ArrowItem* arrow = blackHole->m_exitItem->m_arrow;
-	m_speedHandle->setPos(m_exitHandle->pos() + arrow->vector());
+	m_exitHandle->setPos(blackHole->exitPos() - blackHole->pos());
+	m_speedHandle->setPos(m_exitHandle->pos() + blackHole->exitDirection());
 	m_exitIndicator->setLine(QLineF(m_exitHandle->pos(), m_speedHandle->pos()));
 	const qreal exitAngle = -deg2rad(blackHole->curExitDeg());
 	m_exitHandle->setRotation(exitAngle);
@@ -393,14 +311,11 @@ void Kolf::BlackHoleOverlay::moveHandle(const QPointF& handleScenePos)
 {
 	Kolf::BlackHole* blackHole = dynamic_cast<Kolf::BlackHole*>(qitem());
 	if (sender() == m_exitHandle)
-	{
-		blackHole->m_exitItem->setPos(handleScenePos);
-		blackHole->updateInfo();
-	}
+		blackHole->setExitPos(handleScenePos);
 	else if (sender() == m_speedHandle)
 	{
 		//this modifies only exit direction, not speed
-		Vector dir = handleScenePos - blackHole->m_exitItem->pos();
+		Vector dir = handleScenePos - blackHole->exitPos();
 		blackHole->setExitDeg(-rad2deg(dir.direction()));
 	}
 }
