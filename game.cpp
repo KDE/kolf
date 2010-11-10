@@ -1034,61 +1034,6 @@ void Putter::finishMe()
 
 /////////////////////////
 
-Cup::Cup(QGraphicsItem * parent, b2World* world)
-	: EllipticalCanvasItem(false, QLatin1String("cup"), parent, world)
-{
-	const int diameter = 16;
-	setSize(QSizeF(diameter, diameter));
-	setSimulationType(CanvasItem::NoSimulation);
-
-	setZValue(998.1);
-}
-
-Kolf::Overlay* Cup::createOverlay()
-{
-	return new Kolf::Overlay(this, this);
-}
-
-bool Cup::place(Ball *ball, bool /*wasCenter*/)
-{
-	ball->setState(Holed);
-	playSound("holed");
-
-	ball->setPos(pos());
-	ball->setVelocity(Vector());
-	return true;
-}
-
-bool Cup::collision(Ball *ball)
-{
-	bool wasCenter = false;
-
-	switch (result(ball->pos(), ball->velocity().magnitude(), &wasCenter))
-	{
-		case Result_Holed:
-			place(ball, wasCenter);
-			return false;
-
-		default:
-			break;
-	}
-
-	return true;
-}
-
-HoleResult Cup::result(QPointF p, double speed, bool * /*wasCenter*/)
-{
-	if (speed > 3.75)
-		return Result_Miss;
-
-	const QPointF posDiff = pos() - p;
-	const double distanceSquared = posDiff.x() * posDiff.x() + posDiff.y() * posDiff.y();
-	const double radiusSquared = boundingRect().width() * boundingRect().width() / 4;
-	return distanceSquared < radiusSquared ? Result_Holed : Result_Miss;
-}
-
-/////////////////////////
-
 BlackHole::BlackHole(QGraphicsItem * parent, b2World* world)
 	: EllipticalCanvasItem(true, QLatin1String("black_hole"), parent, world)
 	, exitDeg(0)

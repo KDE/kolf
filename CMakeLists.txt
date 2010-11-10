@@ -72,6 +72,7 @@ set(kolf_LIB_SRCS
    floater.cpp
    slope.cpp
    itemfactory.cpp
+   objects.cpp
    obstacles.cpp
    overlay.cpp
    shape.cpp

@@ -255,20 +255,6 @@ public:
 	virtual bool collision(Ball *ball);
 };
 
- class Cup : public EllipticalCanvasItem
-{
-public:
-	Cup(QGraphicsItem *parent, b2World* world);
-
-	virtual Kolf::Overlay* createOverlay();
-	virtual bool place(Ball *ball, bool wasCenter);
-	virtual bool canBeMovedByOthers() const { return true; }
-	virtual bool collision(Ball *ball);
-
-protected:
-	virtual HoleResult result(const QPointF, double, bool *wasCenter);
-};
-
 class BlackHole;
 class BlackHoleConfig : public Config
 {
