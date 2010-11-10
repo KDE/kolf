@@ -19,7 +19,6 @@
 
 #include "kolf.h"
 #include "editor.h"
-#include "floater.h"
 #include "landscape.h"
 #include "newgame.h"
 #include "objects.h"
@@ -62,7 +61,7 @@ KolfWindow::KolfWindow()
 	m_itemFactory.registerType<Kolf::Sand>("sand", i18n("Sand"));
 	m_itemFactory.registerType<Kolf::Windmill>("windmill", i18n("Windmill"));
 	m_itemFactory.registerType<Kolf::BlackHole>("blackhole", i18n("Black Hole"));
-	m_itemFactory.registerType<Floater>("floater", i18n("Floater"));
+	m_itemFactory.registerType<Kolf::Floater>("floater", i18n("Floater"));
 	m_itemFactory.registerType<Kolf::Bridge>("bridge", i18n("Bridge"));
 	m_itemFactory.registerType<Kolf::Sign>("sign", i18n("Sign"));
 	m_itemFactory.registerType<Kolf::Bumper>("bumper", i18n("Bumper"));

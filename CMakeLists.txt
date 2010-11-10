@@ -69,7 +69,6 @@ set(kolf_LIB_SRCS
    scoreboard.cpp
    editor.cpp
    kcomboboxdialog.cpp
-   floater.cpp
    slope.cpp
    itemfactory.cpp
    landscape.cpp

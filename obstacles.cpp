@@ -153,6 +153,7 @@ void Kolf::WallOverlay::update()
 
 void Kolf::WallOverlay::moveHandle(const QPointF& handleScenePos)
 {
+	//TODO: code duplication to Kolf::FloaterOverlay
 	QPointF handlePos = mapFromScene(handleScenePos);
 	const QObject* handle = sender();
 	//get handle positions
@@ -451,6 +452,24 @@ Kolf::RectangleConfig::RectangleConfig(Kolf::RectangleItem* item, QWidget* paren
 		slider->setValue(windmill->speed());
 		connect(slider, SIGNAL(valueChanged(int)), windmill, SLOT(setSpeed(int)));
 	}
+	//Kolf::Floater does not have a special Config class
+	Kolf::Floater* floater = qobject_cast<Kolf::Floater*>(item);
+	if (floater)
+	{
+		m_layout->addWidget(new QLabel(i18n("Moving speed"), this), 4, 0, 1, 3);
+		QHBoxLayout* hlayout = new QHBoxLayout;
+		m_layout->addLayout(hlayout, 5, 0, 1, 3);
+		QLabel* label1 = new QLabel(i18n("Slow"), this);
+		hlayout->addWidget(label1);
+		QSlider* slider = new QSlider(Qt::Horizontal, this);
+		hlayout->addWidget(slider);
+		QLabel* label2 = new QLabel(i18n("Fast"), this);
+		hlayout->addWidget(label2);
+		slider->setRange(0, 20);
+		slider->setPageStep(2);
+		slider->setValue(floater->speed());
+		connect(slider, SIGNAL(valueChanged(int)), floater, SLOT(setSpeed(int)));
+	}
 }
 
 void Kolf::RectangleConfig::setWall(bool hasWall)
@@ -484,6 +503,226 @@ bool Kolf::Bridge::collision(Ball* ball)
 }
 
 //END Kolf::Bridge
+//BEGIN Kolf::Floater
+
+Kolf::Floater::Floater(QGraphicsItem* parent, b2World* world)
+	: Kolf::RectangleItem(QLatin1String("floater"), parent, world)
+	, m_motionLine(QLineF(200, 200, 100, 100))
+	, m_speed(0)
+	, m_velocity(0)
+	, m_position(0)
+	, m_moveByMovesMotionLine(true)
+{
+	setMlPosition(m_position);
+	setAnimated(true);
+}
+
+void Kolf::Floater::editModeChanged(bool editing)
+{
+	Kolf::RectangleItem::editModeChanged(editing);
+	setAnimated(!editing);
+	if (editing)
+		setMlPosition(0);
+}
+
+void Kolf::Floater::moveBy(double dx, double dy)
+{
+	Kolf::RectangleItem::moveBy(dx, dy);
+	if (m_moveByMovesMotionLine)
+		m_motionLine.translate(dx, dy);
+	propagateUpdate();
+}
+
+QLineF Kolf::Floater::motionLine() const
+{
+	return m_motionLine;
+}
+
+void Kolf::Floater::setMotionLine(const QLineF& motionLine)
+{
+	m_motionLine = motionLine;
+	setMlPosition(m_position);
+	propagateUpdate();
+}
+
+void Kolf::Floater::setMlPosition(qreal position)
+{
+	m_moveByMovesMotionLine = false;
+	setPosition(m_motionLine.pointAt(position));
+	m_position = position;
+	m_moveByMovesMotionLine = true;
+}
+
+int Kolf::Floater::speed() const
+{
+	return m_speed;
+}
+
+void Kolf::Floater::setSpeed(int speed)
+{
+	m_speed = speed;
+	const qreal velocity = speed / 3.5;
+	m_velocity = (m_velocity < 0) ? -velocity : velocity;
+	propagateUpdate();
+}
+
+#if 0
+//NOTE: This is the old floater moving code with vStrut stuff.
+//I'll keep this around until the new code works.
+
+void Floater::moveBy(double dx, double dy)
+{
+	if (!isEnabled())
+		return;
+
+	QList<QGraphicsItem *> l = collidingItems();
+	for (QList<QGraphicsItem *>::Iterator it = l.begin(); it != l.end(); ++it)
+	{
+		CanvasItem *item = dynamic_cast<CanvasItem *>(*it);
+
+		if (!noUpdateZ && item && item->canBeMovedByOthers())
+			item->updateZ(this);
+
+		if ((*it)->zValue() >= zValue())
+		{
+			if (item && item->canBeMovedByOthers() && collidesWithItem(*it))
+			{
+				Ball *ball = dynamic_cast<Ball *>(*it);
+				if (ball)
+				{
+					ball->moveBy(dx, dy);
+					if (game && /*game->hasFocus() &&*/ !game->isEditing() && game->curBall() == (Ball *)(*it))
+						game->ballMoved();
+				}
+				else if ((*it)->data(0) != Rtti_Putter) {
+					item->moveBy(dx, dy);
+				}
+			}
+		}
+	}
+
+	point->dontMove();
+	point->setPos(x() + width(), y() + height());
+
+	// this call must come after we have tested for collidingItems, otherwise we skip them when saving!
+	// that's a bad thing
+	QGraphicsItem::moveBy(dx, dy);
+
+	// because we don't do Bridge::moveBy();
+	topWall->setPos(x(), y());
+	botWall->setPos(x(), y() - 1);
+	leftWall->setPos(x(), y());
+	rightWall->setPos(x(), y());
+
+	if (game && game->isEditing())
+		game->updateHighlighter();
+}
+
+#endif
+
+void Kolf::Floater::advance(int phase)
+{
+	if (phase != 1 || !isAnimated())
+		return;
+	//determine movement step
+	const qreal mlLength = m_motionLine.length();
+	const qreal parameterDiff = m_velocity / mlLength;
+	//determine new position (mirror on end point if end point passed)
+	m_position += parameterDiff;
+	if (m_position < 0)
+	{
+		m_velocity = qAbs(m_velocity);
+		m_position = -m_position;
+	}
+	else if (m_position > 1)
+	{
+		m_velocity = -qAbs(m_velocity);
+		m_position = 2 - m_position;
+	}
+	//apply position
+	setMlPosition(m_position);
+}
+
+void Kolf::Floater::load(KConfigGroup* group)
+{
+	Kolf::RectangleItem::load(group);
+	QLineF motionLine = m_motionLine;
+	motionLine.setP1(group->readEntry("startPoint", m_motionLine.p1()));
+	motionLine.setP2(group->readEntry("endPoint", m_motionLine.p2()));
+	setMotionLine(motionLine);
+	setSpeed(group->readEntry("speed", m_speed));
+}
+
+void Kolf::Floater::save(KConfigGroup* group)
+{
+	Kolf::RectangleItem::save(group);
+	group->writeEntry("startPoint", m_motionLine.p1());
+	group->writeEntry("endPoint", m_motionLine.p2());
+	group->writeEntry("speed", m_speed);
+}
+
+Kolf::Overlay* Kolf::Floater::createOverlay()
+{
+	return new Kolf::FloaterOverlay(this);
+}
+
+//END Kolf::Floater
+//BEGIN Kolf::FloaterOverlay
+
+Kolf::FloaterOverlay::FloaterOverlay(Kolf::Floater* floater)
+	: Kolf::RectangleOverlay(floater)
+	, m_handle1(new Kolf::OverlayHandle(Kolf::OverlayHandle::SquareShape, this))
+	, m_handle2(new Kolf::OverlayHandle(Kolf::OverlayHandle::SquareShape, this))
+	, m_motionLineItem(new QGraphicsLineItem(this))
+{
+	addHandle(m_handle1);
+	addHandle(m_handle2);
+	connect(m_handle1, SIGNAL(moveRequest(QPointF)), this, SLOT(moveMotionLineHandle(QPointF)));
+	connect(m_handle2, SIGNAL(moveRequest(QPointF)), this, SLOT(moveMotionLineHandle(QPointF)));
+	addHandle(m_motionLineItem);
+	QPen pen = m_motionLineItem->pen();
+	pen.setStyle(Qt::DashLine);
+	m_motionLineItem->setPen(pen);
+}
+
+void Kolf::FloaterOverlay::update()
+{
+	Kolf::Overlay::update();
+	const QLineF line = dynamic_cast<Kolf::Floater*>(qitem())->motionLine().translated(-qitem()->pos());
+	m_handle1->setPos(line.p1());
+	m_handle2->setPos(line.p2());
+	m_motionLineItem->setLine(line);
+}
+
+void Kolf::FloaterOverlay::moveMotionLineHandle(const QPointF& handleScenePos)
+{
+	//TODO: code duplication to Kolf::WallOverlay
+	QPointF handlePos = mapFromScene(handleScenePos) + qitem()->pos();
+	const QObject* handle = sender();
+	//get handle positions
+	QPointF handle1Pos = m_handle1->pos() + qitem()->pos();
+	QPointF handle2Pos = m_handle2->pos() + qitem()->pos();
+	if (handle == m_handle1)
+		handle1Pos = handlePos;
+	else if (handle == m_handle2)
+		handle2Pos = handlePos;
+	//ensure minimum length
+	static const qreal minLength = Kolf::Overlay::MinimumObjectDimension;
+	const QPointF posDiff = handle1Pos - handle2Pos;
+	const qreal length = QLineF(QPointF(), posDiff).length();
+	if (length < minLength)
+	{
+		const QPointF additionalExtent = posDiff * (minLength / length - 1);
+		if (handle == m_handle1)
+			handle1Pos += additionalExtent;
+		else if (handle == m_handle2)
+			handle2Pos -= additionalExtent;
+	}
+	//apply to item
+	dynamic_cast<Kolf::Floater*>(qitem())->setMotionLine(QLineF(handle1Pos, handle2Pos));
+}
+
+//END Kolf::FloaterOverlay
 //BEGIN Kolf::Sign
 
 Kolf::Sign::Sign(QGraphicsItem* parent, b2World* world)
@@ -521,11 +760,13 @@ void Kolf::Sign::setSize(const QSizeF& size)
 
 void Kolf::Sign::load(KConfigGroup* group)
 {
+	Kolf::RectangleItem::load(group);
 	setText(group->readEntry("Comment", m_text));
 }
 
 void Kolf::Sign::save(KConfigGroup* group)
 {
+	Kolf::RectangleItem::save(group);
 	group->writeEntry("Comment", m_text);
 }
 
@@ -584,7 +825,7 @@ void Kolf::Windmill::setGuardAtTop(bool guardAtTop)
 	propagateUpdate();
 }
 
-double Kolf::Windmill::speed() const
+int Kolf::Windmill::speed() const
 {
 	return m_speed;
 }
@@ -660,12 +901,14 @@ void Kolf::Windmill::updateWallPosition()
 
 void Kolf::Windmill::load(KConfigGroup* group)
 {
+	Kolf::RectangleItem::load(group);
 	setSpeed(group->readEntry("speed", m_speed));
 	setGuardAtTop(!group->readEntry("bottom", !m_guardAtTop));
 }
 
 void Kolf::Windmill::save(KConfigGroup* group)
 {
+	Kolf::RectangleItem::save(group);
 	group->writeEntry("speed", m_speed);
 	group->writeEntry("bottom", !m_guardAtTop);
 }

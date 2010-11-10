@@ -159,6 +159,50 @@ namespace Kolf
 			virtual bool collision(Ball* ball);
 	};
 
+	class Floater : public Kolf::RectangleItem
+	{
+		Q_OBJECT
+		public:
+			Floater(QGraphicsItem* parent, b2World* world);
+			virtual void editModeChanged(bool changed);
+			virtual void moveBy(double dx, double dy);
+
+			QLineF motionLine() const;
+			void setMotionLine(const QLineF& motionLine);
+			int speed() const;
+			virtual void advance(int phase);
+
+			virtual void load(KConfigGroup* group);
+			virtual void save(KConfigGroup* group);
+		public Q_SLOTS:
+			void setSpeed(int speed);
+		protected:
+			virtual Kolf::Overlay* createOverlay();
+		private:
+			void setMlPosition(qreal position);
+
+			QLineF m_motionLine;
+			int m_speed;
+			qreal m_velocity;
+			qreal m_position; //parameter on motion line (see QLineF::pointAt)
+			bool m_moveByMovesMotionLine;
+	};
+
+	class FloaterOverlay : public Kolf::RectangleOverlay
+	{
+		Q_OBJECT
+		public:
+			FloaterOverlay(Kolf::Floater* floater);
+			virtual void update();
+		private Q_SLOTS:
+			//interface to handles
+			void moveMotionLineHandle(const QPointF& handleScenePos);
+		private:
+			Kolf::OverlayHandle* m_handle1;
+			Kolf::OverlayHandle* m_handle2;
+			QGraphicsLineItem* m_motionLineItem;
+	};
+
 	class Sign : public Kolf::RectangleItem
 	{
 		Q_OBJECT
@@ -185,7 +229,7 @@ namespace Kolf
 			Windmill(QGraphicsItem* parent, b2World* world);
 
 			bool guardAtTop() const;
-			double speed() const;
+			int speed() const;
 			virtual void advance(int phase);
 			virtual void moveBy(double dx, double dy);
 
@@ -201,7 +245,8 @@ namespace Kolf
 			Kolf::Wall* m_rightWall;
 			Kolf::Wall* m_guardWall;
 			bool m_guardAtTop;
-			double m_speed, m_velocity;
+			int m_speed;
+			double m_velocity;
 	};
 }
 
