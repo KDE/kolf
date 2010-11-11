@@ -19,6 +19,7 @@
 
 #include "canvasitem.h"
 #include "game.h"
+#include "landscape.h"
 #include "overlay.h"
 #include "shape.h"
 
@@ -27,6 +28,10 @@
 
 CanvasItem::CanvasItem(b2World* world)
 	: game(0)
+	, m_zBehavior(CanvasItem::FixedZValue)
+	, m_zValue(0)
+	, m_zValueStep(0)
+	, m_strut(0)
 	, m_body(0)
 	, m_overlay(0)
 	, m_simulationType((CanvasItem::SimulationType) -1)
@@ -39,6 +44,11 @@ CanvasItem::CanvasItem(b2World* world)
 
 CanvasItem::~CanvasItem()
 {
+	//disconnect struts
+	if (m_strut)
+		m_strut->m_struttedItems.removeAll(this);
+	foreach (CanvasItem* item, m_struttedItems)
+		item->m_strut = 0;
 	//The overlay is deleted first, because it might interact with all other parts of the object.
 	delete m_overlay;
 	//NOTE: Box2D objects will need to be destroyed in the following order:
@@ -47,33 +57,86 @@ CanvasItem::~CanvasItem()
 	m_body->GetWorld()->DestroyBody(m_body);
 }
 
-QGraphicsRectItem *CanvasItem::onVStrut()
+void CanvasItem::setZBehavior(CanvasItem::ZBehavior behavior, qreal zValue, qreal zValueStep)
 {
-	QGraphicsItem *qthis = dynamic_cast<QGraphicsItem *>(this);
-	if (!qthis) 
-		return 0;
-	QList<QGraphicsItem *> l = qthis->collidingItems();
-	bool aboveVStrut = false;
-	CanvasItem *item = 0;
-	QGraphicsItem *qitem = 0;
-	for (QList<QGraphicsItem *>::Iterator it = l.begin(); it != l.end(); ++it)
+	m_zBehavior = behavior;
+	m_zValue = zValue;
+	m_zValueStep = zValueStep;
+	QGraphicsItem* qitem = dynamic_cast<QGraphicsItem*>(this);
+	if (qitem)
 	{
-		item = dynamic_cast<CanvasItem *>(*it);
-		if (item)
+		if (m_zBehavior == CanvasItem::FixedZValue)
+			qitem->setZValue(m_zValue);
+		else
+			updateZ(qitem);
+	}
+}
+
+void CanvasItem::updateZ(QGraphicsItem* self)
+{
+	//disconnect from old strut (if any)
+	if (m_strut)
+	{
+		m_strut->m_struttedItems.removeAll(this);
+		m_strut = 0;
+	}
+	//simple behavior
+	if (m_zBehavior == CanvasItem::FixedZValue)
+		return;
+	if (m_zBehavior == CanvasItem::IsStrut)
+	{
+		self->setZValue(m_zValueStep);
+		return;
+	}
+	//determine new strut
+	foreach (QGraphicsItem* qitem, self->collidingItems())
+	{
+		CanvasItem* citem = dynamic_cast<CanvasItem*>(qitem);
+		if (citem && citem->m_zBehavior == CanvasItem::IsStrut)
 		{
-			qitem = *it;
-			if (item->vStrut())
+			//special condition for slopes: they must lie inside the strut's area, not only touch it
+			//HACK: for compatibility reasons, the condition is that area of slope < area of strut
+			Kolf::Slope* slope = dynamic_cast<Kolf::Slope*>(this);
+			if (slope)
 			{
-				//kDebug(12007) << "above vstrut\n";
-				aboveVStrut = true;
-				break;
+				const QSizeF slopeSize = slope->size();
+				const qreal slopeArea = slopeSize.width() * slopeSize.height();
+				const QSizeF strutSize = qitem->boundingRect().size();
+				const qreal strutArea = strutSize.width() * strutSize.height();
+				if (slopeArea > strutArea)
+					continue;
 			}
+			//strut found
+			m_strut = citem;
+			m_strut->m_struttedItems << this;
+			self->setZValue(m_zValue + m_zValueStep);
+			return;
 		}
 	}
+	//no strut found -> set default zValue
+	self->setZValue(m_zValue);
+}
 
-	QGraphicsRectItem *ritem = dynamic_cast<QGraphicsRectItem *>(qitem);
+void CanvasItem::moveItemsOnStrut(const QPointF& posDiff)
+{
+	foreach (CanvasItem* citem, m_struttedItems)
+	{
+		QGraphicsItem* qitem = dynamic_cast<QGraphicsItem*>(citem);
+		if (!qitem || qitem->data(0) == Rtti_Putter)
+			continue;
+		citem->moveBy(posDiff.x(), posDiff.y());
+		Ball* ball = dynamic_cast<Ball*>(citem);
+		if (ball && game && !game->isEditing() && game->curBall() == ball)
+			game->ballMoved();
+	}
+}
 
-	return aboveVStrut && ritem? ritem : 0;
+void CanvasItem::moveBy(double dx, double dy)
+{
+	Q_UNUSED(dx) Q_UNUSED(dy)
+	QGraphicsItem* qitem = dynamic_cast<QGraphicsItem*>(this);
+	if (qitem)
+		updateZ(qitem);
 }
 
 void CanvasItem::save(KConfigGroup *cfgGroup)
@@ -256,6 +319,7 @@ void EllipticalCanvasItem::setSize(const QSizeF& size)
 void EllipticalCanvasItem::moveBy(double dx, double dy)
 {
 	Tagaro::SpriteObjectItem::moveBy(dx, dy);
+	CanvasItem::moveBy(dx, dy);
 }
 
 void EllipticalCanvasItem::saveSize(KConfigGroup* group)

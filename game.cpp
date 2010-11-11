@@ -121,6 +121,7 @@ void Putter::moveBy(double dx, double dy)
 {
 	QGraphicsLineItem::moveBy(dx, dy);
 	guideLine->setPos(x(), y());
+	CanvasItem::moveBy(dx, dy);
 }
 
 void Putter::setShowGuideLine(bool yes)
@@ -482,6 +483,7 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 		banner = new Tagaro::SpriteObjectItem(Kolf::renderer(), "intro_foreground", courseBoard);
 		banner->setSize(400, 132);
 		banner->setPos(0, 32);
+		banner->setZValue(3); //on the height of a puddle (above slopes and sands, below any objects)
 	}
 
 	adjustSize();
@@ -1163,6 +1165,10 @@ void KolfGame::fastTimeout()
 		if (citem)
 		{
 			citem->startSimulation();
+			//HACK: the following should not be necessary at this point
+			QGraphicsItem* qitem = dynamic_cast<QGraphicsItem*>(citem);
+			if (qitem)
+				citem->updateZ(qitem);
 		}
 	}
 	//step world
@@ -1917,14 +1923,6 @@ void KolfGame::openFile()
 	QList<QGraphicsItem *>::const_iterator qsceneItem;
 	QList<CanvasItem *> todo;
 	QList<QGraphicsItem *> qtodo;
-
-	for (qsceneItem = m_topLevelQItems.constBegin(); qsceneItem != m_topLevelQItems.constEnd(); ++qsceneItem)
-	{
-		if (dynamic_cast<Ball*>(*qsceneItem)) continue; //skip balls
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(*qsceneItem);
-		if (citem)
-			citem->updateZ();
-	}
 
 	if (curHole > _highestHole)
 		_highestHole = curHole;

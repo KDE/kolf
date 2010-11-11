@@ -184,7 +184,7 @@ Kolf::Puddle::Puddle(QGraphicsItem* parent, b2World* world)
 {
 	setData(0, Rtti_DontPlaceOn);
 	setSize(QSizeF(45, 30));
-	setZValue(-25);
+	setZBehavior(CanvasItem::FixedZValue, 3);
 }
 
 bool Kolf::Puddle::collision(Ball* ball)
@@ -212,7 +212,7 @@ Kolf::Sand::Sand(QGraphicsItem* parent, b2World* world)
 	: Kolf::LandscapeItem(QLatin1String("sand"), parent, world)
 {
 	setSize(QSizeF(45, 40));
-	setZValue(-26);
+	setZBehavior(CanvasItem::FixedZValue, 2);
 }
 
 bool Kolf::Sand::collision(Ball* ball)
@@ -275,7 +275,8 @@ Kolf::Slope::Slope(QGraphicsItem* parent, b2World* world)
 		m_arrows << arrow;
 	}
 	setSize(QSizeF(40, 40));
-	setZValue(-50);
+	m_stuckOnGround = true; //so that the following call does not return early
+	setStuckOnGround(false); //initializes Z behavior
 	updateAppearance();
 }
 
@@ -334,7 +335,7 @@ void Kolf::Slope::setStuckOnGround(bool stuckOnGround)
 	if (m_stuckOnGround != stuckOnGround)
 	{
 		m_stuckOnGround = stuckOnGround;
-		//TODO: update Z order
+		setZBehavior(m_stuckOnGround ? CanvasItem::FixedZValue : CanvasItem::IsRaisedByStrut, 1);
 		propagateUpdate();
 	}
 }
@@ -374,7 +375,7 @@ void Kolf::Slope::setSize(const QSizeF& size)
 		Tagaro::SpriteObjectItem::setSize(size);
 	updateInfo();
 	propagateUpdate();
-	//TODO: update Z order
+	updateZ(this);
 }
 
 QPointF Kolf::Slope::getPosition() const
@@ -385,6 +386,7 @@ QPointF Kolf::Slope::getPosition() const
 void Kolf::Slope::moveBy(double dx, double dy)
 {
 	Tagaro::SpriteObjectItem::moveBy(dx, dy);
+	CanvasItem::moveBy(dx, dy);
 }
 
 void Kolf::Slope::load(KConfigGroup* group)
@@ -486,7 +488,7 @@ bool Kolf::Slope::collision(Ball* ball)
 	double slopeAngle = 0;
 	const double width = size().width(), height = size().height();
 
-	if (diag) 
+	if (diag)
 		slopeAngle = atan(width / height);
 	else if (circle)
 	{
@@ -551,37 +553,6 @@ Kolf::Overlay* Kolf::Slope::createOverlay()
 {
 	return new Kolf::SlopeOverlay(this);
 }
-
-#if 0
-
-//NOTE: This is code from the old Z ordering. I keep this around until
-//the Z ordering has been refactored.
-
-void Slope::updateZ(QGraphicsItem *vStrut)
-{
-	const double area = (height() * width());
-	const int defaultz = -50;
-
-	double newZ = 0;
-
-	QGraphicsItem *rect = 0;
-	if (!stuckOnGround)
-		rect = vStrut? vStrut : onVStrut();
-
-	if (rect)
-	{
-		if (area > (rect->boundingRect().width() * rect->boundingRect().height()))
-			newZ = defaultz;
-		else
-			newZ = rect->zValue();
-	}
-	else
-		newZ = defaultz;
-
-	setZValue(((double)1 / (area == 0? 1 : area)) + newZ);
-}
-
-#endif
 
 //END Kolf::Slope
 //BEGIN Kolf::SlopeConfig

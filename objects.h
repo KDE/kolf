@@ -37,8 +37,7 @@ namespace Kolf
 		public:
 			BlackHole(QGraphicsItem* parent, b2World* world);
 			~BlackHole();
-			//FIXME: canBeMovedByOthers() of exit is broken since refactoring.
-			virtual bool canBeMovedByOthers() const { return true; }
+			//FIXME: strutted moving of exit is broken since refactoring.
 
 			virtual QList<QGraphicsItem*> infoItems() const;
 			virtual void save(KConfigGroup* cfgGroup);
@@ -123,7 +122,6 @@ namespace Kolf
 			Cup(QGraphicsItem* parent, b2World* world);
 
 			virtual Kolf::Overlay* createOverlay();
-			virtual bool canBeMovedByOthers() const { return true; }
 			virtual bool collision(Ball* ball);
 	};
 }

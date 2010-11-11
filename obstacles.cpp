@@ -38,7 +38,7 @@ Kolf::Bumper::Bumper(QGraphicsItem* parent, b2World* world)
 {
 	const int diameter = 20;
 	setSize(QSizeF(diameter, diameter));
-	setZValue(-25);
+	setZBehavior(CanvasItem::IsRaisedByStrut, 4);
 	setSimulationType(CanvasItem::NoSimulation);
 }
 
@@ -81,7 +81,7 @@ Kolf::Wall::Wall(QGraphicsItem* parent, b2World* world)
 {
 	setPen(QPen(Qt::darkRed, 3));
 	setData(0, Rtti_NoCollision);
-	setZValue(50);
+	setZBehavior(CanvasItem::IsRaisedByStrut, 5);
 
 	m_shape = new Kolf::LineShape(line());
 	addShape(m_shape);
@@ -117,6 +117,7 @@ void Kolf::Wall::setLine(const QLineF& line)
 void Kolf::Wall::moveBy(double dx, double dy)
 {
 	QGraphicsLineItem::moveBy(dx, dy);
+	CanvasItem::moveBy(dx, dy);
 }
 
 QPointF Kolf::Wall::getPosition() const
@@ -282,14 +283,14 @@ void Kolf::RectangleItem::moveBy(double dx, double dy)
 	foreach (Kolf::Wall* wall, m_walls)
 		if (wall)
 			wall->setPos(pos);
-	//update Z order of items on top of vStrut
-	if (vStrut())
-		foreach (QGraphicsItem* qitem, collidingItems())
-		{
-			CanvasItem* citem = dynamic_cast<CanvasItem*>(qitem);
-			if (citem)
-				citem->updateZ();
-		}
+	//update Z order
+	CanvasItem::moveBy(dx, dy);
+	foreach (QGraphicsItem* qitem, collidingItems())
+	{
+		CanvasItem* citem = dynamic_cast<CanvasItem*>(qitem);
+		if (citem)
+			citem->updateZ(qitem);
+	}
 }
 
 void Kolf::RectangleItem::setWallColor(const QColor& color)
@@ -494,6 +495,7 @@ void Kolf::RectangleConfig::wallChanged(Kolf::WallIndex index, bool hasWall, boo
 Kolf::Bridge::Bridge(QGraphicsItem* parent, b2World* world)
 	: Kolf::RectangleItem(QLatin1String("bridge"), parent, world)
 {
+	setZBehavior(CanvasItem::IsStrut, 0);
 }
 
 bool Kolf::Bridge::collision(Ball* ball)
@@ -515,6 +517,7 @@ Kolf::Floater::Floater(QGraphicsItem* parent, b2World* world)
 	, m_animated(true)
 {
 	setMlPosition(m_position);
+	setZBehavior(CanvasItem::IsStrut, 0);
 }
 
 void Kolf::Floater::editModeChanged(bool editing)
@@ -527,6 +530,7 @@ void Kolf::Floater::editModeChanged(bool editing)
 
 void Kolf::Floater::moveBy(double dx, double dy)
 {
+	moveItemsOnStrut(QPointF(dx, dy));
 	Kolf::RectangleItem::moveBy(dx, dy);
 	if (m_moveByMovesMotionLine)
 		m_motionLine.translate(dx, dy);
@@ -565,60 +569,6 @@ void Kolf::Floater::setSpeed(int speed)
 	m_velocity = (m_velocity < 0) ? -velocity : velocity;
 	propagateUpdate();
 }
-
-#if 0
-//NOTE: This is the old floater moving code with vStrut stuff.
-//I'll keep this around until the new code works.
-
-void Floater::moveBy(double dx, double dy)
-{
-	if (!isEnabled())
-		return;
-
-	QList<QGraphicsItem *> l = collidingItems();
-	for (QList<QGraphicsItem *>::Iterator it = l.begin(); it != l.end(); ++it)
-	{
-		CanvasItem *item = dynamic_cast<CanvasItem *>(*it);
-
-		if (!noUpdateZ && item && item->canBeMovedByOthers())
-			item->updateZ(this);
-
-		if ((*it)->zValue() >= zValue())
-		{
-			if (item && item->canBeMovedByOthers() && collidesWithItem(*it))
-			{
-				Ball *ball = dynamic_cast<Ball *>(*it);
-				if (ball)
-				{
-					ball->moveBy(dx, dy);
-					if (game && /*game->hasFocus() &&*/ !game->isEditing() && game->curBall() == (Ball *)(*it))
-						game->ballMoved();
-				}
-				else if ((*it)->data(0) != Rtti_Putter) {
-					item->moveBy(dx, dy);
-				}
-			}
-		}
-	}
-
-	point->dontMove();
-	point->setPos(x() + width(), y() + height());
-
-	// this call must come after we have tested for collidingItems, otherwise we skip them when saving!
-	// that's a bad thing
-	QGraphicsItem::moveBy(dx, dy);
-
-	// because we don't do Bridge::moveBy();
-	topWall->setPos(x(), y());
-	botWall->setPos(x(), y() - 1);
-	leftWall->setPos(x(), y());
-	rightWall->setPos(x(), y());
-
-	if (game && game->isEditing())
-		game->updateHighlighter();
-}
-
-#endif
 
 void Kolf::Floater::advance(int phase)
 {
@@ -730,7 +680,7 @@ Kolf::Sign::Sign(QGraphicsItem* parent, b2World* world)
 	, m_text(i18n("New Text"))
 	, m_textItem(new QGraphicsTextItem(m_text, this))
 {
-	setZValue(998.8);
+	setZBehavior(CanvasItem::FixedZValue, 3);
 	setWallColor(Qt::black);
 	for (int i = 0; i < Kolf::RectangleWallCount; ++i)
 		setWall((Kolf::WallIndex) i, true);
@@ -781,6 +731,7 @@ Kolf::Windmill::Windmill(QGraphicsItem* parent, b2World* world)
 	  , m_guardAtTop(false)
 	  , m_speed(0), m_velocity(0)
 {
+	setZBehavior(CanvasItem::IsStrut, 0);
 	setSpeed(5); //initialize m_speed and m_velocity properly
 	applyWallStyle(m_leftWall);
 	applyWallStyle(m_rightWall);

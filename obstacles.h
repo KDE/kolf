@@ -97,15 +97,13 @@ namespace Kolf
 			RectangleItem(const QString& type, QGraphicsItem* parent, b2World* world);
 			virtual ~RectangleItem();
 
-			virtual bool vStrut() const { return true; }
-
 			bool hasWall(Kolf::WallIndex index) const;
 			bool isWallAllowed(Kolf::WallIndex index) const;
 			void setWall(Kolf::WallIndex index, bool hasWall);
 			void setWallAllowed(Kolf::WallIndex index, bool wallAllowed);
 			virtual void setSize(const QSizeF& size);
 			virtual QPointF getPosition() const;
-			virtual void moveBy(double dx, double dy); 
+			virtual void moveBy(double dx, double dy);
 
 			void setWallColor(const QColor& color);
 			void applyWallStyle(Kolf::Wall* wall);
@@ -210,7 +208,6 @@ namespace Kolf
 		Q_OBJECT
 		public:
 			Sign(QGraphicsItem* parent, b2World* world);
-			virtual bool vStrut() const { return false; }
 
 			QString text() const;
 			virtual void setSize(const QSizeF& size);

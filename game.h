@@ -137,7 +137,6 @@ public:
 	void saveAngle(Ball *ball) { angleMap[ball] = angle; }
 	void setAngle(Ball *ball);
 	void resetAngles() { angleMap.clear(); setZValue(999999); }
-	virtual bool canBeMovedByOthers() const { return true; }
 	virtual void moveBy(double dx, double dy);
 	void setShowGuideLine(bool yes);
 
@@ -195,7 +194,6 @@ public:
 	void borderWallsChanged(bool yes);
 	bool borderWalls() const { return m_borderWalls; }
 
-	virtual void moveBy(double , double) {}
 	virtual QPointF getPosition() const { return QPointF(); }
 private:
 	QString m_author;

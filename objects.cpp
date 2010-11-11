@@ -41,7 +41,7 @@ Kolf::BlackHole::BlackHole(QGraphicsItem* parent, b2World* world)
 	, m_infoLine(new QGraphicsLineItem(this))
 {
 	setSize(QSizeF(16, 18));
-	setZValue(998.1);
+	setZBehavior(CanvasItem::IsRaisedByStrut, 4);
 	setSimulationType(CanvasItem::NoSimulation);
 
 	const QColor myColor((QRgb)(KRandom::random() % 0x01000000));
@@ -327,8 +327,8 @@ Kolf::Cup::Cup(QGraphicsItem* parent, b2World* world)
 {
 	const int diameter = 16;
 	setSize(QSizeF(diameter, diameter));
+	setZBehavior(CanvasItem::IsRaisedByStrut, 4);
 	setSimulationType(CanvasItem::NoSimulation);
-	setZValue(998.1);
 }
 
 Kolf::Overlay* Kolf::Cup::createOverlay()

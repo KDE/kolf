@@ -29,6 +29,7 @@ Ball::Ball(QGraphicsItem* parent, b2World* world)
 {
 	const int diameter = 8;
 	setSize(QSizeF(diameter, diameter));
+	setZBehavior(CanvasItem::IsRaisedByStrut, 10);
 
 	setData(0, Rtti_NoCollision);
 	m_doDetect = true;

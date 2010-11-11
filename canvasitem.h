@@ -57,12 +57,6 @@ public:
 	virtual void editModeChanged(bool editing);
 	///Returns whether all items of this type of item (based on data()) that are "colliding" (ie, in the same spot) with ball should get collision() called.
 	virtual bool terrainCollisions() const { return false; }
-	///Returns whether or not this item lifts items on top of it.
-	virtual bool vStrut() const { return false; }
-	///update your Z value (this is called by various things when perhaps the value should change) if this is called by a vStrut, it will pass 'this'.
-	virtual void updateZ(QGraphicsItem * /*vStrut*/ = 0) {}
-	///returns whether this item can be moved by others (if you want to move an item, you should honor this!)
-	virtual bool canBeMovedByOthers() const { return false; }
 	///Returns a Config that can be used to configure this item by the user. The default implementation returns one that says 'No configuration options'.
 	virtual Config *config(QWidget *parent) { return new DefaultConfig(parent); }
 	///Returns other items that should be moveable (besides this one of course).
@@ -84,20 +78,35 @@ public:
 	void setName(const QString &newname) { m_name = newname; }
 	virtual void setSize(const QSizeF&) {}
 
-	virtual void moveBy(double , double) { kDebug(12007) << "Warning, empty moveBy used";} //needed so that float can call the own custom moveBy()s of everything on it
+	virtual void moveBy(double dx, double dy);
 
 	//The following is needed temporarily while CanvasItem is not a QGraphicsItem by itself.
 	void setPosition(const QPointF& pos) { const QPointF diff = pos - getPosition(); moveBy(diff.x(), diff.y()); }
 	virtual QPointF getPosition() const = 0;
+
+	enum ZBehavior { FixedZValue = 0, IsStrut = 1, IsRaisedByStrut = 2 };
+	///This specifies how the object is Z-ordered.
+	///\li FixedZValue: No special behavior.
+	///\li IsStrut: This item is a vertical strut. It raises certain
+	///    items when they move on top of it. Its zValue is \a zValueStep.
+	///\li IsRaisedByStrut: This item can be raised by struts underneath
+	///    it. \a zValueStep is the amount by which the zValue is raised
+	///    then. (i.e. \a zValue is relative to the strut)
+	//TODO: account for overlapping struts
+	void setZBehavior(ZBehavior behavior, qreal zValue, qreal zValueStep = 100);
+	void updateZ(QGraphicsItem* self);
+	void moveItemsOnStrut(const QPointF& posDiff);
 protected:
 	friend class Kolf::Overlay; //for delivery of Kolf::Overlay::stateChanged signal
 	///pointer to main KolfGame
 	KolfGame *game;
-	///returns the highest vertical strut the item is on
-	QGraphicsRectItem *onVStrut();
 private:
 	QString m_name;
 	int m_id;
+	CanvasItem::ZBehavior m_zBehavior;
+	qreal m_zValue, m_zValueStep;
+	CanvasItem* m_strut;
+	QList<CanvasItem*> m_struttedItems;
 
 //AFTER THIS LINE follows what I have inserted during the refactoring
 	public:
