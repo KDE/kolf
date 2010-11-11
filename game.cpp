@@ -1009,11 +1009,8 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 			CanvasItem *citem = dynamic_cast<CanvasItem *>(selectedItem);
 			if (!citem)
 				return;
-			citem = citem->itemToDelete();
-			if (!citem)
-				return;
 			QGraphicsItem *item = dynamic_cast<QGraphicsItem *>(citem);
-			if (citem && citem->deleteable())
+			if (citem && !dynamic_cast<Ball*>(item))
 			{
 				lastDelId = citem->curId();
 
@@ -1153,10 +1150,6 @@ void KolfGame::fastTimeout()
 
 	if (editing)
 		return;
-
-	// do home-grown advance
-	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-		(*it).ball()->doAdvance();
 
 	// do Box2D advance
 	//Because there are so much CanvasItems out there, there is currently no

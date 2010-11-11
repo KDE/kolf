@@ -34,8 +34,6 @@ public:
 
 	virtual void moveBy(double dx, double dy);
 
-	virtual bool deleteable() const { return false; }
-
 	virtual bool canBeMovedByOthers() const { return true; }
 
 	BallState curState() const { return state; }

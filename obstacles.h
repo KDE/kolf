@@ -26,6 +26,8 @@
 #include "canvasitem.h"
 #include "overlay.h"
 
+#include <QPen>
+
 class QCheckBox;
 class QGridLayout;
 

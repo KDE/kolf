@@ -25,7 +25,6 @@
 #include "tagaro/spriteobjectitem.h"
 
 #include <QGraphicsRectItem>
-#include <QGraphicsView>
 #include <KDebug>
 class b2Body;
 class b2World;
@@ -56,12 +55,6 @@ public:
 	virtual void shotStarted() {}
 	///called when the edit mode has been changed.
 	virtual void editModeChanged(bool editing);
-	///Returns the object to get rid of when the delete button is pressed on this item.
-	virtual CanvasItem *itemToDelete() { return this; }
-	///Returns whether this item should be able to be deleted by user while editing.
-	virtual bool deleteable() const { return true; }
-	///called if fastAdvance is enabled
-	virtual void doAdvance() {}
 	///Returns whether all items of this type of item (based on data()) that are "colliding" (ie, in the same spot) with ball should get collision() called.
 	virtual bool terrainCollisions() const { return false; }
 	///Returns whether or not this item lifts items on top of it.
