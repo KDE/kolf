@@ -275,7 +275,12 @@ void Kolf::Overlay::setState(Kolf::Overlay::State state)
 	m_handleAnimator->setOpacityAnimated(state == Active ? 1.0 : 0.0);
 	//propagate changes
 	emit stateChanged();
-	m_citem->game->overlayStateChanged(m_citem);
+	if (state == Kolf::Overlay::Active)
+	{
+		KolfGame* game = m_citem->game;
+		if (game)
+			game->setSelectedItem(m_citem);
+	}
 }
 
 void Kolf::Overlay::activatorEntered()

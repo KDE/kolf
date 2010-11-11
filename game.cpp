@@ -672,8 +672,7 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 		//at this point, QGV::mousePressEvent and thus the interaction
 		//with overlays has already been done; we therefore know that
 		//the user has clicked into free space
-		selectedItem = 0;
-		emit newSelectedItem(&holeInfo);
+		setSelectedItem(0);
 		return;
 	}
 	else
@@ -918,8 +917,7 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 				m_topLevelQItems.removeAll(item);
 				m_moveableQItems.removeAll(item);
 				delete citem;
-				selectedItem = 0;
-				emit newSelectedItem(&holeInfo);
+				setSelectedItem(0);
 
 				setModified(true);
 			}
@@ -2002,9 +2000,7 @@ void KolfGame::clearHole()
 	}
 
 	m_moveableQItems = m_topLevelQItems = newTopLevelQItems;
-	selectedItem = 0;
-
-	emit newSelectedItem(&holeInfo);
+	setSelectedItem(0);
 
 	// add default objects
 	foreach (const Kolf::ItemMetadata& metadata, m_factory.knownTypes())
@@ -2147,7 +2143,7 @@ void KolfGame::toggleEditMode()
 	if (editing)
 	{
 		emit editingStarted();
-		emit newSelectedItem(&holeInfo);
+		setSelectedItem(0);
 	}
 	else
 	{
@@ -2187,27 +2183,21 @@ void KolfGame::toggleEditMode()
 	inPlay = false;
 }
 
-void KolfGame::overlayStateChanged(CanvasItem* citem)
+void KolfGame::setSelectedItem(CanvasItem* citem)
 {
-	Kolf::Overlay* overlay = citem->overlay(false);
-	if (!overlay) //HACK: looks weird, but can happen in the setState() call in the Overlay ctor
-		return;
-	if (overlay->state() == Kolf::Overlay::Active)
+	QGraphicsItem* qitem = dynamic_cast<QGraphicsItem*>(citem);
+	selectedItem = qitem;
+	emit newSelectedItem(qitem ? citem : &holeInfo);
+	//deactivate all other overlays
+	foreach (QGraphicsItem* otherQitem, m_topLevelQItems)
 	{
-		//update selectedItem
-		selectedItem = overlay->qitem();
-		emit newSelectedItem(overlay->citem());
-		//only one overlay may be active at one time, so deactivate the others
-		foreach (QGraphicsItem* qitem, m_topLevelQItems)
+		CanvasItem* otherCitem = dynamic_cast<CanvasItem*>(otherQitem);
+		if (otherCitem && otherCitem != citem)
 		{
-			CanvasItem* otherCitem = dynamic_cast<CanvasItem*>(qitem);
-			if (otherCitem && otherCitem != citem)
-			{
-				//false = do not create overlay if it does not exist yet
-				Kolf::Overlay* otherOverlay = otherCitem->overlay(false);
-				if (otherOverlay)
-					otherOverlay->setState(Kolf::Overlay::Passive);
-			}
+			//false = do not create overlay if it does not exist yet
+			Kolf::Overlay* otherOverlay = otherCitem->overlay(false);
+			if (otherOverlay)
+				otherOverlay->setState(Kolf::Overlay::Passive);
 		}
 	}
 }

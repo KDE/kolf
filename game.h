@@ -269,7 +269,7 @@ public:
 	void hidePutter() { putter->setVisible(false); }
 	void ignoreEvents(bool ignore) { m_ignoreEvents = ignore; }
 
-	void overlayStateChanged(CanvasItem* citem);
+	void setSelectedItem(CanvasItem* citem);
 
 	static void scoresFromSaved(KConfig*, PlayerList &players);
 	static void courseInfo(CourseInfo &info, const QString &filename);
