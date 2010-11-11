@@ -496,13 +496,6 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 		m_moveableQItems << ball;
 	}
 
-	// highlighter shows current item when editing
-	highlighter = new QGraphicsRectItem(courseBoard);
-	highlighter->setPen(QPen(Qt::yellow, 1));
-	highlighter->setBrush(QBrush(Qt::NoBrush));
-	highlighter->setVisible(false);
-	highlighter->setZValue(10000);
-
 	QFont font = QApplication::font();
 	font.setPixelSize(12);
 
@@ -663,15 +656,6 @@ void KolfGame::addBorderWall(const QPoint &start, const QPoint &end)
 	borderWalls.append(wall);
 }
 
-void KolfGame::updateHighlighter()
-{
-	if (!selectedItem)
-		return;
-	QRectF rect = selectedItem->boundingRect();
-	highlighter->setPos(0, 0);
-	highlighter->setRect(rect.x() + selectedItem->x() + 1, rect.y() + selectedItem->y() + 1, rect.width(), rect.height());
-}
-
 void KolfGame::handleMouseDoubleClickEvent(QMouseEvent *e)
 {
 	// allow two fast single clicks
@@ -685,65 +669,12 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 
 	if (editing)
 	{
-		if (inPlay)
-			return;
-
-		storedMousePos = e->pos();
-
-		QList<QGraphicsItem *> list = course->items(courseBoard->mapToScene(e->pos()));
-		if(list.count() > 0)
-		{
-			list.removeAll(courseBoard);
-			list.removeAll(highlighter);
-		}
-
-		moving = false;
-		highlighter->setVisible(false);
+		//at this point, QGV::mousePressEvent and thus the interaction
+		//with overlays has already been done; we therefore know that
+		//the user has clicked into free space
 		selectedItem = 0;
-		movingItem = 0;
-		movingCanvasItem = 0;
-
-		if (list.count() < 1)
-		{
-			emit newSelectedItem(&holeInfo);
-			return;
-		}
-		// only items we keep track of
-		if (!m_moveableQItems.contains(list.first()))
-		{
-			emit newSelectedItem(&holeInfo);
-			return;
-		}
-
-		CanvasItem *citem = dynamic_cast<CanvasItem *>(list.first());
-		if (!citem)
-		{
-			emit newSelectedItem(&holeInfo);
-			return;
-		}
-
-		switch (e->button())
-		{
-			// select AND move now :)
-			case Qt::LeftButton:
-				{
-					selectedItem = list.first();
-					movingItem = selectedItem;
-					movingCanvasItem = dynamic_cast<CanvasItem *>(movingItem);
-					moving = true;
-					setCursor(Qt::SizeAllCursor);
-
-					emit newSelectedItem(citem);
-					highlighter->setVisible(true);
-					QRectF rect = selectedItem->boundingRect();
-					highlighter->setPos(0, 0);
-					highlighter->setRect(rect.x() + selectedItem->x() + 1, rect.y() + selectedItem->y() + 1, rect.width(), rect.height());
-				}
-				break;
-
-			default:
-				break;
-		}
+		emit newSelectedItem(&holeInfo);
+		return;
 	}
 	else
 	{
@@ -818,43 +749,12 @@ void KolfGame::mouseMoveEvent(QMouseEvent * e)
 
 void KolfGame::handleMouseMoveEvent(QMouseEvent *e)
 {
-	if (inPlay || !putter || m_ignoreEvents)
-		return;
-
-	QPoint mouse = e->pos();
-
-	// mouse moving of putter
-	if (!editing)
+	if (!editing && !inPlay && putter && !m_ignoreEvents)
 	{
+		// mouse moving of putter
 		updateMouse();
-		return;
+		e->accept();
 	}
-
-	if (!moving)
-	{
-		// lets change the cursor to a hand
-		// if we're hovering over something
-
-		QList<QGraphicsItem *> list = course->items(courseBoard->mapToScene(e->pos()));
-		if (list.count() > 1) //list always contains courseBoard
-			setCursor(Qt::PointingHandCursor);
-		else
-			setCursor(Qt::ArrowCursor);
-		return;
-	}
-
-	int moveX = storedMousePos.x() - mouse.x();
-	int moveY = storedMousePos.y() - mouse.y();
-
-	// moving counts as modifying
-	if (moveX || moveY)
-		setModified(true);
-
-	highlighter->moveBy(-(double)moveX, -(double)moveY);
-	movingCanvasItem->moveBy(-(double)moveX, -(double)moveY);
-	QRectF brect = movingItem->boundingRect();
-	emit newStatusText(QString("%1x%2").arg(brect.x()).arg(brect.y()));
-	storedMousePos = mouse;
 }
 
 void KolfGame::updateMouse()
@@ -875,7 +775,6 @@ void KolfGame::handleMouseReleaseEvent(QMouseEvent *e)
 	if (editing)
 	{
 		emit newStatusText(QString());
-		moving = false;
 	}
 
 	if (m_ignoreEvents)
@@ -1006,7 +905,7 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 		puttRelease();
 	else if ((e->key() == Qt::Key_Backspace || e->key() == Qt::Key_Delete) && !(e->modifiers() & Qt::ControlModifier))
 	{
-		if (editing && !moving && selectedItem)
+		if (editing && selectedItem)
 		{
 			CanvasItem *citem = dynamic_cast<CanvasItem *>(selectedItem);
 			if (!citem)
@@ -1016,7 +915,6 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 			{
 				lastDelId = citem->curId();
 
-				highlighter->setVisible(false);
 				m_topLevelQItems.removeAll(item);
 				m_moveableQItems.removeAll(item);
 				delete citem;
@@ -2054,7 +1952,6 @@ void KolfGame::addNewHole()
 		(*it).ball()->setVisible(false);
 
 	whiteBall->setVisible(editing);
-	highlighter->setVisible(false);
 	putter->setVisible(!editing);
 	inPlay = false;
 
@@ -2243,7 +2140,6 @@ void KolfGame::toggleEditMode()
 	   }
 	   */
 
-	moving = false;
 	selectedItem = 0;
 
 	editing = !editing;
@@ -2279,7 +2175,6 @@ void KolfGame::toggleEditMode()
 
 	whiteBall->setVisible(editing);
 	whiteBall->editModeChanged(editing);
-	highlighter->setVisible(false);
 
 	// shouldn't see putter whilst editing
 	putter->setVisible(!editing);
@@ -2301,12 +2196,7 @@ void KolfGame::overlayStateChanged(CanvasItem* citem)
 	{
 		//update selectedItem
 		selectedItem = overlay->qitem();
-		movingItem = 0; movingCanvasItem = 0;
 		emit newSelectedItem(overlay->citem());
-		highlighter->setVisible(true);
-		QRectF rect = selectedItem->boundingRect();
-		highlighter->setPos(0, 0);
-		highlighter->setRect(rect.x() + selectedItem->x() + 1, rect.y() + selectedItem->y() + 1, rect.width(), rect.height());
 		//only one overlay may be active at one time, so deactivate the others
 		foreach (QGraphicsItem* qitem, m_topLevelQItems)
 		{

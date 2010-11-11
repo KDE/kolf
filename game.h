@@ -260,7 +260,6 @@ public:
 	Ball *curBall() const { return (*curPlayer).ball(); }
 	void updateMouse();
 	void ballMoved();
-	void updateHighlighter();
 	void setBorderWalls(bool);
 	void setInPlay(bool yes) { inPlay = yes; }
 	bool isInPlay() { return inPlay; }
@@ -370,7 +369,7 @@ private:
 	bool regAdv;
 
 	const Kolf::ItemFactory& m_factory;
-	QList<QGraphicsItem*> m_topLevelQItems; //includes balls, but not putter and highlighter
+	QList<QGraphicsItem*> m_topLevelQItems; //includes balls, but not putter
 	QList<QGraphicsItem*> m_moveableQItems;
 
 	QList<Kolf::Wall *> borderWalls;
@@ -413,13 +412,7 @@ private:
 	bool strict;
 
 	bool editing;
-	QPoint storedMousePos;
-	bool moving;
-	bool dragging;
-	QGraphicsItem *movingItem;
-	CanvasItem *movingCanvasItem;
 	QGraphicsItem *selectedItem;
-	QGraphicsRectItem *highlighter;
 	
 	//For intro banner
 	Tagaro::SpriteObjectItem *banner;
