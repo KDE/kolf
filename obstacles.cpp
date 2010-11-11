@@ -81,7 +81,7 @@ Kolf::Wall::Wall(QGraphicsItem* parent, b2World* world)
 {
 	setPen(QPen(Qt::darkRed, 3));
 	setData(0, Rtti_NoCollision);
-	setZBehavior(CanvasItem::IsRaisedByStrut, 5);
+	setZBehavior(CanvasItem::FixedZValue, 5);
 
 	m_shape = new Kolf::LineShape(line());
 	addShape(m_shape);
