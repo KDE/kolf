@@ -637,7 +637,7 @@ Kolf::FloaterOverlay::FloaterOverlay(Kolf::Floater* floater)
 
 void Kolf::FloaterOverlay::update()
 {
-	Kolf::Overlay::update();
+	Kolf::RectangleOverlay::update();
 	const QLineF line = dynamic_cast<Kolf::Floater*>(qitem())->motionLine().translated(-qitem()->pos());
 	m_handle1->setPos(line.p1());
 	m_handle2->setPos(line.p2());
