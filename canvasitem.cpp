@@ -96,17 +96,10 @@ void CanvasItem::updateZ(QGraphicsItem* self)
 		if (citem && citem->m_zBehavior == CanvasItem::IsStrut)
 		{
 			//special condition for slopes: they must lie inside the strut's area, not only touch it
-			//HACK: for compatibility reasons, the condition is that area of slope < area of strut
 			Kolf::Slope* slope = dynamic_cast<Kolf::Slope*>(this);
 			if (slope)
-			{
-				const QSizeF slopeSize = slope->size();
-				const qreal slopeArea = slopeSize.width() * slopeSize.height();
-				const QSizeF strutSize = qitem->boundingRect().size();
-				const qreal strutArea = strutSize.width() * strutSize.height();
-				if (slopeArea > strutArea)
+				if (!slope->collidesWithItem(qitem, Qt::ContainsItemBoundingRect))
 					continue;
-			}
 			//strut found
 			m_strut = citem;
 			m_strut->m_struttedItems << this;
