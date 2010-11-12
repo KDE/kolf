@@ -21,6 +21,7 @@
 #include "overlay.h"
 
 #include <QtCore/qmath.h>
+#include <QtCore/QVarLengthArray>
 #include <Box2D/Collision/Shapes/b2CircleShape.h>
 #include <Box2D/Collision/Shapes/b2EdgeShape.h>
 #include <Box2D/Collision/Shapes/b2PolygonShape.h>
@@ -170,7 +171,7 @@ b2Shape* Kolf::EllipseShape::createShape()
 		static const int N = qMin(20, b2_maxPolygonVertices);
 		//increase N if the approximation turns out to be too bad
 		//TODO: calculate the (cos, sin) pairs only once
-		b2Vec2 vertices[N];
+		QVarLengthArray<b2Vec2, 20> vertices(N);
 		static const qreal angleStep = 2 * M_PI / N;
 		for (int i = 0; i < N; ++i)
 		{
@@ -178,7 +179,7 @@ b2Shape* Kolf::EllipseShape::createShape()
 			vertices[i].x = c.x + rx * cos(angle);
 			vertices[i].y = c.y + ry * sin(angle);
 		}
-		shape->Set(vertices, N);
+		shape->Set(vertices.data(), N);
 		return shape;
 	}
 }
