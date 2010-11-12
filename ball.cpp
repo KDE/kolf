@@ -60,9 +60,7 @@ void Ball::setState(BallState newState)
 	else
 		setSimulationType(CanvasItem::DynamicSimulation);
 
-	if (state == Stopped)
-		setZValue(1000);
-	else
+	if (state != Stopped)
 		setBeginningOfHole(false);
 }
 

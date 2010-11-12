@@ -191,7 +191,6 @@ Kolf::RectangleItem::RectangleItem(const QString& type, QGraphicsItem* parent, b
 	, m_walls(Kolf::RectangleWallCount, 0)
 	, m_shape(new Kolf::RectShape(QRectF(0, 0, 1, 1)))
 {
-	setZValue(998);
 	addShape(m_shape);
 	setSimulationType(CanvasItem::NoSimulation);
 	//default size

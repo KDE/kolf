@@ -93,9 +93,10 @@ public:
 	///    it. \a zValueStep is the amount by which the zValue is raised
 	///    then. (i.e. \a zValue is relative to the strut)
 	//TODO: account for overlapping struts
-	void setZBehavior(ZBehavior behavior, qreal zValue, qreal zValueStep = 100);
+	void setZBehavior(ZBehavior behavior, qreal zValue);
 	void updateZ(QGraphicsItem* self);
 	void moveItemsOnStrut(const QPointF& posDiff);
+	static bool mayCollide(CanvasItem* citem1, CanvasItem* citem2);
 protected:
 	friend class Kolf::Overlay; //for delivery of Kolf::Overlay::stateChanged signal
 	///pointer to main KolfGame
@@ -104,7 +105,7 @@ private:
 	QString m_name;
 	int m_id;
 	CanvasItem::ZBehavior m_zBehavior;
-	qreal m_zValue, m_zValueStep;
+	qreal m_zValue;
 	CanvasItem* m_strut;
 	QList<CanvasItem*> m_struttedItems;
 

@@ -39,7 +39,9 @@
 #include <KRandom>
 #include <KStandardDirs>
 #include <Box2D/Dynamics/b2Body.h>
+#include <Box2D/Dynamics/b2Fixture.h>
 #include <Box2D/Dynamics/b2World.h>
+#include <Box2D/Dynamics/b2WorldCallbacks.h>
 
 inline QString makeGroup(int id, int hole, const QString &name, int x, int y)
 {
@@ -50,6 +52,32 @@ inline QString makeStateGroup(int id, const QString &name)
 {
 	return QString("%1|%2").arg(name).arg(id);
 }
+
+class KolfContactFilter : public b2ContactFilter
+{
+	public:
+		virtual bool ShouldCollide(b2Fixture* fixtureA, b2Fixture* fixtureB)
+		{
+			CanvasItem* citemA = static_cast<CanvasItem*>(fixtureA->GetBody()->GetUserData());
+			CanvasItem* citemB = static_cast<CanvasItem*>(fixtureB->GetBody()->GetUserData());
+			if (!CanvasItem::mayCollide(citemA, citemB))
+				return false;
+			else
+				return b2ContactFilter::ShouldCollide(fixtureA, fixtureB);
+		}
+};
+
+class KolfWorld : public b2World
+{
+	public:
+		KolfWorld()
+			: b2World(b2Vec2(0, 0), true) //parameters: no gravity, objects are allowed to sleep
+		{
+			SetContactFilter(&m_filter);
+		}
+	private:
+		KolfContactFilter m_filter;
+};
 
 class KolfRenderer : public KGameRenderer
 {
@@ -63,7 +91,7 @@ class KolfRenderer : public KGameRenderer
 };
 
 K_GLOBAL_STATIC(KolfRenderer, g_renderer)
-K_GLOBAL_STATIC_WITH_ARGS(b2World, g_world, (b2Vec2(0, 0), true)) //parameters: no gravity, objects are allowed to sleep
+K_GLOBAL_STATIC(KolfWorld, g_world)
 
 KGameRenderer* Kolf::renderer()
 {
@@ -652,7 +680,6 @@ void KolfGame::addBorderWall(const QPoint &start, const QPoint &end)
 	wall->setLine(QLineF(start, end));
 	wall->setVisible(true);
 	wall->setGame(this);
-	wall->setZValue(998.7);
 	borderWalls.append(wall);
 }
 

@@ -26,11 +26,13 @@
 #include <Box2D/Dynamics/b2Body.h>
 #include <Box2D/Dynamics/b2World.h>
 
+//this is how much a strut and the items on it are raised
+static const int ZValueStep = 100;
+
 CanvasItem::CanvasItem(b2World* world)
 	: game(0)
 	, m_zBehavior(CanvasItem::FixedZValue)
 	, m_zValue(0)
-	, m_zValueStep(0)
 	, m_strut(0)
 	, m_body(0)
 	, m_overlay(0)
@@ -57,11 +59,10 @@ CanvasItem::~CanvasItem()
 	m_body->GetWorld()->DestroyBody(m_body);
 }
 
-void CanvasItem::setZBehavior(CanvasItem::ZBehavior behavior, qreal zValue, qreal zValueStep)
+void CanvasItem::setZBehavior(CanvasItem::ZBehavior behavior, qreal zValue)
 {
 	m_zBehavior = behavior;
 	m_zValue = zValue;
-	m_zValueStep = zValueStep;
 	QGraphicsItem* qitem = dynamic_cast<QGraphicsItem*>(this);
 	if (qitem)
 	{
@@ -85,7 +86,7 @@ void CanvasItem::updateZ(QGraphicsItem* self)
 		return;
 	if (m_zBehavior == CanvasItem::IsStrut)
 	{
-		self->setZValue(m_zValueStep);
+		self->setZValue(ZValueStep);
 		return;
 	}
 	//determine new strut
@@ -109,7 +110,7 @@ void CanvasItem::updateZ(QGraphicsItem* self)
 			//strut found
 			m_strut = citem;
 			m_strut->m_struttedItems << this;
-			self->setZValue(m_zValue + m_zValueStep);
+			self->setZValue(m_zValue + ZValueStep);
 			return;
 		}
 	}
@@ -129,6 +130,31 @@ void CanvasItem::moveItemsOnStrut(const QPointF& posDiff)
 		if (ball && game && !game->isEditing() && game->curBall() == ball)
 			game->ballMoved();
 	}
+}
+
+/*static*/ bool CanvasItem::mayCollide(CanvasItem* citem1, CanvasItem* citem2)
+{
+	//which one is the ball?
+	Ball* ball = dynamic_cast<Ball*>(citem1);
+	CanvasItem* citem = citem2;
+	if (!ball)
+	{
+		ball = dynamic_cast<Ball*>(citem2);
+		citem = citem1;
+	}
+	if (!ball)
+		//huh, no ball involved? then don't restrict anything, because
+		//that likely introduces weird bugs later
+		return true;
+	//if both items are graphicsitems, restrict collisions of ball to thos
+	//objects on same strut level or above (i.e. don't collide with
+	//stuff below the current strut)
+	const QGraphicsItem* qitem = dynamic_cast<QGraphicsItem*>(citem);
+	if (!qitem)
+		return true;
+	const int ballStrutLevel = int(ball->zValue()) / ZValueStep;
+	const int itemStrutLevel = int(qitem->zValue()) / ZValueStep;
+	return ballStrutLevel <= itemStrutLevel;
 }
 
 void CanvasItem::moveBy(double dx, double dy)
