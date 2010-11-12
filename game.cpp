@@ -1804,7 +1804,7 @@ void KolfGame::openFile()
 			sceneItem->setName(name);
 			m_moveableQItems.append(sceneItem->moveableItems());
 
-			newItem->setPos(x, y); 
+			sceneItem->setPosition(QPointF(x, y));
 			newItem->setVisible(true);
 
 			// make things actually show
