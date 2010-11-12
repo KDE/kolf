@@ -97,6 +97,15 @@ void Ball::moveBy(double dx, double dy)
 		game->ballMoved();
 }
 
+void Ball::endSimulation()
+{
+	CanvasItem::endSimulation();
+	if (state == Stopped)
+		if (!qFuzzyIsNull(Vector(velocity()).magnitude()))
+			//ball was resting, but received some momentum from collision with other ball
+			setState(Rolling);
+}
+
 void Ball::collisionDetect()
 {
 	if (!isVisible() || state == Holed || !m_doDetect)

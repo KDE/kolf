@@ -72,6 +72,7 @@ public slots:
 
 protected:
 	virtual Kolf::Overlay* createOverlay();
+	virtual void endSimulation();
 
 private:
 	BallState state;
