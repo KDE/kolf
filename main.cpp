@@ -39,17 +39,19 @@ static const char version[] = "1.10"; // = KDE 4.6 Release
 
 int main(int argc, char **argv)
 {
-	KAboutData aboutData( "kolf", 0, ki18n("Kolf"), version, ki18n(description), KAboutData::License_GPL, ki18n("(c) 2002-2005, Jason Katz-Brown"), KLocalizedString(), "http://games.kde.org/kolf");
+	KAboutData aboutData( "kolf", 0, ki18n("Kolf"), version, ki18n(description), KAboutData::License_GPL, ki18n("(c) 2002-2010, Kolf developers"), KLocalizedString(), "http://games.kde.org/kolf");
 
-	aboutData.addAuthor(ki18n("Jason Katz-Brown"), ki18n("Main author"), "jasonkb@mit.edu");
+	aboutData.addAuthor(ki18n("Stefan Majewsky"), ki18n("Current maintainer"), "majewsky@gmx.net");
+	aboutData.addAuthor(ki18n("Jason Katz-Brown"), ki18n("Former main author"), "jasonkb@mit.edu");
 	aboutData.addAuthor(ki18n("Niklas Knutsson"), ki18n("Advanced putting mode"));
 	aboutData.addAuthor(ki18n("Rik Hemsley"), ki18n("Border around course"));
-	aboutData.addAuthor(ki18n("Ryan Cumming"), ki18n("Vector class"));
-	aboutData.addAuthor(ki18n("Daniel Matza-Brown"), ki18n("Working wall-bouncing algorithm"));
 	aboutData.addAuthor(ki18n("Timo A. Hummel"), ki18n("Some good sound effects"), "timo.hummel@gmx.net");
 
 	aboutData.addCredit(ki18n("Rob Renaud"), ki18n("Wall-bouncing help"));
 	aboutData.addCredit(ki18n("Aaron Seigo"), ki18n("Suggestions, bug reports"));
+	aboutData.addCredit(ki18n("Erin Catto"), ki18n("Developer of Box2D physics engine"));
+	aboutData.addCredit(ki18n("Ryan Cumming"), ki18n("Vector class (Kolf 1)"));
+	aboutData.addCredit(ki18n("Daniel Matza-Brown"), ki18n("Working wall-bouncing algorithm (Kolf 1)"));
 
 	KCmdLineArgs::init(argc, argv, &aboutData);
 
