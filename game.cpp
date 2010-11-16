@@ -680,6 +680,9 @@ void KolfGame::addBorderWall(const QPoint &start, const QPoint &end)
 	wall->setLine(QLineF(start, end));
 	wall->setVisible(true);
 	wall->setGame(this);
+	//change Z value to something very high so that border walls
+	//really keep the balls inside the course
+	wall->setZBehavior(CanvasItem::FixedZValue, 10000);
 	borderWalls.append(wall);
 }
 
