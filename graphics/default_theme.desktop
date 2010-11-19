@@ -1,6 +1,7 @@
 [KGameTheme]
 VersionFormat=1
 Name=Kolf Default Theme
+Name[ca]=Tema predeterminat del Kolf
 Name[de]=Standard
 Name[es]=Tema predeterminado para Kolf
 Name[et]=Kolfi vaiketeema
@@ -13,6 +14,7 @@ Name[x-test]=xxKolf Default Themexx
 Name[zh_CN]=Kolf 默认主题
 Name[zh_TW]=Kolf 的預設主題
 Description=Kolf Default Theme
+Description[ca]=Tema predeterminat del Kolf
 Description[de]=Das Standard-Design von Kolf.
 Description[es]=Tema predeterminado para Kolf
 Description[et]=Kolfi vaiketeema
