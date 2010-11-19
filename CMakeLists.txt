@@ -84,7 +84,7 @@ set(kolf_LIB_SRCS
 
 kde4_add_library(kolfprivate SHARED ${kolf_LIB_SRCS})
 
-target_link_libraries(kolfprivate  ${KDE4_KIO_LIBS} ${KDE4_KDE3SUPPORT_LIBS} ${KDE4_PHONON_LIBS} kdegames )
+target_link_libraries(kolfprivate  ${KDE4_KIO_LIBS} ${KDE4_PHONON_LIBS} kdegames )
 
 set_target_properties(kolfprivate PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 install(TARGETS kolfprivate ${INSTALL_TARGETS_DEFAULT_ARGS})

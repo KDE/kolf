@@ -27,8 +27,8 @@
 #include <KPageDialog>
 
 class QLabel;
+class QListWidget;
 class QScrollArea;
-class K3ListBox;
 class KPushButton;
 class CourseInfo;
 
@@ -99,7 +99,7 @@ private:
 
 	QStringList extraCourses;
 
-	K3ListBox *courseList;
+	QListWidget *courseList;
 	QLabel *name;
 	QLabel *author;
 	QLabel *par;

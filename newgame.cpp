@@ -22,13 +22,13 @@
 
 #include <QBoxLayout>
 #include <QLabel>
+#include <QListWidget>
 #include <KFileDialog>
 #include <KMessageBox>
 #include <KPushButton>
 #include <KScoreDialog>
 #include <KSeparator>
 #include <KStandardDirs>
-#include <K3ListBox>
 
 NewGameDialog::NewGameDialog(bool enableCourses)
 	: KPageDialog()
@@ -130,12 +130,12 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		names.append(QString());
 		nameList.append(newName);
 
-		courseList = new K3ListBox(coursePage);
+		courseList = new QListWidget(coursePage);
 		hlayout->addWidget(courseList);
-		courseList->insertStringList(nameList);
-		courseList->setCurrentItem(curItem);
-		connect(courseList, SIGNAL(highlighted(int)), this, SLOT(courseSelected(int)));
-		connect(courseList, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
+		courseList->addItems(nameList);
+		courseList->setCurrentRow(curItem);
+		connect(courseList, SIGNAL(currentRowChanged(int)), this, SLOT(courseSelected(int)));
+		connect(courseList, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 
 		QVBoxLayout *detailLayout = new QVBoxLayout;
                 detailLayout->setSpacing( spacingHint() );
@@ -252,25 +252,25 @@ void NewGameDialog::showHighscores()
 
 void NewGameDialog::removeCourse()
 {
-	int curItem = courseList->currentItem();
-	if (curItem < 0)
+	QListWidgetItem* curItem = courseList->currentItem();
+	if (!curItem)
 		return;
 
-	QString file = names.at(curItem);
+	QString file = curItem->text();
 	if (!externCourses.contains(file))
 		return;
 
 	names.removeAll(file);
 	externCourses.removeAll(file);
-	courseList->removeItem(curItem);
+	delete courseList->takeItem(courseList->currentRow());
 
 	selectionChanged();
 }
 
 void NewGameDialog::selectionChanged()
 {
-	const int curItem = courseList->currentItem();
-	remove->setEnabled(!(curItem < 0 || !externCourses.contains(names.at(curItem))));
+	QListWidgetItem* curItem = courseList->currentItem();
+	remove->setEnabled(curItem && externCourses.contains(curItem->text()));
 }
 
 void NewGameDialog::addCourse()
@@ -294,7 +294,7 @@ void NewGameDialog::addCourse()
 		names.prepend(*fileIt);
 		externCourses.prepend(*fileIt);
 
-		courseList->insertItem(curinfo.name, 0);
+		courseList->insertItem(0, new QListWidgetItem(curinfo.name));
 	}
 
 	if (hasDuplicates)
