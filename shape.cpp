@@ -154,8 +154,10 @@ void Kolf::EllipseShape::setRect(const QRectF& rect)
 b2Shape* Kolf::EllipseShape::createShape()
 {
 	const b2Vec2 c = toB2Vec2(m_rect.center() * Kolf::Box2DScaleFactor);
-	const qreal rx = m_rect.width() * Kolf::Box2DScaleFactor / 2;
-	const qreal ry = m_rect.height() * Kolf::Box2DScaleFactor / 2;
+	//ensure some minimum size because b2PolygonShape gets confused when its
+	//area is smaller than FLT_EPSILON (TODO: handle rx*ry == 0 differently?)
+	const qreal rx = qMax(m_rect.width() * Kolf::Box2DScaleFactor / 2, 1e-5);
+	const qreal ry = qMax(m_rect.height() * Kolf::Box2DScaleFactor / 2, 1e-5);
 	if (rx == ry)
 	{
 		//use circle shape when possible because it's cheaper and exact
