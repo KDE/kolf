@@ -41,7 +41,7 @@ class KGameRenderer;
 namespace Kolf
 {
 	class Wall;
-};
+}
 namespace Tagaro
 {
 	class Board;

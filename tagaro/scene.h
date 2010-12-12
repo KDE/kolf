@@ -83,7 +83,7 @@ class Scene : public QGraphicsScene
 	private:
 		class Private;
 		Private* const d;
-		Q_PRIVATE_SLOT(d, void _k_updateSceneRect(const QRectF&));
+		Q_PRIVATE_SLOT(d, void _k_updateSceneRect(const QRectF&))
 };
 
 } //namespace Tagaro
