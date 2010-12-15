@@ -2,6 +2,7 @@
 VersionFormat=1
 Name=Kolf Default Theme
 Name[ca]=Tema predeterminat del Kolf
+Name[da]=Kolfs standardtema
 Name[de]=Standard
 Name[en_GB]=Kolf Default Theme
 Name[es]=Tema predeterminado para Kolf
@@ -19,6 +20,7 @@ Name[zh_CN]=Kolf 默认主题
 Name[zh_TW]=Kolf 的預設主題
 Description=Kolf Default Theme
 Description[ca]=Tema predeterminat del Kolf
+Description[da]=Kolfs standardtema
 Description[de]=Das Standard-Design von Kolf.
 Description[en_GB]=Kolf Default Theme
 Description[es]=Tema predeterminado para Kolf
