@@ -42,7 +42,7 @@ inline bool b2IsValid(qreal x)
 
 template<size_t size> struct b2InvSqrt_magic;
 template<> struct b2InvSqrt_magic<4> { static inline int32_t value() { return 0x5f3759df; } };
-template<> struct b2InvSqrt_magic<8> { static inline int64_t value() { return 0x5fe6eb50c7aa19f9; } };
+template<> struct b2InvSqrt_magic<8> { static inline int64_t value() { return 0x5fe6eb50c7aa19f9LLU; } };
 
 /// This is a approximate yet fast inverse square-root.
 inline qreal b2InvSqrt(qreal x)
