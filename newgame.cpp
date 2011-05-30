@@ -230,6 +230,9 @@ void NewGameDialog::slotOk()
 
 void NewGameDialog::courseSelected(int index)
 {
+	//BUG 274418: select first course if nothing selected (should not happen, but meh)
+	if (index < 0)
+		index = 0;
 	currentCourse = names.at(index);
 
 	CourseInfo &curinfo = info[currentCourse];
