@@ -318,7 +318,7 @@ void NewGameDialog::addPlayer()
 	editors.append(pe);
 	pe->show();
 	playersWidget->layout()->addWidget(pe);
-	connect(pe, SIGNAL(deleteEditor(PlayerEditor *)), this, SLOT(deleteEditor(PlayerEditor *)));
+	connect(pe, SIGNAL(deleteEditor(PlayerEditor*)), this, SLOT(deleteEditor(PlayerEditor*)));
 
 	enableButtons();
 	playersWidget->setMinimumSize(playersWidget->sizeHint());

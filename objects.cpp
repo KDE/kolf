@@ -170,7 +170,7 @@ bool Kolf::BlackHole::collision(Ball* ball)
 	const double distance = Vector(pos() - m_exitItem->pos()).magnitude();
 	BlackHoleTimer* timer = new BlackHoleTimer(ball, newSpeed, distance * 2.5 - newSpeed * 35 + 500);
 
-	connect(timer, SIGNAL(eject(Ball*, double)), this, SLOT(eject(Ball*, double)));
+	connect(timer, SIGNAL(eject(Ball*,double)), this, SLOT(eject(Ball*,double)));
 	connect(timer, SIGNAL(halfway()), this, SLOT(halfway()));
 
 	playSound("blackhole");

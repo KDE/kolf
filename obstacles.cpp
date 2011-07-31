@@ -416,7 +416,7 @@ Kolf::RectangleConfig::RectangleConfig(Kolf::RectangleItem* item, QWidget* paren
 		checkBox->setChecked(item->hasWall((Kolf::WallIndex) i));
 		connect(checkBox, SIGNAL(toggled(bool)), SLOT(setWall(bool)));
 	}
-	connect(item, SIGNAL(wallChanged(Kolf::WallIndex, bool,bool)), SLOT(wallChanged(Kolf::WallIndex, bool,bool)));
+	connect(item, SIGNAL(wallChanged(Kolf::WallIndex,bool,bool)), SLOT(wallChanged(Kolf::WallIndex,bool,bool)));
 	m_layout->addWidget(new QLabel(i18n("Walls on:")), 0, 0);
 	m_layout->addWidget(m_wallCheckBoxes[0], 0, 1);
 	m_layout->addWidget(m_wallCheckBoxes[1], 1, 0);

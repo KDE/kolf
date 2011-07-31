@@ -93,10 +93,10 @@ void KolfWindow::setupActions()
 
 	saveGameAction = actionCollection()->addAction("savegame");
 	saveGameAction->setText(i18n("&Save Game"));
-	connect(saveGameAction, SIGNAL(triggered(bool) ), SLOT(saveGame()));
+	connect(saveGameAction, SIGNAL(triggered(bool)), SLOT(saveGame()));
 	saveGameAsAction = actionCollection()->addAction("savegameas");
 	saveGameAsAction->setText(i18n("&Save Game As..."));
-	connect(saveGameAsAction, SIGNAL(triggered(bool) ), SLOT(saveGameAs()));
+	connect(saveGameAsAction, SIGNAL(triggered(bool)), SLOT(saveGameAs()));
 
 	loadGameAction = KStandardGameAction::load(this, SLOT(loadGame()), actionCollection());
 	highScoreAction = KStandardGameAction::highscores(this, SLOT(showHighScores()), actionCollection());
@@ -104,7 +104,7 @@ void KolfWindow::setupActions()
 	// Hole
 	editingAction = new KToggleAction(KIcon( QLatin1String( "document-properties") ), i18n("&Edit"), this);
 	actionCollection()->addAction("editing", editingAction);
-	connect(editingAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
+	connect(editingAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	editingAction->setShortcut(Qt::CTRL+Qt::Key_E);
 	newHoleAction = actionCollection()->addAction("newhole");
 	newHoleAction->setIcon(KIcon( QLatin1String( "document-new" )));
@@ -118,7 +118,7 @@ void KolfWindow::setupActions()
 	clearHoleAction->setShortcut(Qt::CTRL+Qt::Key_Delete);
 	resetHoleAction = actionCollection()->addAction("resethole");
 	resetHoleAction->setText(i18n("&Reset"));
-	connect(resetHoleAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
+	connect(resetHoleAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	resetHoleAction->setShortcut(Qt::CTRL+Qt::Key_R);
 	undoShotAction = KStandardAction::undo(this, SLOT(emptySlot()), this);
 	actionCollection()->addAction("undoshot", undoShotAction);
@@ -146,7 +146,7 @@ void KolfWindow::setupActions()
 	firstAction->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Begin));
 	lastAction = actionCollection()->addAction("lasthole");
 	lastAction->setText(i18n("&Last Hole"));
-	connect(lastAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
+	connect(lastAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	lastAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_End); // why not KStandardShortcut::End (Ctrl+End)?
 	randAction = actionCollection()->addAction("randhole");
 	randAction->setIcon(KIcon( QLatin1String( "go-jump" )));
@@ -156,46 +156,46 @@ void KolfWindow::setupActions()
 	// Settings
 	useMouseAction = new KToggleAction(i18n("Enable &Mouse for Moving Putter"), this);
 	actionCollection()->addAction("usemouse", useMouseAction);
-	connect(useMouseAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
+	connect(useMouseAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	connect(useMouseAction, SIGNAL(toggled(bool)), this, SLOT(useMouseChanged(bool)));
 	KConfigGroup configGroup(KGlobal::config(), "Settings");
 	useMouseAction->setChecked(configGroup.readEntry("useMouse", true));
 
 	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Putting"), this);
 	actionCollection()->addAction("useadvancedputting", useAdvancedPuttingAction);
-	connect(useAdvancedPuttingAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
+	connect(useAdvancedPuttingAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
 	useAdvancedPuttingAction->setChecked(configGroup.readEntry("useAdvancedPutting", false));
 
 	showInfoAction = new KToggleAction(KIcon( QLatin1String( "help-about")), i18n("Show &Info"), this);
 	actionCollection()->addAction("showinfo", showInfoAction);
-	connect(showInfoAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
+	connect(showInfoAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	showInfoAction->setShortcut(Qt::CTRL+Qt::Key_I);
 	connect(showInfoAction, SIGNAL(toggled(bool)), this, SLOT(showInfoChanged(bool)));
 	showInfoAction->setChecked(configGroup.readEntry("showInfo", true));
 
 	showGuideLineAction = new KToggleAction(i18n("Show Putter &Guideline"), this);
 	actionCollection()->addAction("showguideline", showGuideLineAction);
-	connect(showGuideLineAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
+	connect(showGuideLineAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	connect(showGuideLineAction, SIGNAL(toggled(bool)), this, SLOT(showGuideLineChanged(bool)));
 	showGuideLineAction->setChecked(configGroup.readEntry("showGuideLine", true));
 
 	KToggleAction *act = new KToggleAction(i18n("Enable All Dialog Boxes"), this);
 	actionCollection()->addAction("enableAll", act);
-	connect(act, SIGNAL(triggered(bool) ), SLOT(enableAllMessages()));
+	connect(act, SIGNAL(triggered(bool)), SLOT(enableAllMessages()));
 
 	soundAction = new KToggleAction(i18n("Play &Sounds"), this);
 	actionCollection()->addAction("sound", soundAction);
-	connect(soundAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
+	connect(soundAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	connect(soundAction, SIGNAL(toggled(bool)), this, SLOT(soundChanged(bool)));
 	soundAction->setChecked(configGroup.readEntry("sound", true));
 
 	aboutAction = actionCollection()->addAction("aboutcourse");
 	aboutAction->setText(i18n("&About Course"));
-	connect(aboutAction, SIGNAL(triggered(bool) ), SLOT(emptySlot()));
+	connect(aboutAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	tutorialAction = actionCollection()->addAction("tutorial");
 	tutorialAction->setText(i18n("&Tutorial"));
-	connect(tutorialAction, SIGNAL(triggered(bool) ), SLOT(tutorial()));
+	connect(tutorialAction, SIGNAL(triggered(bool)), SLOT(tutorial()));
 
 	setupGUI();
 }
@@ -271,22 +271,22 @@ void KolfWindow::startNewGame()
 	game->setStrict(competition);
 
 	connect(game, SIGNAL(newHole(int)), scoreboard, SLOT(newHole(int)));
-	connect(game, SIGNAL(scoreChanged(int, int, int)), scoreboard, SLOT(setScore(int, int, int)));
-	connect(game, SIGNAL(parChanged(int, int)), scoreboard, SLOT(parChanged(int, int)));
+	connect(game, SIGNAL(scoreChanged(int,int,int)), scoreboard, SLOT(setScore(int,int,int)));
+	connect(game, SIGNAL(parChanged(int,int)), scoreboard, SLOT(parChanged(int,int)));
 	connect(game, SIGNAL(modifiedChanged(bool)), this, SLOT(updateModified(bool)));
-	connect(game, SIGNAL(newPlayersTurn(Player *)), this, SLOT(newPlayersTurn(Player *)));
+	connect(game, SIGNAL(newPlayersTurn(Player*)), this, SLOT(newPlayersTurn(Player*)));
 	connect(game, SIGNAL(holesDone()), this, SLOT(gameOver()));
 	connect(game, SIGNAL(checkEditing()), this, SLOT(checkEditing()));
 	connect(game, SIGNAL(editingStarted()), this, SLOT(editingStarted()));
 	connect(game, SIGNAL(editingEnded()), this, SLOT(editingEnded()));
 	connect(game, SIGNAL(inPlayStart()), this, SLOT(inPlayStart()));
 	connect(game, SIGNAL(inPlayEnd()), this, SLOT(inPlayEnd()));
-	connect(game, SIGNAL(maxStrokesReached(const QString &)), this, SLOT(maxStrokesReached(const QString &)));
+	connect(game, SIGNAL(maxStrokesReached(QString)), this, SLOT(maxStrokesReached(QString)));
 	connect(game, SIGNAL(largestHole(int)), this, SLOT(updateHoleMenu(int)));
-	connect(game, SIGNAL(titleChanged(const QString &)), this, SLOT(titleChanged(const QString &)));
-	connect(game, SIGNAL(newStatusText(const QString &)), this, SLOT(newStatusText(const QString &)));
+	connect(game, SIGNAL(titleChanged(QString)), this, SLOT(titleChanged(QString)));
+	connect(game, SIGNAL(newStatusText(QString)), this, SLOT(newStatusText(QString)));
 	connect(game, SIGNAL(currentHole(int)), this, SLOT(setCurrentHole(int)));
-	connect(holeAction, SIGNAL(triggered(const QString &)), game, SLOT(switchHole(const QString &)));
+	connect(holeAction, SIGNAL(triggered(QString)), game, SLOT(switchHole(QString)));
 	connect(nextAction, SIGNAL(triggered(bool)), game, SLOT(nextHole()));
 	connect(prevAction, SIGNAL(triggered(bool)), game, SLOT(prevHole()));
 	connect(firstAction, SIGNAL(triggered(bool)), game, SLOT(firstHole()));
@@ -647,7 +647,7 @@ void KolfWindow::editingStarted()
 	connect(editor, SIGNAL(addNewItem(QString)), game, SLOT(addNewObject(QString)));
 	connect(editor, SIGNAL(changed()), game, SLOT(setModified()));
 	connect(editor, SIGNAL(addNewItem(QString)), this, SLOT(setHoleFocus()));
-	connect(game, SIGNAL(newSelectedItem(CanvasItem *)), editor, SLOT(setItem(CanvasItem *)));
+	connect(game, SIGNAL(newSelectedItem(CanvasItem*)), editor, SLOT(setItem(CanvasItem*)));
 
 	scoreboard->hide();
 

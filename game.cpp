@@ -252,7 +252,7 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	hlayout->addWidget(new QLabel(i18n("Course name: "), this));
 	KLineEdit *nameEdit = new KLineEdit(holeInfo->untranslatedName(), this);
 	hlayout->addWidget(nameEdit);
-	connect(nameEdit, SIGNAL(textChanged(const QString &)), this, SLOT(nameChanged(const QString &)));
+	connect(nameEdit, SIGNAL(textChanged(QString)), this, SLOT(nameChanged(QString)));
 
 	hlayout = new QHBoxLayout;
 	hlayout->setSpacing( spacingHint() );
@@ -260,7 +260,7 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	hlayout->addWidget(new QLabel(i18n("Course author: "), this));
 	KLineEdit *authorEdit = new KLineEdit(holeInfo->author(), this);
 	hlayout->addWidget(authorEdit);
-	connect(authorEdit, SIGNAL(textChanged(const QString &)), this, SLOT(authorChanged(const QString &)));
+	connect(authorEdit, SIGNAL(textChanged(QString)), this, SLOT(authorChanged(QString)));
 
 	layout->addStretch();
 

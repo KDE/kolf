@@ -201,7 +201,7 @@ Kolf::Overlay::Overlay(CanvasItem* citem, QGraphicsItem* qitem, bool hack_addQit
 	m_interactorAnimator->setOpacity(0); //not visible at first
 	m_interactorItem->setBrush(Qt::green);
 	connect(m_interactorItem, SIGNAL(clicked(int)), this, SLOT(activatorClicked(int))); //note that interactor item is over activator in hovered mode
-	connect(m_interactorItem, SIGNAL(dragged(const QPointF&)), this, SLOT(interactorDragged(const QPointF&)));
+	connect(m_interactorItem, SIGNAL(dragged(QPointF)), this, SLOT(interactorDragged(QPointF)));
 	//initialize handle manager
 	m_handleAnimator->setZValue(3);
 	m_handleAnimator->setHideWhenInvisible(true);

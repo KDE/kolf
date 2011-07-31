@@ -465,3 +465,4 @@ void b2Body::SetActive(bool flag)
 		m_contactList = NULL;
 	}
 }
+
