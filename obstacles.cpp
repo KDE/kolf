@@ -300,19 +300,14 @@ void Kolf::RectangleItem::setWallColor(const QColor& color)
 		applyWallStyle(wall);
 }
 
-void Kolf::RectangleItem::applyWallStyle(Kolf::Wall* wall)
+void Kolf::RectangleItem::applyWallStyle(Kolf::Wall* wall, bool adjustPainting)
 {
 	if (!wall) //explicitly allowed, see e.g. setWallColor()
 		return;
-	wall->setPen(m_wallPen);
-	wall->setZValue(zValue() + 0.001);
-}
-
-void Kolf::RectangleItem::setZValue(qreal zValue)
-{
-	QGraphicsItem::setZValue(zValue);
-	foreach (Kolf::Wall* wall, m_walls)
-		applyWallStyle(wall);
+	if (adjustPainting)
+		wall->setPen(m_wallPen);
+	wall->setZBehavior(CanvasItem::IsRaisedByStrut, 3);
+	wall->setStaticStrut(this);
 }
 
 static const char* wallPropNames[] = { "topWallVisible", "leftWallVisible", "rightWallVisible", "botWallVisible" };
@@ -735,7 +730,7 @@ Kolf::Windmill::Windmill(QGraphicsItem* parent, b2World* world)
 	setSpeed(5); //initialize m_speed and m_velocity properly
 	applyWallStyle(m_leftWall);
 	applyWallStyle(m_rightWall);
-	applyWallStyle(m_guardWall); //Z-ordering!
+	applyWallStyle(m_guardWall, false); //Z-ordering!
 	m_guardWall->setPen(QPen(Qt::black, 5));
 	setWall(Kolf::TopWallIndex, false);
 	setWall(Kolf::LeftWallIndex, true);

@@ -94,6 +94,10 @@ public:
 	///    then. (i.e. \a zValue is relative to the strut)
 	//TODO: account for overlapping struts
 	void setZBehavior(ZBehavior behavior, qreal zValue);
+	///Struts are normally found by collision detection. This method
+	///configures a static strut for this item (on a semantic basis;
+	///e.g. the RectangleItem is the static strut for its walls).
+	void setStaticStrut(CanvasItem* citem);
 	void updateZ(QGraphicsItem* self);
 	void moveItemsOnStrut(const QPointF& posDiff);
 	static bool mayCollide(CanvasItem* citem1, CanvasItem* citem2);
@@ -107,6 +111,7 @@ private:
 	CanvasItem::ZBehavior m_zBehavior;
 	qreal m_zValue;
 	CanvasItem* m_strut;
+	CanvasItem* m_staticStrut;
 	QList<CanvasItem*> m_struttedItems;
 
 //AFTER THIS LINE follows what I have inserted during the refactoring

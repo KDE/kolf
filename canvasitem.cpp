@@ -34,6 +34,7 @@ CanvasItem::CanvasItem(b2World* world)
 	, m_zBehavior(CanvasItem::FixedZValue)
 	, m_zValue(0)
 	, m_strut(0)
+	, m_staticStrut(0)
 	, m_body(0)
 	, m_overlay(0)
 	, m_simulationType((CanvasItem::SimulationType) -1)
@@ -73,9 +74,15 @@ void CanvasItem::setZBehavior(CanvasItem::ZBehavior behavior, qreal zValue)
 	}
 }
 
+void CanvasItem::setStaticStrut(CanvasItem* citem)
+{
+	m_staticStrut = citem;
+}
+
 void CanvasItem::updateZ(QGraphicsItem* self)
 {
 	//disconnect from old strut (if any)
+	//TODO: not if old strut is new strut (or did I forget some cornercases?)
 	if (m_strut)
 	{
 		m_strut->m_struttedItems.removeAll(this);
@@ -93,25 +100,35 @@ void CanvasItem::updateZ(QGraphicsItem* self)
 		return;
 	}
 	//determine new strut
-	foreach (QGraphicsItem* qitem, self->collidingItems())
+	if (m_staticStrut)
+		m_strut = m_staticStrut;
+	else
 	{
-		CanvasItem* citem = dynamic_cast<CanvasItem*>(qitem);
-		if (citem && citem->m_zBehavior == CanvasItem::IsStrut)
+		foreach (QGraphicsItem* qitem, self->collidingItems())
 		{
-			//special condition for slopes: they must lie inside the strut's area, not only touch it
-			Kolf::Slope* slope = dynamic_cast<Kolf::Slope*>(this);
-			if (slope)
-				if (!slope->collidesWithItem(qitem, Qt::ContainsItemBoundingRect))
-					continue;
-			//strut found
-			m_strut = citem;
-			m_strut->m_struttedItems << this;
-			self->setZValue(m_zValue + ZValueStep);
-			return;
+			CanvasItem* citem = dynamic_cast<CanvasItem*>(qitem);
+			if (citem && citem->m_zBehavior == CanvasItem::IsStrut)
+			{
+				//special condition for slopes: they must lie inside the strut's area, not only touch it
+				Kolf::Slope* slope = dynamic_cast<Kolf::Slope*>(this);
+				if (slope)
+					if (!slope->collidesWithItem(qitem, Qt::ContainsItemBoundingRect))
+						continue;
+				//strut found
+				m_strut = citem;
+				break;
+			}
 		}
 	}
+	//strut found?
+	if (m_strut)
+	{
+		m_strut->m_struttedItems << this;
+		self->setZValue(m_zValue + ZValueStep);
+	}
 	//no strut found -> set default zValue
-	self->setZValue(m_zValue);
+	else
+		self->setZValue(m_zValue);
 }
 
 void CanvasItem::moveItemsOnStrut(const QPointF& posDiff)

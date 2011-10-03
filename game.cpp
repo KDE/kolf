@@ -39,6 +39,7 @@
 #include <KRandom>
 #include <KStandardDirs>
 #include <Box2D/Dynamics/b2Body.h>
+#include <Box2D/Dynamics/Contacts/b2Contact.h>
 #include <Box2D/Dynamics/b2Fixture.h>
 #include <Box2D/Dynamics/b2World.h>
 #include <Box2D/Dynamics/b2WorldCallbacks.h>
@@ -53,17 +54,16 @@ inline QString makeStateGroup(int id, const QString &name)
 	return QString("%1|%2").arg(name).arg(id);
 }
 
-class KolfContactFilter : public b2ContactFilter
+class KolfContactListener : public b2ContactListener
 {
 	public:
-		virtual bool ShouldCollide(b2Fixture* fixtureA, b2Fixture* fixtureB)
+		virtual void PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
 		{
-			CanvasItem* citemA = static_cast<CanvasItem*>(fixtureA->GetBody()->GetUserData());
-			CanvasItem* citemB = static_cast<CanvasItem*>(fixtureB->GetBody()->GetUserData());
+			Q_UNUSED(oldManifold)
+			CanvasItem* citemA = static_cast<CanvasItem*>(contact->GetFixtureA()->GetBody()->GetUserData());
+			CanvasItem* citemB = static_cast<CanvasItem*>(contact->GetFixtureB()->GetBody()->GetUserData());
 			if (!CanvasItem::mayCollide(citemA, citemB))
-				return false;
-			else
-				return b2ContactFilter::ShouldCollide(fixtureA, fixtureB);
+				contact->SetEnabled(false);
 		}
 };
 
@@ -73,10 +73,10 @@ class KolfWorld : public b2World
 		KolfWorld()
 			: b2World(b2Vec2(0, 0), true) //parameters: no gravity, objects are allowed to sleep
 		{
-			SetContactFilter(&m_filter);
+			SetContactListener(&m_listener);
 		}
 	private:
-		KolfContactFilter m_filter;
+		KolfContactListener m_listener;
 };
 
 class KolfRenderer : public KGameRenderer
@@ -116,6 +116,7 @@ Putter::Putter(QGraphicsItem* parent, b2World* world)
 , CanvasItem(world)
 {
 	setData(0, Rtti_Putter);
+	setZBehavior(CanvasItem::FixedZValue, 10001);
 	m_showGuideLine = true;
 	oneDegree = M_PI / 180;
 	guideLineLength = 9;

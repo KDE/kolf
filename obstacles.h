@@ -106,8 +106,7 @@ namespace Kolf
 			virtual void moveBy(double dx, double dy);
 
 			void setWallColor(const QColor& color);
-			void applyWallStyle(Kolf::Wall* wall);
-			void setZValue(qreal zValue);
+			void applyWallStyle(Kolf::Wall* wall, bool adjustPainting = true);
 
 			virtual void load(KConfigGroup* group);
 			virtual void save(KConfigGroup* group);
