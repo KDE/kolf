@@ -83,7 +83,10 @@ void CanvasItem::updateZ(QGraphicsItem* self)
 	}
 	//simple behavior
 	if (m_zBehavior == CanvasItem::FixedZValue)
+	{
+		self->setZValue(m_zValue);
 		return;
+	}
 	if (m_zBehavior == CanvasItem::IsStrut)
 	{
 		self->setZValue(ZValueStep);
