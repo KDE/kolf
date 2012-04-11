@@ -33,6 +33,7 @@
 #include <QTimer>
 #include <KFileDialog>
 #include <KGameRenderer>
+#include <KgTheme>
 #include <KLineEdit>
 #include <KMessageBox>
 #include <KNumInput>
@@ -79,11 +80,19 @@ class KolfWorld : public b2World
 		KolfContactListener m_listener;
 };
 
+class KolfTheme : public KgTheme
+{
+	public:
+		KolfTheme() : KgTheme("pics/default_theme.desktop")
+		{
+			setSvgPath(KStandardDirs::locate("appdata", "pics/default_theme.svgz"));
+		}
+};
+
 class KolfRenderer : public KGameRenderer
 {
 	public:
-		KolfRenderer()
-			: KGameRenderer(QLatin1String("pics/default_theme.desktop"))
+		KolfRenderer() : KGameRenderer(new KolfTheme)
 		{
 			setStrategyEnabled(KGameRenderer::UseDiskCache, false);
 			setStrategyEnabled(KGameRenderer::UseRenderingThreads, false);
