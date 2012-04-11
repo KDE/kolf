@@ -85,7 +85,7 @@ class KolfTheme : public KgTheme
 	public:
 		KolfTheme() : KgTheme("pics/default_theme.desktop")
 		{
-			setSvgPath(KStandardDirs::locate("appdata", "pics/default_theme.svgz"));
+			setGraphicsPath(KStandardDirs::locate("appdata", "pics/default_theme.svgz"));
 		}
 };
 
