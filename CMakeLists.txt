@@ -16,6 +16,7 @@ add_subdirectory( sounds )
 add_subdirectory( courses ) 
 add_subdirectory( pics ) 
 add_subdirectory( graphics ) 
+add_subdirectory( doc )
 
 include_directories( ${CMAKE_SOURCE_DIR}/libkdegames/highscore  )
 
