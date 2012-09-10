@@ -1,5 +1,7 @@
 [0-course@-50,-50]
 Name=USA Pro
+Name[uk]=USA Pro
+Name[x-test]=xxUSA Proxx
 author=Rob Kaper
 
 [1-ball@22,350]
@@ -42,6 +44,8 @@ width=840
 
 [1-sign@4,371|14]
 Comment=Daytona Beach, FL
+Comment[uk]=Дейтона-Біч, Флорида
+Comment[x-test]=xxDaytona Beach, FLxx
 botWallVisible=false
 height=34
 leftWallVisible=true
@@ -226,6 +230,8 @@ width=36
 
 [10-sign@-1,360|42]
 Comment=Washington DC (Pentagon)
+Comment[uk]=Вашингтон, округ Колумбія (Пентагон)
+Comment[x-test]=xxWashington DC (Pentagon)xx
 botWallVisible=true
 height=49
 leftWallVisible=true
@@ -373,6 +379,8 @@ width=84
 
 [11-sign@-2,370|24]
 Comment=Palm Springs, CO
+Comment[uk]=Палм-Спрінґс, Колорадо
+Comment[x-test]=xxPalm Springs, COxx
 botWallVisible=true
 height=36
 leftWallVisible=true
@@ -525,6 +533,8 @@ width=38
 
 [2-sign@26,345|31]
 Comment=Las Vegas, NV
+Comment[uk]=Лас-Вегас, Невада
+Comment[x-test]=xxLas Vegas, NVxx
 botWallVisible=true
 height=34
 leftWallVisible=true
@@ -674,6 +684,8 @@ par=2
 
 [3-sign@-4,358|9]
 Comment=San Francisco, CA
+Comment[uk]=Сан-Франциско, Каліфорнія
+Comment[x-test]=xxSan Francisco, CAxx
 botWallVisible=true
 height=48
 leftWallVisible=true
@@ -755,6 +767,8 @@ par=3
 
 [4-sign@201,171|8]
 Comment=Grand Canyon
+Comment[uk]=Великий каньйон
+Comment[x-test]=xxGrand Canyonxx
 botWallVisible=true
 height=23
 leftWallVisible=true
@@ -862,6 +876,8 @@ width=48
 
 [5-sign@219,344|10]
 Comment=Lake Tahoe, CA/NV
+Comment[uk]=Озеро Тахо, Каліфорнія/Невади
+Comment[x-test]=xxLake Tahoe, CA/NVxx
 botWallVisible=true
 height=27
 leftWallVisible=true
@@ -1001,6 +1017,8 @@ width=368
 
 [6-sign@3,101|17]
 Comment=Florida Keys, FL
+Comment[uk]=Флорида-Кіс, Флорида
+Comment[x-test]=xxFlorida Keys, FLxx
 botWallVisible=true
 height=40
 leftWallVisible=true
@@ -1152,6 +1170,8 @@ width=40
 
 [7-sign@135,364|25]
 Comment=San Francisco, CA
+Comment[uk]=Сан-Франциско, Каліфорнія
+Comment[x-test]=xxSan Francisco, CAxx
 botWallVisible=true
 height=40
 leftWallVisible=true
@@ -1299,6 +1319,8 @@ width=98
 
 [8-sign@137,370|19]
 Comment=Washington DC
+Comment[uk]=Вашингтон, Округ Колумбія
+Comment[x-test]=xxWashington DCxx
 botWallVisible=true
 height=28
 leftWallVisible=true
@@ -1512,6 +1534,8 @@ width=20
 
 [9-sign@291,368|28]
 Comment=Niagara Falls, NY
+Comment[uk]=Ніагара-Фоллз, Нью-Йорк
+Comment[x-test]=xxNiagara Falls, NYxx
 botWallVisible=true
 height=36
 leftWallVisible=true

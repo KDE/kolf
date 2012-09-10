@@ -1,5 +1,7 @@
 [0-course@-50,-50]
 Name=Hard Course
+Name[uk]=Складний курс
+Name[x-test]=xxHard Coursexx
 author=Jason Katz-Brown
 
 [1-ball@84,73]
@@ -1064,6 +1066,8 @@ par=3
 
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
+Comment[uk]=Нехай плавуни <strong>штурхануть</strong> вас!
+Comment[x-test]=xxLet the floaters <strong>push</strong> you!xx
 botWallVisible=true
 height=196
 leftWallVisible=true

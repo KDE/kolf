@@ -1,6 +1,8 @@
 [Desktop Entry]
 X-DocPath=kolf/index.html
 Name=Kolf
+Name[uk]=Kolf
+Name[x-test]=xxKolfxx
 
 Type=Application
 Exec=kolf %U
@@ -8,4 +10,6 @@ Icon=kolf
 MimeType=application/x-kourse;application/x-kolf;
 
 GenericName=Miniature Golf
+GenericName[uk]=Мініатюрний гольф
+GenericName[x-test]=xxMiniature Golfxx
 Categories=Qt;KDE;Game;ArcadeGame;

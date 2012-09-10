@@ -1,5 +1,7 @@
 [0-course@-50,-50]
 Name=Medium Course
+Name[uk]=Середній курс
+Name[x-test]=xxMedium Coursexx
 author=Jason Katz-Brown
 name=Medium Course
 

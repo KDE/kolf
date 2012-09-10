@@ -1,5 +1,7 @@
 [0-course@-50,-50]
 Name=Easy Course
+Name[uk]=Простий курс
+Name[x-test]=xxEasy Coursexx
 author=Jason Katz-Brown
 name=Easy Course
 
@@ -568,6 +570,8 @@ width=10
 
 [13-sign@219,247|14]
 Comment=Hit slowly...
+Comment[uk]=Бити легенько...
+Comment[x-test]=xxHit slowly...xx
 botWallVisible=true
 height=55
 leftWallVisible=true

@@ -1,5 +1,7 @@
 [0-course@-50,-50]
 Name=Classic
+Name[uk]=Класична
+Name[x-test]=xxClassicxx
 author=Niklas Knutsson
 name=Classic
 

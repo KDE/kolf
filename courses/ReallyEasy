@@ -1,5 +1,7 @@
 [0-course@-50,-50]
 Name=Really Easy
+Name[uk]=Справді простий
+Name[x-test]=xxReally Easyxx
 author=Neil Stevens
 name=Really Easy
 

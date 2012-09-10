@@ -1,7 +1,11 @@
 [KGameTheme]
 VersionFormat=1
 Name=Kolf Default Theme
+Name[uk]=Типова тема Kolf
+Name[x-test]=xxKolf Default Themexx
 Description=Kolf Default Theme
+Description[uk]=Типова тема Kolf
+Description[x-test]=xxKolf Default Themexx
 FileName=default_theme.svgz
 Author=Eugene Trounev
 AuthorEmail=eugene.trounev@gmail.com
