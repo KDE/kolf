@@ -104,7 +104,7 @@ static b2Vec2 ComputeCentroid(const b2Vec2* vs, int32 count)
 
 		qreal D = b2Cross(e1, e2);
 
-		qreal triangleArea = 0.5f * D;
+		qreal triangleArea = qAbs(0.5f * D);
 		area += triangleArea;
 
 		// Area weighted centroid
