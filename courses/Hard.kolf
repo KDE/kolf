@@ -1,6 +1,7 @@
 [0-course@-50,-50]
 Name=Hard Course
 Name[ast]=Campu difícil
+Name[bs]=Težak tok
 Name[ca]=Camp difícil
 Name[ca@valencia]=Camp difícil
 Name[cs]=Těžký kurz
@@ -1111,6 +1112,7 @@ par=3
 [13-sign@257,44|26]
 Comment=Let the floaters <strong>push</strong> you!
 Comment[ast]=¡Dexa que los flotadores <strong>emburrien</strong>!
+Comment[bs]=Neka floateri <strong>poguraju</strong> tebe!
 Comment[ca]=Deixa que els flotadors <strong>t'empenyin</strong>!
 Comment[ca@valencia]=Deixa que els flotadors <strong>t'empenyin</strong>!
 Comment[da]=Lad flyderne <strong>skubbe</strong> til dig!

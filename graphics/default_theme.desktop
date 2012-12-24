@@ -1,6 +1,7 @@
 [KGameTheme]
 VersionFormat=1
 Name=Kolf Default Theme
+Name[bs]=Podrazumijevana tema Kolfa
 Name[ca]=Tema predeterminat del Kolf
 Name[ca@valencia]=Tema predeterminat del Kolf
 Name[cs]=Výchozí motiv Kolf
@@ -39,6 +40,7 @@ Name[x-test]=xxKolf Default Themexx
 Name[zh_CN]=Kolf 默认主题
 Name[zh_TW]=Kolf 的預設主題
 Description=Kolf Default Theme
+Description[bs]=Podrazumijevana tema Kolfa
 Description[ca]=Tema predeterminat del Kolf
 Description[ca@valencia]=Tema predeterminat del Kolf
 Description[cs]=Výchozí motiv Kolf
