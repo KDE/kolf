@@ -114,7 +114,7 @@ width=319
 
 [1-sign@73,81|4]
 Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
-Comment[ast]=Pa pega-y a la bola, calca y caltén calcada la flecha abaxo o'l botón izquierdu del mur. El güelpe sedrá más fuerte cuanto más tiempu caltengas calcada la tecla o'l botón del mur.
+Comment[ast]=Pa pega-y a la bola, calca y caltén calcada la flecha abaxo o'l botón esquierdu del mur. El güelpe sedrá más fuerte cuanto más tiempu caltengas calcada la tecla o'l botón del mur.
 Comment[bs]=Za udariti loptu, pritisnite i držite strelicu dolje ili lijevu tipku miša. Koliko dugo držite pritisnutu tipku miša ili tipku dolje odredjuje snagu pucanja.
 Comment[ca]=Per colpejar la bola, prem la fletxa cap avall o el botó esquerre del ratolí. Com més temps mantinguis pressionat el botó del ratolí o la tecla determina la força del cop.
 Comment[ca@valencia]=Per colpejar la bola, prem la fletxa cap avall o el botó esquerre del ratolí. Com més temps mantinguis pressionat el botó del ratolí o la tecla determina la força del cop.
@@ -163,7 +163,7 @@ width=319
 
 [1-sign@74,251|7]
 Comment=To aim the putter, press the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use the mouse.
-Comment[ast]=Pa camudar al putter, calca les fleches izquierda (en sentíu contrariu a les aguyes del reló) y drecha (nel sentíu de les aguyes del reló) o usa'l mur.
+Comment[ast]=Pa camudar al putter, calca les fleches esquierda (en sentíu contrariu a les aguyes del reló) y derecha (nel sentíu de les aguyes del reló) o usa'l mur.
 Comment[bs]=Za ciljanje, pritisnite lijevu (rotirati ulijevo) i desnu (rotirati udesno) tipku sa strelicama ili koristite miša.
 Comment[ca]=Per canviar al putter, prem cursor esquerra (en sentit contrari a les agulles del rellotge) i dret (girar en sentit de les agulles del rellotge) o usa el ratolí.
 Comment[ca@valencia]=Per canviar al putter, prem cursor esquerra (en sentit contrari a les agulles del rellotge) i dret (girar en sentit de les agulles del rellotge) o usa el ratolí.
@@ -265,7 +265,7 @@ width=112
 
 [10-sign@7,9|4]
 Comment=<h3>Bridges</h3>Bridges can have walls on the top, bottom, left, or right.
-Comment[ast]=<h3>Pontes</h3>Les pontes pueden tener muros na parte cimera, baxera, izquierda o drecha.
+Comment[ast]=<h3>Pontes</h3>Les pontes puen tener muros na parte cimera, baxera, esquierda o derecha.
 Comment[bs]=<h3>Mostovi</h3>Mostovi mogu imati zidove na vrhu, dnu, lijevo i desno.
 Comment[ca]=<h3>Ponts</h3>Els ponts poden tenir parets a la part superior, inferior, esquerra o dreta.
 Comment[ca@valencia]=<h3>Ponts</h3>Els ponts poden tindre parets a la part superior, inferior, esquerra o dreta.
