@@ -39,6 +39,7 @@
 #include <KNumInput>
 #include <KRandom>
 #include <KStandardDirs>
+#include <KUrl>
 #include <Box2D/Dynamics/b2Body.h>
 #include <Box2D/Dynamics/Contacts/b2Contact.h>
 #include <Box2D/Dynamics/b2Fixture.h>

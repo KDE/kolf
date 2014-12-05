@@ -25,9 +25,9 @@
 
 #include "game.h"
 #include "itemfactory.h"
-
+#include <KUrl>
 class QGridLayout;
-class KAction;
+class QAction;
 class KSelectAction;
 class KToggleAction;
 
@@ -97,11 +97,11 @@ private:
 	QGridLayout *layout;
 	ScoreBoard *scoreboard;
 	KToggleAction *editingAction;
-	KAction *newHoleAction;
-	KAction *resetHoleAction;
+	QAction *newHoleAction;
+	QAction *resetHoleAction;
 	QAction *undoShotAction;
 	//QAction *replayShotAction;
-	KAction *clearHoleAction;
+	QAction *clearHoleAction;
 	QAction *tutorialAction;
 	QAction *newAction;
 	QAction *endAction;
@@ -113,10 +113,10 @@ private:
 	QAction *aboutAction;
 	KSelectAction *holeAction;
 	QAction *highScoreAction;
-	KAction *nextAction;
-	KAction *prevAction;
-	KAction *firstAction;
-	KAction *lastAction;
+	QAction *nextAction;
+	QAction *prevAction;
+	QAction *firstAction;
+	QAction *lastAction;
 	QAction *randAction;
 	KToggleAction *showInfoAction;
 	KToggleAction *useMouseAction;

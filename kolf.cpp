@@ -37,7 +37,9 @@
 #include <KStandardGameAction>
 #include <KStandardGuiItem>
 #include <KToggleAction>
-
+#include <KUrl>
+#include <KMimeType>
+#include <KGlobal>
 #include <QGridLayout>
 #include <QTimer>
 
@@ -102,17 +104,17 @@ void KolfWindow::setupActions()
 	highScoreAction = KStandardGameAction::highscores(this, SLOT(showHighScores()), actionCollection());
 
 	// Hole
-	editingAction = new KToggleAction(KIcon( QLatin1String( "document-properties") ), i18n("&Edit"), this);
+	editingAction = new KToggleAction(QIcon::fromTheme( QLatin1String( "document-properties") ), i18n("&Edit"), this);
 	actionCollection()->addAction("editing", editingAction);
 	connect(editingAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	editingAction->setShortcut(Qt::CTRL+Qt::Key_E);
 	newHoleAction = actionCollection()->addAction("newhole");
-	newHoleAction->setIcon(KIcon( QLatin1String( "document-new" )));
+	newHoleAction->setIcon(QIcon::fromTheme( QLatin1String( "document-new" )));
 	newHoleAction->setText(i18n("&New"));
 	connect(newHoleAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	newHoleAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_N);
 	clearHoleAction = actionCollection()->addAction("clearhole");
-	clearHoleAction->setIcon(KIcon( QLatin1String( "edit-clear-locationbar-ltr" )));
+	clearHoleAction->setIcon(QIcon::fromTheme( QLatin1String( "edit-clear-locationbar-ltr" )));
 	clearHoleAction->setText(KStandardGuiItem::clear().text());
 	connect(clearHoleAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	clearHoleAction->setShortcut(Qt::CTRL+Qt::Key_Delete);
@@ -123,24 +125,24 @@ void KolfWindow::setupActions()
 	undoShotAction = KStandardAction::undo(this, SLOT(emptySlot()), this);
 	actionCollection()->addAction("undoshot", undoShotAction);
 	undoShotAction->setText(i18n("&Undo Shot"));
-	//replayShotAction = new KAction(i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+	//replayShotAction = new QAction(i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 
 	// Go
 	holeAction = new KSelectAction(i18n("Switch to Hole"), this);
 	actionCollection()->addAction("switchhole", holeAction);
 	connect(holeAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	nextAction = actionCollection()->addAction("nexthole");
-	nextAction->setIcon(KIcon( QLatin1String( "go-next" )));
+	nextAction->setIcon(QIcon::fromTheme( QLatin1String( "go-next" )));
 	nextAction->setText(i18n("&Next Hole"));
 	connect(nextAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	nextAction->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Forward));
 	prevAction = actionCollection()->addAction("prevhole");
-	prevAction->setIcon(KIcon( QLatin1String( "go-previous" )));
+	prevAction->setIcon(QIcon::fromTheme( QLatin1String( "go-previous" )));
 	prevAction->setText(i18n("&Previous Hole"));
 	connect(prevAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	prevAction->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Back));
 	firstAction = actionCollection()->addAction("firsthole");
-	firstAction->setIcon(KIcon( QLatin1String( "go-home" )));
+	firstAction->setIcon(QIcon::fromTheme( QLatin1String( "go-home" )));
 	firstAction->setText(i18n("&First Hole"));
 	connect(firstAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	firstAction->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Begin));
@@ -149,7 +151,7 @@ void KolfWindow::setupActions()
 	connect(lastAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	lastAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_End); // why not KStandardShortcut::End (Ctrl+End)?
 	randAction = actionCollection()->addAction("randhole");
-	randAction->setIcon(KIcon( QLatin1String( "go-jump" )));
+	randAction->setIcon(QIcon::fromTheme( QLatin1String( "go-jump" )));
 	randAction->setText(i18n("&Random Hole"));
 	connect(randAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 
@@ -167,7 +169,7 @@ void KolfWindow::setupActions()
 	connect(useAdvancedPuttingAction, SIGNAL(toggled(bool)), this, SLOT(useAdvancedPuttingChanged(bool)));
 	useAdvancedPuttingAction->setChecked(configGroup.readEntry("useAdvancedPutting", false));
 
-	showInfoAction = new KToggleAction(KIcon( QLatin1String( "help-about")), i18n("Show &Info"), this);
+	showInfoAction = new KToggleAction(QIcon::fromTheme( QLatin1String( "help-about")), i18n("Show &Info"), this);
 	actionCollection()->addAction("showinfo", showInfoAction);
 	connect(showInfoAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	showInfoAction->setShortcut(Qt::CTRL+Qt::Key_I);

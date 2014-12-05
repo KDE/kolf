@@ -20,6 +20,7 @@
 #include "newgame.h"
 #include "game.h"
 
+#include <KUrl>
 #include <QBoxLayout>
 #include <QLabel>
 #include <QListWidget>
@@ -29,13 +30,14 @@
 #include <KScoreDialog>
 #include <KSeparator>
 #include <KStandardDirs>
-
+#include <KGlobal>
+#include <KDialog>
 NewGameDialog::NewGameDialog(bool enableCourses)
 	: KPageDialog()
 {
-	setCaption(i18n("New Game"));
-	setButtons(Ok | Cancel);
-	setDefaultButton(Ok);
+	setWindowTitle(i18n("New Game"));
+	//QT5 setButtons(Ok | Cancel);
+	//QT5 setDefaultButton(Ok);
 	setMinimumSize(640,310);
         connect(this, SIGNAL(okClicked()), this, SLOT(slotOk()));
 
@@ -53,8 +55,8 @@ NewGameDialog::NewGameDialog(bool enableCourses)
     	addPage(playerPage, i18n("Players"));
 
 	QVBoxLayout *bigLayout = new QVBoxLayout(playerPage);
-        bigLayout->setMargin( marginHint() );
-        bigLayout->setSpacing( spacingHint() );
+        //QT5 bigLayout->setMargin( marginHint() );
+        //QT5 bigLayout->setSpacing( spacingHint() );
 
 	addButton = new KPushButton(i18n("&New Player"), playerPage);
 	bigLayout->addWidget(addButton);
@@ -95,11 +97,11 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		pageItem->setHeader(i18n("Course"));
 		addPage(pageItem);
 		QVBoxLayout *coursePageLayout = new QVBoxLayout(coursePage);
-                coursePageLayout->setMargin( marginHint() );
-                coursePageLayout->setSpacing( spacingHint() );
+                //QT5 coursePageLayout->setMargin( marginHint() );
+                //QT5 coursePageLayout->setSpacing( spacingHint() );
 
 		QHBoxLayout *hlayout = new QHBoxLayout;
-                hlayout->setSpacing( spacingHint() );
+                //QT5 hlayout->setSpacing( spacingHint() );
                 coursePageLayout->addLayout( hlayout );
 
 
@@ -138,7 +140,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		connect(courseList, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 
 		QVBoxLayout *detailLayout = new QVBoxLayout;
-                detailLayout->setSpacing( spacingHint() );
+                //QT5 detailLayout->setSpacing( spacingHint() );
                 hlayout->addLayout( detailLayout );
 		name = new QLabel(coursePage);
 		detailLayout->addWidget(name);
@@ -146,7 +148,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		detailLayout->addWidget(author);
 
 		QHBoxLayout *minorLayout = new QHBoxLayout;
-                minorLayout->setSpacing( spacingHint() );
+                //QT5 minorLayout->setSpacing( spacingHint() );
                 detailLayout->addLayout( minorLayout );
 		par = new QLabel(coursePage);
 		minorLayout->addWidget(par);
@@ -162,7 +164,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		detailLayout->addWidget(new KSeparator(coursePage));
 
 		minorLayout = new QHBoxLayout;
-                minorLayout->setSpacing( spacingHint() );
+                //QT5 minorLayout->setSpacing( spacingHint() );
                 detailLayout->addLayout( minorLayout );
 
 		KPushButton *addCourseButton = new KPushButton(i18n("Add..."), coursePage);
@@ -184,8 +186,8 @@ NewGameDialog::NewGameDialog(bool enableCourses)
     addPage(pageItem);
 
 	QVBoxLayout *vlayout = new QVBoxLayout(optionsPage);
-        vlayout->setMargin( marginHint() );
-        vlayout->setSpacing( spacingHint() );
+        //QT5 vlayout->setMargin( marginHint() );
+        //QT5 vlayout->setSpacing( spacingHint() );
 
 	mode = new QCheckBox(i18n("&Strict mode"), optionsPage);
 	vlayout->addWidget(mode);
@@ -225,7 +227,7 @@ void NewGameDialog::slotOk()
 
 	config->sync();
 
-	KDialog::accept();
+	//QT5 KDialog::accept();
 }
 
 void NewGameDialog::courseSelected(int index)

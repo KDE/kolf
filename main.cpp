@@ -21,7 +21,7 @@
 #include <kapplication.h>
 #include <klocale.h>
 #include <kcmdlineargs.h>
-#include <kaboutdata.h>
+#include <K4AboutData>
 #include <kdebug.h>
 #include <kurl.h>
 #include <kglobal.h>
@@ -39,7 +39,7 @@ static const char version[] = "1.10"; // = KDE 4.6 Release
 
 int main(int argc, char **argv)
 {
-	KAboutData aboutData( "kolf", 0, ki18n("Kolf"), version, ki18n(description), KAboutData::License_GPL, ki18n("(c) 2002-2010, Kolf developers"), KLocalizedString(), "http://games.kde.org/kolf");
+	K4AboutData aboutData( "kolf", 0, ki18n("Kolf"), version, ki18n(description), K4AboutData::License_GPL, ki18n("(c) 2002-2010, Kolf developers"), KLocalizedString(), "http://games.kde.org/kolf");
 
 	aboutData.addAuthor(ki18n("Stefan Majewsky"), ki18n("Current maintainer"), "majewsky@gmx.net");
 	aboutData.addAuthor(ki18n("Jason Katz-Brown"), ki18n("Former main author"), "jasonkb@mit.edu");
