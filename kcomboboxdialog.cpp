@@ -154,4 +154,4 @@ QString KComboBoxDialog::getText(const QString &_caption, const QString &_text, 
 	return dlg.text();
 }
 
-#include "kcomboboxdialog.moc"
+

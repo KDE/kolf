@@ -867,4 +867,4 @@ void Kolf::Windmill::save(KConfigGroup* group)
 
 //END Kolf::Windmill
 
-#include "obstacles.moc"
+

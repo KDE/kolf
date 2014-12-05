@@ -74,4 +74,4 @@ void Editor::setItem(CanvasItem *item)
 	connect(config, SIGNAL(modified()), this, SIGNAL(changed()));
 }
 
-#include "editor.moc"
+

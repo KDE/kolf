@@ -147,5 +147,5 @@ void Tagaro::Scene::Private::receivePixmap(const QPixmap& pixmap)
 }
 
 //END background brush stuff
+#include "moc_scene.cpp"
 
-#include "scene.moc"

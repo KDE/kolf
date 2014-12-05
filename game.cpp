@@ -2399,4 +2399,4 @@ CourseInfo::CourseInfo()
 {
 }
 
-#include "game.moc"
+

@@ -287,4 +287,4 @@ void Tagaro::Board::timerEvent(QTimerEvent* event)
 	}
 }
 
-#include "board.moc"
+#include "moc_board.cpp"

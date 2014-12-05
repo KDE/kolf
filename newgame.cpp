@@ -369,4 +369,4 @@ void PlayerEditor::removeMe()
 	emit deleteEditor(this);
 }
 
-#include "newgame.moc"
+

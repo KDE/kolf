@@ -19,7 +19,7 @@
 #include "shape.h"
 #include "canvasitem.h"
 #include "overlay.h"
-
+#include <QGraphicsScene>
 #include <QtCore/qmath.h>
 #include <QtCore/QVarLengthArray>
 #include <Box2D/Collision/Shapes/b2CircleShape.h>

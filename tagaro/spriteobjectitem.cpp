@@ -213,4 +213,4 @@ QPainterPath Tagaro::SpriteObjectItem::Private::shape() const
 
 //END QGraphicsItem reimplementation of Tagaro::SpriteObjectItem::Private
 
-#include "spriteobjectitem.moc"
+
