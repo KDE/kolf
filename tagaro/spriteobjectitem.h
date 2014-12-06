@@ -19,8 +19,8 @@
 #ifndef TAGARO_SPRITEOBJECTITEM_H
 #define TAGARO_SPRITEOBJECTITEM_H
 
-#include <QtCore/QObject>
-#include <QtGui/QGraphicsItem>
+#include <QObject>
+#include <QGraphicsItem>
 
 #include <KGameRendererClient>
 

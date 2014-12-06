@@ -19,7 +19,7 @@
 #ifndef TAGARO_BOARD_H
 #define TAGARO_BOARD_H
 
-#include <QtGui/QGraphicsObject>
+#include <QGraphicsObject>
 
 namespace Tagaro {
 

@@ -19,7 +19,7 @@
 #ifndef TAGARO_SCENE_H
 #define TAGARO_SCENE_H
 
-#include <QtGui/QGraphicsScene>
+#include <QGraphicsScene>
 
 class KGameRenderer;
 class KGameRendererClient;

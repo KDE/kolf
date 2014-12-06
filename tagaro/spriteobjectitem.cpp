@@ -18,8 +18,8 @@
 
 #include "spriteobjectitem.h"
 
-#include <QtCore/qmath.h>
-#include <QtGui/QGraphicsScene>
+#include <qmath.h>
+#include <QGraphicsScene>
 
 #include <KGameRenderer>
 

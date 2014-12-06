@@ -19,10 +19,10 @@
 #include "board.h"
 #include "spriteobjectitem.h"
 
-#include <QtCore/QBasicTimer>
-#include <QtCore/QTimerEvent>
-#include <QtGui/QApplication>
-#include <QtGui/QGraphicsScene>
+#include <QBasicTimer>
+#include <QTimerEvent>
+#include <QApplication>
+#include <QGraphicsScene>
 
 struct Tagaro::Board::Private
 {
