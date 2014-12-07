@@ -44,7 +44,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 	setFaceType(KPageDialog::Tree);
 	this->enableCourses = enableCourses;
 
-	KSharedConfig::Ptr config = KGlobal::config();
+	KSharedConfig::Ptr config = KSharedConfig::openConfig();
         // following use this group
         KConfigGroup configGroup(config->group(QString("New Game Dialog Mode")));
 
@@ -206,7 +206,7 @@ NewGameDialog::~NewGameDialog()
 
 void NewGameDialog::slotOk()
 {
-	KSharedConfig::Ptr config = KGlobal::config();
+	KSharedConfig::Ptr config = KSharedConfig::openConfig();
 	KConfigGroup configGroup(config->group(QString("New Game Dialog Mode")));
 
 	configGroup.writeEntry("competition", mode->isChecked());

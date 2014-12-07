@@ -160,7 +160,7 @@ void KolfWindow::setupActions()
 	actionCollection()->addAction("usemouse", useMouseAction);
 	connect(useMouseAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
 	connect(useMouseAction, SIGNAL(toggled(bool)), this, SLOT(useMouseChanged(bool)));
-	KConfigGroup configGroup(KGlobal::config(), "Settings");
+	KConfigGroup configGroup(KSharedConfig::openConfig(), "Settings");
 	useMouseAction->setChecked(configGroup.readEntry("useMouse", true));
 
 	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Putting"), this);
@@ -758,27 +758,27 @@ void KolfWindow::titleChanged(const QString &newTitle)
 
 void KolfWindow::useMouseChanged(bool yes)
 {
-	KConfigGroup configGroup(KGlobal::config(), "Settings"); configGroup.writeEntry("useMouse", yes); configGroup.sync();
+	KConfigGroup configGroup(KSharedConfig::openConfig(), "Settings"); configGroup.writeEntry("useMouse", yes); configGroup.sync();
 }
 
 void KolfWindow::useAdvancedPuttingChanged(bool yes)
 {
-	KConfigGroup configGroup(KGlobal::config(), "Settings"); configGroup.writeEntry("useAdvancedPutting", yes); configGroup.sync();
+	KConfigGroup configGroup(KSharedConfig::openConfig(), "Settings"); configGroup.writeEntry("useAdvancedPutting", yes); configGroup.sync();
 }
 
 void KolfWindow::showInfoChanged(bool yes)
 {
-	KConfigGroup configGroup(KGlobal::config(), "Settings"); configGroup.writeEntry("showInfo", yes); configGroup.sync();
+	KConfigGroup configGroup(KSharedConfig::openConfig(), "Settings"); configGroup.writeEntry("showInfo", yes); configGroup.sync();
 }
 
 void KolfWindow::showGuideLineChanged(bool yes)
 {
-	KConfigGroup configGroup(KGlobal::config(), "Settings"); configGroup.writeEntry("showGuideLine", yes); configGroup.sync();
+	KConfigGroup configGroup(KSharedConfig::openConfig(), "Settings"); configGroup.writeEntry("showGuideLine", yes); configGroup.sync();
 }
 
 void KolfWindow::soundChanged(bool yes)
 {
-	KConfigGroup configGroup(KGlobal::config(), "Settings"); configGroup.writeEntry("sound", yes); configGroup.sync();
+	KConfigGroup configGroup(KSharedConfig::openConfig(), "Settings"); configGroup.writeEntry("sound", yes); configGroup.sync();
 }
 
 void KolfWindow::enableAllMessages()

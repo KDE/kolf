@@ -95,7 +95,7 @@ public:
 	                       const QString &_value = QString(),
 	                       bool *ok = 0, QWidget *parent = 0,
 	                       const QString &configName = QString(),
-	                       KSharedConfigPtr config = KGlobal::config());
+	                       KSharedConfigPtr config = KSharedConfig::openConfig());
 
 protected:
 	KHistoryComboBox *combo;

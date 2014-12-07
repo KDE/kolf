@@ -90,7 +90,7 @@ QString KComboBoxDialog::getItem( const QString &_text, const QString &_caption,
 	QString prevAnswer;
 	if ( !dontAskAgainName.isEmpty() )
 	{
-		KSharedConfig::Ptr config = KGlobal::config();
+		KSharedConfig::Ptr config = KSharedConfig::openConfig();
 		KConfigGroup *configGroup = new KConfigGroup(config->group("Notification Messages"));
 		prevAnswer = configGroup->readEntry( dontAskAgainName,QString() );
 		if ( !prevAnswer.isEmpty() )
@@ -110,7 +110,7 @@ QString KComboBoxDialog::getItem( const QString &_text, const QString &_caption,
 	{
 		if ( !dontAskAgainName.isEmpty() && !text.isEmpty() )
 		{
-			KSharedConfig::Ptr config = KGlobal::config();
+			KSharedConfig::Ptr config = KSharedConfig::openConfig();
 			KConfigGroup *configGroup = new KConfigGroup(config->group("Notification Messages"));
 			configGroup->writeEntry( dontAskAgainName, text );
 		}
