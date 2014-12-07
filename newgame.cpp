@@ -26,7 +26,7 @@
 #include <QListWidget>
 #include <KFileDialog>
 #include <KMessageBox>
-#include <KPushButton>
+#include <QPushButton>
 #include <KScoreDialog>
 #include <KSeparator>
 #include <KStandardDirs>
@@ -58,7 +58,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
         //QT5 bigLayout->setMargin( marginHint() );
         //QT5 bigLayout->setSpacing( spacingHint() );
 
-	addButton = new KPushButton(i18n("&New Player"), playerPage);
+	addButton = new QPushButton(i18n("&New Player"), playerPage);
 	bigLayout->addWidget(addButton);
 
 	connect(addButton, SIGNAL(clicked()), this, SLOT(addPlayer()));
@@ -156,7 +156,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		minorLayout->addWidget(holes);
 
 		detailLayout->addStretch();
-		KPushButton *scores = new KPushButton(i18n("Highscores"), coursePage);
+		QPushButton *scores = new QPushButton(i18n("Highscores"), coursePage);
 		connect(scores, SIGNAL(clicked()), this, SLOT(showHighscores()));
 		detailLayout->addWidget(scores);
 
@@ -167,11 +167,11 @@ NewGameDialog::NewGameDialog(bool enableCourses)
                 //QT5 minorLayout->setSpacing( spacingHint() );
                 detailLayout->addLayout( minorLayout );
 
-		KPushButton *addCourseButton = new KPushButton(i18n("Add..."), coursePage);
+		QPushButton *addCourseButton = new QPushButton(i18n("Add..."), coursePage);
 		minorLayout->addWidget(addCourseButton);
 		connect(addCourseButton, SIGNAL(clicked()), this, SLOT(addCourse()));
 
-		remove = new KPushButton(i18n("Remove"), coursePage);
+		remove = new QPushButton(i18n("Remove"), coursePage);
 		minorLayout->addWidget(remove);
 		connect(remove, SIGNAL(clicked()), this, SLOT(removeCourse()));
 
@@ -359,7 +359,7 @@ PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent
 	layout->addStretch();
 	layout->addWidget(colorButton = new KColorButton(startColor, this));
 	colorButton->hide();
-	KPushButton *remove = new KPushButton(i18n("Remove"), this);
+	QPushButton *remove = new QPushButton(i18n("Remove"), this);
 	layout->addWidget(remove);
 	connect(remove, SIGNAL(clicked()), this, SLOT(removeMe()));
 }
