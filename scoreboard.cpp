@@ -19,7 +19,7 @@
 #include "scoreboard.h"
 
 #include <QHeaderView>
-#include <KLocale>
+#include <KLocalizedString>
 
 ScoreBoard::ScoreBoard(QWidget *parent)
 	: QTableWidget(1, 1, parent) 

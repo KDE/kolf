@@ -28,7 +28,7 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <KHistoryComboBox>
-#include <KLocale>
+#include <KLocalizedString>
 
 KComboBoxDialog::KComboBoxDialog( const QString &_text, const QStringList &_items, const QString& _value, bool showDontAskAgain, QWidget *parent )
 	: KDialog( parent)

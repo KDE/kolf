@@ -28,7 +28,7 @@
 #include <KComboBox>
 #include <KConfigGroup>
 #include <KGlobal>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KNumInput>
 
 //BEGIN Kolf::LandscapeItem

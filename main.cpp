@@ -19,7 +19,7 @@
 #include <QFile>
 
 #include <kapplication.h>
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kcmdlineargs.h>
 #include <K4AboutData>
 #include <kdebug.h>
@@ -89,7 +89,7 @@ int main(int argc, char **argv)
 	QApplication::setColorSpec(QApplication::ManyColor);
 	KApplication a;
 	//KF5 port: remove this line and define TRANSLATION_DOMAIN in CMakeLists.txt instead
-//KLocale::global()->insertCatalog( QLatin1String( "libkdegames" ));
+//KLocalizedString::global()->insertCatalog( QLatin1String( "libkdegames" ));
 
 	KolfWindow *top = new KolfWindow;
 

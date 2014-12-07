@@ -22,7 +22,7 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <KDialog>
-#include <KLocale>
+#include <KLocalizedString>
 
 Config::Config(QWidget *parent)
 	: QFrame(parent)
