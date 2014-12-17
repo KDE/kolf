@@ -25,7 +25,7 @@
 #include <QLabel>
 #include <KDialog>
 #include <KListWidget>
-
+#include <KLocalizedString>
 Editor::Editor(const Kolf::ItemFactory& factory, QWidget *parent)
 	: QWidget(parent)
 	, m_factory(factory)

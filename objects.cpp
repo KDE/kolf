@@ -27,7 +27,7 @@
 #include <KConfigGroup>
 #include <KNumInput>
 #include <KRandom>
-
+#include <KLocalizedString>
 //BEGIN Kolf::BlackHole
 
 Kolf::BlackHole::BlackHole(QGraphicsItem* parent, b2World* world)

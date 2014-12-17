@@ -30,7 +30,7 @@
 #include <KConfigGroup>
 #include <KLineEdit>
 #include <KRandom>
-
+#include <KLocalizedString>
 //BEGIN Kolf::Bumper
 
 Kolf::Bumper::Bumper(QGraphicsItem* parent, b2World* world)

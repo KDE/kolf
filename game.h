@@ -28,13 +28,8 @@
 #include "tagaro/scene.h"
 
 #include <QGraphicsView>
-#include <KLocale>
 #include <KConfigGroup>
 
-class QLabel;
-class QSlider;
-class QCheckBox;
-class QVBoxLayout;
 class KolfGame;
 class KGameRenderer;
 

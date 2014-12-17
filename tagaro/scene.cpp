@@ -23,7 +23,6 @@
 #include <QGraphicsTextItem>
 #include <QGraphicsView>
 #include <QStyleOptionGraphicsItem>
-#include <QTextDocument>
 
 Tagaro::Scene::Private::Private(KGameRenderer* backgroundRenderer, const QString& backgroundSpriteKey, Tagaro::Scene* parent)
 	: KGameRendererClient(backgroundRenderer, backgroundSpriteKey)
