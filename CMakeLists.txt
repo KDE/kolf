@@ -36,6 +36,7 @@ include(KDECMakeSettings)
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 add_definitions(-DTRANSLATION_DOMAIN="kolf")
 
+set(LIBKOLF_VERSION "5.0.0")
 
 add_subdirectory( sounds ) 
 add_subdirectory( courses ) 
@@ -121,7 +122,7 @@ add_library(kolfprivate SHARED ${kolf_LIB_SRCS})
 
 target_link_libraries(kolfprivate  KF5::KIOCore Phonon::phonon4qt5 KF5KDEGames  KF5::KDELibs4Support Qt5::Widgets Qt5::Gui)
 
-set_target_properties(kolfprivate PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
+set_target_properties(kolfprivate PROPERTIES VERSION ${LIBKOLF_VERSION} SOVERSION ${LIBKOLF_VERSION} )
 install(TARGETS kolfprivate ${INSTALL_TARGETS_DEFAULT_ARGS} LIBRARY NAMELINK_SKIP)
 
 
