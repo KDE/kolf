@@ -193,15 +193,15 @@ Kolf::Overlay::Overlay(CanvasItem* citem, QGraphicsItem* qitem, bool hack_addQit
 	setFlag(QGraphicsItem::ItemHasNoContents);
 	//initialize activator area item
 	m_activatorItem->setZValue(1);
-	connect(m_activatorItem, SIGNAL(hoverEntered()), this, SLOT(activatorEntered()));
-	connect(m_activatorItem, SIGNAL(hoverLeft()), this, SLOT(activatorLeft()));
-	connect(m_activatorItem, SIGNAL(clicked(int)), this, SLOT(activatorClicked(int)));
+	connect(m_activatorItem, &Kolf::OverlayAreaItem::hoverEntered, this, &Overlay::activatorEntered);
+	connect(m_activatorItem, &Kolf::OverlayAreaItem::hoverLeft, this, &Overlay::activatorLeft);
+	connect(m_activatorItem, &Kolf::OverlayAreaItem::clicked, this, &Overlay::activatorClicked);
 	//initialize interactor area item
 	m_interactorAnimator->setZValue(2);
 	m_interactorAnimator->setOpacity(0); //not visible at first
 	m_interactorItem->setBrush(Qt::green);
-	connect(m_interactorItem, SIGNAL(clicked(int)), this, SLOT(activatorClicked(int))); //note that interactor item is over activator in hovered mode
-	connect(m_interactorItem, SIGNAL(dragged(QPointF)), this, SLOT(interactorDragged(QPointF)));
+	connect(m_interactorItem, &Kolf::OverlayAreaItem::clicked, this, &Overlay::activatorClicked);
+	connect(m_interactorItem, &Kolf::OverlayAreaItem::dragged, this, &Overlay::interactorDragged);
 	//initialize handle manager
 	m_handleAnimator->setZValue(3);
 	m_handleAnimator->setHideWhenInvisible(true);
