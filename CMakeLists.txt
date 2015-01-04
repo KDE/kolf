@@ -144,3 +144,4 @@ install( FILES intro tutorial.kolf tutorial.kolfgame  DESTINATION  ${DATA_INSTAL
 #install( FILES ball.h game.h statedb.h config.h canvasitem.h object.h rtti.h vector.h floater.h slope.h  DESTINATION  ${INCLUDE_INSTALL_DIR}/kolf COMPONENT Devel )
 
 
+feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
