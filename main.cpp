@@ -18,10 +18,10 @@
 
 #include <QFile>
 
-#include <kapplication.h>
+
 #include <KLocalizedString>
-#include <kcmdlineargs.h>
-#include <K4AboutData>
+
+#include <KAboutData>
 #include <kdebug.h>
 #include <kurl.h>
 #include <kglobal.h>
@@ -29,6 +29,9 @@
 
 #include <iostream>
 #include <kdemacros.h>
+#include <QApplication>
+#include <QCommandLineParser>
+#include <QCommandLineOption>
 using namespace std;
 
 static const char description[] =
@@ -39,34 +42,38 @@ static const char version[] = "1.10"; // = KDE 4.6 Release
 
 int main(int argc, char **argv)
 {
-	K4AboutData aboutData( "kolf", 0, ki18n("Kolf"), version, ki18n(description), K4AboutData::License_GPL, ki18n("(c) 2002-2010, Kolf developers"), KLocalizedString(), "http://games.kde.org/kolf");
+	KAboutData aboutData( "kolf", i18n("Kolf"), version, i18n(description), KAboutLicense::GPL, i18n("(c) 2002-2010, Kolf developers"),  "http://games.kde.org/kolf");
 
-	aboutData.addAuthor(ki18n("Stefan Majewsky"), ki18n("Current maintainer"), "majewsky@gmx.net");
-	aboutData.addAuthor(ki18n("Jason Katz-Brown"), ki18n("Former main author"), "jasonkb@mit.edu");
-	aboutData.addAuthor(ki18n("Niklas Knutsson"), ki18n("Advanced putting mode"));
-	aboutData.addAuthor(ki18n("Rik Hemsley"), ki18n("Border around course"));
-	aboutData.addAuthor(ki18n("Timo A. Hummel"), ki18n("Some good sound effects"), "timo.hummel@gmx.net");
+	aboutData.addAuthor(i18n("Stefan Majewsky"), i18n("Current maintainer"), "majewsky@gmx.net");
+	aboutData.addAuthor(i18n("Jason Katz-Brown"), i18n("Former main author"), "jasonkb@mit.edu");
+	aboutData.addAuthor(i18n("Niklas Knutsson"), i18n("Advanced putting mode"));
+	aboutData.addAuthor(i18n("Rik Hemsley"), i18n("Border around course"));
+	aboutData.addAuthor(i18n("Timo A. Hummel"), i18n("Some good sound effects"), "timo.hummel@gmx.net");
 
-	aboutData.addCredit(ki18n("Rob Renaud"), ki18n("Wall-bouncing help"));
-	aboutData.addCredit(ki18n("Aaron Seigo"), ki18n("Suggestions, bug reports"));
-	aboutData.addCredit(ki18n("Erin Catto"), ki18n("Developer of Box2D physics engine"));
-	aboutData.addCredit(ki18n("Ryan Cumming"), ki18n("Vector class (Kolf 1)"));
-	aboutData.addCredit(ki18n("Daniel Matza-Brown"), ki18n("Working wall-bouncing algorithm (Kolf 1)"));
+	aboutData.addCredit(i18n("Rob Renaud"), i18n("Wall-bouncing help"));
+	aboutData.addCredit(i18n("Aaron Seigo"), i18n("Suggestions, bug reports"));
+	aboutData.addCredit(i18n("Erin Catto"), i18n("Developer of Box2D physics engine"));
+	aboutData.addCredit(i18n("Ryan Cumming"), i18n("Vector class (Kolf 1)"));
+	aboutData.addCredit(i18n("Daniel Matza-Brown"), i18n("Working wall-bouncing algorithm (Kolf 1)"));
 
-	KCmdLineArgs::init(argc, argv, &aboutData);
+    QApplication app(argc, argv);
+    QCommandLineParser parser;
+    KAboutData::setApplicationData(aboutData);
+    parser.addVersionOption();
+    parser.addHelpOption();
+        parser.addOption(QCommandLineOption(QStringList() << QLatin1String("+file"), i18n("File")));
+        parser.addOption(QCommandLineOption(QStringList() << QLatin1String("course-info "), i18n("Print course information and exit")));
 
-	KCmdLineOptions options;
-	options.add("+file", ki18n("File"));
-	options.add("course-info ", ki18n("Print course information and exit"));
-	KCmdLineArgs::addCmdLineOptions(options);
+    //PORTING SCRIPT: adapt aboutdata variable if necessary
+    aboutData.setupCommandLine(&parser);
+    parser.process(app);
+    aboutData.processCommandLine(&parser);
+
 
 	// I've actually added this for my web site uploaded courses display
-	KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-	if (args->isSet("course-info"))
+	if (parser.isSet("course-info"))
 	{
-		KCmdLineArgs::enable_i18n();
-
-		QString filename(args->getOption("course-info"));
+		QString filename(parser.value("course-info"));
 		if (QFile::exists(filename))
 		{
 			CourseInfo info;
@@ -82,28 +89,25 @@ int main(int argc, char **argv)
 		}
 		else
 		{
-			KCmdLineArgs::usageError(i18n("Course %1 does not exist.", filename));
+			//KCmdLineArgs::usageError(i18n("Course %1 does not exist.", filename));
 		}
 	}
 
 	QApplication::setColorSpec(QApplication::ManyColor);
-	KApplication a;
-	//KF5 port: remove this line and define TRANSLATION_DOMAIN in CMakeLists.txt instead
-//KLocalizedString::global()->insertCatalog( QLatin1String( "libkdegames" ));
 
 	KolfWindow *top = new KolfWindow;
 
-	if (args->count() >= 1)
+	if (parser.positionalArguments().count() >= 1)
 	{
-		KUrl url = args->url(args->count() - 1);
+		KUrl url = parser.positionalArguments().at(parser.positionalArguments().count() - 1);
 		top->openUrl(url);
-		args->clear();
+		
 	}
 	else
 		top->closeGame();
 
 	top->show();
 
-	return a.exec();
+	return app.exec();
 }
 
