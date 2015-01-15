@@ -120,7 +120,7 @@ set(kolf_LIB_SRCS
 
 add_library(kolfprivate SHARED ${kolf_LIB_SRCS})
 
-target_link_libraries(kolfprivate  KF5::KIOCore Phonon::phonon4qt5 KF5KDEGames  KF5::KDELibs4Support Qt5::Widgets Qt5::Gui)
+target_link_libraries(kolfprivate  KF5::KIOCore Phonon::phonon4qt5 KF5KDEGames  KF5::KDELibs4Support Qt5::Widgets Qt5::Gui KF5::DBusAddons)
 
 set_target_properties(kolfprivate PROPERTIES VERSION ${LIBKOLF_VERSION} SOVERSION ${LIBKOLF_VERSION} )
 install(TARGETS kolfprivate ${INSTALL_TARGETS_DEFAULT_ARGS} LIBRARY NAMELINK_SKIP)

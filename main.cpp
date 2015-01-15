@@ -20,6 +20,7 @@
 
 
 #include <KLocalizedString>
+#include <KDBusService>
 
 #include <KAboutData>
 #include <kdebug.h>
@@ -42,6 +43,8 @@ static const char version[] = "1.10"; // = KDE 4.6 Release
 
 int main(int argc, char **argv)
 {
+    QApplication app(argc, argv);
+
 	KAboutData aboutData( "kolf", i18n("Kolf"), version, i18n(description), KAboutLicense::GPL, i18n("(c) 2002-2010, Kolf developers"),  "http://games.kde.org/kolf");
 
 	aboutData.addAuthor(i18n("Stefan Majewsky"), i18n("Current maintainer"), "majewsky@gmx.net");
@@ -56,7 +59,6 @@ int main(int argc, char **argv)
 	aboutData.addCredit(i18n("Ryan Cumming"), i18n("Vector class (Kolf 1)"));
 	aboutData.addCredit(i18n("Daniel Matza-Brown"), i18n("Working wall-bouncing algorithm (Kolf 1)"));
 
-    QApplication app(argc, argv);
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
     parser.addVersionOption();
@@ -64,11 +66,10 @@ int main(int argc, char **argv)
         parser.addOption(QCommandLineOption(QStringList() << QLatin1String("+file"), i18n("File")));
         parser.addOption(QCommandLineOption(QStringList() << QLatin1String("course-info "), i18n("Print course information and exit")));
 
-    //PORTING SCRIPT: adapt aboutdata variable if necessary
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
-
+    KDBusService service;
 
 	// I've actually added this for my web site uploaded courses display
 	if (parser.isSet("course-info"))
