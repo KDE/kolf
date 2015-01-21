@@ -29,7 +29,6 @@
 #include "kolf.h"
 
 #include <iostream>
-#include <kdemacros.h>
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
