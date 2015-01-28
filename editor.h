@@ -24,7 +24,7 @@
 
 #include "game.h"
 
-class KListWidget;
+class QListWidget;
 class QHBoxLayout;
 class QListWidgetItem;
 class Config;
@@ -49,7 +49,7 @@ private Q_SLOTS:
 private:
 	const Kolf::ItemFactory& m_factory;
 	QHBoxLayout *hlayout;
-	KListWidget* m_typeList;
+	QListWidget* m_typeList;
 	Config *config;
 };
 
