@@ -3,7 +3,7 @@ project(kolf)
 cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
 set (QT_MIN_VERSION "5.3.0")
 
-find_package(ECM 1.3.0 REQUIRED CONFIG)
+find_package(ECM 1.7.0 REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets )
@@ -28,6 +28,7 @@ find_package(KF5KDEGames 4.9.0 REQUIRED)
 find_package(Phonon4Qt5 CONFIG REQUIRED)
 
 include(FeatureSummary)
+include(ECMAddAppIcon)
 include(ECMInstallIcons)
 include(KDEInstallDirs)
 include(KDECompilerSettings)
@@ -123,25 +124,26 @@ add_library(kolfprivate SHARED ${kolf_LIB_SRCS})
 target_link_libraries(kolfprivate  KF5::KIOCore Phonon::phonon4qt5 KF5KDEGames  KF5::KDELibs4Support Qt5::Widgets Qt5::Gui KF5::DBusAddons)
 
 set_target_properties(kolfprivate PROPERTIES VERSION ${LIBKOLF_VERSION} SOVERSION ${LIBKOLF_VERSION} )
-install(TARGETS kolfprivate ${INSTALL_TARGETS_DEFAULT_ARGS} LIBRARY NAMELINK_SKIP)
+install(TARGETS kolfprivate ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} LIBRARY NAMELINK_SKIP)
 
 
 ########### next target ###############
 
 set(kolf_SRCS main.cpp)
 
-kde4_add_app_icon(kolf_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/hi*-app-kolf.png")
+file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/hi*-apps-kolf.png")
+ecm_add_app_icon(kolf_SRCS ICONS ${ICONS_SRCS})
 add_executable( kolf ${kolf_SRCS} )
 
 target_link_libraries( kolf kolfprivate )
-install(TARGETS kolf  ${INSTALL_TARGETS_DEFAULT_ARGS} )
+install(TARGETS kolf  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### install files ###############
 
-install( PROGRAMS org.kde.kolf.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
-install( FILES kolfui.rc DESTINATION ${KXMLGUI_INSTALL_DIR}/kolf )
-install( FILES intro tutorial.kolf tutorial.kolfgame  DESTINATION  ${DATA_INSTALL_DIR}/kolf )
-#install( FILES ball.h game.h statedb.h config.h canvasitem.h object.h rtti.h vector.h floater.h slope.h  DESTINATION  ${INCLUDE_INSTALL_DIR}/kolf COMPONENT Devel )
+install( PROGRAMS org.kde.kolf.desktop  DESTINATION  ${KDE_INSTALL_APPDIR} )
+install( FILES kolfui.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/kolf )
+install( FILES intro tutorial.kolf tutorial.kolfgame  DESTINATION  ${KDE_INSTALL_DATADIR}/kolf )
+#install( FILES ball.h game.h statedb.h config.h canvasitem.h object.h rtti.h vector.h floater.h slope.h  DESTINATION  ${KDE_INSTALL_INCLUDEDIR}/kolf COMPONENT Devel )
 
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
