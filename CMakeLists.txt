@@ -131,7 +131,7 @@ install(TARGETS kolfprivate ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} LIBRARY NAMELINK
 
 set(kolf_SRCS main.cpp)
 
-file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/hi*-apps-kolf.png")
+file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/*-apps-kolf.png")
 ecm_add_app_icon(kolf_SRCS ICONS ${ICONS_SRCS})
 add_executable( kolf ${kolf_SRCS} )
 
