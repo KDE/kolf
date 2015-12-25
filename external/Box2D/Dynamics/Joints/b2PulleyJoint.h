@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2007 Erin Catto http://www.gphysics.com
+* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -21,11 +21,10 @@
 
 #include <Box2D/Dynamics/Joints/b2Joint.h>
 
-const qreal b2_minPulleyLength = 2.0f;
+const float32 b2_minPulleyLength = 2.0f;
 
 /// Pulley joint definition. This requires two ground anchors,
-/// two dynamic body anchor points, max lengths for each side,
-/// and a pulley ratio.
+/// two dynamic body anchor points, and a pulley ratio.
 struct b2PulleyJointDef : public b2JointDef
 {
 	b2PulleyJointDef()
@@ -36,9 +35,7 @@ struct b2PulleyJointDef : public b2JointDef
 		localAnchorA.Set(-1.0f, 0.0f);
 		localAnchorB.Set(1.0f, 0.0f);
 		lengthA = 0.0f;
-		maxLengthA = 0.0f;
 		lengthB = 0.0f;
-		maxLengthB = 0.0f;
 		ratio = 1.0f;
 		collideConnected = true;
 	}
@@ -47,7 +44,7 @@ struct b2PulleyJointDef : public b2JointDef
 	void Initialize(b2Body* bodyA, b2Body* bodyB,
 					const b2Vec2& groundAnchorA, const b2Vec2& groundAnchorB,
 					const b2Vec2& anchorA, const b2Vec2& anchorB,
-					qreal ratio);
+					float32 ratio);
 
 	/// The first ground anchor in world coordinates. This point never moves.
 	b2Vec2 groundAnchorA;
@@ -62,35 +59,31 @@ struct b2PulleyJointDef : public b2JointDef
 	b2Vec2 localAnchorB;
 
 	/// The a reference length for the segment attached to bodyA.
-	qreal lengthA;
-
-	/// The maximum length of the segment attached to bodyA.
-	qreal maxLengthA;
+	float32 lengthA;
 
 	/// The a reference length for the segment attached to bodyB.
-	qreal lengthB;
-
-	/// The maximum length of the segment attached to bodyB.
-	qreal maxLengthB;
+	float32 lengthB;
 
 	/// The pulley ratio, used to simulate a block-and-tackle.
-	qreal ratio;
+	float32 ratio;
 };
 
 /// The pulley joint is connected to two bodies and two fixed ground points.
 /// The pulley supports a ratio such that:
 /// length1 + ratio * length2 <= constant
 /// Yes, the force transmitted is scaled by the ratio.
-/// The pulley also enforces a maximum length limit on both sides. This is
-/// useful to prevent one side of the pulley hitting the top.
+/// Warning: the pulley joint can get a bit squirrelly by itself. They often
+/// work better when combined with prismatic joints. You should also cover the
+/// the anchor points with static shapes to prevent one side from going to
+/// zero length.
 class b2PulleyJoint : public b2Joint
 {
 public:
 	b2Vec2 GetAnchorA() const;
 	b2Vec2 GetAnchorB() const;
 
-	b2Vec2 GetReactionForce(qreal inv_dt) const;
-	qreal GetReactionTorque(qreal inv_dt) const;
+	b2Vec2 GetReactionForce(float32 inv_dt) const;
+	float32 GetReactionTorque(float32 inv_dt) const;
 
 	/// Get the first ground anchor.
 	b2Vec2 GetGroundAnchorA() const;
@@ -98,51 +91,62 @@ public:
 	/// Get the second ground anchor.
 	b2Vec2 GetGroundAnchorB() const;
 
-	/// Get the current length of the segment attached to body1.
-	qreal GetLength1() const;
+	/// Get the current length of the segment attached to bodyA.
+	float32 GetLengthA() const;
 
-	/// Get the current length of the segment attached to body2.
-	qreal GetLength2() const;
+	/// Get the current length of the segment attached to bodyB.
+	float32 GetLengthB() const;
 
 	/// Get the pulley ratio.
-	qreal GetRatio() const;
+	float32 GetRatio() const;
+
+	/// Get the current length of the segment attached to bodyA.
+	float32 GetCurrentLengthA() const;
+
+	/// Get the current length of the segment attached to bodyB.
+	float32 GetCurrentLengthB() const;
+
+	/// Dump joint to dmLog
+	void Dump();
+
+	/// Implement b2Joint::ShiftOrigin
+	void ShiftOrigin(const b2Vec2& newOrigin);
 
 protected:
 
 	friend class b2Joint;
 	b2PulleyJoint(const b2PulleyJointDef* data);
 
-	void InitVelocityConstraints(const b2TimeStep& step);
-	void SolveVelocityConstraints(const b2TimeStep& step);
-	bool SolvePositionConstraints(qreal baumgarte);
+	void InitVelocityConstraints(const b2SolverData& data);
+	void SolveVelocityConstraints(const b2SolverData& data);
+	bool SolvePositionConstraints(const b2SolverData& data);
 
-	b2Vec2 m_groundAnchor1;
-	b2Vec2 m_groundAnchor2;
-	b2Vec2 m_localAnchor1;
-	b2Vec2 m_localAnchor2;
-
-	b2Vec2 m_u1;
-	b2Vec2 m_u2;
+	b2Vec2 m_groundAnchorA;
+	b2Vec2 m_groundAnchorB;
+	float32 m_lengthA;
+	float32 m_lengthB;
 	
-	qreal m_constant;
-	qreal m_ratio;
-	
-	qreal m_maxLength1;
-	qreal m_maxLength2;
+	// Solver shared
+	b2Vec2 m_localAnchorA;
+	b2Vec2 m_localAnchorB;
+	float32 m_constant;
+	float32 m_ratio;
+	float32 m_impulse;
 
-	// Effective masses
-	qreal m_pulleyMass;
-	qreal m_limitMass1;
-	qreal m_limitMass2;
-
-	// Impulses for accumulation/warm starting.
-	qreal m_impulse;
-	qreal m_limitImpulse1;
-	qreal m_limitImpulse2;
-
-	b2LimitState m_state;
-	b2LimitState m_limitState1;
-	b2LimitState m_limitState2;
+	// Solver temp
+	int32 m_indexA;
+	int32 m_indexB;
+	b2Vec2 m_uA;
+	b2Vec2 m_uB;
+	b2Vec2 m_rA;
+	b2Vec2 m_rB;
+	b2Vec2 m_localCenterA;
+	b2Vec2 m_localCenterB;
+	float32 m_invMassA;
+	float32 m_invMassB;
+	float32 m_invIA;
+	float32 m_invIB;
+	float32 m_mass;
 };
 
 #endif

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
+* Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -21,49 +21,49 @@
 
 #include <Box2D/Common/b2Math.h>
 #include <Box2D/Collision/b2Collision.h>
-#include <Box2D/Dynamics/b2Island.h>
+#include <Box2D/Dynamics/b2TimeStep.h>
 
 class b2Contact;
 class b2Body;
 class b2StackAllocator;
+struct b2ContactPositionConstraint;
 
-struct b2ContactConstraintPoint
+struct b2VelocityConstraintPoint
 {
-	b2Vec2 localPoint;
 	b2Vec2 rA;
 	b2Vec2 rB;
-	qreal normalImpulse;
-	qreal tangentImpulse;
-	qreal normalMass;
-	qreal tangentMass;
-	qreal velocityBias;
+	float32 normalImpulse;
+	float32 tangentImpulse;
+	float32 normalMass;
+	float32 tangentMass;
+	float32 velocityBias;
 };
 
-struct b2ContactConstraint
+struct b2ContactVelocityConstraint
 {
-	b2ContactConstraintPoint points[b2_maxManifoldPoints];
-	b2Vec2 localNormal;
-	b2Vec2 localPoint;
+	b2VelocityConstraintPoint points[b2_maxManifoldPoints];
 	b2Vec2 normal;
 	b2Mat22 normalMass;
 	b2Mat22 K;
-	b2Body* bodyA;
-	b2Body* bodyB;
-	b2Manifold::Type type;
-	qreal radiusA, radiusB;
-	qreal friction;
-	qreal restitution;
+	int32 indexA;
+	int32 indexB;
+	float32 invMassA, invMassB;
+	float32 invIA, invIB;
+	float32 friction;
+	float32 restitution;
+	float32 tangentSpeed;
 	int32 pointCount;
-	b2Manifold* manifold;
+	int32 contactIndex;
 };
 
 struct b2ContactSolverDef
 {
+	b2TimeStep step;
 	b2Contact** contacts;
 	int32 count;
+	b2Position* positions;
+	b2Velocity* velocities;
 	b2StackAllocator* allocator;
-	qreal impulseRatio;
-	bool warmStarting;
 };
 
 class b2ContactSolver
@@ -78,11 +78,16 @@ public:
 	void SolveVelocityConstraints();
 	void StoreImpulses();
 
-	bool SolvePositionConstraints(qreal baumgarte);
-	bool SolveTOIPositionConstraints(qreal baumgarte, const b2Body* toiBodyA, const b2Body* toiBodyB);
+	bool SolvePositionConstraints();
+	bool SolveTOIPositionConstraints(int32 toiIndexA, int32 toiIndexB);
 
+	b2TimeStep m_step;
+	b2Position* m_positions;
+	b2Velocity* m_velocities;
 	b2StackAllocator* m_allocator;
-	b2ContactConstraint* m_constraints;
+	b2ContactPositionConstraint* m_positionConstraints;
+	b2ContactVelocityConstraint* m_velocityConstraints;
+	b2Contact** m_contacts;
 	int m_count;
 };
 

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
+* Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -20,7 +20,7 @@
 #define B2_COLLISION_H
 
 #include <Box2D/Common/b2Math.h>
-#include <climits>
+#include <limits.h>
 
 /// @file
 /// Structures and functions used for computing contact points, distance
@@ -69,10 +69,9 @@ union b2ContactID
 struct b2ManifoldPoint
 {
 	b2Vec2 localPoint;		///< usage depends on manifold type
-	qreal normalImpulse;	///< the non-penetration impulse
-	qreal tangentImpulse;	///< the friction impulse
+	float32 normalImpulse;	///< the non-penetration impulse
+	float32 tangentImpulse;	///< the friction impulse
 	b2ContactID id;			///< uniquely identifies a contact point between two shapes
-	bool isNew;
 };
 
 /// A manifold for two touching convex shapes.
@@ -115,11 +114,12 @@ struct b2WorldManifold
 	/// point count, impulses, etc. The radii must come from the shapes
 	/// that generated the manifold.
 	void Initialize(const b2Manifold* manifold,
-					const b2Transform& xfA, qreal radiusA,
-					const b2Transform& xfB, qreal radiusB);
+					const b2Transform& xfA, float32 radiusA,
+					const b2Transform& xfB, float32 radiusB);
 
-	b2Vec2 normal;						///< world vector pointing from A to B
-	b2Vec2 points[b2_maxManifoldPoints];	///< world contact point (point of intersection)
+	b2Vec2 normal;								///< world vector pointing from A to B
+	b2Vec2 points[b2_maxManifoldPoints];		///< world contact point (point of intersection)
+	float32 separations[b2_maxManifoldPoints];	///< a negative value indicates overlap, in meters
 };
 
 /// This is used for determining the state of contact points.
@@ -147,7 +147,7 @@ struct b2ClipVertex
 struct b2RayCastInput
 {
 	b2Vec2 p1, p2;
-	qreal maxFraction;
+	float32 maxFraction;
 };
 
 /// Ray-cast output data. The ray hits at p1 + fraction * (p2 - p1), where p1 and p2
@@ -155,7 +155,7 @@ struct b2RayCastInput
 struct b2RayCastOutput
 {
 	b2Vec2 normal;
-	qreal fraction;
+	float32 fraction;
 };
 
 /// An axis aligned bounding box.
@@ -177,10 +177,10 @@ struct b2AABB
 	}
 
 	/// Get the perimeter length
-	qreal GetPerimeter() const
+	float32 GetPerimeter() const
 	{
-		qreal wx = upperBound.x - lowerBound.x;
-		qreal wy = upperBound.y - lowerBound.y;
+		float32 wx = upperBound.x - lowerBound.x;
+		float32 wy = upperBound.y - lowerBound.y;
 		return 2.0f * (wx + wy);
 	}
 
@@ -242,7 +242,7 @@ void b2CollideEdgeAndPolygon(b2Manifold* manifold,
 
 /// Clipping for contact manifolds.
 int32 b2ClipSegmentToLine(b2ClipVertex vOut[2], const b2ClipVertex vIn[2],
-							const b2Vec2& normal, qreal offset, int32 vertexIndexA);
+							const b2Vec2& normal, float32 offset, int32 vertexIndexA);
 
 /// Determine if two generic shapes overlap.
 bool b2TestOverlap(	const b2Shape* shapeA, int32 indexA,

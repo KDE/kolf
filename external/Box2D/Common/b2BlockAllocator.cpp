@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
+* Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -17,11 +17,9 @@
 */
 
 #include <Box2D/Common/b2BlockAllocator.h>
-#include <cstdlib>
-#include <climits>
-#include <cstring>
-#include <memory>
-using namespace std;
+#include <limits.h>
+#include <string.h>
+#include <stddef.h>
 
 int32 b2BlockAllocator::s_blockSizes[b2_blockSizes] = 
 {

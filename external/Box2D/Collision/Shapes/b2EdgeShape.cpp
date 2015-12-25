@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2010 Erin Catto http://www.gphysics.com
+* Copyright (c) 2006-2010 Erin Catto http://www.box2d.org
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -18,7 +18,6 @@
 
 #include <Box2D/Collision/Shapes/b2EdgeShape.h>
 #include <new>
-using namespace std;
 
 void b2EdgeShape::Set(const b2Vec2& v1, const b2Vec2& v2)
 {
@@ -58,8 +57,8 @@ bool b2EdgeShape::RayCast(b2RayCastOutput* output, const b2RayCastInput& input,
 	B2_NOT_USED(childIndex);
 
 	// Put the ray into the edge's frame of reference.
-	b2Vec2 p1 = b2MulT(xf.R, input.p1 - xf.position);
-	b2Vec2 p2 = b2MulT(xf.R, input.p2 - xf.position);
+	b2Vec2 p1 = b2MulT(xf.q, input.p1 - xf.p);
+	b2Vec2 p2 = b2MulT(xf.q, input.p2 - xf.p);
 	b2Vec2 d = p2 - p1;
 
 	b2Vec2 v1 = m_vertex1;
@@ -71,16 +70,16 @@ bool b2EdgeShape::RayCast(b2RayCastOutput* output, const b2RayCastInput& input,
 	// q = p1 + t * d
 	// dot(normal, q - v1) = 0
 	// dot(normal, p1 - v1) + t * dot(normal, d) = 0
-	qreal numerator = b2Dot(normal, v1 - p1);
-	qreal denominator = b2Dot(normal, d);
+	float32 numerator = b2Dot(normal, v1 - p1);
+	float32 denominator = b2Dot(normal, d);
 
 	if (denominator == 0.0f)
 	{
 		return false;
 	}
 
-	qreal t = numerator / denominator;
-	if (t < 0.0f || 1.0f < t)
+	float32 t = numerator / denominator;
+	if (t < 0.0f || input.maxFraction < t)
 	{
 		return false;
 	}
@@ -90,13 +89,13 @@ bool b2EdgeShape::RayCast(b2RayCastOutput* output, const b2RayCastInput& input,
 	// q = v1 + s * r
 	// s = dot(q - v1, r) / dot(r, r)
 	b2Vec2 r = v2 - v1;
-	qreal rr = b2Dot(r, r);
+	float32 rr = b2Dot(r, r);
 	if (rr == 0.0f)
 	{
 		return false;
 	}
 
-	qreal s = b2Dot(q - v1, r) / rr;
+	float32 s = b2Dot(q - v1, r) / rr;
 	if (s < 0.0f || 1.0f < s)
 	{
 		return false;
@@ -105,11 +104,11 @@ bool b2EdgeShape::RayCast(b2RayCastOutput* output, const b2RayCastInput& input,
 	output->fraction = t;
 	if (numerator > 0.0f)
 	{
-		output->normal = -normal;
+		output->normal = -b2Mul(xf.q, normal);
 	}
 	else
 	{
-		output->normal = normal;
+		output->normal = b2Mul(xf.q, normal);
 	}
 	return true;
 }
@@ -129,7 +128,7 @@ void b2EdgeShape::ComputeAABB(b2AABB* aabb, const b2Transform& xf, int32 childIn
 	aabb->upperBound = upper + r;
 }
 
-void b2EdgeShape::ComputeMass(b2MassData* massData, qreal density) const
+void b2EdgeShape::ComputeMass(b2MassData* massData, float32 density) const
 {
 	B2_NOT_USED(density);
 

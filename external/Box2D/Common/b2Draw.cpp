@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
+* Copyright (c) 2011 Erin Catto http://box2d.org
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -16,24 +16,29 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-#ifndef B2_LOOP_AND_CIRCLE_CONTACT_H
-#define B2_LOOP_AND_CIRCLE_CONTACT_H
+#include <Box2D/Common/b2Draw.h>
 
-#include <Box2D/Dynamics/Contacts/b2Contact.h>
-
-class b2BlockAllocator;
-
-class b2LoopAndCircleContact : public b2Contact
+b2Draw::b2Draw()
 {
-public:
-	static b2Contact* Create(	b2Fixture* fixtureA, int32 indexA,
-								b2Fixture* fixtureB, int32 indexB, b2BlockAllocator* allocator);
-	static void Destroy(b2Contact* contact, b2BlockAllocator* allocator);
+	m_drawFlags = 0;
+}
 
-	b2LoopAndCircleContact(b2Fixture* fixtureA, int32 indexA, b2Fixture* fixtureB, int32 indexB);
-	~b2LoopAndCircleContact() {}
+void b2Draw::SetFlags(uint32 flags)
+{
+	m_drawFlags = flags;
+}
 
-	void Evaluate(b2Manifold* manifold, const b2Transform& xfA, const b2Transform& xfB);
-};
+uint32 b2Draw::GetFlags() const
+{
+	return m_drawFlags;
+}
 
-#endif
+void b2Draw::AppendFlags(uint32 flags)
+{
+	m_drawFlags |= flags;
+}
+
+void b2Draw::ClearFlags(uint32 flags)
+{
+	m_drawFlags &= ~flags;
+}

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
+* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -26,6 +26,7 @@
 class b2Fixture;
 class b2Joint;
 class b2Contact;
+class b2Controller;
 class b2World;
 struct b2FixtureDef;
 struct b2JointEdge;
@@ -65,7 +66,7 @@ struct b2BodyDef
 		bullet = false;
 		type = b2_staticBody;
 		active = true;
-		inertiaScale = 1.0f;
+		gravityScale = 1.0f;
 	}
 
 	/// The body type: static, kinematic, or dynamic.
@@ -77,23 +78,23 @@ struct b2BodyDef
 	b2Vec2 position;
 
 	/// The world angle of the body in radians.
-	qreal angle;
+	float32 angle;
 
 	/// The linear velocity of the body's origin in world co-ordinates.
 	b2Vec2 linearVelocity;
 
 	/// The angular velocity of the body.
-	qreal angularVelocity;
+	float32 angularVelocity;
 
 	/// Linear damping is use to reduce the linear velocity. The damping parameter
 	/// can be larger than 1.0f but the damping effect becomes sensitive to the
 	/// time step when the damping parameter is large.
-	qreal linearDamping;
+	float32 linearDamping;
 
 	/// Angular damping is use to reduce the angular velocity. The damping parameter
 	/// can be larger than 1.0f but the damping effect becomes sensitive to the
 	/// time step when the damping parameter is large.
-	qreal angularDamping;
+	float32 angularDamping;
 
 	/// Set this flag to false if this body should never fall asleep. Note that
 	/// this increases CPU usage.
@@ -117,8 +118,8 @@ struct b2BodyDef
 	/// Use this to store application specific body data.
 	void* userData;
 
-	/// Experimental: scales the inertia tensor.
-	qreal inertiaScale;
+	/// Scale the gravity applied to this body.
+	float32 gravityScale;
 };
 
 /// A rigid body. These are created via b2World::CreateBody.
@@ -141,7 +142,7 @@ public:
 	/// @param shape the shape to be cloned.
 	/// @param density the shape density (set to zero for static bodies).
 	/// @warning This function is locked during callbacks.
-	b2Fixture* CreateFixture(const b2Shape* shape, qreal density);
+	b2Fixture* CreateFixture(const b2Shape* shape, float32 density);
 
 	/// Destroy a fixture. This removes the fixture from the broad-phase and
 	/// destroys all contacts associated with this fixture. This will
@@ -153,11 +154,11 @@ public:
 	void DestroyFixture(b2Fixture* fixture);
 
 	/// Set the position of the body's origin and rotation.
-	/// This breaks any contacts and wakes the other bodies.
 	/// Manipulating a body's transform may cause non-physical behavior.
+	/// Note: contacts are updated on the next call to b2World::Step.
 	/// @param position the world position of the body's local origin.
 	/// @param angle the world rotation in radians.
-	void SetTransform(const b2Vec2& position, qreal angle);
+	void SetTransform(const b2Vec2& position, float32 angle);
 
 	/// Get the body transform for the body's origin.
 	/// @return the world transform of the body's origin.
@@ -169,7 +170,7 @@ public:
 
 	/// Get the angle in radians.
 	/// @return the current world rotation angle in radians.
-	qreal GetAngle() const;
+	float32 GetAngle() const;
 
 	/// Get the world position of the center of mass.
 	const b2Vec2& GetWorldCenter() const;
@@ -183,47 +184,56 @@ public:
 
 	/// Get the linear velocity of the center of mass.
 	/// @return the linear velocity of the center of mass.
-	b2Vec2 GetLinearVelocity() const;
+	const b2Vec2& GetLinearVelocity() const;
 
 	/// Set the angular velocity.
 	/// @param omega the new angular velocity in radians/second.
-	void SetAngularVelocity(qreal omega);
+	void SetAngularVelocity(float32 omega);
 
 	/// Get the angular velocity.
 	/// @return the angular velocity in radians/second.
-	qreal GetAngularVelocity() const;
+	float32 GetAngularVelocity() const;
 
 	/// Apply a force at a world point. If the force is not
 	/// applied at the center of mass, it will generate a torque and
 	/// affect the angular velocity. This wakes up the body.
 	/// @param force the world force vector, usually in Newtons (N).
 	/// @param point the world position of the point of application.
-	void ApplyForce(const b2Vec2& force, const b2Vec2& point);
+	/// @param wake also wake up the body
+	void ApplyForce(const b2Vec2& force, const b2Vec2& point, bool wake);
+
+	/// Apply a force to the center of mass. This wakes up the body.
+	/// @param force the world force vector, usually in Newtons (N).
+	/// @param wake also wake up the body
+	void ApplyForceToCenter(const b2Vec2& force, bool wake);
 
 	/// Apply a torque. This affects the angular velocity
 	/// without affecting the linear velocity of the center of mass.
 	/// This wakes up the body.
 	/// @param torque about the z-axis (out of the screen), usually in N-m.
-	void ApplyTorque(qreal torque);
+	/// @param wake also wake up the body
+	void ApplyTorque(float32 torque, bool wake);
 
 	/// Apply an impulse at a point. This immediately modifies the velocity.
 	/// It also modifies the angular velocity if the point of application
 	/// is not at the center of mass. This wakes up the body.
 	/// @param impulse the world impulse vector, usually in N-seconds or kg-m/s.
 	/// @param point the world position of the point of application.
-	void ApplyLinearImpulse(const b2Vec2& impulse, const b2Vec2& point);
+	/// @param wake also wake up the body
+	void ApplyLinearImpulse(const b2Vec2& impulse, const b2Vec2& point, bool wake);
 
 	/// Apply an angular impulse.
 	/// @param impulse the angular impulse in units of kg*m*m/s
-	void ApplyAngularImpulse(qreal impulse);
+	/// @param wake also wake up the body
+	void ApplyAngularImpulse(float32 impulse, bool wake);
 
 	/// Get the total mass of the body.
 	/// @return the mass, usually in kilograms (kg).
-	qreal GetMass() const;
+	float32 GetMass() const;
 
 	/// Get the rotational inertia of the body about the local origin.
 	/// @return the rotational inertia, usually in kg-m^2.
-	qreal GetInertia() const;
+	float32 GetInertia() const;
 
 	/// Get the mass data of the body.
 	/// @return a struct containing the mass, inertia and center of the body.
@@ -272,16 +282,22 @@ public:
 	b2Vec2 GetLinearVelocityFromLocalPoint(const b2Vec2& localPoint) const;
 
 	/// Get the linear damping of the body.
-	qreal GetLinearDamping() const;
+	float32 GetLinearDamping() const;
 
 	/// Set the linear damping of the body.
-	void SetLinearDamping(qreal linearDamping);
+	void SetLinearDamping(float32 linearDamping);
 
 	/// Get the angular damping of the body.
-	qreal GetAngularDamping() const;
+	float32 GetAngularDamping() const;
 
 	/// Set the angular damping of the body.
-	void SetAngularDamping(qreal angularDamping);
+	void SetAngularDamping(float32 angularDamping);
+
+	/// Get the gravity scale of the body.
+	float32 GetGravityScale() const;
+
+	/// Set the gravity scale of the body.
+	void SetGravityScale(float32 scale);
 
 	/// Set the type of this body. This may alter the mass and velocity.
 	void SetType(b2BodyType type);
@@ -304,11 +320,11 @@ public:
 
 	/// Set the sleep state of the body. A sleeping body has very
 	/// low CPU cost.
-	/// @param flag set to true to put body to sleep, false to wake it.
+	/// @param flag set to true to wake the body, false to put it to sleep.
 	void SetAwake(bool flag);
 
 	/// Get the sleeping state of this body.
-	/// @return true if the body is sleeping.
+	/// @return true if the body is awake.
 	bool IsAwake() const;
 
 	/// Set the active state of the body. An inactive body is not
@@ -364,23 +380,28 @@ public:
 	b2World* GetWorld();
 	const b2World* GetWorld() const;
 
+	/// Dump this body to a log file
+	void Dump();
+
 private:
 
 	friend class b2World;
 	friend class b2Island;
 	friend class b2ContactManager;
 	friend class b2ContactSolver;
+	friend class b2Contact;
 	
 	friend class b2DistanceJoint;
+	friend class b2FrictionJoint;
 	friend class b2GearJoint;
-	friend class b2LineJoint;
+	friend class b2MotorJoint;
 	friend class b2MouseJoint;
 	friend class b2PrismaticJoint;
 	friend class b2PulleyJoint;
 	friend class b2RevoluteJoint;
-	friend class b2WeldJoint;
-	friend class b2FrictionJoint;
 	friend class b2RopeJoint;
+	friend class b2WeldJoint;
+	friend class b2WheelJoint;
 
 	// m_flags
 	enum
@@ -404,7 +425,7 @@ private:
 	// It may lie, depending on the collideConnected flag.
 	bool ShouldCollide(const b2Body* other) const;
 
-	void Advance(qreal t);
+	void Advance(float32 t);
 
 	b2BodyType m_type;
 
@@ -416,10 +437,10 @@ private:
 	b2Sweep m_sweep;		// the swept motion for CCD
 
 	b2Vec2 m_linearVelocity;
-	qreal m_angularVelocity;
+	float32 m_angularVelocity;
 
 	b2Vec2 m_force;
-	qreal m_torque;
+	float32 m_torque;
 
 	b2World* m_world;
 	b2Body* m_prev;
@@ -431,15 +452,16 @@ private:
 	b2JointEdge* m_jointList;
 	b2ContactEdge* m_contactList;
 
-	qreal m_mass, m_invMass;
+	float32 m_mass, m_invMass;
 
 	// Rotational inertia about the center of mass.
-	qreal m_I, m_invI;
+	float32 m_I, m_invI;
 
-	qreal m_linearDamping;
-	qreal m_angularDamping;
+	float32 m_linearDamping;
+	float32 m_angularDamping;
+	float32 m_gravityScale;
 
-	qreal m_sleepTime;
+	float32 m_sleepTime;
 
 	void* m_userData;
 };
@@ -456,10 +478,10 @@ inline const b2Transform& b2Body::GetTransform() const
 
 inline const b2Vec2& b2Body::GetPosition() const
 {
-	return m_xf.position;
+	return m_xf.p;
 }
 
-inline qreal b2Body::GetAngle() const
+inline float32 b2Body::GetAngle() const
 {
 	return m_sweep.a;
 }
@@ -489,12 +511,12 @@ inline void b2Body::SetLinearVelocity(const b2Vec2& v)
 	m_linearVelocity = v;
 }
 
-inline b2Vec2 b2Body::GetLinearVelocity() const
+inline const b2Vec2& b2Body::GetLinearVelocity() const
 {
 	return m_linearVelocity;
 }
 
-inline void b2Body::SetAngularVelocity(qreal w)
+inline void b2Body::SetAngularVelocity(float32 w)
 {
 	if (m_type == b2_staticBody)
 	{
@@ -509,17 +531,17 @@ inline void b2Body::SetAngularVelocity(qreal w)
 	m_angularVelocity = w;
 }
 
-inline qreal b2Body::GetAngularVelocity() const
+inline float32 b2Body::GetAngularVelocity() const
 {
 	return m_angularVelocity;
 }
 
-inline qreal b2Body::GetMass() const
+inline float32 b2Body::GetMass() const
 {
 	return m_mass;
 }
 
-inline qreal b2Body::GetInertia() const
+inline float32 b2Body::GetInertia() const
 {
 	return m_I + m_mass * b2Dot(m_sweep.localCenter, m_sweep.localCenter);
 }
@@ -538,7 +560,7 @@ inline b2Vec2 b2Body::GetWorldPoint(const b2Vec2& localPoint) const
 
 inline b2Vec2 b2Body::GetWorldVector(const b2Vec2& localVector) const
 {
-	return b2Mul(m_xf.R, localVector);
+	return b2Mul(m_xf.q, localVector);
 }
 
 inline b2Vec2 b2Body::GetLocalPoint(const b2Vec2& worldPoint) const
@@ -548,7 +570,7 @@ inline b2Vec2 b2Body::GetLocalPoint(const b2Vec2& worldPoint) const
 
 inline b2Vec2 b2Body::GetLocalVector(const b2Vec2& worldVector) const
 {
-	return b2MulT(m_xf.R, worldVector);
+	return b2MulT(m_xf.q, worldVector);
 }
 
 inline b2Vec2 b2Body::GetLinearVelocityFromWorldPoint(const b2Vec2& worldPoint) const
@@ -561,24 +583,34 @@ inline b2Vec2 b2Body::GetLinearVelocityFromLocalPoint(const b2Vec2& localPoint) 
 	return GetLinearVelocityFromWorldPoint(GetWorldPoint(localPoint));
 }
 
-inline qreal b2Body::GetLinearDamping() const
+inline float32 b2Body::GetLinearDamping() const
 {
 	return m_linearDamping;
 }
 
-inline void b2Body::SetLinearDamping(qreal linearDamping)
+inline void b2Body::SetLinearDamping(float32 linearDamping)
 {
 	m_linearDamping = linearDamping;
 }
 
-inline qreal b2Body::GetAngularDamping() const
+inline float32 b2Body::GetAngularDamping() const
 {
 	return m_angularDamping;
 }
 
-inline void b2Body::SetAngularDamping(qreal angularDamping)
+inline void b2Body::SetAngularDamping(float32 angularDamping)
 {
 	m_angularDamping = angularDamping;
+}
+
+inline float32 b2Body::GetGravityScale() const
+{
+	return m_gravityScale;
+}
+
+inline void b2Body::SetGravityScale(float32 scale)
+{
+	m_gravityScale = scale;
 }
 
 inline void b2Body::SetBullet(bool flag)
@@ -627,20 +659,6 @@ inline bool b2Body::IsAwake() const
 inline bool b2Body::IsActive() const
 {
 	return (m_flags & e_activeFlag) == e_activeFlag;
-}
-
-inline void b2Body::SetFixedRotation(bool flag)
-{
-	if (flag)
-	{
-		m_flags |= e_fixedRotationFlag;
-	}
-	else
-	{
-		m_flags &= ~e_fixedRotationFlag;
-	}
-
-	ResetMassData();
 }
 
 inline bool b2Body::IsFixedRotation() const
@@ -716,79 +734,117 @@ inline void* b2Body::GetUserData() const
 	return m_userData;
 }
 
-inline void b2Body::ApplyForce(const b2Vec2& force, const b2Vec2& point)
+inline void b2Body::ApplyForce(const b2Vec2& force, const b2Vec2& point, bool wake)
 {
 	if (m_type != b2_dynamicBody)
 	{
 		return;
 	}
 
-	if (IsAwake() == false)
+	if (wake && (m_flags & e_awakeFlag) == 0)
 	{
 		SetAwake(true);
 	}
 
-	m_force += force;
-	m_torque += b2Cross(point - m_sweep.c, force);
+	// Don't accumulate a force if the body is sleeping.
+	if (m_flags & e_awakeFlag)
+	{
+		m_force += force;
+		m_torque += b2Cross(point - m_sweep.c, force);
+	}
 }
 
-inline void b2Body::ApplyTorque(qreal torque)
+inline void b2Body::ApplyForceToCenter(const b2Vec2& force, bool wake)
 {
 	if (m_type != b2_dynamicBody)
 	{
 		return;
 	}
 
-	if (IsAwake() == false)
+	if (wake && (m_flags & e_awakeFlag) == 0)
 	{
 		SetAwake(true);
 	}
 
-	m_torque += torque;
+	// Don't accumulate a force if the body is sleeping
+	if (m_flags & e_awakeFlag)
+	{
+		m_force += force;
+	}
 }
 
-inline void b2Body::ApplyLinearImpulse(const b2Vec2& impulse, const b2Vec2& point)
+inline void b2Body::ApplyTorque(float32 torque, bool wake)
 {
 	if (m_type != b2_dynamicBody)
 	{
 		return;
 	}
 
-	if (IsAwake() == false)
+	if (wake && (m_flags & e_awakeFlag) == 0)
 	{
 		SetAwake(true);
 	}
-	m_linearVelocity += m_invMass * impulse;
-	m_angularVelocity += m_invI * b2Cross(point - m_sweep.c, impulse);
+
+	// Don't accumulate a force if the body is sleeping
+	if (m_flags & e_awakeFlag)
+	{
+		m_torque += torque;
+	}
 }
 
-inline void b2Body::ApplyAngularImpulse(qreal impulse)
+inline void b2Body::ApplyLinearImpulse(const b2Vec2& impulse, const b2Vec2& point, bool wake)
 {
 	if (m_type != b2_dynamicBody)
 	{
 		return;
 	}
 
-	if (IsAwake() == false)
+	if (wake && (m_flags & e_awakeFlag) == 0)
 	{
 		SetAwake(true);
 	}
-	m_angularVelocity += m_invI * impulse;
+
+	// Don't accumulate velocity if the body is sleeping
+	if (m_flags & e_awakeFlag)
+	{
+		m_linearVelocity += m_invMass * impulse;
+		m_angularVelocity += m_invI * b2Cross(point - m_sweep.c, impulse);
+	}
+}
+
+inline void b2Body::ApplyAngularImpulse(float32 impulse, bool wake)
+{
+	if (m_type != b2_dynamicBody)
+	{
+		return;
+	}
+
+	if (wake && (m_flags & e_awakeFlag) == 0)
+	{
+		SetAwake(true);
+	}
+
+	// Don't accumulate velocity if the body is sleeping
+	if (m_flags & e_awakeFlag)
+	{
+		m_angularVelocity += m_invI * impulse;
+	}
 }
 
 inline void b2Body::SynchronizeTransform()
 {
-	m_xf.R.Set(m_sweep.a);
-	m_xf.position = m_sweep.c - b2Mul(m_xf.R, m_sweep.localCenter);
+	m_xf.q.Set(m_sweep.a);
+	m_xf.p = m_sweep.c - b2Mul(m_xf.q, m_sweep.localCenter);
 }
 
-inline void b2Body::Advance(qreal alpha)
+inline void b2Body::Advance(float32 alpha)
 {
-	// Advance to the new safe time.
+	// Advance to the new safe time. This doesn't sync the broad-phase.
 	m_sweep.Advance(alpha);
 	m_sweep.c = m_sweep.c0;
 	m_sweep.a = m_sweep.a0;
-	SynchronizeTransform();
+	m_xf.q.Set(m_sweep.a);
+	m_xf.p = m_sweep.c - b2Mul(m_xf.q, m_sweep.localCenter);
 }
 
 inline b2World* b2Body::GetWorld()

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2010 Erin Catto http://www.gphysics.com
+* Copyright (c) 2006-2010 Erin Catto http://www.box2d.org
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -21,7 +21,6 @@
 #include <Box2D/Dynamics/b2Fixture.h>
 
 #include <new>
-using namespace std;
 
 b2Contact* b2EdgeAndCircleContact::Create(b2Fixture* fixtureA, int32, b2Fixture* fixtureB, int32, b2BlockAllocator* allocator)
 {

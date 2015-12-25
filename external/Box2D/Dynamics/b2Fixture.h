@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
+* Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -31,6 +31,13 @@ class b2Fixture;
 /// This holds contact filtering data.
 struct b2Filter
 {
+	b2Filter()
+	{
+		categoryBits = 0x0001;
+		maskBits = 0xFFFF;
+		groupIndex = 0;
+	}
+
 	/// The collision category bits. Normally you would just set one bit.
 	uint16 categoryBits;
 
@@ -56,13 +63,8 @@ struct b2FixtureDef
 		friction = 0.2f;
 		restitution = 0.0f;
 		density = 0.0f;
-		filter.categoryBits = 0x0001;
-		filter.maskBits = 0xFFFF;
-		filter.groupIndex = 0;
 		isSensor = false;
 	}
-
-	virtual ~b2FixtureDef() {}
 
 	/// The shape, this must be set. The shape will be cloned, so you
 	/// can create the shape on the stack.
@@ -72,13 +74,13 @@ struct b2FixtureDef
 	void* userData;
 
 	/// The friction coefficient, usually in the range [0,1].
-	qreal friction;
+	float32 friction;
 
 	/// The restitution (elasticity) usually in the range [0,1].
-	qreal restitution;
+	float32 restitution;
 
 	/// The density, usually in kg/m^2.
-	qreal density;
+	float32 density;
 
 	/// A sensor shape collects contact information but never generates a collision
 	/// response.
@@ -124,10 +126,14 @@ public:
 
 	/// Set the contact filtering data. This will not update contacts until the next time
 	/// step when either parent body is active and awake.
+	/// This automatically calls Refilter.
 	void SetFilterData(const b2Filter& filter);
 
 	/// Get the contact filtering data.
 	const b2Filter& GetFilterData() const;
+
+	/// Call this if you want to establish collision that was previously disabled by b2ContactFilter::ShouldCollide.
+	void Refilter();
 
 	/// Get the parent body of this fixture. This is NULL if the fixture is not attached.
 	/// @return the parent body.
@@ -162,29 +168,32 @@ public:
 
 	/// Set the density of this fixture. This will _not_ automatically adjust the mass
 	/// of the body. You must call b2Body::ResetMassData to update the body's mass.
-	void SetDensity(qreal density);
+	void SetDensity(float32 density);
 
 	/// Get the density of this fixture.
-	qreal GetDensity() const;
+	float32 GetDensity() const;
 
 	/// Get the coefficient of friction.
-	qreal GetFriction() const;
+	float32 GetFriction() const;
 
-	/// Set the coefficient of friction. This will immediately update the mixed friction
-	/// on all associated contacts.
-	void SetFriction(qreal friction);
+	/// Set the coefficient of friction. This will _not_ change the friction of
+	/// existing contacts.
+	void SetFriction(float32 friction);
 
 	/// Get the coefficient of restitution.
-	qreal GetRestitution() const;
+	float32 GetRestitution() const;
 
-	/// Set the coefficient of restitution. This will immediately update the mixed restitution
-	/// on all associated contacts.
-	void SetRestitution(qreal restitution);
+	/// Set the coefficient of restitution. This will _not_ change the restitution of
+	/// existing contacts.
+	void SetRestitution(float32 restitution);
 
 	/// Get the fixture's AABB. This AABB may be enlarge and/or stale.
 	/// If you need a more accurate AABB, compute it using the shape and
 	/// the body transform.
 	const b2AABB& GetAABB(int32 childIndex) const;
+
+	/// Dump this fixture to the log file.
+	void Dump(int32 bodyIndex);
 
 protected:
 
@@ -206,15 +215,15 @@ protected:
 
 	void Synchronize(b2BroadPhase* broadPhase, const b2Transform& xf1, const b2Transform& xf2);
 
-	qreal m_density;
+	float32 m_density;
 
 	b2Fixture* m_next;
 	b2Body* m_body;
 
 	b2Shape* m_shape;
 
-	qreal m_friction;
-	qreal m_restitution;
+	float32 m_friction;
+	float32 m_restitution;
 
 	b2FixtureProxy* m_proxies;
 	int32 m_proxyCount;
@@ -281,33 +290,33 @@ inline const b2Fixture* b2Fixture::GetNext() const
 	return m_next;
 }
 
-inline void b2Fixture::SetDensity(qreal density)
+inline void b2Fixture::SetDensity(float32 density)
 {
 	b2Assert(b2IsValid(density) && density >= 0.0f);
 	m_density = density;
 }
 
-inline qreal b2Fixture::GetDensity() const
+inline float32 b2Fixture::GetDensity() const
 {
 	return m_density;
 }
 
-inline qreal b2Fixture::GetFriction() const
+inline float32 b2Fixture::GetFriction() const
 {
 	return m_friction;
 }
 
-inline void b2Fixture::SetFriction(qreal friction)
+inline void b2Fixture::SetFriction(float32 friction)
 {
 	m_friction = friction;
 }
 
-inline qreal b2Fixture::GetRestitution() const
+inline float32 b2Fixture::GetRestitution() const
 {
 	return m_restitution;
 }
 
-inline void b2Fixture::SetRestitution(qreal restitution)
+inline void b2Fixture::SetRestitution(float32 restitution)
 {
 	m_restitution = restitution;
 }

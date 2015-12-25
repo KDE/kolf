@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
+* Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -27,13 +27,13 @@
 struct b2MassData
 {
 	/// The mass of the shape, usually in kilograms.
-	qreal mass;
+	float32 mass;
 
 	/// The position of the shape's centroid relative to the shape's origin.
 	b2Vec2 center;
 
 	/// The rotational inertia of the shape about the local origin.
-	qreal I;
+	float32 I;
 };
 
 /// A shape is used for collision detection. You can create a shape however you like.
@@ -45,15 +45,13 @@ public:
 	
 	enum Type
 	{
-		e_unknown= -1,
 		e_circle = 0,
 		e_edge = 1,
 		e_polygon = 2,
-		e_loop = 3,
+		e_chain = 3,
 		e_typeCount = 4
 	};
 
-	b2Shape() { m_type = e_unknown; }
 	virtual ~b2Shape() {}
 
 	/// Clone the concrete shape using the provided allocator.
@@ -89,10 +87,10 @@ public:
 	/// The inertia tensor is computed about the local origin.
 	/// @param massData returns the mass data for this shape.
 	/// @param density the density in kilograms per meter squared.
-	virtual void ComputeMass(b2MassData* massData, qreal density) const = 0;
+	virtual void ComputeMass(b2MassData* massData, float32 density) const = 0;
 
 	Type m_type;
-	qreal m_radius;
+	float32 m_radius;
 };
 
 inline b2Shape::Type b2Shape::GetType() const

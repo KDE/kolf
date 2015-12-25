@@ -1,6 +1,6 @@
 
 /*
-* Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
+* Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -49,14 +49,14 @@ struct b2DistanceProxy
 	b2Vec2 m_buffer[2];
 	const b2Vec2* m_vertices;
 	int32 m_count;
-	qreal m_radius;
+	float32 m_radius;
 };
 
 /// Used to warm start b2Distance.
 /// Set count to zero on first call.
 struct b2SimplexCache
 {
-	qreal metric;		///< length or area
+	float32 metric;		///< length or area
 	uint16 count;
 	uint8 indexA[3];	///< vertices on shape A
 	uint8 indexB[3];	///< vertices on shape B
@@ -79,7 +79,7 @@ struct b2DistanceOutput
 {
 	b2Vec2 pointA;		///< closest point on shapeA
 	b2Vec2 pointB;		///< closest point on shapeB
-	qreal distance;
+	float32 distance;
 	int32 iterations;	///< number of GJK iterations used
 };
 
@@ -107,10 +107,10 @@ inline const b2Vec2& b2DistanceProxy::GetVertex(int32 index) const
 inline int32 b2DistanceProxy::GetSupport(const b2Vec2& d) const
 {
 	int32 bestIndex = 0;
-	qreal bestValue = b2Dot(m_vertices[0], d);
+	float32 bestValue = b2Dot(m_vertices[0], d);
 	for (int32 i = 1; i < m_count; ++i)
 	{
-		qreal value = b2Dot(m_vertices[i], d);
+		float32 value = b2Dot(m_vertices[i], d);
 		if (value > bestValue)
 		{
 			bestIndex = i;
@@ -124,10 +124,10 @@ inline int32 b2DistanceProxy::GetSupport(const b2Vec2& d) const
 inline const b2Vec2& b2DistanceProxy::GetSupportVertex(const b2Vec2& d) const
 {
 	int32 bestIndex = 0;
-	qreal bestValue = b2Dot(m_vertices[0], d);
+	float32 bestValue = b2Dot(m_vertices[0], d);
 	for (int32 i = 1; i < m_count; ++i)
 	{
-		qreal value = b2Dot(m_vertices[i], d);
+		float32 value = b2Dot(m_vertices[i], d);
 		if (value > bestValue)
 		{
 			bestIndex = i;

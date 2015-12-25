@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2010 Erin Catto http://www.gphysics.com
+* Copyright (c) 2006-2010 Erin Catto http://www.box2d.org
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -49,7 +49,7 @@ public:
 	void ComputeAABB(b2AABB* aabb, const b2Transform& transform, int32 childIndex) const;
 
 	/// @see b2Shape::ComputeMass
-	void ComputeMass(b2MassData* massData, qreal density) const;
+	void ComputeMass(b2MassData* massData, float32 density) const;
 	
 	/// These are the edge vertices
 	b2Vec2 m_vertex1, m_vertex2;
@@ -63,6 +63,10 @@ inline b2EdgeShape::b2EdgeShape()
 {
 	m_type = e_edge;
 	m_radius = b2_polygonRadius;
+	m_vertex0.x = 0.0f;
+	m_vertex0.y = 0.0f;
+	m_vertex3.x = 0.0f;
+	m_vertex3.y = 0.0f;
 	m_hasVertex0 = false;
 	m_hasVertex3 = false;
 }
