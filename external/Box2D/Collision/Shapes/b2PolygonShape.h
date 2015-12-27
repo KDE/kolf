@@ -46,14 +46,14 @@ public:
 	/// Build vertices to represent an axis-aligned box centered on the local origin.
 	/// @param hx the half-width.
 	/// @param hy the half-height.
-	void SetAsBox(float32 hx, float32 hy);
+	void SetAsBox(qreal hx, float32 hy);
 
 	/// Build vertices to represent an oriented box.
 	/// @param hx the half-width.
 	/// @param hy the half-height.
 	/// @param center the center of the box in local coordinates.
 	/// @param angle the rotation of the box in local coordinates.
-	void SetAsBox(float32 hx, float32 hy, const b2Vec2& center, float32 angle);
+	void SetAsBox(qreal hx, float32 hy, const b2Vec2& center, float32 angle);
 
 	/// @see b2Shape::TestPoint
 	bool TestPoint(const b2Transform& transform, const b2Vec2& p) const;
@@ -66,7 +66,7 @@ public:
 	void ComputeAABB(b2AABB* aabb, const b2Transform& transform, int32 childIndex) const;
 
 	/// @see b2Shape::ComputeMass
-	void ComputeMass(b2MassData* massData, float32 density) const;
+	void ComputeMass(b2MassData* massData, qreal density) const;
 
 	/// Get the vertex count.
 	int32 GetVertexCount() const { return m_count; }

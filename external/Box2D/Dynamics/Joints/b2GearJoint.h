@@ -41,7 +41,7 @@ struct b2GearJointDef : public b2JointDef
 
 	/// The gear ratio.
 	/// @see b2GearJoint for explanation.
-	float32 ratio;
+	qreal ratio;
 };
 
 /// A gear joint is used to connect two joints together. Either joint
@@ -59,8 +59,8 @@ public:
 	b2Vec2 GetAnchorA() const;
 	b2Vec2 GetAnchorB() const;
 
-	b2Vec2 GetReactionForce(float32 inv_dt) const;
-	float32 GetReactionTorque(float32 inv_dt) const;
+	b2Vec2 GetReactionForce(qreal inv_dt) const;
+	qreal GetReactionTorque(float32 inv_dt) const;
 
 	/// Get the first joint.
 	b2Joint* GetJoint1() { return m_joint1; }
@@ -69,8 +69,8 @@ public:
 	b2Joint* GetJoint2() { return m_joint2; }
 
 	/// Set/Get the gear ratio.
-	void SetRatio(float32 ratio);
-	float32 GetRatio() const;
+	void SetRatio(qreal ratio);
+	qreal GetRatio() const;
 
 	/// Dump joint to dmLog
 	void Dump();
@@ -104,22 +104,22 @@ protected:
 	b2Vec2 m_localAxisC;
 	b2Vec2 m_localAxisD;
 
-	float32 m_referenceAngleA;
-	float32 m_referenceAngleB;
+	qreal m_referenceAngleA;
+	qreal m_referenceAngleB;
 
-	float32 m_constant;
-	float32 m_ratio;
+	qreal m_constant;
+	qreal m_ratio;
 
-	float32 m_impulse;
+	qreal m_impulse;
 
 	// Solver temp
 	int32 m_indexA, m_indexB, m_indexC, m_indexD;
 	b2Vec2 m_lcA, m_lcB, m_lcC, m_lcD;
-	float32 m_mA, m_mB, m_mC, m_mD;
-	float32 m_iA, m_iB, m_iC, m_iD;
+	qreal m_mA, m_mB, m_mC, m_mD;
+	qreal m_iA, m_iB, m_iC, m_iD;
 	b2Vec2 m_JvAC, m_JvBD;
-	float32 m_JwA, m_JwB, m_JwC, m_JwD;
-	float32 m_mass;
+	qreal m_JwA, m_JwB, m_JwC, m_JwD;
+	qreal m_mass;
 };
 
 #endif

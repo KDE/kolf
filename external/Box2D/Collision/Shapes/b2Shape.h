@@ -27,13 +27,13 @@
 struct b2MassData
 {
 	/// The mass of the shape, usually in kilograms.
-	float32 mass;
+	qreal mass;
 
 	/// The position of the shape's centroid relative to the shape's origin.
 	b2Vec2 center;
 
 	/// The rotational inertia of the shape about the local origin.
-	float32 I;
+	qreal I;
 };
 
 /// A shape is used for collision detection. You can create a shape however you like.
@@ -87,10 +87,10 @@ public:
 	/// The inertia tensor is computed about the local origin.
 	/// @param massData returns the mass data for this shape.
 	/// @param density the density in kilograms per meter squared.
-	virtual void ComputeMass(b2MassData* massData, float32 density) const = 0;
+	virtual void ComputeMass(b2MassData* massData, qreal density) const = 0;
 
 	Type m_type;
-	float32 m_radius;
+	qreal m_radius;
 };
 
 inline b2Shape::Type b2Shape::GetType() const

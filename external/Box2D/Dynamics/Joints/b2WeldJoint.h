@@ -47,14 +47,14 @@ struct b2WeldJointDef : public b2JointDef
 	b2Vec2 localAnchorB;
 
 	/// The bodyB angle minus bodyA angle in the reference state (radians).
-	float32 referenceAngle;
+	qreal referenceAngle;
 	
 	/// The mass-spring-damper frequency in Hertz. Rotation only.
 	/// Disable softness with a value of 0.
-	float32 frequencyHz;
+	qreal frequencyHz;
 
 	/// The damping ratio. 0 = no damping, 1 = critical damping.
-	float32 dampingRatio;
+	qreal dampingRatio;
 };
 
 /// A weld joint essentially glues two bodies together. A weld joint may
@@ -65,8 +65,8 @@ public:
 	b2Vec2 GetAnchorA() const;
 	b2Vec2 GetAnchorB() const;
 
-	b2Vec2 GetReactionForce(float32 inv_dt) const;
-	float32 GetReactionTorque(float32 inv_dt) const;
+	b2Vec2 GetReactionForce(qreal inv_dt) const;
+	qreal GetReactionTorque(float32 inv_dt) const;
 
 	/// The local anchor point relative to bodyA's origin.
 	const b2Vec2& GetLocalAnchorA() const { return m_localAnchorA; }
@@ -75,15 +75,15 @@ public:
 	const b2Vec2& GetLocalAnchorB() const  { return m_localAnchorB; }
 
 	/// Get the reference angle.
-	float32 GetReferenceAngle() const { return m_referenceAngle; }
+	qreal GetReferenceAngle() const { return m_referenceAngle; }
 
 	/// Set/get frequency in Hz.
-	void SetFrequency(float32 hz) { m_frequencyHz = hz; }
-	float32 GetFrequency() const { return m_frequencyHz; }
+	void SetFrequency(qreal hz) { m_frequencyHz = hz; }
+	qreal GetFrequency() const { return m_frequencyHz; }
 
 	/// Set/get damping ratio.
-	void SetDampingRatio(float32 ratio) { m_dampingRatio = ratio; }
-	float32 GetDampingRatio() const { return m_dampingRatio; }
+	void SetDampingRatio(qreal ratio) { m_dampingRatio = ratio; }
+	qreal GetDampingRatio() const { return m_dampingRatio; }
 
 	/// Dump to b2Log
 	void Dump();
@@ -98,15 +98,15 @@ protected:
 	void SolveVelocityConstraints(const b2SolverData& data);
 	bool SolvePositionConstraints(const b2SolverData& data);
 
-	float32 m_frequencyHz;
-	float32 m_dampingRatio;
-	float32 m_bias;
+	qreal m_frequencyHz;
+	qreal m_dampingRatio;
+	qreal m_bias;
 
 	// Solver shared
 	b2Vec2 m_localAnchorA;
 	b2Vec2 m_localAnchorB;
-	float32 m_referenceAngle;
-	float32 m_gamma;
+	qreal m_referenceAngle;
+	qreal m_gamma;
 	b2Vec3 m_impulse;
 
 	// Solver temp
@@ -116,10 +116,10 @@ protected:
 	b2Vec2 m_rB;
 	b2Vec2 m_localCenterA;
 	b2Vec2 m_localCenterB;
-	float32 m_invMassA;
-	float32 m_invMassB;
-	float32 m_invIA;
-	float32 m_invIB;
+	qreal m_invMassA;
+	qreal m_invMassB;
+	qreal m_invIA;
+	qreal m_invIB;
 	b2Mat33 m_mass;
 };
 

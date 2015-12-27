@@ -70,15 +70,15 @@ bool b2EdgeShape::RayCast(b2RayCastOutput* output, const b2RayCastInput& input,
 	// q = p1 + t * d
 	// dot(normal, q - v1) = 0
 	// dot(normal, p1 - v1) + t * dot(normal, d) = 0
-	float32 numerator = b2Dot(normal, v1 - p1);
-	float32 denominator = b2Dot(normal, d);
+	qreal numerator = b2Dot(normal, v1 - p1);
+	qreal denominator = b2Dot(normal, d);
 
 	if (denominator == 0.0f)
 	{
 		return false;
 	}
 
-	float32 t = numerator / denominator;
+	qreal t = numerator / denominator;
 	if (t < 0.0f || input.maxFraction < t)
 	{
 		return false;
@@ -89,13 +89,13 @@ bool b2EdgeShape::RayCast(b2RayCastOutput* output, const b2RayCastInput& input,
 	// q = v1 + s * r
 	// s = dot(q - v1, r) / dot(r, r)
 	b2Vec2 r = v2 - v1;
-	float32 rr = b2Dot(r, r);
+	qreal rr = b2Dot(r, r);
 	if (rr == 0.0f)
 	{
 		return false;
 	}
 
-	float32 s = b2Dot(q - v1, r) / rr;
+	qreal s = b2Dot(q - v1, r) / rr;
 	if (s < 0.0f || 1.0f < s)
 	{
 		return false;
@@ -128,7 +128,7 @@ void b2EdgeShape::ComputeAABB(b2AABB* aabb, const b2Transform& xf, int32 childIn
 	aabb->upperBound = upper + r;
 }
 
-void b2EdgeShape::ComputeMass(b2MassData* massData, float32 density) const
+void b2EdgeShape::ComputeMass(b2MassData* massData, qreal density) const
 {
 	B2_NOT_USED(density);
 

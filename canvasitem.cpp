@@ -259,7 +259,7 @@ void CanvasItem::setVelocity(const QPointF& newVelocity)
 		else
 		{
 			const QPointF impulse = (newVelocity - currentVelocity) * mass;
-			m_body->ApplyLinearImpulse(b2Vec2(impulse.x(), impulse.y()), m_body->GetPosition());
+			m_body->ApplyLinearImpulse(b2Vec2(impulse.x(), impulse.y()), m_body->GetPosition(), true);
 		}
 	}
 }
