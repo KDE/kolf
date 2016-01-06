@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+* Copyright (c) 2006-2007 Erin Catto http://www.gphysics.com
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -21,8 +21,12 @@
 
 #include <Box2D/Dynamics/Joints/b2Joint.h>
 
+class b2RevoluteJoint;
+class b2PrismaticJoint;
+
 /// Gear joint definition. This definition requires two existing
 /// revolute or prismatic joints (any combination will work).
+/// The provided joints must attach a dynamic body to a static body.
 struct b2GearJointDef : public b2JointDef
 {
 	b2GearJointDef()
@@ -41,7 +45,7 @@ struct b2GearJointDef : public b2JointDef
 
 	/// The gear ratio.
 	/// @see b2GearJoint for explanation.
-	float32 ratio;
+	qreal ratio;
 };
 
 /// A gear joint is used to connect two joints together. Either joint
@@ -51,75 +55,57 @@ struct b2GearJointDef : public b2JointDef
 /// The ratio can be negative or positive. If one joint is a revolute joint
 /// and the other joint is a prismatic joint, then the ratio will have units
 /// of length or units of 1/length.
-/// @warning You have to manually destroy the gear joint if joint1 or joint2
-/// is destroyed.
+/// @warning The revolute and prismatic joints must be attached to
+/// fixed bodies (which must be body1 on those joints).
 class b2GearJoint : public b2Joint
 {
 public:
 	b2Vec2 GetAnchorA() const;
 	b2Vec2 GetAnchorB() const;
 
-	b2Vec2 GetReactionForce(float32 inv_dt) const;
-	float32 GetReactionTorque(float32 inv_dt) const;
-
-	/// Get the first joint.
-	b2Joint* GetJoint1() { return m_joint1; }
-
-	/// Get the second joint.
-	b2Joint* GetJoint2() { return m_joint2; }
+	b2Vec2 GetReactionForce(qreal inv_dt) const;
+	qreal GetReactionTorque(qreal inv_dt) const;
 
 	/// Set/Get the gear ratio.
-	void SetRatio(float32 ratio);
-	float32 GetRatio() const;
-
-	/// Dump joint to dmLog
-	void Dump();
+	void SetRatio(qreal ratio);
+	qreal GetRatio() const;
 
 protected:
 
 	friend class b2Joint;
 	b2GearJoint(const b2GearJointDef* data);
 
-	void InitVelocityConstraints(const b2SolverData& data);
-	void SolveVelocityConstraints(const b2SolverData& data);
-	bool SolvePositionConstraints(const b2SolverData& data);
+	void InitVelocityConstraints(const b2TimeStep& step);
+	void SolveVelocityConstraints(const b2TimeStep& step);
+	bool SolvePositionConstraints(qreal baumgarte);
 
-	b2Joint* m_joint1;
-	b2Joint* m_joint2;
+	b2Body* m_ground1;
+	b2Body* m_ground2;
 
-	b2JointType m_typeA;
-	b2JointType m_typeB;
+	// One of these is NULL.
+	b2RevoluteJoint* m_revolute1;
+	b2PrismaticJoint* m_prismatic1;
 
-	// Body A is connected to body C
-	// Body B is connected to body D
-	b2Body* m_bodyC;
-	b2Body* m_bodyD;
+	// One of these is NULL.
+	b2RevoluteJoint* m_revolute2;
+	b2PrismaticJoint* m_prismatic2;
 
-	// Solver shared
-	b2Vec2 m_localAnchorA;
-	b2Vec2 m_localAnchorB;
-	b2Vec2 m_localAnchorC;
-	b2Vec2 m_localAnchorD;
+	b2Vec2 m_groundAnchor1;
+	b2Vec2 m_groundAnchor2;
 
-	b2Vec2 m_localAxisC;
-	b2Vec2 m_localAxisD;
+	b2Vec2 m_localAnchor1;
+	b2Vec2 m_localAnchor2;
 
-	float32 m_referenceAngleA;
-	float32 m_referenceAngleB;
+	b2Jacobian m_J;
 
-	float32 m_constant;
-	float32 m_ratio;
+	qreal m_constant;
+	qreal m_ratio;
 
-	float32 m_impulse;
+	// Effective mass
+	qreal m_mass;
 
-	// Solver temp
-	int32 m_indexA, m_indexB, m_indexC, m_indexD;
-	b2Vec2 m_lcA, m_lcB, m_lcC, m_lcD;
-	float32 m_mA, m_mB, m_mC, m_mD;
-	float32 m_iA, m_iB, m_iC, m_iD;
-	b2Vec2 m_JvAC, m_JvBD;
-	float32 m_JwA, m_JwB, m_JwC, m_JwD;
-	float32 m_mass;
+	// Impulse for accumulation/warm starting.
+	qreal m_impulse;
 };
 
 #endif

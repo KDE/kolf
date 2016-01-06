@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
+* Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -19,69 +19,148 @@
 #include <Box2D/Collision/b2Collision.h>
 #include <Box2D/Collision/Shapes/b2PolygonShape.h>
 
-// Find the max separation between poly1 and poly2 using edge normals from poly1.
-static float32 b2FindMaxSeparation(int32* edgeIndex,
-								 const b2PolygonShape* poly1, const b2Transform& xf1,
-								 const b2PolygonShape* poly2, const b2Transform& xf2)
+// Find the separation between poly1 and poly2 for a give edge normal on poly1.
+static qreal b2EdgeSeparation(const b2PolygonShape* poly1, const b2Transform& xf1, int32 edge1,
+							  const b2PolygonShape* poly2, const b2Transform& xf2)
 {
-	int32 count1 = poly1->m_count;
-	int32 count2 = poly2->m_count;
-	const b2Vec2* n1s = poly1->m_normals;
-	const b2Vec2* v1s = poly1->m_vertices;
-	const b2Vec2* v2s = poly2->m_vertices;
-	b2Transform xf = b2MulT(xf2, xf1);
+	int32 count1 = poly1->m_vertexCount;
+	const b2Vec2* vertices1 = poly1->m_vertices;
+	const b2Vec2* normals1 = poly1->m_normals;
 
-	int32 bestIndex = 0;
-	float32 maxSeparation = -b2_maxFloat;
-	for (int32 i = 0; i < count1; ++i)
+	int32 count2 = poly2->m_vertexCount;
+	const b2Vec2* vertices2 = poly2->m_vertices;
+
+	b2Assert(0 <= edge1 && edge1 < count1);
+
+	// Convert normal from poly1's frame into poly2's frame.
+	b2Vec2 normal1World = b2Mul(xf1.R, normals1[edge1]);
+	b2Vec2 normal1 = b2MulT(xf2.R, normal1World);
+
+	// Find support vertex on poly2 for -normal.
+	int32 index = 0;
+	qreal minDot = b2_maxFloat;
+
+	for (int32 i = 0; i < count2; ++i)
 	{
-		// Get poly1 normal in frame2.
-		b2Vec2 n = b2Mul(xf.q, n1s[i]);
-		b2Vec2 v1 = b2Mul(xf, v1s[i]);
-
-		// Find deepest point for normal i.
-		float32 si = b2_maxFloat;
-		for (int32 j = 0; j < count2; ++j)
+		qreal dot = b2Dot(vertices2[i], normal1);
+		if (dot < minDot)
 		{
-			float32 sij = b2Dot(n, v2s[j] - v1);
-			if (sij < si)
-			{
-				si = sij;
-			}
-		}
-
-		if (si > maxSeparation)
-		{
-			maxSeparation = si;
-			bestIndex = i;
+			minDot = dot;
+			index = i;
 		}
 	}
 
-	*edgeIndex = bestIndex;
-	return maxSeparation;
+	b2Vec2 v1 = b2Mul(xf1, vertices1[edge1]);
+	b2Vec2 v2 = b2Mul(xf2, vertices2[index]);
+	qreal separation = b2Dot(v2 - v1, normal1World);
+	return separation;
+}
+
+// Find the max separation between poly1 and poly2 using edge normals from poly1.
+static qreal b2FindMaxSeparation(int32* edgeIndex,
+								 const b2PolygonShape* poly1, const b2Transform& xf1,
+								 const b2PolygonShape* poly2, const b2Transform& xf2)
+{
+	int32 count1 = poly1->m_vertexCount;
+	const b2Vec2* normals1 = poly1->m_normals;
+
+	// Vector pointing from the centroid of poly1 to the centroid of poly2.
+	b2Vec2 d = b2Mul(xf2, poly2->m_centroid) - b2Mul(xf1, poly1->m_centroid);
+	b2Vec2 dLocal1 = b2MulT(xf1.R, d);
+
+	// Find edge normal on poly1 that has the largest projection onto d.
+	int32 edge = 0;
+	qreal maxDot = -b2_maxFloat;
+	for (int32 i = 0; i < count1; ++i)
+	{
+		qreal dot = b2Dot(normals1[i], dLocal1);
+		if (dot > maxDot)
+		{
+			maxDot = dot;
+			edge = i;
+		}
+	}
+
+	// Get the separation for the edge normal.
+	qreal s = b2EdgeSeparation(poly1, xf1, edge, poly2, xf2);
+
+	// Check the separation for the previous edge normal.
+	int32 prevEdge = edge - 1 >= 0 ? edge - 1 : count1 - 1;
+	qreal sPrev = b2EdgeSeparation(poly1, xf1, prevEdge, poly2, xf2);
+
+	// Check the separation for the next edge normal.
+	int32 nextEdge = edge + 1 < count1 ? edge + 1 : 0;
+	qreal sNext = b2EdgeSeparation(poly1, xf1, nextEdge, poly2, xf2);
+
+	// Find the best edge and the search direction.
+	int32 bestEdge;
+	qreal bestSeparation;
+	int32 increment;
+	if (sPrev > s && sPrev > sNext)
+	{
+		increment = -1;
+		bestEdge = prevEdge;
+		bestSeparation = sPrev;
+	}
+	else if (sNext > s)
+	{
+		increment = 1;
+		bestEdge = nextEdge;
+		bestSeparation = sNext;
+	}
+	else
+	{
+		*edgeIndex = edge;
+		return s;
+	}
+
+	// Perform a local search for the best edge normal.
+	for ( ; ; )
+	{
+		if (increment == -1)
+			edge = bestEdge - 1 >= 0 ? bestEdge - 1 : count1 - 1;
+		else
+			edge = bestEdge + 1 < count1 ? bestEdge + 1 : 0;
+
+		s = b2EdgeSeparation(poly1, xf1, edge, poly2, xf2);
+
+		if (s > bestSeparation)
+		{
+			bestEdge = edge;
+			bestSeparation = s;
+		}
+		else
+		{
+			break;
+		}
+	}
+
+	*edgeIndex = bestEdge;
+	return bestSeparation;
 }
 
 static void b2FindIncidentEdge(b2ClipVertex c[2],
 							 const b2PolygonShape* poly1, const b2Transform& xf1, int32 edge1,
 							 const b2PolygonShape* poly2, const b2Transform& xf2)
 {
+	int32 count1 = poly1->m_vertexCount;
 	const b2Vec2* normals1 = poly1->m_normals;
 
-	int32 count2 = poly2->m_count;
+	int32 count2 = poly2->m_vertexCount;
 	const b2Vec2* vertices2 = poly2->m_vertices;
 	const b2Vec2* normals2 = poly2->m_normals;
 
-	b2Assert(0 <= edge1 && edge1 < poly1->m_count);
+	b2Assert(0 <= edge1 && edge1 < count1);
 
 	// Get the normal of the reference edge in poly2's frame.
-	b2Vec2 normal1 = b2MulT(xf2.q, b2Mul(xf1.q, normals1[edge1]));
+	b2Vec2 normal1 = b2MulT(xf2.R, b2Mul(xf1.R, normals1[edge1]));
 
 	// Find the incident edge on poly2.
 	int32 index = 0;
-	float32 minDot = b2_maxFloat;
+	qreal minDot = b2_maxFloat;
 	for (int32 i = 0; i < count2; ++i)
 	{
-		float32 dot = b2Dot(normal1, normals2[i]);
+		qreal dot = b2Dot(normal1, normals2[i]);
 		if (dot < minDot)
 		{
 			minDot = dot;
@@ -118,26 +197,27 @@ void b2CollidePolygons(b2Manifold* manifold,
 					  const b2PolygonShape* polyB, const b2Transform& xfB)
 {
 	manifold->pointCount = 0;
-	float32 totalRadius = polyA->m_radius + polyB->m_radius;
+	qreal totalRadius = polyA->m_radius + polyB->m_radius;
 
 	int32 edgeA = 0;
-	float32 separationA = b2FindMaxSeparation(&edgeA, polyA, xfA, polyB, xfB);
+	qreal separationA = b2FindMaxSeparation(&edgeA, polyA, xfA, polyB, xfB);
 	if (separationA > totalRadius)
 		return;
 
 	int32 edgeB = 0;
-	float32 separationB = b2FindMaxSeparation(&edgeB, polyB, xfB, polyA, xfA);
+	qreal separationB = b2FindMaxSeparation(&edgeB, polyB, xfB, polyA, xfA);
 	if (separationB > totalRadius)
 		return;
 
 	const b2PolygonShape* poly1;	// reference polygon
 	const b2PolygonShape* poly2;	// incident polygon
 	b2Transform xf1, xf2;
-	int32 edge1;					// reference edge
+	int32 edge1;		// reference edge
 	uint8 flip;
-	const float32 k_tol = 0.1f * b2_linearSlop;
+	const qreal k_relativeTol = 0.98f;
+	const qreal k_absoluteTol = 0.001f;
 
-	if (separationB > separationA + k_tol)
+	if (separationB > k_relativeTol * separationA + k_absoluteTol)
 	{
 		poly1 = polyB;
 		poly2 = polyA;
@@ -161,7 +241,7 @@ void b2CollidePolygons(b2Manifold* manifold,
 	b2ClipVertex incidentEdge[2];
 	b2FindIncidentEdge(incidentEdge, poly1, xf1, edge1, poly2, xf2);
 
-	int32 count1 = poly1->m_count;
+	int32 count1 = poly1->m_vertexCount;
 	const b2Vec2* vertices1 = poly1->m_vertices;
 
 	int32 iv1 = edge1;
@@ -176,18 +256,18 @@ void b2CollidePolygons(b2Manifold* manifold,
 	b2Vec2 localNormal = b2Cross(localTangent, 1.0f);
 	b2Vec2 planePoint = 0.5f * (v11 + v12);
 
-	b2Vec2 tangent = b2Mul(xf1.q, localTangent);
+	b2Vec2 tangent = b2Mul(xf1.R, localTangent);
 	b2Vec2 normal = b2Cross(tangent, 1.0f);
 	
 	v11 = b2Mul(xf1, v11);
 	v12 = b2Mul(xf1, v12);
 
 	// Face offset.
-	float32 frontOffset = b2Dot(normal, v11);
+	qreal frontOffset = b2Dot(normal, v11);
 
 	// Side offsets, extended by polytope skin thickness.
-	float32 sideOffset1 = -b2Dot(tangent, v11) + totalRadius;
-	float32 sideOffset2 = b2Dot(tangent, v12) + totalRadius;
+	qreal sideOffset1 = -b2Dot(tangent, v11) + totalRadius;
+	qreal sideOffset2 = b2Dot(tangent, v12) + totalRadius;
 
 	// Clip incident edge against extruded edge1 side edges.
 	b2ClipVertex clipPoints1[2];
@@ -215,7 +295,7 @@ void b2CollidePolygons(b2Manifold* manifold,
 	int32 pointCount = 0;
 	for (int32 i = 0; i < b2_maxManifoldPoints; ++i)
 	{
-		float32 separation = b2Dot(normal, clipPoints2[i].v) - frontOffset;
+		qreal separation = b2Dot(normal, clipPoints2[i].v) - frontOffset;
 
 		if (separation <= totalRadius)
 		{

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2007-2009 Erin Catto http://www.box2d.org
+* Copyright (c) 2007-2009 Erin Catto http://www.gphysics.com
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -20,8 +20,8 @@
 #include <Box2D/Collision/b2Distance.h>
 
 void b2WorldManifold::Initialize(const b2Manifold* manifold,
-						  const b2Transform& xfA, float32 radiusA,
-						  const b2Transform& xfB, float32 radiusB)
+						  const b2Transform& xfA, qreal radiusA,
+						  const b2Transform& xfB, qreal radiusB)
 {
 	if (manifold->pointCount == 0)
 	{
@@ -44,13 +44,12 @@ void b2WorldManifold::Initialize(const b2Manifold* manifold,
 			b2Vec2 cA = pointA + radiusA * normal;
 			b2Vec2 cB = pointB - radiusB * normal;
 			points[0] = 0.5f * (cA + cB);
-			separations[0] = b2Dot(cB - cA, normal);
 		}
 		break;
 
 	case b2Manifold::e_faceA:
 		{
-			normal = b2Mul(xfA.q, manifold->localNormal);
+			normal = b2Mul(xfA.R, manifold->localNormal);
 			b2Vec2 planePoint = b2Mul(xfA, manifold->localPoint);
 			
 			for (int32 i = 0; i < manifold->pointCount; ++i)
@@ -59,14 +58,13 @@ void b2WorldManifold::Initialize(const b2Manifold* manifold,
 				b2Vec2 cA = clipPoint + (radiusA - b2Dot(clipPoint - planePoint, normal)) * normal;
 				b2Vec2 cB = clipPoint - radiusB * normal;
 				points[i] = 0.5f * (cA + cB);
-				separations[i] = b2Dot(cB - cA, normal);
 			}
 		}
 		break;
 
 	case b2Manifold::e_faceB:
 		{
-			normal = b2Mul(xfB.q, manifold->localNormal);
+			normal = b2Mul(xfB.R, manifold->localNormal);
 			b2Vec2 planePoint = b2Mul(xfB, manifold->localPoint);
 
 			for (int32 i = 0; i < manifold->pointCount; ++i)
@@ -75,7 +73,6 @@ void b2WorldManifold::Initialize(const b2Manifold* manifold,
 				b2Vec2 cB = clipPoint + (radiusB - b2Dot(clipPoint - planePoint, normal)) * normal;
 				b2Vec2 cA = clipPoint - radiusA * normal;
 				points[i] = 0.5f * (cA + cB);
-				separations[i] = b2Dot(cA - cB, normal);
 			}
 
 			// Ensure normal points from A to B.
@@ -132,8 +129,8 @@ void b2GetPointStates(b2PointState state1[b2_maxManifoldPoints], b2PointState st
 // From Real-time Collision Detection, p179.
 bool b2AABB::RayCast(b2RayCastOutput* output, const b2RayCastInput& input) const
 {
-	float32 tmin = -b2_maxFloat;
-	float32 tmax = b2_maxFloat;
+	qreal tmin = -b2_maxFloat;
+	qreal tmax = b2_maxFloat;
 
 	b2Vec2 p = input.p1;
 	b2Vec2 d = input.p2 - input.p1;
@@ -153,12 +150,12 @@ bool b2AABB::RayCast(b2RayCastOutput* output, const b2RayCastInput& input) const
 		}
 		else
 		{
-			float32 inv_d = 1.0f / d(i);
-			float32 t1 = (lowerBound(i) - p(i)) * inv_d;
-			float32 t2 = (upperBound(i) - p(i)) * inv_d;
+			qreal inv_d = 1.0f / d(i);
+			qreal t1 = (lowerBound(i) - p(i)) * inv_d;
+			qreal t2 = (upperBound(i) - p(i)) * inv_d;
 
 			// Sign of the normal vector.
-			float32 s = -1.0f;
+			qreal s = -1.0f;
 
 			if (t1 > t2)
 			{
@@ -199,14 +196,14 @@ bool b2AABB::RayCast(b2RayCastOutput* output, const b2RayCastInput& input) const
 
 // Sutherland-Hodgman clipping.
 int32 b2ClipSegmentToLine(b2ClipVertex vOut[2], const b2ClipVertex vIn[2],
-						const b2Vec2& normal, float32 offset, int32 vertexIndexA)
+						const b2Vec2& normal, qreal offset, int32 vertexIndexA)
 {
 	// Start with no output points
 	int32 numOut = 0;
 
 	// Calculate the distance of end points to the line
-	float32 distance0 = b2Dot(normal, vIn[0].v) - offset;
-	float32 distance1 = b2Dot(normal, vIn[1].v) - offset;
+	qreal distance0 = b2Dot(normal, vIn[0].v) - offset;
+	qreal distance1 = b2Dot(normal, vIn[1].v) - offset;
 
 	// If the points are behind the plane
 	if (distance0 <= 0.0f) vOut[numOut++] = vIn[0];
@@ -216,11 +213,11 @@ int32 b2ClipSegmentToLine(b2ClipVertex vOut[2], const b2ClipVertex vIn[2],
 	if (distance0 * distance1 < 0.0f)
 	{
 		// Find intersection point of edge and plane
-		float32 interp = distance0 / (distance0 - distance1);
+		qreal interp = distance0 / (distance0 - distance1);
 		vOut[numOut].v = vIn[0].v + interp * (vIn[1].v - vIn[0].v);
 
 		// VertexA is hitting edgeB.
-		vOut[numOut].id.cf.indexA = static_cast<uint8>(vertexIndexA);
+		vOut[numOut].id.cf.indexA = vertexIndexA;
 		vOut[numOut].id.cf.indexB = vIn[0].id.cf.indexB;
 		vOut[numOut].id.cf.typeA = b2ContactFeature::e_vertex;
 		vOut[numOut].id.cf.typeB = b2ContactFeature::e_face;

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
+* Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -21,49 +21,49 @@
 
 #include <Box2D/Common/b2Math.h>
 #include <Box2D/Collision/b2Collision.h>
-#include <Box2D/Dynamics/b2TimeStep.h>
+#include <Box2D/Dynamics/b2Island.h>
 
 class b2Contact;
 class b2Body;
 class b2StackAllocator;
-struct b2ContactPositionConstraint;
 
-struct b2VelocityConstraintPoint
+struct b2ContactConstraintPoint
 {
+	b2Vec2 localPoint;
 	b2Vec2 rA;
 	b2Vec2 rB;
-	float32 normalImpulse;
-	float32 tangentImpulse;
-	float32 normalMass;
-	float32 tangentMass;
-	float32 velocityBias;
+	qreal normalImpulse;
+	qreal tangentImpulse;
+	qreal normalMass;
+	qreal tangentMass;
+	qreal velocityBias;
 };
 
-struct b2ContactVelocityConstraint
+struct b2ContactConstraint
 {
-	b2VelocityConstraintPoint points[b2_maxManifoldPoints];
+	b2ContactConstraintPoint points[b2_maxManifoldPoints];
+	b2Vec2 localNormal;
+	b2Vec2 localPoint;
 	b2Vec2 normal;
 	b2Mat22 normalMass;
 	b2Mat22 K;
-	int32 indexA;
-	int32 indexB;
-	float32 invMassA, invMassB;
-	float32 invIA, invIB;
-	float32 friction;
-	float32 restitution;
-	float32 tangentSpeed;
+	b2Body* bodyA;
+	b2Body* bodyB;
+	b2Manifold::Type type;
+	qreal radiusA, radiusB;
+	qreal friction;
+	qreal restitution;
 	int32 pointCount;
-	int32 contactIndex;
+	b2Manifold* manifold;
 };
 
 struct b2ContactSolverDef
 {
-	b2TimeStep step;
 	b2Contact** contacts;
 	int32 count;
-	b2Position* positions;
-	b2Velocity* velocities;
 	b2StackAllocator* allocator;
+	qreal impulseRatio;
+	bool warmStarting;
 };
 
 class b2ContactSolver
@@ -78,16 +78,11 @@ public:
 	void SolveVelocityConstraints();
 	void StoreImpulses();
 
-	bool SolvePositionConstraints();
-	bool SolveTOIPositionConstraints(int32 toiIndexA, int32 toiIndexB);
+	bool SolvePositionConstraints(qreal baumgarte);
+	bool SolveTOIPositionConstraints(qreal baumgarte, const b2Body* toiBodyA, const b2Body* toiBodyB);
 
-	b2TimeStep m_step;
-	b2Position* m_positions;
-	b2Velocity* m_velocities;
 	b2StackAllocator* m_allocator;
-	b2ContactPositionConstraint* m_positionConstraints;
-	b2ContactVelocityConstraint* m_velocityConstraints;
-	b2Contact** m_contacts;
+	b2ContactConstraint* m_constraints;
 	int m_count;
 };
 

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
+* Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -29,7 +29,7 @@ struct b2TOIInput
 	b2DistanceProxy proxyB;
 	b2Sweep sweepA;
 	b2Sweep sweepB;
-	float32 tMax;		// defines sweep interval [0, tMax]
+	qreal tMax;		// defines sweep interval [0, tMax]
 };
 
 // Output parameters for b2TimeOfImpact.
@@ -45,7 +45,7 @@ struct b2TOIOutput
 	};
 
 	State state;
-	float32 t;
+	qreal t;
 };
 
 /// Compute the upper bound on time before two shapes penetrate. Time is represented as

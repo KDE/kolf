@@ -16,27 +16,25 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-#ifndef B2_PRISMATIC_JOINT_H
-#define B2_PRISMATIC_JOINT_H
+#ifndef B2_LINE_JOINT_H
+#define B2_LINE_JOINT_H
 
 #include <Box2D/Dynamics/Joints/b2Joint.h>
 
-/// Prismatic joint definition. This requires defining a line of
+/// Line joint definition. This requires defining a line of
 /// motion using an axis and an anchor point. The definition uses local
 /// anchor points and a local axis so that the initial configuration
 /// can violate the constraint slightly. The joint translation is zero
 /// when the local anchor points coincide in world space. Using local
 /// anchors and a local axis helps when saving and loading a game.
-/// @warning at least one body should by dynamic with a non-fixed rotation.
-struct b2PrismaticJointDef : public b2JointDef
+struct b2LineJointDef : public b2JointDef
 {
-	b2PrismaticJointDef()
+	b2LineJointDef()
 	{
-		type = e_prismaticJoint;
+		type = e_lineJoint;
 		localAnchorA.SetZero();
 		localAnchorB.SetZero();
-		localAxis1.Set(1.0f, 0.0f);
-		referenceAngle = 0.0f;
+		localAxisA.Set(1.0f, 0.0f);
 		enableLimit = false;
 		lowerTranslation = 0.0f;
 		upperTranslation = 0.0f;
@@ -56,10 +54,7 @@ struct b2PrismaticJointDef : public b2JointDef
 	b2Vec2 localAnchorB;
 
 	/// The local translation axis in body1.
-	b2Vec2 localAxis1;
-
-	/// The constrained angle between the bodies: body2_angle - body1_angle.
-	qreal referenceAngle;
+	b2Vec2 localAxisA;
 
 	/// Enable/disable the joint limit.
 	bool enableLimit;
@@ -80,11 +75,11 @@ struct b2PrismaticJointDef : public b2JointDef
 	qreal motorSpeed;
 };
 
-/// A prismatic joint. This joint provides one degree of freedom: translation
-/// along an axis fixed in body1. Relative rotation is prevented. You can
-/// use a joint limit to restrict the range of motion and a joint motor to
-/// drive the motion or to model joint friction.
-class b2PrismaticJoint : public b2Joint
+/// A line joint. This joint provides two degrees of freedom: translation
+/// along an axis fixed in body1 and rotation in the plane. You can use a
+/// joint limit to restrict the range of motion and a joint motor to drive
+/// the motion or to model joint friction.
+class b2LineJoint : public b2Joint
 {
 public:
 	b2Vec2 GetAnchorA() const;
@@ -126,16 +121,17 @@ public:
 	/// Get the motor speed, usually in meters per second.
 	qreal GetMotorSpeed() const;
 
-	/// Set the maximum motor force, usually in N.
+	/// Set/Get the maximum motor force, usually in N.
 	void SetMaxMotorForce(qreal force);
+	qreal GetMaxMotorForce() const;
 
 	/// Get the current motor force given the inverse time step, usually in N.
 	qreal GetMotorForce(qreal inv_dt) const;
 
 protected:
+
 	friend class b2Joint;
-	friend class b2GearJoint;
-	b2PrismaticJoint(const b2PrismaticJointDef* def);
+	b2LineJoint(const b2LineJointDef* def);
 
 	void InitVelocityConstraints(const b2TimeStep& step);
 	void SolveVelocityConstraints(const b2TimeStep& step);
@@ -145,14 +141,13 @@ protected:
 	b2Vec2 m_localAnchor2;
 	b2Vec2 m_localXAxis1;
 	b2Vec2 m_localYAxis1;
-	qreal m_refAngle;
 
 	b2Vec2 m_axis, m_perp;
 	qreal m_s1, m_s2;
 	qreal m_a1, m_a2;
 
-	b2Mat33 m_K;
-	b2Vec3 m_impulse;
+	b2Mat22 m_K;
+	b2Vec2 m_impulse;
 
 	qreal m_motorMass;			// effective mass for motor/limit translational constraint.
 	qreal m_motorImpulse;
@@ -161,15 +156,20 @@ protected:
 	qreal m_upperTranslation;
 	qreal m_maxMotorForce;
 	qreal m_motorSpeed;
-	
+
 	bool m_enableLimit;
 	bool m_enableMotor;
 	b2LimitState m_limitState;
 };
 
-inline qreal b2PrismaticJoint::GetMotorSpeed() const
+inline qreal b2LineJoint::GetMotorSpeed() const
 {
 	return m_motorSpeed;
+}
+
+inline qreal b2LineJoint::GetMaxMotorForce() const
+{
+	return m_maxMotorForce;
 }
 
 #endif

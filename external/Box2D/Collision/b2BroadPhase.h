@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
+* Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -28,6 +28,7 @@ struct b2Pair
 {
 	int32 proxyIdA;
 	int32 proxyIdB;
+	int32 next;
 };
 
 /// The broad-phase is used for computing pairs and performing volume queries and ray casts.
@@ -55,9 +56,6 @@ public:
 	/// Call MoveProxy as many times as you like, then when you are done
 	/// call UpdatePairs to finalized the proxy pairs (for your time step).
 	void MoveProxy(int32 proxyId, const b2AABB& aabb, const b2Vec2& displacement);
-
-	/// Call to trigger a re-processing of it's pairs on the next call to UpdatePairs.
-	void TouchProxy(int32 proxyId);
 
 	/// Get the fat AABB for a proxy.
 	const b2AABB& GetFatAABB(int32 proxyId) const;
@@ -90,19 +88,8 @@ public:
 	template <typename T>
 	void RayCast(T* callback, const b2RayCastInput& input) const;
 
-	/// Get the height of the embedded tree.
-	int32 GetTreeHeight() const;
-
-	/// Get the balance of the embedded tree.
-	int32 GetTreeBalance() const;
-
-	/// Get the quality metric of the embedded tree.
-	float32 GetTreeQuality() const;
-
-	/// Shift the world origin. Useful for large worlds.
-	/// The shift formula is: position -= newOrigin
-	/// @param newOrigin the new origin with respect to the old origin
-	void ShiftOrigin(const b2Vec2& newOrigin);
+	/// Compute the height of the embedded tree.
+	int32 ComputeHeight() const;
 
 private:
 
@@ -166,19 +153,9 @@ inline int32 b2BroadPhase::GetProxyCount() const
 	return m_proxyCount;
 }
 
-inline int32 b2BroadPhase::GetTreeHeight() const
+inline int32 b2BroadPhase::ComputeHeight() const
 {
-	return m_tree.GetHeight();
-}
-
-inline int32 b2BroadPhase::GetTreeBalance() const
-{
-	return m_tree.GetMaxBalance();
-}
-
-inline float32 b2BroadPhase::GetTreeQuality() const
-{
-	return m_tree.GetAreaRatio();
+	return m_tree.ComputeHeight();
 }
 
 template <typename T>
@@ -234,7 +211,7 @@ void b2BroadPhase::UpdatePairs(T* callback)
 	}
 
 	// Try to keep the tree balanced.
-	//m_tree.Rebalance(4);
+	m_tree.Rebalance(4);
 }
 
 template <typename T>
@@ -247,11 +224,6 @@ template <typename T>
 inline void b2BroadPhase::RayCast(T* callback, const b2RayCastInput& input) const
 {
 	m_tree.RayCast(callback, input);
-}
-
-inline void b2BroadPhase::ShiftOrigin(const b2Vec2& newOrigin)
-{
-	m_tree.ShiftOrigin(newOrigin);
 }
 
 #endif

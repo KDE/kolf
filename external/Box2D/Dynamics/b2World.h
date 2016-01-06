@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org
+* Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -24,14 +24,12 @@
 #include <Box2D/Common/b2StackAllocator.h>
 #include <Box2D/Dynamics/b2ContactManager.h>
 #include <Box2D/Dynamics/b2WorldCallbacks.h>
-#include <Box2D/Dynamics/b2TimeStep.h>
 
 struct b2AABB;
 struct b2BodyDef;
-struct b2Color;
 struct b2JointDef;
+struct b2TimeStep;
 class b2Body;
-class b2Draw;
 class b2Fixture;
 class b2Joint;
 
@@ -43,7 +41,8 @@ class b2World
 public:
 	/// Construct a world object.
 	/// @param gravity the world gravity vector.
-	b2World(const b2Vec2& gravity);
+	/// @param doSleep improve performance by not simulating inactive bodies.
+	b2World(const b2Vec2& gravity, bool doSleep);
 
 	/// Destruct the world. All physics entities are destroyed and all heap memory is released.
 	~b2World();
@@ -64,7 +63,7 @@ public:
 	/// Register a routine for debug drawing. The debug draw functions are called
 	/// inside with b2World::DrawDebugData method. The debug draw object is owned
 	/// by you and must remain in scope.
-	void SetDebugDraw(b2Draw* debugDraw);
+	void SetDebugDraw(b2DebugDraw* debugDraw);
 
 	/// Create a rigid body given a definition. No reference to the definition
 	/// is retained.
@@ -91,7 +90,7 @@ public:
 	/// @param timeStep the amount of time to simulate, this should not vary.
 	/// @param velocityIterations for the velocity constraint solver.
 	/// @param positionIterations for the position constraint solver.
-	void Step(	float32 timeStep,
+	void Step(	qreal timeStep,
 				int32 velocityIterations,
 				int32 positionIterations);
 
@@ -104,7 +103,7 @@ public:
 	/// @see SetAutoClearForces
 	void ClearForces();
 
-	/// Call this to draw shapes and other debug draw data. This is intentionally non-const.
+	/// Call this to draw shapes and other debug draw data.
 	void DrawDebugData();
 
 	/// Query the world for all fixtures that potentially overlap the
@@ -136,26 +135,18 @@ public:
 	/// Get the world contact list. With the returned contact, use b2Contact::GetNext to get
 	/// the next contact in the world list. A NULL contact indicates the end of the list.
 	/// @return the head of the world contact list.
-	/// @warning contacts are created and destroyed in the middle of a time step.
-	/// Use b2ContactListener to avoid missing contacts.
+	/// @warning contacts are 
 	b2Contact* GetContactList();
 	const b2Contact* GetContactList() const;
 
-	/// Enable/disable sleep.
-	void SetAllowSleeping(bool flag);
-	bool GetAllowSleeping() const { return m_allowSleep; }
-
 	/// Enable/disable warm starting. For testing.
 	void SetWarmStarting(bool flag) { m_warmStarting = flag; }
-	bool GetWarmStarting() const { return m_warmStarting; }
 
 	/// Enable/disable continuous physics. For testing.
 	void SetContinuousPhysics(bool flag) { m_continuousPhysics = flag; }
-	bool GetContinuousPhysics() const { return m_continuousPhysics; }
 
 	/// Enable/disable single stepped continuous physics. For testing.
 	void SetSubStepping(bool flag) { m_subStepping = flag; }
-	bool GetSubStepping() const { return m_subStepping; }
 
 	/// Get the number of broad-phase proxies.
 	int32 GetProxyCount() const;
@@ -168,16 +159,6 @@ public:
 
 	/// Get the number of contacts (each may have 0 or more contact points).
 	int32 GetContactCount() const;
-
-	/// Get the height of the dynamic tree.
-	int32 GetTreeHeight() const;
-
-	/// Get the balance of the dynamic tree.
-	int32 GetTreeBalance() const;
-
-	/// Get the quality metric of the dynamic tree. The smaller the better.
-	/// The minimum is 1.
-	float32 GetTreeQuality() const;
 
 	/// Change the global gravity vector.
 	void SetGravity(const b2Vec2& gravity);
@@ -194,20 +175,8 @@ public:
 	/// Get the flag that controls automatic clearing of forces after each time step.
 	bool GetAutoClearForces() const;
 
-	/// Shift the world origin. Useful for large worlds.
-	/// The body shift formula is: position -= newOrigin
-	/// @param newOrigin the new origin with respect to the old origin
-	void ShiftOrigin(const b2Vec2& newOrigin);
-
 	/// Get the contact manager for testing.
 	const b2ContactManager& GetContactManager() const;
-
-	/// Get the current profile.
-	const b2Profile& GetProfile() const;
-
-	/// Dump the world into the log file.
-	/// @warning this should be called outside of a time step.
-	void Dump();
 
 private:
 
@@ -220,7 +189,6 @@ private:
 	};
 
 	friend class b2Body;
-	friend class b2Fixture;
 	friend class b2ContactManager;
 	friend class b2Controller;
 
@@ -247,11 +215,11 @@ private:
 	bool m_allowSleep;
 
 	b2DestructionListener* m_destructionListener;
-	b2Draw* g_debugDraw;
+	b2DebugDraw* m_debugDraw;
 
 	// This is used to compute the time step ratio to
 	// support a variable time step.
-	float32 m_inv_dt0;
+	qreal m_inv_dt0;
 
 	// These are for debugging the solver.
 	bool m_warmStarting;
@@ -259,8 +227,6 @@ private:
 	bool m_subStepping;
 
 	bool m_stepComplete;
-
-	b2Profile m_profile;
 };
 
 inline b2Body* b2World::GetBodyList()
@@ -344,11 +310,6 @@ inline bool b2World::GetAutoClearForces() const
 inline const b2ContactManager& b2World::GetContactManager() const
 {
 	return m_contactManager;
-}
-
-inline const b2Profile& b2World::GetProfile() const
-{
-	return m_profile;
 }
 
 #endif

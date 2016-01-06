@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2007 Erin Catto http://www.box2d.org
+* Copyright (c) 2006-2007 Erin Catto http://www.gphysics.com
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -23,7 +23,7 @@
 
 class b2Body;
 class b2Joint;
-struct b2SolverData;
+struct b2TimeStep;
 class b2BlockAllocator;
 
 enum b2JointType
@@ -35,11 +35,10 @@ enum b2JointType
 	e_pulleyJoint,
 	e_mouseJoint,
 	e_gearJoint,
-	e_wheelJoint,
+	e_lineJoint,
     e_weldJoint,
 	e_frictionJoint,
-	e_ropeJoint,
-	e_motorJoint
+	e_ropeJoint
 };
 
 enum b2LimitState
@@ -52,9 +51,14 @@ enum b2LimitState
 
 struct b2Jacobian
 {
-	b2Vec2 linear;
-	float32 angularA;
-	float32 angularB;
+	b2Vec2 linearA;
+	qreal angularA;
+	b2Vec2 linearB;
+	qreal angularB;
+
+	void SetZero();
+	void Set(const b2Vec2& x1, qreal a1, const b2Vec2& x2, qreal a2);
+	qreal Compute(const b2Vec2& x1, qreal a1, const b2Vec2& x2, qreal a2);
 };
 
 /// A joint edge is used to connect bodies and joints together
@@ -119,11 +123,11 @@ public:
 	/// Get the anchor point on bodyB in world coordinates.
 	virtual b2Vec2 GetAnchorB() const = 0;
 
-	/// Get the reaction force on bodyB at the joint anchor in Newtons.
-	virtual b2Vec2 GetReactionForce(float32 inv_dt) const = 0;
+	/// Get the reaction force on body2 at the joint anchor in Newtons.
+	virtual b2Vec2 GetReactionForce(qreal inv_dt) const = 0;
 
-	/// Get the reaction torque on bodyB in N*m.
-	virtual float32 GetReactionTorque(float32 inv_dt) const = 0;
+	/// Get the reaction torque on body2 in N*m.
+	virtual qreal GetReactionTorque(qreal inv_dt) const = 0;
 
 	/// Get the next joint the world joint list.
 	b2Joint* GetNext();
@@ -138,22 +142,10 @@ public:
 	/// Short-cut function to determine if either body is inactive.
 	bool IsActive() const;
 
-	/// Get collide connected.
-	/// Note: modifying the collide connect flag won't work correctly because
-	/// the flag is only checked when fixture AABBs begin to overlap.
-	bool GetCollideConnected() const;
-
-	/// Dump this joint to the log file.
-	virtual void Dump() { b2Log("// Dump is not supported for this joint type.\n"); }
-
-	/// Shift the origin for any points stored in world coordinates.
-	virtual void ShiftOrigin(const b2Vec2& newOrigin) { B2_NOT_USED(newOrigin);  }
-
 protected:
 	friend class b2World;
 	friend class b2Body;
 	friend class b2Island;
-	friend class b2GearJoint;
 
 	static b2Joint* Create(const b2JointDef* def, b2BlockAllocator* allocator);
 	static void Destroy(b2Joint* joint, b2BlockAllocator* allocator);
@@ -161,11 +153,11 @@ protected:
 	b2Joint(const b2JointDef* def);
 	virtual ~b2Joint() {}
 
-	virtual void InitVelocityConstraints(const b2SolverData& data) = 0;
-	virtual void SolveVelocityConstraints(const b2SolverData& data) = 0;
+	virtual void InitVelocityConstraints(const b2TimeStep& step) = 0;
+	virtual void SolveVelocityConstraints(const b2TimeStep& step) = 0;
 
 	// This returns true if the position errors are within tolerance.
-	virtual bool SolvePositionConstraints(const b2SolverData& data) = 0;
+	virtual bool SolvePositionConstraints(qreal baumgarte) = 0;
 
 	b2JointType m_type;
 	b2Joint* m_prev;
@@ -175,13 +167,34 @@ protected:
 	b2Body* m_bodyA;
 	b2Body* m_bodyB;
 
-	int32 m_index;
-
 	bool m_islandFlag;
 	bool m_collideConnected;
 
 	void* m_userData;
+
+	// Cache here per time step to reduce cache misses.
+	// TODO_ERIN will be wrong if the mass changes.
+	b2Vec2 m_localCenterA, m_localCenterB;
+	qreal m_invMassA, m_invIA;
+	qreal m_invMassB, m_invIB;
 };
+
+inline void b2Jacobian::SetZero()
+{
+	linearA.SetZero(); angularA = 0.0f;
+	linearB.SetZero(); angularB = 0.0f;
+}
+
+inline void b2Jacobian::Set(const b2Vec2& x1, qreal a1, const b2Vec2& x2, qreal a2)
+{
+	linearA = x1; angularA = a1;
+	linearB = x2; angularB = a2;
+}
+
+inline qreal b2Jacobian::Compute(const b2Vec2& x1, qreal a1, const b2Vec2& x2, qreal a2)
+{
+	return b2Dot(linearA, x1) + angularA * a1 + b2Dot(linearB, x2) + angularB * a2;
+}
 
 inline b2JointType b2Joint::GetType() const
 {
@@ -216,11 +229,6 @@ inline void* b2Joint::GetUserData() const
 inline void b2Joint::SetUserData(void* data)
 {
 	m_userData = data;
-}
-
-inline bool b2Joint::GetCollideConnected() const
-{
-	return m_collideConnected;
 }
 
 #endif

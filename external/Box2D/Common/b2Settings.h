@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
+* Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -19,9 +19,12 @@
 #ifndef B2_SETTINGS_H
 #define B2_SETTINGS_H
 
-#include <stddef.h>
-#include <assert.h>
-#include <float.h>
+#include <cassert>
+#include <cfloat>
+#include <cmath>
+#include <climits>
+#include <stdint.h>
+#include <QtCore/qmath.h>
 
 #define B2_NOT_USED(x) ((void)(x))
 #define b2Assert(A) assert(A)
@@ -32,12 +35,22 @@ typedef signed int int32;
 typedef unsigned char uint8;
 typedef unsigned short uint16;
 typedef unsigned int uint32;
-typedef float float32;
-typedef double float64;
 
-#define	b2_maxFloat		FLT_MAX
-#define	b2_epsilon		FLT_EPSILON
-#define b2_pi			3.14159265359f
+template<size_t fltsize> struct b2_floatValues;
+template<> struct b2_floatValues<4> {
+	static inline float maxFloat() { return FLT_MAX; }
+	static inline float epsilon() { return FLT_EPSILON; }
+	static inline float pi() { return 3.14159265359f; }
+};
+template<> struct b2_floatValues<8> {
+	static inline double maxFloat() { return DBL_MAX; }
+	static inline double epsilon() { return DBL_EPSILON; }
+	static inline double pi() { return M_PI; }
+};
+
+#define	b2_maxFloat		b2_floatValues<sizeof(qreal)>::maxFloat()
+#define	b2_epsilon		b2_floatValues<sizeof(qreal)>::epsilon()
+#define b2_pi			b2_floatValues<sizeof(qreal)>::pi()
 
 /// @file
 /// Global tuning constants based on meters-kilograms-seconds (MKS) units.
@@ -45,8 +58,7 @@ typedef double float64;
 
 // Collision
 
-/// The maximum number of contact points between two convex shapes. Do
-/// not change this value.
+/// The maximum number of contact points between two convex shapes.
 #define b2_maxManifoldPoints	2
 
 /// The maximum number of vertices on a convex polygon. You cannot increase
@@ -87,7 +99,7 @@ typedef double float64;
 
 /// A velocity threshold for elastic collisions. Any collision with a relative linear
 /// velocity below this threshold will be treated as inelastic.
-#define b2_velocityThreshold		1.0f
+#define b2_velocityThreshold		0.0f
 
 /// The maximum linear position correction used when solving constraints. This helps to
 /// prevent overshoot.
@@ -110,8 +122,7 @@ typedef double float64;
 /// This scale factor controls how fast overlap is resolved. Ideally this would be 1 so
 /// that overlap is removed in one time step. However using values close to 1 often lead
 /// to overshoot.
-#define b2_baumgarte				0.2f
-#define b2_toiBaugarte				0.75f
+#define b2_contactBaumgarte			0.2f
 
 
 // Sleep
@@ -133,9 +144,6 @@ void* b2Alloc(int32 size);
 /// If you implement b2Alloc, you should also implement this function.
 void b2Free(void* mem);
 
-/// Logging function.
-void b2Log(const char* string, ...);
-
 /// Version numbering scheme.
 /// See http://en.wikipedia.org/wiki/Software_versioning
 struct b2Version
@@ -147,5 +155,17 @@ struct b2Version
 
 /// Current version.
 extern b2Version b2_version;
+
+/// Friction mixing law. Feel free to customize this.
+inline qreal b2MixFriction(qreal friction1, qreal friction2)
+{
+	return std::sqrt(friction1 * friction2);
+}
+
+/// Restitution mixing law. Feel free to customize this.
+inline qreal b2MixRestitution(qreal restitution1, qreal restitution2)
+{
+	return restitution1 > restitution2 ? restitution1 : restitution2;
+}
 
 #endif

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
+* Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
 *
 * This software is provided 'as-is', without any express or implied
 * warranty.  In no event will the authors be held liable for any damages
@@ -17,6 +17,8 @@
 */
 
 #include <Box2D/Collision/b2BroadPhase.h>
+#include <cstring>
+using namespace std;
 
 b2BroadPhase::b2BroadPhase()
 {
@@ -61,11 +63,6 @@ void b2BroadPhase::MoveProxy(int32 proxyId, const b2AABB& aabb, const b2Vec2& di
 	}
 }
 
-void b2BroadPhase::TouchProxy(int32 proxyId)
-{
-	BufferMove(proxyId);
-}
-
 void b2BroadPhase::BufferMove(int32 proxyId)
 {
 	if (m_moveCount == m_moveCapacity)
@@ -88,6 +85,7 @@ void b2BroadPhase::UnBufferMove(int32 proxyId)
 		if (m_moveBuffer[i] == proxyId)
 		{
 			m_moveBuffer[i] = e_nullProxy;
+			return;
 		}
 	}
 }

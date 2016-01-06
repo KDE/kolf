@@ -16,7 +16,7 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-#include <Box2D/Dynamics/Joints/b2PrismaticJoint.h>
+#include <Box2D/Dynamics/Joints/b2LineJoint.h>
 #include <Box2D/Dynamics/b2Body.h>
 #include <Box2D/Dynamics/b2TimeStep.h>
 
@@ -27,15 +27,9 @@
 //      = -dot(perp, v1) - dot(cross(d + r1, perp), w1) + dot(perp, v2) + dot(cross(r2, perp), v2)
 // J = [-perp, -cross(d + r1, perp), perp, cross(r2,perp)]
 //
-// Angular constraint
-// C = a2 - a1 + a_initial
-// Cdot = w2 - w1
-// J = [0 0 -1 0 0 1]
-//
 // K = J * invM * JT
 //
 // J = [-a -s1 a s2]
-//     [0  -1  0  1]
 // a = perp
 // s1 = cross(d + r1, a) = cross(p2 - x1, a)
 // s2 = cross(r2, a) = cross(p2 - x2, a)
@@ -52,7 +46,6 @@
 //
 // The Jacobian has 3 rows:
 // J = [-uT -s1 uT s2] // linear
-//     [0   -1   0  1] // angular
 //     [-vT -a1 vT a2] // limit
 //
 // u = perp
@@ -75,36 +68,34 @@
 // f2 = invK * (-Cdot) + f1
 //
 // Clamp accumulated limit impulse.
-// lower: f2(3) = max(f2(3), 0)
-// upper: f2(3) = min(f2(3), 0)
+// lower: f2(2) = max(f2(2), 0)
+// upper: f2(2) = min(f2(2), 0)
 //
-// Solve for correct f2(1:2)
-// K(1:2, 1:2) * f2(1:2) = -Cdot(1:2) - K(1:2,3) * f2(3) + K(1:2,1:3) * f1
-//                       = -Cdot(1:2) - K(1:2,3) * f2(3) + K(1:2,1:2) * f1(1:2) + K(1:2,3) * f1(3)
-// K(1:2, 1:2) * f2(1:2) = -Cdot(1:2) - K(1:2,3) * (f2(3) - f1(3)) + K(1:2,1:2) * f1(1:2)
-// f2(1:2) = invK(1:2,1:2) * (-Cdot(1:2) - K(1:2,3) * (f2(3) - f1(3))) + f1(1:2)
+// Solve for correct f2(1)
+// K(1,1) * f2(1) = -Cdot(1) - K(1,2) * f2(2) + K(1,1:2) * f1
+//                = -Cdot(1) - K(1,2) * f2(2) + K(1,1) * f1(1) + K(1,2) * f1(2)
+// K(1,1) * f2(1) = -Cdot(1) - K(1,2) * (f2(2) - f1(2)) + K(1,1) * f1(1)
+// f2(1) = invK(1,1) * (-Cdot(1) - K(1,2) * (f2(2) - f1(2))) + f1(1)
 //
 // Now compute impulse to be applied:
 // df = f2 - f1
 
-void b2PrismaticJointDef::Initialize(b2Body* b1, b2Body* b2, const b2Vec2& anchor, const b2Vec2& axis)
+void b2LineJointDef::Initialize(b2Body* b1, b2Body* b2, const b2Vec2& anchor, const b2Vec2& axis)
 {
 	bodyA = b1;
 	bodyB = b2;
 	localAnchorA = bodyA->GetLocalPoint(anchor);
 	localAnchorB = bodyB->GetLocalPoint(anchor);
-	localAxis1 = bodyA->GetLocalVector(axis);
-	referenceAngle = bodyB->GetAngle() - bodyA->GetAngle();
+	localAxisA = bodyA->GetLocalVector(axis);
 }
 
-b2PrismaticJoint::b2PrismaticJoint(const b2PrismaticJointDef* def)
+b2LineJoint::b2LineJoint(const b2LineJointDef* def)
 : b2Joint(def)
 {
 	m_localAnchor1 = def->localAnchorA;
 	m_localAnchor2 = def->localAnchorB;
-	m_localXAxis1 = def->localAxis1;
+	m_localXAxis1 = def->localAxisA;
 	m_localYAxis1 = b2Cross(1.0f, m_localXAxis1);
-	m_refAngle = def->referenceAngle;
 
 	m_impulse.SetZero();
 	m_motorMass = 0.0;
@@ -122,7 +113,7 @@ b2PrismaticJoint::b2PrismaticJoint(const b2PrismaticJointDef* def)
 	m_perp.SetZero();
 }
 
-void b2PrismaticJoint::InitVelocityConstraints(const b2TimeStep& step)
+void b2LineJoint::InitVelocityConstraints(const b2TimeStep& step)
 {
 	b2Body* b1 = m_bodyA;
 	b2Body* b2 = m_bodyB;
@@ -154,6 +145,10 @@ void b2PrismaticJoint::InitVelocityConstraints(const b2TimeStep& step)
 		{
 			m_motorMass = 1.0f / m_motorMass;
 		}
+		else
+		{
+			m_motorMass = 0.0f;
+		}
 	}
 
 	// Prismatic constraint.
@@ -167,19 +162,11 @@ void b2PrismaticJoint::InitVelocityConstraints(const b2TimeStep& step)
 		qreal i1 = m_invIA, i2 = m_invIB;
 
 		qreal k11 = m1 + m2 + i1 * m_s1 * m_s1 + i2 * m_s2 * m_s2;
-		qreal k12 = i1 * m_s1 + i2 * m_s2;
-		qreal k13 = i1 * m_s1 * m_a1 + i2 * m_s2 * m_a2;
-		qreal k22 = i1 + i2;
-		if (k22 == 0.0f)
-		{
-			k22 = 1.0f;
-		}
-		qreal k23 = i1 * m_a1 + i2 * m_a2;
-		qreal k33 = m1 + m2 + i1 * m_a1 * m_a1 + i2 * m_a2 * m_a2;
+		qreal k12 = i1 * m_s1 * m_a1 + i2 * m_s2 * m_a2;
+		qreal k22 = m1 + m2 + i1 * m_a1 * m_a1 + i2 * m_a2 * m_a2;
 
-		m_K.col1.Set(k11, k12, k13);
-		m_K.col2.Set(k12, k22, k23);
-		m_K.col3.Set(k13, k23, k33);
+		m_K.col1.Set(k11, k12);
+		m_K.col2.Set(k12, k22);
 	}
 
 	// Compute motor and limit terms.
@@ -195,7 +182,7 @@ void b2PrismaticJoint::InitVelocityConstraints(const b2TimeStep& step)
 			if (m_limitState != e_atLowerLimit)
 			{
 				m_limitState = e_atLowerLimit;
-				m_impulse.z = 0.0f;
+				m_impulse.y = 0.0f;
 			}
 		}
 		else if (jointTranslation >= m_upperTranslation)
@@ -203,19 +190,18 @@ void b2PrismaticJoint::InitVelocityConstraints(const b2TimeStep& step)
 			if (m_limitState != e_atUpperLimit)
 			{
 				m_limitState = e_atUpperLimit;
-				m_impulse.z = 0.0f;
+				m_impulse.y = 0.0f;
 			}
 		}
 		else
 		{
 			m_limitState = e_inactiveLimit;
-			m_impulse.z = 0.0f;
+			m_impulse.y = 0.0f;
 		}
 	}
 	else
 	{
 		m_limitState = e_inactiveLimit;
-		m_impulse.z = 0.0f;
 	}
 
 	if (m_enableMotor == false)
@@ -229,9 +215,9 @@ void b2PrismaticJoint::InitVelocityConstraints(const b2TimeStep& step)
 		m_impulse *= step.dtRatio;
 		m_motorImpulse *= step.dtRatio;
 
-		b2Vec2 P = m_impulse.x * m_perp + (m_motorImpulse + m_impulse.z) * m_axis;
-		qreal L1 = m_impulse.x * m_s1 + m_impulse.y + (m_motorImpulse + m_impulse.z) * m_a1;
-		qreal L2 = m_impulse.x * m_s2 + m_impulse.y + (m_motorImpulse + m_impulse.z) * m_a2;
+		b2Vec2 P = m_impulse.x * m_perp + (m_motorImpulse + m_impulse.y) * m_axis;
+		qreal L1 = m_impulse.x * m_s1 + (m_motorImpulse + m_impulse.y) * m_a1;
+		qreal L2 = m_impulse.x * m_s2 + (m_motorImpulse + m_impulse.y) * m_a2;
 
 		b1->m_linearVelocity -= m_invMassA * P;
 		b1->m_angularVelocity -= m_invIA * L1;
@@ -246,7 +232,7 @@ void b2PrismaticJoint::InitVelocityConstraints(const b2TimeStep& step)
 	}
 }
 
-void b2PrismaticJoint::SolveVelocityConstraints(const b2TimeStep& step)
+void b2LineJoint::SolveVelocityConstraints(const b2TimeStep& step)
 {
 	b2Body* b1 = m_bodyA;
 	b2Body* b2 = m_bodyB;
@@ -277,41 +263,46 @@ void b2PrismaticJoint::SolveVelocityConstraints(const b2TimeStep& step)
 		w2 += m_invIB * L2;
 	}
 
-	b2Vec2 Cdot1;
-	Cdot1.x = b2Dot(m_perp, v2 - v1) + m_s2 * w2 - m_s1 * w1;
-	Cdot1.y = w2 - w1;
+	qreal Cdot1 = b2Dot(m_perp, v2 - v1) + m_s2 * w2 - m_s1 * w1;
 
 	if (m_enableLimit && m_limitState != e_inactiveLimit)
 	{
 		// Solve prismatic and limit constraint in block form.
-		qreal Cdot2;
-		Cdot2 = b2Dot(m_axis, v2 - v1) + m_a2 * w2 - m_a1 * w1;
-		b2Vec3 Cdot(Cdot1.x, Cdot1.y, Cdot2);
+		qreal Cdot2 = b2Dot(m_axis, v2 - v1) + m_a2 * w2 - m_a1 * w1;
+		b2Vec2 Cdot(Cdot1, Cdot2);
 
-		b2Vec3 f1 = m_impulse;
-		b2Vec3 df =  m_K.Solve33(-Cdot);
+		b2Vec2 f1 = m_impulse;
+		b2Vec2 df =  m_K.Solve(-Cdot);
 		m_impulse += df;
 
 		if (m_limitState == e_atLowerLimit)
 		{
-			m_impulse.z = b2Max(m_impulse.z, 0.0f);
+			m_impulse.y = b2Max(m_impulse.y, 0.0f);
 		}
 		else if (m_limitState == e_atUpperLimit)
 		{
-			m_impulse.z = b2Min(m_impulse.z, 0.0f);
+			m_impulse.y = b2Min(m_impulse.y, 0.0f);
 		}
 
-		// f2(1:2) = invK(1:2,1:2) * (-Cdot(1:2) - K(1:2,3) * (f2(3) - f1(3))) + f1(1:2)
-		b2Vec2 b = -Cdot1 - (m_impulse.z - f1.z) * b2Vec2(m_K.col3.x, m_K.col3.y);
-		b2Vec2 f2r = m_K.Solve22(b) + b2Vec2(f1.x, f1.y);
-		m_impulse.x = f2r.x;
-		m_impulse.y = f2r.y;
+		// f2(1) = invK(1,1) * (-Cdot(1) - K(1,2) * (f2(2) - f1(2))) + f1(1)
+		qreal b = -Cdot1 - (m_impulse.y - f1.y) * m_K.col2.x;
+		qreal f2r;
+		if (m_K.col1.x != 0.0f)
+		{
+			f2r = b / m_K.col1.x + f1.x;
+		}
+		else
+		{
+			f2r = f1.x;	
+		}
+
+		m_impulse.x = f2r;
 
 		df = m_impulse - f1;
 
-		b2Vec2 P = df.x * m_perp + df.z * m_axis;
-		qreal L1 = df.x * m_s1 + df.y + df.z * m_a1;
-		qreal L2 = df.x * m_s2 + df.y + df.z * m_a2;
+		b2Vec2 P = df.x * m_perp + df.y * m_axis;
+		qreal L1 = df.x * m_s1 + df.y * m_a1;
+		qreal L2 = df.x * m_s2 + df.y * m_a2;
 
 		v1 -= m_invMassA * P;
 		w1 -= m_invIA * L1;
@@ -322,13 +313,20 @@ void b2PrismaticJoint::SolveVelocityConstraints(const b2TimeStep& step)
 	else
 	{
 		// Limit is inactive, just solve the prismatic constraint in block form.
-		b2Vec2 df = m_K.Solve22(-Cdot1);
-		m_impulse.x += df.x;
-		m_impulse.y += df.y;
+		qreal df;
+		if (m_K.col1.x != 0.0f)
+		{
+			df = - Cdot1 / m_K.col1.x;
+		}
+		else
+		{
+			df = 0.0f;
+		}
+		m_impulse.x += df;
 
-		b2Vec2 P = df.x * m_perp;
-		qreal L1 = df.x * m_s1 + df.y;
-		qreal L2 = df.x * m_s2 + df.y;
+		b2Vec2 P = df * m_perp;
+		qreal L1 = df * m_s1;
+		qreal L2 = df * m_s2;
 
 		v1 -= m_invMassA * P;
 		w1 -= m_invIA * L1;
@@ -343,7 +341,7 @@ void b2PrismaticJoint::SolveVelocityConstraints(const b2TimeStep& step)
 	b2->m_angularVelocity = w2;
 }
 
-bool b2PrismaticJoint::SolvePositionConstraints(qreal baumgarte)
+bool b2LineJoint::SolvePositionConstraints(qreal baumgarte)
 {
 	B2_NOT_USED(baumgarte);
 
@@ -403,13 +401,12 @@ bool b2PrismaticJoint::SolvePositionConstraints(qreal baumgarte)
 	m_s1 = b2Cross(d + r1, m_perp);
 	m_s2 = b2Cross(r2, m_perp);
 
-	b2Vec3 impulse;
-	b2Vec2 C1;
-	C1.x = b2Dot(m_perp, d);
-	C1.y = a2 - a1 - m_refAngle;
+	b2Vec2 impulse;
+	qreal C1;
+	C1 = b2Dot(m_perp, d);
 
-	linearError = b2Max(linearError, b2Abs(C1.x));
-	angularError = b2Abs(C1.y);
+	linearError = b2Max(linearError, b2Abs(C1));
+	angularError = 0.0f;
 
 	if (active)
 	{
@@ -417,26 +414,17 @@ bool b2PrismaticJoint::SolvePositionConstraints(qreal baumgarte)
 		qreal i1 = m_invIA, i2 = m_invIB;
 
 		qreal k11 = m1 + m2 + i1 * m_s1 * m_s1 + i2 * m_s2 * m_s2;
-		qreal k12 = i1 * m_s1 + i2 * m_s2;
-		qreal k13 = i1 * m_s1 * m_a1 + i2 * m_s2 * m_a2;
-		qreal k22 = i1 + i2;
-		if (k22 == 0.0f)
-		{
-			k22 = 1.0f;
-		}
-		qreal k23 = i1 * m_a1 + i2 * m_a2;
-		qreal k33 = m1 + m2 + i1 * m_a1 * m_a1 + i2 * m_a2 * m_a2;
+		qreal k12 = i1 * m_s1 * m_a1 + i2 * m_s2 * m_a2;
+		qreal k22 = m1 + m2 + i1 * m_a1 * m_a1 + i2 * m_a2 * m_a2;
 
-		m_K.col1.Set(k11, k12, k13);
-		m_K.col2.Set(k12, k22, k23);
-		m_K.col3.Set(k13, k23, k33);
+		m_K.col1.Set(k11, k12);
+		m_K.col2.Set(k12, k22);
 
-		b2Vec3 C;
-		C.x = C1.x;
-		C.y = C1.y;
-		C.z = C2;
+		b2Vec2 C;
+		C.x = C1;
+		C.y = C2;
 
-		impulse = m_K.Solve33(-C);
+		impulse = m_K.Solve(-C);
 	}
 	else
 	{
@@ -444,25 +432,24 @@ bool b2PrismaticJoint::SolvePositionConstraints(qreal baumgarte)
 		qreal i1 = m_invIA, i2 = m_invIB;
 
 		qreal k11 = m1 + m2 + i1 * m_s1 * m_s1 + i2 * m_s2 * m_s2;
-		qreal k12 = i1 * m_s1 + i2 * m_s2;
-		qreal k22 = i1 + i2;
-		if (k22 == 0.0f)
+
+		qreal impulse1;
+		if (k11 != 0.0f)
 		{
-			k22 = 1.0f;
+			impulse1 = - C1 / k11;
+		}
+		else
+		{
+			impulse1 = 0.0f;
 		}
 
-		m_K.col1.Set(k11, k12, 0.0f);
-		m_K.col2.Set(k12, k22, 0.0f);
-
-		b2Vec2 impulse1 = m_K.Solve22(-C1);
-		impulse.x = impulse1.x;
-		impulse.y = impulse1.y;
-		impulse.z = 0.0f;
+		impulse.x = impulse1;
+		impulse.y = 0.0f;
 	}
 
-	b2Vec2 P = impulse.x * m_perp + impulse.z * m_axis;
-	qreal L1 = impulse.x * m_s1 + impulse.y + impulse.z * m_a1;
-	qreal L2 = impulse.x * m_s2 + impulse.y + impulse.z * m_a2;
+	b2Vec2 P = impulse.x * m_perp + impulse.y * m_axis;
+	qreal L1 = impulse.x * m_s1 + impulse.y * m_a1;
+	qreal L2 = impulse.x * m_s2 + impulse.y * m_a2;
 
 	c1 -= m_invMassA * P;
 	a1 -= m_invIA * L1;
@@ -476,31 +463,32 @@ bool b2PrismaticJoint::SolvePositionConstraints(qreal baumgarte)
 	b2->m_sweep.a = a2;
 	b1->SynchronizeTransform();
 	b2->SynchronizeTransform();
-	
+
 	return linearError <= b2_linearSlop && angularError <= b2_angularSlop;
 }
 
-b2Vec2 b2PrismaticJoint::GetAnchorA() const
+b2Vec2 b2LineJoint::GetAnchorA() const
 {
 	return m_bodyA->GetWorldPoint(m_localAnchor1);
 }
 
-b2Vec2 b2PrismaticJoint::GetAnchorB() const
+b2Vec2 b2LineJoint::GetAnchorB() const
 {
 	return m_bodyB->GetWorldPoint(m_localAnchor2);
 }
 
-b2Vec2 b2PrismaticJoint::GetReactionForce(qreal inv_dt) const
+b2Vec2 b2LineJoint::GetReactionForce(qreal inv_dt) const
 {
-	return inv_dt * (m_impulse.x * m_perp + (m_motorImpulse + m_impulse.z) * m_axis);
+	return inv_dt * (m_impulse.x * m_perp + (m_motorImpulse + m_impulse.y) * m_axis);
 }
 
-qreal b2PrismaticJoint::GetReactionTorque(qreal inv_dt) const
+qreal b2LineJoint::GetReactionTorque(qreal inv_dt) const
 {
-	return inv_dt * m_impulse.y;
+	B2_NOT_USED(inv_dt);
+	return 0.0f;
 }
 
-qreal b2PrismaticJoint::GetJointTranslation() const
+qreal b2LineJoint::GetJointTranslation() const
 {
 	b2Body* b1 = m_bodyA;
 	b2Body* b2 = m_bodyB;
@@ -514,7 +502,7 @@ qreal b2PrismaticJoint::GetJointTranslation() const
 	return translation;
 }
 
-qreal b2PrismaticJoint::GetJointSpeed() const
+qreal b2LineJoint::GetJointSpeed() const
 {
 	b2Body* b1 = m_bodyA;
 	b2Body* b2 = m_bodyB;
@@ -535,29 +523,29 @@ qreal b2PrismaticJoint::GetJointSpeed() const
 	return speed;
 }
 
-bool b2PrismaticJoint::IsLimitEnabled() const
+bool b2LineJoint::IsLimitEnabled() const
 {
 	return m_enableLimit;
 }
 
-void b2PrismaticJoint::EnableLimit(bool flag)
+void b2LineJoint::EnableLimit(bool flag)
 {
 	m_bodyA->SetAwake(true);
 	m_bodyB->SetAwake(true);
 	m_enableLimit = flag;
 }
 
-qreal b2PrismaticJoint::GetLowerLimit() const
+qreal b2LineJoint::GetLowerLimit() const
 {
 	return m_lowerTranslation;
 }
 
-qreal b2PrismaticJoint::GetUpperLimit() const
+qreal b2LineJoint::GetUpperLimit() const
 {
 	return m_upperTranslation;
 }
 
-void b2PrismaticJoint::SetLimits(qreal lower, qreal upper)
+void b2LineJoint::SetLimits(qreal lower, qreal upper)
 {
 	b2Assert(lower <= upper);
 	m_bodyA->SetAwake(true);
@@ -566,33 +554,38 @@ void b2PrismaticJoint::SetLimits(qreal lower, qreal upper)
 	m_upperTranslation = upper;
 }
 
-bool b2PrismaticJoint::IsMotorEnabled() const
+bool b2LineJoint::IsMotorEnabled() const
 {
 	return m_enableMotor;
 }
 
-void b2PrismaticJoint::EnableMotor(bool flag)
+void b2LineJoint::EnableMotor(bool flag)
 {
 	m_bodyA->SetAwake(true);
 	m_bodyB->SetAwake(true);
 	m_enableMotor = flag;
 }
 
-void b2PrismaticJoint::SetMotorSpeed(qreal speed)
+void b2LineJoint::SetMotorSpeed(qreal speed)
 {
 	m_bodyA->SetAwake(true);
 	m_bodyB->SetAwake(true);
 	m_motorSpeed = speed;
 }
 
-void b2PrismaticJoint::SetMaxMotorForce(qreal force)
+void b2LineJoint::SetMaxMotorForce(qreal force)
 {
 	m_bodyA->SetAwake(true);
 	m_bodyB->SetAwake(true);
 	m_maxMotorForce = force;
 }
 
-qreal b2PrismaticJoint::GetMotorForce(qreal inv_dt) const
+qreal b2LineJoint::GetMotorForce(qreal inv_dt) const
 {
 	return inv_dt * m_motorImpulse;
 }
+
+
+
+
+
