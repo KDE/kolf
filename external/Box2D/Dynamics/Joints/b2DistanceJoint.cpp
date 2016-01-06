@@ -71,14 +71,14 @@ void b2DistanceJoint::InitVelocityConstraints(const b2SolverData& data)
 	m_invIB = m_bodyB->m_invI;
 
 	b2Vec2 cA = data.positions[m_indexA].c;
-	qreal aA = data.positions[m_indexA].a;
+	float32 aA = data.positions[m_indexA].a;
 	b2Vec2 vA = data.velocities[m_indexA].v;
-	qreal wA = data.velocities[m_indexA].w;
+	float32 wA = data.velocities[m_indexA].w;
 
 	b2Vec2 cB = data.positions[m_indexB].c;
-	qreal aB = data.positions[m_indexB].a;
+	float32 aB = data.positions[m_indexB].a;
 	b2Vec2 vB = data.velocities[m_indexB].v;
-	qreal wB = data.velocities[m_indexB].w;
+	float32 wB = data.velocities[m_indexB].w;
 
 	b2Rot qA(aA), qB(aB);
 
@@ -87,7 +87,7 @@ void b2DistanceJoint::InitVelocityConstraints(const b2SolverData& data)
 	m_u = cB + m_rB - cA - m_rA;
 
 	// Handle singularity.
-	qreal length = m_u.Length();
+	float32 length = m_u.Length();
 	if (length > b2_linearSlop)
 	{
 		m_u *= 1.0f / length;
@@ -97,28 +97,28 @@ void b2DistanceJoint::InitVelocityConstraints(const b2SolverData& data)
 		m_u.Set(0.0f, 0.0f);
 	}
 
-	qreal crAu = b2Cross(m_rA, m_u);
-	qreal crBu = b2Cross(m_rB, m_u);
-	qreal invMass = m_invMassA + m_invIA * crAu * crAu + m_invMassB + m_invIB * crBu * crBu;
+	float32 crAu = b2Cross(m_rA, m_u);
+	float32 crBu = b2Cross(m_rB, m_u);
+	float32 invMass = m_invMassA + m_invIA * crAu * crAu + m_invMassB + m_invIB * crBu * crBu;
 
 	// Compute the effective mass matrix.
 	m_mass = invMass != 0.0f ? 1.0f / invMass : 0.0f;
 
 	if (m_frequencyHz > 0.0f)
 	{
-		qreal C = length - m_length;
+		float32 C = length - m_length;
 
 		// Frequency
-		qreal omega = 2.0f * b2_pi * m_frequencyHz;
+		float32 omega = 2.0f * b2_pi * m_frequencyHz;
 
 		// Damping coefficient
-		qreal d = 2.0f * m_mass * m_dampingRatio * omega;
+		float32 d = 2.0f * m_mass * m_dampingRatio * omega;
 
 		// Spring stiffness
-		qreal k = m_mass * omega * omega;
+		float32 k = m_mass * omega * omega;
 
 		// magic formulas
-		qreal h = data.step.dt;
+		float32 h = data.step.dt;
 		m_gamma = h * (d + h * k);
 		m_gamma = m_gamma != 0.0f ? 1.0f / m_gamma : 0.0f;
 		m_bias = C * h * k * m_gamma;
@@ -157,16 +157,16 @@ void b2DistanceJoint::InitVelocityConstraints(const b2SolverData& data)
 void b2DistanceJoint::SolveVelocityConstraints(const b2SolverData& data)
 {
 	b2Vec2 vA = data.velocities[m_indexA].v;
-	qreal wA = data.velocities[m_indexA].w;
+	float32 wA = data.velocities[m_indexA].w;
 	b2Vec2 vB = data.velocities[m_indexB].v;
-	qreal wB = data.velocities[m_indexB].w;
+	float32 wB = data.velocities[m_indexB].w;
 
 	// Cdot = dot(u, v + cross(w, r))
 	b2Vec2 vpA = vA + b2Cross(wA, m_rA);
 	b2Vec2 vpB = vB + b2Cross(wB, m_rB);
-	qreal Cdot = b2Dot(m_u, vpB - vpA);
+	float32 Cdot = b2Dot(m_u, vpB - vpA);
 
-	qreal impulse = -m_mass * (Cdot + m_bias + m_gamma * m_impulse);
+	float32 impulse = -m_mass * (Cdot + m_bias + m_gamma * m_impulse);
 	m_impulse += impulse;
 
 	b2Vec2 P = impulse * m_u;
@@ -190,9 +190,9 @@ bool b2DistanceJoint::SolvePositionConstraints(const b2SolverData& data)
 	}
 
 	b2Vec2 cA = data.positions[m_indexA].c;
-	qreal aA = data.positions[m_indexA].a;
+	float32 aA = data.positions[m_indexA].a;
 	b2Vec2 cB = data.positions[m_indexB].c;
-	qreal aB = data.positions[m_indexB].a;
+	float32 aB = data.positions[m_indexB].a;
 
 	b2Rot qA(aA), qB(aB);
 
@@ -200,11 +200,11 @@ bool b2DistanceJoint::SolvePositionConstraints(const b2SolverData& data)
 	b2Vec2 rB = b2Mul(qB, m_localAnchorB - m_localCenterB);
 	b2Vec2 u = cB + rB - cA - rA;
 
-	qreal length = u.Normalize();
-	qreal C = length - m_length;
+	float32 length = u.Normalize();
+	float32 C = length - m_length;
 	C = b2Clamp(C, -b2_maxLinearCorrection, b2_maxLinearCorrection);
 
-	qreal impulse = -m_mass * C;
+	float32 impulse = -m_mass * C;
 	b2Vec2 P = impulse * u;
 
 	cA -= m_invMassA * P;
@@ -230,13 +230,13 @@ b2Vec2 b2DistanceJoint::GetAnchorB() const
 	return m_bodyB->GetWorldPoint(m_localAnchorB);
 }
 
-b2Vec2 b2DistanceJoint::GetReactionForce(qreal inv_dt) const
+b2Vec2 b2DistanceJoint::GetReactionForce(float32 inv_dt) const
 {
 	b2Vec2 F = (inv_dt * m_impulse) * m_u;
 	return F;
 }
 
-qreal b2DistanceJoint::GetReactionTorque(float32 inv_dt) const
+float32 b2DistanceJoint::GetReactionTorque(float32 inv_dt) const
 {
 	B2_NOT_USED(inv_dt);
 	return 0.0f;

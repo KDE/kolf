@@ -73,7 +73,7 @@ class KolfWorld : public b2World
 {
 	public:
 		KolfWorld()
-			: b2World(b2Vec2(0, 0)) //parameters: no gravity, objects are allowed to sleep
+			: b2World(b2Vec2(0, 0), true) //parameters: no gravity, objects are allowed to sleep
 		{
 			SetContactListener(&m_listener);
 		}

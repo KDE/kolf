@@ -52,17 +52,15 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external)
 set(box2d_SRCS
         external/Box2D/Common/b2StackAllocator.cpp
         external/Box2D/Common/b2Settings.cpp
-        external/Box2D/Common/b2Timer.cpp
         external/Box2D/Common/b2Math.cpp
-        external/Box2D/Common/b2Draw.cpp
         external/Box2D/Common/b2BlockAllocator.cpp
         external/Box2D/Dynamics/b2Island.cpp
         external/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp
-        external/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp
+        external/Box2D/Dynamics/Contacts/b2LoopAndCircleContact.cpp
         external/Box2D/Dynamics/Contacts/b2CircleContact.cpp
         external/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp
         external/Box2D/Dynamics/Contacts/b2Contact.cpp
-        external/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp
+        external/Box2D/Dynamics/Contacts/b2LoopAndPolygonContact.cpp
         external/Box2D/Dynamics/Contacts/b2PolygonContact.cpp
         external/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp
         external/Box2D/Dynamics/Contacts/b2ContactSolver.cpp
@@ -70,13 +68,12 @@ set(box2d_SRCS
         external/Box2D/Dynamics/b2Body.cpp
         external/Box2D/Dynamics/b2ContactManager.cpp
         external/Box2D/Dynamics/Joints/b2MouseJoint.cpp
-        external/Box2D/Dynamics/Joints/b2MotorJoint.cpp
         external/Box2D/Dynamics/Joints/b2PulleyJoint.cpp
         external/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp
         external/Box2D/Dynamics/Joints/b2WeldJoint.cpp
         external/Box2D/Dynamics/Joints/b2Joint.cpp
         external/Box2D/Dynamics/Joints/b2FrictionJoint.cpp
-        external/Box2D/Dynamics/Joints/b2WheelJoint.cpp
+        external/Box2D/Dynamics/Joints/b2LineJoint.cpp
         external/Box2D/Dynamics/Joints/b2RopeJoint.cpp
         external/Box2D/Dynamics/Joints/b2GearJoint.cpp
         external/Box2D/Dynamics/Joints/b2DistanceJoint.cpp
@@ -89,7 +86,7 @@ set(box2d_SRCS
         external/Box2D/Collision/Shapes/b2CircleShape.cpp
         external/Box2D/Collision/Shapes/b2EdgeShape.cpp
         external/Box2D/Collision/Shapes/b2PolygonShape.cpp
-        external/Box2D/Collision/Shapes/b2ChainShape.cpp
+        external/Box2D/Collision/Shapes/b2LoopShape.cpp
         external/Box2D/Collision/b2BroadPhase.cpp
         external/Box2D/Collision/b2Collision.cpp
         external/Box2D/Collision/b2TimeOfImpact.cpp

@@ -35,7 +35,7 @@
 void b2PulleyJointDef::Initialize(b2Body* bA, b2Body* bB,
 				const b2Vec2& groundA, const b2Vec2& groundB,
 				const b2Vec2& anchorA, const b2Vec2& anchorB,
-				qreal r)
+				float32 r)
 {
 	bodyA = bA;
 	bodyB = bB;
@@ -82,14 +82,14 @@ void b2PulleyJoint::InitVelocityConstraints(const b2SolverData& data)
 	m_invIB = m_bodyB->m_invI;
 
 	b2Vec2 cA = data.positions[m_indexA].c;
-	qreal aA = data.positions[m_indexA].a;
+	float32 aA = data.positions[m_indexA].a;
 	b2Vec2 vA = data.velocities[m_indexA].v;
-	qreal wA = data.velocities[m_indexA].w;
+	float32 wA = data.velocities[m_indexA].w;
 
 	b2Vec2 cB = data.positions[m_indexB].c;
-	qreal aB = data.positions[m_indexB].a;
+	float32 aB = data.positions[m_indexB].a;
 	b2Vec2 vB = data.velocities[m_indexB].v;
-	qreal wB = data.velocities[m_indexB].w;
+	float32 wB = data.velocities[m_indexB].w;
 
 	b2Rot qA(aA), qB(aB);
 
@@ -100,8 +100,8 @@ void b2PulleyJoint::InitVelocityConstraints(const b2SolverData& data)
 	m_uA = cA + m_rA - m_groundAnchorA;
 	m_uB = cB + m_rB - m_groundAnchorB;
 
-	qreal lengthA = m_uA.Length();
-	qreal lengthB = m_uB.Length();
+	float32 lengthA = m_uA.Length();
+	float32 lengthB = m_uB.Length();
 
 	if (lengthA > 10.0f * b2_linearSlop)
 	{
@@ -122,11 +122,11 @@ void b2PulleyJoint::InitVelocityConstraints(const b2SolverData& data)
 	}
 
 	// Compute effective mass.
-	qreal ruA = b2Cross(m_rA, m_uA);
-	qreal ruB = b2Cross(m_rB, m_uB);
+	float32 ruA = b2Cross(m_rA, m_uA);
+	float32 ruB = b2Cross(m_rB, m_uB);
 
-	qreal mA = m_invMassA + m_invIA * ruA * ruA;
-	qreal mB = m_invMassB + m_invIB * ruB * ruB;
+	float32 mA = m_invMassA + m_invIA * ruA * ruA;
+	float32 mB = m_invMassB + m_invIB * ruB * ruB;
 
 	m_mass = mA + m_ratio * m_ratio * mB;
 
@@ -163,15 +163,15 @@ void b2PulleyJoint::InitVelocityConstraints(const b2SolverData& data)
 void b2PulleyJoint::SolveVelocityConstraints(const b2SolverData& data)
 {
 	b2Vec2 vA = data.velocities[m_indexA].v;
-	qreal wA = data.velocities[m_indexA].w;
+	float32 wA = data.velocities[m_indexA].w;
 	b2Vec2 vB = data.velocities[m_indexB].v;
-	qreal wB = data.velocities[m_indexB].w;
+	float32 wB = data.velocities[m_indexB].w;
 
 	b2Vec2 vpA = vA + b2Cross(wA, m_rA);
 	b2Vec2 vpB = vB + b2Cross(wB, m_rB);
 
-	qreal Cdot = -b2Dot(m_uA, vpA) - m_ratio * b2Dot(m_uB, vpB);
-	qreal impulse = -m_mass * Cdot;
+	float32 Cdot = -b2Dot(m_uA, vpA) - m_ratio * b2Dot(m_uB, vpB);
+	float32 impulse = -m_mass * Cdot;
 	m_impulse += impulse;
 
 	b2Vec2 PA = -impulse * m_uA;
@@ -190,9 +190,9 @@ void b2PulleyJoint::SolveVelocityConstraints(const b2SolverData& data)
 bool b2PulleyJoint::SolvePositionConstraints(const b2SolverData& data)
 {
 	b2Vec2 cA = data.positions[m_indexA].c;
-	qreal aA = data.positions[m_indexA].a;
+	float32 aA = data.positions[m_indexA].a;
 	b2Vec2 cB = data.positions[m_indexB].c;
-	qreal aB = data.positions[m_indexB].a;
+	float32 aB = data.positions[m_indexB].a;
 
 	b2Rot qA(aA), qB(aB);
 
@@ -203,8 +203,8 @@ bool b2PulleyJoint::SolvePositionConstraints(const b2SolverData& data)
 	b2Vec2 uA = cA + rA - m_groundAnchorA;
 	b2Vec2 uB = cB + rB - m_groundAnchorB;
 
-	qreal lengthA = uA.Length();
-	qreal lengthB = uB.Length();
+	float32 lengthA = uA.Length();
+	float32 lengthB = uB.Length();
 
 	if (lengthA > 10.0f * b2_linearSlop)
 	{
@@ -225,23 +225,23 @@ bool b2PulleyJoint::SolvePositionConstraints(const b2SolverData& data)
 	}
 
 	// Compute effective mass.
-	qreal ruA = b2Cross(rA, uA);
-	qreal ruB = b2Cross(rB, uB);
+	float32 ruA = b2Cross(rA, uA);
+	float32 ruB = b2Cross(rB, uB);
 
-	qreal mA = m_invMassA + m_invIA * ruA * ruA;
-	qreal mB = m_invMassB + m_invIB * ruB * ruB;
+	float32 mA = m_invMassA + m_invIA * ruA * ruA;
+	float32 mB = m_invMassB + m_invIB * ruB * ruB;
 
-	qreal mass = mA + m_ratio * m_ratio * mB;
+	float32 mass = mA + m_ratio * m_ratio * mB;
 
 	if (mass > 0.0f)
 	{
 		mass = 1.0f / mass;
 	}
 
-	qreal C = m_constant - lengthA - m_ratio * lengthB;
-	qreal linearError = b2Abs(C);
+	float32 C = m_constant - lengthA - m_ratio * lengthB;
+	float32 linearError = b2Abs(C);
 
-	qreal impulse = -mass * C;
+	float32 impulse = -mass * C;
 
 	b2Vec2 PA = -impulse * uA;
 	b2Vec2 PB = -m_ratio * impulse * uB;
@@ -269,13 +269,13 @@ b2Vec2 b2PulleyJoint::GetAnchorB() const
 	return m_bodyB->GetWorldPoint(m_localAnchorB);
 }
 
-b2Vec2 b2PulleyJoint::GetReactionForce(qreal inv_dt) const
+b2Vec2 b2PulleyJoint::GetReactionForce(float32 inv_dt) const
 {
 	b2Vec2 P = m_impulse * m_uB;
 	return inv_dt * P;
 }
 
-qreal b2PulleyJoint::GetReactionTorque(float32 inv_dt) const
+float32 b2PulleyJoint::GetReactionTorque(float32 inv_dt) const
 {
 	B2_NOT_USED(inv_dt);
 	return 0.0f;
@@ -291,22 +291,22 @@ b2Vec2 b2PulleyJoint::GetGroundAnchorB() const
 	return m_groundAnchorB;
 }
 
-qreal b2PulleyJoint::GetLengthA() const
+float32 b2PulleyJoint::GetLengthA() const
 {
 	return m_lengthA;
 }
 
-qreal b2PulleyJoint::GetLengthB() const
+float32 b2PulleyJoint::GetLengthB() const
 {
 	return m_lengthB;
 }
 
-qreal b2PulleyJoint::GetRatio() const
+float32 b2PulleyJoint::GetRatio() const
 {
 	return m_ratio;
 }
 
-qreal b2PulleyJoint::GetCurrentLengthA() const
+float32 b2PulleyJoint::GetCurrentLengthA() const
 {
 	b2Vec2 p = m_bodyA->GetWorldPoint(m_localAnchorA);
 	b2Vec2 s = m_groundAnchorA;
@@ -314,7 +314,7 @@ qreal b2PulleyJoint::GetCurrentLengthA() const
 	return d.Length();
 }
 
-qreal b2PulleyJoint::GetCurrentLengthB() const
+float32 b2PulleyJoint::GetCurrentLengthB() const
 {
 	b2Vec2 p = m_bodyB->GetWorldPoint(m_localAnchorB);
 	b2Vec2 s = m_groundAnchorB;

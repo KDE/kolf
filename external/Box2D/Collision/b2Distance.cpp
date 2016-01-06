@@ -88,7 +88,7 @@ struct b2SimplexVertex
 	b2Vec2 wA;		// support point in proxyA
 	b2Vec2 wB;		// support point in proxyB
 	b2Vec2 w;		// wB - wA
-	qreal a;		// barycentric coordinate for closest point
+	float32 a;		// barycentric coordinate for closest point
 	int32 indexA;	// wA index
 	int32 indexB;	// wB index
 };
@@ -121,8 +121,8 @@ struct b2Simplex
 		// old metric then flush the simplex.
 		if (m_count > 1)
 		{
-			qreal metric1 = cache->metric;
-			qreal metric2 = GetMetric();
+			float32 metric1 = cache->metric;
+			float32 metric2 = GetMetric();
 			if (metric2 < 0.5f * metric1 || 2.0f * metric1 < metric2 || metric2 < b2_epsilon)
 			{
 				// Reset the simplex.
@@ -168,7 +168,7 @@ struct b2Simplex
 		case 2:
 			{
 				b2Vec2 e12 = m_v2.w - m_v1.w;
-				qreal sgn = b2Cross(e12, -m_v1.w);
+				float32 sgn = b2Cross(e12, -m_v1.w);
 				if (sgn > 0.0f)
 				{
 					// Origin is left of e12.
@@ -239,7 +239,7 @@ struct b2Simplex
 		}
 	}
 
-	qreal GetMetric() const
+	float32 GetMetric() const
 	{
 		switch (m_count)
 		{
@@ -300,7 +300,7 @@ void b2Simplex::Solve2()
 	b2Vec2 e12 = w2 - w1;
 
 	// w1 region
-	qreal d12_2 = -b2Dot(w1, e12);
+	float32 d12_2 = -b2Dot(w1, e12);
 	if (d12_2 <= 0.0f)
 	{
 		// a2 <= 0, so we clamp it to 0
@@ -310,7 +310,7 @@ void b2Simplex::Solve2()
 	}
 
 	// w2 region
-	qreal d12_1 = b2Dot(w2, e12);
+	float32 d12_1 = b2Dot(w2, e12);
 	if (d12_1 <= 0.0f)
 	{
 		// a1 <= 0, so we clamp it to 0
@@ -321,7 +321,7 @@ void b2Simplex::Solve2()
 	}
 
 	// Must be in e12 region.
-	qreal inv_d12 = 1.0f / (d12_1 + d12_2);
+	float32 inv_d12 = 1.0f / (d12_1 + d12_2);
 	m_v1.a = d12_1 * inv_d12;
 	m_v2.a = d12_2 * inv_d12;
 	m_count = 2;
@@ -343,37 +343,37 @@ void b2Simplex::Solve3()
 	// [w1.e12 w2.e12][a2] = [0]
 	// a3 = 0
 	b2Vec2 e12 = w2 - w1;
-	qreal w1e12 = b2Dot(w1, e12);
-	qreal w2e12 = b2Dot(w2, e12);
-	qreal d12_1 = w2e12;
-	qreal d12_2 = -w1e12;
+	float32 w1e12 = b2Dot(w1, e12);
+	float32 w2e12 = b2Dot(w2, e12);
+	float32 d12_1 = w2e12;
+	float32 d12_2 = -w1e12;
 
 	// Edge13
 	// [1      1     ][a1] = [1]
 	// [w1.e13 w3.e13][a3] = [0]
 	// a2 = 0
 	b2Vec2 e13 = w3 - w1;
-	qreal w1e13 = b2Dot(w1, e13);
-	qreal w3e13 = b2Dot(w3, e13);
-	qreal d13_1 = w3e13;
-	qreal d13_2 = -w1e13;
+	float32 w1e13 = b2Dot(w1, e13);
+	float32 w3e13 = b2Dot(w3, e13);
+	float32 d13_1 = w3e13;
+	float32 d13_2 = -w1e13;
 
 	// Edge23
 	// [1      1     ][a2] = [1]
 	// [w2.e23 w3.e23][a3] = [0]
 	// a1 = 0
 	b2Vec2 e23 = w3 - w2;
-	qreal w2e23 = b2Dot(w2, e23);
-	qreal w3e23 = b2Dot(w3, e23);
-	qreal d23_1 = w3e23;
-	qreal d23_2 = -w2e23;
+	float32 w2e23 = b2Dot(w2, e23);
+	float32 w3e23 = b2Dot(w3, e23);
+	float32 d23_1 = w3e23;
+	float32 d23_2 = -w2e23;
 	
 	// Triangle123
-	qreal n123 = b2Cross(e12, e13);
+	float32 n123 = b2Cross(e12, e13);
 
-	qreal d123_1 = n123 * b2Cross(w2, w3);
-	qreal d123_2 = n123 * b2Cross(w3, w1);
-	qreal d123_3 = n123 * b2Cross(w1, w2);
+	float32 d123_1 = n123 * b2Cross(w2, w3);
+	float32 d123_2 = n123 * b2Cross(w3, w1);
+	float32 d123_3 = n123 * b2Cross(w1, w2);
 
 	// w1 region
 	if (d12_2 <= 0.0f && d13_2 <= 0.0f)
@@ -386,7 +386,7 @@ void b2Simplex::Solve3()
 	// e12
 	if (d12_1 > 0.0f && d12_2 > 0.0f && d123_3 <= 0.0f)
 	{
-		qreal inv_d12 = 1.0f / (d12_1 + d12_2);
+		float32 inv_d12 = 1.0f / (d12_1 + d12_2);
 		m_v1.a = d12_1 * inv_d12;
 		m_v2.a = d12_2 * inv_d12;
 		m_count = 2;
@@ -396,7 +396,7 @@ void b2Simplex::Solve3()
 	// e13
 	if (d13_1 > 0.0f && d13_2 > 0.0f && d123_2 <= 0.0f)
 	{
-		qreal inv_d13 = 1.0f / (d13_1 + d13_2);
+		float32 inv_d13 = 1.0f / (d13_1 + d13_2);
 		m_v1.a = d13_1 * inv_d13;
 		m_v3.a = d13_2 * inv_d13;
 		m_count = 2;
@@ -425,7 +425,7 @@ void b2Simplex::Solve3()
 	// e23
 	if (d23_1 > 0.0f && d23_2 > 0.0f && d123_1 <= 0.0f)
 	{
-		qreal inv_d23 = 1.0f / (d23_1 + d23_2);
+		float32 inv_d23 = 1.0f / (d23_1 + d23_2);
 		m_v2.a = d23_1 * inv_d23;
 		m_v3.a = d23_2 * inv_d23;
 		m_count = 2;
@@ -434,7 +434,7 @@ void b2Simplex::Solve3()
 	}
 
 	// Must be in triangle123
-	qreal inv_d123 = 1.0f / (d123_1 + d123_2 + d123_3);
+	float32 inv_d123 = 1.0f / (d123_1 + d123_2 + d123_3);
 	m_v1.a = d123_1 * inv_d123;
 	m_v2.a = d123_2 * inv_d123;
 	m_v3.a = d123_3 * inv_d123;
@@ -466,8 +466,8 @@ void b2Distance(b2DistanceOutput* output,
 	int32 saveA[3], saveB[3];
 	int32 saveCount = 0;
 
-	qreal distanceSqr1 = b2_maxFloat;
-	qreal distanceSqr2 = distanceSqr1;
+	float32 distanceSqr1 = b2_maxFloat;
+	float32 distanceSqr2 = distanceSqr1;
 
 	// Main iteration loop.
 	int32 iter = 0;
@@ -577,8 +577,8 @@ void b2Distance(b2DistanceOutput* output,
 	// Apply radii if requested.
 	if (input->useRadii)
 	{
-		qreal rA = proxyA->m_radius;
-		qreal rB = proxyB->m_radius;
+		float32 rA = proxyA->m_radius;
+		float32 rB = proxyB->m_radius;
 
 		if (output->distance > rA + rB && output->distance > b2_epsilon)
 		{

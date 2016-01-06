@@ -63,32 +63,32 @@ const b2Vec2& b2MouseJoint::GetTarget() const
 	return m_targetA;
 }
 
-void b2MouseJoint::SetMaxForce(qreal force)
+void b2MouseJoint::SetMaxForce(float32 force)
 {
 	m_maxForce = force;
 }
 
-qreal b2MouseJoint::GetMaxForce() const
+float32 b2MouseJoint::GetMaxForce() const
 {
 	return m_maxForce;
 }
 
-void b2MouseJoint::SetFrequency(qreal hz)
+void b2MouseJoint::SetFrequency(float32 hz)
 {
 	m_frequencyHz = hz;
 }
 
-qreal b2MouseJoint::GetFrequency() const
+float32 b2MouseJoint::GetFrequency() const
 {
 	return m_frequencyHz;
 }
 
-void b2MouseJoint::SetDampingRatio(qreal ratio)
+void b2MouseJoint::SetDampingRatio(float32 ratio)
 {
 	m_dampingRatio = ratio;
 }
 
-qreal b2MouseJoint::GetDampingRatio() const
+float32 b2MouseJoint::GetDampingRatio() const
 {
 	return m_dampingRatio;
 }
@@ -101,27 +101,27 @@ void b2MouseJoint::InitVelocityConstraints(const b2SolverData& data)
 	m_invIB = m_bodyB->m_invI;
 
 	b2Vec2 cB = data.positions[m_indexB].c;
-	qreal aB = data.positions[m_indexB].a;
+	float32 aB = data.positions[m_indexB].a;
 	b2Vec2 vB = data.velocities[m_indexB].v;
-	qreal wB = data.velocities[m_indexB].w;
+	float32 wB = data.velocities[m_indexB].w;
 
 	b2Rot qB(aB);
 
-	qreal mass = m_bodyB->GetMass();
+	float32 mass = m_bodyB->GetMass();
 
 	// Frequency
-	qreal omega = 2.0f * b2_pi * m_frequencyHz;
+	float32 omega = 2.0f * b2_pi * m_frequencyHz;
 
 	// Damping coefficient
-	qreal d = 2.0f * mass * m_dampingRatio * omega;
+	float32 d = 2.0f * mass * m_dampingRatio * omega;
 
 	// Spring stiffness
-	qreal k = mass * (omega * omega);
+	float32 k = mass * (omega * omega);
 
 	// magic formulas
 	// gamma has units of inverse mass.
 	// beta has units of inverse time.
-	qreal h = data.step.dt;
+	float32 h = data.step.dt;
 	b2Assert(d + h * k > b2_epsilon);
 	m_gamma = h * (d + h * k);
 	if (m_gamma != 0.0f)
@@ -168,7 +168,7 @@ void b2MouseJoint::InitVelocityConstraints(const b2SolverData& data)
 void b2MouseJoint::SolveVelocityConstraints(const b2SolverData& data)
 {
 	b2Vec2 vB = data.velocities[m_indexB].v;
-	qreal wB = data.velocities[m_indexB].w;
+	float32 wB = data.velocities[m_indexB].w;
 
 	// Cdot = v + cross(w, r)
 	b2Vec2 Cdot = vB + b2Cross(wB, m_rB);
@@ -176,7 +176,7 @@ void b2MouseJoint::SolveVelocityConstraints(const b2SolverData& data)
 
 	b2Vec2 oldImpulse = m_impulse;
 	m_impulse += impulse;
-	qreal maxImpulse = data.step.dt * m_maxForce;
+	float32 maxImpulse = data.step.dt * m_maxForce;
 	if (m_impulse.LengthSquared() > maxImpulse * maxImpulse)
 	{
 		m_impulse *= maxImpulse / m_impulse.Length();
@@ -206,12 +206,12 @@ b2Vec2 b2MouseJoint::GetAnchorB() const
 	return m_bodyB->GetWorldPoint(m_localAnchorB);
 }
 
-b2Vec2 b2MouseJoint::GetReactionForce(qreal inv_dt) const
+b2Vec2 b2MouseJoint::GetReactionForce(float32 inv_dt) const
 {
 	return inv_dt * m_impulse;
 }
 
-qreal b2MouseJoint::GetReactionTorque(float32 inv_dt) const
+float32 b2MouseJoint::GetReactionTorque(float32 inv_dt) const
 {
 	return inv_dt * 0.0f;
 }

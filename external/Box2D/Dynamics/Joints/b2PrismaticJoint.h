@@ -58,25 +58,25 @@ struct b2PrismaticJointDef : public b2JointDef
 	b2Vec2 localAxisA;
 
 	/// The constrained angle between the bodies: bodyB_angle - bodyA_angle.
-	qreal referenceAngle;
+	float32 referenceAngle;
 
 	/// Enable/disable the joint limit.
 	bool enableLimit;
 
 	/// The lower translation limit, usually in meters.
-	qreal lowerTranslation;
+	float32 lowerTranslation;
 
 	/// The upper translation limit, usually in meters.
-	qreal upperTranslation;
+	float32 upperTranslation;
 
 	/// Enable/disable the joint motor.
 	bool enableMotor;
 
 	/// The maximum motor torque, usually in N-m.
-	qreal maxMotorForce;
+	float32 maxMotorForce;
 
 	/// The desired motor speed in radians per second.
-	qreal motorSpeed;
+	float32 motorSpeed;
 };
 
 /// A prismatic joint. This joint provides one degree of freedom: translation
@@ -89,8 +89,8 @@ public:
 	b2Vec2 GetAnchorA() const;
 	b2Vec2 GetAnchorB() const;
 
-	b2Vec2 GetReactionForce(qreal inv_dt) const;
-	qreal GetReactionTorque(float32 inv_dt) const;
+	b2Vec2 GetReactionForce(float32 inv_dt) const;
+	float32 GetReactionTorque(float32 inv_dt) const;
 
 	/// The local anchor point relative to bodyA's origin.
 	const b2Vec2& GetLocalAnchorA() const { return m_localAnchorA; }
@@ -102,13 +102,13 @@ public:
 	const b2Vec2& GetLocalAxisA() const { return m_localXAxisA; }
 
 	/// Get the reference angle.
-	qreal GetReferenceAngle() const { return m_referenceAngle; }
+	float32 GetReferenceAngle() const { return m_referenceAngle; }
 
 	/// Get the current joint translation, usually in meters.
-	qreal GetJointTranslation() const;
+	float32 GetJointTranslation() const;
 
 	/// Get the current joint translation speed, usually in meters per second.
-	qreal GetJointSpeed() const;
+	float32 GetJointSpeed() const;
 
 	/// Is the joint limit enabled?
 	bool IsLimitEnabled() const;
@@ -117,13 +117,13 @@ public:
 	void EnableLimit(bool flag);
 
 	/// Get the lower joint limit, usually in meters.
-	qreal GetLowerLimit() const;
+	float32 GetLowerLimit() const;
 
 	/// Get the upper joint limit, usually in meters.
-	qreal GetUpperLimit() const;
+	float32 GetUpperLimit() const;
 
 	/// Set the joint limits, usually in meters.
-	void SetLimits(qreal lower, float32 upper);
+	void SetLimits(float32 lower, float32 upper);
 
 	/// Is the joint motor enabled?
 	bool IsMotorEnabled() const;
@@ -132,17 +132,17 @@ public:
 	void EnableMotor(bool flag);
 
 	/// Set the motor speed, usually in meters per second.
-	void SetMotorSpeed(qreal speed);
+	void SetMotorSpeed(float32 speed);
 
 	/// Get the motor speed, usually in meters per second.
-	qreal GetMotorSpeed() const;
+	float32 GetMotorSpeed() const;
 
 	/// Set the maximum motor force, usually in N.
-	void SetMaxMotorForce(qreal force);
-	qreal GetMaxMotorForce() const { return m_maxMotorForce; }
+	void SetMaxMotorForce(float32 force);
+	float32 GetMaxMotorForce() const { return m_maxMotorForce; }
 
 	/// Get the current motor force given the inverse time step, usually in N.
-	qreal GetMotorForce(float32 inv_dt) const;
+	float32 GetMotorForce(float32 inv_dt) const;
 
 	/// Dump to b2Log
 	void Dump();
@@ -161,13 +161,13 @@ protected:
 	b2Vec2 m_localAnchorB;
 	b2Vec2 m_localXAxisA;
 	b2Vec2 m_localYAxisA;
-	qreal m_referenceAngle;
+	float32 m_referenceAngle;
 	b2Vec3 m_impulse;
-	qreal m_motorImpulse;
-	qreal m_lowerTranslation;
-	qreal m_upperTranslation;
-	qreal m_maxMotorForce;
-	qreal m_motorSpeed;
+	float32 m_motorImpulse;
+	float32 m_lowerTranslation;
+	float32 m_upperTranslation;
+	float32 m_maxMotorForce;
+	float32 m_motorSpeed;
 	bool m_enableLimit;
 	bool m_enableMotor;
 	b2LimitState m_limitState;
@@ -177,18 +177,18 @@ protected:
 	int32 m_indexB;
 	b2Vec2 m_localCenterA;
 	b2Vec2 m_localCenterB;
-	qreal m_invMassA;
-	qreal m_invMassB;
-	qreal m_invIA;
-	qreal m_invIB;
+	float32 m_invMassA;
+	float32 m_invMassB;
+	float32 m_invIA;
+	float32 m_invIB;
 	b2Vec2 m_axis, m_perp;
-	qreal m_s1, m_s2;
-	qreal m_a1, m_a2;
+	float32 m_s1, m_s2;
+	float32 m_a1, m_a2;
 	b2Mat33 m_K;
-	qreal m_motorMass;
+	float32 m_motorMass;
 };
 
-inline qreal b2PrismaticJoint::GetMotorSpeed() const
+inline float32 b2PrismaticJoint::GetMotorSpeed() const
 {
 	return m_motorSpeed;
 }

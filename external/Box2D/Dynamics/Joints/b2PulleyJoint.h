@@ -21,7 +21,7 @@
 
 #include <Box2D/Dynamics/Joints/b2Joint.h>
 
-const qreal b2_minPulleyLength = 2.0f;
+const float32 b2_minPulleyLength = 2.0f;
 
 /// Pulley joint definition. This requires two ground anchors,
 /// two dynamic body anchor points, and a pulley ratio.
@@ -44,7 +44,7 @@ struct b2PulleyJointDef : public b2JointDef
 	void Initialize(b2Body* bodyA, b2Body* bodyB,
 					const b2Vec2& groundAnchorA, const b2Vec2& groundAnchorB,
 					const b2Vec2& anchorA, const b2Vec2& anchorB,
-					qreal ratio);
+					float32 ratio);
 
 	/// The first ground anchor in world coordinates. This point never moves.
 	b2Vec2 groundAnchorA;
@@ -59,13 +59,13 @@ struct b2PulleyJointDef : public b2JointDef
 	b2Vec2 localAnchorB;
 
 	/// The a reference length for the segment attached to bodyA.
-	qreal lengthA;
+	float32 lengthA;
 
 	/// The a reference length for the segment attached to bodyB.
-	qreal lengthB;
+	float32 lengthB;
 
 	/// The pulley ratio, used to simulate a block-and-tackle.
-	qreal ratio;
+	float32 ratio;
 };
 
 /// The pulley joint is connected to two bodies and two fixed ground points.
@@ -82,8 +82,8 @@ public:
 	b2Vec2 GetAnchorA() const;
 	b2Vec2 GetAnchorB() const;
 
-	b2Vec2 GetReactionForce(qreal inv_dt) const;
-	qreal GetReactionTorque(float32 inv_dt) const;
+	b2Vec2 GetReactionForce(float32 inv_dt) const;
+	float32 GetReactionTorque(float32 inv_dt) const;
 
 	/// Get the first ground anchor.
 	b2Vec2 GetGroundAnchorA() const;
@@ -92,19 +92,19 @@ public:
 	b2Vec2 GetGroundAnchorB() const;
 
 	/// Get the current length of the segment attached to bodyA.
-	qreal GetLengthA() const;
+	float32 GetLengthA() const;
 
 	/// Get the current length of the segment attached to bodyB.
-	qreal GetLengthB() const;
+	float32 GetLengthB() const;
 
 	/// Get the pulley ratio.
-	qreal GetRatio() const;
+	float32 GetRatio() const;
 
 	/// Get the current length of the segment attached to bodyA.
-	qreal GetCurrentLengthA() const;
+	float32 GetCurrentLengthA() const;
 
 	/// Get the current length of the segment attached to bodyB.
-	qreal GetCurrentLengthB() const;
+	float32 GetCurrentLengthB() const;
 
 	/// Dump joint to dmLog
 	void Dump();
@@ -123,15 +123,15 @@ protected:
 
 	b2Vec2 m_groundAnchorA;
 	b2Vec2 m_groundAnchorB;
-	qreal m_lengthA;
-	qreal m_lengthB;
+	float32 m_lengthA;
+	float32 m_lengthB;
 	
 	// Solver shared
 	b2Vec2 m_localAnchorA;
 	b2Vec2 m_localAnchorB;
-	qreal m_constant;
-	qreal m_ratio;
-	qreal m_impulse;
+	float32 m_constant;
+	float32 m_ratio;
+	float32 m_impulse;
 
 	// Solver temp
 	int32 m_indexA;
@@ -142,11 +142,11 @@ protected:
 	b2Vec2 m_rB;
 	b2Vec2 m_localCenterA;
 	b2Vec2 m_localCenterB;
-	qreal m_invMassA;
-	qreal m_invMassB;
-	qreal m_invIA;
-	qreal m_invIB;
-	qreal m_mass;
+	float32 m_invMassA;
+	float32 m_invMassB;
+	float32 m_invIA;
+	float32 m_invIB;
+	float32 m_mass;
 };
 
 #endif

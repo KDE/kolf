@@ -41,13 +41,13 @@ struct b2MouseJointDef : public b2JointDef
 	/// The maximum constraint force that can be exerted
 	/// to move the candidate body. Usually you will express
 	/// as some multiple of the weight (multiplier * mass * gravity).
-	qreal maxForce;
+	float32 maxForce;
 
 	/// The response speed.
-	qreal frequencyHz;
+	float32 frequencyHz;
 
 	/// The damping ratio. 0 = no damping, 1 = critical damping.
-	qreal dampingRatio;
+	float32 dampingRatio;
 };
 
 /// A mouse joint is used to make a point on a body track a
@@ -68,26 +68,26 @@ public:
 	b2Vec2 GetAnchorB() const;
 
 	/// Implements b2Joint.
-	b2Vec2 GetReactionForce(qreal inv_dt) const;
+	b2Vec2 GetReactionForce(float32 inv_dt) const;
 
 	/// Implements b2Joint.
-	qreal GetReactionTorque(float32 inv_dt) const;
+	float32 GetReactionTorque(float32 inv_dt) const;
 
 	/// Use this to update the target point.
 	void SetTarget(const b2Vec2& target);
 	const b2Vec2& GetTarget() const;
 
 	/// Set/get the maximum force in Newtons.
-	void SetMaxForce(qreal force);
-	qreal GetMaxForce() const;
+	void SetMaxForce(float32 force);
+	float32 GetMaxForce() const;
 
 	/// Set/get the frequency in Hertz.
-	void SetFrequency(qreal hz);
-	qreal GetFrequency() const;
+	void SetFrequency(float32 hz);
+	float32 GetFrequency() const;
 
 	/// Set/get the damping ratio (dimensionless).
-	void SetDampingRatio(qreal ratio);
-	qreal GetDampingRatio() const;
+	void SetDampingRatio(float32 ratio);
+	float32 GetDampingRatio() const;
 
 	/// The mouse joint does not support dumping.
 	void Dump() { b2Log("Mouse joint dumping is not supported.\n"); }
@@ -106,22 +106,22 @@ protected:
 
 	b2Vec2 m_localAnchorB;
 	b2Vec2 m_targetA;
-	qreal m_frequencyHz;
-	qreal m_dampingRatio;
-	qreal m_beta;
+	float32 m_frequencyHz;
+	float32 m_dampingRatio;
+	float32 m_beta;
 	
 	// Solver shared
 	b2Vec2 m_impulse;
-	qreal m_maxForce;
-	qreal m_gamma;
+	float32 m_maxForce;
+	float32 m_gamma;
 
 	// Solver temp
 	int32 m_indexA;
 	int32 m_indexB;
 	b2Vec2 m_rB;
 	b2Vec2 m_localCenterB;
-	qreal m_invMassB;
-	qreal m_invIB;
+	float32 m_invMassB;
+	float32 m_invIB;
 	b2Mat22 m_mass;
 	b2Vec2 m_C;
 };

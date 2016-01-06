@@ -51,14 +51,14 @@ struct b2DistanceJointDef : public b2JointDef
 	b2Vec2 localAnchorB;
 
 	/// The natural length between the anchor points.
-	qreal length;
+	float32 length;
 
 	/// The mass-spring-damper frequency in Hertz. A value of 0
 	/// disables softness.
-	qreal frequencyHz;
+	float32 frequencyHz;
 
 	/// The damping ratio. 0 = no damping, 1 = critical damping.
-	qreal dampingRatio;
+	float32 dampingRatio;
 };
 
 /// A distance joint constrains two points on two bodies
@@ -73,11 +73,11 @@ public:
 
 	/// Get the reaction force given the inverse time step.
 	/// Unit is N.
-	b2Vec2 GetReactionForce(qreal inv_dt) const;
+	b2Vec2 GetReactionForce(float32 inv_dt) const;
 
 	/// Get the reaction torque given the inverse time step.
 	/// Unit is N*m. This is always zero for a distance joint.
-	qreal GetReactionTorque(float32 inv_dt) const;
+	float32 GetReactionTorque(float32 inv_dt) const;
 
 	/// The local anchor point relative to bodyA's origin.
 	const b2Vec2& GetLocalAnchorA() const { return m_localAnchorA; }
@@ -87,16 +87,16 @@ public:
 
 	/// Set/get the natural length.
 	/// Manipulating the length can lead to non-physical behavior when the frequency is zero.
-	void SetLength(qreal length);
-	qreal GetLength() const;
+	void SetLength(float32 length);
+	float32 GetLength() const;
 
 	/// Set/get frequency in Hz.
-	void SetFrequency(qreal hz);
-	qreal GetFrequency() const;
+	void SetFrequency(float32 hz);
+	float32 GetFrequency() const;
 
 	/// Set/get damping ratio.
-	void SetDampingRatio(qreal ratio);
-	qreal GetDampingRatio() const;
+	void SetDampingRatio(float32 ratio);
+	float32 GetDampingRatio() const;
 
 	/// Dump joint to dmLog
 	void Dump();
@@ -110,16 +110,16 @@ protected:
 	void SolveVelocityConstraints(const b2SolverData& data);
 	bool SolvePositionConstraints(const b2SolverData& data);
 
-	qreal m_frequencyHz;
-	qreal m_dampingRatio;
-	qreal m_bias;
+	float32 m_frequencyHz;
+	float32 m_dampingRatio;
+	float32 m_bias;
 
 	// Solver shared
 	b2Vec2 m_localAnchorA;
 	b2Vec2 m_localAnchorB;
-	qreal m_gamma;
-	qreal m_impulse;
-	qreal m_length;
+	float32 m_gamma;
+	float32 m_impulse;
+	float32 m_length;
 
 	// Solver temp
 	int32 m_indexA;
@@ -129,39 +129,39 @@ protected:
 	b2Vec2 m_rB;
 	b2Vec2 m_localCenterA;
 	b2Vec2 m_localCenterB;
-	qreal m_invMassA;
-	qreal m_invMassB;
-	qreal m_invIA;
-	qreal m_invIB;
-	qreal m_mass;
+	float32 m_invMassA;
+	float32 m_invMassB;
+	float32 m_invIA;
+	float32 m_invIB;
+	float32 m_mass;
 };
 
-inline void b2DistanceJoint::SetLength(qreal length)
+inline void b2DistanceJoint::SetLength(float32 length)
 {
 	m_length = length;
 }
 
-inline qreal b2DistanceJoint::GetLength() const
+inline float32 b2DistanceJoint::GetLength() const
 {
 	return m_length;
 }
 
-inline void b2DistanceJoint::SetFrequency(qreal hz)
+inline void b2DistanceJoint::SetFrequency(float32 hz)
 {
 	m_frequencyHz = hz;
 }
 
-inline qreal b2DistanceJoint::GetFrequency() const
+inline float32 b2DistanceJoint::GetFrequency() const
 {
 	return m_frequencyHz;
 }
 
-inline void b2DistanceJoint::SetDampingRatio(qreal ratio)
+inline void b2DistanceJoint::SetDampingRatio(float32 ratio)
 {
 	m_dampingRatio = ratio;
 }
 
-inline qreal b2DistanceJoint::GetDampingRatio() const
+inline float32 b2DistanceJoint::GetDampingRatio() const
 {
 	return m_dampingRatio;
 }
