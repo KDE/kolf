@@ -35,7 +35,6 @@ include(KDECompilerSettings)
 include(KDECMakeSettings)
 
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
-add_definitions(-DTRANSLATION_DOMAIN="kolf")
 
 set(LIBKOLF_VERSION "5.0.0")
 

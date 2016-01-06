@@ -44,6 +44,8 @@ int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
 
+    KLocalizedString::setApplicationDomain("kolf");
+
 	KAboutData aboutData( "kolf", i18n("Kolf"), version, i18n(description), KAboutLicense::GPL, i18n("(c) 2002-2010, Kolf developers"),  "http://games.kde.org/kolf");
 
 	aboutData.addAuthor(i18n("Stefan Majewsky"), i18n("Current maintainer"), "majewsky@gmx.net");
