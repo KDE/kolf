@@ -110,6 +110,8 @@ int main(int argc, char **argv)
 
 	top->show();
 
+	app.setWindowIcon(QIcon::fromTheme(QStringLiteral("kolf")));
+
 	return app.exec();
 }
 
