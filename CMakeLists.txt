@@ -2,27 +2,29 @@ project(kolf)
 
 cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
 set (QT_MIN_VERSION "5.3.0")
+set (KF5_MIN_VERSION "5.15.0")
 
 find_package(ECM 1.7.0 REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets )
-find_package(KF5 REQUIRED COMPONENTS 
+find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+    Config
+    ConfigWidgets
     CoreAddons
-    Config
-    ItemModels
-    WidgetsAddons
-    WindowSystem
-    Config
+    Crash
     DBusAddons
     I18n
-    ConfigWidgets
-    TextWidgets
-    XmlGui
+    ItemModels
+    KDELibs4Support
     KIO
-    NotifyConfig
     NewStuff
-    KDELibs4Support)
+    NotifyConfig
+    TextWidgets
+    WidgetsAddons
+    WindowSystem
+    XmlGui
+)
 
 find_package(KF5KDEGames 4.9.0 REQUIRED)
 find_package(Phonon4Qt5 CONFIG REQUIRED)
@@ -38,11 +40,11 @@ add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 
 set(LIBKOLF_VERSION "5.0.0")
 
-add_subdirectory( sounds ) 
-add_subdirectory( courses ) 
-add_subdirectory( pics ) 
-add_subdirectory( graphics ) 
-add_subdirectory( doc )
+add_subdirectory(sounds)
+add_subdirectory(courses)
+add_subdirectory(pics)
+add_subdirectory(graphics)
+add_subdirectory(doc)
 
 # we have a static copy of Box2D in our source tree
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external)
@@ -96,33 +98,42 @@ set(box2d_SRCS
 
 
 set(kolf_LIB_SRCS
-   game.cpp
-   kolf.cpp
-   newgame.cpp
-   canvasitem.cpp
-   ball.cpp
-   config.cpp
-   scoreboard.cpp
-   editor.cpp
-   kcomboboxdialog.cpp
-   itemfactory.cpp
-   landscape.cpp
-   objects.cpp
-   obstacles.cpp
-   overlay.cpp
-   shape.cpp
-   utils-animateditem.cpp
-   tagaro/board.cpp
-   tagaro/scene.cpp
-   tagaro/spriteobjectitem.cpp
-   ${box2d_SRCS}
+    game.cpp
+    kolf.cpp
+    newgame.cpp
+    canvasitem.cpp
+    ball.cpp
+    config.cpp
+    scoreboard.cpp
+    editor.cpp
+    kcomboboxdialog.cpp
+    itemfactory.cpp
+    landscape.cpp
+    objects.cpp
+    obstacles.cpp
+    overlay.cpp
+    shape.cpp
+    utils-animateditem.cpp
+    tagaro/board.cpp
+    tagaro/scene.cpp
+    tagaro/spriteobjectitem.cpp
+    ${box2d_SRCS}
 )
 
 add_library(kolfprivate SHARED ${kolf_LIB_SRCS})
 
-target_link_libraries(kolfprivate  KF5::KIOCore Phonon::phonon4qt5 KF5KDEGames  KF5::KDELibs4Support Qt5::Widgets Qt5::Gui KF5::DBusAddons)
+target_link_libraries(kolfprivate
+    Qt5::Gui
+    Qt5::Widgets
+    KF5::Crash
+    KF5::DBusAddons
+    KF5::KDELibs4Support
+    KF5::KIOCore
+    Phonon::phonon4qt5
+    KF5KDEGames
+)
 
-set_target_properties(kolfprivate PROPERTIES VERSION ${LIBKOLF_VERSION} SOVERSION ${LIBKOLF_VERSION} )
+set_target_properties(kolfprivate PROPERTIES VERSION ${LIBKOLF_VERSION} SOVERSION ${LIBKOLF_VERSION})
 install(TARGETS kolfprivate ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} LIBRARY NAMELINK_SKIP)
 
 
@@ -132,17 +143,17 @@ set(kolf_SRCS main.cpp)
 
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/*-apps-kolf.png")
 ecm_add_app_icon(kolf_SRCS ICONS ${ICONS_SRCS})
-add_executable( kolf ${kolf_SRCS} )
+add_executable(kolf ${kolf_SRCS})
 
-target_link_libraries( kolf kolfprivate )
-install(TARGETS kolf  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
+target_link_libraries( kolf kolfprivate)
+install(TARGETS kolf  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### install files ###############
 
-install( PROGRAMS org.kde.kolf.desktop  DESTINATION  ${KDE_INSTALL_APPDIR} )
-install( FILES kolfui.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/kolf )
-install( FILES intro tutorial.kolf tutorial.kolfgame  DESTINATION  ${KDE_INSTALL_DATADIR}/kolf )
-#install( FILES ball.h game.h statedb.h config.h canvasitem.h object.h rtti.h vector.h floater.h slope.h  DESTINATION  ${KDE_INSTALL_INCLUDEDIR}/kolf COMPONENT Devel )
+install(PROGRAMS org.kde.kolf.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
+install(FILES kolfui.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/kolf)
+install(FILES intro tutorial.kolf tutorial.kolfgame  DESTINATION  ${KDE_INSTALL_DATADIR}/kolf)
+#install(FILES ball.h game.h statedb.h config.h canvasitem.h object.h rtti.h vector.h floater.h slope.h  DESTINATION  ${KDE_INSTALL_INCLUDEDIR}/kolf COMPONENT Devel)
 
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

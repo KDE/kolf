@@ -23,6 +23,7 @@
 #include <KDBusService>
 
 #include <KAboutData>
+#include <KCrash>
 #include <kdebug.h>
 #include <kurl.h>
 #include <kglobal.h>
@@ -62,6 +63,7 @@ int main(int argc, char **argv)
 
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
+    KCrash::initialize();
     parser.addVersionOption();
     parser.addHelpOption();
         parser.addOption(QCommandLineOption(QStringList() << QLatin1String("+file"), i18n("File")));
