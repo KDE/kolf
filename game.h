@@ -20,7 +20,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-//#define SOUND
+#define SOUND
 
 #include <kolflib_export.h>
 #include "ball.h"
