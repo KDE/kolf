@@ -6,6 +6,7 @@
   <name>Kolf</name>
   <name xml:lang="ca">Kolf</name>
   <name xml:lang="ca-valencia">Kolf</name>
+  <name xml:lang="cs">Kolf</name>
   <name xml:lang="es">Kolf</name>
   <name xml:lang="nl">Kolf</name>
   <name xml:lang="pt">Kolf</name>
@@ -16,6 +17,7 @@
   <summary>Miniature Golf</summary>
   <summary xml:lang="ca">Golf en miniatura</summary>
   <summary xml:lang="ca-valencia">Golf en miniatura</summary>
+  <summary xml:lang="cs">Miniaturní golf</summary>
   <summary xml:lang="es">Minigolf</summary>
   <summary xml:lang="nl">Miniatuurgolf</summary>
   <summary xml:lang="pt">Golfe em Miniatura</summary>
@@ -40,6 +42,7 @@
     <p>Features:</p>
     <p xml:lang="ca">Característiques:</p>
     <p xml:lang="ca-valencia">Característiques:</p>
+    <p xml:lang="cs">Vlastnosti:</p>
     <p xml:lang="es">Funciones:</p>
     <p xml:lang="nl">Mogelijkheden:</p>
     <p xml:lang="pt">Funcionalidades:</p>
@@ -60,6 +63,7 @@
       <li>High scores table</li>
       <li xml:lang="ca">Taula de puntuacions màximes</li>
       <li xml:lang="ca-valencia">Taula de puntuacions màximes</li>
+      <li xml:lang="cs">Tabulka nejvyšších skóre</li>
       <li xml:lang="es">Tabla de mejores puntuaciones</li>
       <li xml:lang="nl">Tabel met topscores</li>
       <li xml:lang="pt">Tabela de recordes</li>
@@ -69,6 +73,7 @@
       <li>Dynamic courses</li>
       <li xml:lang="ca">Camps dinàmics</li>
       <li xml:lang="ca-valencia">Camps dinàmics</li>
+      <li xml:lang="cs">Dynamické kurzy</li>
       <li xml:lang="es">Campos de golf dinámicos</li>
       <li xml:lang="nl">Dynamische banen</li>
       <li xml:lang="pt">Campos dinâmicos</li>
@@ -87,6 +92,7 @@
       <li>Course editor</li>
       <li xml:lang="ca">Editor de camps</li>
       <li xml:lang="ca-valencia">Editor de camps</li>
+      <li xml:lang="cs">Editor kurzů</li>
       <li xml:lang="es">Editor de campos de golf</li>
       <li xml:lang="nl">Bewerker van de baan</li>
       <li xml:lang="pt">Editor de campos</li>
