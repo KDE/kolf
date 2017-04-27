@@ -44,6 +44,8 @@
 #include <Box2D/Dynamics/b2Fixture.h>
 #include <Box2D/Dynamics/b2World.h>
 #include <Box2D/Dynamics/b2WorldCallbacks.h>
+#include <phonon/MediaObject>
+#include <phonon/AudioOutput>
 
 inline QString makeGroup(int id, int hole, const QString &name, int x, int y)
 {
