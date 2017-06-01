@@ -67,16 +67,16 @@ class b2DistanceJoint : public b2Joint
 {
 public:
 
-	b2Vec2 GetAnchorA() const;
-	b2Vec2 GetAnchorB() const;
+	b2Vec2 GetAnchorA() const Q_DECL_OVERRIDE;
+	b2Vec2 GetAnchorB() const Q_DECL_OVERRIDE;
 
 	/// Get the reaction force given the inverse time step.
 	/// Unit is N.
-	b2Vec2 GetReactionForce(qreal inv_dt) const;
+	b2Vec2 GetReactionForce(qreal inv_dt) const Q_DECL_OVERRIDE;
 
 	/// Get the reaction torque given the inverse time step.
 	/// Unit is N*m. This is always zero for a distance joint.
-	qreal GetReactionTorque(qreal inv_dt) const;
+	qreal GetReactionTorque(qreal inv_dt) const Q_DECL_OVERRIDE;
 
 	/// Set/get the natural length.
 	/// Manipulating the length can lead to non-physical behavior when the frequency is zero.
@@ -96,9 +96,9 @@ protected:
 	friend class b2Joint;
 	b2DistanceJoint(const b2DistanceJointDef* data);
 
-	void InitVelocityConstraints(const b2TimeStep& step);
-	void SolveVelocityConstraints(const b2TimeStep& step);
-	bool SolvePositionConstraints(qreal baumgarte);
+	void InitVelocityConstraints(const b2TimeStep& step) Q_DECL_OVERRIDE;
+	void SolveVelocityConstraints(const b2TimeStep& step) Q_DECL_OVERRIDE;
+	bool SolvePositionConstraints(qreal baumgarte) Q_DECL_OVERRIDE;
 
 	b2Vec2 m_localAnchor1;
 	b2Vec2 m_localAnchor2;

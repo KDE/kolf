@@ -42,9 +42,9 @@ namespace Kolf
 		public:
 			Bumper(QGraphicsItem* parent, b2World* world);
 
-			virtual bool collision(Ball* ball);
+			bool collision(Ball* ball) Q_DECL_OVERRIDE;
 		protected:
-			virtual Kolf::Overlay* createOverlay();
+			Kolf::Overlay* createOverlay() Q_DECL_OVERRIDE;
 		public Q_SLOTS:
 			void turnBumperOff();
 	};
@@ -54,15 +54,15 @@ namespace Kolf
 		public:
 			Wall(QGraphicsItem* parent, b2World* world);
 
-			virtual void load(KConfigGroup* cfgGroup);
-			virtual void save(KConfigGroup* cfgGroup);
+			void load(KConfigGroup* cfgGroup) Q_DECL_OVERRIDE;
+			void save(KConfigGroup* cfgGroup) Q_DECL_OVERRIDE;
 			void setVisible(bool visible);
 
 			virtual void setLine(const QLineF& line);
-			virtual void moveBy(double dx, double dy);
-			virtual QPointF getPosition() const;
+			void moveBy(double dx, double dy) Q_DECL_OVERRIDE;
+			QPointF getPosition() const Q_DECL_OVERRIDE;
 		protected:
-			virtual Kolf::Overlay* createOverlay();
+			Kolf::Overlay* createOverlay() Q_DECL_OVERRIDE;
 		private:
 			Kolf::LineShape* m_shape;
 	};
@@ -72,7 +72,7 @@ namespace Kolf
 		Q_OBJECT
 		public:
 			WallOverlay(Kolf::Wall* wall);
-			virtual void update();
+			void update() Q_DECL_OVERRIDE;
 		private Q_SLOTS:
 			//interface to handles
 			void moveHandle(const QPointF& handleScenePos);
@@ -101,21 +101,21 @@ namespace Kolf
 			bool isWallAllowed(Kolf::WallIndex index) const;
 			void setWall(Kolf::WallIndex index, bool hasWall);
 			void setWallAllowed(Kolf::WallIndex index, bool wallAllowed);
-			virtual void setSize(const QSizeF& size);
-			virtual QPointF getPosition() const;
-			virtual void moveBy(double dx, double dy);
+			void setSize(const QSizeF& size) Q_DECL_OVERRIDE;
+			QPointF getPosition() const Q_DECL_OVERRIDE;
+			void moveBy(double dx, double dy) Q_DECL_OVERRIDE;
 
 			void setWallColor(const QColor& color);
 			void applyWallStyle(Kolf::Wall* wall, bool adjustPainting = true);
 
-			virtual void load(KConfigGroup* group);
-			virtual void save(KConfigGroup* group);
+			void load(KConfigGroup* group) Q_DECL_OVERRIDE;
+			void save(KConfigGroup* group) Q_DECL_OVERRIDE;
 
-			virtual Config* config(QWidget* parent);
+			Config* config(QWidget* parent) Q_DECL_OVERRIDE;
 		Q_SIGNALS:
 			void wallChanged(Kolf::WallIndex index, bool hasWall, bool wallAllowed);
 		protected:
-			virtual Kolf::Overlay* createOverlay();
+			Kolf::Overlay* createOverlay() Q_DECL_OVERRIDE;
 			virtual void updateWallPosition();
 		private:
 			QPen m_wallPen;
@@ -129,7 +129,7 @@ namespace Kolf
 		Q_OBJECT
 		public:
 			RectangleOverlay(Kolf::RectangleItem* item);
-			virtual void update();
+			void update() Q_DECL_OVERRIDE;
 		private Q_SLOTS:
 			//interface to handles
 			void moveHandle(const QPointF& handleScenePos);
@@ -155,7 +155,7 @@ namespace Kolf
 	{
 		public:
 			Bridge(QGraphicsItem* parent, b2World* world);
-			virtual bool collision(Ball* ball);
+			bool collision(Ball* ball) Q_DECL_OVERRIDE;
 	};
 
 	class Floater : public Kolf::RectangleItem
@@ -163,20 +163,20 @@ namespace Kolf
 		Q_OBJECT
 		public:
 			Floater(QGraphicsItem* parent, b2World* world);
-			virtual void editModeChanged(bool changed);
-			virtual void moveBy(double dx, double dy);
+			void editModeChanged(bool changed) Q_DECL_OVERRIDE;
+			void moveBy(double dx, double dy) Q_DECL_OVERRIDE;
 
 			QLineF motionLine() const;
 			void setMotionLine(const QLineF& motionLine);
 			int speed() const;
-			virtual void advance(int phase);
+			void advance(int phase) Q_DECL_OVERRIDE;
 
-			virtual void load(KConfigGroup* group);
-			virtual void save(KConfigGroup* group);
+			void load(KConfigGroup* group) Q_DECL_OVERRIDE;
+			void save(KConfigGroup* group) Q_DECL_OVERRIDE;
 		public Q_SLOTS:
 			void setSpeed(int speed);
 		protected:
-			virtual Kolf::Overlay* createOverlay();
+			Kolf::Overlay* createOverlay() Q_DECL_OVERRIDE;
 		private:
 			void setMlPosition(qreal position);
 
@@ -192,7 +192,7 @@ namespace Kolf
 		Q_OBJECT
 		public:
 			FloaterOverlay(Kolf::Floater* floater);
-			virtual void update();
+			void update() Q_DECL_OVERRIDE;
 		private Q_SLOTS:
 			//interface to handles
 			void moveMotionLineHandle(const QPointF& handleScenePos);
@@ -209,10 +209,10 @@ namespace Kolf
 			Sign(QGraphicsItem* parent, b2World* world);
 
 			QString text() const;
-			virtual void setSize(const QSizeF& size);
+			void setSize(const QSizeF& size) Q_DECL_OVERRIDE;
 
-			virtual void load(KConfigGroup* group);
-			virtual void save(KConfigGroup* group);
+			void load(KConfigGroup* group) Q_DECL_OVERRIDE;
+			void save(KConfigGroup* group) Q_DECL_OVERRIDE;
 		public Q_SLOTS:
 			void setText(const QString& text);
 		private:
@@ -229,16 +229,16 @@ namespace Kolf
 
 			bool guardAtTop() const;
 			int speed() const;
-			virtual void advance(int phase);
-			virtual void moveBy(double dx, double dy);
+			void advance(int phase) Q_DECL_OVERRIDE;
+			void moveBy(double dx, double dy) Q_DECL_OVERRIDE;
 
-			virtual void load(KConfigGroup* group);
-			virtual void save(KConfigGroup* group);
+			void load(KConfigGroup* group) Q_DECL_OVERRIDE;
+			void save(KConfigGroup* group) Q_DECL_OVERRIDE;
 		public Q_SLOTS:
 			void setGuardAtTop(bool guardAtTop);
 			void setSpeed(int speed);
 		protected:
-			virtual void updateWallPosition();
+			void updateWallPosition() Q_DECL_OVERRIDE;
 		private:
 			Kolf::Wall* m_leftWall;
 			Kolf::Wall* m_rightWall;

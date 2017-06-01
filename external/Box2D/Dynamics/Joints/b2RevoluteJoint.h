@@ -90,8 +90,8 @@ struct b2RevoluteJointDef : public b2JointDef
 class b2RevoluteJoint : public b2Joint
 {
 public:
-	b2Vec2 GetAnchorA() const;
-	b2Vec2 GetAnchorB() const;
+	b2Vec2 GetAnchorA() const Q_DECL_OVERRIDE;
+	b2Vec2 GetAnchorB() const Q_DECL_OVERRIDE;
 
 	/// Get the current joint angle in radians.
 	qreal GetJointAngle() const;
@@ -131,11 +131,11 @@ public:
 
 	/// Get the reaction force given the inverse time step.
 	/// Unit is N.
-	b2Vec2 GetReactionForce(qreal inv_dt) const;
+	b2Vec2 GetReactionForce(qreal inv_dt) const Q_DECL_OVERRIDE;
 
 	/// Get the reaction torque due to the joint limit given the inverse time step.
 	/// Unit is N*m.
-	qreal GetReactionTorque(qreal inv_dt) const;
+	qreal GetReactionTorque(qreal inv_dt) const Q_DECL_OVERRIDE;
 
 	/// Get the current motor torque given the inverse time step.
 	/// Unit is N*m.
@@ -148,10 +148,10 @@ protected:
 
 	b2RevoluteJoint(const b2RevoluteJointDef* def);
 
-	void InitVelocityConstraints(const b2TimeStep& step);
-	void SolveVelocityConstraints(const b2TimeStep& step);
+	void InitVelocityConstraints(const b2TimeStep& step) Q_DECL_OVERRIDE;
+	void SolveVelocityConstraints(const b2TimeStep& step) Q_DECL_OVERRIDE;
 
-	bool SolvePositionConstraints(qreal baumgarte);
+	bool SolvePositionConstraints(qreal baumgarte) Q_DECL_OVERRIDE;
 
 	b2Vec2 m_localAnchor1;	// relative
 	b2Vec2 m_localAnchor2;

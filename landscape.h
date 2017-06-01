@@ -36,17 +36,17 @@ namespace Kolf
 
 			bool isBlinkEnabled() const;
 			int blinkInterval() const;
-			virtual void advance(int phase);
+			void advance(int phase) Q_DECL_OVERRIDE;
 
-			virtual void load(KConfigGroup* group);
-			virtual void save(KConfigGroup* group);
+			void load(KConfigGroup* group) Q_DECL_OVERRIDE;
+			void save(KConfigGroup* group) Q_DECL_OVERRIDE;
 
-			virtual Config* config(QWidget* parent);
+			Config* config(QWidget* parent) Q_DECL_OVERRIDE;
 		public Q_SLOTS:
 			void setBlinkEnabled(bool blinkEnabled);
 			void setBlinkInterval(int blinkInterval);
 		protected:
-			virtual Kolf::Overlay* createOverlay();
+			Kolf::Overlay* createOverlay() Q_DECL_OVERRIDE;
 		private:
 			bool m_blinkEnabled;
 			int m_blinkInterval, m_blinkFrame;
@@ -57,7 +57,7 @@ namespace Kolf
 		Q_OBJECT
 		public:
 			LandscapeOverlay(Kolf::LandscapeItem* item);
-			virtual void update();
+			void update() Q_DECL_OVERRIDE;
 		private Q_SLOTS:
 			//interface to handles
 			void moveHandle(const QPointF& handleScenePos);
@@ -80,14 +80,14 @@ namespace Kolf
 	{
 		public:
 			Puddle(QGraphicsItem* parent, b2World* world);
-			virtual bool collision(Ball* ball);
+			bool collision(Ball* ball) Q_DECL_OVERRIDE;
 	};
 
 	class Sand : public Kolf::LandscapeItem
 	{
 		public:
 			Sand(QGraphicsItem* parent, b2World* world);
-			virtual bool collision(Ball* ball);
+			bool collision(Ball* ball) Q_DECL_OVERRIDE;
 	};
 
 	enum SlopeType
@@ -110,25 +110,25 @@ namespace Kolf
 			Kolf::SlopeType slopeType() const;
 			bool isStuckOnGround() const;
 
-			virtual QPainterPath shape() const;
-			virtual void setSize(const QSizeF& size);
-			virtual QPointF getPosition() const;
-			virtual void moveBy(double dx, double dy);
+			QPainterPath shape() const Q_DECL_OVERRIDE;
+			void setSize(const QSizeF& size) Q_DECL_OVERRIDE;
+			QPointF getPosition() const Q_DECL_OVERRIDE;
+			void moveBy(double dx, double dy) Q_DECL_OVERRIDE;
 
-			virtual void load(KConfigGroup* group);
-			virtual void save(KConfigGroup* group);
+			void load(KConfigGroup* group) Q_DECL_OVERRIDE;
+			void save(KConfigGroup* group) Q_DECL_OVERRIDE;
 
-			virtual bool collision(Ball* ball);
-			virtual bool terrainCollisions() const;
-			virtual QList<QGraphicsItem*> infoItems() const;
-			virtual Config* config(QWidget* parent);
+			bool collision(Ball* ball) Q_DECL_OVERRIDE;
+			bool terrainCollisions() const Q_DECL_OVERRIDE;
+			QList<QGraphicsItem*> infoItems() const Q_DECL_OVERRIDE;
+			Config* config(QWidget* parent) Q_DECL_OVERRIDE;
 		public Q_SLOTS:
 			void setGrade(double grade);
 			void setReversed(bool reversed);
 			void setSlopeType(int type);
 			void setStuckOnGround(bool stuckOnGround);
 		protected:
-			virtual Kolf::Overlay* createOverlay();
+			Kolf::Overlay* createOverlay() Q_DECL_OVERRIDE;
 		private:
 			void updateAppearance();
 			void updateInfo();
@@ -152,7 +152,7 @@ namespace Kolf
 		Q_OBJECT
 		public:
 			SlopeOverlay(Kolf::Slope* slope);
-			virtual void update();
+			void update() Q_DECL_OVERRIDE;
 		private Q_SLOTS:
 			//interface to handles
 			void moveHandle(const QPointF& handleScenePos);

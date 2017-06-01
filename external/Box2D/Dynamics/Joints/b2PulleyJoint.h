@@ -86,11 +86,11 @@ struct b2PulleyJointDef : public b2JointDef
 class b2PulleyJoint : public b2Joint
 {
 public:
-	b2Vec2 GetAnchorA() const;
-	b2Vec2 GetAnchorB() const;
+	b2Vec2 GetAnchorA() const Q_DECL_OVERRIDE;
+	b2Vec2 GetAnchorB() const Q_DECL_OVERRIDE;
 
-	b2Vec2 GetReactionForce(qreal inv_dt) const;
-	qreal GetReactionTorque(qreal inv_dt) const;
+	b2Vec2 GetReactionForce(qreal inv_dt) const Q_DECL_OVERRIDE;
+	qreal GetReactionTorque(qreal inv_dt) const Q_DECL_OVERRIDE;
 
 	/// Get the first ground anchor.
 	b2Vec2 GetGroundAnchorA() const;
@@ -112,9 +112,9 @@ protected:
 	friend class b2Joint;
 	b2PulleyJoint(const b2PulleyJointDef* data);
 
-	void InitVelocityConstraints(const b2TimeStep& step);
-	void SolveVelocityConstraints(const b2TimeStep& step);
-	bool SolvePositionConstraints(qreal baumgarte);
+	void InitVelocityConstraints(const b2TimeStep& step) Q_DECL_OVERRIDE;
+	void SolveVelocityConstraints(const b2TimeStep& step) Q_DECL_OVERRIDE;
+	bool SolvePositionConstraints(qreal baumgarte) Q_DECL_OVERRIDE;
 
 	b2Vec2 m_groundAnchor1;
 	b2Vec2 m_groundAnchor2;

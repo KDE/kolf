@@ -62,16 +62,16 @@ class b2MouseJoint : public b2Joint
 public:
 
 	/// Implements b2Joint.
-	b2Vec2 GetAnchorA() const;
+	b2Vec2 GetAnchorA() const Q_DECL_OVERRIDE;
 
 	/// Implements b2Joint.
-	b2Vec2 GetAnchorB() const;
+	b2Vec2 GetAnchorB() const Q_DECL_OVERRIDE;
 
 	/// Implements b2Joint.
-	b2Vec2 GetReactionForce(qreal inv_dt) const;
+	b2Vec2 GetReactionForce(qreal inv_dt) const Q_DECL_OVERRIDE;
 
 	/// Implements b2Joint.
-	qreal GetReactionTorque(qreal inv_dt) const;
+	qreal GetReactionTorque(qreal inv_dt) const Q_DECL_OVERRIDE;
 
 	/// Use this to update the target point.
 	void SetTarget(const b2Vec2& target);
@@ -94,9 +94,9 @@ protected:
 
 	b2MouseJoint(const b2MouseJointDef* def);
 
-	void InitVelocityConstraints(const b2TimeStep& step);
-	void SolveVelocityConstraints(const b2TimeStep& step);
-	bool SolvePositionConstraints(qreal baumgarte) { B2_NOT_USED(baumgarte); return true; }
+	void InitVelocityConstraints(const b2TimeStep& step) Q_DECL_OVERRIDE;
+	void SolveVelocityConstraints(const b2TimeStep& step) Q_DECL_OVERRIDE;
+	bool SolvePositionConstraints(qreal baumgarte) Q_DECL_OVERRIDE { B2_NOT_USED(baumgarte); return true; }
 
 	b2Vec2 m_localAnchor;
 	b2Vec2 m_target;

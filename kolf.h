@@ -49,7 +49,7 @@ public slots:
 	void updateModified(bool);
 
 protected:
-	virtual bool queryClose();
+	bool queryClose() Q_DECL_OVERRIDE;
 
 protected slots:
 	void startNewGame();

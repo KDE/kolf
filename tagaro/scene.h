@@ -79,7 +79,7 @@ class Scene : public QGraphicsScene
 		///size from the sceneRect().
 		void setBackgroundBrushRenderSize(const QSize& size);
 	protected:
-		virtual bool eventFilter(QObject* watched, QEvent* event);
+		bool eventFilter(QObject* watched, QEvent* event) Q_DECL_OVERRIDE;
 	private:
 		class Private;
 		Private* const d;

@@ -60,11 +60,11 @@ struct b2GearJointDef : public b2JointDef
 class b2GearJoint : public b2Joint
 {
 public:
-	b2Vec2 GetAnchorA() const;
-	b2Vec2 GetAnchorB() const;
+	b2Vec2 GetAnchorA() const Q_DECL_OVERRIDE;
+	b2Vec2 GetAnchorB() const Q_DECL_OVERRIDE;
 
-	b2Vec2 GetReactionForce(qreal inv_dt) const;
-	qreal GetReactionTorque(qreal inv_dt) const;
+	b2Vec2 GetReactionForce(qreal inv_dt) const Q_DECL_OVERRIDE;
+	qreal GetReactionTorque(qreal inv_dt) const Q_DECL_OVERRIDE;
 
 	/// Set/Get the gear ratio.
 	void SetRatio(qreal ratio);
@@ -75,9 +75,9 @@ protected:
 	friend class b2Joint;
 	b2GearJoint(const b2GearJointDef* data);
 
-	void InitVelocityConstraints(const b2TimeStep& step);
-	void SolveVelocityConstraints(const b2TimeStep& step);
-	bool SolvePositionConstraints(qreal baumgarte);
+	void InitVelocityConstraints(const b2TimeStep& step) Q_DECL_OVERRIDE;
+	void SolveVelocityConstraints(const b2TimeStep& step) Q_DECL_OVERRIDE;
+	bool SolvePositionConstraints(qreal baumgarte) Q_DECL_OVERRIDE;
 
 	b2Body* m_ground1;
 	b2Body* m_ground2;
