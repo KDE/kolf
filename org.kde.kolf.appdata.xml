@@ -49,6 +49,7 @@
     <p xml:lang="fr">Kolf est un jeu de golf miniature. Le jeu se joue depuis une vue en hauteur, une barre représentant le club de golf. Kolf propose de nombreux types d'obstacles différents, notamment des lacs, des pentes et des trous noirs.</p>
     <p xml:lang="nl">Kolf is een miniatuur spel golf. Het spel wordt gespeeld vanuit een bovenaanzicht, met een trekstang die de golfclub representeert. Kolf heeft veel verschillende typen objecten, zoals o.a. waterplassen, hellingen, zandbakken en zwarte gaten (warps).</p>
     <p xml:lang="pt">O Kolf é um jogo de golfe em miniatura. O jogo é executado numa perspectiva de cima, com uma barra que representa o taco de golfe. O Kolf oferece diversos tipos de objectos, como poças de água, rampas, armadilhas de areia e buracos negros (portais), entre outros.</p>
+    <p xml:lang="sk">Kolf je miniatúrna golfová hra. Hra sa hrá pohľadom zhora. Obsahuje mnoho rôznych typov objektov, ako vodné prekážky, stĺpy, pieskové pasce, čierne diery a iné.</p>
     <p xml:lang="sr">Колф је игра минијатурног голфа. Игра се преко погледа одозго, и са пречком која представља палицу за голф. Колф садржи многе врсте објеката, попут водених препрека, косина, пешчаних замки и црних рупа (црвоточина).</p>
     <p xml:lang="sr-Latn">Kolf je igra minijaturnog golfa. Igra se preko pogleda odozgo, i sa prečkom koja predstavlja palicu za golf. Kolf sadrži mnoge vrste objekata, poput vodenih prepreka, kosina, peščanih zamki i crnih rupa (crvotočina).</p>
     <p xml:lang="sr-ijekavian">Колф је игра минијатурног голфа. Игра се преко погледа одозго, и са пречком која представља палицу за голф. Колф садржи многе врсте објеката, попут водених препрека, косина, пешчаних замки и црних рупа (црвоточина).</p>
@@ -81,6 +82,7 @@
       <li xml:lang="fr">Modes solo et multi-joueurs (jusqu'à 10 joueurs)</li>
       <li xml:lang="nl">Modi met enkele en meerdere spelers (tot tien spelers)</li>
       <li xml:lang="pt">Modos para um ou vários jogadores (até dez jogadores)</li>
+      <li xml:lang="sk">Režimy jedného a viacerých hráčov (do 10 hráčov)</li>
       <li xml:lang="sr">Режим за једног и више играча (до десет).</li>
       <li xml:lang="sr-Latn">Režim za jednog i više igrača (do deset).</li>
       <li xml:lang="sr-ijekavian">Режим за једног и више играча (до десет).</li>
@@ -96,6 +98,7 @@
       <li xml:lang="fr">Meilleurs scores</li>
       <li xml:lang="nl">Tabel met topscores</li>
       <li xml:lang="pt">Tabela de recordes</li>
+      <li xml:lang="sk">Tabuľka najvyššieho skóre</li>
       <li xml:lang="sr">Табела најрезултата.</li>
       <li xml:lang="sr-Latn">Tabela najrezultata.</li>
       <li xml:lang="sr-ijekavian">Табела најрезултата.</li>
@@ -111,6 +114,7 @@
       <li xml:lang="fr">Parcours dynamiques</li>
       <li xml:lang="nl">Dynamische banen</li>
       <li xml:lang="pt">Campos dinâmicos</li>
+      <li xml:lang="sk">Dynamické kurzy</li>
       <li xml:lang="sr">Динамички терени.</li>
       <li xml:lang="sr-Latn">Dinamički tereni.</li>
       <li xml:lang="sr-ijekavian">Динамички терени.</li>
@@ -125,6 +129,7 @@
       <li xml:lang="fr">Parcours téléchargeables</li>
       <li xml:lang="nl">Banen van derden</li>
       <li xml:lang="pt">Campos criados por terceiros</li>
+      <li xml:lang="sk">Kurzy tretích strán</li>
       <li xml:lang="sr">Терени са стране.</li>
       <li xml:lang="sr-Latn">Tereni sa strane.</li>
       <li xml:lang="sr-ijekavian">Терени са стране.</li>
@@ -141,6 +146,7 @@
       <li xml:lang="fr">Éditeur de parcours</li>
       <li xml:lang="nl">Bewerker van de baan</li>
       <li xml:lang="pt">Editor de campos</li>
+      <li xml:lang="sk">Editor kurzov</li>
       <li xml:lang="sr">Уређивач терена.</li>
       <li xml:lang="sr-Latn">Uređivač terena.</li>
       <li xml:lang="sr-ijekavian">Уређивач терена.</li>
