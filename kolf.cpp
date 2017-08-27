@@ -107,21 +107,21 @@ void KolfWindow::setupActions()
 	editingAction = new KToggleAction(QIcon::fromTheme( QLatin1String( "document-properties") ), i18n("&Edit"), this);
 	actionCollection()->addAction("editing", editingAction);
 	connect(editingAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
-	editingAction->setShortcut(Qt::CTRL+Qt::Key_E);
+	actionCollection()->setDefaultShortcut(editingAction, Qt::CTRL+Qt::Key_E);
 	newHoleAction = actionCollection()->addAction("newhole");
 	newHoleAction->setIcon(QIcon::fromTheme( QLatin1String( "document-new" )));
 	newHoleAction->setText(i18n("&New"));
 	connect(newHoleAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
-	newHoleAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_N);
+	actionCollection()->setDefaultShortcut(newHoleAction, Qt::CTRL+Qt::SHIFT+Qt::Key_N);
 	clearHoleAction = actionCollection()->addAction("clearhole");
 	clearHoleAction->setIcon(QIcon::fromTheme( QLatin1String( "edit-clear-locationbar-ltr" )));
 	clearHoleAction->setText(KStandardGuiItem::clear().text());
 	connect(clearHoleAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
-	clearHoleAction->setShortcut(Qt::CTRL+Qt::Key_Delete);
+	actionCollection()->setDefaultShortcut(clearHoleAction, Qt::CTRL+Qt::Key_Delete);
 	resetHoleAction = actionCollection()->addAction("resethole");
 	resetHoleAction->setText(i18n("&Reset"));
 	connect(resetHoleAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
-	resetHoleAction->setShortcut(Qt::CTRL+Qt::Key_R);
+	actionCollection()->setDefaultShortcut(resetHoleAction, Qt::CTRL+Qt::Key_R);
 	undoShotAction = KStandardAction::undo(this, SLOT(emptySlot()), this);
 	actionCollection()->addAction("undoshot", undoShotAction);
 	undoShotAction->setText(i18n("&Undo Shot"));
@@ -135,21 +135,21 @@ void KolfWindow::setupActions()
 	nextAction->setIcon(QIcon::fromTheme( QLatin1String( "go-next" )));
 	nextAction->setText(i18n("&Next Hole"));
 	connect(nextAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
-	nextAction->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Forward));
+	actionCollection()->setDefaultShortcuts(nextAction, KStandardShortcut::forward());
 	prevAction = actionCollection()->addAction("prevhole");
 	prevAction->setIcon(QIcon::fromTheme( QLatin1String( "go-previous" )));
 	prevAction->setText(i18n("&Previous Hole"));
 	connect(prevAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
-	prevAction->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Back));
+	actionCollection()->setDefaultShortcuts(prevAction, KStandardShortcut::back());
 	firstAction = actionCollection()->addAction("firsthole");
 	firstAction->setIcon(QIcon::fromTheme( QLatin1String( "go-home" )));
 	firstAction->setText(i18n("&First Hole"));
 	connect(firstAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
-	firstAction->setShortcuts(KStandardShortcut::shortcut(KStandardShortcut::Begin));
+	actionCollection()->setDefaultShortcuts(firstAction, KStandardShortcut::begin());
 	lastAction = actionCollection()->addAction("lasthole");
 	lastAction->setText(i18n("&Last Hole"));
 	connect(lastAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
-	lastAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_End); // why not KStandardShortcut::End (Ctrl+End)?
+	actionCollection()->setDefaultShortcut(lastAction, Qt::CTRL+Qt::SHIFT+Qt::Key_End); // why not KStandardShortcut::End (Ctrl+End)?
 	randAction = actionCollection()->addAction("randhole");
 	randAction->setIcon(QIcon::fromTheme( QLatin1String( "go-jump" )));
 	randAction->setText(i18n("&Random Hole"));
@@ -172,7 +172,7 @@ void KolfWindow::setupActions()
 	showInfoAction = new KToggleAction(QIcon::fromTheme( QLatin1String( "help-about")), i18n("Show &Info"), this);
 	actionCollection()->addAction("showinfo", showInfoAction);
 	connect(showInfoAction, SIGNAL(triggered(bool)), SLOT(emptySlot()));
-	showInfoAction->setShortcut(Qt::CTRL+Qt::Key_I);
+	actionCollection()->setDefaultShortcut(showInfoAction, Qt::CTRL+Qt::Key_I);
 	connect(showInfoAction, SIGNAL(toggled(bool)), this, SLOT(showInfoChanged(bool)));
 	showInfoAction->setChecked(configGroup.readEntry("showInfo", true));
 
