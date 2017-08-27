@@ -67,7 +67,7 @@ int main(int argc, char **argv)
     parser.addVersionOption();
     parser.addHelpOption();
         parser.addOption(QCommandLineOption(QStringList() << QLatin1String("+file"), i18n("File")));
-        parser.addOption(QCommandLineOption(QStringList() << QLatin1String("course-info "), i18n("Print course information and exit")));
+        parser.addOption(QCommandLineOption(QStringList() << QLatin1String("course-info"), i18n("Print course information and exit")));
 
     aboutData.setupCommandLine(&parser);
     parser.process(app);
@@ -96,8 +96,6 @@ int main(int argc, char **argv)
 			//KCmdLineArgs::usageError(i18n("Course %1 does not exist.", filename));
 		}
 	}
-
-	QApplication::setColorSpec(QApplication::ManyColor);
 
 	KolfWindow *top = new KolfWindow;
 
