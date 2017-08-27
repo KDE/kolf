@@ -36,10 +36,9 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 	: KPageDialog()
 {
 	setWindowTitle(i18n("New Game"));
-	//QT5 setButtons(Ok | Cancel);
-	//QT5 setDefaultButton(Ok);
+	buttonBox()->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	setMinimumSize(640,310);
-        connect(this, SIGNAL(okClicked()), this, SLOT(slotOk()));
+	connect(buttonBox(), SIGNAL(accepted()), this, SLOT(slotOk()));
 
 	setFaceType(KPageDialog::Tree);
 	this->enableCourses = enableCourses;
@@ -226,8 +225,6 @@ void NewGameDialog::slotOk()
 	}
 
 	config->sync();
-
-	//QT5 KDialog::accept();
 }
 
 void NewGameDialog::courseSelected(int index)
