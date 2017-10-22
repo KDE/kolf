@@ -31,10 +31,10 @@ public:
 	b2PolygonShape();
 
 	/// Implement b2Shape.
-	b2Shape* Clone(b2BlockAllocator* allocator) const;
+	b2Shape* Clone(b2BlockAllocator* allocator) const Q_DECL_OVERRIDE;
 
 	/// @see b2Shape::GetChildCount
-	int32 GetChildCount() const;
+	int32 GetChildCount() const Q_DECL_OVERRIDE;
 
 	/// Copy vertices. This assumes the vertices define a convex polygon.
 	/// It is assumed that the exterior is the the right of each edge.
@@ -54,17 +54,17 @@ public:
 	void SetAsBox(qreal hx, qreal hy, const b2Vec2& center, qreal angle);
 
 	/// @see b2Shape::TestPoint
-	bool TestPoint(const b2Transform& transform, const b2Vec2& p) const;
+	bool TestPoint(const b2Transform& transform, const b2Vec2& p) const Q_DECL_OVERRIDE;
 
 	/// Implement b2Shape.
 	bool RayCast(b2RayCastOutput* output, const b2RayCastInput& input,
-					const b2Transform& transform, int32 childIndex) const;
+					const b2Transform& transform, int32 childIndex) const Q_DECL_OVERRIDE;
 
 	/// @see b2Shape::ComputeAABB
-	void ComputeAABB(b2AABB* aabb, const b2Transform& transform, int32 childIndex) const;
+	void ComputeAABB(b2AABB* aabb, const b2Transform& transform, int32 childIndex) const Q_DECL_OVERRIDE;
 
 	/// @see b2Shape::ComputeMass
-	void ComputeMass(b2MassData* massData, qreal density) const;
+	void ComputeMass(b2MassData* massData, qreal density) const Q_DECL_OVERRIDE;
 
 	/// Get the vertex count.
 	int32 GetVertexCount() const { return m_vertexCount; }

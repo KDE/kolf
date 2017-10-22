@@ -1,11 +1,4 @@
-
-
-
-
-########### install files ###############
-
-
-kde4_install_icons( ${ICON_INSTALL_DIR}   )
+ecm_install_icons( ICONS 128-apps-kolf.png  16-apps-kolf.png  22-apps-kolf.png  32-apps-kolf.png  48-apps-kolf.png  64-apps-kolf.png DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor   )
 
 
 

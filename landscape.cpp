@@ -21,15 +21,14 @@
 #include "ball.h"
 #include "game.h"
 
+#include <QDoubleSpinBox>
 #include <QBoxLayout>
 #include <QCheckBox>
 #include <QLabel>
 #include <QSlider>
 #include <KComboBox>
 #include <KConfigGroup>
-#include <KGlobal>
-#include <KLocale>
-#include <KNumInput>
+#include <KLocalizedString>
 
 //BEGIN Kolf::LandscapeItem
 //END Kolf::LandscapeItem
@@ -253,7 +252,7 @@ struct SlopeData
 			         << QLatin1String("slope_dip");
 	}
 };
-K_GLOBAL_STATIC(SlopeData, g_slopeData)
+Q_GLOBAL_STATIC(SlopeData, g_slopeData)
 
 Kolf::Slope::Slope(QGraphicsItem* parent, b2World* world)
 	: Tagaro::SpriteObjectItem(Kolf::renderer(), QString(), parent)
@@ -581,8 +580,9 @@ Kolf::SlopeConfig::SlopeConfig(Kolf::Slope* slope, QWidget* parent)
 
 	layout->addWidget(new QLabel(i18n("Grade:"), this), 2, 0);
 
-	KDoubleNumInput* grade = new KDoubleNumInput(this);
-	grade->setRange(0, 8, 1, true);
+	QDoubleSpinBox* grade = new QDoubleSpinBox(this);
+	grade->setRange(0, 8);
+	grade->setSingleStep(1);
 	grade->setValue(slope->grade());
 	connect(grade, SIGNAL(valueChanged(double)), slope, SLOT(setGrade(double)));
 	layout->addWidget(grade, 2, 1);
@@ -638,4 +638,4 @@ void Kolf::SlopeOverlay::moveHandle(const QPointF& handleScenePos)
 
 //END Kolf::SlopeOverlay
 
-#include "landscape.moc"
+

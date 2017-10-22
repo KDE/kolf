@@ -18,55 +18,66 @@
 
 #include <QFile>
 
-#include <kapplication.h>
-#include <klocale.h>
-#include <kcmdlineargs.h>
-#include <kaboutdata.h>
+
+#include <KLocalizedString>
+#include <KDBusService>
+
+#include <KAboutData>
+#include <KCrash>
 #include <kdebug.h>
 #include <kurl.h>
 #include <kglobal.h>
 #include "kolf.h"
 
 #include <iostream>
-#include <kdemacros.h>
+#include <QApplication>
+#include <QCommandLineParser>
+#include <QCommandLineOption>
 using namespace std;
 
 static const char description[] =
 I18N_NOOP("KDE Minigolf Game");
 
-static const char version[] = "1.10"; // = KDE 4.6 Release
+static const char version[] = "1.20";
 
 
 int main(int argc, char **argv)
 {
-	KAboutData aboutData( "kolf", 0, ki18n("Kolf"), version, ki18n(description), KAboutData::License_GPL, ki18n("(c) 2002-2010, Kolf developers"), KLocalizedString(), "http://games.kde.org/kolf");
+    QApplication app(argc, argv);
 
-	aboutData.addAuthor(ki18n("Stefan Majewsky"), ki18n("Current maintainer"), "majewsky@gmx.net");
-	aboutData.addAuthor(ki18n("Jason Katz-Brown"), ki18n("Former main author"), "jasonkb@mit.edu");
-	aboutData.addAuthor(ki18n("Niklas Knutsson"), ki18n("Advanced putting mode"));
-	aboutData.addAuthor(ki18n("Rik Hemsley"), ki18n("Border around course"));
-	aboutData.addAuthor(ki18n("Timo A. Hummel"), ki18n("Some good sound effects"), "timo.hummel@gmx.net");
+    KLocalizedString::setApplicationDomain("kolf");
 
-	aboutData.addCredit(ki18n("Rob Renaud"), ki18n("Wall-bouncing help"));
-	aboutData.addCredit(ki18n("Aaron Seigo"), ki18n("Suggestions, bug reports"));
-	aboutData.addCredit(ki18n("Erin Catto"), ki18n("Developer of Box2D physics engine"));
-	aboutData.addCredit(ki18n("Ryan Cumming"), ki18n("Vector class (Kolf 1)"));
-	aboutData.addCredit(ki18n("Daniel Matza-Brown"), ki18n("Working wall-bouncing algorithm (Kolf 1)"));
+	KAboutData aboutData( "kolf", i18n("Kolf"), version, i18n(description), KAboutLicense::GPL, i18n("(c) 2002-2010, Kolf developers"),  "http://games.kde.org/kolf");
 
-	KCmdLineArgs::init(argc, argv, &aboutData);
+	aboutData.addAuthor(i18n("Stefan Majewsky"), i18n("Current maintainer"), "majewsky@gmx.net");
+	aboutData.addAuthor(i18n("Jason Katz-Brown"), i18n("Former main author"), "jasonkb@mit.edu");
+	aboutData.addAuthor(i18n("Niklas Knutsson"), i18n("Advanced putting mode"));
+	aboutData.addAuthor(i18n("Rik Hemsley"), i18n("Border around course"));
+	aboutData.addAuthor(i18n("Timo A. Hummel"), i18n("Some good sound effects"), "timo.hummel@gmx.net");
 
-	KCmdLineOptions options;
-	options.add("+file", ki18n("File"));
-	options.add("course-info ", ki18n("Print course information and exit"));
-	KCmdLineArgs::addCmdLineOptions(options);
+	aboutData.addCredit(i18n("Rob Renaud"), i18n("Wall-bouncing help"));
+	aboutData.addCredit(i18n("Aaron Seigo"), i18n("Suggestions, bug reports"));
+	aboutData.addCredit(i18n("Erin Catto"), i18n("Developer of Box2D physics engine"));
+	aboutData.addCredit(i18n("Ryan Cumming"), i18n("Vector class (Kolf 1)"));
+	aboutData.addCredit(i18n("Daniel Matza-Brown"), i18n("Working wall-bouncing algorithm (Kolf 1)"));
+
+    QCommandLineParser parser;
+    KAboutData::setApplicationData(aboutData);
+    KCrash::initialize();
+    parser.addVersionOption();
+    parser.addHelpOption();
+        parser.addOption(QCommandLineOption(QStringList() << QLatin1String("+file"), i18n("File")));
+        parser.addOption(QCommandLineOption(QStringList() << QLatin1String("course-info"), i18n("Print course information and exit")));
+
+    aboutData.setupCommandLine(&parser);
+    parser.process(app);
+    aboutData.processCommandLine(&parser);
+    KDBusService service;
 
 	// I've actually added this for my web site uploaded courses display
-	KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-	if (args->isSet("course-info"))
+	if (parser.isSet("course-info"))
 	{
-		KCmdLineArgs::enable_i18n();
-
-		QString filename(args->getOption("course-info"));
+		QString filename(parser.value("course-info"));
 		if (QFile::exists(filename))
 		{
 			CourseInfo info;
@@ -82,27 +93,25 @@ int main(int argc, char **argv)
 		}
 		else
 		{
-			KCmdLineArgs::usageError(i18n("Course %1 does not exist.", filename));
+			//KCmdLineArgs::usageError(i18n("Course %1 does not exist.", filename));
 		}
 	}
 
-	QApplication::setColorSpec(QApplication::ManyColor);
-	KApplication a;
-	KGlobal::locale()->insertCatalog( QLatin1String( "libkdegames" ));
-
 	KolfWindow *top = new KolfWindow;
 
-	if (args->count() >= 1)
+	if (parser.positionalArguments().count() >= 1)
 	{
-		KUrl url = args->url(args->count() - 1);
+		KUrl url = parser.positionalArguments().at(parser.positionalArguments().count() - 1);
 		top->openUrl(url);
-		args->clear();
+		
 	}
 	else
 		top->closeGame();
 
 	top->show();
 
-	return a.exec();
+	app.setWindowIcon(QIcon::fromTheme(QStringLiteral("kolf")));
+
+	return app.exec();
 }
 

@@ -39,6 +39,7 @@
 #include <KNumInput>
 #include <KRandom>
 #include <KStandardDirs>
+#include <KUrl>
 #include <Box2D/Dynamics/b2Body.h>
 #include <Box2D/Dynamics/Contacts/b2Contact.h>
 #include <Box2D/Dynamics/b2Fixture.h>
@@ -58,7 +59,7 @@ inline QString makeStateGroup(int id, const QString &name)
 class KolfContactListener : public b2ContactListener
 {
 	public:
-		virtual void PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
+		void PreSolve(b2Contact* contact, const b2Manifold* oldManifold) Q_DECL_OVERRIDE
 		{
 			Q_UNUSED(oldManifold)
 			CanvasItem* citemA = static_cast<CanvasItem*>(contact->GetFixtureA()->GetBody()->GetUserData());
@@ -262,7 +263,7 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	hlayout->addWidget(new QLabel(i18n("Course name: "), this));
 	KLineEdit *nameEdit = new KLineEdit(holeInfo->untranslatedName(), this);
 	hlayout->addWidget(nameEdit);
-	connect(nameEdit, SIGNAL(textChanged(QString)), this, SLOT(nameChanged(QString)));
+	connect(nameEdit, &KLineEdit::textChanged, this, &HoleConfig::nameChanged);
 
 	hlayout = new QHBoxLayout;
 	hlayout->setSpacing( spacingHint() );
@@ -270,7 +271,7 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	hlayout->addWidget(new QLabel(i18n("Course author: "), this));
 	KLineEdit *authorEdit = new KLineEdit(holeInfo->author(), this);
 	hlayout->addWidget(authorEdit);
-	connect(authorEdit, SIGNAL(textChanged(QString)), this, SLOT(authorChanged(QString)));
+	connect(authorEdit, &KLineEdit::textChanged, this, &HoleConfig::authorChanged);
 
 	layout->addStretch();
 
@@ -283,7 +284,7 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	par->setSingleStep( 1 );
 	par->setValue(holeInfo->par());
 	hlayout->addWidget(par);
-	connect(par, SIGNAL(valueChanged(int)), this, SLOT(parChanged(int)));
+	connect(par, static_cast<void (KIntSpinBox::*)(int)>(&KIntSpinBox::valueChanged), this, &HoleConfig::parChanged);
 	hlayout->addStretch();
 
 	hlayout->addWidget(new QLabel(i18n("Maximum:"), this));
@@ -295,12 +296,12 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	maxstrokes->setSpecialValueText(i18n("Unlimited"));
 	maxstrokes->setValue(holeInfo->maxStrokes());
 	hlayout->addWidget(maxstrokes);
-	connect(maxstrokes, SIGNAL(valueChanged(int)), this, SLOT(maxStrokesChanged(int)));
+	connect(maxstrokes, static_cast<void (KIntSpinBox::*)(int)>(&KIntSpinBox::valueChanged), this, &HoleConfig::maxStrokesChanged);
 
 	QCheckBox *check = new QCheckBox(i18n("Show border walls"), this);
 	check->setChecked(holeInfo->borderWalls());
 	layout->addWidget(check);
-	connect(check, SIGNAL(toggled(bool)), this, SLOT(borderWallsChanged(bool)));
+	connect(check, &QCheckBox::toggled, this, &HoleConfig::borderWallsChanged);
 }
 
 void HoleConfig::authorChanged(const QString &newauthor)
@@ -581,15 +582,15 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 	addBorderWall(QPoint(width - margin - 1, margin), QPoint(width - margin - 1, height - margin));
 
 	timer = new QTimer(this);
-	connect(timer, SIGNAL(timeout()), this, SLOT(timeout()));
+	connect(timer, &QTimer::timeout, this, &KolfGame::timeout);
 	timerMsec = 300;
 
 	fastTimer = new QTimer(this);
-	connect(fastTimer, SIGNAL(timeout()), this, SLOT(fastTimeout()));
+	connect(fastTimer, &QTimer::timeout, this, &KolfGame::fastTimeout);
 	fastTimerMsec = 11;
 
 	autoSaveTimer = new QTimer(this);
-	connect(autoSaveTimer, SIGNAL(timeout()), this, SLOT(autoSaveTimeout()));
+	connect(autoSaveTimer, &QTimer::timeout, this, &KolfGame::autoSaveTimeout);
 	autoSaveMsec = 5 * 1000 * 60; // 5 min autosave
 
 	// setUseAdvancedPutting() sets maxStrength!
@@ -597,7 +598,7 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 
 	putting = false;
 	putterTimer = new QTimer(this);
-	connect(putterTimer, SIGNAL(timeout()), this, SLOT(putterTimeout()));
+	connect(putterTimer, &QTimer::timeout, this, &KolfGame::putterTimeout);
 	putterTimerMsec = 20;
 }
 
@@ -1709,7 +1710,7 @@ void KolfGame::showInfoDlg(bool addDontShowAgain)
 	KMessageBox::information(parentWidget(),
 			i18n("Course name: %1", holeInfo.name()) + QString("\n")
 			+ i18n("Created by %1", holeInfo.author()) + QString("\n")
-			+ i18n("%1 holes", highestHole),
+			+ i18np("%1 hole", "%1 holes", highestHole),
 			i18n("Course Information"),
 			addDontShowAgain? holeInfo.name() + QString(" ") + holeInfo.author() : QString());
 }
@@ -2398,4 +2399,4 @@ CourseInfo::CourseInfo()
 {
 }
 
-#include "game.moc"
+

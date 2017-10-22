@@ -24,8 +24,8 @@
 #include <QBoxLayout>
 #include <QLabel>
 #include <KDialog>
-#include <KListWidget>
-
+#include <QListWidget>
+#include <KLocalizedString>
 Editor::Editor(const Kolf::ItemFactory& factory, QWidget *parent)
 	: QWidget(parent)
 	, m_factory(factory)
@@ -40,7 +40,7 @@ Editor::Editor(const Kolf::ItemFactory& factory, QWidget *parent)
 	vlayout->setSpacing( KDialog::spacingHint() );
 	hlayout->addLayout( vlayout );
 	vlayout->addWidget(new QLabel(i18n("Add object:"), this));
-	m_typeList = new KListWidget(this);
+	m_typeList = new QListWidget(this);
 	vlayout->addWidget(m_typeList);
 	hlayout->setStretchFactor(vlayout, 2);
 
@@ -74,4 +74,4 @@ void Editor::setItem(CanvasItem *item)
 	connect(config, SIGNAL(modified()), this, SIGNAL(changed()));
 }
 
-#include "editor.moc"
+

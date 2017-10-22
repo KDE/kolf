@@ -29,7 +29,7 @@
 class QLabel;
 class QListWidget;
 class QScrollArea;
-class KPushButton;
+class QPushButton;
 class CourseInfo;
 
 class PlayerEditor : public QWidget
@@ -81,14 +81,14 @@ private slots:
 
 private:
 	QWidget *playersWidget;
-	KPushButton *addButton;
+	QPushButton *addButton;
 	QFrame *playerPage;
 	QScrollArea *scroller;
 	QFrame *coursePage;
 	QFrame *optionsPage;
 	QList<QColor> startColors;
 	QList<PlayerEditor*> editors;
-	KPushButton *remove;
+	QPushButton *remove;
 	QCheckBox *mode;
 
 	QPixmap grass;

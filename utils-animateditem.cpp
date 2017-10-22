@@ -75,4 +75,4 @@ void Utils::AnimatedItem::paint(QPainter*, const QStyleOptionGraphicsItem*, QWid
 {
 }
 
-#include "utils-animateditem.moc"
+

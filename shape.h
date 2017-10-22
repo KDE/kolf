@@ -110,8 +110,8 @@ namespace Kolf
 			QRectF rect() const;
 			void setRect(const QRectF& rect);
 		protected:
-			virtual b2Shape* createShape();
-			virtual void createOutlines(QPainterPath& activationOutline, QPainterPath& interactionOutline);
+			b2Shape* createShape() Q_DECL_OVERRIDE;
+			void createOutlines(QPainterPath& activationOutline, QPainterPath& interactionOutline) Q_DECL_OVERRIDE;
 		private:
 			QRectF m_rect;
 	};
@@ -124,8 +124,8 @@ namespace Kolf
 			QRectF rect() const;
 			void setRect(const QRectF& rect);
 		protected:
-			virtual b2Shape* createShape();
-			virtual void createOutlines(QPainterPath& activationOutline, QPainterPath& interactionOutline);
+			b2Shape* createShape() Q_DECL_OVERRIDE;
+			void createOutlines(QPainterPath& activationOutline, QPainterPath& interactionOutline) Q_DECL_OVERRIDE;
 		private:
 			QRectF m_rect;
 	};
@@ -138,8 +138,8 @@ namespace Kolf
 			QLineF line() const;
 			void setLine(const QLineF& line);
 		protected:
-			virtual b2Shape* createShape();
-			virtual void createOutlines(QPainterPath& activationOutline, QPainterPath& interactionOutline);
+			b2Shape* createShape() Q_DECL_OVERRIDE;
+			void createOutlines(QPainterPath& activationOutline, QPainterPath& interactionOutline) Q_DECL_OVERRIDE;
 		private:
 			QLineF m_line;
 	};

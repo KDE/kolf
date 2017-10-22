@@ -19,11 +19,10 @@
 #include "scene.h"
 #include "scene_p.h"
 
-#include <QtCore/QEvent>
-#include <QtGui/QGraphicsTextItem>
-#include <QtGui/QGraphicsView>
-#include <QtGui/QStyleOptionGraphicsItem>
-#include <QtGui/QTextDocument>
+#include <QEvent>
+#include <QGraphicsTextItem>
+#include <QGraphicsView>
+#include <QStyleOptionGraphicsItem>
 
 Tagaro::Scene::Private::Private(KGameRenderer* backgroundRenderer, const QString& backgroundSpriteKey, Tagaro::Scene* parent)
 	: KGameRendererClient(backgroundRenderer, backgroundSpriteKey)
@@ -147,5 +146,5 @@ void Tagaro::Scene::Private::receivePixmap(const QPixmap& pixmap)
 }
 
 //END background brush stuff
+#include "moc_scene.cpp"
 
-#include "scene.moc"

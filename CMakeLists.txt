@@ -1,24 +1,50 @@
 project(kolf)
 
-if(NOT COMPILING_KDEGAMES)
-	find_package(KDE4 REQUIRED)
-	include(KDE4Defaults)
-	include(MacroLibrary)
-	find_package(KDEGames 4.9.0 REQUIRED)
+cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
+set (QT_MIN_VERSION "5.3.0")
+set (KF5_MIN_VERSION "5.15.0")
 
-	add_definitions(${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
-	add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
-	include_directories(${KDEGAMES_INCLUDE_DIRS} ${KDE4_INCLUDES} ${QDBUS_INCLUDE_DIRS})
-endif(NOT COMPILING_KDEGAMES)
+find_package(ECM 1.7.0 REQUIRED CONFIG)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
+find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets )
+find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+    Config
+    ConfigWidgets
+    CoreAddons
+    Crash
+    DBusAddons
+    I18n
+    ItemModels
+    KDELibs4Support
+    KIO
+    NewStuff
+    NotifyConfig
+    TextWidgets
+    WidgetsAddons
+    WindowSystem
+    XmlGui
+)
 
-add_subdirectory( sounds ) 
-add_subdirectory( courses ) 
-add_subdirectory( pics ) 
-add_subdirectory( graphics ) 
-add_subdirectory( doc )
+find_package(KF5KDEGames 4.9.0 REQUIRED)
+find_package(Phonon4Qt5 CONFIG REQUIRED)
 
-include_directories( ${CMAKE_SOURCE_DIR}/libkdegames/highscore  )
+include(FeatureSummary)
+include(ECMAddAppIcon)
+include(ECMInstallIcons)
+include(KDEInstallDirs)
+include(KDECompilerSettings NO_POLICY_SCOPE)
+include(KDECMakeSettings)
+
+add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
+
+set(LIBKOLF_VERSION "5.0.0")
+
+add_subdirectory(sounds)
+add_subdirectory(courses)
+add_subdirectory(pics)
+add_subdirectory(graphics)
+add_subdirectory(doc)
 
 # we have a static copy of Box2D in our source tree
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external)
@@ -72,49 +98,63 @@ set(box2d_SRCS
 
 
 set(kolf_LIB_SRCS
-   game.cpp
-   kolf.cpp
-   newgame.cpp
-   canvasitem.cpp
-   ball.cpp
-   config.cpp
-   scoreboard.cpp
-   editor.cpp
-   kcomboboxdialog.cpp
-   itemfactory.cpp
-   landscape.cpp
-   objects.cpp
-   obstacles.cpp
-   overlay.cpp
-   shape.cpp
-   utils-animateditem.cpp
-   tagaro/board.cpp
-   tagaro/scene.cpp
-   tagaro/spriteobjectitem.cpp
-   ${box2d_SRCS}
+    game.cpp
+    kolf.cpp
+    newgame.cpp
+    canvasitem.cpp
+    ball.cpp
+    config.cpp
+    scoreboard.cpp
+    editor.cpp
+    kcomboboxdialog.cpp
+    itemfactory.cpp
+    landscape.cpp
+    objects.cpp
+    obstacles.cpp
+    overlay.cpp
+    shape.cpp
+    utils-animateditem.cpp
+    tagaro/board.cpp
+    tagaro/scene.cpp
+    tagaro/spriteobjectitem.cpp
+    ${box2d_SRCS}
 )
 
-kde4_add_library(kolfprivate SHARED ${kolf_LIB_SRCS})
+add_library(kolfprivate SHARED ${kolf_LIB_SRCS})
 
-target_link_libraries(kolfprivate  ${KDE4_KIO_LIBS} ${KDE4_PHONON_LIBS} kdegames )
+target_link_libraries(kolfprivate
+    Qt5::Gui
+    Qt5::Widgets
+    KF5::Crash
+    KF5::DBusAddons
+    KF5::KDELibs4Support
+    KF5::KIOCore
+    Phonon::phonon4qt5
+    KF5KDEGames
+)
 
-set_target_properties(kolfprivate PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
-install(TARGETS kolfprivate ${INSTALL_TARGETS_DEFAULT_ARGS} LIBRARY NAMELINK_SKIP)
+set_target_properties(kolfprivate PROPERTIES VERSION ${LIBKOLF_VERSION} SOVERSION ${LIBKOLF_VERSION})
+install(TARGETS kolfprivate ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} LIBRARY NAMELINK_SKIP)
 
 
 ########### next target ###############
 
 set(kolf_SRCS main.cpp)
 
-kde4_add_app_icon(kolf_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/hi*-app-kolf.png")
-kde4_add_executable( kolf ${kolf_SRCS} )
+file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/*-apps-kolf.png")
+ecm_add_app_icon(kolf_SRCS ICONS ${ICONS_SRCS})
+add_executable(kolf ${kolf_SRCS})
 
-target_link_libraries( kolf kolfprivate ${KDE4_KDEUI_LIBS})
-install(TARGETS kolf  ${INSTALL_TARGETS_DEFAULT_ARGS} )
+target_link_libraries( kolf kolfprivate)
+install(TARGETS kolf  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### install files ###############
 
-install( PROGRAMS org.kde.kolf.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
-install( FILES kolfui.rc intro tutorial.kolf tutorial.kolfgame  DESTINATION  ${DATA_INSTALL_DIR}/kolf )
-#install( FILES ball.h game.h statedb.h config.h canvasitem.h object.h rtti.h vector.h floater.h slope.h  DESTINATION  ${INCLUDE_INSTALL_DIR}/kolf COMPONENT Devel )
-install(FILES org.kde.kolf.appdata.xml DESTINATION ${SHARE_INSTALL_PREFIX}/metainfo/ )
+install(PROGRAMS org.kde.kolf.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
+install(FILES kolfui.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/kolf)
+install(FILES intro tutorial.kolf tutorial.kolfgame  DESTINATION  ${KDE_INSTALL_DATADIR}/kolf)
+#install(FILES ball.h game.h statedb.h config.h canvasitem.h object.h rtti.h vector.h floater.h slope.h  DESTINATION  ${KDE_INSTALL_INCLUDEDIR}/kolf COMPONENT Devel)
+install(FILES org.kde.kolf.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+
+
+feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
