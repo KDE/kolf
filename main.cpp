@@ -64,8 +64,6 @@ int main(int argc, char **argv)
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
     KCrash::initialize();
-    parser.addVersionOption();
-    parser.addHelpOption();
         parser.addOption(QCommandLineOption(QStringList() << QLatin1String("+file"), i18n("File")));
         parser.addOption(QCommandLineOption(QStringList() << QLatin1String("course-info"), i18n("Print course information and exit")));
 
