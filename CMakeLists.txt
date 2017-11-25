@@ -15,12 +15,8 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Crash
     DBusAddons
     I18n
-    ItemModels
     KDELibs4Support
     KIO
-    NewStuff
-    NotifyConfig
-    TextWidgets
     WidgetsAddons
     WindowSystem
     XmlGui
