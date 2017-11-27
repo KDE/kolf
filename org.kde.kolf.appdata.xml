@@ -8,6 +8,7 @@
   <name xml:lang="ca-valencia">Kolf</name>
   <name xml:lang="cs">Kolf</name>
   <name xml:lang="de">Kolf</name>
+  <name xml:lang="en-GB">Kolf</name>
   <name xml:lang="es">Kolf</name>
   <name xml:lang="fr">Kolf</name>
   <name xml:lang="it">Kolf</name>
@@ -28,6 +29,7 @@
   <summary xml:lang="ca-valencia">Golf en miniatura</summary>
   <summary xml:lang="cs">Miniaturní golf</summary>
   <summary xml:lang="de">Minigolf</summary>
+  <summary xml:lang="en-GB">Miniature Golf</summary>
   <summary xml:lang="es">Minigolf</summary>
   <summary xml:lang="fr">Golf miniature</summary>
   <summary xml:lang="it">Golf in miniatura</summary>
@@ -51,6 +53,7 @@
     <p xml:lang="ca">El Kolf és un jocs de golf en miniatura. El joc es juga amb una vista des de dalt, amb una barra d'herba que representa al club de golf. El Kolf disposa de diferents tipus d'objectes, com paranys d'aigua, desnivells, trampes de sorra, forats negres, entre altres.</p>
     <p xml:lang="ca-valencia">El Kolf és un jocs de golf en miniatura. El joc es juga amb una vista des de dalt, amb una barra d'herba que representa al club de golf. El Kolf disposa de diferents tipus d'objectes, com paranys d'aigua, desnivells, trampes de sorra, forats negres, entre altres.</p>
     <p xml:lang="de">Kolf ist ein Minigolf-Spiel. Das Spiel wird aus der Vogelperspektive gespielt, mit einem Balken, der den Golfschläger darstellt. Kolf verfügt über viele verschiedene Arten von Objekten, wie Wasserlöcher, Hänge, Sandbunker und Schwarze Löcher (Verwerfungen), und noch mehr.</p>
+    <p xml:lang="en-GB">Kolf is a miniature golf game. The game is played from an overhead view, with a short bar representing the golf club. Kolf features many different types of objects, such water hazards, slopes, sand traps, and black holes (warps), among others.</p>
     <p xml:lang="es">Kolf es un juego de minigolf desde una perspectiva aérea y con una barra que representa el club de golf. Kolf contiene diversos tipos de objetos, como obstáculos de agua, pendientes, bancos de arena y agujeros negros (deformados), entre otros</p>
     <p xml:lang="fr">Kolf est un jeu de golf miniature. Le jeu se joue depuis une vue en hauteur, une barre représentant le club de golf. Kolf propose de nombreux types d'obstacles différents, notamment des lacs, des pentes et des trous noirs.</p>
     <p xml:lang="it">Kolf è un gioco di di golf in miniatura. Il gioco si gioca da un punto di vista sopraelevato, con una barra che rappresenta la mazza da golf. Kolf contiene molti tipi di oggetti diversi, tra cui ostacoli d'acqua, pendenze, trappole di sabbia e buchi neri (deformazioni).</p>
@@ -70,6 +73,7 @@
     <p xml:lang="ca-valencia">Característiques:</p>
     <p xml:lang="cs">Vlastnosti:</p>
     <p xml:lang="de">Funktionen:</p>
+    <p xml:lang="en-GB">Features:</p>
     <p xml:lang="es">Funciones:</p>
     <p xml:lang="fr">Fonctionnalités :</p>
     <p xml:lang="it">Caratteristiche:</p>
@@ -91,6 +95,7 @@
       <li xml:lang="ca">Modes individual i multi-jugador (fins a 10 jugadors)</li>
       <li xml:lang="ca-valencia">Modes individual i multi-jugador (fins a 10 jugadors)</li>
       <li xml:lang="de">Einzel- und Mehrspielermodi, bis zu 10 Spielern</li>
+      <li xml:lang="en-GB">Single and Multi-player (up to ten players) modes</li>
       <li xml:lang="es">Modos de uno o más jugadores (hasta diez)</li>
       <li xml:lang="fr">Modes solo et multi-joueurs (jusqu'à 10 joueurs)</li>
       <li xml:lang="it">Modalità a uno o più giocatori (fino a dieci)</li>
@@ -110,6 +115,7 @@
       <li xml:lang="ca-valencia">Taula de puntuacions màximes</li>
       <li xml:lang="cs">Tabulka nejvyšších skóre</li>
       <li xml:lang="de">Bestenliste</li>
+      <li xml:lang="en-GB">High scores table</li>
       <li xml:lang="es">Tabla de mejores puntuaciones</li>
       <li xml:lang="fr">Meilleurs scores</li>
       <li xml:lang="it">Tabellone dei migliori punteggi</li>
@@ -129,6 +135,7 @@
       <li xml:lang="ca-valencia">Camps dinàmics</li>
       <li xml:lang="cs">Dynamické kurzy</li>
       <li xml:lang="de">Dynamische Golfplätze</li>
+      <li xml:lang="en-GB">Dynamic courses</li>
       <li xml:lang="es">Campos de golf dinámicos</li>
       <li xml:lang="fr">Parcours dynamiques</li>
       <li xml:lang="it">Percorsi dinamici</li>
@@ -147,6 +154,7 @@
       <li xml:lang="ca">Camps de tercers</li>
       <li xml:lang="ca-valencia">Camps de tercers</li>
       <li xml:lang="de">Golfplätze anderer Anbieter</li>
+      <li xml:lang="en-GB">Third-party courses</li>
       <li xml:lang="es">Campos de golf de terceras partes</li>
       <li xml:lang="fr">Parcours téléchargeables</li>
       <li xml:lang="it">Percorsi di terze parti</li>
@@ -166,6 +174,7 @@
       <li xml:lang="ca-valencia">Editor de camps</li>
       <li xml:lang="cs">Editor kurzů</li>
       <li xml:lang="de">Golfplatz-Editor</li>
+      <li xml:lang="en-GB">Course editor</li>
       <li xml:lang="es">Editor de campos de golf</li>
       <li xml:lang="fr">Éditeur de parcours</li>
       <li xml:lang="it">Editor dei percorsi</li>
