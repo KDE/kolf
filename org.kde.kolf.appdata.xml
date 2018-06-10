@@ -16,6 +16,7 @@
   <name xml:lang="gl">Kolf</name>
   <name xml:lang="it">Kolf</name>
   <name xml:lang="nl">Kolf</name>
+  <name xml:lang="nn">Kolf</name>
   <name xml:lang="pl">Kolf</name>
   <name xml:lang="pt">Kolf</name>
   <name xml:lang="pt-BR">Kolf</name>
@@ -42,6 +43,7 @@
   <summary xml:lang="gl">Golf en miniatura</summary>
   <summary xml:lang="it">Golf in miniatura</summary>
   <summary xml:lang="nl">Miniatuurgolf</summary>
+  <summary xml:lang="nn">Minigolf</summary>
   <summary xml:lang="pl">Miniaturowy golf</summary>
   <summary xml:lang="pt">Golfe em Miniatura</summary>
   <summary xml:lang="pt-BR">Mini-Golf</summary>
@@ -70,6 +72,7 @@
     <p xml:lang="gl">Kolf é un xogo de golf en miniatura. Xógase cunha vista aérea, cunha barra curta que representa o pau de golf. Kolf conta con moitos tipos distintos de obxectos, como obstáculos de auga, rampas, trampas de area, e buratos negros (teleportación), entre outros.</p>
     <p xml:lang="it">Kolf è un gioco di di golf in miniatura. Il gioco si gioca da un punto di vista sopraelevato, con una barra che rappresenta la mazza da golf. Kolf contiene molti tipi di oggetti diversi, tra cui ostacoli d'acqua, pendenze, trappole di sabbia e buchi neri (deformazioni).</p>
     <p xml:lang="nl">Kolf is een miniatuur spel golf. Het spel wordt gespeeld vanuit een bovenaanzicht, met een trekstang die de golfclub representeert. Kolf heeft veel verschillende typen objecten, zoals o.a. waterplassen, hellingen, zandbakken en zwarte gaten (warps).</p>
+    <p xml:lang="nn">Kolf er eit minigolfspel. Ein ser golfbana frå fugleperspektiv, der ei kort linje representerer golfkølla. Det finst òg mange hinder, som vatn, bakkar, bunkerar og svarte hòl.</p>
     <p xml:lang="pl">Kolf jest grą w miniaturowego golfa. Gra się w widoku z góry, gdzie pasek hort stanowi kije golfowe. Kolf posiada wiele różnych rodzajów obiektów, takich jak woda, pochylenia, piasek, czarne dziury i inne.</p>
     <p xml:lang="pt">O Kolf é um jogo de golfe em miniatura. O jogo é executado numa perspectiva de cima, com uma barra que representa o taco de golfe. O Kolf oferece diversos tipos de objectos, como poças de água, rampas, armadilhas de areia e buracos negros (portais), entre outros.</p>
     <p xml:lang="pt-BR">Kolf é um jogo de mini-golfe. É jogado de uma vista aérea com uma barra curta representando o clube de golfe. Kolf possui muitos tipos diferentes de objetos, como riscos de água, encostas, armadilhas de areia, buracos negros (empenamento), entre outros.</p>
@@ -94,6 +97,7 @@
     <p xml:lang="gl">Funcionalidades:</p>
     <p xml:lang="it">Caratteristiche:</p>
     <p xml:lang="nl">Mogelijkheden:</p>
+    <p xml:lang="nn">Funksjonar:</p>
     <p xml:lang="pl">Możliwości:</p>
     <p xml:lang="pt">Funcionalidades:</p>
     <p xml:lang="pt-BR">Recursos:</p>
@@ -120,6 +124,7 @@
       <li xml:lang="gl">Modos de un e varios xogadores (ata 10).</li>
       <li xml:lang="it">Modalità a uno o più giocatori (fino a dieci)</li>
       <li xml:lang="nl">Modi met enkele en meerdere spelers (tot tien spelers)</li>
+      <li xml:lang="nn">Kan vera frå éin til ti spelarar</li>
       <li xml:lang="pl">Tryb gracza pojedynczego i wielu graczy (do dziesięciu)</li>
       <li xml:lang="pt">Modos para um ou vários jogadores (até dez jogadores)</li>
       <li xml:lang="pt-BR">Modos único jogador e múltijogadores (até 10 jogadores)</li>
@@ -144,6 +149,7 @@
       <li xml:lang="gl">Táboa de mellores puntuacións.</li>
       <li xml:lang="it">Tabellone dei migliori punteggi</li>
       <li xml:lang="nl">Tabel met topscores</li>
+      <li xml:lang="nn">Rekordtavle</li>
       <li xml:lang="pl">Tablica najlepszych wyników</li>
       <li xml:lang="pt">Tabela de recordes</li>
       <li xml:lang="pt-BR">Tabela de recordes</li>
@@ -168,6 +174,7 @@
       <li xml:lang="gl">Campos dinámicos</li>
       <li xml:lang="it">Percorsi dinamici</li>
       <li xml:lang="nl">Dynamische banen</li>
+      <li xml:lang="nn">Dynamiske golfbanar</li>
       <li xml:lang="pl">Dynamiczne pola golfowe</li>
       <li xml:lang="pt">Campos dinâmicos</li>
       <li xml:lang="pt-BR">Cursos dinâmicos</li>
@@ -191,6 +198,7 @@
       <li xml:lang="gl">Campos de terceiros</li>
       <li xml:lang="it">Percorsi di terze parti</li>
       <li xml:lang="nl">Banen van derden</li>
+      <li xml:lang="nn">Nedlastbare golfbanar</li>
       <li xml:lang="pl">Dogrywane pola golfowe</li>
       <li xml:lang="pt">Campos criados por terceiros</li>
       <li xml:lang="pt-BR">Cursos de terceiros</li>
@@ -215,6 +223,7 @@
       <li xml:lang="gl">Editor de campos</li>
       <li xml:lang="it">Editor dei percorsi</li>
       <li xml:lang="nl">Bewerker van de baan</li>
+      <li xml:lang="nn">Kan laga eigne banar</li>
       <li xml:lang="pl">Edytor pól golfowych</li>
       <li xml:lang="pt">Editor de campos</li>
       <li xml:lang="pt-BR">Editor de curso</li>
