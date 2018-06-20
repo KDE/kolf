@@ -46,6 +46,7 @@ Name[sv]=Övningsbana
 Name[tr]=Öğretici Kurs
 Name[uk]=Навчальний курс
 Name[x-test]=xxTutorial Coursexx
+Name[zh_CN]=教学课程
 Name[zh_TW]=教學課程
 author=Jason Katz-Brown
 
@@ -104,6 +105,7 @@ Comment[sv]=<h3>Välkommen</h3> till Kolfs övningsbana!
 Comment[tr]=Kolf Oyununun deneme pistine <h3>hoş geldiniz!</h3> 
 Comment[uk]=<h3>Ласкаво просимо</h3> до навчального курсу з Kolf!
 Comment[x-test]=xx<h3>Welcome</h3> to the tutorial course for Kolf!xx
+Comment[zh_CN]=<h3>欢迎</h3>来到 Kolf 教学课程！
 Comment[zh_TW]=<h3>歡迎</h3>來到 Kolf 的教學課程！
 botWallVisible=true
 height=74
