@@ -45,6 +45,7 @@ Name[sv]=Omöjlig bana
 Name[tr]=İmkansız Kurs
 Name[uk]=Неймовірний курс
 Name[x-test]=xxImpossible Coursexx
+Name[zh_CN]=不可能完成的课程
 Name[zh_TW]=不可能的任務
 author=Jason Katz-Brown
 
@@ -871,6 +872,7 @@ Comment[sv]=Uppskov
 Comment[tr]=Ertele
 Comment[uk]=Перепочинок
 Comment[x-test]=xxReprievexx
+Comment[zh_CN]=暂缓
 Comment[zh_TW]=暫停
 botWallVisible=false
 height=47
