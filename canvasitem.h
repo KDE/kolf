@@ -20,7 +20,7 @@
 #ifndef KOLF_CANVASITEM_H
 #define KOLF_CANVASITEM_H
 
-#include "config.h"
+#include <config.h>
 #include "vector.h"
 #include "tagaro/spriteobjectitem.h"
 
@@ -45,7 +45,7 @@ enum RttiCodes { Rtti_NoCollision = 1001, Rtti_DontPlaceOn = 1002, Rtti_Putter =
 class CanvasItem
 {
 public:
-	CanvasItem(b2World* world);
+	explicit CanvasItem(b2World* world);
 	virtual ~CanvasItem();
 	///load your settings from the KConfigGroup, which represents a course.
 	virtual void load(KConfigGroup *) {}
@@ -59,7 +59,7 @@ public:
 	virtual bool terrainCollisions() const { return false; }
 	///Returns a Config that can be used to configure this item by the user. The default implementation returns one that says 'No configuration options'.
 	virtual Config *config(QWidget *parent) { return new DefaultConfig(parent); }
-	///Returns other items that should be moveable (besides this one of course).
+	///Returns other items that should be movable (besides this one of course).
 	virtual QList<QGraphicsItem *> moveableItems() const { return QList<QGraphicsItem *>(); }
 
 	void setId(int newId) { m_id = newId; }
@@ -201,7 +201,7 @@ class EllipticalCanvasItem : public Tagaro::SpriteObjectItem, public CanvasItem
 class ArrowItem : public QGraphicsPathItem
 {
 	public:
-		ArrowItem(QGraphicsItem* parent);
+		explicit ArrowItem(QGraphicsItem* parent);
 
 		qreal angle() const;
 		void setAngle(qreal angle);

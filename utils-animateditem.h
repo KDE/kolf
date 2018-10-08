@@ -33,7 +33,7 @@ namespace Utils
 		Q_OBJECT
 		Q_PROPERTY(qreal correct_opacity READ opacity WRITE setOpacity) //I'm talking of AnimatedItem::setOpacity, not QGraphicsItem::setOpacity!
 		public:
-			AnimatedItem(QGraphicsItem* parent = 0);
+			explicit AnimatedItem(QGraphicsItem* parent = 0);
 
 			///Returns the duration of opacity animations.
 			int animationTime() const;

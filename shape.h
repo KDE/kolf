@@ -105,7 +105,7 @@ namespace Kolf
 	class EllipseShape : public Kolf::Shape
 	{
 		public:
-			EllipseShape(const QRectF& rect);
+			explicit EllipseShape(const QRectF& rect);
 
 			QRectF rect() const;
 			void setRect(const QRectF& rect);
@@ -119,7 +119,7 @@ namespace Kolf
 	class RectShape : public Kolf::Shape
 	{
 		public:
-			RectShape(const QRectF& rect);
+			explicit RectShape(const QRectF& rect);
 
 			QRectF rect() const;
 			void setRect(const QRectF& rect);
@@ -133,7 +133,7 @@ namespace Kolf
 	class LineShape : public Kolf::Shape
 	{
 		public:
-			LineShape(const QLineF& line);
+			explicit LineShape(const QLineF& line);
 
 			QLineF line() const;
 			void setLine(const QLineF& line);

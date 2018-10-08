@@ -180,7 +180,7 @@ struct b2FatEdge
 	bool hasVertex0, hasVertex3;
 };
 
-// This lets us treate and edge shape and a polygon in the same
+// This lets us treat an edge shape and a polygon in the same
 // way in the SAT collider.
 struct b2EPProxy
 {

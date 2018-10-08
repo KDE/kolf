@@ -22,7 +22,7 @@
 
 //NOTE: Only refactored stuff goes into this header.
 
-#include "config.h"
+#include <config.h>
 #include "canvasitem.h"
 #include "overlay.h"
 
@@ -71,7 +71,7 @@ namespace Kolf
 	{
 		Q_OBJECT
 		public:
-			WallOverlay(Kolf::Wall* wall);
+			explicit WallOverlay(Kolf::Wall* wall);
 			void update() Q_DECL_OVERRIDE;
 		private Q_SLOTS:
 			//interface to handles
@@ -128,7 +128,7 @@ namespace Kolf
 	{
 		Q_OBJECT
 		public:
-			RectangleOverlay(Kolf::RectangleItem* item);
+			explicit RectangleOverlay(Kolf::RectangleItem* item);
 			void update() Q_DECL_OVERRIDE;
 		private Q_SLOTS:
 			//interface to handles
@@ -191,7 +191,7 @@ namespace Kolf
 	{
 		Q_OBJECT
 		public:
-			FloaterOverlay(Kolf::Floater* floater);
+			explicit FloaterOverlay(Kolf::Floater* floater);
 			void update() Q_DECL_OVERRIDE;
 		private Q_SLOTS:
 			//interface to handles

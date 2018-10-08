@@ -169,7 +169,7 @@ private:
 class HoleInfo : public CanvasItem
 {
 public:
-	HoleInfo(b2World* world) : CanvasItem(world) { setSimulationType(CanvasItem::NoSimulation); m_lowestMaxStrokes = 4; }
+	explicit HoleInfo(b2World* world) : CanvasItem(world) { setSimulationType(CanvasItem::NoSimulation); m_lowestMaxStrokes = 4; }
 	virtual ~HoleInfo() {}
 	void setPar(int newpar) { m_par = newpar; }
 	int par() const { return m_par; }
@@ -203,7 +203,7 @@ private:
 class StrokeCircle : public QGraphicsItem
 {
 public:
-	StrokeCircle(QGraphicsItem *parent);
+	explicit StrokeCircle(QGraphicsItem *parent);
 
 	void setValue(double v);
 	double value();

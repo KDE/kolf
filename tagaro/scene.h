@@ -41,7 +41,7 @@ class Scene : public QGraphicsScene
 	Q_OBJECT
 	public:
 		///Creates a new Tagaro::Scene instance.
-		Scene(QObject* parent = 0);
+		explicit Scene(QObject* parent = 0);
 		///@overload
 		///Initializes the renderer client for the scene background brush with
 		///the given renderer and sprite key.

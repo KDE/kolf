@@ -42,7 +42,7 @@ class Board : public QGraphicsObject
 		///The logicalSize() is initialized to (1,1). The physicalSize() is
 		///determined from the parent item's bounding rect by using the default
 		///alignment Qt::AlignCenter.
-		Board(QGraphicsItem* parent = 0);
+		explicit Board(QGraphicsItem* parent = 0);
 		///Destroys the Tagaro::Board and all its children.
 		virtual ~Board();
 

@@ -105,7 +105,7 @@ namespace Kolf
 	{
 		Q_OBJECT
 		public:
-			BlackHoleOverlay(Kolf::BlackHole* blackHole);
+			explicit BlackHoleOverlay(Kolf::BlackHole* blackHole);
 			void update() Q_DECL_OVERRIDE;
 		private Q_SLOTS:
 			//interface to handles

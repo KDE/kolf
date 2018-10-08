@@ -26,7 +26,7 @@ class Config : public QFrame
 	Q_OBJECT
 
 public:
-	Config(QWidget *parent);
+	explicit Config(QWidget *parent);
 	void ctorDone();
 
 signals:
@@ -54,7 +54,7 @@ class DefaultConfig : public MessageConfig
 	Q_OBJECT
 
 public:
-	DefaultConfig(QWidget *parent);
+	explicit DefaultConfig(QWidget *parent);
 };
 
 #endif

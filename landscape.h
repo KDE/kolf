@@ -23,7 +23,7 @@
 //NOTE: Only refactored stuff goes into this header.
 
 #include "canvasitem.h"
-#include "config.h"
+#include <config.h>
 #include "overlay.h"
 
 namespace Kolf
@@ -56,7 +56,7 @@ namespace Kolf
 	{
 		Q_OBJECT
 		public:
-			LandscapeOverlay(Kolf::LandscapeItem* item);
+			explicit LandscapeOverlay(Kolf::LandscapeItem* item);
 			void update() Q_DECL_OVERRIDE;
 		private Q_SLOTS:
 			//interface to handles
@@ -151,7 +151,7 @@ namespace Kolf
 	{
 		Q_OBJECT
 		public:
-			SlopeOverlay(Kolf::Slope* slope);
+			explicit SlopeOverlay(Kolf::Slope* slope);
 			void update() Q_DECL_OVERRIDE;
 		private Q_SLOTS:
 			//interface to handles

@@ -54,7 +54,7 @@
 		</Menu>
 	</MenuBar>
 
-	<ToolBar name="mainToolBar" fullWidth="true">
+	<ToolBar name="mainToolBar">
 		<Action name="game_new" />
 		<Action name="game_save" />
 		<Separator />
@@ -63,6 +63,4 @@
 		<Action name="prevhole" />
 		<Action name="nexthole" />
 	</ToolBar>
-
-	<StatusBar />
 </gui>
