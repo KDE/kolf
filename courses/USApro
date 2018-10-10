@@ -1,6 +1,5 @@
 [0-course@-50,-50]
 Name=USA Pro
-Name[ast]=USA Pro
 Name[bs]=USA Pro
 Name[ca]=USA Pro
 Name[ca@valencia]=USA Pro
@@ -90,7 +89,6 @@ width=840
 
 [1-sign@4,371|14]
 Comment=Daytona Beach, FL
-Comment[ast]=Sablera de Daytona, FL
 Comment[bs]=Daytona Beach, FL
 Comment[ca]=Daytona Beach, FL
 Comment[ca@valencia]=Daytona Beach, FL
@@ -321,7 +319,6 @@ width=36
 
 [10-sign@-1,360|42]
 Comment=Washington DC (Pentagon)
-Comment[ast]=Washington DC (Pentágonu)
 Comment[bs]=Vašington DC (Pentagon)
 Comment[ca]=Washington DC (Pentagon)
 Comment[ca@valencia]=Washington DC (Pentagon)
@@ -516,7 +513,6 @@ width=84
 
 [11-sign@-2,370|24]
 Comment=Palm Springs, CO
-Comment[ast]=Palm Springs, CO
 Comment[bs]=Palm Springs, CO
 Comment[ca]=Palm Springs, CO
 Comment[ca@valencia]=Palm Springs, CO
@@ -715,7 +711,6 @@ width=38
 
 [2-sign@26,345|31]
 Comment=Las Vegas, NV
-Comment[ast]=Las Vegas, NV
 Comment[bs]=Las Vegas, NV
 Comment[ca]=Las Vegas, NV
 Comment[ca@valencia]=Las Vegas, NV
@@ -913,7 +908,6 @@ par=2
 
 [3-sign@-4,358|9]
 Comment=San Francisco, CA
-Comment[ast]=San Franciscu, CA
 Comment[bs]=San Francisko, CA
 Comment[ca]=San Francisco, CA
 Comment[ca@valencia]=San Francisco, CA
@@ -1042,7 +1036,6 @@ par=3
 
 [4-sign@201,171|8]
 Comment=Grand Canyon
-Comment[ast]=Gran Cañón
 Comment[bs]=Veliki kanjon (Grand Canyon)
 Comment[ca]=Grand Canyon
 Comment[ca@valencia]=Grand Canyon
@@ -1201,7 +1194,6 @@ width=48
 
 [5-sign@219,344|10]
 Comment=Lake Tahoe, CA/NV
-Comment[ast]=Lagu Tahoe, CA/NV
 Comment[bs]=Jezero Tahoe, CA/NV
 Comment[ca]=Llac Tahoe, CA/NV
 Comment[ca@valencia]=Llac Tahoe, CA/NV
@@ -1387,7 +1379,6 @@ width=368
 
 [6-sign@3,101|17]
 Comment=Florida Keys, FL
-Comment[ast]=Cayos de Florida, FL
 Comment[bs]=Florida Keys, FL
 Comment[ca]=Els calls de Florida, FL
 Comment[ca@valencia]=Els calls de Florida, FL
@@ -1585,7 +1576,6 @@ width=40
 
 [7-sign@135,364|25]
 Comment=San Francisco, CA
-Comment[ast]=San Franciscu, CA
 Comment[bs]=San Francisko, CA
 Comment[ca]=San Francisco, CA
 Comment[ca@valencia]=San Francisco, CA
@@ -1780,7 +1770,6 @@ width=98
 
 [8-sign@137,370|19]
 Comment=Washington DC
-Comment[ast]=Washington DC
 Comment[bs]=Vašington DC
 Comment[ca]=Washington DC
 Comment[ca@valencia]=Washington DC
@@ -2043,7 +2032,6 @@ width=20
 
 [9-sign@291,368|28]
 Comment=Niagara Falls, NY
-Comment[ast]=Catarates del Niágara, NY
 Comment[bs]=Niagarini vodopadi, NY
 Comment[ca]=Cascades del Niàgara, NY
 Comment[ca@valencia]=Cascades del Niàgara, NY
