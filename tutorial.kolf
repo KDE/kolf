@@ -1,6 +1,5 @@
 [0-course@-50,-50]
 Name=Tutorial Course
-Name[ast]=Campu de tutorial
 Name[bs]=Uvodni kurs
 Name[ca]=Camp d'aprenentatge
 Name[ca@valencia]=Camp d'aprenentatge
@@ -64,7 +63,6 @@ par=2
 
 [1-sign@2,2|3]
 Comment=<h3>Welcome</h3> to the tutorial course for Kolf!
-Comment[ast]=¡<h3>Bienveníu</h3> al tutorial del campu Kolf!
 Comment[bs]=<h3>Dobro došli</h3> na tutorijal za Kolf!
 Comment[ca]=<h3>Benvingut</h3> al camp d'aprenentatge del Kolf!
 Comment[ca@valencia]=<h3>Benvingut</h3> al camp d'aprenentatge del Kolf!
@@ -116,7 +114,6 @@ width=319
 
 [1-sign@73,81|4]
 Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
-Comment[ast]=Pa pega-y a la bola, calca y caltén calcada la flecha abaxo o'l botón esquierdu del mur. El güelpe sedrá más fuerte cuanto más tiempu caltengas calcada la tecla o'l botón del mur.
 Comment[bs]=Za udariti loptu, pritisnite i držite strelicu dolje ili lijevu tipku miša. Koliko dugo držite pritisnutu tipku miša ili tipku dolje odredjuje snagu pucanja.
 Comment[ca]=Per colpejar la bola, prem la fletxa cap avall o el botó esquerre del ratolí. Com més temps mantinguis pressionat el botó del ratolí o la tecla determina la força del cop.
 Comment[ca@valencia]=Per colpejar la bola, prem la fletxa cap avall o el botó esquerre del ratolí. Com més temps mantinguis pressionat el botó del ratolí o la tecla determina la força del cop.
@@ -168,7 +165,6 @@ width=319
 
 [1-sign@74,251|7]
 Comment=To aim the putter, press the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use the mouse.
-Comment[ast]=Pa camudar al putter, calca les fleches esquierda (en sentíu contrariu a les aguyes del reló) y derecha (nel sentíu de les aguyes del reló) o usa'l mur.
 Comment[bs]=Za ciljanje, pritisnite lijevu (rotirati ulijevo) i desnu (rotirati udesno) tipku sa strelicama ili koristite miša.
 Comment[ca]=Per canviar al putter, prem cursor esquerre (en sentit contrari a les agulles del rellotge) i dret (girar en sentit de les agulles del rellotge) o usa el ratolí.
 Comment[ca@valencia]=Per canviar al putter, prem cursor esquerre (en sentit contrari a les agulles del rellotge) i dret (girar en sentit de les agulles del rellotge) o usa el ratolí.
@@ -273,7 +269,6 @@ width=112
 
 [10-sign@7,9|4]
 Comment=<h3>Bridges</h3>Bridges can have walls on the top, bottom, left, or right.
-Comment[ast]=<h3>Pontes</h3>Les pontes puen tener muros na parte cimera, baxera, esquierda o derecha.
 Comment[bs]=<h3>Mostovi</h3>Mostovi mogu imati zidove na vrhu, dnu, lijevo i desno.
 Comment[ca]=<h3>Ponts</h3>Els ponts poden tenir parets a la part superior, inferior, esquerra o dreta.
 Comment[ca@valencia]=<h3>Ponts</h3>Els ponts poden tindre parets a la part superior, inferior, esquerra o dreta.
@@ -391,7 +386,6 @@ width=172
 
 [11-sign@145,4|3]
 Comment=<h3>Everything</h3>Here's a hole that has it all. Have fun with Kolf!<br><center>-- Jason Katz-Brown</center>
-Comment[ast]=<h3>Too</h3>Equí tenemos un ḥou que lo tien too. ¡Diviértite con Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[bs]=<h3>Sve</h3>Evo rupa koje imaju sve. Zabavite se uz Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[ca]=<h3>Tot</h3>Aquí tenim un forat que ho té tot. Diverteix-te amb el Kolf!<br><center>-- Jason Katz-Brown</center>
 Comment[ca@valencia]=<h3>Tot</h3>Ací tenim un forat que ho té tot. Diverteix-te amb el Kolf!<br><center>-- Jason Katz-Brown</center>
@@ -500,7 +494,6 @@ par=2
 
 [2-sign@1,5|3]
 Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you choose <u>Hole->Show Info</u>.
-Comment[ast]=<h3>Pendientes</h3>Les pendientes son estayes con un enclín del suelu qu'emburrien la bola na direición de la pendiente. Esta direición amuésase cuando escueyes <u>Ḥou->Amosar info</u>.
 Comment[bs]=<h3>Padine</h3>Padine su na kosim područjima zbog toga što guramo loptu u smjeru nagiba. Ovaj smjer se prikazuje kada odaberete<u>Hole->Show Info</u>.
 Comment[ca]=<h3>Pendents</h3>Els pendents són àrees de terreny inclinat que empenyen la bola en la direcció del pendent. Aquesta direcció es mostra quan tries <u>Forat->Mostra informació</u>.
 Comment[ca@valencia]=<h3>Pendents</h3>Els pendents són àrees de terreny inclinat que empenyen la bola en la direcció del pendent. Aquesta direcció es mostra quan tries <u>Forat->Mostra informació</u>.
@@ -551,7 +544,6 @@ width=392
 
 [2-sign@197,198|5]
 Comment=Hit the ball onto the slope and let it roll into cup.
-Comment[ast]=Péga-y a la bola haza la pendiente y déxala rodar fasta'l vasu.
 Comment[bs]=Udari loptu na padini i pusti da se uvalja u šoljicu.
 Comment[ca]=Colpeja la bola cap al pendent i deixa que rodi fins a la tassa.
 Comment[ca@valencia]=Colpeja la bola cap al pendent i deixa que rodi fins a la tassa.
@@ -622,7 +614,6 @@ par=3
 
 [3-sign@4,4|4]
 Comment=Try out these different types of slopes.
-Comment[ast]=Prueba estes tribes de pendientes estremaes.
 Comment[bs]=Probaj različite vrste padina.
 Comment[ca]=Prova aquests diferents tipus de pistes.
 Comment[ca@valencia]=Prova aquests diferents tipus de pistes.
@@ -757,7 +748,6 @@ par=3
 
 [4-sign@6,3|3]
 Comment=The steepness of a slope is shown when you choose <u>Hole->Show Info</u>. Steepness goes from 8 (steepest) to 1 (shallowest).
-Comment[ast]=L'enclín de la pendiente amuésase cuando escueyes <u>Ḥou->Amosar info</u>. L'enclín puede tomar un valor ente 8 (máximu) y 1 (mínimu).
 Comment[bs]=Strmost padine se prikazuje kada odaberete <u>Hole->Show Info</u>. Strmost ide od 8 (najbrže) do 1 (najpliće).
 Comment[ca]=La inclinació d'un pendent, es mostra en triar <u>Forat->Mostra informació</u>. La inclinació va des de 8 (més) a 1 (menys).
 Comment[ca@valencia]=La inclinació d'un pendent, es mostra en triar <u>Forat->Mostra informació</u>. La inclinació va des de 8 (més) a 1 (menys).
@@ -836,7 +826,6 @@ par=2
 
 [5-sign@3,5|3]
 Comment=<h3>Walls</h3>Bounce the ball off of the red walls.
-Comment[ast]=<h3>Muries</h3>Rebota la bola fuera de les muralles colloraes.
 Comment[bs]=<h3>Zidovi</h3>Odbijte lopticu od crvene zidove.
 Comment[ca]=<h3>Parets</h3>Rebota la bola fora de les parets vermelles.
 Comment[ca@valencia]=<h3>Parets</h3>Rebota la bola fora de les parets vermelles.
@@ -941,7 +930,6 @@ width=78
 
 [6-sign@3,152|37]
 Comment=<h3>Sand</h3>Sand is yellow, and slows your ball down.
-Comment[ast]=<h3>Sable</h3>El sable ye mariello, y ralentiza la to bola.
 Comment[bs]=<h3>Pjesak</h3>Pjesak je žut i usporava kretanje loptice.
 Comment[ca]=<h3>Sorra</h3>La sorra és groga, i alenteix la bola.
 Comment[ca@valencia]=<h3>Sorra</h3>La sorra és groga, i alenteix la bola.
@@ -992,7 +980,6 @@ width=138
 
 [6-sign@3,5|4]
 Comment=<h3>Puddles (Water)</h3>Hitting into a puddle (blue) adds a penalty stroke to your score, and your ball is placed outside the puddle.
-Comment[ast]=<h3>Llaos (agua)</h3>Si-y das a la bola dientro del llau (azul) sumes un güelpe de penalización a la to puntuación, y la to bola allugaráse fuera del llau.
 Comment[bs]=<h3>Lokve (Voda)</h3>Udaranje u lokve (plavo) dodaje kazneni udarac na vaš rezultat, a loptica se nalazi izvan lokve.
 Comment[ca]=<h3>Llacs (aigua)</h3>Si colpeges la bola dins del llac (blau) s'afegeix un cop de penalització a la teva puntuació i la bola se situarà fora del llac.
 Comment[ca@valencia]=<h3>Llacs (aigua)</h3>Si colpeges la bola dins del llac (blau) s'afig un cop de penalització a la teva puntuació i la bola se situarà fora del llac.
@@ -1218,7 +1205,6 @@ par=2
 
 [9-sign@5,6|3]
 Comment=<h3>Floaters</h3>Floaters are moving platforms that carry a ball that lands on it. Floaters' speeds vary.
-Comment[ast]=<h3>Flotadores</h3>Los flotadores son plataformes móviles que tresporten la bola que cae sobre ellos. La velocidá de los flotadores varía.
 Comment[bs]=<h3>Pomične grede</h3>Pomične grede su pokretne platforme koje nose loptu koja padne na nju. Brzine pomičnih greda variraju.
 Comment[ca]=<h3>Flotadors</h3>Els flotadors són plataformes mòbils que transporten la bola que cau sobre ells. La velocitat dels flotadors és variable.
 Comment[ca@valencia]=<h3>Flotadors</h3>Els flotadors són plataformes mòbils que transporten la bola que cau sobre ells. La velocitat dels flotadors és variable.
