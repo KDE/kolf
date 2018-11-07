@@ -239,6 +239,7 @@
   </description>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kolf</url>
   <url type="help">http://docs.kde.org/?application=kolf</url>
+  <url type="donation">https://www.kde.org/community/donations/?app=kolf&amp;source=appdata</url>
   <screenshots>
     <screenshot type="default">
       <image>https://kde.org/images/screenshots/kolf.png</image>
