@@ -51,7 +51,7 @@ Editor::Editor(const Kolf::ItemFactory& factory, QWidget *parent)
 		item->setData(Qt::UserRole, metadata.identifier);
 		m_typeList->addItem(item);
 	}
-	connect(m_typeList, SIGNAL(executed(QListWidgetItem*)), SLOT(listboxExecuted(QListWidgetItem*)));
+	connect(m_typeList, &QListWidget::itemClicked, this, &Editor::listboxExecuted);
 }
 
 void Editor::listboxExecuted(QListWidgetItem* item)
