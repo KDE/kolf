@@ -19,6 +19,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     I18n
     KDELibs4Support
     KIO
+    TextWidgets
     WidgetsAddons
     XmlGui
 )
@@ -98,6 +99,7 @@ set(box2d_SRCS
 set(kolf_LIB_SRCS
     game.cpp
     kolf.cpp
+    kolfNumInput.cpp
     newgame.cpp
     canvasitem.cpp
     ball.cpp

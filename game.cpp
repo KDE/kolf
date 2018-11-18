@@ -30,13 +30,13 @@
 #include <QCheckBox>
 #include <QLabel>
 #include <QMouseEvent>
+#include <QSpinBox>
 #include <QTimer>
 #include <KFileDialog>
 #include <KGameRenderer>
 #include <KgTheme>
 #include <KLineEdit>
 #include <KMessageBox>
-#include <KNumInput>
 #include <KRandom>
 #include <KStandardDirs>
 #include <KUrl>
@@ -279,16 +279,16 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	hlayout->setSpacing( spacingHint() );
 	layout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Par:"), this));
-	KIntSpinBox *par = new KIntSpinBox(this);
+	QSpinBox *par = new QSpinBox(this);
 	par->setRange( 1, 15 );
 	par->setSingleStep( 1 );
 	par->setValue(holeInfo->par());
 	hlayout->addWidget(par);
-	connect(par, static_cast<void (KIntSpinBox::*)(int)>(&KIntSpinBox::valueChanged), this, &HoleConfig::parChanged);
+	connect(par, QOverload<int>::of(&QSpinBox::valueChanged), this, &HoleConfig::parChanged);
 	hlayout->addStretch();
 
 	hlayout->addWidget(new QLabel(i18n("Maximum:"), this));
-	KIntSpinBox *maxstrokes = new KIntSpinBox(this);
+	QSpinBox *maxstrokes = new QSpinBox(this);
 	maxstrokes->setRange( holeInfo->lowestMaxStrokes(), 30 );
 	maxstrokes->setSingleStep( 1 );
 	maxstrokes->setWhatsThis( i18n("Maximum number of strokes player can take on this hole."));
@@ -296,7 +296,7 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	maxstrokes->setSpecialValueText(i18n("Unlimited"));
 	maxstrokes->setValue(holeInfo->maxStrokes());
 	hlayout->addWidget(maxstrokes);
-	connect(maxstrokes, static_cast<void (KIntSpinBox::*)(int)>(&KIntSpinBox::valueChanged), this, &HoleConfig::maxStrokesChanged);
+	connect(maxstrokes, QOverload<int>::of(&QSpinBox::valueChanged), this, &HoleConfig::maxStrokesChanged);
 
 	QCheckBox *check = new QCheckBox(i18n("Show border walls"), this);
 	check->setChecked(holeInfo->borderWalls());

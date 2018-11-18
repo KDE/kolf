@@ -20,12 +20,13 @@
 #include "objects.h"
 #include "ball.h"
 #include "game.h"
+#include "kolfNumInput.h"
 #include "tagaro/board.h"
 
 #include <QFormLayout>
 #include <QTimer>
 #include <KConfigGroup>
-#include <KNumInput>
+#include <KPluralHandlingSpinBox>
 #include <KRandom>
 #include <KLocalizedString>
 //BEGIN Kolf::BlackHole
@@ -236,28 +237,28 @@ Kolf::BlackHoleConfig::BlackHoleConfig(BlackHole* blackHole, QWidget* parent)
 {
 	QFormLayout* layout = new QFormLayout(this);
 
-	KIntSpinBox* deg = new KIntSpinBox(this);
+	KPluralHandlingSpinBox* deg = new KPluralHandlingSpinBox(this);
 	deg->setRange(0, 359);
 	deg->setSingleStep(10);
 	deg->setSuffix(ki18np(" degree", " degrees"));
 	deg->setValue(m_blackHole->curExitDeg());
 	deg->setWrapping(true);
 	layout->addRow(i18n("Exiting ball angle:"), deg);
-	connect(deg, SIGNAL(valueChanged(int)), this, SLOT(degChanged(int)));
+	connect(deg, QOverload<int>::of(&KPluralHandlingSpinBox::valueChanged), this, &Kolf::BlackHoleConfig::degChanged);
 
-	KDoubleNumInput* min = new KDoubleNumInput(this);
+	kolfDoubleNumInput* min = new kolfDoubleNumInput(this);
 	min->setSizePolicy(QSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed));
 	min->setRange(0, 8);
 	min->setValue(m_blackHole->minSpeed());
 	layout->addRow(i18n("Minimum exit speed:"), min);
-	connect(min, SIGNAL(valueChanged(double)), this, SLOT(minChanged(double)));
+	connect(min, &kolfDoubleNumInput::valueChanged, this, &Kolf::BlackHoleConfig::minChanged);
 
-	KDoubleNumInput* max = new KDoubleNumInput(this);
+	kolfDoubleNumInput* max = new kolfDoubleNumInput(this);
 	max->setSizePolicy(QSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed));
 	max->setRange(0, 8);
 	max->setValue(m_blackHole->maxSpeed());
 	layout->addRow(i18n("Maximum exit speed:"), max);
-	connect(max, SIGNAL(valueChanged(double)), this, SLOT(maxChanged(double)));
+	connect(max, &kolfDoubleNumInput::valueChanged, this, &Kolf::BlackHoleConfig::maxChanged);
 }
 
 void Kolf::BlackHoleConfig::degChanged(int newdeg)
