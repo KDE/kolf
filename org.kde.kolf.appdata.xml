@@ -243,6 +243,7 @@
   <url type="donation">https://www.kde.org/community/donations/?app=kolf&amp;source=appdata</url>
   <screenshots>
     <screenshot type="default">
+      <caption>Initial screen of Kolf</caption>
       <image>https://kde.org/images/screenshots/kolf.png</image>
     </screenshot>
   </screenshots>
