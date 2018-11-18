@@ -31,7 +31,6 @@
 #include <KMessageBox>
 #include <KScoreDialog>
 #include <KSelectAction>
-#include <KStandardDirs>
 #include <KStatusBar>
 #include <KStandardAction>
 #include <KStandardGameAction>
@@ -41,6 +40,7 @@
 #include <KMimeType>
 #include <KGlobal>
 #include <QGridLayout>
+#include <QStandardPaths>
 #include <QTimer>
 
 KolfWindow::KolfWindow()
@@ -249,7 +249,7 @@ void KolfWindow::startNewGame()
 		KConfigGroup configGroup(config.group("0 Saved Game"));
 
 		if (isTutorial)
-			filename = KGlobal::dirs()->findResource("appdata", "tutorial.kolf");
+			filename = QStandardPaths::locate(QStandardPaths::AppDataLocation, QLatin1String("tutorial.kolf"));
 		else
 			filename = configGroup.readEntry("Course", QString());
 
@@ -352,7 +352,7 @@ void KolfWindow::newGame()
 
 void KolfWindow::tutorial()
 {
-	QString newfilename = KGlobal::dirs()->findResource("appdata", "tutorial.kolfgame");
+	QString newfilename = QStandardPaths::locate(QStandardPaths::DataLocation, QLatin1String("tutorial.kolfgame"));
 	if (newfilename.isNull())
 	        return;
 
@@ -415,7 +415,7 @@ void KolfWindow::createSpacer()
 	spacerPlayers.last().setId(1);
 
 	delete spacer;
-	spacer = new KolfGame(m_itemFactory, &spacerPlayers, KGlobal::dirs()->findResource("appdata", "intro"), dummy);
+	spacer = new KolfGame(m_itemFactory, &spacerPlayers, QStandardPaths::locate(QStandardPaths::AppDataLocation, QLatin1String("intro")), dummy);
 	spacer->setSound(false);
 	layout->addWidget(spacer, 0, 0);//, Qt::AlignCenter);
 	spacer->ignoreEvents(true);

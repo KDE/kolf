@@ -31,6 +31,7 @@
 #include <QLabel>
 #include <QMouseEvent>
 #include <QSpinBox>
+#include <QStandardPaths>
 #include <QTimer>
 #include <KFileDialog>
 #include <KGameRenderer>
@@ -38,7 +39,6 @@
 #include <KLineEdit>
 #include <KMessageBox>
 #include <KRandom>
-#include <KStandardDirs>
 #include <KUrl>
 #include <Box2D/Dynamics/b2Body.h>
 #include <Box2D/Dynamics/Contacts/b2Contact.h>
@@ -86,7 +86,7 @@ class KolfTheme : public KgTheme
 	public:
 		KolfTheme() : KgTheme("pics/default_theme.desktop")
 		{
-			setGraphicsPath(KStandardDirs::locate("appdata", "pics/default_theme.svgz"));
+			setGraphicsPath(QStandardPaths::locate(QStandardPaths::AppDataLocation, "pics/default_theme.svgz"));
 		}
 };
 
@@ -473,7 +473,7 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 	lastDelId = -1;
 	m_showInfo = false;
 	ballStateList.canUndo = false;
-	soundDir = KStandardDirs::locate("appdata", "sounds/");
+	soundDir = QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds", QStandardPaths::LocateDirectory);
 	dontAddStroke = false;
 	addingNewHole = false;
 	scoreboardHoles = 0;
@@ -2248,7 +2248,7 @@ void KolfGame::playSound(const QString& file, float vol)
 {
 	if (m_sound)
 	{
-		QString resFile = soundDir + file + QString::fromLatin1(".wav");
+		QString resFile = soundDir + '/' + file + QString::fromLatin1(".wav");
 
 		// not needed when all of the files are in the distribution
 		//if (!QFile::exists(resFile))

@@ -29,7 +29,7 @@
 #include <QPushButton>
 #include <KScoreDialog>
 #include <KSeparator>
-#include <KStandardDirs>
+#include <QStandardPaths>
 #include <KGlobal>
 #include <KDialog>
 NewGameDialog::NewGameDialog(bool enableCourses)
@@ -108,7 +108,16 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		externCourses = configGroup.readEntry("extra",QStringList());
 
 		/// course loading
-		const QStringList items = externCourses + KGlobal::dirs()->findAllResources("appdata", "courses/*");
+		QStringList files;
+		const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, "courses", QStandardPaths::LocateDirectory);
+		Q_FOREACH (const QString& dir, dirs) {
+			const QStringList fileNames = QDir(dir).entryList(QStringList() << QStringLiteral("*"));
+			Q_FOREACH (const QString& file, fileNames) {
+				files.append(dir + '/' + file);
+			}
+		}
+		const QStringList items = externCourses + files;
+
 		QStringList nameList;
 		const QString lastCourse(configGroup.readEntry("course", ""));
 		int curItem = 0;
