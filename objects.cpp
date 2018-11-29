@@ -158,7 +158,7 @@ bool Kolf::BlackHole::collision(Ball* ball)
 	if (m_runs > 10 && game && game->isInPlay())
 		return true;
 
-	playSound("blackholeputin");
+	game->playSound(Sound::BlackHolePutIn);
 
 	const double diff = m_maxSpeed - m_minSpeed;
 	const double newSpeed = m_minSpeed + speed / 3.75 * diff;
@@ -174,7 +174,7 @@ bool Kolf::BlackHole::collision(Ball* ball)
 	connect(timer, SIGNAL(eject(Ball*,double)), this, SLOT(eject(Ball*,double)));
 	connect(timer, SIGNAL(halfway()), this, SLOT(halfway()));
 
-	playSound("blackhole");
+	game->playSound(Sound::BlackHole);
 	return false;
 }
 
@@ -204,12 +204,12 @@ void Kolf::BlackHole::eject(Ball* ball, double speed)
 
 	m_runs++;
 
-	playSound("blackholeeject");
+	game->playSound(Sound::BlackHoleEject);
 }
 
 void Kolf::BlackHole::halfway()
 {
-	playSound("blackhole");
+	game->playSound(Sound::BlackHole);
 }
 
 void Kolf::BlackHole::load(KConfigGroup* cfgGroup)
@@ -348,7 +348,7 @@ bool Kolf::Cup::collision(Ball* ball)
 		return true;
 	//place ball in hole
 	ball->setState(Holed);
-	playSound("holed");
+	game->playSound(Sound::Holed);
 	ball->setPos(pos());
 	ball->setVelocity(Vector());
 	return false;

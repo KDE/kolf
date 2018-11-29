@@ -183,12 +183,6 @@ void CanvasItem::save(KConfigGroup *cfgGroup)
 	cfgGroup->writeEntry("dummykey", true);
 }
 
-void CanvasItem::playSound(const QString &file, double vol)
-{
-	if (game)
-		game->playSound(file, vol);
-}
-
 void CanvasItem::editModeChanged(bool editing)
 {
 	Kolf::Overlay* overlay = this->overlay();

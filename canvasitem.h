@@ -65,13 +65,10 @@ public:
 	void setId(int newId) { m_id = newId; }
 	int curId() const { return m_id; }
 
-	///Play a sound (e.g. playSound("wall") plays kdedir/share/apps/kolf/sounds/wall.wav). Optionally, specify \a vol to be between 0-1, for no sound to full volume, respectively.
-	void playSound(const QString &file, double vol = 1);
-
 	///Called on ball's collision. Return if terrain collidingItems should be processed.
 	virtual bool collision(Ball *ball) { Q_UNUSED(ball) return false; }
 
-	///Reimplement if you want extra items to have access to the game object. playSound() relies on having this.
+	///Reimplement if you want extra items to have access to the game object.
 	virtual void setGame(KolfGame *game) { this->game = game; }
 
 	QString name() const { return m_name; }

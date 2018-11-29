@@ -125,7 +125,11 @@ void Ball::collisionDetect()
 	foreach (QGraphicsItem* item, items)
 	{
 		if (item->data(0) == Rtti_NoCollision || item->data(0) == Rtti_Putter)
+		{
+			if (item->data(0) == Rtti_NoCollision)
+				game->playSound(Sound::Wall);
 			continue;
+		}
 	
 		if (!isVisible() || state == Holed)
 			return;

@@ -20,8 +20,6 @@
 #ifndef GAME_H
 #define GAME_H
 
-//#define SOUND
-
 #include <kolflib_export.h>
 #include "ball.h"
 
@@ -29,6 +27,7 @@
 
 #include <QGraphicsView>
 #include <KConfigGroup>
+#include <KgSound>
 
 class KolfGame;
 class KGameRenderer;
@@ -41,10 +40,6 @@ namespace Tagaro
 {
 	class Board;
 }
-namespace Phonon
-{
-    class MediaObject;
-}
 namespace Kolf
 {
 	class ItemFactory;
@@ -55,6 +50,17 @@ namespace Kolf
 
 enum Direction { D_Left, D_Right, Forwards, Backwards };
 enum Amount { Amount_Less, Amount_Normal, Amount_More };
+enum class Sound {
+	BlackHole,
+	BlackHoleEject,
+	BlackHolePutIn,
+	Hit,
+	Holed,
+	HoleINone,
+	Puddle,
+	Wall,
+	WooHoo
+};
 
 class BallStateInfo
 {
@@ -268,6 +274,7 @@ public:
 
 	static void scoresFromSaved(KConfig*, PlayerList &players);
 	static void courseInfo(CourseInfo &info, const QString &filename);
+	void playSound(Sound soundType);
 
 public slots:
 	void pause();
@@ -284,7 +291,6 @@ public slots:
 	void firstHole();
 	void lastHole();
 	void randHole();
-	void playSound(const QString &file, float vol = 1);
 	void showInfoDlg(bool = false);
 	void resetHole();
 	void clearHole();
@@ -412,11 +418,16 @@ private:
 	//For intro banner
 	Tagaro::SpriteObjectItem *banner;
 
-#ifdef SOUND
-    Phonon::MediaObject *m_player;
-#endif
+	KgSound m_soundBlackHole;
+	KgSound m_soundBlackHoleEject;
+	KgSound m_soundBlackHolePutIn;
+	KgSound m_soundHit;
+	KgSound m_soundHoled;
+	KgSound m_soundHoleINone;
+	KgSound m_soundPuddle;
+	KgSound m_soundWall;
+	KgSound m_soundWooHoo;
 	bool m_sound;
-	QString soundDir;
 
 	bool m_ignoreEvents;
 

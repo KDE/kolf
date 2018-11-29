@@ -25,8 +25,6 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 )
 
 find_package(KF5KDEGames 4.9.0 REQUIRED)
-# Uncomment when sound is reenabled
-# find_package(Phonon4Qt5 CONFIG REQUIRED)
 
 include(FeatureSummary)
 include(ECMAddAppIcon)
@@ -129,8 +127,6 @@ target_link_libraries(kolfprivate
     KF5::DBusAddons
     KF5::KDELibs4Support
     KF5::KIOCore
-# Uncomment when sound is reenabled
-#   Phonon::phonon4qt5
     KF5KDEGames
 )
 

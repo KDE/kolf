@@ -445,9 +445,18 @@ void StrokeCircle::paint (QPainter *p, const QStyleOptionGraphicsItem *, QWidget
 /////////////////////////////////////////
 
 KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const QString &filename, QWidget *parent)
-: QGraphicsView(parent)
-, m_factory(factory)
-, holeInfo(g_world)
+: QGraphicsView(parent),
+ m_factory(factory),
+ m_soundBlackHole(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/blackhole.wav")),
+ m_soundBlackHoleEject(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/blackholeeject.wav")),
+ m_soundBlackHolePutIn(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/blackholeputin.wav")),
+ m_soundHit(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/hit.wav")),
+ m_soundHoled(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/holed.wav")),
+ m_soundHoleINone(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/holeinone.wav")),
+ m_soundPuddle(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/puddle.wav")),
+ m_soundWall(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/wall.wav")),
+ m_soundWooHoo(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/woohoo.wav")),
+ holeInfo(g_world)
 {
 	setRenderHint(QPainter::Antialiasing);
 	// for mouse control
@@ -473,7 +482,6 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 	lastDelId = -1;
 	m_showInfo = false;
 	ballStateList.canUndo = false;
-	soundDir = QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds", QStandardPaths::LocateDirectory);
 	dontAddStroke = false;
 	addingNewHole = false;
 	scoreboardHoles = 0;
@@ -485,10 +493,6 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 	highestHole = 0;
 	recalcHighestHole = false;
 	banner = 0;
-
-#ifdef SOUND
-	m_player = Phonon::createPlayer(Phonon::GameCategory);
-#endif
 
 	holeInfo.setGame(this);
 	holeInfo.setAuthor(i18n("Course Author"));
@@ -602,6 +606,44 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 	putterTimerMsec = 20;
 }
 
+void KolfGame::playSound(Sound soundType)
+{
+	if (m_sound) {
+		switch (soundType) {
+			case Sound::BlackHole:
+				m_soundBlackHole.start();
+				break;
+			case Sound::BlackHoleEject:
+				m_soundBlackHoleEject.start();
+				break;
+			case Sound::BlackHolePutIn:
+				m_soundBlackHolePutIn.start();
+				break;
+			case Sound::Hit:
+				m_soundHit.start();
+				break;
+			case Sound::Holed:
+				m_soundHoled.start();
+				break;
+			case Sound::HoleINone:
+				m_soundHoleINone.start();
+				break;
+			case Sound::Puddle:
+				m_soundPuddle.start();
+				break;
+			case Sound::Wall:
+				m_soundWall.start();
+				break;
+			case Sound::WooHoo:
+				m_soundWooHoo.start();
+				break;
+			default:
+				qWarning() << "There was a request to play an unknown sound.";
+				break;
+		}
+	}
+}
+
 void KolfGame::startFirstHole(int hole)
 {
 	if (curHole > 0) // if there was saved game, sync scoreboard
@@ -645,9 +687,6 @@ KolfGame::~KolfGame()
 	}
 
 	delete cfg;
-#ifdef SOUND
-	delete m_player;
-#endif
 }
 
 void KolfGame::setModified(bool mod)
@@ -1050,13 +1089,11 @@ void KolfGame::timeout()
 
 		if (curScore == 1)
 		{
-			playSound("holeinone");
+			playSound(Sound::HoleINone);
 		}
 		else if (curScore <= holeInfo.par())
 		{
-			// I don't have a sound!!
-			// *sob*
-			// playSound("woohoo");
+			playSound(Sound::WooHoo);
 		}
 
 		(*curPlayer).ball()->setZValue((*curPlayer).ball()->zValue() + .1 - (.1)/(curScore));
@@ -1493,8 +1530,7 @@ void KolfGame::emitMax()
 
 void KolfGame::startBall(const Vector &velocity)
 {
-	playSound("hit");
-
+	playSound(Sound::Hit);
 	emit inPlayStart();
 	putter->setVisible(false);
 
@@ -2242,28 +2278,6 @@ void KolfGame::setSelectedItem(CanvasItem* citem)
 		}
 	}
 }
-
-#ifdef SOUND
-void KolfGame::playSound(const QString& file, float vol)
-{
-	if (m_sound)
-	{
-		QString resFile = soundDir + '/' + file + QString::fromLatin1(".wav");
-
-		// not needed when all of the files are in the distribution
-		//if (!QFile::exists(resFile))
-		//return;
-		if (vol > 1)
-			vol = 1;
-		m_player->setCurrentSource(resFile);
-		m_player->play();
-	}
-}
-#else //SOUND
-void KolfGame::playSound( const QString&, float )
-{
-}
-#endif //SOUND
 
 void HoleInfo::borderWallsChanged(bool yes)
 {

@@ -193,7 +193,7 @@ bool Kolf::Puddle::collision(Ball* ball)
 	if (!contains(ball->pos() - pos()))
 		return true;
 	//ball is visible and has reached the puddle
-	playSound("puddle");
+	game->playSound(Sound::Puddle);
 	ball->setAddStroke(ball->addStroke() + 1);
 	ball->setPlaceOnGround(true);
 	ball->setVisible(false);
