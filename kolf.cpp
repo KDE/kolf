@@ -26,7 +26,9 @@
 #include "scoreboard.h"
 
 #include <KActionCollection>
-#include <KFileDialog>
+#include <KIO/CopyJob>
+#include <KIO/Job>
+#include <KJobWidgets>
 #include <KIO/NetAccess>
 #include <KMessageBox>
 #include <KScoreDialog>
@@ -36,12 +38,16 @@
 #include <KStandardGameAction>
 #include <KStandardGuiItem>
 #include <KToggleAction>
-#include <KUrl>
 #include <KMimeType>
 #include <KGlobal>
+#include <QFileDialog>
 #include <QGridLayout>
+#include <QMimeDatabase>
+#include <QMimeType>
 #include <QStandardPaths>
+#include <QTemporaryFile>
 #include <QTimer>
+#include <QUrl>
 
 KolfWindow::KolfWindow()
     : KXmlGuiWindow(0)
@@ -543,11 +549,11 @@ void KolfWindow::save()
 
 void KolfWindow::saveAs()
 {
-	QString newfilename = KFileDialog::getSaveFileName( KUrl("kfiledialog:///kourses"),
-                                  "application/x-kourse", this, i18n("Pick Kolf Course to Save To"));
-	if (!newfilename.isNull())
+	QUrl newfile = QFileDialog::getSaveFileUrl(this, i18n("Pick Kolf Course to Save To"),
+				QUrl(), i18n("Kolf course (*.kolf)"));
+	if (!newfile.isEmpty())
 	{
-		filename = newfilename;
+		filename = newfile.url();
 		game->setFilename(filename);
 		game->save();
 		game->setFocus();
@@ -556,12 +562,12 @@ void KolfWindow::saveAs()
 
 void KolfWindow::saveGameAs()
 {
-	QString newfilename = KFileDialog::getSaveFileName( KUrl("kfiledialog:///savedkolf"),
-                                    "application/x-kolf", this, i18n("Pick Saved Game to Save To"));
-	if (newfilename.isNull())
+	QUrl newfile = QFileDialog::getSaveFileUrl(this, i18n("Pick Saved Game to Save To"),
+				QUrl(), i18n("Kolf saved game (*.kolfgame)"));
+	if (newfile.isEmpty())
 		return;
 
-	loadedGame = newfilename;
+	loadedGame = newfile.url();
 
 	saveGame();
 }
@@ -587,10 +593,10 @@ void KolfWindow::saveGame()
 
 void KolfWindow::loadGame()
 {
-	loadedGame = KFileDialog::getOpenFileName( KUrl("kfiledialog:///savedkolf"),
-			 QLatin1String("application/x-kolf"), this, i18n("Pick Kolf Saved Game"));
+	loadedGame = QFileDialog::getOpenFileUrl( this, i18n("Pick Kolf Saved Game"),
+				QUrl(), i18n("Kolf saved game (*.kolfgame)") ).url();
 
-	if (loadedGame.isNull())
+	if (loadedGame.isEmpty())
 		return;
 
 	isTutorial = false;
@@ -598,17 +604,22 @@ void KolfWindow::loadGame()
 }
 
 // called by main for command line files
-void KolfWindow::openUrl(KUrl url)
+void KolfWindow::openUrl(QUrl url)
 {
-	QString target;
-	if (KIO::NetAccess::download(url, target, this))
+	QTemporaryFile tempFile;
+	tempFile.open();
+	KIO::FileCopyJob *job = KIO::file_copy(url, QUrl::fromLocalFile(tempFile.fileName()), -1, KIO::Overwrite);
+	KJobWidgets::setWindow(job, this);
+	job->exec();
+	if (!job->error())
 	{
 		isTutorial = false;
-		QString mimeType = KMimeType::findByPath(target)->name();
+		QMimeDatabase db;
+		QString mimeType = db.mimeTypeForFile(tempFile).name();
 		if (mimeType == "application/x-kourse")
-			filename = target;
+			filename = tempFile.fileName();
 		else if (mimeType == "application/x-kolf")
-			loadedGame = target;
+			loadedGame = tempFile.fileName();
 		else
 		{
 			closeGame();

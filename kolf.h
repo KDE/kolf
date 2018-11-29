@@ -25,7 +25,7 @@
 
 #include "game.h"
 #include "itemfactory.h"
-#include <KUrl>
+#include <QUrl>
 class QGridLayout;
 class QAction;
 class KSelectAction;
@@ -42,7 +42,7 @@ public:
 	KolfWindow();
 	~KolfWindow();
 
-	void openUrl(KUrl url);
+	void openUrl(QUrl url);
 
 public slots:
 	void closeGame();

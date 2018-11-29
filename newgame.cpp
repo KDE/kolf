@@ -20,18 +20,19 @@
 #include "newgame.h"
 #include "game.h"
 
-#include <KUrl>
 #include <QBoxLayout>
+#include <QFileDialog>
 #include <QLabel>
 #include <QListWidget>
-#include <KFileDialog>
-#include <KMessageBox>
 #include <QPushButton>
+#include <QStandardPaths>
+#include <QUrl>
+#include <KDialog>
+#include <KGlobal>
+#include <KMessageBox>
 #include <KScoreDialog>
 #include <KSeparator>
-#include <QStandardPaths>
-#include <KGlobal>
-#include <KDialog>
+
 NewGameDialog::NewGameDialog(bool enableCourses)
 	: KPageDialog()
 {
@@ -54,8 +55,6 @@ NewGameDialog::NewGameDialog(bool enableCourses)
     	addPage(playerPage, i18n("Players"));
 
 	QVBoxLayout *bigLayout = new QVBoxLayout(playerPage);
-        //QT5 bigLayout->setMargin( marginHint() );
-        //QT5 bigLayout->setSpacing( spacingHint() );
 
 	addButton = new QPushButton(i18n("&New Player"), playerPage);
 	bigLayout->addWidget(addButton);
@@ -96,11 +95,8 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		pageItem->setHeader(i18n("Course"));
 		addPage(pageItem);
 		QVBoxLayout *coursePageLayout = new QVBoxLayout(coursePage);
-                //QT5 coursePageLayout->setMargin( marginHint() );
-                //QT5 coursePageLayout->setSpacing( spacingHint() );
 
 		QHBoxLayout *hlayout = new QHBoxLayout;
-                //QT5 hlayout->setSpacing( spacingHint() );
                 coursePageLayout->addLayout( hlayout );
 
 
@@ -111,7 +107,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		QStringList files;
 		const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, "courses", QStandardPaths::LocateDirectory);
 		Q_FOREACH (const QString& dir, dirs) {
-			const QStringList fileNames = QDir(dir).entryList(QStringList() << QStringLiteral("*"));
+			const QStringList fileNames = QDir(dir).entryList(QStringList() << QStringLiteral("*"), QDir::Files);
 			Q_FOREACH (const QString& file, fileNames) {
 				files.append(dir + '/' + file);
 			}
@@ -148,7 +144,6 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		connect(courseList, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 
 		QVBoxLayout *detailLayout = new QVBoxLayout;
-                //QT5 detailLayout->setSpacing( spacingHint() );
                 hlayout->addLayout( detailLayout );
 		name = new QLabel(coursePage);
 		detailLayout->addWidget(name);
@@ -156,7 +151,6 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		detailLayout->addWidget(author);
 
 		QHBoxLayout *minorLayout = new QHBoxLayout;
-                //QT5 minorLayout->setSpacing( spacingHint() );
                 detailLayout->addLayout( minorLayout );
 		par = new QLabel(coursePage);
 		minorLayout->addWidget(par);
@@ -172,7 +166,6 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		detailLayout->addWidget(new KSeparator(coursePage));
 
 		minorLayout = new QHBoxLayout;
-                //QT5 minorLayout->setSpacing( spacingHint() );
                 detailLayout->addLayout( minorLayout );
 
 		QPushButton *addCourseButton = new QPushButton(i18n("Add..."), coursePage);
@@ -194,8 +187,6 @@ NewGameDialog::NewGameDialog(bool enableCourses)
     addPage(pageItem);
 
 	QVBoxLayout *vlayout = new QVBoxLayout(optionsPage);
-        //QT5 vlayout->setMargin( marginHint() );
-        //QT5 vlayout->setSpacing( spacingHint() );
 
 	mode = new QCheckBox(i18n("&Strict mode"), optionsPage);
 	vlayout->addWidget(mode);
@@ -286,8 +277,8 @@ void NewGameDialog::selectionChanged()
 
 void NewGameDialog::addCourse()
 {
-	const QStringList files = KFileDialog::getOpenFileNames( KUrl("kfiledialog:///kourses"),
-			 QString::fromLatin1("application/x-kourse"), this, i18n("Pick Kolf Course"));
+	const QStringList files = QFileDialog::getOpenFileNames( this, i18n("Pick Kolf Course"),
+			 QString(), i18n("Saved Kolf game (*.kolfgame);;All files (*.*)") );
 
 	bool hasDuplicates = false;
 
@@ -356,7 +347,6 @@ PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent
 	: QWidget(parent)
 {
 	QHBoxLayout *layout = new QHBoxLayout(this);
-	layout->setMargin( KDialog::spacingHint() );
 
 	editor = new KLineEdit(this);
 	layout->addWidget(editor);

@@ -40,8 +40,6 @@ KComboBoxDialog::KComboBoxDialog( const QString &_text, const QStringList &_item
 	QFrame *frame = new QFrame(this);
 	setMainWidget(frame);
 	QVBoxLayout *topLayout = new QVBoxLayout( frame );
-        topLayout->setMargin( marginHint() );
-        topLayout->setSpacing( spacingHint() );
 	QLabel *label = new QLabel(_text, frame );
 	topLayout->addWidget( label, 1 );
 

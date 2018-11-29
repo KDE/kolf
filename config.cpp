@@ -21,7 +21,6 @@
 
 #include <QLabel>
 #include <QVBoxLayout>
-#include <KDialog>
 #include <KLocalizedString>
 
 Config::Config(QWidget *parent)
@@ -35,16 +34,6 @@ void Config::ctorDone()
 	startedUp = true;
 }
 
-int Config::spacingHint()
-{
-	return KDialog::spacingHint() / 2;
-}
-
-int Config::marginHint()
-{
-	return KDialog::marginHint();
-}
-
 void Config::changed()
 {
 	if (startedUp)
@@ -55,8 +44,6 @@ MessageConfig::MessageConfig(const QString &text, QWidget *parent)
 	: Config(parent)
 {
 	QVBoxLayout *layout = new QVBoxLayout(this);
-        layout->setMargin( marginHint() );
-        layout->setSpacing( spacingHint() );
 	layout->addWidget(new QLabel(text, this));
 }
 

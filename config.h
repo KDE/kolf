@@ -33,8 +33,6 @@ signals:
 	void modified();
 
 protected:
-	int spacingHint();
-	int marginHint();
 	bool startedUp;
 	void changed();
 };

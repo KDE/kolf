@@ -24,15 +24,15 @@
 
 #include <KAboutData>
 #include <KCrash>
-#include <kdebug.h>
-#include <kurl.h>
-#include <kglobal.h>
+#include <KDebug>
+#include <KGlobal>
 #include "kolf.h"
 
 #include <iostream>
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
+#include <QUrl>
 using namespace std;
 
 static const char description[] =
@@ -91,7 +91,7 @@ int main(int argc, char **argv)
 		}
 		else
 		{
-			//KCmdLineArgs::usageError(i18n("Course %1 does not exist.", filename));
+			qCritical() << i18n("Course %1 does not exist.", filename);
 		}
 	}
 
@@ -99,7 +99,7 @@ int main(int argc, char **argv)
 
 	if (parser.positionalArguments().count() >= 1)
 	{
-		KUrl url = parser.positionalArguments().at(parser.positionalArguments().count() - 1);
+		QUrl url = QUrl::fromUserInput(parser.positionalArguments().at(parser.positionalArguments().count() - 1));
 		top->openUrl(url);
 		
 	}

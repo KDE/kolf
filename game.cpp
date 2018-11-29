@@ -28,18 +28,18 @@
 #include <QApplication>
 #include <QBoxLayout>
 #include <QCheckBox>
+#include <QFileDialog>
 #include <QLabel>
 #include <QMouseEvent>
 #include <QSpinBox>
 #include <QStandardPaths>
 #include <QTimer>
-#include <KFileDialog>
+#include <QUrl>
 #include <KGameRenderer>
-#include <KgTheme>
 #include <KLineEdit>
 #include <KMessageBox>
 #include <KRandom>
-#include <KUrl>
+#include <KgTheme>
 #include <Box2D/Dynamics/b2Body.h>
 #include <Box2D/Dynamics/Contacts/b2Contact.h>
 #include <Box2D/Dynamics/b2Fixture.h>
@@ -254,11 +254,8 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	this->holeInfo = holeInfo;
 
 	QVBoxLayout *layout = new QVBoxLayout(this);
-	layout->setMargin( marginHint() );
-	layout->setSpacing( spacingHint() );
 
 	QHBoxLayout *hlayout = new QHBoxLayout;
-	hlayout->setSpacing( spacingHint() );
 	layout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Course name: "), this));
 	KLineEdit *nameEdit = new KLineEdit(holeInfo->untranslatedName(), this);
@@ -266,7 +263,6 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	connect(nameEdit, &KLineEdit::textChanged, this, &HoleConfig::nameChanged);
 
 	hlayout = new QHBoxLayout;
-	hlayout->setSpacing( spacingHint() );
 	layout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Course author: "), this));
 	KLineEdit *authorEdit = new KLineEdit(holeInfo->author(), this);
@@ -276,7 +272,6 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	layout->addStretch();
 
 	hlayout = new QHBoxLayout;
-	hlayout->setSpacing( spacingHint() );
 	layout->addLayout( hlayout );
 	hlayout->addWidget(new QLabel(i18n("Par:"), this));
 	QSpinBox *par = new QSpinBox(this);
@@ -2146,14 +2141,14 @@ void KolfGame::randHole()
 
 void KolfGame::save()
 {
-	if (filename.isNull())
+	if (filename.isEmpty())
 	{
-		QString newfilename = KFileDialog::getSaveFileName(KUrl("kfiledialog:///kourses"), 
-				"application/x-kourse", this, i18n("Pick Kolf Course to Save To"));
-		if (newfilename.isNull())
+		QUrl newfile = QFileDialog::getSaveFileUrl(this, i18n("Pick Kolf Course to Save To"), QUrl(),
+				i18n("Kolf saved course (*.kolf)"));
+		if (newfile.isEmpty())
 			return;
 
-		setFilename(newfilename);
+		setFilename(newfile.url());
 	}
 
 	emit parChanged(curHole, holeInfo.par());

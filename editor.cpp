@@ -23,7 +23,6 @@
 
 #include <QBoxLayout>
 #include <QLabel>
-#include <KDialog>
 #include <QListWidget>
 #include <KLocalizedString>
 Editor::Editor(const Kolf::ItemFactory& factory, QWidget *parent)
@@ -33,11 +32,8 @@ Editor::Editor(const Kolf::ItemFactory& factory, QWidget *parent)
 	config = 0;
 
 	hlayout = new QHBoxLayout(this);
-	hlayout->setMargin( KDialog::marginHint() );
-	hlayout->setSpacing( KDialog::spacingHint() );
 
 	QVBoxLayout *vlayout = new QVBoxLayout;
-	vlayout->setSpacing( KDialog::spacingHint() );
 	hlayout->addLayout( vlayout );
 	vlayout->addWidget(new QLabel(i18n("Add object:"), this));
 	m_typeList = new QListWidget(this);
