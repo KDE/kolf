@@ -247,7 +247,7 @@ void NewGameDialog::showHighscores()
 {
 	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Custom1 | KScoreDialog::Score, this);
 	scoreDialog->addField(KScoreDialog::Custom1, i18n("Par"), "Par");
-	scoreDialog->setConfigGroup(info[currentCourse].untranslatedName + QString(" Highscores"));
+	scoreDialog->setConfigGroup(qMakePair(QByteArray(info[currentCourse].untranslatedName.toUtf8() + " Highscores"), i18n("High Scores for %1", info[currentCourse].name)));
 	scoreDialog->setComment(i18n("High Scores for %1", info[currentCourse].name));
 	scoreDialog->show();
 }

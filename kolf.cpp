@@ -500,7 +500,7 @@ void KolfWindow::gameOver()
 		CourseInfo courseInfo;
 		game->courseInfo(courseInfo, game->curFilename());
 
-		scoreDialog->setConfigGroup(courseInfo.untranslatedName + QString(" Highscores"));
+		scoreDialog->setConfigGroup(qMakePair(QByteArray(courseInfo.untranslatedName.toUtf8() + " Highscores"), i18n("High Scores for %1", courseInfo.name)));
 
 		for (HighScoreList::Iterator it = highScores.begin(); it != highScores.end(); ++it)
 		{
@@ -527,7 +527,7 @@ void KolfWindow::showHighScores()
 	CourseInfo courseInfo;
 	game->courseInfo(courseInfo, game->curFilename());
 
-	scoreDialog->setConfigGroup(courseInfo.untranslatedName + QString(" Highscores"));
+	scoreDialog->setConfigGroup(qMakePair(QByteArray(courseInfo.untranslatedName.toUtf8() + " Highscores"), i18n("High Scores for %1", courseInfo.name)));
 	scoreDialog->setComment(i18n("High Scores for %1", courseInfo.name));
 	scoreDialog->show();
 }
