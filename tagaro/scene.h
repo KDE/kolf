@@ -81,7 +81,7 @@ class Scene : public QGraphicsScene
 	protected:
 		bool eventFilter(QObject* watched, QEvent* event) Q_DECL_OVERRIDE;
 	private:
-		class Private;
+		struct Private;
 		Private* const d;
 		Q_PRIVATE_SLOT(d, void _k_updateSceneRect(const QRectF&))
 };
