@@ -27,11 +27,11 @@
 #include <QPushButton>
 #include <QStandardPaths>
 #include <QUrl>
-#include <KDialog>
-#include <KGlobal>
+#include <KLocalizedString>
 #include <KMessageBox>
 #include <KScoreDialog>
 #include <KSeparator>
+#include <KSharedConfig>
 
 NewGameDialog::NewGameDialog(bool enableCourses)
 	: KPageDialog()

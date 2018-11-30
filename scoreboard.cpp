@@ -32,7 +32,7 @@ ScoreBoard::ScoreBoard(QWidget *parent)
 	
 	resizeColumnToContents(columnCount() - 1);
 	
-	verticalHeader()->setResizeMode(QHeaderView::Fixed);
+	verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
 	
 	doUpdateHeight();
 }

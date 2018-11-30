@@ -25,7 +25,7 @@
 #include "tagaro/spriteobjectitem.h"
 
 #include <QGraphicsRectItem>
-#include <KDebug>
+
 class b2Body;
 class b2World;
 

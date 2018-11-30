@@ -25,25 +25,32 @@
 #include "kcomboboxdialog.h"
 
 #include <QCheckBox>
+#include <QDialogButtonBox>
 #include <QLabel>
+#include <QPushButton>
 #include <QVBoxLayout>
+#include <KConfigGroup>
 #include <KHistoryComboBox>
 #include <KLocalizedString>
 
 KComboBoxDialog::KComboBoxDialog( const QString &_text, const QStringList &_items, const QString& _value, bool showDontAskAgain, QWidget *parent )
-	: KDialog( parent)
+	: QDialog( parent)
 {
-	setButtons(Ok);
-	setDefaultButton(Ok);
+	auto buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok);
+	auto mainLayout = new QVBoxLayout(this);
+	auto okButton = buttonBox->button(QDialogButtonBox::Ok);
+	okButton->setDefault(true);
+	okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+	connect(buttonBox, &QDialogButtonBox::accepted, this, &KComboBoxDialog::accept);
+	connect(buttonBox, &QDialogButtonBox::rejected, this, &KComboBoxDialog::reject);
+
 	setModal(true);
-	showButtonSeparator(true);
-	QFrame *frame = new QFrame(this);
-	setMainWidget(frame);
+	QFrame *frame = new QFrame( this );
 	QVBoxLayout *topLayout = new QVBoxLayout( frame );
 	QLabel *label = new QLabel(_text, frame );
 	topLayout->addWidget( label, 1 );
 
-	combo = new KHistoryComboBox( frame);
+	combo = new KHistoryComboBox( frame );
 	combo->setEditable(false);
 	combo->addItems( _items );
 	topLayout->addWidget( combo, 1 );
@@ -59,6 +66,14 @@ KComboBoxDialog::KComboBoxDialog( const QString &_text, const QStringList &_item
 	if ( !_value.isNull() )
 		combo->setCurrentItem( _value );
 	combo->setFocus();
+    
+	QFrame* separationLine = new QFrame();
+	separationLine->setFrameShape(QFrame::HLine);
+	separationLine->setFrameShadow(QFrame::Sunken);
+
+	mainLayout->addWidget( frame );
+	mainLayout->addWidget( separationLine );
+	mainLayout->addWidget( buttonBox );
 }
 
 KComboBoxDialog::~KComboBoxDialog()
@@ -98,7 +113,7 @@ QString KComboBoxDialog::getItem( const QString &_text, const QString &_caption,
 
 	KComboBoxDialog dlg( _text, _items, _value, !dontAskAgainName.isNull(), parent );
 	if ( !_caption.isNull() )
-		dlg.setCaption( _caption );
+		dlg.setWindowTitle( _caption );
 
 	dlg.exec();
 
@@ -122,7 +137,7 @@ QString KComboBoxDialog::getText(const QString &_caption, const QString &_text, 
 	KConfigGroup *configGroup = 0;
 	KComboBoxDialog dlg(_text, QStringList(), _value, false, parent);
 	if ( !_caption.isNull() )
-		dlg.setCaption( _caption );
+		dlg.setWindowTitle( _caption );
 
 	KHistoryComboBox * const box = dlg.comboBox();
 	box->setEditable(true);
@@ -151,5 +166,3 @@ QString KComboBoxDialog::getText(const QString &_caption, const QString &_text, 
 
 	return dlg.text();
 }
-
-

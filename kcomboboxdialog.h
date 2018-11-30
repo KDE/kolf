@@ -25,15 +25,15 @@
 #ifndef KCOMBOBOX_DIALOG_H
 #define KCOMBOBOX_DIALOG_H
 
+#include <QDialog>
 #include <KConfig>
-#include <KDialog>
-#include <KGlobal>
+#include <KSharedConfig>
 
 class QCheckBox;
 class KHistoryComboBox;
 
 ///Dialog for user to choose an item from a QStringList.
-class KComboBoxDialog : public KDialog
+class KComboBoxDialog : public QDialog
 {
 Q_OBJECT
 
@@ -89,7 +89,7 @@ public:
 	 * @param ok               Variable to store whether the user hit OK
 	 * @param parent           Parent widget for the dialog
 	 * @param configName       Name of the dialog for saving the completion and history
-	 * @parma config           KConfig for saving the completion and history
+	 * @param config           KConfig for saving the completion and history
 	 */
 	static QString getText(const QString &_caption, const QString &_text,
 	                       const QString &_value = QString(),

@@ -29,6 +29,7 @@
 #include <QBoxLayout>
 #include <QCheckBox>
 #include <QFileDialog>
+#include <QGlobalStatic>
 #include <QLabel>
 #include <QMouseEvent>
 #include <QSpinBox>
@@ -37,6 +38,7 @@
 #include <QUrl>
 #include <KGameRenderer>
 #include <KLineEdit>
+#include <KLocalizedString>
 #include <KMessageBox>
 #include <KRandom>
 #include <KgTheme>
@@ -100,8 +102,8 @@ class KolfRenderer : public KGameRenderer
 		}
 };
 
-K_GLOBAL_STATIC(KolfRenderer, g_renderer)
-K_GLOBAL_STATIC(KolfWorld, g_world)
+Q_GLOBAL_STATIC(KolfRenderer, g_renderer)
+Q_GLOBAL_STATIC(KolfWorld, g_world)
 
 KGameRenderer* Kolf::renderer()
 {

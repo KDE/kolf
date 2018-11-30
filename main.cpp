@@ -16,23 +16,22 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include <QFile>
-
-
-#include <KLocalizedString>
-#include <KDBusService>
-
-#include <KAboutData>
-#include <KCrash>
-#include <KDebug>
-#include <KGlobal>
 #include "kolf.h"
 
 #include <iostream>
+
 #include <QApplication>
-#include <QCommandLineParser>
 #include <QCommandLineOption>
+#include <QCommandLineParser>
+#include <QDebug>
+#include <QFile>
 #include <QUrl>
+
+#include <KAboutData>
+#include <KCrash>
+#include <KDBusService>
+#include <KLocalizedString>
+
 using namespace std;
 
 static const char description[] =

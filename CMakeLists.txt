@@ -17,7 +17,6 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     DBusAddons
     DocTools
     I18n
-    KDELibs4Support
     KIO
     TextWidgets
     WidgetsAddons
@@ -124,9 +123,14 @@ target_link_libraries(kolfprivate
     Qt5::Gui
     Qt5::Widgets
     KF5::Crash
+    KF5::Completion
+    KF5::ConfigCore
     KF5::DBusAddons
-    KF5::KDELibs4Support
+    KF5::I18n
+    KF5::JobWidgets
     KF5::KIOCore
+    KF5::TextWidgets
+    KF5::XmlGui
     KF5KDEGames
 )
 
