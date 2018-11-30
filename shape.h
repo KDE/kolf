@@ -22,7 +22,7 @@
 #include <QPainterPath>
 class b2Body;
 class b2Fixture;
-class b2FixtureDef;
+struct b2FixtureDef;
 class b2Shape;
 
 class CanvasItem;

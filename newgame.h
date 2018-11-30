@@ -30,7 +30,7 @@ class QLabel;
 class QListWidget;
 class QScrollArea;
 class QPushButton;
-class CourseInfo;
+struct CourseInfo;
 
 class PlayerEditor : public QWidget
 {

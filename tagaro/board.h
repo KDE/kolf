@@ -99,7 +99,7 @@ class Board : public QGraphicsObject
 		QVariant itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant& value) Q_DECL_OVERRIDE;
 		void timerEvent(QTimerEvent* event) Q_DECL_OVERRIDE;
 	private:
-		class Private;
+		struct Private;
 		Private* const d;
 		Q_PRIVATE_SLOT(d, void _k_update())
 		Q_PRIVATE_SLOT(d, void _k_updateItem())
