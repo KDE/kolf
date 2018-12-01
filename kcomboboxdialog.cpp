@@ -111,15 +111,15 @@ QString KComboBoxDialog::getItem( const QString &_text, const QString &_caption,
 				return prevAnswer;
 	}
 
-	KComboBoxDialog dlg( _text, _items, _value, !dontAskAgainName.isNull(), parent );
+	QPointer<KComboBoxDialog> dlg = new KComboBoxDialog( _text, _items, _value, !dontAskAgainName.isNull(), parent );
 	if ( !_caption.isNull() )
-		dlg.setWindowTitle( _caption );
+		dlg->setWindowTitle( _caption );
 
-	dlg.exec();
+	dlg->exec();
 
-	const QString text = dlg.text();
+	const QString text = dlg->text();
 
-	if (dlg.dontAskAgainChecked())
+	if (dlg->dontAskAgainChecked())
 	{
 		if ( !dontAskAgainName.isEmpty() && !text.isEmpty() )
 		{
@@ -128,6 +128,7 @@ QString KComboBoxDialog::getItem( const QString &_text, const QString &_caption,
 			configGroup->writeEntry( dontAskAgainName, text );
 		}
 	}
+	delete dlg;
 
 	return text;
 }
@@ -135,11 +136,11 @@ QString KComboBoxDialog::getItem( const QString &_text, const QString &_caption,
 QString KComboBoxDialog::getText(const QString &_caption, const QString &_text, const QString &_value, bool *ok, QWidget *parent, const QString &configName, KSharedConfigPtr config)
 {
 	KConfigGroup *configGroup = 0;
-	KComboBoxDialog dlg(_text, QStringList(), _value, false, parent);
+	QPointer<KComboBoxDialog> dlg = new KComboBoxDialog(_text, QStringList(), _value, false, parent);
 	if ( !_caption.isNull() )
-		dlg.setWindowTitle( _caption );
+		dlg->setWindowTitle( _caption );
 
-	KHistoryComboBox * const box = dlg.comboBox();
+	KHistoryComboBox * const box = dlg->comboBox();
 	box->setEditable(true);
 
 	const QString historyItem = QString("%1History").arg(configName);
@@ -152,17 +153,19 @@ QString KComboBoxDialog::getText(const QString &_caption, const QString &_text, 
 		box->completionObject()->setItems(configGroup->readEntry(completionItem,QStringList()));
 	}
 
-	bool result = dlg.exec();
+	bool result = dlg->exec();
 	if(ok) *ok = result;
 
 	if(!configName.isNull() && result)
 	{
-		box->addToHistory(dlg.text());
-		box->completionObject()->addItem(dlg.text());
+		box->addToHistory(dlg->text());
+		box->completionObject()->addItem(dlg->text());
 		configGroup = new KConfigGroup(config->group("KComboBoxDialog"));
 		configGroup->writeEntry(historyItem, box->historyItems());
 		configGroup->writeEntry(completionItem, box->completionObject()->items());
 	}
 
-	return dlg.text();
+	QString text = dlg->text();
+	delete dlg;
+	return text;
 }

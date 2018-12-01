@@ -1248,12 +1248,12 @@ void KolfGame::putterTimeout()
 				if (al > 45)
 				{
 					deg = putter->curDeg() - 45 + rand() % 90;
-					strength -= rand() % (int)strength;
+					strength -= qrand() % (int)strength;
 				}
 				else if (!finishStroking)
 				{
 					deg = putter->curDeg() - 45 + rand() % 90;
-					strength -= rand() % (int)strength;
+					strength -= qrand() % (int)strength;
 				}
 				else
 					deg = putter->curDeg() + (int)(strokeCircle->value() / 3);
