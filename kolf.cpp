@@ -235,9 +235,7 @@ void KolfWindow::startNewGame()
 
 	if (loadedGame.isNull())
 	{
-		PlayerEditor *curEditor = 0;
-		int newId = 1;
-		for (curEditor = dialog->players()->at(newId-1); newId <= dialog->players()->count(); ++newId)
+		for (int newId = 1; newId <= dialog->players()->count(); ++newId)
 		{
 			players.append(Player());
 			players.last().ball()->setColor(dialog->players()->at(newId-1)->color());
