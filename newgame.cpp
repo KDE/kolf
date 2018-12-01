@@ -39,7 +39,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 	setWindowTitle(i18n("New Game"));
 	buttonBox()->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	setMinimumSize(640,310);
-	connect(buttonBox(), SIGNAL(accepted()), this, SLOT(slotOk()));
+	connect(buttonBox(), &QDialogButtonBox::accepted, this, &NewGameDialog::slotOk);
 
 	setFaceType(KPageDialog::Tree);
 	this->enableCourses = enableCourses;
@@ -59,7 +59,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 	addButton = new QPushButton(i18n("&New Player"), playerPage);
 	bigLayout->addWidget(addButton);
 
-	connect(addButton, SIGNAL(clicked()), this, SLOT(addPlayer()));
+	connect(addButton, &QPushButton::clicked, this, &NewGameDialog::addPlayer);
 
 	scroller = new QScrollArea(playerPage);
 	bigLayout->addWidget(scroller);
@@ -140,8 +140,8 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		hlayout->addWidget(courseList);
 		courseList->addItems(nameList);
 		courseList->setCurrentRow(curItem);
-		connect(courseList, SIGNAL(currentRowChanged(int)), this, SLOT(courseSelected(int)));
-		connect(courseList, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
+		connect(courseList, &QListWidget::currentRowChanged, this, &NewGameDialog::courseSelected);
+		connect(courseList, &QListWidget::itemSelectionChanged, this, &NewGameDialog::selectionChanged);
 
 		QVBoxLayout *detailLayout = new QVBoxLayout;
                 hlayout->addLayout( detailLayout );
@@ -159,7 +159,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 
 		detailLayout->addStretch();
 		QPushButton *scores = new QPushButton(i18n("Highscores"), coursePage);
-		connect(scores, SIGNAL(clicked()), this, SLOT(showHighscores()));
+		connect(scores, &QPushButton::clicked, this, &NewGameDialog::showHighscores);
 		detailLayout->addWidget(scores);
 
 		detailLayout->addStretch();
@@ -170,11 +170,11 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 
 		QPushButton *addCourseButton = new QPushButton(i18n("Add..."), coursePage);
 		minorLayout->addWidget(addCourseButton);
-		connect(addCourseButton, SIGNAL(clicked()), this, SLOT(addCourse()));
+		connect(addCourseButton, &QPushButton::clicked, this, &NewGameDialog::addCourse);
 
 		remove = new QPushButton(i18n("Remove"), coursePage);
 		minorLayout->addWidget(remove);
-		connect(remove, SIGNAL(clicked()), this, SLOT(removeCourse()));
+		connect(remove, &QPushButton::clicked, this, &NewGameDialog::removeCourse);
 
 		courseSelected(curItem);
 		selectionChanged();
@@ -317,7 +317,7 @@ void NewGameDialog::addPlayer()
 	editors.append(pe);
 	pe->show();
 	playersWidget->layout()->addWidget(pe);
-	connect(pe, SIGNAL(deleteEditor(PlayerEditor*)), this, SLOT(deleteEditor(PlayerEditor*)));
+	connect(pe, &PlayerEditor::deleteEditor, this, &NewGameDialog::deleteEditor);
 
 	enableButtons();
 	playersWidget->setMinimumSize(playersWidget->sizeHint());
@@ -357,7 +357,7 @@ PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent
 	colorButton->hide();
 	QPushButton *remove = new QPushButton(i18n("Remove"), this);
 	layout->addWidget(remove);
-	connect(remove, SIGNAL(clicked()), this, SLOT(removeMe()));
+	connect(remove, &QPushButton::clicked, this, &PlayerEditor::removeMe);
 }
 
 void PlayerEditor::removeMe()

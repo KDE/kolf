@@ -30,7 +30,7 @@ public:
 	void ctorDone();
 
 signals:
-	void modified();
+	void modified(bool mod);
 
 protected:
 	bool startedUp;

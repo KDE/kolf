@@ -171,8 +171,8 @@ bool Kolf::BlackHole::collision(Ball* ball)
 	const double distance = Vector(pos() - m_exitItem->pos()).magnitude();
 	BlackHoleTimer* timer = new BlackHoleTimer(ball, newSpeed, distance * 2.5 - newSpeed * 35 + 500);
 
-	connect(timer, SIGNAL(eject(Ball*,double)), this, SLOT(eject(Ball*,double)));
-	connect(timer, SIGNAL(halfway()), this, SLOT(halfway()));
+	connect(timer, &BlackHoleTimer::eject, this, &Kolf::BlackHole::eject);
+	connect(timer, &BlackHoleTimer::halfway, this, &Kolf::BlackHole::halfway);
 
 	game->playSound(Sound::BlackHole);
 	return false;
@@ -181,8 +181,8 @@ bool Kolf::BlackHole::collision(Ball* ball)
 Kolf::BlackHoleTimer::BlackHoleTimer(Ball* ball, double speed, int msec)
 	: m_speed(speed), m_ball(ball)
 {
-	QTimer::singleShot(msec, this, SLOT(emitEject()));
-	QTimer::singleShot(msec / 2, this, SIGNAL(halfway()));
+	QTimer::singleShot(msec, this, &Kolf::BlackHoleTimer::emitEject);
+	QTimer::singleShot(msec / 2, this, &Kolf::BlackHoleTimer::halfway);
 }
 
 void Kolf::BlackHoleTimer::emitEject()
@@ -291,8 +291,8 @@ Kolf::BlackHoleOverlay::BlackHoleOverlay(Kolf::BlackHole* blackHole)
 	addHandle(m_exitIndicator);
 	addHandle(m_exitHandle);
 	addHandle(m_speedHandle);
-	connect(m_exitHandle, SIGNAL(moveRequest(QPointF)), this, SLOT(moveHandle(QPointF)));
-	connect(m_speedHandle, SIGNAL(moveRequest(QPointF)), this, SLOT(moveHandle(QPointF)));
+	connect(m_exitHandle, &Kolf::OverlayHandle::moveRequest, this, &Kolf::BlackHoleOverlay::moveHandle);
+	connect(m_speedHandle, &Kolf::OverlayHandle::moveRequest, this, &Kolf::BlackHoleOverlay::moveHandle);
 }
 
 void Kolf::BlackHoleOverlay::update()

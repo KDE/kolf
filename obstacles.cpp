@@ -58,7 +58,7 @@ bool Kolf::Bumper::collision(Ball* ball)
 	ball->setState(Rolling);
 
 	setSpriteKey(QLatin1String("bumper_on"));
-	QTimer::singleShot(100, this, SLOT(turnBumperOff()));
+	QTimer::singleShot(100, this, &Kolf::Bumper::turnBumperOff);
 	return true;
 }
 
@@ -141,8 +141,8 @@ Kolf::WallOverlay::WallOverlay(Kolf::Wall* wall)
 {
 	addHandle(m_handle1);
 	addHandle(m_handle2);
-	connect(m_handle1, SIGNAL(moveRequest(QPointF)), this, SLOT(moveHandle(QPointF)));
-	connect(m_handle2, SIGNAL(moveRequest(QPointF)), this, SLOT(moveHandle(QPointF)));
+	connect(m_handle1, &Kolf::OverlayHandle::moveRequest, this, &Kolf::WallOverlay::moveHandle);
+	connect(m_handle2, &Kolf::OverlayHandle::moveRequest, this, &Kolf::WallOverlay::moveHandle);
 }
 
 void Kolf::WallOverlay::update()
@@ -360,7 +360,7 @@ Kolf::RectangleOverlay::RectangleOverlay(Kolf::RectangleItem* item)
 		Kolf::OverlayHandle* handle = new Kolf::OverlayHandle(Kolf::OverlayHandle::CircleShape, this);
 		m_handles << handle;
 		addHandle(handle);
-		connect(handle, SIGNAL(moveRequest(QPointF)), this, SLOT(moveHandle(QPointF)));
+		connect(handle, &Kolf::OverlayHandle::moveRequest, this, &Kolf::RectangleOverlay::moveHandle);
 	}
 }
 
@@ -409,9 +409,9 @@ Kolf::RectangleConfig::RectangleConfig(Kolf::RectangleItem* item, QWidget* paren
 		QCheckBox* checkBox = m_wallCheckBoxes[i] = new QCheckBox(i18n(captions[i]), this);
 		checkBox->setEnabled(item->isWallAllowed((Kolf::WallIndex) i));
 		checkBox->setChecked(item->hasWall((Kolf::WallIndex) i));
-		connect(checkBox, SIGNAL(toggled(bool)), SLOT(setWall(bool)));
+		connect(checkBox, &QCheckBox::toggled, this, &Kolf::RectangleConfig::setWall);
 	}
-	connect(item, SIGNAL(wallChanged(Kolf::WallIndex,bool,bool)), SLOT(wallChanged(Kolf::WallIndex,bool,bool)));
+	connect(item, &Kolf::RectangleItem::wallChanged, this, &Kolf::RectangleConfig::wallChanged);
 	m_layout->addWidget(new QLabel(i18n("Walls on:")), 0, 0);
 	m_layout->addWidget(m_wallCheckBoxes[0], 0, 1);
 	m_layout->addWidget(m_wallCheckBoxes[1], 1, 0);
@@ -425,7 +425,7 @@ Kolf::RectangleConfig::RectangleConfig(Kolf::RectangleItem* item, QWidget* paren
 		m_layout->addWidget(new QLabel(i18n("Sign HTML:")), 3, 0, 1, 3);
 		KLineEdit* edit = new KLineEdit(sign->text(), this);
 		m_layout->addWidget(edit, 4, 0, 1, 3);
-		connect(edit, SIGNAL(textChanged(QString)), sign, SLOT(setText(QString)));
+		connect(edit, &KLineEdit::textChanged, sign, &Kolf::Sign::setText);
 	}
 	//Kolf::Windmill does not have a special Config class
 	Kolf::Windmill* windmill = qobject_cast<Kolf::Windmill*>(item);
@@ -434,7 +434,7 @@ Kolf::RectangleConfig::RectangleConfig(Kolf::RectangleItem* item, QWidget* paren
 		QCheckBox* checkBox = new QCheckBox(i18n("Windmill on top"), this);
 		m_layout->addWidget(checkBox, 4, 0, 1, 3);
 		checkBox->setChecked(windmill->guardAtTop());
-		connect(checkBox, SIGNAL(toggled(bool)), windmill, SLOT(setGuardAtTop(bool)));
+		connect(checkBox, &QCheckBox::toggled, windmill, &Kolf::Windmill::setGuardAtTop);
 		QHBoxLayout* hlayout = new QHBoxLayout;
 		m_layout->addLayout(hlayout, 5, 0, 1, 3);
 		QLabel* label1 = new QLabel(i18n("Slow"), this);
@@ -446,7 +446,7 @@ Kolf::RectangleConfig::RectangleConfig(Kolf::RectangleItem* item, QWidget* paren
 		slider->setRange(1, 10);
 		slider->setPageStep(1);
 		slider->setValue(windmill->speed());
-		connect(slider, SIGNAL(valueChanged(int)), windmill, SLOT(setSpeed(int)));
+		connect(slider, &QSlider::valueChanged, windmill, &Kolf::Windmill::setSpeed);
 	}
 	//Kolf::Floater does not have a special Config class
 	Kolf::Floater* floater = qobject_cast<Kolf::Floater*>(item);
@@ -464,7 +464,7 @@ Kolf::RectangleConfig::RectangleConfig(Kolf::RectangleItem* item, QWidget* paren
 		slider->setRange(0, 20);
 		slider->setPageStep(2);
 		slider->setValue(floater->speed());
-		connect(slider, SIGNAL(valueChanged(int)), floater, SLOT(setSpeed(int)));
+		connect(slider, &QSlider::valueChanged, floater, &Kolf::Floater::setSpeed);
 	}
 }
 
@@ -622,8 +622,8 @@ Kolf::FloaterOverlay::FloaterOverlay(Kolf::Floater* floater)
 {
 	addHandle(m_handle1);
 	addHandle(m_handle2);
-	connect(m_handle1, SIGNAL(moveRequest(QPointF)), this, SLOT(moveMotionLineHandle(QPointF)));
-	connect(m_handle2, SIGNAL(moveRequest(QPointF)), this, SLOT(moveMotionLineHandle(QPointF)));
+	connect(m_handle1, &Kolf::OverlayHandle::moveRequest, this, &Kolf::FloaterOverlay::moveMotionLineHandle);
+	connect(m_handle2, &Kolf::OverlayHandle::moveRequest, this, &Kolf::FloaterOverlay::moveMotionLineHandle);
 	addHandle(m_motionLineItem);
 	QPen pen = m_motionLineItem->pen();
 	pen.setStyle(Qt::DashLine);

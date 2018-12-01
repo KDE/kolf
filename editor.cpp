@@ -67,7 +67,7 @@ void Editor::setItem(CanvasItem *item)
 	config->setFrameStyle(QFrame::Box | QFrame::Raised);
 	config->setLineWidth(1);
 	config->show();
-	connect(config, SIGNAL(modified()), this, SIGNAL(changed()));
+	connect(config, &Config::modified, this, &Editor::changed);
 }
 
 

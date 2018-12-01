@@ -114,7 +114,7 @@ Kolf::LandscapeOverlay::LandscapeOverlay(Kolf::LandscapeItem* item)
 		Kolf::OverlayHandle* handle = new Kolf::OverlayHandle(Kolf::OverlayHandle::CircleShape, this);
 		m_handles << handle;
 		addHandle(handle);
-		connect(handle, SIGNAL(moveRequest(QPointF)), this, SLOT(moveHandle(QPointF)));
+		connect(handle, &Kolf::OverlayHandle::moveRequest, this, &Kolf::LandscapeOverlay::moveHandle);
 	}
 }
 
@@ -158,16 +158,16 @@ Kolf::LandscapeConfig::LandscapeConfig(Kolf::LandscapeItem* item, QWidget* paren
 	vlayout->addStretch();
 
 	checkBox->setChecked(true);
-	connect(checkBox, SIGNAL(toggled(bool)), label1, SLOT(setEnabled(bool)));
-	connect(checkBox, SIGNAL(toggled(bool)), label2, SLOT(setEnabled(bool)));
-	connect(checkBox, SIGNAL(toggled(bool)), slider, SLOT(setEnabled(bool)));
-	connect(checkBox, SIGNAL(toggled(bool)), item, SLOT(setBlinkEnabled(bool)));
+	connect(checkBox, &QCheckBox::toggled, label1, &QLabel::setEnabled);
+	connect(checkBox, &QCheckBox::toggled, label2, &QLabel::setEnabled);
+	connect(checkBox, &QCheckBox::toggled, slider, &QSlider::setEnabled);
+	connect(checkBox, &QCheckBox::toggled, item, &Kolf::LandscapeItem::setBlinkEnabled);
 	checkBox->setChecked(item->isBlinkEnabled());
 	slider->setRange(1, 100);
 	slider->setPageStep(5);
 	slider->setValue(100 - item->blinkInterval());
-	connect(slider, SIGNAL(valueChanged(int)), SLOT(setBlinkInterval(int)));
-	connect(this, SIGNAL(blinkIntervalChanged(int)), item, SLOT(setBlinkInterval(int)));
+	connect(slider, &QSlider::valueChanged, this, &Kolf::LandscapeConfig::setBlinkInterval);
+	connect(this, &Kolf::LandscapeConfig::blinkIntervalChanged, item, &Kolf::LandscapeItem::setBlinkInterval);
 }
 
 void Kolf::LandscapeConfig::setBlinkInterval(int sliderValue)
@@ -564,18 +564,18 @@ Kolf::SlopeConfig::SlopeConfig(Kolf::Slope* slope, QWidget* parent)
 	KComboBox* typeBox = new KComboBox(this);
 	typeBox->addItems(g_slopeData->translatedGradientKeys);
 	typeBox->setCurrentIndex(slope->slopeType());
-	connect(typeBox, SIGNAL(currentIndexChanged(int)), slope, SLOT(setSlopeType(int)));
+	connect(typeBox, QOverload<int>::of(&KComboBox::currentIndexChanged), slope, &Kolf::Slope::setSlopeType);
 	layout->addWidget(typeBox, 0, 0, 1, 2);
 
 	QCheckBox* reversed = new QCheckBox(i18n("Reverse direction"), this);
 	reversed->setChecked(slope->isReversed());
-	connect(reversed, SIGNAL(toggled(bool)), slope, SLOT(setReversed(bool)));
+	connect(reversed, &QCheckBox::toggled, slope, &Kolf::Slope::setReversed);
 	layout->addWidget(reversed, 1, 0);
 
 	QCheckBox* stuck = new QCheckBox(i18n("Unmovable"), this);
 	stuck->setChecked(slope->isStuckOnGround());
 	stuck->setWhatsThis(i18n("Whether or not this slope can be moved by other objects, like floaters."));
-	connect(stuck, SIGNAL(toggled(bool)), slope, SLOT(setStuckOnGround(bool)));
+	connect(stuck, &QCheckBox::toggled, slope, &Kolf::Slope::setStuckOnGround);
 	layout->addWidget(stuck, 1, 1);
 
 	layout->addWidget(new QLabel(i18n("Grade:"), this), 2, 0);
@@ -584,7 +584,7 @@ Kolf::SlopeConfig::SlopeConfig(Kolf::Slope* slope, QWidget* parent)
 	grade->setRange(0, 8);
 	grade->setSingleStep(1);
 	grade->setValue(slope->grade());
-	connect(grade, SIGNAL(valueChanged(double)), slope, SLOT(setGrade(double)));
+	connect(grade, QOverload<double>::of(&QDoubleSpinBox::valueChanged), slope, &Kolf::Slope::setGrade);
 	layout->addWidget(grade, 2, 1);
 
 	layout->setRowStretch(4, 10);
@@ -602,7 +602,7 @@ Kolf::SlopeOverlay::SlopeOverlay(Kolf::Slope* slope)
 		Kolf::OverlayHandle* handle = new Kolf::OverlayHandle(Kolf::OverlayHandle::CircleShape, this);
 		m_handles << handle;
 		addHandle(handle);
-		connect(handle, SIGNAL(moveRequest(QPointF)), this, SLOT(moveHandle(QPointF)));
+		connect(handle, &Kolf::OverlayHandle::moveRequest, this, &Kolf::SlopeOverlay::moveHandle);
 	}
 }
 

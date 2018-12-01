@@ -1073,7 +1073,7 @@ void KolfGame::timeout()
 	if (curState == Stopped && inPlay)
 	{
 		inPlay = false;
-		QTimer::singleShot(0, this, SLOT(shotDone()));
+		QTimer::singleShot(0, this, &KolfGame::shotDone);
 	}
 
 	if (curState == Holed && inPlay)
@@ -1104,12 +1104,12 @@ void KolfGame::timeout()
 				(*curPlayer).addStrokeToHole(curHole);
 				emit scoreChanged((*curPlayer).id(), curHole, (*curPlayer).score(curHole));
 			}
-			QTimer::singleShot(600, this, SLOT(holeDone()));
+			QTimer::singleShot(600, this, &KolfGame::holeDone);
 		}
 		else
 		{
 			inPlay = false;
-			QTimer::singleShot(0, this, SLOT(shotDone()));
+			QTimer::singleShot(0, this, &KolfGame::shotDone);
 		}
 	}
 }
@@ -1490,11 +1490,11 @@ void KolfGame::shotDone()
 			if (allPlayersDone())
 			{
 				startNextHole();
-				QTimer::singleShot(100, this, SLOT(emitMax()));
+				QTimer::singleShot(100, this, &KolfGame::emitMax);
 				return;
 			}
 
-			QTimer::singleShot(100, this, SLOT(emitMax()));
+			QTimer::singleShot(100, this, &KolfGame::emitMax);
 		}
 	}
 

@@ -37,7 +37,7 @@ void Config::ctorDone()
 void Config::changed()
 {
 	if (startedUp)
-		emit modified();
+		emit modified(true);
 }
 
 MessageConfig::MessageConfig(const QString &text, QWidget *parent)
