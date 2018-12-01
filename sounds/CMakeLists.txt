@@ -1,1 +1,1 @@
-install( FILES wall.wav puddle.wav holeinone.wav holed.wav blackhole.wav blackholeputin.wav blackholeeject.wav hit.wav woohoo.wav DESTINATION  ${KDE_INSTALL_DATADIR}/kolf/sounds )
+install( FILES blackhole.wav blackholeputin.wav blackholeeject.wav bumper.wav hit.wav holed.wav holeinone.wav puddle.wav wall.wav woohoo.wav DESTINATION  ${KDE_INSTALL_DATADIR}/kolf/sounds )

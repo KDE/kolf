@@ -57,6 +57,8 @@ bool Kolf::Bumper::collision(Ball* ball)
 	ball->setVelocity(betweenVector);
 	ball->setState(Rolling);
 
+	game->playSound(Sound::Bumper);
+
 	setSpriteKey(QLatin1String("bumper_on"));
 	QTimer::singleShot(100, this, &Kolf::Bumper::turnBumperOff);
 	return true;

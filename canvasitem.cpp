@@ -159,7 +159,7 @@ void CanvasItem::moveItemsOnStrut(const QPointF& posDiff)
 		//huh, no ball involved? then don't restrict anything, because
 		//that likely introduces weird bugs later
 		return true;
-	//if both items are graphicsitems, restrict collisions of ball to thos
+	//if both items are graphicsitems, restrict collisions of ball to those
 	//objects on same strut level or above (i.e. don't collide with
 	//stuff below the current strut)
 	const QGraphicsItem* qitem = dynamic_cast<QGraphicsItem*>(citem);

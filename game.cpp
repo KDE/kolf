@@ -447,6 +447,7 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
  m_soundBlackHole(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/blackhole.wav")),
  m_soundBlackHoleEject(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/blackholeeject.wav")),
  m_soundBlackHolePutIn(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/blackholeputin.wav")),
+ m_soundBumper(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/bumper.wav")),
  m_soundHit(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/hit.wav")),
  m_soundHoled(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/holed.wav")),
  m_soundHoleINone(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/holeinone.wav")),
@@ -615,6 +616,9 @@ void KolfGame::playSound(Sound soundType)
 				break;
 			case Sound::BlackHolePutIn:
 				m_soundBlackHolePutIn.start();
+				break;
+			case Sound::Bumper:
+				m_soundBumper.start();
 				break;
 			case Sound::Hit:
 				m_soundHit.start();

@@ -54,6 +54,7 @@ enum class Sound {
 	BlackHole,
 	BlackHoleEject,
 	BlackHolePutIn,
+	Bumper,
 	Hit,
 	Holed,
 	HoleINone,
@@ -421,6 +422,7 @@ private:
 	KgSound m_soundBlackHole;
 	KgSound m_soundBlackHoleEject;
 	KgSound m_soundBlackHolePutIn;
+	KgSound m_soundBumper;
 	KgSound m_soundHit;
 	KgSound m_soundHoled;
 	KgSound m_soundHoleINone;
