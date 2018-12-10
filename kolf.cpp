@@ -217,14 +217,16 @@ bool KolfWindow::queryClose()
 
 void KolfWindow::startNewGame()
 {
-	NewGameDialog *dialog = 0;
+        NewGameDialog *dialog = nullptr;
 	int firstHole = 1;
 
 	if (loadedGame.isNull())
 	{
 		dialog = new NewGameDialog(filename.isNull());
-		if (dialog->exec() != QDialog::Accepted)
-			goto end;
+                if (dialog->exec() != QDialog::Accepted) {
+                    delete dialog;
+                    return;
+               }
 	}
 
 	players.clear();
@@ -270,9 +272,9 @@ void KolfWindow::startNewGame()
 		scoreboard->newPlayer((*it).name());
 
 	delete spacer;
-	spacer = 0;
+        spacer = nullptr;
 	delete game;
-	game = new KolfGame(m_itemFactory, &players, filename, dummy);
+        game = new KolfGame(m_itemFactory, &players, filename, dummy);
 	game->setStrict(competition);
 
 	connect(game, &KolfGame::newHole, scoreboard, &ScoreBoard::newHole);
@@ -341,8 +343,6 @@ void KolfWindow::startNewGame()
 	// so game can do stuff that needs to be done
 	// after things above are connected
 	game->startFirstHole(firstHole);
-
-	end:
 	delete dialog;
 }
 
