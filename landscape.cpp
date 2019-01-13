@@ -179,7 +179,7 @@ void Kolf::LandscapeConfig::setBlinkInterval(int sliderValue)
 //BEGIN Kolf::Puddle
 
 Kolf::Puddle::Puddle(QGraphicsItem* parent, b2World* world)
-	: Kolf::LandscapeItem(QLatin1String("puddle"), parent, world)
+	: Kolf::LandscapeItem(QStringLiteral("puddle"), parent, world)
 {
 	setData(0, Rtti_DontPlaceOn);
 	setSize(QSizeF(45, 30));
@@ -208,7 +208,7 @@ bool Kolf::Puddle::collision(Ball* ball)
 //BEGIN Kolf::Sand
 
 Kolf::Sand::Sand(QGraphicsItem* parent, b2World* world)
-	: Kolf::LandscapeItem(QLatin1String("sand"), parent, world)
+	: Kolf::LandscapeItem(QStringLiteral("sand"), parent, world)
 {
 	setSize(QSizeF(45, 40));
 	setZBehavior(CanvasItem::FixedZValue, 2);
@@ -230,26 +230,26 @@ struct SlopeData
 	QStringList spriteKeys, reversedSpriteKeys;
 	SlopeData()
 	{
-		gradientKeys << QLatin1String("Vertical")
-		             << QLatin1String("Horizontal")
-		             << QLatin1String("Diagonal")
-		             << QLatin1String("Opposite Diagonal")
-		             << QLatin1String("Elliptic");
+		gradientKeys << QStringLiteral("Vertical")
+		             << QStringLiteral("Horizontal")
+		             << QStringLiteral("Diagonal")
+		             << QStringLiteral("Opposite Diagonal")
+		             << QStringLiteral("Elliptic");
 		translatedGradientKeys << i18n("Vertical")
 		             << i18n("Horizontal")
 		             << i18n("Diagonal")
 		             << i18n("Opposite Diagonal")
 		             << i18n("Elliptic");
-		spriteKeys   << QLatin1String("slope_n")
-			         << QLatin1String("slope_w")
-			         << QLatin1String("slope_nw")
-			         << QLatin1String("slope_ne")
-			         << QLatin1String("slope_bump");
-		reversedSpriteKeys << QLatin1String("slope_s")
-			         << QLatin1String("slope_e")
-			         << QLatin1String("slope_se")
-			         << QLatin1String("slope_sw")
-			         << QLatin1String("slope_dip");
+		spriteKeys   << QStringLiteral("slope_n")
+			         << QStringLiteral("slope_w")
+			         << QStringLiteral("slope_nw")
+			         << QStringLiteral("slope_ne")
+			         << QStringLiteral("slope_bump");
+		reversedSpriteKeys << QStringLiteral("slope_s")
+			         << QStringLiteral("slope_e")
+			         << QStringLiteral("slope_se")
+			         << QStringLiteral("slope_sw")
+			         << QStringLiteral("slope_dip");
 	}
 };
 Q_GLOBAL_STATIC(SlopeData, g_slopeData)

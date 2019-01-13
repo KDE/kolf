@@ -78,9 +78,9 @@ kolfNumInput::kolfNumInput(QWidget *parent)
 {
     setSizePolicy(QSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed));
     setFocusPolicy(Qt::StrongFocus);
-    KConfigDialogManager::changedMap()->insert("kpIntNumInput", SIGNAL(valueChanged(int)));
-    KConfigDialogManager::changedMap()->insert("QSpinBox", SIGNAL(valueChanged(int)));
-    KConfigDialogManager::changedMap()->insert("kolfDoubleSpinBox", SIGNAL(valueChanged(double)));
+    KConfigDialogManager::changedMap()->insert(QStringLiteral("kpIntNumInput"), SIGNAL(valueChanged(int)));
+    KConfigDialogManager::changedMap()->insert(QStringLiteral("QSpinBox"), SIGNAL(valueChanged(int)));
+    KConfigDialogManager::changedMap()->insert(QStringLiteral("kolfDoubleSpinBox"), SIGNAL(valueChanged(double)));
 }
 
 kolfNumInput::~kolfNumInput()
@@ -109,7 +109,7 @@ void kolfNumInput::setLabel(const QString &label, Qt::Alignment a)
             d->label = new QLabel(this);
         }
         d->label->setText(label);
-        d->label->setObjectName("kolfNumInput::QLabel");
+        d->label->setObjectName(QStringLiteral("kolfNumInput::QLabel"));
         d->label->setAlignment(a);
         // if no vertical alignment set, use Top alignment
         if (!(a & (Qt::AlignTop | Qt::AlignBottom | Qt::AlignVCenter))) {
@@ -204,7 +204,7 @@ void kolfDoubleNumInput::initWidget(double value, double lower, double upper,
     d->spin->setValue(value);
     d->spin->setDecimals(precision);
 
-    d->spin->setObjectName("kolfDoubleNumInput::QDoubleSpinBox");
+    d->spin->setObjectName(QStringLiteral("kolfDoubleNumInput::QDoubleSpinBox"));
     setFocusProxy(d->spin);
     connect(d->spin, QOverload<double>::of(&QDoubleSpinBox::valueChanged),
             this, &kolfDoubleNumInput::valueChanged);

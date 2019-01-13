@@ -42,7 +42,7 @@ public:
 	KolfWindow();
 	~KolfWindow();
 
-	void openUrl(QUrl url);
+	void openUrl(const QUrl &url);
 
 public slots:
 	void closeGame();

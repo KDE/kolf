@@ -46,13 +46,13 @@ int main(int argc, char **argv)
 
     KLocalizedString::setApplicationDomain("kolf");
 
-	KAboutData aboutData( "kolf", i18n("Kolf"), version, i18n(description), KAboutLicense::GPL, i18n("(c) 2002-2010, Kolf developers"),  "http://games.kde.org/kolf");
+	KAboutData aboutData( QStringLiteral("kolf"), i18n("Kolf"), version, i18n(description), KAboutLicense::GPL, i18n("(c) 2002-2010, Kolf developers"),  QStringLiteral("http://games.kde.org/kolf"));
 
-	aboutData.addAuthor(i18n("Stefan Majewsky"), i18n("Current maintainer"), "majewsky@gmx.net");
-	aboutData.addAuthor(i18n("Jason Katz-Brown"), i18n("Former main author"), "jasonkb@mit.edu");
+	aboutData.addAuthor(i18n("Stefan Majewsky"), i18n("Current maintainer"), QStringLiteral("majewsky@gmx.net"));
+	aboutData.addAuthor(i18n("Jason Katz-Brown"), i18n("Former main author"), QStringLiteral("jasonkb@mit.edu"));
 	aboutData.addAuthor(i18n("Niklas Knutsson"), i18n("Advanced putting mode"));
 	aboutData.addAuthor(i18n("Rik Hemsley"), i18n("Border around course"));
-	aboutData.addAuthor(i18n("Timo A. Hummel"), i18n("Some good sound effects"), "timo.hummel@gmx.net");
+	aboutData.addAuthor(i18n("Timo A. Hummel"), i18n("Some good sound effects"), QStringLiteral("timo.hummel@gmx.net"));
 
 	aboutData.addCredit(i18n("Rob Renaud"), i18n("Wall-bouncing help"));
 	aboutData.addCredit(i18n("Aaron Seigo"), i18n("Suggestions, bug reports"));
@@ -63,8 +63,8 @@ int main(int argc, char **argv)
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
     KCrash::initialize();
-        parser.addOption(QCommandLineOption(QStringList() << QLatin1String("+file"), i18n("File")));
-        parser.addOption(QCommandLineOption(QStringList() << QLatin1String("course-info"), i18n("Print course information and exit")));
+        parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("+file"), i18n("File")));
+        parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("course-info"), i18n("Print course information and exit")));
 
     aboutData.setupCommandLine(&parser);
     parser.process(app);
@@ -72,9 +72,9 @@ int main(int argc, char **argv)
     KDBusService service;
 
 	// I've actually added this for my web site uploaded courses display
-	if (parser.isSet("course-info"))
+	if (parser.isSet(QStringLiteral("course-info")))
 	{
-		QString filename(parser.value("course-info"));
+		QString filename(parser.value(QStringLiteral("course-info")));
 		if (QFile::exists(filename))
 		{
 			CourseInfo info;

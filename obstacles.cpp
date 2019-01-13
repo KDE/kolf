@@ -34,7 +34,7 @@
 //BEGIN Kolf::Bumper
 
 Kolf::Bumper::Bumper(QGraphicsItem* parent, b2World* world)
-	: EllipticalCanvasItem(false, QLatin1String("bumper_off"), parent, world)
+	: EllipticalCanvasItem(false, QStringLiteral("bumper_off"), parent, world)
 {
 	const int diameter = 20;
 	setSize(QSizeF(diameter, diameter));
@@ -59,14 +59,14 @@ bool Kolf::Bumper::collision(Ball* ball)
 
 	game->playSound(Sound::Bumper);
 
-	setSpriteKey(QLatin1String("bumper_on"));
+	setSpriteKey(QStringLiteral("bumper_on"));
 	QTimer::singleShot(100, this, &Kolf::Bumper::turnBumperOff);
 	return true;
 }
 
 void Kolf::Bumper::turnBumperOff()
 {
-	setSpriteKey(QLatin1String("bumper_off"));
+	setSpriteKey(QStringLiteral("bumper_off"));
 }
 
 Kolf::Overlay* Kolf::Bumper::createOverlay()
@@ -197,7 +197,7 @@ Kolf::RectangleItem::RectangleItem(const QString& type, QGraphicsItem* parent, b
 	addShape(m_shape);
 	setSimulationType(CanvasItem::NoSimulation);
 	//default size
-	setSize(type == "sign" ? QSize(110, 40) : QSize(80, 40));
+	setSize(type == QLatin1String("sign") ? QSize(110, 40) : QSize(80, 40));
 }
 
 Kolf::RectangleItem::~RectangleItem()
@@ -490,7 +490,7 @@ void Kolf::RectangleConfig::wallChanged(Kolf::WallIndex index, bool hasWall, boo
 //BEGIN Kolf::Bridge
 
 Kolf::Bridge::Bridge(QGraphicsItem* parent, b2World* world)
-	: Kolf::RectangleItem(QLatin1String("bridge"), parent, world)
+	: Kolf::RectangleItem(QStringLiteral("bridge"), parent, world)
 {
 	setZBehavior(CanvasItem::IsStrut, 0);
 }
@@ -505,7 +505,7 @@ bool Kolf::Bridge::collision(Ball* ball)
 //BEGIN Kolf::Floater
 
 Kolf::Floater::Floater(QGraphicsItem* parent, b2World* world)
-	: Kolf::RectangleItem(QLatin1String("floater"), parent, world)
+	: Kolf::RectangleItem(QStringLiteral("floater"), parent, world)
 	, m_motionLine(QLineF(200, 200, 100, 100))
 	, m_speed(0)
 	, m_velocity(0)
@@ -673,7 +673,7 @@ void Kolf::FloaterOverlay::moveMotionLineHandle(const QPointF& handleScenePos)
 //BEGIN Kolf::Sign
 
 Kolf::Sign::Sign(QGraphicsItem* parent, b2World* world)
-	: Kolf::RectangleItem(QLatin1String("sign"), parent, world)
+	: Kolf::RectangleItem(QStringLiteral("sign"), parent, world)
 	, m_text(i18n("New Text"))
 	, m_textItem(new QGraphicsTextItem(m_text, this))
 {
@@ -721,7 +721,7 @@ void Kolf::Sign::save(KConfigGroup* group)
 //BEGIN Kolf::Windmill
 
 Kolf::Windmill::Windmill(QGraphicsItem* parent, b2World* world)
-	: Kolf::RectangleItem(QLatin1String("windmill"), parent, world)
+	: Kolf::RectangleItem(QStringLiteral("windmill"), parent, world)
 	  , m_leftWall(new Kolf::Wall(parent, world))
 	  , m_rightWall(new Kolf::Wall(parent, world))
 	  , m_guardWall(new Kolf::Wall(parent, world))

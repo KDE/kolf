@@ -32,7 +32,7 @@
 //BEGIN Kolf::BlackHole
 
 Kolf::BlackHole::BlackHole(QGraphicsItem* parent, b2World* world)
-	: EllipticalCanvasItem(true, QLatin1String("black_hole"), parent, world)
+	: EllipticalCanvasItem(true, QStringLiteral("black_hole"), parent, world)
 	, m_minSpeed(3.0)
 	, m_maxSpeed(5.0)
 	, m_runs(0)
@@ -324,7 +324,7 @@ void Kolf::BlackHoleOverlay::moveHandle(const QPointF& handleScenePos)
 //BEGIN Kolf::Cup
 
 Kolf::Cup::Cup(QGraphicsItem* parent, b2World* world)
-	: EllipticalCanvasItem(false, QLatin1String("cup"), parent, world)
+	: EllipticalCanvasItem(false, QStringLiteral("cup"), parent, world)
 {
 	const int diameter = 16;
 	setSize(QSizeF(diameter, diameter));

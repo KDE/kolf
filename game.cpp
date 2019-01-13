@@ -50,12 +50,12 @@
 
 inline QString makeGroup(int id, int hole, const QString &name, int x, int y)
 {
-	return QString("%1-%2@%3,%4|%5").arg(hole).arg(name).arg(x).arg(y).arg(id);
+	return QStringLiteral("%1-%2@%3,%4|%5").arg(hole).arg(name).arg(x).arg(y).arg(id);
 }
 
 inline QString makeStateGroup(int id, const QString &name)
 {
-	return QString("%1|%2").arg(name).arg(id);
+	return QStringLiteral("%1|%2").arg(name).arg(id);
 }
 
 class KolfContactListener : public b2ContactListener
@@ -88,7 +88,7 @@ class KolfTheme : public KgTheme
 	public:
 		KolfTheme() : KgTheme("pics/default_theme.desktop")
 		{
-			setGraphicsPath(QStandardPaths::locate(QStandardPaths::AppDataLocation, "pics/default_theme.svgz"));
+			setGraphicsPath(QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("pics/default_theme.svgz")));
 		}
 };
 
@@ -444,16 +444,16 @@ void StrokeCircle::paint (QPainter *p, const QStyleOptionGraphicsItem *, QWidget
 KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const QString &filename, QWidget *parent)
 : QGraphicsView(parent),
  m_factory(factory),
- m_soundBlackHole(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/blackhole.wav")),
- m_soundBlackHoleEject(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/blackholeeject.wav")),
- m_soundBlackHolePutIn(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/blackholeputin.wav")),
- m_soundBumper(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/bumper.wav")),
- m_soundHit(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/hit.wav")),
- m_soundHoled(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/holed.wav")),
- m_soundHoleINone(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/holeinone.wav")),
- m_soundPuddle(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/puddle.wav")),
- m_soundWall(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/wall.wav")),
- m_soundWooHoo(QStandardPaths::locate(QStandardPaths::AppDataLocation, "sounds/woohoo.wav")),
+ m_soundBlackHole(QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("sounds/blackhole.wav"))),
+ m_soundBlackHoleEject(QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("sounds/blackholeeject.wav"))),
+ m_soundBlackHolePutIn(QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("sounds/blackholeputin.wav"))),
+ m_soundBumper(QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("sounds/bumper.wav"))),
+ m_soundHit(QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("sounds/hit.wav"))),
+ m_soundHoled(QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("sounds/holed.wav"))),
+ m_soundHoleINone(QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("sounds/holeinone.wav"))),
+ m_soundPuddle(QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("sounds/puddle.wav"))),
+ m_soundWall(QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("sounds/wall.wav"))),
+ m_soundWooHoo(QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("sounds/woohoo.wav"))),
  holeInfo(g_world)
 {
 	setRenderHint(QPainter::Antialiasing);
@@ -513,15 +513,15 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 
 	setContentsMargins(margin, margin, margin, margin);
 
-	course = new Tagaro::Scene(Kolf::renderer(), "grass");
+	course = new Tagaro::Scene(Kolf::renderer(), QStringLiteral("grass"));
 	course->setMainView(this); //this does this->setScene(course)
 	courseBoard = new Tagaro::Board;
 	courseBoard->setLogicalSize(QSizeF(400, 400));
 	course->addItem(courseBoard);
 
-	if( filename.contains( "intro" ) )
+	if( filename.contains( QLatin1String("intro") ) )
 	{
-		banner = new Tagaro::SpriteObjectItem(Kolf::renderer(), "intro_foreground", courseBoard);
+		banner = new Tagaro::SpriteObjectItem(Kolf::renderer(), QStringLiteral("intro_foreground"), courseBoard);
 		banner->setSize(400, 132);
 		banner->setPos(0, 32);
 		banner->setZValue(3); //on the height of a puddle (above slopes and sands, below any objects)
@@ -652,7 +652,7 @@ void KolfGame::startFirstHole(int hole)
 	{
 		for (; scoreboardHoles < curHole; ++scoreboardHoles)
 		{
-			cfgGroup = KConfigGroup(cfg->group(QString("%1-hole@-50,-50|0").arg(scoreboardHoles + 1)));
+			cfgGroup = KConfigGroup(cfg->group(QStringLiteral("%1-hole@-50,-50|0").arg(scoreboardHoles + 1)));
 			emit newHole(cfgGroup.readEntry("par", 3));
 		}
 
@@ -1415,7 +1415,7 @@ void KolfGame::shotDone()
 			const QString placeOutside = i18n("Drop Outside of Hazard");
 			const QString rehit = i18n("Rehit From Last Location");
 			options << placeOutside << rehit;
-			const QString choice = KComboBoxDialog::getItem(i18n("What would you like to do for your next shot?"), i18n("%1 is in a Hazard", (*it).name()), options, placeOutside, "hazardOptions");
+			const QString choice = KComboBoxDialog::getItem(i18n("What would you like to do for your next shot?"), i18n("%1 is in a Hazard", (*it).name()), options, placeOutside, QStringLiteral("hazardOptions"));
 
 			if (choice == placeOutside)
 			{
@@ -1584,7 +1584,7 @@ void KolfGame::sayWhosGoing()
 {
 	if (players->count() >= 2)
 	{
-		KMessageBox::information(this, i18n("%1 will start off.", (*curPlayer).name()), i18n("New Hole"), "newHole");
+		KMessageBox::information(this, i18n("%1 will start off.", (*curPlayer).name()), i18n("New Hole"), QStringLiteral("newHole"));
 	}
 }
 
@@ -1722,7 +1722,7 @@ void KolfGame::startNextHole()
 
 		for (; scoreboardHoles < curHole; ++scoreboardHoles)
 		{
-			cfgGroup = KConfigGroup(cfg->group(QString("%1-hole@-50,-50|0").arg(scoreboardHoles + 1)));
+			cfgGroup = KConfigGroup(cfg->group(QStringLiteral("%1-hole@-50,-50|0").arg(scoreboardHoles + 1)));
 			emit newHole(cfgGroup.readEntry("par", 3));
 		}
 
@@ -1745,11 +1745,11 @@ void KolfGame::startNextHole()
 void KolfGame::showInfoDlg(bool addDontShowAgain)
 {
 	KMessageBox::information(parentWidget(),
-			i18n("Course name: %1", holeInfo.name()) + QString("\n")
-			+ i18n("Created by %1", holeInfo.author()) + QString("\n")
+			i18n("Course name: %1", holeInfo.name()) + QStringLiteral("\n")
+			+ i18n("Created by %1", holeInfo.author()) + QStringLiteral("\n")
 			+ i18np("%1 hole", "%1 holes", highestHole),
 			i18n("Course Information"),
-			addDontShowAgain? holeInfo.name() + QString(" ") + holeInfo.author() : QString());
+			addDontShowAgain? holeInfo.name() + QStringLiteral(" ") + holeInfo.author() : QString());
 }
 
 void KolfGame::openFile()
@@ -1777,13 +1777,13 @@ void KolfGame::openFile()
 	// we do this here for the hell of it.
 	// there is no fake id, by the way,
 	// because it's old and when i added ids i forgot to change it.
-	cfgGroup = KConfigGroup(cfg->group(QString("0-course@-50,-50")));
+	cfgGroup = KConfigGroup(cfg->group(QStringLiteral("0-course@-50,-50")));
 	holeInfo.setAuthor(cfgGroup.readEntry("author", holeInfo.author()));
 	holeInfo.setName(cfgGroup.readEntry("Name", holeInfo.name()));
 	holeInfo.setUntranslatedName(cfgGroup.readEntryUntranslated("Name", holeInfo.untranslatedName()));
 	emit titleChanged(holeInfo.name());
 
-	cfgGroup = KConfigGroup(KSharedConfig::openConfig(filename), QString("%1-hole@-50,-50|0").arg(curHole));
+	cfgGroup = KConfigGroup(KSharedConfig::openConfig(filename), QStringLiteral("%1-hole@-50,-50|0").arg(curHole));
 	curPar = cfgGroup.readEntry("par", 3);
 	holeInfo.setPar(curPar);
 	holeInfo.borderWallsChanged(cfgGroup.readEntry("borderWalls", holeInfo.borderWalls()));
@@ -1804,12 +1804,12 @@ void KolfGame::openFile()
 		cfgGroup = KConfigGroup(cfg->group(*it));
 
 		const int len = (*it).length();
-		const int dashIndex = (*it).indexOf("-");
-		const int holeNum = (*it).left(dashIndex).toInt();
+		const int dashIndex = (*it).indexOf(QLatin1String("-"));
+		const int holeNum = (*it).leftRef(dashIndex).toInt();
 		if (holeNum > _highestHole)
 			_highestHole = holeNum;
 
-		const int atIndex = (*it).indexOf("@");
+		const int atIndex = (*it).indexOf(QLatin1String("@"));
 		const QString name = (*it).mid(dashIndex + 1, atIndex - (dashIndex + 1));
 
 		if (holeNum != curHole)
@@ -1823,13 +1823,13 @@ void KolfGame::openFile()
 		numItems++;
 
 
-		const int commaIndex = (*it).indexOf(",");
-		const int pipeIndex = (*it).indexOf("|");
-		const int x = (*it).mid(atIndex + 1, commaIndex - (atIndex + 1)).toInt();
-		const int y = (*it).mid(commaIndex + 1, pipeIndex - (commaIndex + 1)).toInt();
+		const int commaIndex = (*it).indexOf(QLatin1String(","));
+		const int pipeIndex = (*it).indexOf(QLatin1String("|"));
+		const int x = (*it).midRef(atIndex + 1, commaIndex - (atIndex + 1)).toInt();
+		const int y = (*it).midRef(commaIndex + 1, pipeIndex - (commaIndex + 1)).toInt();
 
 		// will tell where ball is
-		if (name == "ball")
+		if (name == QLatin1String("ball"))
 		{
 			for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 				(*it).ball()->setPos(x, y);
@@ -1837,7 +1837,7 @@ void KolfGame::openFile()
 			continue;
 		}
 
-		const int id = (*it).right(len - (pipeIndex + 1)).toInt();
+		const int id = (*it).rightRef(len - (pipeIndex + 1)).toInt();
 
 		QGraphicsItem* newItem = m_factory.createInstance(name, courseBoard, g_world);
 		if (newItem)
@@ -1862,14 +1862,14 @@ void KolfGame::openFile()
 			cfgGroup = KConfigGroup(cfg->group(makeGroup(id, curHole, sceneItem->name(), x, y)));
 			sceneItem->load(&cfgGroup);
 		}
-		else if (name != "hole" && !missingPlugins.contains(name))
+		else if (name != QLatin1String("hole") && !missingPlugins.contains(name))
 			missingPlugins.append(name);
 
 	}
 
 	if (!missingPlugins.empty())
 	{
-		KMessageBox::informationList(this, QString("<p>") + i18n("This hole uses the following plugins, which you do not have installed:") + QString("</p>"), missingPlugins, QString(), QString("%1 warning").arg(holeInfo.untranslatedName() + QString::number(curHole)));
+		KMessageBox::informationList(this, QStringLiteral("<p>") + i18n("This hole uses the following plugins, which you do not have installed:") + QStringLiteral("</p>"), missingPlugins, QString(), QStringLiteral("%1 warning").arg(holeInfo.untranslatedName() + QString::number(curHole)));
 	}
 
 	lastDelId = -1;
@@ -2165,7 +2165,7 @@ void KolfGame::save()
 	// wipe out all groups from this hole
 	for (QStringList::const_iterator it = groups.begin(); it != groups.end(); ++it)
 	{
-		int holeNum = (*it).left((*it).indexOf("-")).toInt();
+		int holeNum = (*it).leftRef((*it).indexOf(QLatin1String("-"))).toInt();
 		if (holeNum == curHole)
 			cfg->deleteGroup(*it);
 	}
@@ -2180,15 +2180,15 @@ void KolfGame::save()
 	}
 
 	// save where ball starts (whiteBall tells all)
-	cfgGroup = KConfigGroup(cfg->group(QString("%1-ball@%2,%3").arg(curHole).arg((int)whiteBall->x()).arg((int)whiteBall->y())));
+	cfgGroup = KConfigGroup(cfg->group(QStringLiteral("%1-ball@%2,%3").arg(curHole).arg((int)whiteBall->x()).arg((int)whiteBall->y())));
 	cfgGroup.writeEntry("dummykey", true);
 
-	cfgGroup = KConfigGroup(cfg->group(QString("0-course@-50,-50")));
+	cfgGroup = KConfigGroup(cfg->group(QStringLiteral("0-course@-50,-50")));
 	cfgGroup.writeEntry("author", holeInfo.author());
 	cfgGroup.writeEntry("Name", holeInfo.untranslatedName());
 
 	// save hole info
-	cfgGroup = KConfigGroup(cfg->group(QString("%1-hole@-50,-50|0").arg(curHole)));
+	cfgGroup = KConfigGroup(cfg->group(QStringLiteral("%1-hole@-50,-50|0").arg(curHole)));
 	cfgGroup.writeEntry("par", holeInfo.par());
 	cfgGroup.writeEntry("maxstrokes", holeInfo.maxStrokes());
 	cfgGroup.writeEntry("borderWalls", holeInfo.borderWalls());
@@ -2325,7 +2325,7 @@ void KolfGame::setSound(bool yes)
 void KolfGame::courseInfo(CourseInfo &info, const QString& filename)
 {
 	KConfig config(filename);
-	KConfigGroup configGroup (config.group(QString("0-course@-50,-50")));
+	KConfigGroup configGroup (config.group(QStringLiteral("0-course@-50,-50")));
 	info.author = configGroup.readEntry("author", info.author);
 	info.name = configGroup.readEntry("Name", configGroup.readEntry("name", info.name));
 	info.untranslatedName = configGroup.readEntryUntranslated("Name", configGroup.readEntryUntranslated("name", info.name));
@@ -2334,7 +2334,7 @@ void KolfGame::courseInfo(CourseInfo &info, const QString& filename)
 	unsigned int par= 0;
 	while (1)
 	{
-		QString group = QString("%1-hole@-50,-50|0").arg(hole);
+		QString group = QStringLiteral("%1-hole@-50,-50|0").arg(hole);
 		if (!config.hasGroup(group))
 		{
 			hole--;
@@ -2353,7 +2353,7 @@ void KolfGame::courseInfo(CourseInfo &info, const QString& filename)
 
 void KolfGame::scoresFromSaved(KConfig *config, PlayerList &players)
 {
-	KConfigGroup configGroup(config->group(QString("0 Saved Game")));
+	KConfigGroup configGroup(config->group(QStringLiteral("0 Saved Game")));
 	int numPlayers = configGroup.readEntry("Players", 0);
 	if (numPlayers <= 0)
 		return;
@@ -2389,7 +2389,7 @@ void KolfGame::saveScores(KConfig *config)
 			config->deleteGroup(*it);
 	}
 
-	KConfigGroup configGroup(config->group(QString("0 Saved Game")));
+	KConfigGroup configGroup(config->group(QStringLiteral("0 Saved Game")));
 	configGroup.writeEntry("Players", players->count());
 	configGroup.writeEntry("Course", filename);
 	configGroup.writeEntry("Current Hole", curHole);

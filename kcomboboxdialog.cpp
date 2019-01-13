@@ -143,8 +143,8 @@ QString KComboBoxDialog::getText(const QString &_caption, const QString &_text, 
 	KHistoryComboBox * const box = dlg->comboBox();
 	box->setEditable(true);
 
-	const QString historyItem = QString("%1History").arg(configName);
-	const QString completionItem = QString("%1Completion").arg(configName);
+	const QString historyItem = QStringLiteral("%1History").arg(configName);
+	const QString completionItem = QStringLiteral("%1Completion").arg(configName);
 
 	if(!configName.isNull())
 	{

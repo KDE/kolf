@@ -51,7 +51,7 @@
 KolfWindow::KolfWindow()
     : KXmlGuiWindow(0)
 {
-	setObjectName( QLatin1String("Kolf" ));
+	setObjectName( QStringLiteral("Kolf" ));
 	competition = false;
 	game = 0;
 	editor = 0;
@@ -61,17 +61,17 @@ KolfWindow::KolfWindow()
 
 	setupActions();
 
-	m_itemFactory.registerType<Kolf::Slope>("slope", i18n("Slope"));
-	m_itemFactory.registerType<Kolf::Puddle>("puddle", i18n("Puddle"));
-	m_itemFactory.registerType<Kolf::Wall>("wall", i18n("Wall"));
-	m_itemFactory.registerType<Kolf::Cup>("cup", i18n("Cup"), true); //true == addOnNewHole
-	m_itemFactory.registerType<Kolf::Sand>("sand", i18n("Sand"));
-	m_itemFactory.registerType<Kolf::Windmill>("windmill", i18n("Windmill"));
-	m_itemFactory.registerType<Kolf::BlackHole>("blackhole", i18n("Black Hole"));
-	m_itemFactory.registerType<Kolf::Floater>("floater", i18n("Floater"));
-	m_itemFactory.registerType<Kolf::Bridge>("bridge", i18n("Bridge"));
-	m_itemFactory.registerType<Kolf::Sign>("sign", i18n("Sign"));
-	m_itemFactory.registerType<Kolf::Bumper>("bumper", i18n("Bumper"));
+	m_itemFactory.registerType<Kolf::Slope>(QStringLiteral("slope"), i18n("Slope"));
+	m_itemFactory.registerType<Kolf::Puddle>(QStringLiteral("puddle"), i18n("Puddle"));
+	m_itemFactory.registerType<Kolf::Wall>(QStringLiteral("wall"), i18n("Wall"));
+	m_itemFactory.registerType<Kolf::Cup>(QStringLiteral("cup"), i18n("Cup"), true); //true == addOnNewHole
+	m_itemFactory.registerType<Kolf::Sand>(QStringLiteral("sand"), i18n("Sand"));
+	m_itemFactory.registerType<Kolf::Windmill>(QStringLiteral("windmill"), i18n("Windmill"));
+	m_itemFactory.registerType<Kolf::BlackHole>(QStringLiteral("blackhole"), i18n("Black Hole"));
+	m_itemFactory.registerType<Kolf::Floater>(QStringLiteral("floater"), i18n("Floater"));
+	m_itemFactory.registerType<Kolf::Bridge>(QStringLiteral("bridge"), i18n("Bridge"));
+	m_itemFactory.registerType<Kolf::Sign>(QStringLiteral("sign"), i18n("Sign"));
+	m_itemFactory.registerType<Kolf::Bumper>(QStringLiteral("bumper"), i18n("Bumper"));
 	//NOTE: The plugin mechanism has been removed because it is not used anyway.
 
 	filename = QString();
@@ -93,15 +93,15 @@ void KolfWindow::setupActions()
 	endAction = KStandardGameAction::end(this, SLOT(closeGame()), actionCollection());
 	KStandardGameAction::quit(this, SLOT(close()), actionCollection());
 
-	saveAction = actionCollection()->addAction(KStandardAction::Save, "game_save", this, SLOT(save()));
+	saveAction = actionCollection()->addAction(KStandardAction::Save, QStringLiteral("game_save"), this, SLOT(save()));
 	saveAction->setText(i18n("Save &Course"));
-	saveAsAction = actionCollection()->addAction(KStandardAction::SaveAs, "game_save_as", this, SLOT(saveAs()));
+	saveAsAction = actionCollection()->addAction(KStandardAction::SaveAs, QStringLiteral("game_save_as"), this, SLOT(saveAs()));
 	saveAsAction->setText(i18n("Save &Course As..."));
 
-	saveGameAction = actionCollection()->addAction("savegame");
+	saveGameAction = actionCollection()->addAction(QStringLiteral("savegame"));
 	saveGameAction->setText(i18n("&Save Game"));
 	connect(saveGameAction, &QAction::triggered, this, &KolfWindow::saveGame);
-	saveGameAsAction = actionCollection()->addAction("savegameas");
+	saveGameAsAction = actionCollection()->addAction(QStringLiteral("savegameas"));
 	saveGameAsAction->setText(i18n("&Save Game As..."));
 	connect(saveGameAsAction, &QAction::triggered, this, &KolfWindow::saveGameAs);
 
@@ -109,98 +109,98 @@ void KolfWindow::setupActions()
 	highScoreAction = KStandardGameAction::highscores(this, SLOT(showHighScores()), actionCollection());
 
 	// Hole
-	editingAction = new KToggleAction(QIcon::fromTheme( QLatin1String( "document-properties") ), i18n("&Edit"), this);
-	actionCollection()->addAction("editing", editingAction);
+	editingAction = new KToggleAction(QIcon::fromTheme( QStringLiteral( "document-properties") ), i18n("&Edit"), this);
+	actionCollection()->addAction(QStringLiteral("editing"), editingAction);
 	connect(editingAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	actionCollection()->setDefaultShortcut(editingAction, Qt::CTRL+Qt::Key_E);
-	newHoleAction = actionCollection()->addAction("newhole");
-	newHoleAction->setIcon(QIcon::fromTheme( QLatin1String( "document-new" )));
+	newHoleAction = actionCollection()->addAction(QStringLiteral("newhole"));
+	newHoleAction->setIcon(QIcon::fromTheme( QStringLiteral( "document-new" )));
 	newHoleAction->setText(i18n("&New"));
 	connect(newHoleAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	actionCollection()->setDefaultShortcut(newHoleAction, Qt::CTRL+Qt::SHIFT+Qt::Key_N);
-	clearHoleAction = actionCollection()->addAction("clearhole");
-	clearHoleAction->setIcon(QIcon::fromTheme( QLatin1String( "edit-clear-locationbar-ltr" )));
+	clearHoleAction = actionCollection()->addAction(QStringLiteral("clearhole"));
+	clearHoleAction->setIcon(QIcon::fromTheme( QStringLiteral( "edit-clear-locationbar-ltr" )));
 	clearHoleAction->setText(KStandardGuiItem::clear().text());
 	connect(clearHoleAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	actionCollection()->setDefaultShortcut(clearHoleAction, Qt::CTRL+Qt::Key_Delete);
-	resetHoleAction = actionCollection()->addAction("resethole");
+	resetHoleAction = actionCollection()->addAction(QStringLiteral("resethole"));
 	resetHoleAction->setText(i18n("&Reset"));
 	connect(resetHoleAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	actionCollection()->setDefaultShortcut(resetHoleAction, Qt::CTRL+Qt::Key_R);
 	undoShotAction = KStandardAction::undo(this, &KolfWindow::emptySlot, this);
-	actionCollection()->addAction("undoshot", undoShotAction);
+	actionCollection()->addAction(QStringLiteral("undoshot"), undoShotAction);
 	undoShotAction->setText(i18n("&Undo Shot"));
 	//replayShotAction = new QAction(i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 
 	// Go
 	holeAction = new KSelectAction(i18n("Switch to Hole"), this);
-	actionCollection()->addAction("switchhole", holeAction);
+	actionCollection()->addAction(QStringLiteral("switchhole"), holeAction);
 	connect(holeAction, &QAction::triggered, this, &KolfWindow::emptySlot);
-	nextAction = actionCollection()->addAction("nexthole");
-	nextAction->setIcon(QIcon::fromTheme( QLatin1String( "go-next" )));
+	nextAction = actionCollection()->addAction(QStringLiteral("nexthole"));
+	nextAction->setIcon(QIcon::fromTheme( QStringLiteral( "go-next" )));
 	nextAction->setText(i18n("&Next Hole"));
 	connect(nextAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	actionCollection()->setDefaultShortcuts(nextAction, KStandardShortcut::forward());
-	prevAction = actionCollection()->addAction("prevhole");
-	prevAction->setIcon(QIcon::fromTheme( QLatin1String( "go-previous" )));
+	prevAction = actionCollection()->addAction(QStringLiteral("prevhole"));
+	prevAction->setIcon(QIcon::fromTheme( QStringLiteral( "go-previous" )));
 	prevAction->setText(i18n("&Previous Hole"));
 	connect(prevAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	actionCollection()->setDefaultShortcuts(prevAction, KStandardShortcut::back());
-	firstAction = actionCollection()->addAction("firsthole");
-	firstAction->setIcon(QIcon::fromTheme( QLatin1String( "go-home" )));
+	firstAction = actionCollection()->addAction(QStringLiteral("firsthole"));
+	firstAction->setIcon(QIcon::fromTheme( QStringLiteral( "go-home" )));
 	firstAction->setText(i18n("&First Hole"));
 	connect(firstAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	actionCollection()->setDefaultShortcuts(firstAction, KStandardShortcut::begin());
-	lastAction = actionCollection()->addAction("lasthole");
+	lastAction = actionCollection()->addAction(QStringLiteral("lasthole"));
 	lastAction->setText(i18n("&Last Hole"));
 	connect(lastAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	actionCollection()->setDefaultShortcut(lastAction, Qt::CTRL+Qt::SHIFT+Qt::Key_End); // why not KStandardShortcut::End (Ctrl+End)?
-	randAction = actionCollection()->addAction("randhole");
-	randAction->setIcon(QIcon::fromTheme( QLatin1String( "go-jump" )));
+	randAction = actionCollection()->addAction(QStringLiteral("randhole"));
+	randAction->setIcon(QIcon::fromTheme( QStringLiteral( "go-jump" )));
 	randAction->setText(i18n("&Random Hole"));
 	connect(randAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 
 	// Settings
 	useMouseAction = new KToggleAction(i18n("Enable &Mouse for Moving Putter"), this);
-	actionCollection()->addAction("usemouse", useMouseAction);
+	actionCollection()->addAction(QStringLiteral("usemouse"), useMouseAction);
 	connect(useMouseAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	connect(useMouseAction, &QAction::toggled, this, &KolfWindow::useMouseChanged);
 	KConfigGroup configGroup(KSharedConfig::openConfig(), "Settings");
 	useMouseAction->setChecked(configGroup.readEntry("useMouse", true));
 
 	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Putting"), this);
-	actionCollection()->addAction("useadvancedputting", useAdvancedPuttingAction);
+	actionCollection()->addAction(QStringLiteral("useadvancedputting"), useAdvancedPuttingAction);
 	connect(useAdvancedPuttingAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	connect(useAdvancedPuttingAction, &QAction::toggled, this, &KolfWindow::useAdvancedPuttingChanged);
 	useAdvancedPuttingAction->setChecked(configGroup.readEntry("useAdvancedPutting", false));
 
-	showInfoAction = new KToggleAction(QIcon::fromTheme( QLatin1String( "help-about")), i18n("Show &Info"), this);
-	actionCollection()->addAction("showinfo", showInfoAction);
+	showInfoAction = new KToggleAction(QIcon::fromTheme( QStringLiteral( "help-about")), i18n("Show &Info"), this);
+	actionCollection()->addAction(QStringLiteral("showinfo"), showInfoAction);
 	connect(showInfoAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	actionCollection()->setDefaultShortcut(showInfoAction, Qt::CTRL+Qt::Key_I);
 	connect(showInfoAction, &QAction::toggled, this, &KolfWindow::showInfoChanged);
 	showInfoAction->setChecked(configGroup.readEntry("showInfo", true));
 
 	showGuideLineAction = new KToggleAction(i18n("Show Putter &Guideline"), this);
-	actionCollection()->addAction("showguideline", showGuideLineAction);
+	actionCollection()->addAction(QStringLiteral("showguideline"), showGuideLineAction);
 	connect(showGuideLineAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	connect(showGuideLineAction, &QAction::toggled, this, &KolfWindow::showGuideLineChanged);
 	showGuideLineAction->setChecked(configGroup.readEntry("showGuideLine", true));
 
 	KToggleAction *act = new KToggleAction(i18n("Enable All Dialog Boxes"), this);
-	actionCollection()->addAction("enableAll", act);
+	actionCollection()->addAction(QStringLiteral("enableAll"), act);
 	connect(act, &QAction::triggered, this, &KolfWindow::enableAllMessages);
 
 	soundAction = new KToggleAction(i18n("Play &Sounds"), this);
-	actionCollection()->addAction("sound", soundAction);
+	actionCollection()->addAction(QStringLiteral("sound"), soundAction);
 	connect(soundAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	connect(soundAction, &QAction::toggled, this, &KolfWindow::soundChanged);
 	soundAction->setChecked(configGroup.readEntry("sound", true));
 
-	aboutAction = actionCollection()->addAction("aboutcourse");
+	aboutAction = actionCollection()->addAction(QStringLiteral("aboutcourse"));
 	aboutAction->setText(i18n("&About Course"));
 	connect(aboutAction, &QAction::triggered, this, &KolfWindow::emptySlot);
-	tutorialAction = actionCollection()->addAction("tutorial");
+	tutorialAction = actionCollection()->addAction(QStringLiteral("tutorial"));
 	tutorialAction->setText(i18n("&Tutorial"));
 	connect(tutorialAction, &QAction::triggered, this, &KolfWindow::tutorial);
 
@@ -254,7 +254,7 @@ void KolfWindow::startNewGame()
 		KConfigGroup configGroup(config.group("0 Saved Game"));
 
 		if (isTutorial)
-			filename = QStandardPaths::locate(QStandardPaths::AppDataLocation, QLatin1String("tutorial.kolf"));
+			filename = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("tutorial.kolf"));
 		else
 			filename = configGroup.readEntry("Course", QString());
 
@@ -355,7 +355,7 @@ void KolfWindow::newGame()
 
 void KolfWindow::tutorial()
 {
-	QString newfilename = QStandardPaths::locate(QStandardPaths::DataLocation, QLatin1String("tutorial.kolfgame"));
+	QString newfilename = QStandardPaths::locate(QStandardPaths::DataLocation, QStringLiteral("tutorial.kolfgame"));
 	if (newfilename.isNull())
 	        return;
 
@@ -414,11 +414,11 @@ void KolfWindow::createSpacer()
 	spacerPlayers.clear();
 	spacerPlayers.append(Player());
 	spacerPlayers.last().ball()->setColor(Qt::yellow);
-	spacerPlayers.last().setName("player");
+	spacerPlayers.last().setName(QStringLiteral("player"));
 	spacerPlayers.last().setId(1);
 
 	delete spacer;
-	spacer = new KolfGame(m_itemFactory, &spacerPlayers, QStandardPaths::locate(QStandardPaths::AppDataLocation, QLatin1String("intro")), dummy);
+	spacer = new KolfGame(m_itemFactory, &spacerPlayers, QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("intro")), dummy);
 	spacer->setSound(false);
 	layout->addWidget(spacer, 0, 0);//, Qt::AlignCenter);
 	spacer->ignoreEvents(true);
@@ -493,7 +493,7 @@ void KolfWindow::gameOver()
 		// KScoreDialog makes it very easy :-))
 
 		KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Custom1 | KScoreDialog::Score, this);
-		scoreDialog->addField(KScoreDialog::Custom1, i18n("Par"), "Par");
+		scoreDialog->addField(KScoreDialog::Custom1, i18n("Par"), QStringLiteral("Par"));
 
 		CourseInfo courseInfo;
 		game->courseInfo(courseInfo, game->curFilename());
@@ -520,7 +520,7 @@ void KolfWindow::gameOver()
 void KolfWindow::showHighScores()
 {
 	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Custom1 | KScoreDialog::Score, this);
-	scoreDialog->addField(KScoreDialog::Custom1, i18n("Par"), "Par");
+	scoreDialog->addField(KScoreDialog::Custom1, i18n("Par"), QStringLiteral("Par"));
 
 	CourseInfo courseInfo;
 	game->courseInfo(courseInfo, game->curFilename());
@@ -601,7 +601,7 @@ void KolfWindow::loadGame()
 }
 
 // called by main for command line files
-void KolfWindow::openUrl(QUrl url)
+void KolfWindow::openUrl(const QUrl &url)
 {
 	QTemporaryFile tempFile;
 	tempFile.open();
@@ -613,9 +613,9 @@ void KolfWindow::openUrl(QUrl url)
 		isTutorial = false;
 		QMimeDatabase db;
 		QString mimeType = db.mimeTypeForFile(tempFile).name();
-		if (mimeType == "application/x-kourse")
+		if (mimeType == QLatin1String("application/x-kourse"))
 			filename = tempFile.fileName();
-		else if (mimeType == "application/x-kolf")
+		else if (mimeType == QLatin1String("application/x-kolf"))
 			loadedGame = tempFile.fileName();
 		else
 		{
@@ -653,7 +653,7 @@ void KolfWindow::editingStarted()
 {
 	delete editor;
 	editor = new Editor(m_itemFactory, dummy);
-	editor->setObjectName( QLatin1String( "Editor" ) );
+	editor->setObjectName( QStringLiteral( "Editor" ) );
 	connect(editor, &Editor::addNewItem, game, &KolfGame::addNewObject);
 	connect(editor, &Editor::changed, game, &KolfGame::setModified);
 	connect(editor, &Editor::addNewItem, this, &KolfWindow::setHoleFocus);

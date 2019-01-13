@@ -184,11 +184,11 @@ public:
 	int lowestMaxStrokes() const { return m_lowestMaxStrokes; }
 	int maxStrokes() const { return m_maxStrokes; }
 	bool hasMaxStrokes() const { return m_maxStrokes != m_lowestMaxStrokes; }
-	void setAuthor(QString newauthor) { m_author = newauthor; }
+	void setAuthor(const QString &newauthor) { m_author = newauthor; }
 	QString author() const { return m_author; }
 
-	void setName(QString newname) { m_name = newname; }
-	void setUntranslatedName(QString newname) { m_untranslatedName = newname; }
+	void setName(const QString &newname) { m_name = newname; }
+	void setUntranslatedName(const QString &newname) { m_untranslatedName = newname; }
 	QString name() const { return m_name; }
 	QString untranslatedName() const { return m_untranslatedName; }
 

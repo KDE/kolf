@@ -46,7 +46,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 
 	KSharedConfig::Ptr config = KSharedConfig::openConfig();
         // following use this group
-        KConfigGroup configGroup(config->group(QString("New Game Dialog Mode")));
+        KConfigGroup configGroup(config->group(QStringLiteral("New Game Dialog Mode")));
 
 	// lots o' colors :)
 	startColors << Qt::blue << Qt::red << Qt::yellow << Qt::lightGray << Qt::cyan << Qt::darkBlue << Qt::magenta << Qt::darkGray << Qt::darkMagenta << Qt::darkYellow;
@@ -67,7 +67,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 	scroller->setWidget(playersWidget);
 	new QVBoxLayout(playersWidget);
 
-	QMap<QString, QString> entries = config->entryMap("New Game Dialog");
+	QMap<QString, QString> entries = config->entryMap(QStringLiteral("New Game Dialog"));
 	int i = 0;
 	for (QMap<QString, QString>::Iterator it = entries.begin(); it != entries.end(); ++it)
 	{
@@ -105,7 +105,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 
 		/// course loading
 		QStringList files;
-		const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, "courses", QStandardPaths::LocateDirectory);
+		const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, QStringLiteral("courses"), QStandardPaths::LocateDirectory);
 		Q_FOREACH (const QString& dir, dirs) {
 			const QStringList fileNames = QDir(dir).entryList(QStringList() << QStringLiteral("*"), QDir::Files);
 			Q_FOREACH (const QString& file, fileNames) {
@@ -206,7 +206,7 @@ NewGameDialog::~NewGameDialog()
 void NewGameDialog::slotOk()
 {
 	KSharedConfig::Ptr config = KSharedConfig::openConfig();
-	KConfigGroup configGroup(config->group(QString("New Game Dialog Mode")));
+	KConfigGroup configGroup(config->group(QStringLiteral("New Game Dialog Mode")));
 
 	configGroup.writeEntry("competition", mode->isChecked());
 	if (enableCourses)
@@ -236,7 +236,7 @@ void NewGameDialog::courseSelected(int index)
 
 	CourseInfo &curinfo = info[currentCourse];
 
-	name->setText(QString("<strong>%1</strong>").arg(curinfo.name));
+	name->setText(QStringLiteral("<strong>%1</strong>").arg(curinfo.name));
 
 	author->setText(i18n("By %1", curinfo.author));
 	par->setText(i18n("Par %1", curinfo.par));
@@ -246,7 +246,7 @@ void NewGameDialog::courseSelected(int index)
 void NewGameDialog::showHighscores()
 {
 	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Custom1 | KScoreDialog::Score, this);
-	scoreDialog->addField(KScoreDialog::Custom1, i18n("Par"), "Par");
+	scoreDialog->addField(KScoreDialog::Custom1, i18n("Par"), QStringLiteral("Par"));
 	scoreDialog->setConfigGroup(qMakePair(QByteArray(info[currentCourse].untranslatedName.toUtf8() + " Highscores"), i18n("High Scores for %1", info[currentCourse].name)));
 	scoreDialog->setComment(i18n("High Scores for %1", info[currentCourse].name));
 	scoreDialog->show();
@@ -343,7 +343,7 @@ void NewGameDialog::enableButtons()
 
 /////////////////////////
 
-PlayerEditor::PlayerEditor(QString startName, QColor startColor, QWidget *parent)
+PlayerEditor::PlayerEditor(const QString &startName, QColor startColor, QWidget *parent)
 	: QWidget(parent)
 {
 	QHBoxLayout *layout = new QHBoxLayout(this);
