@@ -2149,12 +2149,20 @@ void KolfGame::save()
 {
 	if (filename.isEmpty())
 	{
-		QUrl newfile = QFileDialog::getSaveFileUrl(this, i18n("Pick Kolf Course to Save To"), QUrl(),
-				i18n("Kolf saved course (*.kolf)"));
-		if (newfile.isEmpty())
-			return;
-
-		setFilename(newfile.url());
+		QPointer<QFileDialog> fileSaveDialog = new QFileDialog(this);
+		fileSaveDialog->setWindowTitle(i18nc("@title:window", "Pick Kolf Course to Save To"));
+		fileSaveDialog->setMimeTypeFilters(QStringList(QStringLiteral("application/x-kourse")));
+		fileSaveDialog->setAcceptMode(QFileDialog::AcceptSave);
+		if (fileSaveDialog->exec() == QDialog::Accepted) {
+			QUrl newfile = fileSaveDialog->selectedUrls().first();
+			if (newfile.isEmpty()) {
+				return;
+			}
+			else {
+				setFilename(newfile.url());
+			}
+		}
+		delete fileSaveDialog;
 	}
 
 	emit parChanged(curHole, holeInfo.par());

@@ -277,8 +277,14 @@ void NewGameDialog::selectionChanged()
 
 void NewGameDialog::addCourse()
 {
-	const QStringList files = QFileDialog::getOpenFileNames( this, i18n("Pick Kolf Course"),
-			 QString(), i18n("Saved Kolf game (*.kolfgame);;All files (*.*)") );
+	QPointer<QFileDialog> fileLoadDialog = new QFileDialog(this);
+	fileLoadDialog->setWindowTitle(i18nc("@title:window", "Pick Kolf Course"));
+	fileLoadDialog->setMimeTypeFilters(QStringList(QStringLiteral("application/x-kourse")));
+	fileLoadDialog->setAcceptMode(QFileDialog::AcceptOpen);
+	fileLoadDialog->setFileMode(QFileDialog::ExistingFile);
+	fileLoadDialog->exec();
+        const QStringList files = fileLoadDialog->selectedFiles();
+	delete fileLoadDialog;
 
 	bool hasDuplicates = false;
 

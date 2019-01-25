@@ -546,27 +546,39 @@ void KolfWindow::save()
 
 void KolfWindow::saveAs()
 {
-	QUrl newfile = QFileDialog::getSaveFileUrl(this, i18n("Pick Kolf Course to Save To"),
-				QUrl(), i18n("Kolf course (*.kolf)"));
-	if (!newfile.isEmpty())
-	{
-		filename = newfile.url();
-		game->setFilename(filename);
-		game->save();
-		game->setFocus();
+	QPointer<QFileDialog> fileSaveDialog = new QFileDialog(this);
+	fileSaveDialog->setWindowTitle(i18nc("@title:window", "Pick Kolf Course to Save To"));
+	fileSaveDialog->setMimeTypeFilters(QStringList(QStringLiteral("application/x-kourse")));
+	fileSaveDialog->setAcceptMode(QFileDialog::AcceptSave);
+	if (fileSaveDialog->exec() == QDialog::Accepted) {
+		QUrl newfile = fileSaveDialog->selectedUrls().first();
+		if (!newfile.isEmpty()) {
+			filename = newfile.url();
+			game->setFilename(filename);
+			game->save();
+			game->setFocus();
+		}
 	}
+	delete fileSaveDialog;
 }
 
 void KolfWindow::saveGameAs()
 {
-	QUrl newfile = QFileDialog::getSaveFileUrl(this, i18n("Pick Saved Game to Save To"),
-				QUrl(), i18n("Kolf saved game (*.kolfgame)"));
-	if (newfile.isEmpty())
-		return;
-
-	loadedGame = newfile.url();
-
-	saveGame();
+		QPointer<QFileDialog> fileSaveDialog = new QFileDialog(this);
+		fileSaveDialog->setWindowTitle(i18nc("@title:window", "Pick Saved Game to Save To"));
+		fileSaveDialog->setMimeTypeFilters(QStringList(QStringLiteral("application/x-kolf")));
+		fileSaveDialog->setAcceptMode(QFileDialog::AcceptSave);
+		if (fileSaveDialog->exec() == QDialog::Accepted) {
+			QUrl newfile = fileSaveDialog->selectedUrls().first();
+			if (newfile.isEmpty()) {
+				return;
+			}
+			else {
+				loadedGame = newfile.url();
+				saveGame();
+			}
+		}
+		delete fileSaveDialog;
 }
 
 void KolfWindow::saveGame()
@@ -590,14 +602,22 @@ void KolfWindow::saveGame()
 
 void KolfWindow::loadGame()
 {
-	loadedGame = QFileDialog::getOpenFileUrl( this, i18n("Pick Kolf Saved Game"),
-				QUrl(), i18n("Kolf saved game (*.kolfgame)") ).url();
-
-	if (loadedGame.isEmpty())
-		return;
-
-	isTutorial = false;
-	startNewGame();
+	QPointer<QFileDialog> fileLoadDialog = new QFileDialog(this);
+	fileLoadDialog->setWindowTitle(i18nc("@title:window", "Pick Kolf Saved Game"));
+	fileLoadDialog->setMimeTypeFilters(QStringList(QStringLiteral("application/x-kolf")));
+	fileLoadDialog->setAcceptMode(QFileDialog::AcceptOpen);
+	fileLoadDialog->setFileMode(QFileDialog::ExistingFile);
+	if (fileLoadDialog->exec() == QDialog::Accepted) {
+		QUrl loadedGame = fileLoadDialog->selectedUrls().first();
+		if (loadedGame.isEmpty()) {
+			return;
+		}
+		else {
+			isTutorial = false;
+			startNewGame();
+		}
+	}
+	delete fileLoadDialog;
 }
 
 // called by main for command line files
