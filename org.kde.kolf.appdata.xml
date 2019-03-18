@@ -31,6 +31,7 @@
   <name xml:lang="uk">Kolf</name>
   <name xml:lang="x-test">xxKolfxx</name>
   <name xml:lang="zh-CN">Kolf</name>
+  <name xml:lang="zh-TW">Kolf</name>
   <summary>Miniature Golf</summary>
   <summary xml:lang="ca">Golf en miniatura</summary>
   <summary xml:lang="ca-valencia">Golf en miniatura</summary>
@@ -116,6 +117,7 @@
     <p xml:lang="uk">Можливості:</p>
     <p xml:lang="x-test">xxFeatures:xx</p>
     <p xml:lang="zh-CN">功能：</p>
+    <p xml:lang="zh-TW">功能：</p>
     <ul>
       <li>Single and Multi-player (up to ten players) modes</li>
       <li xml:lang="ca">Modes individual i multijugador (fins a 10 jugadors)</li>
@@ -269,6 +271,7 @@
       <caption xml:lang="sv">Inledande skärm i Kolf</caption>
       <caption xml:lang="uk">Початкове вікно Kolf</caption>
       <caption xml:lang="x-test">xxInitial screen of Kolfxx</caption>
+      <caption xml:lang="zh-TW">Kolf 的初始畫面</caption>
       <image>https://kde.org/images/screenshots/kolf.png</image>
     </screenshot>
   </screenshots>
