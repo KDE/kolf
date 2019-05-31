@@ -15,6 +15,7 @@
   <name xml:lang="gl">Kolf</name>
   <name xml:lang="id">Kolf</name>
   <name xml:lang="it">Kolf</name>
+  <name xml:lang="ko">Kolf</name>
   <name xml:lang="nl">Kolf</name>
   <name xml:lang="nn">Kolf</name>
   <name xml:lang="pl">Kolf</name>
@@ -44,6 +45,7 @@
   <summary xml:lang="gl">Golf en miniatura</summary>
   <summary xml:lang="id">Golf Miniatur</summary>
   <summary xml:lang="it">Golf in miniatura</summary>
+  <summary xml:lang="ko">모형 골프</summary>
   <summary xml:lang="nl">Miniatuurgolf</summary>
   <summary xml:lang="nn">Minigolf</summary>
   <summary xml:lang="pl">Miniaturowy golf</summary>
@@ -75,6 +77,7 @@
     <p xml:lang="gl">Kolf é un xogo de golf en miniatura. Xógase cunha vista aérea, cunha barra curta que representa o pau de golf. Kolf goza de moitos tipos distintos de obxectos, como obstáculos de auga, rampas, trampas de area, e buratos negros (teleportación), entre outros.</p>
     <p xml:lang="id">Kgolf adalah permainan golf miniatur. Permainan dimainkan dari sebuah tampilan permukaan tanah, dengan hort bar mewakili klub golf. Fitur Kolf banyak tipe objek yang berbeda, seperti bahaya air, lereng, perangkap pasir, dan lubang hitam (lengkungan), dan yang lainnya.</p>
     <p xml:lang="it">Kolf è un gioco di di golf in miniatura. Il gioco si gioca da un punto di vista sopraelevato, con una barra che rappresenta la mazza da golf. Kolf contiene molti tipi di oggetti diversi, tra cui ostacoli d'acqua, pendenze, trappole di sabbia e buchi neri (deformazioni).</p>
+    <p xml:lang="ko">Kolf는 모형 골프 게임입니다. 게임은 오버헤드 뷰로 진행되며 골프 클럽은 막대기로 표시됩니다. Kolf는 물 해저드, 슬로프, 모래 트랩, 블랙홀 등 특수 객체를 지원합니다.</p>
     <p xml:lang="nl">Kolf is een miniatuur spel golf. Het spel wordt gespeeld vanuit een bovenaanzicht, met een trekstang die de golfclub representeert. Kolf heeft veel verschillende typen objecten, zoals o.a. waterplassen, hellingen, zandbakken en zwarte gaten (warps).</p>
     <p xml:lang="nn">Kolf er eit minigolfspel. Ein ser golfbana frå fugleperspektiv, der ei kort linje representerer golfkølla. Det finst òg mange hinder, som vatn, bakkar, bunkerar og svarte hòl.</p>
     <p xml:lang="pl">Kolf jest grą w miniaturowego golfa. Gra się w widoku z góry, gdzie pasek hort stanowi kije golfowe. Kolf posiada wiele różnych rodzajów obiektów, takich jak woda, pochylenia, piasek, czarne dziury i inne.</p>
@@ -101,6 +104,7 @@
     <p xml:lang="gl">Funcionalidades:</p>
     <p xml:lang="id">Fitur:</p>
     <p xml:lang="it">Caratteristiche:</p>
+    <p xml:lang="ko">기능:</p>
     <p xml:lang="nl">Mogelijkheden:</p>
     <p xml:lang="nn">Funksjonar:</p>
     <p xml:lang="pl">Możliwości:</p>
@@ -130,6 +134,7 @@
       <li xml:lang="gl">Modos de un e varios xogadores (ata 10).</li>
       <li xml:lang="id">Mode Pemain Tunggal dan Multi (hingga sepuluh pemain)</li>
       <li xml:lang="it">Modalità a uno o più giocatori (fino a dieci)</li>
+      <li xml:lang="ko">단일 및 최대 10명까지 다중 플레이어 모드</li>
       <li xml:lang="nl">Modi met enkele en meerdere spelers (tot tien spelers)</li>
       <li xml:lang="nn">Kan vera frå éin til ti spelarar</li>
       <li xml:lang="pl">Tryb gracza pojedynczego i wielu graczy (do dziesięciu)</li>
@@ -156,6 +161,7 @@
       <li xml:lang="gl">Táboa de mellores puntuacións.</li>
       <li xml:lang="id">Tabel skor tinggi</li>
       <li xml:lang="it">Tabellone dei migliori punteggi</li>
+      <li xml:lang="ko">최고 점수표</li>
       <li xml:lang="nl">Tabel met topscores</li>
       <li xml:lang="nn">Rekordtavle</li>
       <li xml:lang="pl">Tablica najlepszych wyników</li>
@@ -182,6 +188,7 @@
       <li xml:lang="gl">Campos dinámicos</li>
       <li xml:lang="id">Haluan dinamis</li>
       <li xml:lang="it">Percorsi dinamici</li>
+      <li xml:lang="ko">동적 코스</li>
       <li xml:lang="nl">Dynamische banen</li>
       <li xml:lang="nn">Dynamiske golfbanar</li>
       <li xml:lang="pl">Dynamiczne pola golfowe</li>
@@ -207,6 +214,7 @@
       <li xml:lang="gl">Campos de terceiros</li>
       <li xml:lang="id">Haluan pihak ketiga</li>
       <li xml:lang="it">Percorsi di terze parti</li>
+      <li xml:lang="ko">제 3자 개발 코스</li>
       <li xml:lang="nl">Banen van derden</li>
       <li xml:lang="nn">Nedlastbare golfbanar</li>
       <li xml:lang="pl">Dogrywane pola golfowe</li>
@@ -233,6 +241,7 @@
       <li xml:lang="gl">Editor de campos</li>
       <li xml:lang="id">Pengedit Haluan</li>
       <li xml:lang="it">Editor dei percorsi</li>
+      <li xml:lang="ko">코스 편집기</li>
       <li xml:lang="nl">Bewerker van de baan</li>
       <li xml:lang="nn">Kan laga eigne banar</li>
       <li xml:lang="pl">Edytor pól golfowych</li>
@@ -265,6 +274,7 @@
       <caption xml:lang="gl">Pantalla inicial de Kolf</caption>
       <caption xml:lang="id">Layar awal Kolf</caption>
       <caption xml:lang="it">Schermata iniziale di Kolf</caption>
+      <caption xml:lang="ko">Kolf 초기 화면</caption>
       <caption xml:lang="nl">Initiaal scherm van Kolf</caption>
       <caption xml:lang="pl">Początkowy ekran Kolf</caption>
       <caption xml:lang="pt">Ecrã inicial do Kolf</caption>
