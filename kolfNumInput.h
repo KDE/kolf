@@ -27,10 +27,8 @@
 
 class QSlider;
 class QSpinBox;
-class QValidator;
 
 class kolfNumInputPrivate;
-class KLocalizedString;
 
 class kolfNumInput : public QWidget
 {
