@@ -20,13 +20,12 @@
 #include "newgame.h"
 #include "game.h"
 
-#include <QBoxLayout>
 #include <QFileDialog>
 #include <QLabel>
 #include <QListWidget>
 #include <QPushButton>
 #include <QStandardPaths>
-#include <QUrl>
+#include <QVBoxLayout>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KScoreDialog>

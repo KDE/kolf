@@ -41,7 +41,6 @@
 #include <QFileDialog>
 #include <QGridLayout>
 #include <QMimeDatabase>
-#include <QMimeType>
 #include <QStandardPaths>
 #include <QStatusBar>
 #include <QTemporaryFile>

@@ -25,15 +25,12 @@
 #include <cmath>
 
 #include <QApplication>
-#include <QDebug>
 #include <QLabel>
-#include <QLineEdit>
 #include <QResizeEvent>
 #include <QSlider>
 #include <QStyle>
 
 #include <KConfigDialogManager>
-#include <KLocalizedString>
 
 static inline int calcDiffByTen(int x, int y)
 {

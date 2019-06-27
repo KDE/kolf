@@ -21,9 +21,9 @@
 #include "game.h"
 #include "itemfactory.h"
 
-#include <QBoxLayout>
 #include <QLabel>
 #include <QListWidget>
+#include <QHBoxLayout>
 #include <KLocalizedString>
 Editor::Editor(const Kolf::ItemFactory& factory, QWidget *parent)
 	: QWidget(parent)

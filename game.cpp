@@ -25,11 +25,10 @@
 
 #include "tagaro/board.h"
 
+#include <QHBoxLayout>
 #include <QApplication>
-#include <QBoxLayout>
 #include <QCheckBox>
 #include <QFileDialog>
-#include <QGlobalStatic>
 #include <QLabel>
 #include <QMouseEvent>
 #include <QSpinBox>
