@@ -1,4 +1,4 @@
-This directory contains a source snapshot of Box2D, taken from revision 141 of http://box2d.googlecode.com/svn/trunk/Box2D/Box2D
+This directory contains a source snapshot of Box2D, taken from revision 141 of https://web.archive.org/web/20110429162509/http://box2d.googlecode.com/svn/trunk/Box2D/Box2D
 
 The following modifications have been made to the imported source files:
 * converted line-endings with dos2unix
