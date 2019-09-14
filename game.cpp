@@ -1803,12 +1803,12 @@ void KolfGame::openFile()
 		cfgGroup = KConfigGroup(cfg->group(*it));
 
 		const int len = (*it).length();
-		const int dashIndex = (*it).indexOf(QLatin1String("-"));
+		const int dashIndex = (*it).indexOf(QLatin1Char('-'));
 		const int holeNum = (*it).leftRef(dashIndex).toInt();
 		if (holeNum > _highestHole)
 			_highestHole = holeNum;
 
-		const int atIndex = (*it).indexOf(QLatin1String("@"));
+		const int atIndex = (*it).indexOf(QLatin1Char('@'));
 		const QString name = (*it).mid(dashIndex + 1, atIndex - (dashIndex + 1));
 
 		if (holeNum != curHole)
@@ -1822,8 +1822,8 @@ void KolfGame::openFile()
 		numItems++;
 
 
-		const int commaIndex = (*it).indexOf(QLatin1String(","));
-		const int pipeIndex = (*it).indexOf(QLatin1String("|"));
+		const int commaIndex = (*it).indexOf(QLatin1Char(','));
+		const int pipeIndex = (*it).indexOf(QLatin1Char('|'));
 		const int x = (*it).midRef(atIndex + 1, commaIndex - (atIndex + 1)).toInt();
 		const int y = (*it).midRef(commaIndex + 1, pipeIndex - (commaIndex + 1)).toInt();
 
@@ -2172,7 +2172,7 @@ void KolfGame::save()
 	// wipe out all groups from this hole
 	for (QStringList::const_iterator it = groups.begin(); it != groups.end(); ++it)
 	{
-		int holeNum = (*it).leftRef((*it).indexOf(QLatin1String("-"))).toInt();
+		int holeNum = (*it).leftRef((*it).indexOf(QLatin1Char('-'))).toInt();
 		if (holeNum == curHole)
 			cfg->deleteGroup(*it);
 	}
