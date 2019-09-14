@@ -1,7 +1,7 @@
 project(kolf)
 
 cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
-set (QT_MIN_VERSION "5.7.0")
+set (QT_MIN_VERSION "5.11.0")
 set (KF5_MIN_VERSION "5.30.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
@@ -33,6 +33,9 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
+if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
+   add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
+endif()
 
 set(LIBKOLF_VERSION "5.0.0")
 
