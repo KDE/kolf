@@ -120,7 +120,7 @@ set(kolf_LIB_SRCS
     ${box2d_SRCS}
 )
 
-add_library(kolfprivate SHARED ${kolf_LIB_SRCS})
+add_library(kolfprivate STATIC ${kolf_LIB_SRCS})
 
 target_link_libraries(kolfprivate
     Qt5::Gui

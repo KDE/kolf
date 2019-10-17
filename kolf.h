@@ -20,7 +20,6 @@
 #ifndef KOLF_H
 #define KOLF_H
 
-#include <kolflib_export.h>
 #include <KXmlGuiWindow>
 
 #include "game.h"
@@ -34,7 +33,7 @@ class KToggleAction;
 class Editor;
 class ScoreBoard;
 
-class KOLFLIB_EXPORT KolfWindow : public KXmlGuiWindow
+class KolfWindow : public KXmlGuiWindow
 {
 	Q_OBJECT
 

@@ -20,7 +20,6 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <kolflib_export.h>
 #include "ball.h"
 
 #include "tagaro/scene.h"
@@ -229,7 +228,7 @@ private:
 	double ithickness, iwidth, iheight;
 };
 
-struct KOLFLIB_EXPORT CourseInfo
+struct CourseInfo
 {
 	CourseInfo(const QString &_name, const QString &_untranslatedName, const QString &_author, unsigned int _holes, unsigned int _par) { name = _name; untranslatedName = _untranslatedName, author = _author; holes = _holes; par = _par; }
 	CourseInfo();
@@ -241,7 +240,7 @@ struct KOLFLIB_EXPORT CourseInfo
 	unsigned int par;
 };
 
-class KOLFLIB_EXPORT KolfGame : public QGraphicsView
+class KolfGame : public QGraphicsView
 {
 	Q_OBJECT
 
