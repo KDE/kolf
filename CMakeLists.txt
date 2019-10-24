@@ -37,8 +37,6 @@ if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
    add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
 endif()
 
-set(LIBKOLF_VERSION "5.0.0")
-
 add_subdirectory(sounds)
 add_subdirectory(courses)
 add_subdirectory(pics)
@@ -136,10 +134,6 @@ target_link_libraries(kolfprivate
     KF5::XmlGui
     KF5KDEGames
 )
-
-set_target_properties(kolfprivate PROPERTIES VERSION ${LIBKOLF_VERSION} SOVERSION ${LIBKOLF_VERSION})
-install(TARGETS kolfprivate ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} LIBRARY NAMELINK_SKIP)
-
 
 ########### next target ###############
 
