@@ -100,7 +100,7 @@ void kolfNumInput::setLabel(const QString &label, Qt::Alignment a)
     if (label.isEmpty()) {
         delete d->label;
         d->label = 0;
-        d->labelAlignment = 0;
+        d->labelAlignment = {};
     } else {
         if (!d->label) {
             d->label = new QLabel(this);

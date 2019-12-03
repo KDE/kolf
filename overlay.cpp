@@ -189,7 +189,7 @@ Kolf::Overlay::Overlay(CanvasItem* citem, QGraphicsItem* qitem, bool hack_addQit
 	//overlays have to be shown explicitly
 	hide();
 	//overlays themselves do not have mouse interaction, and do not paint anything itself
-	setAcceptedMouseButtons(0);
+	setAcceptedMouseButtons(Qt::NoButton);
 	setFlag(QGraphicsItem::ItemHasNoContents);
 	//initialize activator area item
 	m_activatorItem->setZValue(1);

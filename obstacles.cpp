@@ -683,7 +683,7 @@ Kolf::Sign::Sign(QGraphicsItem* parent, b2World* world)
 		setWall((Kolf::WallIndex) i, true);
 	//Z value 1 should be enough to keep text above overlay
 	m_textItem->setZValue(1);
-	m_textItem->setAcceptedMouseButtons(0);
+	m_textItem->setAcceptedMouseButtons(Qt::NoButton);
 	//TODO: activate QGraphicsItem::ItemClipsChildrenToShape flag after
 	//refactoring (only after it is clear that the text is the only child)
 }
