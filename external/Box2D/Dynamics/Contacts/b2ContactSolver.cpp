@@ -127,7 +127,7 @@ void b2ContactSolver::InitializeVelocityConstraints()
 
 		for (int32 j = 0; j < cc->pointCount; ++j)
 		{
-			b2ManifoldPoint* cp = manifold->points + j;
+			//b2ManifoldPoint* cp = manifold->points + j;
 			b2ContactConstraintPoint* ccp = cc->points + j;
 
 			ccp->rA = worldManifold.points[j] - bodyA->m_sweep.c;
@@ -674,7 +674,7 @@ bool b2ContactSolver::SolveTOIPositionConstraints(qreal baumgarte, const b2Body*
 		b2ContactConstraint* c = m_constraints + i;
 		b2Body* bodyA = c->bodyA;
 		b2Body* bodyB = c->bodyB;
-
+/*
 		qreal massA = 0.0f;
 		if (bodyA == toiBodyA || bodyA == toiBodyB)
 		{
@@ -686,7 +686,7 @@ bool b2ContactSolver::SolveTOIPositionConstraints(qreal baumgarte, const b2Body*
 		{
 			massB = bodyB->m_mass;
 		}
-
+*/
 		qreal invMassA = bodyA->m_mass * bodyA->m_invMass;
 		qreal invIA = bodyA->m_mass * bodyA->m_invI;
 		qreal invMassB = bodyB->m_mass * bodyB->m_invMass;

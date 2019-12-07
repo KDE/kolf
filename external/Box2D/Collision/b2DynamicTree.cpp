@@ -326,7 +326,7 @@ void b2DynamicTree::RemoveLeaf(int32 leaf)
 		parent = grandParent;
 		while (parent != b2_nullNode)
 		{
-			b2AABB oldAABB = m_nodes[parent].aabb;
+			//b2AABB oldAABB = m_nodes[parent].aabb;
 			m_nodes[parent].aabb.Combine(m_nodes[m_nodes[parent].child1].aabb, m_nodes[m_nodes[parent].child2].aabb);
 
 			b2Assert(m_nodes[parent].leafCount > 0);

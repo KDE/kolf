@@ -215,7 +215,7 @@ struct b2SeparationFunction
 				b2Vec2 normal = b2Mul(xfA.R, m_axis);
 				b2Vec2 pointA = b2Mul(xfA, m_localPoint);
 
-				b2Vec2 axisB = b2MulT(xfB.R, -normal);
+				//b2Vec2 axisB = b2MulT(xfB.R, -normal);
 
 				b2Vec2 localPointB = m_proxyB->GetVertex(indexB);
 				b2Vec2 pointB = b2Mul(xfB, localPointB);
@@ -229,7 +229,7 @@ struct b2SeparationFunction
 				b2Vec2 normal = b2Mul(xfB.R, m_axis);
 				b2Vec2 pointB = b2Mul(xfB, m_localPoint);
 
-				b2Vec2 axisA = b2MulT(xfA.R, -normal);
+				//b2Vec2 axisA = b2MulT(xfA.R, -normal);
 
 				b2Vec2 localPointA = m_proxyA->GetVertex(indexA);
 				b2Vec2 pointA = b2Mul(xfA, localPointA);
