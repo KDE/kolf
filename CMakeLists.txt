@@ -97,7 +97,6 @@ set(box2d_SRCS
 set(kolf_LIB_SRCS
     game.cpp
     kolf.cpp
-    kolfNumInput.cpp
     newgame.cpp
     canvasitem.cpp
     ball.cpp
