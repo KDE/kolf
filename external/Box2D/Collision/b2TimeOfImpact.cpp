@@ -197,8 +197,8 @@ struct b2SeparationFunction
 		{
 		case e_points:
 			{
-				b2Vec2 axisA = b2MulT(xfA.R,  m_axis);
-				b2Vec2 axisB = b2MulT(xfB.R, -m_axis);
+				//b2Vec2 axisA = b2MulT(xfA.R,  m_axis);
+				//b2Vec2 axisB = b2MulT(xfB.R, -m_axis);
 
 				b2Vec2 localPointA = m_proxyA->GetVertex(indexA);
 				b2Vec2 localPointB = m_proxyB->GetVertex(indexB);
