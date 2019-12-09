@@ -262,7 +262,6 @@ public:
 	void updateMouse();
 	void ballMoved();
 	void setBorderWalls(bool);
-	void setInPlay(bool yes) { inPlay = yes; }
 	bool isInPlay() { return inPlay; }
 	bool isInfoShowing() { return m_showInfo; }
 	void stoppedBall();
