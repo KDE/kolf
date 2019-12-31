@@ -35,6 +35,7 @@
 #include <QStandardPaths>
 #include <QTimer>
 #include <QUrl>
+#include <QRandomGenerator>
 #include <KGameRenderer>
 #include <KLineEdit>
 #include <KLocalizedString>
@@ -1243,16 +1244,17 @@ void KolfGame::putterTimeout()
 			{
 				strokeCircle->setValue(al); 
 				int deg;
+		                auto *generator = QRandomGenerator::global();
 				// if > 45 or < -45 then bad stroke
 				if (al > 45)
 				{
 					deg = putter->curDeg() - 45 + rand() % 90;
-					strength -= qrand() % (int)strength;
+                			strength -= generator->bounded((int)strength);
 				}
 				else if (!finishStroking)
 				{
 					deg = putter->curDeg() - 45 + rand() % 90;
-					strength -= qrand() % (int)strength;
+			                strength -= generator->bounded((int)strength);
 				}
 				else
 					deg = putter->curDeg() + (int)(strokeCircle->value() / 3);
