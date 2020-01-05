@@ -1380,6 +1380,14 @@ void KolfGame::shotDone()
 
 	Ball *ball = (*curPlayer).ball();
 
+	if(ball->curState() == Rolling) {
+		// This is a bit of a hack, since we have different timers for detecting shotDone and for doing animation, it can happen that at some point we think the shot
+		// was done, do a singleshot 0 call, but then we continue the animation and we realize it's not really done, so here make sure we're realy done
+		// before adding a stroke to the player
+		inPlay = true;
+		return;
+	}
+
 	if (!dontAddStroke && (*curPlayer).numHoles())
 		(*curPlayer).addStrokeToHole(curHole);
 
