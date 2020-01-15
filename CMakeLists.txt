@@ -1,6 +1,13 @@
-project(kolf)
-
 cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
+
+# KDE Application Version, managed by release script
+set(RELEASE_SERVICE_VERSION_MAJOR "20")
+set(RELEASE_SERVICE_VERSION_MINOR "03")
+set(RELEASE_SERVICE_VERSION_MICRO "70")
+set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_VERSION_MINOR}.${RELEASE_SERVICE_VERSION_MICRO}")
+
+project(kolf VERSION ${RELEASE_SERVICE_VERSION})
+
 set (QT_MIN_VERSION "5.11.0")
 set (KF5_MIN_VERSION "5.30.0")
 
@@ -28,9 +35,12 @@ find_package(KF5KDEGames 4.9.0 REQUIRED)
 include(FeatureSummary)
 include(ECMAddAppIcon)
 include(ECMInstallIcons)
+include(ECMSetupVersion)
 include(KDEInstallDirs)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
+
+ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KOLF VERSION_HEADER kolf_version.h)
 
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 if (EXISTS "${CMAKE_SOURCE_DIR}/.git")

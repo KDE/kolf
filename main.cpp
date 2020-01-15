@@ -17,6 +17,7 @@
 */
 
 #include "kolf.h"
+#include "kolf_version.h"
 
 #include <iostream>
 
@@ -37,16 +38,13 @@ using namespace std;
 static const char description[] =
 I18N_NOOP("KDE Minigolf Game");
 
-static const char version[] = "1.20";
-
-
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
 
     KLocalizedString::setApplicationDomain("kolf");
 
-	KAboutData aboutData( QStringLiteral("kolf"), i18n("Kolf"), version, i18n(description), KAboutLicense::GPL, i18n("(c) 2002-2010, Kolf developers"),  QStringLiteral("https://games.kde.org/kolf"));
+	KAboutData aboutData( QStringLiteral("kolf"), i18n("Kolf"), KOLF_VERSION_STRING, i18n(description), KAboutLicense::GPL, i18n("(c) 2002-2010, Kolf developers"),  QStringLiteral("https://games.kde.org/kolf"));
 
 	aboutData.addAuthor(i18n("Stefan Majewsky"), i18n("Current maintainer"), QStringLiteral("majewsky@gmx.net"));
 	aboutData.addAuthor(i18n("Jason Katz-Brown"), i18n("Former main author"), QStringLiteral("jasonkb@mit.edu"));
