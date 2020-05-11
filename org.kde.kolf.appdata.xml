@@ -305,6 +305,7 @@
     <binary>kolf</binary>
   </provides>
   <releases>
+    <release version="20.04.1" date="2020-05-14"/>
     <release version="20.04.0" date="2020-04-23"/>
   </releases>
 </component>
