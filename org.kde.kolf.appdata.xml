@@ -31,7 +31,6 @@
   <name xml:lang="sr-ijekavianlatin">Kolf</name>
   <name xml:lang="sv">Kolf</name>
   <name xml:lang="uk">Kolf</name>
-  <name xml:lang="x-test">xxKolfxx</name>
   <name xml:lang="zh-CN">Kolf</name>
   <name xml:lang="zh-TW">Kolf</name>
   <summary>Miniature Golf</summary>
@@ -61,7 +60,6 @@
   <summary xml:lang="sr-ijekavianlatin">Minijaturni golf</summary>
   <summary xml:lang="sv">Minigolf</summary>
   <summary xml:lang="uk">Мініатюрний гольф</summary>
-  <summary xml:lang="x-test">xxMiniature Golfxx</summary>
   <summary xml:lang="zh-CN">迷你高尔夫</summary>
   <description>
     <p>
@@ -94,7 +92,6 @@
     <p xml:lang="sr-ijekavianlatin">Kolf je igra minijaturnog golfa. Igra se preko pogleda odozgo, i sa prečkom koja predstavlja palicu za golf. Kolf sadrži mnoge vrste objekata, poput vodenih prepreka, kosina, peščanih zamki i crnih rupa (crvotočina).</p>
     <p xml:lang="sv">Kolf är ett minigolfspel. Spelet visas ovanifrån, med ett kort streck som representerar golfklubban. Kolf har många olika hinder, bland annat vattenhinder, sluttningar, bunkrar och svarta hål.</p>
     <p xml:lang="uk">Kolf — мініатюрна гра у гольф. Під час гри гравець дивиться на майданчик згори. У Kolf передбачено різні типи об’єктів-перешкод, зокрема водяні пастки, схили, піскові пастки і чорні діри (тунелі).</p>
-    <p xml:lang="x-test">xxKolf is a miniature golf game. The game is played from an overhead view, with a hort bar representing the golf club. Kolf features many different types of objects, such water hazards, slopes, sand traps, and black holes (warps), among others.xx</p>
     <p>Features:</p>
     <p xml:lang="ca">Característiques:</p>
     <p xml:lang="ca-valencia">Característiques:</p>
@@ -123,7 +120,6 @@
     <p xml:lang="sr-ijekavianlatin">Mogućnosti:</p>
     <p xml:lang="sv">Funktioner:</p>
     <p xml:lang="uk">Можливості:</p>
-    <p xml:lang="x-test">xxFeatures:xx</p>
     <p xml:lang="zh-CN">功能：</p>
     <p xml:lang="zh-TW">功能：</p>
     <ul>
@@ -153,7 +149,6 @@
       <li xml:lang="sr-ijekavianlatin">Režim za jednog i više igrača (do deset).</li>
       <li xml:lang="sv">En eller flera spelare (upp till tio stycken)</li>
       <li xml:lang="uk">Режими одного та декількох гравців (до десяти учасників змагань)</li>
-      <li xml:lang="x-test">xxSingle and Multi-player (up to ten players) modesxx</li>
       <li>High scores table</li>
       <li xml:lang="ca">Taula de puntuacions màximes</li>
       <li xml:lang="ca-valencia">Taula de puntuacions màximes</li>
@@ -181,7 +176,6 @@
       <li xml:lang="sr-ijekavianlatin">Tabela najrezultata.</li>
       <li xml:lang="sv">Tabell över bästa resultat</li>
       <li xml:lang="uk">Таблиця найкращих результатів</li>
-      <li xml:lang="x-test">xxHigh scores tablexx</li>
       <li>Dynamic courses</li>
       <li xml:lang="ca">Camps dinàmics</li>
       <li xml:lang="ca-valencia">Camps dinàmics</li>
@@ -209,7 +203,6 @@
       <li xml:lang="sr-ijekavianlatin">Dinamički tereni.</li>
       <li xml:lang="sv">Dynamiska banor</li>
       <li xml:lang="uk">Динамічні майданчики</li>
-      <li xml:lang="x-test">xxDynamic coursesxx</li>
       <li>Third-party courses</li>
       <li xml:lang="ca">Camps de tercers</li>
       <li xml:lang="ca-valencia">Camps de tercers</li>
@@ -236,7 +229,6 @@
       <li xml:lang="sr-ijekavianlatin">Tereni sa strane.</li>
       <li xml:lang="sv">Tredjepartsbanor</li>
       <li xml:lang="uk">Можливість використання сторонніх майданчиків</li>
-      <li xml:lang="x-test">xxThird-party coursesxx</li>
       <li>Course editor</li>
       <li xml:lang="ca">Editor de camps</li>
       <li xml:lang="ca-valencia">Editor de camps</li>
@@ -264,7 +256,6 @@
       <li xml:lang="sr-ijekavianlatin">Uređivač terena.</li>
       <li xml:lang="sv">Baneditor</li>
       <li xml:lang="uk">Редактор майданчиків</li>
-      <li xml:lang="x-test">xxCourse editorxx</li>
     </ul>
   </description>
   <url type="homepage">https://kde.org/applications/games/org.kde.kolf</url>
@@ -296,7 +287,6 @@
       <caption xml:lang="sl">Začetni zaslon Kolfa</caption>
       <caption xml:lang="sv">Inledande skärm i Kolf</caption>
       <caption xml:lang="uk">Початкове вікно Kolf</caption>
-      <caption xml:lang="x-test">xxInitial screen of Kolfxx</caption>
       <caption xml:lang="zh-TW">Kolf 的初始畫面</caption>
       <image>https://cdn.kde.org/screenshots/kolf/kolf.png</image>
     </screenshot>
