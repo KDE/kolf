@@ -65,7 +65,6 @@ Name[uk]=Kolf
 Name[vi]=Kolf
 Name[wa]=Kolf
 Name[xh]=Kolf
-Name[x-test]=xxKolfxx
 Name[zh_CN]=Kolf
 Name[zh_TW]=Kolf
 
@@ -136,7 +135,6 @@ GenericName[uk]=Мініатюрний гольф
 GenericName[vi]=Miniature Golf
 GenericName[wa]=Golf miniateure
 GenericName[xh]=Igalufa encinci
-GenericName[x-test]=xxMiniature Golfxx
 GenericName[zh_CN]=迷你高尔夫
 GenericName[zh_TW]=迷你高爾夫
 Categories=Qt;KDE;Game;ArcadeGame;
