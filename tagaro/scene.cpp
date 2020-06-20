@@ -27,7 +27,7 @@
 Tagaro::Scene::Private::Private(KGameRenderer* backgroundRenderer, const QString& backgroundSpriteKey, Tagaro::Scene* parent)
 	: KGameRendererClient(backgroundRenderer, backgroundSpriteKey)
 	, m_parent(parent)
-	, m_mainView(0)
+	, m_mainView(nullptr)
 	, m_renderSize() //constructed with invalid size (as documented)
 	, m_adjustingSceneRect(false)
 {
@@ -36,7 +36,7 @@ Tagaro::Scene::Private::Private(KGameRenderer* backgroundRenderer, const QString
 
 Tagaro::Scene::Scene(QObject* parent)
 	: QGraphicsScene(parent)
-	, d(new Private(0, QString(), this))
+	, d(new Private(nullptr, QString(), this))
 {
 }
 

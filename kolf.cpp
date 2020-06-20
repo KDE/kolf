@@ -48,14 +48,14 @@
 #include <QUrl>
 
 KolfWindow::KolfWindow()
-    : KXmlGuiWindow(0)
+    : KXmlGuiWindow(nullptr)
 {
 	setObjectName( QStringLiteral("Kolf" ));
 	competition = false;
-	game = 0;
-	editor = 0;
-	spacer = 0;
-	scoreboard = 0;
+	game = nullptr;
+	editor = nullptr;
+	spacer = nullptr;
+	scoreboard = nullptr;
 	isTutorial = false;
 
 	setupActions();
@@ -380,7 +380,7 @@ void KolfWindow::closeGame()
 
 	editingEnded();
 	delete game;
-	game = 0;
+	game = nullptr;
 	loadedGame = QString();
 
 	editingAction->setChecked(false);
@@ -693,7 +693,7 @@ void KolfWindow::editingStarted()
 void KolfWindow::editingEnded()
 {
 	delete editor;
-	editor = 0;
+	editor = nullptr;
 
 	if (scoreboard)
 		scoreboard->show();

@@ -213,7 +213,7 @@ QVariant Tagaro::Board::itemChange(QGraphicsItem::GraphicsItemChange change, con
 		Tagaro::SpriteObjectItem* objectItem = qobject_cast<Tagaro::SpriteObjectItem*>(object);
 		if (objectItem)
 		{
-			disconnect(objectItem, 0, this, 0);
+			disconnect(objectItem, nullptr, this, nullptr);
 			d->m_items.removeAll(objectItem);
 		}
 	}
@@ -245,7 +245,7 @@ QVariant Tagaro::Board::itemChange(QGraphicsItem::GraphicsItemChange change, con
 		QGraphicsScene* scene = value.value<QGraphicsScene*>();
 		if (scene)
 		{
-			disconnect(scene, 0, this, 0);
+			disconnect(scene, nullptr, this, nullptr);
 		}
 	}
 	else if (change == ItemSceneHasChanged)

@@ -47,7 +47,7 @@ public:
 	 * @param _text      Text of the label
 	 * @param _value     Initial value of the combobox
 	 */
-	KComboBoxDialog( const QString &_text, const QStringList& _items, const QString& _value = QString(), bool showDontAskAgain = false, QWidget *parent = 0 );
+	KComboBoxDialog( const QString &_text, const QStringList& _items, const QString& _value = QString(), bool showDontAskAgain = false, QWidget *parent = nullptr );
 	virtual ~KComboBoxDialog();
 
 	///@return the value the user chose
@@ -64,7 +64,7 @@ public:
 	 * @param _value           Initial value of the inputline
 	 * @param dontAskAgainName Name for saving whether the user doesn't want to be asked again; use QString() to disable
 	 */
-	static QString getItem( const QString &_text, const QStringList &_items, const QString& _value = QString(), const QString &dontAskAgainName = QString(), QWidget *parent = 0 );
+	static QString getItem( const QString &_text, const QStringList &_items, const QString& _value = QString(), const QString &dontAskAgainName = QString(), QWidget *parent = nullptr );
 
 	/**
 	 * Static convenience function to get input from the user.
@@ -76,7 +76,7 @@ public:
 	 * @param _value           Initial value of the inputline
 	 * @param dontAskAgainName Name for saving whether the user doesn't want to be asked again; use QString() to disable
 	 */
-	static QString getItem( const QString &_text, const QString &_caption, const QStringList &_items, const QString& _value = QString(), const QString &dontAskAgainName = QString(), QWidget *parent = 0 );
+	static QString getItem( const QString &_text, const QString &_caption, const QStringList &_items, const QString& _value = QString(), const QString &dontAskAgainName = QString(), QWidget *parent = nullptr );
 
 	/**
 	 * Static convenience method.
@@ -93,7 +93,7 @@ public:
 	 */
 	static QString getText(const QString &_caption, const QString &_text,
 	                       const QString &_value = QString(),
-	                       bool *ok = 0, QWidget *parent = 0,
+	                       bool *ok = nullptr, QWidget *parent = nullptr,
 	                       const QString &configName = QString(),
 	                       KSharedConfigPtr config = KSharedConfig::openConfig());
 

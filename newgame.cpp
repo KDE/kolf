@@ -86,7 +86,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 	}
 
 	enableButtons();
-	KPageWidgetItem *pageItem =0L;
+	KPageWidgetItem *pageItem =nullptr;
 	if (enableCourses)
 	{
 		coursePage = new QFrame();
@@ -216,7 +216,7 @@ void NewGameDialog::slotOk()
 
 	config->deleteGroup("New Game Dialog");
 
-	PlayerEditor *curEditor = 0;
+	PlayerEditor *curEditor = nullptr;
 	int i = 0;
 	for (; i < editors.count(); ++i) {
 		curEditor = editors.at(i);
@@ -307,7 +307,7 @@ void NewGameDialog::addCourse()
 	if (hasDuplicates)
 		KMessageBox::information(this, i18n("Chosen course is already on course list."));
 
-	courseList->setCurrentItem(0);
+	courseList->setCurrentItem(nullptr);
 	courseSelected(0);
 	selectionChanged();
 }

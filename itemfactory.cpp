@@ -33,7 +33,7 @@ QGraphicsItem* Kolf::ItemFactory::createInstance(const QString& identifier, QGra
 	for (; it1 != it2; ++it1)
 		if (it1->first.identifier == identifier)
 			return (it1->second)(parent, world);
-	return 0;
+	return nullptr;
 }
 
 void Kolf::ItemFactory::registerType(const Kolf::ItemMetadata& metadata, ItemCreator creator)

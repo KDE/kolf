@@ -26,7 +26,7 @@ class ScoreBoard : public QTableWidget
 	Q_OBJECT
 
 public:
-	explicit ScoreBoard(QWidget *parent = 0);
+	explicit ScoreBoard(QWidget *parent = nullptr);
 	int total(int id, QString &name);
 
 public slots:

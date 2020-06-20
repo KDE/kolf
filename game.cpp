@@ -113,7 +113,7 @@ KGameRenderer* Kolf::renderer()
 Tagaro::Board* Kolf::findBoard(QGraphicsItem* item_)
 {
 	//This returns the toplevel board instance in which the given parent resides.
-	return item_ ? dynamic_cast<Tagaro::Board*>(item_->topLevelItem()) : 0;
+	return item_ ? dynamic_cast<Tagaro::Board*>(item_->topLevelItem()) : nullptr;
 }
 
 b2World* Kolf::world()
@@ -464,7 +464,7 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 
 	regAdv = false;
 	curHole = 0; // will get ++'d
-	cfg = 0;
+	cfg = nullptr;
 	setFilename(filename);
 	this->players = players;
 	curPlayer = players->end();
@@ -490,7 +490,7 @@ KolfGame::KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const 
 	m_ignoreEvents = false;
 	highestHole = 0;
 	recalcHighestHole = false;
-	banner = 0;
+	banner = nullptr;
 
 	holeInfo.setGame(this);
 	holeInfo.setAuthor(i18n("Course Author"));
@@ -753,7 +753,7 @@ void KolfGame::handleMousePressEvent(QMouseEvent *e)
 		//at this point, QGV::mousePressEvent and thus the interaction
 		//with overlays has already been done; we therefore know that
 		//the user has clicked into free space
-		setSelectedItem(0);
+		setSelectedItem(nullptr);
 		return;
 	}
 	else
@@ -998,7 +998,7 @@ void KolfGame::keyReleaseEvent(QKeyEvent *e)
 				m_topLevelQItems.removeAll(item);
 				m_moveableQItems.removeAll(item);
 				delete citem;
-				setSelectedItem(0);
+				setSelectedItem(nullptr);
 
 				setModified(true);
 			}
@@ -1780,7 +1780,7 @@ void KolfGame::openFile()
 	}
 
 	m_moveableQItems = m_topLevelQItems = newTopLevelQItems;
-	selectedItem = 0;
+	selectedItem = nullptr;
 
 	// will tell basic course info
 	// we do this here for the hell of it.
@@ -2087,7 +2087,7 @@ void KolfGame::clearHole()
 	}
 
 	m_moveableQItems = m_topLevelQItems = newTopLevelQItems;
-	setSelectedItem(0);
+	setSelectedItem(nullptr);
 
 	// add default objects
 	foreach (const Kolf::ItemMetadata& metadata, m_factory.knownTypes())
@@ -2231,14 +2231,14 @@ void KolfGame::toggleEditMode()
 	   }
 	   */
 
-	selectedItem = 0;
+	selectedItem = nullptr;
 
 	editing = !editing;
 
 	if (editing)
 	{
 		emit editingStarted();
-		setSelectedItem(0);
+		setSelectedItem(nullptr);
 	}
 	else
 	{

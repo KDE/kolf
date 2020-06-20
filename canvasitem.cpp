@@ -30,13 +30,13 @@
 static const int ZValueStep = 100;
 
 CanvasItem::CanvasItem(b2World* world)
-	: game(0)
+	: game(nullptr)
 	, m_zBehavior(CanvasItem::FixedZValue)
 	, m_zValue(0)
-	, m_strut(0)
-	, m_staticStrut(0)
-	, m_body(0)
-	, m_overlay(0)
+	, m_strut(nullptr)
+	, m_staticStrut(nullptr)
+	, m_body(nullptr)
+	, m_overlay(nullptr)
 	, m_simulationType((CanvasItem::SimulationType) -1)
 {
 	b2BodyDef bodyDef;
@@ -51,7 +51,7 @@ CanvasItem::~CanvasItem()
 	if (m_strut)
 		m_strut->m_struttedItems.removeAll(this);
 	foreach (CanvasItem* item, m_struttedItems)
-		item->m_strut = 0;
+		item->m_strut = nullptr;
 	//The overlay is deleted first, because it might interact with all other parts of the object.
 	delete m_overlay;
 	//NOTE: Box2D objects will need to be destroyed in the following order:
@@ -86,7 +86,7 @@ void CanvasItem::updateZ(QGraphicsItem* self)
 	if (m_strut)
 	{
 		m_strut->m_struttedItems.removeAll(this);
-		m_strut = 0;
+		m_strut = nullptr;
 	}
 	//simple behavior
 	if (m_zBehavior == CanvasItem::FixedZValue)
@@ -305,8 +305,8 @@ void CanvasItem::propagateUpdate()
 EllipticalCanvasItem::EllipticalCanvasItem(bool withEllipse, const QString& spriteKey, QGraphicsItem* parent, b2World* world)
 	: Tagaro::SpriteObjectItem(Kolf::renderer(), spriteKey, parent)
 	, CanvasItem(world)
-	, m_ellipseItem(0)
-	, m_shape(0)
+	, m_ellipseItem(nullptr)
+	, m_shape(nullptr)
 {
 	if (withEllipse)
 	{

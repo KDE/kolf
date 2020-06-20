@@ -42,7 +42,7 @@ class Board : public QGraphicsObject
 		///The logicalSize() is initialized to (1,1). The physicalSize() is
 		///determined from the parent item's bounding rect by using the default
 		///alignment Qt::AlignCenter.
-		explicit Board(QGraphicsItem* parent = 0);
+		explicit Board(QGraphicsItem* parent = nullptr);
 		///Destroys the Tagaro::Board and all its children.
 		virtual ~Board();
 
@@ -94,7 +94,7 @@ class Board : public QGraphicsObject
 		void setAlignment(Qt::Alignment alignment);
 
 		QRectF boundingRect() const Q_DECL_OVERRIDE;
-		void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = 0) Q_DECL_OVERRIDE;
+		void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = nullptr) Q_DECL_OVERRIDE;
 	protected:
 		QVariant itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant& value) Q_DECL_OVERRIDE;
 		void timerEvent(QTimerEvent* event) Q_DECL_OVERRIDE;

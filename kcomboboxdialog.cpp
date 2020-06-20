@@ -61,7 +61,7 @@ KComboBoxDialog::KComboBoxDialog( const QString &_text, const QStringList &_item
 		topLayout->addWidget( dontAskAgainCheckBox, 1 );
 	}
 	else
-		dontAskAgainCheckBox = 0;
+		dontAskAgainCheckBox = nullptr;
 
 	if ( !_value.isNull() )
 		combo->setCurrentItem( _value );
@@ -135,7 +135,7 @@ QString KComboBoxDialog::getItem( const QString &_text, const QString &_caption,
 
 QString KComboBoxDialog::getText(const QString &_caption, const QString &_text, const QString &_value, bool *ok, QWidget *parent, const QString &configName, KSharedConfigPtr config)
 {
-	KConfigGroup *configGroup = 0;
+	KConfigGroup *configGroup = nullptr;
 	QPointer<KComboBoxDialog> dlg = new KComboBoxDialog(_text, QStringList(), _value, false, parent);
 	if ( !_caption.isNull() )
 		dlg->setWindowTitle( _caption );

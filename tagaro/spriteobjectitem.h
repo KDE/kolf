@@ -55,7 +55,7 @@ class SpriteObjectItem : public QGraphicsObject, public KGameRendererClient
 	public:
 		///Creates a new Tagaro::SpriteObjectItem which renders the sprite with
 		///the given @a spriteKey as provided by the given @a renderer.
-		SpriteObjectItem(KGameRenderer* renderer, const QString& spriteKey, QGraphicsItem* parent = 0);
+		SpriteObjectItem(KGameRenderer* renderer, const QString& spriteKey, QGraphicsItem* parent = nullptr);
 		virtual ~SpriteObjectItem();
 
 		///@return the item's offset, which defines the point of the top-left
@@ -79,7 +79,7 @@ class SpriteObjectItem : public QGraphicsObject, public KGameRendererClient
 		bool contains(const QPointF& point) const Q_DECL_OVERRIDE;
 		bool isObscuredBy(const QGraphicsItem* item) const Q_DECL_OVERRIDE;
 		QPainterPath opaqueArea() const Q_DECL_OVERRIDE;
-		void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = 0) Q_DECL_OVERRIDE;
+		void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = nullptr) Q_DECL_OVERRIDE;
 		QPainterPath shape() const Q_DECL_OVERRIDE;
 	Q_SIGNALS:
 		///This signal is emitted when the size of the item's bounding rect

@@ -156,7 +156,7 @@ private:
 
 		///Creates the optimal overlay for this object. The implementation does not have to propagate its properties to the overlay, as the overlay is updated just after it has been created.
 		///@warning Do not actually call this function from subclass implementations. Use overlay() instead.
-		virtual Kolf::Overlay* createOverlay() { return 0; } //TODO: make this pure virtual when all CanvasItems are QGraphicsItems and implement createOverlay() (and then disallow createOverlay() == 0)
+		virtual Kolf::Overlay* createOverlay() { return nullptr; } //TODO: make this pure virtual when all CanvasItems are QGraphicsItems and implement createOverlay() (and then disallow createOverlay() == 0)
 		///This function should be called whenever the value of an object's property changes. This will most prominently cause the overlay to be updated (if it exists).
 		void propagateUpdate();
 	private:

@@ -191,7 +191,7 @@ Kolf::RectangleItem::RectangleItem(const QString& type, QGraphicsItem* parent, b
 	, CanvasItem(world)
 	, m_wallPen(QColor("#92772D").darker(), 3)
 	, m_wallAllowed(Kolf::RectangleWallCount, true)
-	, m_walls(Kolf::RectangleWallCount, 0)
+	, m_walls(Kolf::RectangleWallCount, nullptr)
 	, m_shape(new Kolf::RectShape(QRectF(0, 0, 1, 1)))
 {
 	addShape(m_shape);
@@ -232,7 +232,7 @@ void Kolf::RectangleItem::setWall(Kolf::WallIndex index, bool hasWall)
 	else
 	{
 		delete m_walls[index];
-		m_walls[index] = 0;
+		m_walls[index] = nullptr;
 	}
 	propagateUpdate();
 	emit wallChanged(index, hasWall, m_wallAllowed[index]);
@@ -402,7 +402,7 @@ void Kolf::RectangleOverlay::moveHandle(const QPointF& handleScenePos)
 Kolf::RectangleConfig::RectangleConfig(Kolf::RectangleItem* item, QWidget* parent)
 	: Config(parent)
 	, m_layout(new QGridLayout(this))
-	, m_wallCheckBoxes(Kolf::RectangleWallCount, 0)
+	, m_wallCheckBoxes(Kolf::RectangleWallCount, nullptr)
 	, m_item(item)
 {
 	static const char* captions[] = { I18N_NOOP("&Top"), I18N_NOOP("&Left"), I18N_NOOP("&Right"), I18N_NOOP("&Bottom") };

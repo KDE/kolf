@@ -125,7 +125,7 @@ namespace Kolf
 			static const qreal MinimumObjectDimension;
 
 			QRectF boundingRect() const Q_DECL_OVERRIDE;
-			void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = 0) Q_DECL_OVERRIDE;
+			void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = nullptr) Q_DECL_OVERRIDE;
 		Q_SIGNALS:
 			///This signal is emitted if the overlay's state changes.
 			void stateChanged();

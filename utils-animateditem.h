@@ -33,7 +33,7 @@ namespace Utils
 		Q_OBJECT
 		Q_PROPERTY(qreal correct_opacity READ opacity WRITE setOpacity) //I'm talking of AnimatedItem::setOpacity, not QGraphicsItem::setOpacity!
 		public:
-			explicit AnimatedItem(QGraphicsItem* parent = 0);
+			explicit AnimatedItem(QGraphicsItem* parent = nullptr);
 
 			///Returns the duration of opacity animations.
 			int animationTime() const;
@@ -47,7 +47,7 @@ namespace Utils
 			void setOpacity(qreal opacity);
 
 			QRectF boundingRect() const Q_DECL_OVERRIDE;
-			void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = 0) Q_DECL_OVERRIDE;
+			void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = nullptr) Q_DECL_OVERRIDE;
 		private:
 			int m_animationTime;
 			bool m_hideWhenInvisible;

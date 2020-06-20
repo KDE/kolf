@@ -38,11 +38,11 @@ const qreal Kolf::Shape::ActivationOutlinePadding = 5;
 
 Kolf::Shape::Shape()
 	: m_traits(Kolf::Shape::ParticipatesInPhysicalSimulation)
-	, m_citem(0)
-	, m_body(0)
+	, m_citem(nullptr)
+	, m_body(nullptr)
 	, m_fixtureDef(new b2FixtureDef)
-	, m_fixture(0)
-	, m_shape(0)
+	, m_fixture(nullptr)
+	, m_shape(nullptr)
 {
 	m_fixtureDef->density = 1;
 	m_fixtureDef->restitution = 1;
@@ -53,7 +53,7 @@ Kolf::Shape::Shape()
 Kolf::Shape::~Shape()
 {
 	delete m_fixtureDef;
-	updateFixture(0); //clear fixture and shape
+	updateFixture(nullptr); //clear fixture and shape
 }
 
 QPainterPath Kolf::Shape::activationOutline() const
@@ -97,7 +97,7 @@ void Kolf::Shape::updateFixture(b2Shape* newShape)
 	if (m_fixture)
 		m_body->DestroyFixture(m_fixture);
 	delete m_shape;
-	m_shape = 0;
+	m_shape = nullptr;
 	//create new fixture
 	if (m_traits & Kolf::Shape::CollisionDetectionFlag)
 	{

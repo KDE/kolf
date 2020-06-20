@@ -37,7 +37,7 @@ class PlayerEditor : public QWidget
 	Q_OBJECT
 	
 public:
-	explicit PlayerEditor(const QString &name = QString(), QColor = Qt::red, QWidget *parent = 0);
+	explicit PlayerEditor(const QString &name = QString(), QColor = Qt::red, QWidget *parent = nullptr);
 	QColor color() { return colorButton->color(); }
 	QString name() { return editor->text(); }
 	void setColor(QColor col) { colorButton->setColor(col); }

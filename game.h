@@ -86,7 +86,7 @@ public:
 class Player
 {
 public:
-	Player() : m_ball(new Ball(0, Kolf::world())) {}
+	Player() : m_ball(new Ball(nullptr, Kolf::world())) {}
 	Ball *ball() const { return m_ball; }
 	void setBall(Ball *ball) { m_ball = ball; }
 	BallStateInfo stateInfo(int hole) const { BallStateInfo ret; ret.spot = m_ball->pos().toPoint(); ret.state = m_ball->curState(); ret.score = score(hole); ret.beginningOfHole = m_ball->beginningOfHole(); ret.id = m_id; return ret; }
@@ -245,7 +245,7 @@ class KolfGame : public QGraphicsView
 	Q_OBJECT
 
 public:
-	KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const QString &filename, QWidget *parent=0);
+	KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const QString &filename, QWidget *parent=nullptr);
 	~KolfGame();
 	void setFilename(const QString &filename);
 	QString curFilename() const { return filename; }

@@ -29,7 +29,7 @@ Editor::Editor(const Kolf::ItemFactory& factory, QWidget *parent)
 	: QWidget(parent)
 	, m_factory(factory)
 {
-	config = 0;
+	config = nullptr;
 
 	hlayout = new QHBoxLayout(this);
 
