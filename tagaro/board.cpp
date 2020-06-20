@@ -84,7 +84,7 @@ void Tagaro::Board::setSize(const QSizeF& size)
 	if (size.isValid() && d->m_size != size)
 	{
 		d->m_size = size;
-		d->m_alignment = (Qt::Alignment) 0;
+		d->m_alignment = Qt::Alignment();
 		d->_k_update();
 	}
 }
