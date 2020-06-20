@@ -50,7 +50,7 @@ CanvasItem::~CanvasItem()
 	//disconnect struts
 	if (m_strut)
 		m_strut->m_struttedItems.removeAll(this);
-	foreach (CanvasItem* item, m_struttedItems)
+	for (CanvasItem* item : qAsConst(m_struttedItems))
 		item->m_strut = nullptr;
 	//The overlay is deleted first, because it might interact with all other parts of the object.
 	delete m_overlay;
@@ -104,8 +104,8 @@ void CanvasItem::updateZ(QGraphicsItem* self)
 		m_strut = m_staticStrut;
 	else
 	{
-		foreach (QGraphicsItem* qitem, self->collidingItems())
-		{
+		const auto collidingItems = self->collidingItems();
+		for (QGraphicsItem* qitem :collidingItems) {
 			CanvasItem* citem = dynamic_cast<CanvasItem*>(qitem);
 			if (citem && citem->m_zBehavior == CanvasItem::IsStrut)
 			{
@@ -133,8 +133,7 @@ void CanvasItem::updateZ(QGraphicsItem* self)
 
 void CanvasItem::moveItemsOnStrut(const QPointF& posDiff)
 {
-	foreach (CanvasItem* citem, m_struttedItems)
-	{
+	for (CanvasItem* citem : qAsConst(m_struttedItems)) {
 		QGraphicsItem* qitem = dynamic_cast<QGraphicsItem*>(citem);
 		if (!qitem || qitem->data(0) == Rtti_Putter)
 			continue;

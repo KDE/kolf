@@ -119,11 +119,10 @@ void Ball::collisionDetect()
 	const double initialVelocity = Vector(velocity()).magnitude();
 	const double minSpeed = .06;
 
-	QList<QGraphicsItem *> items = collidingItems();
+	const QList<QGraphicsItem *> items = collidingItems();
 
 	bool doTerrainCollisions = true;
-	foreach (QGraphicsItem* item, items)
-	{
+	for (QGraphicsItem* item : items) {
 		if (item->data(0) == Rtti_NoCollision || item->data(0) == Rtti_Putter)
 		{
 			if (item->data(0) == Rtti_NoCollision)
@@ -149,8 +148,7 @@ void Ball::collisionDetect()
 
 	if (doTerrainCollisions)
 	{
-		foreach (QGraphicsItem* item, items)
-		{
+		for (QGraphicsItem* item : items) {
 			CanvasItem *citem = dynamic_cast<CanvasItem *>(item);
 			if (citem && citem->terrainCollisions())
 			{

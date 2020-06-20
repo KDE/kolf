@@ -225,8 +225,8 @@ void Kolf::Overlay::update()
 {
 	//update geometry outlines
 	QPainterPath activationOutline, interactionOutline;
-	foreach (Kolf::Shape* shape, m_citem->shapes())
-	{
+        const auto shapes = m_citem->shapes();
+	for (Kolf::Shape* shape : shapes) {
 		activationOutline.addPath(shape->activationOutline());
 		interactionOutline.addPath(shape->interactionOutline());
 	}

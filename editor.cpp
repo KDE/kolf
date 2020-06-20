@@ -41,8 +41,8 @@ Editor::Editor(const Kolf::ItemFactory& factory, QWidget *parent)
 	hlayout->setStretchFactor(vlayout, 2);
 
 	//populate type list
-	foreach (const Kolf::ItemMetadata& metadata, factory.knownTypes())
-	{
+	const auto knownTypes = factory.knownTypes();
+	for (const Kolf::ItemMetadata& metadata : knownTypes) {
 		QListWidgetItem* item = new QListWidgetItem(metadata.name);
 		item->setData(Qt::UserRole, metadata.identifier);
 		m_typeList->addItem(item);

@@ -282,13 +282,13 @@ void Kolf::RectangleItem::moveBy(double dx, double dy)
 	Tagaro::SpriteObjectItem::moveBy(dx, dy);
 	//move myself
 	const QPointF pos = this->pos();
-	foreach (Kolf::Wall* wall, m_walls)
+	for (Kolf::Wall* wall : qAsConst(m_walls))
 		if (wall)
 			wall->setPos(pos);
 	//update Z order
 	CanvasItem::moveBy(dx, dy);
-	foreach (QGraphicsItem* qitem, collidingItems())
-	{
+	const auto collidingItems = this->collidingItems();
+	for (QGraphicsItem* qitem : collidingItems) {
 		CanvasItem* citem = dynamic_cast<CanvasItem*>(qitem);
 		if (citem)
 			citem->updateZ(qitem);
@@ -298,7 +298,7 @@ void Kolf::RectangleItem::moveBy(double dx, double dy)
 void Kolf::RectangleItem::setWallColor(const QColor& color)
 {
 	m_wallPen = QPen(color.darker(), 3);
-	foreach (Kolf::Wall* wall, m_walls)
+	for (Kolf::Wall* wall : qAsConst(m_walls))
 		applyWallStyle(wall);
 }
 

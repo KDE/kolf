@@ -537,7 +537,7 @@ bool Kolf::Slope::terrainCollisions() const
 QList<QGraphicsItem*> Kolf::Slope::infoItems() const
 {
 	QList<QGraphicsItem*> result;
-	foreach (ArrowItem* arrow, m_arrows)
+	for (ArrowItem* arrow : m_arrows)
 		result << arrow;
 	result << m_gradeItem;
 	return result;

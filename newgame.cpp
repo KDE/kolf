@@ -105,9 +105,9 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		/// course loading
 		QStringList files;
 		const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, QStringLiteral("courses"), QStandardPaths::LocateDirectory);
-		Q_FOREACH (const QString& dir, dirs) {
+		for (const QString& dir : dirs) {
 			const QStringList fileNames = QDir(dir).entryList(QStringList() << QStringLiteral("*"), QDir::Files);
-			Q_FOREACH (const QString& file, fileNames) {
+			for (const QString& file : fileNames) {
 				files.append(dir + '/' + file);
 			}
 		}
