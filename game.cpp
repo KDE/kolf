@@ -653,13 +653,13 @@ void KolfGame::startFirstHole(int hole)
 		for (; scoreboardHoles < curHole; ++scoreboardHoles)
 		{
 			cfgGroup = KConfigGroup(cfg->group(QStringLiteral("%1-hole@-50,-50|0").arg(scoreboardHoles + 1)));
-			emit newHole(cfgGroup.readEntry("par", 3));
+			Q_EMIT newHole(cfgGroup.readEntry("par", 3));
 		}
 
 		// lets load all of the scores from saved game if there are any
 		for (int hole = 1; hole <= curHole; ++hole)
 			for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
-				emit scoreChanged((*it).id(), hole, (*it).score(hole));
+				Q_EMIT scoreChanged((*it).id(), hole, (*it).score(hole));
 	}
 
 	curHole = hole - 1;
@@ -693,7 +693,7 @@ KolfGame::~KolfGame()
 void KolfGame::setModified(bool mod)
 {
 	modified = mod;
-	emit modifiedChanged(mod);
+	Q_EMIT modifiedChanged(mod);
 }
 
 void KolfGame::pause()
@@ -854,7 +854,7 @@ void KolfGame::handleMouseReleaseEvent(QMouseEvent *e)
 
 	if (editing)
 	{
-		emit newStatusText(QString());
+		Q_EMIT newStatusText(QString());
 	}
 
 	if (m_ignoreEvents)
@@ -1082,7 +1082,7 @@ void KolfGame::timeout()
 
 	if (curState == Holed && inPlay)
 	{
-		emit inPlayEnd();
+		Q_EMIT inPlayEnd();
 
 		int curScore = (*curPlayer).score(curHole);
 		if (!dontAddStroke)
@@ -1106,7 +1106,7 @@ void KolfGame::timeout()
 			if (curHole > 0 && !dontAddStroke)
 			{
 				(*curPlayer).addStrokeToHole(curHole);
-				emit scoreChanged((*curPlayer).id(), curHole, (*curPlayer).score(curHole));
+				Q_EMIT scoreChanged((*curPlayer).id(), curHole, (*curPlayer).score(curHole));
 			}
 			QTimer::singleShot(600, this, &KolfGame::holeDone);
 		}
@@ -1368,14 +1368,14 @@ void KolfGame::loadStateList()
 			player.ball()->setVisible(!info.beginningOfHole);
 		player.setScoreForHole(info.score, curHole);
 		player.ball()->setState(info.state);
-		emit scoreChanged(info.id, curHole, info.score);
+		Q_EMIT scoreChanged(info.id, curHole, info.score);
 	}
 }
 
 void KolfGame::shotDone()
 {
 	inPlay = false;
-	emit inPlayEnd();
+	Q_EMIT inPlayEnd();
 	setFocus();
 
 	Ball *ball = (*curPlayer).ball();
@@ -1403,7 +1403,7 @@ void KolfGame::shotDone()
 				(*it).addStrokeToHole(curHole);
 
 			// emit that we have a new stroke count
-			emit scoreChanged((*it).id(), curHole, (*it).score(curHole));
+			Q_EMIT scoreChanged((*it).id(), curHole, (*it).score(curHole));
 		}
 		(*it).ball()->setAddStroke(0);
 	}
@@ -1477,7 +1477,7 @@ void KolfGame::shotDone()
 	}
 
 	// emit again
-	emit scoreChanged((*curPlayer).id(), curHole, (*curPlayer).score(curHole));
+	Q_EMIT scoreChanged((*curPlayer).id(), curHole, (*curPlayer).score(curHole));
 
 	if(ball->curState() == Rolling) {
 		inPlay = true; 
@@ -1521,7 +1521,7 @@ void KolfGame::shotDone()
 	}
 	while ((*curPlayer).ball()->curState() == Holed);
 
-	emit newPlayersTurn(&(*curPlayer));
+	Q_EMIT newPlayersTurn(&(*curPlayer));
 
 	(*curPlayer).ball()->setVisible(true);
 
@@ -1535,13 +1535,13 @@ void KolfGame::shotDone()
 
 void KolfGame::emitMax()
 {
-	emit maxStrokesReached(playerWhoMaxed);
+	Q_EMIT maxStrokesReached(playerWhoMaxed);
 }
 
 void KolfGame::startBall(const Vector &velocity)
 {
 	playSound(Sound::Hit);
-	emit inPlayStart();
+	Q_EMIT inPlayStart();
 	putter->setVisible(false);
 
 	(*curPlayer).ball()->setState(Rolling);
@@ -1636,7 +1636,7 @@ void KolfGame::startNextHole()
 
 	int oldCurHole = curHole;
 	curHole++;
-	emit currentHole(curHole);
+	Q_EMIT currentHole(curHole);
 
 	if (reset)
 	{
@@ -1702,7 +1702,7 @@ void KolfGame::startNextHole()
 		(*it).ball()->setVisible(false);
 	}
 
-	emit newPlayersTurn(&(*curPlayer));
+	Q_EMIT newPlayersTurn(&(*curPlayer));
 
 	if (reset)
 		openFile();
@@ -1732,7 +1732,7 @@ void KolfGame::startNextHole()
 		for (; scoreboardHoles < curHole; ++scoreboardHoles)
 		{
 			cfgGroup = KConfigGroup(cfg->group(QStringLiteral("%1-hole@-50,-50|0").arg(scoreboardHoles + 1)));
-			emit newHole(cfgGroup.readEntry("par", 3));
+			Q_EMIT newHole(cfgGroup.readEntry("par", 3));
 		}
 
 		resetHoleScores();
@@ -1790,7 +1790,7 @@ void KolfGame::openFile()
 	holeInfo.setAuthor(cfgGroup.readEntry("author", holeInfo.author()));
 	holeInfo.setName(cfgGroup.readEntry("Name", holeInfo.name()));
 	holeInfo.setUntranslatedName(cfgGroup.readEntryUntranslated("Name", holeInfo.untranslatedName()));
-	emit titleChanged(holeInfo.name());
+	Q_EMIT titleChanged(holeInfo.name());
 
 	cfgGroup = KConfigGroup(KSharedConfig::openConfig(filename), QStringLiteral("%1-hole@-50,-50|0").arg(curHole));
 	curPar = cfgGroup.readEntry("par", 3);
@@ -1889,7 +1889,7 @@ void KolfGame::openFile()
 		// we're done, let's quit
 		curHole--;
 		pause();
-		emit holesDone();
+		Q_EMIT holesDone();
 
 		// tidy things up
 		setBorderWalls(false);
@@ -1914,7 +1914,7 @@ void KolfGame::openFile()
 	{
 		highestHole = _highestHole;
 		recalcHighestHole = false;
-		emit largestHole(highestHole);
+		Q_EMIT largestHole(highestHole);
 	}
 
 	if (curHole == 1 && !filename.isNull() && !infoShown)
@@ -2030,7 +2030,7 @@ void KolfGame::addNewHole()
 	recalcHighestHole = true;
 	startNextHole();
 	addingNewHole = false;
-	emit currentHole(curHole);
+	Q_EMIT currentHole(curHole);
 
 	// make sure even the current player isn't showing
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
@@ -2064,7 +2064,7 @@ void KolfGame::resetHoleScores()
 	for (PlayerList::Iterator it = players->begin(); it != players->end(); ++it)
 	{
 		(*it).resetScore(curHole);
-		emit scoreChanged((*it).id(), curHole, 0);
+		Q_EMIT scoreChanged((*it).id(), curHole, 0);
 	}
 }
 
@@ -2174,8 +2174,8 @@ void KolfGame::save()
 		delete fileSaveDialog;
 	}
 
-	emit parChanged(curHole, holeInfo.par());
-	emit titleChanged(holeInfo.name());
+	Q_EMIT parChanged(curHole, holeInfo.par());
+	Q_EMIT titleChanged(holeInfo.name());
 
 	const QStringList groups = cfg->groupList();
 
@@ -2225,7 +2225,7 @@ void KolfGame::toggleEditMode()
 	   {
 	   if (askSave(false))
 	   {
-	   emit checkEditing();
+	   Q_EMIT checkEditing();
 	   return;
 	   }
 	   }
@@ -2237,12 +2237,12 @@ void KolfGame::toggleEditMode()
 
 	if (editing)
 	{
-		emit editingStarted();
+		Q_EMIT editingStarted();
 		setSelectedItem(nullptr);
 	}
 	else
 	{
-		emit editingEnded();
+		Q_EMIT editingEnded();
 		setCursor(Qt::ArrowCursor);
 	}
 
@@ -2282,7 +2282,7 @@ void KolfGame::setSelectedItem(CanvasItem* citem)
 {
 	QGraphicsItem* qitem = dynamic_cast<QGraphicsItem*>(citem);
 	selectedItem = qitem;
-	emit newSelectedItem(qitem ? citem : &holeInfo);
+	Q_EMIT newSelectedItem(qitem ? citem : &holeInfo);
 	//deactivate all other overlays
 	foreach (QGraphicsItem* otherQitem, m_topLevelQItems)
 	{

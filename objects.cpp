@@ -189,7 +189,7 @@ Kolf::BlackHoleTimer::BlackHoleTimer(Ball* ball, double speed, int msec)
 
 void Kolf::BlackHoleTimer::emitEject()
 {
-	emit eject(m_ball, m_speed);
+	Q_EMIT eject(m_ball, m_speed);
 	deleteLater();
 }
 

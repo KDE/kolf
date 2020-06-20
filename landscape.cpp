@@ -172,7 +172,7 @@ Kolf::LandscapeConfig::LandscapeConfig(Kolf::LandscapeItem* item, QWidget* paren
 
 void Kolf::LandscapeConfig::setBlinkInterval(int sliderValue)
 {
-	emit blinkIntervalChanged(100 - sliderValue);
+	Q_EMIT blinkIntervalChanged(100 - sliderValue);
 }
 
 //END Kolf::LandscapeConfig

@@ -52,7 +52,7 @@ Editor::Editor(const Kolf::ItemFactory& factory, QWidget *parent)
 
 void Editor::listboxExecuted(QListWidgetItem* item)
 {
-	emit addNewItem(item->data(Qt::UserRole).toString()); //data(UserRole) contains the type identifier
+	Q_EMIT addNewItem(item->data(Qt::UserRole).toString()); //data(UserRole) contains the type identifier
 }
 
 void Editor::setItem(CanvasItem *item)

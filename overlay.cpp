@@ -79,7 +79,7 @@ void Kolf::OverlayHandle::mousePressEvent(QGraphicsSceneMouseEvent* event)
 	if (event->button() == Qt::LeftButton)
 	{
 		event->accept();
-		emit moveStarted();
+		Q_EMIT moveStarted();
 	}
 }
 
@@ -88,7 +88,7 @@ void Kolf::OverlayHandle::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 	if (event->buttons() & Qt::LeftButton)
 	{
 		event->accept();
-		emit moveRequest(event->scenePos());
+		Q_EMIT moveRequest(event->scenePos());
 	}
 }
 
@@ -97,7 +97,7 @@ void Kolf::OverlayHandle::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
 	if (event->button() == Qt::LeftButton)
 	{
 		event->accept();
-		emit moveEnded();
+		Q_EMIT moveEnded();
 	}
 }
 
@@ -124,7 +124,7 @@ void Kolf::OverlayAreaItem::hoverEnterEvent(QGraphicsSceneHoverEvent* event)
 	if (m_features & Hoverable)
 	{
 		event->accept();
-		emit hoverEntered();
+		Q_EMIT hoverEntered();
 	}
 	else
 		QGraphicsPathItem::hoverEnterEvent(event);
@@ -135,7 +135,7 @@ void Kolf::OverlayAreaItem::hoverLeaveEvent(QGraphicsSceneHoverEvent* event)
 	if (m_features & Hoverable)
 	{
 		event->accept();
-		emit hoverLeft();
+		Q_EMIT hoverLeft();
 	}
 	else
 		QGraphicsPathItem::hoverLeaveEvent(event);
@@ -146,7 +146,7 @@ void Kolf::OverlayAreaItem::mousePressEvent(QGraphicsSceneMouseEvent* event)
 	if (m_features & Clickable)
 	{
 		event->accept();
-		emit clicked(event->button());
+		Q_EMIT clicked(event->button());
 	}
 	if (m_features & Draggable)
 	{
@@ -160,7 +160,7 @@ void Kolf::OverlayAreaItem::mousePressEvent(QGraphicsSceneMouseEvent* event)
 void Kolf::OverlayAreaItem::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 {
 	if (m_features & Draggable)
-		emit dragged(event->scenePos() - event->lastScenePos());
+		Q_EMIT dragged(event->scenePos() - event->lastScenePos());
 	else
 		QGraphicsItem::mouseMoveEvent(event);
 }
@@ -274,7 +274,7 @@ void Kolf::Overlay::setState(Kolf::Overlay::State state)
 	}
 	m_handleAnimator->setOpacityAnimated(state == Active ? 1.0 : 0.0);
 	//propagate changes
-	emit stateChanged();
+	Q_EMIT stateChanged();
 	if (state == Kolf::Overlay::Active)
 	{
 		KolfGame* game = m_citem->game;

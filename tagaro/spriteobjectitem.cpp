@@ -108,7 +108,7 @@ void Tagaro::SpriteObjectItem::setSize(const QSizeF& size)
 		prepareGeometryChange();
 		d->m_size = size;
 		d->updateTransform();
-		emit sizeChanged(size);
+		Q_EMIT sizeChanged(size);
 		update();
 	}
 }

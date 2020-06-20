@@ -367,7 +367,7 @@ PlayerEditor::PlayerEditor(const QString &startName, QColor startColor, QWidget 
 
 void PlayerEditor::removeMe()
 {
-	emit deleteEditor(this);
+	Q_EMIT deleteEditor(this);
 }
 
 

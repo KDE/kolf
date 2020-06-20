@@ -249,7 +249,7 @@ public:
 	~KolfGame() override;
 	void setFilename(const QString &filename);
 	QString curFilename() const { return filename; }
-	void emitLargestHole() { emit largestHole(highestHole); }
+	void emitLargestHole() { Q_EMIT largestHole(highestHole); }
 	QGraphicsScene *scene() const { return course; }
 	void removeItem(QGraphicsItem *item) { m_topLevelQItems.removeAll(item); }
 	bool askSave(bool);

@@ -235,7 +235,7 @@ void Kolf::RectangleItem::setWall(Kolf::WallIndex index, bool hasWall)
 		m_walls[index] = nullptr;
 	}
 	propagateUpdate();
-	emit wallChanged(index, hasWall, m_wallAllowed[index]);
+	Q_EMIT wallChanged(index, hasWall, m_wallAllowed[index]);
 }
 
 void Kolf::RectangleItem::setWallAllowed(Kolf::WallIndex index, bool wallAllowed)
@@ -244,7 +244,7 @@ void Kolf::RectangleItem::setWallAllowed(Kolf::WallIndex index, bool wallAllowed
 	//delete wall if one exists at this position currently
 	if (!wallAllowed)
 		setWall(index, false);
-	emit wallChanged(index, hasWall(index), wallAllowed);
+	Q_EMIT wallChanged(index, hasWall(index), wallAllowed);
 }
 
 void Kolf::RectangleItem::updateWallPosition()
