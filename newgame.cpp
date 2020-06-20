@@ -108,7 +108,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		for (const QString& dir : dirs) {
 			const QStringList fileNames = QDir(dir).entryList(QStringList() << QStringLiteral("*"), QDir::Files);
 			for (const QString& file : fileNames) {
-				files.append(dir + '/' + file);
+				files.append(dir + QLatin1Char('/') + file);
 			}
 		}
 		const QStringList items = externCourses + files;
