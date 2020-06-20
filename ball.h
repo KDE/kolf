@@ -67,7 +67,7 @@ public:
 	double getMaxBumperBounceSpeed() { return maxBumperBounceSpeed; }
 	void reduceMaxBumperBounceSpeed() { if(maxBumperBounceSpeed > 0.4) maxBumperBounceSpeed -= 0.35; }
 
-public slots:
+public Q_SLOTS:
 	void update() { }
 
 protected:

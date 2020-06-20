@@ -39,7 +39,7 @@ class Editor : public QWidget
 	Q_OBJECT
 public:
 	explicit Editor(const Kolf::ItemFactory& factory, QWidget * = nullptr);
-signals:
+Q_SIGNALS:
 	void changed(bool mod);
 	void addNewItem(const QString&);
 public Q_SLOTS:

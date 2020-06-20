@@ -29,7 +29,7 @@ public:
 	explicit Config(QWidget *parent);
 	void ctorDone();
 
-signals:
+Q_SIGNALS:
 	void modified(bool mod);
 
 protected:

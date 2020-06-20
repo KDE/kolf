@@ -29,7 +29,7 @@ public:
 	explicit ScoreBoard(QWidget *parent = nullptr);
 	int total(int id, QString &name);
 
-public slots:
+public Q_SLOTS:
 	void newHole(int);
 	void newPlayer(const QString &name);
 	void setScore(int id, int hole, int score);

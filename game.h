@@ -162,7 +162,7 @@ class HoleConfig : public Config
 public:
 	HoleConfig(HoleInfo *holeInfo, QWidget *);
 
-private slots:
+private Q_SLOTS:
 	void authorChanged(const QString &);
 	void parChanged(int);
 	void maxStrokesChanged(int);
@@ -275,7 +275,7 @@ public:
 	static void courseInfo(CourseInfo &info, const QString &filename);
 	void playSound(Sound soundType);
 
-public slots:
+public Q_SLOTS:
 	void pause();
 	void unPause();
 	void save();
@@ -306,7 +306,7 @@ public slots:
 	void startFirstHole(int hole);
 	void sayWhosGoing();
 
-signals:
+Q_SIGNALS:
 	void holesDone();
 	void newHole(int);
 	void parChanged(int, int);
@@ -325,7 +325,7 @@ signals:
 	void modifiedChanged(bool);
 	void newStatusText(const QString &);
 
-private slots:
+private Q_SLOTS:
 	void shotDone();
 	void holeDone();
 	void startNextHole();

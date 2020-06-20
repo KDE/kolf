@@ -43,14 +43,14 @@ public:
 
 	void openUrl(const QUrl &url);
 
-public slots:
+public Q_SLOTS:
 	void closeGame();
 	void updateModified(bool);
 
 protected:
 	bool queryClose() Q_DECL_OVERRIDE;
 
-protected slots:
+protected Q_SLOTS:
 	void startNewGame();
 	void loadGame();
 	void tutorial();

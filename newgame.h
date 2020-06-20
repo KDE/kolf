@@ -43,10 +43,10 @@ public:
 	void setColor(QColor col) { colorButton->setColor(col); }
 	void setName(const QString &newname) { editor->setText(newname); }
 
-signals:
+Q_SIGNALS:
 	void deleteEditor(PlayerEditor *editor);
 
-private slots:
+private Q_SLOTS:
 	void removeMe();
 
 private:
@@ -66,12 +66,12 @@ public:
 	bool competition() { return mode->isChecked(); }
 	QString course() { return currentCourse; }
 
-public slots:
+public Q_SLOTS:
 	void deleteEditor(PlayerEditor *);
 
-protected slots:
+protected Q_SLOTS:
 	void slotOk();
-private slots:
+private Q_SLOTS:
 	void addPlayer();
 	void courseSelected(int);
 	void addCourse();
