@@ -48,7 +48,7 @@ public:
 	 * @param _value     Initial value of the combobox
 	 */
 	KComboBoxDialog( const QString &_text, const QStringList& _items, const QString& _value = QString(), bool showDontAskAgain = false, QWidget *parent = nullptr );
-	virtual ~KComboBoxDialog();
+	~KComboBoxDialog() override;
 
 	///@return the value the user chose
 	QString text() const;

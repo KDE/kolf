@@ -47,7 +47,7 @@ class Scene : public QGraphicsScene
 		///the given renderer and sprite key.
 		Scene(KGameRenderer* backgroundRenderer, const QString& backgroundSpriteKey, QObject* parent = nullptr);
 		///Destroys this Tagaro::Scene instance.
-		virtual ~Scene();
+		~Scene() override;
 
 		///@return the main view of this scene
 		QGraphicsView* mainView() const;

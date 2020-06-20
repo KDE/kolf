@@ -56,7 +56,7 @@ class SpriteObjectItem : public QGraphicsObject, public KGameRendererClient
 		///Creates a new Tagaro::SpriteObjectItem which renders the sprite with
 		///the given @a spriteKey as provided by the given @a renderer.
 		SpriteObjectItem(KGameRenderer* renderer, const QString& spriteKey, QGraphicsItem* parent = nullptr);
-		virtual ~SpriteObjectItem();
+		~SpriteObjectItem() override;
 
 		///@return the item's offset, which defines the point of the top-left
 		///corner of the bounding rect, in local coordinates.

@@ -95,7 +95,7 @@ namespace Kolf
 		Q_OBJECT
 		public:
 			RectangleItem(const QString& type, QGraphicsItem* parent, b2World* world);
-			virtual ~RectangleItem();
+			~RectangleItem() override;
 
 			bool hasWall(Kolf::WallIndex index) const;
 			bool isWallAllowed(Kolf::WallIndex index) const;
@@ -225,7 +225,7 @@ namespace Kolf
 		Q_OBJECT
 		public:
 			Windmill(QGraphicsItem* parent, b2World* world);
-			virtual ~Windmill();
+			~Windmill() override;
 
 			bool guardAtTop() const;
 			int speed() const;

@@ -176,7 +176,7 @@ class HoleInfo : public CanvasItem
 {
 public:
 	explicit HoleInfo(b2World* world) : CanvasItem(world) { setSimulationType(CanvasItem::NoSimulation); m_lowestMaxStrokes = 4; }
-	virtual ~HoleInfo() {}
+	~HoleInfo() override {}
 	void setPar(int newpar) { m_par = newpar; }
 	int par() const { return m_par; }
 	void setMaxStrokes(int newMaxStrokes) { m_maxStrokes = newMaxStrokes; }
@@ -246,7 +246,7 @@ class KolfGame : public QGraphicsView
 
 public:
 	KolfGame(const Kolf::ItemFactory& factory, PlayerList *players, const QString &filename, QWidget *parent=nullptr);
-	~KolfGame();
+	~KolfGame() override;
 	void setFilename(const QString &filename);
 	QString curFilename() const { return filename; }
 	void emitLargestHole() { emit largestHole(highestHole); }

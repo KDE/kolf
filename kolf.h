@@ -39,7 +39,7 @@ class KolfWindow : public KXmlGuiWindow
 
 public:
 	KolfWindow();
-	~KolfWindow();
+	~KolfWindow() override;
 
 	void openUrl(const QUrl &url);
 

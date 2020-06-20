@@ -44,7 +44,7 @@ class Board : public QGraphicsObject
 		///alignment Qt::AlignCenter.
 		explicit Board(QGraphicsItem* parent = nullptr);
 		///Destroys the Tagaro::Board and all its children.
-		virtual ~Board();
+		~Board() override;
 
 		///@return the logical size of this board, i.e. the size of its
 		///bounding rect in the item's local coordinates

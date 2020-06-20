@@ -61,7 +61,7 @@ class NewGameDialog : public KPageDialog
 
 public:
 	explicit NewGameDialog(bool enableCourses);
-	~NewGameDialog();
+	~NewGameDialog() override;
 	QList<PlayerEditor*> *players() { return &editors; }
 	bool competition() { return mode->isChecked(); }
 	QString course() { return currentCourse; }
