@@ -115,8 +115,8 @@ width=319
 [1-sign@73,81|4]
 Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
 Comment[bs]=Za udariti loptu, pritisnite i držite strelicu dolje ili lijevu tipku miša. Koliko dugo držite pritisnutu tipku miša ili tipku dolje odredjuje snagu pucanja.
-Comment[ca]=Per colpejar la bola, prem la fletxa cap avall o el botó esquerre del ratolí. Com més temps mantinguis pressionat el botó del ratolí o la tecla determina la força del cop.
-Comment[ca@valencia]=Per colpejar la bola, prem la fletxa cap avall o el botó esquerre del ratolí. Com més temps mantinguis pressionat el botó del ratolí o la tecla determina la força del cop.
+Comment[ca]=Per a colpejar la bola, prem la fletxa cap avall o el botó esquerre del ratolí. Com més temps mantinguis premut el botó del ratolí o la tecla, això determinarà la força del cop.
+Comment[ca@valencia]=Per a colpejar la bola, prem la fletxa cap avall o el botó esquerre del ratolí. Com més temps mantinguis premut el botó del ratolí o la tecla, això determinarà la força del cop.
 Comment[da]=For at slå til bolden trykkes og holdes på venstre museknap eller piletast "ned". Hvor længe du holder museknappen eller tasten nede afgør slagets styrke.
 Comment[de]=Halten Sie die linke Maustaste oder die Taste „Pfeil runter“ gedrückt, um den Ball zu schlagen. Die Dauer des Tastendrucks entscheidet über die Stärke.
 Comment[el]=Για να χτυπήσετε την μπάλα, κρατήστε πατημένο το Κάτω Βέλος ή το αριστερό πλήκτρο του ποντικιού. Η δύναμη του χτυπήματος είναι ανάλογη από το χρόνο που θα το κρατήσετε πατημένο.
@@ -166,8 +166,8 @@ width=319
 [1-sign@74,251|7]
 Comment=To aim the putter, press the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use the mouse.
 Comment[bs]=Za ciljanje, pritisnite lijevu (rotirati ulijevo) i desnu (rotirati udesno) tipku sa strelicama ili koristite miša.
-Comment[ca]=Per canviar al putter, prem cursor esquerre (en sentit contrari a les agulles del rellotge) i dret (girar en sentit de les agulles del rellotge) o usa el ratolí.
-Comment[ca@valencia]=Per canviar al putter, prem cursor esquerre (en sentit contrari a les agulles del rellotge) i dret (girar en sentit de les agulles del rellotge) o usa el ratolí.
+Comment[ca]=Per a canviar al putter, prem les tecles de fletxa esquerra (gira en sentit contrari a les agulles del rellotge) i dreta (gira en sentit de les agulles del rellotge) o usa el ratolí.
+Comment[ca@valencia]=Per a canviar al putter, prem les tecles de fletxa esquerra (gira en sentit contrari a les agulles del rellotge) i dreta (gira en sentit de les agulles del rellotge) o usa el ratolí.
 Comment[da]=For at sigte med putteren trykkes venstre (rotér mod uret) og højre (rotér med uret) piletast. Musen kan også bruges.
 Comment[de]=Um den Putter auszurichten, verwenden Sie entweder die linke (gegen den Uhrzeigersinn) oder rechte (im Uhrzeigersinn) Pfeiltaste oder die Maus.
 Comment[el]=Για να στοχεύσετε, πιέστε το αριστερό (αριστερόστροφα) και το δεξί (δεξιόστροφα) πλήκτρο ή χρησιμοποιήστε το ποντίκι.
@@ -495,8 +495,8 @@ par=2
 [2-sign@1,5|3]
 Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you choose <u>Hole->Show Info</u>.
 Comment[bs]=<h3>Padine</h3>Padine su na kosim područjima zbog toga što guramo loptu u smjeru nagiba. Ovaj smjer se prikazuje kada odaberete<u>Hole->Show Info</u>.
-Comment[ca]=<h3>Pendents</h3>Els pendents són àrees de terreny inclinat que empenyen la bola en la direcció del pendent. Aquesta direcció es mostra quan tries <u>Forat->Mostra informació</u>.
-Comment[ca@valencia]=<h3>Pendents</h3>Els pendents són àrees de terreny inclinat que empenyen la bola en la direcció del pendent. Aquesta direcció es mostra quan tries <u>Forat->Mostra informació</u>.
+Comment[ca]=<h3>Pendents</h3>Els pendents són àrees de terreny inclinat que empenyen la bola en la direcció del pendent. Aquesta direcció es mostra quan tries <u>Forat -> Mostra la informació</u>.
+Comment[ca@valencia]=<h3>Pendents</h3>Els pendents són àrees de terreny inclinat que empenyen la bola en la direcció del pendent. Aquesta direcció es mostra quan tries <u>Forat -> Mostra la informació</u>.
 Comment[da]=<h3>Skråninger</h3>Skråninger er jordområder med hældning som skubber bolden i den retning som de hælder. Denne retning er vist når du vælger <u>Hul->Vis info</u>.
 Comment[de]=<h3>Hügel</h3>Hügel sind kurvige Bodenstücke, die den Ball in die eine oder andere Richtung ablenken. Diese Richtung ist sichtbar, wenn Sie <u>Bahn->Informationen anzeigen</u> auswählen.
 Comment[el]=<h3>Κλίσεις</h3>Κεκλιμένες περιοχές του εδάφους που ωθούν την μπάλα στην κατεύθυνση της κλίσης τους. Η κατεύθυνση εμφανίζεται όταν επιλέξετε <u>Τρύπα->Εμφάνιση πληροφοριών</u>.
@@ -749,8 +749,8 @@ par=3
 [4-sign@6,3|3]
 Comment=The steepness of a slope is shown when you choose <u>Hole->Show Info</u>. Steepness goes from 8 (steepest) to 1 (shallowest).
 Comment[bs]=Strmost padine se prikazuje kada odaberete <u>Hole->Show Info</u>. Strmost ide od 8 (najbrže) do 1 (najpliće).
-Comment[ca]=La inclinació d'un pendent, es mostra en triar <u>Forat->Mostra informació</u>. La inclinació va des de 8 (més) a 1 (menys).
-Comment[ca@valencia]=La inclinació d'un pendent, es mostra en triar <u>Forat->Mostra informació</u>. La inclinació va des de 8 (més) a 1 (menys).
+Comment[ca]=La inclinació d'un pendent, es mostra en triar <u>Forat -> Mostra la informació</u>. La inclinació va des de 8 (més) a 1 (menys).
+Comment[ca@valencia]=La inclinació d'un pendent, es mostra en triar <u>Forat -> Mostra la informació</u>. La inclinació va des de 8 (més) a 1 (menys).
 Comment[da]=En skrånings stejlhed vises når du vælger <u>Hul->Vis info</u>. Stejlhed går fra 8 (mest stejl) til 1 (mindst stejl).
 Comment[de]=Die Steigung eines Hügels bekommen Sie angezeigt, wenn Sie <u>Bahn->Informationen anzeigen</u> auswählen. Steigungen gehen von 8 (sehr steil) bis 1 (sehr flach).
 Comment[el]=Το πόσο απότομη είναι μια κλίση εμφανίζεται αν επιλέξετε <u>Τρύπα->Εμφάνιση πληροφοριών</u>. Η διαβάθμιση είναι από 8 (πιο απότομο) έως 1 (ομαλότερο).
@@ -1125,8 +1125,8 @@ par=2
 [8-sign@5,5|3]
 Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed in direct relation to the speed your ball was traveling. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out.
 Comment[bs]=<h3>Crne rupe</h3>Crne rupe prenose loptu na svoje izlaze, i to brzinom u direktnom odnosu na brzinu vaše lopte koja je putovala. Odaberi <u>Hole->Show Info</u> da vidiš koja crna rupa ide u koji izlaz i smjer lopte koja izlazi.
-Comment[ca]=<h3>Forats negres</h3>Els forats negres transporten la bola a la seva sortida i l'expulsen a una velocitat directament relacionada amb la que tenia la bola. Tria <u>Forat->Mostra informació</u> per veure quin forat negre va a quina sortida i la direcció amb la qual sortirà la bola.
-Comment[ca@valencia]=<h3>Forats negres</h3>Els forats negres transporten la bola a la seua eixida i l'expulsen a una velocitat directament relacionada amb la que tenia la bola. Tria <u>Forat->Mostra informació</u> per veure quin forat negre va a quina eixida i la direcció amb la qual eixirà la bola.
+Comment[ca]=<h3>Forats negres</h3>Els forats negres transporten la bola a la seva sortida i l'expulsen a una velocitat directament relacionada amb la que tenia la bola. Tria <u>Forat -> Mostra la informació</u> per a veure quin forat negre va a quina sortida i la direcció amb la qual sortirà la bola.
+Comment[ca@valencia]=<h3>Forats negres</h3>Els forats negres transporten la bola a la seua eixida i l'expulsen a una velocitat directament relacionada amb la que tenia la bola. Tria <u>Forat -> Mostra la informació</u> per a veure quin forat negre va a quina eixida i la direcció amb la qual eixirà la bola.
 Comment[da]=<h3>Sorte huller</h3>Sorte huller transporterer bolden til deres udgang og skyder bolden ud med en hastighed som er direkte relateret til den hastighed din bold havde. Vælg <u>Hul->Vis info</u> for at se hvilket sort hul der fører til hvilken udgang og retningen som bolden vil komme ud i.
 Comment[de]=<h3>Schwarze Löcher</h3>Schwarze Löcher teleportieren den Ball zu ihrem Ausgang und werfen den Ball mit einer Geschwindigkeit, die zu seiner ursprünglichen Geschwindigkeit direkt im Verhältnis steht, wieder auf das Spielfeld. Wählen Sie <u>Bahn->Informationen anzeigen</u> um zu sehen, welches Schwarze Loch zu welchem Ausgang gehört und in welcher Richtung der Ball herauskommt.
 Comment[el]=<h3>Μαύρες τρύπες</h3>Οι Μαύρες τρύπες μεταφέρουν την μπάλα στην έξοδό τους, με την ίδια ταχύτητα με την οποία μπήκε, Επιλέξτε <u>Τρύπα->Εμφάνιση πληροφοριών</u> για να δείτε ποια έξοδος αντιστοιχεί στην κάθε Μαύρη τρύπα και την κατεύθυνση που θα ακολουθήσει η μπάλα κατά την έξοδό της.
