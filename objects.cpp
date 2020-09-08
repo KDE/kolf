@@ -24,12 +24,12 @@
 
 #include <QFormLayout>
 #include <QHBoxLayout>
+#include <QRandomGenerator>
 #include <QSlider>
 #include <QSpinBox>
 #include <QTimer>
 #include <KConfigGroup>
 #include <KPluralHandlingSpinBox>
-#include <KRandom>
 #include <KLocalizedString>
 //BEGIN Kolf::BlackHole
 
@@ -47,7 +47,7 @@ Kolf::BlackHole::BlackHole(QGraphicsItem* parent, b2World* world)
 	setZBehavior(CanvasItem::IsRaisedByStrut, 4);
 	setSimulationType(CanvasItem::NoSimulation);
 
-	const QColor myColor((QRgb)(KRandom::random() % 0x01000000));
+	const QColor myColor((QRgb)(QRandomGenerator::global()->bounded(0x01000000)));
 	ellipseItem()->setBrush(myColor);
 	m_exitItem->setPen(QPen(myColor, 6));
 	m_directionItem->setPen(myColor);

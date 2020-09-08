@@ -25,11 +25,11 @@
 #include <QCheckBox>
 #include <QGridLayout>
 #include <QLabel>
+#include <QRandomGenerator>
 #include <QSlider>
 #include <QTimer>
 #include <KConfigGroup>
 #include <KLineEdit>
-#include <KRandom>
 #include <KLocalizedString>
 //BEGIN Kolf::Bumper
 
@@ -51,7 +51,7 @@ bool Kolf::Bumper::collision(Ball* ball)
 	Vector betweenVector(ball->pos() - pos());
 	betweenVector.setMagnitudeDirection(speed,
 		// add some randomness so we don't go indefinitely
-		betweenVector.direction() + deg2rad((KRandom::random() % 3) - 1)
+		betweenVector.direction() + deg2rad(QRandomGenerator::global()->bounded(3) - 1)
 	);
 
 	ball->setVelocity(betweenVector);

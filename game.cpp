@@ -40,7 +40,6 @@
 #include <KLineEdit>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KRandom>
 #include <KgTheme>
 #include <Box2D/Dynamics/b2Body.h>
 #include <Box2D/Dynamics/Contacts/b2Contact.h>
@@ -2147,7 +2146,7 @@ void KolfGame::lastHole()
 
 void KolfGame::randHole()
 {
-	int newHole = 1 + (int)((double)KRandom::random() * ((double)(highestHole - 1) / (double)RAND_MAX));
+	const int newHole = QRandomGenerator::global()->bounded(1, highestHole);
 	switchHole(newHole);
 }
 
