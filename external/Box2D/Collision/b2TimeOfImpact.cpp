@@ -17,7 +17,6 @@
 */
 
 #include <Box2D/Collision/b2Collision.h>
-#include <Box2D/Collision/b2Distance.h>
 #include <Box2D/Collision/b2TimeOfImpact.h>
 #include <Box2D/Collision/Shapes/b2CircleShape.h>
 #include <Box2D/Collision/Shapes/b2PolygonShape.h>

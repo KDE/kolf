@@ -45,7 +45,6 @@
 #include <QStatusBar>
 #include <QTemporaryFile>
 #include <QTimer>
-#include <QUrl>
 
 KolfWindow::KolfWindow()
     : KXmlGuiWindow(nullptr)

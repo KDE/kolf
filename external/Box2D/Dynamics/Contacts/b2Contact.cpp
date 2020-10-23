@@ -26,12 +26,9 @@
 #include <Box2D/Dynamics/Contacts/b2LoopAndPolygonContact.h>
 #include <Box2D/Dynamics/Contacts/b2ContactSolver.h>
 
-#include <Box2D/Collision/b2Collision.h>
 #include <Box2D/Collision/b2TimeOfImpact.h>
-#include <Box2D/Collision/Shapes/b2Shape.h>
 #include <Box2D/Common/b2BlockAllocator.h>
 #include <Box2D/Dynamics/b2Body.h>
-#include <Box2D/Dynamics/b2Fixture.h>
 #include <Box2D/Dynamics/b2World.h>
 
 b2ContactRegister b2Contact::s_registers[b2Shape::e_typeCount][b2Shape::e_typeCount];

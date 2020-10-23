@@ -23,7 +23,6 @@
 #include <Box2D/Collision/Shapes/b2PolygonShape.h>
 #include <Box2D/Collision/Shapes/b2LoopShape.h>
 #include <Box2D/Collision/b2BroadPhase.h>
-#include <Box2D/Collision/b2Collision.h>
 #include <Box2D/Common/b2BlockAllocator.h>
 
 b2Fixture::b2Fixture()

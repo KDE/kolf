@@ -18,7 +18,6 @@
 
 #include <Box2D/Collision/b2Distance.h>
 #include <Box2D/Dynamics/b2Island.h>
-#include <Box2D/Dynamics/b2Body.h>
 #include <Box2D/Dynamics/b2Fixture.h>
 #include <Box2D/Dynamics/b2World.h>
 #include <Box2D/Dynamics/Contacts/b2Contact.h>

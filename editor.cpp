@@ -18,7 +18,6 @@
 */
 
 #include "editor.h"
-#include "game.h"
 #include "itemfactory.h"
 
 #include <QLabel>
