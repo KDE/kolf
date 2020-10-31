@@ -353,7 +353,7 @@ void KolfWindow::newGame()
 
 void KolfWindow::tutorial()
 {
-	QString newfilename = QStandardPaths::locate(QStandardPaths::DataLocation, QStringLiteral("tutorial.kolfgame"));
+	QString newfilename = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("tutorial.kolfgame"));
 	if (newfilename.isNull())
 	        return;
 
