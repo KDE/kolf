@@ -65,9 +65,6 @@ enum class Sound {
 class BallStateInfo
 {
 public:
-	void saveState(KConfigGroup *cfgGroup);
-	void loadState(KConfigGroup *cfgGroup);
-
 	int id;
 	QPoint spot;
 	BallState state;
