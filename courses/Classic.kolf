@@ -1009,7 +1009,7 @@ dummykey=true
 
 [18-bridge@172,92|28]
 botWallVisible=false
-height=47
+height=57
 leftWallVisible=false
 rightWallVisible=false
 topWallVisible=false
