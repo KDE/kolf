@@ -551,7 +551,7 @@ void KolfWindow::saveAs()
 	if (fileSaveDialog->exec() == QDialog::Accepted) {
 		QUrl newfile = fileSaveDialog->selectedUrls().first();
 		if (!newfile.isEmpty()) {
-			filename = newfile.url();
+			filename = newfile.toLocalFile();
 			game->setFilename(filename);
 			game->save();
 			game->setFocus();
@@ -572,7 +572,7 @@ void KolfWindow::saveGameAs()
 				return;
 			}
 			else {
-				loadedGame = newfile.url();
+				loadedGame = newfile.toLocalFile();
 				saveGame();
 			}
 		}
@@ -606,7 +606,7 @@ void KolfWindow::loadGame()
 	fileLoadDialog->setAcceptMode(QFileDialog::AcceptOpen);
 	fileLoadDialog->setFileMode(QFileDialog::ExistingFile);
 	if (fileLoadDialog->exec() == QDialog::Accepted) {
-		QUrl loadedGame = fileLoadDialog->selectedUrls().first();
+		loadedGame = fileLoadDialog->selectedUrls().first().toLocalFile();
 		if (loadedGame.isEmpty()) {
 			return;
 		}
