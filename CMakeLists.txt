@@ -145,8 +145,8 @@ target_link_libraries(kolfprivate
     KF5::KIOCore
     KF5::TextWidgets
     KF5::XmlGui
-    Qt5::Gui
-    Qt5::Widgets
+    Qt::Gui
+    Qt::Widgets
 )
 
 ########### next target ###############
