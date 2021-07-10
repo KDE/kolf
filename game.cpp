@@ -2164,7 +2164,7 @@ void KolfGame::save()
 				return;
 			}
 			else {
-				setFilename(newfile.url());
+				setFilename(newfile.toLocalFile());
 			}
 		}
 		delete fileSaveDialog;
