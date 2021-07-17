@@ -9,10 +9,19 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 project(kolf VERSION ${RELEASE_SERVICE_VERSION})
 
 set (QT_MIN_VERSION "5.15.0")
-set (KF5_MIN_VERSION "5.83.0")
+set (KF5_MIN_VERSION "5.85.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
+
+include(KDEInstallDirs)
+include(KDECMakeSettings)
+include(KDECompilerSettings NO_POLICY_SCOPE)
+
+include(ECMAddAppIcon)
+include(ECMInstallIcons)
+include(ECMSetupVersion)
+include(FeatureSummary)
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Gui Widgets)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
@@ -32,27 +41,12 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 
 find_package(KF5KDEGames 4.9.0 REQUIRED)
 
-include(FeatureSummary)
-include(ECMAddAppIcon)
-include(ECMInstallIcons)
-include(ECMSetupVersion)
-include(KDEInstallDirs)
-include(KDECompilerSettings NO_POLICY_SCOPE)
-include(KDECMakeSettings)
-
 ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KOLF VERSION_HEADER kolf_version.h)
 
 add_definitions(
     -DQT_DISABLE_DEPRECATED_BEFORE=0x050F00
     -DQT_DEPRECATED_WARNINGS_SINCE=0x060000
-    -DQT_NO_KEYWORDS
-    -DQT_NO_URL_CAST_FROM_STRING
-    -DQT_NO_CAST_FROM_ASCII
-    -DQT_NO_CAST_TO_ASCII
-    -DQT_NO_CAST_FROM_BYTEARRAY
-    -DQT_STRICT_ITERATORS
-    -DQT_USE_QSTRINGBUILDER
-    -DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT
+    -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
 )
 
 add_subdirectory(sounds)
