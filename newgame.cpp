@@ -35,7 +35,7 @@
 NewGameDialog::NewGameDialog(bool enableCourses)
 	: KPageDialog()
 {
-	setWindowTitle(i18n("New Game"));
+	setWindowTitle(i18nc("@title:window", "New Game"));
 	buttonBox()->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	setMinimumSize(640,310);
 	connect(buttonBox(), &QDialogButtonBox::accepted, this, &NewGameDialog::slotOk);
@@ -90,8 +90,8 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 	if (enableCourses)
 	{
 		coursePage = new QFrame();
-		pageItem = new KPageWidgetItem( coursePage, i18n("Choose Course to Play") );
-		pageItem->setHeader(i18n("Course"));
+		pageItem = new KPageWidgetItem( coursePage, i18n("Course") );
+		pageItem->setHeader(i18n("Choose Course to Play"));
 		addPage(pageItem);
 		QVBoxLayout *coursePageLayout = new QVBoxLayout(coursePage);
 
@@ -181,8 +181,8 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 
 	// options page
     optionsPage = new QFrame();
-    pageItem = new KPageWidgetItem( optionsPage, i18n("Game Options") );
-    pageItem->setHeader(i18n("Options"));
+    pageItem = new KPageWidgetItem( optionsPage, i18n("Options") );
+    pageItem->setHeader(i18n("Game Options"));
     addPage(pageItem);
 
 	QVBoxLayout *vlayout = new QVBoxLayout(optionsPage);

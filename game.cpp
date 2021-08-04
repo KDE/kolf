@@ -1751,7 +1751,7 @@ void KolfGame::showInfoDlg(bool addDontShowAgain)
 			i18n("Course name: %1", holeInfo.name()) + QStringLiteral("\n")
 			+ i18n("Created by %1", holeInfo.author()) + QStringLiteral("\n")
 			+ i18np("%1 hole", "%1 holes", highestHole),
-			i18n("Course Information"),
+			i18nc("@title:window", "Course Information"),
 			addDontShowAgain? holeInfo.name() + QStringLiteral(" ") + holeInfo.author() : QString());
 }
 

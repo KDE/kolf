@@ -196,7 +196,7 @@ void KolfWindow::setupActions()
 	soundAction->setChecked(configGroup.readEntry("sound", true));
 
 	aboutAction = actionCollection()->addAction(QStringLiteral("aboutcourse"));
-	aboutAction->setText(i18n("&About Course"));
+	aboutAction->setText(i18n("&About Course..."));
 	connect(aboutAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	tutorialAction = actionCollection()->addAction(QStringLiteral("tutorial"));
 	tutorialAction->setText(i18n("&Tutorial"));
