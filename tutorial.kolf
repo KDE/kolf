@@ -115,7 +115,7 @@ width=319
 [1-sign@73,81|4]
 Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
 Comment[bs]=Za udariti loptu, pritisnite i držite strelicu dolje ili lijevu tipku miša. Koliko dugo držite pritisnutu tipku miša ili tipku dolje odredjuje snagu pucanja.
-Comment[ca]=Per a colpejar la pilota, manteniu premuda «Fletxa avall» o el botó esquerre del ratolí. Com més temps mantinguis premut el botó del ratolí o la tecla, això determinarà la força del cop.
+Comment[ca]=Per a colpejar la bola, manteniu premuda «Fletxa avall» o el botó esquerre del ratolí. Com més temps mantinguis premut el botó del ratolí o la tecla, això determinarà la força del cop.
 Comment[ca@valencia]=Per a colpejar la bola, manteniu premuda «Fletxa avall» o el botó esquerre del ratolí. Com més temps mantinguis premut el botó del ratolí o la tecla, això determinarà la força del cop.
 Comment[da]=For at slå til bolden trykkes og holdes på venstre museknap eller piletast "ned". Hvor længe du holder museknappen eller tasten nede afgør slagets styrke.
 Comment[de]=Halten Sie die linke Maustaste oder die Taste „Pfeil runter“ gedrückt, um den Ball zu schlagen. Die Dauer des Tastendrucks entscheidet über die Stärke.
@@ -495,7 +495,7 @@ par=2
 [2-sign@1,5|3]
 Comment=<h3>Slopes</h3>Slopes are slanted areas of ground that push the ball in the direction that they slope. This direction is shown when you choose <u>Hole->Show Info</u>.
 Comment[bs]=<h3>Padine</h3>Padine su na kosim područjima zbog toga što guramo loptu u smjeru nagiba. Ovaj smjer se prikazuje kada odaberete<u>Hole->Show Info</u>.
-Comment[ca]=<h3>Desnivells</h3>Són àrees de terreny inclinat que empenyen la pilota en la direcció del desnivell. Aquesta direcció es mostra quan tries <u>Forat -> Mostra la informació</u>.
+Comment[ca]=<h3>Desnivells</h3>Són àrees de terreny inclinat que empenyen la bola en la direcció del desnivell. Aquesta direcció es mostra quan tries <u>Forat -> Mostra la informació</u>.
 Comment[ca@valencia]=<h3>Pendents</h3>Els pendents són àrees de terreny inclinat que empenyen la bola en la direcció del pendent. Aquesta direcció es mostra quan tries <u>Forat -> Mostra la informació</u>.
 Comment[da]=<h3>Skråninger</h3>Skråninger er jordområder med hældning som skubber bolden i den retning som de hælder. Denne retning er vist når du vælger <u>Hul->Vis info</u>.
 Comment[de]=<h3>Hügel</h3>Hügel sind kurvige Bodenstücke, die den Ball in die eine oder andere Richtung ablenken. Diese Richtung ist sichtbar, wenn Sie <u>Bahn->Informationen anzeigen</u> auswählen.
@@ -545,7 +545,7 @@ width=392
 [2-sign@197,198|5]
 Comment=Hit the ball onto the slope and let it roll into cup.
 Comment[bs]=Udari loptu na padini i pusti da se uvalja u šoljicu.
-Comment[ca]=Colpeja la pilota cap al desnivell i deixa que rodi fins a la tassa.
+Comment[ca]=Colpeja la bola cap al desnivell i deixa que rodi fins a la tassa.
 Comment[ca@valencia]=Colpeja la bola cap al pendent i deixa que rodi fins a la tassa.
 Comment[da]=Slå bolden op på skråningen og lad den rullen ned i cuppen.
 Comment[de]=Spielen Sie den Ball auf den Hügel und lassen Sie ihn in das Loch rollen.
@@ -827,7 +827,7 @@ par=2
 [5-sign@3,5|3]
 Comment=<h3>Walls</h3>Bounce the ball off of the red walls.
 Comment[bs]=<h3>Zidovi</h3>Odbijte lopticu od crvene zidove.
-Comment[ca]=<h3>Murs</h3>La pilota rebotarà cap a fora dels murs vermells.
+Comment[ca]=<h3>Murs</h3>La bola rebotarà cap a fora dels murs vermells.
 Comment[ca@valencia]=<h3>Parets</h3>Rebota la bola fora de les parets vermelles.
 Comment[da]=<h3>Vægge</h3>lad bolden prelle af på de røde vægge.
 Comment[de]=<h3>Wände</h3>Schlagen den Ball von den roten Wänden zurück.
@@ -931,7 +931,7 @@ width=78
 [6-sign@3,152|37]
 Comment=<h3>Sand</h3>Sand is yellow, and slows your ball down.
 Comment[bs]=<h3>Pjesak</h3>Pjesak je žut i usporava kretanje loptice.
-Comment[ca]=<h3>Sorra</h3>La sorra és groga i alenteix la pilota.
+Comment[ca]=<h3>Sorra</h3>La sorra és groga i alenteix la bola.
 Comment[ca@valencia]=<h3>Sorra</h3>La sorra és groga, i alenteix la bola.
 Comment[da]=<h3>Grus</h3>Grus er gult, og sænker hastigheden på din bold.
 Comment[de]=<h3>Sand</h3>Sand ist gelb, und verlangsamt Ihren Ball.
@@ -981,7 +981,7 @@ width=138
 [6-sign@3,5|4]
 Comment=<h3>Puddles (Water)</h3>Hitting into a puddle (blue) adds a penalty stroke to your score, and your ball is placed outside the puddle.
 Comment[bs]=<h3>Lokve (Voda)</h3>Udaranje u lokve (plavo) dodaje kazneni udarac na vaš rezultat, a loptica se nalazi izvan lokve.
-Comment[ca]=<h3>Bassals (aigua)</h3>Si colpeges la pilota dins d'un bassal (blau) s'afegirà un cop de penalització a la teva puntuació i la pilota se situarà fora del bassal.
+Comment[ca]=<h3>Bassals (aigua)</h3>Si colpeges la bola dins d'un bassal (blau) s'afegirà un cop de penalització a la teva puntuació i la bola se situarà fora del bassal.
 Comment[ca@valencia]=<h3>Llacs (aigua)</h3>Si colpeges la bola dins del llac (blau) s'afig un cop de penalització a la teva puntuació i la bola se situarà fora del llac.
 Comment[da]=<h3>Pytter (vand)</h3>At ramme ind i en pyt (blå) giver et strafslag til din score og din bold placeres udenfor pytten.
 Comment[de]=<h3>Wasserpfützen</h3>Wenn Sie in eine Pfütze hineinspielen (blau dargestellt), bekommen Sie einen zusätzlichen Strafpunkt, und Ihr Ball wird außerhalb der Pfütze auf dem Spielfeld platziert.
@@ -1125,7 +1125,7 @@ par=2
 [8-sign@5,5|3]
 Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed in direct relation to the speed your ball was traveling. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out.
 Comment[bs]=<h3>Crne rupe</h3>Crne rupe prenose loptu na svoje izlaze, i to brzinom u direktnom odnosu na brzinu vaše lopte koja je putovala. Odaberi <u>Hole->Show Info</u> da vidiš koja crna rupa ide u koji izlaz i smjer lopte koja izlazi.
-Comment[ca]=<h3>Forats negres</h3>Els forats negres transporten la pilota a la seva sortida i l'expulsen a una velocitat directament relacionada amb la que tenia la pilota. Tria <u>Forat -> Mostra la informació</u> per a veure quin forat negre va a quina sortida i la direcció amb la qual sortirà la pilota.
+Comment[ca]=<h3>Forats negres</h3>Els forats negres transporten la bola a la seva sortida i l'expulsen a una velocitat directament relacionada amb la que tenia la bola. Tria <u>Forat -> Mostra la informació</u> per a veure quin forat negre va a quina sortida i la direcció amb la qual sortirà la bola.
 Comment[ca@valencia]=<h3>Forats negres</h3>Els forats negres transporten la bola a la seua eixida i l'expulsen a una velocitat directament relacionada amb la que tenia la bola. Tria <u>Forat -> Mostra la informació</u> per a veure quin forat negre va a quina eixida i la direcció amb la qual eixirà la bola.
 Comment[da]=<h3>Sorte huller</h3>Sorte huller transporterer bolden til deres udgang og skyder bolden ud med en hastighed som er direkte relateret til den hastighed din bold havde. Vælg <u>Hul->Vis info</u> for at se hvilket sort hul der fører til hvilken udgang og retningen som bolden vil komme ud i.
 Comment[de]=<h3>Schwarze Löcher</h3>Schwarze Löcher teleportieren den Ball zu ihrem Ausgang und werfen den Ball mit einer Geschwindigkeit, die zu seiner ursprünglichen Geschwindigkeit direkt im Verhältnis steht, wieder auf das Spielfeld. Wählen Sie <u>Bahn->Informationen anzeigen</u> um zu sehen, welches Schwarze Loch zu welchem Ausgang gehört und in welcher Richtung der Ball herauskommt.
@@ -1206,7 +1206,7 @@ par=2
 [9-sign@5,6|3]
 Comment=<h3>Floaters</h3>Floaters are moving platforms that carry a ball that lands on it. Floaters' speeds vary.
 Comment[bs]=<h3>Pomične grede</h3>Pomične grede su pokretne platforme koje nose loptu koja padne na nju. Brzine pomičnih greda variraju.
-Comment[ca]=<h3>Plataformes voladores</h3>Són plataformes mòbils que transporten la pilota que cau sobre seu. La seva velocitat és variable.
+Comment[ca]=<h3>Plataformes voladores</h3>Són plataformes mòbils que transporten la bola que cau sobre seu. La seva velocitat és variable.
 Comment[ca@valencia]=<h3>Flotadors</h3>Els flotadors són plataformes mòbils que transporten la bola que cau sobre ells. La velocitat dels flotadors és variable.
 Comment[da]=<h3>Flydere</h3>Flydere er bevægelige platforme som bærer en bold der lander på den. Flyderes hastigheder varierer.
 Comment[de]=<h3>Floß</h3>Flöße sind bewegliche Plattformen, die einen Ball weitertragen, wenn er auf ihnen landet. Es gibt Flöße mit unterschiedlichen Geschwindigkeiten.
