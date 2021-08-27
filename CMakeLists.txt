@@ -125,7 +125,6 @@ target_sources(kolfprivate PRIVATE
     tagaro/board.cpp
     tagaro/scene.cpp
     tagaro/spriteobjectitem.cpp
-    ${box2d_SRCS}
 )
 
 target_link_libraries(kolfprivate
