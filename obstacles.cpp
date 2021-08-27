@@ -282,7 +282,7 @@ void Kolf::RectangleItem::moveBy(double dx, double dy)
 	Tagaro::SpriteObjectItem::moveBy(dx, dy);
 	//move myself
 	const QPointF pos = this->pos();
-	for (Kolf::Wall* wall : qAsConst(m_walls))
+	for (Kolf::Wall* wall : std::as_const(m_walls))
 		if (wall)
 			wall->setPos(pos);
 	//update Z order
@@ -298,7 +298,7 @@ void Kolf::RectangleItem::moveBy(double dx, double dy)
 void Kolf::RectangleItem::setWallColor(const QColor& color)
 {
 	m_wallPen = QPen(color.darker(), 3);
-	for (Kolf::Wall* wall : qAsConst(m_walls))
+	for (Kolf::Wall* wall : std::as_const(m_walls))
 		applyWallStyle(wall);
 }
 

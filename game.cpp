@@ -920,12 +920,12 @@ void KolfGame::setShowInfo(bool yes)
 {
 	m_showInfo = yes;
 	QList<QGraphicsItem*> infoItems;
-	for (QGraphicsItem* qitem : qAsConst(m_topLevelQItems)) {
+	for (QGraphicsItem* qitem : std::as_const(m_topLevelQItems)) {
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 		if (citem)
 			infoItems << citem->infoItems();
 	}
-	for (QGraphicsItem* qitem : qAsConst(infoItems))
+	for (QGraphicsItem* qitem : std::as_const(infoItems))
 		qitem->setVisible(m_showInfo);
 }
 
@@ -1314,7 +1314,7 @@ void KolfGame::autoSaveTimeout()
 void KolfGame::recreateStateList()
 {
 	savedState.clear();
-	for (QGraphicsItem* item : qAsConst(m_topLevelQItems)) {
+	for (QGraphicsItem* item : std::as_const(m_topLevelQItems)) {
 		if (dynamic_cast<Ball*>(item)) continue; //see below
 		CanvasItem* citem = dynamic_cast<CanvasItem*>(item);
 		if (citem)
@@ -1339,7 +1339,7 @@ void KolfGame::undoShot()
 
 void KolfGame::loadStateList()
 {
-	for (QGraphicsItem* item : qAsConst(m_topLevelQItems)) {
+	for (QGraphicsItem* item : std::as_const(m_topLevelQItems)) {
 		if (dynamic_cast<Ball*>(item)) continue; //see below
 		CanvasItem* citem = dynamic_cast<CanvasItem*>(item);
 		if (citem)
@@ -1543,7 +1543,7 @@ void KolfGame::startBall(const Vector &velocity)
 	(*curPlayer).ball()->setVelocity(velocity);
 	(*curPlayer).ball()->shotStarted();
 
-	for (QGraphicsItem* qitem : qAsConst(m_topLevelQItems)) {
+	for (QGraphicsItem* qitem : std::as_const(m_topLevelQItems)) {
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 		if (citem)
 			citem->shotStarted();
@@ -1942,7 +1942,7 @@ void KolfGame::addNewObject(const QString& identifier)
 	for (;; ++i)
 	{
 		bool found = false;
-		for (QGraphicsItem* qitem : qAsConst(m_topLevelQItems)) {
+		for (QGraphicsItem* qitem : std::as_const(m_topLevelQItems)) {
 			CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 			if (citem)
 			{
@@ -2182,7 +2182,7 @@ void KolfGame::save()
 		if (holeNum == curHole)
 			cfg->deleteGroup(*it);
 	}
-	for (QGraphicsItem* qitem : qAsConst(m_topLevelQItems)) {
+	for (QGraphicsItem* qitem : std::as_const(m_topLevelQItems)) {
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 		if (citem)
 		{
@@ -2242,7 +2242,7 @@ void KolfGame::toggleEditMode()
 	}
 
 	// alert our items
-	for (QGraphicsItem* qitem : qAsConst(m_topLevelQItems)) {
+	for (QGraphicsItem* qitem : std::as_const(m_topLevelQItems)) {
 		if (dynamic_cast<Ball*>(qitem)) continue;
 		CanvasItem *citem = dynamic_cast<CanvasItem *>(qitem);
 		if (citem)
@@ -2278,7 +2278,7 @@ void KolfGame::setSelectedItem(CanvasItem* citem)
 	selectedItem = qitem;
 	Q_EMIT newSelectedItem(qitem ? citem : &holeInfo);
 	//deactivate all other overlays
-	for (QGraphicsItem* otherQitem : qAsConst(m_topLevelQItems)) {
+	for (QGraphicsItem* otherQitem : std::as_const(m_topLevelQItems)) {
 		CanvasItem* otherCitem = dynamic_cast<CanvasItem*>(otherQitem);
 		if (otherCitem && otherCitem != citem)
 		{
@@ -2307,7 +2307,7 @@ bool KolfGame::allPlayersDone()
 
 void KolfGame::setBorderWalls(bool showing)
 {
-	for (Kolf::Wall* wall : qAsConst(borderWalls))
+	for (Kolf::Wall* wall : std::as_const(borderWalls))
 		wall->setVisible(showing);
 }
 
