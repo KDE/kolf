@@ -290,9 +290,11 @@ void KolfWindow::startNewGame()
 	connect(game, &KolfGame::largestHole, this, &KolfWindow::updateHoleMenu);
 	connect(game, &KolfGame::titleChanged, this, &KolfWindow::titleChanged);
 	connect(game, &KolfGame::newStatusText, this, &KolfWindow::newStatusText);
-	connect(game, QOverload<int>::of(&KolfGame::currentHole), this, &KolfWindow::setCurrentHole);
-	connect(holeAction, &QAction::triggered, game, QOverload<int>::of(&KolfGame::switchHole));
-	connect(nextAction, &QAction::triggered, game, &KolfGame::nextHole);
+        connect(game, qOverload<int>(&KolfGame::currentHole), this,
+                &KolfWindow::setCurrentHole);
+        connect(holeAction, &QAction::triggered, game,
+                qOverload<int>(&KolfGame::switchHole));
+        connect(nextAction, &QAction::triggered, game, &KolfGame::nextHole);
 	connect(prevAction, &QAction::triggered, game, &KolfGame::prevHole);
 	connect(firstAction, &QAction::triggered, game, &KolfGame::firstHole);
 	connect(lastAction, &QAction::triggered, game, &KolfGame::lastHole);

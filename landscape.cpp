@@ -564,8 +564,9 @@ Kolf::SlopeConfig::SlopeConfig(Kolf::Slope* slope, QWidget* parent)
 	KComboBox* typeBox = new KComboBox(this);
 	typeBox->addItems(g_slopeData->translatedGradientKeys);
 	typeBox->setCurrentIndex(slope->slopeType());
-	connect(typeBox, QOverload<int>::of(&KComboBox::currentIndexChanged), slope, &Kolf::Slope::setSlopeType);
-	layout->addWidget(typeBox, 0, 0, 1, 2);
+        connect(typeBox, qOverload<int>(&KComboBox::currentIndexChanged), slope,
+                &Kolf::Slope::setSlopeType);
+        layout->addWidget(typeBox, 0, 0, 1, 2);
 
 	QCheckBox* reversed = new QCheckBox(i18n("Reverse direction"), this);
 	reversed->setChecked(slope->isReversed());
@@ -584,8 +585,9 @@ Kolf::SlopeConfig::SlopeConfig(Kolf::Slope* slope, QWidget* parent)
 	grade->setRange(0, 8);
 	grade->setSingleStep(1);
 	grade->setValue(slope->grade());
-	connect(grade, QOverload<double>::of(&QDoubleSpinBox::valueChanged), slope, &Kolf::Slope::setGrade);
-	layout->addWidget(grade, 2, 1);
+        connect(grade, qOverload<double>(&QDoubleSpinBox::valueChanged), slope,
+                &Kolf::Slope::setGrade);
+        layout->addWidget(grade, 2, 1);
 
 	layout->setRowStretch(4, 10);
 }

@@ -280,8 +280,9 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	par->setSingleStep( 1 );
 	par->setValue(holeInfo->par());
 	hlayout->addWidget(par);
-	connect(par, QOverload<int>::of(&QSpinBox::valueChanged), this, &HoleConfig::parChanged);
-	hlayout->addStretch();
+        connect(par, qOverload<int>(&QSpinBox::valueChanged), this,
+                &HoleConfig::parChanged);
+        hlayout->addStretch();
 
 	hlayout->addWidget(new QLabel(i18n("Maximum:"), this));
 	QSpinBox *maxstrokes = new QSpinBox(this);
@@ -292,9 +293,10 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	maxstrokes->setSpecialValueText(i18n("Unlimited"));
 	maxstrokes->setValue(holeInfo->maxStrokes());
 	hlayout->addWidget(maxstrokes);
-	connect(maxstrokes, QOverload<int>::of(&QSpinBox::valueChanged), this, &HoleConfig::maxStrokesChanged);
+        connect(maxstrokes, qOverload<int>(&QSpinBox::valueChanged), this,
+                &HoleConfig::maxStrokesChanged);
 
-	QCheckBox *check = new QCheckBox(i18n("Show border walls"), this);
+        QCheckBox *check = new QCheckBox(i18n("Show border walls"), this);
 	check->setChecked(holeInfo->borderWalls());
 	layout->addWidget(check);
 	connect(check, &QCheckBox::toggled, this, &HoleConfig::borderWallsChanged);

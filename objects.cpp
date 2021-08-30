@@ -246,9 +246,10 @@ Kolf::BlackHoleConfig::BlackHoleConfig(BlackHole* blackHole, QWidget* parent)
 	deg->setValue(m_blackHole->curExitDeg());
 	deg->setWrapping(true);
 	layout->addRow(i18n("Exiting ball angle:"), deg);
-	connect(deg, QOverload<int>::of(&KPluralHandlingSpinBox::valueChanged), this, &Kolf::BlackHoleConfig::degChanged);
+        connect(deg, qOverload<int>(&KPluralHandlingSpinBox::valueChanged),
+                this, &Kolf::BlackHoleConfig::degChanged);
 
-	QSlider* minSlider = new QSlider(Qt::Horizontal, this);
+        QSlider* minSlider = new QSlider(Qt::Horizontal, this);
 	minSlider->setSizePolicy(QSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed));
 	minSlider->setRange(0, 800);
 	minSlider->setSingleStep(1);
@@ -257,15 +258,19 @@ Kolf::BlackHoleConfig::BlackHoleConfig(BlackHole* blackHole, QWidget* parent)
 	minSpinBox->setRange(0, 8);
 	minSpinBox->setSingleStep(0.01);
 	connect(minSlider, &QSlider::valueChanged, [minSlider, minSpinBox] {minSpinBox->setValue(minSlider->value()/100.0);});
-	connect(minSpinBox, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [minSlider, minSpinBox] {minSlider->setValue(qRound(minSpinBox->value()*100));});
-	QHBoxLayout *min = new QHBoxLayout;
+        connect(minSpinBox, qOverload<double>(&QDoubleSpinBox::valueChanged),
+                [minSlider, minSpinBox] {
+                  minSlider->setValue(qRound(minSpinBox->value() * 100));
+                });
+        QHBoxLayout *min = new QHBoxLayout;
 	min->addWidget(minSlider);
 	min->addWidget(minSpinBox);
 	layout->addRow(i18n("Minimum exit speed:"), min);
 	minSpinBox->setValue(m_blackHole->minSpeed());
-	connect(minSpinBox, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, &Kolf::BlackHoleConfig::minChanged);
+        connect(minSpinBox, qOverload<double>(&QDoubleSpinBox::valueChanged),
+                this, &Kolf::BlackHoleConfig::minChanged);
 
-	QSlider* maxSlider = new QSlider(Qt::Horizontal, this);
+        QSlider* maxSlider = new QSlider(Qt::Horizontal, this);
 	maxSlider->setSizePolicy(QSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed));
 	maxSlider->setRange(0, 800);
 	maxSlider->setSingleStep(1);
@@ -274,13 +279,17 @@ Kolf::BlackHoleConfig::BlackHoleConfig(BlackHole* blackHole, QWidget* parent)
 	maxSpinBox->setRange(0, 8);
 	maxSpinBox->setSingleStep(0.01);
 	connect(maxSlider, &QSlider::valueChanged, [maxSlider, maxSpinBox] {maxSpinBox->setValue(maxSlider->value()/100.0);});
-	connect(maxSpinBox, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [maxSlider, maxSpinBox] {maxSlider->setValue(qRound(maxSpinBox->value()*100));});
-	QHBoxLayout *max = new QHBoxLayout;
+        connect(maxSpinBox, qOverload<double>(&QDoubleSpinBox::valueChanged),
+                [maxSlider, maxSpinBox] {
+                  maxSlider->setValue(qRound(maxSpinBox->value() * 100));
+                });
+        QHBoxLayout *max = new QHBoxLayout;
 	max->addWidget(maxSlider);
 	max->addWidget(maxSpinBox);
 	layout->addRow(i18n("Maximum exit speed:"), max);
 	maxSpinBox->setValue(m_blackHole->maxSpeed());
-	connect(maxSpinBox, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, &Kolf::BlackHoleConfig::maxChanged);
+        connect(maxSpinBox, qOverload<double>(&QDoubleSpinBox::valueChanged),
+                this, &Kolf::BlackHoleConfig::maxChanged);
 }
 
 void Kolf::BlackHoleConfig::degChanged(int newdeg)
