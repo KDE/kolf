@@ -160,6 +160,7 @@
       <li xml:lang="sv">En eller flera spelare (upp till tio stycken)</li>
       <li xml:lang="uk">Режими одного та декількох гравців (до десяти учасників змагань)</li>
       <li xml:lang="x-test">xxSingle and Multi-player (up to ten players) modesxx</li>
+      <li xml:lang="zh-CN">单人模式及多人 (最高十位玩家) 模式</li>
       <li>High scores table</li>
       <li xml:lang="ca">Taula de puntuacions màximes</li>
       <li xml:lang="ca-valencia">Taula de puntuacions màximes</li>
@@ -189,6 +190,7 @@
       <li xml:lang="sv">Tabell över bästa resultat</li>
       <li xml:lang="uk">Таблиця найкращих результатів</li>
       <li xml:lang="x-test">xxHigh scores tablexx</li>
+      <li xml:lang="zh-CN">高分表</li>
       <li>Dynamic courses</li>
       <li xml:lang="ca">Camps dinàmics</li>
       <li xml:lang="ca-valencia">Camps dinàmics</li>
@@ -218,6 +220,7 @@
       <li xml:lang="sv">Dynamiska banor</li>
       <li xml:lang="uk">Динамічні майданчики</li>
       <li xml:lang="x-test">xxDynamic coursesxx</li>
+      <li xml:lang="zh-CN">动态高尔夫球场</li>
       <li>Third-party courses</li>
       <li xml:lang="ca">Camps de tercers</li>
       <li xml:lang="ca-valencia">Camps de tercers</li>
@@ -247,6 +250,7 @@
       <li xml:lang="sv">Tredjepartsbanor</li>
       <li xml:lang="uk">Можливість використання сторонніх майданчиків</li>
       <li xml:lang="x-test">xxThird-party coursesxx</li>
+      <li xml:lang="zh-CN">第三方高尔夫球场</li>
       <li>Course editor</li>
       <li xml:lang="ca">Editor de camps</li>
       <li xml:lang="ca-valencia">Editor de camps</li>
@@ -276,6 +280,7 @@
       <li xml:lang="sv">Baneditor</li>
       <li xml:lang="uk">Редактор майданчиків</li>
       <li xml:lang="x-test">xxCourse editorxx</li>
+      <li xml:lang="zh-CN">高尔夫球场编辑器</li>
     </ul>
   </description>
   <url type="homepage">https://kde.org/applications/games/org.kde.kolf</url>
@@ -309,6 +314,7 @@
       <caption xml:lang="sv">Inledande skärm i Kolf</caption>
       <caption xml:lang="uk">Початкове вікно Kolf</caption>
       <caption xml:lang="x-test">xxInitial screen of Kolfxx</caption>
+      <caption xml:lang="zh-CN">Kolf 的初始界面</caption>
       <caption xml:lang="zh-TW">Kolf 的初始畫面</caption>
       <image>https://cdn.kde.org/screenshots/kolf/kolf.png</image>
     </screenshot>
