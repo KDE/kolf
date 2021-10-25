@@ -34,7 +34,7 @@ public:
 	b2LoopShape();
 
 	/// The destructor frees the vertices using b2Free.
-	~b2LoopShape();
+	~b2LoopShape() override;
 
 	/// Create the loop shape, copy all vertices.
 	void Create(const b2Vec2* vertices, int32 count);

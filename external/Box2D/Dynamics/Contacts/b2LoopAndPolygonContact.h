@@ -31,7 +31,7 @@ public:
 	static void Destroy(b2Contact* contact, b2BlockAllocator* allocator);
 
 	b2LoopAndPolygonContact(b2Fixture* fixtureA, int32 indexA, b2Fixture* fixtureB, int32 indexB);
-	~b2LoopAndPolygonContact() {}
+	~b2LoopAndPolygonContact() override {}
 
 	void Evaluate(b2Manifold* manifold, const b2Transform& xfA, const b2Transform& xfB) Q_DECL_OVERRIDE;
 };
