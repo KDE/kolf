@@ -46,8 +46,8 @@ namespace Utils
 			///\warning Always use this instead of QGraphicsItem::setOpacity for direct opacity adjustments.
 			void setOpacity(qreal opacity);
 
-			QRectF boundingRect() const Q_DECL_OVERRIDE;
-			void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = nullptr) Q_DECL_OVERRIDE;
+			QRectF boundingRect() const override;
+			void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = nullptr) override;
 		private:
 			int m_animationTime;
 			bool m_hideWhenInvisible;

@@ -135,10 +135,10 @@ public:
 	void saveAngle(Ball *ball) { angleMap[ball] = angle; }
 	void setAngle(Ball *ball);
 	void resetAngles() { angleMap.clear(); setZValue(999999); }
-	void moveBy(double dx, double dy) Q_DECL_OVERRIDE;
+	void moveBy(double dx, double dy) override;
 	void setShowGuideLine(bool yes);
 
-	QPointF getPosition() const Q_DECL_OVERRIDE { return QGraphicsItem::pos(); }
+	QPointF getPosition() const override { return QGraphicsItem::pos(); }
 private:
 	QPointF midPoint;
 	double maxAngle;
@@ -188,11 +188,11 @@ public:
 	QString name() const { return m_name; }
 	QString untranslatedName() const { return m_untranslatedName; }
 
-	Config *config(QWidget *parent) Q_DECL_OVERRIDE { return new HoleConfig(this, parent); }
+	Config *config(QWidget *parent) override { return new HoleConfig(this, parent); }
 	void borderWallsChanged(bool yes);
 	bool borderWalls() const { return m_borderWalls; }
 
-	QPointF getPosition() const Q_DECL_OVERRIDE { return QPointF(); }
+	QPointF getPosition() const override { return QPointF(); }
 private:
 	QString m_author;
 	QString m_name;
@@ -216,9 +216,9 @@ public:
 	double thickness() const;
 	double width() const;
 	double height() const;
-	void paint (QPainter *, const QStyleOptionGraphicsItem *, QWidget *) Q_DECL_OVERRIDE;
-	QRectF boundingRect() const Q_DECL_OVERRIDE;
-	bool collidesWithItem(const QGraphicsItem*, Qt::ItemSelectionMode mode = Qt::IntersectsItemShape) const Q_DECL_OVERRIDE;
+	void paint (QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
+	QRectF boundingRect() const override;
+	bool collidesWithItem(const QGraphicsItem*, Qt::ItemSelectionMode mode = Qt::IntersectsItemShape) const override;
 
 private:
 	double dvalue, dmax;
@@ -333,20 +333,20 @@ private Q_SLOTS:
 	void emitMax();
 
 protected:
-	void mouseMoveEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
-	void mousePressEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
-	void mouseReleaseEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
-	void mouseDoubleClickEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
+	void mouseMoveEvent(QMouseEvent *e) override;
+	void mousePressEvent(QMouseEvent *e) override;
+	void mouseReleaseEvent(QMouseEvent *e) override;
+	void mouseDoubleClickEvent(QMouseEvent *e) override;
 
 	void handleMousePressEvent(QMouseEvent *e);
 	void handleMouseDoubleClickEvent(QMouseEvent *e);
 	void handleMouseMoveEvent(QMouseEvent *e);
 	void handleMouseReleaseEvent(QMouseEvent *e);
-	void keyPressEvent(QKeyEvent *e) Q_DECL_OVERRIDE;
-	void keyReleaseEvent(QKeyEvent *e) Q_DECL_OVERRIDE;
+	void keyPressEvent(QKeyEvent *e) override;
+	void keyReleaseEvent(QKeyEvent *e) override;
 
 	//resizes view to make sure it is square and calls resizeAllItems
-	void resizeEvent(QResizeEvent *) Q_DECL_OVERRIDE;
+	void resizeEvent(QResizeEvent *) override;
 
 	QPoint viewportToViewport(const QPoint &p);
 

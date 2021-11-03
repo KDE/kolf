@@ -48,11 +48,11 @@ namespace Kolf
 			void moveRequest(const QPointF& targetScenePos);
 			void moveEnded();
 		protected:
-			void hoverEnterEvent(QGraphicsSceneHoverEvent* event) Q_DECL_OVERRIDE;
-			void hoverLeaveEvent(QGraphicsSceneHoverEvent* event) Q_DECL_OVERRIDE;
-			void mousePressEvent(QGraphicsSceneMouseEvent* event) Q_DECL_OVERRIDE;
-			void mouseMoveEvent(QGraphicsSceneMouseEvent* event) Q_DECL_OVERRIDE;
-			void mouseReleaseEvent(QGraphicsSceneMouseEvent* event) Q_DECL_OVERRIDE;
+			void hoverEnterEvent(QGraphicsSceneHoverEvent* event) override;
+			void hoverLeaveEvent(QGraphicsSceneHoverEvent* event) override;
+			void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
+			void mouseMoveEvent(QGraphicsSceneMouseEvent* event) override;
+			void mouseReleaseEvent(QGraphicsSceneMouseEvent* event) override;
 	};
 
 	//This is used by Kolf::Overlay to paint the various outlines of an item.
@@ -75,11 +75,11 @@ namespace Kolf
 			void hoverEntered();
 			void hoverLeft();
 		protected:
-			void hoverEnterEvent(QGraphicsSceneHoverEvent* event) Q_DECL_OVERRIDE;
-			void hoverLeaveEvent(QGraphicsSceneHoverEvent* event) Q_DECL_OVERRIDE;
-			void mousePressEvent(QGraphicsSceneMouseEvent* event) Q_DECL_OVERRIDE;
-			void mouseMoveEvent(QGraphicsSceneMouseEvent* event) Q_DECL_OVERRIDE;
-			void mouseReleaseEvent(QGraphicsSceneMouseEvent* event) Q_DECL_OVERRIDE;
+			void hoverEnterEvent(QGraphicsSceneHoverEvent* event) override;
+			void hoverLeaveEvent(QGraphicsSceneHoverEvent* event) override;
+			void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
+			void mouseMoveEvent(QGraphicsSceneMouseEvent* event) override;
+			void mouseReleaseEvent(QGraphicsSceneMouseEvent* event) override;
 		private:
 			Features m_features;
 	};
@@ -124,8 +124,8 @@ namespace Kolf
 			///Overlays should not allow to decrease an object's dimensions below this level, for the sake of usability.
 			static const qreal MinimumObjectDimension;
 
-			QRectF boundingRect() const Q_DECL_OVERRIDE;
-			void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = nullptr) Q_DECL_OVERRIDE;
+			QRectF boundingRect() const override;
+			void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = nullptr) override;
 		Q_SIGNALS:
 			///This signal is emitted if the overlay's state changes.
 			void stateChanged();

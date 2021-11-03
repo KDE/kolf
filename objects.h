@@ -39,10 +39,10 @@ namespace Kolf
 			~BlackHole() override;
 			//FIXME: strutted moving of exit is broken since refactoring.
 
-			QList<QGraphicsItem*> infoItems() const Q_DECL_OVERRIDE;
-			void save(KConfigGroup* cfgGroup) Q_DECL_OVERRIDE;
-			void load(KConfigGroup* cfgGroup) Q_DECL_OVERRIDE;
-			Config* config(QWidget* parent) Q_DECL_OVERRIDE;
+			QList<QGraphicsItem*> infoItems() const override;
+			void save(KConfigGroup* cfgGroup) override;
+			void load(KConfigGroup* cfgGroup) override;
+			Config* config(QWidget* parent) override;
 			double minSpeed() const;
 			double maxSpeed() const;
 			void setMinSpeed(double news);
@@ -56,15 +56,15 @@ namespace Kolf
 
 			void updateInfo();
 
-			void moveBy(double dx, double dy) Q_DECL_OVERRIDE;
+			void moveBy(double dx, double dy) override;
 
-			void shotStarted() Q_DECL_OVERRIDE;
-			bool collision(Ball* ball) Q_DECL_OVERRIDE;
+			void shotStarted() override;
+			bool collision(Ball* ball) override;
 		public Q_SLOTS:
 			void eject(Ball* ball, double speed);
 			void halfway();
 		protected:
-			Kolf::Overlay* createOverlay() Q_DECL_OVERRIDE;
+			Kolf::Overlay* createOverlay() override;
 		private:
 			double m_minSpeed, m_maxSpeed;
 			int m_runs, m_exitDeg;
@@ -106,7 +106,7 @@ namespace Kolf
 		Q_OBJECT
 		public:
 			explicit BlackHoleOverlay(Kolf::BlackHole* blackHole);
-			void update() Q_DECL_OVERRIDE;
+			void update() override;
 		private Q_SLOTS:
 			//interface to handles
 			void moveHandle(const QPointF& handleScenePos);
@@ -121,8 +121,8 @@ namespace Kolf
 		public:
 			Cup(QGraphicsItem* parent, b2World* world);
 
-			Kolf::Overlay* createOverlay() Q_DECL_OVERRIDE;
-			bool collision(Ball* ball) Q_DECL_OVERRIDE;
+			Kolf::Overlay* createOverlay() override;
+			bool collision(Ball* ball) override;
 	};
 }
 

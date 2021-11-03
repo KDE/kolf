@@ -175,21 +175,21 @@ class EllipticalCanvasItem : public Tagaro::SpriteObjectItem, public CanvasItem
 		EllipticalCanvasItem(bool withEllipse, const QString& spriteKey, QGraphicsItem* parent, b2World* world);
 		QGraphicsEllipseItem* ellipseItem() const { return m_ellipseItem; }
 
-		bool contains(const QPointF& point) const Q_DECL_OVERRIDE;
-		QPainterPath shape() const Q_DECL_OVERRIDE;
+		bool contains(const QPointF& point) const override;
+		QPainterPath shape() const override;
 
 		QRectF rect() const;
 		double width() const { return Tagaro::SpriteObjectItem::size().width(); }
 		double height() const { return Tagaro::SpriteObjectItem::size().height(); }
 
-		void setSize(const QSizeF& size) Q_DECL_OVERRIDE;
+		void setSize(const QSizeF& size) override;
 		void setSize(qreal width, qreal height) { setSize(QSizeF(width, height)); }
-		void moveBy(double x, double y) Q_DECL_OVERRIDE;
+		void moveBy(double x, double y) override;
 
 		void saveSize(KConfigGroup* group);
 		void loadSize(KConfigGroup* group);
 
-		QPointF getPosition() const Q_DECL_OVERRIDE { return QGraphicsItem::pos(); }
+		QPointF getPosition() const override { return QGraphicsItem::pos(); }
 	private:
 		QGraphicsEllipseItem* m_ellipseItem;
 		Kolf::EllipseShape* m_shape;

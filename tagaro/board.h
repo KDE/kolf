@@ -93,11 +93,11 @@ class Board : public QGraphicsObject
 		///@note The flag Qt::AlignJustify is not interpreted.
 		void setAlignment(Qt::Alignment alignment);
 
-		QRectF boundingRect() const Q_DECL_OVERRIDE;
-		void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = nullptr) Q_DECL_OVERRIDE;
+		QRectF boundingRect() const override;
+		void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = nullptr) override;
 	protected:
-		QVariant itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant& value) Q_DECL_OVERRIDE;
-		void timerEvent(QTimerEvent* event) Q_DECL_OVERRIDE;
+		QVariant itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant& value) override;
+		void timerEvent(QTimerEvent* event) override;
 	private:
 		struct Private;
 		Private* const d;

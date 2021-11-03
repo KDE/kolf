@@ -37,7 +37,7 @@ struct Tagaro::Scene::Private : public KGameRendererClient
 		QSize m_renderSize;
 		bool m_adjustingSceneRect;
 	protected:
-		void receivePixmap(const QPixmap& pixmap) Q_DECL_OVERRIDE;
+		void receivePixmap(const QPixmap& pixmap) override;
 };
 
 #endif // TAGARO_SCENE_P_H

@@ -60,7 +60,7 @@ inline QString makeStateGroup(int id, const QString &name)
 class KolfContactListener : public b2ContactListener
 {
 	public:
-		void PreSolve(b2Contact* contact, const b2Manifold* oldManifold) Q_DECL_OVERRIDE
+		void PreSolve(b2Contact* contact, const b2Manifold* oldManifold) override
 		{
 			Q_UNUSED(oldManifold)
 			CanvasItem* citemA = static_cast<CanvasItem*>(contact->GetFixtureA()->GetBody()->GetUserData());

@@ -44,10 +44,10 @@ class Tagaro::SpriteObjectItem::Private : public QGraphicsPixmapItem
 		inline void updateTransform();
 
 		//QGraphicsItem reimplementations (see comment below for why we need all of this)
-		bool contains(const QPointF& point) const Q_DECL_OVERRIDE;
-		bool isObscuredBy(const QGraphicsItem* item) const Q_DECL_OVERRIDE;
-		QPainterPath opaqueArea() const Q_DECL_OVERRIDE;
-		QPainterPath shape() const Q_DECL_OVERRIDE;
+		bool contains(const QPointF& point) const override;
+		bool isObscuredBy(const QGraphicsItem* item) const override;
+		QPainterPath opaqueArea() const override;
+		QPainterPath shape() const override;
 };
 
 Tagaro::SpriteObjectItem::Private::Private(QGraphicsItem* parent)

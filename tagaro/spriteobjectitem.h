@@ -75,18 +75,18 @@ class SpriteObjectItem : public QGraphicsObject, public KGameRendererClient
 		inline void setSize(qreal width, qreal height);
 
 		//QGraphicsItem reimplementations (see comment in source file for why we need all of this)
-		QRectF boundingRect() const Q_DECL_OVERRIDE;
-		bool contains(const QPointF& point) const Q_DECL_OVERRIDE;
-		bool isObscuredBy(const QGraphicsItem* item) const Q_DECL_OVERRIDE;
-		QPainterPath opaqueArea() const Q_DECL_OVERRIDE;
-		void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = nullptr) Q_DECL_OVERRIDE;
-		QPainterPath shape() const Q_DECL_OVERRIDE;
+		QRectF boundingRect() const override;
+		bool contains(const QPointF& point) const override;
+		bool isObscuredBy(const QGraphicsItem* item) const override;
+		QPainterPath opaqueArea() const override;
+		void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = nullptr) override;
+		QPainterPath shape() const override;
 	Q_SIGNALS:
 		///This signal is emitted when the size of the item's bounding rect
 		///changes.
 		void sizeChanged(const QSizeF& size);
 	protected:
-		void receivePixmap(const QPixmap& pixmap) Q_DECL_OVERRIDE;
+		void receivePixmap(const QPixmap& pixmap) override;
 	private:
 		class Private;
 		Private* const d;

@@ -32,7 +32,7 @@ public:
 
 	BallState currentState();
 
-	void moveBy(double dx, double dy) Q_DECL_OVERRIDE;
+	void moveBy(double dx, double dy) override;
 
 	BallState curState() const { return state; }
 	void setState(BallState newState);
@@ -55,12 +55,12 @@ public:
 	bool forceStillGoing() const { return m_forceStillGoing; }
 	void setForceStillGoing(bool yes) { m_forceStillGoing = yes; }
 
-	void shotStarted() Q_DECL_OVERRIDE { maxBumperBounceSpeed = 8; }
+	void shotStarted() override { maxBumperBounceSpeed = 8; }
 
 	void setDoDetect(bool yes) { m_doDetect = yes; }
 	bool doDetect() const { return m_doDetect; }
 
-	QList<QGraphicsItem*> infoItems() const Q_DECL_OVERRIDE;
+	QList<QGraphicsItem*> infoItems() const override;
 	virtual void setName(const QString &);
 	virtual void setVisible(bool yes);
 
@@ -71,8 +71,8 @@ public Q_SLOTS:
 	void update() { }
 
 protected:
-	Kolf::Overlay* createOverlay() Q_DECL_OVERRIDE;
-	void endSimulation() Q_DECL_OVERRIDE;
+	Kolf::Overlay* createOverlay() override;
+	void endSimulation() override;
 
 private:
 	BallState state;
