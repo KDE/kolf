@@ -31,6 +31,8 @@
 #include <KConfigGroup>
 #include <KLineEdit>
 #include <KLocalizedString>
+#include <KLazyLocalizedString>
+
 //BEGIN Kolf::Bumper
 
 Kolf::Bumper::Bumper(QGraphicsItem* parent, b2World* world)
@@ -399,12 +401,6 @@ void Kolf::RectangleOverlay::moveHandle(const QPointF& handleScenePos)
 //END Kolf::RectangleOverlay
 //BEGIN Kolf::RectangleConfig
 
-#include <ki18n_version.h>
-#if KI18N_VERSION >= QT_VERSION_CHECK(5, 89, 0)
-#include <KLazyLocalizedString>
-#undef I18N_NOOP
-#define I18N_NOOP kli18n
-#endif
 
 Kolf::RectangleConfig::RectangleConfig(Kolf::RectangleItem* item, QWidget* parent)
 	: Config(parent)
@@ -412,19 +408,11 @@ Kolf::RectangleConfig::RectangleConfig(Kolf::RectangleItem* item, QWidget* paren
 	, m_wallCheckBoxes(Kolf::RectangleWallCount, nullptr)
 	, m_item(item)
 {
-#if KI18N_VERSION < QT_VERSION_CHECK(5, 89, 0)
-    static const char* captions[] =
-#else
     static const KLazyLocalizedString captions[] =
-#endif
-        { I18N_NOOP("&Top"), I18N_NOOP("&Left"), I18N_NOOP("&Right"), I18N_NOOP("&Bottom") };
+        { kli18n("&Top"), kli18n("&Left"), kli18n("&Right"), kli18n("&Bottom") };
 	for (int i = 0; i < Kolf::RectangleWallCount; ++i)
 	{
-#if KI18N_VERSION < QT_VERSION_CHECK(5, 89, 0)
-        QCheckBox* checkBox = m_wallCheckBoxes[i] = new QCheckBox(i18n(captions[i]), this);
-#else
         QCheckBox* checkBox = m_wallCheckBoxes[i] = new QCheckBox(captions[i].toString(), this);
-#endif
 		checkBox->setEnabled(item->isWallAllowed((Kolf::WallIndex) i));
 		checkBox->setChecked(item->hasWall((Kolf::WallIndex) i));
 		connect(checkBox, &QCheckBox::toggled, this, &Kolf::RectangleConfig::setWall);
