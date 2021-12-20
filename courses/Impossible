@@ -1,5 +1,6 @@
 [0-course@-50,-50]
 Name=Impossible Course
+Name[ar]=مضمار مستحيل
 Name[bs]=Nemogući tok
 Name[ca]=Camp impossible
 Name[ca@valencia]=Camp impossible
@@ -828,6 +829,7 @@ width=66
 
 [13-sign@142,193|1]
 Comment=Reprieve
+Comment[ar]=العفو
 Comment[bs]=Odloži
 Comment[ca]=Indult
 Comment[ca@valencia]=Indult
@@ -1584,6 +1586,7 @@ width=50
 
 [17-sign@23,152|20]
 Comment=Luck
+Comment[ar]=الحظ
 Comment[bs]=Sreća
 Comment[ca]=Sort
 Comment[ca@valencia]=Sort
@@ -3398,6 +3401,7 @@ width=66
 
 [9-sign@146,329|23]
 Comment=Chaos
+Comment[ar]=الفوضى
 Comment[bs]=Haos
 Comment[ca]=Caos
 Comment[ca@valencia]=Caos
