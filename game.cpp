@@ -1810,7 +1810,11 @@ void KolfGame::openFile()
 
 		const int len = (*it).length();
 		const int dashIndex = (*it).indexOf(QLatin1Char('-'));
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 		const int holeNum = (*it).leftRef(dashIndex).toInt();
+#else
+        const int holeNum = QStringView(*it).left(dashIndex).toInt();
+#endif
 		if (holeNum > _highestHole)
 			_highestHole = holeNum;
 
@@ -1830,9 +1834,13 @@ void KolfGame::openFile()
 
 		const int commaIndex = (*it).indexOf(QLatin1Char(','));
 		const int pipeIndex = (*it).indexOf(QLatin1Char('|'));
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 		const int x = (*it).midRef(atIndex + 1, commaIndex - (atIndex + 1)).toInt();
 		const int y = (*it).midRef(commaIndex + 1, pipeIndex - (commaIndex + 1)).toInt();
-
+#else
+        const int x = QStringView(*it).mid(atIndex + 1, commaIndex - (atIndex + 1)).toInt();
+        const int y = QStringView(*it).mid(commaIndex + 1, pipeIndex - (commaIndex + 1)).toInt();
+#endif
 		// will tell where ball is
 		if (name == QLatin1String("ball"))
 		{
@@ -1841,9 +1849,11 @@ void KolfGame::openFile()
 			whiteBall->setPos(x, y);
 			continue;
 		}
-
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 		const int id = (*it).rightRef(len - (pipeIndex + 1)).toInt();
-
+#else
+        const int id = QStringView(*it).right(len - (pipeIndex + 1)).toInt();
+#endif
 		QGraphicsItem* newItem = m_factory.createInstance(name, courseBoard, g_world);
 		if (newItem)
 		{
@@ -2180,7 +2190,11 @@ void KolfGame::save()
 	// wipe out all groups from this hole
 	for (QStringList::const_iterator it = groups.begin(); it != groups.end(); ++it)
 	{
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 		int holeNum = (*it).leftRef((*it).indexOf(QLatin1Char('-'))).toInt();
+#else
+        int holeNum = QStringView(*it).left((*it).indexOf(QLatin1Char('-'))).toInt();
+#endif
 		if (holeNum == curHole)
 			cfg->deleteGroup(*it);
 	}

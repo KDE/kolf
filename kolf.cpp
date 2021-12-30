@@ -110,21 +110,21 @@ void KolfWindow::setupActions()
 	editingAction = new KToggleAction(QIcon::fromTheme( QStringLiteral( "document-properties") ), i18n("&Edit"), this);
 	actionCollection()->addAction(QStringLiteral("editing"), editingAction);
 	connect(editingAction, &QAction::triggered, this, &KolfWindow::emptySlot);
-	actionCollection()->setDefaultShortcut(editingAction, Qt::CTRL+Qt::Key_E);
+    actionCollection()->setDefaultShortcut(editingAction, Qt::CTRL|Qt::Key_E);
 	newHoleAction = actionCollection()->addAction(QStringLiteral("newhole"));
 	newHoleAction->setIcon(QIcon::fromTheme( QStringLiteral( "document-new" )));
 	newHoleAction->setText(i18n("&New"));
 	connect(newHoleAction, &QAction::triggered, this, &KolfWindow::emptySlot);
-	actionCollection()->setDefaultShortcut(newHoleAction, Qt::CTRL+Qt::SHIFT+Qt::Key_N);
+    actionCollection()->setDefaultShortcut(newHoleAction, Qt::CTRL|Qt::SHIFT|Qt::Key_N);
 	clearHoleAction = actionCollection()->addAction(QStringLiteral("clearhole"));
 	clearHoleAction->setIcon(QIcon::fromTheme( QStringLiteral( "edit-clear-locationbar-ltr" )));
 	clearHoleAction->setText(KStandardGuiItem::clear().text());
 	connect(clearHoleAction, &QAction::triggered, this, &KolfWindow::emptySlot);
-	actionCollection()->setDefaultShortcut(clearHoleAction, Qt::CTRL+Qt::Key_Delete);
+    actionCollection()->setDefaultShortcut(clearHoleAction, Qt::CTRL|Qt::Key_Delete);
 	resetHoleAction = actionCollection()->addAction(QStringLiteral("resethole"));
 	resetHoleAction->setText(i18n("&Reset"));
 	connect(resetHoleAction, &QAction::triggered, this, &KolfWindow::emptySlot);
-	actionCollection()->setDefaultShortcut(resetHoleAction, Qt::CTRL+Qt::Key_R);
+    actionCollection()->setDefaultShortcut(resetHoleAction, Qt::CTRL|Qt::Key_R);
 	undoShotAction = KStandardAction::undo(this, &KolfWindow::emptySlot, this);
 	actionCollection()->addAction(QStringLiteral("undoshot"), undoShotAction);
 	undoShotAction->setText(i18n("&Undo Shot"));
@@ -152,7 +152,7 @@ void KolfWindow::setupActions()
 	lastAction = actionCollection()->addAction(QStringLiteral("lasthole"));
 	lastAction->setText(i18n("&Last Hole"));
 	connect(lastAction, &QAction::triggered, this, &KolfWindow::emptySlot);
-	actionCollection()->setDefaultShortcut(lastAction, Qt::CTRL+Qt::SHIFT+Qt::Key_End); // why not KStandardShortcut::End (Ctrl+End)?
+    actionCollection()->setDefaultShortcut(lastAction, Qt::CTRL|Qt::SHIFT|Qt::Key_End); // why not KStandardShortcut::End (Ctrl+End)?
 	randAction = actionCollection()->addAction(QStringLiteral("randhole"));
 	randAction->setIcon(QIcon::fromTheme( QStringLiteral( "go-jump" )));
 	randAction->setText(i18n("&Random Hole"));
@@ -175,7 +175,7 @@ void KolfWindow::setupActions()
 	showInfoAction = new KToggleAction(QIcon::fromTheme( QStringLiteral( "help-about")), i18n("Show &Info"), this);
 	actionCollection()->addAction(QStringLiteral("showinfo"), showInfoAction);
 	connect(showInfoAction, &QAction::triggered, this, &KolfWindow::emptySlot);
-	actionCollection()->setDefaultShortcut(showInfoAction, Qt::CTRL+Qt::Key_I);
+    actionCollection()->setDefaultShortcut(showInfoAction, Qt::CTRL|Qt::Key_I);
 	connect(showInfoAction, &QAction::toggled, this, &KolfWindow::showInfoChanged);
 	showInfoAction->setChecked(configGroup.readEntry("showInfo", true));
 
@@ -632,7 +632,7 @@ void KolfWindow::openUrl(const QUrl &url)
 	{
 		isTutorial = false;
 		QMimeDatabase db;
-		QString mimeType = db.mimeTypeForFile(tempFile).name();
+        QString mimeType = db.mimeTypeForFile(tempFile.fileName()).name();
 		if (mimeType == QLatin1String("application/x-kourse"))
 			filename = tempFile.fileName();
 		else if (mimeType == QLatin1String("application/x-kolf"))
