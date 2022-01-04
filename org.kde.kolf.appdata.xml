@@ -4,6 +4,7 @@
   <metadata_license>FSFAP</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <name>Kolf</name>
+  <name xml:lang="ar">غولف</name>
   <name xml:lang="ca">Kolf</name>
   <name xml:lang="ca-valencia">Kolf</name>
   <name xml:lang="cs">Kolf</name>
@@ -37,6 +38,7 @@
   <name xml:lang="zh-CN">Kolf</name>
   <name xml:lang="zh-TW">Kolf</name>
   <summary>Miniature Golf</summary>
+  <summary xml:lang="ar">غولف المصغر</summary>
   <summary xml:lang="ca">Golf en miniatura</summary>
   <summary xml:lang="ca-valencia">Golf en miniatura</summary>
   <summary xml:lang="cs">Miniaturní golf</summary>
@@ -72,6 +74,7 @@
       hort bar representing the golf club. Kolf features many different types of objects,
       such water hazards, slopes, sand traps, and black holes (warps), among others.
     </p>
+    <p xml:lang="ar">غولف هي لعبة غولف مصغرة. تُلعب اللعبة من منظور علوي ، مع شريط هورت يمثل نادي الغولف. يتميز غولف بالعديد من الأنواع المختلفة من الأشياء، مثل مخاطر المياه، والمنحدرات، والفخاخ الرملية، والثقوب السوداء (الاعوجاج)، وغيرها.</p>
     <p xml:lang="ca">El Kolf és un joc de golf en miniatura. El joc es juga amb una vista des de dalt, amb una barra d'herba que representa al club de golf. El Kolf disposa de diferents tipus d'objectes, com paranys d'aigua, desnivells, trampes de sorra, forats negres, entre altres.</p>
     <p xml:lang="ca-valencia">El Kolf és un joc de golf en miniatura. El joc es juga amb una vista des de dalt, amb una barra d'herba que representa al club de golf. El Kolf disposa de diferents tipus d'objectes, com paranys d'aigua, desnivells, trampes de sorra, forats negres, entre altres.</p>
     <p xml:lang="de">Kolf ist ein Minigolf-Spiel. Das Spiel wird aus der Vogelperspektive gespielt, mit einem Balken, der den Golfschläger darstellt. Kolf verfügt über viele verschiedene Arten von Objekten, wie Wasserlöcher, Hänge, Sandbunker und Schwarze Löcher (Verwerfungen), und noch mehr.</p>
@@ -100,6 +103,7 @@
     <p xml:lang="uk">Kolf — мініатюрна гра у гольф. Під час гри гравець дивиться на майданчик згори. У Kolf передбачено різні типи об’єктів-перешкод, зокрема водяні пастки, схили, піскові пастки і чорні діри (тунелі).</p>
     <p xml:lang="x-test">xxKolf is a miniature golf game. The game is played from an overhead view, with a hort bar representing the golf club. Kolf features many different types of objects, such water hazards, slopes, sand traps, and black holes (warps), among others.xx</p>
     <p>Features:</p>
+    <p xml:lang="ar">الميزات:</p>
     <p xml:lang="ca">Característiques:</p>
     <p xml:lang="ca-valencia">Característiques:</p>
     <p xml:lang="cs">Vlastnosti:</p>
@@ -133,6 +137,7 @@
     <p xml:lang="zh-TW">功能：</p>
     <ul>
       <li>Single and Multi-player (up to ten players) modes</li>
+      <li xml:lang="ar">نمط لاعب واحد و نمط عدة لاعبين (حتى عشرة)</li>
       <li xml:lang="ca">Modes individual i multijugador (fins a 10 jugadors)</li>
       <li xml:lang="ca-valencia">Modes individual i multijugador (fins a 10 jugadors)</li>
       <li xml:lang="de">Einzel- und Mehrspielermodi, bis zu 10 Spielern</li>
@@ -162,6 +167,7 @@
       <li xml:lang="x-test">xxSingle and Multi-player (up to ten players) modesxx</li>
       <li xml:lang="zh-CN">单人模式及多人 (最高十位玩家) 模式</li>
       <li>High scores table</li>
+      <li xml:lang="ar">جدول أعلى النتائج</li>
       <li xml:lang="ca">Taula de puntuacions màximes</li>
       <li xml:lang="ca-valencia">Taula de puntuacions màximes</li>
       <li xml:lang="cs">Tabulka nejvyšších skóre</li>
@@ -192,6 +198,7 @@
       <li xml:lang="x-test">xxHigh scores tablexx</li>
       <li xml:lang="zh-CN">高分表</li>
       <li>Dynamic courses</li>
+      <li xml:lang="ar">ميادين متفاعلة</li>
       <li xml:lang="ca">Camps dinàmics</li>
       <li xml:lang="ca-valencia">Camps dinàmics</li>
       <li xml:lang="cs">Dynamické kurzy</li>
@@ -222,6 +229,7 @@
       <li xml:lang="x-test">xxDynamic coursesxx</li>
       <li xml:lang="zh-CN">动态高尔夫球场</li>
       <li>Third-party courses</li>
+      <li xml:lang="ar">ميادين أطراف ثالثة</li>
       <li xml:lang="ca">Camps de tercers</li>
       <li xml:lang="ca-valencia">Camps de tercers</li>
       <li xml:lang="cs">Kurzy od třetích stran</li>
@@ -252,6 +260,7 @@
       <li xml:lang="x-test">xxThird-party coursesxx</li>
       <li xml:lang="zh-CN">第三方高尔夫球场</li>
       <li>Course editor</li>
+      <li xml:lang="ar">محرر الميدان</li>
       <li xml:lang="ca">Editor de camps</li>
       <li xml:lang="ca-valencia">Editor de camps</li>
       <li xml:lang="cs">Editor kurzů</li>
@@ -290,6 +299,7 @@
   <screenshots>
     <screenshot type="default">
       <caption>Initial screen of Kolf</caption>
+      <caption xml:lang="ar">الصورة الأولى للغولف</caption>
       <caption xml:lang="ca">Pantalla inicial del Kolf</caption>
       <caption xml:lang="ca-valencia">Pantalla inicial del Kolf</caption>
       <caption xml:lang="cs">Úvodní obrazovka Kolf</caption>
