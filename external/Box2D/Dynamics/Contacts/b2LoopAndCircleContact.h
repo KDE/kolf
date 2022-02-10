@@ -33,7 +33,7 @@ public:
 	b2LoopAndCircleContact(b2Fixture* fixtureA, int32 indexA, b2Fixture* fixtureB, int32 indexB);
 	~b2LoopAndCircleContact() override {}
 
-	void Evaluate(b2Manifold* manifold, const b2Transform& xfA, const b2Transform& xfB) Q_DECL_OVERRIDE;
+	void Evaluate(b2Manifold* manifold, const b2Transform& xfA, const b2Transform& xfB) override;
 };
 
 #endif

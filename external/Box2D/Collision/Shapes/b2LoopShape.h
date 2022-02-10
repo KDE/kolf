@@ -40,28 +40,28 @@ public:
 	void Create(const b2Vec2* vertices, int32 count);
 
 	/// Implement b2Shape. Vertices are cloned using b2Alloc.
-	b2Shape* Clone(b2BlockAllocator* allocator) const Q_DECL_OVERRIDE;
+	b2Shape* Clone(b2BlockAllocator* allocator) const override;
 
 	/// @see b2Shape::GetChildCount
-	int32 GetChildCount() const Q_DECL_OVERRIDE;
+	int32 GetChildCount() const override;
 
 	/// Get a child edge.
 	void GetChildEdge(b2EdgeShape* edge, int32 index) const;
 
 	/// This always return false.
 	/// @see b2Shape::TestPoint
-	bool TestPoint(const b2Transform& transform, const b2Vec2& p) const Q_DECL_OVERRIDE;
+	bool TestPoint(const b2Transform& transform, const b2Vec2& p) const override;
 
 	/// Implement b2Shape.
 	bool RayCast(b2RayCastOutput* output, const b2RayCastInput& input,
-					const b2Transform& transform, int32 childIndex) const Q_DECL_OVERRIDE;
+					const b2Transform& transform, int32 childIndex) const override;
 
 	/// @see b2Shape::ComputeAABB
-	void ComputeAABB(b2AABB* aabb, const b2Transform& transform, int32 childIndex) const Q_DECL_OVERRIDE;
+	void ComputeAABB(b2AABB* aabb, const b2Transform& transform, int32 childIndex) const override;
 
 	/// Chains have zero mass.
 	/// @see b2Shape::ComputeMass
-	void ComputeMass(b2MassData* massData, qreal density) const Q_DECL_OVERRIDE;
+	void ComputeMass(b2MassData* massData, qreal density) const override;
 
 	/// Get the number of vertices.
 	int32 GetCount() const { return m_count; }

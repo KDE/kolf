@@ -82,11 +82,11 @@ struct b2LineJointDef : public b2JointDef
 class b2LineJoint : public b2Joint
 {
 public:
-	b2Vec2 GetAnchorA() const Q_DECL_OVERRIDE;
-	b2Vec2 GetAnchorB() const Q_DECL_OVERRIDE;
+	b2Vec2 GetAnchorA() const override;
+	b2Vec2 GetAnchorB() const override;
 
-	b2Vec2 GetReactionForce(qreal inv_dt) const Q_DECL_OVERRIDE;
-	qreal GetReactionTorque(qreal inv_dt) const Q_DECL_OVERRIDE;
+	b2Vec2 GetReactionForce(qreal inv_dt) const override;
+	qreal GetReactionTorque(qreal inv_dt) const override;
 
 	/// Get the current joint translation, usually in meters.
 	qreal GetJointTranslation() const;
@@ -133,9 +133,9 @@ protected:
 	friend class b2Joint;
 	b2LineJoint(const b2LineJointDef* def);
 
-	void InitVelocityConstraints(const b2TimeStep& step) Q_DECL_OVERRIDE;
-	void SolveVelocityConstraints(const b2TimeStep& step) Q_DECL_OVERRIDE;
-	bool SolvePositionConstraints(qreal baumgarte) Q_DECL_OVERRIDE;
+	void InitVelocityConstraints(const b2TimeStep& step) override;
+	void SolveVelocityConstraints(const b2TimeStep& step) override;
+	bool SolvePositionConstraints(qreal baumgarte) override;
 
 	b2Vec2 m_localAnchor1;
 	b2Vec2 m_localAnchor2;
