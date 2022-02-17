@@ -25,6 +25,7 @@
   <name xml:lang="pl">Kolf</name>
   <name xml:lang="pt">Kolf</name>
   <name xml:lang="pt-BR">Kolf</name>
+  <name xml:lang="ro">Kolf</name>
   <name xml:lang="ru">Kolf</name>
   <name xml:lang="sk">Kolf</name>
   <name xml:lang="sl">Kolf</name>
@@ -58,6 +59,7 @@
   <summary xml:lang="pl">Miniaturowy golf</summary>
   <summary xml:lang="pt">Golfe em Miniatura</summary>
   <summary xml:lang="pt-BR">Mini-Golf</summary>
+  <summary xml:lang="ro">Golf în miniatură</summary>
   <summary xml:lang="ru">Гольф в миниатюре</summary>
   <summary xml:lang="sk">Miniatúrny golf</summary>
   <summary xml:lang="sl">Miniaturni golf</summary>
@@ -125,6 +127,7 @@
     <p xml:lang="pl">Możliwości:</p>
     <p xml:lang="pt">Funcionalidades:</p>
     <p xml:lang="pt-BR">Recursos:</p>
+    <p xml:lang="ro">Caracteristici:</p>
     <p xml:lang="ru">Возможности:</p>
     <p xml:lang="sk">Funkcie:</p>
     <p xml:lang="sl">Zmožnosti:</p>
