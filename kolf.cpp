@@ -723,7 +723,7 @@ void KolfWindow::inPlayEnd()
 
 void KolfWindow::maxStrokesReached(const QString &name)
 {
-	KMessageBox::sorry(this, i18n("%1's score has reached the maximum for this hole.", name));
+	KMessageBox::information(this, i18n("%1's score has reached the maximum for this hole.", name));
 }
 
 void KolfWindow::updateHoleMenu(int largest)
