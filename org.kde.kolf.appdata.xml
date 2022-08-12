@@ -14,6 +14,7 @@
   <name xml:lang="en-GB">Kolf</name>
   <name xml:lang="es">Kolf</name>
   <name xml:lang="et">Kolf</name>
+  <name xml:lang="eu">Kolf</name>
   <name xml:lang="fi">Kolf</name>
   <name xml:lang="fr">Kolf</name>
   <name xml:lang="gl">Kolf</name>
@@ -49,6 +50,7 @@
   <summary xml:lang="en-GB">Miniature Golf</summary>
   <summary xml:lang="es">Minigolf</summary>
   <summary xml:lang="et">Miniatuurne golf</summary>
+  <summary xml:lang="eu">Minigolf</summary>
   <summary xml:lang="fi">Pienoisgolf</summary>
   <summary xml:lang="fr">Golf miniature</summary>
   <summary xml:lang="gl">Golf en miniatura</summary>
@@ -87,6 +89,7 @@
     <p xml:lang="en-GB">Kolf is a miniature golf game. The game is played from an overhead view, with a short bar representing the golf club. Kolf features many different types of objects, such water hazards, slopes, sand traps, and black holes (warps), among others.</p>
     <p xml:lang="es">Kolf es un juego de minigolf desde una perspectiva aérea y con una barra que representa el club de golf. Kolf contiene diversos tipos de objetos, como obstáculos de agua, pendientes, bancos de arena y agujeros negros (deformados), entre otros</p>
     <p xml:lang="et">Kolf on miniatuurne golfimäng. Mängitakse ülavaates, kus lühike kepp vastab golfikepile. Kolfis on kasutusel mitut laadi objektid, näiteks veetõkked, nõlvad, liivaväljad ja mustad augud.</p>
+    <p xml:lang="eu">Kolf minigolf jokoa da. Jokoa gaineko bista batekin jolasten da,  golf kluba irudikatzen duen barra batekin. Kolf jokoan objektu desberdin asko agertzen dira, hots, ur oztopoak, aldapak, harea tranpak eta zulo beltzak (okertuak) besteak beste.</p>
     <p xml:lang="fi">Kolf on pienoisgolfpeli. Peliä pelataan yläkulmanäkymästä, missä viiva esittää golfmailaa. Kolfissa on monenlaisia maastoja: vesi- ja hiekkaesteitä sekä mustia aukkoja (”poimuja”) yms.</p>
     <p xml:lang="fr">Kolf est un jeu de golf miniature. Le jeu se joue depuis une vue en hauteur, une barre représentant le club de golf. Kolf propose de nombreux types d'obstacles différents, notamment des lacs, des pentes et des trous noirs.</p>
     <p xml:lang="gl">Kolf é un xogo de golf en miniatura. Xógase cunha vista aérea, cunha barra curta que representa o pau de golf. Kolf goza de moitos tipos distintos de obxectos, como obstáculos de auga, rampas, trampas de area, e buratos negros (teleportación), entre outros.</p>
@@ -119,6 +122,7 @@
     <p xml:lang="en-GB">Features:</p>
     <p xml:lang="es">Funciones:</p>
     <p xml:lang="et">Omadused:</p>
+    <p xml:lang="eu">Ezaugarriak:</p>
     <p xml:lang="fi">Ominaisuudet:</p>
     <p xml:lang="fr">Fonctionnalités :</p>
     <p xml:lang="gl">Funcionalidades:</p>
@@ -154,6 +158,7 @@
       <li xml:lang="en-GB">Single and Multi-player (up to ten players) modes</li>
       <li xml:lang="es">Modos de uno o más jugadores (hasta diez)</li>
       <li xml:lang="et">Ühe ja mitme (kuni kümme) mängijaga režiimid</li>
+      <li xml:lang="eu">Bakarra edo jokalari askotakoa (hamar jokalari gehienez) moduak.</li>
       <li xml:lang="fi">Yksin- ja moninpeli (aina kymmeneen pelaajaan asti)</li>
       <li xml:lang="fr">Modes solo et multi-joueurs (jusqu'à 10 joueurs)</li>
       <li xml:lang="gl">Modos de un e varios xogadores (ata 10).</li>
@@ -187,6 +192,7 @@
       <li xml:lang="en-GB">High scores table</li>
       <li xml:lang="es">Tabla de mejores puntuaciones</li>
       <li xml:lang="et">Edetabel</li>
+      <li xml:lang="eu">Puntuazio maximoen taula</li>
       <li xml:lang="fi">Ennätystaulukko</li>
       <li xml:lang="fr">Meilleurs scores</li>
       <li xml:lang="gl">Táboa de mellores puntuacións.</li>
@@ -220,6 +226,7 @@
       <li xml:lang="en-GB">Dynamic courses</li>
       <li xml:lang="es">Campos de golf dinámicos</li>
       <li xml:lang="et">Dünaamilised rajad</li>
+      <li xml:lang="eu">Golf-zelaia dinamikoak</li>
       <li xml:lang="fi">Dynaamiset kentät</li>
       <li xml:lang="fr">Parcours dynamiques</li>
       <li xml:lang="gl">Campos dinámicos</li>
@@ -253,6 +260,7 @@
       <li xml:lang="en-GB">Third-party courses</li>
       <li xml:lang="es">Campos de golf de terceras partes</li>
       <li xml:lang="et">Kolmanda poole loodud rajad</li>
+      <li xml:lang="eu">Norberak egindako golf-zelaiak</li>
       <li xml:lang="fi">Kolmannen osapuolen kentät</li>
       <li xml:lang="fr">Parcours téléchargeables</li>
       <li xml:lang="gl">Campos de terceiros</li>
@@ -286,6 +294,7 @@
       <li xml:lang="en-GB">Course editor</li>
       <li xml:lang="es">Editor de campos de golf</li>
       <li xml:lang="et">Radade redaktor</li>
+      <li xml:lang="eu">golf-zelai editorea</li>
       <li xml:lang="fi">Kenttien muokkaus</li>
       <li xml:lang="fr">Éditeur de parcours</li>
       <li xml:lang="gl">Editor de campos</li>
@@ -327,6 +336,7 @@
       <caption xml:lang="en-GB">Initial screen of Kolf</caption>
       <caption xml:lang="es">Pantalla inicial de Kolf</caption>
       <caption xml:lang="et">Kolfi avaekraan</caption>
+      <caption xml:lang="eu">Kolfen hasierako pantaila</caption>
       <caption xml:lang="fi">Kolfin alkunäkymä</caption>
       <caption xml:lang="fr">Écran d'ouverture de Kolf</caption>
       <caption xml:lang="gl">Pantalla inicial de Kolf</caption>
