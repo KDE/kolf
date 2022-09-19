@@ -320,7 +320,7 @@
       <li xml:lang="zh-CN">高尔夫球场编辑器</li>
     </ul>
   </description>
-  <url type="homepage">https://kde.org/applications/games/org.kde.kolf</url>
+  <url type="homepage">https://apps.kde.org/kolf</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kolf</url>
   <url type="help">https://docs.kde.org/?application=kolf</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kolf&amp;source=appdata</url>

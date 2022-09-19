@@ -45,7 +45,13 @@ int main(int argc, char **argv)
 
     KLocalizedString::setApplicationDomain("kolf");
 
-    KAboutData aboutData( QStringLiteral("kolf"), i18n("Kolf"), QStringLiteral(KOLF_VERSION_STRING), i18n("KDE Minigolf Game"), KAboutLicense::GPL, i18n("(c) 2002-2010, Kolf developers"),  QStringLiteral("https://games.kde.org/kolf"));
+    KAboutData aboutData( QStringLiteral("kolf"),
+			  i18n("Kolf"),
+			  QStringLiteral(KOLF_VERSION_STRING),
+			  i18n("KDE Minigolf Game"),
+			  KAboutLicense::GPL,
+			  i18n("(c) 2002-2010, Kolf developers"),
+			  QStringLiteral("https://apps.kde.org/kolf"));
 
 	aboutData.addAuthor(i18n("Stefan Majewsky"), i18n("Current maintainer"), QStringLiteral("majewsky@gmx.net"));
 	aboutData.addAuthor(i18n("Jason Katz-Brown"), i18n("Former main author"), QStringLiteral("jasonkb@mit.edu"));
