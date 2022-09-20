@@ -361,6 +361,7 @@
     </screenshot>
   </screenshots>
   <project_group>KDE</project_group>
+  <launchable type="desktop-id">org.kde.kolf.desktop</launchable>
   <provides>
     <binary>kolf</binary>
   </provides>
