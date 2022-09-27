@@ -20,7 +20,6 @@
 #include "canvasitem.h"
 #include "overlay.h"
 #include <QGraphicsScene>
-#include <QtMath>
 #include <QVarLengthArray>
 #include <Box2D/Collision/Shapes/b2CircleShape.h>
 #include <Box2D/Collision/Shapes/b2EdgeShape.h>

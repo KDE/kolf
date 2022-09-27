@@ -26,7 +26,6 @@
 #include <QHBoxLayout>
 #include <QRandomGenerator>
 #include <QSlider>
-#include <QSpinBox>
 #include <QTimer>
 #include <KConfigGroup>
 #include <KPluralHandlingSpinBox>

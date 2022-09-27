@@ -24,7 +24,6 @@
 
 #include <QGraphicsSceneEvent>
 #include <QPen>
-#include <QtMath>
 
 const qreal Kolf::Overlay::MinimumObjectDimension = 10;
 
