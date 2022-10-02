@@ -1,0 +1,812 @@
+#
+# Tamas Szanto <taszanto@gmail.com>, 2002.
+# Kristóf Kiszel <ulysses@kubuntu.org>, 2011, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: KDE 4.3\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2012-01-22 15:47+0100\n"
+"Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.2\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Szántó Tamás"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "tszanto@interware.hu"
+
+#: config.cpp:51
+#, kde-format
+msgid "No configuration options"
+msgstr "Nincs beállítási lehetőség"
+
+#: editor.cpp:37
+#, kde-format
+msgid "Add object:"
+msgstr "Objektum hozzáadása:"
+
+#: game.cpp:261
+#, kde-format
+msgid "Course name: "
+msgstr "A pálya neve: "
+
+#: game.cpp:268
+#, kde-format
+msgid "Course author: "
+msgstr "A pálya szerzője: "
+
+#: game.cpp:277
+#, kde-format
+msgid "Par:"
+msgstr "Par:"
+
+#: game.cpp:287
+#, kde-format
+msgid "Maximum:"
+msgstr "Maximális:"
+
+#: game.cpp:291
+#, kde-format
+msgid "Maximum number of strokes player can take on this hole."
+msgstr "A lyuk eléréséhez felhasználható ütésszám (maximális érték)."
+
+#: game.cpp:292
+#, kde-format
+msgid "Maximum number of strokes"
+msgstr "Az ütések maximális száma"
+
+#: game.cpp:293
+#, kde-format
+msgid "Unlimited"
+msgstr "korlátlan"
+
+#: game.cpp:299
+#, kde-format
+msgid "Show border walls"
+msgstr "A határolófalak megjelenítése"
+
+#: game.cpp:497 game.cpp:2439
+#, kde-format
+msgid "Course Author"
+msgstr "A pálya szerzője"
+
+#: game.cpp:498 game.cpp:499 game.cpp:2439
+#, kde-format
+msgid "Course Name"
+msgstr "A pálya neve"
+
+#: game.cpp:1421
+#, kde-format
+msgid "Drop Outside of Hazard"
+msgstr "Kihelyezés az akadály mellé"
+
+#: game.cpp:1422
+#, kde-format
+msgid "Rehit From Last Location"
+msgstr "Újbóli ütés a legutolsó pozícióból"
+
+#: game.cpp:1424
+#, kde-format
+msgid "What would you like to do for your next shot?"
+msgstr "Mit szeretne tenni a következő ütésnél?"
+
+#: game.cpp:1424
+#, kde-format
+msgid "%1 is in a Hazard"
+msgstr "%1 terepakadályon belül van"
+
+#: game.cpp:1592
+#, kde-format
+msgid "%1 will start off."
+msgstr "%1 kezd."
+
+#: game.cpp:1592
+#, kde-format
+msgid "New Hole"
+msgstr "Új lyuk"
+
+#: game.cpp:1753
+#, kde-format
+msgid "Course name: %1"
+msgstr "A pálya neve: %1"
+
+#: game.cpp:1754
+#, kde-format
+msgid "Created by %1"
+msgstr "Készítette: %1"
+
+#: game.cpp:1755
+#, fuzzy, kde-format
+#| msgid "%1 holes"
+msgid "%1 hole"
+msgid_plural "%1 holes"
+msgstr[0] "%1 lyuk"
+msgstr[1] "%1 lyuk"
+
+#: game.cpp:1756
+#, fuzzy, kde-format
+#| msgid "Course Information"
+msgctxt "@title:window"
+msgid "Course Information"
+msgstr "A pálya jellemzői"
+
+#: game.cpp:1887
+#, kde-format
+msgid "This hole uses the following plugins, which you do not have installed:"
+msgstr "Ehhez a lyukhoz a következő, még nem telepített modulok kellenek:"
+
+#: game.cpp:1999
+#, kde-format
+msgid "There are unsaved changes to current hole. Save them?"
+msgstr ""
+"Nem mentett módosítások tartoznak a jelenlegi lyukhoz. El szeretné menteni "
+"ezeket?"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Unsaved Changes"
+msgstr "Nem mentett változtatások"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Save &Later"
+msgstr "Mentés ké&sőbb"
+
+#: game.cpp:2170 kolf.cpp:550
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course to Save To"
+msgctxt "@title:window"
+msgid "Pick Kolf Course to Save To"
+msgstr "Válassza ki azt a Kolf pályát, amelybe menteni szeretne"
+
+#: kcomboboxdialog.cpp:60
+#, kde-format
+msgid "&Do not ask again"
+msgstr "Ez a &kérdés ne jelenjen meg többé"
+
+#: kolf.cpp:62
+#, kde-format
+msgid "Slope"
+msgstr "Lejtő"
+
+#: kolf.cpp:63
+#, kde-format
+msgid "Puddle"
+msgstr "Pocsolya"
+
+#: kolf.cpp:64
+#, kde-format
+msgid "Wall"
+msgstr "Fal"
+
+#: kolf.cpp:65
+#, kde-format
+msgid "Cup"
+msgstr "Csésze"
+
+#: kolf.cpp:66
+#, kde-format
+msgid "Sand"
+msgstr "Homok"
+
+#: kolf.cpp:67
+#, kde-format
+msgid "Windmill"
+msgstr "Szélmalom"
+
+#: kolf.cpp:68
+#, kde-format
+msgid "Black Hole"
+msgstr "Fekete lyuk"
+
+#: kolf.cpp:69
+#, kde-format
+msgid "Floater"
+msgstr "Tutaj"
+
+#: kolf.cpp:70
+#, kde-format
+msgid "Bridge"
+msgstr "Híd"
+
+#: kolf.cpp:71
+#, kde-format
+msgid "Sign"
+msgstr "Jel"
+
+#: kolf.cpp:72
+#, kde-format
+msgid "Bumper"
+msgstr "Ütköző"
+
+#: kolf.cpp:95
+#, kde-format
+msgid "Save &Course"
+msgstr "&Mentés"
+
+#: kolf.cpp:97
+#, kde-format
+msgid "Save &Course As..."
+msgstr "A pálya mentése m&int..."
+
+#: kolf.cpp:100
+#, kde-format
+msgid "&Save Game"
+msgstr "Me&ntés"
+
+#: kolf.cpp:103
+#, kde-format
+msgid "&Save Game As..."
+msgstr "Mentés m&int..."
+
+#: kolf.cpp:110
+#, kde-format
+msgid "&Edit"
+msgstr "S&zerkesztés"
+
+#: kolf.cpp:116
+#, kde-format
+msgid "&New"
+msgstr "Ú&j"
+
+#: kolf.cpp:125
+#, kde-format
+msgid "&Reset"
+msgstr "&Alapállapot"
+
+#: kolf.cpp:130
+#, kde-format
+msgid "&Undo Shot"
+msgstr "Ü&tés visszavonása"
+
+#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. Go
+#: kolf.cpp:134
+#, kde-format
+msgid "Switch to Hole"
+msgstr "Ugrás egy lyukra"
+
+#: kolf.cpp:139
+#, kde-format
+msgid "&Next Hole"
+msgstr "&Következő lyuk"
+
+#: kolf.cpp:144
+#, kde-format
+msgid "&Previous Hole"
+msgstr "&Előző lyuk"
+
+#: kolf.cpp:149
+#, kde-format
+msgid "&First Hole"
+msgstr "El&ső lyuk"
+
+#: kolf.cpp:153
+#, kde-format
+msgid "&Last Hole"
+msgstr "Ut&olsó lyuk"
+
+#: kolf.cpp:158
+#, kde-format
+msgid "&Random Hole"
+msgstr "&Véletlenszerű lyuk"
+
+#: kolf.cpp:162
+#, kde-format
+msgid "Enable &Mouse for Moving Putter"
+msgstr "Az ütő az &egérrel is mozgatható"
+
+#: kolf.cpp:169
+#, kde-format
+msgid "Enable &Advanced Putting"
+msgstr "Kibővített ütésmó&d"
+
+#: kolf.cpp:175
+#, kde-format
+msgid "Show &Info"
+msgstr "A jellem&zők megjelenítése"
+
+#: kolf.cpp:182
+#, kde-format
+msgid "Show Putter &Guideline"
+msgstr "Ütési se&gédvonal megjelenítése"
+
+#: kolf.cpp:188
+#, kde-format
+msgid "Enable All Dialog Boxes"
+msgstr "Az összes párbeszédablak engedélyezése"
+
+#: kolf.cpp:192
+#, kde-format
+msgid "Play &Sounds"
+msgstr "&Hanghatások"
+
+#: kolf.cpp:199
+#, fuzzy, kde-format
+#| msgid "&About Course"
+msgid "&About Course..."
+msgstr "A pálya &névjegye"
+
+#: kolf.cpp:202
+#, kde-format
+msgid "&Tutorial"
+msgstr "O&ktatópálya"
+
+#: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
+#, kde-format
+msgid "Par"
+msgstr "Par"
+
+#: kolf.cpp:483
+#, kde-format
+msgid " and "
+msgstr " és "
+
+#: kolf.cpp:484
+#, kde-format
+msgid "%1 tied"
+msgstr "%1 döntetlent ért el"
+
+#: kolf.cpp:487
+#, kde-format
+msgid "%1 won!"
+msgstr "%1 győzött!"
+
+#: kolf.cpp:501 kolf.cpp:513 kolf.cpp:528 kolf.cpp:529 newgame.cpp:249
+#: newgame.cpp:250
+#, kde-format
+msgid "High Scores for %1"
+msgstr "Legjobb eredmények a(z) %1 pályán"
+
+#: kolf.cpp:568
+#, fuzzy, kde-format
+#| msgid "Pick Saved Game to Save To"
+msgctxt "@title:window"
+msgid "Pick Saved Game to Save To"
+msgstr "Válassza ki azt a korábban elmentett állást, amelybe menteni szeretne"
+
+#: kolf.cpp:606
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Saved Game"
+msgctxt "@title:window"
+msgid "Pick Kolf Saved Game"
+msgstr "Válasszon egy elmentett Kolf állást"
+
+#: kolf.cpp:654
+#, kde-format
+msgid "%1's turn"
+msgstr "%1 következik"
+
+#: kolf.cpp:726
+#, kde-format
+msgid "%1's score has reached the maximum for this hole."
+msgstr "%1 pontszáma elérte a lyuk teljesítéséhez engedélyezett maximumot."
+
+#. i18n: ectx: Menu (hole)
+#: kolfui.rc:17
+#, kde-format
+msgid "Ho&le"
+msgstr "Ly&uk"
+
+#. i18n: ectx: Menu (go_course)
+#: kolfui.rc:31
+#, kde-format
+msgid "&Go"
+msgstr "&Indítás"
+
+#: landscape.cpp:146
+#, kde-format
+msgid "Enable show/hide"
+msgstr "A megjelenítés/elrejtés engedélyezése"
+
+#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
+#, kde-format
+msgid "Slow"
+msgstr "Lassú"
+
+#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
+#, kde-format
+msgid "Fast"
+msgstr "Gyors"
+
+#: landscape.cpp:238
+#, kde-format
+msgid "Vertical"
+msgstr "Függőleges"
+
+#: landscape.cpp:239
+#, kde-format
+msgid "Horizontal"
+msgstr "Vízszintes"
+
+#: landscape.cpp:240
+#, kde-format
+msgid "Diagonal"
+msgstr "Átlós"
+
+#: landscape.cpp:241
+#, kde-format
+msgid "Opposite Diagonal"
+msgstr "Átlós (ellentétesen)"
+
+#: landscape.cpp:242
+#, kde-format
+msgid "Elliptic"
+msgstr "Elliptikus"
+
+#: landscape.cpp:571
+#, kde-format
+msgid "Reverse direction"
+msgstr "Fordított irányban"
+
+#: landscape.cpp:576
+#, kde-format
+msgid "Unmovable"
+msgstr "Nem mozdítható el"
+
+#: landscape.cpp:578
+#, kde-format
+msgid "Whether or not this slope can be moved by other objects, like floaters."
+msgstr ""
+"Ez határozza meg, hogy ezt a lejtőt más objektumok odébbtolhatják-e "
+"('lebegés')."
+
+#: landscape.cpp:582
+#, kde-format
+msgid "Grade:"
+msgstr "Fokozat:"
+
+#: main.cpp:49
+#, kde-format
+msgid "Kolf"
+msgstr "Kolf"
+
+#: main.cpp:51
+#, kde-format
+msgid "KDE Minigolf Game"
+msgstr "KDE minigolf játék"
+
+#: main.cpp:53
+#, kde-format
+msgid "(c) 2002-2010, Kolf developers"
+msgstr "© A Kolf fejlesztői, 2002-2010."
+
+#: main.cpp:56
+#, kde-format
+msgid "Stefan Majewsky"
+msgstr "Stefan Majewsky"
+
+#: main.cpp:56
+#, kde-format
+msgid "Current maintainer"
+msgstr "Jelenlegi karbantartó"
+
+#: main.cpp:57
+#, kde-format
+msgid "Jason Katz-Brown"
+msgstr "Jason Katz-Brown"
+
+#: main.cpp:57
+#, kde-format
+msgid "Former main author"
+msgstr "Korábbi fő szerző"
+
+#: main.cpp:58
+#, kde-format
+msgid "Niklas Knutsson"
+msgstr "Niklas Knutsson"
+
+#: main.cpp:58
+#, kde-format
+msgid "Advanced putting mode"
+msgstr "Speciális játékmód"
+
+#: main.cpp:59
+#, kde-format
+msgid "Rik Hemsley"
+msgstr "Rik Hemsley"
+
+#: main.cpp:59
+#, kde-format
+msgid "Border around course"
+msgstr "Keret rajzolása a pálya körül"
+
+#: main.cpp:60
+#, kde-format
+msgid "Timo A. Hummel"
+msgstr "Timo A. Hummel"
+
+#: main.cpp:60
+#, kde-format
+msgid "Some good sound effects"
+msgstr "Néhány jó hangeffektus"
+
+#: main.cpp:62
+#, kde-format
+msgid "Rob Renaud"
+msgstr "Rob Renaud"
+
+#: main.cpp:62
+#, kde-format
+msgid "Wall-bouncing help"
+msgstr "Segítség a visszapattanások kezeléséhez"
+
+#: main.cpp:63
+#, kde-format
+msgid "Aaron Seigo"
+msgstr "Aaron Seigo"
+
+#: main.cpp:63
+#, kde-format
+msgid "Suggestions, bug reports"
+msgstr "Javaslatok, hibajelentések"
+
+#: main.cpp:64
+#, kde-format
+msgid "Erin Catto"
+msgstr "Erin Catto"
+
+#: main.cpp:64
+#, kde-format
+msgid "Developer of Box2D physics engine"
+msgstr "A Box2D fizikai motor fejlesztője"
+
+#: main.cpp:65
+#, kde-format
+msgid "Ryan Cumming"
+msgstr "Ryan Cumming"
+
+#: main.cpp:65
+#, kde-format
+msgid "Vector class (Kolf 1)"
+msgstr "Vektorosztály (Kolf 1)"
+
+#: main.cpp:66
+#, kde-format
+msgid "Daniel Matza-Brown"
+msgstr "Daniel Matza-Brown"
+
+#: main.cpp:66
+#, kde-format
+msgid "Working wall-bouncing algorithm (Kolf 1)"
+msgstr "A labda visszapattanási algoritmusa (Kolf 1)"
+
+#: main.cpp:71
+#, kde-format
+msgid "File"
+msgstr "Fájl"
+
+#: main.cpp:72
+#, kde-format
+msgid "Print course information and exit"
+msgstr "A pálya jellemzőinek kiírása, majd kilépés"
+
+#: main.cpp:89 newgame.cpp:240
+#, kde-format
+msgid "By %1"
+msgstr "%1"
+
+#: main.cpp:90
+#, kde-format
+msgid "%1 holes"
+msgstr "%1 lyuk"
+
+#: main.cpp:91
+#, kde-format
+msgid "par %1"
+msgstr "par %1"
+
+#: main.cpp:98
+#, kde-format
+msgid "Course %1 does not exist."
+msgstr "A(z) %1 pálya nem létezik."
+
+#: newgame.cpp:38
+#, fuzzy, kde-format
+#| msgid "New Game"
+msgctxt "@title:window"
+msgid "New Game"
+msgstr "Új játék"
+
+#: newgame.cpp:54
+#, kde-format
+msgid "Players"
+msgstr "Játékosok"
+
+#: newgame.cpp:58
+#, kde-format
+msgid "&New Player"
+msgstr "Új já&tékos"
+
+#: newgame.cpp:93
+#, kde-format
+msgid "Course"
+msgstr "Pálya"
+
+#: newgame.cpp:94
+#, kde-format
+msgid "Choose Course to Play"
+msgstr "Válassza ki a pályát"
+
+#: newgame.cpp:133
+#, kde-format
+msgid "Create New"
+msgstr "Új létrehozása"
+
+#: newgame.cpp:134
+#, kde-format
+msgid "You"
+msgstr "Ön"
+
+#: newgame.cpp:160
+#, kde-format
+msgid "Highscores"
+msgstr "Dicsőségtábla"
+
+#: newgame.cpp:170
+#, kde-format
+msgid "Add..."
+msgstr "Hozzáadás..."
+
+#: newgame.cpp:174 newgame.cpp:363
+#, kde-format
+msgid "Remove"
+msgstr "Eltávolítás"
+
+#: newgame.cpp:184
+#, kde-format
+msgid "Options"
+msgstr "Beállítások"
+
+#: newgame.cpp:185
+#, kde-format
+msgid "Game Options"
+msgstr "A játék beállításai"
+
+#: newgame.cpp:190
+#, kde-format
+msgid "&Strict mode"
+msgstr "Szi&gorított mód"
+
+#: newgame.cpp:194
+#, kde-format
+msgid ""
+"In strict mode, undo, editing, and switching holes is not allowed. This is "
+"generally for competition. Only in strict mode are highscores kept."
+msgstr ""
+"Szigorított módban visszavonás, szerkesztés és lyukváltás nem engedélyezett. "
+"Elsősorban tényleges versenynél érdemes használni. Az eredménytáblára csak "
+"ebben a módban lehet felkerülni."
+
+#: newgame.cpp:241
+#, kde-format
+msgid "Par %1"
+msgstr "%1. par."
+
+#: newgame.cpp:242
+#, kde-format
+msgid "%1 Holes"
+msgstr "%1 lyuk"
+
+#: newgame.cpp:280
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course"
+msgctxt "@title:window"
+msgid "Pick Kolf Course"
+msgstr "Válasszon egy pályát"
+
+#: newgame.cpp:308
+#, kde-format
+msgid "Chosen course is already on course list."
+msgstr "A kiválasztott pálya már szerepel a pályalistában."
+
+#: newgame.cpp:321
+#, kde-format
+msgid "Player %1"
+msgstr "%1. játékos"
+
+#: objects.cpp:244
+#, kde-format
+msgid " degree"
+msgid_plural " degrees"
+msgstr[0] " fok"
+msgstr[1] " fok"
+
+#: objects.cpp:247
+#, kde-format
+msgid "Exiting ball angle:"
+msgstr "A labda elhagyási szöge:"
+
+#: objects.cpp:267
+#, kde-format
+msgid "Minimum exit speed:"
+msgstr "Minimális elhagyási sebesség:"
+
+#: objects.cpp:288
+#, kde-format
+msgid "Maximum exit speed:"
+msgstr "Maximális elhagyási sebesség:"
+
+#: obstacles.cpp:412
+msgid "&Top"
+msgstr "&Felül"
+
+#: obstacles.cpp:412
+msgid "&Left"
+msgstr "&Balról"
+
+#: obstacles.cpp:412
+msgid "&Right"
+msgstr "&Jobbról"
+
+#: obstacles.cpp:412
+msgid "&Bottom"
+msgstr "&Alul"
+
+#: obstacles.cpp:421
+#, kde-format
+msgid "Walls on:"
+msgstr "Falak:"
+
+#: obstacles.cpp:431
+#, kde-format
+msgid "Sign HTML:"
+msgstr "HTML aláírás:"
+
+#: obstacles.cpp:440
+#, kde-format
+msgid "Windmill on top"
+msgstr "Szélmalom felül"
+
+#: obstacles.cpp:461
+#, kde-format
+msgid "Moving speed"
+msgstr "Mozgási sebesség"
+
+#: obstacles.cpp:681
+#, kde-format
+msgid "New Text"
+msgstr "Új szöveg"
+
+#: scoreboard.cpp:28
+#, kde-format
+msgid "Total"
+msgstr "Összesen"
+
+#~ msgid "(c) 2002-2005, Jason Katz-Brown"
+#~ msgstr "(c) Jason Katz-Brown, 2002-2005."
+
+#~ msgid "Circular"
+#~ msgstr "Körkörös"
+
+#~ msgid "%1 - Hole %2; by %3"
+#~ msgstr "%1 - %2. lyuk - %3"
+
+#~ msgid "Kolf Options"
+#~ msgstr "A játék beállításai"
+
+#~ msgid "Draw title text"
+#~ msgstr "Felirat rajzolása"
+
+#~ msgid "Print %1 - Hole %2"
+#~ msgstr "%1 kinyomtatása - %2. lyuk"
+
+#~ msgid "Currently Loaded Plugins"
+#~ msgstr "A betöltött modulok"
+
+#~ msgid "by %1"
+#~ msgstr "%1"
+
+#~ msgid "Plugins"
+#~ msgstr "Bővítmények"

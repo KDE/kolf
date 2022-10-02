@@ -1,0 +1,1634 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Swedish "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="kolf" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Handbok &kolf;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<authorgroup>
+<author
+><firstname
+>Jason</firstname
+> <surname
+>Katz-Brown</surname
+> <affiliation
+> <address
+><email
+>jasonkb@mit.edu</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+><firstname
+>Paul</firstname
+> <surname
+>Broadbent</surname
+> <affiliation
+> <address
+><email
+>dbd@myrealbox.com</email
+></address>
+</affiliation>
+<!-- <contrib
+>Reviewer</contrib
+> -->
+</othercredit>
+
+<othercredit role="translator"
+> <firstname
+>Stefan</firstname
+> <surname
+>Asserhäll</surname
+> <affiliation
+><address
+><email
+>stefan.asserhall@bredband.net</email
+></address
+></affiliation
+> <contrib
+>Översättare</contrib
+></othercredit
+> 
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-08-06</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>KDE Gear 21.08</releaseinfo>
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Denna dokumentation beskriver spelet &kolf;, version 21.08</para>
+</abstract>
+
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>spel</keyword
+> <!-- do not change this! -->
+	<keyword
+>Kolf</keyword
+><!--Application name goes here-->
+	<keyword
+>golf</keyword>
+	<keyword
+>minigolf</keyword>
+	<keyword
+>spelhall</keyword>
+	<keyword
+>sport</keyword>
+	<keyword
+>tio spelare</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Inledning</title
+> <!-- do not change this! -->
+	<note
+><title
+>Speltyp:</title
+><para
+>Spelhall, sport</para
+></note>
+	<note
+><title
+>Antal möjliga spelare:</title
+><para
+>Tio</para
+></note>
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&kolf; är ett minigolfspel med 2D visning ovanifrån. Banor är dynamiska, och upp till 10 personer kan spela på en gång i tävlingar.</para>
+<para
+>&kolf; levereras med en övningsbana. <link linkend="howto"
+>Att spela den banan</link
+> är det lättaste sättet att komma igång.</para>
+</chapter>
+
+<chapter id="howto"
+><title
+>Hur man spelar</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Syfte:</title
+><para
+>Slå bollen i hålet med så få slag som möjligt.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para
+>Att spela &kolf; är enkelt. Det är lättast att lära sig spela genom att försöka själv, och därför finns en övningsbana inkluderad för att hjälpa dig med grunderna. Det här kapitlet tar dig igenom övningsbanan. För att starta handledningen, använd menyalternativet <menuchoice
+><guimenu
+>Hjälp</guimenu
+> <guimenuitem
+>Handledning</guimenuitem
+></menuchoice
+>.</para>
+
+<sect1 id="hitting">
+<title
+>Slå bollen</title>
+<para
+>För att sikta med bollen, rada antingen upp musen bakom bollen så att puttern siktar i riktningen du vill slå, eller tryck på en av tangenterna <keycap
+>Vänsterpil</keycap
+> (moturs) eller <keycap
+>Högerpil</keycap
+> (medurs), för att rotera puttern.</para>
+<tip>
+<para
+>För att rotera puttern snabbare med tangentbordet, håll nere &Shift; medan du trycker eller håller nere piltangenterna. För att rotera långsammare, håll nere &Ctrl;.</para>
+</tip>
+<para
+>För att slå bollen, tryck och håll nere vänster musknapp eller <keycap
+>neråtpilen</keycap
+>. Ju längre du trycker på knappen eller tangenten, desto mer kraft får putten. Det krävs övning att få en god känsla för hastigheten.</para>
+<tip>
+<para
+>För att avbryta putten medan du fortfarande rör puttern bakåt i slaget, tryck på <keycap
+>Esc</keycap
+>.</para>
+</tip>
+
+<para
+>Slå bollen i hålet för att kunna fortsätta med nästa.</para>
+</sect1>
+
+<sect1 id="slopes">
+<title
+>Sluttningar</title>
+<para
+>Sluttningar är lutande områden som golfbollen rullar nerför på förväntat sätt. Ljuset faller uppifrån till vänster på golfbanan, så den ljusaste sluttningen gör att bollen rullar åt hålets övre vänstra hörn. Använd menyalternativet <menuchoice
+><guimenu
+>Hål</guimenu
+> <guimenuitem
+>Visa information</guimenuitem
+></menuchoice
+> för att se en pil som pekar i riktningen som bollen kommer att rulla i sluttningen.</para>
+<para
+>För övningshålet, slå bollen på den uppåtpekande sluttningen och låt den rulla ner i hålet för att komma vidare till nästa hål.</para>
+
+<sect2
+> <title
+>Anvisningar</title>
+<para
+>Experimentera med andra sorters sluttningar på nästa hål. Det finns elliptiska, vertikala, horisontella och diagonala sluttningar i &kolf;. Slå i bollen i hålet.</para>
+</sect2>
+<sect2
+> <title
+>Lutning</title>
+<para
+>Nästa övningshål har två sluttningar med olika lutning. Om du använder menyalternativet <menuchoice
+><guimenu
+>Hål</guimenu
+> <guimenuitem
+>Visa information</guimenuitem
+></menuchoice
+>, så syns sluttningens lutning som ett tal mellan 1 och 8, där 8 är brantast och 1 är minst brant. Slå i bollen i hålet och fortsätt med nästa hål.</para>
+</sect2>
+</sect1>
+
+<sect1 id="walls"
+> <title
+>Väggar</title>
+<para
+>Bollar studsar mot väggarna som man skulle vänta sig att de gör, men en viss dämpning. Studsa bollen via väggen ner i hålet för att gå vidare till nästa hål.</para>
+</sect1>
+
+<sect1 id="puddles-sand"
+> <title
+>Vattenhinder och bunkrar</title>
+<sect2
+> <title
+>Vattenhinder</title>
+	<para
+>Vattenhinder är blå. När bollen rullar ner i vattnet, så läggs ett straffslag till i poängen, och du måste välja var du vill göra nästa slag: antingen intill vattenhindret eller på samma ställe som du just gjorde det senaste slaget.</para>
+</sect2>
+<sect2
+> <title
+>Bunkrar</title>
+<para
+>Bunkrar är gula. Bollar rullar mycket långsamt genom sanden.</para>
+<para
+>Slå bollen runt vattenhindren, och genom sanden ner i hålet, och fortsätt med nästa övningshål.</para>
+</sect2>
+</sect1>
+
+<sect1 id="windmills"
+> <title
+>Väderkvarnar</title>
+<para
+>Väderkvarnar är sammansatta objekt, med bruna kantväggar och en rörlig vinge på ena sidan. Halva väggar skapar öppningen i väderkvarnen, där en svart vinge sveper förbi. Det krävs övning för att kunna slå bollen vid rätt tid för att komma igenom öppningen. Slå bollen genom väderkvarnen ner i hålet för att fortsätta.</para>
+</sect1>
+
+<sect1 id="black-holes"
+> <title
+>Svarta hål</title>
+<para
+>När du slår bollen in i ett svart hål, transporteras den till utgången och skickas ut med utgångens vinkel, och en hastighet som är direkt proportionell mot hastigheten bollen hade. Använd menyalternativet <menuchoice
+><guimenu
+>Hål</guimenu
+> <guimenuitem
+>Visa information</guimenuitem
+></menuchoice
+> för att se vilket svart hål som går till vilken utgång, och vilken riktning bollen kommer ut med. Kanten runt svarta hål och motsvarande utgångar har också samma färg. Slå bollen in i det svarta hålet, som då skickar ut bollen ner i hålet, så du kan gå till nästa hål.</para>
+</sect1>
+
+<sect1 id="floaters"
+> <title
+>Flottar</title>
+<para
+>Flottar är rörliga plattformar, som flyttar en boll som landar på dem. Flottarnas hastighet varierar. Den här är en ganska långsam flotte, men du måste fortfarande slå vid rätt tid, så att du kommer över väggen och ner i hålet.</para>
+</sect1>
+
+<sect1 id="bridges"
+> <title
+>Broar</title>
+<para
+>Broar är enkla: de lyfter bara bollen över saker under dem, som sluttningar, bunkrar och vattenhinder. De kan ha bruna väggar längs kanterna.</para>
+</sect1>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Spelets regler, strategi och tips</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+<para
+>Här är en ingående beskrivning av &kolf;s grundläggande funktioner.</para>
+
+<sect1 id="starting">
+<title
+>Starta ett spel</title>
+
+<para
+>För att starta en omgång, använd menyalternativet <menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Ny</guimenuitem
+></menuchoice
+>. Då öppnas en dialogruta där du kan anpassa den nya omgången.</para>
+<!--
+<tip>
+<para
+>More third-party &kolf; courses are available at the &kolf; website. See <ulink
+url="https://web.mit.edu/jasonkb/www/kolf/"
+>the &kolf; user-uploaded courses page</ulink
+>.</para>
+</tip>
+-->
+<sect2>
+<title
+>Sidan Spelare</title>
+<para
+>För att lägga till en spelare i spelet, klicka på knappen <guibutton
+>Ny spelare</guibutton
+>.</para>
+
+<para
+>Ändra texten i textrutorna för att ändra spelarnas namn.</para>
+
+<para
+>För att ta bort en spelare, klicka på knappen <guibutton
+>Ta bort</guibutton
+> intill spelarens namn.</para>
+
+</sect2>
+
+<sect2
+> <title
+>Sidan Bana</title>
+<para
+>För att välja bana som du vill spela, klicka på den i listrutan till vänster på sidan. &kolf; levereras med många färdiga banor som du kan spela.</para>
+<para
+>För att lägga till en bana som du har laddad ner eller gjort, klicka på knappen <guibutton
+>Lägg till...</guibutton
+> längst ner på sidan, och välj banans fil i filvalsdialogrutan.</para>
+</sect2>
+<sect2
+> <title
+>Sidan Inställningar</title>
+<para
+>På den här sidan kan du välja om spelet ska spelas i <guilabel
+>Strikt läge</guilabel
+>. I strikt läge finns inte ångra, byte av hål eller redigering av banan. Det här läget är i allmänhet avsett för tävlingar. Toppresultat räknas bara i strikt läge.</para>
+</sect2>
+</sect1>
+
+<sect1 id="saved-games"
+> <title
+>Sparade spel</title>
+<para
+>&kolf; kan spara en historik över spelen som fortfarande pågår, och spara dem på disk, så att du kan ladda dem och spela senare. Sparade spel omfattar nuvarande hålet, namn och färger för alla spelare i spelet, och spelarnas poäng.</para>
+<sect2
+> <title
+>Spara ett spel</title>
+<para
+>För att spara spelet medan det fortfarande pågår, använd menyalternativet <menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Spara spel</guimenuitem
+></menuchoice
+>. Om du inte har sparat spelet för denna omgången tidigare, blir du tillfrågad om filen att spara det till.</para>
+</sect2>
+<sect2
+> <title
+>Ladda ett spel</title>
+<para
+>För att ladda spelet du sparade, använd menyalternativet <menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Ladda...</guimenuitem
+></menuchoice
+>. Du kan då välja det sparade spelet som ska öppnas.</para>
+</sect2>
+</sect1>
+
+<sect1 id="practicing"
+> <title
+>Öva</title>
+<para
+>Det finns några funktioner som gör det lättare att öva golfspelet. Dessa funktioner är inte aktiverade med strikt läge.</para>
+<sect2
+> <title
+>Ångra</title>
+<para
+>För att ångra ett dåligt slag, använd menyalternativet <menuchoice
+><guimenu
+>Hål</guimenu
+> <guimenuitem
+>Ångra slag</guimenuitem
+></menuchoice
+>.</para>
+</sect2>
+<sect2
+> <title
+>Byta hål</title>
+<para
+>Menyn <guimenu
+>Gå</guimenu
+> innehåller många menyalternativ för att byte mellan olika hål som är ganska självförklarande. Se <link linkend="go-menu"
+>menyreferensen</link
+> för <guimenu
+>Gå</guimenu
+>.</para>
+</sect2>
+</sect1>
+
+<sect1 id="putting-options"
+> <title
+>Puttningsalternativ</title>
+<para
+>&kolf; har några olika sätt att putta. Den grundläggande puttningsmetoden <link linkend="hitting"
+>beskrivs ovan</link
+>.</para>
+<para
+>Musen är normalt aktiverad. Det betyder att så fort musen flyttas, så justeras puttern till linjen mellan musen och bollen.</para>
+<para
+>Om du föredrar att bara använda tangentbordet och piltangenterna, kan du stänga av puttning med musen genom att avmarkera menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Aktivera mus för att flytta putter</guimenuitem
+></menuchoice
+>.</para>
+
+<sect2 id="advanced-putting"
+> <title
+>Avancerad puttning</title>
+<para
+>Avancerad puttning kan aktiveras genom att markera menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Aktivera avancerad puttning</guimenuitem
+></menuchoice
+>. Detta puttningsläge är något svårare än det vanliga <quote
+>klicka och håll</quote
+> läget, och kan antingen användas med musen eller tangentbordet.</para>
+
+<para
+>För att putta med det här läget:</para>
+<procedure>
+<step>
+<para
+>Klicka eller tryck på tangenten <keycap
+>neråtpil</keycap
+> en gång för att börja svingen. Puttningsindikatorn visas, och styrkemätaren börjar fyllas i med en färg, som ändras medan mätaren fylls.</para>
+</step>
+<step>
+<para
+>Klicka eller tryck på tangenten <keycap
+>neråtpil</keycap
+> när styrkemätaren har fyllts så mycket som du vill. Ju längre styrkemätaren har fyllts runt cirkeln, desto starkare blir putten. Det krävs övning för att få rätt styrka för puttarna.</para>
+<para
+>Därefter, börjar färgen i puttningsindikatorn att gå tillbaka till där den började.</para>
+</step>
+<step>
+<para
+>Klicka eller tryck på tangenten <keycap
+>neråtpil</keycap
+> igen, när styrkemätaren är så nära som möjligt till puttningsindikatorns centrumlinje.</para>
+</step>
+</procedure>
+<para
+>Ju närmare det slutliga klicket (eller tangentnedtryckningen) är, desto noggrannare blir putten jämfört med den ursprungliga linjen.</para>
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Översikt av gränssnittet</title
+> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+ <sect1 id="game-menu">
+<title
+>Menyn Spel</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Ny</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Starta ett nytt spel.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Ladda...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Ladda ett tidigare sparat spel.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Spara bana</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Sparar den nuvarande banan med dess nuvarande filnamn.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Spara banan som...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Öppna en fildialogrutan som låter dig <action
+>spara den nuvarande banan med ett nytt filnamn.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Spel</guimenu
+><guimenuitem
+>Spara spel</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Spara nuvarande spel.</action
+> med det senaste filnamnet för det sparade spelet, eller med ett filnamn som du anger om du inte har sparat spelet ännu.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Spara spel som...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Öppnar en fildialogruta som låter dig <action
+>spara nuvarande spel med ett filnamn som du väljer.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>End</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Bana</guimenu
+> <guimenuitem
+>Avsluta spel</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Avsluta nuvarande spel, utan att avsluta</action
+> &kolf;.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Visa bästa resultat</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Visa poängtoppen.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Spel</guimenu
+><guimenuitem
+>Om banan...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Visa banans namn, upphovsman och antal hål.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+><guimenuitem
+>Avsluta</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Avsluta</action
+> &kolf;.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="hole-menu">
+<title
+>Menyn Hål</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Hål</guimenu
+> <guimenuitem
+>Redigera</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Byt till redigeringsläge</action
+> för att ändra nuvarande hål.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Alt;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Hål</guimenu
+> <guimenuitem
+>Ny</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Skapar ett nytt hål.</action
+> (Bara under redigering.)</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Delete</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Hål</guimenu
+> <guimenuitem
+>Rensa</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Tar bort alla objekt från det nuvarande hålet.</action
+> (Bara under redigering.)</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>R</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Hål</guimenu
+> <guimenuitem
+>Återställ</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Återställer nuvarande hål till startpositionen</action
+>, så att du kan börja om.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Hål</guimenu
+> <guimenuitem
+>Visa information</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Visa information om objekt för nuvarande hål.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Hål</guimenu
+> <guimenuitem
+>Ångra slag</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Ångrar det senaste slaget du gjorde.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="go-menu">
+<title
+>Menyn Gå</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Gå</guimenu
+> <guisubmenu
+>Byt till hål</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Går direkt till ett annat hål i banan.</action
+> En lista med hålnummer låter dig välja vilket hål du vill gå till.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Alt;<keycap
+>Högerpil</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Gå</guimenu
+> <guimenuitem
+>Nästa hål</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Gå till nästa hål.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Alt;<keycap
+>Vänsterpil</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Gå</guimenu
+> <guimenuitem
+>Föregående hål</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Gå till föregående hål.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl;<keycap
+>Home</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Gå</guimenu
+> <guimenuitem
+>Första hålet</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Gå till banans första hål.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>End</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Gå</guimenu
+> <guimenuitem
+>Sista hålet</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Gå till banans sista hål.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Gå</guimenu
+> <guimenuitem
+>Slumpmässigt hål</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Gå till ett slumpmässigt hål på den nuvarande banan.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="settings-help-menu">
+<title
+>Menyerna Inställningar och Hjälp</title>
+
+<para
+>&kolf; har de vanliga menyalternativen i &kde;, <guimenu
+>Inställningar</guimenu
+> och <guimenu
+>Hjälp</guimenu
+>, med följande ytterligare alternativ. För mer information läs avsnitten om <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menyn Inställningar</ulink
+> och <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menyn Hjälp</ulink
+> i &kde;:s grunder.</para>
+
+<variablelist>
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Aktivera mus för att flytta  putter</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Tillåt användning av musen för att flytta puttern.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+><guimenuitem
+>Aktivera avancerad puttning</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Aktiverar det avancerade puttningsläget</action
+>, som beskrivs i <link linkend="advanced-putting"
+>ett eget avsnitt</link
+>.</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+><guimenuitem
+>Visa styrlinje för putt</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Växla mellan på och av för putterns styrlinje.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Spela ljud</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Växla mellan på och av för ljudeffekter.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+><guimenuitem
+>Aktivera alla dialogrutor</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Aktiverar alla dialogrutor igen som du inaktiverat genom att klicka på <guilabel
+>Visa inte det här meddelandet igen</guilabel
+> eller liknande.</action
+></para
+></listitem>
+  </varlistentry>
+<!--
+  <varlistentry>
+    <term
+><menuchoice>
+    <guimenu
+>Settings</guimenu>
+    <guimenuitem
+>Reload Plugins</guimenuitem>
+    </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Reload plugins.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice>
+    <guimenu
+>Settings</guimenu>
+    <guimenuitem
+>Show Plugins</guimenuitem>
+    </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Display the currently loaded plugins.</action
+></para
+></listitem>
+  </varlistentry>
+-->
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Hjälp</guimenu
+><guimenuitem
+>Handledning</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+>Starta &kolf;s övningsbana.</para
+></listitem>
+  </varlistentry>
+</variablelist>
+
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Vanliga frågor</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Jag vill ändra hur spelet ser ut. Kan man göra det? </para
+></question>
+ <answer
+><para
+>Nej. För närvarande finns bara ett tema i &kolf;.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Kan man använda tangentbordet för att spela? </para
+></question>
+ <answer
+><para
+>Ja. Använd piltangenterna för att styra puttern.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Jag kan inte räkna ut vad man ska göra här. Finns det några tips? </para
+></question>
+ <answer
+><para
+>Nej. &kolf; har ingen tipsfunktion.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Jag vill konstruera en egen golfbana. Går det? </para
+></question>
+ <answer
+><para
+>Ja, det går. Använd menyalternativet <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+></shortcut
+><guimenu
+>Hål</guimenu
+> <guimenuitem
+>Redigera</guimenuitem
+></menuchoice
+> för att starta redigeringsläget. Klicka <link linkend="creating"
+>här</link
+> för mer information.</para
+></answer
+><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Baneditor</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+<para
+>&kolf; levereras med en mångsidig editor för dess banfilformat. Banor kan har hur många hål som helst, och det finns ingen gräns för bankonstruktörens fantasi.</para>
+
+<sect1 id="creating"
+> <title
+>Skapa en ny bana</title>
+<para
+>För att skapa en ny bana, använd menyalternativet <menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Ny</guimenuitem
+></menuchoice
+>. Gå till sidan <guilabel
+>Bana</guilabel
+> i dialogrutan, och välj banan <guilabel
+>Skapa ny</guilabel
+>. Försäkra dig om att <guilabel
+>Strikt läge</guilabel
+> inte är markerat på sidan <guilabel
+>Alternativ</guilabel
+> i dialogrutan.</para>
+
+<note>
+<para
+>För att senare spela den nya banan, klicka på knappen <guibutton
+>Lägg till...</guibutton
+> för att lägga till banan i listan med banor.</para>
+</note>
+</sect1>
+
+<sect1 id="adding-holes"
+> <title
+>Lägga till hål</title>
+<para
+>Byt till redigeringsläge med menyalternativet <menuchoice
+><guimenu
+>Hål</guimenu
+> <guimenuitem
+>Redigera</guimenuitem
+></menuchoice
+>. Använd menyalternativet <menuchoice
+><guimenu
+>Hål</guimenu
+> <guimenuitem
+>Ny</guimenuitem
+></menuchoice
+> för att lägga till ett nytt hål sist i banan.</para>
+<tip>
+<para
+>Du kan återställa ett hål till det tomma tillståndet, som liknar det när hålet först skapades, genom att använda menyalternativet <menuchoice
+><guimenu
+>Hål</guimenu
+> <guimenuitem
+>Rensa</guimenuitem
+></menuchoice
+>.</para>
+</tip>
+<para
+>Två objekt syns för nya hål, en kopp och en vit boll. Den vita bollen markerar var spelarnas bollar startar hålet.</para>
+</sect1>
+
+<sect1 id="editing-basics"
+> <title
+>Grundläggande redigering</title>
+<para
+>De grundläggande byggblocken för &kolf;s banor är <quote
+>objekten</quote
+>. Hål består av ett antal objekt. Objekt kan flyttas till vilken plats som helst, och de olika objekten har alla olika egenskaper som du kan ställa in.</para>
+<para
+>För att börja redigera ett hål, markera menyalternativet <menuchoice
+><guimenu
+>Hål</guimenu
+> <guimenuitem
+>Redigera</guimenuitem
+></menuchoice
+>, eller tryck på penseln i verktygsraden. För att lämna redigeringsläget, avmarkera menyalternativet (eller ikonen i verktygsraden).</para>
+
+<sect2
+> <title
+>Lägga till objekt</title>
+<para
+>För att lägga till ett nytt objekt till banan, välj namnet i listrutan som heter <guilabel
+>Lägg till objekt:</guilabel
+>. Objektet visas i mitten av banan.</para>
+<caution>
+<para
+>Broar och skyltar täcker nya objekt om de redan fanns på banans mitt.</para>
+</caution>
+<!--
+<tip>
+<para
+>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
+</tip>
+<para
+>Some &kolf; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
+<para
+>Third-party &kolf; plugins are available at the &kolf; website. See <ulink url="https://web.mit.edu/jasonkb/www/kolf/"
+>the &kolf; plugins download page</ulink
+>.</para>
+-->
+</sect2>
+
+<sect2
+> <title
+>Flytta och ändra storlek på objekt</title>
+<para
+>Flytta musmarkören till objektet som du vill flytta, så ändras markören till en hand. Klicka sedan och dra objektet dit du vill ha det.</para>
+<para
+>Storleken på vattenhinder, bunkrar, flottar, broar och skyltar kan ändras genom att dra den lilla cirkeln i nedre högra hörnet.</para>
+
+<note>
+<para
+>Väggar kan flyttas genom att klicka och dra i deras ändar, eller så kan hela väggen flyttas genom att klicka och dra på väggens mitt som vanligt.</para>
+</note>
+</sect2>
+
+<sect2
+> <title
+>Inställningar för objekt</title>
+<para
+>Objektens egenskaper kan ändras från området i nedre högra hörnet av &kolf;s fönster. För att redigera ett objekt, flytta musen över det till markören ändras till en hand. Klicka sedan. Olika värden för objektet visas i nedre högra hörnet av &kolf;s fönster.</para>
+<sect3
+> <title
+>Allmänna inställningar för ett hål</title>
+<para
+>För att redigera allmänna inställningar för hålet, klicka på ett område av hålet som inte täcks av ett objekt. När detta är möjligt ser markören ut som den vanliga pilen.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Banans namn:</guilabel
+></term>
+<listitem>
+<para
+>Det är namnet som visas i dialogrutan <guilabel
+>Nytt spel</guilabel
+> och i dialogrutan <guimenuitem
+>Baninformation</guimenuitem
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Banans upphovsman:</guilabel
+></term>
+<listitem>
+<para
+>Det är upphovsmannens namn som visas i dialogrutan <guimenuitem
+>Baninformation</guimenuitem
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Par:</guilabel
+></term>
+<listitem>
+<para
+>Hålets par.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Maximum:</guilabel
+></term>
+<listitem>
+<para
+>Maximalt antal slag som en spelare får göra för hålet.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Visa kantväggar</guilabel
+></term>
+<listitem>
+<para
+>Om väggar ska visas eller inte runt hålets kant.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Sluttningar</title>
+
+<variablelist>
+<varlistentry
+> <term
+>Typ</term>
+<listitem>
+<para
+>Välj sluttningens typ: <guilabel
+>Vertikal</guilabel
+>, <guilabel
+>Horisontell</guilabel
+>, <guilabel
+>Diagonal</guilabel
+>, <guilabel
+>Motsatt diagonal</guilabel
+> eller <guilabel
+>Rund</guilabel
+>. Diagonala och motsatt diagonala sluttningar är trianglar, medan runda sluttningar är cirklar. Vertikala och horisontella sluttningar är förstås rektanglar.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Omvänd riktning</guilabel
+></term>
+<listitem>
+<para
+>Om sluttningen ska ha omvänd riktning. Tänk dig till exempel en rund sluttning (cirkulär sluttning). Om den inte är omvänd, så rullar den bollen utåt som en kulle. När den är omvänd, så drar den åt sig bollen som ett hål.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Oflyttbar</guilabel
+></term>
+<listitem>
+<para
+>Om det kan flyttas av andra objekt, som flottar.</para>
+<caution>
+<para
+>Om en flotte överlappar det här objektet vid någon punkt på dess väg, och sluttningen är brant, och därför inte flyttar flotten, <emphasis
+>måste</emphasis
+> du göra sluttningen <guilabel
+>Oflyttbar</guilabel
+>, annars blir &kolf;s prestanda dålig.</para>
+</caution>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Lutning:</guilabel
+></term>
+<listitem>
+<para
+>Välj lutningen för sluttningen genom att flytta skjutreglaget så att lutningen rör sig mot 0 eller 8, där 8 är brantast och 0 är platt. Brantare sluttningar rullar bollen fortare.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Vattenhinder och bunkrar</title>
+<para
+>Vattenhinder och bunkrar har likadana inställningsalternativ.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Aktivera visa/göm</guilabel
+></term>
+<listitem>
+<para
+>Markeras detta så aktiveras blinkning för vattenhindret eller bunkern.</para>
+<!--
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Show/Hide speed</term>
+<listitem>
+  -->
+<para
+>Ju längre åt hållet <guilabel
+>Snabb</guilabel
+> som skjutreglaget flyttas, desto snabbare blinkar vattenhindret eller bunkern.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Broar, väderkvarnar, flottar och skyltar</title>
+<para
+>Broar, väderkvarnar, flottar och skyltar har alla liknande inställningar för att anpassa vilka sidor som det finns kantväggar. För att visa väggen längs en sida, markera kryssrutan för den sidan.</para>
+<para
+>Det finns också några speciella alternativ för väderkvarnar, flottar och skyltar.</para>
+
+<sect4
+> <title
+>Väderkvarnar</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Väderkvarn längst upp</guilabel
+></term>
+<listitem>
+<para
+>Om den svarta väderkvarnsvingen är längst ner eller längst upp. Normalt är den längst upp. De två halva väggarna hör alltid ihop med vingen. Observera att du inte kan aktivera en kantvägg på sidan som vingen finns.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Hastighet</term>
+<listitem>
+<para
+>Ju längre åt hållet <guilabel
+>Snabb</guilabel
+> som skjutreglaget flyttas, desto snabbare flyttas väderkvarnens vinge.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Flottar</title>
+<para
+>Vägen som flotten rör sig visas av väggen som den hör ihop med.</para>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Förflyttningshastighet</guilabel
+></term>
+<listitem>
+<para
+>Ju längre åt hållet <guilabel
+>Snabb</guilabel
+> som skjutreglaget flyttas, desto snabbare rör sig flotten. Om skjutreglaget flyttas så långt som möjligt mot <guilabel
+>Långsam</guilabel
+>, stannar flotten.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Skyltar</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Skylt med HTML:</guilabel
+></term>
+<listitem>
+<para
+>Du kan skriva in all giltig &HTML; här. Genom att till exempel skriva <markup
+>Slå den &lt;i&gt;försiktigt&lt;/i&gt; mot sluttningen!</markup
+> så skapas texten <quote
+>Slå den <emphasis
+>försiktigt</emphasis
+> mot sluttningen!</quote
+>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+</sect3>
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="credits"
+><title
+>Tack till och licens</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&kolf;</para>
+
+<para
+>&kolf; copyright 2001, 2002 &Jason.Katz-Brown;</para>
+
+<itemizedlist>
+<title
+>Utvecklare</title>
+<listitem>
+<para
+>&Jason.Katz-Brown; <email
+>jasonkb@mit.edu</email
+></para>
+</listitem>
+<listitem>
+<para
+>Niklas Knutsson</para>
+</listitem>
+<listitem>
+<para
+>Ryan Cumming</para>
+</listitem>
+<listitem>
+<para
+>Daniel Matza-Brown</para>
+</listitem>
+<listitem>
+<para
+>Paul Broadbent</para>
+</listitem>
+</itemizedlist>
+
+<para
+>Dokumentation copyright 2002, &Jason.Katz-Brown;</para>
+
+<para
+>Översättning Stefan Asserhäll <email
+>stefan.asserhall@bredband.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

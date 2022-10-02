@@ -1,0 +1,1717 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kolf;">
+  <!ENTITY kappversion "1.9"
+><!--Application version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % Galician  "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+ 
+<book id="kolf" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Manual de &kolf;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<authorgroup>
+<author
+><firstname
+>Jason</firstname
+> <surname
+>Katz-Brown</surname
+> <affiliation
+> <address
+><email
+>jasonkb@mit.edu</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+><firstname
+>Paul</firstname
+> <surname
+>Broadbent</surname
+> <affiliation
+> <address
+><email
+>dbd@myrealbox.com</email
+></address>
+</affiliation>
+<!-- <contrib
+>Reviewer</contrib
+> -->
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>Xosé</firstname
+><surname
+>Calvo</surname
+><affiliation
+><address
+><email
+></email
+></address
+></affiliation
+><contrib
+>Tradutor do proxecto Trasno</contrib
+></othercredit
+> 
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+ 
+<date
+>2010-10-01</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>&kappversion; (&kde; 4.5)</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+ 
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Esta documentación describe o xogo de &kappname; na versión &kappversion;</para>
+</abstract>
+ 
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>xogo</keyword
+> <!-- do not change this! -->
+	<keyword
+>Kolf</keyword
+><!--Application name goes here-->
+	<keyword
+>golf</keyword>
+	<keyword
+>miniatura</keyword>
+	<keyword
+>arcade</keyword>
+	<keyword
+>deporte</keyword>
+	<keyword
+>dez xogadores</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Introdución</title
+> <!-- do not change this! -->
+	<note
+><title
+>Tipo de xogo:</title
+><para
+>Arcade, Deporte</para
+></note>
+	<note
+><title
+>Número de xogadores posíbeis:</title
+><para
+>Dez</para
+></note
+> 
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&kappname; é un xogo de golf en miniatura cunha vistas en dúas dimensións de arriba para abaixo. Os campos son dinámicos e poden xogar ata dez persoas simultaneamente nunha competición.</para>
+<para
+>&kappname; ven cun curso titorial. <link linkend="howto"
+>Xogar neste campo</link
+>, é a mellor forma de se preparar.</para>
+</chapter>
+ 
+<chapter id="howto"
+><title
+>Como xogar</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Obxectivo:</title
+><para
+>Acertar coa bóla no furado co mínimo de tacadas posíbel.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para
+>O modo de xogo de &kappname; é simple. É máis fácil de aprender como xogar coas mans na masa e por iso ven incluído un campo de titorial paraguiar polas nocións básicas. Este capítulo conduce a través deste titorial. Para dar inicio a este tutorial, escolle a opción <menuchoice
+><guimenu
+>Axuda</guimenu
+><guimenuitem
+>Titorial</guimenuitem
+></menuchoice
+>.</para>
+
+<sect1 id="hitting"
+> 
+<title
+>Acertar na bóla</title>
+<para
+>Para apuntar a bóla, pódese tanto aliñar o rato por tras da bóla para que o taco aponte na dirección en que se queira acertar na bóla ou premer unha das teclas <keycap
+>Esquerda</keycap
+> (no sentido contrario ao das agullas do reloxo) ou <keycap
+>Dereita</keycap
+> (no sentido das agullas do reloxo), para rotar o pau.</para>
+<tip>
+<para
+>Para rotar o pau máis de presa co teclado, mantén premida a tecla &Shift; mentres premes ou mantés premidas as teclas dos cursores. Para rotar máis devagar, mantén premida a tecla &Ctrl;.</para>
+</tip>
+<para
+>Para acertar na bóla, preme e mantén premido o &LMB; ou a tecla de cursor <keycap
+>Abaixo</keycap
+>. Canto máis tempo mantiveres premida a tecla ou o botón, pero forza terá a tacada. Require práctica ter unha boa noción da velocidade.</para>
+<tip>
+<para
+>Para interromper a tacada mentres aínda mantés o pau en tensión, preme &Esc;.</para>
+</tip>
+
+<para
+>Acerta coa bóla no furado para pasar para ao seguinte.</para>
+</sect1>
+
+<sect1 id="slopes"
+> 
+<title
+>Ramplas</title>
+<para
+>As ramplas son áreas inclinadas nas que a bóla rola dunha forma esperada. A luz do campo de golf ven do canto superior esquerdo, de modo que as ramplas máis brillantes empurran a bóla para o canto superior esquerdo do furado. Escolle a opción <menuchoice
+><guimenu
+>Furado</guimenu
+><guimenuitem
+>Mostrar información</guimenuitem
+></menuchoice
+> para ver unha frecha que apunta na dirección na que a rampla fará rodar a bóla.</para>
+<para
+>Neste furado de tutorial, acerte na bóla para que vaia para a rampla que apunta para arriba, e deixe que rebole para a cova, de modo a que pase para o próximo furado.</para>
+
+<sect2
+> <title
+>Direccións</title>
+<para
+>No próximo furado, experimente cos outros tipos de ramplas. Existen ramplas elípticas, verticais, horizontais e diagonais en &kappname;. Acerte coa bóla no furado.</para>
+</sect2>
+<sect2
+> <title
+>Inclinación</title>
+<para
+>O próximo furado de tutorial ten dúas ramplas con inclinacións distintas. Se escolles <menuchoice
+><guimenu
+>Furado</guimenu
+><guimenuitem
+>Mostrar información</guimenuitem
+></menuchoice
+>, a inclinación da rampla aparece como un número entre o 1 e o 8, en que o 8 é o máis inclinado e o 1 o máis chan. Acerta no furado e pasa para o próximo.</para>
+</sect2>
+</sect1>
+
+<sect1 id="walls"
+> <title
+>Paredes</title>
+<para
+>As bólas rebotan nas paredes, como sería de esperar, cun lixeiro efecto. Desvía a bóla das paredes para dentro da cova e avanza para o próximo furado.</para>
+</sect1>
+
+<sect1 id="puddles-sand"
+> <title
+>Pozas e area</title>
+<sect2
+> <title
+>Pozas</title>
+	<para
+>As pozas son azuis. Cando a bóla for parar a unha poza, engádese unha tacada de penalización á puntuación e hai que escoller onde colocar a bóla: quere preto da poza quere no mesmo sitio dese onde se fixo a última xogada.</para>
+</sect2>
+<sect2
+> <title
+>Area</title>
+<para
+>A area é amarela. As bólas rodan a través da area moi devagar.</para>
+<para
+>Acerta na bóla arredor dos charcos e a través da area ata a meteres no furado para continuar para o próximo furado do titorial.</para>
+</sect2>
+</sect1>
+
+<sect1 id="windmills"
+> <title
+>Muíños</title>
+<para
+>Os muíños son obxectos compostos con paredes de bordos castaños e cun brazo móbel tanto na parte superior como na inferior do obxecto. As medias paredes crean a abertura do muíño, arredor da cal roda un brazo preto. Esixe algunha práctica para ser capaz de cronometrar a tacada da bóla para que pase pola abertura. Acerte na bóla a través do muíño para o furado para poder proseguir.</para>
+</sect1>
+
+<sect1 id="black-holes"
+> <title
+>Furados negros</title>
+<para
+>Cando se acerta coa bóla nun furado negro, esta é transportada para a saída e expulsada co ángulo de saída a unha velocidade directamente proporcional á velocidade con que a bóla ía. Escolle a opción <menuchoice
+><guimenu
+>Furado</guimenu
+><guimenuitem
+>Mostrar informacións</guimenuitem
+></menuchoice
+> para ver cal é o Furado Negro que vai a cada saída e con que dirección. O bordo que hai arredor dos furados negros e das súas saídas correspondentes son da mesma cor. Acerta coa bóla no furado negro, o cal expulsará entón a bóla para o furado de maneira que se pase para o próximo nivel.</para>
+</sect1>
+
+<sect1 id="floaters"
+> <title
+>Boias</title>
+<para
+>As boias son plataformas móbiles que cargan unha bóla que pare encima delas. A velocidade das boias pode variar. Esta é unha boia bastante lenta, pero aínda así hai que cronometrar a tacada para que pase por riba da parede e caia na cova.</para>
+</sect1>
+
+<sect1 id="bridges"
+> <title
+>Pontes</title>
+<para
+>As pontes son simples - simplemente elevan a bóla por riba das cousas que haxa por baixo delas, como as ramplas, a area e as pozas. Poden ter paredes castañas no seu perímetro.</para>
+</sect1>
+</chapter>
+ 
+<chapter id="rules_and_tips"
+><title
+>Regras do xogo, estratexias e suxestións</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+<para
+>Velaquí unha descrición detallada das funcionalidades básicas de &kappname;.</para>
+
+<sect1 id="starting"
+> 
+<title
+>Inicio dunha partida</title>
+
+<para
+>Para comezar unha partida, escolle a opción <menuchoice
+><guimenu
+>Partida</guimenu
+><guimenuitem
+>Nova</guimenuitem
+></menuchoice
+>.Ábrese un diálogo no que se pode configurar a nova partida.</para>
+<!--
+<tip>
+<para
+>More third-party &kappname; courses are available at the &kappname; website. See <ulink 
+url="http://web.mit.edu/jasonkb/www/kolf/"
+>the &kappname; user-uploaded courses page</ulink
+>.</para>
+</tip>
+-->
+<sect2
+> 
+<title
+>Páxina dos <guilabel
+>Xogadores</guilabel
+></title>
+<para
+>Para engadir un xogador á partida, preme o botón<guibutton
+>Novo xogador</guibutton
+>.</para>
+
+<para
+>Para cambiar o nome dos xogadores, cambia o texto dos campos respectivos.</para>
+
+<para
+>Para retirar un xogador, preme o botón <guibutton
+>Retirar</guibutton
+> que hai ao lado do nome do xogador.</para>
+
+</sect2>
+
+<sect2
+> <title
+>A páxina <guilabel
+>Campo</guilabel
+></title>
+<para
+>Para escoller o campo no que queres xogar, preme o seu nome na lista que hai á esquerda desta páxina. &kappname; ven con varios campos incorporados nos que se pode xogar.</para>
+<para
+>Para engadir un campo que descargases ou creases, preme o botón <guibutton
+>Engadir…</guibutton
+> no fondo desta páxina e escolle o ficheiro do campo no diálogo para escoller ficheiros.</para>
+</sect2>
+<sect2
+> <title
+>Páxina <guilabel
+>Opcións</guilabel
+></title>
+<para
+>Nesta páxina pódese escoller se este xogo será ou non xogado no <guilabel
+>Modo estrito</guilabel
+>. Neste modo, non é posíbel desfacer as xogadas, mover os furados ou editar o campo. Este modo emprégase habitualmente nas competicións. As mellores puntuacións só se rexistran no modo estrito.</para>
+</sect2>
+</sect1>
+
+<sect1 id="saved-games"
+> <title
+>Partidas gardadas</title>
+<para
+>&kappname; pode manter un historial das quendas aínda en progreso e gardalo para podelas cargar e xogalas máis tarde. As partidas gardadas inclúen o furado actual, os nomes e as cores dos xogadores da partida, ben como as súas puntuacións.</para>
+<sect2
+> <title
+>Gardar a partida</title>
+<para
+>Para gardar unha partida mentres aínda se está a xogar, escolle a opción <menuchoice
+><guimenu
+>Partida</guimenu
+><guimenuitem
+>Gardar a partida</guimenuitem
+> </menuchoice
+>. Se aínda non tiveses ningunha partida gardada, pídese o nome do ficheiro no que gardar os datos.</para>
+</sect2>
+<sect2
+> <title
+>Cargar unha partida</title>
+<para
+>Para cargar unha partida gardada, escolle<menuchoice
+><guimenu
+>Partida</guimenu
+><guimenuitem
+>Cargar…</guimenuitem
+> </menuchoice
+>. Aí pódese escoller a partida gardada para cargar.</para>
+</sect2>
+</sect1>
+
+<sect1 id="practicing"
+> <title
+>Practicar</title>
+<para
+>Existen algunhas funcionalidades que tornan a práctica do golf máis simple. Estas funcionalidades non están activadas durante o modo estrito.</para>
+<sect2
+> <title
+>Desfacer</title>
+<para
+>Para desfacer unha mala xogada, escolle <menuchoice
+><guimenu
+>Furado</guimenu
+><guimenuitem
+>Desfacer o golpe</guimenuitem
+></menuchoice
+>.</para>
+</sect2>
+<sect2
+> <title
+>Cambiar de furado</title>
+<para
+>O menú <guimenu
+>Partida</guimenu
+> contén moitos elementos do menú para cambiar a varios furados que son bastante esclarecedores. Consulta a <link linkend="go-menu"
+>referencia do menú <guimenu
+>Ir</guimenu
+></link
+>.</para>
+</sect2>
+</sect1>
+
+<sect1 id="putting-options"
+> <title
+>Opcións dos golpes</title>
+<para
+>&kappname; ten diversas formas de dar os golpes. O método básico dos golpesestá <link linkend="hitting"
+>descrito arriba</link
+>.</para>
+<para
+>O rato está activo de maneira predeterminada. Isto significa que, sempre que se move o rato o pau alíñase coa liña que hai entre o rato e a bóla.</para>
+<para
+>Se prefire usar só o teclado e as teclas dos cursores, pódense desactivar os golpes co rato desmarcando <menuchoice
+><guimenu
+>Configuración</guimenu
+><guimenuitem
+>Activar o rato para mover o pau</guimenuitem
+></menuchoice
+>.</para>
+
+<sect2 id="advanced-putting"
+> <title
+>Golpes avanzados</title>
+<para
+>Pódense activar os golpes avanzados marcando <menuchoice
+><guimenu
+>Configuración</guimenu
+><guimenuitem
+>Activar os golpes avanzados</guimenuitem
+></menuchoice
+>. Este modo de golpe é lixeiramente máis desafiante que o modo normal, e pode usarse tanto co rato como co teclado.</para>
+
+<para
+>Para golpear neste modo:</para>
+<procedure>
+<step>
+<para
+>Preme a tecla de cursor <keycap
+>Abaixo</keycap
+> unha vez para comezar o «swing». Aparece o indicador de golpe e o medidor da forza comézase a encher cunha cor, a cal vai cambiando a medida que ese medidor se vai enchendo.</para>
+</step>
+<step>
+<para
+>Preme outra vez a tecla de cursor <keycap
+>Abaixo</keycap
+> cando o medidor de forza se encha coa cantidade desexada. Canto máis cheo estiver ese círculo do medidor, pero forte será a tacada. Esixe algunha práctica para conseguir dar a forza correcta nas tacadas.</para>
+<para
+>Despois disto, a cor do indicador da tacada comeza a baixar ata ao nivel inicial.</para>
+</step>
+<step>
+<para
+>Prema máis unha vez a tecla <keycap
+>Abaixo</keycap
+> de novo cando o indicador de forza estiver tan preto como for posíbel da liña central do indicador da tacada.</para>
+</step>
+</procedure>
+<para
+>Canto máis preto do clic (ou presión de tecla) final for, máis fiel será a tacada á liña original.</para>
+</sect2>
+</sect1>
+</chapter>
+ 
+<chapter id="interface"
+><title
+>Vista xeral da interface</title
+> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+ <sect1 id="game-menu">
+<title
+>O menú Partida</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+></keycap
+></keycombo
+></shortcut
+><guimenu
+>Partida</guimenu
+> <guimenuitem
+>Nova</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Comezar unha partida nova</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Partida</guimenu
+> <guimenuitem
+>Cargar…</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Carga unha partida gardada previamente.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Partida</guimenu
+> <guimenuitem
+>Gardar o campo</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Garda o campo actual usando o seu nome de ficheiro actual.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Partida</guimenu
+> <guimenuitem
+>Gardar o campo como…</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Abre un diálogo de ficheiros que permite <action
+>gardar o campo actual con outro nome de ficheiro</action
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Partida</guimenu
+><guimenuitem
+>Gardar a partida</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Garda a partida actual</action
+> co nome da última partida gardada, ou co nome de ficheiro que se indique se aínda non se tiver gardada ningunha partida.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Partida</guimenu
+><guimenuitem
+>Gardar a partida como…</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Abre un diálogo de ficheiros que permite <action
+>gardar a partida actual co nome de ficheiro que se escolla.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Rematar</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Partida</guimenu
+> <guimenuitem
+>Rematar a partida</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Rematar a partida sen pechar</action
+> &kappname;</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Partida</guimenu
+> <guimenuitem
+>Mostrar as mellores puntuacións</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Mostra a táboa de puntuacións.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Partida</guimenu
+><guimenuitem
+>Sobre o campo</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Mostra o nome, o autor e o número de furados do campo.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Partida</guimenu
+> <guimenuitem
+>Saír</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Sae</action
+> de &kappname;</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="hole-menu">
+<title
+>O menú Furado</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Furado</guimenu
+> <guimenuitem
+>Editar</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Pasa ao modo de edición</action
+> para editar o furado no que se estea.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Furado</guimenu
+> <guimenuitem
+>Novo</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Crea un furado novo.</action
+> (Só no modo de edición).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Del</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Furado</guimenu
+> <guimenuitem
+>Limpar</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Retirar todos os obxectos do nivel actual.</action
+> (Só no modo de edición).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>R</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Furado</guimenu
+> <guimenuitem
+>Reiniciar</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Repón o furado no que se estea para a súa posición inicial</action
+>, de modo que se poida comezar desde o inicio.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Furado</guimenu
+> <guimenuitem
+>Mostrar Información</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Mostra información sobre os obxectos do furado no que se estea.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Furado</guimenu
+> <guimenuitem
+>Desfacer o golpe</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Desfacer o último golpe realizado.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="go-menu">
+<title
+>O Menu Ir</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ir</guimenu
+> <guisubmenu
+>Cambiar ao furado</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Ir directamente para outro furado do campo.</action
+> Unha lista cos números dos furados permitir escoller o furado ao que se desexe ir.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Alt;<keycap
+>Dereita</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Ir</guimenu
+> <guimenuitem
+>Furado seguinte</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Vai ao furado seguinte.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Alt;<keycap
+>Esquerda</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Ir</guimenu
+> <guimenuitem
+>Furado anterior</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Vai ao furado anterior.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl;<keycap
+>Inicio</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Ir</guimenu
+> <guimenuitem
+>Primeiro furado</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Vai ao primeiro furado do campo.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Fin</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Ir</guimenu
+> <guimenuitem
+>Derradeiro furado</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Vai ao derradeiro furado do campo.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ir</guimenu
+> <guimenuitem
+>Furado aleatorio</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Vai a un furado aleatorio do campo actual.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="settings-menu">
+<title
+>O menú Configuración</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuración</guimenu
+> <guimenuitem
+>Mostrar a barra de ferramentas</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Activa ou desactiva a barra de ferramentas principal.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuración</guimenu
+> <guimenuitem
+>Mostrar a barra de estado</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Activa ou desactiva a barra de estado.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuración</guimenu
+> <guimenuitem
+>Activar o rato para mover o pau</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Permite a utilización do rato para mover o pau.</action
+></para
+> 
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuración</guimenu
+> <guimenuitem
+>Activar os golpes avanzados</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Activa o modo avanzado de usar os paus</action
+>, tal como está descrito na súa <link linkend="advanced-putting"
+>propia sección</link
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuración</guimenu
+> <guimenuitem
+>Mostrar a liña de guía do pau</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Activa ou desactiva a liña de guía do pau.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuración</guimenu
+> <guimenuitem
+>Reproducir os sons</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Activa ou desactiva os efectos sonoros.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuración</guimenu
+> <guimenuitem
+>Activar todos os diálogos</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Activar de novo todos os diálogos que se desactivasen ao premer <guilabel
+>Non mostrar esta mensaxe de novo</guilabel
+> ou similar</action
+>.</para>
+</listitem>
+</varlistentry>
+<!--
+<varlistentry>
+<term
+><menuchoice>
+<guimenu
+>Settings</guimenu>
+<guimenuitem
+>Reload Plugins</guimenuitem>
+</menuchoice
+></term>
+<listitem>
+<para
+><action
+>Reload plugins.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice>
+<guimenu
+>Settings</guimenu>
+<guimenuitem
+>Show Plugins</guimenuitem>
+</menuchoice
+></term>
+<listitem>
+<para
+><action
+>Display the currently loaded plugins.</action
+></para>
+</listitem>
+</varlistentry>
+-->
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuración</guimenu
+> <guimenuitem
+>Configurar os atallos de teclado…</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Personalizar os atallos do teclado.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuración</guimenu
+> <guimenuitem
+>Configurar as barras de ferramentas…</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Abrir un diálogo no que se poden configurar as barras de ferramentas</action
+> de &kappname;.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+<sect1 id="help"
+><!--This is a standard Help menubar entry. Only change if needed.-->
+<title
+>O menú Axuda</title>
+<para
+>&kappname; ten un menú <guimenu
+>Axuda</guimenu
+> predeterminado de &kde;, tal e como se describe embaixo:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Axuda</guimenu
+><guimenuitem
+>Titorial</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Inicia o campo de tutorial de &kappname;.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Os elementos predeterminados de &kde; para o menu <guimenu
+>Axuda</guimenu
+> son:</para
+>&help.menu.documentation; </sect1>
+</chapter>
+  
+<chapter id="faq"
+><title
+>Preguntas máis frecuentes</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Quero cambiar o aspecto do xogo. Podo? </para
+></question>
+ <answer
+><para
+>Non. De momento, &kappname; só ofrece un tema.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Pódese empregar o teclado para xogar a este xogo? </para
+></question>
+ <answer
+><para
+>Si. Emprega as teclas dos cursores para controlar o pau.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Non podo entender o que facer aquí! Existe algunha suxestión? </para
+></question>
+ <answer
+><para
+>Non. &kappname; non posúe da funcionalidade de suxestión.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Quero deseñar o meu campo de golf. Pódoo facer? </para
+></question>
+ <answer
+><para
+>Si, podes. Para entrares no modo de edición, emprega <menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Furado</guimenu
+> <guimenuitem
+>Editar</guimenuitem
+></menuchoice
+>. Preme <link linkend="creating"
+>aquí</link
+> para máis detalles.</para
+></answer
+><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+</qandaentry>
+ 
+</qandaset>
+</chapter>
+ 
+<chapter id="configuration"
+><title
+>Editor de campos</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+<para
+>&kappname; ven cun editor versátil para o seu formato de ficheiro dos campos. Os campos poden conter calquera número de furados e non existe ningún limite á creatividade do deseñador do campo.</para>
+
+<sect1 id="creating"
+> <title
+>Crear un campo novo</title>
+<para
+>Para crear un campo novo, escolle <menuchoice
+><guimenu
+>Partida</guimenu
+><guimenuitem
+>Nova</guimenuitem
+></menuchoice
+>. Vai á páxina <guilabel
+>Campos</guilabel
+> do diálogo e escolle o campo <guilabel
+>Crear Novo</guilabel
+>. Asegúrate de que na páxina <guilabel
+>Opcións</guilabel
+> do diálogo o <guilabel
+>Modo estrito</guilabel
+> estea desmarcado.</para>
+
+<note>
+<para
+>Para xogar neste campo novo máis tarde, preme o botón<guibutton
+>Engadir…</guibutton
+> para engadir o campo á lista de campos.</para>
+</note>
+</sect1>
+
+<sect1 id="adding-holes"
+> <title
+>Engadir furados</title>
+<para
+>Pasa para o modo de edición coa opción <menuchoice
+><guimenu
+>Furado</guimenu
+><guimenuitem
+>Editar</guimenuitem
+></menuchoice
+>. Escolle a opción <menuchoice
+><guimenu
+>Furado</guimenu
+><guimenuitem
+>Novo</guimenuitem
+></menuchoice
+> para engadir un furado novo ao fin do campo.</para>
+<tip>
+<para
+>Pódese repor un furado e que estea en branco, igual a como estaba cando se creou por primeira vez, se escolleres a opción <menuchoice
+><guimenu
+>Furado</guimenu
+><guimenuitem
+>Limpar</guimenuitem
+></menuchoice
+>.</para>
+</tip>
+<para
+>Aparece dous elementos no campo de xogo: o furado en si e unha bóla branca. A bóla branca marca onde as bólas dos xogadores comezan o furado.</para>
+</sect1>
+
+<sect1 id="editing-basics"
+> <title
+>Conceptos básicos da edición</title>
+<para
+>O bloque de construción básico dos campos de &kappname; é o <quote
+>obxecto</quote
+>. Os furados consisten dun conxunto de obxectos. Os obxectos pódense mover para calquera lugar e os distintos tipos de obxectos teñen propiedades distintas que se poden definir.</para>
+<para
+>Para comezar a editar un furado, activa o elemento do menú <menuchoice
+><guimenu
+>Furado</guimenu
+><guimenuitem
+>Editar</guimenuitem
+></menuchoice
+> ou preme a icona do lapis na barra de ferramentas. Para saír do modo de edición, desmarca este elemento do menu (ou a icona da barra de ferramentas).</para>
+
+<sect2
+> <title
+>Engadir obxectos</title>
+<para
+>Para engadir un obxecto novo ao campo, escolle o seu nome na lista chamada <guilabel
+>Engadir un obxecto:</guilabel
+>. O obxecto aparece no centro do campo.</para>
+<caution>
+<para
+>As pontes e os sinais cobren os obxectos novos se xa estiveren no centro do furado.</para>
+</caution>
+<!--
+<tip>
+<para
+>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
+</tip>
+<para
+>Some &kappname; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
+<para
+>Third-party &kappname; plugins are available at the &kappname; website. See <ulink url="http://web.mit.edu/jasonkb/www/kolf/"
+>the &kappname; plugins download page</ulink
+>.</para>
+-->
+</sect2>
+
+<sect2
+> <title
+>Mover e redimensionar os obxectos</title>
+<para
+>Move o cursor do rato por enriba do obxecto que queiras mover para que o cursor cambie a un con forma de man. Entón preme e arrastra o obxecto para onde o queiras mover.</para>
+<para
+>As pozas, a area, as boias, as pontes e os sinais poden redimensionarse arrastrando o circuliño que teñen no seu canto inferior dereito.</para>
+
+<note>
+<para
+>As paredes poden moverse premendo e arrastrando os seus puntos finais, ou tamén se pode arrastrar a parede enteira premendo e arrastrando a parte do medio da parede como é normal.</para>
+</note>
+</sect2>
+
+<sect2
+> <title
+>Configuración dos obxectos</title>
+<para
+>As propiedades dos obxectos poden cambiarse na área do recanto inferior dereito da xanela de &kappname;. Para editar un obxecto, move o cursor do rato para encima del ata que o cursor se cambie por un con forma de man. Entón prémeo. Aparecen os diversos controis dese obxecto no recanto inferior dereito da xanela de &kappname;.</para>
+<sect3
+> <title
+>Configuración xeral dos furados</title>
+<para
+>Para editar as configuracións xerais dun nivel, preme unha área do furado que non estea cuberta por ningún obxecto. Cando isto sexa posíbel, o cursor será o punteiro normal da frecha.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Nome do campo:</guilabel
+></term>
+<listitem>
+<para
+>Este é o nome que aparece na xanela do novo xogo e na xanela do diálogo<guimenuitem
+>Sobre o campo</guimenuitem
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Autor do campo:</guilabel
+></term>
+<listitem>
+<para
+>Este é o nome do autor que aparece na xanela de <guimenuitem
+>Sobre o campo</guimenuitem
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Par:</guilabel
+></term>
+<listitem>
+<para
+>O «par» do furado.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Máximo:</guilabel
+></term>
+<listitem>
+<para
+>Número máximo de golpes que o xogador pode dar neste furado.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Mostrar as paredes dos bordos</guilabel
+></term>
+<listitem>
+<para
+>Se se deben mostrar as paredes que rodean o furado.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Ramplas</title>
+
+<variablelist>
+<varlistentry
+> <term
+>Tipo</term>
+<listitem>
+<para
+>Escolla o tipo de valga- <guilabel
+>Vertical</guilabel
+>, <guilabel
+>Horizontal</guilabel
+>, <guilabel
+>Diagonal</guilabel
+>, <guilabel
+>Diagonal inversa</guilabel
+>, <guilabel
+>Circular</guilabel
+>. As valgas diagonais e diagonais inversas son triangulares, mentres que as circulares teñen exactamente esa forma. As valgas verticais e horizontais son rectangulares, como sería de esperar.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Dirección inversa</guilabel
+></term>
+<listitem>
+<para
+>Se desexas inverter ou non a inclinación da valga. Por exemplo, pensa nunha valga elíptica (circular). Cando non estiver invertida, empurra as bólas para fora como se for un monte. Cando estiver invertida, puxa as bólas para dentro como unha cova.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Grao:</guilabel
+></term>
+<listitem>
+<para
+>Escolle o grao (inclinación) da valga, movendo a barra deslizante para que o grao vaia de 0 a 8, en que o 8 é o máis inclinado e o 0 é o plano. As valgas máis a pique empurran máis a bóla.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Inamovíbel</guilabel
+></term>
+<listitem>
+<para
+>Indica se esta pendente pode moverse por outros obxectos, como as boias.</para>
+<caution>
+<para
+>Se unha boia se sobrepón a este obxecto nalgún punto dasúa ruta e se a inclinación for grande de maneira que non mova deste modo a boia, <emphasis
+>é preciso</emphasis
+> tornar a rampla <guilabel
+>Inamovíbel</guilabel
+>, ou entón &kappname; funcionará mal!</para>
+</caution>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Pozas e area</title>
+<para
+>As pozas e a area teñen as mesmas opcións de configuración.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Activar mostrar/agochar</guilabel
+></term>
+<listitem>
+<para
+>Marcar isto activa a intermitencia desta poza de auga ou de area.</para>
+<!--
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Show/Hide speed</term>
+<listitem>
+  -->
+<para
+>Canto máis preto do <guilabel
+>Rápido</guilabel
+> estiver a barra, máis de presa a poza ou a area están intermitentes.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Pontes, muíños, boias e sinais</title>
+<para
+>As pontes, muíños, boias e sinais teñen todos opcións similares para configurar os lados en que existen paredes de bordo. Para mostrar a parede dun lado, marca a caixa para ese lado.</para>
+<para
+>Existen tamén algunhas opcións específicas para os muíños, as boias e os sinais.</para>
+
+<sect4
+> <title
+>Muíños</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Muíño no fondo</guilabel
+></term>
+<listitem>
+<para
+>Se o brazo do muíño en negro está encima ou embaixo - de maneira predeterminada, está embaixo. As dúas medias-paredes terán sempre o brazo. Repara que non se pode activar a parede do bordo do lado no que se atopa o brazo.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Velocidade</term>
+<listitem>
+<para
+>Canto máis preto do <guilabel
+>Rápido</guilabel
+> estiver a barra, máis rapidamente se moverá o brazo do muíño.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Boias</title>
+<para
+>A ruta que segue a boia móstrase pola parede a que se encontra asociada.</para>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Velocidade de movemento</guilabel
+></term>
+<listitem>
+<para
+>Canto máis próxima do <guilabel
+>Rápido</guilabel
+> estiver a barra, máis rapidamente se move a boia. Se a barra estiver encostada por completo ao extremo <guilabel
+>Lento</guilabel
+>, a boia para.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Sinais</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Sinal HTML:</guilabel
+></term>
+<listitem>
+<para
+>Pódese inserir calquera &HTML; correcto aquí. Por exemplo se se insire <markup
+>Dálle &lt;i&gt;devagar&lt;/i&gt; en dirección á valga!</markup
+> créase o texto <quote
+>Dálle <emphasis
+>devagar</emphasis
+> en dirección á valga!</quote
+>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+</sect3>
+</sect2>
+</sect1>
+</chapter>
+ 
+<chapter id="credits"
+><title
+>Créditos e licenza</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+ 
+<para
+>&kappname;</para>
+
+<para
+>&kappname; copyright 2001, 2002 &Jason.Katz-Brown;</para>
+
+<itemizedlist>
+<title
+>Desenvolvedores</title>
+<listitem>
+<para
+>&Jason.Katz-Brown; <email
+>jasonkb@mit.edu</email
+></para>
+</listitem>
+<listitem>
+<para
+>Niklas Knutsson</para>
+</listitem>
+<listitem>
+<para
+>Ryan Cumming</para>
+</listitem>
+<listitem>
+<para
+>Daniel Matza-Brown</para>
+</listitem>
+<listitem>
+<para
+>Paul Broadbent</para>
+</listitem>
+</itemizedlist>
+
+<para
+>Copyright da documentación 2002, &Jason.Katz-Brown;</para>
+
+<para
+>Tradución da documentación: Xosé Calvo - http://trasno.gal/</para
+> &underFDL; &underGPL; </chapter>
+  
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

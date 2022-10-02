@@ -1,0 +1,845 @@
+# translation of kolf.po to Persian
+# Mahdi Foladgar <foladgar@itland.ir>, 2006.
+# Nasim Daniarzadeh <daniarzadeh@itland.ir>, 2006.
+# MaryamSadat Razavi <razavi@itland.ir>, 2006.
+# Tahereh Dadkhahfar <dadkhahfar@itland.ir>, 2006.
+# Nazanin Kazemi <kazemi@itland.ir>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: kolf\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2007-07-08 10:29+0330\n"
+"Last-Translator: Nazanin Kazemi <kazemi@itland.ir>\n"
+"Language-Team: Persian <kde-i18n-fa@kde.org>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "نسیم دانیارزاده"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "daniarzadeh@itland.ir"
+
+#: config.cpp:51
+#, kde-format
+msgid "No configuration options"
+msgstr "بدون گزینه‌های پیکربندی"
+
+#: editor.cpp:37
+#, kde-format
+msgid "Add object:"
+msgstr "افزودن شیء:"
+
+#: game.cpp:261
+#, kde-format
+msgid "Course name: "
+msgstr "نام دوره: "
+
+#: game.cpp:268
+#, kde-format
+msgid "Course author: "
+msgstr "نویسنده دوره: "
+
+#: game.cpp:277
+#, kde-format
+msgid "Par:"
+msgstr "تعادل:"
+
+#: game.cpp:287
+#, kde-format
+msgid "Maximum:"
+msgstr "بیشینه:"
+
+#: game.cpp:291
+#, kde-format
+msgid "Maximum number of strokes player can take on this hole."
+msgstr "حداکثر تعداد ضربه‌هایی که بازیکن می‌تواند در این گودال بگیرد."
+
+#: game.cpp:292
+#, kde-format
+msgid "Maximum number of strokes"
+msgstr "تعداد بیشینه ضربه‌ها"
+
+#: game.cpp:293
+#, kde-format
+msgid "Unlimited"
+msgstr "نامحدود"
+
+#: game.cpp:299
+#, kde-format
+msgid "Show border walls"
+msgstr "نمایش دیوارهای مرزی"
+
+#: game.cpp:497 game.cpp:2439
+#, kde-format
+msgid "Course Author"
+msgstr "نویسنده دوره"
+
+#: game.cpp:498 game.cpp:499 game.cpp:2439
+#, kde-format
+msgid "Course Name"
+msgstr "نام دوره"
+
+#: game.cpp:1421
+#, kde-format
+msgid "Drop Outside of Hazard"
+msgstr "خروج از خطر"
+
+#: game.cpp:1422
+#, kde-format
+msgid "Rehit From Last Location"
+msgstr "ضربه زدن مجدد از آخرین محل"
+
+#: game.cpp:1424
+#, kde-format
+msgid "What would you like to do for your next shot?"
+msgstr "می‌خواهید برای گلوله بعدی چه کار کنید؟"
+
+#: game.cpp:1424
+#, kde-format
+msgid "%1 is in a Hazard"
+msgstr " %1 در خطر است"
+
+#: game.cpp:1592
+#, kde-format
+msgid "%1 will start off."
+msgstr " %1 شروع خواهد کرد."
+
+#: game.cpp:1592
+#, kde-format
+msgid "New Hole"
+msgstr "گودال جدید"
+
+#: game.cpp:1753
+#, kde-format
+msgid "Course name: %1"
+msgstr "نام دوره: %1"
+
+#: game.cpp:1754
+#, kde-format
+msgid "Created by %1"
+msgstr "ایجادشده توسط %1"
+
+#: game.cpp:1755
+#, fuzzy, kde-format
+#| msgid "%1 holes"
+msgid "%1 hole"
+msgid_plural "%1 holes"
+msgstr[0] " %1 گودال"
+
+#: game.cpp:1756
+#, fuzzy, kde-format
+#| msgid "Course Information"
+msgctxt "@title:window"
+msgid "Course Information"
+msgstr "اطلاعات دوره"
+
+#: game.cpp:1887
+#, kde-format
+msgid "This hole uses the following plugins, which you do not have installed:"
+msgstr "این گودال از وصله‌های زیر استفاده می‌کند که شما نصب نکرده‌اید:"
+
+#: game.cpp:1999
+#, kde-format
+msgid "There are unsaved changes to current hole. Save them?"
+msgstr "در مورد گودال جاری، تغییرات ذخیره‌نشده‌ای وجود دارند. آنها ذخیره شوند؟"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Unsaved Changes"
+msgstr "تغییرات ذخیره‌نشده"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Save &Later"
+msgstr " &بعداً ذخیره شود‌"
+
+#: game.cpp:2170 kolf.cpp:550
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course to Save To"
+msgctxt "@title:window"
+msgid "Pick Kolf Course to Save To"
+msgstr "دوره Pick Kolf برای ذخیره در"
+
+#: kcomboboxdialog.cpp:60
+#, kde-format
+msgid "&Do not ask again"
+msgstr "دوباره سؤال &نشود‌"
+
+#: kolf.cpp:62
+#, kde-format
+msgid "Slope"
+msgstr "شیب"
+
+#: kolf.cpp:63
+#, kde-format
+msgid "Puddle"
+msgstr "گودال"
+
+#: kolf.cpp:64
+#, kde-format
+msgid "Wall"
+msgstr "دیوار"
+
+#: kolf.cpp:65
+#, kde-format
+msgid "Cup"
+msgstr "جام"
+
+#: kolf.cpp:66
+#, kde-format
+msgid "Sand"
+msgstr "شن و ماسه"
+
+#: kolf.cpp:67
+#, kde-format
+msgid "Windmill"
+msgstr "اشیای بادی"
+
+#: kolf.cpp:68
+#, kde-format
+msgid "Black Hole"
+msgstr "سیاه‌چال"
+
+#: kolf.cpp:69
+#, kde-format
+msgid "Floater"
+msgstr "شناور"
+
+#: kolf.cpp:70
+#, kde-format
+msgid "Bridge"
+msgstr "پل"
+
+#: kolf.cpp:71
+#, kde-format
+msgid "Sign"
+msgstr "علامت"
+
+#: kolf.cpp:72
+#, kde-format
+msgid "Bumper"
+msgstr "ضرب‌خور"
+
+#: kolf.cpp:95
+#, kde-format
+msgid "Save &Course"
+msgstr "ذخیره &دوره‌"
+
+#: kolf.cpp:97
+#, kde-format
+msgid "Save &Course As..."
+msgstr "ذخیره &دوره به عنوان...‌"
+
+#: kolf.cpp:100
+#, kde-format
+msgid "&Save Game"
+msgstr "&ذخیره بازی‌"
+
+#: kolf.cpp:103
+#, kde-format
+msgid "&Save Game As..."
+msgstr "&ذخیره بازی به عنوان...‌"
+
+#: kolf.cpp:110
+#, kde-format
+msgid "&Edit"
+msgstr "&ویرایش‌"
+
+#: kolf.cpp:116
+#, kde-format
+msgid "&New"
+msgstr "&جدید‌"
+
+#: kolf.cpp:125
+#, kde-format
+msgid "&Reset"
+msgstr "&بازنشانی‌"
+
+#: kolf.cpp:130
+#, kde-format
+msgid "&Undo Shot"
+msgstr "&واگرد گلوله‌"
+
+#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. Go
+#: kolf.cpp:134
+#, kde-format
+msgid "Switch to Hole"
+msgstr "سودهی به گودال"
+
+#: kolf.cpp:139
+#, kde-format
+msgid "&Next Hole"
+msgstr "گودال &بعدی‌"
+
+#: kolf.cpp:144
+#, kde-format
+msgid "&Previous Hole"
+msgstr "گودال &قبلی‌"
+
+#: kolf.cpp:149
+#, kde-format
+msgid "&First Hole"
+msgstr "&اولین گودال‌"
+
+#: kolf.cpp:153
+#, kde-format
+msgid "&Last Hole"
+msgstr "&آخرین گودال‌"
+
+#: kolf.cpp:158
+#, kde-format
+msgid "&Random Hole"
+msgstr "گودال &تصادفی‌"
+
+#: kolf.cpp:162
+#, kde-format
+msgid "Enable &Mouse for Moving Putter"
+msgstr "فعال‌سازی &موشی برای حرکت چوگان‌"
+
+#: kolf.cpp:169
+#, kde-format
+msgid "Enable &Advanced Putting"
+msgstr "فعال‌سازی گلف  &پیشرفته‌"
+
+#: kolf.cpp:175
+#, kde-format
+msgid "Show &Info"
+msgstr "نمایش  &اطلاعات‌"
+
+#: kolf.cpp:182
+#, kde-format
+msgid "Show Putter &Guideline"
+msgstr "نمایش  &رهنمون گلف‌"
+
+#: kolf.cpp:188
+#, kde-format
+msgid "Enable All Dialog Boxes"
+msgstr "فعال‌سازی تمام جعبه‌های محاوره"
+
+#: kolf.cpp:192
+#, kde-format
+msgid "Play &Sounds"
+msgstr "پخش &صداها‌"
+
+#: kolf.cpp:199
+#, fuzzy, kde-format
+#| msgid "&About Course"
+msgid "&About Course..."
+msgstr "&در مورد دوره‌"
+
+#: kolf.cpp:202
+#, kde-format
+msgid "&Tutorial"
+msgstr "&آموختار‌"
+
+#: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
+#, kde-format
+msgid "Par"
+msgstr "تعادل"
+
+#: kolf.cpp:483
+#, kde-format
+msgid " and "
+msgstr " و "
+
+#: kolf.cpp:484
+#, kde-format
+msgid "%1 tied"
+msgstr " %1 مساوی با"
+
+#: kolf.cpp:487
+#, kde-format
+msgid "%1 won!"
+msgstr " %1 برد!"
+
+#: kolf.cpp:501 kolf.cpp:513 kolf.cpp:528 kolf.cpp:529 newgame.cpp:249
+#: newgame.cpp:250
+#, kde-format
+msgid "High Scores for %1"
+msgstr "امتیازهای بالا برای %1"
+
+#: kolf.cpp:568
+#, fuzzy, kde-format
+#| msgid "Pick Saved Game to Save To"
+msgctxt "@title:window"
+msgid "Pick Saved Game to Save To"
+msgstr "برداشتن بازی ذخیره‌شده برای ذخیره در"
+
+#: kolf.cpp:606
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Saved Game"
+msgctxt "@title:window"
+msgid "Pick Kolf Saved Game"
+msgstr "برداشتن بازی ذخیره‌شده Kolf"
+
+#: kolf.cpp:654
+#, kde-format
+msgid "%1's turn"
+msgstr "نوبت %1"
+
+#: kolf.cpp:726
+#, kde-format
+msgid "%1's score has reached the maximum for this hole."
+msgstr "برای این گودال، امتیاز %1 به بیشینه رسیده است."
+
+#. i18n: ectx: Menu (hole)
+#: kolfui.rc:17
+#, kde-format
+msgid "Ho&le"
+msgstr "&گودال‌"
+
+#. i18n: ectx: Menu (go_course)
+#: kolfui.rc:31
+#, kde-format
+msgid "&Go"
+msgstr "&برو‌"
+
+#: landscape.cpp:146
+#, kde-format
+msgid "Enable show/hide"
+msgstr "فعال‌سازی نمایش/مخفی کردن"
+
+#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
+#, kde-format
+msgid "Slow"
+msgstr "آهسته"
+
+#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
+#, kde-format
+msgid "Fast"
+msgstr "سریع"
+
+#: landscape.cpp:238
+#, kde-format
+msgid "Vertical"
+msgstr "عمودی"
+
+#: landscape.cpp:239
+#, kde-format
+msgid "Horizontal"
+msgstr "افقی"
+
+#: landscape.cpp:240
+#, kde-format
+msgid "Diagonal"
+msgstr "مورب"
+
+#: landscape.cpp:241
+#, kde-format
+msgid "Opposite Diagonal"
+msgstr "ضد مورب"
+
+#: landscape.cpp:242
+#, kde-format
+msgid "Elliptic"
+msgstr ""
+
+#: landscape.cpp:571
+#, kde-format
+msgid "Reverse direction"
+msgstr "جهت معکوس"
+
+#: landscape.cpp:576
+#, kde-format
+msgid "Unmovable"
+msgstr "غیرقابل حرکت"
+
+#: landscape.cpp:578
+#, kde-format
+msgid "Whether or not this slope can be moved by other objects, like floaters."
+msgstr ""
+"آیا این شیب را می‌توان توسط اشیای دیگر نظیر اجسام شناور حرکت داد، یا خیر."
+
+#: landscape.cpp:582
+#, kde-format
+msgid "Grade:"
+msgstr "درجه:"
+
+#: main.cpp:49
+#, kde-format
+msgid "Kolf"
+msgstr ""
+
+#: main.cpp:51
+#, kde-format
+msgid "KDE Minigolf Game"
+msgstr "بازی گلف کوچک KDE"
+
+#: main.cpp:53
+#, kde-format
+msgid "(c) 2002-2010, Kolf developers"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Stefan Majewsky"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Current maintainer"
+msgstr ""
+
+#: main.cpp:57
+#, kde-format
+msgid "Jason Katz-Brown"
+msgstr ""
+
+#: main.cpp:57
+#, fuzzy, kde-format
+#| msgid "Main author"
+msgid "Former main author"
+msgstr "نویسنده اصلی"
+
+#: main.cpp:58
+#, kde-format
+msgid "Niklas Knutsson"
+msgstr ""
+
+#: main.cpp:58
+#, kde-format
+msgid "Advanced putting mode"
+msgstr "حالت پیشرفته گلف"
+
+#: main.cpp:59
+#, kde-format
+msgid "Rik Hemsley"
+msgstr ""
+
+#: main.cpp:59
+#, kde-format
+msgid "Border around course"
+msgstr "مرز پیرامون دوره"
+
+#: main.cpp:60
+#, kde-format
+msgid "Timo A. Hummel"
+msgstr ""
+
+#: main.cpp:60
+#, kde-format
+msgid "Some good sound effects"
+msgstr "برخی اثرات خوب صدا"
+
+#: main.cpp:62
+#, kde-format
+msgid "Rob Renaud"
+msgstr ""
+
+#: main.cpp:62
+#, kde-format
+msgid "Wall-bouncing help"
+msgstr "کمک برای پرش از دیوار"
+
+#: main.cpp:63
+#, kde-format
+msgid "Aaron Seigo"
+msgstr ""
+
+#: main.cpp:63
+#, kde-format
+msgid "Suggestions, bug reports"
+msgstr "پیشنهادها، گزارشهای اشکال"
+
+#: main.cpp:64
+#, kde-format
+msgid "Erin Catto"
+msgstr ""
+
+#: main.cpp:64
+#, kde-format
+msgid "Developer of Box2D physics engine"
+msgstr ""
+
+#: main.cpp:65
+#, kde-format
+msgid "Ryan Cumming"
+msgstr ""
+
+#: main.cpp:65
+#, fuzzy, kde-format
+#| msgid "Vector class"
+msgid "Vector class (Kolf 1)"
+msgstr "رده بردار"
+
+#: main.cpp:66
+#, kde-format
+msgid "Daniel Matza-Brown"
+msgstr ""
+
+#: main.cpp:66
+#, fuzzy, kde-format
+#| msgid "Working wall-bouncing algorithm"
+msgid "Working wall-bouncing algorithm (Kolf 1)"
+msgstr "الگوریتم در حال کار پرش از دیوار"
+
+#: main.cpp:71
+#, kde-format
+msgid "File"
+msgstr "پرونده"
+
+#: main.cpp:72
+#, kde-format
+msgid "Print course information and exit"
+msgstr "چاپ اطلاعات دوره و خروج"
+
+#: main.cpp:89 newgame.cpp:240
+#, kde-format
+msgid "By %1"
+msgstr "توسط %1"
+
+#: main.cpp:90
+#, kde-format
+msgid "%1 holes"
+msgstr " %1 گودال"
+
+#: main.cpp:91
+#, kde-format
+msgid "par %1"
+msgstr "تعادل %1"
+
+#: main.cpp:98
+#, kde-format
+msgid "Course %1 does not exist."
+msgstr "دوره %1 موجود نمی‌باشد."
+
+#: newgame.cpp:38
+#, fuzzy, kde-format
+#| msgid "New Game"
+msgctxt "@title:window"
+msgid "New Game"
+msgstr "بازی جدید"
+
+#: newgame.cpp:54
+#, kde-format
+msgid "Players"
+msgstr "بازیکنان"
+
+#: newgame.cpp:58
+#, kde-format
+msgid "&New Player"
+msgstr "بازیکن &جدید‌"
+
+#: newgame.cpp:93
+#, kde-format
+msgid "Course"
+msgstr "دوره"
+
+#: newgame.cpp:94
+#, kde-format
+msgid "Choose Course to Play"
+msgstr "انتخاب دوره برای بازی"
+
+#: newgame.cpp:133
+#, kde-format
+msgid "Create New"
+msgstr "ایجاد کردن جدید"
+
+#: newgame.cpp:134
+#, kde-format
+msgid "You"
+msgstr "شما"
+
+#: newgame.cpp:160
+#, kde-format
+msgid "Highscores"
+msgstr "امتیازهای بالا"
+
+#: newgame.cpp:170
+#, kde-format
+msgid "Add..."
+msgstr "افزودن..."
+
+#: newgame.cpp:174 newgame.cpp:363
+#, kde-format
+msgid "Remove"
+msgstr "حذف"
+
+#: newgame.cpp:184
+#, kde-format
+msgid "Options"
+msgstr "گزینه‌ها"
+
+#: newgame.cpp:185
+#, kde-format
+msgid "Game Options"
+msgstr "گزینه‌های بازی"
+
+#: newgame.cpp:190
+#, kde-format
+msgid "&Strict mode"
+msgstr "حالت &سخت‌"
+
+#: newgame.cpp:194
+#, kde-format
+msgid ""
+"In strict mode, undo, editing, and switching holes is not allowed. This is "
+"generally for competition. Only in strict mode are highscores kept."
+msgstr ""
+"در حالت سخت، واگرد، ویرایش و سودهی گودالها مجاز نمی‌باشد. این معمولاً برای "
+"رقابت است. فقط در حالت سخت، امتیازهای بالا نگه داشته می‌شوند."
+
+#: newgame.cpp:241
+#, kde-format
+msgid "Par %1"
+msgstr "تعادل %1"
+
+#: newgame.cpp:242
+#, kde-format
+msgid "%1 Holes"
+msgstr "%1 گودال"
+
+#: newgame.cpp:280
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course"
+msgctxt "@title:window"
+msgid "Pick Kolf Course"
+msgstr "برداشتن دوره Kolf"
+
+#: newgame.cpp:308
+#, kde-format
+msgid "Chosen course is already on course list."
+msgstr "دوره انتخاب‌شده، از قبل در فهرست دوره می‌باشد."
+
+#: newgame.cpp:321
+#, kde-format
+msgid "Player %1"
+msgstr "بازیکن %1"
+
+#: objects.cpp:244
+#, fuzzy, kde-format
+#| msgid "degrees"
+msgid " degree"
+msgid_plural " degrees"
+msgstr[0] "درجه‌ها"
+
+#: objects.cpp:247
+#, kde-format
+msgid "Exiting ball angle:"
+msgstr "زاویه خروج توپ:"
+
+#: objects.cpp:267
+#, kde-format
+msgid "Minimum exit speed:"
+msgstr "سرعت کمینه خروج:"
+
+#: objects.cpp:288
+#, fuzzy, kde-format
+#| msgid "Minimum exit speed:"
+msgid "Maximum exit speed:"
+msgstr "سرعت کمینه خروج:"
+
+#: obstacles.cpp:412
+msgid "&Top"
+msgstr "&بالا‌"
+
+#: obstacles.cpp:412
+msgid "&Left"
+msgstr "&چپ‌"
+
+#: obstacles.cpp:412
+msgid "&Right"
+msgstr "&راست‌"
+
+#: obstacles.cpp:412
+msgid "&Bottom"
+msgstr "&دکمه‌"
+
+#: obstacles.cpp:421
+#, kde-format
+msgid "Walls on:"
+msgstr "دیوارها بر روی:"
+
+#: obstacles.cpp:431
+#, kde-format
+msgid "Sign HTML:"
+msgstr "علامت زنگام:"
+
+#: obstacles.cpp:440
+#, fuzzy, kde-format
+#| msgid "Windmill on bottom"
+msgid "Windmill on top"
+msgstr "آسیاب بادی در پایین"
+
+#: obstacles.cpp:461
+#, kde-format
+msgid "Moving speed"
+msgstr "سرعت حرکت"
+
+#: obstacles.cpp:681
+#, kde-format
+msgid "New Text"
+msgstr "متن جدید"
+
+#: scoreboard.cpp:28
+#, kde-format
+msgid "Total"
+msgstr "مجموع"
+
+#~ msgid "Circular"
+#~ msgstr "مدور"
+
+#~ msgid "%1 - Hole %2; by %3"
+#~ msgstr "%1 - گودال %2؛ توسط %3"
+
+#~ msgid "Kolf Options"
+#~ msgstr "گزینه‌‌های Kolf"
+
+#~ msgid "Draw title text"
+#~ msgstr "ترسیم متن عنوان"
+
+#~ msgid "Print %1 - Hole %2"
+#~ msgstr "چاپ %1 - گودال %2"
+
+#~ msgid "Currently Loaded Plugins"
+#~ msgstr "وصله‌هایی که اخیراً بارگذاری شده"
+
+#~ msgid "by %1"
+#~ msgstr "توسط %1"
+
+#~ msgid "Plugins"
+#~ msgstr "وصله‌ها"
+
+#~ msgid "&Reload Plugins"
+#~ msgstr "&بارگذاری مجدد وصله‌ها‌"
+
+#~ msgid "Show &Plugins"
+#~ msgstr "نمایش &وصله‌ها‌"
+
+#~ msgid "Flash speed"
+#~ msgstr "سرعت درخشش"
+
+#~ msgid "Flash"
+#~ msgstr "درخشش"
+
+#~ msgid "Pool Ball"
+#~ msgstr "توپ استخر"
+
+#~ msgid "Number:"
+#~ msgstr "شماره:"
+
+#~ msgid "Disable &Mouse for Moving Putter"
+#~ msgstr "غیرفعال کردن &موشی برای حرکت چوگان‌"
+
+#~ msgid "Disable &Advanced Putting"
+#~ msgstr "غیرفعال کردن گلف &پیشرفته‌"
+
+#~ msgid "Hide &Info"
+#~ msgstr "مخفی کردن &اطلاعات‌"
+
+#~ msgid "Hide Putter &Guideline"
+#~ msgstr "مخفی کردن &رهنمون گلف‌"
+
+#~ msgid "Disable All Dialog Boxes"
+#~ msgstr "غیرفعال کردن تمام جعبه‌های محاوره"

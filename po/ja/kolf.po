@@ -1,0 +1,796 @@
+# Translation of kolf into Japanese.
+# This file is distributed under the same license as the kdegames package.
+# Jason Katz-Brown <jason@katzbrown.com>, 2002.
+# Taiki Komoda <kom@kde.gr.jp>, 2002.
+# Takuro Ashie <ashie@homa.ne.jp>, 2004.
+# Toyohiro Asukai <toyohiro@ksmplus.com>, 2004.
+# Kurose Shushi <md81@bird.email.ne.jp>, 2004.
+# Fumiaki Okushi <okushi@kde.gr.jp>, 2006.
+# Yukiko Bando <ybando@k6.dion.ne.jp>, 2006, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kolf\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2007-11-29 22:00+0900\n"
+"Last-Translator: Yukiko Bando <ybando@k6.dion.ne.jp>\n"
+"Language-Team: Japanese <kde-jp@kde.org>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Jason Katz-Brown ,Takuro Ashie,Kurose Shushi"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "jason@katzbrown.com,ashie@homa.ne.jp,md81@bird.email.ne.jp"
+
+#: config.cpp:51
+#, kde-format
+msgid "No configuration options"
+msgstr "設定オプションはありません"
+
+#: editor.cpp:37
+#, kde-format
+msgid "Add object:"
+msgstr "オブジェクトを追加:"
+
+#: game.cpp:261
+#, kde-format
+msgid "Course name: "
+msgstr "コース名:"
+
+#: game.cpp:268
+#, kde-format
+msgid "Course author: "
+msgstr "コースの作者:"
+
+#: game.cpp:277
+#, kde-format
+msgid "Par:"
+msgstr "パー:"
+
+#: game.cpp:287
+#, kde-format
+msgid "Maximum:"
+msgstr "最大:"
+
+#: game.cpp:291
+#, kde-format
+msgid "Maximum number of strokes player can take on this hole."
+msgstr "各プレイヤーがこのホールで打てる最大ストローク数"
+
+#: game.cpp:292
+#, kde-format
+msgid "Maximum number of strokes"
+msgstr "最大ストローク数"
+
+#: game.cpp:293
+#, kde-format
+msgid "Unlimited"
+msgstr "無制限"
+
+#: game.cpp:299
+#, kde-format
+msgid "Show border walls"
+msgstr "ボーダーの壁を表示する"
+
+#: game.cpp:497 game.cpp:2439
+#, kde-format
+msgid "Course Author"
+msgstr "コースの作者"
+
+#: game.cpp:498 game.cpp:499 game.cpp:2439
+#, kde-format
+msgid "Course Name"
+msgstr "コース名"
+
+#: game.cpp:1421
+#, kde-format
+msgid "Drop Outside of Hazard"
+msgstr "ハザード外にドロップ"
+
+#: game.cpp:1422
+#, kde-format
+msgid "Rehit From Last Location"
+msgstr "もう一度前の場所から打つ"
+
+#: game.cpp:1424
+#, kde-format
+msgid "What would you like to do for your next shot?"
+msgstr "次のショットはどうしましょう？"
+
+#: game.cpp:1424
+#, kde-format
+msgid "%1 is in a Hazard"
+msgstr "%1 がハザードに入りました"
+
+#: game.cpp:1592
+#, kde-format
+msgid "%1 will start off."
+msgstr "%1 が開始します。"
+
+#: game.cpp:1592
+#, kde-format
+msgid "New Hole"
+msgstr "新しいホール"
+
+#: game.cpp:1753
+#, kde-format
+msgid "Course name: %1"
+msgstr "コース名: %1"
+
+#: game.cpp:1754
+#, kde-format
+msgid "Created by %1"
+msgstr "作者: %1"
+
+#: game.cpp:1755
+#, fuzzy, kde-format
+#| msgid "%1 holes"
+msgid "%1 hole"
+msgid_plural "%1 holes"
+msgstr[0] "%1 ホール"
+msgstr[1] "%1 ホール"
+
+#: game.cpp:1756
+#, fuzzy, kde-format
+#| msgid "Course Information"
+msgctxt "@title:window"
+msgid "Course Information"
+msgstr "コース情報"
+
+#: game.cpp:1887
+#, kde-format
+msgid "This hole uses the following plugins, which you do not have installed:"
+msgstr "このホールには現在インストールされていない次のプラグインが必要です:"
+
+#: game.cpp:1999
+#, kde-format
+msgid "There are unsaved changes to current hole. Save them?"
+msgstr "現在のホールには未保存の変更があります。保存しますか？"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Unsaved Changes"
+msgstr "未保存の変更"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Save &Later"
+msgstr "後で保存(&L)"
+
+#: game.cpp:2170 kolf.cpp:550
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course to Save To"
+msgctxt "@title:window"
+msgid "Pick Kolf Course to Save To"
+msgstr "コースを保存するファイルを選択"
+
+#: kcomboboxdialog.cpp:60
+#, kde-format
+msgid "&Do not ask again"
+msgstr "次回から確認しない(&D)"
+
+#: kolf.cpp:62
+#, kde-format
+msgid "Slope"
+msgstr "斜面"
+
+#: kolf.cpp:63
+#, kde-format
+msgid "Puddle"
+msgstr "池"
+
+#: kolf.cpp:64
+#, kde-format
+msgid "Wall"
+msgstr "壁"
+
+#: kolf.cpp:65
+#, kde-format
+msgid "Cup"
+msgstr "カップ"
+
+#: kolf.cpp:66
+#, kde-format
+msgid "Sand"
+msgstr "砂地"
+
+#: kolf.cpp:67
+#, kde-format
+msgid "Windmill"
+msgstr "風車"
+
+#: kolf.cpp:68
+#, kde-format
+msgid "Black Hole"
+msgstr "ブラックホール"
+
+#: kolf.cpp:69
+#, kde-format
+msgid "Floater"
+msgstr "フローター"
+
+#: kolf.cpp:70
+#, kde-format
+msgid "Bridge"
+msgstr "橋"
+
+#: kolf.cpp:71
+#, kde-format
+msgid "Sign"
+msgstr "標識"
+
+#: kolf.cpp:72
+#, kde-format
+msgid "Bumper"
+msgstr "バンパー"
+
+#: kolf.cpp:95
+#, kde-format
+msgid "Save &Course"
+msgstr "コースを保存(&C)"
+
+#: kolf.cpp:97
+#, kde-format
+msgid "Save &Course As..."
+msgstr "名前を付けてコースを保存(&C)..."
+
+#: kolf.cpp:100
+#, kde-format
+msgid "&Save Game"
+msgstr "ゲームを保存(&S)"
+
+#: kolf.cpp:103
+#, kde-format
+msgid "&Save Game As..."
+msgstr "名前を付けてゲームを保存(&S)..."
+
+#: kolf.cpp:110
+#, kde-format
+msgid "&Edit"
+msgstr "編集(&E)"
+
+#: kolf.cpp:116
+#, kde-format
+msgid "&New"
+msgstr "新規(&N)"
+
+#: kolf.cpp:125
+#, kde-format
+msgid "&Reset"
+msgstr "リセット(&R)"
+
+#: kolf.cpp:130
+#, kde-format
+msgid "&Undo Shot"
+msgstr "ショットを元に戻す(&U)"
+
+#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. Go
+#: kolf.cpp:134
+#, kde-format
+msgid "Switch to Hole"
+msgstr "ホールに移動"
+
+#: kolf.cpp:139
+#, kde-format
+msgid "&Next Hole"
+msgstr "次のホール(&N)"
+
+#: kolf.cpp:144
+#, kde-format
+msgid "&Previous Hole"
+msgstr "前のホール(&P)"
+
+#: kolf.cpp:149
+#, kde-format
+msgid "&First Hole"
+msgstr "最初のホール(&F)"
+
+#: kolf.cpp:153
+#, kde-format
+msgid "&Last Hole"
+msgstr "最後のホール(&L)"
+
+#: kolf.cpp:158
+#, kde-format
+msgid "&Random Hole"
+msgstr "ランダムなホール(&R)"
+
+#: kolf.cpp:162
+#, kde-format
+msgid "Enable &Mouse for Moving Putter"
+msgstr "マウスを使ってパターを動かす(&M)"
+
+#: kolf.cpp:169
+#, kde-format
+msgid "Enable &Advanced Putting"
+msgstr "上級者用のパット方法を使う(&A)"
+
+#: kolf.cpp:175
+#, kde-format
+msgid "Show &Info"
+msgstr "情報を表示(&I)"
+
+#: kolf.cpp:182
+#, kde-format
+msgid "Show Putter &Guideline"
+msgstr "パターのガイドラインを表示(&G)"
+
+#: kolf.cpp:188
+#, kde-format
+msgid "Enable All Dialog Boxes"
+msgstr "すべてのダイアログボックスを有効に"
+
+#: kolf.cpp:192
+#, kde-format
+msgid "Play &Sounds"
+msgstr "効果音あり(&S)"
+
+#: kolf.cpp:199
+#, fuzzy, kde-format
+#| msgid "&About Course"
+msgid "&About Course..."
+msgstr "コースについて(&A)"
+
+#: kolf.cpp:202
+#, kde-format
+msgid "&Tutorial"
+msgstr "チュートリアル(&T)"
+
+#: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
+#, kde-format
+msgid "Par"
+msgstr "パー"
+
+#: kolf.cpp:483
+#, kde-format
+msgid " and "
+msgstr " と "
+
+#: kolf.cpp:484
+#, kde-format
+msgid "%1 tied"
+msgstr "%1 が引き分けました"
+
+#: kolf.cpp:487
+#, kde-format
+msgid "%1 won!"
+msgstr "%1 が勝ちました!"
+
+#: kolf.cpp:501 kolf.cpp:513 kolf.cpp:528 kolf.cpp:529 newgame.cpp:249
+#: newgame.cpp:250
+#, kde-format
+msgid "High Scores for %1"
+msgstr "%1 のハイスコア"
+
+#: kolf.cpp:568
+#, fuzzy, kde-format
+#| msgid "Pick Saved Game to Save To"
+msgctxt "@title:window"
+msgid "Pick Saved Game to Save To"
+msgstr "ゲームを保存するファイルを選択"
+
+#: kolf.cpp:606
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Saved Game"
+msgctxt "@title:window"
+msgid "Pick Kolf Saved Game"
+msgstr "ゲームファイルを選択"
+
+#: kolf.cpp:654
+#, kde-format
+msgid "%1's turn"
+msgstr "%1 のショット"
+
+#: kolf.cpp:726
+#, kde-format
+msgid "%1's score has reached the maximum for this hole."
+msgstr "%1 のスコアがこのホールの最大ストローク数を超えました。"
+
+#. i18n: ectx: Menu (hole)
+#: kolfui.rc:17
+#, kde-format
+msgid "Ho&le"
+msgstr "ホール(&L)"
+
+#. i18n: ectx: Menu (go_course)
+#: kolfui.rc:31
+#, kde-format
+msgid "&Go"
+msgstr "移動(&G)"
+
+#: landscape.cpp:146
+#, kde-format
+msgid "Enable show/hide"
+msgstr "点滅させる"
+
+#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
+#, kde-format
+msgid "Slow"
+msgstr "遅い"
+
+#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
+#, kde-format
+msgid "Fast"
+msgstr "速い"
+
+#: landscape.cpp:238
+#, kde-format
+msgid "Vertical"
+msgstr "垂直"
+
+#: landscape.cpp:239
+#, kde-format
+msgid "Horizontal"
+msgstr "水平"
+
+#: landscape.cpp:240
+#, kde-format
+msgid "Diagonal"
+msgstr "対角"
+
+#: landscape.cpp:241
+#, kde-format
+msgid "Opposite Diagonal"
+msgstr "逆対角"
+
+#: landscape.cpp:242
+#, kde-format
+msgid "Elliptic"
+msgstr ""
+
+#: landscape.cpp:571
+#, kde-format
+msgid "Reverse direction"
+msgstr "逆方向"
+
+#: landscape.cpp:576
+#, kde-format
+msgid "Unmovable"
+msgstr "移動不可"
+
+#: landscape.cpp:578
+#, kde-format
+msgid "Whether or not this slope can be moved by other objects, like floaters."
+msgstr "フローターのような他のオブジェクトがこの斜面を動かせるかどうか"
+
+#: landscape.cpp:582
+#, kde-format
+msgid "Grade:"
+msgstr "グレード:"
+
+#: main.cpp:49
+#, kde-format
+msgid "Kolf"
+msgstr "Kolf"
+
+#: main.cpp:51
+#, kde-format
+msgid "KDE Minigolf Game"
+msgstr "KDE ミニチュアゴルフ"
+
+#: main.cpp:53
+#, kde-format
+msgid "(c) 2002-2010, Kolf developers"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Stefan Majewsky"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Current maintainer"
+msgstr ""
+
+#: main.cpp:57
+#, kde-format
+msgid "Jason Katz-Brown"
+msgstr "Jason Katz-Brown"
+
+#: main.cpp:57
+#, fuzzy, kde-format
+#| msgid "Main author"
+msgid "Former main author"
+msgstr "メインの作者"
+
+#: main.cpp:58
+#, kde-format
+msgid "Niklas Knutsson"
+msgstr "Niklas Knutsson"
+
+#: main.cpp:58
+#, kde-format
+msgid "Advanced putting mode"
+msgstr "上級者用のパットモード"
+
+#: main.cpp:59
+#, kde-format
+msgid "Rik Hemsley"
+msgstr "Rik Hemsley"
+
+#: main.cpp:59
+#, kde-format
+msgid "Border around course"
+msgstr "コースのボーダー"
+
+#: main.cpp:60
+#, kde-format
+msgid "Timo A. Hummel"
+msgstr "Timo A. Hummel"
+
+#: main.cpp:60
+#, kde-format
+msgid "Some good sound effects"
+msgstr "効果音"
+
+#: main.cpp:62
+#, kde-format
+msgid "Rob Renaud"
+msgstr "Rob Renaud"
+
+#: main.cpp:62
+#, kde-format
+msgid "Wall-bouncing help"
+msgstr "壁のバウンドの手伝い"
+
+#: main.cpp:63
+#, kde-format
+msgid "Aaron Seigo"
+msgstr "Aaron Seigo"
+
+#: main.cpp:63
+#, kde-format
+msgid "Suggestions, bug reports"
+msgstr "提案、バグレポート"
+
+#: main.cpp:64
+#, kde-format
+msgid "Erin Catto"
+msgstr ""
+
+#: main.cpp:64
+#, kde-format
+msgid "Developer of Box2D physics engine"
+msgstr ""
+
+#: main.cpp:65
+#, kde-format
+msgid "Ryan Cumming"
+msgstr "Ryan Cumming"
+
+#: main.cpp:65
+#, fuzzy, kde-format
+#| msgid "Vector class"
+msgid "Vector class (Kolf 1)"
+msgstr "ベクトルのクラス"
+
+#: main.cpp:66
+#, kde-format
+msgid "Daniel Matza-Brown"
+msgstr "Daniel Matza-Brown"
+
+#: main.cpp:66
+#, fuzzy, kde-format
+#| msgid "Working wall-bouncing algorithm"
+msgid "Working wall-bouncing algorithm (Kolf 1)"
+msgstr "壁のバウンドのアルゴリズム"
+
+#: main.cpp:71
+#, kde-format
+msgid "File"
+msgstr "ファイル"
+
+#: main.cpp:72
+#, kde-format
+msgid "Print course information and exit"
+msgstr "コース情報を表示して終了する"
+
+#: main.cpp:89 newgame.cpp:240
+#, kde-format
+msgid "By %1"
+msgstr "%1 作"
+
+#: main.cpp:90
+#, kde-format
+msgid "%1 holes"
+msgstr "%1 ホール"
+
+#: main.cpp:91
+#, kde-format
+msgid "par %1"
+msgstr "パー %1"
+
+#: main.cpp:98
+#, kde-format
+msgid "Course %1 does not exist."
+msgstr "%1 というコースはありません。"
+
+#: newgame.cpp:38
+#, fuzzy, kde-format
+#| msgid "New Game"
+msgctxt "@title:window"
+msgid "New Game"
+msgstr "新しいゲーム"
+
+#: newgame.cpp:54
+#, kde-format
+msgid "Players"
+msgstr "プレイヤー"
+
+#: newgame.cpp:58
+#, kde-format
+msgid "&New Player"
+msgstr "プレイヤーを追加(&N)"
+
+#: newgame.cpp:93
+#, kde-format
+msgid "Course"
+msgstr "コース"
+
+# 設定パネルの左に表示される項目
+#: newgame.cpp:94
+#, kde-format
+msgid "Choose Course to Play"
+msgstr "コース"
+
+#: newgame.cpp:133
+#, kde-format
+msgid "Create New"
+msgstr "新しいコースを作成"
+
+#: newgame.cpp:134
+#, kde-format
+msgid "You"
+msgstr "あなた"
+
+#: newgame.cpp:160
+#, kde-format
+msgid "Highscores"
+msgstr "ハイスコア"
+
+#: newgame.cpp:170
+#, kde-format
+msgid "Add..."
+msgstr "追加..."
+
+#: newgame.cpp:174 newgame.cpp:363
+#, kde-format
+msgid "Remove"
+msgstr "削除"
+
+#: newgame.cpp:184
+#, kde-format
+msgid "Options"
+msgstr "オプション"
+
+# 設定パネルの左に表示される項目
+#: newgame.cpp:185
+#, kde-format
+msgid "Game Options"
+msgstr "オプション"
+
+#: newgame.cpp:190
+#, kde-format
+msgid "&Strict mode"
+msgstr "厳しいモード(&S)"
+
+#: newgame.cpp:194
+#, kde-format
+msgid ""
+"In strict mode, undo, editing, and switching holes is not allowed. This is "
+"generally for competition. Only in strict mode are highscores kept."
+msgstr ""
+"厳しいモードでは、元に戻すことや編集、ホールの変更が許されません。一般には競"
+"技用です。ハイスコアは厳しいモードでのみ記録されます。"
+
+#: newgame.cpp:241
+#, kde-format
+msgid "Par %1"
+msgstr "パー %1"
+
+#: newgame.cpp:242
+#, kde-format
+msgid "%1 Holes"
+msgstr "%1 ホール"
+
+#: newgame.cpp:280
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course"
+msgctxt "@title:window"
+msgid "Pick Kolf Course"
+msgstr "コースを選択"
+
+#: newgame.cpp:308
+#, kde-format
+msgid "Chosen course is already on course list."
+msgstr "選択されたコースは既にリストにあります。"
+
+#: newgame.cpp:321
+#, kde-format
+msgid "Player %1"
+msgstr "プレイヤー %1"
+
+#: objects.cpp:244
+#, kde-format
+msgid " degree"
+msgid_plural " degrees"
+msgstr[0] " 度"
+msgstr[1] " 度"
+
+#: objects.cpp:247
+#, kde-format
+msgid "Exiting ball angle:"
+msgstr "ボールが出る角度:"
+
+#: objects.cpp:267
+#, kde-format
+msgid "Minimum exit speed:"
+msgstr "出る最低速度:"
+
+#: objects.cpp:288
+#, fuzzy, kde-format
+#| msgid "Minimum exit speed:"
+msgid "Maximum exit speed:"
+msgstr "出る最低速度:"
+
+#: obstacles.cpp:412
+msgid "&Top"
+msgstr "上(&T)"
+
+#: obstacles.cpp:412
+msgid "&Left"
+msgstr "左(&L)"
+
+#: obstacles.cpp:412
+msgid "&Right"
+msgstr "右(&R)"
+
+#: obstacles.cpp:412
+msgid "&Bottom"
+msgstr "下(&B)"
+
+#: obstacles.cpp:421
+#, kde-format
+msgid "Walls on:"
+msgstr "壁:"
+
+#: obstacles.cpp:431
+#, kde-format
+msgid "Sign HTML:"
+msgstr "標識の HTML:"
+
+#: obstacles.cpp:440
+#, fuzzy, kde-format
+#| msgid "Windmill on bottom"
+msgid "Windmill on top"
+msgstr "下に風車"
+
+#: obstacles.cpp:461
+#, kde-format
+msgid "Moving speed"
+msgstr "速度"
+
+#: obstacles.cpp:681
+#, kde-format
+msgid "New Text"
+msgstr "新しいテキスト"
+
+#: scoreboard.cpp:28
+#, kde-format
+msgid "Total"
+msgstr "合計"

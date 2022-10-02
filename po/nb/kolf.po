@@ -1,0 +1,779 @@
+# Translation of kolf to Norwegian Bokmål
+#
+# Nils Kristian Tomren <slx@nilsk.net>, 2005.
+# Øyvind A. Holm <sunny@sunbase.org>, 2005.
+# Bjørn Steensrud <bjornst@skogkatt.homelinux.org>, 2009, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: kolf\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2010-11-15 14:03+0100\n"
+"Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
+"Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Environment: kde\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Knut Yrvin,Gunnhild Lurås,Nils Kristian Tomren"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "knut.yrvin@gmail.com,gluras@c2i.net,slx@nilsk.net"
+
+#: config.cpp:51
+#, kde-format
+msgid "No configuration options"
+msgstr "Ingen innstillinger"
+
+#: editor.cpp:37
+#, kde-format
+msgid "Add object:"
+msgstr "Legg til objekt:"
+
+#: game.cpp:261
+#, kde-format
+msgid "Course name: "
+msgstr "Rundenavn:"
+
+#: game.cpp:268
+#, kde-format
+msgid "Course author: "
+msgstr "Rundeforfatter:"
+
+#: game.cpp:277
+#, kde-format
+msgid "Par:"
+msgstr "Par:"
+
+#: game.cpp:287
+#, kde-format
+msgid "Maximum:"
+msgstr "Maksimum:"
+
+#: game.cpp:291
+#, kde-format
+msgid "Maximum number of strokes player can take on this hole."
+msgstr "Største antall salg en spiller kan slå på dette hullet."
+
+#: game.cpp:292
+#, kde-format
+msgid "Maximum number of strokes"
+msgstr "Største antall slag"
+
+#: game.cpp:293
+#, kde-format
+msgid "Unlimited"
+msgstr "Ubegrenset"
+
+#: game.cpp:299
+#, kde-format
+msgid "Show border walls"
+msgstr "Vis kantvegger"
+
+#: game.cpp:497 game.cpp:2439
+#, kde-format
+msgid "Course Author"
+msgstr "Rundeforfatter"
+
+#: game.cpp:498 game.cpp:499 game.cpp:2439
+#, kde-format
+msgid "Course Name"
+msgstr "Rundenavn"
+
+#: game.cpp:1421
+#, kde-format
+msgid "Drop Outside of Hazard"
+msgstr "Slipp utenfor hindringer"
+
+#: game.cpp:1422
+#, kde-format
+msgid "Rehit From Last Location"
+msgstr "Nytt slag fra siste plassering"
+
+#: game.cpp:1424
+#, kde-format
+msgid "What would you like to do for your next shot?"
+msgstr "Hva vil du gjøre på ditt neste slag?"
+
+#: game.cpp:1424
+#, kde-format
+msgid "%1 is in a Hazard"
+msgstr "%1 er i en hindring"
+
+#: game.cpp:1592
+#, kde-format
+msgid "%1 will start off."
+msgstr "%1 starter."
+
+#: game.cpp:1592
+#, kde-format
+msgid "New Hole"
+msgstr "Nytt hull"
+
+#: game.cpp:1753
+#, kde-format
+msgid "Course name: %1"
+msgstr "Rundenavn: %1"
+
+#: game.cpp:1754
+#, kde-format
+msgid "Created by %1"
+msgstr "Laget av %1"
+
+#: game.cpp:1755
+#, kde-format
+msgid "%1 hole"
+msgid_plural "%1 holes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: game.cpp:1756
+#, kde-format
+msgctxt "@title:window"
+msgid "Course Information"
+msgstr ""
+
+#: game.cpp:1887
+#, kde-format
+msgid "This hole uses the following plugins, which you do not have installed:"
+msgstr "Dette hullet bruker følgende uinstallerte programtillegg:"
+
+#: game.cpp:1999
+#, kde-format
+msgid "There are unsaved changes to current hole. Save them?"
+msgstr "Endringene på dette hullet er ikke lagret. Vil du lagre?"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Unsaved Changes"
+msgstr "Endringer som ikke er lagret"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Save &Later"
+msgstr "&Lagre senere"
+
+#: game.cpp:2170 kolf.cpp:550
+#, kde-format
+msgctxt "@title:window"
+msgid "Pick Kolf Course to Save To"
+msgstr ""
+
+#: kcomboboxdialog.cpp:60
+#, kde-format
+msgid "&Do not ask again"
+msgstr "&Ikke spør igjen"
+
+#: kolf.cpp:62
+#, kde-format
+msgid "Slope"
+msgstr "Helling"
+
+#: kolf.cpp:63
+#, kde-format
+msgid "Puddle"
+msgstr "Pytt"
+
+#: kolf.cpp:64
+#, kde-format
+msgid "Wall"
+msgstr "Vegg"
+
+#: kolf.cpp:65
+#, kde-format
+msgid "Cup"
+msgstr "Kopp"
+
+#: kolf.cpp:66
+#, kde-format
+msgid "Sand"
+msgstr "Sand"
+
+#: kolf.cpp:67
+#, kde-format
+msgid "Windmill"
+msgstr "Vindmølle"
+
+#: kolf.cpp:68
+#, kde-format
+msgid "Black Hole"
+msgstr "Svart hull"
+
+#: kolf.cpp:69
+#, kde-format
+msgid "Floater"
+msgstr "Flyter"
+
+#: kolf.cpp:70
+#, kde-format
+msgid "Bridge"
+msgstr "Bro"
+
+#: kolf.cpp:71
+#, kde-format
+msgid "Sign"
+msgstr "Skilt"
+
+#: kolf.cpp:72
+#, kde-format
+msgid "Bumper"
+msgstr "Sprettkant"
+
+#: kolf.cpp:95
+#, kde-format
+msgid "Save &Course"
+msgstr "Lagre &runde"
+
+#: kolf.cpp:97
+#, kde-format
+msgid "Save &Course As..."
+msgstr "Lagre runde &som …"
+
+#: kolf.cpp:100
+#, kde-format
+msgid "&Save Game"
+msgstr "&Lagre spill"
+
+#: kolf.cpp:103
+#, kde-format
+msgid "&Save Game As..."
+msgstr "Lagre spill &som …"
+
+#: kolf.cpp:110
+#, kde-format
+msgid "&Edit"
+msgstr "&Rediger"
+
+#: kolf.cpp:116
+#, kde-format
+msgid "&New"
+msgstr "&Ny"
+
+#: kolf.cpp:125
+#, kde-format
+msgid "&Reset"
+msgstr "Til&bakestill"
+
+#: kolf.cpp:130
+#, kde-format
+msgid "&Undo Shot"
+msgstr "&Angre slag"
+
+#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. Go
+#: kolf.cpp:134
+#, kde-format
+msgid "Switch to Hole"
+msgstr "Hopp til hull"
+
+#: kolf.cpp:139
+#, kde-format
+msgid "&Next Hole"
+msgstr "N&este hull"
+
+#: kolf.cpp:144
+#, kde-format
+msgid "&Previous Hole"
+msgstr "F&orrige hull"
+
+#: kolf.cpp:149
+#, kde-format
+msgid "&First Hole"
+msgstr "&Første hull"
+
+#: kolf.cpp:153
+#, kde-format
+msgid "&Last Hole"
+msgstr "&Siste hull"
+
+#: kolf.cpp:158
+#, kde-format
+msgid "&Random Hole"
+msgstr "&Vilkårlig hull"
+
+#: kolf.cpp:162
+#, kde-format
+msgid "Enable &Mouse for Moving Putter"
+msgstr "Slå på styring av slaget med &musa"
+
+#: kolf.cpp:169
+#, kde-format
+msgid "Enable &Advanced Putting"
+msgstr "Slå på &avansert putting"
+
+#: kolf.cpp:175
+#, kde-format
+msgid "Show &Info"
+msgstr "V&is info"
+
+#: kolf.cpp:182
+#, kde-format
+msgid "Show Putter &Guideline"
+msgstr "Vis &hjelpelinjer for putting"
+
+#: kolf.cpp:188
+#, kde-format
+msgid "Enable All Dialog Boxes"
+msgstr "Slå på alle meldingsvinduer"
+
+#: kolf.cpp:192
+#, kde-format
+msgid "Play &Sounds"
+msgstr "Spill &lyder"
+
+#: kolf.cpp:199
+#, kde-format
+msgid "&About Course..."
+msgstr ""
+
+#: kolf.cpp:202
+#, kde-format
+msgid "&Tutorial"
+msgstr "&Øvelse"
+
+#: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
+#, kde-format
+msgid "Par"
+msgstr "Par"
+
+#: kolf.cpp:483
+#, kde-format
+msgid " and "
+msgstr " og"
+
+#: kolf.cpp:484
+#, kde-format
+msgid "%1 tied"
+msgstr "%1 uavgjort"
+
+#: kolf.cpp:487
+#, kde-format
+msgid "%1 won!"
+msgstr "%1 vunnet!"
+
+#: kolf.cpp:501 kolf.cpp:513 kolf.cpp:528 kolf.cpp:529 newgame.cpp:249
+#: newgame.cpp:250
+#, kde-format
+msgid "High Scores for %1"
+msgstr "Resultater for %1"
+
+#: kolf.cpp:568
+#, kde-format
+msgctxt "@title:window"
+msgid "Pick Saved Game to Save To"
+msgstr ""
+
+#: kolf.cpp:606
+#, kde-format
+msgctxt "@title:window"
+msgid "Pick Kolf Saved Game"
+msgstr ""
+
+#: kolf.cpp:654
+#, kde-format
+msgid "%1's turn"
+msgstr "%1 sin tur"
+
+#: kolf.cpp:726
+#, kde-format
+msgid "%1's score has reached the maximum for this hole."
+msgstr "%1 har nådd maksimum for dette hullet."
+
+#. i18n: ectx: Menu (hole)
+#: kolfui.rc:17
+#, kde-format
+msgid "Ho&le"
+msgstr "H&ull"
+
+#. i18n: ectx: Menu (go_course)
+#: kolfui.rc:31
+#, kde-format
+msgid "&Go"
+msgstr "&Gå"
+
+#: landscape.cpp:146
+#, kde-format
+msgid "Enable show/hide"
+msgstr "Slå på vis/skjul"
+
+#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
+#, kde-format
+msgid "Slow"
+msgstr "Langsom"
+
+#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
+#, kde-format
+msgid "Fast"
+msgstr "Rask"
+
+#: landscape.cpp:238
+#, kde-format
+msgid "Vertical"
+msgstr "Loddrett"
+
+#: landscape.cpp:239
+#, kde-format
+msgid "Horizontal"
+msgstr "Vannrett"
+
+#: landscape.cpp:240
+#, kde-format
+msgid "Diagonal"
+msgstr "Skrå"
+
+#: landscape.cpp:241
+#, kde-format
+msgid "Opposite Diagonal"
+msgstr "Motsatt diagonal"
+
+#: landscape.cpp:242
+#, kde-format
+msgid "Elliptic"
+msgstr "Elliptisk"
+
+#: landscape.cpp:571
+#, kde-format
+msgid "Reverse direction"
+msgstr "Omvendt retning"
+
+#: landscape.cpp:576
+#, kde-format
+msgid "Unmovable"
+msgstr "Kan ikke flyttes"
+
+#: landscape.cpp:578
+#, kde-format
+msgid "Whether or not this slope can be moved by other objects, like floaters."
+msgstr ""
+"Velg om denne skråningen kan flyttes av andre objekt, som for eksempel "
+"plattformer."
+
+#: landscape.cpp:582
+#, kde-format
+msgid "Grade:"
+msgstr "Nivå:"
+
+#: main.cpp:49
+#, kde-format
+msgid "Kolf"
+msgstr "Kolf"
+
+#: main.cpp:51
+#, kde-format
+msgid "KDE Minigolf Game"
+msgstr "KDE Minigolf"
+
+#: main.cpp:53
+#, kde-format
+msgid "(c) 2002-2010, Kolf developers"
+msgstr "© 2002–2010 Kolf-utviklerne"
+
+#: main.cpp:56
+#, kde-format
+msgid "Stefan Majewsky"
+msgstr "Stefan Majewsky"
+
+#: main.cpp:56
+#, kde-format
+msgid "Current maintainer"
+msgstr "Nåværende vedlikeholder"
+
+#: main.cpp:57
+#, kde-format
+msgid "Jason Katz-Brown"
+msgstr "Jason Katz-Brown"
+
+#: main.cpp:57
+#, kde-format
+msgid "Former main author"
+msgstr "Tidligere hovedutvikler"
+
+#: main.cpp:58
+#, kde-format
+msgid "Niklas Knutsson"
+msgstr "Niklas Knutsson"
+
+#: main.cpp:58
+#, kde-format
+msgid "Advanced putting mode"
+msgstr "Avansert putte-modus"
+
+#: main.cpp:59
+#, kde-format
+msgid "Rik Hemsley"
+msgstr "Rik Hemsley"
+
+#: main.cpp:59
+#, kde-format
+msgid "Border around course"
+msgstr "Ramme rundt banen"
+
+#: main.cpp:60
+#, kde-format
+msgid "Timo A. Hummel"
+msgstr "Timo A. Hummel"
+
+#: main.cpp:60
+#, kde-format
+msgid "Some good sound effects"
+msgstr "Noen gode lydeffekter"
+
+#: main.cpp:62
+#, kde-format
+msgid "Rob Renaud"
+msgstr "Rob Renaud"
+
+#: main.cpp:62
+#, kde-format
+msgid "Wall-bouncing help"
+msgstr "Hjelp med veggsprett"
+
+#: main.cpp:63
+#, kde-format
+msgid "Aaron Seigo"
+msgstr "Aaron Seigo"
+
+#: main.cpp:63
+#, kde-format
+msgid "Suggestions, bug reports"
+msgstr "Forslag og feilmeldinger"
+
+#: main.cpp:64
+#, kde-format
+msgid "Erin Catto"
+msgstr "Erin Catto"
+
+#: main.cpp:64
+#, kde-format
+msgid "Developer of Box2D physics engine"
+msgstr "Utvikler Box2D fysikkmotor"
+
+#: main.cpp:65
+#, kde-format
+msgid "Ryan Cumming"
+msgstr "Ryan Cumming"
+
+#: main.cpp:65
+#, kde-format
+msgid "Vector class (Kolf 1)"
+msgstr "Vektorklasse (Kolf 1)"
+
+#: main.cpp:66
+#, kde-format
+msgid "Daniel Matza-Brown"
+msgstr "Daniel Matza-Brown"
+
+#: main.cpp:66
+#, kde-format
+msgid "Working wall-bouncing algorithm (Kolf 1)"
+msgstr "Fungerende algoritme for veggsprett (Kolf 1)"
+
+#: main.cpp:71
+#, kde-format
+msgid "File"
+msgstr "Fil"
+
+#: main.cpp:72
+#, kde-format
+msgid "Print course information and exit"
+msgstr "Skriv ut baneinformasjon og avslutt."
+
+#: main.cpp:89 newgame.cpp:240
+#, kde-format
+msgid "By %1"
+msgstr "Av %1"
+
+#: main.cpp:90
+#, kde-format
+msgid "%1 holes"
+msgstr "%1 hull"
+
+#: main.cpp:91
+#, kde-format
+msgid "par %1"
+msgstr "par %1"
+
+#: main.cpp:98
+#, kde-format
+msgid "Course %1 does not exist."
+msgstr ""
+
+#: newgame.cpp:38
+#, kde-format
+msgctxt "@title:window"
+msgid "New Game"
+msgstr ""
+
+#: newgame.cpp:54
+#, kde-format
+msgid "Players"
+msgstr "Spillere"
+
+#: newgame.cpp:58
+#, kde-format
+msgid "&New Player"
+msgstr "&Ny spiller"
+
+#: newgame.cpp:93
+#, kde-format
+msgid "Course"
+msgstr "Runde"
+
+#: newgame.cpp:94
+#, kde-format
+msgid "Choose Course to Play"
+msgstr "Velg runde å spille"
+
+#: newgame.cpp:133
+#, kde-format
+msgid "Create New"
+msgstr "Lag ny"
+
+#: newgame.cpp:134
+#, kde-format
+msgid "You"
+msgstr "Du"
+
+#: newgame.cpp:160
+#, kde-format
+msgid "Highscores"
+msgstr "Resultatliste"
+
+#: newgame.cpp:170
+#, kde-format
+msgid "Add..."
+msgstr "Legg til …"
+
+#: newgame.cpp:174 newgame.cpp:363
+#, kde-format
+msgid "Remove"
+msgstr "Fjern"
+
+#: newgame.cpp:184
+#, kde-format
+msgid "Options"
+msgstr "Valg"
+
+#: newgame.cpp:185
+#, kde-format
+msgid "Game Options"
+msgstr "Spillinnstillinger"
+
+#: newgame.cpp:190
+#, kde-format
+msgid "&Strict mode"
+msgstr "&Streng modus"
+
+#: newgame.cpp:194
+#, kde-format
+msgid ""
+"In strict mode, undo, editing, and switching holes is not allowed. This is "
+"generally for competition. Only in strict mode are highscores kept."
+msgstr ""
+"I streng modus er det ikke lov å angre, endre eller hoppe fra hull til hull. "
+"Dette er for konkurransen. Bare i streng modus blir resultatene beholdt."
+
+#: newgame.cpp:241
+#, kde-format
+msgid "Par %1"
+msgstr "Par %1"
+
+#: newgame.cpp:242
+#, kde-format
+msgid "%1 Holes"
+msgstr "%1 hull"
+
+#: newgame.cpp:280
+#, kde-format
+msgctxt "@title:window"
+msgid "Pick Kolf Course"
+msgstr ""
+
+#: newgame.cpp:308
+#, kde-format
+msgid "Chosen course is already on course list."
+msgstr "Den valgte runden er allerede på rundelista."
+
+#: newgame.cpp:321
+#, kde-format
+msgid "Player %1"
+msgstr "Spiller %1"
+
+#: objects.cpp:244
+#, kde-format
+msgid " degree"
+msgid_plural " degrees"
+msgstr[0] " grad"
+msgstr[1] " grader"
+
+#: objects.cpp:247
+#, kde-format
+msgid "Exiting ball angle:"
+msgstr "Utgangsvinkel på ballen:"
+
+#: objects.cpp:267
+#, kde-format
+msgid "Minimum exit speed:"
+msgstr "Minimum utgangshastighet:"
+
+#: objects.cpp:288
+#, kde-format
+msgid "Maximum exit speed:"
+msgstr "Største utgangshastighet:"
+
+#: obstacles.cpp:412
+msgid "&Top"
+msgstr "&Øverst"
+
+#: obstacles.cpp:412
+msgid "&Left"
+msgstr "&Venstre"
+
+#: obstacles.cpp:412
+msgid "&Right"
+msgstr "&Høyre"
+
+#: obstacles.cpp:412
+msgid "&Bottom"
+msgstr "&Nederst"
+
+#: obstacles.cpp:421
+#, kde-format
+msgid "Walls on:"
+msgstr "Vegger på:"
+
+#: obstacles.cpp:431
+#, kde-format
+msgid "Sign HTML:"
+msgstr "Skilt-HTML:"
+
+#: obstacles.cpp:440
+#, kde-format
+msgid "Windmill on top"
+msgstr "Vindmølle øversttttt"
+
+#: obstacles.cpp:461
+#, kde-format
+msgid "Moving speed"
+msgstr "Flyttehastighet"
+
+#: obstacles.cpp:681
+#, kde-format
+msgid "New Text"
+msgstr "Ny tekst"
+
+#: scoreboard.cpp:28
+#, kde-format
+msgid "Total"
+msgstr "Totalt"

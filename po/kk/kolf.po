@@ -1,0 +1,779 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Sairan Kikkarin <sairan@computer.org>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2012-04-19 04:24+0600\n"
+"Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
+"Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.2\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Сайран Киккарин"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "sairan@computer.org"
+
+#: config.cpp:51
+#, kde-format
+msgid "No configuration options"
+msgstr "Баптайтын параметрлері жоқ"
+
+#: editor.cpp:37
+#, kde-format
+msgid "Add object:"
+msgstr "Нысанды қосу:"
+
+#: game.cpp:261
+#, kde-format
+msgid "Course name: "
+msgstr "Алаң атауы:"
+
+#: game.cpp:268
+#, kde-format
+msgid "Course author: "
+msgstr "Оның авторы:"
+
+#: game.cpp:277
+#, kde-format
+msgid "Par:"
+msgstr "Неше рет соғу:"
+
+#: game.cpp:287
+#, kde-format
+msgid "Maximum:"
+msgstr "Максимум:"
+
+#: game.cpp:291
+#, kde-format
+msgid "Maximum number of strokes player can take on this hole."
+msgstr "Осы шұңқырға тігізу үшін ең көп неше рет соғу рұқсат етіледі."
+
+#: game.cpp:292
+#, kde-format
+msgid "Maximum number of strokes"
+msgstr "Соғу санның шегі"
+
+#: game.cpp:293
+#, kde-format
+msgid "Unlimited"
+msgstr "Шектелмеген"
+
+#: game.cpp:299
+#, kde-format
+msgid "Show border walls"
+msgstr "Шек қабырғаларды көрсету"
+
+#: game.cpp:497 game.cpp:2439
+#, kde-format
+msgid "Course Author"
+msgstr "Алаңның авторы"
+
+#: game.cpp:498 game.cpp:499 game.cpp:2439
+#, kde-format
+msgid "Course Name"
+msgstr "Алаңның атауы"
+
+#: game.cpp:1421
+#, kde-format
+msgid "Drop Outside of Hazard"
+msgstr "Қауіпті аймақтан тыс тастау"
+
+#: game.cpp:1422
+#, kde-format
+msgid "Rehit From Last Location"
+msgstr "Соңғы орыннан қайта соғу"
+
+#: game.cpp:1424
+#, kde-format
+msgid "What would you like to do for your next shot?"
+msgstr "Енді қай жерден соқпақсыз?"
+
+#: game.cpp:1424
+#, kde-format
+msgid "%1 is in a Hazard"
+msgstr "%1 қауіпті аймақта"
+
+#: game.cpp:1592
+#, kde-format
+msgid "%1 will start off."
+msgstr "%1 бастайды."
+
+#: game.cpp:1592
+#, kde-format
+msgid "New Hole"
+msgstr "Жаңа шұңқыр"
+
+#: game.cpp:1753
+#, kde-format
+msgid "Course name: %1"
+msgstr "Алаңның атауы: %1"
+
+#: game.cpp:1754
+#, kde-format
+msgid "Created by %1"
+msgstr "%1 жасаған"
+
+#: game.cpp:1755
+#, fuzzy, kde-format
+#| msgid "%1 holes"
+msgid "%1 hole"
+msgid_plural "%1 holes"
+msgstr[0] "%1 шұңқыр"
+
+#: game.cpp:1756
+#, fuzzy, kde-format
+#| msgid "Course Information"
+msgctxt "@title:window"
+msgid "Course Information"
+msgstr "Алаң мәліметі"
+
+#: game.cpp:1887
+#, kde-format
+msgid "This hole uses the following plugins, which you do not have installed:"
+msgstr "Бұл шұңқыр келесі орнатылмаған плагиндерді қолданады:"
+
+#: game.cpp:1999
+#, kde-format
+msgid "There are unsaved changes to current hole. Save them?"
+msgstr "Назардағы шұңқырдың сақталмаған өзгерістері бар. Сақталсын ба?"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Unsaved Changes"
+msgstr "Сақталмаған өзгерістер"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Save &Later"
+msgstr "К&ейін сақтау"
+
+#: game.cpp:2170 kolf.cpp:550
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course to Save To"
+msgctxt "@title:window"
+msgid "Pick Kolf Course to Save To"
+msgstr "Сақтау үшін Kolf алаңын таңдау"
+
+#: kcomboboxdialog.cpp:60
+#, kde-format
+msgid "&Do not ask again"
+msgstr "&Ендігәрі сұралмасын"
+
+#: kolf.cpp:62
+#, kde-format
+msgid "Slope"
+msgstr "Ылди"
+
+#: kolf.cpp:63
+#, kde-format
+msgid "Puddle"
+msgstr "Қақ"
+
+#: kolf.cpp:64
+#, kde-format
+msgid "Wall"
+msgstr "Қабырға"
+
+#: kolf.cpp:65
+#, kde-format
+msgid "Cup"
+msgstr "Ойлы жер"
+
+#: kolf.cpp:66
+#, kde-format
+msgid "Sand"
+msgstr "Құм"
+
+#: kolf.cpp:67
+#, kde-format
+msgid "Windmill"
+msgstr "Жел диірмені"
+
+#: kolf.cpp:68
+#, kde-format
+msgid "Black Hole"
+msgstr "Қара шұңқыр"
+
+#: kolf.cpp:69
+#, kde-format
+msgid "Floater"
+msgstr "Жылжытқыш"
+
+#: kolf.cpp:70
+#, kde-format
+msgid "Bridge"
+msgstr "Көпір"
+
+#: kolf.cpp:71
+#, kde-format
+msgid "Sign"
+msgstr "Белгі"
+
+#: kolf.cpp:72
+#, kde-format
+msgid "Bumper"
+msgstr "Қаққыш"
+
+#: kolf.cpp:95
+#, kde-format
+msgid "Save &Course"
+msgstr "&Алаңды сақтау"
+
+#: kolf.cpp:97
+#, kde-format
+msgid "Save &Course As..."
+msgstr "Алаңды &былай сақтау..."
+
+#: kolf.cpp:100
+#, kde-format
+msgid "&Save Game"
+msgstr "&Ойынды сақтау"
+
+#: kolf.cpp:103
+#, kde-format
+msgid "&Save Game As..."
+msgstr "&Ойынды былай сақтау..."
+
+#: kolf.cpp:110
+#, kde-format
+msgid "&Edit"
+msgstr "&Өңдеу"
+
+#: kolf.cpp:116
+#, kde-format
+msgid "&New"
+msgstr "&Жаңа"
+
+#: kolf.cpp:125
+#, kde-format
+msgid "&Reset"
+msgstr "&Ысыру"
+
+#: kolf.cpp:130
+#, kde-format
+msgid "&Undo Shot"
+msgstr "Соғудан &қайту"
+
+#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. Go
+#: kolf.cpp:134
+#, kde-format
+msgid "Switch to Hole"
+msgstr "Шұңқырды ауыстыру"
+
+#: kolf.cpp:139
+#, kde-format
+msgid "&Next Hole"
+msgstr "К&елесі шұңқыр"
+
+#: kolf.cpp:144
+#, kde-format
+msgid "&Previous Hole"
+msgstr "&Алдыңғы шұңқыр"
+
+#: kolf.cpp:149
+#, kde-format
+msgid "&First Hole"
+msgstr "&Алғашқы шұңқыр"
+
+#: kolf.cpp:153
+#, kde-format
+msgid "&Last Hole"
+msgstr "&Соңғы шұңқыр"
+
+#: kolf.cpp:158
+#, kde-format
+msgid "&Random Hole"
+msgstr "Ке&здейсоқ шұңқыр"
+
+#: kolf.cpp:162
+#, kde-format
+msgid "Enable &Mouse for Moving Putter"
+msgstr "&Тышқанмен басқаруы болсын"
+
+#: kolf.cpp:169
+#, kde-format
+msgid "Enable &Advanced Putting"
+msgstr "Күрделі соғуы болсын"
+
+#: kolf.cpp:175
+#, kde-format
+msgid "Show &Info"
+msgstr "&Ақпарын көрсету"
+
+#: kolf.cpp:182
+#, kde-format
+msgid "Show Putter &Guideline"
+msgstr "Соғу &бағыты көрсетілсін"
+
+#: kolf.cpp:188
+#, kde-format
+msgid "Enable All Dialog Boxes"
+msgstr "Бүкіл диалогтар  болсын"
+
+#: kolf.cpp:192
+#, kde-format
+msgid "Play &Sounds"
+msgstr "&Дыбыспен ойнау"
+
+#: kolf.cpp:199
+#, fuzzy, kde-format
+#| msgid "&About Course"
+msgid "&About Course..."
+msgstr "Алаң &туралы"
+
+#: kolf.cpp:202
+#, kde-format
+msgid "&Tutorial"
+msgstr "&Үйрену"
+
+#: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
+#, kde-format
+msgid "Par"
+msgstr "Соғу"
+
+#: kolf.cpp:483
+#, kde-format
+msgid " and "
+msgstr " және "
+
+#: kolf.cpp:484
+#, kde-format
+msgid "%1 tied"
+msgstr "%1 жеңілді"
+
+#: kolf.cpp:487
+#, kde-format
+msgid "%1 won!"
+msgstr "%1 жеңді!"
+
+#: kolf.cpp:501 kolf.cpp:513 kolf.cpp:528 kolf.cpp:529 newgame.cpp:249
+#: newgame.cpp:250
+#, kde-format
+msgid "High Scores for %1"
+msgstr "%1 жетістіктері"
+
+#: kolf.cpp:568
+#, fuzzy, kde-format
+#| msgid "Pick Saved Game to Save To"
+msgctxt "@title:window"
+msgid "Pick Saved Game to Save To"
+msgstr "Сақтайтын ойынды таңдау"
+
+#: kolf.cpp:606
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Saved Game"
+msgctxt "@title:window"
+msgid "Pick Kolf Saved Game"
+msgstr "Сақталған Kolf ойының таңдау"
+
+#: kolf.cpp:654
+#, kde-format
+msgid "%1's turn"
+msgstr "%1 кезегі"
+
+#: kolf.cpp:726
+#, kde-format
+msgid "%1's score has reached the maximum for this hole."
+msgstr "%1 дегеннің ұпайы осы шұңқырдың максимумына жетті."
+
+#. i18n: ectx: Menu (hole)
+#: kolfui.rc:17
+#, kde-format
+msgid "Ho&le"
+msgstr "&Шұңқыр"
+
+#. i18n: ectx: Menu (go_course)
+#: kolfui.rc:31
+#, kde-format
+msgid "&Go"
+msgstr "&Жүріс"
+
+#: landscape.cpp:146
+#, kde-format
+msgid "Enable show/hide"
+msgstr "Көрсету/Жасыруды қосу"
+
+#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
+#, kde-format
+msgid "Slow"
+msgstr "Баяу"
+
+#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
+#, kde-format
+msgid "Fast"
+msgstr "Жылдам"
+
+#: landscape.cpp:238
+#, kde-format
+msgid "Vertical"
+msgstr "Тігінен"
+
+#: landscape.cpp:239
+#, kde-format
+msgid "Horizontal"
+msgstr "Жатығынан"
+
+#: landscape.cpp:240
+#, kde-format
+msgid "Diagonal"
+msgstr "Диагональді"
+
+#: landscape.cpp:241
+#, kde-format
+msgid "Opposite Diagonal"
+msgstr "Қарсы диагональді"
+
+#: landscape.cpp:242
+#, kde-format
+msgid "Elliptic"
+msgstr "Эллипстік"
+
+#: landscape.cpp:571
+#, kde-format
+msgid "Reverse direction"
+msgstr "Кері бағытты"
+
+#: landscape.cpp:576
+#, kde-format
+msgid "Unmovable"
+msgstr "Жылжымайтың"
+
+#: landscape.cpp:578
+#, kde-format
+msgid "Whether or not this slope can be moved by other objects, like floaters."
+msgstr "Осы ылдиды жылжытқыш секілді басқа нысандар жылжыта ала ма, жоқ па."
+
+#: landscape.cpp:582
+#, kde-format
+msgid "Grade:"
+msgstr "Еңісі:"
+
+#: main.cpp:49
+#, kde-format
+msgid "Kolf"
+msgstr "Kolf"
+
+#: main.cpp:51
+#, kde-format
+msgid "KDE Minigolf Game"
+msgstr "KDE минигольф ойны"
+
+#: main.cpp:53
+#, kde-format
+msgid "(c) 2002-2010, Kolf developers"
+msgstr "(c) 2002-2010, Kolf құрустырушылары"
+
+#: main.cpp:56
+#, kde-format
+msgid "Stefan Majewsky"
+msgstr "Stefan Majewsky"
+
+#: main.cpp:56
+#, kde-format
+msgid "Current maintainer"
+msgstr "Қазіргі жетілдірушісі"
+
+#: main.cpp:57
+#, kde-format
+msgid "Jason Katz-Brown"
+msgstr "Jason Katz-Brown"
+
+#: main.cpp:57
+#, kde-format
+msgid "Former main author"
+msgstr "Бұрынғы негізгі авторы"
+
+#: main.cpp:58
+#, kde-format
+msgid "Niklas Knutsson"
+msgstr "Niklas Knutsson"
+
+#: main.cpp:58
+#, kde-format
+msgid "Advanced putting mode"
+msgstr "Күрделі соғу режімі"
+
+#: main.cpp:59
+#, kde-format
+msgid "Rik Hemsley"
+msgstr "Rik Hemsley"
+
+#: main.cpp:59
+#, kde-format
+msgid "Border around course"
+msgstr "Алаң қоршауы"
+
+#: main.cpp:60
+#, kde-format
+msgid "Timo A. Hummel"
+msgstr "Timo A. Hummel"
+
+#: main.cpp:60
+#, kde-format
+msgid "Some good sound effects"
+msgstr "Кейбір жақсы дыбыс эффекттері"
+
+#: main.cpp:62
+#, kde-format
+msgid "Rob Renaud"
+msgstr "Rob Renaud"
+
+#: main.cpp:62
+#, kde-format
+msgid "Wall-bouncing help"
+msgstr "Қабырғаға соғылуды жасау көмегі"
+
+#: main.cpp:63
+#, kde-format
+msgid "Aaron Seigo"
+msgstr "Aaron Seigo"
+
+#: main.cpp:63
+#, kde-format
+msgid "Suggestions, bug reports"
+msgstr "Ұсыныстар, қате туралы хабарлар"
+
+#: main.cpp:64
+#, kde-format
+msgid "Erin Catto"
+msgstr "Erin Catto"
+
+#: main.cpp:64
+#, kde-format
+msgid "Developer of Box2D physics engine"
+msgstr "Box2D физика тетігін жасаған"
+
+#: main.cpp:65
+#, kde-format
+msgid "Ryan Cumming"
+msgstr "Ryan Cumming"
+
+#: main.cpp:65
+#, kde-format
+msgid "Vector class (Kolf 1)"
+msgstr "Vector класы (Kolf 1)"
+
+#: main.cpp:66
+#, kde-format
+msgid "Daniel Matza-Brown"
+msgstr "Daniel Matza-Brown"
+
+#: main.cpp:66
+#, kde-format
+msgid "Working wall-bouncing algorithm (Kolf 1)"
+msgstr "Істейтін қабырғаға соғлу алгоритмі (Kolf 1)"
+
+#: main.cpp:71
+#, kde-format
+msgid "File"
+msgstr "Файл"
+
+#: main.cpp:72
+#, kde-format
+msgid "Print course information and exit"
+msgstr "Алаң туралы ақпараты көрсету де шығу"
+
+#: main.cpp:89 newgame.cpp:240
+#, kde-format
+msgid "By %1"
+msgstr "%1 бойынша"
+
+#: main.cpp:90
+#, kde-format
+msgid "%1 holes"
+msgstr "%1 шұңқыр"
+
+#: main.cpp:91
+#, kde-format
+msgid "par %1"
+msgstr "%1 соғу"
+
+#: main.cpp:98
+#, kde-format
+msgid "Course %1 does not exist."
+msgstr "%1 алаңы жоқ екен."
+
+#: newgame.cpp:38
+#, fuzzy, kde-format
+#| msgid "New Game"
+msgctxt "@title:window"
+msgid "New Game"
+msgstr "Жаңа ойын"
+
+#: newgame.cpp:54
+#, kde-format
+msgid "Players"
+msgstr "Ойыншылар"
+
+#: newgame.cpp:58
+#, kde-format
+msgid "&New Player"
+msgstr "Жаңа ойыншы"
+
+#: newgame.cpp:93
+#, kde-format
+msgid "Course"
+msgstr "Алаңы"
+
+#: newgame.cpp:94
+#, kde-format
+msgid "Choose Course to Play"
+msgstr "Ойын алаңын таңдау"
+
+#: newgame.cpp:133
+#, kde-format
+msgid "Create New"
+msgstr "Жаңасын құру"
+
+#: newgame.cpp:134
+#, kde-format
+msgid "You"
+msgstr "Сіз"
+
+#: newgame.cpp:160
+#, kde-format
+msgid "Highscores"
+msgstr "Жетістіктер"
+
+#: newgame.cpp:170
+#, kde-format
+msgid "Add..."
+msgstr "Қосу..."
+
+#: newgame.cpp:174 newgame.cpp:363
+#, kde-format
+msgid "Remove"
+msgstr "Өшіру"
+
+#: newgame.cpp:184
+#, kde-format
+msgid "Options"
+msgstr "Параметрлері"
+
+#: newgame.cpp:185
+#, kde-format
+msgid "Game Options"
+msgstr "Ойын параметрлері"
+
+#: newgame.cpp:190
+#, kde-format
+msgid "&Strict mode"
+msgstr "&Қатаң тәртіп"
+
+#: newgame.cpp:194
+#, kde-format
+msgid ""
+"In strict mode, undo, editing, and switching holes is not allowed. This is "
+"generally for competition. Only in strict mode are highscores kept."
+msgstr ""
+"Қатаң тәртіпте қайту, өзгеру, не шұңқырды ауыстыру деген болмайды. Бұл тек "
+"жарыс өткізу үшін. Тек осында жетістіктер жазылып сақталады. "
+
+#: newgame.cpp:241
+#, kde-format
+msgid "Par %1"
+msgstr "%1 соғулары"
+
+#: newgame.cpp:242
+#, kde-format
+msgid "%1 Holes"
+msgstr "%1 шұңқыр"
+
+#: newgame.cpp:280
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course"
+msgctxt "@title:window"
+msgid "Pick Kolf Course"
+msgstr "Kolf алаңын таңдау"
+
+#: newgame.cpp:308
+#, kde-format
+msgid "Chosen course is already on course list."
+msgstr "Таңдалған алаң тізімінде бар ғой."
+
+#: newgame.cpp:321
+#, kde-format
+msgid "Player %1"
+msgstr "%1 ойыншысы"
+
+#: objects.cpp:244
+#, kde-format
+msgid " degree"
+msgid_plural " degrees"
+msgstr[0] " градус"
+
+#: objects.cpp:247
+#, kde-format
+msgid "Exiting ball angle:"
+msgstr "Доптың шығу бұрышы:"
+
+#: objects.cpp:267
+#, kde-format
+msgid "Minimum exit speed:"
+msgstr "Мин. шығу жылдамдығы:"
+
+#: objects.cpp:288
+#, kde-format
+msgid "Maximum exit speed:"
+msgstr "Макс. шығу жылдамдығы:"
+
+#: obstacles.cpp:412
+msgid "&Top"
+msgstr "&Жоғары"
+
+#: obstacles.cpp:412
+msgid "&Left"
+msgstr "&Сол жақ"
+
+#: obstacles.cpp:412
+msgid "&Right"
+msgstr " Оң жақ"
+
+#: obstacles.cpp:412
+msgid "&Bottom"
+msgstr "&Төмен"
+
+#: obstacles.cpp:421
+#, kde-format
+msgid "Walls on:"
+msgstr "Қабырғалары:"
+
+#: obstacles.cpp:431
+#, kde-format
+msgid "Sign HTML:"
+msgstr "HTML белгісі:"
+
+#: obstacles.cpp:440
+#, kde-format
+msgid "Windmill on top"
+msgstr "Жел диірмені жоғарда"
+
+#: obstacles.cpp:461
+#, kde-format
+msgid "Moving speed"
+msgstr "Қимыл жылдамдығы"
+
+#: obstacles.cpp:681
+#, kde-format
+msgid "New Text"
+msgstr "Жаңа мәтін"
+
+#: scoreboard.cpp:28
+#, kde-format
+msgid "Total"
+msgstr "Жалпы"

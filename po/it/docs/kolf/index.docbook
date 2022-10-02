@@ -1,0 +1,1656 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Italian "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="kolf" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Manuale di &kolf;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<authorgroup>
+<author
+><firstname
+>Jason</firstname
+> <surname
+>Katz-Brown</surname
+> <affiliation
+> <address
+><email
+>jasonkb@mit.edu</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+><firstname
+>Paul</firstname
+> <surname
+>Broadbent</surname
+> <affiliation
+> <address
+><email
+>dbd@myrealbox.com</email
+></address>
+</affiliation>
+<!-- <contrib
+>Reviewer</contrib
+> -->
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>Vincenzo</firstname
+><surname
+>Reale</surname
+><affiliation
+><address
+><email
+>smart2128vr@gmail.com</email
+></address
+></affiliation
+><contrib
+>Traduzione italiana</contrib
+></othercredit
+><othercredit role="translator"
+> <firstname
+>Andrea</firstname
+> <surname
+>Celli</surname
+> <affiliation
+><address
+><email
+> andrea.celli@libero.it</email
+></address
+></affiliation
+><firstname
+>Enrico</firstname
+> <surname
+>Morra</surname
+> <affiliation
+><address
+><email
+>enriquez.mo@tiscali.it</email
+></address
+></affiliation
+><contrib
+>Traduzioni italiane</contrib
+> </othercredit
+><othercredit role="translator"
+><firstname
+>Luciano</firstname
+><surname
+>Montanaro</surname
+><affiliation
+><address
+><email
+>mikelima@cirulla.net</email
+></address
+></affiliation
+><contrib
+>Revisione per KDE 4</contrib
+></othercredit
+> 
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>6/8/2021</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>KDE Gear 21.08</releaseinfo>
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Questo documento descrive la versione 21.08; di &kolf;</para>
+</abstract>
+
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>gioco</keyword
+> <!-- do not change this! -->
+	<keyword
+>Kolf</keyword
+><!--Application name goes here-->
+	<keyword
+>golf</keyword>
+	<keyword
+>in miniatura</keyword>
+	<keyword
+>arcade</keyword>
+	<keyword
+>sport</keyword>
+	<keyword
+>dieci giocatori</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Introduzione</title
+> <!-- do not change this! -->
+	<note
+><title
+>Tipo di gioco:</title
+><para
+>Arcade, Sport</para
+></note>
+	<note
+><title
+>Numero di giocatori possibili:</title
+><para
+>Dieci</para
+></note>
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&kolf; è un gioco di minigolf con una grafica bidimensionale vista dall'alto. I percorsi sono dinamici e vi possono partecipare contemporaneamente fino a 10 giocatori in competizione.</para>
+<para
+>&kolf; comprende un percorso di esercitazione. <link linkend="howto"
+>Effettuare questo percorso</link
+> è il modo più facile per imparare.</para>
+</chapter>
+
+<chapter id="howto"
+><title
+>Come si gioca</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Obiettivo:</title
+><para
+>Spingi la palla nella buca con il minimo numero di colpi.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para
+>Giocare a &kolf; è semplice. Giocarci è il modo più facile per imparare, quindi è stato incluso un percorso scuola per insegnare i primi passi. Questo capitolo ti guiderà lungo l'esercitazione. Per avviarla, scegli <menuchoice
+><guimenu
+>Aiuto</guimenu
+><guimenuitem
+>Esercitazione</guimenuitem
+></menuchoice
+>.</para>
+
+<sect1 id="hitting">
+<title
+>Colpire la palla</title>
+<para
+>Per dirigere il colpo, puoi trascinare il mouse dietro la palla, così che il putter miri nella direzione desiderata. Oppure, puoi premere la freccia sinistra per ruotare il putter in senso antiorario o la freccia destra per ruotarlo in senso orario.</para>
+<tip>
+<para
+>Per ruotare il putter più rapidamente con la tastiera, tieni premuto &Shift; mentre premi i tasti direzionali. Per ruotarlo più lentamente tieni premuto &Ctrl;.</para>
+</tip>
+<para
+>Per colpire la palla, premi per un po' il &LMB; o la freccia in giù;. Quanto più terrai premuto il tasto, tanta più forza avrà il colpo. Servirà molta pratica per imparare a regolare bene la velocità.</para>
+<tip>
+<para
+>Per annullare il colpo mentre stai ancora alzando il putter per il colpo, premi &Esc;.</para>
+</tip>
+
+<para
+>Spingi la palla nella buca per passare alla prossima.</para>
+</sect1>
+
+<sect1 id="slopes">
+<title
+>Pendii</title>
+<para
+>I pendii sono zone in pendenza lungo le quali le palle rotolano giù in modo prevedibile. L'illuminazione del percorso viene dall'angolo in alto a sinistra, quindi i pendii più chiari spingono la palla verso l'angolo in alto a sinistra della buca. Scegli <menuchoice
+><guimenu
+>Buca</guimenu
+><guimenuitem
+>Mostra informazioni</guimenuitem
+></menuchoice
+> per vedere una freccia che punta nella direzione in cui la pendenza farà rotolare la palla.</para>
+<para
+>In questa buca di esercitazione, colpisci la palla verso il pendio che va verso l'alto per vederla rotolare in buca per spostarti alla buca successiva.</para>
+
+<sect2
+> <title
+>Direzioni</title>
+<para
+>Nella prossima buca farai pratica con altri tipi di pendii. In &kolf; ci sono pendii ellittici, verticali, orizzontali e diagonali. Manda la palla in buca.</para>
+</sect2>
+<sect2
+> <title
+>Gradi di inclinazione</title>
+<para
+>La prossima buca di esercitazione ha due pendii di diversa inclinazione. Se scegli <menuchoice
+><guimenu
+>Buca</guimenu
+><guimenuitem
+>Mostra informazioni</guimenuitem
+></menuchoice
+>, il grado di inclinazione del pendio appare come un numero compreso tra 1 e 8, dove 8 è il più ripido e 1 il più dolce. Manda la palla in buca e prosegui alla successiva.</para>
+</sect2>
+</sect1>
+
+<sect1 id="walls"
+> <title
+>Muri</title>
+<para
+>Le palle rimbalzano contro i muri con un leggero smorzamento, esattamente come ci si aspetta. Fai rimbalzare la palla contro i muri per mandarla in buca e prosegui verso la buca successiva.</para>
+</sect1>
+
+<sect1 id="puddles-sand"
+> <title
+>Laghetti e bunker</title>
+<sect2
+> <title
+>Laghetti</title>
+	<para
+>I laghetti sono blu. Quando la tua palla cade in un laghetto, viene sommato un colpo di penalizzazione al tuo punteggio e dovrai scegliere da dove effettuare il colpo successivo: o dalle vicinanze del laghetto oppure da dove hai effettuato l'ultimo colpo.</para>
+</sect2>
+<sect2
+> <title
+>Sabbia</title>
+<para
+>I bunker di sabbia sono gialli. Le palle rotolano molto lentamente sulla sabbia.</para>
+<para
+>Per poter passare alla prossima buca, devi prima spingere la palla attorno ai laghetti e attraverso il bunker fin dentro la buca.</para>
+</sect2>
+</sect1>
+
+<sect1 id="windmills"
+> <title
+>Mulini a vento</title>
+<para
+>I mulini a vento sono strutture articolate, delimitate da muri marroni, e con un braccio mobile all'estremità superiore o inferiore. Dei mezzi-muri forniscono un'apertura nei mulini a vento, che è attraversata da un braccio nero oscillante. Serve esperienza per riuscire a colpire la palla al momento giusto in modo che riesca ad attraversare l'apertura. Per continuare, fai passare la palla attraverso il mulino a vento e mandala in buca.</para>
+</sect1>
+
+<sect1 id="black-holes"
+> <title
+>Gallerie</title>
+<para
+>Quando spingi una palla in una galleria, essa viene portata all'uscita ed espulsa con un angolo proprio dell'uscita e con una velocità proporzionale a quella con cui stava andando. Scegli <menuchoice
+><guimenu
+>Buca</guimenu
+><guimenuitem
+>Mostra informazioni</guimenuitem
+></menuchoice
+> per vedere le corrispondenze tra ingressi e uscite delle gallerie, nonché la direzione con cui la palla uscirà. Il bordo attorno alle due estremità di una galleria sarà dello stesso colore. Spingi la palla nella galleria, questa la farà uscire verso la buca, per poter proseguire alla buca successiva.</para>
+</sect1>
+
+<sect1 id="floaters"
+> <title
+>Floater</title>
+<para
+>I floater sono piattaforme mobili che trasportano una palla che cada su di loro. La velocità dei floater può variare. Questo è un floater abbastanza lento, ma tu dovrai battere al momento giusto, se vuoi essere trasportato oltre il muro e andare in buca.</para>
+</sect1>
+
+<sect1 id="bridges"
+> <title
+>Ponti</title>
+<para
+>I ponti sono come ci si aspetta: permettono alla palla di passare sopra gli ostacoli sottostanti, come pendii, bunker e laghetti. Essi possono avere dei muri marroni lungo i bordi.</para>
+</sect1>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Regole del gioco, strategie e suggerimenti</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+<para
+>Questa è una descrizione approfondita delle funzionalità basilari di &kolf;.</para>
+
+<sect1 id="starting">
+<title
+>Iniziare una gara</title>
+
+<para
+>Per iniziare una gara, scegli <menuchoice
+><guimenu
+>Partita</guimenu
+><guimenuitem
+>Nuova</guimenuitem
+></menuchoice
+>. Si aprirà una finestra da cui potrai configurare la tua nuova partita.</para>
+<!--
+<tip>
+<para
+>More third-party &kolf; courses are available at the &kolf; website. See <ulink
+url="https://web.mit.edu/jasonkb/www/kolf/"
+>the &kolf; user-uploaded courses page</ulink
+>.</para>
+</tip>
+-->
+<sect2>
+<title
+>Pagina dei giocatori</title>
+<para
+>Per aggiungere un giocatore alla gara, premi i pulsante <guibutton
+>Nuovo giocatore</guibutton
+>.</para>
+
+<para
+>Se vuoi cambiare i nomi dei giocatori, puoi farlo in questi riquadri.</para>
+
+<para
+>Per eliminare un giocatore, premi il pulsante <guibutton
+>Elimina</guibutton
+> vicino al nome del giocatore.</para>
+
+</sect2>
+
+<sect2
+> <title
+>Pagina del percorso</title>
+<para
+>Per scegliere il percorso su cui vuoi gareggiare, selezionalo col mouse dall'elenco nella parte sinistra della scheda. &kolf; viene fornito con diversi percorsi già pronti da utilizzare.</para>
+<para
+>Per aggiungere un percorso che tu hai scaricato o costruito, premi il pulsante <guibutton
+>Aggiungi...</guibutton
+> nella parte alta della scheda e seleziona dal file manager il file che descrive il percorso.</para>
+</sect2>
+<sect2
+> <title
+>Pagina delle opzioni</title>
+<para
+>Da questa scheda puoi decidere se giocare seguendo le <guilabel
+>Regole strette</guilabel
+> o normalmente. Con le regole strette non potrai annullare un colpo, spostare una buca o modificare il percorso. Di solito queste regole si usano per le gare. I punteggi vengono registrati solo se si seguono le regole rigide.</para>
+</sect2>
+</sect1>
+
+<sect1 id="saved-games"
+> <title
+>Partite salvate</title>
+<para
+>&kolf; può mantenere una registrazione dei tuoi giri che non hai terminato e salvarli sul disco, in modo che tu possa richiamarli e rigiocarli in un secondo momento. Nel salvare la partita, vengono memorizzati i nomi e i colori di tutti i partecipanti, i loro punteggi e la buca attuale.</para>
+<sect2
+> <title
+>Come salvare la partita</title>
+<para
+>Per salvare la tua partita mentre è ancora in corso, scegli <menuchoice
+><guimenu
+>Partita</guimenu
+><guimenuitem
+>Salva partita</guimenuitem
+></menuchoice
+>. Se non hai già salvato questa stessa partita, ti sarà chiesto un nome per il file di destinazione.</para>
+</sect2>
+<sect2
+> <title
+>Come riprendere una partita</title>
+<para
+>Per caricare una partita precedentemente salvata, scegli <menuchoice
+><guimenu
+>Partita</guimenu
+><guimenuitem
+>Carica...</guimenuitem
+></menuchoice
+>. Potrai scegliere una partita da caricare tra quelle salvate.</para>
+</sect2>
+</sect1>
+
+<sect1 id="practicing"
+> <title
+>Fare pratica</title>
+<para
+>Ci sono alcune opzioni che ti permettono di fare pratica più agevolmente. Queste opzioni non sono utilizzabili se scegli le regole rigide.</para>
+<sect2
+> <title
+>Annullare</title>
+<para
+>Per annullare un brutto colpo, scegli <menuchoice
+><guimenu
+>Buca</guimenu
+><guimenuitem
+>Annulla colpo</guimenuitem
+></menuchoice
+>.</para>
+</sect2>
+<sect2
+> <title
+>Cambiare buca</title>
+<para
+>Il menu <guimenu
+>Vai</guimenu
+> contiene diverse voci, abbastanza chiare di per sé, che permettono di passare da una buca all'altra. Vedi la <link linkend="go-menu"
+> guida di riferimento per il menu <guimenu
+>Vai</guimenu
+></link
+>.</para>
+</sect2>
+</sect1>
+
+<sect1 id="putting-options"
+> <title
+>Opzioni per i colpi</title>
+<para
+>&kolf; fornisce alcuni modi per imbucare. Il modo normale per effettuare un colpo con il putt è stato <link linkend="hitting"
+>descritto sopra</link
+>.</para>
+<para
+>Il mouse, se non modifichi nulla, è attivo. Questo significa che ogni volta che muovi il mouse, il bastone si alza per colpire nella direzione data dal puntatore e dalla palla.</para>
+<para
+>Se preferisci usare solo la tastiera e le frecce direzionali, puoi disabilitare l'uso del mouse per muovere il bastone deselezionando <menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guimenuitem
+>Usa il mouse per muovere il bastone</guimenuitem
+></menuchoice
+>.</para>
+
+<sect2 id="advanced-putting"
+> <title
+>Colpi da professionista</title>
+<para
+>Puoi utilizzare i colpi avanzati con il putt attivando l'opzione <menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guimenuitem
+>Abilita colpi da professionista</guimenuitem
+></menuchoice
+>. Questa modalità è un po' più impegnativa del normale clic e tira, e può essere usata sia col mouse che da tastiera.</para>
+
+<para
+>Come colpire in questa modalità:</para>
+<procedure>
+<step>
+<para
+>Fai clic col mouse o premi una volta sulla freccia in giù per iniziare lo swing. Apparirà l'indicatore di tiro e un misuratore di forza inizierà a riempirsi con un colore, che cambierà man mano che l'indicatore si completa.</para>
+</step>
+<step>
+<para
+>Fai ancora clic col mouse o premi una volta sulla freccia in giù quando il misuratore di forza ha raggiunto il livello voluto. Più l'indicatore di forza viene fatto girare, più forte sarà il putt. Serve molta pratica per diventate abili nel dosare la forza dei putt.</para>
+<para
+>Dopo di ciò, il colore del misuratore tornerà rapidamente a quello iniziale.</para>
+</step>
+<step>
+<para
+>Fai ancora clic col mouse o premi una volta freccia in giù quando l'indicatore di forza si trova il più vicino possibile alla linea centrale dell'indicatore di tiro.</para>
+</step>
+</procedure>
+<para
+>Quanto più sarà vicina la pressione del pulsante del mouse (o della tastiera), tanto più sarà fedele il colpo alla sua linea originale.</para>
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Panoramica dell'interfaccia</title
+> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+ <sect1 id="game-menu">
+<title
+>Il menu Partita</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+><guimenu
+>Partita</guimenu
+><guimenuitem
+>Nuova</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Avvia una nuova partita.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Carica...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Carica una partita precedentemente salvata.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Partita</guimenu
+><guimenuitem
+>Salva percorso</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Salva il percorso attuale con il nome del file attuale.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Partita</guimenu
+><guimenuitem
+>Salva percorso come...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Apre una finestra di dialogo che ti permette di <action
+> salvare il percorso attuale usando un nuovo nome</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Partita</guimenu
+><guimenuitem
+>Salva partita</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Salva la partita attuale</action
+> con il nome dell'ultimo salvataggio, oppure con un nome di tua scelta se nessuna partita è stata salvata.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Partita</guimenu
+><guimenuitem
+>Salva partita come</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Apre una finestra dialogo che ti permette di <action
+>salvare la partita attuale con un nome di tua scelta.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&End;</keycombo
+> </shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Fine della partita</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Termina la partita attuale, senza chiudere</action
+> &kolf;</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+><guimenu
+>Partita</guimenu
+><guimenuitem
+>Mostra punteggi</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Visualizza la classifica.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Partita</guimenu
+><guimenuitem
+>Informazioni sul percorso...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Mostra nome, autore e numero di buche del percorso.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+><guimenu
+>Partita</guimenu
+><guimenuitem
+>Esci</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Chiudi</action
+> &kolf;.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="hole-menu">
+<title
+>Il menu Buca</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Buca</guimenu
+><guimenuitem
+>Modifica</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Passa alla modalità modifica</action
+> per modificare la buca attuale.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+><guimenu
+>Buca</guimenu
+><guimenuitem
+>Nuova</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Crea una nuova buca</action
+>(Solamente nella modalità modifica)</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Del;</keycombo
+> </shortcut
+> <guimenu
+>Buca</guimenu
+><guimenuitem
+>Cancella</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Rimuove tutti gli oggetti dalla buca attuale</action
+> (Solamente nella modalità modifica)</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>R</keycap
+></keycombo
+> </shortcut
+><guimenu
+>Buca</guimenu
+><guimenuitem
+>Ripristina</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Riporta la buca attuale alla posizione di partenza</action
+>, in modo da ricominciare da capo.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+></keycap
+></keycombo
+> </shortcut
+><guimenu
+>Buca</guimenu
+><guimenuitem
+>Mostra Informazioni</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Mostra informazioni sui vari oggetti presenti sul percorso.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+><guimenu
+>Buca</guimenu
+><guimenuitem
+>Annulla Colpo</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Annulla l'ultimo colpo.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="go-menu">
+<title
+>Il menu Vai</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Vai</guimenu
+><guisubmenu
+>Alla Buca</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Vai direttamente ad un'altra buca all'interno del percorso</action
+> Si aprirà una lista che ti permetterà di scegliere la buca.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Alt;&Right;</keycombo
+> </shortcut
+> <guimenu
+>Vai</guimenu
+><guimenuitem
+>Buca successiva</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Vai alla buca successiva.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Alt;&Left;</keycombo
+> </shortcut
+> <guimenu
+>Vai</guimenu
+><guimenuitem
+>Buca precedente</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Vai alla buca precedente.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Home;</keycombo
+> </shortcut
+> <guimenu
+>Vai</guimenu
+><guimenuitem
+>Prima buca</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Vai alla prima buca del percorso.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;&End;</keycombo
+> </shortcut
+> <guimenu
+>Vai</guimenu
+><guimenuitem
+>Ultima buca</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Vai all'ultima buca del percorso.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Vai</guimenu
+><guimenuitem
+>Buca a caso</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Vai ad una buca a caso del percorso attuale.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="settings-help-menu">
+<title
+>I menu Impostazioni e Aiuto</title>
+
+<para
+>Nel menu di &kolf; compaiono due voci comuni dei menu di &kde;, <guimenu
+>Impostazioni</guimenu
+> e <guimenu
+>Aiuto</guimenu
+>. Per maggiori informazioni leggi le sezioni <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu impostazioni</ulink
+> e <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu di aiuto</ulink
+> nei Fondamentali di &kde;, con queste voci aggiuntive:</para>
+
+<variablelist>
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guimenuitem
+>Usa il mouse per muovere il putter</guimenuitem
+>  </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Consente l'uso del mouse per muovere il putter.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guimenuitem
+>Abilita colpi da professionista</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Abilita la modalità professionista</action
+>. come descritto <link linkend="advanced-putting"
+> nella relativa sezione</link
+>.</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guimenuitem
+>Mostra le direttrici del Putter</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Attiva o disattiva le direttrici del putter.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guimenuitem
+>Abilita Suoni</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Attiva o disattiva gli effetti sonori.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guimenuitem
+>Abilita tutte le finestre informative</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Abilita nuovamente le finestre informative facendo clic con il mouse <guilabel
+> Non mostrare più questo messaggio</guilabel
+> o simile.</action
+></para
+></listitem>
+  </varlistentry>
+<!--
+  <varlistentry>
+    <term
+><menuchoice>
+    <guimenu
+>Settings</guimenu>
+    <guimenuitem
+>Reload Plugins</guimenuitem>
+    </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Reload plugins.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice>
+    <guimenu
+>Settings</guimenu>
+    <guimenuitem
+>Show Plugins</guimenuitem>
+    </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Display the currently loaded plugins.</action
+></para
+></listitem>
+  </varlistentry>
+-->
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Aiuto</guimenu
+> <guimenuitem
+>Esercitazione</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+>Inizia il percorso di esercitazione di &kolf;.</para
+></listitem>
+  </varlistentry>
+</variablelist>
+
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Domande frequenti</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Voglio cambiare l'aspetto del gioco. È possibile? </para
+></question>
+ <answer
+><para
+>No. Per il momento &kolf; ha un solo tema.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Si può giocare con la tastiera? </para
+></question>
+ <answer
+><para
+>Sì. Usa i tasti freccia per controllare il putter.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Non riesco a capire che cosa fare qui! Ci sono dei suggerimenti? </para
+></question>
+ <answer
+><para
+>No. &kolf; non ha una funzione di suggerimento.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Voglio creare un mio percorso personale. È possibile? </para
+></question>
+ <answer
+><para
+>Sì. Per entrare in modalità di modifica usa <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Buca</guimenu
+><guimenuitem
+>Modifica</guimenuitem
+></menuchoice
+>. Fai clic <link linkend="creating"
+>qui</link
+> per maggiori dettagli.</para
+></answer
+><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Editor dei percorsi</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+<para
+>&kolf; comprende un editor versatile per gestire il formato del percorso. I percorsi possono avere un numero illimitato di buche, e non c'è limite alla fantasia del progettista.</para>
+
+<sect1 id="creating"
+> <title
+>Creare un nuovo percorso</title>
+<para
+>Per creare un nuovo percorso, scegli <menuchoice
+><guimenu
+>Partita</guimenu
+><guimenuitem
+>Nuova</guimenuitem
+></menuchoice
+>. Vai alla pagina <guilabel
+>Percorso</guilabel
+> della finestra, e scegli <guilabel
+>Crea nuovo</guilabel
+>. Assicurati che, alla pagina <guilabel
+>Opzioni</guilabel
+>, la voce <guilabel
+>Regole rigide</guilabel
+> non sia selezionata.</para>
+
+<note>
+<para
+>Per giocare successivamente ad un nuovo percorso, fai clic con il mouse sul pulsante <guibutton
+>Aggiungi...</guibutton
+> per aggiungere il percorso alla tua lista percorsi.</para>
+</note>
+</sect1>
+
+<sect1 id="adding-holes"
+> <title
+>Aggiungere buche</title>
+<para
+>Passa alla modalità di modifica usando <menuchoice
+><guimenu
+>Buca</guimenu
+><guimenuitem
+>Modifica</guimenuitem
+></menuchoice
+>. Scegli <menuchoice
+><guimenu
+>Buca</guimenu
+><guimenuitem
+>Nuova</guimenuitem
+></menuchoice
+> per aggiungere una nuova buca alla fine del percorso.</para>
+<tip>
+<para
+>Puoi ripristinare una buca al suo stato originale, in maniera simile a quando è stata creata, scegliendo <menuchoice
+><guimenu
+>Buca</guimenu
+><guimenuitem
+>Cancella</guimenuitem
+></menuchoice
+>.</para>
+</tip>
+<para
+>Due oggetti compariranno sulle nuove buche: una buca, e una pallina bianca. La pallina bianca segna dove i giocatori inizieranno a giocare.</para>
+</sect1>
+
+<sect1 id="editing-basics"
+> <title
+>Modifica gli Elementi</title>
+<para
+>L'elemento basilare dei percorsi di &kolf; è l'<quote
+>oggetto</quote
+>. Le buche sono formate da gruppi di oggetti. Gli oggetti possono essere spostati in qualsiasi direzione, inoltre diversi tipi di oggetti possiedono caratteristiche differenti che puoi impostare.</para>
+<para
+>Per iniziare a modificare una buca, seleziona il menu oggetto sotto <menuchoice
+><guimenu
+>Buca</guimenu
+><guimenuitem
+>Modifica</guimenuitem
+></menuchoice
+>, o premi l'icona a forma di matita nella barra degli strumenti. Per abbandonare la modifica di una buca, deseleziona la voce di menu (o l'icona della barra strumenti).</para>
+
+<sect2
+> <title
+>Aggiungere oggetti</title>
+<para
+>Per aggiungere un nuovo oggetto al percorso, scegli il nome dalla lista <guilabel
+>Aggiungi oggetto:</guilabel
+>. L'oggetto apparirà al centro del percorso.</para>
+<caution>
+<para
+>Ponti e segnali ricopriranno nuovi oggetti, nel caso quest'ultimi si ritrovassero già al centro della buca.</para>
+</caution>
+<!--
+<tip>
+<para
+>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
+</tip>
+<para
+>Some &kolf; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
+<para
+>Third-party &kolf; plugins are available at the &kolf; website. See <ulink url="https://web.mit.edu/jasonkb/www/kolf/"
+>the &kolf; plugins download page</ulink
+>.</para>
+-->
+</sect2>
+
+<sect2
+> <title
+>Spostamento e ridimensionamento degli oggetti</title>
+<para
+>Muovi il puntatore del mouse sull'oggetto che vuoi spostare, e il puntatore del mouse si trasformerà in un cursore a forma di mano. Poi fai clic su di lui con il mouse e trascinalo dove vuoi.</para>
+<para
+>Laghetti, ponti, bunker, floater e segnali possono essere ridimensionati trascinando il piccolo cerchio che compare in basso alla loro destra.</para>
+
+<note>
+<para
+>I Muri possono essere spostati selezionandoli e trascinando le loro estremità, oppure si può muovere un intero muro selezionandolo e trascinando la parte centrale di esso.</para>
+</note>
+</sect2>
+
+<sect2
+> <title
+>Impostazione degli oggetti</title>
+<para
+>Le proprietà degli oggetti possono essere modificate nell'apposita area situata in basso a destra della finestra di &kolf;. Per modificare un oggetto, sposta il puntatore del mouse sull'oggetto stesso: il cursore prenderà la forma di una mano. Fai clic. Appariranno, nell'angolo in basso a destra della finestra di &kolf;, numerose opzioni.</para>
+<sect3
+> <title
+>Impostazioni generali della buca</title>
+<para
+>Per modificare le impostazioni generali di una buca, fai clic con il mouse su una zona della buca non coperta da oggetti. Se questo è possibile, il cursore assumerà la forma tipica di puntatore.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Nome del percorso:</guilabel
+></term>
+<listitem>
+<para
+>Questo è il nome che viene mostrato nella finestra <guilabel
+>Nuova partita</guilabel
+> e nella finestra <guimenuitem
+>Informazioni sul percorso</guimenuitem
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Autore del percorso:</guilabel
+></term>
+<listitem>
+<para
+>Questo è il nome dell'autore mostrato nella finestra <guilabel
+>Informazioni sul percorso</guilabel
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Par:</guilabel
+></term>
+<listitem>
+<para
+>Il Par della buca.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Massimo:</guilabel
+></term>
+<listitem>
+<para
+>Il numero massimo di colpi consentito per questa buca.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Mostra i muri laterali</guilabel
+></term>
+<listitem>
+<para
+>Per decidere se mostrare o meno un muro lungo i bordi di una buca.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Pendii</title>
+
+<variablelist>
+<varlistentry
+> <term
+>Tipo</term>
+<listitem>
+<para
+>Scegli il tipo di pendio - <guilabel
+>Verticale</guilabel
+>, <guilabel
+>Orizzontale</guilabel
+>, <guilabel
+>Diagonale</guilabel
+>, <guilabel
+>Diagonale opposta</guilabel
+>, <guilabel
+>Circolare</guilabel
+>. I pendii "Diagonale" e "Diagonale opposta" hanno la forma di un triangolo, i pendii circolari quella di un cerchio. I pendii verticali e orizzontali hanno ovviamente una forma rettangolare.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Inverti la direzione</guilabel
+></term>
+<listitem>
+<para
+>Per invertire o meno l'inclinazione di un pendio. Considera, per esempio, un pendio ellittico (o circolare). Quando l'inclinazione non è invertita, spinge la pallina all'infuori proprio come una montagnola. Mentre se viene invertita l'inclinazione risucchierà la palla verso di sé come una buca.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Inamovibile</guilabel
+></term>
+<listitem>
+<para
+>Per decidere se un pendio può essere rimosso da altri oggetti, come i floater.</para>
+<caution>
+<para
+>Se un flotter si sovrappone con questo oggetto in qualsiasi punto del percorso, e il pendio è largo abbastanza da non spostare il flotter, <emphasis
+>devi</emphasis
+> rendere il pendio <guilabel
+>Inamovibile</guilabel
+>, o &kolf; ne risentirà!</para>
+</caution>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Grado:</guilabel
+></term>
+<listitem>
+<para
+>Scegli il grado (di inclinazione) del pendio muovendo la barra in modo che oscilli tra 0 e 8, dove 8 è l'inclinazione massima mentre 0 la minima. Pendii più ripidi spingono maggiormente la pallina.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Laghetti e bunker</title>
+<para
+>Sia i laghetti che i bunker hanno le stesse opzioni di configurazione.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Attiva mostra/nascondi</guilabel
+></term>
+<listitem>
+<para
+>Selezionando questa opzione si attiva il lampeggìo di questo laghetto o bunker.</para>
+<!--
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Show/Hide speed</term>
+<listitem>
+  -->
+<para
+>Quanto più <guilabel
+>Veloce</guilabel
+> è la barra, tanto più veloce sarà il lampeggìo del laghetto o del bunker.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Ponti, Mulini a vento, Floater, e Segnali</title>
+<para
+>Ponti, mulini a vento, floater e segnali possiedono le stesse impostazioni per configurare il lato sul quale innalzare muri laterali. Per mostrare un muro su un determinato lato, seleziona la casella a scelta multipla per quel lato.</para>
+<para
+>Ci sono inoltre alcune opzioni specifiche per mulini, floater, e segnali.</para>
+
+<sect4
+> <title
+>Mulini a vento</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Mulino a vento in alto</guilabel
+></term>
+<listitem>
+<para
+>Sia che il braccio nero mobile si trovi all'estremità superiore o inferiore - la posizione predefinita è quella superiore. I due mezzi muri si troveranno sempre dalla parte del braccio. Attenzione: non puoi attivare un muro laterale dalla parte in cui si trova il braccio.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Velocità</term>
+<listitem>
+<para
+>Quanto più la barra sarà <guilabel
+>Veloce</guilabel
+>, tanto più velocemente si muoverà il braccio nero oscillante.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Floater</title>
+<para
+>Il percorso lungo cui si muove il floater è mostrato dal muro a cui è connesso.</para>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Velocità di Movimento</guilabel
+></term>
+<listitem>
+<para
+>Quanto più la barra è <guilabel
+>Veloce</guilabel
+>, tanto più veloce sarà il movimento del floater. Se la barra è tutta spostata verso l'estremità <guilabel
+>Lento</guilabel
+>, il floater si fermerà.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Segnali</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Testo HTML:</guilabel
+></term>
+<listitem>
+<para
+>Puoi inserire qualsiasi tag &HTML; qui. Per esempio, inserendo <userinput
+>Colpiscila &lt;i&gt;dolcemente&lt;/i&gt; verso il pendio!</userinput
+> si creerà il testo <quote
+>Colpiscila <emphasis
+>dolcemente</emphasis
+> verso il pendio!</quote
+>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+</sect3>
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="credits"
+><title
+>Riconoscimenti e licenza</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&kolf;</para>
+
+<para
+>&kolf; copyright 2001, 2002 &Jason.Katz-Brown;</para>
+
+<itemizedlist>
+<title
+>Sviluppatori</title>
+<listitem>
+<para
+>&Jason.Katz-Brown; <email
+>jasonkb@mit.edu</email
+></para>
+</listitem>
+<listitem>
+<para
+>Niklas Knutsson</para>
+</listitem>
+<listitem>
+<para
+>Ryan Cumming</para>
+</listitem>
+<listitem>
+<para
+>Daniel Matza-Brown</para>
+</listitem>
+<listitem>
+<para
+>Paul Broadbent</para>
+</listitem>
+</itemizedlist>
+
+<para
+>Copyright 2002 sulla documentazione: &Jason.Katz-Brown;</para>
+
+<para
+>Traduzione italiana a cura di Vincenzo Reale <email
+>smart2128vr@gmail.com</email
+></para
+><para
+>Traduzione della documentazione Andrea Celli <email
+>andrea.celli@libero.it</email
+></para
+><para
+>, Enrico Morra <email
+>enriquez.mo@tiscali.it</email
+>Consulenza sui termini tecnici e revisione generale Luigi d'Avos</para
+><para
+>Revisione per KDE 4 a cura di Luciano Montanaro<email
+>mikelima@cirulla.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

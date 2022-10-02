@@ -1,0 +1,1705 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kolf;">
+  <!ENTITY kappversion "1.9"
+><!--Application version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % French "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+ 
+<book id="kolf" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Manuel de &kappname;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<authorgroup>
+<author
+><firstname
+>Jason</firstname
+> <surname
+>Katz-Brown</surname
+> <affiliation
+> <address
+><email
+>jasonkb@mit.edu</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+><firstname
+>Paul</firstname
+> <surname
+>Broadbent</surname
+> <affiliation
+> <address
+><email
+>dbd@myrealbox.com</email
+></address>
+</affiliation>
+<!-- <contrib
+>Reviewer</contrib
+> -->
+</othercredit>
+
+&traducteurRobertJacolin;&traducteurStanislasZeller; 
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+ 
+<date
+>01/10/2010</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>&kappversion; (&kde; 4.5)</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+ 
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Cette documentation décrit le jeu &kappname; version &kappversion;</para>
+</abstract>
+ 
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>jeu</keyword
+> <!-- do not change this! -->
+	<keyword
+>Kolf</keyword
+><!--Application name goes here-->
+	<keyword
+>golf</keyword>
+	<keyword
+>miniature</keyword>
+	<keyword
+>arcade</keyword>
+	<keyword
+>sport</keyword>
+	<keyword
+>10 joueurs</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Introduction</title
+> <!-- do not change this! -->
+	<note
+><title
+>Type de jeu : </title
+><para
+>Arcade, sport</para
+></note>
+	<note
+><title
+>Nombre possible de joueurs : </title
+><para
+>Dix</para
+></note
+> 
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&kappname; est un jeu de mini-golf avec une vue aérienne 2D. Les parcours sont dynamiques et jusqu'à 10 personnes peuvent jouer simultanément en compétition.</para>
+<para
+>&kappname; est fourni avec un cours de formation. <link linkend="howto"
+>Jouer ce parcours</link
+> est la manière la plus simple de démarrer.</para>
+</chapter>
+ 
+<chapter id="howto"
+><title
+>Comment jouer</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Objectif : </title
+><para
+>Faites entrer la balle dans le trou avec le moins de coups possibles.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para
+>Jouer à &kappname; est simple. Il est plus facile d'apprendre à y jouer en le pratiquant, et c'est pourquoi le parcours du tutoriel est inclus pour vous guider dans l'apprentissage des bases. Ce chapitre vous guidera dans ce tutoriel. Pour démarrer le tutoriel, choisissez <menuchoice
+><guimenu
+>Aide</guimenu
+><guimenuitem
+>Tutoriel</guimenuitem
+></menuchoice
+>.</para>
+
+<sect1 id="hitting"
+> 
+<title
+>Frapper la balle</title>
+<para
+>Pour viser la balle, soit vous alignez la souris derrière la balle pour que le putter soit tourné dans la direction où vous désirez la lancer, soit vous actionnez une des deux touches <keycap
+>flèche vers la gauche</keycap
+> (dans le sens inverse des aiguilles d'une montre) ou bien <keycap
+>flèche vers la droite</keycap
+> (dans le sens des aiguilles d'une montre), pour faire tourner le putter.</para>
+<tip>
+<para
+>Pour faire tourner le putter plus rapidement avec le clavier, maintenez la touche &Maj; enfoncée tout en appuyant sur les touches fléchées. Pour le faire tourner lentement, maintenez la touche &Ctrl; enfoncée.</para>
+</tip>
+<para
+>Pour frapper la balle, enfoncez et maintenez soit le &BGS; soit la touche <keycap
+>flèche vers le bas</keycap
+>. Plus vous maintiendrez longtemps la touche ou le bouton enfoncé, plus le tir aura de la puissance. Cela prend du temps pour bien apprécier la vitesse.</para>
+<tip>
+<para
+>Pour arrêter le putt alors que vous déplacez encore le putter pour votre coup, appuyez sur <keycap
+>&Echap;</keycap
+>.</para>
+</tip>
+
+<para
+>Faites entrer la balle dans le trou pour passer au parcours suivant.</para>
+</sect1>
+
+<sect1 id="slopes"
+> 
+<title
+>Les pentes</title>
+<para
+>Les pentes sont des zones inclinées où la balle de golf parcourt de manière prévue. La lumière du parcours de golf vient du côté gauche supérieur, ainsi le côté le plus brillant de la pente repoussera la balle vers le coin supérieur gauche du trou. Choisissez <menuchoice
+><guimenu
+>Trou</guimenu
+> <guimenuitem
+>Afficher les informations</guimenuitem
+></menuchoice
+> pour voir une flèche qui pointe dans la direction de la pente où la balle roulera.</para>
+<para
+>Dans ce trou du tutoriel, faites avancer la balle sur la pente pointant vers le haut et laissez-la rouler dans la trou pour passer au trou suivant.</para>
+
+<sect2
+> <title
+>Les directions</title>
+<para
+>Sur le trou suivant, goûtons aux autres sortes de pentes. Dans &kappname;, il y a les pentes circulaires, verticales, horizontales et diagonales. Faites entrer la balle dans le trou.</para>
+</sect2>
+<sect2
+> <title
+>Les inclinaisons</title>
+<para
+>Le trou suivant du tutoriel possède deux pentes d'inclinaison différente. Si vous choisissez <menuchoice
+><guimenu
+>Trou</guimenu
+><guimenuitem
+>Afficher les informations</guimenuitem
+></menuchoice
+>, l'inclinaison de la pente apparaîtra sous la forme d'un nombre compris entre 1 et 8, où 8 est l'inclinaison la plus forte et 1 la moins forte. Par ailleurs, plus l'ombre de la pente est importante, plus l'inclinaison est forte. Faites entrer la balle dans le trou et passez au trou suivant.</para>
+</sect2>
+</sect1>
+
+<sect1 id="walls"
+> <title
+>Les murs</title>
+<para
+>Les balles rebondissent sur les murs comme on peut s'y attendre, avec un petit ralentissement. Détournez la balle des murs et amenez-la dans le trou pour passer au trou suivant.</para>
+</sect1>
+
+<sect1 id="puddles-sand"
+> <title
+>Les mares et le sable</title>
+<sect2
+> <title
+>Les mares</title>
+	<para
+>Les mares sont bleues. Lorsqu'une balle roule dans une mare, un coup de pénalité est ajouté à votre score et vous devez choisir où vous voulez commencer votre prochain coup : soit à coté de la mare, ou bien à la même place qu'au dernier coup joué.</para>
+</sect2>
+<sect2
+> <title
+>Le sable</title>
+<para
+>Le sable est jaune. Les balles roulent très lentement sur le sable.</para>
+<para
+>Faites entrer la balle dans le trou en contournant les mares et en traversant le sable pour continuer au trou suivant du tutoriel.</para>
+</sect2>
+</sect1>
+
+<sect1 id="windmills"
+> <title
+>Les moulins à vent</title>
+<para
+>Les moulins à vent sont des objets composés d'un mur de bordure marron et un bras mouvant soit en haut soit en bas de l'objet. Des demi-murs créent une ouverture dans le moulin à vent, devant laquelle un bras noir oscille. Il vous faudra du temps pour pouvoir faire passer la balle à travers l'ouverture. Faites entrer la balle dans le trou en traversant le moulin à vent pour continuer.</para>
+</sect1>
+
+<sect1 id="black-holes"
+> <title
+>Les trous noirs</title>
+<para
+>Lorsque vous faites entrer une balle dans un trou noir, elle est transportée vers la sortie et éjectée dans l'angle de la sortie à la même vitesse qu'avait votre balle en entrant. Choisissez <menuchoice
+><guimenu
+>Trou</guimenu
+> <guimenuitem
+>Afficher les informations</guimenuitem
+></menuchoice
+> pour voir quel trou noir renvoie vers quelle sortie et la direction que prendra la balle à leur sortie. Le bord des trous noirs et leur sortie correspondante possèdent les mêmes couleurs. Faites entrer la balle dans le trou noir, qui éjectera la balle dans le trou final pour que vous puissiez passer au trou suivant.</para>
+</sect1>
+
+<sect1 id="floaters"
+> <title
+>Les flotteurs</title>
+<para
+>Les flotteurs sont des plates-formes mouvantes qui transportent une balle qui s'y trouve. La vitesse des flotteurs varie. Celui-ci est un flotteur plutôt lent, mais il vous faudra du temps pour tirer donc vous pouvez traverser le mur et aller dans le trou.</para>
+</sect1>
+
+<sect1 id="bridges"
+> <title
+>Les ponts</title>
+<para
+>Le concept des ponts est simple - ils font passer la balle par-dessus les choses qui sont en dessous, comme les pentes, le sable et les mares. Ils peuvent avoir des murs de couleur marron sur leurs bords.</para>
+</sect1>
+</chapter>
+ 
+<chapter id="rules_and_tips"
+><title
+>Règles du jeu, stratégies et astuces</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+<para
+>Voici une description complète des fonctionnalités de bases de &kappname;.</para>
+
+<sect1 id="starting"
+> 
+<title
+>Démarrer une partie</title>
+
+<para
+>Pour démarrer une partie, choisissez <menuchoice
+><guimenu
+>Jeu</guimenu
+><guimenuitem
+>Nouveau</guimenuitem
+></menuchoice
+>. Ceci ouvre une boîte de dialogue où il vous est possible de configurer votre nouvelle partie.</para>
+<!--
+<tip>
+<para
+>More third-party &kappname; courses are available at the &kappname; website. See <ulink 
+url="http://web.mit.edu/jasonkb/www/kolf/"
+>the &kappname; user-uploaded courses page</ulink
+>.</para>
+</tip>
+-->
+<sect2
+> 
+<title
+>Page <guilabel
+>Joueurs</guilabel
+></title>
+<para
+>Pour ajouter un joueur à votre partie, cliquez sur le bouton <guibutton
+>Nouveau joueur</guibutton
+>.</para>
+
+<para
+>Pour modifier les noms des joueurs, modifiez le texte sous les boîtes de saisie.</para>
+
+<para
+>Pour enlever un joueur, cliquez sur le bouton <guibutton
+>Enlever</guibutton
+> qui suit le nom du joueur.</para>
+
+</sect2>
+
+<sect2
+> <title
+>Page <guilabel
+>Parcours</guilabel
+></title>
+<para
+>Pour choisir un parcours que vous désirez faire, cliquez sur l'entrée dans la liste déroulante sur la gauche de cette page. &kappname; est fourni avec des parcours préfabriqués que vous pouvez jouer.</para>
+<para
+>Pour ajouter un parcours que vous avez téléchargé ou créé, cliquez sur le bouton <guibutton
+>Ajouter...</guibutton
+> sur le bas de cette page puis choisissez le fichier de parcours dans la boîte de dialogue de fichiers.</para>
+</sect2>
+<sect2
+> <title
+>Page <guilabel
+>Options</guilabel
+></title>
+<para
+>Sur cette page, vous pouvez choisir si ce jeu sera joué ou non en <guilabel
+>mode strict</guilabel
+>. En mode strict, il n'y a pas de possibilité d'annulation, de déplacement de trous, ou de modification du parcours. Ce mode est généralement utilisé pour les compétitions. Les meilleurs scores ne sont comptés qu'en mode strict.</para>
+</sect2>
+</sect1>
+
+<sect1 id="saved-games"
+> <title
+>Parties enregistrées</title>
+<para
+>&kappname; peut conserver un historique de vos parties en progrès et les enregistrer sur disque pour que vous puissiez les recharger et les jouer plus tard. Les parties enregistrées contiennent le trou en cours, les noms et les couleurs des joueurs présents dans la partie ainsi que les scores des joueurs.</para>
+<sect2
+> <title
+>Enregistrer votre partie</title>
+<para
+>Pour enregistrer votre partie en cours de jeu, choisissez <menuchoice
+><guimenu
+>Jeu</guimenu
+><guimenuitem
+>Enregistrer la partie </guimenuitem
+></menuchoice
+>. Si vous n'avez pas déjà enregistré une fois la partie, il vous sera demandé le nom du fichier sous lequel enregistrer cette partie.</para>
+</sect2>
+<sect2
+> <title
+>Charger votre partie</title>
+<para
+>Pour charger la partie que vous avez enregistrée, choisissez <menuchoice
+> <guimenu
+>Jeu</guimenu
+><guimenuitem
+>Charger une partie...</guimenuitem
+> </menuchoice
+>. Vous pouvez alors choisir la partie enregistrée à ouvrir.</para>
+</sect2>
+</sect1>
+
+<sect1 id="practicing"
+> <title
+>Entraînement</title>
+<para
+>Il y a plusieurs fonctionnalités qui facilitent votre entraînement au golf. Ces fonctionnalités ne sont pas activés en mode strict.</para>
+<sect2
+> <title
+>Annulation</title>
+<para
+>Pour annuler un mauvais tir, choisissez <menuchoice
+><guimenu
+>Trou </guimenu
+><guimenuitem
+>Annuler le tir</guimenuitem
+></menuchoice
+>.</para>
+</sect2>
+<sect2
+> <title
+>Changement de trous</title>
+<para
+>Le menu <guimenu
+>Aller</guimenu
+> contient plusieurs éléments pour aller sur différents trous qui sont plutôt évidents. Consultez la <link linkend="go-menu"
+>référence du menu <guimenu
+>Aller</guimenu
+></link
+>.</para>
+</sect2>
+</sect1>
+
+<sect1 id="putting-options"
+> <title
+>Les options de putting</title>
+<para
+>&kappname; possède plusieurs types de putt. La méthode de base pour putter est <link linkend="hitting"
+>décrite ci-dessus</link
+>.</para>
+<para
+>La souris est activée par défaut. Cela signifie que quand la souris est déplacée, le putter s'aligne sur un ligne entre la souris et la balle.</para>
+<para
+>Si vous préférez utiliser uniquement le clavier et les touches fléchées, vous pouvez désactiver le putting à la souris en décochant <menuchoice
+> <guimenu
+>Configuration</guimenu
+><guimenuitem
+>Activer la souris pour déplacer le Putter</guimenuitem
+></menuchoice
+>.</para>
+
+<sect2 id="advanced-putting"
+> <title
+>Putting amélioré</title>
+<para
+>Le putting amélioré peut être activé en cochant <menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Activer le putting amélioré</guimenuitem
+></menuchoice
+>. Ce mode de putting est légèrement plus stimulant que le mode ordinaire par des clics et pression, et peut être utilisé soit à la souris soit au clavier.</para>
+
+<para
+>Pour putter dans ce mode :</para>
+<procedure>
+<step>
+<para
+>Cliquez ou appuyez sur la touche <keycap
+>Flèche vers le bas</keycap
+> une fois pour commencer le swing. L'indicateur de putting apparaîtra, et la jauge de force commencera à se remplir avec une couleur, qui change pendant son remplissage.</para>
+</step>
+<step>
+<para
+>Cliquez ou appuyez sur la touche <keycap
+>Flèche vers le bas</keycap
+> lorsque la jauge de force atteint la valeur désirée. Plus la jauge de force est remplie le long du cercle, plus fort sera le putt. Il faut de l'entraînement pour pouvoir obtenir une une force correcte des putts.</para>
+<para
+>Après cela, l'indicateur de putting commencera à revenir à sa couleur de départ.</para>
+</step>
+<step>
+<para
+>Cliquez ou appuyez sur la touche <keycap
+>Flèche vers le bas</keycap
+> encore lorsque l'indicateur de force est aussi proche que possible de la ligne centrale de l'indicateur de putting.</para>
+</step>
+</procedure>
+<para
+>Plus le clic (ou la pression de la touche) final s'en approche, plus le putt est proche de la ligne originale.</para>
+</sect2>
+</sect1>
+</chapter>
+ 
+<chapter id="interface"
+><title
+>Vue d'ensemble de l'interface</title
+> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+ <sect1 id="game-menu">
+<title
+>Le menu du jeu</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Nouveau</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Démarre une nouvelle partie</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Charger</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Charge une partie préalablement enregistrée.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Enregistrer le parcours</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Enregistre le parcours en cours en utilisant son nom de fichier courant.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Enregistrer la partie sous...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Ouvre une boîte de dialogue permettant <action
+>d'enregistrer le parcours en cours en utilisant un nouveau nom de fichier.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Jeu</guimenu
+><guimenuitem
+>Enregistrer la partie</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Enregistre la partie en cours</action
+> avec le dernier nom de fichier de la partie enregistrée, ou sous un nom de fichier que vous spécifiez si vous ne l'avez pas encore enregistrée.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Enregistrer la partie sous...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Ouvre une boîte de dialogue vous permettant <action
+>d'enregistrer la partie en cours avec un nom de fichier de votre choix</action
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Fin</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Terminer la partie</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Termine la partie en cours, sans fermer</action
+> &kappname;.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Afficher les meilleurs scores</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Affiche la table des meilleurs scores.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Jeu</guimenu
+><guimenuitem
+>À propos du parcours</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Afficher le nom, l'auteur et le par d'un parcours.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+><guimenuitem
+>Quitter</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Quitter</action
+> &kappname;</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="hole-menu">
+<title
+>Le menu pour le trou</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Trou</guimenu
+><guimenuitem
+>Édition</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Passe en mode édition</action
+> pour modifier le trou courant.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Maj;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Trou</guimenu
+><guimenuitem
+>Nouveau</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Créé un nouveau trou.</action
+> (Uniquement en mode édition).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Suppr</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Trou</guimenu
+><guimenuitem
+>Effacer</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Efface tous les objets du trou courant.</action
+> (Uniquement en mode édition).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>R</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Trou</guimenu
+><guimenuitem
+>Réinitialiser</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Réinitialise le trou courant à sa position de départ</action
+>, pour que vous puissiez recommencer.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Trou</guimenu
+><guimenuitem
+>Afficher les informations</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Afficher les informations sur les objets du trou courant.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Trou</guimenu
+><guimenuitem
+>Annuler le tir</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Annule le dernier tir que vous avez fait.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="go-menu">
+<title
+>Le menu pour jouer</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Aller</guimenu
+><guisubmenu
+>Aller au trou</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Aller directement à un autre trou du parcours.</action
+> Une liste de numéros de trous vous permet de choisir le trou où vous désirez aller.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Alt;<keycap
+>Flèche vers la droite</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Aller</guimenu
+><guimenuitem
+>Trou suivant</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Aller au trou suivant.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Alt;<keycap
+>Flèche vers la gauche</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Aller</guimenu
+><guimenuitem
+>Trou précédent</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Aller au trou précédent.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl;<keycap
+>Home</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Aller</guimenu
+><guimenuitem
+>Premier trou</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Aller au premier trou du parcours.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Maj;<keycap
+>Fin</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Aller</guimenu
+><guimenuitem
+>Dernier trou</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Aller au dernier trou du parcours.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Aller</guimenu
+><guimenuitem
+>Trou aléatoire</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Aller sur n'importe quel trou du parcours en cours.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="settings-menu">
+<title
+>Le menu de configuration</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Afficher la barre d'outils</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Affiche ou cache la barre d'outils.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Afficher la barre d'outils</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Affiche ou cache la barre d'outils.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Activer la souris pour déplacer le Putter</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Permet l'utilisation de la souris pour déplacer le putter.</action
+></para
+> 
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Activer le putting amélioré</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Active le mode de putting amélioré</action
+>, comme décrit dans <link linkend="advanced-putting"
+>son propre chapitre</link
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Afficher la ligne de visée du putter</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Affiche ou cache la ligne de visée du putter.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Jouer les sons</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Active ou désactive les effets sonores.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Activer toutes les boîtes de dialogue</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Réactive n'importe quelle boîte de dialogue que vous avez désactivée en cliquant sur <guilabel
+>Ne plus afficher ce message</guilabel
+> ou similaire</action
+>.</para>
+</listitem>
+</varlistentry>
+<!--
+<varlistentry>
+<term
+><menuchoice>
+<guimenu
+>Settings</guimenu>
+<guimenuitem
+>Reload Plugins</guimenuitem>
+</menuchoice
+></term>
+<listitem>
+<para
+><action
+>Reload plugins.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice>
+<guimenu
+>Settings</guimenu>
+<guimenuitem
+>Show Plugins</guimenuitem>
+</menuchoice
+></term>
+<listitem>
+<para
+><action
+>Display the currently loaded plugins.</action
+></para>
+</listitem>
+</varlistentry>
+-->
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Configurer les raccourcis clavier...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Personnalise les raccourcis clavier.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Configurer les barres d'outils...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Ouvre une boîte de dialogue pour configurer la barre d'outils</action
+> de &kappname;.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+<sect1 id="help"
+><!--This is a standard Help menubar entry. Only change if needed.-->
+<title
+>Le menu d'aide</title>
+<para
+>&kappname; a un menu &kde; <guimenu
+>Aide</guimenu
+> comme décrit au dessus, avec un ajout : </para>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Aide</guimenu
+><guimenuitem
+>Tutoriel</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Démarre un tutoriel de parcours de &kappname;.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Les entrées par défaut du menu <guimenu
+>Aide</guimenu
+> sont : </para
+>&help.menu.documentation; </sect1>
+</chapter>
+  
+<chapter id="faq"
+><title
+>Foire aux questions</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Je veux modifier la façon dont le jeu s'affiche. Est-ce possible ? </para
+></question>
+ <answer
+><para
+>Non. Pour le moment, &kappname; ne possède qu'un seul thème.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Puis-je utiliser le clavier pour jouer à ce jeu ? </para
+></question>
+ <answer
+><para
+>Oui. Utilisez les touches de flèche pour contrôler le putter.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Je ne comprend pas quoi faire ! Y a t-il une astuce ? </para
+></question>
+ <answer
+><para
+>Non. &kappname; n'implante pas de fonctionnalité de « conseil ».</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Je veux créer mon propre parcours de golf. Puis-je le faire ? </para
+></question>
+ <answer
+><para
+>Oui. Vous pouvez. Pour entrer dans le mode d'édition, utilisez <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+></shortcut
+><guimenu
+>Trou</guimenu
+><guimenuitem
+>Modifier</guimenuitem
+></menuchoice
+> sur la barre de menu. Cliquez <link linkend="creating"
+>ici</link
+> pour plus de détails.</para
+></answer
+><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+</qandaentry>
+ 
+</qandaset>
+</chapter>
+ 
+<chapter id="configuration"
+><title
+>Éditeur de parcours</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+<para
+>&kappname; est fourni avec un éditeur pour son format de fichier de parcours. Des parcours peuvent posséder plusieurs trous, et il n'y a pas de limite à la création des parcours.</para>
+
+<sect1 id="creating"
+> <title
+>Créer un nouveau parcours</title>
+<para
+>Pour créer un nouveau parcours, choisissez <menuchoice
+><guimenu
+>Jeu </guimenu
+><guimenuitem
+>Nouveau</guimenuitem
+></menuchoice
+>. Allez à la page <guilabel
+>Parcours</guilabel
+> de la boîte de dialogue, puis choisissez <guilabel
+>En créer un nouveau</guilabel
+>. Assurez-vous que, dans la page <guilabel
+>Options</guilabel
+> de la boîte de dialogue, le <guilabel
+>Mode strict</guilabel
+> ne soit pas coché.</para>
+
+<note>
+<para
+>Pour le parcourir plus tard, cliquez sur le bouton <guibutton
+>Ajouter...</guibutton
+> pour ajouter le parcours à la liste des parcours.</para>
+</note>
+</sect1>
+
+<sect1 id="adding-holes"
+> <title
+>Ajouter des trous</title>
+<para
+>Basculer en mode de modification en utilisant <menuchoice
+><guimenu
+>Trou</guimenu
+> <guimenuitem
+>Modifier</guimenuitem
+></menuchoice
+>. Choisissez <menuchoice
+><guimenu
+>Trou</guimenu
+><guimenuitem
+>Nouveau</guimenuitem
+></menuchoice
+>pour ajouter un nouveau trou à la fin du parcours.</para>
+<tip>
+<para
+>Vous pouvez ramener un trou à son état vide initial en choisissant <menuchoice
+><guimenu
+>Trou</guimenu
+><guimenuitem
+>Effacer</guimenuitem
+> </menuchoice
+>.</para>
+</tip>
+<para
+>Deux éléments apparaîtront sur des nouveaux trous : une trou et une balle blanche. La balle blanche définit l'endroit où les balles des joueurs seront placées au départ du trou.</para>
+</sect1>
+
+<sect1 id="editing-basics"
+> <title
+>Principe des modifications</title>
+<para
+>Le bloc de construction de base des parcours de &kappname; est <quote
+>l'objet</quote
+>. Les trous sont faits d'un ensemble d'objets. Les objets peuvent être déplacés à un endroit, et chacune des différentes sortes d'objets possède des propriétés différentes que vous pouvez modifier.</para>
+<para
+>Pour commencer à modifier un trou, activez le choix de menu <menuchoice
+><guimenu
+>Trou</guimenu
+><guimenuitem
+>Édition</guimenuitem
+> </menuchoice
+>, ou bien activez l'icône représentant un crayon sur la barre d'outils. Pour quitter le mode d'édition, désactivez ce choix de menu (ou l'icône de la barre d'outils).</para>
+
+<sect2
+> <title
+>Ajouter des objets</title>
+<para
+>Pour ajouter un nouvel objet au parcours, sélectionnez son nom dans la liste déroulante intitulée <guilabel
+>Ajouter un objet</guilabel
+>. L'objet apparaîtra au centre du parcours.</para>
+<caution>
+<para
+>Les ponts et les panneaux recouvriront les nouveaux objets s'ils sont déjà au centre du trou.</para>
+</caution>
+<!--
+<tip>
+<para
+>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
+</tip>
+<para
+>Some &kappname; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
+<para
+>Third-party &kappname; plugins are available at the &kappname; website. See <ulink url="http://web.mit.edu/jasonkb/www/kolf/"
+>the &kappname; plugins download page</ulink
+>.</para>
+-->
+</sect2>
+
+<sect2
+> <title
+>Déplacer et modifier la taille des objets</title>
+<para
+>Amenez le pointeur de votre souris sur l'objet que vous désirez déplacer, le curseur de la souris se changera en curseur en forme de main. Puis cliquez et déplacez l'objet là où vous le désirez tout en maintenant le bouton enfoncé.</para>
+<para
+>Les mares, le sable, les flotteurs, les ponts et les panneaux peuvent être re-dimensionnés en déplaçant le petit cercle sur leur coin inférieur droit.</para>
+
+<note>
+<para
+>Les murs peuvent être déplacés en cliquant et en déplaçant leurs extrémités en maintenant le bouton de la souris enfoncé, ou bien vous pouvez déplacer le mur en sa totalité en cliquant sur la partie centrale du mur et en le déplaçant tout en maintenant le bouton enfoncé comme d'habitude.</para>
+</note>
+</sect2>
+
+<sect2
+> <title
+>Configuration des objets</title>
+<para
+>Les propriétés des objets peuvent être modifiés dans la zone inférieure droite de la fenêtre de &kappname;. Pour modifier un objet, déplacer le pointeur de votre souris au-dessus de l'objet, le curseur va se modifier en un curseur en forme de main. Ensuite, cliquez. Différents contrôles pour cet objet apparaîtront dans le coin inférieure droit de la fenêtre de &kappname;.</para>
+<sect3
+> <title
+>Les paramètres généraux des trous</title>
+<para
+>Pour modifier la configuration générale du trou, cliquez sur une zone du trou qui n'est pas recouverte par un objet. Lorsque cela est possible, le curseur aura une forme normale.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Nom du parcours</guilabel
+></term>
+<listitem>
+<para
+>C'est le nom qui est montré dans la boîte de dialogue lors d'une nouvelle partie et dans la boîte de dialogue <guimenuitem
+>À propos du parcours</guimenuitem
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Auteur du parcours</guilabel
+></term>
+<listitem>
+<para
+>C'est le nom de l'auteur qui apparaît dans la boîte de dialogue <guimenuitem
+>À propos du parcours</guimenuitem
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Par : </guilabel
+></term>
+<listitem>
+<para
+>Le par du trou.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Maximum : </guilabel
+></term>
+<listitem>
+<para
+>Le nombre maximum de tirs qu'un joueur peut faire sur le trou.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Afficher les murs de bordure</guilabel
+></term>
+<listitem>
+<para
+>Affiche ou non les murs sur le périmètre du trou.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Les pentes</title>
+
+<variablelist>
+<varlistentry
+> <term
+>Type</term>
+<listitem>
+<para
+>Choisissez le type de la pente - <guilabel
+>Verticale</guilabel
+>, <guilabel
+>Horizontale</guilabel
+>, <guilabel
+>Diagonale</guilabel
+>, <guilabel
+>Diagonale opposée</guilabel
+>, <guilabel
+>Circulaire</guilabel
+>. Les pentes de types diagonales et diagonales opposées sont des triangles, à la différence des pentes circulaires qui sont des cercles. Les pentes verticales et horizontales sont des rectangles.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Direction inverse</guilabel
+></term>
+<listitem>
+<para
+>Inverse ou non l'inclinaison de la pente. Par exemple, considérez une pente elliptique (circulaire). Lorsqu'elle n'est pas inversée, elle repousse les balles à l'extérieure comme un tertre. Lorsqu'elle est inversée, elle attire les balles comme un trou.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Grade : </guilabel
+></term>
+<listitem>
+<para
+>Choisissez un grade (inclinaison) de la pente en déplaçant le curseur pour que le grade se place entre 0 et 8, où 8 est l'inclinaison la plus forte et 0 la plus faible. Des pentes plus inclinées repoussent plus la balle.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Non déplaçable</guilabel
+></term>
+<listitem>
+<para
+>Permet ou non le déplacement par d'autres objets, comme les flotteurs.</para>
+<caution>
+<para
+>Si un flotteur chevauche cet objet n'importe où, et si la pente est large et ne déplacera pas le flotteur, vous <emphasis
+>devez</emphasis
+> rendre la pente <guilabel
+>Non déplaçable</guilabel
+>, ou bien &kappname; souffrira de mauvaises performances !</para>
+</caution>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Les mares et le sable</title>
+<para
+>Les mares et le sable ont les mêmes options de configuration que les autres.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Activer afficher ou cacher</guilabel
+></term>
+<listitem>
+<para
+>Cocher cette option active le clignotement de cette mare ou du sable.</para>
+<!--
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Show/Hide speed</term>
+<listitem>
+  -->
+<para
+>Plus le curseur est proche de <guilabel
+>Rapide</guilabel
+>, plus le clignotement de la mare ou du sable est rapide.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Les ponts, les moulins à vent, les flotteurs et les panneaux</title>
+<para
+>Les ponts, les moulins à vent, les flotteurs et les panneaux possèdent des options semblables pour configurer sur quels côtés sont présents les murs de bordure. Pour afficher le mur sur un côté, cochez la boîte à cocher associée à ce côté.</para>
+<para
+>Il y a aussi quelques options plus spécifiques pour les moulins à vent, les flotteurs et les panneaux.</para>
+
+<sect4
+> <title
+>Les moulins à vent</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Moulin à vent en bas</guilabel
+></term>
+<listitem>
+<para
+>Définit si le bras noir du moulin à vent est en bas ou en haut - en bas par défaut. Les deux demi-murs seront toujours avec le bras. Notez que vous ne pouvez pas activer un mur de bordure sur le côté où le bras est présent.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Vitesse</term>
+<listitem>
+<para
+>Plus le curseur est proche de <guilabel
+>Rapide</guilabel
+>, plus le bras noir du moulin à vent se déplacera rapidement.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Les flotteurs</title>
+<para
+>La trajectoire que suit le flotteur est affiché par le mur auquel il est relié.</para>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Modifier la vitesse</guilabel
+></term>
+<listitem>
+<para
+>Plus le curseur sera proche de <guilabel
+>Rapide</guilabel
+>, plus le flotteur se déplacera rapidement. Si le curseur est juste à côté de <guilabel
+>Lent</guilabel
+>, le flotteur est arrêté.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Les panneaux</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Panneaux HTML :</guilabel
+></term>
+<listitem>
+<para
+>Vous pouvez saisir ici tout HTML valable. Par exemple, saisissez <userinput
+>Frappez &lt;i&gt;doucement&lt;/i&gt; en direction de la pente !</userinput
+> affichera le texte <quote
+>Frappez <emphasis
+>doucement</emphasis
+> en direction de la pente !</quote
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+</sect3>
+</sect2>
+</sect1>
+</chapter>
+ 
+<chapter id="credits"
+><title
+>Remerciements et licence</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+ 
+<para
+>&kappname;</para>
+
+<para
+>Copyright &kappname; 2001, 2002 &Jason.Katz-Brown;</para>
+
+<itemizedlist>
+<title
+>Développeurs</title>
+<listitem>
+<para
+>Jason Katz-Brown <email
+>jasonkb@mit.edu</email
+></para>
+</listitem>
+<listitem>
+<para
+>Niklas Knutsson</para>
+</listitem>
+<listitem>
+<para
+>Ryan Cumming</para>
+</listitem>
+<listitem>
+<para
+>Daniel Matza-Brown</para>
+</listitem>
+<listitem>
+<para
+>Paul Broadbent</para>
+</listitem>
+</itemizedlist>
+
+<para
+>Copyright de la documentation 2002, Jason Katz-Brown</para>
+
+<para
+>Traduction française par &RobertJacolin; et &StanislasZeller;.</para
+> &underFDL; &underGPL; </chapter>
+  
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

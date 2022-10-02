@@ -1,0 +1,840 @@
+# Malay message for Kolf
+# Copyright (C) 2003, 2006 Free Software Foundation, Inc.
+# Hasbullah Bin Pit (sebol) <sebol@ikhlas.com>, 2003.
+# Sharuzzaman Ahmat Raslan <sharuzzaman@myrealbox.com>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kolf\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2006-07-28 10:55+0800\n"
+"Last-Translator: Sharuzzaman Ahmat Raslan <sharuzzaman@myrealbox.com>\n"
+"Language-Team: Malay <translation-team-ms@lists.sourceforge.net>\n"
+"Language: ms\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.10.2\n"
+"Plural-Forms: nplurals=2; plural=1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Hasbullah Bin Pit"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "sebol@ikhlas.com"
+
+#: config.cpp:51
+#, kde-format
+msgid "No configuration options"
+msgstr "Tiada pilihan tetapan"
+
+#: editor.cpp:37
+#, kde-format
+msgid "Add object:"
+msgstr "Tambah objek:"
+
+#: game.cpp:261
+#, kde-format
+msgid "Course name: "
+msgstr "Nama padang:"
+
+#: game.cpp:268
+#, kde-format
+msgid "Course author: "
+msgstr "Pencipta padang: "
+
+#: game.cpp:277
+#, kde-format
+msgid "Par:"
+msgstr "Par:"
+
+#: game.cpp:287
+#, kde-format
+msgid "Maximum:"
+msgstr "Maksimum:"
+
+#: game.cpp:291
+#, kde-format
+msgid "Maximum number of strokes player can take on this hole."
+msgstr "Bilangan maksimum pukulan pemain boleh ambil pada lubang ini."
+
+#: game.cpp:292
+#, kde-format
+msgid "Maximum number of strokes"
+msgstr "Bilangan maksimum pukulan"
+
+#: game.cpp:293
+#, kde-format
+msgid "Unlimited"
+msgstr "Tanpa had"
+
+#: game.cpp:299
+#, kde-format
+msgid "Show border walls"
+msgstr "Papar sempadan tembok"
+
+#: game.cpp:497 game.cpp:2439
+#, kde-format
+msgid "Course Author"
+msgstr "Pencipta Padang"
+
+#: game.cpp:498 game.cpp:499 game.cpp:2439
+#, kde-format
+msgid "Course Name"
+msgstr "Nama Padang"
+
+#: game.cpp:1421
+#, kde-format
+msgid "Drop Outside of Hazard"
+msgstr "Jatuh Diluar Halangan"
+
+#: game.cpp:1422
+#, kde-format
+msgid "Rehit From Last Location"
+msgstr "Pukul Daripada Lokasi Terakhir"
+
+#: game.cpp:1424
+#, kde-format
+msgid "What would you like to do for your next shot?"
+msgstr "Apa yang anda ingin lakukan bagi pukulan berikutnya?"
+
+#: game.cpp:1424
+#, kde-format
+msgid "%1 is in a Hazard"
+msgstr "%1 berada dalam Halangan"
+
+#: game.cpp:1592
+#, kde-format
+msgid "%1 will start off."
+msgstr "%1 akan bermula."
+
+#: game.cpp:1592
+#, kde-format
+msgid "New Hole"
+msgstr "Lubang Baru"
+
+#: game.cpp:1753
+#, kde-format
+msgid "Course name: %1"
+msgstr "Nama padang: %1"
+
+#: game.cpp:1754
+#, kde-format
+msgid "Created by %1"
+msgstr "Dicipta oleh %1"
+
+#: game.cpp:1755
+#, fuzzy, kde-format
+#| msgid "%1 holes"
+msgid "%1 hole"
+msgid_plural "%1 holes"
+msgstr[0] "%1 lubang"
+msgstr[1] "%1 lubang"
+
+#: game.cpp:1756
+#, fuzzy, kde-format
+#| msgid "Course Information"
+msgctxt "@title:window"
+msgid "Course Information"
+msgstr "Maklumat Padang"
+
+#: game.cpp:1887
+#, kde-format
+msgid "This hole uses the following plugins, which you do not have installed:"
+msgstr "Lubang ini menggunakan plugin berikut, dimana anda tak memasangnya:"
+
+#: game.cpp:1999
+#, kde-format
+msgid "There are unsaved changes to current hole. Save them?"
+msgstr "Ada perubahan tak simpan pada lubang semasa.Simpan perubahan ?"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Unsaved Changes"
+msgstr "Perubahan belum Disimpan"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Save &Later"
+msgstr "Simpan &Kemudian"
+
+#: game.cpp:2170 kolf.cpp:550
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course to Save To"
+msgctxt "@title:window"
+msgid "Pick Kolf Course to Save To"
+msgstr "Pilih Padang Kolf untuk Disimpan"
+
+#: kcomboboxdialog.cpp:60
+#, kde-format
+msgid "&Do not ask again"
+msgstr "&Jangan tanya saya lagi"
+
+#: kolf.cpp:62
+#, fuzzy, kde-format
+#| msgid "Slow"
+msgid "Slope"
+msgstr "Perlahan"
+
+#: kolf.cpp:63
+#, fuzzy, kde-format
+msgid "Puddle"
+msgstr "Tengah"
+
+#: kolf.cpp:64
+#, fuzzy, kde-format
+msgid "Wall"
+msgstr "semua"
+
+#: kolf.cpp:65
+#, kde-format
+msgid "Cup"
+msgstr "Piala"
+
+#: kolf.cpp:66
+#, kde-format
+msgid "Sand"
+msgstr "Pasir"
+
+#: kolf.cpp:67
+#, fuzzy, kde-format
+msgid "Windmill"
+msgstr "Binomial"
+
+#: kolf.cpp:68
+#, kde-format
+msgid "Black Hole"
+msgstr "Lubang Hitam"
+
+#: kolf.cpp:69
+#, kde-format
+msgid "Floater"
+msgstr ""
+
+#: kolf.cpp:70
+#, kde-format
+msgid "Bridge"
+msgstr "Jambatan"
+
+#: kolf.cpp:71
+#, fuzzy, kde-format
+msgid "Sign"
+msgstr "_T.tangan"
+
+#: kolf.cpp:72
+#, fuzzy, kde-format
+msgid "Bumper"
+msgstr "Super"
+
+#: kolf.cpp:95
+#, kde-format
+msgid "Save &Course"
+msgstr "Simpan &Padang"
+
+#: kolf.cpp:97
+#, kde-format
+msgid "Save &Course As..."
+msgstr "Simpan Padang Sebagai..."
+
+#: kolf.cpp:100
+#, kde-format
+msgid "&Save Game"
+msgstr "&Simpan Permainan"
+
+#: kolf.cpp:103
+#, kde-format
+msgid "&Save Game As..."
+msgstr "_Simpan Permainan Sebagai..."
+
+#: kolf.cpp:110
+#, kde-format
+msgid "&Edit"
+msgstr ""
+
+#: kolf.cpp:116
+#, kde-format
+msgid "&New"
+msgstr "Ba&ru"
+
+#: kolf.cpp:125
+#, kde-format
+msgid "&Reset"
+msgstr "&Ulangtetap"
+
+#: kolf.cpp:130
+#, kde-format
+msgid "&Undo Shot"
+msgstr "&Nyah acara Pukulan"
+
+#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. Go
+#: kolf.cpp:134
+#, kde-format
+msgid "Switch to Hole"
+msgstr "Bertukar Lubang"
+
+#: kolf.cpp:139
+#, kde-format
+msgid "&Next Hole"
+msgstr "Lubang &Berikutnya"
+
+#: kolf.cpp:144
+#, kde-format
+msgid "&Previous Hole"
+msgstr "Lubang &Terdahulu"
+
+#: kolf.cpp:149
+#, kde-format
+msgid "&First Hole"
+msgstr "Lubang &Pertama"
+
+#: kolf.cpp:153
+#, kde-format
+msgid "&Last Hole"
+msgstr "Lubang &Akhir"
+
+#: kolf.cpp:158
+#, kde-format
+msgid "&Random Hole"
+msgstr "Lubang &Rawak"
+
+#: kolf.cpp:162
+#, kde-format
+msgid "Enable &Mouse for Moving Putter"
+msgstr ""
+
+#: kolf.cpp:169
+#, fuzzy, kde-format
+msgid "Enable &Advanced Putting"
+msgstr "Tetapan Lanjutan"
+
+#: kolf.cpp:175
+#, kde-format
+msgid "Show &Info"
+msgstr "Papar &Maklumat"
+
+#: kolf.cpp:182
+#, kde-format
+msgid "Show Putter &Guideline"
+msgstr "Papar putert"
+
+#: kolf.cpp:188
+#, kde-format
+msgid "Enable All Dialog Boxes"
+msgstr "Hidupkan Semua Kotak Dialog"
+
+#: kolf.cpp:192
+#, kde-format
+msgid "Play &Sounds"
+msgstr "Main &Bunyi"
+
+#: kolf.cpp:199
+#, fuzzy, kde-format
+#| msgid "&About Course"
+msgid "&About Course..."
+msgstr "&perihal Course"
+
+#: kolf.cpp:202
+#, kde-format
+msgid "&Tutorial"
+msgstr "&Tutorial"
+
+#: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
+#, kde-format
+msgid "Par"
+msgstr "Par"
+
+#: kolf.cpp:483
+#, kde-format
+msgid " and "
+msgstr " dan "
+
+#: kolf.cpp:484
+#, fuzzy, kde-format
+msgid "%1 tied"
+msgstr "1 byte"
+
+#: kolf.cpp:487
+#, kde-format
+msgid "%1 won!"
+msgstr "%1 menang!"
+
+#: kolf.cpp:501 kolf.cpp:513 kolf.cpp:528 kolf.cpp:529 newgame.cpp:249
+#: newgame.cpp:250
+#, kde-format
+msgid "High Scores for %1"
+msgstr "Mata tertinggi bagi %1"
+
+#: kolf.cpp:568
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course to Save To"
+msgctxt "@title:window"
+msgid "Pick Saved Game to Save To"
+msgstr "Pilih Padang Kolf untuk Disimpan"
+
+#: kolf.cpp:606
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Saved Game"
+msgctxt "@title:window"
+msgid "Pick Kolf Saved Game"
+msgstr "Pilih Permainan Kolf yang Disimpan"
+
+#: kolf.cpp:654
+#, fuzzy, kde-format
+msgid "%1's turn"
+msgstr "giliran %s"
+
+#: kolf.cpp:726
+#, kde-format
+msgid "%1's score has reached the maximum for this hole."
+msgstr "Mata %1 telah menjangkau maksimum bagi lubang ini."
+
+#. i18n: ectx: Menu (hole)
+#: kolfui.rc:17
+#, kde-format
+msgid "Ho&le"
+msgstr "&Lubang"
+
+#. i18n: ectx: Menu (go_course)
+#: kolfui.rc:31
+#, kde-format
+msgid "&Go"
+msgstr "&Pergi"
+
+#: landscape.cpp:146
+#, kde-format
+msgid "Enable show/hide"
+msgstr "Hidupkan papar/sembunyi"
+
+#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
+#, kde-format
+msgid "Slow"
+msgstr "Perlahan"
+
+#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
+#, kde-format
+msgid "Fast"
+msgstr "Pantas"
+
+#: landscape.cpp:238
+#, kde-format
+msgid "Vertical"
+msgstr ""
+
+#: landscape.cpp:239
+#, kde-format
+msgid "Horizontal"
+msgstr ""
+
+#: landscape.cpp:240
+#, kde-format
+msgid "Diagonal"
+msgstr "Diagonal"
+
+#: landscape.cpp:241
+#, kde-format
+msgid "Opposite Diagonal"
+msgstr "Diagonal Bertentangan"
+
+#: landscape.cpp:242
+#, kde-format
+msgid "Elliptic"
+msgstr ""
+
+#: landscape.cpp:571
+#, kde-format
+msgid "Reverse direction"
+msgstr "Hala songsang"
+
+#: landscape.cpp:576
+#, fuzzy, kde-format
+msgid "Unmovable"
+msgstr "Tiada"
+
+#: landscape.cpp:578
+#, fuzzy, kde-format
+msgid "Whether or not this slope can be moved by other objects, like floaters."
+msgstr "Samada teks boleh diubahsuai oleh pengguna"
+
+#: landscape.cpp:582
+#, kde-format
+msgid "Grade:"
+msgstr "Gred:"
+
+#: main.cpp:49
+#, kde-format
+msgid "Kolf"
+msgstr "Kolf"
+
+#: main.cpp:51
+#, kde-format
+msgid "KDE Minigolf Game"
+msgstr "Permainan golf mini KDE"
+
+#: main.cpp:53
+#, kde-format
+msgid "(c) 2002-2010, Kolf developers"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Stefan Majewsky"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Current maintainer"
+msgstr ""
+
+#: main.cpp:57
+#, kde-format
+msgid "Jason Katz-Brown"
+msgstr ""
+
+#: main.cpp:57
+#, fuzzy, kde-format
+#| msgid "Main author"
+msgid "Former main author"
+msgstr "Penulis utama:"
+
+#: main.cpp:58
+#, kde-format
+msgid "Niklas Knutsson"
+msgstr ""
+
+#: main.cpp:58
+#, kde-format
+msgid "Advanced putting mode"
+msgstr "Mod pengeputan lanjutan"
+
+#: main.cpp:59
+#, kde-format
+msgid "Rik Hemsley"
+msgstr ""
+
+#: main.cpp:59
+#, kde-format
+msgid "Border around course"
+msgstr "Sempadan sekeliling padang"
+
+#: main.cpp:60
+#, kde-format
+msgid "Timo A. Hummel"
+msgstr ""
+
+#: main.cpp:60
+#, kde-format
+msgid "Some good sound effects"
+msgstr "Beberapa kesan bunyi yang baik"
+
+#: main.cpp:62
+#, kde-format
+msgid "Rob Renaud"
+msgstr ""
+
+#: main.cpp:62
+#, kde-format
+msgid "Wall-bouncing help"
+msgstr ""
+
+#: main.cpp:63
+#, kde-format
+msgid "Aaron Seigo"
+msgstr ""
+
+#: main.cpp:63
+#, kde-format
+msgid "Suggestions, bug reports"
+msgstr "Cadangan, laporan pepijat"
+
+#: main.cpp:64
+#, kde-format
+msgid "Erin Catto"
+msgstr ""
+
+#: main.cpp:64
+#, kde-format
+msgid "Developer of Box2D physics engine"
+msgstr ""
+
+#: main.cpp:65
+#, kde-format
+msgid "Ryan Cumming"
+msgstr ""
+
+#: main.cpp:65
+#, fuzzy, kde-format
+#| msgid "Vector class"
+msgid "Vector class (Kolf 1)"
+msgstr "Kelas vektor"
+
+#: main.cpp:66
+#, kde-format
+msgid "Daniel Matza-Brown"
+msgstr ""
+
+#: main.cpp:66
+#, kde-format
+msgid "Working wall-bouncing algorithm (Kolf 1)"
+msgstr ""
+
+#: main.cpp:71
+#, kde-format
+msgid "File"
+msgstr ""
+
+#: main.cpp:72
+#, fuzzy, kde-format
+msgid "Print course information and exit"
+msgstr "cetak maklumat padang dan keluar."
+
+#: main.cpp:89 newgame.cpp:240
+#, fuzzy, kde-format
+msgid "By %1"
+msgstr "%B %1"
+
+#: main.cpp:90
+#, kde-format
+msgid "%1 holes"
+msgstr "%1 lubang"
+
+#: main.cpp:91
+#, kde-format
+msgid "par %1"
+msgstr "par %1"
+
+#: main.cpp:98
+#, kde-format
+msgid "Course %1 does not exist."
+msgstr "Padang %1 tidak wujud."
+
+#: newgame.cpp:38
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "New Game"
+msgstr "&Simpan Permainan"
+
+#: newgame.cpp:54
+#, kde-format
+msgid "Players"
+msgstr "Pemain"
+
+#: newgame.cpp:58
+#, kde-format
+msgid "&New Player"
+msgstr "Pemain Ba&ru"
+
+#: newgame.cpp:93
+#, kde-format
+msgid "Course"
+msgstr "Padang"
+
+#: newgame.cpp:94
+#, kde-format
+msgid "Choose Course to Play"
+msgstr "Pilih Padang untuk Bermain"
+
+#: newgame.cpp:133
+#, kde-format
+msgid "Create New"
+msgstr "Cipta Baru"
+
+#: newgame.cpp:134
+#, kde-format
+msgid "You"
+msgstr "Anda"
+
+#: newgame.cpp:160
+#, kde-format
+msgid "Highscores"
+msgstr "Mata tertinggi"
+
+#: newgame.cpp:170
+#, kde-format
+msgid "Add..."
+msgstr "Tambah..."
+
+#: newgame.cpp:174 newgame.cpp:363
+#, kde-format
+msgid "Remove"
+msgstr ""
+
+#: newgame.cpp:184
+#, fuzzy, kde-format
+msgid "Options"
+msgstr "Opsyen Permainan"
+
+#: newgame.cpp:185
+#, kde-format
+msgid "Game Options"
+msgstr "Opsyen Permainan"
+
+#: newgame.cpp:190
+#, kde-format
+msgid "&Strict mode"
+msgstr "Mod &Tegas"
+
+#: newgame.cpp:194
+#, kde-format
+msgid ""
+"In strict mode, undo, editing, and switching holes is not allowed. This is "
+"generally for competition. Only in strict mode are highscores kept."
+msgstr ""
+"Dalam mod tegas, nyah acara, pengeditan, dan pertukaran lubang tak "
+"dibenarkan. Ini biasanya untuk pertandingan. Hanya pada mod tegas mata "
+"tertinggi disimpan."
+
+#: newgame.cpp:241
+#, kde-format
+msgid "Par %1"
+msgstr "Par %1"
+
+#: newgame.cpp:242
+#, kde-format
+msgid "%1 Holes"
+msgstr "%1 Lubang"
+
+#: newgame.cpp:280
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course"
+msgctxt "@title:window"
+msgid "Pick Kolf Course"
+msgstr "Pilih Padang Kolf"
+
+#: newgame.cpp:308
+#, kde-format
+msgid "Chosen course is already on course list."
+msgstr "Padang dipilih sudah ada pada senarai padang."
+
+#: newgame.cpp:321
+#, kde-format
+msgid "Player %1"
+msgstr "Pemain %1"
+
+#: objects.cpp:244
+#, fuzzy, kde-format
+#| msgid "degrees"
+msgid " degree"
+msgid_plural " degrees"
+msgstr[0] "darjah"
+msgstr[1] "darjah"
+
+#: objects.cpp:247
+#, kde-format
+msgid "Exiting ball angle:"
+msgstr "Keluar sudut bola:"
+
+#: objects.cpp:267
+#, kde-format
+msgid "Minimum exit speed:"
+msgstr "Kelajuan keluar minimum:"
+
+#: objects.cpp:288
+#, fuzzy, kde-format
+#| msgid "Minimum exit speed:"
+msgid "Maximum exit speed:"
+msgstr "Kelajuan keluar minimum:"
+
+#: obstacles.cpp:412
+msgid "&Top"
+msgstr "&Atas"
+
+#: obstacles.cpp:412
+msgid "&Left"
+msgstr "Ki&ri"
+
+#: obstacles.cpp:412
+msgid "&Right"
+msgstr "Ka&nan"
+
+#: obstacles.cpp:412
+msgid "&Bottom"
+msgstr ""
+
+#: obstacles.cpp:421
+#, fuzzy, kde-format
+msgid "Walls on:"
+msgstr "Walloon"
+
+#: obstacles.cpp:431
+#, fuzzy, kde-format
+msgid "Sign HTML:"
+msgstr "Isyarat :"
+
+#: obstacles.cpp:440
+#, fuzzy, kde-format
+msgid "Windmill on top"
+msgstr "Binomial"
+
+#: obstacles.cpp:461
+#, kde-format
+msgid "Moving speed"
+msgstr "Kelajuan pergerakan"
+
+#: obstacles.cpp:681
+#, kde-format
+msgid "New Text"
+msgstr "Teks Baru"
+
+#: scoreboard.cpp:28
+#, kde-format
+msgid "Total"
+msgstr "Jumlah"
+
+#~ msgid "Circular"
+#~ msgstr "Membulat"
+
+#~ msgid "Kolf Options"
+#~ msgstr "Opsyen Kolf"
+
+#~ msgid "Draw title text"
+#~ msgstr "Lukis teks tajuk"
+
+#~ msgid "Currently Loaded Plugins"
+#~ msgstr "Plugin yg Kini DImuatkan"
+
+#~ msgid "Plugins"
+#~ msgstr "Plugin"
+
+#~ msgid "&Reload Plugins"
+#~ msgstr "&Ulangmuat Plugin"
+
+#~ msgid "Show &Plugins"
+#~ msgstr "&Papar Plugin"
+
+#, fuzzy
+#~| msgid "Fast"
+#~ msgid "Flash"
+#~ msgstr "Pantas"
+
+#, fuzzy
+#~ msgid "Number:"
+#~ msgstr "Super"
+
+#, fuzzy
+#~ msgid "Disable &Advanced Putting"
+#~ msgstr "Tetapan Lanjutan"
+
+#, fuzzy
+#~ msgid "Hide &Info"
+#~ msgstr "Papar &Maklumat"
+
+#, fuzzy
+#~ msgid "Hide Putter &Guideline"
+#~ msgstr "Papar putert"
+
+#, fuzzy
+#~ msgid "Disable All Dialog Boxes"
+#~ msgstr "Hidupkan Semua Kotak Dialog"
+
+#, fuzzy
+#~ msgid "Load Saved Game..."
+#~ msgstr "Muat Simpanan..."
+
+#~ msgid "Hole %1: par %2, maximum %3 strokes"
+#~ msgstr "Lubang %1: par %2, maksimum %3 pukulan"

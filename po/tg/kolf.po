@@ -1,0 +1,858 @@
+# translation of kolf.po to Tajik
+# translation of kolf.po to Тоҷикӣ
+# Copyright (C) 2004, 2005 Free Software Foundation, Inc.
+# 2004, infoDev, a World Bank organization
+# 2004, Khujand Computer Technologies, Inc.
+# 2004, KCT1, NGO
+# Dilshod Marupov <dma165@hotmail.com>, 2004.
+# Hiromon <H_Abrorova@rambler.ru>, 2004.
+# Victor Ibragimov <youth_opportunities@tajikngo.org>, 2005.
+msgid ""
+msgstr ""
+"Project-Id-Version: kolf\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2005-10-22 16:37+0500\n"
+"Last-Translator: Victor Ibragimov <youth_opportunities@tajikngo.org>\n"
+"Language-Team: Tajik\n"
+"Language: tg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.10\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Роҷер Ковакс, Виктор Ибрагимов, Абророва Хиромон"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+"rkovacs@khujand.org, youth_opportunities@tajikngo.org,H_Abrorova@rambler.ru"
+
+#: config.cpp:51
+#, kde-format
+msgid "No configuration options"
+msgstr "Хосиятҳои тақсимшаванда нестанд"
+
+#: editor.cpp:37
+#, kde-format
+msgid "Add object:"
+msgstr "Иловакунии объект:"
+
+#: game.cpp:261
+#, kde-format
+msgid "Course name: "
+msgstr "Номи майдонча: "
+
+#: game.cpp:268
+#, kde-format
+msgid "Course author: "
+msgstr "Муаллифи майдонча: "
+
+#: game.cpp:277
+#, kde-format
+msgid "Par:"
+msgstr "Холҳо:"
+
+#: game.cpp:287
+#, kde-format
+msgid "Maximum:"
+msgstr "Калонтарин:"
+
+#: game.cpp:291
+#, kde-format
+msgid "Maximum number of strokes player can take on this hole."
+msgstr "Шумораи зиёдтарини занишҳо, ки бозингар ба ин сӯрох карда метавонад."
+
+#: game.cpp:292
+#, kde-format
+msgid "Maximum number of strokes"
+msgstr "Шумораи зиёдтарини занишҳо"
+
+#: game.cpp:293
+#, kde-format
+msgid "Unlimited"
+msgstr "Номаҳдуд"
+
+#: game.cpp:299
+#, kde-format
+msgid "Show border walls"
+msgstr "Намоиши деворҳои сарҳадӣ"
+
+#: game.cpp:497 game.cpp:2439
+#, kde-format
+msgid "Course Author"
+msgstr "Муаллифи Майдонча"
+
+#: game.cpp:498 game.cpp:499 game.cpp:2439
+#, kde-format
+msgid "Course Name"
+msgstr "Номи Майдонча"
+
+#: game.cpp:1421
+#, kde-format
+msgid "Drop Outside of Hazard"
+msgstr "Партофтан Дар Назди Минтақаи Хатарнок"
+
+#: game.cpp:1422
+#, kde-format
+msgid "Rehit From Last Location"
+msgstr "Азнавтакроркунии Заниш аз Мавқеъи Охирон"
+
+#: game.cpp:1424
+#, kde-format
+msgid "What would you like to do for your next shot?"
+msgstr "Заниши ояндаро аз куҷо кардан мехоҳед?"
+
+#: game.cpp:1424
+#, kde-format
+msgid "%1 is in a Hazard"
+msgstr "%1 дар минтақаи Хатарнок аст"
+
+#: game.cpp:1592
+#, kde-format
+msgid "%1 will start off."
+msgstr "%1 оғоз мекунад."
+
+#: game.cpp:1592
+#, kde-format
+msgid "New Hole"
+msgstr "Сӯрохии Нав"
+
+#: game.cpp:1753
+#, kde-format
+msgid "Course name: %1"
+msgstr "Номи майдонча: %1"
+
+#: game.cpp:1754
+#, kde-format
+msgid "Created by %1"
+msgstr "Аз тарафи %1 офарида шудааст"
+
+#: game.cpp:1755
+#, fuzzy, kde-format
+#| msgid "%1 holes"
+msgid "%1 hole"
+msgid_plural "%1 holes"
+msgstr[0] "%1 сӯрохиҳо"
+msgstr[1] "%1 сӯрохиҳо"
+
+#: game.cpp:1756
+#, fuzzy, kde-format
+#| msgid "Course Information"
+msgctxt "@title:window"
+msgid "Course Information"
+msgstr "Маълумот оиди Майдонча"
+
+#: game.cpp:1887
+#, kde-format
+msgid "This hole uses the following plugins, which you do not have installed:"
+msgstr ""
+"Ин сӯрохиро модулҳои зерине, ки шумо онҳоро коргузорӣ накардед, истифода "
+"мебаранд:"
+
+#: game.cpp:1999
+#, kde-format
+msgid "There are unsaved changes to current hole. Save them?"
+msgstr "Барои сӯрохии ҷорӣ тағиротҳо захира нашудаанд. Онҳоро захира кунам?"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Unsaved Changes"
+msgstr "Тағиротҳои Захирашуда"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Save &Later"
+msgstr "&Дертар Захиракунӣ"
+
+#: game.cpp:2170 kolf.cpp:550
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course to Save To"
+msgctxt "@title:window"
+msgid "Pick Kolf Course to Save To"
+msgstr "Интихоби Майдончаи Голф барои Захиракунӣ"
+
+#: kcomboboxdialog.cpp:60
+#, kde-format
+msgid "&Do not ask again"
+msgstr "&Дигар напурсед"
+
+#: kolf.cpp:62
+#, fuzzy, kde-format
+#| msgid "Slow"
+msgid "Slope"
+msgstr "Суст"
+
+#: kolf.cpp:63
+#, kde-format
+msgid "Puddle"
+msgstr "Кӯмак"
+
+#: kolf.cpp:64
+#, kde-format
+msgid "Wall"
+msgstr "Девор"
+
+#: kolf.cpp:65
+#, kde-format
+msgid "Cup"
+msgstr "Ҷом"
+
+#: kolf.cpp:66
+#, kde-format
+msgid "Sand"
+msgstr "Қум"
+
+#: kolf.cpp:67
+#, kde-format
+msgid "Windmill"
+msgstr "Осиёб"
+
+#: kolf.cpp:68
+#, kde-format
+msgid "Black Hole"
+msgstr "Сӯрохии Сиёҳ"
+
+#: kolf.cpp:69
+#, kde-format
+msgid "Floater"
+msgstr ""
+
+#: kolf.cpp:70
+#, kde-format
+msgid "Bridge"
+msgstr "Кӯпрук"
+
+#: kolf.cpp:71
+#, kde-format
+msgid "Sign"
+msgstr "Навиштаҷот"
+
+#: kolf.cpp:72
+#, kde-format
+msgid "Bumper"
+msgstr "Инъикоскунанда"
+
+#: kolf.cpp:95
+#, kde-format
+msgid "Save &Course"
+msgstr "Захиракунии &Майдонча"
+
+#: kolf.cpp:97
+#, kde-format
+msgid "Save &Course As..."
+msgstr "Захиракунии &Майдонча Ҳамчун..."
+
+#: kolf.cpp:100
+#, kde-format
+msgid "&Save Game"
+msgstr "&Захиракунии Бозӣ"
+
+#: kolf.cpp:103
+#, kde-format
+msgid "&Save Game As..."
+msgstr "&Захиракунии Бозӣ Ҳамчун..."
+
+#: kolf.cpp:110
+#, kde-format
+msgid "&Edit"
+msgstr ""
+
+#: kolf.cpp:116
+#, kde-format
+msgid "&New"
+msgstr "&Нав"
+
+#: kolf.cpp:125
+#, kde-format
+msgid "&Reset"
+msgstr "&Партофтан"
+
+#: kolf.cpp:130
+#, kde-format
+msgid "&Undo Shot"
+msgstr "&Бекоркунии Заниш"
+
+#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. Go
+#: kolf.cpp:134
+#, kde-format
+msgid "Switch to Hole"
+msgstr "Гузариш ба Сӯрохӣ"
+
+#: kolf.cpp:139
+#, kde-format
+msgid "&Next Hole"
+msgstr "Сӯрохии &Оянда"
+
+#: kolf.cpp:144
+#, kde-format
+msgid "&Previous Hole"
+msgstr "Сӯрохии &Пешина"
+
+#: kolf.cpp:149
+#, kde-format
+msgid "&First Hole"
+msgstr "Сӯрохии &Якум"
+
+#: kolf.cpp:153
+#, kde-format
+msgid "&Last Hole"
+msgstr "Сӯрохии &Охирон"
+
+#: kolf.cpp:158
+#, kde-format
+msgid "&Random Hole"
+msgstr "Сӯрохии &Ихиёрӣ"
+
+#: kolf.cpp:162
+#, kde-format
+msgid "Enable &Mouse for Moving Putter"
+msgstr "Даргиронидани Идоракунӣ ба &Муш"
+
+#: kolf.cpp:169
+#, kde-format
+msgid "Enable &Advanced Putting"
+msgstr "Даргиронидани Заниши &Беҳтаршуда"
+
+#: kolf.cpp:175
+#, kde-format
+msgid "Show &Info"
+msgstr "Нишон додани &Маълумот"
+
+#: kolf.cpp:182
+#, kde-format
+msgid "Show Putter &Guideline"
+msgstr "Нишон додани &Чӯби Идоракунанда"
+
+#: kolf.cpp:188
+#, kde-format
+msgid "Enable All Dialog Boxes"
+msgstr "Даргиронидани Ҳамаи Муколамаҳо"
+
+#: kolf.cpp:192
+#, kde-format
+msgid "Play &Sounds"
+msgstr "Бозикунии &Овозҳо"
+
+#: kolf.cpp:199
+#, fuzzy, kde-format
+#| msgid "&About Course"
+msgid "&About Course..."
+msgstr "&Оиди Майдонча"
+
+#: kolf.cpp:202
+#, kde-format
+msgid "&Tutorial"
+msgstr "&Воситаҳои Ёдгирӣ"
+
+#: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
+#, kde-format
+msgid "Par"
+msgstr "Хол"
+
+#: kolf.cpp:483
+#, kde-format
+msgid " and "
+msgstr " ва "
+
+#: kolf.cpp:484
+#, kde-format
+msgid "%1 tied"
+msgstr "%1 мағлуб шуд"
+
+#: kolf.cpp:487
+#, kde-format
+msgid "%1 won!"
+msgstr "%1 ғолиб омад!"
+
+#: kolf.cpp:501 kolf.cpp:513 kolf.cpp:528 kolf.cpp:529 newgame.cpp:249
+#: newgame.cpp:250
+#, kde-format
+msgid "High Scores for %1"
+msgstr "Ҳисоби Баланд барои %1"
+
+#: kolf.cpp:568
+#, fuzzy, kde-format
+#| msgid "Pick Saved Game to Save To"
+msgctxt "@title:window"
+msgid "Pick Saved Game to Save To"
+msgstr "Интихоби Бозии Захирашудаи барои Захиракунӣ"
+
+#: kolf.cpp:606
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Saved Game"
+msgctxt "@title:window"
+msgid "Pick Kolf Saved Game"
+msgstr "Интихоби Бозии Захирашудаи Голф"
+
+#: kolf.cpp:654
+#, kde-format
+msgid "%1's turn"
+msgstr "навбати %1"
+
+#: kolf.cpp:726
+#, kde-format
+msgid "%1's score has reached the maximum for this hole."
+msgstr "Ҳисоби %1 ба қиммати калонтарин барои сӯрохӣ расид."
+
+#. i18n: ectx: Menu (hole)
+#: kolfui.rc:17
+#, kde-format
+msgid "Ho&le"
+msgstr "&Сӯрохи"
+
+#. i18n: ectx: Menu (go_course)
+#: kolfui.rc:31
+#, kde-format
+msgid "&Go"
+msgstr "&Гузаштан"
+
+#: landscape.cpp:146
+#, kde-format
+msgid "Enable show/hide"
+msgstr "Даргиронидани нишондиҳӣ/пинҳонкунӣ"
+
+#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
+#, kde-format
+msgid "Slow"
+msgstr "Суст"
+
+#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
+#, kde-format
+msgid "Fast"
+msgstr "Тез"
+
+#: landscape.cpp:238
+#, kde-format
+msgid "Vertical"
+msgstr ""
+
+#: landscape.cpp:239
+#, kde-format
+msgid "Horizontal"
+msgstr ""
+
+#: landscape.cpp:240
+#, kde-format
+msgid "Diagonal"
+msgstr "Диагоналӣ"
+
+#: landscape.cpp:241
+#, kde-format
+msgid "Opposite Diagonal"
+msgstr "Ба муқобили Диагонал"
+
+#: landscape.cpp:242
+#, kde-format
+msgid "Elliptic"
+msgstr ""
+
+#: landscape.cpp:571
+#, kde-format
+msgid "Reverse direction"
+msgstr "Самти ақиб"
+
+#: landscape.cpp:576
+#, kde-format
+msgid "Unmovable"
+msgstr "Ноҷунбон"
+
+#: landscape.cpp:578
+#, kde-format
+msgid "Whether or not this slope can be moved by other objects, like floaters."
+msgstr ""
+"Оё теппача аз тарафи дигар объектҳо, масалан хазандаҳо ҷойиваз карда мешавад."
+
+#: landscape.cpp:582
+#, kde-format
+msgid "Grade:"
+msgstr "Сатҳ:"
+
+#: main.cpp:49
+#, kde-format
+msgid "Kolf"
+msgstr "Гофл"
+
+#: main.cpp:51
+#, kde-format
+msgid "KDE Minigolf Game"
+msgstr "KDE Бозии Мини-Голф"
+
+#: main.cpp:53
+#, kde-format
+msgid "(c) 2002-2010, Kolf developers"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Stefan Majewsky"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Current maintainer"
+msgstr ""
+
+#: main.cpp:57
+#, kde-format
+msgid "Jason Katz-Brown"
+msgstr ""
+
+#: main.cpp:57
+#, fuzzy, kde-format
+#| msgid "Main author"
+msgid "Former main author"
+msgstr "Муаллифи ибтидоӣ"
+
+#: main.cpp:58
+#, kde-format
+msgid "Niklas Knutsson"
+msgstr ""
+
+#: main.cpp:58
+#, kde-format
+msgid "Advanced putting mode"
+msgstr "Усули заниши беҳтаршуда"
+
+#: main.cpp:59
+#, kde-format
+msgid "Rik Hemsley"
+msgstr ""
+
+#: main.cpp:59
+#, kde-format
+msgid "Border around course"
+msgstr "Ҳошия дар гирди майдонча"
+
+#: main.cpp:60
+#, kde-format
+msgid "Timo A. Hummel"
+msgstr ""
+
+#: main.cpp:60
+#, kde-format
+msgid "Some good sound effects"
+msgstr "Баъзе натиҷаҳои овозии хуб"
+
+#: main.cpp:62
+#, kde-format
+msgid "Rob Renaud"
+msgstr ""
+
+#: main.cpp:62
+#, kde-format
+msgid "Wall-bouncing help"
+msgstr "Ёри бо инъикос аз деворҳо"
+
+#: main.cpp:63
+#, kde-format
+msgid "Aaron Seigo"
+msgstr ""
+
+#: main.cpp:63
+#, kde-format
+msgid "Suggestions, bug reports"
+msgstr "Хоҳишҳо, маърӯзаҳо оиди хатогӣ"
+
+#: main.cpp:64
+#, kde-format
+msgid "Erin Catto"
+msgstr ""
+
+#: main.cpp:64
+#, kde-format
+msgid "Developer of Box2D physics engine"
+msgstr ""
+
+#: main.cpp:65
+#, kde-format
+msgid "Ryan Cumming"
+msgstr ""
+
+#: main.cpp:65
+#, fuzzy, kde-format
+#| msgid "Vector class"
+msgid "Vector class (Kolf 1)"
+msgstr "Синфи Vector"
+
+#: main.cpp:66
+#, kde-format
+msgid "Daniel Matza-Brown"
+msgstr ""
+
+#: main.cpp:66
+#, fuzzy, kde-format
+#| msgid "Working wall-bouncing algorithm"
+msgid "Working wall-bouncing algorithm (Kolf 1)"
+msgstr "Алгоритми иъикос аз деворҳо"
+
+#: main.cpp:71
+#, kde-format
+msgid "File"
+msgstr ""
+
+#: main.cpp:72
+#, kde-format
+msgid "Print course information and exit"
+msgstr "Маълумотро оиди майдонча чоп кунед ва бароед"
+
+#: main.cpp:89 newgame.cpp:240
+#, kde-format
+msgid "By %1"
+msgstr "Муаллиф %1"
+
+#: main.cpp:90
+#, kde-format
+msgid "%1 holes"
+msgstr "%1 сӯрохиҳо"
+
+#: main.cpp:91
+#, kde-format
+msgid "par %1"
+msgstr "хол %1"
+
+#: main.cpp:98
+#, kde-format
+msgid "Course %1 does not exist."
+msgstr "Майдони %1 мавҷуд нест."
+
+#: newgame.cpp:38
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "New Game"
+msgstr "&Захиракунии Бозӣ"
+
+#: newgame.cpp:54
+#, kde-format
+msgid "Players"
+msgstr "Бозингарон"
+
+#: newgame.cpp:58
+#, kde-format
+msgid "&New Player"
+msgstr "Бозингари &Нав"
+
+#: newgame.cpp:93
+#, kde-format
+msgid "Course"
+msgstr "Майдонча"
+
+#: newgame.cpp:94
+#, kde-format
+msgid "Choose Course to Play"
+msgstr "Интихоби Майдонча барои Бозӣ"
+
+#: newgame.cpp:133
+#, kde-format
+msgid "Create New"
+msgstr "Офаридани Нав"
+
+#: newgame.cpp:134
+#, kde-format
+msgid "You"
+msgstr "Шумо"
+
+#: newgame.cpp:160
+#, kde-format
+msgid "Highscores"
+msgstr "Рекордҳо"
+
+#: newgame.cpp:170
+#, kde-format
+msgid "Add..."
+msgstr "Иловакунӣ..."
+
+#: newgame.cpp:174 newgame.cpp:363
+#, kde-format
+msgid "Remove"
+msgstr ""
+
+#: newgame.cpp:184
+#, fuzzy, kde-format
+msgid "Options"
+msgstr "Хосиятҳои Бозӣ"
+
+#: newgame.cpp:185
+#, kde-format
+msgid "Game Options"
+msgstr "Хосиятҳои Бозӣ"
+
+#: newgame.cpp:190
+#, kde-format
+msgid "&Strict mode"
+msgstr "Усули &мувофиқи қоидаҳо"
+
+#: newgame.cpp:194
+#, kde-format
+msgid ""
+"In strict mode, undo, editing, and switching holes is not allowed. This is "
+"generally for competition. Only in strict mode are highscores kept."
+msgstr ""
+"Дар усули мувофиқии қоидаҳо, радкунӣ, гузариш ва таҳрири сӯрохиҳо "
+"имконпазиранд. Умуман он барои мусобиқаҳо аст. Танҳо барои бозиҳо мувофиқи "
+"қоидаҳо рӯйхати рекордҳо нигоҳ дошта мешаванд."
+
+#: newgame.cpp:241
+#, kde-format
+msgid "Par %1"
+msgstr "Холҳо %1"
+
+#: newgame.cpp:242
+#, kde-format
+msgid "%1 Holes"
+msgstr "%1 Сӯрохиҳо"
+
+#: newgame.cpp:280
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course"
+msgctxt "@title:window"
+msgid "Pick Kolf Course"
+msgstr "Интихоби Майдончаи Голф"
+
+#: newgame.cpp:308
+#, kde-format
+msgid "Chosen course is already on course list."
+msgstr "Майдончаи интихобшуда аллакай дар рӯйхат мавҷуд аст."
+
+#: newgame.cpp:321
+#, kde-format
+msgid "Player %1"
+msgstr "Бозингари %1"
+
+#: objects.cpp:244
+#, fuzzy, kde-format
+#| msgid "degrees"
+msgid " degree"
+msgid_plural " degrees"
+msgstr[0] "градус"
+msgstr[1] "градус"
+
+#: objects.cpp:247
+#, kde-format
+msgid "Exiting ball angle:"
+msgstr "Кунҷи баромади тӯбча:"
+
+#: objects.cpp:267
+#, kde-format
+msgid "Minimum exit speed:"
+msgstr "Суръати хурдтарини баромад:"
+
+#: objects.cpp:288
+#, fuzzy, kde-format
+#| msgid "Minimum exit speed:"
+msgid "Maximum exit speed:"
+msgstr "Суръати хурдтарини баромад:"
+
+#: obstacles.cpp:412
+msgid "&Top"
+msgstr "&Боло"
+
+#: obstacles.cpp:412
+msgid "&Left"
+msgstr "&Чап"
+
+#: obstacles.cpp:412
+msgid "&Right"
+msgstr "&Рост"
+
+#: obstacles.cpp:412
+msgid "&Bottom"
+msgstr ""
+
+#: obstacles.cpp:421
+#, kde-format
+msgid "Walls on:"
+msgstr "Деворҳо:"
+
+#: obstacles.cpp:431
+#, kde-format
+msgid "Sign HTML:"
+msgstr "Навиштаҷоти HTML:"
+
+#: obstacles.cpp:440
+#, fuzzy, kde-format
+#| msgid "Windmill on bottom"
+msgid "Windmill on top"
+msgstr "Осиё дар поён"
+
+#: obstacles.cpp:461
+#, kde-format
+msgid "Moving speed"
+msgstr "Суръати ҳаракат"
+
+#: obstacles.cpp:681
+#, kde-format
+msgid "New Text"
+msgstr "Матни Нав"
+
+#: scoreboard.cpp:28
+#, kde-format
+msgid "Total"
+msgstr "Ҳамагӣ"
+
+#~ msgid "Circular"
+#~ msgstr "Элепсӣ"
+
+#~ msgid "%1 - Hole %2; by %3"
+#~ msgstr "%1 - Сӯрохӣ %2; аз тарафи %3"
+
+#~ msgid "Kolf Options"
+#~ msgstr "Хосиятҳои Голф"
+
+#~ msgid "Draw title text"
+#~ msgstr "Воридкунии сарлавҳаи матн"
+
+#~ msgid "Print %1 - Hole %2"
+#~ msgstr "Чопкунӣ %1 - Сӯрохи %2"
+
+#~ msgid "Currently Loaded Plugins"
+#~ msgstr "Модулҳои Боркардашудаи Ҷорӣ"
+
+#~ msgid "by %1"
+#~ msgstr "муаллиф %1"
+
+#~ msgid "Plugins"
+#~ msgstr "Модул"
+
+#~ msgid "&Reload Plugins"
+#~ msgstr "&Бозборкунии Модулҳо"
+
+#~ msgid "Show &Plugins"
+#~ msgstr "Нишондиҳии &Модулҳо"
+
+#, fuzzy
+#~| msgid "Fast"
+#~ msgid "Flash"
+#~ msgstr "Тез"
+
+#, fuzzy
+#~| msgid "Bumper"
+#~ msgid "Number:"
+#~ msgstr "Инъикоскунанда"
+
+#~ msgid "Disable &Mouse for Moving Putter"
+#~ msgstr "Хомӯш кардани Идоракунӣ ба &Муш"
+
+#~ msgid "Disable &Advanced Putting"
+#~ msgstr "Хомӯш кардани Заниши &Беҳтаршуда"
+
+#~ msgid "Hide &Info"
+#~ msgstr "Пинҳон кардани &Маълумот"
+
+#~ msgid "Hide Putter &Guideline"
+#~ msgstr "Пинҳон кардани &Чӯби Идоракунанда"
+
+#~ msgid "Disable All Dialog Boxes"
+#~ msgstr "Хомӯш кардани Ҳамаи Муколамаҳо"
+
+#~ msgid "Load Saved Game..."
+#~ msgstr "Боркунии бозии захирашуда..."
+
+#~ msgid "Hole %1: par %2, maximum %3 strokes"
+#~ msgstr "Сӯрохи %1: холҳо %2, занишҳои максималӣ %3"

@@ -1,0 +1,814 @@
+# translation of kolf.po to Latvian
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Viesturs Zarins <viesturs.zarins@mii.lu.lv>, 2008.
+# Einars Sprugis <einars8@gmail.com>, 2010, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: kolf\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2011-07-14 22:49+0300\n"
+"Last-Translator: Einars Sprugis <einars8@gmail.com>\n"
+"Language-Team: Latvian <locale@laka.lv>\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Viesturs Zariņš, Einārs Sprūģis"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "viesturs.zarins@mi.lu.lv, einars8@gmail.com"
+
+#: config.cpp:51
+#, kde-format
+msgid "No configuration options"
+msgstr "Nav konfigurējamu iespēju"
+
+#: editor.cpp:37
+#, kde-format
+msgid "Add object:"
+msgstr "Pievienot objektu"
+
+#: game.cpp:261
+#, kde-format
+msgid "Course name: "
+msgstr "Kursa nosaukums: "
+
+#: game.cpp:268
+#, kde-format
+msgid "Course author: "
+msgstr "Kursa autors: "
+
+#: game.cpp:277
+#, kde-format
+msgid "Par:"
+msgstr "Partija:"
+
+#: game.cpp:287
+#, kde-format
+msgid "Maximum:"
+msgstr "Maksimālais:"
+
+#: game.cpp:291
+#, kde-format
+msgid "Maximum number of strokes player can take on this hole."
+msgstr "Maksimālais sitienu skaits, ko drīkst izdarīt šajā bedrītē."
+
+#: game.cpp:292
+#, kde-format
+msgid "Maximum number of strokes"
+msgstr "Maksimālais sitienu skaits"
+
+#: game.cpp:293
+#, kde-format
+msgid "Unlimited"
+msgstr "Neierobežots"
+
+#: game.cpp:299
+#, kde-format
+msgid "Show border walls"
+msgstr "Rādīt robežu sienas"
+
+#: game.cpp:497 game.cpp:2439
+#, kde-format
+msgid "Course Author"
+msgstr "Kursa autors"
+
+#: game.cpp:498 game.cpp:499 game.cpp:2439
+#, kde-format
+msgid "Course Name"
+msgstr "Kursa nosaukums"
+
+#: game.cpp:1421
+#, kde-format
+msgid "Drop Outside of Hazard"
+msgstr "Izmest ārpus bīstamās zonas"
+
+#: game.cpp:1422
+#, kde-format
+msgid "Rehit From Last Location"
+msgstr "Sist vēlreiz no iepriekšējās vietas"
+
+#: game.cpp:1424
+#, kde-format
+msgid "What would you like to do for your next shot?"
+msgstr "Ko darīsi tālāk?"
+
+#: game.cpp:1424
+#, kde-format
+msgid "%1 is in a Hazard"
+msgstr "%1 atrodas briesmās"
+
+#: game.cpp:1592
+#, kde-format
+msgid "%1 will start off."
+msgstr "%1 sāks spēli."
+
+#: game.cpp:1592
+#, kde-format
+msgid "New Hole"
+msgstr "Jauna bedrīte"
+
+#: game.cpp:1753
+#, kde-format
+msgid "Course name: %1"
+msgstr "Kursa nosaukums: %1"
+
+#: game.cpp:1754
+#, kde-format
+msgid "Created by %1"
+msgstr "Izveidojis %1"
+
+#: game.cpp:1755
+#, fuzzy, kde-format
+#| msgid "%1 holes"
+msgid "%1 hole"
+msgid_plural "%1 holes"
+msgstr[0] "%1 bedrītes"
+msgstr[1] "%1 bedrītes"
+msgstr[2] "%1 bedrītes"
+
+#: game.cpp:1756
+#, fuzzy, kde-format
+#| msgid "Course Information"
+msgctxt "@title:window"
+msgid "Course Information"
+msgstr "Kursa informācija"
+
+#: game.cpp:1887
+#, kde-format
+msgid "This hole uses the following plugins, which you do not have installed:"
+msgstr "Šī bedrīte izmanto šādus spraudņus, kuri nav instalēti tavā datorā:"
+
+#: game.cpp:1999
+#, kde-format
+msgid "There are unsaved changes to current hole. Save them?"
+msgstr "Aktīvajā bedrītē ir nesaglabātas izmaiņas. Saglabāt?"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Unsaved Changes"
+msgstr "Nesaglabātas izmaiņas"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Save &Later"
+msgstr "Saglabāt &vēlāk"
+
+#: game.cpp:2170 kolf.cpp:550
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course to Save To"
+msgctxt "@title:window"
+msgid "Pick Kolf Course to Save To"
+msgstr "Izvēlies failu, kurā saglabāt Kolf kursu"
+
+#: kcomboboxdialog.cpp:60
+#, kde-format
+msgid "&Do not ask again"
+msgstr "Vairs &neprasīt"
+
+#: kolf.cpp:62
+#, kde-format
+msgid "Slope"
+msgstr "Nogāze"
+
+#: kolf.cpp:63
+#, kde-format
+msgid "Puddle"
+msgstr "Ūdens"
+
+#: kolf.cpp:64
+#, kde-format
+msgid "Wall"
+msgstr "Siena"
+
+#: kolf.cpp:65
+#, kde-format
+msgid "Cup"
+msgstr "Kauss"
+
+#: kolf.cpp:66
+#, kde-format
+msgid "Sand"
+msgstr "Smiltis"
+
+#: kolf.cpp:67
+#, kde-format
+msgid "Windmill"
+msgstr "Vējdzirnavas"
+
+#: kolf.cpp:68
+#, kde-format
+msgid "Black Hole"
+msgstr "Melnais caurums"
+
+#: kolf.cpp:69
+#, kde-format
+msgid "Floater"
+msgstr "Platforma"
+
+#: kolf.cpp:70
+#, kde-format
+msgid "Bridge"
+msgstr "Tilts"
+
+#: kolf.cpp:71
+#, kde-format
+msgid "Sign"
+msgstr "Zīme"
+
+#: kolf.cpp:72
+#, kde-format
+msgid "Bumper"
+msgstr "Buferis"
+
+#: kolf.cpp:95
+#, kde-format
+msgid "Save &Course"
+msgstr "Saglabāt &kursu"
+
+#: kolf.cpp:97
+#, kde-format
+msgid "Save &Course As..."
+msgstr "Saglabāt &kursu kā..."
+
+#: kolf.cpp:100
+#, kde-format
+msgid "&Save Game"
+msgstr "&Saglabāt spēli"
+
+#: kolf.cpp:103
+#, kde-format
+msgid "&Save Game As..."
+msgstr "&Saglabāt spēli kā..."
+
+#: kolf.cpp:110
+#, kde-format
+msgid "&Edit"
+msgstr "R&ediģēt"
+
+#: kolf.cpp:116
+#, kde-format
+msgid "&New"
+msgstr "Jau&ns"
+
+#: kolf.cpp:125
+#, kde-format
+msgid "&Reset"
+msgstr "Sākt &vēlreiz"
+
+#: kolf.cpp:130
+#, kde-format
+msgid "&Undo Shot"
+msgstr "&Atsaukt sitienu"
+
+#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. Go
+#: kolf.cpp:134
+#, kde-format
+msgid "Switch to Hole"
+msgstr "Pārslēgties uz bedrīti"
+
+#: kolf.cpp:139
+#, kde-format
+msgid "&Next Hole"
+msgstr "&Nākamā bedrīte"
+
+#: kolf.cpp:144
+#, kde-format
+msgid "&Previous Hole"
+msgstr "&Iepriekšējā bedrīte"
+
+#: kolf.cpp:149
+#, kde-format
+msgid "&First Hole"
+msgstr "&Pirmā bedrīte"
+
+#: kolf.cpp:153
+#, kde-format
+msgid "&Last Hole"
+msgstr "Pē&dējā bedrīte"
+
+#: kolf.cpp:158
+#, kde-format
+msgid "&Random Hole"
+msgstr "Ne&jauša bedrīte"
+
+#: kolf.cpp:162
+#, kde-format
+msgid "Enable &Mouse for Moving Putter"
+msgstr "Atļaut pārvietot nūju ar &peli"
+
+#: kolf.cpp:169
+#, kde-format
+msgid "Enable &Advanced Putting"
+msgstr "Ieslēgt &paplašināto sišanu"
+
+#: kolf.cpp:175
+#, kde-format
+msgid "Show &Info"
+msgstr "Rādīt &informāciju"
+
+#: kolf.cpp:182
+#, kde-format
+msgid "Show Putter &Guideline"
+msgstr "Rādīt nūjas &virziena vadlīniju"
+
+#: kolf.cpp:188
+#, kde-format
+msgid "Enable All Dialog Boxes"
+msgstr "Ieslēgt visus paziņojumu logus"
+
+#: kolf.cpp:192
+#, kde-format
+msgid "Play &Sounds"
+msgstr "Atskaņot &skaņas"
+
+#: kolf.cpp:199
+#, fuzzy, kde-format
+#| msgid "&About Course"
+msgid "&About Course..."
+msgstr "&Par kursu"
+
+#: kolf.cpp:202
+#, kde-format
+msgid "&Tutorial"
+msgstr "Pa&mācība"
+
+#: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
+#, kde-format
+msgid "Par"
+msgstr "Partija"
+
+#: kolf.cpp:483
+#, kde-format
+msgid " and "
+msgstr " un "
+
+#: kolf.cpp:484
+#, kde-format
+msgid "%1 tied"
+msgstr "%1 neizšķirts"
+
+#: kolf.cpp:487
+#, kde-format
+msgid "%1 won!"
+msgstr "%1 uzvarēja!"
+
+#: kolf.cpp:501 kolf.cpp:513 kolf.cpp:528 kolf.cpp:529 newgame.cpp:249
+#: newgame.cpp:250
+#, kde-format
+msgid "High Scores for %1"
+msgstr "%1 labākie rezultāti"
+
+#: kolf.cpp:568
+#, fuzzy, kde-format
+#| msgid "Pick Saved Game to Save To"
+msgctxt "@title:window"
+msgid "Pick Saved Game to Save To"
+msgstr "Izvēlies failu, kurā saglabāt spēli"
+
+#: kolf.cpp:606
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Saved Game"
+msgctxt "@title:window"
+msgid "Pick Kolf Saved Game"
+msgstr "Izvēlies saglabātu Kolf spēli"
+
+#: kolf.cpp:654
+#, kde-format
+msgid "%1's turn"
+msgstr "%1 gājiens"
+
+#: kolf.cpp:726
+#, kde-format
+msgid "%1's score has reached the maximum for this hole."
+msgstr "%1 punktu skaits ir sasniedzis šīs bedrītes maksimumu."
+
+#. i18n: ectx: Menu (hole)
+#: kolfui.rc:17
+#, kde-format
+msgid "Ho&le"
+msgstr "Bedrī&te"
+
+#. i18n: ectx: Menu (go_course)
+#: kolfui.rc:31
+#, kde-format
+msgid "&Go"
+msgstr "&Gājiens"
+
+#: landscape.cpp:146
+#, kde-format
+msgid "Enable show/hide"
+msgstr "Ieslēgt paslēpšanu/atklāšanu"
+
+#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
+#, kde-format
+msgid "Slow"
+msgstr "Lēns"
+
+#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
+#, kde-format
+msgid "Fast"
+msgstr "Ātrs"
+
+#: landscape.cpp:238
+#, kde-format
+msgid "Vertical"
+msgstr "Vertikāla"
+
+#: landscape.cpp:239
+#, kde-format
+msgid "Horizontal"
+msgstr "Horizontāla"
+
+#: landscape.cpp:240
+#, kde-format
+msgid "Diagonal"
+msgstr "Diagonāla"
+
+#: landscape.cpp:241
+#, kde-format
+msgid "Opposite Diagonal"
+msgstr "Pretēji diagonāla"
+
+#: landscape.cpp:242
+#, kde-format
+msgid "Elliptic"
+msgstr "Eliptisks"
+
+#: landscape.cpp:571
+#, kde-format
+msgid "Reverse direction"
+msgstr "Pretējā virzienā"
+
+#: landscape.cpp:576
+#, kde-format
+msgid "Unmovable"
+msgstr "Nekustināma"
+
+#: landscape.cpp:578
+#, kde-format
+msgid "Whether or not this slope can be moved by other objects, like floaters."
+msgstr "Vai šī nogāze kustās kopā ar citiem objektiem, piemēram, platformām."
+
+#: landscape.cpp:582
+#, kde-format
+msgid "Grade:"
+msgstr "Slīpums:"
+
+#: main.cpp:49
+#, kde-format
+msgid "Kolf"
+msgstr "Kolf"
+
+#: main.cpp:51
+#, kde-format
+msgid "KDE Minigolf Game"
+msgstr "KDE minigolfa spēle"
+
+#: main.cpp:53
+#, kde-format
+msgid "(c) 2002-2010, Kolf developers"
+msgstr "(c) 2002-2010, Kolf izstrādātāji"
+
+#: main.cpp:56
+#, kde-format
+msgid "Stefan Majewsky"
+msgstr "Stefan Majewsky"
+
+#: main.cpp:56
+#, kde-format
+msgid "Current maintainer"
+msgstr "Pašreizējais uzturētājs"
+
+#: main.cpp:57
+#, kde-format
+msgid "Jason Katz-Brown"
+msgstr "Jason Katz-Brown"
+
+#: main.cpp:57
+#, kde-format
+msgid "Former main author"
+msgstr "Agrākais galvenais autors"
+
+#: main.cpp:58
+#, kde-format
+msgid "Niklas Knutsson"
+msgstr "Niklas Knutsson"
+
+#: main.cpp:58
+#, kde-format
+msgid "Advanced putting mode"
+msgstr "Paplašinātais sišanas režīms"
+
+#: main.cpp:59
+#, kde-format
+msgid "Rik Hemsley"
+msgstr "Rik Hemsley"
+
+#: main.cpp:59
+#, kde-format
+msgid "Border around course"
+msgstr "Robeža apkārt laukumam"
+
+#: main.cpp:60
+#, kde-format
+msgid "Timo A. Hummel"
+msgstr "Timo A. Hummel"
+
+#: main.cpp:60
+#, kde-format
+msgid "Some good sound effects"
+msgstr "Daži labi skaņu efekti"
+
+#: main.cpp:62
+#, kde-format
+msgid "Rob Renaud"
+msgstr "Rob Renaud"
+
+#: main.cpp:62
+#, kde-format
+msgid "Wall-bouncing help"
+msgstr "Palīdzība ar atsišanos"
+
+#: main.cpp:63
+#, kde-format
+msgid "Aaron Seigo"
+msgstr "Aaron Seigo"
+
+#: main.cpp:63
+#, kde-format
+msgid "Suggestions, bug reports"
+msgstr "Ieteikumi, kļūdu ziņojumi"
+
+#: main.cpp:64
+#, kde-format
+msgid "Erin Catto"
+msgstr "Erin Catto"
+
+#: main.cpp:64
+#, kde-format
+msgid "Developer of Box2D physics engine"
+msgstr "Box2D fizikas dzinēja izstrādātājs"
+
+#: main.cpp:65
+#, kde-format
+msgid "Ryan Cumming"
+msgstr "Ryan Cumming"
+
+#: main.cpp:65
+#, kde-format
+msgid "Vector class (Kolf 1)"
+msgstr "Vektoru klase (Kolf 1)"
+
+#: main.cpp:66
+#, kde-format
+msgid "Daniel Matza-Brown"
+msgstr "Daniel Matza-Brown"
+
+#: main.cpp:66
+#, kde-format
+msgid "Working wall-bouncing algorithm (Kolf 1)"
+msgstr "Strādājošs no sienām atsišanās algoritms (Kolf 1)"
+
+#: main.cpp:71
+#, kde-format
+msgid "File"
+msgstr "Fails"
+
+#: main.cpp:72
+#, kde-format
+msgid "Print course information and exit"
+msgstr "Izdrukāt informāciju par kursu un iziet"
+
+#: main.cpp:89 newgame.cpp:240
+#, kde-format
+msgid "By %1"
+msgstr "Veidojis %1"
+
+#: main.cpp:90
+#, kde-format
+msgid "%1 holes"
+msgstr "%1 bedrītes"
+
+#: main.cpp:91
+#, kde-format
+msgid "par %1"
+msgstr "partija %1"
+
+#: main.cpp:98
+#, kde-format
+msgid "Course %1 does not exist."
+msgstr "Kurss %1 nepastāv"
+
+#: newgame.cpp:38
+#, fuzzy, kde-format
+#| msgid "New Game"
+msgctxt "@title:window"
+msgid "New Game"
+msgstr "Jauna spēle"
+
+#: newgame.cpp:54
+#, kde-format
+msgid "Players"
+msgstr "Spēlētāji"
+
+#: newgame.cpp:58
+#, kde-format
+msgid "&New Player"
+msgstr "&Jauns spēlētājs"
+
+#: newgame.cpp:93
+#, kde-format
+msgid "Course"
+msgstr "Kurss"
+
+#: newgame.cpp:94
+#, kde-format
+msgid "Choose Course to Play"
+msgstr "Izvēlieties kuru kursu spēlēt"
+
+#: newgame.cpp:133
+#, kde-format
+msgid "Create New"
+msgstr "Veidot jaunu"
+
+#: newgame.cpp:134
+#, kde-format
+msgid "You"
+msgstr "Jūs"
+
+#: newgame.cpp:160
+#, kde-format
+msgid "Highscores"
+msgstr "Labākie rezultāti"
+
+#: newgame.cpp:170
+#, kde-format
+msgid "Add..."
+msgstr "Pievienot..."
+
+#: newgame.cpp:174 newgame.cpp:363
+#, kde-format
+msgid "Remove"
+msgstr "Izņemt"
+
+#: newgame.cpp:184
+#, kde-format
+msgid "Options"
+msgstr "Iestatījumi"
+
+#: newgame.cpp:185
+#, kde-format
+msgid "Game Options"
+msgstr "Spēles iestatījumi"
+
+#: newgame.cpp:190
+#, kde-format
+msgid "&Strict mode"
+msgstr "&Strikts režīms"
+
+#: newgame.cpp:194
+#, kde-format
+msgid ""
+"In strict mode, undo, editing, and switching holes is not allowed. This is "
+"generally for competition. Only in strict mode are highscores kept."
+msgstr ""
+"Striktajā režīmā nav atļauta atsaukšana, rediģēšana un bedrīšu maiņa. Tās "
+"primārais mērķis ir sacenšanās. Tikai striktajā režīmā tiek saglabāti "
+"labākie rezultāti."
+
+#: newgame.cpp:241
+#, kde-format
+msgid "Par %1"
+msgstr "Partija %1"
+
+#: newgame.cpp:242
+#, kde-format
+msgid "%1 Holes"
+msgstr "%1 bedrītes"
+
+#: newgame.cpp:280
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course"
+msgctxt "@title:window"
+msgid "Pick Kolf Course"
+msgstr "Izvēlieties Kolf kursu"
+
+#: newgame.cpp:308
+#, kde-format
+msgid "Chosen course is already on course list."
+msgstr "Izvēlētais kurss jau atrodas kursu sarakstā."
+
+#: newgame.cpp:321
+#, kde-format
+msgid "Player %1"
+msgstr "%1. spēlētājs"
+
+#: objects.cpp:244
+#, kde-format
+msgid " degree"
+msgid_plural " degrees"
+msgstr[0] " grāds"
+msgstr[1] " grādi"
+msgstr[2] " grādu"
+
+#: objects.cpp:247
+#, kde-format
+msgid "Exiting ball angle:"
+msgstr "Izlidojošās bumbas leņķis:"
+
+#: objects.cpp:267
+#, kde-format
+msgid "Minimum exit speed:"
+msgstr "Minimālais izlidošanas ātrums:"
+
+#: objects.cpp:288
+#, kde-format
+msgid "Maximum exit speed:"
+msgstr "Maksimālais izlidošanas ātrums:"
+
+#: obstacles.cpp:412
+msgid "&Top"
+msgstr "&Augšā"
+
+#: obstacles.cpp:412
+msgid "&Left"
+msgstr "&Kreisajā pusē"
+
+#: obstacles.cpp:412
+msgid "&Right"
+msgstr "&Labajā pusē"
+
+#: obstacles.cpp:412
+msgid "&Bottom"
+msgstr "A&pakšā"
+
+#: obstacles.cpp:421
+#, kde-format
+msgid "Walls on:"
+msgstr "Sienas:"
+
+#: obstacles.cpp:431
+#, kde-format
+msgid "Sign HTML:"
+msgstr "Zīmes HTML:"
+
+#: obstacles.cpp:440
+#, kde-format
+msgid "Windmill on top"
+msgstr "Dzirnavas augšā"
+
+#: obstacles.cpp:461
+#, kde-format
+msgid "Moving speed"
+msgstr "Pārvietošanās ātrums"
+
+#: obstacles.cpp:681
+#, kde-format
+msgid "New Text"
+msgstr "Jauns teksts"
+
+#: scoreboard.cpp:28
+#, kde-format
+msgid "Total"
+msgstr "Kopā"
+
+#~ msgid "(c) 2002-2005, Jason Katz-Brown"
+#~ msgstr "(c) 2002-2005, Jason Katz-Brown"
+
+#~ msgid "Circular"
+#~ msgstr "Apaļa"
+
+#~ msgid "%1 - Hole %2; by %3"
+#~ msgstr "%1 - %2. bedrīte; spēlē %3"
+
+#~ msgid "Kolf Options"
+#~ msgstr "Kolf iestatījumi"
+
+#~ msgid "Draw title text"
+#~ msgstr "Zīmēt mazu tekstu"
+
+#~ msgid "Print %1 - Hole %2"
+#~ msgstr "Drukāt %1 - bedrīte %2"
+
+#~ msgid "Currently Loaded Plugins"
+#~ msgstr "Šobrīd ielādētie spraudņi"
+
+#~ msgid "by %1"
+#~ msgstr "autors %1"
+
+#~ msgid "Plugins"
+#~ msgstr "Spraudņi"

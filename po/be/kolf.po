@@ -1,0 +1,860 @@
+# translation of kolf.po to Belarusian
+#
+# Siarhei Liantsevich <serzh.by@gmail.com>, 2007.
+# Darafei Praliaskouski <komzpa@licei2.com>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: kolf\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2007-10-28 14:34+0200\n"
+"Last-Translator: Darafei Praliaskouski <komzpa@licei2.com>\n"
+"Language-Team: Belarusian <i18n@mova.org>\n"
+"Language: be\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || n%10>=5 && n%10<=9 || n"
+"%100>=11 && n%100<=14 ? 2 : 3);\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Дарафей Праляскоўскі"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "komzpa@licei2.com"
+
+#: config.cpp:51
+#, kde-format
+msgid "No configuration options"
+msgstr "Няма наладжвальных параметраў"
+
+#: editor.cpp:37
+#, kde-format
+msgid "Add object:"
+msgstr "Дадаць аб'ект:"
+
+#: game.cpp:261
+#, fuzzy, kde-format
+msgid "Course name: "
+msgstr "Імя пляцоўкі:"
+
+#: game.cpp:268
+#, fuzzy, kde-format
+msgid "Course author: "
+msgstr "Аўтар пляцоўкі:"
+
+#: game.cpp:277
+#, fuzzy, kde-format
+msgid "Par:"
+msgstr "Ачкі:"
+
+#: game.cpp:287
+#, fuzzy, kde-format
+msgid "Maximum:"
+msgstr "Максімальная:"
+
+#: game.cpp:291
+#, fuzzy, kde-format
+msgid "Maximum number of strokes player can take on this hole."
+msgstr "Максімальная колькасць удараў, якое гулец можа зрабіць у гэтую лунку."
+
+#: game.cpp:292
+#, fuzzy, kde-format
+msgid "Maximum number of strokes"
+msgstr "Максімальная колькасць удараў"
+
+#: game.cpp:293
+#, kde-format
+msgid "Unlimited"
+msgstr "Неабмежавана"
+
+#: game.cpp:299
+#, kde-format
+msgid "Show border walls"
+msgstr "Паказваць межавую сцяну"
+
+#: game.cpp:497 game.cpp:2439
+#, kde-format
+msgid "Course Author"
+msgstr "Аўтар пляцоўкі"
+
+#: game.cpp:498 game.cpp:499 game.cpp:2439
+#, kde-format
+msgid "Course Name"
+msgstr "Назва пляцоўкі"
+
+#: game.cpp:1421
+#, kde-format
+msgid "Drop Outside of Hazard"
+msgstr "Змясціць побач з небяспечнай зонай"
+
+#: game.cpp:1422
+#, kde-format
+msgid "Rehit From Last Location"
+msgstr "Паўтарыць удар з апошняй пазіцыі"
+
+#: game.cpp:1424
+#, kde-format
+msgid "What would you like to do for your next shot?"
+msgstr "Адкуль вы жадаеце зрабіць наступны ўдар?"
+
+#: game.cpp:1424
+#, kde-format
+msgid "%1 is in a Hazard"
+msgstr "%1 у небяспечнай зоне"
+
+#: game.cpp:1592
+#, kde-format
+msgid "%1 will start off."
+msgstr "%1 пачынае."
+
+#: game.cpp:1592
+#, fuzzy, kde-format
+msgid "New Hole"
+msgstr "Новая лунка"
+
+#: game.cpp:1753
+#, fuzzy, kde-format
+msgid "Course name: %1"
+msgstr "Назоў пляцоўкі: %1"
+
+#: game.cpp:1754
+#, fuzzy, kde-format
+msgid "Created by %1"
+msgstr "Аўтар: %1"
+
+#: game.cpp:1755
+#, fuzzy, kde-format
+msgid "%1 hole"
+msgid_plural "%1 holes"
+msgstr[0] "Лунак: %1"
+msgstr[1] "Лунак: %1"
+msgstr[2] "Лунак: %1"
+
+#: game.cpp:1756
+#, fuzzy, kde-format
+#| msgid "Course Information"
+msgctxt "@title:window"
+msgid "Course Information"
+msgstr "Звесткі пра пляцоўку"
+
+#: game.cpp:1887
+#, fuzzy, kde-format
+msgid "This hole uses the following plugins, which you do not have installed:"
+msgstr "Гэтая лунка выкарыстае наступныя модулі, адсутныя ў вашай сістэме:"
+
+#: game.cpp:1999
+#, fuzzy, kde-format
+msgid "There are unsaved changes to current hole. Save them?"
+msgstr "Змены для пляцоўкі не захаваныя. Захаваць?"
+
+#: game.cpp:1999
+#, fuzzy, kde-format
+msgid "Unsaved Changes"
+msgstr "Незахаваныя змены"
+
+#: game.cpp:1999
+#, fuzzy, kde-format
+msgid "Save &Later"
+msgstr "Захаваць пазней"
+
+#: game.cpp:2170 kolf.cpp:550
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Pick Kolf Course to Save To"
+msgstr "Вылучыць пляцоўку Kolf для захавання"
+
+#: kcomboboxdialog.cpp:60
+#, fuzzy, kde-format
+msgid "&Do not ask again"
+msgstr "&Больш не пытацца"
+
+#: kolf.cpp:62
+#, fuzzy, kde-format
+#| msgid "Slow"
+msgid "Slope"
+msgstr "Павольна"
+
+#: kolf.cpp:63
+#, fuzzy, kde-format
+msgid "Puddle"
+msgstr "Лужына"
+
+#: kolf.cpp:64
+#, fuzzy, kde-format
+msgid "Wall"
+msgstr "Сцяна"
+
+#: kolf.cpp:65
+#, kde-format
+msgid "Cup"
+msgstr "Кубак"
+
+#: kolf.cpp:66
+#, fuzzy, kde-format
+msgid "Sand"
+msgstr "Пясок"
+
+#: kolf.cpp:67
+#, kde-format
+msgid "Windmill"
+msgstr "Млын"
+
+#: kolf.cpp:68
+#, fuzzy, kde-format
+msgid "Black Hole"
+msgstr "Чорная дзюра"
+
+#: kolf.cpp:69
+#, kde-format
+msgid "Floater"
+msgstr ""
+
+#: kolf.cpp:70
+#, fuzzy, kde-format
+msgid "Bridge"
+msgstr "Мост"
+
+#: kolf.cpp:71
+#, fuzzy, kde-format
+msgid "Sign"
+msgstr "Падпісаць"
+
+#: kolf.cpp:72
+#, fuzzy, kde-format
+msgid "Bumper"
+msgstr "Адбівальнік"
+
+#: kolf.cpp:95
+#, fuzzy, kde-format
+msgid "Save &Course"
+msgstr "Захаваць пляцоўку"
+
+#: kolf.cpp:97
+#, fuzzy, kde-format
+msgid "Save &Course As..."
+msgstr "Захаваць пляцоўку як"
+
+#: kolf.cpp:100
+#, fuzzy, kde-format
+msgid "&Save Game"
+msgstr "Захаваць гульню"
+
+#: kolf.cpp:103
+#, fuzzy, kde-format
+msgid "&Save Game As..."
+msgstr "Захаваць гульню як"
+
+#: kolf.cpp:110
+#, fuzzy, kde-format
+msgid "&Edit"
+msgstr "&Змяніць"
+
+#: kolf.cpp:116
+#, fuzzy, kde-format
+msgid "&New"
+msgstr "&Новы"
+
+#: kolf.cpp:125
+#, fuzzy, kde-format
+msgid "&Reset"
+msgstr "С&кінуць"
+
+#: kolf.cpp:130
+#, fuzzy, kde-format
+msgid "&Undo Shot"
+msgstr "Адмяніць удар"
+
+#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. Go
+#: kolf.cpp:134
+#, fuzzy, kde-format
+msgid "Switch to Hole"
+msgstr "Пераключыцца на..."
+
+#: kolf.cpp:139
+#, fuzzy, kde-format
+msgid "&Next Hole"
+msgstr "Наступная лунка"
+
+#: kolf.cpp:144
+#, fuzzy, kde-format
+msgid "&Previous Hole"
+msgstr "Папярэдняя лунка"
+
+#: kolf.cpp:149
+#, fuzzy, kde-format
+msgid "&First Hole"
+msgstr "Першая лунка"
+
+#: kolf.cpp:153
+#, fuzzy, kde-format
+msgid "&Last Hole"
+msgstr "Апошняя лунка"
+
+#: kolf.cpp:158
+#, fuzzy, kde-format
+msgid "&Random Hole"
+msgstr "Выпадковая лунка"
+
+#: kolf.cpp:162
+#, fuzzy, kde-format
+msgid "Enable &Mouse for Moving Putter"
+msgstr "Уключыць кіраванне мышшу"
+
+#: kolf.cpp:169
+#, fuzzy, kde-format
+msgid "Enable &Advanced Putting"
+msgstr "Уключыць складаны ўдар"
+
+#: kolf.cpp:175
+#, fuzzy, kde-format
+msgid "Show &Info"
+msgstr "Паказаць &інфармацыю"
+
+#: kolf.cpp:182
+#, fuzzy, kde-format
+msgid "Show Putter &Guideline"
+msgstr "Паказаць накіравальную клюшкі"
+
+#: kolf.cpp:188
+#, fuzzy, kde-format
+msgid "Enable All Dialog Boxes"
+msgstr "Уключыць усе дыялогі"
+
+#: kolf.cpp:192
+#, fuzzy, kde-format
+msgid "Play &Sounds"
+msgstr "Гукі"
+
+#: kolf.cpp:199
+#, fuzzy, kde-format
+#| msgid "&About Course"
+msgid "&About Course..."
+msgstr "Пра пляцоўку"
+
+#: kolf.cpp:202
+#, fuzzy, kde-format
+msgid "&Tutorial"
+msgstr "Навучанне"
+
+#: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
+#, fuzzy, kde-format
+msgid "Par"
+msgstr "Ачкі"
+
+#: kolf.cpp:483
+#, fuzzy, kde-format
+msgid " and "
+msgstr " і "
+
+#: kolf.cpp:484
+#, fuzzy, kde-format
+msgid "%1 tied"
+msgstr "%1 прайграў"
+
+#: kolf.cpp:487
+#, fuzzy, kde-format
+msgid "%1 won!"
+msgstr "%1 выйграў!"
+
+#: kolf.cpp:501 kolf.cpp:513 kolf.cpp:528 kolf.cpp:529 newgame.cpp:249
+#: newgame.cpp:250
+#, fuzzy, kde-format
+msgid "High Scores for %1"
+msgstr "Рэкорды для %1"
+
+#: kolf.cpp:568
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Pick Saved Game to Save To"
+msgstr "Вылучыць гульню для захавання"
+
+#: kolf.cpp:606
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Pick Kolf Saved Game"
+msgstr "Вылучыць захаваную гульню"
+
+#: kolf.cpp:654
+#, fuzzy, kde-format
+msgid "%1's turn"
+msgstr "Удар %1"
+
+#: kolf.cpp:726
+#, fuzzy, kde-format
+msgid "%1's score has reached the maximum for this hole."
+msgstr "Рахунак %1 дасягнуў максімальна магчымага значэння для гэтай лункі."
+
+#. i18n: ectx: Menu (hole)
+#: kolfui.rc:17
+#, kde-format
+msgid "Ho&le"
+msgstr "Лунка"
+
+#. i18n: ectx: Menu (go_course)
+#: kolfui.rc:31
+#, kde-format
+msgid "&Go"
+msgstr "Іс&ці"
+
+#: landscape.cpp:146
+#, fuzzy, kde-format
+msgid "Enable show/hide"
+msgstr "Уключыць мігаценне"
+
+#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
+#, kde-format
+msgid "Slow"
+msgstr "Павольна"
+
+#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
+#, kde-format
+msgid "Fast"
+msgstr "Хутка"
+
+#: landscape.cpp:238
+#, fuzzy, kde-format
+msgid "Vertical"
+msgstr "Вертыкальна"
+
+#: landscape.cpp:239
+#, fuzzy, kde-format
+msgid "Horizontal"
+msgstr "Гарызантальна"
+
+#: landscape.cpp:240
+#, fuzzy, kde-format
+msgid "Diagonal"
+msgstr "Дыяганальная"
+
+#: landscape.cpp:241
+#, fuzzy, kde-format
+msgid "Opposite Diagonal"
+msgstr "Процілеглая дыяганальная"
+
+#: landscape.cpp:242
+#, kde-format
+msgid "Elliptic"
+msgstr ""
+
+#: landscape.cpp:571
+#, fuzzy, kde-format
+msgid "Reverse direction"
+msgstr "Зваротная"
+
+#: landscape.cpp:576
+#, fuzzy, kde-format
+msgid "Unmovable"
+msgstr "Нерухомая"
+
+#: landscape.cpp:578
+#, fuzzy, kde-format
+msgid "Whether or not this slope can be moved by other objects, like floaters."
+msgstr ""
+"Паказвае, ці можа горка перасоўвацца іншымі аб'ектамі, напрыклад, паўзунамі."
+
+#: landscape.cpp:582
+#, fuzzy, kde-format
+msgid "Grade:"
+msgstr "Крутасць:"
+
+#: main.cpp:49
+#, fuzzy, kde-format
+msgid "Kolf"
+msgstr "Kolf"
+
+#: main.cpp:51
+#, fuzzy, kde-format
+msgid "KDE Minigolf Game"
+msgstr "Міні-гольф - гульня для KDE"
+
+#: main.cpp:53
+#, kde-format
+msgid "(c) 2002-2010, Kolf developers"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Stefan Majewsky"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Current maintainer"
+msgstr ""
+
+#: main.cpp:57
+#, kde-format
+msgid "Jason Katz-Brown"
+msgstr ""
+
+#: main.cpp:57
+#, fuzzy, kde-format
+msgid "Former main author"
+msgstr "Аўтар праграмы"
+
+#: main.cpp:58
+#, kde-format
+msgid "Niklas Knutsson"
+msgstr ""
+
+#: main.cpp:58
+#, fuzzy, kde-format
+msgid "Advanced putting mode"
+msgstr "Рэжым складанага ўдару"
+
+#: main.cpp:59
+#, kde-format
+msgid "Rik Hemsley"
+msgstr ""
+
+#: main.cpp:59
+#, fuzzy, kde-format
+msgid "Border around course"
+msgstr "Рамка вакол пляцоўкі"
+
+#: main.cpp:60
+#, kde-format
+msgid "Timo A. Hummel"
+msgstr ""
+
+#: main.cpp:60
+#, fuzzy, kde-format
+msgid "Some good sound effects"
+msgstr "Добрыя гукавыя эфекты"
+
+#: main.cpp:62
+#, kde-format
+msgid "Rob Renaud"
+msgstr ""
+
+#: main.cpp:62
+#, fuzzy, kde-format
+msgid "Wall-bouncing help"
+msgstr "Дапамога з адлюстраваннем ад сценаў"
+
+#: main.cpp:63
+#, kde-format
+msgid "Aaron Seigo"
+msgstr ""
+
+#: main.cpp:63
+#, fuzzy, kde-format
+msgid "Suggestions, bug reports"
+msgstr "Пажаданні, памылкі"
+
+#: main.cpp:64
+#, kde-format
+msgid "Erin Catto"
+msgstr ""
+
+#: main.cpp:64
+#, kde-format
+msgid "Developer of Box2D physics engine"
+msgstr ""
+
+#: main.cpp:65
+#, kde-format
+msgid "Ryan Cumming"
+msgstr ""
+
+#: main.cpp:65
+#, fuzzy, kde-format
+msgid "Vector class (Kolf 1)"
+msgstr "Клас vector"
+
+#: main.cpp:66
+#, kde-format
+msgid "Daniel Matza-Brown"
+msgstr ""
+
+#: main.cpp:66
+#, fuzzy, kde-format
+msgid "Working wall-bouncing algorithm (Kolf 1)"
+msgstr "Алгарытм адлюстравання ад сценак"
+
+#: main.cpp:71
+#, fuzzy, kde-format
+msgid "File"
+msgstr "Файл"
+
+#: main.cpp:72
+#, kde-format
+msgid "Print course information and exit"
+msgstr "Вывесці інфармацыю пра пляцоўку і выйсці"
+
+#: main.cpp:89 newgame.cpp:240
+#, fuzzy, kde-format
+msgid "By %1"
+msgstr "Аўтар: %1"
+
+#: main.cpp:90
+#, fuzzy, kde-format
+msgid "%1 holes"
+msgstr "Лунак: %1"
+
+#: main.cpp:91
+#, fuzzy, kde-format
+msgid "par %1"
+msgstr "ачкі: %1"
+
+#: main.cpp:98
+#, fuzzy, kde-format
+msgid "Course %1 does not exist."
+msgstr "Пляцоўка %1 не існуе."
+
+#: newgame.cpp:38
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "New Game"
+msgstr "Новая гульня"
+
+#: newgame.cpp:54
+#, fuzzy, kde-format
+msgid "Players"
+msgstr "Гульнёўцы"
+
+#: newgame.cpp:58
+#, fuzzy, kde-format
+msgid "&New Player"
+msgstr "Новы гулец"
+
+#: newgame.cpp:93
+#, fuzzy, kde-format
+msgid "Course"
+msgstr "Пляцоўка"
+
+#: newgame.cpp:94
+#, fuzzy, kde-format
+msgid "Choose Course to Play"
+msgstr "Вылучыць пляцоўку для гульні"
+
+#: newgame.cpp:133
+#, fuzzy, kde-format
+msgid "Create New"
+msgstr "Стварыць новы"
+
+#: newgame.cpp:134
+#, fuzzy, kde-format
+msgid "You"
+msgstr "Вы"
+
+#: newgame.cpp:160
+#, fuzzy, kde-format
+msgid "Highscores"
+msgstr "Дасягненні"
+
+#: newgame.cpp:170
+#, fuzzy, kde-format
+msgid "Add..."
+msgstr "Дадаць..."
+
+#: newgame.cpp:174 newgame.cpp:363
+#, fuzzy, kde-format
+msgid "Remove"
+msgstr "Выдаліць"
+
+#: newgame.cpp:184
+#, fuzzy, kde-format
+msgid "Options"
+msgstr "Настаўленні"
+
+#: newgame.cpp:185
+#, fuzzy, kde-format
+msgid "Game Options"
+msgstr "Параметры гульні"
+
+#: newgame.cpp:190
+#, fuzzy, kde-format
+msgid "&Strict mode"
+msgstr "Па правілах"
+
+#: newgame.cpp:194
+#, fuzzy, kde-format
+msgid ""
+"In strict mode, undo, editing, and switching holes is not allowed. This is "
+"generally for competition. Only in strict mode are highscores kept."
+msgstr ""
+"У рэжыме гульні па правілах адмена, рэдагаванне і пераключэнне паміж лункамі "
+"немагчымыя. Гэта рэжым для спаборніцтваў. Толькі для гульняў па правілах "
+"захоўваецца спіс рэкордаў."
+
+#: newgame.cpp:241
+#, fuzzy, kde-format
+msgid "Par %1"
+msgstr "Ачкі %1"
+
+#: newgame.cpp:242
+#, fuzzy, kde-format
+msgid "%1 Holes"
+msgstr "Лунак: %1"
+
+#: newgame.cpp:280
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Pick Kolf Course"
+msgstr "Вылучыць пляцоўку Kolf"
+
+#: newgame.cpp:308
+#, fuzzy, kde-format
+msgid "Chosen course is already on course list."
+msgstr "Вылучаная пляцоўка ўжо ёсць у спісе."
+
+#: newgame.cpp:321
+#, fuzzy, kde-format
+msgid "Player %1"
+msgstr "Гулец %1"
+
+#: objects.cpp:244
+#, fuzzy, kde-format
+#| msgid "degrees"
+msgid " degree"
+msgid_plural " degrees"
+msgstr[0] "град."
+msgstr[1] "град."
+msgstr[2] "град."
+
+#: objects.cpp:247
+#, fuzzy, kde-format
+msgid "Exiting ball angle:"
+msgstr "Кут выхаду мяча:"
+
+#: objects.cpp:267
+#, fuzzy, kde-format
+msgid "Minimum exit speed:"
+msgstr "Мінімальная хуткасць выхаду:"
+
+#: objects.cpp:288
+#, fuzzy, kde-format
+msgid "Maximum exit speed:"
+msgstr "Мінімальная хуткасць выхаду:"
+
+#: obstacles.cpp:412
+msgid "&Top"
+msgstr "Угары"
+
+#: obstacles.cpp:412
+msgid "&Left"
+msgstr "Злева"
+
+#: obstacles.cpp:412
+msgid "&Right"
+msgstr "Справа"
+
+#: obstacles.cpp:412
+msgid "&Bottom"
+msgstr "Знізу"
+
+#: obstacles.cpp:421
+#, kde-format
+msgid "Walls on:"
+msgstr "Сцены:"
+
+#: obstacles.cpp:431
+#, kde-format
+msgid "Sign HTML:"
+msgstr "Надпіс HTML:"
+
+#: obstacles.cpp:440
+#, fuzzy, kde-format
+#| msgid "Windmill on bottom"
+msgid "Windmill on top"
+msgstr "Млын унізе"
+
+#: obstacles.cpp:461
+#, kde-format
+msgid "Moving speed"
+msgstr "Хуткасць руху"
+
+#: obstacles.cpp:681
+#, kde-format
+msgid "New Text"
+msgstr "Новы тэкст"
+
+#: scoreboard.cpp:28
+#, kde-format
+msgid "Total"
+msgstr "Усяго"
+
+#, fuzzy
+#~ msgid "Circular"
+#~ msgstr "Эліптычная"
+
+#, fuzzy
+#~ msgid "%1 - Hole %2; by %3"
+#~ msgstr "%1 - лунка %2; %3"
+
+#, fuzzy
+#~ msgid "Kolf Options"
+#~ msgstr "Параметры Kolf"
+
+#~ msgid "Draw title text"
+#~ msgstr "Выводзіць тэкст загалоўка"
+
+#, fuzzy
+#~ msgid "Print %1 - Hole %2"
+#~ msgstr "Друк %1 - лунка %2"
+
+#, fuzzy
+#~ msgid "Currently Loaded Plugins"
+#~ msgstr "Загружаныя модулі"
+
+#, fuzzy
+#~ msgid "by %1"
+#~ msgstr "Аўтар: %1"
+
+#, fuzzy
+#~ msgid "Plugins"
+#~ msgstr "Утулкі"
+
+#, fuzzy
+#~ msgid "&Reload Plugins"
+#~ msgstr "Перазагрузіць модулі"
+
+#, fuzzy
+#~ msgid "Show &Plugins"
+#~ msgstr "Паказаць модулі"
+
+#, fuzzy
+#~| msgid "Fast"
+#~ msgid "Flash"
+#~ msgstr "Хутка"
+
+#, fuzzy
+#~ msgid "Number:"
+#~ msgstr "Адбівальнік"
+
+#, fuzzy
+#~ msgid "Disable &Mouse for Moving Putter"
+#~ msgstr "Адключыць кіраванне мышшу"
+
+#, fuzzy
+#~ msgid "Disable &Advanced Putting"
+#~ msgstr "Адключыць складаны ўдар"
+
+#, fuzzy
+#~ msgid "Hide &Info"
+#~ msgstr "Схаваць звесткі"
+
+#, fuzzy
+#~ msgid "Hide Putter &Guideline"
+#~ msgstr "Схаваць накіравальную клюшкі"
+
+#, fuzzy
+#~ msgid "Disable All Dialog Boxes"
+#~ msgstr "Адключыць усе дыялогі"
+
+#, fuzzy
+#~ msgid "Load Saved Game..."
+#~ msgstr "Загрузіць захаваную гульню..."
+
+#, fuzzy
+#~ msgid "Hole %1: par %2, maximum %3 strokes"
+#~ msgstr "Лунка %1 - ачкоў: %2, максімум удараў: %3"

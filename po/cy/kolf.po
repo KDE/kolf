@@ -1,0 +1,852 @@
+# translation of kolf.po to Cymraeg
+# Penbwrdd yn Gymraeg.
+# Copyright (C) 2003, 2005 Free Software Foundation, Inc.
+# www.kyfieithu.co.uk<kyfieithu@dotmon.com>, www.gyfieithu.co.uk<kyfieithu@dotmon.com>, 2003.
+# Kevin Donnelly <kevin@dotmon.com>, 2005.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kolf\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2005-09-21 09:20+0100\n"
+"Last-Translator: Kevin Donnelly <kevin@dotmon.com>\n"
+"Language-Team: Cymraeg <cy@li.org>\n"
+"Language: cy\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.10\n"
+"\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Kyfieithu: KD, jawz, dylunio, strempan, Thierry Vignaud"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kyfieithu@dotmon.com,,,,"
+
+#: config.cpp:51
+#, kde-format
+msgid "No configuration options"
+msgstr "Dim dewisiadau ffurfweddu"
+
+#: editor.cpp:37
+#, kde-format
+msgid "Add object:"
+msgstr "Ychwanegu gwrthrych:"
+
+#: game.cpp:261
+#, kde-format
+msgid "Course name: "
+msgstr "Enw'r cwrs:"
+
+#: game.cpp:268
+#, kde-format
+msgid "Course author: "
+msgstr "Awdur y cwrs:"
+
+#: game.cpp:277
+#, kde-format
+msgid "Par:"
+msgstr "Par:"
+
+#: game.cpp:287
+#, kde-format
+msgid "Maximum:"
+msgstr "Uchaf:"
+
+#: game.cpp:291
+#, kde-format
+msgid "Maximum number of strokes player can take on this hole."
+msgstr "Uchafswm y trawiadau y gall chwaraewr gymryd ar y twll hwn."
+
+#: game.cpp:292
+#, kde-format
+msgid "Maximum number of strokes"
+msgstr "Uchafswm y trawiadau"
+
+#: game.cpp:293
+#, kde-format
+msgid "Unlimited"
+msgstr "Heb derfyn"
+
+#: game.cpp:299
+#, kde-format
+msgid "Show border walls"
+msgstr "Dangos waliau ffin"
+
+#: game.cpp:497 game.cpp:2439
+#, kde-format
+msgid "Course Author"
+msgstr "Awdur y Cwrs"
+
+#: game.cpp:498 game.cpp:499 game.cpp:2439
+#, kde-format
+msgid "Course Name"
+msgstr "Enw'r Cwrs"
+
+#: game.cpp:1421
+#, kde-format
+msgid "Drop Outside of Hazard"
+msgstr "Disgyn Tu Allan o'r Rhwystr"
+
+#: game.cpp:1422
+#, kde-format
+msgid "Rehit From Last Location"
+msgstr "Aildaro o'r Lleoliad Diwethaf"
+
+#: game.cpp:1424
+#, kde-format
+msgid "What would you like to do for your next shot?"
+msgstr "Beth hoffech wneud am eich ergyd nesaf?"
+
+#: game.cpp:1424
+#, kde-format
+msgid "%1 is in a Hazard"
+msgstr "Mae %1 mewn Rhwystr"
+
+#: game.cpp:1592
+#, kde-format
+msgid "%1 will start off."
+msgstr "Bydd %1 yn dechrau."
+
+#: game.cpp:1592
+#, kde-format
+msgid "New Hole"
+msgstr "Twll Newydd"
+
+#: game.cpp:1753
+#, kde-format
+msgid "Course name: %1"
+msgstr "Enw'r cwrs: %1"
+
+#: game.cpp:1754
+#, kde-format
+msgid "Created by %1"
+msgstr "Creuwyd gan %1"
+
+#: game.cpp:1755
+#, fuzzy, kde-format
+#| msgid "%1 holes"
+msgid "%1 hole"
+msgid_plural "%1 holes"
+msgstr[0] "%1 o dyllau"
+msgstr[1] "%1 o dyllau"
+
+#: game.cpp:1756
+#, fuzzy, kde-format
+#| msgid "Course Information"
+msgctxt "@title:window"
+msgid "Course Information"
+msgstr "Gwybodaeth am y Cwrs"
+
+#: game.cpp:1887
+#, kde-format
+msgid "This hole uses the following plugins, which you do not have installed:"
+msgstr "Mae'r twll yma yn defnyddio'r ategion dilynol, nad arsefydlwyd:"
+
+#: game.cpp:1999
+#, kde-format
+msgid "There are unsaved changes to current hole. Save them?"
+msgstr "Mae newidiadau heb eu cadw i'r twll cyfredol.  Cadw nawr?"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Unsaved Changes"
+msgstr "Newidiadau Heb eu Cadw"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Save &Later"
+msgstr "&Cadw Wedyn"
+
+#: game.cpp:2170 kolf.cpp:550
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course to Save To"
+msgctxt "@title:window"
+msgid "Pick Kolf Course to Save To"
+msgstr "Dewis Pa Gwrs Kolf i Gadw Iddo"
+
+#: kcomboboxdialog.cpp:60
+#, kde-format
+msgid "&Do not ask again"
+msgstr "&Paid â gofyn eto"
+
+#: kolf.cpp:62
+#, fuzzy, kde-format
+#| msgid "Slow"
+msgid "Slope"
+msgstr "Araf"
+
+#: kolf.cpp:63
+#, kde-format
+msgid "Puddle"
+msgstr "Pwll"
+
+#: kolf.cpp:64
+#, kde-format
+msgid "Wall"
+msgstr "Wal"
+
+#: kolf.cpp:65
+#, kde-format
+msgid "Cup"
+msgstr "Cwpan"
+
+#: kolf.cpp:66
+#, kde-format
+msgid "Sand"
+msgstr "Tywod"
+
+#: kolf.cpp:67
+#, kde-format
+msgid "Windmill"
+msgstr "Melin wynt"
+
+#: kolf.cpp:68
+#, kde-format
+msgid "Black Hole"
+msgstr "Twll Du"
+
+#: kolf.cpp:69
+#, kde-format
+msgid "Floater"
+msgstr ""
+
+#: kolf.cpp:70
+#, kde-format
+msgid "Bridge"
+msgstr "Pont"
+
+#: kolf.cpp:71
+#, kde-format
+msgid "Sign"
+msgstr "Llofnodi"
+
+#: kolf.cpp:72
+#, kde-format
+msgid "Bumper"
+msgstr "Bympar"
+
+#: kolf.cpp:95
+#, kde-format
+msgid "Save &Course"
+msgstr "Cadw C&wrs"
+
+#: kolf.cpp:97
+#, kde-format
+msgid "Save &Course As..."
+msgstr "Cadw Cw&rs Fel..."
+
+#: kolf.cpp:100
+#, kde-format
+msgid "&Save Game"
+msgstr "Cadw &Gêm"
+
+#: kolf.cpp:103
+#, kde-format
+msgid "&Save Game As..."
+msgstr "Cadw Gê&m Fel..."
+
+#: kolf.cpp:110
+#, kde-format
+msgid "&Edit"
+msgstr ""
+
+#: kolf.cpp:116
+#, kde-format
+msgid "&New"
+msgstr "&Newydd"
+
+#: kolf.cpp:125
+#, kde-format
+msgid "&Reset"
+msgstr "&Ailosod"
+
+#: kolf.cpp:130
+#, kde-format
+msgid "&Undo Shot"
+msgstr "&Dadwneud Ergyd"
+
+#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. Go
+#: kolf.cpp:134
+#, kde-format
+msgid "Switch to Hole"
+msgstr "Newid i Dwll"
+
+#: kolf.cpp:139
+#, kde-format
+msgid "&Next Hole"
+msgstr "Twll N&esaf"
+
+#: kolf.cpp:144
+#, kde-format
+msgid "&Previous Hole"
+msgstr "Twll B&laenorol"
+
+#: kolf.cpp:149
+#, kde-format
+msgid "&First Hole"
+msgstr "Twll C&yntaf"
+
+#: kolf.cpp:153
+#, kde-format
+msgid "&Last Hole"
+msgstr "Twll &Olaf"
+
+#: kolf.cpp:158
+#, kde-format
+msgid "&Random Hole"
+msgstr "Twll ar &Hap"
+
+#: kolf.cpp:162
+#, kde-format
+msgid "Enable &Mouse for Moving Putter"
+msgstr "Galluogi Lly&goden i Symud Pytiwr"
+
+#: kolf.cpp:169
+#, kde-format
+msgid "Enable &Advanced Putting"
+msgstr "Galluogi &Pytio Uwch"
+
+#: kolf.cpp:175
+#, kde-format
+msgid "Show &Info"
+msgstr "&Dangos Gwybodaeth"
+
+#: kolf.cpp:182
+#, kde-format
+msgid "Show Putter &Guideline"
+msgstr "Dangos T&ywyslinell Bytiwr"
+
+#: kolf.cpp:188
+#, kde-format
+msgid "Enable All Dialog Boxes"
+msgstr "Galluogi Pob Blwch Ymgom"
+
+#: kolf.cpp:192
+#, kde-format
+msgid "Play &Sounds"
+msgstr "Chwarae &Sain"
+
+#: kolf.cpp:199
+#, fuzzy, kde-format
+#| msgid "&About Course"
+msgid "&About Course..."
+msgstr "Yn&glyn â'r Cwrs"
+
+#: kolf.cpp:202
+#, kde-format
+msgid "&Tutorial"
+msgstr "&Hyfforddiad"
+
+#: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
+#, kde-format
+msgid "Par"
+msgstr "Par"
+
+#: kolf.cpp:483
+#, kde-format
+msgid " and "
+msgstr "a"
+
+#: kolf.cpp:484
+#, kde-format
+msgid "%1 tied"
+msgstr "Mae %1 wedi dod yn gydradd"
+
+#: kolf.cpp:487
+#, kde-format
+msgid "%1 won!"
+msgstr "Mae %1 wedi enill!"
+
+#: kolf.cpp:501 kolf.cpp:513 kolf.cpp:528 kolf.cpp:529 newgame.cpp:249
+#: newgame.cpp:250
+#, kde-format
+msgid "High Scores for %1"
+msgstr "Sgorau Gorau %1"
+
+#: kolf.cpp:568
+#, fuzzy, kde-format
+#| msgid "Pick Saved Game to Save To"
+msgctxt "@title:window"
+msgid "Pick Saved Game to Save To"
+msgstr "Dewis Gêm wedi'i Chadw i Gadw Iddi"
+
+#: kolf.cpp:606
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Saved Game"
+msgctxt "@title:window"
+msgid "Pick Kolf Saved Game"
+msgstr "Dewis Gêm Kolf wedi'i Chadw"
+
+#: kolf.cpp:654
+#, kde-format
+msgid "%1's turn"
+msgstr "Tro %1"
+
+#: kolf.cpp:726
+#, kde-format
+msgid "%1's score has reached the maximum for this hole."
+msgstr "Mae sgôr %1 wedi cyrraedd yr uchafswm ar gyfer y twll yma."
+
+#. i18n: ectx: Menu (hole)
+#: kolfui.rc:17
+#, kde-format
+msgid "Ho&le"
+msgstr "Tw&ll"
+
+#. i18n: ectx: Menu (go_course)
+#: kolfui.rc:31
+#, kde-format
+msgid "&Go"
+msgstr "&Ewch"
+
+#: landscape.cpp:146
+#, kde-format
+msgid "Enable show/hide"
+msgstr "Galluogi dangos/cuddio"
+
+#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
+#, kde-format
+msgid "Slow"
+msgstr "Araf"
+
+#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
+#, kde-format
+msgid "Fast"
+msgstr "Cyflym"
+
+#: landscape.cpp:238
+#, kde-format
+msgid "Vertical"
+msgstr ""
+
+#: landscape.cpp:239
+#, kde-format
+msgid "Horizontal"
+msgstr ""
+
+#: landscape.cpp:240
+#, kde-format
+msgid "Diagonal"
+msgstr "Lletraws"
+
+#: landscape.cpp:241
+#, kde-format
+msgid "Opposite Diagonal"
+msgstr "Lletraws Cyferbyn"
+
+#: landscape.cpp:242
+#, kde-format
+msgid "Elliptic"
+msgstr ""
+
+#: landscape.cpp:571
+#, kde-format
+msgid "Reverse direction"
+msgstr "Gwrthdroi cyfeiriad"
+
+#: landscape.cpp:576
+#, kde-format
+msgid "Unmovable"
+msgstr "Disymud"
+
+#: landscape.cpp:578
+#, kde-format
+msgid "Whether or not this slope can be moved by other objects, like floaters."
+msgstr "A ellir symud y llethr yma gan gwrthrychau eraill, megis arnofyddion."
+
+#: landscape.cpp:582
+#, kde-format
+msgid "Grade:"
+msgstr "Gradd:"
+
+#: main.cpp:49
+#, kde-format
+msgid "Kolf"
+msgstr "Kolf"
+
+#: main.cpp:51
+#, kde-format
+msgid "KDE Minigolf Game"
+msgstr "Gêm Minigolff KDE"
+
+#: main.cpp:53
+#, kde-format
+msgid "(c) 2002-2010, Kolf developers"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Stefan Majewsky"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Current maintainer"
+msgstr ""
+
+#: main.cpp:57
+#, kde-format
+msgid "Jason Katz-Brown"
+msgstr ""
+
+#: main.cpp:57
+#, fuzzy, kde-format
+#| msgid "Main author"
+msgid "Former main author"
+msgstr "Prif awdur"
+
+#: main.cpp:58
+#, kde-format
+msgid "Niklas Knutsson"
+msgstr ""
+
+#: main.cpp:58
+#, kde-format
+msgid "Advanced putting mode"
+msgstr "Modd pytio uwch"
+
+#: main.cpp:59
+#, kde-format
+msgid "Rik Hemsley"
+msgstr ""
+
+#: main.cpp:59
+#, kde-format
+msgid "Border around course"
+msgstr "Ffin o gwmpas y cwrs"
+
+#: main.cpp:60
+#, kde-format
+msgid "Timo A. Hummel"
+msgstr ""
+
+#: main.cpp:60
+#, kde-format
+msgid "Some good sound effects"
+msgstr "Rhai effeithiau sŵn da"
+
+#: main.cpp:62
+#, kde-format
+msgid "Rob Renaud"
+msgstr ""
+
+#: main.cpp:62
+#, kde-format
+msgid "Wall-bouncing help"
+msgstr "Cymorth efo'r sboncio o'r waliau"
+
+#: main.cpp:63
+#, kde-format
+msgid "Aaron Seigo"
+msgstr ""
+
+#: main.cpp:63
+#, kde-format
+msgid "Suggestions, bug reports"
+msgstr "Awgrymiadau, adroddiadau nam"
+
+#: main.cpp:64
+#, kde-format
+msgid "Erin Catto"
+msgstr ""
+
+#: main.cpp:64
+#, kde-format
+msgid "Developer of Box2D physics engine"
+msgstr ""
+
+#: main.cpp:65
+#, kde-format
+msgid "Ryan Cumming"
+msgstr ""
+
+#: main.cpp:65
+#, fuzzy, kde-format
+#| msgid "Vector class"
+msgid "Vector class (Kolf 1)"
+msgstr "Dosbarth fector"
+
+#: main.cpp:66
+#, kde-format
+msgid "Daniel Matza-Brown"
+msgstr ""
+
+#: main.cpp:66
+#, fuzzy, kde-format
+#| msgid "Working wall-bouncing algorithm"
+msgid "Working wall-bouncing algorithm (Kolf 1)"
+msgstr "Algorithm sboncio o'r waliau sy'n gweithio"
+
+#: main.cpp:71
+#, kde-format
+msgid "File"
+msgstr ""
+
+#: main.cpp:72
+#, kde-format
+msgid "Print course information and exit"
+msgstr "Argraffu gwybodaeth am y cyrsiau, a terfynu"
+
+#: main.cpp:89 newgame.cpp:240
+#, kde-format
+msgid "By %1"
+msgstr "Gan %1"
+
+#: main.cpp:90
+#, kde-format
+msgid "%1 holes"
+msgstr "%1 o dyllau"
+
+#: main.cpp:91
+#, kde-format
+msgid "par %1"
+msgstr "par %1"
+
+#: main.cpp:98
+#, kde-format
+msgid "Course %1 does not exist."
+msgstr "Nid yw'r cwrs %1 mewn bod."
+
+#: newgame.cpp:38
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "New Game"
+msgstr "Cadw &Gêm"
+
+#: newgame.cpp:54
+#, kde-format
+msgid "Players"
+msgstr "Chwaraewyr"
+
+#: newgame.cpp:58
+#, kde-format
+msgid "&New Player"
+msgstr "Chwaraewr &Newydd"
+
+#: newgame.cpp:93
+#, kde-format
+msgid "Course"
+msgstr "Cwrs"
+
+#: newgame.cpp:94
+#, kde-format
+msgid "Choose Course to Play"
+msgstr "Dewis Cwrs i Chwarae"
+
+#: newgame.cpp:133
+#, kde-format
+msgid "Create New"
+msgstr "Creu Newydd"
+
+#: newgame.cpp:134
+#, kde-format
+msgid "You"
+msgstr "Chi"
+
+#: newgame.cpp:160
+#, kde-format
+msgid "Highscores"
+msgstr "Sgorau Gorau"
+
+#: newgame.cpp:170
+#, kde-format
+msgid "Add..."
+msgstr "Ychwanegu..."
+
+#: newgame.cpp:174 newgame.cpp:363
+#, kde-format
+msgid "Remove"
+msgstr ""
+
+#: newgame.cpp:184
+#, fuzzy, kde-format
+msgid "Options"
+msgstr "Dewisiadau Gêm"
+
+#: newgame.cpp:185
+#, kde-format
+msgid "Game Options"
+msgstr "Dewisiadau Gêm"
+
+#: newgame.cpp:190
+#, kde-format
+msgid "&Strict mode"
+msgstr "Modd &llym"
+
+#: newgame.cpp:194
+#, kde-format
+msgid ""
+"In strict mode, undo, editing, and switching holes is not allowed. This is "
+"generally for competition. Only in strict mode are highscores kept."
+msgstr ""
+"Ym modd llym, ni chaniateir dadwneud, golygu, neu amnewid tyllau.  Defnyddir "
+"hyn fel rheol mewn cystadlaethau.  Cedwir sgorau gorau ym modd llym yn unig."
+
+#: newgame.cpp:241
+#, kde-format
+msgid "Par %1"
+msgstr "Par %1"
+
+#: newgame.cpp:242
+#, kde-format
+msgid "%1 Holes"
+msgstr "%1 o Dyllau"
+
+#: newgame.cpp:280
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course"
+msgctxt "@title:window"
+msgid "Pick Kolf Course"
+msgstr "Dewis Cwrs Kolf"
+
+#: newgame.cpp:308
+#, kde-format
+msgid "Chosen course is already on course list."
+msgstr "Mae'r cwrs dewisiedig eisoes ar y rhestr cyrsiau."
+
+#: newgame.cpp:321
+#, kde-format
+msgid "Player %1"
+msgstr "Chwaraewr %1"
+
+#: objects.cpp:244
+#, fuzzy, kde-format
+#| msgid "degrees"
+msgid " degree"
+msgid_plural " degrees"
+msgstr[0] "graddau"
+msgstr[1] "graddau"
+
+#: objects.cpp:247
+#, kde-format
+msgid "Exiting ball angle:"
+msgstr "Ongl aeth y bêl allan:"
+
+#: objects.cpp:267
+#, kde-format
+msgid "Minimum exit speed:"
+msgstr "Cyflymder isaf dod allan:"
+
+#: objects.cpp:288
+#, fuzzy, kde-format
+#| msgid "Minimum exit speed:"
+msgid "Maximum exit speed:"
+msgstr "Cyflymder isaf dod allan:"
+
+#: obstacles.cpp:412
+msgid "&Top"
+msgstr "&Pen"
+
+#: obstacles.cpp:412
+msgid "&Left"
+msgstr "&Chwith"
+
+#: obstacles.cpp:412
+msgid "&Right"
+msgstr "&De"
+
+#: obstacles.cpp:412
+msgid "&Bottom"
+msgstr ""
+
+#: obstacles.cpp:421
+#, kde-format
+msgid "Walls on:"
+msgstr "Defnyddio waliau:"
+
+#: obstacles.cpp:431
+#, kde-format
+msgid "Sign HTML:"
+msgstr "HTML Arwydd:"
+
+#: obstacles.cpp:440
+#, fuzzy, kde-format
+#| msgid "Windmill on bottom"
+msgid "Windmill on top"
+msgstr "Melin wynt ar y gwaelod"
+
+#: obstacles.cpp:461
+#, kde-format
+msgid "Moving speed"
+msgstr "Cyflymder symud"
+
+#: obstacles.cpp:681
+#, kde-format
+msgid "New Text"
+msgstr "Testun Newydd"
+
+#: scoreboard.cpp:28
+#, kde-format
+msgid "Total"
+msgstr "Cyfanswm"
+
+#~ msgid "Circular"
+#~ msgstr "Crwn"
+
+#~ msgid "%1 - Hole %2; by %3"
+#~ msgstr "%1 - Twll %2; gan %3"
+
+#~ msgid "Kolf Options"
+#~ msgstr "Dewisiadau Kolf"
+
+#~ msgid "Draw title text"
+#~ msgstr "Darlunio testun teitl"
+
+#~ msgid "Print %1 - Hole %2"
+#~ msgstr "Argraffu %1 - Twll %2"
+
+#~ msgid "Currently Loaded Plugins"
+#~ msgstr "Ategion Llwythedig ar Hyn o Bryd"
+
+#~ msgid "by %1"
+#~ msgstr "gan %1"
+
+#~ msgid "Plugins"
+#~ msgstr "Ategion"
+
+#~ msgid "&Reload Plugins"
+#~ msgstr "Ail-lwy&tho Ategion"
+
+#~ msgid "Show &Plugins"
+#~ msgstr "Dangos &Ategion"
+
+#, fuzzy
+#~| msgid "Fast"
+#~ msgid "Flash"
+#~ msgstr "Cyflym"
+
+#, fuzzy
+#~| msgid "Bumper"
+#~ msgid "Number:"
+#~ msgstr "Bympar"
+
+#~ msgid "Disable &Mouse for Moving Putter"
+#~ msgstr "Analluogi Llygoden i Sy&mud Pytiwr"
+
+#~ msgid "Disable &Advanced Putting"
+#~ msgstr "Analluogi Pytio &Uwch"
+
+#~ msgid "Hide &Info"
+#~ msgstr "&Cuddio Gwybodaeth"
+
+#~ msgid "Hide Putter &Guideline"
+#~ msgstr "Cuddio Ty&wyslinell Bytiwr"
+
+#~ msgid "Disable All Dialog Boxes"
+#~ msgstr "Analluogi Pob Blwch Ymgom"
+
+#~ msgid "Load Saved Game..."
+#~ msgstr "Llwytho Gêm Wedi'i Chadw..."
+
+#~ msgid "Hole %1: par %2, maximum %3 strokes"
+#~ msgstr "Twll %1: par %2, uchafswm trawiadau: %3"

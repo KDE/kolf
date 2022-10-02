@@ -1,0 +1,864 @@
+# translation of kolf.po to
+# translation of kolf.po to
+# translation of kolf.po to
+# translation of kolf.po to
+# translation of kolf.po to
+# translation of kolf.po to
+# translation of kolf.po to
+# translation of kolf.po to
+# translation of kolf.po to Xhosa
+# Copyright (C) 2002 Free Software Foundation, Inc.
+# Thelma Lungcuzo <thelma@translate.org.za>, 2002
+# Lwandle Mgidlana <lwandle@translate.org.za>, 2002
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kolf\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2002-10-18 15:41SAST\n"
+"Last-Translator: Lwandle Mgidlana <lwandle@translate.org.za>\n"
+"Language-Team: Xhosa <xhosa@translate.org.za>\n"
+"Language: xh\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.0beta2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Lwandle Mgidlana"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "lwandle@translate.org.za"
+
+#: config.cpp:51
+#, kde-format
+msgid "No configuration options"
+msgstr "Azikho iinketho zokuhlanganisela"
+
+#: editor.cpp:37
+#, kde-format
+msgid "Add object:"
+msgstr "Yongeza injongo ethile:"
+
+#: game.cpp:261
+#, kde-format
+msgid "Course name: "
+msgstr "Igama lesifundo:"
+
+#: game.cpp:268
+#, kde-format
+msgid "Course author: "
+msgstr "Umbali wesifundo:"
+
+#: game.cpp:277
+#, kde-format
+msgid "Par:"
+msgstr "Par:"
+
+#: game.cpp:287
+#, kde-format
+msgid "Maximum:"
+msgstr "Ubuninzi:"
+
+#: game.cpp:291
+#, kde-format
+msgid "Maximum number of strokes player can take on this hole."
+msgstr "Ubukhulu beneni labadlali ababethayo bangathatha lo mngxuma."
+
+#: game.cpp:292
+#, kde-format
+msgid "Maximum number of strokes"
+msgstr "Ubukhulu benani lababethi"
+
+#: game.cpp:293
+#, kde-format
+msgid "Unlimited"
+msgstr "Ayinasiphelo"
+
+#: game.cpp:299
+#, kde-format
+msgid "Show border walls"
+msgstr "Bonisa umda wamadonga"
+
+#: game.cpp:497 game.cpp:2439
+#, kde-format
+msgid "Course Author"
+msgstr "Umbali wesifundo"
+
+#: game.cpp:498 game.cpp:499 game.cpp:2439
+#, kde-format
+msgid "Course Name"
+msgstr "Igama lesifundo"
+
+#: game.cpp:1421
+#, kde-format
+msgid "Drop Outside of Hazard"
+msgstr "Wisa Ngaphandle Kwendawo enobungozi"
+
+#: game.cpp:1422
+#, kde-format
+msgid "Rehit From Last Location"
+msgstr "Phinda ubethe Ukusuka Kwindawo yokugqibela"
+
+#: game.cpp:1424
+#, kde-format
+msgid "What would you like to do for your next shot?"
+msgstr "Ungathanda ukwenza ntoni ekubetheni okulandelayo?"
+
+#: game.cpp:1424
+#, kde-format
+msgid "%1 is in a Hazard"
+msgstr "%1 ikwindawo enobungozi"
+
+#: game.cpp:1592
+#, kde-format
+msgid "%1 will start off."
+msgstr "%1 izakuqala ukuyeka."
+
+#: game.cpp:1592
+#, kde-format
+msgid "New Hole"
+msgstr "Umngxunya Omtsha"
+
+#: game.cpp:1753
+#, kde-format
+msgid "Course name: %1"
+msgstr "Igama lesifundo: %1"
+
+#: game.cpp:1754
+#, kde-format
+msgid "Created by %1"
+msgstr "Idalwe ngu %1"
+
+#: game.cpp:1755
+#, fuzzy, kde-format
+#| msgid "%1 holes"
+msgid "%1 hole"
+msgid_plural "%1 holes"
+msgstr[0] "%1 imingxuma"
+msgstr[1] "%1 imingxuma"
+
+#: game.cpp:1756
+#, fuzzy, kde-format
+#| msgid "Course Information"
+msgctxt "@title:window"
+msgid "Course Information"
+msgstr "Isifundo solwazi"
+
+#: game.cpp:1887
+#, kde-format
+msgid "This hole uses the following plugins, which you do not have installed:"
+msgstr ""
+"Lomngxunya usebenzisa leiplagi efakiweyo elandelayo, ekungafuneki uuba "
+"uyifakele:"
+
+#: game.cpp:1999
+#, kde-format
+msgid "There are unsaved changes to current hole. Save them?"
+msgstr ""
+"Kukho iitshintsho ezingagcinekanga kumngxunya okhoyo ngoku. Ungazigcina?"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Unsaved Changes"
+msgstr "Iintshintsho ezingagcinekanga"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Save &Later"
+msgstr "Gcina &Kamva"
+
+#: game.cpp:2170 kolf.cpp:550
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course to Save To"
+msgctxt "@title:window"
+msgid "Pick Kolf Course to Save To"
+msgstr "Pika isifundo seKolf ukuze ugcina kwi"
+
+#: kcomboboxdialog.cpp:60
+#, kde-format
+msgid "&Do not ask again"
+msgstr "&Ungaphinde ubuze kwakhona"
+
+#: kolf.cpp:62
+#, fuzzy, kde-format
+#| msgid "Slow"
+msgid "Slope"
+msgstr "Ngokuchothayo"
+
+#: kolf.cpp:63
+#, kde-format
+msgid "Puddle"
+msgstr "Ichityana"
+
+#: kolf.cpp:64
+#, kde-format
+msgid "Wall"
+msgstr "Idonga"
+
+#: kolf.cpp:65
+#, kde-format
+msgid "Cup"
+msgstr "Ikomityi"
+
+#: kolf.cpp:66
+#, kde-format
+msgid "Sand"
+msgstr "Isanti"
+
+#: kolf.cpp:67
+#, kde-format
+msgid "Windmill"
+msgstr "Iphiko lomoya"
+
+#: kolf.cpp:68
+#, kde-format
+msgid "Black Hole"
+msgstr "Umngxuma Omnyama"
+
+#: kolf.cpp:69
+#, kde-format
+msgid "Floater"
+msgstr ""
+
+#: kolf.cpp:70
+#, kde-format
+msgid "Bridge"
+msgstr "Ibhulorho"
+
+#: kolf.cpp:71
+#, kde-format
+msgid "Sign"
+msgstr "Uphawu"
+
+#: kolf.cpp:72
+#, kde-format
+msgid "Bumper"
+msgstr "Ibhampari"
+
+#: kolf.cpp:95
+#, kde-format
+msgid "Save &Course"
+msgstr "Gcina &Isifundo"
+
+#: kolf.cpp:97
+#, kde-format
+msgid "Save &Course As..."
+msgstr "Gcina&Isifundo njenge..."
+
+#: kolf.cpp:100
+#, kde-format
+msgid "&Save Game"
+msgstr "&Gcina Umdlalo"
+
+#: kolf.cpp:103
+#, kde-format
+msgid "&Save Game As..."
+msgstr "&Gcina Umdlalo njenge..."
+
+#: kolf.cpp:110
+#, kde-format
+msgid "&Edit"
+msgstr ""
+
+#: kolf.cpp:116
+#, kde-format
+msgid "&New"
+msgstr "&Intsha"
+
+#: kolf.cpp:125
+#, kde-format
+msgid "&Reset"
+msgstr "&Cwangcisa kwakhona"
+
+#: kolf.cpp:130
+#, kde-format
+msgid "&Undo Shot"
+msgstr "&Ukungenzi Ubetho"
+
+#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. Go
+#: kolf.cpp:134
+#, kde-format
+msgid "Switch to Hole"
+msgstr "Tshintshela emngxunyeni"
+
+#: kolf.cpp:139
+#, kde-format
+msgid "&Next Hole"
+msgstr "&Umngxunya Olandelayo"
+
+#: kolf.cpp:144
+#, kde-format
+msgid "&Previous Hole"
+msgstr "&Umngxunya Ogqithileyo"
+
+#: kolf.cpp:149
+#, kde-format
+msgid "&First Hole"
+msgstr "&Umngxuma Wokuqala"
+
+#: kolf.cpp:153
+#, kde-format
+msgid "&Last Hole"
+msgstr "&Umngxuma Wokugqibela"
+
+#: kolf.cpp:158
+#, kde-format
+msgid "&Random Hole"
+msgstr "&Umngxuma Ongenamlinganiselo"
+
+#: kolf.cpp:162
+#, kde-format
+msgid "Enable &Mouse for Moving Putter"
+msgstr "Ukwenza ukwazi &Imawusi uze uhambise induku yokubetha"
+
+#: kolf.cpp:169
+#, kde-format
+msgid "Enable &Advanced Putting"
+msgstr "Ukwazi ukwenza &Induku yokubetha kwangaphambili"
+
+#: kolf.cpp:175
+#, kde-format
+msgid "Show &Info"
+msgstr "Bonisa &Ulwazi"
+
+#: kolf.cpp:182
+#, kde-format
+msgid "Show Putter &Guideline"
+msgstr "Bonisa Iduku yokubetha &Indlela yokwenza"
+
+#: kolf.cpp:188
+#, kde-format
+msgid "Enable All Dialog Boxes"
+msgstr "Ukwazi ukwenza zonke iibhokisi zencoko yababini"
+
+#: kolf.cpp:192
+#, kde-format
+msgid "Play &Sounds"
+msgstr "Dlala &Izandi"
+
+#: kolf.cpp:199
+#, fuzzy, kde-format
+#| msgid "&About Course"
+msgid "&About Course..."
+msgstr "&Malunga Nesifundo"
+
+#: kolf.cpp:202
+#, kde-format
+msgid "&Tutorial"
+msgstr "&Isifundo sembuyiselo"
+
+#: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
+#, kde-format
+msgid "Par"
+msgstr "Par"
+
+#: kolf.cpp:483
+#, kde-format
+msgid " and "
+msgstr " kunye "
+
+#: kolf.cpp:484
+#, kde-format
+msgid "%1 tied"
+msgstr "%1 Iqinisiwe"
+
+#: kolf.cpp:487
+#, kde-format
+msgid "%1 won!"
+msgstr "%1 uphumelele"
+
+#: kolf.cpp:501 kolf.cpp:513 kolf.cpp:528 kolf.cpp:529 newgame.cpp:249
+#: newgame.cpp:250
+#, kde-format
+msgid "High Scores for %1"
+msgstr "Amanani amanqaku aphezulu ka %1"
+
+#: kolf.cpp:568
+#, fuzzy, kde-format
+#| msgid "Pick Saved Game to Save To"
+msgctxt "@title:window"
+msgid "Pick Saved Game to Save To"
+msgstr "Khetha umdlalo ogciniweyo ukuze ugcine Kwi "
+
+#: kolf.cpp:606
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Saved Game"
+msgctxt "@title:window"
+msgid "Pick Kolf Saved Game"
+msgstr "Khetha Umdlalo ogcineweyo weKolf "
+
+#: kolf.cpp:654
+#, kde-format
+msgid "%1's turn"
+msgstr "%1's ujiko"
+
+#: kolf.cpp:726
+#, kde-format
+msgid "%1's score has reached the maximum for this hole."
+msgstr "%1's inani lenqaku lifikelele kubukhulu balo mngxuma."
+
+#. i18n: ectx: Menu (hole)
+#: kolfui.rc:17
+#, kde-format
+msgid "Ho&le"
+msgstr "Umngxu&nya"
+
+#. i18n: ectx: Menu (go_course)
+#: kolfui.rc:31
+#, kde-format
+msgid "&Go"
+msgstr "&Hamba"
+
+#: landscape.cpp:146
+#, kde-format
+msgid "Enable show/hide"
+msgstr "Ukwenza ibonise/ifihle"
+
+#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
+#, kde-format
+msgid "Slow"
+msgstr "Ngokuchothayo"
+
+#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
+#, kde-format
+msgid "Fast"
+msgstr "Ngokukhawuleza"
+
+#: landscape.cpp:238
+#, kde-format
+msgid "Vertical"
+msgstr ""
+
+#: landscape.cpp:239
+#, kde-format
+msgid "Horizontal"
+msgstr ""
+
+#: landscape.cpp:240
+#, kde-format
+msgid "Diagonal"
+msgstr "Uxweso"
+
+#: landscape.cpp:241
+#, kde-format
+msgid "Opposite Diagonal"
+msgstr "Uxweso olukwelinye icala"
+
+#: landscape.cpp:242
+#, kde-format
+msgid "Elliptic"
+msgstr ""
+
+#: landscape.cpp:571
+#, kde-format
+msgid "Reverse direction"
+msgstr "Buyisela umva uboniso lwendlela"
+
+#: landscape.cpp:576
+#, fuzzy, kde-format
+msgid "Unmovable"
+msgstr "Ayishukumiseki"
+
+#: landscape.cpp:578
+#, kde-format
+msgid "Whether or not this slope can be moved by other objects, like floaters."
+msgstr ""
+"Nokuba kukanjani eli thambeka lingashukunyiswa zezinye izinto, ezinjenge "
+"zidadi."
+
+#: landscape.cpp:582
+#, kde-format
+msgid "Grade:"
+msgstr "Izinga:"
+
+#: main.cpp:49
+#, kde-format
+msgid "Kolf"
+msgstr "Kolf"
+
+#: main.cpp:51
+#, kde-format
+msgid "KDE Minigolf Game"
+msgstr "Umdlalo wegolufa encinane weKDE"
+
+#: main.cpp:53
+#, kde-format
+msgid "(c) 2002-2010, Kolf developers"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Stefan Majewsky"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Current maintainer"
+msgstr ""
+
+#: main.cpp:57
+#, kde-format
+msgid "Jason Katz-Brown"
+msgstr ""
+
+#: main.cpp:57
+#, fuzzy, kde-format
+#| msgid "Main author"
+msgid "Former main author"
+msgstr "Oyena mbhali"
+
+#: main.cpp:58
+#, kde-format
+msgid "Niklas Knutsson"
+msgstr ""
+
+#: main.cpp:58
+#, kde-format
+msgid "Advanced putting mode"
+msgstr "Indlela yokwenza ubethe ubhekise ngaphambili"
+
+#: main.cpp:59
+#, kde-format
+msgid "Rik Hemsley"
+msgstr ""
+
+#: main.cpp:59
+#, kde-format
+msgid "Border around course"
+msgstr "Umda macala onke kwindawo ekudlalelwa kuyo"
+
+#: main.cpp:60
+#, kde-format
+msgid "Timo A. Hummel"
+msgstr ""
+
+#: main.cpp:60
+#, kde-format
+msgid "Some good sound effects"
+msgstr "Iziqhano ezinhle eziluncedo"
+
+#: main.cpp:62
+#, kde-format
+msgid "Rob Renaud"
+msgstr ""
+
+#: main.cpp:62
+#, kde-format
+msgid "Wall-bouncing help"
+msgstr "Udonga olubhampayo loncedo"
+
+#: main.cpp:63
+#, kde-format
+msgid "Aaron Seigo"
+msgstr ""
+
+#: main.cpp:63
+#, kde-format
+msgid "Suggestions, bug reports"
+msgstr "Amacebiso, isinambuzane sezichazo"
+
+#: main.cpp:64
+#, kde-format
+msgid "Erin Catto"
+msgstr ""
+
+#: main.cpp:64
+#, kde-format
+msgid "Developer of Box2D physics engine"
+msgstr ""
+
+#: main.cpp:65
+#, kde-format
+msgid "Ryan Cumming"
+msgstr ""
+
+#: main.cpp:65
+#, fuzzy, kde-format
+#| msgid "Vector class"
+msgid "Vector class (Kolf 1)"
+msgstr "Iklasi elinomgca ongahlukaniseka kabini"
+
+#: main.cpp:66
+#, kde-format
+msgid "Daniel Matza-Brown"
+msgstr ""
+
+#: main.cpp:66
+#, fuzzy, kde-format
+#| msgid "Working wall-bouncing algorithm"
+msgid "Working wall-bouncing algorithm (Kolf 1)"
+msgstr "Ukusebenzisa ubalo ngalithoba lo bhampiso eludongeni"
+
+#: main.cpp:71
+#, kde-format
+msgid "File"
+msgstr ""
+
+#: main.cpp:72
+#, fuzzy, kde-format
+msgid "Print course information and exit"
+msgstr "Shicilela ulwazi lwesifundo uze uphume."
+
+#: main.cpp:89 newgame.cpp:240
+#, kde-format
+msgid "By %1"
+msgstr "ngo %1"
+
+#: main.cpp:90
+#, kde-format
+msgid "%1 holes"
+msgstr "%1 imingxuma"
+
+#: main.cpp:91
+#, kde-format
+msgid "par %1"
+msgstr "par %1"
+
+#: main.cpp:98
+#, kde-format
+msgid "Course %1 does not exist."
+msgstr "Indawo ekudlalelwa kuyo %1 ayikho."
+
+#: newgame.cpp:38
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "New Game"
+msgstr "&Gcina Umdlalo"
+
+#: newgame.cpp:54
+#, kde-format
+msgid "Players"
+msgstr "Abadlali"
+
+#: newgame.cpp:58
+#, kde-format
+msgid "&New Player"
+msgstr "&Umdlali omtsha"
+
+#: newgame.cpp:93
+#, kde-format
+msgid "Course"
+msgstr "Indawo ekudlalelwa kuyo"
+
+#: newgame.cpp:94
+#, kde-format
+msgid "Choose Course to Play"
+msgstr "Khetha indawo ekudlalelwa kuyo ukuze udlale"
+
+#: newgame.cpp:133
+#, kde-format
+msgid "Create New"
+msgstr "Dala entsha"
+
+#: newgame.cpp:134
+#, kde-format
+msgid "You"
+msgstr "Wena"
+
+#: newgame.cpp:160
+#, kde-format
+msgid "Highscores"
+msgstr "Amanqaku aphezulu"
+
+#: newgame.cpp:170
+#, kde-format
+msgid "Add..."
+msgstr "Dibanisa..."
+
+#: newgame.cpp:174 newgame.cpp:363
+#, kde-format
+msgid "Remove"
+msgstr ""
+
+#: newgame.cpp:184
+#, fuzzy, kde-format
+msgid "Options"
+msgstr "Iinketho Zomdlalo"
+
+#: newgame.cpp:185
+#, kde-format
+msgid "Game Options"
+msgstr "Iinketho Zomdlalo"
+
+#: newgame.cpp:190
+#, kde-format
+msgid "&Strict mode"
+msgstr "&Indlela yokwenza engqongqo"
+
+#: newgame.cpp:194
+#, kde-format
+msgid ""
+"In strict mode, undo, editing, and switching holes is not allowed. This is "
+"generally for competition. Only in strict mode are highscores kept."
+msgstr ""
+"Kwindlela yokwenza engqongqo,sukwenza, nokutshintsha imingxuma "
+"akuvumelekanga. Oku kumele ukhuphiswano kuphela. Kukwindlela yokwenza "
+"engqongqo kuphela apho kugcinwa amanani amanqaku khona."
+
+#: newgame.cpp:241
+#, kde-format
+msgid "Par %1"
+msgstr "Par %1"
+
+#: newgame.cpp:242
+#, kde-format
+msgid "%1 Holes"
+msgstr "%1 Imingxuma"
+
+#: newgame.cpp:280
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course"
+msgctxt "@title:window"
+msgid "Pick Kolf Course"
+msgstr "Khetha indawo ekudlalelwa kuyo yeKolf"
+
+#: newgame.cpp:308
+#, kde-format
+msgid "Chosen course is already on course list."
+msgstr ""
+"Indawo ekhethiweyo ekudlalelwa kuyo sele ikuluhlu lwendawo ekudlalelwa kuyo."
+
+#: newgame.cpp:321
+#, kde-format
+msgid "Player %1"
+msgstr "Umdlali %1"
+
+#: objects.cpp:244
+#, fuzzy, kde-format
+#| msgid "degrees"
+msgid " degree"
+msgid_plural " degrees"
+msgstr[0] "Amazinga okutshisa"
+msgstr[1] "Amazinga okutshisa"
+
+#: objects.cpp:247
+#, kde-format
+msgid "Exiting ball angle:"
+msgstr "Ukuphuma kwicala lebhola:"
+
+#: objects.cpp:267
+#, kde-format
+msgid "Minimum exit speed:"
+msgstr "Ubuncincane besantya sokuphuma: "
+
+#: objects.cpp:288
+#, fuzzy, kde-format
+#| msgid "Minimum exit speed:"
+msgid "Maximum exit speed:"
+msgstr "Ubuncincane besantya sokuphuma: "
+
+#: obstacles.cpp:412
+msgid "&Top"
+msgstr "&Umphezulu"
+
+#: obstacles.cpp:412
+msgid "&Left"
+msgstr "&Ekhohlo"
+
+#: obstacles.cpp:412
+msgid "&Right"
+msgstr "&Ekunene "
+
+#: obstacles.cpp:412
+msgid "&Bottom"
+msgstr ""
+
+#: obstacles.cpp:421
+#, kde-format
+msgid "Walls on:"
+msgstr "Iindonga kwi:"
+
+#: obstacles.cpp:431
+#, kde-format
+msgid "Sign HTML:"
+msgstr "Tyikitya i HTML:"
+
+#: obstacles.cpp:440
+#, fuzzy, kde-format
+#| msgid "Windmill on bottom"
+msgid "Windmill on top"
+msgstr "Iphiko lomoya emazantsi"
+
+#: obstacles.cpp:461
+#, kde-format
+msgid "Moving speed"
+msgstr "Isantya esihambayo"
+
+#: obstacles.cpp:681
+#, kde-format
+msgid "New Text"
+msgstr "Isifundo esitsha"
+
+#: scoreboard.cpp:28
+#, kde-format
+msgid "Total"
+msgstr "Okuphelele"
+
+#~ msgid "Circular"
+#~ msgstr "Umjikelezo"
+
+#~ msgid "Kolf Options"
+#~ msgstr "Iinketho zeKolf"
+
+#~ msgid "Draw title text"
+#~ msgstr "Zoba iwonga lokubhaliweyo"
+
+#~ msgid "Currently Loaded Plugins"
+#~ msgstr "Izivingco zangaphakathi ezilayishiweyo ezikhoyo"
+
+#~ msgid "by %1"
+#~ msgstr "ngu %1"
+
+#~ msgid "Plugins"
+#~ msgstr "Izivingco zangaphakathi"
+
+#~ msgid "&Reload Plugins"
+#~ msgstr "&Phinda layisha Izivingco zangaphakathi"
+
+#~ msgid "Show &Plugins"
+#~ msgstr "Bonisa &Izivingco zangaphakathi"
+
+#, fuzzy
+#~| msgid "Fast"
+#~ msgid "Flash"
+#~ msgstr "Ngokukhawuleza"
+
+#, fuzzy
+#~| msgid "Bumper"
+#~ msgid "Number:"
+#~ msgstr "Ibhampari"
+
+#, fuzzy
+#~ msgid "Disable &Mouse for Moving Putter"
+#~ msgstr "Ukwenza ukwazi &Imawusi uze uhambise induku yokubetha"
+
+#, fuzzy
+#~ msgid "Disable &Advanced Putting"
+#~ msgstr "Ukwazi ukwenza &Induku yokubetha kwangaphambili"
+
+#, fuzzy
+#~ msgid "Hide &Info"
+#~ msgstr "Bonisa &Ulwazi"
+
+#, fuzzy
+#~ msgid "Hide Putter &Guideline"
+#~ msgstr "Bonisa Iduku yokubetha &Indlela yokwenza"
+
+#, fuzzy
+#~ msgid "Disable All Dialog Boxes"
+#~ msgstr "Ukwazi ukwenza zonke iibhokisi zencoko yababini"
+
+#, fuzzy
+#~ msgid "Load Saved Game..."
+#~ msgstr "Umthwalo Ugciniwe..."
+
+#~ msgid "Hole %1: par %2, maximum %3 strokes"
+#~ msgstr "Umngxunya %1: par %2, ubukhulu benani labaphethi ngu %3."

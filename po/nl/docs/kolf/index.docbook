@@ -1,0 +1,1588 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Dutch "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="kolf" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Het handboek van &kolf;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<authorgroup>
+<author
+><firstname
+>Jason</firstname
+> <surname
+>Katz-Brown</surname
+> <affiliation
+> <address
+><email
+>jasonkb@mit.edu</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+><firstname
+>Paul</firstname
+> <surname
+>Broadbent</surname
+> <affiliation
+> <address
+><email
+>dbd@myrealbox.com</email
+></address>
+</affiliation>
+<!-- <contrib
+>Reviewer</contrib
+> -->
+</othercredit>
+
+&Sander.Koning; 
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-08-06</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>KDE Gear 21.08</releaseinfo>
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Deze documentatie beschrijft het spel van &kolf; versie 21.08</para>
+</abstract>
+
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>spel</keyword
+> <!-- do not change this! -->
+	<keyword
+>Kolf</keyword
+><!--Application name goes here-->
+	<keyword
+>golf</keyword>
+	<keyword
+>miniatuur</keyword>
+	<keyword
+>arcade</keyword>
+	<keyword
+>sport</keyword>
+	<keyword
+>tien spelers</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Inleiding</title
+> <!-- do not change this! -->
+	<note
+><title
+>Speltype:</title
+><para
+>Arcade, Sport</para
+></note>
+	<note
+><title
+>Aantal mogelijke spelers:</title
+><para
+>Tien</para
+></note>
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&kolf; is een miniatuurgolfspel met 2d-weergave van bovenaf. Banen zijn dynamisch en tot 10 mensen kunnen tegelijk in een competitie spelen.</para>
+<para
+>&kolf; wordt met een oefenbaan geleverd. <link linkend="howto"
+>Deze baan spelen</link
+> is de makkelijkste manier om te beginnen.</para>
+</chapter>
+
+<chapter id="howto"
+><title
+>Hoe te spelen</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Doel:</title
+><para
+>Sla de bal in de hole (de grijze cirkel) met de minst mogelijke slagen.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para
+>&kolf; spelen is eenvoudig. Het is het gemakkelijkst te leren door het zelf te spelen, en daarom is een oefenbaan meegeleverd om u door de basics heen te leiden. Dit hoofdstuk leidt u door de oefening. Om de inleiding te starten kiest u menu-item <menuchoice
+><guimenu
+>Help</guimenu
+> <guimenuitem
+>Inleiding</guimenuitem
+></menuchoice
+>.</para>
+
+<sect1 id="hitting">
+<title
+>De bal raken</title>
+<para
+>Om met de bal te mikken, plaatst u de muis achter de bal zodat de putter in de richting wijst waarin u deze wilt raken of drukt u een van de toetsen &Left; of &Right; om de putter tegen de klok in, respectievelijk met de klok mee te draaien.</para>
+<tip>
+<para
+>Om de putter sneller met het toetsenbord te draaien, houdt u &Shift; ingedrukt terwijl u de pijltoetsen indrukt of ingedrukt houdt. Om langzamer te draaien houdt u &Ctrl; ingedrukt.</para>
+</tip>
+<para
+>Om de bal te slaan houdt u de &LMB; of de toets &Down; ingedrukt. Hoe langer u de knop ingedrukt houdt, des te krachtiger de put wordt. Voor een goed gevoel voor snelheid is ervaring nodig.</para>
+<tip>
+<para
+>Om de putt te onderbreken als u de putter nog naar achteren aan het bewegen bent voor uw slag, drukt u op &Esc;.</para>
+</tip>
+
+<para
+>Sla de bal in de hole (de grijze cirkel) om naar de volgende hole te gaan.</para>
+</sect1>
+
+<sect1 id="slopes">
+<title
+>Heuvels</title>
+<para
+>Hellingen zijn schuine stukken grond waar de bal op een te verwachten manier vanaf rolt. Het licht op de golfbaan komt van linksboven, dus de helderste heuvels duwen de bal naar linksboven. Kies menu-item <menuchoice
+><guimenu
+>Hole</guimenu
+><guimenuitem
+>Info tonen</guimenuitem
+></menuchoice
+> om een pijl te zien die in de richting wijst waar de bal heen zal rollen.</para>
+<para
+>Sla in deze oefening de bal de omhoog wijzende helling op en laat hem in de cup rollen om door te gaan naar de volgende hole.</para>
+
+<sect2
+> <title
+>Richtingen</title>
+<para
+>Experimenteer op de volgende hole met andere soorten heuvels. Er zijn ellipsvormige, verticale, horizontale en diagonale heuvels in &kolf;. Sla de bal de hole in.</para>
+</sect2>
+<sect2
+> <title
+>Steilte</title>
+<para
+>De volgende oefenhole bevat twee hellingen met verschillende steilte. Als u menu-item <menuchoice
+><guimenu
+>Hole</guimenu
+><guimenuitem
+>Toon info</guimenuitem
+></menuchoice
+> kiest, verschijnt de steilte van de helling als een getal van 1 tot 8, waarbij 8 steil en 1 bijna vlak is. Sla de bal in de hole en ga door naar de volgende hole.</para>
+</sect2>
+</sect1>
+
+<sect1 id="walls"
+> <title
+>Muren</title>
+<para
+>Ballen stuiteren van muren af zoals te verwachten is, met een klein beetje demping. Laat de bal tegen de muren stuiteren en in de cup rollen om naar de volgende hole te gaan.</para>
+</sect1>
+
+<sect1 id="puddles-sand"
+> <title
+>Poelen en zand</title>
+<sect2
+> <title
+>Poelen</title>
+	<para
+>Poelen zijn blauw. Als uw bal in een poel landt wordt een strafslag aan uw score toegevoegd en moet u kiezen waar vandaan u uw volgende bal zal slaan: ofwel naast de poel of vanaf de plaats waar u uw laatste slag deed.</para>
+</sect2>
+<sect2
+> <title
+>Zand</title>
+<para
+>Zand is geel. Ballen rollen erg langzaam in zand.</para>
+<para
+>Sla de bal rond de poelen en door het zand de hole in om naar de volgende oefeningshole door te gaan.</para>
+</sect2>
+</sect1>
+
+<sect1 id="windmills"
+> <title
+>Windmolens</title>
+<para
+>Windmolens zijn samengestelde objecten met bruine muren en een bewegende arm aan één kant. Halfmuren vormen de opening naar de windmolen, waar de zwarte arm voorlangs zwaait. Er is oefening nodig om de bal op het juiste moment te slaan zodat deze door de opening gaat. Sla de bal door de windmolen in de hole om door te gaan.</para>
+</sect1>
+
+<sect1 id="black-holes"
+> <title
+>Zwarte gaten</title>
+<para
+>Als u de bal in een zwart gat slaat, wordt deze naar de uitgang getransporteerd en bij de uitgang afgeschoten met een snelheid afhankelijk van de originele snelheid. Kies menu-item <menuchoice
+><guimenu
+>Hole</guimenu
+><guimenuitem
+>Toon info</guimenuitem
+></menuchoice
+> om te zien welk zwart gat met welke uitgang verbonden is en in welke richting de bal afgeschoten wordt. De rand rond een zwart gat en de bijbehorende uitgang hebben dezelfde kleur. Sla de bal het zwarte gat in, dat vervolgens de bal naar de cup zal afschieten zodat u naar de volgende hole kunt gaan.</para>
+</sect1>
+
+<sect1 id="floaters"
+> <title
+>Drijvers</title>
+<para
+>Drijvers zijn bewegende platforms die een bal meenemen die erop landt. De snelheid van drijvers kan verschillen. Deze is redelijk langzaam, maar u moet nog steeds op het juiste moment slaan zodat u over de muur heen in de cup kunt komen.</para>
+</sect1>
+
+<sect1 id="bridges"
+> <title
+>Bruggen</title>
+<para
+>Bruggen zijn eenvoudig - ze tillen de bal slechts op over wat er onder ligt, zoals heuvels, zand of poelen. Ze kunnen bruine muren langs de rand hebben.</para>
+</sect1>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Spelregels, strategieën en tips</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+<para
+>Hier volgt een gedetailleerde beschrijving van de basics van &kolf;.</para>
+
+<sect1 id="starting">
+<title
+>Een spel starten</title>
+
+<para
+>Om een spel te starten, kiest u menu-item <menuchoice
+><guimenu
+>Spel</guimenu
+><guimenuitem
+>Nieuw</guimenuitem
+></menuchoice
+>. Dit opent een dialoogvenster waarin u uw nieuwe spel kunt instellen.</para>
+<!--
+<tip>
+<para
+>More third-party &kolf; courses are available at the &kolf; website. See <ulink
+url="https://web.mit.edu/jasonkb/www/kolf/"
+>the &kolf; user-uploaded courses page</ulink
+>.</para>
+</tip>
+-->
+<sect2>
+<title
+>Pagina Spelers</title>
+<para
+>Om een speler aan uw spel toe te voegen, klikt u op de knop <guibutton
+>Nieuwe speler</guibutton
+>.</para>
+
+<para
+>Om de naam van de spelers te wijzigen, wijzig dan de tekst in de tekstvakken.</para>
+
+<para
+>Om een speler te verwijderen, klikt u op de knop <guibutton
+>Verwijderen</guibutton
+> naast de naam van de speler.</para>
+
+</sect2>
+
+<sect2
+> <title
+>Pagina Baan</title>
+<para
+>Om de baan te kiezen die u wilt spelen, klikt u op het item in de keuzelijst aan de linkerkant van deze pagina. &kolf; biedt vele ingebouwde banen die u kunt spelen.</para>
+<para
+>Om een baan toe te voegen die u gedownload hebt of zelf hebt gemaakt, klikt u op de knop <guibutton
+>Toevoegen...</guibutton
+> onderaan deze pagina, en kiest u het bestand dat de baan bevat in het bestandsdialoogvenster.</para>
+</sect2>
+<sect2
+> <title
+>Pagina Opties</title>
+<para
+>Op deze pagina kunt u kiezen of het spel in <guilabel
+>Wedstrijdmodus</guilabel
+> gespeeld wordt. In wedstrijdmodus zijn ongedaan maken en het verplaatsen of bewerken van de baan niet toegestaan. Deze modus wordt over het algemeen gebruikt voor competities. Alleen in deze modus worden topscores bijgehouden.</para>
+</sect2>
+</sect1>
+
+<sect1 id="saved-games"
+> <title
+>Opgeslagen spellen</title>
+<para
+>&kolf; kan een geschiedenis bijhouden van uw ronden die nog bezig zijn en ze opslaan op schijf, zodat u ze later kunt laden en verder spelen. Opgeslagen spellen bevatten de huidige hole, namen en kleuren van alle spelers in het spel, en de scores van de spelers.</para>
+<sect2
+> <title
+>Uw spel opslaan</title>
+<para
+>Om uw spel op te slaan terwijl u aan het spelen bent, kiest u menu-item <menuchoice
+><guimenu
+>Spel</guimenu
+><guimenuitem
+>Spel opslaan</guimenuitem
+></menuchoice
+>. Als u het huidige spel nog niet eerder hebt opgeslagen, wordt u om een bestandsnaam gevraagd.</para>
+</sect2>
+<sect2
+> <title
+>Uw spel laden</title>
+<para
+>Om het opgeslagen spel te laden, kiest u menu-item <menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Laden...</guimenuitem
+></menuchoice
+>. U kunt dan het opgeslagen spel kiezen dat u wilt openen.</para>
+</sect2>
+</sect1>
+
+<sect1 id="practicing"
+> <title
+>Oefenen</title>
+<para
+>Er zijn een paar mogelijkheden om makkelijker te oefenen met golf. Deze zijn niet ingeschakeld in wedstrijdmodus.</para>
+<sect2
+> <title
+>Ongedaan maken</title>
+<para
+>Om een slecht schot ongedaan te maken, kiest u menu-item <menuchoice
+><guimenu
+>Hole</guimenu
+><guimenuitem
+>Schot ongedaan maken</guimenuitem
+></menuchoice
+>.</para>
+</sect2>
+<sect2
+> <title
+>Van holes wisselen</title>
+<para
+>Het menu <guimenu
+>Ga</guimenu
+> bevat veel menu-items om naar andere holes over te schakelen die redelijk zelfverklarend zijn. Zie de <link linkend="go-menu"
+>beschrijving van het menu <guimenu
+>Ga</guimenu
+></link
+>.</para>
+</sect2>
+</sect1>
+
+<sect1 id="putting-options"
+> <title
+>Opties voor het putten</title>
+<para
+>&kolf; heeft een paar mogelijkheden om te putten. De basismethode is <link linkend="hitting"
+>hierboven beschreven</link
+>.</para>
+<para
+>De muis is standaard ingeschakeld. Dit betekent dat wanneer de muis verplaatst wordt, de putter uitgelijnd wordt tussen de muis en de bal.</para>
+<para
+>Als u liever alleen het toetsenbord en de pijltoetsen gebruikt, kunt u putten met de muis uitschakelen door menu-item <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>Muis inschakelen voor bewegen putter</guimenuitem
+></menuchoice
+> uit te schakelen.</para>
+
+<sect2 id="advanced-putting"
+> <title
+>Geavanceerd putten</title>
+<para
+>Geavanceerd putten kan worden ingeschakeld met het menu-item <menuchoice
+><guimenu
+>Insteliingen</guimenu
+><guimenuitem
+>Geavanceerde slagmodus activeren</guimenuitem
+></menuchoice
+>. Deze modus is ietwat uitdagender dan de standaard klik-en-hou-vast-methode en kan zowel met de muis als met het toetsenbord gebruikt worden.</para>
+
+<para
+>Om in deze modus te putten:</para>
+<procedure>
+<step>
+<para
+>Klik of druk eenmaal op de toets &Down; om met de slag te beginnen. Er verschijnt een slagindicator en de sterktewijzer wordt met een kleur opgevuld, die verandert naarmate de wijzer wordt gevuld.</para>
+</step>
+<step>
+<para
+>Klik of druk op de toets &Down; als de sterktewijzer tot het gewenste niveau gevuld is. Hoe verder de wijzer gevuld is, des te sterker de put zal zijn. Er is oefening vereist om de juiste sterkte te kunnen bepalen.</para>
+<para
+>Hierna keert de kleur in de slagindicator terug naar de oorspronkelijke waarde.</para>
+</step>
+<step>
+<para
+>Klik opnieuw of druk opnieuw op de toets &Down; als de sterktewijzer zo dicht mogelijk bij de middellijn van de slagindicator is.</para>
+</step>
+</procedure>
+<para
+>Hoe dichterbij de laatste klik of toetsaanslag is, hoe dichter de slag bij de originele lijn uitkomt.</para>
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Overzicht van het interface</title
+> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+ <sect1 id="game-menu">
+<title
+>Het menu Spel</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Nieuw</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Start een nieuw spel.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Laden...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Laad een eerder opgeslagen spel</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Baan opslaan</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Sla de huidige baan op onder zijn huidige bestandsnaam.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Baan opslaan als...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Open een bestandsdialoogvenster waarmee u <action
+>de huidige baan onder een nieuwe bestandsnaam kunt opslaan</action
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Spel</guimenu
+><guimenuitem
+>Spel opslaan</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Sla het huidige spel op</action
+> onder de laatst gebruikte bestandsnaam, of onder een bestandsnaam die u opgeeft als u het spel nog niet hebt opgeslagen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Spel opslaan als...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Opent een bestandsdialoogvenster waarmee u <action
+>het huidige spel kunt opslaan onder een bestandsnaam van uw keuze</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&End;</keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Spel beëindigen</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Beëindig het huidige spel, zonder &kolf; af te sluiten</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Topscores tonen</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Toon de topscoretabel.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Spel</guimenu
+><guimenuitem
+>Over de baan...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Toon naam, auteur en aantal holes van de baan.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+><guimenuitem
+>Afsluiten</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>&kolf; <action
+>afsluiten</action
+></para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="hole-menu">
+<title
+>Het menu Hole</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Hole</guimenu
+> <guimenuitem
+>Bewerken</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Schakel naar bewerkmodus over</action
+> om de huidige hole te bewerken.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Hole</guimenu
+> <guimenuitem
+>Nieuw</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Maak een nieuwe hole aan.</action
+> (Alleen in bewerkmodus.)</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Del; </keycombo
+> </shortcut
+> <guimenu
+>Hole</guimenu
+> <guimenuitem
+>Wissen</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Verwijder alle objecten van de huidige hole.</action
+> (Alleen in bewerkmodus.)</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>R</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Hole</guimenu
+> <guimenuitem
+>Beginwaarde</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Herstel de huidige hole naar de beginwaarde</action
+> zodat u overnieuw kunt beginnen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Hole</guimenu
+> <guimenuitem
+>Info tonen</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Toon informatie over de objecten op de huidige hole.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Hole</guimenu
+> <guimenuitem
+>Shot ongedaan maken</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Maak het laatste schot ongedaan.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="go-menu">
+<title
+>Het menu Ga naar</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ga</guimenu
+> <guisubmenu
+>Verander naar hole</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Ga direct naar een andere hole op deze baan</action
+>. U kunt de hole waarnaar u wilt overschakelen kiezen uit een lijst met holenummers.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Alt;&Right;</keycombo
+> </shortcut
+> <guimenu
+>Ga naar</guimenu
+> <guimenuitem
+>Volgende hole</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Ga naar de volgende hole.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Alt;&Left;</keycombo
+></shortcut
+> <guimenu
+>Ga naar</guimenu
+> <guimenuitem
+>Vorige hole</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Ga naar de vorige hole.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl;&Home;</keycombo
+> </shortcut
+> <guimenu
+>Ga naar</guimenu
+> <guimenuitem
+>Eerste hole</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Ga naar de eerste hole op de baan.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;&End; </keycombo
+> </shortcut
+> <guimenu
+>Ga naar</guimenu
+> <guimenuitem
+>Laatste hole</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Ga naar de laatste hole op de baan.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ga</guimenu
+> <guimenuitem
+>Willekeurige hole</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Ga naar een willekeurige hole van de huidige baan.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="settings-help-menu">
+<title
+>De menu's Instellingen en Help</title>
+
+<para
+>&kolf; heeft de standaard &kde;-menu-items <guimenu
+>Instellingen</guimenu
+> en <guimenu
+>Help</guimenu
+>, lees voor meer informatie de secties over het <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu Instellingen</ulink
+> en <ulink url="help:/fundamentals/menus.html#menus-help"
+>Help Menu</ulink
+> van de &kde; Fundamentals met deze extra items:</para>
+
+<variablelist>
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Muis inschakelen voor bewegen putter </guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Gebruik de muis om de speler te bewegen.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Geavanceerde slagmodus inschakelen</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Schakel de geavanceerde slagmodus in</action
+>, zoals<link linkend="advanced-putting"
+>in deze sectie</link
+> beschreven.</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Gidslijn putter tonen</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Schakel de gidslijn voor de putter in en uit.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Geluiden afspelen</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Schakel de geluidseffecten in en uit.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Alle dialoogvensters inschakelen</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Schakel alle dialoogvensters opnieuw in die u uitgeschakeld hebt met <guilabel
+>Dit bericht niet meer tonen</guilabel
+> of soortgelijke opties.</action
+></para
+></listitem>
+  </varlistentry>
+<!--
+  <varlistentry>
+    <term
+><menuchoice>
+    <guimenu
+>Settings</guimenu>
+    <guimenuitem
+>Reload Plugins</guimenuitem>
+    </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Reload plugins.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice>
+    <guimenu
+>Settings</guimenu>
+    <guimenuitem
+>Show Plugins</guimenuitem>
+    </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Display the currently loaded plugins.</action
+></para
+></listitem>
+  </varlistentry>
+-->
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Help</guimenu
+><guimenuitem
+>Handleiding</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+>De oefenbaan van &kolf; starten.</para
+></listitem>
+  </varlistentry>
+</variablelist>
+
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Veel voorkomende vragen</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Ik wil het uiterlijk van dit spel wijzigen. Kan dat? </para
+></question>
+ <answer
+><para
+>Nee. Op dit moment heeft &kolf; slechts één thema.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Kan ik het toetsenbord gebruiken om het spel te spelen? </para
+></question>
+ <answer
+><para
+>Ja, de pijltoetsen gebruiken om de putter te besturen.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Ik kom er niet achter wat hier te doen! Zijn er tips? </para
+></question>
+ <answer
+><para
+>Nee. &kolf; heeft geen tips.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Ik wil mijn eigen golfbaan ontwerpen. Kan dat? </para
+></question>
+ <answer
+><para
+>Ja, dat kan. Om in de bewerkingsmodus te komen gebruik menu-item <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Hole</guimenu
+><guimenuitem
+>Bewerken</guimenuitem
+></menuchoice
+>. Klik <link linkend="creating"
+>hier</link
+> voor meer details.</para
+></answer
+><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Bewerker van de baan</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+<para
+>&kolf; biedt een veelzijdige bewerker voor de baanbestanden. Banen kunnen een willekeurig aantal holes bevatten, en de creativiteit van de ontwerper wordt niet beperkt.</para>
+
+<sect1 id="creating"
+> <title
+>Een nieuwe baan maken</title>
+<para
+>Om een nieuwe baan te maken, kiest u menu-item <menuchoice
+><guimenu
+>Spel</guimenu
+><guimenuitem
+>Nieuw</guimenuitem
+></menuchoice
+>. Ga naar de pagina <guilabel
+>Baan</guilabel
+> en kies de baan <guilabel
+>Nieuwe aanmaken</guilabel
+>. Zorg ervoor dat op de pagina <guilabel
+>Opties</guilabel
+> de optie van de dialoog <guilabel
+>Wedstrijdmodus</guilabel
+> uitgeschakeld is.</para>
+
+<note>
+<para
+>Om deze nieuwe baan later te spelen, klikt u op de knop <guibutton
+>Toevoegen...</guibutton
+> om deze aan uw banenlijst toe te voegen.</para>
+</note>
+</sect1>
+
+<sect1 id="adding-holes"
+> <title
+>Holes toevoegen</title>
+<para
+>Schakel om naar de bewerkingsmodus met menu-item <menuchoice
+><guimenu
+>Hole</guimenu
+><guimenuitem
+>Bewerken</guimenuitem
+></menuchoice
+>. Kies menu-item <menuchoice
+><guimenu
+>Hole</guimenu
+><guimenuitem
+>Nieuw</guimenuitem
+></menuchoice
+> om een nieuwe hole aan het eind van de baan toe te voegen.</para>
+<tip>
+<para
+>U kunt een hole terugbrengen in de oorspronkelijke staat met het kiezen van menu-item <menuchoice
+><guimenu
+>Hole</guimenu
+><guimenuitem
+>Wissen</guimenuitem
+></menuchoice
+>.</para>
+</tip>
+<para
+>Er verschijnen twee items op een nieuwe hole: een cup en een witte bal. De witte bal geeft aan waar de spelers aan de hole beginnen.</para>
+</sect1>
+
+<sect1 id="editing-basics"
+> <title
+>De basis van het bewerken</title>
+<para
+>De basisbouwsteen van &kolf;-banen is het <quote
+>object</quote
+>. Holes worden samengesteld uit een aantal objecten. Objecten kunnen op een willekeurige plaats worden gezet en de diverse soorten objecten hebben elk andere eigenschappen die u kunt instellen.</para>
+<para
+>Om een hole te bewerken, schakelt u het menu-item <menuchoice
+><guimenu
+>Hole</guimenu
+><guimenuitem
+>Bewerken</guimenuitem
+></menuchoice
+> in, of kiest u het potloodpictogram op de werkbalk. Om de bewerkmodus te verlaten, schakelt u het menu-item of het pictogram weer uit.</para>
+
+<sect2
+> <title
+>Objecten toevoegen</title>
+<para
+>Om een nieuw object aan de baan toe te voegen, kiest u de naam ervan in de keuzelijst <guilabel
+>Object toevoegen:</guilabel
+>. Het object verschijnt op het midden van de baan.</para>
+<caution>
+<para
+>Bruggen en tekens bedekken nieuwe objecten als ze zich al in het midden van de hole bevonden.</para>
+</caution>
+<!--
+<tip>
+<para
+>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
+</tip>
+<para
+>Some &kolf; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
+<para
+>Third-party &kolf; plugins are available at the &kolf; website. See <ulink url="https://web.mit.edu/jasonkb/www/kolf/"
+>the &kolf; plugins download page</ulink
+>.</para>
+-->
+</sect2>
+
+<sect2
+> <title
+>Objecten verplaatsen en van grootte veranderen</title>
+<para
+>Beweeg uw muispijl op het object dat u wilt verplaatsen en de muispijl verandert in een handje. Klik en sleep het object dan naar de gewenste plaats.</para>
+<para
+>Poelen, zand, drijvers en tekens kunnen vergroot of verkleind worden door de kleine cirkel in hun rechteronderhoek te slepen.</para>
+
+<note>
+<para
+>Muren kunnen verplaatst worden door op de eindpunten te klikken en te slepen, of u kunt de hele muur verplaatsen door op het middelste deel te klikken en te slepen zoals gewoonlijk.</para>
+</note>
+</sect2>
+
+<sect2
+> <title
+>Objectinstellingen</title>
+<para
+>De eigenschappen van objecten kunnen veranderd worden in de hoek rechtsonder van het venster van &kolf;. Om een object te wijzigen, verplaatst u de muispijl erop zodat de cursor in een handcursor verandert. Dan klikt u. Diverse instellingen voor dat object verschijnen dan in de hoek rechtsonder van het venster van &kolf;.</para>
+<sect3
+> <title
+>Algemene hole-instellingen</title>
+<para
+>Om algemene instellingen voor een hole te wijzigen, klikt u op een gebied van de hole dat niet bedekt is door een object. Als dit mogelijk is, is de cursor de normale pijlcursor.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Baannaam: </guilabel
+></term>
+<listitem>
+<para
+>Dit is de naam die in het dialoogvenster <guilabel
+>Nieuw spel</guilabel
+> en in het dialoogvenster <guimenuitem
+>Baaninformatie</guimenuitem
+> wordt getoond.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Baanauteur: </guilabel
+></term>
+<listitem>
+<para
+>Dit is de naam van de auteur die in het dialoogvenster <guimenuitem
+> Baaninformatie</guimenuitem
+> wordt getoond.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Par:</guilabel
+></term>
+<listitem>
+<para
+>De par van de hole.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Maximum:</guilabel
+></term>
+<listitem>
+<para
+>Het maximale aantal slagen dat een speler op deze hole kan doen.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Grensmuren tonen</guilabel
+></term>
+<listitem>
+<para
+>Of er muren getoond moeten worden rond de rand van de hole.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Heuvels</title>
+
+<variablelist>
+<varlistentry
+> <term
+>Type</term>
+<listitem>
+<para
+>Kies het type helling - <guilabel
+>Verticaal</guilabel
+>, <guilabel
+>Horizontaal</guilabel
+>, <guilabel
+>Diagonaal</guilabel
+>, <guilabel
+>Tegengesteld diagonaal</guilabel
+>, <guilabel
+>Cirkelvormig</guilabel
+>. Diagonale en tegengesteld diagonale heuvels zijn driehoeken, cirkelvormige heuvels zijn cirkels. Verticale en horizontale heuvels zijn uiteraard rechthoeken.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Omgekeerde richting</guilabel
+></term>
+<listitem>
+<para
+>Of de helling van de heuvel omgekeerd moet worden. Neem bijvoorbeeld een ellipsvormige (cirkelvormige) helling. Als deze niet omgekeerd is, worden ballen van de heuvel afgestoten. Als deze omgekeerd is, worden ballen door het gat aangetrokken.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Onverplaatsbaar</guilabel
+></term>
+<listitem>
+<para
+>Of dit object door andere objecten verplaatst kan worden, zoals drijvers.</para>
+<caution>
+<para
+>Als een drijver met dit object overlapt op een bepaald punt op zijn pad en de helling groot is en deze de drijver dus niet beweegt, <emphasis
+>moet</emphasis
+> u de helling <guilabel
+>onverplaatsbaar</guilabel
+> maken, anders zal &kolf; erg slecht reageren!</para>
+</caution>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Graad:</guilabel
+></term>
+<listitem>
+<para
+>Kies de graad (steilte) van de heuvel door de schuifbalk te verplaatsen zodat de graad naar 0 of 8 beweegt, waarbij 8 steil en 0 vlak is. Steilere heuvels duwen de bal harder.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Poelen en zand</title>
+<para
+>Poelen en zand hebben dezelfde instelbare opties.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Tonen/verbergen inschakelen</guilabel
+></term>
+<listitem>
+<para
+>Dit inschakelen maakt het flitsen van deze poel of zandbank mogelijk.</para>
+<!--
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Show/Hide speed</term>
+<listitem>
+  -->
+<para
+>Hoe dichter de schuifbalk bij <guilabel
+>Snel</guilabel
+> staat, des te sneller de flitst poel of zandbank.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Bruggen, windmolens, drijvers en tekens</title>
+<para
+>Bruggen, windmolens, drijvers en tekens hebben allen soortgelijke instellingen op welke zijden ze muren hebben. Om de muur op een zijde te tonen, schakelt u het keuzevakje voor die zijde in.</para>
+<para
+>Er zijn ook wat meer specifieke opties voor windmolens, drijvers en tekens.</para>
+
+<sect4
+> <title
+>Windmolens</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Windmolen bovenaan</guilabel
+></term>
+<listitem>
+<para
+>Of de zwarte arm van de windmolen onderaan of bovenaan zit - standaard zit deze bovenaan. De twee halfmuren zullen altijd bij de arm zitten. Let op dat u geen randmuur kunt inschakelen op de zijde waar de arm zit.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Snelheid</term>
+<listitem>
+<para
+>Hoe dichter de schuifbalk bij <guilabel
+>Snel</guilabel
+> staat, des te sneller beweegt de zwarte arm van de windmolen.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Drijvers</title>
+<para
+>Het pad waarover een drijver beweegt wordt aangegeven door de muur waar deze aan verbonden is.</para>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Bewegingssnelheid</guilabel
+></term>
+<listitem>
+<para
+>Hoe dichter de schuifbalk bij <guilabel
+>Snel</guilabel
+> staat, des te sneller beweegt de drijver. Als de schuifbalk helemaal aan bij <guilabel
+>Langzaam</guilabel
+> staat, stopt de drijver.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Tekens</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Teken-HTML:</guilabel
+></term>
+<listitem>
+<para
+>U kunt hier willekeurige geldige HTML invoegen. Bijvoorbeeld <userinput
+>Sla de bal &lt;i&gt;zachtjes&lt;/i&gt; richting de helling!</userinput
+> levert de tekst <quote
+>Sla de bal <emphasis
+>zachtjes</emphasis
+> richting de helling!</quote
+>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+</sect3>
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="credits"
+><title
+>Dankbetuigingen en licentie</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&kolf;</para>
+
+<para
+>&kolf; copyright 2001, 2002 &Jason.Katz-Brown;</para>
+
+<itemizedlist>
+<title
+>Ontwikkelaars</title>
+<listitem>
+<para
+>&Jason.Katz-Brown; <email
+>jasonkb@mit.edu</email
+></para>
+</listitem>
+<listitem>
+<para
+>Niklas Knutsson</para>
+</listitem>
+<listitem>
+<para
+>Ryan Cumming</para>
+</listitem>
+<listitem>
+<para
+>Daniel Matza-Brown</para>
+</listitem>
+<listitem>
+<para
+>Paul Broadbent</para>
+</listitem>
+</itemizedlist>
+
+<para
+>Documentatie copyright 2002, &Jason.Katz-Brown;</para>
+
+&meld.fouten;&vertaling.sander; &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

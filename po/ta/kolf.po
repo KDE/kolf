@@ -1,0 +1,851 @@
+# translation of kolf.po to English
+# translation of kolf.po to
+# translation of kolf.po to
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# Ambalam <tamilpc@ambalam.com>, 2004.
+# root <root@intranet.ddsl>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kolf\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2005-04-24 22:16-0800\n"
+"Last-Translator: Tamil PC <tamilpc@ambalam.com>\n"
+"Language-Team: English <en@li.org>\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "சரவணன்"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "tel2sara@rediffmail.com"
+
+#: config.cpp:51
+#, kde-format
+msgid "No configuration options"
+msgstr "அமைப்பில்லா தேர்வுகள்"
+
+#: editor.cpp:37
+#, kde-format
+msgid "Add object:"
+msgstr "பொருள்களை சேர்"
+
+#: game.cpp:261
+#, kde-format
+msgid "Course name: "
+msgstr "விளையாட்டு பெயர்"
+
+#: game.cpp:268
+#, kde-format
+msgid "Course author: "
+msgstr "விளையாட்டு எழுத்தாளர்"
+
+#: game.cpp:277
+#, kde-format
+msgid "Par:"
+msgstr "Par:"
+
+#: game.cpp:287
+#, kde-format
+msgid "Maximum:"
+msgstr "நிறைந்த"
+
+#: game.cpp:291
+#, kde-format
+msgid "Maximum number of strokes player can take on this hole."
+msgstr "விளையாடுபவர் அதிகபட்ச நடத்தும் தாக்குகள் "
+
+#: game.cpp:292
+#, kde-format
+msgid "Maximum number of strokes"
+msgstr "அதிகபட்ச தாக்குகள்"
+
+#: game.cpp:293
+#, kde-format
+msgid "Unlimited"
+msgstr "அளவில்லாத"
+
+#: game.cpp:299
+#, kde-format
+msgid "Show border walls"
+msgstr "சுவர்களின் விளம்பை காட்டு"
+
+#: game.cpp:497 game.cpp:2439
+#, kde-format
+msgid "Course Author"
+msgstr "விளையாட்டு எழுத்தாளர்"
+
+#: game.cpp:498 game.cpp:499 game.cpp:2439
+#, kde-format
+msgid "Course Name"
+msgstr "விளையாட்டு பெயர்"
+
+#: game.cpp:1421
+#, kde-format
+msgid "Drop Outside of Hazard"
+msgstr "ஆபத்தான பகுதிக்கு வெளியே பந்தை போடு"
+
+#: game.cpp:1422
+#, kde-format
+msgid "Rehit From Last Location"
+msgstr "கடைசி இடத்திலிருந்து மறுபடியும் உதை"
+
+#: game.cpp:1424
+#, kde-format
+msgid "What would you like to do for your next shot?"
+msgstr "நீங்கள் உங்களுடைய அடுத்த ஆட்டத்தை ஆட விரும்புகிறீர்களா?"
+
+#: game.cpp:1424
+#, kde-format
+msgid "%1 is in a Hazard"
+msgstr "%1 இது ஆபத்தில் உள்ளதா"
+
+#: game.cpp:1592
+#, kde-format
+msgid "%1 will start off."
+msgstr "%1 ஆரம்பமாகுமா"
+
+#: game.cpp:1592
+#, kde-format
+msgid "New Hole"
+msgstr "புதிய குழி"
+
+#: game.cpp:1753
+#, kde-format
+msgid "Course name: %1"
+msgstr "விளையாட்டு பெயர் : %1"
+
+#: game.cpp:1754
+#, kde-format
+msgid "Created by %1"
+msgstr "உருவாக்கம்  %1"
+
+#: game.cpp:1755
+#, fuzzy, kde-format
+#| msgid "%1 holes"
+msgid "%1 hole"
+msgid_plural "%1 holes"
+msgstr[0] "குழிகள்%1"
+msgstr[1] "குழிகள்%1"
+
+#: game.cpp:1756
+#, fuzzy, kde-format
+#| msgid "Course Information"
+msgctxt "@title:window"
+msgid "Course Information"
+msgstr "விளையாட்டு செய்தி"
+
+#: game.cpp:1887
+#, kde-format
+msgid "This hole uses the following plugins, which you do not have installed:"
+msgstr "சொருகு பொருள் இந்த குழி பயன்படுத்தபடும், நீங்கள் நிறுவாததை:"
+
+#: game.cpp:1999
+#, kde-format
+msgid "There are unsaved changes to current hole. Save them?"
+msgstr "தற்போதைய குழுவில் சேமிக்காத மாற்றங்கள் உள்ளன.அவற்றை சேமி?"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Unsaved Changes"
+msgstr "சேமிக்காத மாற்றங்கள்"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Save &Later"
+msgstr "பின்பு சேமி"
+
+#: game.cpp:2170 kolf.cpp:550
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course to Save To"
+msgctxt "@title:window"
+msgid "Pick Kolf Course to Save To"
+msgstr "Kolf விளையாட்டை எடுத்து அதில் சேமி "
+
+#: kcomboboxdialog.cpp:60
+#, kde-format
+msgid "&Do not ask again"
+msgstr "மறுபடியும் கேட்காதே"
+
+#: kolf.cpp:62
+#, fuzzy, kde-format
+#| msgid "Slow"
+msgid "Slope"
+msgstr "மெதுவாக"
+
+#: kolf.cpp:63
+#, kde-format
+msgid "Puddle"
+msgstr "குட்டை"
+
+#: kolf.cpp:64
+#, kde-format
+msgid "Wall"
+msgstr "சுவர்"
+
+#: kolf.cpp:65
+#, kde-format
+msgid "Cup"
+msgstr "கிண்ணம்"
+
+#: kolf.cpp:66
+#, kde-format
+msgid "Sand"
+msgstr "மண்"
+
+#: kolf.cpp:67
+#, kde-format
+msgid "Windmill"
+msgstr "காற்றலை"
+
+#: kolf.cpp:68
+#, kde-format
+msgid "Black Hole"
+msgstr "கறுப்பு வெற்றிடங்கள்"
+
+#: kolf.cpp:69
+#, kde-format
+msgid "Floater"
+msgstr ""
+
+#: kolf.cpp:70
+#, kde-format
+msgid "Bridge"
+msgstr "பாலம்"
+
+#: kolf.cpp:71
+#, kde-format
+msgid "Sign"
+msgstr "குறியிடு"
+
+#: kolf.cpp:72
+#, kde-format
+msgid "Bumper"
+msgstr "அதிர்வு தாங்கி"
+
+#: kolf.cpp:95
+#, kde-format
+msgid "Save &Course"
+msgstr "விளையாட்டு &சேமி "
+
+#: kolf.cpp:97
+#, kde-format
+msgid "Save &Course As..."
+msgstr "இவ்வாறு விளையாட்டை &சேமி "
+
+#: kolf.cpp:100
+#, kde-format
+msgid "&Save Game"
+msgstr "விளையாட்டை சேமி"
+
+#: kolf.cpp:103
+#, kde-format
+msgid "&Save Game As..."
+msgstr "&விளையாட்டை இவ்வாறு சேமி"
+
+#: kolf.cpp:110
+#, kde-format
+msgid "&Edit"
+msgstr ""
+
+#: kolf.cpp:116
+#, kde-format
+msgid "&New"
+msgstr "புதிய"
+
+#: kolf.cpp:125
+#, kde-format
+msgid "&Reset"
+msgstr "&மீட்டமை"
+
+#: kolf.cpp:130
+#, kde-format
+msgid "&Undo Shot"
+msgstr "&ரத்து செய்"
+
+#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. Go
+#: kolf.cpp:134
+#, kde-format
+msgid "Switch to Hole"
+msgstr "துளைக்கு மாற்று"
+
+#: kolf.cpp:139
+#, kde-format
+msgid "&Next Hole"
+msgstr "&அடுத்த துளை"
+
+#: kolf.cpp:144
+#, kde-format
+msgid "&Previous Hole"
+msgstr "&முன்புள்ள துளை"
+
+#: kolf.cpp:149
+#, kde-format
+msgid "&First Hole"
+msgstr "&முதல் துளை"
+
+#: kolf.cpp:153
+#, kde-format
+msgid "&Last Hole"
+msgstr "&இறுதி துளை"
+
+#: kolf.cpp:158
+#, kde-format
+msgid "&Random Hole"
+msgstr "குறியில்லா துளை"
+
+#: kolf.cpp:162
+#, kde-format
+msgid "Enable &Mouse for Moving Putter"
+msgstr "புட்டரை நகர்த்த சுட்டியை செயலாக்கவும்."
+
+#: kolf.cpp:169
+#, kde-format
+msgid "Enable &Advanced Putting"
+msgstr "முன்னேறிய விளையாட்டை செயல்படுத்து"
+
+#: kolf.cpp:175
+#, kde-format
+msgid "Show &Info"
+msgstr "&தகவல்களை காட்டு"
+
+#: kolf.cpp:182
+#, kde-format
+msgid "Show Putter &Guideline"
+msgstr "விளையாடுபவரின் ஆலோசனையை காட்டு"
+
+#: kolf.cpp:188
+#, kde-format
+msgid "Enable All Dialog Boxes"
+msgstr "எல்லா உரையாடல் பெட்டிகளை செயல்படுத்து"
+
+#: kolf.cpp:192
+#, kde-format
+msgid "Play &Sounds"
+msgstr "&ஒலி வாசி"
+
+#: kolf.cpp:199
+#, fuzzy, kde-format
+#| msgid "&About Course"
+msgid "&About Course..."
+msgstr "விளையாட்டைப் பற்றி"
+
+#: kolf.cpp:202
+#, kde-format
+msgid "&Tutorial"
+msgstr "&பயிற்சி"
+
+#: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
+#, kde-format
+msgid "Par"
+msgstr "Par"
+
+#: kolf.cpp:483
+#, kde-format
+msgid " and "
+msgstr "உடன்"
+
+#: kolf.cpp:484
+#, kde-format
+msgid "%1 tied"
+msgstr "%1 சமம்"
+
+#: kolf.cpp:487
+#, kde-format
+msgid "%1 won!"
+msgstr "%1  வெற்றி!"
+
+#: kolf.cpp:501 kolf.cpp:513 kolf.cpp:528 kolf.cpp:529 newgame.cpp:249
+#: newgame.cpp:250
+#, kde-format
+msgid "High Scores for %1"
+msgstr "%1 க்கான அதிக மதிப்பெண்"
+
+#: kolf.cpp:568
+#, fuzzy, kde-format
+#| msgid "Pick Saved Game to Save To"
+msgctxt "@title:window"
+msgid "Pick Saved Game to Save To"
+msgstr "தற்போது உள்ள குழியில் மாற்றங்கள் சேமிக்கப்படவில்லை, அதனை சேமிக்கவும்?"
+
+#: kolf.cpp:606
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Saved Game"
+msgctxt "@title:window"
+msgid "Pick Kolf Saved Game"
+msgstr "சேமித்த கால்ப்விளையாட்டை தேர்ந்தெடு"
+
+#: kolf.cpp:654
+#, kde-format
+msgid "%1's turn"
+msgstr "%1யின் வாய்ப்பு"
+
+#: kolf.cpp:726
+#, kde-format
+msgid "%1's score has reached the maximum for this hole."
+msgstr "%1க்கான மதிப்பெண் அதிகபட்சம் இந்த குழிக்குள் அடைந்தது."
+
+#. i18n: ectx: Menu (hole)
+#: kolfui.rc:17
+#, kde-format
+msgid "Ho&le"
+msgstr "&வெற்றிடம்"
+
+#. i18n: ectx: Menu (go_course)
+#: kolfui.rc:31
+#, kde-format
+msgid "&Go"
+msgstr "&போ"
+
+#: landscape.cpp:146
+#, kde-format
+msgid "Enable show/hide"
+msgstr "காட்டு/மறையை செயல்படுத்து"
+
+#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
+#, kde-format
+msgid "Slow"
+msgstr "மெதுவாக"
+
+#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
+#, kde-format
+msgid "Fast"
+msgstr "வேகமாக"
+
+#: landscape.cpp:238
+#, kde-format
+msgid "Vertical"
+msgstr ""
+
+#: landscape.cpp:239
+#, kde-format
+msgid "Horizontal"
+msgstr ""
+
+#: landscape.cpp:240
+#, kde-format
+msgid "Diagonal"
+msgstr "குறுக்கு"
+
+#: landscape.cpp:241
+#, kde-format
+msgid "Opposite Diagonal"
+msgstr "எதிர் குறுக்கு "
+
+#: landscape.cpp:242
+#, kde-format
+msgid "Elliptic"
+msgstr ""
+
+#: landscape.cpp:571
+#, kde-format
+msgid "Reverse direction"
+msgstr "திசை மாற்று"
+
+#: landscape.cpp:576
+#, kde-format
+msgid "Unmovable"
+msgstr "நகர்த்த முடியாதது"
+
+#: landscape.cpp:578
+#, kde-format
+msgid "Whether or not this slope can be moved by other objects, like floaters."
+msgstr "மிதப்பவைகளை போல இந்த சரிவை மற்றவைகளால் நகர்த்த இயலாது."
+
+#: landscape.cpp:582
+#, kde-format
+msgid "Grade:"
+msgstr "தரம்"
+
+#: main.cpp:49
+#, kde-format
+msgid "Kolf"
+msgstr "Kolf"
+
+#: main.cpp:51
+#, kde-format
+msgid "KDE Minigolf Game"
+msgstr "KDE மினிகால்ப் விளையாட்டு"
+
+#: main.cpp:53
+#, kde-format
+msgid "(c) 2002-2010, Kolf developers"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Stefan Majewsky"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Current maintainer"
+msgstr ""
+
+#: main.cpp:57
+#, kde-format
+msgid "Jason Katz-Brown"
+msgstr ""
+
+#: main.cpp:57
+#, fuzzy, kde-format
+#| msgid "Main author"
+msgid "Former main author"
+msgstr "பிரதான எழுத்தாளர்"
+
+#: main.cpp:58
+#, kde-format
+msgid "Niklas Knutsson"
+msgstr ""
+
+#: main.cpp:58
+#, kde-format
+msgid "Advanced putting mode"
+msgstr "முன்னேறிய விளையாட்டு வகை"
+
+#: main.cpp:59
+#, kde-format
+msgid "Rik Hemsley"
+msgstr ""
+
+#: main.cpp:59
+#, kde-format
+msgid "Border around course"
+msgstr "விளையாட்டை சுற்றி விளம்பு"
+
+#: main.cpp:60
+#, kde-format
+msgid "Timo A. Hummel"
+msgstr ""
+
+#: main.cpp:60
+#, kde-format
+msgid "Some good sound effects"
+msgstr "சில சிறந்த ஒலி விளைவுகள்"
+
+#: main.cpp:62
+#, kde-format
+msgid "Rob Renaud"
+msgstr ""
+
+#: main.cpp:62
+#, kde-format
+msgid "Wall-bouncing help"
+msgstr "வால்-பவுன்சிக் உதவி"
+
+#: main.cpp:63
+#, kde-format
+msgid "Aaron Seigo"
+msgstr ""
+
+#: main.cpp:63
+#, kde-format
+msgid "Suggestions, bug reports"
+msgstr "ஆலோசனைகள் அறிக்கை"
+
+#: main.cpp:64
+#, kde-format
+msgid "Erin Catto"
+msgstr ""
+
+#: main.cpp:64
+#, kde-format
+msgid "Developer of Box2D physics engine"
+msgstr ""
+
+#: main.cpp:65
+#, kde-format
+msgid "Ryan Cumming"
+msgstr ""
+
+#: main.cpp:65
+#, fuzzy, kde-format
+#| msgid "Vector class"
+msgid "Vector class (Kolf 1)"
+msgstr "வெக்டார் வகுப்பு"
+
+#: main.cpp:66
+#, kde-format
+msgid "Daniel Matza-Brown"
+msgstr ""
+
+#: main.cpp:66
+#, fuzzy, kde-format
+#| msgid "Working wall-bouncing algorithm"
+msgid "Working wall-bouncing algorithm (Kolf 1)"
+msgstr "வால்-பவுன்சிங் படிமுறை இயங்குகிறது"
+
+#: main.cpp:71
+#, kde-format
+msgid "File"
+msgstr ""
+
+#: main.cpp:72
+#, kde-format
+msgid "Print course information and exit"
+msgstr "விளையாட்டு செய்தியை அச்சிட்டு வெளியேறு"
+
+#: main.cpp:89 newgame.cpp:240
+#, kde-format
+msgid "By %1"
+msgstr "இதனால்  %1"
+
+#: main.cpp:90
+#, kde-format
+msgid "%1 holes"
+msgstr "குழிகள்%1"
+
+#: main.cpp:91
+#, kde-format
+msgid "par %1"
+msgstr "par %1"
+
+#: main.cpp:98
+#, kde-format
+msgid "Course %1 does not exist."
+msgstr "விளையாட்டு  %1 இல்லை"
+
+#: newgame.cpp:38
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "New Game"
+msgstr "விளையாட்டை சேமி"
+
+#: newgame.cpp:54
+#, kde-format
+msgid "Players"
+msgstr "விளையாடுபவர்கள்"
+
+#: newgame.cpp:58
+#, kde-format
+msgid "&New Player"
+msgstr "&புதிய  விளையாட்டாளர்"
+
+#: newgame.cpp:93
+#, kde-format
+msgid "Course"
+msgstr "விளையாட்டு"
+
+#: newgame.cpp:94
+#, kde-format
+msgid "Choose Course to Play"
+msgstr "விளையாட தேர்ந்தெடு"
+
+#: newgame.cpp:133
+#, kde-format
+msgid "Create New"
+msgstr "புதியதை உருவாக்கு"
+
+#: newgame.cpp:134
+#, kde-format
+msgid "You"
+msgstr "நீ"
+
+#: newgame.cpp:160
+#, kde-format
+msgid "Highscores"
+msgstr "அதிக மதிப்பெண்கள்"
+
+#: newgame.cpp:170
+#, kde-format
+msgid "Add..."
+msgstr "சேர்"
+
+#: newgame.cpp:174 newgame.cpp:363
+#, kde-format
+msgid "Remove"
+msgstr ""
+
+#: newgame.cpp:184
+#, fuzzy, kde-format
+msgid "Options"
+msgstr "விளையாட்டு  தேர்வுகள்"
+
+#: newgame.cpp:185
+#, kde-format
+msgid "Game Options"
+msgstr "விளையாட்டு  தேர்வுகள்"
+
+#: newgame.cpp:190
+#, kde-format
+msgid "&Strict mode"
+msgstr "கண்டிப்பான வகை"
+
+#: newgame.cpp:194
+#, kde-format
+msgid ""
+"In strict mode, undo, editing, and switching holes is not allowed. This is "
+"generally for competition. Only in strict mode are highscores kept."
+msgstr ""
+"கண்டிப்பான வகையில், ரத்து செய்வது, திருத்தம் செய்வது மற்றும் வெற்றிடங்களை மாற்றுவதற்கு "
+"அனுமதியில்லை. பொதுவாக இது போட்டிக்கு கண்டிப்பான  வகையில் மட்டுமே அதிக மதிப்பெண்கள் "
+"வைக்கப்படும்"
+
+#: newgame.cpp:241
+#, kde-format
+msgid "Par %1"
+msgstr "Par %1"
+
+#: newgame.cpp:242
+#, kde-format
+msgid "%1 Holes"
+msgstr "%1 வெற்றிடங்கள்"
+
+#: newgame.cpp:280
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course"
+msgctxt "@title:window"
+msgid "Pick Kolf Course"
+msgstr "விளையாட்டை எடு"
+
+#: newgame.cpp:308
+#, kde-format
+msgid "Chosen course is already on course list."
+msgstr "நீங்கள் தேர்ந்தெடுத்தது ஏற்கனவே இப்பட்டியலில் உள்ளது"
+
+#: newgame.cpp:321
+#, kde-format
+msgid "Player %1"
+msgstr "விளையாடுபவர் %1"
+
+#: objects.cpp:244
+#, fuzzy, kde-format
+#| msgid "degrees"
+msgid " degree"
+msgid_plural " degrees"
+msgstr[0] "டிகிரிகள்"
+msgstr[1] "டிகிரிகள்"
+
+#: objects.cpp:247
+#, kde-format
+msgid "Exiting ball angle:"
+msgstr "வெளியேறுகின்ற பந்தின் கோணம்"
+
+#: objects.cpp:267
+#, kde-format
+msgid "Minimum exit speed:"
+msgstr "குறைந்த வெளியேற வேகம்"
+
+#: objects.cpp:288
+#, fuzzy, kde-format
+#| msgid "Minimum exit speed:"
+msgid "Maximum exit speed:"
+msgstr "குறைந்த வெளியேற வேகம்"
+
+#: obstacles.cpp:412
+msgid "&Top"
+msgstr "&மேலே"
+
+#: obstacles.cpp:412
+msgid "&Left"
+msgstr "&இடது"
+
+#: obstacles.cpp:412
+msgid "&Right"
+msgstr "&வலது"
+
+#: obstacles.cpp:412
+msgid "&Bottom"
+msgstr ""
+
+#: obstacles.cpp:421
+#, kde-format
+msgid "Walls on:"
+msgstr "சுவரில்"
+
+#: obstacles.cpp:431
+#, kde-format
+msgid "Sign HTML:"
+msgstr "குறி HTML:"
+
+#: obstacles.cpp:440
+#, fuzzy, kde-format
+#| msgid "Windmill on bottom"
+msgid "Windmill on top"
+msgstr "காற்றாலையின் கீழே"
+
+#: obstacles.cpp:461
+#, kde-format
+msgid "Moving speed"
+msgstr "வேகமாக நகர்கிறது"
+
+#: obstacles.cpp:681
+#, kde-format
+msgid "New Text"
+msgstr "புதிய உரை"
+
+#: scoreboard.cpp:28
+#, kde-format
+msgid "Total"
+msgstr "மொத்தம்"
+
+#~ msgid "Circular"
+#~ msgstr "வட்டம்"
+
+#~ msgid "%1 - Hole %2; by %3"
+#~ msgstr "%1 - துளை %2; இவ்வளவு %3"
+
+#~ msgid "Kolf Options"
+#~ msgstr "Kolf தேர்வுகள்"
+
+#~ msgid "Draw title text"
+#~ msgstr "தலைப்பு உரையை வரை"
+
+#~ msgid "Print %1 - Hole %2"
+#~ msgstr "அச்சடி%1 - குழி%2"
+
+#~ msgid "Currently Loaded Plugins"
+#~ msgstr "தற்போது உள்வாங்கிய சொருகி"
+
+#~ msgid "by %1"
+#~ msgstr "%1 யால்"
+
+#~ msgid "Plugins"
+#~ msgstr "சொருகு"
+
+#~ msgid "&Reload Plugins"
+#~ msgstr "&உள்வாங்கி சொருகு"
+
+#~ msgid "Show &Plugins"
+#~ msgstr "சொருகுகளைக் காட்டு"
+
+#, fuzzy
+#~| msgid "Fast"
+#~ msgid "Flash"
+#~ msgstr "வேகமாக"
+
+#, fuzzy
+#~| msgid "Bumper"
+#~ msgid "Number:"
+#~ msgstr "அதிர்வு தாங்கி"
+
+#~ msgid "Disable &Mouse for Moving Putter"
+#~ msgstr "&சுட்டி நகர்த்தும் வைப்பரை இயக்க முடியவில்லை"
+
+#~ msgid "Disable &Advanced Putting"
+#~ msgstr "&முன்னேறிய வைத்தலை செயல்படுத்தாதே"
+
+#~ msgid "Hide &Info"
+#~ msgstr "&தகவல்களை மறை"
+
+#~ msgid "Hide Putter &Guideline"
+#~ msgstr "வைப்பவரை மறை&துணைக்காட்டி வரிகள்"
+
+#~ msgid "Disable All Dialog Boxes"
+#~ msgstr "அனைத்து உரையாடல் பெட்டிகளையும் செயலற்றதாக்கு"
+
+#~ msgid "Load Saved Game..."
+#~ msgstr "சேமித்ததை விளையாட்டை ஏற்று..."
+
+#~ msgid "Hole %1: par %2, maximum %3 strokes"
+#~ msgstr "குழி  %1: par %2,  அதிகபட்ச%3  தாக்குகள் "

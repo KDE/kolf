@@ -1,0 +1,812 @@
+# translation of kolf.po to Khmer
+# eng vannak <evannak@khmeros.info>, 2006.
+# Auk Piseth <piseth_dv@khmeros.info>, 2006, 2007, 2008.
+# Khoem Sokhem <khoemsokhem@khmeros.info>, 2008, 2009.
+# Morn Met, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: kolf\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2009-10-24 15:17+0700\n"
+"Last-Translator: Morn Met\n"
+"Language-Team: Khmer <kde-i18n-doc@kde.org>\n"
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.0\n"
+"X-Language: km_KH\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "ខឹម សុខែម, ម៉ន ម៉េត, សេង សុត្ថា"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "khoemsokhem@khmeros.info,​​mornmet@khmeros.info,sutha@khmeros.info"
+
+#: config.cpp:51
+#, kde-format
+msgid "No configuration options"
+msgstr "គ្មាន​ជម្រើស​កំណត់​រចនាសម្ព័ន្ធ​ទេ"
+
+#: editor.cpp:37
+#, kde-format
+msgid "Add object:"
+msgstr "បន្ថែម​វត្ថុ ៖"
+
+#: game.cpp:261
+#, kde-format
+msgid "Course name: "
+msgstr "ឈ្មោះ​ទីលាន​ប្រកួត៖"
+
+#: game.cpp:268
+#, kde-format
+msgid "Course author: "
+msgstr "អ្នក​បង្កើត​ទីលាន​ប្រកួត"
+
+#: game.cpp:277
+#, kde-format
+msgid "Par:"
+msgstr "កម្រិត​ចំនួន​​ត្រូវ​វាយ​ចូល​រន្ធ​នីមួយ​ៗ ៖"
+
+#: game.cpp:287
+#, kde-format
+msgid "Maximum:"
+msgstr "អតិបរមា ​៖"
+
+#: game.cpp:291
+#, kde-format
+msgid "Maximum number of strokes player can take on this hole."
+msgstr "ចំនួន​វាយ​អតិបរមា​ដែល​អ្នក​លេង​អាច​វាយ​បញ្ចូល​រន្ធ​នេះ​បាន​ ។"
+
+#: game.cpp:292
+#, kde-format
+msgid "Maximum number of strokes"
+msgstr "ចំនួន​វាយ​អតិបរមា"
+
+#: game.cpp:293
+#, kde-format
+msgid "Unlimited"
+msgstr "មិនកំណត់"
+
+#: game.cpp:299
+#, kde-format
+msgid "Show border walls"
+msgstr "បង្ហាញ​ជញ្ជាំង​ព្រំដែន"
+
+#: game.cpp:497 game.cpp:2439
+#, kde-format
+msgid "Course Author"
+msgstr "អ្នកនិពន្ធ​ទីលាន​ប្រកួត"
+
+#: game.cpp:498 game.cpp:499 game.cpp:2439
+#, kde-format
+msgid "Course Name"
+msgstr "ឈ្មោះ​ទីលាន​ប្រកួត"
+
+#: game.cpp:1421
+#, kde-format
+msgid "Drop Outside of Hazard"
+msgstr "ធ្លាក់​ទៅ​ក្រៅ​កន្លែង​គ្រោះថ្នាក់"
+
+#: game.cpp:1422
+#, kde-format
+msgid "Rehit From Last Location"
+msgstr "វាយ​សារ​ជា​ថ្មី​ពី​ទីតាំង​ចាស់"
+
+#: game.cpp:1424
+#, kde-format
+msgid "What would you like to do for your next shot?"
+msgstr "តើ​អ្នក​នឹង​ធ្វើ​អ្វី​សម្រាប់​ការ​វាយ​បន្ទាប់"
+
+#: game.cpp:1424
+#, kde-format
+msgid "%1 is in a Hazard"
+msgstr "%1 នៅ​ក្នុង​កន្លែង​គ្រោះថ្នាក់"
+
+#: game.cpp:1592
+#, kde-format
+msgid "%1 will start off."
+msgstr "%1 នឹង​ចាប់ផ្ដើម"
+
+#: game.cpp:1592
+#, kde-format
+msgid "New Hole"
+msgstr "រន្ធ​ថ្មី"
+
+#: game.cpp:1753
+#, kde-format
+msgid "Course name: %1"
+msgstr "ឈ្មោះ​ទីលាន​ប្រកួត៖ %1"
+
+#: game.cpp:1754
+#, kde-format
+msgid "Created by %1"
+msgstr "បង្កើត​ដោយ %1"
+
+#: game.cpp:1755
+#, fuzzy, kde-format
+#| msgid "%1 holes"
+msgid "%1 hole"
+msgid_plural "%1 holes"
+msgstr[0] "%1 រន្ធ"
+
+#: game.cpp:1756
+#, fuzzy, kde-format
+#| msgid "Course Information"
+msgctxt "@title:window"
+msgid "Course Information"
+msgstr "ព័ត៌មាន​ទីលាន​ប្រកួត"
+
+#: game.cpp:1887
+#, kde-format
+msgid "This hole uses the following plugins, which you do not have installed:"
+msgstr "រន្ធ​នេះ​ប្រើ​កម្មវិធី​បន្ថែម​ដូច​ខាងក្រោម តើ​កម្មវិធី​មួយ​ណា​ដែល​អ្នក​មិនបា​ន​ដំឡើង"
+
+#: game.cpp:1999
+#, kde-format
+msgid "There are unsaved changes to current hole. Save them?"
+msgstr "មាន​ការ​ផ្លាស់​ប្ដូរ​ដែល​មិន​បាន​រក្សា​ទុក​ចំពោះ​រន្ធ​បច្ចុប្បន្ន រក្សា​ទុក​ពួក​វា​ទេ ?"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Unsaved Changes"
+msgstr "ការ​ផ្លាស់​ប្ដូរ​ដែល​មិន​បាន​រក្សាទុក"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Save &Later"
+msgstr "រក្សា​ទុក​នៅ​ពេល​ក្រោយ"
+
+#: game.cpp:2170 kolf.cpp:550
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course to Save To"
+msgctxt "@title:window"
+msgid "Pick Kolf Course to Save To"
+msgstr "រើស​ទីលាន​ប្រកួត Kolf ដើម្បី​រក្សា​ទុក​ទៅ​កាន់"
+
+#: kcomboboxdialog.cpp:60
+#, kde-format
+msgid "&Do not ask again"
+msgstr "កុំ​សួរ​ម្ដង​ទៀត"
+
+#: kolf.cpp:62
+#, kde-format
+msgid "Slope"
+msgstr "ទី​ជម្រាល"
+
+#: kolf.cpp:63
+#, kde-format
+msgid "Puddle"
+msgstr "គ្រលុក"
+
+#: kolf.cpp:64
+#, kde-format
+msgid "Wall"
+msgstr "ជញ្ជាំង"
+
+#: kolf.cpp:65
+#, kde-format
+msgid "Cup"
+msgstr "រន្ធ"
+
+#: kolf.cpp:66
+#, kde-format
+msgid "Sand"
+msgstr "ខ្សាច់"
+
+#: kolf.cpp:67
+#, kde-format
+msgid "Windmill"
+msgstr "កង្ហារ​ខ្យល់"
+
+#: kolf.cpp:68
+#, kde-format
+msgid "Black Hole"
+msgstr "រន្ធ​ពណ៌​ខ្មៅ"
+
+#: kolf.cpp:69
+#, kde-format
+msgid "Floater"
+msgstr "ទម្រ"
+
+#: kolf.cpp:70
+#, kde-format
+msgid "Bridge"
+msgstr "ស្ពាន"
+
+#: kolf.cpp:71
+#, kde-format
+msgid "Sign"
+msgstr "សញ្ញា"
+
+#: kolf.cpp:72
+#, kde-format
+msgid "Bumper"
+msgstr "របាំង"
+
+#: kolf.cpp:95
+#, kde-format
+msgid "Save &Course"
+msgstr "រក្សា​ទុក​ទីលាន​ប្រកួត"
+
+#: kolf.cpp:97
+#, kde-format
+msgid "Save &Course As..."
+msgstr "រក្សា​ទុក​ទីលាន​ប្រកួត​ជា​..."
+
+#: kolf.cpp:100
+#, kde-format
+msgid "&Save Game"
+msgstr "រក្សា​ល្បែង​ទុក"
+
+#: kolf.cpp:103
+#, kde-format
+msgid "&Save Game As..."
+msgstr "រក្សាល្បែង​ទុក​ជា"
+
+#: kolf.cpp:110
+#, kde-format
+msgid "&Edit"
+msgstr "កែសម្រួល"
+
+#: kolf.cpp:116
+#, kde-format
+msgid "&New"
+msgstr "ថ្មី"
+
+#: kolf.cpp:125
+#, kde-format
+msgid "&Reset"
+msgstr "កំណត់​ឡើង​វិញ"
+
+#: kolf.cpp:130
+#, kde-format
+msgid "&Undo Shot"
+msgstr "មិន​ធ្វើ​កាវាយវិ​ញ"
+
+#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. Go
+#: kolf.cpp:134
+#, kde-format
+msgid "Switch to Hole"
+msgstr "ផ្លាស់​ទៅ​កាន់រន្ធ"
+
+#: kolf.cpp:139
+#, kde-format
+msgid "&Next Hole"
+msgstr "រន្ធ​បន្ទាប់"
+
+#: kolf.cpp:144
+#, kde-format
+msgid "&Previous Hole"
+msgstr "រន្ធ​មុន"
+
+#: kolf.cpp:149
+#, kde-format
+msgid "&First Hole"
+msgstr "រន្ធ​ទីមួយ"
+
+#: kolf.cpp:153
+#, kde-format
+msgid "&Last Hole"
+msgstr "រន្ធ​ចុង​ក្រោយ"
+
+#: kolf.cpp:158
+#, kde-format
+msgid "&Random Hole"
+msgstr "រន្ធ​ចៃដន្យ"
+
+#: kolf.cpp:162
+#, kde-format
+msgid "Enable &Mouse for Moving Putter"
+msgstr "អនុញ្ញាត​ឲ្យ​ប្រើ​​​កណ្ដុរ ​ដើម្បី​ផ្លាស់​ទី​ឈើ​វាយ​កូន​ហ្គោល"
+
+#: kolf.cpp:169
+#, kde-format
+msgid "Enable &Advanced Putting"
+msgstr "អនុញ្ញាត​ការ​វាយ​ចូល​រន្ធ​កម្រិត​ខ្ពស់"
+
+#: kolf.cpp:175
+#, kde-format
+msgid "Show &Info"
+msgstr "បង្ហាញ​ព័ត៌មាន"
+
+#: kolf.cpp:182
+#, kde-format
+msgid "Show Putter &Guideline"
+msgstr "បង្ហាញ​ឈើ​វាយ​កូន​ហ្គោល​ និង​គោល​ការ​ណែនាំ"
+
+#: kolf.cpp:188
+#, kde-format
+msgid "Enable All Dialog Boxes"
+msgstr "អនុញ្ញាត​​ប្រអប់​ទាំងអស់"
+
+#: kolf.cpp:192
+#, kde-format
+msgid "Play &Sounds"
+msgstr "ចាក់​សំឡេង"
+
+#: kolf.cpp:199
+#, fuzzy, kde-format
+#| msgid "&About Course"
+msgid "&About Course..."
+msgstr "អំពី​ទីលាន​ប្រកួត"
+
+#: kolf.cpp:202
+#, kde-format
+msgid "&Tutorial"
+msgstr "បង្រៀន"
+
+#: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
+#, kde-format
+msgid "Par"
+msgstr "កម្រិត​ចំនួន​ត្រូវ​វាយ​ចូល​រន្ធ​នីមួយ​ៗ"
+
+#: kolf.cpp:483
+#, kde-format
+msgid " and "
+msgstr "និង"
+
+#: kolf.cpp:484
+#, kde-format
+msgid "%1 tied"
+msgstr "%1 ស្មើ​គ្នា"
+
+#: kolf.cpp:487
+#, kde-format
+msgid "%1 won!"
+msgstr "%1 ឈ្នះ"
+
+#: kolf.cpp:501 kolf.cpp:513 kolf.cpp:528 kolf.cpp:529 newgame.cpp:249
+#: newgame.cpp:250
+#, kde-format
+msgid "High Scores for %1"
+msgstr "ពិន្ទុ​ខ្ពស់​សម្រាប់ %1"
+
+#: kolf.cpp:568
+#, fuzzy, kde-format
+#| msgid "Pick Saved Game to Save To"
+msgctxt "@title:window"
+msgid "Pick Saved Game to Save To"
+msgstr "រើស​ល្បែង​ដែល​បាន​រក្សា​ទុក​ដើម្បី​រក្សា​ទុក​ទៅ​កាន់"
+
+#: kolf.cpp:606
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Saved Game"
+msgctxt "@title:window"
+msgid "Pick Kolf Saved Game"
+msgstr "រើស​ល្បែង​ដែល​រក្សា​ Kolf ទុក"
+
+#: kolf.cpp:654
+#, kde-format
+msgid "%1's turn"
+msgstr "វេន​របស់ ​%1"
+
+#: kolf.cpp:726
+#, kde-format
+msgid "%1's score has reached the maximum for this hole."
+msgstr "ពិន្ទុ​របស់ %1 បាន​ដល់​អតិបរមា​សម្រាប់​រន្ធ​នេះ"
+
+#. i18n: ectx: Menu (hole)
+#: kolfui.rc:17
+#, kde-format
+msgid "Ho&le"
+msgstr "រន្ធ"
+
+#. i18n: ectx: Menu (go_course)
+#: kolfui.rc:31
+#, kde-format
+msgid "&Go"
+msgstr "ទៅ"
+
+#: landscape.cpp:146
+#, kde-format
+msgid "Enable show/hide"
+msgstr "បើក បង្ហាញ​/​លាក់"
+
+#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
+#, kde-format
+msgid "Slow"
+msgstr "យឺត"
+
+#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
+#, kde-format
+msgid "Fast"
+msgstr "លឿន"
+
+#: landscape.cpp:238
+#, kde-format
+msgid "Vertical"
+msgstr "បញ្ឈរ"
+
+#: landscape.cpp:239
+#, kde-format
+msgid "Horizontal"
+msgstr "ផ្ដេក"
+
+#: landscape.cpp:240
+#, kde-format
+msgid "Diagonal"
+msgstr "អង្កត់​ទ្រូង​"
+
+#: landscape.cpp:241
+#, kde-format
+msgid "Opposite Diagonal"
+msgstr "អង្កត់​ទ្រូង​ឈមគ្នា​"
+
+#: landscape.cpp:242
+#, kde-format
+msgid "Elliptic"
+msgstr "ជា​​​​​រាង​ពង​ក្រពើ"
+
+#: landscape.cpp:571
+#, kde-format
+msgid "Reverse direction"
+msgstr "បញ្ច្រាស​ទិសដៅ"
+
+#: landscape.cpp:576
+#, kde-format
+msgid "Unmovable"
+msgstr "មិន​អាច​ផ្លាស់​ទី​បាន"
+
+#: landscape.cpp:578
+#, kde-format
+msgid "Whether or not this slope can be moved by other objects, like floaters."
+msgstr "ថា​តើ​​ទី​ជម្រាល​នេះ​អាច​ត្រូវ​បាន​ផ្លាស់​ទី​ដោយ​វត្ថុ​ផ្សេង​ទៀត​ ដូច​ជា​ទម្រ​ដែរ​​​ឬ​ទេ​ ។"
+
+#: landscape.cpp:582
+#, kde-format
+msgid "Grade:"
+msgstr "កម្រិត"
+
+#: main.cpp:49
+#, kde-format
+msgid "Kolf"
+msgstr "Kolf"
+
+#: main.cpp:51
+#, kde-format
+msgid "KDE Minigolf Game"
+msgstr "ល្បែង​ហ្គោល​ខ្នាត​តូច​របស់​ KDE "
+
+#: main.cpp:53
+#, kde-format
+msgid "(c) 2002-2010, Kolf developers"
+msgstr "រក្សា​សិទ្ធិ​ឆ្នាំ​ ២​០​០​២-២​០​១​០​ ដោយ​អ្នក​អភិវឌ្ឍន៍​ Kolf"
+
+#: main.cpp:56
+#, kde-format
+msgid "Stefan Majewsky"
+msgstr "Stefan Majewsky"
+
+#: main.cpp:56
+#, kde-format
+msgid "Current maintainer"
+msgstr "អ្នក​ថែ​ទាំ​បច្ចុប្បន្ន"
+
+#: main.cpp:57
+#, kde-format
+msgid "Jason Katz-Brown"
+msgstr "Jason Katz-Brown"
+
+#: main.cpp:57
+#, kde-format
+msgid "Former main author"
+msgstr "អ្នក​និពន្ធ​​​សំខាន់​មុន​"
+
+#: main.cpp:58
+#, kde-format
+msgid "Niklas Knutsson"
+msgstr "Niklas Knutsson"
+
+#: main.cpp:58
+#, kde-format
+msgid "Advanced putting mode"
+msgstr "របៀប​វាយ​បញ្ចូល​រន្ធ​កម្រិត​ខ្ពស់"
+
+#: main.cpp:59
+#, kde-format
+msgid "Rik Hemsley"
+msgstr "Rik Hemsley"
+
+#: main.cpp:59
+#, kde-format
+msgid "Border around course"
+msgstr "ស៊ុម​ជុំវិញ​ទីលាន​ប្រកួត"
+
+#: main.cpp:60
+#, kde-format
+msgid "Timo A. Hummel"
+msgstr "Timo A. Hummel"
+
+#: main.cpp:60
+#, kde-format
+msgid "Some good sound effects"
+msgstr "បែបផែន​សំឡេង​​ល្អ​ខ្លះ"
+
+#: main.cpp:62
+#, kde-format
+msgid "Rob Renaud"
+msgstr "Rob Renaud"
+
+#: main.cpp:62
+#, kde-format
+msgid "Wall-bouncing help"
+msgstr "ជំនួយ​ជញ្ជាំង​លោត"
+
+#: main.cpp:63
+#, kde-format
+msgid "Aaron Seigo"
+msgstr "Aaron Seigo"
+
+#: main.cpp:63
+#, kde-format
+msgid "Suggestions, bug reports"
+msgstr "ការ​ផ្ដល់​យោបល់​ និង​​របាយ​ការណ៍​កំហុស"
+
+#: main.cpp:64
+#, kde-format
+msgid "Erin Catto"
+msgstr "Erin Catto"
+
+#: main.cpp:64
+#, kde-format
+msgid "Developer of Box2D physics engine"
+msgstr "អ្នក​អភិវឌ្ឍន៍​ម៉ាស៊ីន​រូប​វិទ្យា​ Box2D"
+
+#: main.cpp:65
+#, kde-format
+msgid "Ryan Cumming"
+msgstr "Ryan Cumming"
+
+#: main.cpp:65
+#, kde-format
+msgid "Vector class (Kolf 1)"
+msgstr "ថ្នាក់​វ៉ិចទ័រ​ (Kolf ១)"
+
+#: main.cpp:66
+#, kde-format
+msgid "Daniel Matza-Brown"
+msgstr "Daniel Matza-Brown"
+
+#: main.cpp:66
+#, kde-format
+msgid "Working wall-bouncing algorithm (Kolf 1)"
+msgstr "ក្បួន​ដោះ​ស្រាយ​ជញ្ជាំង​លោត​ដែល​សកម្ម​ (Kolf ១)"
+
+#: main.cpp:71
+#, kde-format
+msgid "File"
+msgstr "ឯកសារ"
+
+#: main.cpp:72
+#, kde-format
+msgid "Print course information and exit"
+msgstr "បោះពុម្ព​ព័ត៌មាន​ទីលាន​ប្រកួត ហើយ​ចាក​ចេញ"
+
+#: main.cpp:89 newgame.cpp:240
+#, kde-format
+msgid "By %1"
+msgstr "ត្រឹម​ %1"
+
+#: main.cpp:90
+#, kde-format
+msgid "%1 holes"
+msgstr "%1 រន្ធ"
+
+#: main.cpp:91
+#, kde-format
+msgid "par %1"
+msgstr "កម្រិត​ចំនួន​វាយ​ចូល​រន្ធ​នីមួយ​ៗ​ %1"
+
+#: main.cpp:98
+#, kde-format
+msgid "Course %1 does not exist."
+msgstr "មិន​មាន​ទី​លាន​ប្រកួត​ %1 ទេ ។"
+
+#: newgame.cpp:38
+#, fuzzy, kde-format
+#| msgid "New Game"
+msgctxt "@title:window"
+msgid "New Game"
+msgstr "ល្បែង​ថ្មី"
+
+#: newgame.cpp:54
+#, kde-format
+msgid "Players"
+msgstr "អ្នកលេង"
+
+#: newgame.cpp:58
+#, kde-format
+msgid "&New Player"
+msgstr "អ្នកលេង​ថ្មី"
+
+#: newgame.cpp:93
+#, kde-format
+msgid "Course"
+msgstr "ទីលាន​ប្រកួត"
+
+#: newgame.cpp:94
+#, kde-format
+msgid "Choose Course to Play"
+msgstr "ជ្រើស​ទីលាន​ប្រកួត​សម្រាប់​លេង"
+
+#: newgame.cpp:133
+#, kde-format
+msgid "Create New"
+msgstr "បង្កើត​ថ្មី"
+
+#: newgame.cpp:134
+#, kde-format
+msgid "You"
+msgstr "អ្នក"
+
+#: newgame.cpp:160
+#, kde-format
+msgid "Highscores"
+msgstr "ពិន្ទុ​ខ្ពស់"
+
+#: newgame.cpp:170
+#, kde-format
+msgid "Add..."
+msgstr "បន្ថែម..."
+
+#: newgame.cpp:174 newgame.cpp:363
+#, kde-format
+msgid "Remove"
+msgstr "យក​ចេញ"
+
+#: newgame.cpp:184
+#, kde-format
+msgid "Options"
+msgstr "ជម្រើស​"
+
+#: newgame.cpp:185
+#, kde-format
+msgid "Game Options"
+msgstr "ជម្រើស​ល្បែង"
+
+#: newgame.cpp:190
+#, kde-format
+msgid "&Strict mode"
+msgstr "របៀប​តឹងរ៉ឹង"
+
+#: newgame.cpp:194
+#, kde-format
+msgid ""
+"In strict mode, undo, editing, and switching holes is not allowed. This is "
+"generally for competition. Only in strict mode are highscores kept."
+msgstr ""
+"ចំពោះ​​របៀប​តឹង​រ៉ឹង​​ មិន​ធ្វើ​វិញ​  ការ​កែ​សម្រួល​ ការ​ប្ដូរ​រន្ធ​មិន​ត្រូវ​បាន​អនុញ្ញាត​ទេ​ ។ ជា​ទូ​ទៅ​សម្រាប់​ តែ​ក្នុង​"
+"ការ​ប្រកួត​ប៉ុណ្ណោះ​ ។ ពិន្ទុ​ខ្ពស់​រក្សា​ទុក​បាន​តែ​នៅ​ក្នុង​របៀប​តឹង​រ៉ឹង​ប៉ុណ្ណោះ ។"
+
+#: newgame.cpp:241
+#, kde-format
+msgid "Par %1"
+msgstr "ចំនួន​កម្រិត​វាយ​ចូល​រន្ធ​នីមួយ​ៗ​ %1"
+
+#: newgame.cpp:242
+#, kde-format
+msgid "%1 Holes"
+msgstr "%1 រន្ធ"
+
+#: newgame.cpp:280
+#, fuzzy, kde-format
+#| msgid "Pick Kolf Course"
+msgctxt "@title:window"
+msgid "Pick Kolf Course"
+msgstr "រើស​ទីលាន​ប្រកួត Kolf"
+
+#: newgame.cpp:308
+#, kde-format
+msgid "Chosen course is already on course list."
+msgstr "ទីលាន​ប្រកួត​ដែល​ជ្រើសរើស​មាន​នៅ​ក្នុង​បញ្ជី​ទី​លាន​ប្រកួត​រួច​ហើយ ។"
+
+#: newgame.cpp:321
+#, kde-format
+msgid "Player %1"
+msgstr "អ្នក​លេង %1"
+
+#: objects.cpp:244
+#, kde-format
+msgid " degree"
+msgid_plural " degrees"
+msgstr[0] " ដឺក្រេ"
+
+#: objects.cpp:247
+#, kde-format
+msgid "Exiting ball angle:"
+msgstr "មុំ​បាល់​ដែល​បាន​ចេញ​​ ៖"
+
+#: objects.cpp:267
+#, kde-format
+msgid "Minimum exit speed:"
+msgstr "ល្បឿន​ចេញ​អប្បបរមា ៖"
+
+#: objects.cpp:288
+#, kde-format
+msgid "Maximum exit speed:"
+msgstr "ល្បឿន​ចេញ​អតិបរមា ៖"
+
+#: obstacles.cpp:412
+msgid "&Top"
+msgstr "កំពូល"
+
+#: obstacles.cpp:412
+msgid "&Left"
+msgstr "ឆ្វេង"
+
+#: obstacles.cpp:412
+msgid "&Right"
+msgstr "ស្ដាំ"
+
+#: obstacles.cpp:412
+msgid "&Bottom"
+msgstr "បាត"
+
+#: obstacles.cpp:421
+#, kde-format
+msgid "Walls on:"
+msgstr "ជញ្ជាំង​បើក ៖"
+
+#: obstacles.cpp:431
+#, kde-format
+msgid "Sign HTML:"
+msgstr "សញ្ញា HTML ៖"
+
+#: obstacles.cpp:440
+#, kde-format
+msgid "Windmill on top"
+msgstr "កង្ហារ​ខ្យល់​នៅ​ខាង​លើ​"
+
+#: obstacles.cpp:461
+#, kde-format
+msgid "Moving speed"
+msgstr "ល្បឿន​ផ្លាស់​ទី"
+
+#: obstacles.cpp:681
+#, kde-format
+msgid "New Text"
+msgstr "អត្ថបទ​ថ្មី"
+
+#: scoreboard.cpp:28
+#, kde-format
+msgid "Total"
+msgstr "សរុប"
+
+#~ msgid "(c) 2002-2005, Jason Katz-Brown"
+#~ msgstr "រក្សាសិទ្ធិ​ឆ្នាំ ២០០២-២០០៥ ដោយ Jason Katz-Brown"
+
+#~ msgid "Circular"
+#~ msgstr "រង្វង់"
+
+#, fuzzy
+#~ msgid "%1 - Hole %2; by %3"
+#~ msgstr "%1 - រន្ធ %2; ត្រឹម​ %3"
+
+#~ msgid "Kolf Options"
+#~ msgstr "ជម្រើស Kolf"
+
+#, fuzzy
+#~ msgid "Draw title text"
+#~ msgstr "គូស​​អត្ថបទ​ចំណងជើង"
+
+#~ msgid "Print %1 - Hole %2"
+#~ msgstr "បោះពុម្ព %1 - រន្ធ %2"
+
+#, fuzzy
+#~ msgid "Currently Loaded Plugins"
+#~ msgstr "កម្មវិធី​ជំនួយ​ដែល​បានផ្ទុក​បច្ចុប្បន្ន"
+
+#, fuzzy
+#~ msgid "by %1"
+#~ msgstr "ត្រឹម %1"
+
+#~ msgid "Plugins"
+#~ msgstr "កម្មវិធី​ជំនួយ"

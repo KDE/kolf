@@ -1,0 +1,781 @@
+# Translation of kolf.po to Catalan (Valencian)
+# Copyright (C) 2002-2021 This_file_is_part_of_KDE
+#
+# Josep M. Ferrer <txemaq@gmail.com>, 2002, 2003, 2007, 2010, 2011, 2012, 2015, 2017, 2018, 2019, 2021.
+# Albert Astals Cid <aacid@kde.org>, 2004, 2005.
+# Miquel Oliete <ktalanet@yahoo.es>, 2007.
+# Manuel Tortosa <manutortosa@gmail.com>, 2009.
+# Manuel Tortosa Moreno <manutortosa@chakra-project.org>, 2010.
+# Antoni Bella Pérez <antonibella5@yahoo.com>, 2020, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: kolf\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2021-10-09 14:01+0200\n"
+"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
+"Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
+"Language: ca@valencia\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 20.12.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Accelerator-Marker: &\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Josep M. Ferrer"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "txemaq@gmail.com"
+
+#: config.cpp:51
+#, kde-format
+msgid "No configuration options"
+msgstr "Sense opcions de configuració"
+
+#: editor.cpp:37
+#, kde-format
+msgid "Add object:"
+msgstr "Afig objecte:"
+
+#: game.cpp:261
+#, kde-format
+msgid "Course name: "
+msgstr "Nom del camp: "
+
+#: game.cpp:268
+#, kde-format
+msgid "Course author: "
+msgstr "Autoria del camp: "
+
+#: game.cpp:277
+#, kde-format
+msgid "Par:"
+msgstr "Par:"
+
+#: game.cpp:287
+#, kde-format
+msgid "Maximum:"
+msgstr "Màxim:"
+
+#: game.cpp:291
+#, kde-format
+msgid "Maximum number of strokes player can take on this hole."
+msgstr "Nombre màxim de colps que el jugador pot donar en este forat."
+
+#: game.cpp:292
+#, kde-format
+msgid "Maximum number of strokes"
+msgstr "Nombre màxim de colps"
+
+#: game.cpp:293
+#, kde-format
+msgid "Unlimited"
+msgstr "Il·limitats"
+
+#: game.cpp:299
+#, kde-format
+msgid "Show border walls"
+msgstr "Mostra els murs de la vora"
+
+#: game.cpp:497 game.cpp:2439
+#, kde-format
+msgid "Course Author"
+msgstr "Autoria del camp"
+
+#: game.cpp:498 game.cpp:499 game.cpp:2439
+#, kde-format
+msgid "Course Name"
+msgstr "Nom del camp"
+
+#: game.cpp:1421
+#, kde-format
+msgid "Drop Outside of Hazard"
+msgstr "Tira fora de l'obstacle"
+
+#: game.cpp:1422
+#, kde-format
+msgid "Rehit From Last Location"
+msgstr "Torna a tirar des de l'últim punt"
+
+#: game.cpp:1424
+#, kde-format
+msgid "What would you like to do for your next shot?"
+msgstr "Que vos agradaria fer a la propera tirada?"
+
+#: game.cpp:1424
+#, kde-format
+msgid "%1 is in a Hazard"
+msgstr "%1 està en un obstacle"
+
+#: game.cpp:1592
+#, kde-format
+msgid "%1 will start off."
+msgstr "%1 començarà."
+
+#: game.cpp:1592
+#, kde-format
+msgid "New Hole"
+msgstr "Forat nou"
+
+#: game.cpp:1753
+#, kde-format
+msgid "Course name: %1"
+msgstr "Nom del camp: %1"
+
+#: game.cpp:1754
+#, kde-format
+msgid "Created by %1"
+msgstr "Creat per %1"
+
+#: game.cpp:1755
+#, kde-format
+msgid "%1 hole"
+msgid_plural "%1 holes"
+msgstr[0] "%1 forat"
+msgstr[1] "%1 forats"
+
+#: game.cpp:1756
+#, kde-format
+msgctxt "@title:window"
+msgid "Course Information"
+msgstr "Informació del camp"
+
+#: game.cpp:1887
+#, kde-format
+msgid "This hole uses the following plugins, which you do not have installed:"
+msgstr ""
+"Este forat utilitza els connectors següents, els quals no estan instal·lats:"
+
+#: game.cpp:1999
+#, kde-format
+msgid "There are unsaved changes to current hole. Save them?"
+msgstr "Hi ha canvis per a guardar en el forat actual. Voleu guardar-los?"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Unsaved Changes"
+msgstr "Canvis sense guardar"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Save &Later"
+msgstr "Guarda més &tard"
+
+#: game.cpp:2170 kolf.cpp:550
+#, kde-format
+msgctxt "@title:window"
+msgid "Pick Kolf Course to Save To"
+msgstr "Trieu un camp de Kolf per a guardar a"
+
+#: kcomboboxdialog.cpp:60
+#, kde-format
+msgid "&Do not ask again"
+msgstr "&No ho tornes a preguntar"
+
+#: kolf.cpp:62
+#, kde-format
+msgid "Slope"
+msgstr "Desnivell"
+
+#: kolf.cpp:63
+#, kde-format
+msgid "Puddle"
+msgstr "Bassal"
+
+#: kolf.cpp:64
+#, kde-format
+msgid "Wall"
+msgstr "Mur"
+
+#: kolf.cpp:65
+#, kde-format
+msgid "Cup"
+msgstr "Cassoleta"
+
+#: kolf.cpp:66
+#, kde-format
+msgid "Sand"
+msgstr "Arena"
+
+#: kolf.cpp:67
+#, kde-format
+msgid "Windmill"
+msgstr "Molí de vent"
+
+#: kolf.cpp:68
+#, kde-format
+msgid "Black Hole"
+msgstr "Forat negre"
+
+#: kolf.cpp:69
+#, kde-format
+msgid "Floater"
+msgstr "Plataforma voladora"
+
+#: kolf.cpp:70
+#, kde-format
+msgid "Bridge"
+msgstr "Pont"
+
+#: kolf.cpp:71
+#, kde-format
+msgid "Sign"
+msgstr "Rètol"
+
+#: kolf.cpp:72
+#, kde-format
+msgid "Bumper"
+msgstr "Rebotador"
+
+#: kolf.cpp:95
+#, kde-format
+msgid "Save &Course"
+msgstr "Guarda el &camp"
+
+#: kolf.cpp:97
+#, kde-format
+msgid "Save &Course As..."
+msgstr "Guarda el &camp com a..."
+
+#: kolf.cpp:100
+#, kde-format
+msgid "&Save Game"
+msgstr "Guar&da la partida"
+
+#: kolf.cpp:103
+#, kde-format
+msgid "&Save Game As..."
+msgstr "Guar&da la partida com a..."
+
+#: kolf.cpp:110
+#, kde-format
+msgid "&Edit"
+msgstr "E&dita"
+
+#: kolf.cpp:116
+#, kde-format
+msgid "&New"
+msgstr "&Nou"
+
+#: kolf.cpp:125
+#, kde-format
+msgid "&Reset"
+msgstr "&Restablix"
+
+#: kolf.cpp:130
+#, kde-format
+msgid "&Undo Shot"
+msgstr "&Desfés el colp"
+
+#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. Go
+#: kolf.cpp:134
+#, kde-format
+msgid "Switch to Hole"
+msgstr "Canvia al forat"
+
+#: kolf.cpp:139
+#, kde-format
+msgid "&Next Hole"
+msgstr "Forat &següent"
+
+#: kolf.cpp:144
+#, kde-format
+msgid "&Previous Hole"
+msgstr "Forat &previ"
+
+#: kolf.cpp:149
+#, kde-format
+msgid "&First Hole"
+msgstr "P&rimer forat"
+
+#: kolf.cpp:153
+#, kde-format
+msgid "&Last Hole"
+msgstr "&Últim forat"
+
+#: kolf.cpp:158
+#, kde-format
+msgid "&Random Hole"
+msgstr "Forat &aleatori"
+
+#: kolf.cpp:162
+#, kde-format
+msgid "Enable &Mouse for Moving Putter"
+msgstr "Habilita el &ratolí per a moure l'iniciador"
+
+#: kolf.cpp:169
+#, kde-format
+msgid "Enable &Advanced Putting"
+msgstr "Habilita el llançament &avançat"
+
+#: kolf.cpp:175
+#, kde-format
+msgid "Show &Info"
+msgstr "Mostra la &informació"
+
+#: kolf.cpp:182
+#, kde-format
+msgid "Show Putter &Guideline"
+msgstr "Mostra la línia de &guia de l'iniciador"
+
+#: kolf.cpp:188
+#, kde-format
+msgid "Enable All Dialog Boxes"
+msgstr "Habilita tots els diàlegs"
+
+#: kolf.cpp:192
+#, kde-format
+msgid "Play &Sounds"
+msgstr "Reproduïx els &sons"
+
+#: kolf.cpp:199
+#, kde-format
+msgid "&About Course..."
+msgstr "Quant a c&amp..."
+
+#: kolf.cpp:202
+#, kde-format
+msgid "&Tutorial"
+msgstr "&Camp d'aprenentatge"
+
+#: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
+#, kde-format
+msgid "Par"
+msgstr "Par"
+
+#: kolf.cpp:483
+#, kde-format
+msgid " and "
+msgstr " i "
+
+#: kolf.cpp:484
+#, kde-format
+msgid "%1 tied"
+msgstr "%1 empatat"
+
+#: kolf.cpp:487
+#, kde-format
+msgid "%1 won!"
+msgstr "%1 ha guanyat!"
+
+#: kolf.cpp:501 kolf.cpp:513 kolf.cpp:528 kolf.cpp:529 newgame.cpp:249
+#: newgame.cpp:250
+#, kde-format
+msgid "High Scores for %1"
+msgstr "Puntuacions màximes per a %1"
+
+#: kolf.cpp:568
+#, kde-format
+msgctxt "@title:window"
+msgid "Pick Saved Game to Save To"
+msgstr "Trieu una partida guardada per a guardar a"
+
+#: kolf.cpp:606
+#, kde-format
+msgctxt "@title:window"
+msgid "Pick Kolf Saved Game"
+msgstr "Trieu una partida guardada de Kolf"
+
+#: kolf.cpp:654
+#, kde-format
+msgid "%1's turn"
+msgstr "És el torn de %1"
+
+#: kolf.cpp:726
+#, kde-format
+msgid "%1's score has reached the maximum for this hole."
+msgstr "La puntuació de %1 ha arribat al màxim per a este forat."
+
+#. i18n: ectx: Menu (hole)
+#: kolfui.rc:17
+#, kde-format
+msgid "Ho&le"
+msgstr "&Forat"
+
+#. i18n: ectx: Menu (go_course)
+#: kolfui.rc:31
+#, kde-format
+msgid "&Go"
+msgstr "&Ves"
+
+#: landscape.cpp:146
+#, kde-format
+msgid "Enable show/hide"
+msgstr "Activa mostra/oculta"
+
+#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
+#, kde-format
+msgid "Slow"
+msgstr "Lenta"
+
+#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
+#, kde-format
+msgid "Fast"
+msgstr "Ràpida"
+
+#: landscape.cpp:238
+#, kde-format
+msgid "Vertical"
+msgstr "Vertical"
+
+#: landscape.cpp:239
+#, kde-format
+msgid "Horizontal"
+msgstr "Horitzontal"
+
+#: landscape.cpp:240
+#, kde-format
+msgid "Diagonal"
+msgstr "Diagonal"
+
+#: landscape.cpp:241
+#, kde-format
+msgid "Opposite Diagonal"
+msgstr "Diagonal oposada"
+
+#: landscape.cpp:242
+#, kde-format
+msgid "Elliptic"
+msgstr "El·líptic"
+
+#: landscape.cpp:571
+#, kde-format
+msgid "Reverse direction"
+msgstr "Direcció invertida"
+
+#: landscape.cpp:576
+#, kde-format
+msgid "Unmovable"
+msgstr "Inamovible"
+
+#: landscape.cpp:578
+#, kde-format
+msgid "Whether or not this slope can be moved by other objects, like floaters."
+msgstr "Si el poden moure o no altres objectes, com les plataformes voladores."
+
+#: landscape.cpp:582
+#, kde-format
+msgid "Grade:"
+msgstr "Grau:"
+
+#: main.cpp:49
+#, kde-format
+msgid "Kolf"
+msgstr "Kolf"
+
+#: main.cpp:51
+#, kde-format
+msgid "KDE Minigolf Game"
+msgstr "Joc de minigolf de KDE"
+
+#: main.cpp:53
+#, kde-format
+msgid "(c) 2002-2010, Kolf developers"
+msgstr "(c) 2002-2010, els desenvolupadors de Kolf"
+
+#: main.cpp:56
+#, kde-format
+msgid "Stefan Majewsky"
+msgstr "Stefan Majewsky"
+
+#: main.cpp:56
+#, kde-format
+msgid "Current maintainer"
+msgstr "Mantenidor actual"
+
+#: main.cpp:57
+#, kde-format
+msgid "Jason Katz-Brown"
+msgstr "Jason Katz-Brown"
+
+#: main.cpp:57
+#, kde-format
+msgid "Former main author"
+msgstr "Antic autor principal"
+
+#: main.cpp:58
+#, kde-format
+msgid "Niklas Knutsson"
+msgstr "Niklas Knutsson"
+
+#: main.cpp:58
+#, kde-format
+msgid "Advanced putting mode"
+msgstr "Mode llançament avançat"
+
+#: main.cpp:59
+#, kde-format
+msgid "Rik Hemsley"
+msgstr "Rik Hemsley"
+
+#: main.cpp:59
+#, kde-format
+msgid "Border around course"
+msgstr "Vora al voltant del camp"
+
+#: main.cpp:60
+#, kde-format
+msgid "Timo A. Hummel"
+msgstr "Timo A. Hummel"
+
+#: main.cpp:60
+#, kde-format
+msgid "Some good sound effects"
+msgstr "Alguns bons efectes de sons"
+
+#: main.cpp:62
+#, kde-format
+msgid "Rob Renaud"
+msgstr "Rob Renaud"
+
+#: main.cpp:62
+#, kde-format
+msgid "Wall-bouncing help"
+msgstr "Ajuda sobre el rebot en murs"
+
+#: main.cpp:63
+#, kde-format
+msgid "Aaron Seigo"
+msgstr "Aaron Seigo"
+
+#: main.cpp:63
+#, kde-format
+msgid "Suggestions, bug reports"
+msgstr "Suggeriments i informes d'error"
+
+#: main.cpp:64
+#, kde-format
+msgid "Erin Catto"
+msgstr "Erin Catto"
+
+#: main.cpp:64
+#, kde-format
+msgid "Developer of Box2D physics engine"
+msgstr "Desenvolupador del motor de física Box2D"
+
+#: main.cpp:65
+#, kde-format
+msgid "Ryan Cumming"
+msgstr "Ryan Cumming"
+
+#: main.cpp:65
+#, kde-format
+msgid "Vector class (Kolf 1)"
+msgstr "Classe de vector (Kolf 1)"
+
+#: main.cpp:66
+#, kde-format
+msgid "Daniel Matza-Brown"
+msgstr "Daniel Matza-Brown"
+
+#: main.cpp:66
+#, kde-format
+msgid "Working wall-bouncing algorithm (Kolf 1)"
+msgstr "Algorisme funcional de rebot als murs (Kolf 1)"
+
+#: main.cpp:71
+#, kde-format
+msgid "File"
+msgstr "Fitxer"
+
+#: main.cpp:72
+#, kde-format
+msgid "Print course information and exit"
+msgstr "Mostra la informació del camp i ix"
+
+#: main.cpp:89 newgame.cpp:240
+#, kde-format
+msgid "By %1"
+msgstr "Per %1"
+
+#: main.cpp:90
+#, kde-format
+msgid "%1 holes"
+msgstr "%1 forats"
+
+#: main.cpp:91
+#, kde-format
+msgid "par %1"
+msgstr "par %1"
+
+#: main.cpp:98
+#, kde-format
+msgid "Course %1 does not exist."
+msgstr "El camp %1 no existix."
+
+#: newgame.cpp:38
+#, kde-format
+msgctxt "@title:window"
+msgid "New Game"
+msgstr "Partida nova"
+
+#: newgame.cpp:54
+#, kde-format
+msgid "Players"
+msgstr "Jugadors"
+
+#: newgame.cpp:58
+#, kde-format
+msgid "&New Player"
+msgstr "Jugador &nou"
+
+#: newgame.cpp:93
+#, kde-format
+msgid "Course"
+msgstr "Camp"
+
+#: newgame.cpp:94
+#, kde-format
+msgid "Choose Course to Play"
+msgstr "Trieu un camp per a jugar"
+
+#: newgame.cpp:133
+#, kde-format
+msgid "Create New"
+msgstr "Crea nou"
+
+#: newgame.cpp:134
+#, kde-format
+msgid "You"
+msgstr "Tu"
+
+#: newgame.cpp:160
+#, kde-format
+msgid "Highscores"
+msgstr "Puntuacions màximes"
+
+#: newgame.cpp:170
+#, kde-format
+msgid "Add..."
+msgstr "Afig..."
+
+#: newgame.cpp:174 newgame.cpp:363
+#, kde-format
+msgid "Remove"
+msgstr "Elimina"
+
+#: newgame.cpp:184
+#, kde-format
+msgid "Options"
+msgstr "Opcions"
+
+#: newgame.cpp:185
+#, kde-format
+msgid "Game Options"
+msgstr "Opcions del joc"
+
+#: newgame.cpp:190
+#, kde-format
+msgid "&Strict mode"
+msgstr "Mode e&stricte"
+
+#: newgame.cpp:194
+#, kde-format
+msgid ""
+"In strict mode, undo, editing, and switching holes is not allowed. This is "
+"generally for competition. Only in strict mode are highscores kept."
+msgstr ""
+"En el mode estricte no es permet desfer, editar o canviar forats. "
+"Generalment és per a competició. Les puntuacions màximes només es guarden en "
+"el mode estricte."
+
+#: newgame.cpp:241
+#, kde-format
+msgid "Par %1"
+msgstr "Par %1"
+
+#: newgame.cpp:242
+#, kde-format
+msgid "%1 Holes"
+msgstr "%1 forats"
+
+#: newgame.cpp:280
+#, kde-format
+msgctxt "@title:window"
+msgid "Pick Kolf Course"
+msgstr "Trieu un camp de Kolf"
+
+#: newgame.cpp:308
+#, kde-format
+msgid "Chosen course is already on course list."
+msgstr "El camp escollit ja es troba en la llista de camps."
+
+#: newgame.cpp:321
+#, kde-format
+msgid "Player %1"
+msgstr "Jugador %1"
+
+#: objects.cpp:244
+#, kde-format
+msgid " degree"
+msgid_plural " degrees"
+msgstr[0] " grau"
+msgstr[1] " graus"
+
+#: objects.cpp:247
+#, kde-format
+msgid "Exiting ball angle:"
+msgstr "Angle d'eixida de la bola:"
+
+#: objects.cpp:267
+#, kde-format
+msgid "Minimum exit speed:"
+msgstr "Velocitat mínima d'eixida:"
+
+#: objects.cpp:288
+#, kde-format
+msgid "Maximum exit speed:"
+msgstr "Velocitat màxima d'eixida:"
+
+#: obstacles.cpp:412
+msgid "&Top"
+msgstr "&Dalt"
+
+#: obstacles.cpp:412
+msgid "&Left"
+msgstr "&Esquerra"
+
+#: obstacles.cpp:412
+msgid "&Right"
+msgstr "&Dreta"
+
+#: obstacles.cpp:412
+msgid "&Bottom"
+msgstr "&Baix"
+
+#: obstacles.cpp:421
+#, kde-format
+msgid "Walls on:"
+msgstr "Murs a:"
+
+#: obstacles.cpp:431
+#, kde-format
+msgid "Sign HTML:"
+msgstr "Rètol HTML:"
+
+#: obstacles.cpp:440
+#, kde-format
+msgid "Windmill on top"
+msgstr "Molí de vent a dalt"
+
+#: obstacles.cpp:461
+#, kde-format
+msgid "Moving speed"
+msgstr "Velocitat de moviment"
+
+#: obstacles.cpp:681
+#, kde-format
+msgid "New Text"
+msgstr "Text nou"
+
+#: scoreboard.cpp:28
+#, kde-format
+msgid "Total"
+msgstr "Total"

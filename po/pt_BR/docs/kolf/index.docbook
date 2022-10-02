@@ -1,0 +1,1732 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kolf;">
+  <!ENTITY kappversion "1.9"
+><!--Application version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % Brazilian-Portuguese "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+ 
+<book id="kolf" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Manual do &kolf;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<authorgroup>
+<author
+><firstname
+>Jason</firstname
+> <surname
+>Katz-Brown</surname
+> <affiliation
+> <address
+><email
+>jasonkb@mit.edu</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+><firstname
+>Paul</firstname
+> <surname
+>Broadbent</surname
+> <affiliation
+> <address
+><email
+>dbd@myrealbox.com</email
+></address>
+</affiliation>
+<!-- <contrib
+>Reviewer</contrib
+> -->
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>Marcus</firstname
+><surname
+>Gama</surname
+><affiliation
+><address
+><email
+>marcus.gama@gmail.com</email
+></address
+></affiliation
+><contrib
+>Tradução</contrib
+></othercredit
+> 
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+ 
+<date
+>01/10/2010</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>&kappversion; (&kde; 4.5)</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+ 
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Esta documentação descreve o jogo &kappname; na versão &kappversion;</para>
+</abstract>
+ 
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>jogo</keyword
+> <!-- do not change this! -->
+	<keyword
+>Kolf</keyword
+><!--Application name goes here-->
+	<keyword
+>golfe</keyword>
+	<keyword
+>miniatura</keyword>
+	<keyword
+>arcade</keyword>
+	<keyword
+>esporte</keyword>
+	<keyword
+>dez jogadores</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Introdução</title
+> <!-- do not change this! -->
+	<note
+><title
+>Tipo de jogo:</title
+><para
+>Arcada, Desporto</para
+></note>
+	<note
+><title
+>Número de possíveis jogadores:</title
+><para
+>Dez</para
+></note
+> 
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>O &kappname; é um jogo de golfe em miniatura com gráficos com uma visão 2D de cima para baixo. Os níveis são dinâmicos e até 10 pessoas poderão jogar de uma vez ao mesmo tempo.</para>
+<para
+>O &kappname; vem com um curso de tutorial. <link linkend="howto"
+>Jogar este curso</link
+> será a melhor forma de se preparar.</para>
+</chapter>
+ 
+<chapter id="howto"
+><title
+>Como jogar</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Objetivo:</title
+><para
+>Acerte a bola no buraco com o menor número de tacadas.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para
+>O modo de jogo do &kappname; é simples. É mais fácil aprender como jogar com a mão na massa e, por isso, vem incluído um campo de tutorial para guiá-lo pelas noções básicas. Este capítulo o conduzirá através deste tutorial. Para dar início a este tutorial, escolha a opção <menuchoice
+><guimenu
+>Ajuda</guimenu
+><guimenuitem
+>Tutorial</guimenuitem
+></menuchoice
+>.</para>
+
+<sect1 id="hitting"
+> 
+<title
+>Acertando na bola</title>
+<para
+>Para apontar a bola, você poderá tanto alinhar o mouse por trás da bola para que o taco aponte na direção que deseja acertar na bola ou pressione uma das teclas: <keycap
+>Seta a esquerda</keycap
+> (no sentido anti-horário) ou <keycap
+>Seta a direita</keycap
+> (no sentido horário), para rodar o taco.</para>
+<tip>
+<para
+>Para rodar o taco mais depressa com o teclado, mantenha pressionada a tecla &Shift; enquanto pressiona ou mantém pressionadas as teclas dos cursores. Para rodar mais devagar, mantenha pressionada a tecla &Ctrl;.</para>
+</tip>
+<para
+>Para acertar na bola, pressione e mantenha pressionado o &LMB; ou a tecla de cursor <keycap
+>Seta para baixo</keycap
+>. Quanto mais tempo mantiver pressionada a tecla ou o botão, mais força terá a tacada. Irá exigir alguma prática para que tenha uma boa noção da velocidade.</para>
+<tip>
+<para
+>Para interromper a tacada enquanto ainda mantém o taco sobre tensão, clique em &Esc;.</para>
+</tip>
+
+<para
+>Acerte a bola no buraco para passar para o próximo passo.</para>
+</sect1>
+
+<sect1 id="slopes"
+> 
+<title
+>Rampas</title>
+<para
+>As rampas são áreas inclinadas onde a bola rola de uma forma esperada. A luz do campo de golfe vem do canto superior esquerdo, de modo a que as rampas mais brilhantes irão empurrar a bola para o canto superior esquerdo do buraco. Escolha a opção <menuchoice
+><guimenu
+>Buraco</guimenu
+><guimenuitem
+>Mostrar Informações</guimenuitem
+></menuchoice
+> para ver uma seta que aponta na direção em que a rampa fará rolar a bola.</para>
+<para
+>Neste buraco de tutorial, acerte na bola para que vá para a rampa que aponta para cima, e deixe que ela role para a cova, de modo a passar para o próximo buraco.</para>
+
+<sect2
+> <title
+>Direções</title>
+<para
+>No próximo buraco, experimente com os outros tipos de rampas. Existem rampas elípticas, verticais, horizontais e diagonais no &kappname;. Acerte a bola no buraco.</para>
+</sect2>
+<sect2
+> <title
+>Inclinação</title>
+<para
+>O próximo buraco do tutorial possui duas rampas com inclinações diferentes. Se você escolher o <menuchoice
+><guimenu
+>Buraco</guimenu
+><guimenuitem
+>Exibir informações</guimenuitem
+></menuchoice
+>, a inclinação da rampa irá aparecer como um número de 1 a 8, em que o 8 é o mais inclinado e o 1 o mais plano. Acerte no buraco e passe para o próximo passo.</para>
+</sect2>
+</sect1>
+
+<sect1 id="walls"
+> <title
+>Paredes</title>
+<para
+>As bolas batem nas paredes, como seria de esperar, com um ligeiro efeito. Desvie a bola das paredes para dentro da cova e avance para o próximo buraco.</para>
+</sect1>
+
+<sect1 id="puddles-sand"
+> <title
+>Charcos e areia</title>
+<sect2
+> <title
+>Charcos</title>
+	<para
+>Os charcos são azuis. Quando a bola for parar num charco, é adicionada uma tacada de penalização à sua pontuação e você terá que escolher onde será colocada a sua bola: quer perto do charco quer no mesmo local de onde fez a última jogada.</para>
+</sect2>
+<sect2
+> <title
+>Areia</title>
+<para
+>A areia é amarela. As bolas rolam através da areia muito devagar.</para>
+<para
+>Acerte a bola ao redor dos charcos e através da areia para o buraco para continuar para o próximo buraco.</para>
+</sect2>
+</sect1>
+
+<sect1 id="windmills"
+> <title
+>Moinhos</title>
+<para
+>Os moinhos são objetos compostos com paredes de contornos castanhos e com um braço móvel em um lado. As meias paredes criam a abertura do moinho, à volta da qual roda um braço preto. Exige algum prática para ser capaz de cronometrar a tacada da bola para que passe pela abertura. Acerte a bola através do moinho para o buraco de modo a prosseguir.</para>
+</sect1>
+
+<sect1 id="black-holes"
+> <title
+>Buracos negros</title>
+<para
+>Quando você acertar a sua bola num buraco negro, ela é transportada para a saída e ejetada com o ângulo da saída a uma velocidade diretamente proporcional à velocidade com que a bola estava indo. Escolha a opção <menuchoice
+><guimenu
+>Buraco</guimenu
+><guimenuitem
+>Exibir informações</guimenuitem
+></menuchoice
+> para ver qual buraco negro que vai para cada saída e com que direção. A fronteira ao redor dos buracos negros estão da mesma cor que suas saídas correspondentes. Acerte a bola no buraco negro, que irá ejetar então a bola para o buraco de modo que você passe para o próximo nível.</para>
+</sect1>
+
+<sect1 id="floaters"
+> <title
+>Boias</title>
+<para
+>As boias são plataformas móveis que carregam uma bola que pare em cima dela. A velocidades das boias pode variar. Esta é uma boia bastante lenta, mas você deverá ainda cronometrar a sua tacada para que passe por cima da parede e caia na cova.</para>
+</sect1>
+
+<sect1 id="bridges"
+> <title
+>Pontes</title>
+<para
+>As pontes são simples - estas simplesmente elevam a bola por cima das coisas que estejam abaixo delas, como as rampas, a areia e as poças. Estas poderão ter paredes castanhas no seu perímetro.</para>
+</sect1>
+</chapter>
+ 
+<chapter id="rules_and_tips"
+><title
+>Regras do jogo, estratégias e dicas</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+<para
+>Aqui está um descrição detalhada dos recursos básicos do &kappname;.</para>
+
+<sect1 id="starting"
+> 
+<title
+>Começando um jogo</title>
+
+<para
+>Para começar um jogo, escolha a opção <menuchoice
+><guimenu
+>Jogo</guimenu
+><guimenuitem
+>Novo</guimenuitem
+></menuchoice
+>. Isto irá abrir um diálogo onde você poderá configurar o seu jogo novo.</para>
+<!--
+<tip>
+<para
+>More third-party &kappname; courses are available at the &kappname; website. See <ulink 
+url="http://web.mit.edu/jasonkb/www/kolf/"
+>the &kappname; user-uploaded courses page</ulink
+>.</para>
+</tip>
+-->
+<sect2
+> 
+<title
+>A página <guilabel
+>Jogadores</guilabel
+></title>
+<para
+>Para adicionar um jogador ao seu jogo, clique no botão <guibutton
+>Novo jogador</guibutton
+>.</para>
+
+<para
+>Para mudar no nome dos jogadores, mude o texto nas caixas de texto.</para>
+
+<para
+>Para remover um jogador, clique no botão <guibutton
+>Remover</guibutton
+> ao lado do nome do jogador.</para>
+
+</sect2>
+
+<sect2
+> <title
+>A página <guilabel
+>Campo</guilabel
+></title>
+<para
+>Para escolher o campo onde deseja jogar, clique no seu item da lista à esquerda desta página. O &kappname; vem com vários campos incorporados nos quais poderá jogar.</para>
+<para
+>Para adicionar um campo que tenha obtido da Internet ou criado, clique no botão <guibutton
+>Adicionar...</guibutton
+> no fundo desta página e escolha o arquivo do campo no diálogo de seleção de arquivos.</para>
+</sect2>
+<sect2
+> <title
+>A página <guilabel
+>Opções</guilabel
+></title>
+<para
+>Nesta página você poderá escolher se este jogo será ou não jogado no <guilabel
+>Modo restrito</guilabel
+>. Neste modo, não existe a anulação de jogadas, buracos móveis ou a edição do campo. Este modo é geralmente usado nas competições. Só no modo restrito é que os recordes são registrados.</para>
+</sect2>
+</sect1>
+
+<sect1 id="saved-games"
+> <title
+>Jogos salvos</title>
+<para
+>O &kappname; poderá manter um histórico das suas rodadas ainda em progresso e salvá-lo no disco para que possa carregar essas rodadas e jogá-las mais tarde. Os jogos gravados incluem o buraco atual, os nomes e as cores dos jogadores em jogo, bem como as suas pontuações.</para>
+<sect2
+> <title
+>Salvando seu jogo</title>
+<para
+>Para salvar o seu jogo enquanto ainda está jogando, escolha a opção <menuchoice
+><guimenu
+>Jogo</guimenu
+><guimenuitem
+>Salvar jogo</guimenuitem
+> </menuchoice
+>. Se ainda não tiver gravado o jogo antes, será pedido o nome do arquivo onde irá gravar os dados.</para>
+</sect2>
+<sect2
+> <title
+>Carregando seu jogo</title>
+<para
+>Para carregar o jogo que você gravou, escolha a opção <menuchoice
+><guimenu
+>Jogo</guimenu
+><guimenuitem
+>Carregar...</guimenuitem
+> </menuchoice
+>. Você poderá então escolher o jogo salvo para abrir.</para>
+</sect2>
+</sect1>
+
+<sect1 id="practicing"
+> <title
+>Praticando</title>
+<para
+>Existem alguns recursos que tornam a prática do seu golfe mais simples. Estes recursos não estão ativados durante o modo restrito.</para>
+<sect2
+> <title
+>Desfazer</title>
+<para
+>Para anular uma jogada mal feita, escolha a opção <menuchoice
+><guimenu
+>Buraco</guimenu
+><guimenuitem
+>Desfazer tacada</guimenuitem
+></menuchoice
+>.</para>
+</sect2>
+<sect2
+> <title
+>Mudando de buraco</title>
+<para
+>O menu <guimenu
+>Ir</guimenu
+> contém vários itens do menu para mudar para os vários buracos que são bastante esclarecedores. Veja a <link linkend="go-menu"
+>referência do menu <guimenu
+>Jogar</guimenu
+></link
+>.</para>
+</sect2>
+</sect1>
+
+<sect1 id="putting-options"
+> <title
+>Opções das tacadas</title>
+<para
+>O &kappname; tem algumas formas de dar a tacada. O método básico das tacadas está <link linkend="hitting"
+>descrito acima</link
+>.</para>
+<para
+>O mouse está ativo por padrão. Isto significa que, sempre que o mouse é mexido, o taco se alinhará com a linha entre o mouse e a bola.</para>
+<para
+>Se preferir usar apenas o teclado e as teclas dos cursores, você poderá desativar as tacadas com o mouse desligando a opção <menuchoice
+><guimenu
+>Configurações</guimenu
+><guimenuitem
+>Usar o mouse para mover o taco</guimenuitem
+></menuchoice
+>.</para>
+
+<sect2 id="advanced-putting"
+> <title
+>Tacadas avançadas</title>
+<para
+>As tacadas avançadas poderão se ativadas se assinalar a opção <menuchoice
+><guimenu
+>Configurações</guimenu
+><guimenuitem
+>Ativar o modo avançado</guimenuitem
+></menuchoice
+>. Este modo de tacada é ligeiramente mais desafiante que o modo normal, e poderá ser usado tanto com o mouse como com o teclado.</para>
+
+<para
+>Para dar a tacada neste modo:</para>
+<procedure>
+<step>
+<para
+>Clique ou pressione a tecla de cursor <keycap
+>Seta para baixo</keycap
+> uma vez para começar a tacada. O indicador de tacada irá aparecer e o medidor da força irá começar a ser preenchido com uma determinada cor, que vai mudando à medida que esse medidor vai enchendo.</para>
+</step>
+<step>
+<para
+>Clique ou pressione outra vez na tecla de cursor <keycap
+>Seta para baixo</keycap
+> quando o medidor de força tenha sido preenchido com a quantidade que você deseja. Quanto mais cheio estiver esse círculo do medidor, mais forte será a tacada. Exige alguma prática para conseguir dar a força correta nas tacadas.</para>
+<para
+>Depois disto, a cor do indicador da tacada irá começar a descer até o início.</para>
+</step>
+<step>
+<para
+>Clique ou pressione mais uma vez na tecla <keycap
+>Seta para baixo</keycap
+> quando o indicador de força estiver tão perto quanto possível da linha central do indicador da tacada.</para>
+</step>
+</procedure>
+<para
+>Quanto mais perto do clique final for, mais real a tacada será da linha original.</para>
+</sect2>
+</sect1>
+</chapter>
+ 
+<chapter id="interface"
+><title
+>Resumo da interface</title
+> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+ <sect1 id="game-menu">
+<title
+>O menu Jogo</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Novo</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Inicia um novo jogo</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Carregar...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Carrega um jogo salvo previamente.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Salvar o campo</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Salva o campo atual usando o seu nome de arquivo atual.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Salvar campo como...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Abre um diálogo de arquivos que lhe permite <action
+>salvar o campo atual com um outro nome de arquivo</action
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Jogo</guimenu
+><guimenuitem
+>Salvar jogo</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Salva o jogo atual</action
+> com o nome do último jogo gravado, ou com um nome de arquivo que você irá indicar se ainda não tiver gravado o jogo.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Salvar jogo como...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Abre um diálogo de arquivos que lhe permitirá <action
+>salvar o jogo atual com o nome de um arquivo à sua escolha</action
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>End</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Terminar jogo</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Termina o jogo atual, sem sair do</action
+> &kappname;</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Mostrar recordes</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Exibe a tabela de recordes.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Jogo</guimenu
+><guimenuitem
+>Sobre o campo</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Exibe o nome, o autor e o número de buracos do campo.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+><guimenuitem
+>Sair</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Sai</action
+> do &kappname;</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="hole-menu">
+<title
+>O menu Buraco</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Buraco</guimenu
+> <guimenuitem
+>Editar</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Muda para o modo de edição</action
+> para editar o nível atual.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Buraco</guimenu
+> <guimenuitem
+>Novo</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Cria um novo nível de buraco.</action
+> (Só no modo de edição).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Del</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Buraco</guimenu
+> <guimenuitem
+>Limpar</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Remove todos os objetos do nível atual.</action
+> (Só no modo de edição).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>R</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Buraco</guimenu
+> <guimenuitem
+>Reiniciar</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Restaura o nível atual para a sua posição inicial</action
+>, de modo a que possa começar do início.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Buraco</guimenu
+> <guimenuitem
+>Exibir informações</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Mostra informações sobre os objetos do nível atual.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Buraco</guimenu
+> <guimenuitem
+>Desfazer tacada</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Anula a última jogada que você tenha feito.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="go-menu">
+<title
+>O menu Ir</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ir</guimenu
+> <guisubmenu
+>Mudar para o buraco</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Vai diretamente para outro nível do campo.</action
+> Uma lista com os números dos níveis permitirá escolher qual o nível para o qual deseja mudar.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Alt;<keycap
+>Direita</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Ir</guimenu
+> <guimenuitem
+>Próximo buraco</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Vai para o próximo buraco.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Alt;<keycap
+>Esquerda</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Ir</guimenu
+> <guimenuitem
+>Buraco anterior</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Vai para o nível anterior do buraco.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl;<keycap
+>Home</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Ir</guimenu
+> <guimenuitem
+>Primeiro buraco</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Vai para o primeiro nível do campo.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>End</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Ir</guimenu
+> <guimenuitem
+>Último buraco</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Vai para o último nível do campo.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ir</guimenu
+> <guimenuitem
+>Buraco aleatório</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Vai para um nível aleatório do campo atual.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="settings-menu">
+<title
+>O menu Configurações</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Exibir barra de ferramentas</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Ativa ou desativa a barra de ferramentas principal.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Exibir barra de status</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Ativa ou desativa a barra de estado.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Usar o mouse para mover o taco</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Permite a utilização do mouse para mover o taco.</action
+></para
+> 
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Ativar modo avançado</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Ativa o modo avançado para aplicar tacadas</action
+>, tal como está descrito na sua <link linkend="advanced-putting"
+>própria seção</link
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Exibir guia dos tacos</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Ativa ou desativa a linha de guia do taco.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Reproduzir sons</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Ativa ou desativa os efeitos sonoros.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Ativar Todas as Janelas</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Reativa todas as janelas que você tenha desativado clicando numa opção <guilabel
+>Não mostrar esta mensagem de novo</guilabel
+> ou semelhante</action
+>.</para>
+</listitem>
+</varlistentry>
+<!--
+<varlistentry>
+<term
+><menuchoice>
+<guimenu
+>Settings</guimenu>
+<guimenuitem
+>Reload Plugins</guimenuitem>
+</menuchoice
+></term>
+<listitem>
+<para
+><action
+>Reload plugins.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice>
+<guimenu
+>Settings</guimenu>
+<guimenuitem
+>Show Plugins</guimenuitem>
+</menuchoice
+></term>
+<listitem>
+<para
+><action
+>Display the currently loaded plugins.</action
+></para>
+</listitem>
+</varlistentry>
+-->
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Configurar atalhos...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Personaliza os atalhos do teclado.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Configurar barras de ferramentas...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Abre uma janela que lhe permite configurar as barras de ferramentas</action
+> no &kappname;.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+<sect1 id="help"
+><!--This is a standard Help menubar entry. Only change if needed.-->
+<title
+>O menu Ajuda</title>
+<para
+>O &kappname; tem um menu de <guimenu
+>Ajuda</guimenu
+> padrão do &kde;, como se encontra descrito abaixo, com uma adição:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ajuda</guimenu
+><guimenuitem
+>Tutorial</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Inicia o campo de tutorial do &kappname;.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>As entradas padrão do &kde; no menu <guimenu
+>Ajuda</guimenu
+> são:</para
+>&help.menu.documentation; </sect1>
+</chapter>
+  
+<chapter id="faq"
+><title
+>Perguntas frequentes</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Eu quero alterar o visual do jogo. É possível? </para
+></question>
+ <answer
+><para
+>Não. Atualmente, o &kappname; só oferece um tema.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Posso usar o teclado para jogar? </para
+></question>
+ <answer
+><para
+>Sim. Use as teclas de cursores para controlar o taco.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Não consigo descobrir o que fazer aqui! Existe alguma sugestão? </para
+></question>
+ <answer
+><para
+>Não. O &kappname; não possui uma funcionalidade de sugestão.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Quero desenhar o meu campo de golfe. Posso fazê-lo? </para
+></question>
+ <answer
+><para
+>Sim, você pode. Para entrar no modo de edição, use a opção <menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Buraco</guimenu
+> <guimenuitem
+>Editar</guimenuitem
+></menuchoice
+>. Clique <link linkend="creating"
+>aqui</link
+> para mais detalhes.</para
+></answer
+><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+</qandaentry>
+ 
+</qandaset>
+</chapter>
+ 
+<chapter id="configuration"
+><title
+>Editor de Campos</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+<para
+>O &kappname; vem com um editor versátil para o seu formato de arquivos dos campos. Os campos poderão conter qualquer número de buracos e não existe nenhum limite à criatividade do desenhador do campo.</para>
+
+<sect1 id="creating"
+> <title
+>Criando um novo campo</title>
+<para
+>Para criar um novo campo, escolha a opção <menuchoice
+><guimenu
+>Jogo</guimenu
+><guimenuitem
+>Novo</guimenuitem
+></menuchoice
+>. Vá à página <guilabel
+>Campos</guilabel
+> da janela e escolha o campo <guilabel
+>Criar Novo</guilabel
+>. Certifique-se de que, na página <guilabel
+>Opções</guilabel
+> da janela, o <guilabel
+>Modo restrito</guilabel
+> está desativado.</para>
+
+<note>
+<para
+>Para jogar este campo novo mais tarde, clique no botão <guibutton
+>Adicionar...</guibutton
+> para adicionar o seu campo à lista de campos.</para>
+</note>
+</sect1>
+
+<sect1 id="adding-holes"
+> <title
+>Adicionando buracos</title>
+<para
+>Alterne para o modo edição usando o <menuchoice
+><guimenu
+>Buraco</guimenu
+> <guimenuitem
+>Editar</guimenuitem
+></menuchoice
+>. Escolha a opção <menuchoice
+><guimenu
+>Buraco</guimenu
+><guimenuitem
+>Novo</guimenuitem
+></menuchoice
+> para adicionar um novo buraco ao fim do campo.</para>
+<tip>
+<para
+>Você poderá restaurar um buraco para um campo em branco, de forma semelhante à de quando foi criado da primeira vez, se escolher a opção <menuchoice
+><guimenu
+>Buraco</guimenu
+><guimenuitem
+>Limpar</guimenuitem
+></menuchoice
+>.</para>
+</tip>
+<para
+>Irão aparecer dois itens no campo de jogo: o buraco em si e uma bola branca. A bola branca marca onde as bolas dos jogadores irão iniciar o nível.</para>
+</sect1>
+
+<sect1 id="editing-basics"
+> <title
+>Conceitos básicos da edição</title>
+<para
+>O bloco básico de construção dos campos do &kappname; é o <quote
+>objeto</quote
+>. Cada nível de um buraco é composto a partir de um conjunto de objetos. Os objetos poderão ser movidos para qualquer local e os diferentes tipos de objetos terão propriedades diferentes que você poderá definir.</para>
+<para
+>Para começar a editar o nível de um buraco, ative o item do menu <menuchoice
+><guimenu
+>Buraco</guimenu
+><guimenuitem
+>Editar</guimenuitem
+></menuchoice
+> ou clique no ícone do lápis na barra de ferramentas. Para abandonar o modo de edição, desligue este item do menu (ou o ícone da barra de ferramentas).</para>
+
+<sect2
+> <title
+>Adicionando objetos</title>
+<para
+>Para adicionar um novo objeto ao campo, escolha o seu nome na lista chamada <guilabel
+>Adicionar objeto:</guilabel
+>. O objeto irá aparecer no centro do campo.</para>
+<caution>
+<para
+>As pontes e os sinais irão cobrir os novos objetos se eles já estiverem no centro do nível.</para>
+</caution>
+<!--
+<tip>
+<para
+>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
+</tip>
+<para
+>Some &kappname; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
+<para
+>Third-party &kappname; plugins are available at the &kappname; website. See <ulink url="http://web.mit.edu/jasonkb/www/kolf/"
+>the &kappname; plugins download page</ulink
+>.</para>
+-->
+</sect2>
+
+<sect2
+> <title
+>Movendo e redimensionando objetos</title>
+<para
+>Mova o seu cursor do mouse por cima do objeto que deseja mover para que o cursor mude para o formato de uma mão. A partir daí clique e arraste o objeto para onde desejar movê-lo.</para>
+<para
+>As poças, a areia, as boias, as pontes e os sinais poderão ser redimensionados arrastando o pequeno círculo que possuem no seu canto inferior direito.</para>
+
+<note>
+<para
+>As paredes poderão ser movidas clicando e arrastando os seus pontos finais, ou você poderá arrastar a parede inteira clicando e arrastando a parte central da parede como é normal.</para>
+</note>
+</sect2>
+
+<sect2
+> <title
+>Configurações dos objetos</title>
+<para
+>As propriedades dos objetos podem ser alteradas na área do canto inferior direito da janela do &kappname;. Para editar um objeto, mova o cursor do seu mouse para cima dele até que o cursor mude para a mão. Em seguida clique nele. Os vários controles para esse objeto irão aparecer no canto inferior direito da janela do &kappname;.</para>
+<sect3
+> <title
+>Configurações gerais do buraco</title>
+<para
+>Para editar as configurações gerais do buraco, clique numa área do buraco que não esteja coberta por nenhum objeto. Logo que isto seja possível, o cursor ficará com a forma do ponteiro da seta normal.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Nome do percurso:</guilabel
+></term>
+<listitem>
+<para
+>Este é o nome que é mostrado no diálogo de novo jogo e no diálogo <guimenuitem
+>Sobre o campo</guimenuitem
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Autor do campo:</guilabel
+></term>
+<listitem>
+<para
+>Este é o nome do autor que é mostrado no diálogo <guimenuitem
+>Sobre o campo</guimenuitem
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Par:</guilabel
+></term>
+<listitem>
+<para
+>O 'par' do nível.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Máximo:</guilabel
+></term>
+<listitem>
+<para
+>Número máximo de tacadas que o jogador pode dar neste buraco.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Exibir as paredes de contorno</guilabel
+></term>
+<listitem>
+<para
+>Se deve ser mostrada as paredes ao redor do contorno do nível.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Rampas</title>
+
+<variablelist>
+<varlistentry
+> <term
+>Tipo</term>
+<listitem>
+<para
+>Escolha o tipo da rampa - <guilabel
+>Vertical</guilabel
+>, <guilabel
+>Horizontal</guilabel
+>, <guilabel
+>Diagonal</guilabel
+>, <guilabel
+>Diagonal Oposto</guilabel
+>, <guilabel
+>Circular</guilabel
+>. As rampas diagonais e diagonais opostas são triangulares, enquanto que as circulares têm exatamente essa forma. As rampas verticais e horizontais são retangulares, como seria de esperar.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Inverter direção</guilabel
+></term>
+<listitem>
+<para
+>Se deve ser invertida ou não a inclinação da rampa. Por exemplo, pense numa rampa elíptica (circular). Quando não estiver invertida, ela empurra as rampas para fora como um monte. Quando estiver, ela puxa as bolas para dentro como um buraco.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Grau:</guilabel
+></term>
+<listitem>
+<para
+>Escolha o grau (inclinação) da rampa, movendo a barra deslizante para que o grau vá de 0 a 8, em que o 8 é o mais inclinado e o 0 é o plano. As rampas mais íngremes empurram mais a bola.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Imóvel</guilabel
+></term>
+<listitem>
+<para
+>Se pode ou não ser movida por outros objetos, como flutuadores.</para>
+<caution>
+<para
+>Se uma boia sobrepor este objeto em algum ponto do seu deslocamento e se a inclinação for grande, não movendo deste modo a boia, você <emphasis
+>precisa</emphasis
+> tornar a rampa <guilabel
+>Imóvel</guilabel
+>, ou então o &kappname; terá uma crise de performance!</para>
+</caution>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Charcos e areia</title>
+<para
+>As poças ou charcos e a areia têm as mesmas opções de configuração.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Habilitar exibir/ocultar</guilabel
+></term>
+<listitem>
+<para
+>Se assinalar esta opção, ativa a intermitência desta poça de água ou de areia.</para>
+<!--
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Show/Hide speed</term>
+<listitem>
+  -->
+<para
+>Quanto mais perto do <guilabel
+>Rápido</guilabel
+> estiver a barra, mais depressa o charco ou a areia ficarão intermitentes.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Pontes, moinhos, boias e sinais</title>
+<para
+>As pontes, moinhos, boias e sinais possuem todas opções semelhantes de configuração dos lados que existem nas paredes de contorno. Para mostrar a parede de um lado, ative a opção para esse lado.</para>
+<para
+>Existem também algumas opções específicas para os moinhos, as boias e os sinais.</para>
+
+<sect4
+> <title
+>Moinhos</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Moinho ao fundo</guilabel
+></term>
+<listitem>
+<para
+>Se o braço do moinho a preto está em cima ou em baixo - por padrão, ele está em baixo. As duas meias-paredes irão estar sempre com o braço. Repare que você não poderá ativar a parede do contorno do lado em que o braço se encontra.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Velocidade</term>
+<listitem>
+<para
+>Quanto mais perto do <guilabel
+>Rápido</guilabel
+> estiver a barra, mais rapidamente se moverá o braço do moinho.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Boias</title>
+<para
+>O caminho que a boia segue é mostrado pela parede a que se encontra associada.</para>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Velocidade de movimentação</guilabel
+></term>
+<listitem>
+<para
+>Quanto mais próxima do <guilabel
+>Rápido</guilabel
+> estiver a barra, mais rapidamente se move a boia. Se a barra estiver encostada por completo ao extremo <guilabel
+>Lento</guilabel
+>, a boia irá parar.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Sinais</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Sinal HTML:</guilabel
+></term>
+<listitem>
+<para
+>Você poderá indicar qualquer &HTML; válido aqui. Por exemplo se escrever <userinput
+>Lance &lt;i&gt;devagar&lt;/i&gt; em direção à rampa!</userinput
+> irá criar o texto <quote
+>Lance <emphasis
+>devagar</emphasis
+> em direção à rampa!</quote
+>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+</sect3>
+</sect2>
+</sect1>
+</chapter>
+ 
+<chapter id="credits"
+><title
+>Créditos e licença</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+ 
+<para
+>&kappname;</para>
+
+<para
+>Direitos autorais do &kappname; 2001, 2002 &Jason.Katz-Brown;</para>
+
+<itemizedlist>
+<title
+>Programadores</title>
+<listitem>
+<para
+>&Jason.Katz-Brown; <email
+>jasonkb@mit.edu</email
+></para>
+</listitem>
+<listitem>
+<para
+>Niklas Knutsson</para>
+</listitem>
+<listitem>
+<para
+>Ryan Cumming</para>
+</listitem>
+<listitem>
+<para
+>Daniel Matza-Brown</para>
+</listitem>
+<listitem>
+<para
+>Paul Broadbent</para>
+</listitem>
+</itemizedlist>
+
+<para
+>Direitos autorais da documentação 2002, &Jason.Katz-Brown;</para>
+
+<para
+>Tradução de Marcus Gama <email
+>marcus.gama@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+  
+<appendix id="installation">
+<title
+>Instalação</title>
+ 
+&install.intro.documentation;
+ 
+ 
+<sect1 id="Compilation">
+<title
+>Compilação e instalação</title
+>&install.compile.documentation; </sect1>
+</appendix>
+ 
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

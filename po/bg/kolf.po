@@ -1,0 +1,775 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Zlatko Popov <zlatkopopov@fsa-bg.org>, 2006, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: kolf\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2007-04-15 09:41+0000\n"
+"Last-Translator: Zlatko Popov <zlatkopopov@fsa-bg.org>\n"
+"Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, fuzzy, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Име на игрище: "
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+
+#: config.cpp:51
+#, kde-format
+msgid "No configuration options"
+msgstr "Без възможност за настройване"
+
+#: editor.cpp:37
+#, kde-format
+msgid "Add object:"
+msgstr "Добавяне на обект:"
+
+#: game.cpp:261
+#, kde-format
+msgid "Course name: "
+msgstr "Име на игрище: "
+
+#: game.cpp:268
+#, kde-format
+msgid "Course author: "
+msgstr "Автор на игрище: "
+
+#: game.cpp:277
+#, kde-format
+msgid "Par:"
+msgstr "Средно:"
+
+#: game.cpp:287
+#, kde-format
+msgid "Maximum:"
+msgstr "Максимум:"
+
+#: game.cpp:291
+#, kde-format
+msgid "Maximum number of strokes player can take on this hole."
+msgstr "Максимален брой удари, които може да направи играчът за тази дупка."
+
+#: game.cpp:292
+#, kde-format
+msgid "Maximum number of strokes"
+msgstr "Максимален брой удари"
+
+#: game.cpp:293
+#, kde-format
+msgid "Unlimited"
+msgstr "Без ограничение"
+
+#: game.cpp:299
+#, kde-format
+msgid "Show border walls"
+msgstr "Гранични стени"
+
+#: game.cpp:497 game.cpp:2439
+#, kde-format
+msgid "Course Author"
+msgstr "Автор на игрище"
+
+#: game.cpp:498 game.cpp:499 game.cpp:2439
+#, kde-format
+msgid "Course Name"
+msgstr "Име на игрище"
+
+#: game.cpp:1421
+#, kde-format
+msgid "Drop Outside of Hazard"
+msgstr "Излизане извън локвата"
+
+#: game.cpp:1422
+#, kde-format
+msgid "Rehit From Last Location"
+msgstr "Повторение на удара от последна позиция"
+
+#: game.cpp:1424
+#, kde-format
+msgid "What would you like to do for your next shot?"
+msgstr "Какво искате да направите при следващия си удар?"
+
+#: game.cpp:1424
+#, kde-format
+msgid "%1 is in a Hazard"
+msgstr "%1 е в локва"
+
+#: game.cpp:1592
+#, kde-format
+msgid "%1 will start off."
+msgstr "%1 започва пръв."
+
+#: game.cpp:1592
+#, kde-format
+msgid "New Hole"
+msgstr "Нова дупка"
+
+#: game.cpp:1753
+#, kde-format
+msgid "Course name: %1"
+msgstr "Име на игрище: %1"
+
+#: game.cpp:1754
+#, kde-format
+msgid "Created by %1"
+msgstr "Създадено от %1"
+
+#: game.cpp:1755
+#, fuzzy, kde-format
+msgid "%1 hole"
+msgid_plural "%1 holes"
+msgstr[0] "%1 дупки"
+msgstr[1] "%1 дупки"
+
+#: game.cpp:1756
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Course Information"
+msgstr "Информация за игрището"
+
+#: game.cpp:1887
+#, kde-format
+msgid "This hole uses the following plugins, which you do not have installed:"
+msgstr "Тази дупка използва следните приставки, които не са инсталирани:"
+
+#: game.cpp:1999
+#, kde-format
+msgid "There are unsaved changes to current hole. Save them?"
+msgstr "Незаписани промени за тази дупка. Да бъдат ли записани?"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Unsaved Changes"
+msgstr "Незаписани промени"
+
+#: game.cpp:1999
+#, kde-format
+msgid "Save &Later"
+msgstr "Запис по-&късно"
+
+#: game.cpp:2170 kolf.cpp:550
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Pick Kolf Course to Save To"
+msgstr "Запис в игрище"
+
+#: kcomboboxdialog.cpp:60
+#, kde-format
+msgid "&Do not ask again"
+msgstr "&Изключване на въпроса"
+
+#: kolf.cpp:62
+#, fuzzy, kde-format
+msgid "Slope"
+msgstr "Бавно"
+
+#: kolf.cpp:63
+#, kde-format
+msgid "Puddle"
+msgstr "Локва"
+
+#: kolf.cpp:64
+#, kde-format
+msgid "Wall"
+msgstr "Стена"
+
+#: kolf.cpp:65
+#, kde-format
+msgid "Cup"
+msgstr "Дупка"
+
+#: kolf.cpp:66
+#, kde-format
+msgid "Sand"
+msgstr "Пясъци"
+
+#: kolf.cpp:67
+#, kde-format
+msgid "Windmill"
+msgstr "Вятърна мелница"
+
+#: kolf.cpp:68
+#, kde-format
+msgid "Black Hole"
+msgstr "Черна дупка"
+
+#: kolf.cpp:69
+#, kde-format
+msgid "Floater"
+msgstr ""
+
+#: kolf.cpp:70
+#, kde-format
+msgid "Bridge"
+msgstr "Мост"
+
+#: kolf.cpp:71
+#, kde-format
+msgid "Sign"
+msgstr "Знак"
+
+#: kolf.cpp:72
+#, kde-format
+msgid "Bumper"
+msgstr "Склон"
+
+#: kolf.cpp:95
+#, kde-format
+msgid "Save &Course"
+msgstr "&Запис на игрище"
+
+#: kolf.cpp:97
+#, kde-format
+msgid "Save &Course As..."
+msgstr "Запис на игрище &като..."
+
+#: kolf.cpp:100
+#, kde-format
+msgid "&Save Game"
+msgstr "З&апис на игра"
+
+#: kolf.cpp:103
+#, kde-format
+msgid "&Save Game As..."
+msgstr "Запи&с на игра като..."
+
+#: kolf.cpp:110
+#, kde-format
+msgid "&Edit"
+msgstr ""
+
+#: kolf.cpp:116
+#, kde-format
+msgid "&New"
+msgstr "&Нова"
+
+#: kolf.cpp:125
+#, kde-format
+msgid "&Reset"
+msgstr "Ану&лиране"
+
+#: kolf.cpp:130
+#, kde-format
+msgid "&Undo Shot"
+msgstr "&Отмяна на удар"
+
+#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. Go
+#: kolf.cpp:134
+#, kde-format
+msgid "Switch to Hole"
+msgstr "Прехвърляне към дупка"
+
+#: kolf.cpp:139
+#, kde-format
+msgid "&Next Hole"
+msgstr "Следва&ща дупка"
+
+#: kolf.cpp:144
+#, kde-format
+msgid "&Previous Hole"
+msgstr "Преди&шна дупка"
+
+#: kolf.cpp:149
+#, kde-format
+msgid "&First Hole"
+msgstr "П&ърва дупка"
+
+#: kolf.cpp:153
+#, kde-format
+msgid "&Last Hole"
+msgstr "Пос&ледна дупка"
+
+#: kolf.cpp:158
+#, kde-format
+msgid "&Random Hole"
+msgstr "Сл&учайна дупка"
+
+#: kolf.cpp:162
+#, kde-format
+msgid "Enable &Mouse for Moving Putter"
+msgstr "Движение на стика с &мишката"
+
+#: kolf.cpp:169
+#, kde-format
+msgid "Enable &Advanced Putting"
+msgstr "Стик за н&апреднали"
+
+#: kolf.cpp:175
+#, kde-format
+msgid "Show &Info"
+msgstr "Ин&формация"
+
+#: kolf.cpp:182
+#, kde-format
+msgid "Show Putter &Guideline"
+msgstr "Показване на &водещата линия на стика"
+
+#: kolf.cpp:188
+#, kde-format
+msgid "Enable All Dialog Boxes"
+msgstr "Всички диалогови прозорци"
+
+#: kolf.cpp:192
+#, kde-format
+msgid "Play &Sounds"
+msgstr "Включване на &звука"
+
+#: kolf.cpp:199
+#, fuzzy, kde-format
+msgid "&About Course..."
+msgstr "Относно игри&щето"
+
+#: kolf.cpp:202
+#, kde-format
+msgid "&Tutorial"
+msgstr "О&бучение"
+
+#: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
+#, kde-format
+msgid "Par"
+msgstr "Средно"
+
+#: kolf.cpp:483
+#, kde-format
+msgid " and "
+msgstr " и "
+
+#: kolf.cpp:484
+#, kde-format
+msgid "%1 tied"
+msgstr "%1 е блокиран"
+
+#: kolf.cpp:487
+#, kde-format
+msgid "%1 won!"
+msgstr "%1 спечели!"
+
+#: kolf.cpp:501 kolf.cpp:513 kolf.cpp:528 kolf.cpp:529 newgame.cpp:249
+#: newgame.cpp:250
+#, kde-format
+msgid "High Scores for %1"
+msgstr "Резултат за %1"
+
+#: kolf.cpp:568
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Pick Saved Game to Save To"
+msgstr "Запис в записана игра"
+
+#: kolf.cpp:606
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Pick Kolf Saved Game"
+msgstr "Избиране на записана игра"
+
+#: kolf.cpp:654
+#, kde-format
+msgid "%1's turn"
+msgstr "Ред е на %1"
+
+#: kolf.cpp:726
+#, kde-format
+msgid "%1's score has reached the maximum for this hole."
+msgstr "Максимален брой точки на %1 за тази дупка."
+
+#. i18n: ectx: Menu (hole)
+#: kolfui.rc:17
+#, kde-format
+msgid "Ho&le"
+msgstr "Ду&пка"
+
+#. i18n: ectx: Menu (go_course)
+#: kolfui.rc:31
+#, kde-format
+msgid "&Go"
+msgstr "Навига&ция"
+
+#: landscape.cpp:146
+#, kde-format
+msgid "Enable show/hide"
+msgstr "Показване/скриване"
+
+#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
+#, kde-format
+msgid "Slow"
+msgstr "Бавно"
+
+#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
+#, kde-format
+msgid "Fast"
+msgstr "Бързо"
+
+#: landscape.cpp:238
+#, kde-format
+msgid "Vertical"
+msgstr ""
+
+#: landscape.cpp:239
+#, kde-format
+msgid "Horizontal"
+msgstr ""
+
+#: landscape.cpp:240
+#, kde-format
+msgid "Diagonal"
+msgstr "Диагонал"
+
+#: landscape.cpp:241
+#, kde-format
+msgid "Opposite Diagonal"
+msgstr "Обратен диагонал"
+
+#: landscape.cpp:242
+#, kde-format
+msgid "Elliptic"
+msgstr ""
+
+#: landscape.cpp:571
+#, kde-format
+msgid "Reverse direction"
+msgstr "Обръщане на посоката"
+
+#: landscape.cpp:576
+#, kde-format
+msgid "Unmovable"
+msgstr "Без преместване"
+
+#: landscape.cpp:578
+#, kde-format
+msgid "Whether or not this slope can be moved by other objects, like floaters."
+msgstr ""
+"Преместване на склона от други предмети, като например, хвърчащи килимчета."
+
+#: landscape.cpp:582
+#, kde-format
+msgid "Grade:"
+msgstr "Степен:"
+
+#: main.cpp:49
+#, kde-format
+msgid "Kolf"
+msgstr "Kolf"
+
+#: main.cpp:51
+#, kde-format
+msgid "KDE Minigolf Game"
+msgstr "Мини голф"
+
+#: main.cpp:53
+#, kde-format
+msgid "(c) 2002-2010, Kolf developers"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Stefan Majewsky"
+msgstr ""
+
+#: main.cpp:56
+#, kde-format
+msgid "Current maintainer"
+msgstr ""
+
+#: main.cpp:57
+#, kde-format
+msgid "Jason Katz-Brown"
+msgstr ""
+
+#: main.cpp:57
+#, fuzzy, kde-format
+msgid "Former main author"
+msgstr "Main author"
+
+#: main.cpp:58
+#, kde-format
+msgid "Niklas Knutsson"
+msgstr ""
+
+#: main.cpp:58
+#, kde-format
+msgid "Advanced putting mode"
+msgstr "Advanced putting mode"
+
+#: main.cpp:59
+#, kde-format
+msgid "Rik Hemsley"
+msgstr ""
+
+#: main.cpp:59
+#, kde-format
+msgid "Border around course"
+msgstr "Border around course"
+
+#: main.cpp:60
+#, kde-format
+msgid "Timo A. Hummel"
+msgstr ""
+
+#: main.cpp:60
+#, kde-format
+msgid "Some good sound effects"
+msgstr "Some good sound effects"
+
+#: main.cpp:62
+#, kde-format
+msgid "Rob Renaud"
+msgstr ""
+
+#: main.cpp:62
+#, kde-format
+msgid "Wall-bouncing help"
+msgstr "Wall-bouncing help"
+
+#: main.cpp:63
+#, kde-format
+msgid "Aaron Seigo"
+msgstr ""
+
+#: main.cpp:63
+#, kde-format
+msgid "Suggestions, bug reports"
+msgstr "Suggestions, bug reports"
+
+#: main.cpp:64
+#, kde-format
+msgid "Erin Catto"
+msgstr ""
+
+#: main.cpp:64
+#, kde-format
+msgid "Developer of Box2D physics engine"
+msgstr ""
+
+#: main.cpp:65
+#, kde-format
+msgid "Ryan Cumming"
+msgstr ""
+
+#: main.cpp:65
+#, fuzzy, kde-format
+msgid "Vector class (Kolf 1)"
+msgstr "Vector class"
+
+#: main.cpp:66
+#, kde-format
+msgid "Daniel Matza-Brown"
+msgstr ""
+
+#: main.cpp:66
+#, fuzzy, kde-format
+msgid "Working wall-bouncing algorithm (Kolf 1)"
+msgstr "Working wall-bouncing algorithm"
+
+#: main.cpp:71
+#, kde-format
+msgid "File"
+msgstr ""
+
+#: main.cpp:72
+#, kde-format
+msgid "Print course information and exit"
+msgstr "Отпечатване на информацията за игрището и изход"
+
+#: main.cpp:89 newgame.cpp:240
+#, kde-format
+msgid "By %1"
+msgstr "От %1"
+
+#: main.cpp:90
+#, kde-format
+msgid "%1 holes"
+msgstr "%1 дупки"
+
+#: main.cpp:91
+#, kde-format
+msgid "par %1"
+msgstr "Средно %1"
+
+#: main.cpp:98
+#, kde-format
+msgid "Course %1 does not exist."
+msgstr "Игрището \"%1\" не съществува."
+
+#: newgame.cpp:38
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "New Game"
+msgstr "З&апис на игра"
+
+#: newgame.cpp:54
+#, kde-format
+msgid "Players"
+msgstr "Играчи"
+
+#: newgame.cpp:58
+#, kde-format
+msgid "&New Player"
+msgstr "&Нов играч"
+
+#: newgame.cpp:93
+#, kde-format
+msgid "Course"
+msgstr "Игрище"
+
+#: newgame.cpp:94
+#, kde-format
+msgid "Choose Course to Play"
+msgstr "Избор на игрище"
+
+#: newgame.cpp:133
+#, kde-format
+msgid "Create New"
+msgstr "Ново игрище"
+
+#: newgame.cpp:134
+#, kde-format
+msgid "You"
+msgstr "Вие"
+
+#: newgame.cpp:160
+#, kde-format
+msgid "Highscores"
+msgstr "Резултати"
+
+#: newgame.cpp:170
+#, kde-format
+msgid "Add..."
+msgstr "Добавяне..."
+
+#: newgame.cpp:174 newgame.cpp:363
+#, kde-format
+msgid "Remove"
+msgstr ""
+
+#: newgame.cpp:184
+#, fuzzy, kde-format
+msgid "Options"
+msgstr "Настройки на играта"
+
+#: newgame.cpp:185
+#, kde-format
+msgid "Game Options"
+msgstr "Настройки на играта"
+
+#: newgame.cpp:190
+#, kde-format
+msgid "&Strict mode"
+msgstr "&Строг режим"
+
+#: newgame.cpp:194
+#, kde-format
+msgid ""
+"In strict mode, undo, editing, and switching holes is not allowed. This is "
+"generally for competition. Only in strict mode are highscores kept."
+msgstr ""
+"В строг режим отмяната, редактирането и прехвърлянето към друга дупка не са "
+"разрешени. Той се използва главно за състезания. Само в този режим може да "
+"се записват резултати."
+
+#: newgame.cpp:241
+#, kde-format
+msgid "Par %1"
+msgstr "Средно %1"
+
+#: newgame.cpp:242
+#, kde-format
+msgid "%1 Holes"
+msgstr "%1 Дупки"
+
+#: newgame.cpp:280
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Pick Kolf Course"
+msgstr "Избиране на игрище"
+
+#: newgame.cpp:308
+#, kde-format
+msgid "Chosen course is already on course list."
+msgstr "Избраното игрище вече е в списъка с игрища."
+
+#: newgame.cpp:321
+#, kde-format
+msgid "Player %1"
+msgstr "Играч %1"
+
+#: objects.cpp:244
+#, fuzzy, kde-format
+msgid " degree"
+msgid_plural " degrees"
+msgstr[0] "градуса"
+msgstr[1] "градуса"
+
+#: objects.cpp:247
+#, kde-format
+msgid "Exiting ball angle:"
+msgstr "Ъгъл на излитане на топката:"
+
+#: objects.cpp:267
+#, kde-format
+msgid "Minimum exit speed:"
+msgstr "Минимална скорост на излитане:"
+
+#: objects.cpp:288
+#, fuzzy, kde-format
+msgid "Maximum exit speed:"
+msgstr "Минимална скорост на излитане:"
+
+#: obstacles.cpp:412
+msgid "&Top"
+msgstr "О&тгоре"
+
+#: obstacles.cpp:412
+msgid "&Left"
+msgstr "&Ляво"
+
+#: obstacles.cpp:412
+msgid "&Right"
+msgstr "&Дясно"
+
+#: obstacles.cpp:412
+msgid "&Bottom"
+msgstr ""
+
+#: obstacles.cpp:421
+#, kde-format
+msgid "Walls on:"
+msgstr "Стени:"
+
+#: obstacles.cpp:431
+#, kde-format
+msgid "Sign HTML:"
+msgstr "Подпис HTML:"
+
+#: obstacles.cpp:440
+#, fuzzy, kde-format
+msgid "Windmill on top"
+msgstr "Вятърна мелница на дъното"
+
+#: obstacles.cpp:461
+#, kde-format
+msgid "Moving speed"
+msgstr "Скорост на движение"
+
+#: obstacles.cpp:681
+#, kde-format
+msgid "New Text"
+msgstr "Нов текст"
+
+#: scoreboard.cpp:28
+#, kde-format
+msgid "Total"
+msgstr "Общо"

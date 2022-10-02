@@ -1,0 +1,1573 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kolf;">
+  <!ENTITY package "kdegames">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Russian "INCLUDE">
+]>
+
+<book lang="&language;">
+
+<bookinfo>
+<title
+>Руководство &kolf;</title>
+
+<authorgroup>
+<author
+><firstname
+>Jason</firstname
+> <surname
+>Katz-Brown</surname
+> <affiliation
+> <address
+><email
+>jason@katzbrown.com</email
+></address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Руслан</firstname
+><surname
+>Будаев</surname
+><affiliation
+><address
+><email
+>fokses@pisem.net</email
+></address
+></affiliation
+> <contrib
+>Перевод на русский</contrib
+></othercredit
+><othercredit role="reviewer"
+><firstname
+>Григорий</firstname
+><surname
+>Мохин</surname
+><affiliation
+><address
+><email
+>mok@kde.ru</email
+></address
+></affiliation
+> <contrib
+>Редакция русского перевода</contrib
+></othercredit
+> 
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2003-09-18</date>
+<releaseinfo
+>1.00.00</releaseinfo>
+
+<abstract>
+<para
+>&kolf; - это игра в мини-гольф для &kde; </para>
+</abstract>
+
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>гольф</keyword>
+<keyword
+>мини</keyword>
+<keyword
+>аркада</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction"
+> <title
+>Введение</title>
+<para
+>&kolf; - это игра в мини-гольф. Она выполнена в виде плоского поля, на котором располагаются объекты площадки. Площадки можно настраивать, и одновременно до 10 человек могут участвовать в игре.</para>
+<para
+>В &kolf; включен курс обучения. <link linkend="tutorial"
+>Пройти курс обучения</link
+> - лучший способ научиться играть в гольф.</para>
+
+</chapter>
+
+<chapter id="tutorial"
+> 
+<title
+>Обучение</title>
+
+<para
+>Играть в &kolf; очень просто. Чтобы научиться, проще всего садиться и играть, поэтому в курсе обучения вы пройдете несколько начальных уроков. Сейчас вы познакомитесь с игрой. Для начала обучения выберите <menuchoice
+><guimenu
+>Справка</guimenu
+><guimenuitem
+>Обучение</guimenuitem
+> </menuchoice
+>.</para>
+
+<sect1 id="hitting"
+> 
+<title
+>Удар по мячу</title>
+<para
+>Чтобы прицелиться для удара по мячу, вы можете либо расположить мышку за мячом так, что клюшка будет смотреть в нужном вам направлении, либо с помощью стрелок <keycap
+>Влево</keycap
+> и <keycap
+>Вправо</keycap
+> на клавиатуре повернуть указатель так, как вам надо.</para>
+<tip>
+<para
+>Для ускорения поворота клюшки вы можете зажать клавишу <keycap
+>Shift</keycap
+> при нажатии стрелок. Для замедления используйте клавишу <keycap
+>Control</keycap
+>.</para>
+</tip>
+<para
+>Для удара по мячу нажмите и держите левую кнопку мыши или же стрелку <keycap
+>Вниз</keycap
+>. Чем дольше вы держите клавишу или кнопку, тем с большей силой будет нанесен удар по мячу. Для хорошего чувства скорости потребуется тренировка.</para>
+<tip>
+<para
+>Для отмены удара, когда вы уже замахиваетесь клюшкой, нажмите клавишу <keycap
+>Escape</keycap
+>.</para>
+</tip>
+
+<para
+>Закатите мяч в лунку (серый кружок), чтобы перейти на следующую площадку.</para>
+</sect1>
+
+<sect1 id="slopes"
+> 
+<title
+>Горки</title>
+<para
+>Горки - это поверхности, по которым мяч для гольфа скатывается под уклон вниз. Свет на поле падает из левого верхнего угла, так что по ярко освещенному склону мяч будет скатываться влево и вверх. Вы можете выбрать <menuchoice
+><guimenu
+>Лунка</guimenu
+><guimenuitem
+>Сведения</guimenuitem
+></menuchoice
+>, чтобы увидеть стрелку, показывающую, в каком направлении покатится мяч.</para>
+<para
+>На этом шаге обучения забросьте мяч на склон и добейтесь того, чтобы он скатился в лунку.</para>
+
+<sect2
+> <title
+>Направления</title>
+<para
+>На следующем шаге поэкспериментируйте с другими видами горок. В &kolf; бывают эллиптические, вертикальные, горизонтальные и диагональные склоны. Закатите мяч в лунку.</para>
+</sect2>
+<sect2
+> <title
+>Крутизна</title>
+<para
+>На следующем шаге есть две горки различной высоты. Если вы выберете <menuchoice
+><guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Сведения</guimenuitem
+></menuchoice
+>, будет показана крутизна склона в виде числа от 1 до 8, где 8 - самая крутая, а 1 - самая пологая горка. Самая крутая горка имеет наибольшее затемнение. Закатите мяч в лунку и переходите на следующую площадку.</para>
+</sect2>
+</sect1>
+
+<sect1 id="walls"
+> <title
+>Стены</title>
+<para
+>Мячи, как и следовало ожидать, отскакивают от стен с небольшим торможением. Отбейте мяч от стены в лунку и переходите на следующую площадку.</para>
+</sect1>
+
+<sect1 id="puddles-sand"
+> <title
+>Лужи и песок</title>
+<sect2
+> <title
+>Лужи</title>
+<para
+>Лужи закрашены голубым цветом. Когда ваш мяч попадает в лужу, вам добавляется штрафной удар, и мяч помещается вне нее.</para>
+</sect2>
+<sect2
+> <title
+>Песок</title>
+<para
+>Песок закрашен желтым цветом. Мяч прокатывается по песку очень медленно.</para>
+<para
+>Закатите мяч в лунку так, чтобы он не попал ни в лужу, ни в песок, и переходите на следующую площадку.</para>
+</sect2>
+</sect1>
+
+<sect1 id="windmills"
+> <title
+>Мельницы</title>
+<para
+>Мельницы - это объекты с темной границей и движущейся лопастью сверху или снизу объекта. Ворота мельницы открыты с той стороны, где движется туда и обратно лопасть. Чтобы прокатить мяч через мельницу, нужна определенная тренировка. Сделайте это и, закатив мяч в лунку, переходите на следующую площадку.</para>
+</sect1>
+
+<sect1 id="black-holes"
+> <title
+>Черные дыры</title>
+<para
+>Когда вы попадаете мячом в черную дыру, он транспортируется к выходу и выбрасывается под углом к выходу с той же скоростью, с которой он влетел в нее. Для того, чтобы узнать точку выхода и направление мяча при попадании в черную дыру, используйте <menuchoice
+><guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Сведения</guimenuitem
+></menuchoice
+>. Ободок вокруг черной дыры и его выхода будут обозначены одинаковым цветом. Попадите мячом в черную дыру, которая перенесет его к лунке, и переходите на следующую площадку.</para>
+</sect1>
+
+<sect1 id="floaters"
+> <title
+>Ползуны</title>
+<para
+>Ползун - это движущаяся платформа, которая переносит мячи, падающие на нее. Ее скорость может быть разной. Этот ползун медленный, но вам все равно придется рассчитать свой удар, чтобы мяч перелетел через стену и попал в лунку.</para>
+</sect1>
+
+<sect1 id="bridges"
+> <title
+>Мосты</title>
+<para
+>Функция мостов проста: мяч по ним прокатывается над другими элементами, такими как горки, пески и лужи. Мосты могут иметь коричневые стены по краям.</para>
+</sect1>
+</chapter>
+
+<chapter id="basics"
+> <title
+>Начало</title>
+<para
+>Далее следует более подробное описание возможностей &kolf;.</para>
+
+<sect1 id="starting"
+> 
+<title
+>Начало игры</title>
+
+<para
+>Для начала нажмите <menuchoice
+><guimenu
+>Игра</guimenu
+><guimenuitem
+>Новая игра</guimenuitem
+></menuchoice
+>. Откроется диалог, где вы задаете настройки новой игры.</para>
+
+<tip>
+<para
+>Большее количество площадок доступно на веб-сайте Kolf. Заходите на <ulink url="http://www.katzbrown.com/kolf/Courses/User Uploaded/"
+>страницу площадок, созданных пользователями</ulink
+>.</para>
+</tip>
+
+<sect2
+> 
+<title
+>Страница <guilabel
+>Игроки</guilabel
+></title>
+<para
+>Для добавления нового игрока нажмите кнопку <guibutton
+>Новый игрок</guibutton
+>.</para>
+
+<para
+>Текстовые поля на фоне травы - это имена текущих игроков. Для смены имени введите текст в этом поле. Цвет мяча показан на прямоугольничке на средней кнопке. Чтобы его изменить, нажмите ее, и откроется диалог выбора цвета, где вы сможете выбрать нужный цвет мяча.</para>
+
+<para
+>Для удаления игрока нажмите кнопку <guibutton
+>Удалить</guibutton
+> рядом с именем игрока.</para>
+
+</sect2>
+
+<sect2
+> <title
+><guilabel
+>Площадка</guilabel
+></title>
+<para
+>Для выбора площадки, на которой вы хотите играть, нажмите на нужный пункт в списке слева. &kolf; поставляется со множеством встроенных площадок.</para>
+<para
+>Для добавления площадки, которую вы загрузили либо сделали, нажмите кнопку <guibutton
+>Добавить</guibutton
+> внизу страницы и выберите файл площадки в диалоге.</para>
+</sect2>
+<sect2
+> <title
+><guilabel
+>Параметры</guilabel
+></title>
+<para
+>На этой странице вы можете перевести игру в режим <guilabel
+>По правилам</guilabel
+>. В этом режиме не доступна отмена, передвигание лунок и редактирование площадки. Этот режим обычно используется для соревнований. Только для игры по правилам хранится список рекордов.</para>
+</sect2>
+</sect1>
+
+<sect1 id="saved-games"
+> <title
+>Сохраненные игры</title>
+<para
+>&kolf; может хранить историю ваших игр и сохранять ее на диск, так что вы можете позже загрузить ее и поиграть. Сохраненные игры включают в себя текущую лунку, имена и цвета всех игроков, а также счет игры.</para>
+<sect2
+> <title
+>Сохранение игры</title>
+<para
+>Для сохранения игры вам надо выбрать <menuchoice
+><guimenu
+>Игра</guimenu
+> <guimenuitem
+>Сохранить игру</guimenuitem
+> </menuchoice
+>. Если вы не сохраняли эту игру ранее, будет запрошено имя файла для сохранения.</para>
+</sect2>
+<sect2
+> <title
+>Загрузка игры</title>
+<para
+>Для загрузки сохраненной игры выберите <menuchoice
+><guimenu
+>Игра</guimenu
+><guimenuitem
+>Загрузить...</guimenuitem
+> </menuchoice
+>, после чего вам надо выбрать игру для загрузки.</para>
+</sect2>
+</sect1>
+
+<sect1 id="practicing"
+> <title
+>Тренировка</title>
+<para
+>Есть несколько особенностей, которые помогают практиковаться в игре в гольф. Они недоступны в режиме игры по правилам.</para>
+<sect2
+> <title
+>Отмена</title>
+<para
+>Для отмены неверного удара выберите <menuchoice
+><guimenu
+>Лунка</guimenu
+><guimenuitem
+>Отменить удар</guimenuitem
+></menuchoice
+>.</para>
+</sect2>
+<sect2
+> <title
+>Переключение лунок</title>
+<para
+>Меню <guimenu
+>Перейти</guimenu
+> содержит множество пунктов для переключения между лунками, большинство из которых ясны из названия. Подробнее об этом см. в руководстве по <link linkend="go-menu"
+>Меню <guimenu
+>Перейти</guimenu
+></link
+>.</para>
+</sect2>
+</sect1>
+
+<sect1 id="putting-options"
+> <title
+>Настройки удара</title>
+<para
+>&kolf; имеет несколько видов ударов. Основной тип удара уже был объяснен <link linkend="hitting"
+>выше</link
+>.</para>
+<para
+>Мышь включена по умолчанию. Это значит, что всякий раз, когда мышь двигается, клюшка выравнивается по линии между мышью и мячом.</para>
+<para
+>Если вы предпочитаете использовать только клавиатуру и клавиши управления, вы можете отключить управление мышью, сняв флажок <menuchoice
+><guimenu
+>Настройка</guimenu
+><guimenuitem
+>Включить управление мышью</guimenuitem
+></menuchoice
+>.</para>
+
+<sect2 id="advanced-putting"
+> <title
+>Сложный удар</title>
+<para
+>Сложный удар может быть включен в меню <menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Включить сложный удар</guimenuitem
+></menuchoice
+>. Этот режим более продвинутый, нежели обычный, и также работает с мышью или клавиатурой.</para>
+
+<para
+>Для удара в этом режиме:</para>
+<procedure>
+<step>
+<para
+>Нажмите стрелку <keycap
+>Вниз</keycap
+> для начала замаха. Появится индикатор замаха, и шкала начнет заполняться цветной полосой, которая изменяется в зависимости от величины замаха.</para>
+</step>
+<step>
+<para
+>Нажмите стрелку <keycap
+>Вниз</keycap
+>, когда достигнете нужного замаха. Чем больше по кругу заполнится шкала, тем с большей силой вы ударите по мячу. Для получения нужной силы удара понадобится немного практики.</para>
+<para
+>После этого показания шкалы начнут падать к начальной отметке.</para>
+</step>
+<step>
+<para
+>Нажмите клавишу <keycap
+>Вниз</keycap
+> еще раз при приближении шкалы как можно ближе к центру линии датчика замаха.</para>
+</step>
+</procedure>
+<para
+>И теперь последние нажатие.</para>
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="editing"
+> <title
+>Редактирование площадки</title>
+<para
+>В &kolf; входит гибкий редактор файлов площадок. Последние могут содержат неограниченное количество лунок, поэтому для создателя площадок практически нет ограничений.</para>
+
+<sect1 id="creating"
+> <title
+>Создание новой площадки</title>
+<para
+>Для создания новой площадки выберите <menuchoice
+><guimenu
+>Игра</guimenu
+><guimenuitem
+>Новая игра</guimenuitem
+></menuchoice
+>. Перейдите на диалог <guilabel
+>Площадки</guilabel
+> и выберите <guilabel
+>Создать</guilabel
+>. Убедитесь, что в <guilabel
+>Настройках</guilabel
+> не активизирован режим игры <guilabel
+>По правилам</guilabel
+>.</para>
+
+<note>
+<para
+>Для сохранения площадки нажмите кнопку <guibutton
+>Добавить...</guibutton
+>, и она добавится в список.</para>
+</note>
+</sect1>
+
+<sect1 id="adding-holes"
+> <title
+>Добавление лунок</title>
+<para
+>Для добавления лунок вам необходимо выбрать <menuchoice
+><guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Новая</guimenuitem
+></menuchoice
+>.</para>
+<tip>
+<para
+>Вы можете восстановить исходное состояние лунки, выбрав <menuchoice
+><guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Очистить</guimenuitem
+></menuchoice
+>.</para>
+</tip>
+<para
+>Две вещи появятся возле новой лунки: кубок и белый мяч. Белый мяч отмечает расстояние, попадание в которое равносильно попаданию в лунку.</para>
+</sect1>
+
+<sect1 id="editing-basics"
+> <title
+>Редактирование</title>
+<para
+>Основной элемент площадки &kolf; - это <quote
+>объект</quote
+>. Площадки состоят из набора объектов. Объекты можно передвигать в любое место, и для различных объектов можно задавать различные свойства.</para>
+<para
+>Для начала редактирования лунки выберите <menuchoice
+><guimenu
+>Лунка</guimenu
+><guimenuitem
+>Правка</guimenuitem
+></menuchoice
+> в меню или нажмите на значок с изображением карандаша. Для выхода из этого режима нажмите на значок еще раз.</para>
+
+<sect2
+> <title
+>Добавление объектов</title>
+<para
+>Для добавления нового объекта на площадку, выберите нужное вам имя в списке и нажмите <guilabel
+>Добавить объект</guilabel
+>. Объект появится в центре площадки.</para>
+<caution>
+<para
+>Мосты и надписи будут закрывать новые объекты, если они уже находятся в центре поля.</para>
+</caution>
+<tip>
+<para
+>Вы можете добавить более одного кубка в ямку! Так вы можете создать интересные виды лунок.</para>
+</tip>
+<para
+>Некоторые объекты Kolf доступны в виде модулей. Если вы добавите эти объекты на площадку, ее игроки должны будут закачать этот модуль.</para>
+<para
+>Много модулей Kolf доступно на веб-сайте игры. Зайдите на <ulink url="http://www.katzbrown.com/kolf/Plugins/Download/"
+>страницу модулей Kolf</ulink
+>.</para>
+</sect2>
+
+<sect2
+> <title
+>Передвижение и изменение размера объектов</title>
+<para
+>Наведите курсор мыши на объект, который вы хотите переместить, и он изменится на изображение руки. Нажмите и перетащите объект в нужное вам место.</para>
+<para
+>Размер луж, песка, мячей, мостов и надписей можно изменить мышкой посредством захвата маленького круга в нижнем правом углу.</para>
+
+<note>
+<para
+>Вы можете переместить стены, нажав на один из двух концов и перетащив его в нужное место. Если вы хотите переместить всю стену, щелкните мышкой по ее средней части.</para>
+</note>
+</sect2>
+
+<sect2
+> <title
+>Свойства объектов</title>
+<para
+>Свойства объектов изменяются в правом нижнем углу окна &kolf;. Для редактирования объектов поместите курсор мыши над ним, так чтобы он изменился на изображение руки, и нажмите на объект. Редактируемые свойства объекта отобразятся в нижнем правом углу окна &kolf;.</para>
+<sect3
+> <title
+>Основные параметры лунок</title>
+<para
+>Для правки параметров лунки нажмите на область лунки, которая не покрывается никаким объектом. Когда это возможно, курсор будет иметь обычный вид.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Название площадки</guilabel
+></term>
+<listitem>
+<para
+>Это имя показывается в диалоге новой игры и в диалоге <guimenuitem
+>О площадке</guimenuitem
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Автор площадки</guilabel
+></term>
+<listitem>
+<para
+>Имя автора показывается в диалоге <guimenuitem
+>О площадке</guimenuitem
+></para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Очки</guilabel
+></term>
+<listitem>
+<para
+>Очки лунки.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Максимум</guilabel
+></term>
+<listitem>
+<para
+>Максимальное количество ударов игрока для лунки.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Показывать граничные стены</guilabel
+></term>
+<listitem>
+<para
+>Включить или отключить показ стены вокруг площадки.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Горки</title>
+
+<variablelist>
+<varlistentry
+> <term
+>Тип</term>
+<listitem>
+<para
+>Выберите тип горки - <guilabel
+>Вертикальная</guilabel
+>, <guilabel
+>горизонтальная</guilabel
+>, <guilabel
+>Диагональная</guilabel
+>, <guilabel
+>Противоположная диагональная</guilabel
+>, <guilabel
+>Эллиптическая</guilabel
+>. Диагональные и противоположные диагональные склоны треугольные, в то время как эллиптические - круглые. Вертикальные и горизонтальные склоны - прямоугольные.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Обратное направление</guilabel
+></term>
+<listitem>
+<para
+>Обратить направление склона. К примеру, эллиптический или круглый склон в обычном варианте выталкивает мяч наружу, как бугор. Когда его направление обращено, он всасывает мяч в себя, как яма.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Крутизна</guilabel
+></term>
+<listitem>
+<para
+>Задайте крутизну склона, передвигая ползунок 0 до 8, где 8 - самый крутой склон, а 0 - самый пологий.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Неподвижная</guilabel
+></term>
+<listitem>
+<para
+>Указывает, может ли горка передвигаться другими объектами, например, ползунами.</para>
+<caution>
+<para
+>Если этот объект попадается на пути ползуна, а склон крутой и не может передвигаться ползуном, вы <emphasis
+>должны</emphasis
+> сделать горку <guilabel
+>неподвижной</guilabel
+>, иначе &kolf; будет медленно работать!</para>
+</caution>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Лужи и песок</title>
+<para
+>Лужи и пески имеют такие же параметры, как и другие объекты.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Включить мерцание</guilabel
+></term>
+<listitem>
+<para
+>Включает режим мерцания для луж и песков.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Скорость мерцания</term>
+<listitem>
+<para
+>Чем дальше передвинете ползунок по направлению к <guilabel
+>Быстро</guilabel
+>, тем быстрее будут мерцать лужи и пески.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Мосты, мельницы, ползуны и надписи</title>
+<para
+>Мосты, мельницы, ползуны и надписи имеют похожие настройки: можно задать, с какой стороны у них стены. Для показа стены отметьте соответствующий флажок.</para>
+<para
+>Также есть несколько настроек, специфичных для мельниц, ползунов и надписей.</para>
+
+<sect4
+> <title
+>Мельницы</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Мельница внизу</guilabel
+></term>
+<listitem>
+<para
+>Задает, где находится лопасть мельницы, сверху или снизу. По умолчанию она снизу. Ворота всегда будут со стороны лопасти. Отметьте, что нельзя поставить стенку там, где находится лопасть.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Скорость</term>
+<listitem>
+<para
+>Ползунок регулирует скорость лопасти. Чем ближе он к <guilabel
+>Быстро</guilabel
+>, тем быстрее она движется.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Ползуны</title>
+<para
+>Путь, по которому движется ползун, показывается стеной, к которой он присоединен.</para>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Скорость движения</guilabel
+></term>
+<listitem>
+<para
+>Шкала регулирует скорость ползуна. <guilabel
+>Быстро</guilabel
+> - ползун имеет самую высокую скорость. Если вы передвинете указатель шкалы к противоположному концу, ползун остановится.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Надписи</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>HTML-текст:</guilabel
+></term>
+<listitem>
+<para
+>Здесь вы можете ввести любой HTML-текст. К примеру, введете <markup
+>Hit it &lt;i&gt;softly&lt;/i&gt; towards the slope!</markup
+> и получите текст <quote
+>Hit it <emphasis
+>softly</emphasis
+> towards the slope!</quote
+>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+</sect3>
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="command-reference">
+<title
+>Справочник по командам и меню</title>
+
+<sect1 id="game-menu">
+<title
+>Меню <guimenu
+>Игра</guimenu
+> </title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Новая игра</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Начать игру</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Загрузить</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Загрузить ранее сохраненную игру.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Сохранить площадку</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Сохранить текущую площадку, используя текущее имя файла.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Alt;&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+><guimenuitem
+>Сохранить площадку как...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Открыть диалог, позволяющий вам <action
+>сохранить текущую площадку под новым именем.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Игра</guimenu
+><guimenuitem
+>Сохранить игру</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Сохранить текущую игру</action
+> или под именем последней сохраненной игры, или под заданным вами именем, если до этого вы не сохраняли еще эту игру.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Игра</guimenu
+> <guimenuitem
+>Сохранить игру как...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Открывает диалог, позволяющий вам <action
+>сохранить текущую игру под заданным именем.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>End</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Закончить игру</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Закончить текущую игру, не выходя из</action
+> &kolf;</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Показать рекорды</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Вывести таблицу рекордов.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+><guimenuitem
+>Печать</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Распечатать текущий экран.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Игра</guimenu
+><guimenuitem
+>О площадке</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Показать имя, автора и очки лунки.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+><guimenuitem
+>Выход</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Выход из</action
+> &kolf;</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="hole-menu">
+<title
+>Меню <guimenu
+>Лунка</guimenu
+></title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Правка</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Переключиться в режим редактирования</action
+> текущей лунки.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Alt;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Новая</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Создает новую лунку.</action
+> (Только в режиме редактирования.)</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Delete</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Очистить</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Удаляет все объекты с текущего поля.</action
+> (Только в режиме редактирования.)</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>R</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Сбросить</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Восстановить исходное положение лунок</action
+>, так что вы можете начать всё сначала.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Сведения</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Показать сведения об объекте.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Отменить удар</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Отменяет последний сделанный удар.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="go-menu">
+<title
+>Меню <guimenu
+>Перейти</guimenu
+></title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Перейти</guimenu
+> <guisubmenu
+>Переключиться на...</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Перейти к другой лунке на площадке.</action
+> Список лунок позволяет выбрать, к какой лунке вы хотели бы перейти.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Alt;<keycap
+>Вправо</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Перейти</guimenu
+> <guimenuitem
+>Следующая лунка</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Перейти к следующей ямке.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Alt;<keycap
+>Left Arrow</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Перейти</guimenu
+> <guimenuitem
+>Предыдущая лунка</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Перейти к предыдущей лунке.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl;<keycap
+>Home</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Перейти</guimenu
+> <guimenuitem
+>Первая лунка</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Перейти к первой лунке на площадке.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>End</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Перейти</guimenu
+> <guimenuitem
+>Последняя лунка</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Перейти к последней лунке на площадке.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Перейти</guimenu
+> <guimenuitem
+>Случайная лунка</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Перейти к случайной лунке на площадке.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="settings-menu">
+<title
+>Меню <guimenu
+>Настройка</guimenu
+></title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Показать панель инструментов</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Показать/скрыть панель инструментов.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Включить управление мышью</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Позволяет использовать мышь для управления клюшкой.</action
+></para
+> 
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Включить сложный удар</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Включить сложный удар</action
+>, который описывается в <link linkend="advanced-putting"
+>этом разделе</link
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Показывать направляющую клюшки</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Включить/выключить указатель клюшки.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Звуки</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Включить/выключить звуковые эффекты.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Включить все диалоги</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Восстанавливает показ всех диалогов, отключенных в процессе игры флажком <guilabel
+>Не показывать больше это сообщение</guilabel
+> </action
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Перезагрузить модули</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Перезагрузка модулей.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Показать модули...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Отобразить загруженные модули.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Настроить быстрые клавиши</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Настроить клавиатурные сочетания.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Настроить панели инструментов</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Настроить панели инструментов.</action
+></para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+
+<sect1 id="help-menu">
+<title
+>Меню <guimenu
+>Справка</guimenu
+></title>
+&help.menu.documentation; </sect1>
+</chapter>
+<chapter id="credits-and-license">
+<title
+>Разработчики и лицензирование</title>
+
+<para
+>&kolf; copyright 2001, 2002 Jason Katz-Brown</para>
+
+<itemizedlist>
+<title
+>Разработчики</title>
+<listitem>
+<para
+>Jason Katz-Brown <email
+>jason@katzbrown.com</email
+></para>
+</listitem>
+<listitem>
+<para
+>Niklas Knutsson</para>
+</listitem>
+<listitem>
+<para
+>Ryan Cumming</para>
+</listitem>
+<listitem>
+<para
+>Daniel Matza-Brown</para>
+</listitem>
+</itemizedlist>
+
+<para
+>Документация copyright 2002, Jason Katz-Brown</para>
+
+<para
+>Перевод на русский: Руслан Будаев <email
+>fokses@pisem.net</email
+></para
+><para
+>Редакция русского перевода: Григорий Мохин <email
+>mok@kde.ru</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+<appendix id="installation">
+<title
+>Установка</title>
+
+&install.intro.documentation;
+&install.compile.documentation;
+
+</appendix>
+
+&documentation.index; 
+
+</book>

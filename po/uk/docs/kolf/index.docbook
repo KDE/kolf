@@ -1,0 +1,1620 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Ukrainian "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="kolf" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Підручник з &kolf;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<authorgroup>
+<author
+><firstname
+>Jason</firstname
+> <surname
+>Katz-Brown</surname
+> <affiliation
+> <address
+><email
+>jasonkb@mit.edu</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+><firstname
+>Paul</firstname
+> <surname
+>Broadbent</surname
+> <affiliation
+> <address
+><email
+>dbd@myrealbox.com</email
+></address>
+</affiliation>
+<!-- <contrib
+>Reviewer</contrib
+> -->
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>Юрій</firstname
+><surname
+>Чорноіван</surname
+><affiliation
+><address
+><email
+>yurchor@ukr.net</email
+></address
+></affiliation
+><contrib
+>Переклад українською</contrib
+></othercredit
+> 
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>6 серпня 2021 року</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>KDE Gear 21.08</releaseinfo>
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Цей розділ довідки присвячено грі &kolf; версії 21.08</para>
+</abstract>
+
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>гра</keyword
+> <!-- do not change this! -->
+	<keyword
+>Kolf</keyword
+><!--Application name goes here-->
+	<keyword
+>гольф</keyword>
+	<keyword
+>мініатюрний</keyword>
+	<keyword
+>аркада</keyword>
+	<keyword
+>спорт</keyword>
+	<keyword
+>десять гравців</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Вступ</title
+> <!-- do not change this! -->
+	<note
+><title
+>Тип гри:</title
+><para
+>Аркада, спорт</para
+></note>
+	<note
+><title
+>Можлива кількість гравців:</title
+><para
+>Десять</para
+></note>
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&kolf; — мініатюрна гра у гольф, у якій ви дивитися на поле згори. Раунди гри є дуже динамічними, у змаганнях може брати участь до 10 гравців.</para>
+<para
+>У пакунок з &kolf; додано навчальний майданчик. Найкраще розпочати з <link linkend="howto"
+>гри на навчальному майданчику</link
+>.</para>
+</chapter>
+
+<chapter id="howto"
+><title
+>Як грати</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Мета:</title
+><para
+>Загнати м’ячик у лунку з використанням якомога меншої кількості ударів.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para
+>Грати у &kolf; просто. Найпростішим способом вивчення способів гри є сама гра, а отже до пакунка з грою включено навчальний майданчик, за допомогою якого ви зможете ознайомитися з основами гри. У цій главі ви зможете ознайомитися з цим навчальним майданчиком. Щоб почати навчання, скористайтеся пунктом <menuchoice
+><guimenu
+>Довідка</guimenu
+><guimenuitem
+>Навчання</guimenuitem
+></menuchoice
+>.</para>
+
+<sect1 id="hitting">
+<title
+>Як вдарити по м’ячику</title>
+<para
+>Для визначення напрямку удару або розташуйте вказівник миші так, щоб лінія позаду м’ячика вказувала у напрямку, у якому ви бажаєте здійснити удар, або визначте напрямок удару за допомогою повороту напрямку удару ключкою клавішами <keycap
+>←</keycap
+> (проти годинникової стрілки) або <keycap
+>→</keycap
+> (за годинниковою стрілкою).</para>
+<tip>
+<para
+>Щоб пришвидшити поворот напрямку удару за допомогою клавіатури, утримуйте натиснутою клавішу &Shift; під час натискання клавіш зі стрілками. Щоб сповільнити обертання, утримуйте натиснутою клавішу &Ctrl;.</para>
+</tip>
+<para
+>Щоб виконати удар по м’ячику, натисніть і потримайте натиснутою або ліву кнопку миші, або клавішу <keycap
+>↓</keycap
+>. Чим довше ви триматимете натиснутою клавішу або кнопку, тим сильнішим вийде ваш удар. Щоб розвинути відчуття сили удару, слід добре повправлятися.</para>
+<tip>
+<para
+>Щоб скасувати удар, коли ви продовжуєте замахуватися ключкою за допомогою клавіші або кнопки миші, натисніть клавішу &Esc;.</para>
+</tip>
+
+<para
+>Заженіть м’ячик до лунки, щоб перейти до наступної.</para>
+</sect1>
+
+<sect1 id="slopes">
+<title
+>Схили</title>
+<para
+>Схили — це ділянки місцевості майданчика з певним ухилом, якими м’ячик для гольфу скочується у певному передбаченому напрямку. Світло падає на майданчик для гольфу зверху ліворуч, отже найсвітлішими схилами м’ячик скочується у напрямку верхнього лівого кута лунки. Скористайтеся пунктом меню <menuchoice
+><guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Показати інформацію</guimenuitem
+></menuchoice
+>, щоб побачити на плані майданчика стрілки, які вказуватимуть напрямок, у якому котитиметься м’ячик.</para>
+<para
+>Для цієї навчальної лунки, женіть м’ячик вгору схилом, а потім дозвольте їй скотитися у заглибину, щоб перейти до наступної лунки.</para>
+
+<sect2
+> <title
+>Напрямки</title>
+<para
+>На наступній лунці ви зможете випробувати інші різновиди схилів. У &kolf; існують еліптичні, вертикальні і діагональні схили. Вам слід загнати м’ячик до лунки.</para>
+</sect2>
+<sect2
+> <title
+>Ухил</title>
+<para
+>На наступній навчальній лунці є два схили з різним ухилом. Якщо ви скористаєтеся пунктом меню <menuchoice
+><guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Показати інформацію</guimenuitem
+></menuchoice
+>, буде показано ухил схилів у вигляді числа від 1 до 8, де 8 відповідає найкрутішому схилу, а 1 — найрівнішому. Заженіть м’ячик до лунки і продовжуйте гру на наступній лунці.</para>
+</sect2>
+</sect1>
+
+<sect1 id="walls"
+> <title
+>Стіни</title>
+<para
+>М’ячики відбиваються від стін, як і можна було б очікувати, при цьому вони трохи уповільнюються. Ударами з відбиттями від стін заженіть м’ячик до отвору і перейдіть до наступної лунки.</para>
+</sect1>
+
+<sect1 id="puddles-sand"
+> <title
+>Калюж</title>
+<sect2
+> <title
+>Калюжі</title>
+	<para
+>Калюжі показано синім. Якщо м’ячик потрапить до калюжі, вам буде зараховано штрафний удар, і ви муситимете обрати місце, з якого ви бажаєте зробити наступний удар: з місця поряд з калюжею або з того ж місця, з якого ви робили ваш останній невдалий удар.</para>
+</sect2>
+<sect2
+> <title
+>Пісок</title>
+<para
+>Пісок позначено жовтим кольором. М’ячик дуже сповільнюється у областях з піском.</para>
+<para
+>Ударами проведіть м’ячик між калюжами, крізь пісочницю до лунки, щоб перейти до наступної навчальної лунки.</para>
+</sect2>
+</sect1>
+
+<sect1 id="windmills"
+> <title
+>Вітряки</title>
+<para
+>Вітряки — це складні об’єкти зі стінами коричневого кольору і рухомою перешкодою з одного боку. Між напівстінами розташовано вхід до вітряка, між якими рухається чорна перешкода. Щоб здійснити удар, за якого ваш м’ячик встигне вчасно проскочити крізь отвір до вітряка, слід добре повправлятися. Заженіть м’ячик крізь вітряк до лунки, щоб продовжити навчання.</para>
+</sect1>
+
+<sect1 id="black-holes"
+> <title
+>Чорні дірки</title>
+<para
+>Якщо після вашого удару м’ячик потрапить до чорної дірки, цей м’ячик буде перенесено до виходу дірки і викинуто у напрямку і зі швидкістю, які залежать від швидкості, з якою м’ячик потрапив до чорної дірки. Скористайтеся пунктом меню <menuchoice
+><guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Показати інформацію</guimenuitem
+></menuchoice
+>, щоб побачити зв’язок чорних дірок з виходами з них і напрямком, у якому м’ячик вилетить на виході. Колір облямівки входу до чорної дірки збігається з кольором облямівки виходу з неї. Заженіть м’ячик до чорної дірки так, щоб його було викинуто до лунки, і ви б змогли перейти до наступної лунки.</para>
+</sect1>
+
+<sect1 id="floaters"
+> <title
+>Плавуни</title>
+<para
+>Плавуни — це платформи, що рухаються разом з м’ячиком, який на них потрапив. Швидкість плавунів може бути різною. У цьому випадку ви матимете справу з повільним плавуном, але вам все ж точно розрахувати удар так, щоб м’ячик зміг минути стіну і потрапити до лунки.</para>
+</sect1>
+
+<sect1 id="bridges"
+> <title
+>Мости</title>
+<para
+>Мости мають просте призначення — вони допомагають провести м’ячик над ділянками під мостами, наприклад схилами, піском і калюжами. Периметр мостів обмежено коричневими стінами.</para>
+</sect1>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Правила гри, стратегії і підказки</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+<para
+>У цьому розділі ви знайдете докладний опис основних особливостей &kolf;.</para>
+
+<sect1 id="starting">
+<title
+>Початок гри</title>
+
+<para
+>Щоб розпочати гру, скористайтеся пунктом меню <menuchoice
+><guimenu
+>Гра</guimenu
+><guimenuitem
+>Нова</guimenuitem
+></menuchoice
+>. У відкритому діалоговому вікні ви зможете налаштувати вашу нову гру.</para>
+<!--
+<tip>
+<para
+>More third-party &kolf; courses are available at the &kolf; website. See <ulink
+url="https://web.mit.edu/jasonkb/www/kolf/"
+>the &kolf; user-uploaded courses page</ulink
+>.</para>
+</tip>
+-->
+<sect2>
+<title
+>Сторінка «Гравці»</title>
+<para
+>Щоб додати у гру нового гравця, натисніть кнопку <guibutton
+>Новий гравець</guibutton
+>.</para>
+
+<para
+>Щоб змінити ім’я гравця, змініть текст у відповідному полі.</para>
+
+<para
+>Щоб вилучити гравця, натисніть кнопку <guibutton
+>Вилучити</guibutton
+> поряд з іменем гравця.</para>
+
+</sect2>
+
+<sect2
+> <title
+>Сторінка «Майданчик»</title>
+<para
+>Щоб обрати майданчик, на якому ви маєте намір зіграти, натисніть відповідний запис у полі списку, розташованому у лівій частині цієї сторінки. У пакунку &kolf; ви знайдете багато вбудованих майданчиків, на яких можна грати у гольф.</para>
+<para
+>Щоб додати майданчик, який ви отримали або створили власноруч, натисніть кнопку <guibutton
+>Додати...</guibutton
+>, розташовану у нижній частині сторінки, а потім оберіть файл майданчика за допомогою діалогового вікна вибору файла.</para>
+</sect2>
+<sect2
+> <title
+>Сторінка «Параметри»</title>
+<para
+>На цій сторінці ви можете визначити, чи відбуватиметься гра <guilabel
+>За правилами</guilabel
+>. У грі за правилами не буде скасування ходів, пересування лунок або редагування майданчика. Такий режим призначено для змагань. Найкращі результати зберігаються лише для ігор у режимі за правилами.</para>
+</sect2>
+</sect1>
+
+<sect1 id="saved-games"
+> <title
+>Збережені ігри</title>
+<para
+>&kolf; може зберігати історію ваших ігор, які ще не завершено, у файлах на диску, щоб ви могли завантажити гру і завершити її пізніше. У подібних файлах зберігаються дані про поточну лунку, імена і кольори всіх гравців, а також їх рахунок у грі.</para>
+<sect2
+> <title
+>Як зберегти вашу гру</title>
+<para
+>Щоб зберегти вашу поточну позицію у грі, скористайтесь пунктом меню <menuchoice
+><guimenu
+>Гра</guimenu
+><guimenuitem
+>Зберегти гру</guimenuitem
+> </menuchoice
+>. Якщо ви ще не зберігали поточну гру, програма запитає вас про назву файла, до якого слід зберегти дані.</para>
+</sect2>
+<sect2
+> <title
+>Як завантажити вашу гру</title>
+<para
+>Щоб завантажити раніше збережену гру, виберіть пункт меню <menuchoice
+><guimenu
+>Гра</guimenu
+><guimenuitem
+>Завантажити...</guimenuitem
+> </menuchoice
+>. Потім ви можете обрати збережену гру, яку слід відкрити.</para>
+</sect2>
+</sect1>
+
+<sect1 id="practicing"
+> <title
+>Тренування</title>
+<para
+>Існує декілька можливостей полегшити ваші вправи у гольфі. Ці властивості буде вимкнено під час гри за правилами.</para>
+<sect2
+> <title
+>Вернути</title>
+<para
+>Щоб скасувати невдалий удар, скористайтеся пунктом меню <menuchoice
+><guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Вернути удар</guimenuitem
+></menuchoice
+>.</para>
+</sect2>
+<sect2
+> <title
+>Як перемкнутися між лунками</title>
+<para
+>У меню <guimenu
+>Перехід</guimenu
+> ви знайдете багато пунктів, призначених для переходу між різними лунками, призначення цих пунктів очевидне з їх назви. Див. <link linkend="go-menu"
+>довідку з меню <guimenu
+>Перехід</guimenu
+></link
+>.</para>
+</sect2>
+</sect1>
+
+<sect1 id="putting-options"
+> <title
+>Параметри ударів</title>
+<para
+>У &kolf; удар можна здійснити у декілька способів. Основний спосіб удару ми вже <link linkend="hitting"
+>обговорювали раніше</link
+>.</para>
+<para
+>Типово, керування мишею увімкнено. Це означає, що пересування вказівника миші призводить до пересування лінії напрямку удару, показаної між вказівником і м’ячиком.</para>
+<para
+>Якщо ви надаєте перевагу використанню лише клавіатури і клавіш зі стрілочками, ви можете вимкнути удари, якими керує миша, зняттям позначки з пункту меню <menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Увімкнути мишу для керування ударами</guimenuitem
+></menuchoice
+>.</para>
+
+<sect2 id="advanced-putting"
+> <title
+>Складні удари</title>
+<para
+>Увімкнути складні удари можна за допомогою пункту меню <menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Увімкнути складні удари</guimenuitem
+></menuchoice
+>. Цей режим ударів трохи складніший за звичайне клацання з утримуванням, його можна виконувати або за допомогою миші, або за допомогою клавіатури.</para>
+
+<para
+>Для добивання у цьому режимі:</para>
+<procedure>
+<step>
+<para
+>Клацніть або натисніть один раз клавішу <keycap
+>↓</keycap
+>, щоб почати замах. На екрані з’явиться індикатор сили удару, який почне заповнюватися кольором, що змінюватиметься з величиною заповнення.</para>
+</step>
+<step>
+<para
+>Клацніть або натисніть один раз клавішу <keycap
+>↓</keycap
+>, коли індикатор сили удару буде заповнено до потрібного вам значення. Чим більше буде заповнено індикатор, тим сильнішим вийде у вас удар. Щоб навчитися правильно обирати силу удару, слід добре повправлятися.</para>
+<para
+>Після цього колір індикатора удару почне повертатися до початкового.</para>
+</step>
+<step>
+<para
+>Клацніть або натисніть один раз клавішу <keycap
+>↓</keycap
+>, коли індикатор сили удару максимально наблизиться до центральної лінії індикатора удару.</para>
+</step>
+</procedure>
+<para
+>Чим точніше ви виконаєте остаточне клацання (або натискання клавіші), тим ближчим буде напрямок руху м’ячика до початкової лінії.</para>
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Огляд інтерфейсу</title
+> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+ <sect1 id="game-menu">
+<title
+>Меню «Гра»</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Створити</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Почати нову гру.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Завантажити...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Завантажити збережену раніше гру.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Game</guimenu
+> <guimenuitem
+>Зберегти майданчик</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Зберігає поточний майданчик з поточною назвою його файла.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Гра</guimenu
+><guimenuitem
+>Зберегти майданчик як...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Відкриває діалогове вікно вибору файла, за допомогою якого ви зможете <action
+>зберегти поточну позицію на майданчику до файла з новою назвою.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Гра</guimenu
+><guimenuitem
+>Зберегти гру</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Зберігає поточну гру</action
+> до файла з назвою, під якою було збережено останню гру, або з назвою, яку ви вкажете, якщо ви ще не зберігали ігор.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Гра</guimenu
+> <guimenuitem
+>Зберегти гру як...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Відкриває діалогове вікно, яке надає вам змогу <action
+>зберегти поточну гру з обраною вами назвою.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&End;</keycombo
+></shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Завершити гру</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Завершує поточну гру, не закриваючи</action
+> &kolf;</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Показати найкращі результати</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Показує таблицю найкращих результатів</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Гра</guimenu
+><guimenuitem
+>Про майданчик…</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Показує назву, автора та кількість лунок для майданчика.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+><guimenuitem
+>Вийти</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Завершує</action
+> роботу &kolf;</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="hole-menu">
+<title
+>Меню «Лунка»</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Змінити</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Перемикає програму у режим редагування</action
+> для зміни поточної лунки.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Нова</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Створює нову лунку.</action
+> (Лише під час редагування.)</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Del;</keycombo
+> </shortcut
+> <guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Очистити</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Вилучає всі об’єкти з поточної лунки.</action
+> (Лише у режимі редагування.)</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>R</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Скинути</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Поновлює початкову позицію для поточної лунки</action
+>, щоб ви могли розпочати з початку.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Показати інформацію</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Показує інформацію щодо об’єктів біля поточної лунки.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Вернути удар</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Скасовує останній удар, який ви виконали.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="go-menu">
+<title
+>Меню «Перехід»</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Перехід</guimenu
+> <guisubmenu
+>Перемкнути на лунку</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Перейти безпосередньо до іншої лунки на майданчику.</action
+> За допомогою списку номерів лунок ви зможете обрати лунку, до якої ви бажаєте перейти.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Alt;<keycap
+>→</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Перехід</guimenu
+> <guimenuitem
+>Наступна лунка</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Перейти до наступної лунки.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Alt;<keycap
+>←</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Перехід</guimenu
+> <guimenuitem
+>Попередня лунка</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Перейти до попередньої лунки.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Home;</keycombo
+> </shortcut
+> <guimenu
+>Перехід</guimenu
+> <guimenuitem
+>Перша лунка</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Перейти до першої лунки на майданчику.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;&End;</keycombo
+> </shortcut
+> <guimenu
+>Перехід</guimenu
+> <guimenuitem
+>Остання лунка</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Перейти до останньої лунки на майданчику.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Перехід</guimenu
+> <guimenuitem
+>Випадкова лунка</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Перейти до випадкової лунки поточного майданчика.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="settings-help-menu">
+<title
+>Меню «Параметри» і «Довідка»</title>
+
+<para
+>У &kolf; передбачено типові для &kde; пункти меню <guimenu
+>Параметри</guimenu
+> і <guimenu
+>Довідка</guimenu
+>. Щоб дізнатися більше, ознайомтеся з розділами щодо <ulink url="help:/fundamentals/menus.html#menus-settings"
+>меню «Параметри»</ulink
+> та <ulink url="help:/fundamentals/menus.html#menus-help"
+>меню «Довідка»</ulink
+> підручника з основ роботи у &kde;, окрім цих додаткових пунктів.</para>
+
+<variablelist>
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Увімкнути мишу для керування ударами</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Дозволяє використовувати мишу для пересування ключки.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Увімкнути складні удари</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Вмикає режим складних ударів</action
+>, який описано у <link linkend="advanced-putting"
+>присвяченому такому типові ударів розділі</link
+>.</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Показувати напрямну удару</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Вмикає або вимикає показ напрямної удару.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Відтворювати звуки</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Увімкнути або вимкнути звуковий супровід.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Увімкнути всі діалогові вікна</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Повторно вмикає всі діалогові вікна, які ви вимкнули позначенням пункту <guilabel
+>Не показувати більше це повідомлення</guilabel
+> або подібного.</action
+></para
+></listitem>
+  </varlistentry>
+<!--
+  <varlistentry>
+    <term
+><menuchoice>
+    <guimenu
+>Settings</guimenu>
+    <guimenuitem
+>Reload Plugins</guimenuitem>
+    </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Reload plugins.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice>
+    <guimenu
+>Settings</guimenu>
+    <guimenuitem
+>Show Plugins</guimenuitem>
+    </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Display the currently loaded plugins.</action
+></para
+></listitem>
+  </varlistentry>
+-->
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Довідка</guimenu
+> <guimenuitem
+>Навчання</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+>Запускає навчальний курс &kolf;.</para
+></listitem>
+  </varlistentry>
+</variablelist>
+
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Часті запитання</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Я хочу змінити вигляд цієї гри. Як це зробити? </para
+></question>
+ <answer
+><para
+>Ні. У цій версії програми &kolf; можна використовувати лише одну тему.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Чи можна використовувати для гри клавіатуру? </para
+></question>
+ <answer
+><para
+>Так. Скористайтеся клавішами зі стрілочками для керування ключкою.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Не можу з’ясувати, що слід робити! Чи є у грі підказки? </para
+></question>
+ <answer
+><para
+>Ні. У &kolf; немає підказок.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Я хочу створити мій власний майданчик для гольфу. Чи можу я це зробити? </para
+></question>
+ <answer
+><para
+>Так, можете. Щоб увійти до режиму редагування, скористайтеся пунктом меню <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Змінити</guimenuitem
+></menuchoice
+>. Щоб дізнатися більше, натисніть <link linkend="creating"
+>тут</link
+>.</para
+></answer
+><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Редактор майданчиків</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+<para
+>До складу &kolf; входить гнучкий редактор файлів майданчиків програми. На майданчиках може бути довільна кількість лунок, творчі можливості розробника майданчиків майже нічим не обмежено.</para>
+
+<sect1 id="creating"
+> <title
+>Як створити новий майданчик</title>
+<para
+>Щоб створити новий майданчик, скористайтеся пунктом меню <menuchoice
+><guimenu
+>Гра</guimenu
+> <guimenuitem
+>Створити</guimenuitem
+></menuchoice
+>. Перейдіть на сторінку <guilabel
+>Майданчик</guilabel
+> діалогового вікна, що відкриється, і оберіть майданчик <guilabel
+>Створити новий</guilabel
+>. Пам’ятайте, що слід зняти позначку <guilabel
+>За правилами</guilabel
+> на сторінці <guilabel
+>Параметрів</guilabel
+> діалогового вікна.</para>
+
+<note>
+<para
+>Щоб мати змогу зіграти на новому майданчику пізніше, натисніть кнопку <guibutton
+>Додати...</guibutton
+>, щоб додати майданчик до вашого списку майданчиків.</para>
+</note>
+</sect1>
+
+<sect1 id="adding-holes"
+> <title
+>Як додати лунки</title>
+<para
+>Перемкніться у режим редагування за допомогою пункту <menuchoice
+><guimenu
+>Лунка</guimenu
+><guimenuitem
+>Змінити</guimenuitem
+></menuchoice
+>. Скористайтеся пунктом меню <menuchoice
+><guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Створити</guimenuitem
+></menuchoice
+>, щоб додати нову лунку у кінець списку лунок майданчика.</para>
+<tip>
+<para
+>Ви можете відновити початковий режим лунки, у тому вигляді, у якому її було створено, за допомогою пункту меню <menuchoice
+><guimenu
+>Лунка</guimenu
+> <guimenuitem
+>Очиститиr</guimenuitem
+></menuchoice
+>.</para>
+</tip>
+<para
+>Для нових лунок з’явиться два елементи: отвір луки і білий м’ячик. Білим м’ячиком позначається місце, у яке мають влучити м’ячики гравців, щоб потрапити до лунки.</para>
+</sect1>
+
+<sect1 id="editing-basics"
+> <title
+>Основи редагування</title>
+<para
+>Базовою цеглинкою майданчиків &kolf; є <quote
+>об’єкт</quote
+>. Лунки складаються з багатьох об’єктів. Об’єкти можна пересувати до будь-якого місця, а різні типи об’єктів мають різні властивості, які ви можете змінити.</para>
+<para
+>Щоб почати редагування лунки, позначте пункт меню <menuchoice
+><guimenu
+>Лунка</guimenu
+><guimenuitem
+>Змінити</guimenuitem
+></menuchoice
+> або натисніть піктограму з олівцем на панелі інструментів. Щоб завершити редагування, зніміть позначку з цього пункту меню (або ще раз натисніть піктограму на панелі інструментів).</para>
+
+<sect2
+> <title
+>Додавання об’єктів</title>
+<para
+>Щоб додати новий об’єкт на поле майданчика, оберіть його назву у списку з міткою <guilabel
+>Додати об’єкт:</guilabel
+>. Об’єкт з’явиться у центрі майданчика.</para>
+<caution>
+<para
+>Мости і написи перекриватимуть нові об’єкти, якщо ці мости або написи вже розташовано по центру поля лунки.</para>
+</caution>
+<!--
+<tip>
+<para
+>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
+</tip>
+<para
+>Some &kolf; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
+<para
+>Third-party &kolf; plugins are available at the &kolf; website. See <ulink url="https://web.mit.edu/jasonkb/www/kolf/"
+>the &kolf; plugins download page</ulink
+>.</para>
+-->
+</sect2>
+
+<sect2
+> <title
+>Пересування і зміна розмірі об’єктів</title>
+<para
+>Наведіть вказівник вашої миші на об’єкт, який ви бажаєте пересунути, — вигляд вказівника миші буде змінено на форму у вигляді руки. Після цього натисніть ліву кнопку миші і перетягніть об’єкт у бажане місце.</para>
+<para
+>Розмір калюж, пісочниць, пливунів, мостів та написів можна змінювати перетягуванням маленького кружечка у їх верхньому правому куті.</para>
+
+<note>
+<para
+>Стіни можна пересувати натисканням і перетягуванням вказівником миші їх кінцевих точок, всю стіну можна перетягнути натисканням і перетягуванням стіни за середню частину, як звичайно.</para>
+</note>
+</sect2>
+
+<sect2
+> <title
+>Параметри об’єктів</title>
+<para
+>Властивості об’єктів можна змінити у області, розташованій у нижньому правому куті вікна &kolf;. Щоб змінити властивості об’єкта, наведіть на нього вказівник миші так, щоб вигляд вказівника змінився на форму руки. Після цього клацніть лівою кнопкою миші. У нижньому правому куті вікна &kolf; з’являться різноманітні засоби керування властивостями об’єкта.</para>
+<sect3
+> <title
+>Загальні параметри лунки</title>
+<para
+>Щоб змінити загальні параметри лунки, наведіть вказівник миші на ділянку поля лунки, не зайняту ніякими об’єктами, і клацніть лівою кнопкою миші. Незайняту ділянку можна визначити за тим, що на ній вказівник миші набуде звичайної форми.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Назва майданчика:</guilabel
+></term>
+<listitem>
+<para
+>Це назва, яку буде показано у діалоговому вікні створення нової гри і у діалоговому вікні <guimenuitem
+>Про майданчик</guimenuitem
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Автор майданчика:</guilabel
+></term>
+<listitem>
+<para
+>Це ім’я автора, яке буде показано у діалоговому вікні <guimenuitem
+>Про майданчик</guimenuitem
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>К-ть ударів:</guilabel
+></term>
+<listitem>
+<para
+>Кількість ударів, потрібна для влучання у лунку.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Максимум:</guilabel
+></term>
+<listitem>
+<para
+>Максимальна кількість ударів, які гравець може використати для взяття лунки.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Показувати стіни меж</guilabel
+></term>
+<listitem>
+<para
+>Визначає, чи слід показувати стіни навколо границь лунки.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Схили</title>
+
+<variablelist>
+<varlistentry
+> <term
+>Тип</term>
+<listitem>
+<para
+>Оберіть тип схилу — <guilabel
+>Вертикальний</guilabel
+>, <guilabel
+>Горизонтальний</guilabel
+>, <guilabel
+>Діагональний</guilabel
+>, <guilabel
+>Зворотний діагональний</guilabel
+>, <guilabel
+>Круговий</guilabel
+>. Діагональні і зворотні діагональні схили мають трикутну форму, кругові схили мають форму кіл. Вертикальні та горизонтальні схили є, звичайно ж, прямокутними.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Зворотній напрямок</guilabel
+></term>
+<listitem>
+<para
+>Визначає чи слід змінювати ухил схилу на протилежний. Наприклад, розглянемо еліптичний схил (круговий схил). Якщо значення ухилу не було змінено на протилежне, м’ячик скочуватиметься зі схилу, як з горба. Якщо ж змінити значення ухилу, м’ячик скочуватиметься всередину, як у заглибину.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Нерухомий</guilabel
+></term>
+<listitem>
+<para
+>Визначає, чи зможуть пересувати цей об’єкт інші об’єкти, наприклад пливуни.</para>
+<caution>
+<para
+>Якщо пливун перекриватиме цей об’єкт у будь-якій точці свого шляху, а схил буде крутим і не дасть рухатися пливуну, вам <emphasis
+>слід</emphasis
+> зробити схил <guilabel
+>Нерухомим</guilabel
+>, інакше швидкодія &kolf; страшенно уповільниться!</para>
+</caution>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Нахил:</guilabel
+></term>
+<listitem>
+<para
+>Оберіть нахил (крутизну) схилу пересуванням повзунка нахилу між значеннями 0 та 8, де 8 позначає найкрутіший схил, а 0 — рівне місце. Крутіші схили більше відхиляють напрям м’ячика.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Калюж</title>
+<para
+>Калюжі і Пісок мають однакові параметри налаштування.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Ввімкнути показ/приховування</guilabel
+></term>
+<listitem>
+<para
+>Позначення цього пункту вмикає блимання калюжі або пісочниці.</para>
+<!--
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Show/Hide speed</term>
+<listitem>
+  -->
+<para
+>Чим ближчим до крайньої точки напису <guilabel
+>Швидко</guilabel
+> буде цей повзунок, тим швидше блиматиме калюжа або пісок.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Мости, вітряки, пливуни і написи</title>
+<para
+>Мости, вітряки, пливуни і написи мають однакові параметри налаштування того, де буде встановлено бокові стіни. Щоб показати бокові стіни, позначте пункт для відповідної сторони.</para>
+<para
+>Існує також декілька специфічніших параметрів для вітряків, пливунів та написів.</para>
+
+<sect4
+> <title
+>Вітряки</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Млин згори</guilabel
+></term>
+<listitem>
+<para
+>Вказує, де саме буде показано перешкоду у вітряку, згори чи внизу, — типово, її буде показано вгорі. Дві напівстіни завжди буде показано на боці перешкоди. Зауважте, що не можна робити стіну на стороні перешкоди.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Швидкість</term>
+<listitem>
+<para
+>Чим ближчим буде повзунок до крайньої позначки <guilabel
+>Швидко</guilabel
+>, тим швидше рухатиметься чорна перешкода у вітряку.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Плавуни</title>
+<para
+>Шлях, вздовж якого рухатиметься пливун, буде показано стінкою, до якої приєднано пливун.</para>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Швидкість руху</guilabel
+></term>
+<listitem>
+<para
+>Чим ближчим до позначки <guilabel
+>Швидко</guilabel
+> буде повзунок, тим швидше рухатиметься пливун. Якщо пересунути повзунок у крайню позначку до напису <guilabel
+>Повільно</guilabel
+>, пливун зупиниться.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Написи</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Напис HTML:</guilabel
+></term>
+<listitem>
+<para
+>Сюди ви можете ввести будь-який коректний код &HTML;. Якщо ввести, наприклад, <userinput
+>Ударте &lt;i&gt;легенько&lt;/i&gt; у напрямку схилу!</userinput
+>, буде створено текст <quote
+>Ударте <emphasis
+>легенько</emphasis
+> у напрямку схилу!</quote
+>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+</sect3>
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="credits"
+><title
+>Подяки і ліцензія</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&kolf;</para>
+
+<para
+>Авторські права на програму &kolf; належать &Jason.Katz-Brown;, ©2001, 2002</para>
+
+<itemizedlist>
+<title
+>Розробники</title>
+<listitem>
+<para
+>&Jason.Katz-Brown; <email
+>jasonkb@mit.edu</email
+></para>
+</listitem>
+<listitem>
+<para
+>Niklas Knutsson</para>
+</listitem>
+<listitem>
+<para
+>Ryan Cumming</para>
+</listitem>
+<listitem>
+<para
+>Daniel Matza-Brown</para>
+</listitem>
+<listitem>
+<para
+>Paul Broadbent</para>
+</listitem>
+</itemizedlist>
+
+<para
+>Авторські права на документацію належать &Jason.Katz-Brown;, ©2002</para>
+
+<para
+>Переклад українською: Юрій Чорноіван <email
+>yurchor@ukr.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

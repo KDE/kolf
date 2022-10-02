@@ -1,0 +1,1588 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Catalan  "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="kolf" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>El manual del &kolf;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<authorgroup>
+<author
+><firstname
+>Jason</firstname
+> <surname
+>Katz-Brown</surname
+> <affiliation
+> <address
+><email
+>jasonkb@mit.edu</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+><firstname
+>Paul</firstname
+> <surname
+>Broadbent</surname
+> <affiliation
+> <address
+><email
+>dbd@myrealbox.com</email
+></address>
+</affiliation>
+<!-- <contrib
+>Reviewer</contrib
+> -->
+</othercredit>
+
+&traductor.Antoni.Bella; 
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>6 d'agost de 2021</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>KDE Gear 21.08</releaseinfo>
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Aquesta documentació descriu el joc &kolf; versió 21.08</para>
+</abstract>
+
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>joc</keyword
+> <!-- do not change this! -->
+	<keyword
+>Kolf</keyword
+><!--Application name goes here-->
+	<keyword
+>golf</keyword>
+	<keyword
+>miniatura</keyword>
+	<keyword
+>arcade</keyword>
+	<keyword
+>esport</keyword>
+	<keyword
+>deu jugadors</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Introducció</title
+> <!-- do not change this! -->
+	<note
+><title
+>Tipus de joc:</title
+><para
+>Arcade, esport</para
+></note>
+	<note
+><title
+>Nombre de possibles jugadors:</title
+><para
+>Deu</para
+></note>
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>El &kolf; és un joc de golf en miniatura amb la vista de dalt a baix en 2D. Els camps són dinàmics, i poden jugar alhora fins a 10 persones en competició.</para>
+<para
+>El &kolf; ve amb un camp d'aprenentatge. <link linkend="howto"
+>Jugar aquest camp</link
+> és la forma més fàcil de començar.</para>
+</chapter>
+
+<chapter id="howto"
+><title
+>Com jugar</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Objectiu:</title
+><para
+>Posar la bola a dins del forat amb els mínims cops possibles.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para
+>El joc del &kolf; és senzill. És més fàcil aprendre com jugar amb la pràctica i, per tant, s'inclou un camp d'aprenentatge per a guiar-vos a través dels conceptes bàsics. Aquest capítol us guiarà a través d'aquest camp d'aprenentatge. Per a iniciar-lo, trieu l'element de menú <menuchoice
+><guimenu
+>Ajuda</guimenu
+> <guimenuitem
+>Camp d'aprenentatge</guimenuitem
+></menuchoice
+>.</para>
+
+<sect1 id="hitting">
+<title
+>Colpejar la bola</title>
+<para
+>Per a apuntar la bola, s'ha d'alinear el ratolí al darrere de la bola, de manera que el llançador apunti cap a la direcció en la qual voleu colpejar o per a fer girar el llançador, s'ha de prémer una de les tecles &Left; (en sentit antihorari) o &Right; (en sentit horari).</para>
+<tip>
+<para
+>Per a fer girar el llançador més ràpidament amb el teclat, manteniu premuda la tecla &Maj; mentre premeu o manteniu premudes les tecles de fletxa. Per a fer girar més lentament, manteniu premuda la tecla &Ctrl;.</para>
+</tip>
+<para
+>Per a colpejar la bola, premeu i manteniu premut el &BER; o la tecla &Down;. Com més temps ho manteniu premut, més força tindrà el llançament. Agafareu pràctica obtenint una bona sensació per la velocitat.</para>
+<tip>
+<para
+>Per a aturar el llançament mentre encara esteu sostenint el moviment cap enrere del llançador en el vostre cop, premeu &Esc;.</para>
+</tip>
+
+<para
+>Colpegeu la bola cap al forat per a passar al següent.</para>
+</sect1>
+
+<sect1 id="slopes">
+<title
+>Desnivells</title>
+<para
+>Els desnivells són les àrees inclinades del camp on la bola de golf rodarà cap avall d'una manera esperada. La llum del camp de golf ve des de la part superior esquerra, de manera que els desnivells més brillants empenyeran la bola cap a la cantonada superior esquerra del forat. Trieu l'element de menú <menuchoice
+><guimenu
+>Forat</guimenu
+> <guimenuitem
+>Mostra la informació</guimenuitem
+></menuchoice
+> per a veure una fletxa que apunti en la direcció en la qual rodarà la bola pel desnivell.</para>
+<para
+>En el forat d'aquest camp d'aprenentatge, colpegeu la bola cap amunt en el desnivell i deixeu que rodi cap a la cassoleta per a anar al forat següent.</para>
+
+<sect2
+> <title
+>Direccions</title>
+<para
+>En el forat següent, experimenteu amb els altres tipus de desnivell. En el &kolf; hi ha desnivells el·líptics, verticals, horitzontals i diagonals. Colpegeu la bola cap a dins del forat.</para>
+</sect2>
+<sect2
+> <title
+>Inclinació</title>
+<para
+>El forat següent en el camp d'aprenentatge té dos desnivells amb una inclinació diferent. Si trieu l'element de menú <menuchoice
+><guimenu
+>Forat</guimenu
+> <guimenuitem
+>Mostra la informació</guimenuitem
+></menuchoice
+>, la inclinació del desnivell apareixerà com un número des de l'1 fins al 8, on 8 és més inclinat i 1 és menys profund. Colpegeu la bola cap a dins del forat i continueu fins al forat següent.</para>
+</sect2>
+</sect1>
+
+<sect1 id="walls"
+> <title
+>Murs</title>
+<para
+>Les boles rebotaran en els murs com seria d'esperar, amb una mica d'amortiment. Feu desviar la bola cap a fora dels murs i cap a la cassoleta per a avançar fins al forat següent.</para>
+</sect1>
+
+<sect1 id="puddles-sand"
+> <title
+>Bassals i sorra</title>
+<sect2
+> <title
+>Bassals</title>
+	<para
+>Els bassals són blaus. Quan la bola roda per un bassal, s'afegirà un cop de penalització a la vostra puntuació i, a continuació, haureu de triar per on voleu tirar: ja sigui al costat del bassal o des del mateix lloc on heu fet l'última tirada.</para>
+</sect2>
+<sect2
+> <title
+>Sorra</title>
+<para
+>La sorra és groga. Les boles rodaran molt lentament a través de la sorra.</para>
+<para
+>Colpegeu la bola al voltant dels bassals i a través de la sorra cap al forat per a continuar cap al camp d'aprenentatge següent.</para>
+</sect2>
+</sect1>
+
+<sect1 id="windmills"
+> <title
+>Molins de vent</title>
+<para
+>Els molins de vent són objectes compostos amb murs de la vora marrons i un braç en moviment en un costat. En la meitat dels murs es crea l'obertura en el molí de vent, on oscil·la el braç negre. Es necessita pràctica per a fer que el cop de la bola passi per l'obertura. Per a continuar, colpegeu la bola a través del molí de vent cap a dins del forat.</para>
+</sect1>
+
+<sect1 id="black-holes"
+> <title
+>Forats negres</title>
+<para
+>Quan colpegeu la bola a dins d'un forat negre, es transportarà fins a la sortida i s'expulsarà en angle a una velocitat directament relacionada amb la velocitat que li heu donat. Trieu l'element de menú <menuchoice
+><guimenu
+>Forat</guimenu
+><guimenuitem
+>Mostra la informació</guimenuitem
+></menuchoice
+> per a veure quin forat negre va a la sortida següent i en quina direcció sortirà la bola. La vora al voltant dels forats negres és del mateix color que el de les seves sortides corresponents. Colpegeu la bola cap a dins del forat negre, el qual després expulsarà la bola a dins de la cassoleta perquè pugueu anar cap al forat següent.</para>
+</sect1>
+
+<sect1 id="floaters"
+> <title
+>Plataformes voladores</title>
+<para
+>Les plataformes voladores mouen les plataformes que porten una bola que aterra a sobre seu. La seva velocitat és variable. Aquesta és una plataforma voladora força lenta, però encara hauríeu de tenir temps de donar un cop de manera que pugueu fer-la anar per sobre del mur i cap a dins de la cassoleta.</para>
+</sect1>
+
+<sect1 id="bridges"
+> <title
+>Ponts</title>
+<para
+>Els ponts són senzills: aixequen la bola per sobre de les coses que hi ha a sota seu, com desnivells, sorra i bassals. Poden tenir murs marrons en el seu perímetre.</para>
+</sect1>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Les regles del joc, estratègies i consells</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+<para
+>Aquí hi ha la descripció detallada de les característiques bàsiques del &kolf;.</para>
+
+<sect1 id="starting">
+<title
+>Començar una partida</title>
+
+<para
+>Per a iniciar una partida, trieu l'element de menú <menuchoice
+><guimenu
+>Joc</guimenu
+> <guimenuitem
+>Nova</guimenuitem
+></menuchoice
+>. Això obrirà un diàleg on podreu configurar el nom de la vostra partida.</para>
+<!--
+<tip>
+<para
+>More third-party &kolf; courses are available at the &kolf; website. See <ulink
+url="https://web.mit.edu/jasonkb/www/kolf/"
+>the &kolf; user-uploaded courses page</ulink
+>.</para>
+</tip>
+-->
+<sect2>
+<title
+>La pàgina Jugadors</title>
+<para
+>Per a afegir un jugador a la vostra partida, feu clic al botó <guibutton
+>Jugador nou</guibutton
+>.</para>
+
+<para
+>Per a canviar el nom dels jugadors, canvieu el text en els quadres de text.</para>
+
+<para
+>Per a eliminar un jugador, feu clic al botó <guibutton
+>Elimina</guibutton
+> que hi ha al costat del seu nom.</para>
+
+</sect2>
+
+<sect2
+> <title
+>La pàgina Camp</title>
+<para
+>Per a triar el camp que voleu jugar, feu clic a la seva entrada en el quadre de llista que hi ha a l'esquerra d'aquesta pàgina. El &kolf; ve amb molts camps incorporats en què podreu jugar.</para>
+<para
+>Per a afegir un camp que hàgiu descarregat o creat, feu clic al botó <guibutton
+>Afegeix...</guibutton
+> que es troba a la part inferior d'aquesta pàgina i trieu el fitxer del camp des del diàleg de fitxers.</para>
+</sect2>
+<sect2
+> <title
+>La pàgina Opcions</title>
+<para
+>En aquesta pàgina podreu triar si aquesta partida es jugarà o no en el <guilabel
+>Mode estricte</guilabel
+>. En aquest mode, no hi ha desfer, forats en moviment o edició del camp. Aquest mode generalment és per a la competició. En el mode estricte només es mantindran les puntuacions altes.</para>
+</sect2>
+</sect1>
+
+<sect1 id="saved-games"
+> <title
+>Partides desades</title>
+<para
+>El &kolf; pot mantenir un historial de les tandes que encara estan en curs i desar-les en el disc perquè les pugueu carregar i jugar més tard. Les partides desades inclouen el forat, els noms i els colors actuals de tots els jugadors en la partida, així com la seva puntuació.</para>
+<sect2
+> <title
+>Desar la vostra partida</title>
+<para
+>Per a desar la partida mentre esteu jugant, trieu l'element de menú <menuchoice
+><guimenu
+>Joc</guimenu
+> <guimenuitem
+>Desa la partida</guimenuitem
+></menuchoice
+>. Si no heu desat abans una partida en aquesta mateixa, se us demanarà pel fitxer de desament.</para>
+</sect2>
+<sect2
+> <title
+>Carregar la vostra partida</title>
+<para
+>Per a carregar la partida que heu desat, trieu l'element de menú <menuchoice
+><guimenu
+>Joc</guimenu
+> <guimenuitem
+>Carrega...</guimenuitem
+></menuchoice
+>. Podreu triar la partida desada que s'obrirà.</para>
+</sect2>
+</sect1>
+
+<sect1 id="practicing"
+> <title
+>Practicar</title>
+<para
+>Hi ha algunes característiques que faciliten la pràctica del golf. Aquestes característiques no estaran habilitades durant el mode estricte.</para>
+<sect2
+> <title
+>Desfés</title>
+<para
+>Per a desfer un cop dolent, trieu l'element de menú <menuchoice
+><guimenu
+>Forat</guimenu
+> <guimenuitem
+>Desfés el cop</guimenuitem
+></menuchoice
+>.</para>
+</sect2>
+<sect2
+> <title
+>Canviar de forat</title>
+<para
+>El menú <guimenu
+>Ves</guimenu
+> conté molts elements de menú per a canviar a forats diferents que són molt explicatius. Vegeu la <link linkend="go-menu"
+>referència de menú <guimenu
+>Ves</guimenu
+></link
+>.</para>
+</sect2>
+</sect1>
+
+<sect1 id="putting-options"
+> <title
+>Opcions de llançament</title>
+<para
+>El &kolf; té algunes maneres de llançar. El mètode de llançament bàsic s'ha <link linkend="hitting"
+>descrit anteriorment</link
+>.</para>
+<para
+>El ratolí estarà habilitat de manera predeterminada. Això vol dir que cada vegada que moveu el ratolí, el llançador s'alinearà amb la línia entre el ratolí i la bola.</para>
+<para
+>Si preferiu utilitzar només les tecles del teclat i les tecles de fletxa, podeu inhabilitar el llançament amb el ratolí desmarcant l'element de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Habilita el ratolí per a moure el llançador</guimenuitem
+></menuchoice
+>.</para>
+
+<sect2 id="advanced-putting"
+> <title
+>Llançament avançat</title>
+<para
+>El llançament avançat es pot habilitar marcant l'element de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Habilita el llançament avançat</guimenuitem
+></menuchoice
+>. Aquest mode de llançament és lleugerament més desafiant que el mode habitual de fer clic i mantenir premut, i es pot emprar amb el ratolí o el teclat.</para>
+
+<para
+>Llançar en aquest mode:</para>
+<procedure>
+<step>
+<para
+>Feu clic o premeu una vegada la tecla &Down; per a començar el swing. Apareixerà l'indicador de llançament, i l'indicador de força començarà a omplir-se amb un color, el qual canviarà a mesura que s'ompli.</para>
+</step>
+<step>
+<para
+>Feu clic o premeu la tecla &Down; quan l'indicador de força hagi completat la quantitat que voleu. Com més lluny al voltant del cercle, l'indicador de força estarà ple i més fort serà el llançament. Es necessita pràctica per a poder obtenir la força correcta en els llançaments.</para>
+<para
+>Després d'això, el color en l'indicador de llançament tornarà fins on estava en començar.</para>
+</step>
+<step>
+<para
+>Feu clic o premeu una altra vegada la tecla &Down; quan l'indicador de força estigui el més a prop possible de la línia central de l'indicador de llançament.</para>
+</step>
+</procedure>
+<para
+>Com més a prop esteu del clic final (o prémer la tecla), més precís serà el llançament amb la línia original.</para>
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Resum de la interfície</title
+> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+ <sect1 id="game-menu">
+<title
+>El menú Joc</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Nova</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Inicia una partida nova.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Carrega...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Càrrega una partida desada anteriorment.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Desa el camp</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Desa el camp actual emprant el seu nom de fitxer actual.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Joc</guimenu
+><guimenuitem
+>Desa el camp com a...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Obre un diàleg de fitxers que permet desar el camp actual utilitzant un nom nou de fitxer.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Joc</guimenu
+><guimenuitem
+>Desa la partida</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Desa la partida actual</action
+> amb l'últim nom del fitxer desat o sota un nom de fitxer que especifiqueu si encara no l'heu desat.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Joc</guimenu
+> <guimenuitem
+>Desa la partida com a...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Obre un diàleg de fitxers que permet <action
+>desar la partida actual amb un nom de fitxer de la vostra elecció.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&End;</keycombo
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Finalitza la partida</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Finalitza la partida actual, sense tancar</action
+> el &kolf;.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Mostra les puntuacions</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Mostra la taula de puntuació alta.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Joc</guimenu
+><guimenuitem
+>Quant al camp...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Mostra el nom, l'autor i el nombre de forats del camp.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Surt</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Surt</action
+> del &kolf;.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="hole-menu">
+<title
+>El menú Forat</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Forat</guimenu
+> <guimenuitem
+>Edita</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Canvia al mode edició</action
+> per a editar el forat actual.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Maj;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Forat</guimenu
+> <guimenuitem
+>Nou</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Crea un forat nou.</action
+> (Només mentre s'edita).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Del;</keycombo
+></shortcut
+> <guimenu
+>Forat</guimenu
+> <guimenuitem
+>Neteja</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Elimina tots els objectes del forat actual.</action
+> (Només mentre s'edita).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>R</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Forat</guimenu
+> <guimenuitem
+>Inicialitza</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Inicialitza el forat actual a la seva posició inicial</action
+>, de manera que pugueu començar de nou.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Forat</guimenu
+> <guimenuitem
+>Mostra la informació</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Mostra la informació sobre els objectes en el forat actual.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Forat</guimenu
+> <guimenuitem
+>Desfés el cop</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Desfà l'última tirada que heu fet.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="go-menu">
+<title
+>El menú Ves</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ves</guimenu
+> <guisubmenu
+>Canvia al forat</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Va directament cap a un altre forat dins del camp.</action
+> Una llista dels números de forat us permetrà escollir cap a quin forat voleu anar.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Alt;&Right;</keycombo
+></shortcut
+> <guimenu
+>Ves</guimenu
+> <guimenuitem
+>Forat següent</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Va cap al forat següent.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Alt;&Left;</keycombo
+></shortcut
+> <guimenu
+>Ves</guimenu
+> <guimenuitem
+>Forat anterior</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Va cap al forat anterior.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Home;</keycombo
+></shortcut
+> <guimenu
+>Ves</guimenu
+> <guimenuitem
+>Primer forat</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Va cap al primer forat en el camp.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Maj;&End;</keycombo
+> </shortcut
+> <guimenu
+>Ves</guimenu
+> <guimenuitem
+>Darrer forat</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Va cap a l'últim forat en el camp.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ves</guimenu
+> <guimenuitem
+>Forat aleatori</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Va cap a un forat aleatori des del camp actual.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="settings-help-menu">
+<title
+>Els menús Arranjament i Ajuda</title>
+
+<para
+>El &kolf; té la configuració comuna al &kde; i els elements dels menús <guimenu
+>Arranjament</guimenu
+> i <guimenu
+>Ajuda</guimenu
+>. Per a obtenir més informació, llegiu les seccions sobre <ulink url="help:/fundamentals/menus.html#menus-settings"
+>El menú Arranjament</ulink
+> i <ulink url="help:/fundamentals/menus.html#menus-help"
+>El menú Ajuda</ulink
+> en els Fonaments del &kde; amb aquestes entrades addicionals:</para>
+
+<variablelist>
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Habilita el ratolí per a moure el llançador</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Permet que es mogui el llançador emprant el ratolí.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Habilita el llançament avançat</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Habilita el mode de llançament avançat</action
+>, com es descriu en la <link linkend="advanced-putting"
+>seva pròpia secció</link
+>.</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Mostra la línia guia del llançador</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Alterna entre activar i desactivar la línia guia del llançador.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Reprodueix els sons</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Alterna entre activar i desactivar els efectes de so.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Habilita tots els diàlegs</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Torna a habilitar qualsevol diàleg que hàgiu inhabilitat fent clic a <guilabel
+>No tornis a mostrar aquest missatge</guilabel
+> o similar.</action
+></para
+></listitem>
+  </varlistentry>
+<!--
+  <varlistentry>
+    <term
+><menuchoice>
+    <guimenu
+>Settings</guimenu>
+    <guimenuitem
+>Reload Plugins</guimenuitem>
+    </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Reload plugins.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice>
+    <guimenu
+>Settings</guimenu>
+    <guimenuitem
+>Show Plugins</guimenuitem>
+    </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Display the currently loaded plugins.</action
+></para
+></listitem>
+  </varlistentry>
+-->
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Ajuda</guimenu
+> <guimenuitem
+>Camp d'aprenentatge</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+>Inicia el camp d'aprenentatge del &kolf;.</para
+></listitem>
+  </varlistentry>
+</variablelist>
+
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Preguntes més freqüents</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Vull canviar l'aparença d'aquest joc. Puc fer-ho? </para
+></question>
+ <answer
+><para
+>No. En aquest moment, el &kolf; presenta un sol tema.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Puc utilitzar el teclat per a jugar a aquest joc? </para
+></question>
+ <answer
+><para
+>Sí. Empreu les tecles direccionals per a controlar el llançador.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>No sé què fer aquí! Hi ha cap consell? </para
+></question>
+ <answer
+><para
+>No. El &kolf; no té una característica de pista.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Vull dissenyar el meu propi camp de golf. Puc? </para
+></question>
+ <answer
+><para
+>Sí. Ho podeu fer. Per a entrar en el mode edició, utilitzeu l'element de menú <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Forat</guimenu
+> <guimenuitem
+>Edita</guimenuitem
+></menuchoice
+>. Per a més detalls, feu clic <link linkend="creating"
+>aquí</link
+>.</para
+></answer
+><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Editor de camps</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+<para
+>El &kolf; ve amb un editor versàtil per al seu format de fitxer del camp. Els camps poden tenir qualsevol nombre de forats, i no hi ha límit en la creativitat del dissenyador del camp.</para>
+
+<sect1 id="creating"
+> <title
+>Crear un camp nou</title>
+<para
+>Per a crear un camp nou, trieu l'element de menú <menuchoice
+><guimenu
+>Joc</guimenu
+> <guimenuitem
+>Nova</guimenuitem
+></menuchoice
+>. Aneu a la pàgina <guilabel
+>Camp</guilabel
+> del diàleg i trieu <guilabel
+>Crea nou</guilabel
+> en el quadre de llista. Assegureu-vos que no està marcat el <guilabel
+>Mode estricte</guilabel
+> a la pàgina <guilabel
+>Opcions</guilabel
+> del diàleg.</para>
+
+<note>
+<para
+>Per a jugar amb aquest camp nou més tard, feu clic al botó <guibutton
+>Afegeix...</guibutton
+> per a afegir-lo a la vostra llista de camps.</para>
+</note>
+</sect1>
+
+<sect1 id="adding-holes"
+> <title
+>Afegir forats</title>
+<para
+>Canvieu al mode edició utilitzant l'element de menú <menuchoice
+><guimenu
+>Forat</guimenu
+> <guimenuitem
+>Edita</guimenuitem
+></menuchoice
+>. Trieu l'element de menú <menuchoice
+><guimenu
+>Forat</guimenu
+> <guimenuitem
+>Nou</guimenuitem
+></menuchoice
+> per a afegir un forat nou al final del camp.</para>
+<tip>
+<para
+>Podreu restaurar un forat a un estat en blanc, similar a quan es va crear per primera vegada, seleccionant l'element de menú <menuchoice
+><guimenu
+>Forat</guimenu
+> <guimenuitem
+>Neteja</guimenuitem
+></menuchoice
+>.</para>
+</tip>
+<para
+>Apareixeran dos elements sobre els forats nous: una cassoleta i una bola blanca. La bola blanca marca on començaran el forat les boles dels jugadors.</para>
+</sect1>
+
+<sect1 id="editing-basics"
+> <title
+>Conceptes bàsics de l'edició</title>
+<para
+>El bloc de construcció bàsic dels camps del &kolf; és l'<quote
+>objecte</quote
+>. Els forats estan formats per un munt d'objectes. Els objectes es poden moure a qualsevol ubicació, i els diferents tipus d'objectes tenen propietats diferents que podreu establir.</para>
+<para
+>Per a començar a editar un forat, alterneu l'element de menú <menuchoice
+><guimenu
+>Forat</guimenu
+> <guimenuitem
+>Edita</guimenuitem
+></menuchoice
+> o premeu la icona de llapis que hi ha a la barra d'eines. Per a deixar el mode d'edició, desmarqueu aquest element de menú (o la icona de la barra d'eines).</para>
+
+<sect2
+> <title
+>Afegir objectes</title>
+<para
+>Per a afegir un objecte nou al camp, trieu el seu nom en el quadre de llista anomenat <guilabel
+>Afegeix objecte:</guilabel
+>. L'objecte apareixerà en el centre del camp.</para>
+<caution>
+<para
+>Els ponts i els rètols encobriran els objectes nous si ja estan en el centre del forat.</para>
+</caution>
+<!--
+<tip>
+<para
+>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
+</tip>
+<para
+>Some &kolf; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
+<para
+>Third-party &kolf; plugins are available at the &kolf; website. See <ulink url="https://web.mit.edu/jasonkb/www/kolf/"
+>the &kolf; plugins download page</ulink
+>.</para>
+-->
+</sect2>
+
+<sect2
+> <title
+>Moure i canviar la mida dels objectes</title>
+<para
+>Moveu el cursor del ratolí per sobre de l'objecte que voleu moure, i el cursor del ratolí canviarà a un cursor de mà. Després feu clic i arrossegueu l'objecte a on vulgueu.</para>
+<para
+>Els bassals, la sorra, les plataformes voladores, els ponts i els rètols es poden redimensionar arrossegant el cercle petit que hi ha a la seva cantonada inferior dreta.</para>
+
+<note>
+<para
+>Els murs es poden moure fent clic i arrossegant els seus punts finals, o podeu moure tot el mur fent clic i arrossegant a la part mitjana del mur de forma normal.</para>
+</note>
+</sect2>
+
+<sect2
+> <title
+>Opcions de configuració dels objectes</title>
+<para
+>Les propietats dels objectes es poden canviar en l'àrea a la cantonada inferior dreta de la finestra del &kolf;. Per a editar un objecte, moveu el cursor del ratolí per sobre seu fins que el cursor canviï al cursor de mà. Després feu-hi clic. Apareixeran diversos controls per a aquest objecte a la cantonada inferior dreta de la finestra del &kolf;.</para>
+<sect3
+> <title
+>Opcions de configuració generals dels forats</title>
+<para
+>Per a editar les opcions de configuració generals dels forats, feu clic en una àrea del forat que no estigui coberta per un objecte. Quan això sigui possible, el cursor serà el cursor de punter normal.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Nom del camp:</guilabel
+></term>
+<listitem>
+<para
+>Aquest és el nom que es mostrarà en el diàleg <guilabel
+>Partida nova</guilabel
+> i en el diàleg <guilabel
+>Informació del camp</guilabel
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Autor del camp:</guilabel
+></term>
+<listitem>
+<para
+>Aquest és el nom de l'autor que es mostrarà en el diàleg <guilabel
+>Informació del camp</guilabel
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Par:</guilabel
+></term>
+<listitem>
+<para
+>El par del forat.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Màxim:</guilabel
+></term>
+<listitem>
+<para
+>El nombre màxim de cops que un jugador pot donar en el forat.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Mostra els murs de la vora</guilabel
+></term>
+<listitem>
+<para
+>Si voleu mostrar els murs o no al voltant de la vora del forat.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Desnivells</title>
+
+<variablelist>
+<varlistentry
+> <term
+>Tipus</term>
+<listitem>
+<para
+>Trieu el tipus de desnivell: <guilabel
+>Vertical</guilabel
+>, <guilabel
+>Horitzontal</guilabel
+>, <guilabel
+>Diagonal</guilabel
+>, <guilabel
+>Diagonal oposada</guilabel
+>, <guilabel
+>Circular</guilabel
+>. Els desnivells diagonals i diagonals oposades són triangles, mentre que els desnivells circulars són cercles. Els desnivells verticals i horitzontals són rectangles del camp.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Direcció invertida</guilabel
+></term>
+<listitem>
+<para
+>Si revertir o no la inclinació del desnivell. Per exemple, considereu un desnivell el·líptic (un desnivell circular). Quan no s'inverteix, empeny les boles cap a fora com un monticle. Quan s'inverteix, absorbeix les boles cap a dins, com un forat.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Inamovible</guilabel
+></term>
+<listitem>
+<para
+>Si el poden moure o no altres objectes, com les plataformes voladores.</para>
+<caution>
+<para
+>Si una plataforma voladora se superposa amb aquest objecte en qualsevol punt d'aquest camí, i el desnivell és gran, no mourà la plataforma voladora, <emphasis
+>haureu</emphasis
+> de fer que el desnivell sigui <guilabel
+>Inamovible</guilabel
+>, o el &kolf; patirà un rendiment deficient!</para>
+</caution>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Grau:</guilabel
+></term>
+<listitem>
+<para
+>Trieu el grau (inclinació) del desnivell movent el control lliscant de manera que el grau es mogui cap a 0 o 8, on 8 serà més inclinat i 0 serà pla. Els desnivells més inclinats empenyeran més la bola.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Bassals i sorra</title>
+<para
+>Els bassals i la sorra tenen les mateixes opcions de configuració com els altres.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Activa mostra/oculta</guilabel
+></term>
+<listitem>
+<para
+>Marcar-la permet el parpelleig d'aquest bassal o sorra.</para>
+<!--
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Show/Hide speed</term>
+<listitem>
+  -->
+<para
+>Com més a prop de <guilabel
+>Ràpid</guilabel
+> estigui el control lliscant, més ràpid serà el parpelleig del bassal o la sorra.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Ponts, molins de vent, plataformes voladores i rètols</title>
+<para
+>Els ponts, els molins de vent, les plataformes voladores i els rètols tenen opcions de configuració similars per a configurar en quins costats hi ha murs de la vora. Per a mostrar el costat d'un mur, marqueu la casella de selecció per a aquest costat.</para>
+<para
+>També hi ha algunes opcions més específiques per als molins de vent, les plataformes voladores i els rètols.</para>
+
+<sect4
+> <title
+>Molins de vent</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Molí de vent a dalt</guilabel
+></term>
+<listitem>
+<para
+>Si el braç del molí de vent negre es troba o no a baix o dalt, el valor predeterminat és a dalt. La meitat dels murs sempre estaran amb el braç. Cal tenir en compte que no podreu habilitar un mur de la vora al costat on es troba el braç.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Velocitat</term>
+<listitem>
+<para
+>Com més a prop de <guilabel
+>Ràpida</guilabel
+> estigui el control lliscant, més ràpid es mourà el braç del molí de vent negre.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Plataformes voladores</title>
+<para
+>El camí a través del qual es mou la plataforma voladora és mostrat pel mur al qual està connectat.</para>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Velocitat de moviment</guilabel
+></term>
+<listitem>
+<para
+>Com més a prop de <guilabel
+>Ràpida</guilabel
+> estigui el control lliscant, més ràpid es mourà la plataforma voladora. Si està tot el camí a l'extrem <guilabel
+>Lenta</guilabel
+>, la plataforma voladora s'aturarà.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Rètols</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Rètol HTML:</guilabel
+></term>
+<listitem>
+<para
+>Aquí podeu introduir qualsevol &HTML; vàlid. Per exemple, introduir <userinput
+>Hit it &lt;i&gt;softly&lt;/i&gt; towards the slope!</userinput
+> crearà el text <quote
+>Hit it <emphasis
+>softly</emphasis
+> towards the slope!</quote
+>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+</sect3>
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="credits"
+><title
+>Crèdits i llicència</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&kolf;</para>
+
+<para
+>Copyright del &kolf; 2001, 2002 &Jason.Katz-Brown;</para>
+
+<itemizedlist>
+<title
+>Desenvolupadors</title>
+<listitem>
+<para
+>&Jason.Katz-Brown; <email
+>jasonkb@mit.edu</email
+></para>
+</listitem>
+<listitem>
+<para
+>Niklas Knutsson</para>
+</listitem>
+<listitem>
+<para
+>Ryan Cumming</para>
+</listitem>
+<listitem>
+<para
+>Daniel Matza-Brown</para>
+</listitem>
+<listitem>
+<para
+>Paul Broadbent</para>
+</listitem>
+</itemizedlist>
+
+<para
+>Copyright de la documentació 2002, &Jason.Katz-Brown;</para>
+
+<para
+>Traductor de la documentació: &credits.Antoni.Bella;</para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

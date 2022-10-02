@@ -1,0 +1,1733 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kolf;">
+  <!ENTITY kappversion "1.9"
+><!--Application version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % Estonian  "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+ 
+<book id="kolf" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>&kolf;i käsiraamat</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<authorgroup>
+<author
+><firstname
+>Jason</firstname
+> <surname
+>Katz-Brown</surname
+> <affiliation
+> <address
+><email
+>jasonkb@mit.edu</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+><firstname
+>Paul</firstname
+> <surname
+>Broadbent</surname
+> <affiliation
+> <address
+><email
+>dbd@myrealbox.com</email
+></address>
+</affiliation>
+<!-- <contrib
+>Reviewer</contrib
+> -->
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>Marek</firstname
+> <surname
+>Laane</surname
+> <affiliation
+><address
+><email
+>bald@smail.ee</email
+></address
+></affiliation
+> <contrib
+>Tõlge eesti keelde</contrib
+></othercredit
+> 
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+ 
+<date
+>2010-10-01</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>&kappversion; (&kde; 4.5)</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+ 
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>See käsiraamat kirjeldab mängu &kappname; versiooni &kappversion;.</para>
+</abstract>
+ 
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>mäng</keyword
+> <!-- do not change this! -->
+	<keyword
+>Kolf</keyword
+><!--Application name goes here-->
+	<keyword
+>golf</keyword>
+	<keyword
+>mini</keyword>
+	<keyword
+>arkaadmäng</keyword>
+	<keyword
+>sport</keyword>
+	<keyword
+>kümme mängijat</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Sissejuhatus</title
+> <!-- do not change this! -->
+	<note
+><title
+>Mängu tüüp:</title
+><para
+>arkaadmäng, sportmäng</para
+></note>
+	<note
+><title
+>Mängijate arv:</title
+><para
+>Kümme</para
+></note
+> 
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&kappname; kujutab endast minigolfi, mis kasutab 2D ülalt alla vaadet. Väljakud on dünaamilised ning korraga võib võistelda kuni kümme mängijat.</para>
+<para
+>&kappname; pakub ka treenimisvõimalust. <link linkend="howto"
+>Sellisel väljakul</link
+> alustamine on hõlpsaim võimalus golfiga tutvust teha.</para>
+</chapter>
+ 
+<chapter id="howto"
+><title
+>Kuidas mängida</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Eesmärk:</title
+><para
+>lüüa pall auku võimalikult väheste löökidega.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para
+>&kappname;i mängimine on tegelikult ääretult lihtne. Treening pakub võimalust õppida golfi mängima ning seetõttu juhib see väljak sind läbi erinevate elementide, õpetades selgeks põhitõed. See peatükk kirjeldabki treeningut. Treeningu käivitamiseks mängus vali <menuchoice
+><guimenu
+>Abi</guimenu
+><guimenuitem
+>Treening</guimenuitem
+></menuchoice
+>.</para>
+
+<sect1 id="hitting"
+> 
+<title
+>Palli löömine</title>
+<para
+>Palli löömiseks aseta hiir palli taha, nii et golfikepp ehk putter osutaks suunas, kuhu soovid lüüa, või vajuta kas klahvi <keycap
+>Nool vasakule</keycap
+> (vastupäeva) või <keycap
+>Nool paremale</keycap
+> (päripäeva) putteri keeramiseks vajalikku suunda.</para>
+<tip>
+<para
+>Putteri kiiremaks keeramiseks klaviatuuri abil hoia nooleklahvile vajutades all klahvi &Shift;. Aeglasemaks keeramiseks aga vajuta klahvi &Ctrl;.</para>
+</tip>
+<para
+>Palli löömiseks vajuta ja hoia all &HVN; või klahv <keycap
+>Nool alla</keycap
+>. Mida kauem nuppu või klahvi all hoiad, seda tugevam löök tuleb. Õige löögitugevuse tunde kättesaamiseks võib kuluda päris hulk aega.</para>
+<tip>
+<para
+>Löögi peatamiseks pärast seda, kui oled juba hakanud putterit liigutama, vajuta klahvi &Esc;.</para>
+</tip>
+
+<para
+>Järgmisele rajale pääsemiseks löö pall auku.</para>
+</sect1>
+
+<sect1 id="slopes"
+> 
+<title
+>Kallakud</title>
+<para
+>Kallakud on alad, mida mööda golfipall veereb alla teatud kindlal viisil. Golfiväljaku valgustus tuleb ülalt vasakult, nii et heledamad kallakud suunavad palli järelikult ülespoole ja vasakule. Kui soovid näha, millises suunas kallakud palli suunavad, vali vastavaid nooli esile toov menüükäsk <menuchoice
+><guimenu
+>Rada</guimenu
+><guimenuitem
+>Näita infot</guimenuitem
+></menuchoice
+>.</para>
+<para
+>Sellel õpperajal löö järgmisele rajale pääsemiseks pall mööda kallakut üles ja lase tal auku veereda.</para>
+
+<sect2
+> <title
+>Suunad</title>
+<para
+>Järgmisel rajal saad harjutada erinevate kallakutüüpidega. &kappname; pakub ringjaid, vertikaalseid, horisontaalseid ja diagonaalseid kallakuid.</para>
+</sect2>
+<sect2
+> <title
+>Kalle</title>
+<para
+>Järgmisel rajal on kaks erineva kaldega kallakut. Kui valid <menuchoice
+><guimenu
+>Rada</guimenu
+><guimenuitem
+>Näita infot</guimenuitem
+></menuchoice
+>, näed kalde suurust numbrina vahemikus 1 kuni 8, kus 8 on kõige järsem ja 1 kõige laugem. Löö pall auku ja asu järgmise raja kallale.</para>
+</sect2>
+</sect1>
+
+<sect1 id="walls"
+> <title
+>Seinad</title>
+<para
+>Pallid põrkavad seintelt tagasi, nagu võibki oodata, ühtlasi aeglustab sein natuke nende hoogu ja võib ka muuta suunda, kui on löödud nurga all. Järgmisele rajale pääsemiseks löö pall põrkega seina vastu auku.</para>
+</sect1>
+
+<sect1 id="puddles-sand"
+> <title
+>Lombid ja liiv</title>
+<sect2
+> <title
+>Lombid</title>
+	<para
+>Lombid on sinised. Kui pall satub lompi, lisatakse karistuslöök ning sa pead valima, kus soovid ette võtta järgise löögi: kas otse lombi kõrval või samas kohas, kus sooritasid viimase löögi.</para>
+</sect2>
+<sect2
+> <title
+>Liiv</title>
+<para
+>Liiv on kollane. Pallid liiguvad liival väga aeglaselt.</para>
+<para
+>Järgmisele rajale pääsemiseks löö pall ümber lompide ja üle liiva auku.</para>
+</sect2>
+</sect1>
+
+<sect1 id="windmills"
+> <title
+>Tuuleveskid</title>
+<para
+>Tuuleveskid on keerukamad objektid pruunide seinte ning liikuva tiivikuga ühel küljel. Poolseinad tekitavad tuuleveskisse avause, mille ees tiivik liigub. Nõuab natuke harjutamist, enne kui suudad ajastada löögi täpselt läbima avaust - kuid ainult nii pääseb edasi järgmisele rajale.</para>
+</sect1>
+
+<sect1 id="black-holes"
+> <title
+>Mustad augud</title>
+<para
+>Kui lööd palli musta auku, toimetatakse see musta augu väljapääsu juurde ja paisatakse sealt välja teatud nurga all kiirusega, mis on seotud palli musta auku viinud löögi kiirusega. Vali <menuchoice
+><guimenu
+>Rada</guimenu
+><guimenuitem
+>Näita infot</guimenuitem
+></menuchoice
+>, kui soovid näha, millisest väljapääsust ja mis suunas pall mustast august väljub. Musta augu ja tema väljapääsu servad on ühesugust värvi. Löö pall musta auku, kust see saab lennata auku, et pääseda järgmisele rajale.</para>
+</sect1>
+
+<sect1 id="floaters"
+> <title
+>Hõljukid</title>
+<para
+>Hõljukid on liikuvad alused, mis kannavad endale sattunud palli. Nende liikumiskiirus on rajati erinev. Treeningrajal on tegemist üsna aeglase hõljukiga, kuid siiski tuleb sul oma löök täpselt ajastada, et hõljuk saaks toimetada palli üle seina auguni.</para>
+</sect1>
+
+<sect1 id="bridges"
+> <title
+>Sillad</title>
+<para
+>Sillad on väga lihtsad objektid - nad lihtsalt võimaldavad pallil veereda üle selle, mis silla alla jääb, olgu selleks siis kallak, liiv või lomp. Sillad võivad mõnest küljest olla piiratud seinaga.</para>
+</sect1>
+</chapter>
+ 
+<chapter id="rules_and_tips"
+><title
+>Mängureeglid, strateegia ja nõuanded</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+<para
+>Allpool on esitatud &kappname;i põhiomaduste põhjalik kirjeldus.</para>
+
+<sect1 id="starting"
+> 
+<title
+>Mängu käivitamine</title>
+
+<para
+>Mängu käivitamiseks vali <menuchoice
+><guimenu
+>Mäng</guimenu
+><guimenuitem
+>Uus</guimenuitem
+></menuchoice
+>. See avab dialoogi, kus saab uut mängu seadistada.</para>
+<!--
+<tip>
+<para
+>More third-party &kappname; courses are available at the &kappname; website. See <ulink 
+url="http://web.mit.edu/jasonkb/www/kolf/"
+>the &kappname; user-uploaded courses page</ulink
+>.</para>
+</tip>
+-->
+<sect2
+> 
+<title
+>Kaart <guilabel
+>Mängijad</guilabel
+></title>
+<para
+>Mängija lisamiseks klõpsa nupule <guibutton
+>Uus mängija</guibutton
+>.</para>
+
+<para
+>Mängijate nime muutmiseks muuda teksti tekstikastides.</para>
+
+<para
+>Mängija eemaldamiseks klõpsa nupule <guibutton
+>Eemalda</guibutton
+>.</para>
+
+</sect2>
+
+<sect2
+> <title
+>Kaart <guilabel
+>Väljak</guilabel
+></title>
+<para
+>Soovitava väljaku valimiseks klõpsa selle kirjel kaardi vasakus servas asuvas nimekirjakastis. &kappname; pakub mitmeid erinevaid väljakuid.</para>
+<para
+>Veebist tõmmatud või omaloodud väljaku lisamiseks klõpsa nupule <guibutton
+>Lisa...</guibutton
+> ning vali ilmuvas failidialoogis soovitud väljakufail.</para>
+</sect2>
+<sect2
+> <title
+>Kaart <guilabel
+>Valikud</guilabel
+></title>
+<para
+>Sellel kaardil saad valida, kas mängu mängitakse <guilabel
+>Ranges režiimis</guilabel
+> või mitte. Range režiimi korral ei saa lööke tagasi võtta, radu vahetada ega väljakut redigeerida. Üldiselt on see režiim mõeldud võistlemiseks. Ka rekordeid salvestatakse ainult range režiimi korral.</para>
+</sect2>
+</sect1>
+
+<sect1 id="saved-games"
+> <title
+>Salvestatud mängud</title>
+<para
+>&kappname; peab meeles sinu läbitud radu ning võib need kettale salvestada, et sa saaksid soovi korral mängu hiljem jätkata. Salvestatud mängud jätavad meelde poolelijäänud raja, kõigi mängijate nimed ja värvid, samuti iga mängija skoori.</para>
+<sect2
+> <title
+>Mängu salvestamine</title>
+<para
+>Mängu salvestamiseks mängimise ajal vali <menuchoice
+><guimenu
+>Mäng</guimenu
+><guimenuitem
+>Salvesta mäng</guimenuitem
+> </menuchoice
+>. Kui sa ei ole antud mängu varem salvestanud, palutakse sul sisestada failinimi.</para>
+</sect2>
+<sect2
+> <title
+>Mängu avamine</title>
+<para
+>Salvestatud mängu taaslaadimiseks vali <menuchoice
+><guimenu
+>Mäng</guimenu
+><guimenuitem
+>Ava...</guimenuitem
+> </menuchoice
+>, misjärel saad valida, millise mängu soovid avada.</para>
+</sect2>
+</sect1>
+
+<sect1 id="practicing"
+> <title
+>Harjutamine</title>
+<para
+>Mitu lisavõimalust muudavad golfi mängimise hõlpsamaks. Range režiimi korral ei ole need võimalused lubatud.</para>
+<sect2
+> <title
+>Tagasivõtmine</title>
+<para
+>Kehva löögi tagasivõtmiseks vali <menuchoice
+><guimenu
+>Rada</guimenu
+><guimenuitem
+>Võta löök tagasi</guimenuitem
+></menuchoice
+>.</para>
+</sect2>
+<sect2
+> <title
+>Radade vahetamine</title>
+<para
+>Menüü <guimenu
+>Liikumine</guimenu
+> võimaldab mitut moodi suunduda käesolevalt mõnele muule rajale, nende nimetused peaksid ise enda eest kõnelema. Vaata lähemalt <link linkend="go-menu"
+>menüü <guimenu
+>Liikumine</guimenu
+> käskude seletusi</link
+>.</para>
+</sect2>
+</sect1>
+
+<sect1 id="putting-options"
+> <title
+>Puttamisvõimalused</title>
+<para
+>&kappname; pakub puttamiseks mitu võimalust. Põhimeetodit sai kirjeldatud juba <link linkend="hitting"
+>eespool</link
+>.</para>
+<para
+>Vaikimisi on hiire kasutamine lubatud. See tähendab, et kui sa hiirt liigutad, võtab putter sisse asendi hiirekursori ja palli vahel.</para>
+<para
+>Kui eelistad kasutada ainult klaviatuuri ja nooleklahve, saad hiire kasutamise keelata, eemaldades märke menüükäsu <menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>Putteri liigutamine hiirega lubatud</guimenuitem
+></menuchoice
+> eest.</para>
+
+<sect2 id="advanced-putting"
+> <title
+>Täiustatud puttamine</title>
+<para
+>Täiustatud puttamise saab lubada menüükäsu <menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>Täiustatud puttamine lubatud</guimenuitem
+></menuchoice
+> märkimisega. See režiim on omajagu keerukam kui tavaline klõpsa-ja-hoia meetod ning sedagi on võimalik kasutada nii hiire kui klaviatuuriga.</para>
+
+<para
+>Selles režiimis puttamiseks:</para>
+<procedure>
+<step>
+<para
+>Klõpsa või vajuta klahvi <keycap
+>Nool alla</keycap
+> löögi alustamiseks. Ilmub indikaator ning löögitugevuse rõngas hakkab täituma värviga.</para>
+</step>
+<step>
+<para
+>Klõpsa või vajuta klahvi <keycap
+>Nool alla</keycap
+>, kui löögitugevus on rõngal jõudnud tasemeni, mida soovid. Mida enam rõngas on täitunud, seda tugevam löök tuleb. Õige löögitugevuse tunde leidmiseks kulub päris hulk aega.</para>
+<para
+>Seejärel hakkab värv indikaatorirõngas taas kahanema alguse poole.</para>
+</step>
+<step>
+<para
+>Klõpsa või vajuta klahvi <keycap
+>Nool alla</keycap
+> uuesti, kui tugevusindikaator on võimalikult lähedal puttamisindikaatori keskjoonele.</para>
+</step>
+</procedure>
+<para
+>Mida lähemal viimane klõps (või klahvivajutus) on, seda täpsemalt kulgeb löök esialgu määratud suunas.</para>
+</sect2>
+</sect1>
+</chapter>
+ 
+<chapter id="interface"
+><title
+>Liidese tutvustus</title
+> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+ <sect1 id="game-menu">
+<title
+>Menüü Mäng</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Uus</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Alustab uut mängu.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Ava...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Avab varem salvestatud mängu.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Salvesta väljak</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Salvestab parajasti kasutatava väljaku selle praeguse nime all.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Salvesta väljak kui...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Avab failidialoogi, kus saab <action
+>salvestada käesoleva väljaku uue nime all.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Salvesta mäng</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Salvestab käesoleva mängu</action
+> viimati salvestatud mängu failinimega või sinu määratava failinimega, kui sa ei ole varem mängu salvestanud.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Salvesta mäng kui...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Avab failidialoogi, mis võimaldab <action
+>salvestada käesoleva mängu uue nime all.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>End</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Lõpeta mäng</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Lõpetab käesoleva mängu ilma</action
+> &kappname;i sulgemata.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Näita rekordeid</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Näitab edetabelit.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Väljaku info</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Näitab väljaku nime, autorit ja radade arvu.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Välju</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Lõpetab</action
+> &kappname;i töö.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="hole-menu">
+<title
+>Menüü Rada</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Rada</guimenu
+> <guimenuitem
+>Muuda</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Lülitab redigeerimisrežiimi</action
+>, mis võimaldab muuta käesolevat rada.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Rada</guimenu
+> <guimenuitem
+>Uus</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Loob uue raja.</action
+> (Ainult redigeerimise korral.)</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Del</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Rada</guimenu
+> <guimenuitem
+>Puhasta</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Eemaldab käesolevalt rajalt kõik objektid.</action
+> (Ainult redigeerimise korral.)</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>R</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Rada</guimenu
+> <guimenuitem
+>Algseis</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Taastab käesoleva raja algseisu</action
+>, võimaldades uuesti alustada.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Rada</guimenu
+> <guimenuitem
+>Näita infot</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Näitab infot antud raja objektide kohta.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Rada</guimenu
+> <guimenuitem
+>Võta löök tagasi</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Tühistab viimase löögi.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="go-menu">
+<title
+>Menüü Liikumine</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Liikumine</guimenu
+> <guisubmenu
+>Vaheta rada</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Suundub otse sama väljaku mõnele muule rajale.</action
+> Nummerdatud radade nimekiri aitab valida, millisele rajale minna.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Alt;<keycap
+>Nool paremale</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Liikumine</guimenu
+> <guimenuitem
+>Järgmine rada</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Liigub järgmisele rajale.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Alt;<keycap
+>Nool vasakule</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Liikumine</guimenu
+> <guimenuitem
+>Eelmine rada</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Liigub eelmisele rajale.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl;<keycap
+>Home</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Liikumine</guimenu
+> <guimenuitem
+>Esimene rada</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Liigub väljaku esimesele rajale.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>End</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Liikumine</guimenu
+> <guimenuitem
+>Viimane rada</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Liigub väljaku viimasele rajale.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Liikumine</guimenu
+> <guimenuitem
+>Juhuslikult valitud rada</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Liigub väljaku juhuslikult valitud rajale.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="settings-menu">
+<title
+>Menüü Seadistused</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Tööriistariba näitamine</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Lülitab peamise tööriistariba näitamise sisse ja välja.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Olekuriba näitamine</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Lülitab olekuriba näitamise sisse ja välja.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Putteri liigutamine hiirega lubatud</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Lubab kasutada putteri (golfikepi) liigutamiseks hiirt.</action
+></para
+> 
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Täiustatud puttamine</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Lülitab täiustatud puttamise režiimi</action
+>, mida on kirjeldatud <link linkend="advanced-putting"
+>vastavas osas</link
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Putteri sihiku näitamine</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Lülitab putteri sihiku näitamise sisse ja välja.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>Helide esitamine</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Lülitab heliefektid sisse ja välja.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Kõigi dialoogide näitamine</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Lubab taas näidata kõiki dialooge, mida sa oled keelanud klõpsuga märkele <guilabel
+>Seda teadet rohkem ei näidata</guilabel
+></action
+>.</para>
+</listitem>
+</varlistentry>
+<!--
+<varlistentry>
+<term
+><menuchoice>
+<guimenu
+>Settings</guimenu>
+<guimenuitem
+>Reload Plugins</guimenuitem>
+</menuchoice
+></term>
+<listitem>
+<para
+><action
+>Reload plugins.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice>
+<guimenu
+>Settings</guimenu>
+<guimenuitem
+>Show Plugins</guimenuitem>
+</menuchoice
+></term>
+<listitem>
+<para
+><action
+>Display the currently loaded plugins.</action
+></para>
+</listitem>
+</varlistentry>
+-->
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Kiirklahvide seadistamine...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Kiirklahvide kohandamine.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Tööriistaribade seadistamine...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Avab dialoogi, kus saab seadistada &kappname;i tööriistaribasid</action
+>.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+<sect1 id="help"
+><!--This is a standard Help menubar entry. Only change if needed.-->
+<title
+>Menüü Abi</title>
+<para
+>&kappname; kasutab allpool kirjeldatavat tavapärast &kde; <guimenu
+>abi</guimenu
+>menüüd ühe erandiga:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Abi</guimenu
+> <guimenuitem
+>Treening</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Käivitab &kappname; treeningkursuse.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>&kde; tavapärase <guimenu
+>abi</guimenu
+>menüü kirjed on järgmised:</para>
+&help.menu.documentation; </sect1>
+</chapter>
+  
+<chapter id="faq"
+><title
+>Korduma kippuvad küsimused</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Ma soovin muuta mängu välimust. On see võimalik? </para
+></question>
+ <answer
+><para
+>Ei, praegu pakub &kappname; ainult üht teemat.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Kas mängida saab ka klaviatuuri abil? </para
+></question>
+ <answer
+><para
+>Jah, nooleklahvidega saab suunata putterit.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Ma ei saa aru, mida ma peaksin tegema! Kas mingeid vihjeid ei ole? </para
+></question>
+ <answer
+><para
+>Ei, &kappname; ei paku vihjeid.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Tahan luua omaenda golfirada. Kas see on võimalik? </para
+></question>
+ <answer
+><para
+>Ikka on. Redigeerimisrežiimi sisenemiseks vali menüükäsk <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+></shortcut
+><guimenu
+>Rada</guimenu
+><guimenuitem
+>Muuda</guimenuitem
+></menuchoice
+>. Täpsemalt kõneldakse sellest <link linkend="creating"
+>siin</link
+>.</para
+></answer
+><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+</qandaentry>
+ 
+</qandaset>
+</chapter>
+ 
+<chapter id="configuration"
+><title
+>Väljaku redaktor</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+<para
+>&kappname; pakub tõhusat redaktorit enda väljakute redigeerimiseks. Väljakutel võib olla mis tahes arv radu ning õigupoolest ei piira miski väljaku kujundaja mõttelendu.</para>
+
+<sect1 id="creating"
+> <title
+>Uue väljaku loomine</title>
+<para
+>Uue väljaku loomiseks vali <menuchoice
+><guimenu
+>Mäng</guimenu
+><guimenuitem
+>Uus</guimenuitem
+></menuchoice
+>. Liigu kaardile <guilabel
+>Väljakud</guilabel
+> ning vali nimekirjast võimalus <guilabel
+>Loo uus</guilabel
+>. Kontrolli, et kaardil <guilabel
+>Valikud</guilabel
+> oleks võimalus <guilabel
+>Range režiim</guilabel
+> märkimata.</para>
+
+<note>
+<para
+>Uue väljaku kasutamiseks kunagi hiljem klõpsa nupule <guibutton
+>Lisa...</guibutton
+>, mis lisab loodud väljaku nimekirja.</para>
+</note>
+</sect1>
+
+<sect1 id="adding-holes"
+> <title
+>Radade lisamine</title>
+<para
+>Lülitu redigeerimisrežiimi, valides <menuchoice
+><guimenu
+>Rada</guimenu
+><guimenuitem
+>Muuda</guimenuitem
+></menuchoice
+>. Uue raja lisamiseks käesolevale väljakule vali <menuchoice
+><guimenu
+>Rada</guimenu
+><guimenuitem
+>Uus</guimenuitem
+></menuchoice
+>.</para>
+<tip>
+<para
+>Rada on võimalik muuta puhtaks, selliseks, nagu see oli loomise algul, kui valida <menuchoice
+><guimenu
+>Rada</guimenu
+><guimenuitem
+>Puhasta</guimenuitem
+></menuchoice
+>.</para>
+</tip>
+<para
+>Uuel rajal on vaikimisi kohe kaks elementi: auk ja valge pall. Valge pall märgib kohta, kus mängijad antud rajal avalöögi sooritavad.</para>
+</sect1>
+
+<sect1 id="editing-basics"
+> <title
+>Põhielementide redigeerimine</title>
+<para
+>&kappname;i väljaku põhiline komponent on <quote
+>objekt</quote
+>. Rajad koosnevad üldjuhul mitmest objektist. Objekte võib liigutada mis tahes asukohta ning erinevatel objektidel on erinevad omadused, mida on võimalik muuta.</para>
+<para
+>Raja muutmiseks vali <menuchoice
+><guimenu
+>Rada</guimenu
+><guimenuitem
+>Muuda</guimenuitem
+></menuchoice
+> või vajuta pliiatsikujulist ikooni tööriistaribal. Redigeerimisrežiimist väljumiseks vali menüükäsk uuesti või vajuta uuesti ikoonile.</para>
+
+<sect2
+> <title
+>Objektide lisamine</title>
+<para
+>Uue objekti lisamiseks väljakule vali selle nimi nimekirjakastist, mille kohal seisab kiri <guilabel
+>Lisatav objekt</guilabel
+>. Objekt ilmub seejärel väljaku keskele.</para>
+<caution>
+<para
+>Sillad ja sildid võivad katta uusi objekte, kui nad juba asuvad raja keskosas.</para>
+</caution>
+<!--
+<tip>
+<para
+>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
+</tip>
+<para
+>Some &kappname; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
+<para
+>Third-party &kappname; plugins are available at the &kappname; website. See <ulink url="http://web.mit.edu/jasonkb/www/kolf/"
+>the &kappname; plugins download page</ulink
+>.</para>
+-->
+</sect2>
+
+<sect2
+> <title
+>Objektide liigutamine ja suuruse muutmine</title>
+<para
+>Liiguta hiirekursor objekti kohale, mida soovid liigutada. Kursor muutub käekujuliseks. Seejärel klõpsa ja lohista objekt sinna, kuhu soovid.</para>
+<para
+>Lompide, liiva, hõljukite, sildade ja siltide suurust saab muuta nende alumises paremas nurgas asuvat ringikest lohistades.</para>
+
+<note>
+<para
+>Seinu saab liigutada neile klõpsates ja otspunkte lohistades. Kogu seina saab liigutada sellel klõpsates ning seda kuskilt keskelt kinni haarates vajalikku kohta lohistades.</para>
+</note>
+</sect2>
+
+<sect2
+> <title
+>Objektide omadused</title>
+<para
+>Objektide omadusi saab muuta &kappname;i akna alumises paremas nurgas. Objekti redigeerimiseks liiguta hiirekursorit, kuni see muutub käekujuliseks. Seejärel klõpsa objektil, mispeale &kappname;i akna alumises paremas nurgas ilmuvad nähtavale objekti seadistatavad omadused.</para>
+<sect3
+> <title
+>Raja üldised omadused</title>
+<para
+>Raja üldiste omaduste redigeerimiseks klõpsa kuskil, kus ei asu objekti. Kui see on võimalik, jääb hiirekursor normaalseks.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Väljaku nimi:</guilabel
+></term>
+<listitem>
+<para
+>See on nimi, mis on näha uue mängu käivitamise dialoogis ning dialoogis <guimenuitem
+>Väljaku info</guimenuitem
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Väljaku autor:</guilabel
+></term>
+<listitem>
+<para
+>See on autori nimi, mis on näha dialoogis <guimenuitem
+>Väljaku info</guimenuitem
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Par:</guilabel
+></term>
+<listitem>
+<para
+>Raja par.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Maksimaalne:</guilabel
+></term>
+<listitem>
+<para
+>Maksimaalne löökide arv, mida mängija võib rajal sooritada.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Piirete näitamine</guilabel
+></term>
+<listitem>
+<para
+>Kas piirdeid raja ümber näidatakse või mitte.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Kallakud</title>
+
+<variablelist>
+<varlistentry
+> <term
+>Tüüp</term>
+<listitem>
+<para
+>Võimalus valida kallaku tüüp - <guilabel
+>vertikaalne</guilabel
+>, <guilabel
+>horisontaalne</guilabel
+>, <guilabel
+>diagonaal</guilabel
+>, <guilabel
+>teisipidi diagonaal</guilabel
+>, <guilabel
+>ring</guilabel
+>. Diagonaalsed ja teisipidi diagonaalsed kallakud on kolmnurksed, ringid, nagu nimigi ütleb, ringikujulised. Vertikaalsed ja horisontaalsed kallakud on mõistagi ristkülikukujulised.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Vastupidises suunas</guilabel
+></term>
+<listitem>
+<para
+>Millises suunas on kallaku kalle. Näiteks ringikujulise kallaku puhul tähendab selle mittemärkimine, et pallid veerevad sellelt eemale nagu künkalt, märkimine aga palli veeremist kallaku keskme poole nagu auku.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Kalle:</guilabel
+></term>
+<listitem>
+<para
+>Võimalus valida kallaku kalle liuguri nihutamisega skaalal 0 kuni 8, kus 8 on kõige järsem ja 0 päris lame. Mida järsem kallak, seda suurema hoo sealt alla veerev pall saab.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Liikumatu</guilabel
+></term>
+<listitem>
+<para
+>Määrab, kas seda saavad teised objektid (näiteks hõljukid) liigutada või mitte.</para>
+<caution>
+<para
+>Kui hõljuk kattub selle objektiga oma teekonnal ning kallak on suur ega lase hõljukit liigutada, <emphasis
+>pead</emphasis
+> muutma kallaku <guilabel
+>liikumatu</guilabel
+>ks, sest muidu muutub &kappname; üsna halvasti mängitavaks!</para>
+</caution>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Lombid ja liiv</title>
+<para
+>Lompidel ja liival on muude objektidega sarnased seadistamisvõimalused.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Näitamise/peitmise lubamine</guilabel
+></term>
+<listitem>
+<para
+>Selle märkimine paneb antud lombi või liiva ennast ainult aegajalt näitama.</para>
+<!--
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Show/Hide speed</term>
+<listitem>
+  -->
+<para
+>Mida rohkem on liugur nihutatud märke <guilabel
+>Kiire</guilabel
+> poole, seda kiiremini lomp või liiv vilgub.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Sillad, tuuleveskid, hõljukid ja sildid</title>
+<para
+>Sildadel, tuuleveskitel, hõljukitel ja siltidel on ühesugused võimalused seadistada, millisel küljel asuvad nende seinad. Seina tekitamiseks mingile küljele märgi vastava külje märkekast.</para>
+<para
+>Tuuleveskitel, hõljukitel ja siltidel on veel mõned eriomadused.</para>
+
+<sect4
+> <title
+>Tuuleveskid</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Tiivik allservas</guilabel
+></term>
+<listitem>
+<para
+>Määrab, kas tuuleveski tiivik asub selle alumisel või ülemisel küljel. Vaikimisi on see allservas. Tiivikuseinas on alati kaks poolseina. Pane tähele, et sa ei saa määrata seina sellele küljele, kus asub tiivik.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Kiirus</term>
+<listitem>
+<para
+>Mida rohkem on liugur lükatud märke <guilabel
+>Kiire</guilabel
+> suunas, seda kiiremini tiivik liigub.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Hõljukid</title>
+<para
+>Hõljuki liikumissuunda näitab sein, mille külge see on kinnitatud.</para>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Liikumiskiirus</guilabel
+></term>
+<listitem>
+<para
+>Mida rohkem on liugur lükatud märke <guilabel
+>Kiire</guilabel
+> suunas, seda kiiremini hõljuk liigub. Kui liugur on lükatud täielikult märke <guilabel
+>Aeglane</guilabel
+> poolsesse otsa, hõljuk ei liigu.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Sildid</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Sildi HTML:</guilabel
+></term>
+<listitem>
+<para
+>Siia saab sisestada suvalise toimiva &HTML;-teksti. Kui näiteks kirjutada <userinput
+>Löö pall &lt;i&gt;õrnalt&lt;/í&gt; kallaku suunas!</userinput
+>, on tulemuseks silt tekstiga <quote
+>Löö pall <emphasis
+>õrnalt</emphasis
+> kallaku suunas!</quote
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+</sect3>
+</sect2>
+</sect1>
+</chapter>
+ 
+<chapter id="credits"
+><title
+>Autorid ja litsents</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+ 
+<para
+>&kappname;</para>
+
+<para
+>&kappname; copyright 2001, 2002: &Jason.Katz-Brown;</para>
+
+<itemizedlist>
+<title
+>Arendajad</title>
+<listitem>
+<para
+>&Jason.Katz-Brown; <email
+>jasonkb@mit.edu</email
+></para>
+</listitem>
+<listitem>
+<para
+>Niklas Knutsson</para>
+</listitem>
+<listitem>
+<para
+>Ryan Cumming</para>
+</listitem>
+<listitem>
+<para
+>Daniel Matza-Brown</para>
+</listitem>
+<listitem>
+<para
+>Paul Broadbent</para>
+</listitem>
+</itemizedlist>
+
+<para
+>Dokumentatsiooni autoriõigus 2002: &Jason.Katz-Brown;</para>
+
+<para
+>Tõlge eesti keelde: Marek Laane <email
+>bald@smail.ee</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+  
+<appendix id="installation">
+<title
+>Paigaldamine</title>
+ 
+&install.intro.documentation;
+ 
+ 
+<sect1 id="Compilation">
+<title
+>Kompileerimine ja paigaldamine</title>
+&install.compile.documentation; </sect1>
+</appendix>
+ 
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
