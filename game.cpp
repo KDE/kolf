@@ -37,9 +37,12 @@
 #include <QUrl>
 #include <QRandomGenerator>
 #include <KGameRenderer>
+
+#include <kwidgetsaddons_version.h>
 #include <KLineEdit>
 #include <KLocalizedString>
 #include <KMessageBox>
+
 #include <KgTheme>
 #include <Box2D/Dynamics/b2Body.h>
 #include <Box2D/Dynamics/Contacts/b2Contact.h>
@@ -1996,14 +1999,32 @@ bool KolfGame::askSave(bool noMoreChances)
 		// not cancel, don't save
 		return false;
 
-	int result = KMessageBox::warningYesNoCancel(this, i18n("There are unsaved changes to current hole. Save them?"), i18n("Unsaved Changes"), KStandardGuiItem::save(), noMoreChances? KStandardGuiItem::discard() : KGuiItem(i18n("Save &Later")), KStandardGuiItem::cancel(), noMoreChances? QStringLiteral("DiscardAsk") : QStringLiteral("SaveAsk"));
+#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
+	int result = KMessageBox::warningTwoActionsCancel(this,
+#else
+	int result = KMessageBox::warningYesNoCancel(this,
+#endif
+						     i18n("There are unsaved changes to current hole. Save them?"),
+						     i18n("Unsaved Changes"),
+						     KStandardGuiItem::save(),
+						     noMoreChances? KStandardGuiItem::discard() : KGuiItem(i18n("Save &Later")),
+						     KStandardGuiItem::cancel(),
+						     noMoreChances? QStringLiteral("DiscardAsk") : QStringLiteral("SaveAsk"));
 	switch (result)
 	{
+#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
+		case KMessageBox::PrimaryAction:
+#else
 		case KMessageBox::Yes:
+#endif
 			save();
 			// fallthrough
 
+#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
+		case KMessageBox::SecondaryAction:
+#else
 		case KMessageBox::No:
+#endif
 			return false;
 			break;
 
