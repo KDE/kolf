@@ -20,6 +20,7 @@
   <name xml:lang="gl">Kolf</name>
   <name xml:lang="id">Kolf</name>
   <name xml:lang="it">Kolf</name>
+  <name xml:lang="ka">Kolf</name>
   <name xml:lang="ko">Kolf</name>
   <name xml:lang="nl">Kolf</name>
   <name xml:lang="nn">Kolf</name>
@@ -56,6 +57,7 @@
   <summary xml:lang="gl">Golf en miniatura</summary>
   <summary xml:lang="id">Golf Miniatur</summary>
   <summary xml:lang="it">Golf in miniatura</summary>
+  <summary xml:lang="ka">მინიატურული გოლფი</summary>
   <summary xml:lang="ko">모형 골프</summary>
   <summary xml:lang="nl">Miniatuurgolf</summary>
   <summary xml:lang="nn">Minigolf</summary>
@@ -128,6 +130,7 @@
     <p xml:lang="gl">Funcionalidades:</p>
     <p xml:lang="id">Fitur:</p>
     <p xml:lang="it">Caratteristiche:</p>
+    <p xml:lang="ka">თვისებები:</p>
     <p xml:lang="ko">기능:</p>
     <p xml:lang="nl">Mogelijkheden:</p>
     <p xml:lang="nn">Funksjonar:</p>
@@ -198,6 +201,7 @@
       <li xml:lang="gl">Táboa de mellores puntuacións.</li>
       <li xml:lang="id">Tabel tingkat skor</li>
       <li xml:lang="it">Tabellone dei migliori punteggi</li>
+      <li xml:lang="ka">უმაღლესი ქულების ცხრილი</li>
       <li xml:lang="ko">최고 점수표</li>
       <li xml:lang="nl">Tabel met topscores</li>
       <li xml:lang="nn">Rekordtavle</li>
@@ -232,6 +236,7 @@
       <li xml:lang="gl">Campos dinámicos</li>
       <li xml:lang="id">Haluan dinamis</li>
       <li xml:lang="it">Percorsi dinamici</li>
+      <li xml:lang="ka">დინამიკური კურსები</li>
       <li xml:lang="ko">동적 코스</li>
       <li xml:lang="nl">Dynamische banen</li>
       <li xml:lang="nn">Dynamiske golfbanar</li>
@@ -266,6 +271,7 @@
       <li xml:lang="gl">Campos de terceiros</li>
       <li xml:lang="id">Haluan pihak ketiga</li>
       <li xml:lang="it">Percorsi di terze parti</li>
+      <li xml:lang="ka">მესამე პირის კურსები</li>
       <li xml:lang="ko">제 3자 개발 코스</li>
       <li xml:lang="nl">Banen van derden</li>
       <li xml:lang="nn">Nedlastbare golfbanar</li>
@@ -300,6 +306,7 @@
       <li xml:lang="gl">Editor de campos</li>
       <li xml:lang="id">Pengedit Haluan</li>
       <li xml:lang="it">Editor dei percorsi</li>
+      <li xml:lang="ka">კურსის რედაქტორი</li>
       <li xml:lang="ko">코스 편집기</li>
       <li xml:lang="nl">Bewerker van de baan</li>
       <li xml:lang="nn">Kan laga eigne banar</li>
@@ -342,6 +349,7 @@
       <caption xml:lang="gl">Pantalla inicial de Kolf</caption>
       <caption xml:lang="id">Layar awal Kolf</caption>
       <caption xml:lang="it">Schermata iniziale di Kolf</caption>
+      <caption xml:lang="ka">Kolf-ის პირველი ეკრანი</caption>
       <caption xml:lang="ko">Kolf 초기 화면</caption>
       <caption xml:lang="nl">Initiaal scherm van Kolf</caption>
       <caption xml:lang="nn">Startbiletet i Kolf</caption>
