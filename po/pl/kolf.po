@@ -1,4 +1,4 @@
-# Version: $Revision: 1634720 $
+# Version: $Revision: 1636231 $
 # translation of kolf.po to Polish
 # Copyright (C) 2002,2003, 2004, 2005, 2007, 2008, 2009 Free Software Foundation, Inc.
 #
@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"POT-Creation-Date: 2022-10-17 00:43+0000\n"
 "PO-Revision-Date: 2022-01-08 09:09+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -42,97 +42,97 @@ msgstr "Brak konfigurowalnych opcji"
 msgid "Add object:"
 msgstr "Dodaj obiekt:"
 
-#: game.cpp:261
+#: game.cpp:264
 #, kde-format
 msgid "Course name: "
 msgstr "Nazwa toru: "
 
-#: game.cpp:268
+#: game.cpp:271
 #, kde-format
 msgid "Course author: "
 msgstr "Autor toru: "
 
-#: game.cpp:277
+#: game.cpp:280
 #, kde-format
 msgid "Par:"
 msgstr "Norma:"
 
-#: game.cpp:287
+#: game.cpp:290
 #, kde-format
 msgid "Maximum:"
 msgstr "Maksimum:"
 
-#: game.cpp:291
+#: game.cpp:294
 #, kde-format
 msgid "Maximum number of strokes player can take on this hole."
 msgstr "Przekroczono maksymalną liczbę uderzeń dla tego dołka."
 
-#: game.cpp:292
+#: game.cpp:295
 #, kde-format
 msgid "Maximum number of strokes"
 msgstr "Maksymalna liczba prób"
 
-#: game.cpp:293
+#: game.cpp:296
 #, kde-format
 msgid "Unlimited"
 msgstr "Bez ograniczeń"
 
-#: game.cpp:299
+#: game.cpp:302
 #, kde-format
 msgid "Show border walls"
 msgstr "Pokaż ścianki ograniczające"
 
-#: game.cpp:497 game.cpp:2439
+#: game.cpp:500 game.cpp:2460
 #, kde-format
 msgid "Course Author"
 msgstr "Autor toru"
 
-#: game.cpp:498 game.cpp:499 game.cpp:2439
+#: game.cpp:501 game.cpp:502 game.cpp:2460
 #, kde-format
 msgid "Course Name"
 msgstr "Nazwa toru"
 
-#: game.cpp:1421
+#: game.cpp:1424
 #, kde-format
 msgid "Drop Outside of Hazard"
 msgstr "Uderzenie z miejsca wypadnięcia z toru"
 
-#: game.cpp:1422
+#: game.cpp:1425
 #, kde-format
 msgid "Rehit From Last Location"
 msgstr "Uderzenie z poprzedniego miejsca"
 
-#: game.cpp:1424
+#: game.cpp:1427
 #, kde-format
 msgid "What would you like to do for your next shot?"
 msgstr "Co zrobić z następnym uderzeniem?"
 
-#: game.cpp:1424
+#: game.cpp:1427
 #, kde-format
 msgid "%1 is in a Hazard"
 msgstr "%1 jest poza torem"
 
-#: game.cpp:1592
+#: game.cpp:1595
 #, kde-format
 msgid "%1 will start off."
 msgstr "%1 rozpoczyna grę."
 
-#: game.cpp:1592
+#: game.cpp:1595
 #, kde-format
 msgid "New Hole"
 msgstr "Nowy dołek"
 
-#: game.cpp:1753
+#: game.cpp:1756
 #, kde-format
 msgid "Course name: %1"
 msgstr "Nazwa toru: %1"
 
-#: game.cpp:1754
+#: game.cpp:1757
 #, kde-format
 msgid "Created by %1"
 msgstr "Autor: %1"
 
-#: game.cpp:1755
+#: game.cpp:1758
 #, kde-format
 msgid "%1 hole"
 msgid_plural "%1 holes"
@@ -140,33 +140,33 @@ msgstr[0] "%1 dołek"
 msgstr[1] "%1 dołki"
 msgstr[2] "%1 dołków"
 
-#: game.cpp:1756
+#: game.cpp:1759
 #, kde-format
 msgctxt "@title:window"
 msgid "Course Information"
 msgstr "Informacje o torze"
 
-#: game.cpp:1887
+#: game.cpp:1890
 #, kde-format
 msgid "This hole uses the following plugins, which you do not have installed:"
 msgstr "Ten dołek używa następujących niezainstalowanych wtyczek:"
 
-#: game.cpp:1999
+#: game.cpp:2007
 #, kde-format
 msgid "There are unsaved changes to current hole. Save them?"
 msgstr "Nie zapisano zmiany w aktualnym dołku. Zapisać je?"
 
-#: game.cpp:1999
+#: game.cpp:2008
 #, kde-format
 msgid "Unsaved Changes"
 msgstr "Niezapisane zmiany"
 
-#: game.cpp:1999
+#: game.cpp:2010
 #, kde-format
 msgid "Save &Later"
 msgstr "Zapisz &później"
 
-#: game.cpp:2170 kolf.cpp:550
+#: game.cpp:2191 kolf.cpp:550
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"

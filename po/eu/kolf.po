@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"POT-Creation-Date: 2022-10-17 00:43+0000\n"
 "PO-Revision-Date: 2022-08-10 16:59+0200\n"
 "Last-Translator: Jon Intxaurbe <joinzar@gmail.com>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -46,131 +46,131 @@ msgstr "Konfigurazioaren aukerarik ez"
 msgid "Add object:"
 msgstr "Gehitu objektua:"
 
-#: game.cpp:261
+#: game.cpp:264
 #, kde-format
 msgid "Course name: "
 msgstr "Zelaiaren izena:"
 
-#: game.cpp:268
+#: game.cpp:271
 #, kde-format
 msgid "Course author: "
 msgstr "Zelaiaren egilea:"
 
-#: game.cpp:277
+#: game.cpp:280
 #, kde-format
 msgid "Par:"
 msgstr "Parea:"
 
-#: game.cpp:287
+#: game.cpp:290
 #, kde-format
 msgid "Maximum:"
 msgstr "Maximoa:"
 
-#: game.cpp:291
+#: game.cpp:294
 #, kde-format
 msgid "Maximum number of strokes player can take on this hole."
 msgstr "Zulo honetan jokalariak erabil ditzakeen kolpe kopuru maximoa."
 
-#: game.cpp:292
+#: game.cpp:295
 #, kde-format
 msgid "Maximum number of strokes"
 msgstr "Kolpe kopuru maximoa"
 
-#: game.cpp:293
+#: game.cpp:296
 #, kde-format
 msgid "Unlimited"
 msgstr "Mugagabea"
 
-#: game.cpp:299
+#: game.cpp:302
 #, kde-format
 msgid "Show border walls"
 msgstr "Erakutsi ertzeko hormak"
 
-#: game.cpp:497 game.cpp:2439
+#: game.cpp:500 game.cpp:2460
 #, kde-format
 msgid "Course Author"
 msgstr "Zelaiaren egilea"
 
-#: game.cpp:498 game.cpp:499 game.cpp:2439
+#: game.cpp:501 game.cpp:502 game.cpp:2460
 #, kde-format
 msgid "Course Name"
 msgstr "Zelaiaren izena"
 
-#: game.cpp:1421
+#: game.cpp:1424
 #, kde-format
 msgid "Drop Outside of Hazard"
 msgstr "Arriskutik kanpo atera"
 
-#: game.cpp:1422
+#: game.cpp:1425
 #, kde-format
 msgid "Rehit From Last Location"
 msgstr "Kolpea berriro azken kokalekutik"
 
-#: game.cpp:1424
+#: game.cpp:1427
 #, kde-format
 msgid "What would you like to do for your next shot?"
 msgstr "Zer egin nahi duzun hurrengo kolpean?"
 
-#: game.cpp:1424
+#: game.cpp:1427
 #, kde-format
 msgid "%1 is in a Hazard"
 msgstr "%1 arriskuan dago"
 
-#: game.cpp:1592
+#: game.cpp:1595
 #, kde-format
 msgid "%1 will start off."
 msgstr "%1 hasiko da."
 
-#: game.cpp:1592
+#: game.cpp:1595
 #, kde-format
 msgid "New Hole"
 msgstr "Zulo berria"
 
-#: game.cpp:1753
+#: game.cpp:1756
 #, kde-format
 msgid "Course name: %1"
 msgstr "Zelaiaren izena. %1"
 
-#: game.cpp:1754
+#: game.cpp:1757
 #, kde-format
 msgid "Created by %1"
 msgstr "Egilea: %1"
 
-#: game.cpp:1755
+#: game.cpp:1758
 #, kde-format
 msgid "%1 hole"
 msgid_plural "%1 holes"
 msgstr[0] "%1 zulo"
 msgstr[1] "%1 zulo"
 
-#: game.cpp:1756
+#: game.cpp:1759
 #, kde-format
 msgctxt "@title:window"
 msgid "Course Information"
 msgstr "Zelaiaren informazioa"
 
-#: game.cpp:1887
+#: game.cpp:1890
 #, kde-format
 msgid "This hole uses the following plugins, which you do not have installed:"
 msgstr ""
 "Zulo honek ondorengo pluginak erabiltzen ditu, eta ez dituzu instalatuta:"
 
-#: game.cpp:1999
+#: game.cpp:2007
 #, kde-format
 msgid "There are unsaved changes to current hole. Save them?"
 msgstr "Gorde gabeko aldaketak dituzu uneko zuloan. Gorde?"
 
-#: game.cpp:1999
+#: game.cpp:2008
 #, kde-format
 msgid "Unsaved Changes"
 msgstr "Gorde gabeko aldaketak"
 
-#: game.cpp:1999
+#: game.cpp:2010
 #, kde-format
 msgid "Save &Later"
 msgstr "Gorde &beranduago"
 
-#: game.cpp:2170 kolf.cpp:550
+#: game.cpp:2191 kolf.cpp:550
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"

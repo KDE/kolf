@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"POT-Creation-Date: 2022-10-17 00:43+0000\n"
 "PO-Revision-Date: 2007-11-29 22:00+0900\n"
 "Last-Translator: Yukiko Bando <ybando@k6.dion.ne.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -45,97 +45,97 @@ msgstr "設定オプションはありません"
 msgid "Add object:"
 msgstr "オブジェクトを追加:"
 
-#: game.cpp:261
+#: game.cpp:264
 #, kde-format
 msgid "Course name: "
 msgstr "コース名:"
 
-#: game.cpp:268
+#: game.cpp:271
 #, kde-format
 msgid "Course author: "
 msgstr "コースの作者:"
 
-#: game.cpp:277
+#: game.cpp:280
 #, kde-format
 msgid "Par:"
 msgstr "パー:"
 
-#: game.cpp:287
+#: game.cpp:290
 #, kde-format
 msgid "Maximum:"
 msgstr "最大:"
 
-#: game.cpp:291
+#: game.cpp:294
 #, kde-format
 msgid "Maximum number of strokes player can take on this hole."
 msgstr "各プレイヤーがこのホールで打てる最大ストローク数"
 
-#: game.cpp:292
+#: game.cpp:295
 #, kde-format
 msgid "Maximum number of strokes"
 msgstr "最大ストローク数"
 
-#: game.cpp:293
+#: game.cpp:296
 #, kde-format
 msgid "Unlimited"
 msgstr "無制限"
 
-#: game.cpp:299
+#: game.cpp:302
 #, kde-format
 msgid "Show border walls"
 msgstr "ボーダーの壁を表示する"
 
-#: game.cpp:497 game.cpp:2439
+#: game.cpp:500 game.cpp:2460
 #, kde-format
 msgid "Course Author"
 msgstr "コースの作者"
 
-#: game.cpp:498 game.cpp:499 game.cpp:2439
+#: game.cpp:501 game.cpp:502 game.cpp:2460
 #, kde-format
 msgid "Course Name"
 msgstr "コース名"
 
-#: game.cpp:1421
+#: game.cpp:1424
 #, kde-format
 msgid "Drop Outside of Hazard"
 msgstr "ハザード外にドロップ"
 
-#: game.cpp:1422
+#: game.cpp:1425
 #, kde-format
 msgid "Rehit From Last Location"
 msgstr "もう一度前の場所から打つ"
 
-#: game.cpp:1424
+#: game.cpp:1427
 #, kde-format
 msgid "What would you like to do for your next shot?"
 msgstr "次のショットはどうしましょう？"
 
-#: game.cpp:1424
+#: game.cpp:1427
 #, kde-format
 msgid "%1 is in a Hazard"
 msgstr "%1 がハザードに入りました"
 
-#: game.cpp:1592
+#: game.cpp:1595
 #, kde-format
 msgid "%1 will start off."
 msgstr "%1 が開始します。"
 
-#: game.cpp:1592
+#: game.cpp:1595
 #, kde-format
 msgid "New Hole"
 msgstr "新しいホール"
 
-#: game.cpp:1753
+#: game.cpp:1756
 #, kde-format
 msgid "Course name: %1"
 msgstr "コース名: %1"
 
-#: game.cpp:1754
+#: game.cpp:1757
 #, kde-format
 msgid "Created by %1"
 msgstr "作者: %1"
 
-#: game.cpp:1755
+#: game.cpp:1758
 #, fuzzy, kde-format
 #| msgid "%1 holes"
 msgid "%1 hole"
@@ -143,34 +143,34 @@ msgid_plural "%1 holes"
 msgstr[0] "%1 ホール"
 msgstr[1] "%1 ホール"
 
-#: game.cpp:1756
+#: game.cpp:1759
 #, fuzzy, kde-format
 #| msgid "Course Information"
 msgctxt "@title:window"
 msgid "Course Information"
 msgstr "コース情報"
 
-#: game.cpp:1887
+#: game.cpp:1890
 #, kde-format
 msgid "This hole uses the following plugins, which you do not have installed:"
 msgstr "このホールには現在インストールされていない次のプラグインが必要です:"
 
-#: game.cpp:1999
+#: game.cpp:2007
 #, kde-format
 msgid "There are unsaved changes to current hole. Save them?"
 msgstr "現在のホールには未保存の変更があります。保存しますか？"
 
-#: game.cpp:1999
+#: game.cpp:2008
 #, kde-format
 msgid "Unsaved Changes"
 msgstr "未保存の変更"
 
-#: game.cpp:1999
+#: game.cpp:2010
 #, kde-format
 msgid "Save &Later"
 msgstr "後で保存(&L)"
 
-#: game.cpp:2170 kolf.cpp:550
+#: game.cpp:2191 kolf.cpp:550
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Course to Save To"
 msgctxt "@title:window"

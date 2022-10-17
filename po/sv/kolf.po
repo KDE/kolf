@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"POT-Creation-Date: 2022-10-17 00:43+0000\n"
 "PO-Revision-Date: 2021-08-05 17:12+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -37,131 +37,131 @@ msgstr "Inga inställningsalternativ"
 msgid "Add object:"
 msgstr "Lägg till objekt:"
 
-#: game.cpp:261
+#: game.cpp:264
 #, kde-format
 msgid "Course name: "
 msgstr "Banans namn:"
 
-#: game.cpp:268
+#: game.cpp:271
 #, kde-format
 msgid "Course author: "
 msgstr "Banans upphovsman:"
 
-#: game.cpp:277
+#: game.cpp:280
 #, kde-format
 msgid "Par:"
 msgstr "Par:"
 
-#: game.cpp:287
+#: game.cpp:290
 #, kde-format
 msgid "Maximum:"
 msgstr "Maximum:"
 
-#: game.cpp:291
+#: game.cpp:294
 #, kde-format
 msgid "Maximum number of strokes player can take on this hole."
 msgstr "Maximala antal slag som spelaren kan göra för det här hålet."
 
-#: game.cpp:292
+#: game.cpp:295
 #, kde-format
 msgid "Maximum number of strokes"
 msgstr "Maximalt antal slag"
 
-#: game.cpp:293
+#: game.cpp:296
 #, kde-format
 msgid "Unlimited"
 msgstr "Obegränsad"
 
-#: game.cpp:299
+#: game.cpp:302
 #, kde-format
 msgid "Show border walls"
 msgstr "Visa kantväggar"
 
-#: game.cpp:497 game.cpp:2439
+#: game.cpp:500 game.cpp:2460
 #, kde-format
 msgid "Course Author"
 msgstr "Banans upphovsman"
 
-#: game.cpp:498 game.cpp:499 game.cpp:2439
+#: game.cpp:501 game.cpp:502 game.cpp:2460
 #, kde-format
 msgid "Course Name"
 msgstr "Banans namn"
 
-#: game.cpp:1421
+#: game.cpp:1424
 #, kde-format
 msgid "Drop Outside of Hazard"
 msgstr "Släpp utanför hinder"
 
-#: game.cpp:1422
+#: game.cpp:1425
 #, kde-format
 msgid "Rehit From Last Location"
 msgstr "Slå igen från senaste platsen"
 
-#: game.cpp:1424
+#: game.cpp:1427
 #, kde-format
 msgid "What would you like to do for your next shot?"
 msgstr "Vad vill du göra vid nästa slag?"
 
-#: game.cpp:1424
+#: game.cpp:1427
 #, kde-format
 msgid "%1 is in a Hazard"
 msgstr "%1 är i ett hinder"
 
-#: game.cpp:1592
+#: game.cpp:1595
 #, kde-format
 msgid "%1 will start off."
 msgstr "%1 börjar."
 
-#: game.cpp:1592
+#: game.cpp:1595
 #, kde-format
 msgid "New Hole"
 msgstr "Nytt hål"
 
-#: game.cpp:1753
+#: game.cpp:1756
 #, kde-format
 msgid "Course name: %1"
 msgstr "Banans namn: %1"
 
-#: game.cpp:1754
+#: game.cpp:1757
 #, kde-format
 msgid "Created by %1"
 msgstr "Skapad av %1"
 
-#: game.cpp:1755
+#: game.cpp:1758
 #, kde-format
 msgid "%1 hole"
 msgid_plural "%1 holes"
 msgstr[0] "%1 hål"
 msgstr[1] "%1 hål"
 
-#: game.cpp:1756
+#: game.cpp:1759
 #, kde-format
 msgctxt "@title:window"
 msgid "Course Information"
 msgstr "Baninformation"
 
-#: game.cpp:1887
+#: game.cpp:1890
 #, kde-format
 msgid "This hole uses the following plugins, which you do not have installed:"
 msgstr ""
 "Det här hålet använder följande insticksprogram som du inte har installerade:"
 
-#: game.cpp:1999
+#: game.cpp:2007
 #, kde-format
 msgid "There are unsaved changes to current hole. Save them?"
 msgstr "Det finns osparade ändringar för det aktuella hålet. Spara dem?"
 
-#: game.cpp:1999
+#: game.cpp:2008
 #, kde-format
 msgid "Unsaved Changes"
 msgstr "Osparade ändringar"
 
-#: game.cpp:1999
+#: game.cpp:2010
 #, kde-format
 msgid "Save &Later"
 msgstr "Spara se&nare"
 
-#: game.cpp:2170 kolf.cpp:550
+#: game.cpp:2191 kolf.cpp:550
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"

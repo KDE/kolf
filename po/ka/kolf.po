@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"POT-Creation-Date: 2022-10-17 00:43+0000\n"
 "PO-Revision-Date: 2022-10-10 05:32+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -38,130 +38,130 @@ msgstr ""
 msgid "Add object:"
 msgstr "ობიექტის დამატება:"
 
-#: game.cpp:261
+#: game.cpp:264
 #, kde-format
 msgid "Course name: "
 msgstr "კურსის სახელი: "
 
-#: game.cpp:268
+#: game.cpp:271
 #, kde-format
 msgid "Course author: "
 msgstr "კურსის ავტორი: "
 
-#: game.cpp:277
+#: game.cpp:280
 #, kde-format
 msgid "Par:"
 msgstr ""
 
-#: game.cpp:287
+#: game.cpp:290
 #, kde-format
 msgid "Maximum:"
 msgstr "მაქსიმუმი:"
 
-#: game.cpp:291
+#: game.cpp:294
 #, kde-format
 msgid "Maximum number of strokes player can take on this hole."
 msgstr ""
 
-#: game.cpp:292
+#: game.cpp:295
 #, kde-format
 msgid "Maximum number of strokes"
 msgstr ""
 
-#: game.cpp:293
+#: game.cpp:296
 #, kde-format
 msgid "Unlimited"
 msgstr "შეუზღუდავი"
 
-#: game.cpp:299
+#: game.cpp:302
 #, kde-format
 msgid "Show border walls"
 msgstr ""
 
-#: game.cpp:497 game.cpp:2439
+#: game.cpp:500 game.cpp:2460
 #, kde-format
 msgid "Course Author"
 msgstr "კურსის ავტორი"
 
-#: game.cpp:498 game.cpp:499 game.cpp:2439
+#: game.cpp:501 game.cpp:502 game.cpp:2460
 #, kde-format
 msgid "Course Name"
 msgstr "კურსის სახელი"
 
-#: game.cpp:1421
+#: game.cpp:1424
 #, kde-format
 msgid "Drop Outside of Hazard"
 msgstr ""
 
-#: game.cpp:1422
+#: game.cpp:1425
 #, kde-format
 msgid "Rehit From Last Location"
 msgstr ""
 
-#: game.cpp:1424
+#: game.cpp:1427
 #, kde-format
 msgid "What would you like to do for your next shot?"
 msgstr ""
 
-#: game.cpp:1424
+#: game.cpp:1427
 #, kde-format
 msgid "%1 is in a Hazard"
 msgstr "%1 საფრთხეშია"
 
-#: game.cpp:1592
+#: game.cpp:1595
 #, kde-format
 msgid "%1 will start off."
 msgstr ""
 
-#: game.cpp:1592
+#: game.cpp:1595
 #, kde-format
 msgid "New Hole"
 msgstr "ახალი ნახვრეტი"
 
-#: game.cpp:1753
+#: game.cpp:1756
 #, kde-format
 msgid "Course name: %1"
 msgstr "კურსის სახელი: %1"
 
-#: game.cpp:1754
+#: game.cpp:1757
 #, kde-format
 msgid "Created by %1"
 msgstr "შექმნილია %1-ის მიერ"
 
-#: game.cpp:1755
+#: game.cpp:1758
 #, kde-format
 msgid "%1 hole"
 msgid_plural "%1 holes"
 msgstr[0] "%1 ნახვრეტი"
 msgstr[1] "%1 ნახვრეტი"
 
-#: game.cpp:1756
+#: game.cpp:1759
 #, kde-format
 msgctxt "@title:window"
 msgid "Course Information"
 msgstr ""
 
-#: game.cpp:1887
+#: game.cpp:1890
 #, kde-format
 msgid "This hole uses the following plugins, which you do not have installed:"
 msgstr ""
 
-#: game.cpp:1999
+#: game.cpp:2007
 #, kde-format
 msgid "There are unsaved changes to current hole. Save them?"
 msgstr ""
 
-#: game.cpp:1999
+#: game.cpp:2008
 #, kde-format
 msgid "Unsaved Changes"
 msgstr "შეუნახავი ცვლილებები"
 
-#: game.cpp:1999
+#: game.cpp:2010
 #, kde-format
 msgid "Save &Later"
 msgstr ""
 
-#: game.cpp:2170 kolf.cpp:550
+#: game.cpp:2191 kolf.cpp:550
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"
