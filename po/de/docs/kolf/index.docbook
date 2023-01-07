@@ -1,418 +1,845 @@
 <?xml version="1.0" ?>
 <!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY % English "INCLUDE" > <!-- change language only here -->
-  <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
+  <!ENTITY kappname "&kolf;">
+  <!ENTITY kappversion "1.9"
+><!--Application version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % German "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
 ]>
-
-<book id="kolf" lang="&language;"> <!-- do not change this! -->
+ 
+<book id="kolf" lang="&language;"
+> <!-- do not change this! -->
 <bookinfo>
-	<title>The &kolf; Handbook</title> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+	<title
+>Das Handbuch zu &kolf;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
 <authorgroup>
-<author>
-<firstname>Jason</firstname>
-<surname>Katz-Brown</surname>
-<affiliation>
-<address><email>jasonkb@mit.edu</email></address>
+<author
+><firstname
+>Jason</firstname
+> <surname
+>Katz-Brown</surname
+> <affiliation
+> <address
+><email
+>jasonkb@mit.edu</email
+></address>
 </affiliation>
 </author>
 
-<othercredit role="reviewer">
-<firstname>Paul</firstname>
-<surname>Broadbent</surname>
-<affiliation>
-<address><email>dbd@myrealbox.com</email></address>
+<othercredit role="reviewer"
+><firstname
+>Paul</firstname
+> <surname
+>Broadbent</surname
+> <affiliation
+> <address
+><email
+>dbd@myrealbox.com</email
+></address>
 </affiliation>
-<!-- <contrib>Reviewer</contrib> -->
+<!-- <contrib
+>Reviewer</contrib
+> -->
 </othercredit>
 
-<!-- TRANS:ROLES_OF_TRANSLATORS -->
+<othercredit role="translator"
+><firstname
+>Maren</firstname
+><surname
+>Pakura</surname
+><affiliation
+><address
+><email
+>maren@kde.org</email
+></address
+></affiliation
+><contrib
+>Deutsche Übersetzung</contrib
+></othercredit
+> 
 </authorgroup>
 
-<legalnotice>&FDLNotice;</legalnotice>
-
-<date>2021-08-06</date><!-- Date of (re)writing, or update.-->
-<releaseinfo>KDE Gear 21.08</releaseinfo>
-
+<legalnotice
+>&FDLNotice;</legalnotice>
+ 
+<date
+>2010-10-01</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>&kappversion; (&kde; 4.5)</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+ 
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
-	<para>This documentation describes the game of &kolf; version 21.08</para>
+	<para
+>Dieses Handbuch beschreibt das Spiel &kappname; in der Version &kappversion;</para>
 </abstract>
-
+ 
 <!--List of relevan keywords-->
 <keywordset>
-	<keyword>KDE</keyword> <!-- do not change this! -->
-	<keyword>kdegames</keyword> <!-- do not change this! -->
-	<keyword>game</keyword> <!-- do not change this! -->
-	<keyword>Kolf</keyword><!--Application name goes here-->
-	<keyword>golf</keyword>
-	<keyword>miniature</keyword>
-	<keyword>arcade</keyword>
-	<keyword>sport</keyword>
-	<keyword>ten players</keyword>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>Spiel</keyword
+> <!-- do not change this! -->
+	<keyword
+>Kolf</keyword
+><!--Application name goes here-->
+	<keyword
+>Golf</keyword>
+	<keyword
+>Miniatur</keyword>
+	<keyword
+>Arcade</keyword>
+	<keyword
+>Sport</keyword>
+	<keyword
+>Zehn Spieler</keyword>
 </keywordset>
 </bookinfo>
 <!--Content begins here: -->
-<chapter id="introduction"><title>Introduction</title> <!-- do not change this! -->
-	<note><title>Gametype:</title><para>Arcade, Sport</para></note>
-	<note><title>Number of possible players:</title><para>Ten</para></note>
+<chapter id="introduction"
+><title
+>Einführung</title
+> <!-- do not change this! -->
+	<note
+><title
+>Spieltyp:</title
+><para
+>Arcade, Sport</para
+></note>
+	<note
+><title
+>Anzahl der Spieler:</title
+><para
+>Zehn</para
+></note
+> 
 <!--Short game description starts here. 3-4 sentences (paragraphs)-->
-	<para>&kolf; is a miniature golf game with 2d top-down view. Courses are dynamic, and up to 10 people can play at once in competition.</para>
-<para>&kolf; comes with a tutorial course. <link linkend="howto">Playing this course</link> is the easiest way to get started.</para>
+	<para
+>&kappname; ist ein Minigolfspiel aus einer 2D-Vogelperspektive. Die Golfplätze sind dynamisch und bis zu zehn Spieler können an einem Wettbewerb teilnehmen.</para>
+<para
+>Es gibt einen Übungsplatz in &kappname;. Mit diesem <link linkend="howto"
+>Übungsplatz</link
+> sollten Sie beginnen.</para>
 </chapter>
-
-<chapter id="howto"><title>How to Play</title> <!-- do not change this! -->
+ 
+<chapter id="howto"
+><title
+>Spielanleitung</title
+> <!-- do not change this! -->
 <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
-	<note><title>Objective:</title><para>Put the ball into the hole with the least possible hits.</para></note><!--Describe the objective of the game.-->
+	<note
+><title
+>Ziel des Spiels:</title
+><para
+>Den Ball mit möglichst wenig Schlägen in das Loch spielen.</para
+></note
+><!--Describe the objective of the game.-->
 <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
-	<para>&kolf;'s game-play is simple. It is the easiest to learn how to play hands-on, and thus a tutorial course is included to guide you through the basics. This chapter will guide you through this tutorial. To start the tutorial, choose the <menuchoice><guimenu>Help</guimenu> <guimenuitem>Tutorial</guimenuitem></menuchoice> menu item.</para>
+	<para
+>Die Spielregeln für &kappname; sind einfach. Am schnellsten lernen Sie am praktischen Beispiel, daher ist ein Übungsplatz enthalten, der in die Grundlagen einführt. Ein Spiel auf dem Übungsplatz wird mit <menuchoice
+><guimenu
+>Hilfe</guimenu
+> <guimenuitem
+>Einführung</guimenuitem
+></menuchoice
+> gestartet.</para>
 
-<sect1 id="hitting">
-<title>Hitting the Ball</title>
-<para>To aim the ball, either line up the mouse behind the ball so the
-putter aims in the direction you want to hit it or press one of the
-&Left; arrow (counterclockwise) or &Right; arrow (clockwise) keys, to rotate the putter.</para>
+<sect1 id="hitting"
+> 
+<title
+>Den Ball schlagen</title>
+<para
+>Um zu zielen, platzieren Sie entweder den Mauszeiger hinter den Ball oder betätigen die Taste <keycap
+>Pfeil links</keycap
+> (entgegen dem Uhrzeigersinn) oder <keycap
+>Pfeil rechts</keycap
+> (im Uhrzeigersinn), um die Zielrichtung zu ändern.</para>
 <tip>
-<para>To rotate the putter more quickly with the keyboard, hold down &Shift; while pressing or holding the arrow keys. To rotate more slowly, hold down &Ctrl;.</para>
+<para
+>Damit die Zielrichtung sich schneller ändert, halten Sie die &Shift;-Taste gedrückt. Langsamer wird die Drehung durch Drücken der &Ctrl;-Taste.</para>
 </tip>
-<para>To hit the ball, press and hold either the &LMB; or &Down;
-arrow key. The longer you hold down the key or button, the
-more strength the putt will have. It will take practice to get a good
-feel for speed.</para>
+<para
+>Der Ball wird geschlagen durch Betätigen der &LMBn; oder der Taste <keycap
+>Pfeil runter</keycap
+>. Je länger die Taste gehalten wird, umso mehr Kraft hat der Schlag. Das richtige Gefühl erfordert einige Übung.</para>
 <tip>
-<para>To stop the putt while you are still holding moving the putter back in your stroke, press &Esc;.</para>
+<para
+>Um den Schlag abzubrechen, solange man die Taste hält, betätigen Sie die Taste &Esc;.</para>
 </tip>
 
-<para>Hit the ball into the hole to move on to the next.</para>
+<para
+>Der Ball muss in das Loch gespielt werden.</para>
 </sect1>
 
-<sect1 id="slopes">
-<title>Slopes</title>
-<para>Slopes are slanted areas of the course that the golf ball rolls down in an expected manner. The light of the golf course is from the upper-left, so the brightest slopes will push the ball towards the upper-left corner of the hole. Choose the <menuchoice><guimenu>Hole</guimenu> <guimenuitem>Show Info</guimenuitem></menuchoice> menu item to see an arrow that points in the direction the slope will roll the ball.</para>
-<para>On this tutorial hole, hit the ball onto the upward-pointing
-slope and let it roll into the cup to move onto the next hole.</para>
+<sect1 id="slopes"
+> 
+<title
+>Hänge</title>
+<para
+>Hänge sind geneigte Bereiche des Platzes, auf denen der Golfball hinunterrollt. Das Licht scheint von oben links auf den Golfplatz, also rollt der Ball auf den hellsten Hängen in Richtung oben links. Wählen Sie <menuchoice
+><guimenu
+>Bahn</guimenu
+> <guimenuitem
+>Informationen anzeigen</guimenuitem
+></menuchoice
+>, um einen Pfeil anzeigen zu lassen, der die Richtung der Neigung angibt.</para>
+<para
+>Schlagen Sie den Ball bei dieser Einführungsbahn den Hang hoch und lassen Sie ihn abwärts in das Loch rollen.</para>
 
-<sect2> <title>Directions</title>
-<para>On the next hole, experiment with the other kinds of slopes. There are elliptical, vertical, horizontal, and diagonal slopes in &kolf;. Hit the ball into the hole.</para>
+<sect2
+> <title
+>Richtungen</title>
+<para
+>Experimentieren Sie bei der nächsten Bahn mit weiteren Hängen. Es gibt elliptische, vertikale, horizontale und diagonale Hänge in &kappname;. Schlagen Sie den Ball in das Loch.</para>
 </sect2>
-<sect2> <title>Steepness</title>
-<para>The next tutorial hole has two slopes of differing steepness. If you choose the <menuchoice><guimenu>Hole</guimenu> <guimenuitem>Show Info</guimenuitem></menuchoice> menu item, the steepness of the slope will appear as a number from 1-8, where 8 is steepest and 1 is shallowest. Hit the ball into the hole and continue to the next hole.</para>
+<sect2
+> <title
+>Steilheit</title>
+<para
+>Bei der nächsten Einführungsbahn gibt es zwei Hänge mit unterschiedlicher Neigung. Falls Sie <menuchoice
+><guimenu
+>Bahn</guimenu
+> <guimenuitem
+>Informationen anzeigen</guimenuitem
+></menuchoice
+> wählen, erscheint die Neigung als eine Zahl von 1-8, wobei 8 der größten und 1 der geringsten Neigung entspricht. Schlagen Sie den Ball in das Loch und gehen Sie weiter zur nächsten Bahn.</para>
 </sect2>
 </sect1>
 
-<sect1 id="walls"> <title>Walls</title>
-<para>Balls bounce of walls as one would expect them to, with a little bit of dampening. Deflect the ball off the walls and into the cup to advance to the next hole.</para>
+<sect1 id="walls"
+> <title
+>Mauern</title>
+<para
+>Bälle prallen von Wänden ab, werden dabei aber etwas langsamer. Schlagen Sie den Ball in das Loch und gehen Sie zur nächsten Bahn.</para>
 </sect1>
 
-<sect1 id="puddles-sand"> <title>Puddles and Sand</title>
-<sect2> <title>Puddles</title>
-	<para>Puddles are blue. When your ball rolls into a puddle, a penalty stroke is added to your score and you must then choose where you want to take your next shot from: either next to the puddle or from the same place as where you just took the last shot.</para>
+<sect1 id="puddles-sand"
+> <title
+>Pfützen und Sand</title>
+<sect2
+> <title
+>Pfütze</title>
+	<para
+>Pfützen sind blau. Wenn der Ball in eine Pfütze rollt, wird ein Strafschlag zur Punktzahl addiert. Sie müssen sich dann entscheiden, ob Sie den letzten Schlag wiederholen oder ob Sie den Ball neben der Pfütze platzieren und von dort weiter schlagen.</para>
 </sect2>
-<sect2> <title>Sand</title>
-<para>Sand is yellow. Balls roll through sand very slowly.</para>
-<para>Hit the ball around the puddles and through the sand into the hole to continue to the next tutorial hole.</para>
+<sect2
+> <title
+>Sand</title>
+<para
+>Sand ist gelb. Bälle werden im Sand stark abgebremst.</para>
+<para
+>Schlagen Sie den Ball um die Pfütze herum und durch den Sand in das Loch und gehen Sie zur nächsten Bahn der Einführung.</para>
 </sect2>
 </sect1>
 
-<sect1 id="windmills"> <title>Windmills</title>
-<para>Windmills are compound objects with brown border walls and a moving arm on one side. Half-walls create the opening to the windmill, which the black arm swings across. It takes practice to be able to time the stroke of the ball to pass through the opening. Hit the ball through the windmill into the hole to continue.</para>
+<sect1 id="windmills"
+> <title
+>Windmühlen</title>
+<para
+>Windmühlen sind zusammengesetzte Objekte mit braunen Wänden und einem beweglichen Arm an einer Seite des Objekts. Die Öffnung zur Windmühle besteht aus Halbwänden mit einem schwingenden, schwarzen Arm. Diese Hindernisse erfordern einige Übung. Schlagen Sie den Ball durch die Windmühle ins Loch, um weiter zur nächsten Bahn zu kommen.</para>
 </sect1>
 
-<sect1 id="black-holes"> <title>Black Holes</title>
-<para>When you hit your ball into a black hole, it is transported to the exit and ejected at the angle of the exit at a speed directly relational to the speed your ball was going. Choose the <menuchoice><guimenu>Hole</guimenu> <guimenuitem>Show Info</guimenuitem></menuchoice> menu item to see which Black Hole goes to which exit and which direction the ball will come out of the exit. The rim around Black Holes are the same color as their corresponding exits. Hit the ball into the black hole, which will then eject the ball into the cup so you can go to the next hole.</para>
+<sect1 id="black-holes"
+> <title
+>Schwarze Löcher</title>
+<para
+>Wenn Sie den Ball in ein Schwarzes Loch schlagen, wird er zum Ausgang dieses Lochs transportiert und es dort wieder unter dem gleichen Winkel verlassen. Wählen Sie <menuchoice
+><guimenu
+>Bahn</guimenu
+> <guimenuitem
+>Informationen anzeigen</guimenuitem
+></menuchoice
+>, um die Verbindungen zwischen den Schwarzen Löchern und den Ausgängen anzeigen zu lassen. Der farbige Rand eines Schwarzen Lochs zeigt ebenfalls an, zu welchem Ausgang es gehört. Schlagen Sie den Ball in das Schwarze Loch, das ihn in das Loch befördert, und gehen Sie zur nächsten Bahn.</para>
 </sect1>
 
-<sect1 id="floaters"> <title>Floaters</title>
-<para>Floaters are moving platforms that carry a ball that lands on it.  Floaters' speeds vary. This one is a pretty slow floater, but you still must time your shot so you can go over the wall and into the cup.</para>
+<sect1 id="floaters"
+> <title
+>Flöße</title>
+<para
+>Flöße sind bewegliche Plattformen, die gelandete Bälle tragen können. Die Geschwindigkeit von Flößen variiert. Dieses Floß ist recht langsam, dennoch müssen Sie den Schlag zur richtigen Zeit ausführen, um über die Mauer in das Loch zu treffen.</para>
 </sect1>
 
-<sect1 id="bridges"> <title>Bridges</title>
-<para>Bridges are simple - they just lift the ball above the things below them, like slopes, sand, and puddles. They can have brown walls on their perimeter.</para>
+<sect1 id="bridges"
+> <title
+>Brücken</title>
+<para
+>Brücken sind einfach - sie transportieren den Ball über die unterhalb liegenden Hindernisse wie Hänge, Sand und Pfützen. Sie können am Rand braune Wände haben.</para>
 </sect1>
 </chapter>
-
-<chapter id="rules_and_tips"><title>Game Rules, Strategies and Tips</title> <!-- do not change this! -->
+ 
+<chapter id="rules_and_tips"
+><title
+>Spielregeln, Spielstrategien und Tipps</title
+> <!-- do not change this! -->
 	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
-<para>Here's in-depth description of &kolf;'s basic features.</para>
+<para
+>Es folgt eine ausführliche Beschreibung der grundlegenden Funktionen von &kappname;.</para>
 
-<sect1 id="starting">
-<title>Starting a Game</title>
+<sect1 id="starting"
+> 
+<title
+>Ein Spiel starten</title>
 
-<para>To start a game, choose the
-<menuchoice><guimenu>Game</guimenu> <guimenuitem>New</guimenuitem></menuchoice> menu item.
-This opens a dialog where you can configure your new game.</para>
+<para
+>Ein Spiel wird durch <menuchoice
+><guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Neu</guimenuitem
+></menuchoice
+> gestartet. Ein Dialog erscheint, der die Einrichtung des neuen Spiels erlaubt.</para>
 <!--
 <tip>
-<para>More third-party &kolf; courses are available at the &kolf; website. See <ulink
-url="https://web.mit.edu/jasonkb/www/kolf/">the &kolf; user-uploaded courses page</ulink>.</para>
+<para
+>More third-party &kappname; courses are available at the &kappname; website. See <ulink 
+url="http://web.mit.edu/jasonkb/www/kolf/"
+>the &kappname; user-uploaded courses page</ulink
+>.</para>
 </tip>
 -->
-<sect2>
-<title>Players Page</title>
-<para>To add a player to your game, click the <guibutton>New
-Player</guibutton> button.</para>
+<sect2
+> 
+<title
+>Seite <guilabel
+>Spieler</guilabel
+></title>
+<para
+>Um einen Spieler zum Wettbewerb hinzuzufügen, klicken Sie auf den Knopf <guibutton
+>Neuer Spieler</guibutton
+>.</para>
 
-<para><!--The text boxes in the grass area are the names of the players in
-  this game. -->To change the name of the players, change the text in the
-text boxes.<!-- To change the ball color of the players' balls, click the
-middle button that has a color rectangle, and a dialog will open where
-you can select the new ball color. The rectangle on the button is the
-  current player's ball color.--></para>
+<para
+>Zum Ändern der Spielernamen ist lediglich der Text in den Eingabefeldern zu ändern.</para>
 
-<para>To remove a player, click the <guibutton>Remove</guibutton>
-button next to the player's name.</para>
+<para
+>Ein Spieler wird durch Klicken auf <guibutton
+>Entfernen</guibutton
+> neben dem Spielernamen entfernt.</para>
 
 </sect2>
 
-<sect2> <title>Course Page</title>
-<para>To choose the course that you want to play, click its entry in the list box on the left of this page. &kolf; comes with many built-in courses that you can play.</para>
-<para>To add a course that you have downloaded or made, click on the <guibutton>Add...</guibutton> button on the bottom of this page, and choose the course file in the file dialog.</para>
+<sect2
+> <title
+>Seite <guilabel
+>Platzauswahl</guilabel
+></title>
+<para
+>Um einen Golfplatz zu wählen, klicken Sie auf dessen Eintrag in der Liste links auf dieser Seite. In &kappname; sind bereits viele Plätze enthalten.</para>
+<para
+>Sie können einen eigenen oder heruntergeladenen Platz durch Klicken auf <guibutton
+>Hinzufügen ...</guibutton
+> unten auf der Seite hinzufügen.</para>
 </sect2>
-<sect2> <title>Options Page</title>
-<para>On this page you can choose whether or not this game will be played in <guilabel>Strict mode</guilabel>. In strict mode, there is no undo, moving holes, or editing of the course. This mode is generally for competition. Only in strict mode are high scores kept.</para>
-</sect2>
-</sect1>
-
-<sect1 id="saved-games"> <title>Saved Games</title>
-<para>&kolf; can keep a history of your rounds that are still in progress and save them to disk so you can load them and play them later. Saved games include the current hole, names and colors of all players in game, and the scores of the players.</para>
-<sect2> <title>Saving Your Game</title>
-<para>To save your game while still playing, choose the <menuchoice><guimenu>Game</guimenu> <guimenuitem>Save Game</guimenuitem></menuchoice> menu item. If you have not saved a game on this game before, you will be prompted for the file to save to.</para>
-</sect2>
-<sect2> <title>Loading Your Game</title>
-<para>To load the game that you saved, choose the <menuchoice><guimenu>Game</guimenu> <guimenuitem>Load...</guimenuitem>
-</menuchoice> menu item. You can then choose the saved game to open.</para>
-</sect2>
-</sect1>
-
-<sect1 id="practicing"> <title>Practicing</title>
-<para>There are a few features that make practicing your golf easier. These features are not enabled during strict mode.</para>
-<sect2> <title>Undo</title>
-<para>To undo a bad shot, choose the <menuchoice><guimenu>Hole</guimenu> <guimenuitem>Undo Shot</guimenuitem></menuchoice> menu item.</para>
-</sect2>
-<sect2> <title>Switching Holes</title>
-<para>The <guimenu>Go</guimenu> menu contains many menu items for switching to different holes that are quite self explanatory. See the <link linkend="go-menu"><guimenu>Go</guimenu> menu reference</link>.</para>
+<sect2
+> <title
+>Seite <guilabel
+>Spiel-Einstellungen</guilabel
+></title>
+<para
+>Auf dieser Seite können Sie auswählen, ob Sie das Spiel im <guilabel
+>Strengen Modus</guilabel
+> spielen wollen. In diesem Modus dürfen keine Aktionen rückgängig gemacht, keine Löcher übergangen und nicht die Position des Balls verändert werden. Dieser Modus ist für Wettbewerbe geeignet. Nur in diesem Modus wird die Bestenliste geführt. </para>
 </sect2>
 </sect1>
 
-<sect1 id="putting-options"> <title>Putting Options</title>
-<para>&kolf; has a few ways to putt. The basic putting method is <link linkend="hitting">described above</link>.</para>
-<para>The mouse is enabled by default. This means that whenever the mouse is moved, the putter aligns to the line between the mouse and ball.</para>
-<para>If you prefer to only use the keyboard and arrow keys, you can disable mouse putting by unchecking the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Enable Mouse for Moving Putter</guimenuitem></menuchoice> menu item.</para>
+<sect1 id="saved-games"
+> <title
+>Gespeicherte Spiele</title>
+<para
+>&kappname; kann nicht abgeschlossene Runden zwischenspeichern. Sie können diese wieder aufrufen und später weiterspielen. Es werden die aktuelle Bahn, die Namen und Farben der Spieler sowie die Spielstände abgespeichert.</para>
+<sect2
+> <title
+>Ein Spiel speichern</title>
+<para
+>Um ein Spiel zu speichern, wählen Sie im Menü <menuchoice
+><guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Spiel speichern</guimenuitem
+></menuchoice
+>. Falls dieses Spiel noch nicht gespeichert wurde, werden Sie nach dem gewünschten Dateinamen gefragt.</para>
+</sect2>
+<sect2
+> <title
+>Ein Spiel laden</title>
+<para
+>Um ein gespeichertes Spiel zu laden, wählen Sie <menuchoice
+><guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Laden ...</guimenuitem
+></menuchoice
+> aus dem Menü. Sie können dann in einem Dialog ein gespeichertes Spiel auswählen.</para>
+</sect2>
+</sect1>
 
-<sect2 id="advanced-putting"> <title>Advanced Putting</title>
-<para>Advanced putting can be enabled by checking the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Enable Advanced Putting</guimenuitem></menuchoice> menu item. This putting mode is slightly more challenging than the regular click-and-hold mode, and can be used with either the mouse or keyboard.</para>
+<sect1 id="practicing"
+> <title
+>Üben</title>
+<para
+>Einige Funktionen erleichtern das Üben, sind aber im <quote
+>strengen Modus</quote
+> nicht verfügbar.</para>
+<sect2
+> <title
+>Zurücknehmen</title>
+<para
+>Sie können einen Schlag mit <menuchoice
+><guimenu
+>Bahn</guimenu
+> <guimenuitem
+>Schlag zurücknehmen</guimenuitem
+></menuchoice
+> rückgängig machen.</para>
+</sect2>
+<sect2
+> <title
+>Bahn wechseln</title>
+<para
+>Das Menü <guimenu
+>Gehe zu</guimenu
+> enthält einige Einträge zum Wechseln zwischen den Bahnen. Siehe auch die Menüreferenz zu <link linkend="go-menu"
+><guimenu
+>Gehe zu</guimenu
+></link
+>.</para>
+</sect2>
+</sect1>
 
-<para>To putt in this mode:</para>
+<sect1 id="putting-options"
+> <title
+>Einstellungen zum Schlag</title>
+<para
+>Es gibt in &kappname; mehrere Schlagvarianten. Die grundlegenden Schlagvarianten sind <link linkend="hitting"
+>weiter oben</link
+> beschrieben.</para>
+<para
+>Die Maus ist standardmäßig aktiviert. Damit folgt die Zielrichtung des Schlages jeder Bewegung der Maus.</para>
+<para
+>Falls Sie die alleinige Benutzung der Tastatur bevorzugen, können sie die Maus deaktivieren, indem Sie die Markierung von <menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Maus aktivieren zum Bewegen des Putters</guimenuitem
+></menuchoice
+> entfernen.</para>
+
+<sect2 id="advanced-putting"
+> <title
+>Erweiterte Schläge</title>
+<para
+>Erweiterte Schläge werden durch Markieren von <menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Fortgeschrittenes Einlochen aktivieren</guimenuitem
+></menuchoice
+> eingeschaltet. Dieser Schlagmodus ist komplizierter als der Standardmodus, kann aber ebenfalls mit Maus oder Tastatur ausgeführt werden.</para>
+
+<para
+>Um in diesem Modus zu schlagen:</para>
 <procedure>
 <step>
-<para>Click or press the &Down; arrow key once to begin the swing. The putting indicator will appear, and the strength gauge will start filling up with a color, which changes as the gauge fills up.</para>
+<para
+>Klicken Sie mit der &LMBn; oder betätigen Sie die Taste <keycap
+>Pfeil runter</keycap
+> einmal, um auszuholen. Der Schlaganzeiger erscheint und die Schlagstärkeanzeige füllt sich mit einer Farbe, die sich im Laufe der Füllung ändert.</para>
 </step>
 <step>
-<para>Click or press the &Down; arrow key when the strength gauge has filled up the amount that you want. The farther around the circle the strength gauge has filled up, the stronger the putt will be. It takes practice to be able to get the correct strength on putts.</para>
-<para>After this, the color in the putting indicator will start to wind down back to where it started.</para>
+<para
+>Klicken Sie mit der &LMBn; oder betätigen Sie <keycap
+>Pfeil runter</keycap
+> ein zweites Mal, wenn die gewünschte Stärke erreicht ist. Je weiter die Schlagstärkeanzeige gefüllt ist, desto stärker fällt der Schlag aus. Es erfordert einige Übung, die korrekte Schlagstärke zu wählen.</para>
+<para
+>Schließlich geht die Farbe des Schlagstärkeanzeigers wieder auf den Anfangswert zurück.</para>
 </step>
 <step>
-<para>Click or press the &Down; arrow key again when the strength-indicator is as close as possible to the center line of the putting indicator.</para>
+<para
+>Klicken Sie mit der &LMBn; oder betätigen Sie <keycap
+>Pfeil runter</keycap
+> wieder, wenn der Stärkeanzeiger so dicht wie möglich an der Mittellinie des Schlaganzeigers ist.</para>
 </step>
 </procedure>
-<para>The closer the final click (or key press) is, the more true the putt is to the original line.</para>
+<para
+>Je dichter der letzte Klick (oder Tastendruck) an der Mittellinie ist, desto genauer folgt der Schlag der ursprünglichen Linie.</para>
 </sect2>
 </sect1>
 </chapter>
-
-<chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
-<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist> and <varlistentry>. Split the chapter into sections using <sect1(2,3)> for better viewing.-->
+ 
+<chapter id="interface"
+><title
+>Die Benutzeroberfläche</title
+> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
  <sect1 id="game-menu">
-<title>The Game Menu</title>
+<title
+>Das Menü Spiel</title>
 
 <variablelist>
 <varlistentry>
-<term><menuchoice><shortcut>
-<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
-</shortcut>
-<guimenu>Game</guimenu>
-<guimenuitem>New</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Neu</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para><action>Start a new game.</action></para>
+<para
+><action
+>Startet ein neues Spiel.</action
+></para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><shortcut>
-<keycombo action="simul">&Ctrl;<keycap>O</keycap></keycombo>
-</shortcut>
-<guimenu>Game</guimenu>
-<guimenuitem>Load...</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Laden ...</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para><action>Load a previously saved game.</action></para>
+<para
+><action
+>Lädt ein vorher gespeichertes Spiel.</action
+></para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><shortcut>
-<keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo>
-</shortcut>
-<guimenu>Game</guimenu>
-<guimenuitem>Save Course</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+><guimenu
+>Spiel</guimenu
+><guimenuitem
+>Platz speichern</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para><action>Save the current course using its current file
-name.</action></para>
+<para
+><action
+>Speichert den aktuellen Platz unter seinem aktuellen Dateinamen.</action
+></para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<guimenu>Game</guimenu><guimenuitem>Save Course As...</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><guimenu
+>Spiel</guimenu
+><guimenuitem
+>Platz speichern als ...</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para>Open a file dialog allowing you to <action>save the current
-course using a new file name.</action></para>
+<para
+>Öffnet einen Dateidialog um den <action
+>Platz unter einem neuen Namen zu speichern.</action
+></para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<guimenu>Game</guimenu><guimenuitem>Save Game</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><guimenu
+>Spiel</guimenu
+><guimenuitem
+>Spiel speichern</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para><action>Save the current game</action> with the last saved game filename, or under a filename you specify if you have not saved the game yet.</para>
+<para
+><action
+>Speichert das aktuelle Spiel</action
+> unter dem aktuellen Dateinamen oder unter einem noch festzulegenden Namen, falls das Spiel bisher nicht gespeichert wurde.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<guimenu>Game</guimenu>
-<guimenuitem>Save Game As...</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><guimenu
+>Spiel</guimenu
+><guimenuitem
+>Spiel speichern als ...</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para>Open a file dialog allowing you to <action>save the current
-game with a filename of your choice.</action></para>
+<para
+>Öffnet einen Dateidialog, der erlaubt, das <action
+>aktuelle Spiel in einer Datei zu speichern.</action
+></para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><shortcut>
-<keycombo action="simul">&Ctrl;&End;</keycombo>
-</shortcut>
-<guimenu>Game</guimenu>
-<guimenuitem>End Game</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Ende</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Spiel beenden</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para><action>End the current game, without closing</action> &kolf;.</para>
+<para
+><action
+>Beendet das aktuelle Spiel</action
+>, ohne &kappname; zu beenden.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><shortcut>
-<keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo>
-</shortcut>
-<guimenu>Game</guimenu>
-<guimenuitem>Show High Scores</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Bestenliste anzeigen</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para><action>Display the high score table.</action></para>
+<para
+><action
+>Zeigt die Bestenliste an.</action
+></para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<guimenu>Game</guimenu><guimenuitem>About Course...</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><guimenu
+>Spiel</guimenu
+><guimenuitem
+>Über den Platz</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para><action>Show name, author, and number of holes of the course.</action></para>
+<para
+><action
+>Zeigt Name, Autor und Anzahl der Bahnen des Platzes.</action
+></para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><shortcut>
-<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
-</shortcut>
-<guimenu>Game</guimenu><guimenuitem>Quit</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Quit</action> &kolf;.</para></listitem>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Beenden</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Beendet</action
+> &kappname;.</para
+></listitem>
 </varlistentry>
 </variablelist>
 
 </sect1>
 
 <sect1 id="hole-menu">
-<title>The Hole Menu</title>
+<title
+>Das Menü Bahn</title>
 
 <variablelist>
 <varlistentry>
-<term><menuchoice><shortcut>
-<keycombo action="simul">&Ctrl;<keycap>E</keycap></keycombo>
-</shortcut>
-<guimenu>Hole</guimenu>
-<guimenuitem>Edit</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Bahn</guimenu
+><guimenuitem
+>Bearbeiten</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para><action>Switch to editing mode</action> to edit the current hole.</para>
+<para
+><action
+>Schaltet in den Bearbeitungsmodus</action
+>, um die aktuelle Bahn zu bearbeiten.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><shortcut>
-<keycombo action="simul">&Ctrl;&Shift;<keycap>N</keycap></keycombo>
-</shortcut>
-<guimenu>Hole</guimenu>
-<guimenuitem>New</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>N</keycap
+></keycombo
+></shortcut
+><guimenu
+>Bahn</guimenu
+><guimenuitem
+>Neu</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para><action>Create a new hole.</action> (Only while editing.)</para>
+<para
+><action
+>Erzeugt eine neue Bahn.</action
+> (im Bearbeitungsmodus)</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><shortcut>
-<keycombo action="simul">&Ctrl;&Del;</keycombo>
-</shortcut>
-<guimenu>Hole</guimenu>
-<guimenuitem>Clear</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Entf</keycap
+></keycombo
+></shortcut
+><guimenu
+>Bahn</guimenu
+> <guimenuitem
+>Löschen</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para><action>Remove all objects from the current
-hole.</action> (Only while editing.)</para>
+<para
+><action
+>Entfernt alle Objekte der aktuellen Bahn.</action
+> (im Bearbeitungsmodus)</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><shortcut>
-<keycombo
-action="simul">&Ctrl;<keycap>R</keycap></keycombo></shortcut>
-<guimenu>Hole</guimenu>
-<guimenuitem>Reset</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>R</keycap
+></keycombo
+></shortcut
+><guimenu
+>Bahn</guimenu
+><guimenuitem
+>Zurücksetzen</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para><action>Reset the current hole to its starting
-position</action>, so that you can start over.</para>
+<para
+><action
+>Setzt die Bahn in die Ausgangsposition zurück</action
+>, damit Sie neu beginnen können.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><shortcut>
-<keycombo action="simul">&Ctrl;<keycap>I</keycap></keycombo>
-</shortcut>
-<guimenu>Hole</guimenu>
-<guimenuitem>Show Info</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+></shortcut
+><guimenu
+>Bahn</guimenu
+><guimenuitem
+>Informationen anzeigen</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para><action>Show information about objects on the current hole.</action></para>
+<para
+><action
+>Zeigt Informationen über die Objekte der aktuellen Bahn an.</action
+></para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><shortcut>
-<keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo>
-</shortcut>
-<guimenu>Hole</guimenu>
-<guimenuitem>Undo Shot</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Bahn</guimenu
+><guimenuitem
+>Schlag zurücknehmen</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para><action>Undo the last shot you made.</action></para>
+<para
+><action
+>Macht den letzten Schlag rückgängig.</action
+></para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -420,348 +847,801 @@ position</action>, so that you can start over.</para>
 </sect1>
 
 <sect1 id="go-menu">
-<title>The Go Menu</title>
+<title
+>Das Menü Gehe zu</title>
 
 <variablelist>
 <varlistentry>
-<term><menuchoice>
-<guimenu>Go</guimenu>
-<guisubmenu>Switch to Hole</guisubmenu>
-</menuchoice></term>
+<term
+><menuchoice
+><guimenu
+>Gehe zu</guimenu
+><guisubmenu
+>Zu Bahn wechseln</guisubmenu
+> </menuchoice
+></term>
 <listitem>
-<para><action>Go directly to another hole within the
-course.</action>  A list of the hole numbers allows you to choose
-which hole you wish to go to.</para>
+<para
+><action
+>Geht direkt zu einer anderen Bahn des Platzes.</action
+> Eine Liste der Bahnnummern erlaubt die direkte Auswahl der gewünschten Bahn.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo action="simul">&Alt;&Right;</keycombo>
-</shortcut>
-<guimenu>Go</guimenu>
-<guimenuitem>Next Hole</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Alt;<keycap
+>Pfeil rechts</keycap
+></keycombo
+></shortcut
+><guimenu
+>Gehe zu</guimenu
+><guimenuitem
+>Nächste Bahn</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para><action>Go to the next hole.</action></para>
+<para
+><action
+>Geht zu der nächsten Bahn.</action
+></para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo action="simul">&Alt;&Left;</keycombo>
-</shortcut>
-<guimenu>Go</guimenu>
-<guimenuitem>Previous Hole</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Alt;<keycap
+>Pfeil links</keycap
+></keycombo
+></shortcut
+><guimenu
+>Gehe zu</guimenu
+><guimenuitem
+> Vorherige Bahn</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para><action>Go to the previous hole.</action></para>
+<para
+><action
+>Geht zu der vorherigen Bahn.</action
+></para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo action="simul">&Ctrl;&Home;</keycombo>
-</shortcut>
-<guimenu>Go</guimenu>
-<guimenuitem>First Hole</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Pos1</keycap
+></keycombo
+></shortcut
+><guimenu
+>Gehe zu</guimenu
+><guimenuitem
+>Erste Bahn</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para><action>Go to the first hole in the course.</action></para>
+<para
+><action
+>Geht zur ersten Bahn des Platzes.</action
+></para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo action="simul">&Ctrl;&Shift;&End;</keycombo>
-</shortcut>
-<guimenu>Go</guimenu>
-<guimenuitem>Last Hole</guimenuitem>
-</menuchoice>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Ende</keycap
+></keycombo
+></shortcut
+><guimenu
+>Gehe zu</guimenu
+><guimenuitem
+>Letzte Bahn</guimenuitem
+> </menuchoice>
 </term>
 <listitem>
-<para><action>Go to the last hole in the course.</action></para>
+<para
+><action
+>Geht zur letzten Bahn des Platzes.</action
+></para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<guimenu>Go</guimenu>
-<guimenuitem>Random Hole</guimenuitem>
-</menuchoice></term>
+<term
+><menuchoice
+><guimenu
+>Gehe zu</guimenu
+><guimenuitem
+>Zufällige Bahn</guimenuitem
+> </menuchoice
+></term>
 <listitem>
-<para><action>Go to a random hole from the current course.</action></para>
+<para
+><action
+>Geht zu einer zufällig ausgewählten Bahn des Platzes.</action
+></para>
 </listitem>
 </varlistentry>
 </variablelist>
 </sect1>
 
-<sect1 id="settings-help-menu">
-<title>The Settings and Help Menu</title>
-
-<para>&kolf; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu> menu items, for more information read the sections about the <ulink url="help:/fundamentals/menus.html#menus-settings">Settings Menu</ulink> and <ulink url="help:/fundamentals/menus.html#menus-help">Help Menu</ulink> of the &kde; Fundamentals with these additional entries:</para>
+<sect1 id="settings-menu">
+<title
+>Das Menü Einstellungen</title>
 
 <variablelist>
-  <varlistentry>
-    <term><menuchoice>
-    <guimenu>Settings</guimenu>
-    <guimenuitem>Enable Mouse for Moving Putter</guimenuitem>
-    </menuchoice></term>
-    <listitem><para><action>Allow the use of the mouse to move the putter.</action></para></listitem>
-  </varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Werkzeugleiste anzeigen</guimenuitem
+>  </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Blendet die Hauptwerkzeugleiste ein bzw. aus.</action
+></para>
+</listitem>
+</varlistentry>
 
-  <varlistentry>
-    <term><menuchoice>
-    <guimenu>Settings</guimenu>
-    <guimenuitem>Enable Advanced Putting</guimenuitem>
-    </menuchoice></term>
-    <listitem><para><action>Enable the advanced putting mode</action>, as described in <link linkend="advanced-putting">its own section</link>.</para></listitem>
-  </varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Statusleiste anzeigen</guimenuitem
+>  </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Blendet die Statusleiste ein bzw. aus.</action
+></para>
+</listitem>
+</varlistentry>
 
-  <varlistentry>
-    <term><menuchoice>
-    <guimenu>Settings</guimenu>
-    <guimenuitem>Show Putter Guideline</guimenuitem>
-    </menuchoice></term>
-    <listitem><para><action>Toggle on and off the putter guideline.</action></para></listitem>
-  </varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Einstellungen</guimenu
+><guimenuitem
+>Maus aktivieren zum Bewegen des Putters</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Erlaubt die Nutzung der Maus zum Bewegen des Putters.</action
+></para
+> 
+</listitem>
+</varlistentry>
 
-  <varlistentry>
-    <term><menuchoice>
-    <guimenu>Settings</guimenu>
-    <guimenuitem>Play Sounds</guimenuitem>
-    </menuchoice></term>
-    <listitem><para><action>Toggle on and off the sound effects.</action></para></listitem>
-  </varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Einstellungen</guimenu
+><guimenuitem
+>Fortgeschrittenes Einlochen aktivieren</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Aktiviert den erweiterten Schlagmodus</action
+>, so wie es in <link linkend="advanced-putting"
+>in diesem Abschnitt</link
+> beschrieben wird.</para>
+</listitem>
+</varlistentry>
 
-  <varlistentry>
-    <term><menuchoice>
-    <guimenu>Settings</guimenu>
-    <guimenuitem>Enable All Dialog Boxes</guimenuitem>
-    </menuchoice></term>
-    <listitem><para><action>Re-enable any dialog boxes that you disabled by clicking on <guilabel>Do not show this message again</guilabel> or similar.</action></para></listitem>
-  </varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Einstellungen</guimenu
+><guimenuitem
+>Hilfslinie für Putter anzeigen</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Blendet die Hilfslinie für den Putter ein bzw. aus.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Klänge wiedergeben</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Schaltet die Klänge ein bzw. aus.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Einstellungen</guimenu
+><guimenuitem
+>Alle Dialogfelder aktivieren</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Aktiviert alle Dialogfenster wieder, die durch Klicken auf <guilabel
+>Diese Nachfrage nicht mehr anzeigen</guilabel
+> deaktiviert wurden.</action
+></para>
+</listitem>
+</varlistentry>
 <!--
-  <varlistentry>
-    <term><menuchoice>
-    <guimenu>Settings</guimenu>
-    <guimenuitem>Reload Plugins</guimenuitem>
-    </menuchoice></term>
-    <listitem><para><action>Reload plugins.</action></para></listitem>
-  </varlistentry>
+<varlistentry>
+<term
+><menuchoice>
+<guimenu
+>Settings</guimenu>
+<guimenuitem
+>Reload Plugins</guimenuitem>
+</menuchoice
+></term>
+<listitem>
+<para
+><action
+>Reload plugins.</action
+></para>
+</listitem>
+</varlistentry>
 
-  <varlistentry>
-    <term><menuchoice>
-    <guimenu>Settings</guimenu>
-    <guimenuitem>Show Plugins</guimenuitem>
-    </menuchoice></term>
-    <listitem><para><action>Display the currently loaded plugins.</action></para></listitem>
-  </varlistentry>
+<varlistentry>
+<term
+><menuchoice>
+<guimenu
+>Settings</guimenu>
+<guimenuitem
+>Show Plugins</guimenuitem>
+</menuchoice
+></term>
+<listitem>
+<para
+><action
+>Display the currently loaded plugins.</action
+></para>
+</listitem>
+</varlistentry>
 -->
-  <varlistentry>
-    <term><menuchoice>
-    <guimenu>Help</guimenu>
-    <guimenuitem>Tutorial</guimenuitem>
-    </menuchoice></term>
-    <listitem><para>Start the tutorial course of &kolf;.</para></listitem>
-  </varlistentry>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Kurzbefehle festlegen ...</guimenuitem
+>  </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Öffnet den &kde;-Standarddialog zum Einstellen der Tastenkürzel für &kolf;.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Werkzeugleisten einrichten ...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Öffnet einen Dialog</action
+> zum Einrichten der Werkzeugleisten für &kappname;. </para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+<sect1 id="help"
+><!--This is a standard Help menubar entry. Only change if needed.-->
+<title
+>Das Menü Hilfe</title>
+<para
+>&kappname; enthält die Standard-&kde;-<guimenu
+>Hilfe</guimenu
+> mit einem zusätzlichen Eintrag:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Hilfe</guimenu
+><guimenuitem
+>Einführung</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Startet ein Spiel auf dem Übungsplatz von &kappname;.</para>
+</listitem>
+</varlistentry>
 </variablelist>
 
-</sect1>
+<para
+>Die Standardeinträge der &kde;-<guimenu
+>Hilfe</guimenu
+> sind:</para
+>&help.menu.documentation; </sect1>
 </chapter>
-
-<chapter id="faq"><title>Frequently asked questions</title> <!-- do not change this! -->
-<!--This chapter is for frequently asked questions. Please use <qandaset> <qandaentry> only!-->
+  
+<chapter id="faq"
+><title
+>Häufig gestellte Fragen</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
 <qandaset>
 <!--Following is a standard list of FAQ questions.-->
 <qandaentry>
- <question><para>I want to change the way this game looks. Can I? </para></question>
- <answer><para>No. At this moment &kolf; features only one theme.</para></answer>
+ <question
+><para
+>Kann ich das Erscheinungsbild des Spiels ändern? </para
+></question>
+ <answer
+><para
+>Nein, zurzeit hat &kappname; nur ein Design.</para
+></answer>
 </qandaentry>
 <qandaentry>
- <question><para>Can I use the keyboard to play the game? </para></question>
- <answer><para>Yes. Use the directional keys to control the putter.</para></answer>
+ <question
+><para
+>Kann ich mit der Tastatur spielen? </para
+></question>
+ <answer
+><para
+>Ja, mit den Pfeiltasten können Sie einen Schlag ausführen.</para
+></answer>
 </qandaentry>
 <qandaentry>
- <question><para>I cannot figure out what to do here! Are there hints? </para></question>
- <answer><para>No. &kolf; does not have a hint feature.</para></answer>
+ <question
+><para
+>Ich komme im Spiel nicht weiter, gibt es Tipps? </para
+></question>
+ <answer
+><para
+>Nein, in &kappname; gibt es keine Tipps.</para
+></answer>
 </qandaentry>
 <qandaentry>
- <question><para>I want to design my own golf course. Can I? </para></question>
- <answer><para>Yes, you can. To enter the edit mode use the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>E</keycap></keycombo></shortcut> <guimenu>Hole</guimenu> <guimenuitem>Edit</guimenuitem></menuchoice> menu item. Click <link linkend="creating">here</link> for more details.</para></answer><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+ <question
+><para
+>Wie kann ich meinen eigenen Golfplatz entwerfen? </para
+></question>
+ <answer
+><para
+>Wechseln Sie mit <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Bahn</guimenu
+><guimenuitem
+>Bearbeiten</guimenuitem
+></menuchoice
+> in der Menüleiste in den Bearbeitungsmodus. Weitere Informationen finde Sie <link linkend="creating"
+>hier</link
+>.</para
+></answer
+><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
 </qandaentry>
-
+ 
 </qandaset>
 </chapter>
-
-<chapter id="configuration"><title>Course Editor</title> <!-- do not change this! -->
+ 
+<chapter id="configuration"
+><title
+>Golfplatz-Editor</title
+> <!-- do not change this! -->
 <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
-<para>&kolf; comes with a versatile editor for its course file format. Courses can have any number of holes, and there is no limiting the creativity of the course designer.</para>
+<para
+>&kappname; beinhaltet einen umfangreichen Editor für das Platz-Dateiformat. Sie können eigene Golfplätze mit einer beliebigen Anzahl an Bahnen und unbegrenzten Variationen entwickeln.</para>
 
-<sect1 id="creating"> <title>Creating a New Course</title>
-<para>To create a new course, choose the <menuchoice><guimenu>Game</guimenu> <guimenuitem>New</guimenuitem></menuchoice> menu item. Go to the <guilabel>Course</guilabel> page of the dialog, and choose the <guilabel>Create New</guilabel> course. Make sure that, under the <guilabel>Options</guilabel> page of the dialog, <guilabel>Strict mode</guilabel> is unchecked.</para>
+<sect1 id="creating"
+> <title
+>Erstellen eines neuen Golfplatzes</title>
+<para
+>Wählen Sie aus dem Menü <menuchoice
+><guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Neu</guimenuitem
+></menuchoice
+>, um einen neuen Golfplatz zu entwerfen. Gehen Sie auf die Seite <guilabel
+>Platzauswahl</guilabel
+> des Dialogs und wählen Sie <guilabel
+>Hinzufügen ...</guilabel
+>. Auf der Seite <guilabel
+>Spiel-Einstellungen</guilabel
+> darf <guilabel
+>Strenger Modus</guilabel
+> nicht markiert sein.</para>
 
 <note>
-<para>To play this new course later, click the <guibutton>Add...</guibutton> button to add the course to your list of courses.</para>
+<para
+>Um den Platz später zu spielen, müssen Sie auf <guibutton
+>Hinzufügen ...</guibutton
+> klicken und den Platz der Liste der Golfplätze hinzufügen.</para>
 </note>
 </sect1>
 
-<sect1 id="adding-holes"> <title>Adding Holes</title>
-<para>Switch to the edit mode using the <menuchoice><guimenu>Hole</guimenu> <guimenuitem>Edit</guimenuitem></menuchoice> menu item. Choose the <menuchoice><guimenu>Hole</guimenu> <guimenuitem>New</guimenuitem></menuchoice> menu item to add a new hole at the end of the course.</para>
+<sect1 id="adding-holes"
+> <title
+>Bahn hinzufügen</title>
+<para
+>Mittels <menuchoice
+><guimenu
+>Bahn</guimenu
+><guimenuitem
+>Bearbeiten</guimenuitem
+></menuchoice
+> kann in den Bearbeitungsmodus gewechselt werden. Eine neue Bahn wird mittels <menuchoice
+><guimenu
+>Bahn</guimenu
+><guimenuitem
+>Neu</guimenuitem
+></menuchoice
+> am Ende des Platzes hinzugefügt.</para>
 <tip>
-<para>You can restore a hole to a blank state, similar to when it was first created, by choosing the <menuchoice><guimenu>Hole</guimenu> <guimenuitem>Clear</guimenuitem></menuchoice> menu item.</para>
+<para
+>Durch Auswahl von <menuchoice
+><guimenu
+>Bahn</guimenu
+> <guimenuitem
+>Löschen</guimenuitem
+></menuchoice
+> können Sie eine Bahn wieder in den leeren Anfangszustand versetzen.</para>
 </tip>
-<para>Two items will appear on new holes: a cup, and a white ball. The white ball marks where players' balls start the hole.</para>
+<para
+>Bei neuen Bahnen erscheint zunächst ein Loch und ein weißer Ball. Der weiße Ball markiert die Startposition.</para>
 </sect1>
 
-<sect1 id="editing-basics"> <title>Editing Basics</title>
-<para>The basic building block of &kolf; courses is the <quote>object</quote>. Holes are made up of a bunch of objects. Objects can be moved to any location, and the different kinds of objects each have different properties you can set.</para>
-<para>To start editing a hole, toggle the <menuchoice><guimenu>Hole</guimenu> <guimenuitem>Edit</guimenuitem></menuchoice> menu item, or press the pencil icon on the toolbar. To leave editing mode, uncheck this menu item (or the toolbar icon).</para>
+<sect1 id="editing-basics"
+> <title
+>Grundlagen der Bearbeitung</title>
+<para
+>Die Bestandteile eines Golfplatzes bei &kappname; sind <quote
+>Objekte</quote
+>. Jede Bahn besteht aus einer Anzahl von Objekten. Objekte können an jeder Stelle platziert werden und jede Objektart hat spezifische Eigenschaften.</para>
+<para
+>Um eine Bahn zu bearbeiten, schaltet man über <menuchoice
+><guimenu
+>Bahn</guimenu
+> <guimenuitem
+>Bearbeiten</guimenuitem
+></menuchoice
+> oder das Bleistiftsymbol in der Werkzeugleiste in den Bearbeitungsmodus. Der Modus wird durch erneuten Aufruf des Menüpunktes (oder betätigen des Symbols) wieder verlassen.</para>
 
-<sect2> <title>Adding Objects</title>
-<para>To add a new object to the course, choose its name in the list box labeled <guilabel>Add object:</guilabel>. The object will appear in the center of the course.</para>
+<sect2
+> <title
+>Objekte hinzufügen</title>
+<para
+>Um zum Golfplatz ein neues Objekt hinzuzufügen, wählen Sie dessen Namen in der Liste <guilabel
+>Objekt hinzufügen:</guilabel
+>. Das gewählte Objekt erscheint in der Mitte des Platzes.</para>
 <caution>
-<para>Bridges and signs will cover up new objects if they were already in the center of the hole.</para>
+<para
+>Falls sich Brücken oder Zeichen in der Mitte befinden, überdecken diese andere Objekte.</para>
 </caution>
 <!--
 <tip>
-<para>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
+<para
+>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
 </tip>
-<para>Some &kolf; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
-<para>Third-party &kolf; plugins are available at the &kolf; website. See <ulink url="https://web.mit.edu/jasonkb/www/kolf/">the &kolf; plugins download page</ulink>.</para>
+<para
+>Some &kappname; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
+<para
+>Third-party &kappname; plugins are available at the &kappname; website. See <ulink url="http://web.mit.edu/jasonkb/www/kolf/"
+>the &kappname; plugins download page</ulink
+>.</para>
 -->
 </sect2>
 
-<sect2> <title>Moving and Resizing Objects</title>
-<para>Move your mouse cursor over the object that you want to move, and the mouse cursor will change to a hand cursor. Then click and drag the object to where you want it.</para>
-<para>Puddles, sand, floaters, bridges, and signs can be resized by dragging the small circle at their lower-right corner.</para>
+<sect2
+> <title
+>Verschieben von Objekten und deren Größe ändern</title>
+<para
+>Bewegen Sie den Mauszeiger auf das Objekt, das Sie bewegen wollen, ändert sich der Mauszeiger zu einer Hand. Klicken Sie mit der &LMBn; und ziehen Sie das Objekt an die gewünschte Position.</para>
+<para
+>Pfützen, Sand, Flöße, Brücken und Schilder können durch Ziehen des kleinen Kreises unten rechts in der Größe verändert werden.</para>
 
 <note>
-<para>Walls can be moved by clicking and dragging their endpoints, or you can move the whole wall by clicking and dragging on the middle part of the wall as normal.</para>
+<para
+>Wände können durch Klicken auf die Endpunkte in Länge und Richtung verändert werden werden. Die gesamte Wand wird durch Klicken im mittleren Teil der Wand verschoben.</para>
 </note>
 </sect2>
 
-<sect2> <title>Objects' Settings</title>
-<para>Objects' properties can be changed in the area at the lower-right corner of the &kolf; window. To edit an object, move your mouse cursor over it until the cursor changes to the hand cursor. Then click. Various controls for that object will appear in the lower-right corner of the &kolf; window.</para>
-<sect3> <title>General Hole Settings</title>
-<para>To edit general hole settings, click an area of the hole that is not covered by an object. When this is possible, the cursor will be the normal pointer cursor.</para>
+<sect2
+> <title
+>Einstellungen der Objekte</title>
+<para
+>Die Objekteigenschaften können im Bereich rechts unten im &kappname;-Fenster geändert werden. Klicken Sie auf das Objekt, dessen Eigenschaften Sie ändern möchten. Daraufhin erscheinen verschiedene Einstellmöglichkeiten in der unteren rechten Ecke des &kappname;-Fensters.</para>
+<sect3
+> <title
+>Allgemeine Einstellungen der Bahn</title>
+<para
+>Die allgemeinen Einstellungen der Bahn erhalten Sie, wenn Sie auf eine freie Stelle des Rasens klicken. Freie Stellen erkennen Sie an der normalen Form des Mauszeigers.</para>
 
 <variablelist>
-<varlistentry> <term><guilabel>Course name:</guilabel></term>
+<varlistentry
+> <term
+><guilabel
+>Name des Golfplatzes:</guilabel
+></term>
 <listitem>
-<para>This is the name that is shown in the <guilabel>New Game</guilabel> dialog and in the <guilabel>Course Information</guilabel> dialog.</para>
+<para
+>Dieser Name wird im Dialog eines neuen Spiels und im Dialog <guimenuitem
+>Über den Platz</guimenuitem
+> angezeigt.</para>
 </listitem>
 </varlistentry>
-<varlistentry> <term><guilabel>Course author:</guilabel></term>
+<varlistentry
+> <term
+><guilabel
+>Autor des Platzes:</guilabel
+></term>
 <listitem>
-<para>This is the author name that is shown in the <guilabel>Course Information</guilabel> dialog.</para>
+<para
+>Dieser Name wird im Dialog <guimenuitem
+>Über den Platz</guimenuitem
+> angezeigt.</para>
 </listitem>
 </varlistentry>
-<varlistentry> <term><guilabel>Par:</guilabel></term>
+<varlistentry
+> <term
+><guilabel
+>Par:</guilabel
+></term>
 <listitem>
-<para>The par of the hole.</para>
+<para
+>Das Par der Bahn.</para>
 </listitem>
 </varlistentry>
-<varlistentry> <term><guilabel>Maximum:</guilabel></term>
+<varlistentry
+> <term
+><guilabel
+>Maximum:</guilabel
+></term>
 <listitem>
-<para>The maximum number of strokes a player can take on the hole.</para>
+<para
+>Die maximale Anzahl von Schlägen, die ein Spieler für eine Bahn benötigen darf.</para>
 </listitem>
 </varlistentry>
-<varlistentry> <term><guilabel>Show border walls</guilabel></term>
+<varlistentry
+> <term
+><guilabel
+>Wände am Spielfeldrand anzeigen</guilabel
+></term>
 <listitem>
-<para>Whether or not to show walls around the border of the hole.</para>
+<para
+>Ob Wände am Rand um die Bahn angezeigt werden oder nicht.</para>
 </listitem>
 </varlistentry>
 </variablelist>
 
 </sect3>
-<sect3> <title>Slopes</title>
+<sect3
+> <title
+>Hänge</title>
 
 <variablelist>
-<varlistentry> <term>Type</term>
+<varlistentry
+> <term
+>Typ</term>
 <listitem>
-<para>Choose the type of the slope - <guilabel>Vertical</guilabel>, <guilabel>Horizontal</guilabel>, <guilabel>Diagonal</guilabel>, <guilabel>Opposite Diagonal</guilabel>, <guilabel>Circular</guilabel>. Diagonal and opposite diagonal slopes are triangles, while circular slopes are circles. Vertical and horizontal slopes are rectangles of course.</para>
+<para
+>Wählen Sie den Hangtyp - <guilabel
+>Senkrecht</guilabel
+>, <guilabel
+>Waagerecht</guilabel
+>, <guilabel
+>Diagonal</guilabel
+>, <guilabel
+>Entgegengesetzt diagonal</guilabel
+> oder <guilabel
+>Kreisförmig</guilabel
+>. Diagonale und entgegengesetzt diagonale Hänge sind Dreiecke, kreisförmige Hänge sind Kreise. Senkrechte und waagerechte Hänge sind rechteckig.</para>
 </listitem>
 </varlistentry>
-<varlistentry> <term><guilabel>Reverse direction</guilabel></term>
+<varlistentry
+> <term
+><guilabel
+>umgekehrte Richtung</guilabel
+></term>
 <listitem>
-<para>Whether or not to reverse the slant of the slope. For example, consider an elliptical slope (a circular slope). When it is not reversed, it pushes balls outward like a mound. When it is reversed, it sucks balls inward like a hole.</para>
+<para
+>Ob die Neigung umgekehrt werden soll. Ein kreisförmiger Hang &eg; wirkt wie ein Hügel. Wenn seine Richtung umgekehrt wird, wirkt er wie eine Mulde.</para>
 </listitem>
 </varlistentry>
-<varlistentry> <term><guilabel>Unmovable</guilabel></term>
+<varlistentry
+> <term
+><guilabel
+>Neigung:</guilabel
+></term>
 <listitem>
-<para>Whether or not this can be moved by other objects, like floaters.</para>
+<para
+>Wählen Sie die Neigung (Steilheit) des Hanges durch verschieben des Schiebereglers. Die Neigung wird zwischen 0 und 8 bewegt, wobei 8 die stärkste Neigung und 0 flach ist. Durch starke Neigung wird die Geschwindigkeit des Balls stärker verändert.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>unbeweglich</guilabel
+></term>
+<listitem>
+<para
+>Ob das Objekt durch andere Objekte wie Flöße bewegt werden kann.</para>
 <caution>
-<para>If a floater overlaps with this object at any point on this path, and the slope is large and thus won't move the floater, you <emphasis>must</emphasis> make the slope <guilabel>Unmovable</guilabel>, or &kolf; will suffer poor performance!</para>
+<para
+>Falls ein Floß sich mit diesem Objekt an irgendeiner Stelle seines Weges überlappt, <emphasis
+>muss</emphasis
+> das Objekt als <guilabel
+>Unbeweglich</guilabel
+> gekennzeichnet werden, da sonst &kappname; sehr langsam wird.</para>
 </caution>
 </listitem>
 </varlistentry>
-<varlistentry> <term><guilabel>Grade:</guilabel></term>
-<listitem>
-<para>Choose the grade (steepness) of the slope by moving the slider so the grade moves towards 0 or 8, where 8 is steepest and 0 is flat. Steeper slopes push the ball more.</para>
-</listitem>
-</varlistentry>
 </variablelist>
 
 </sect3>
-<sect3> <title>Puddles and Sand</title>
-<para>Puddles and Sand have the same configuration options as each other.</para>
+<sect3
+> <title
+>Pfützen und Sand</title>
+<para
+>Pfützen und Sand haben die gleichen Einstellmöglichkeiten.</para>
 
 <variablelist>
-<varlistentry> <term><guilabel>Enable show/hide</guilabel></term>
+<varlistentry
+> <term
+><guilabel
+>Blinkmodus aktivieren</guilabel
+></term>
 <listitem>
-<para>Checking this enables the flashing of this puddle or sand.</para>
+<para
+>Markieren Sie dieses Feld, damit die Pfütze oder Sandgrube blinkt.</para>
 <!--
 </listitem>
 </varlistentry>
-<varlistentry> <term>Show/Hide speed</term>
+<varlistentry
+> <term
+>Show/Hide speed</term>
 <listitem>
   -->
-<para>The more towards <guilabel>Fast</guilabel> the slider is, the faster the puddle or sand flashes.</para>
+<para
+>Je mehr der Schieberegler Richtung <guilabel
+>Schnell</guilabel
+> verschoben wird, desto höher ist die Blinkgeschwindigkeit.</para>
 </listitem>
 </varlistentry>
 </variablelist>
 
 </sect3>
-<sect3> <title>Bridges, Windmills, Floaters, and Signs</title>
-<para>Bridges, windmills, floaters, and signs all have similar settings for configuring on which sides there are border walls. To show the wall on a side, check the check box for that side.</para>
-<para>There are also some more specific options for windmills, floaters, and signs.</para>
+<sect3
+> <title
+>Brücken, Windmühlen, Flöße und Schilder</title>
+<para
+>Brücken, Windmühlen, Flöße und Schilder haben ähnliche Einstellungen dafür, auf welcher Seite sich Wände befinden. Um eine Wand anzuzeigen, wählen Sie das entsprechende Ankreuzfeld aus.</para>
+<para
+>Es gibt einige besondere Einstellungen für Windmühlen, Flösse und Schilder.</para>
 
-<sect4> <title>Windmills</title>
+<sect4
+> <title
+>Windmühlen</title>
 <variablelist>
-<varlistentry> <term><guilabel>Windmill on top</guilabel></term>
+<varlistentry
+> <term
+><guilabel
+>Windmühle unten</guilabel
+></term>
 <listitem>
-<para>Whether or not the black windmill arm is on bottom or top - the default is that it is on the top. The two half-walls will always be with the arm. Note that you cannot enable a border wall on the side that the arm is.</para>
+<para
+>Ob der schwarze Windmühlenarm oben oder unten ist - standardmäßig befindet er sich unten. Die zwei Halbwände befinden sich immer dort, wo der Arm ist. Beachten Sie, dass Sie auf der Armseite keine Wand aktivieren können.</para>
 </listitem>
 </varlistentry>
-<varlistentry> <term>Speed</term>
+<varlistentry
+> <term
+>Geschwindigkeit</term>
 <listitem>
-<para>The more towards <guilabel>Fast</guilabel> the slider is, the faster the black windmill arm moves.</para>
+<para
+>Je mehr der Schieberegler in Richtung <guilabel
+>Schnell</guilabel
+> bewegt wird, desto schneller bewegt sich der Windmühlenarm.</para>
 </listitem>
 </varlistentry>
 </variablelist>
 </sect4>
 
-<sect4> <title>Floaters</title>
-<para>The path the floater moves along is shown by the wall it's connected to.</para>
+<sect4
+> <title
+>Flöße</title>
+<para
+>Der Weg des Floßes führt entlang der angrenzenden Wand.</para>
 <variablelist>
-<varlistentry> <term><guilabel>Moving speed</guilabel></term>
+<varlistentry
+> <term
+><guilabel
+>Bewegungsgeschwindigkeit</guilabel
+></term>
 <listitem>
-<para>The more towards <guilabel>Fast</guilabel> the slider is, the faster the floater moves. If the slider is all the way at the <guilabel>Slow</guilabel> end, the floater will stop.</para>
+<para
+>Je mehr der Schieberegler Richtung <guilabel
+>Schnell</guilabel
+> geschoben wird, desto schneller bewegt sich das Floß. Falls der Schieberegler sich bei der Marke <guilabel
+>Langsam</guilabel
+> befindet, hält das Floß an.</para>
 </listitem>
 </varlistentry>
 </variablelist>
 </sect4>
 
-<sect4> <title>Signs</title>
+<sect4
+> <title
+>Zeichen</title>
 <variablelist>
-<varlistentry> <term><guilabel>Sign HTML:</guilabel></term>
+<varlistentry
+> <term
+><guilabel
+>Text (im HTML-Format)</guilabel
+></term>
 <listitem>
-<para>You can enter any valid &HTML; here. For example, entering <userinput>Hit it &lt;i&gt;softly&lt;/i&gt; towards the slope!</userinput> will create the text <quote>Hit it <emphasis>softly</emphasis> towards the slope!</quote>.</para>
+<para
+>Hier können beliebige (gültige) &HTML;-Texte eintragen werden. Beispielsweise ergibt <userinput
+>Schlagen Sie &lt;i&gt;vorsichtig&lt;/i&gt; in Richtung des Hanges!</userinput
+> den Text <quote
+>Schlagen Sie <emphasis
+>vorsichtig</emphasis
+> in Richtung des Hanges!</quote
+></para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -771,44 +1651,56 @@ which hole you wish to go to.</para>
 </sect2>
 </sect1>
 </chapter>
-
-<chapter id="credits"><title>Credits and License</title> <!-- do not change this! -->
+ 
+<chapter id="credits"
+><title
+>Danksagungen und Lizenz</title
+> <!-- do not change this! -->
 <!--This chapter is for credits and licenses.-->
+ 
+<para
+>&kappname;</para>
 
-<para>&kolf;</para>
-
-<para>&kolf; copyright 2001, 2002 &Jason.Katz-Brown;</para>
+<para
+>&kappname; Copyright 2001, 2002 &Jason.Katz-Brown;</para>
 
 <itemizedlist>
-<title>Developers</title>
+<title
+>Entwickler</title>
 <listitem>
-<para>&Jason.Katz-Brown; <email>jasonkb@mit.edu</email></para>
+<para
+>&Jason.Katz-Brown; <email
+>jasonkb@mit.edu</email
+></para>
 </listitem>
 <listitem>
-<para>Niklas Knutsson</para>
+<para
+>Niklas Knutsson</para>
 </listitem>
 <listitem>
-<para>Ryan Cumming</para>
+<para
+>Ryan Cumming</para>
 </listitem>
 <listitem>
-<para>Daniel Matza-Brown</para>
+<para
+>Daniel Matza-Brown</para>
 </listitem>
 <listitem>
-<para>Paul Broadbent</para>
+<para
+>Paul Broadbent</para>
 </listitem>
 </itemizedlist>
 
-<para>Documentation copyright 2002, &Jason.Katz-Brown;</para>
+<para
+>Copyright der Dokumentation 2002, &Jason.Katz-Brown;</para>
 
-<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
-&underFDL;
-&underGPL;
-
-<!-- !!!do not change ANYTHING after this line!!!! -->
-
-</chapter>
-
-&documentation.index;
+<para
+>Deutsche Übersetzung von Maren Pakura <email
+>maren@kde.org</email
+></para
+> &underFDL; &underGPL; </chapter>
+  
+&documentation.index; 
 </book>
 <!--
 Local Variables:

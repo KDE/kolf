@@ -1,13 +1,15 @@
 # Translation of kolf into esperanto.
+# Copyright (C) 2009 Free Software Foundation, Inc.
 # Axel Rousseau <axel@esperanto-jeunes.org>, 2009.
+# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-17 00:43+0000\n"
-"PO-Revision-Date: 2009-11-15 12:06+0100\n"
-"Last-Translator: Axel Rousseau <axel@esperanto-jeunes.org>\n"
+"PO-Revision-Date: 2023-01-06 22:00+0100\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -19,32 +21,32 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Axel Rousseau"
+msgstr "Axel Rousseau, Oliver Kellogg"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "axel@esperanto-jeunes.org"
+msgstr "axel@esperanto-jeunes.org, okellogg@users.sourceforge.net"
 
 #: config.cpp:51
 #, kde-format
 msgid "No configuration options"
-msgstr ""
+msgstr "Neniuj agordopcioj"
 
 #: editor.cpp:37
 #, kde-format
 msgid "Add object:"
-msgstr ""
+msgstr "Aldoni objekton:"
 
 #: game.cpp:264
 #, kde-format
 msgid "Course name: "
-msgstr ""
+msgstr "Nomo de golfejo:"
 
 #: game.cpp:271
 #, kde-format
 msgid "Course author: "
-msgstr ""
+msgstr "Aŭtoro de golfejo:"
 
 #: game.cpp:280
 #, kde-format
@@ -64,7 +66,7 @@ msgstr ""
 #: game.cpp:295
 #, kde-format
 msgid "Maximum number of strokes"
-msgstr ""
+msgstr "Maksimuma nombro de batoj"
 
 #: game.cpp:296
 #, kde-format
@@ -74,70 +76,70 @@ msgstr "Senlima"
 #: game.cpp:302
 #, kde-format
 msgid "Show border walls"
-msgstr ""
+msgstr "Montri limomurojn"
 
 #: game.cpp:500 game.cpp:2460
 #, kde-format
 msgid "Course Author"
-msgstr ""
+msgstr "Aŭtoro de golfejo"
 
 #: game.cpp:501 game.cpp:502 game.cpp:2460
 #, kde-format
 msgid "Course Name"
-msgstr ""
+msgstr "Nomo de golfejo"
 
 #: game.cpp:1424
 #, kde-format
 msgid "Drop Outside of Hazard"
-msgstr ""
+msgstr "Faligi ekster danĝerejo"
 
 #: game.cpp:1425
 #, kde-format
 msgid "Rehit From Last Location"
-msgstr ""
+msgstr "Rebati ekde lasta loko"
 
 #: game.cpp:1427
 #, kde-format
 msgid "What would you like to do for your next shot?"
-msgstr ""
+msgstr "Kion vi ŝatus fari por via sekva bato?"
 
 #: game.cpp:1427
 #, kde-format
 msgid "%1 is in a Hazard"
-msgstr ""
+msgstr "%1 estas en danĝerejo"
 
 #: game.cpp:1595
 #, kde-format
 msgid "%1 will start off."
-msgstr ""
+msgstr "%1 ekkomencos."
 
 #: game.cpp:1595
 #, kde-format
 msgid "New Hole"
-msgstr ""
+msgstr "Nova Truo"
 
 #: game.cpp:1756
 #, kde-format
 msgid "Course name: %1"
-msgstr ""
+msgstr "Golfejnomo: %1"
 
 #: game.cpp:1757
 #, kde-format
 msgid "Created by %1"
-msgstr ""
+msgstr "Kreita far %1"
 
 #: game.cpp:1758
 #, kde-format
 msgid "%1 hole"
 msgid_plural "%1 holes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 truo"
+msgstr[1] "%1 truoj"
 
 #: game.cpp:1759
 #, kde-format
 msgctxt "@title:window"
 msgid "Course Information"
-msgstr ""
+msgstr "Informoj pri Golfejo"
 
 #: game.cpp:1890
 #, kde-format
@@ -157,13 +159,13 @@ msgstr "Nekonservitaj ŝanĝoj"
 #: game.cpp:2010
 #, kde-format
 msgid "Save &Later"
-msgstr ""
+msgstr "Konservi p&li poste"
 
 #: game.cpp:2191 kolf.cpp:550
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"
-msgstr ""
+msgstr "Elektu Kolf-ejon al kiu konservi"
 
 #: kcomboboxdialog.cpp:60
 #, kde-format
@@ -173,22 +175,22 @@ msgstr "Ne &peti denove"
 #: kolf.cpp:62
 #, kde-format
 msgid "Slope"
-msgstr ""
+msgstr "Deklivo"
 
 #: kolf.cpp:63
 #, kde-format
 msgid "Puddle"
-msgstr ""
+msgstr "Flako"
 
 #: kolf.cpp:64
 #, kde-format
 msgid "Wall"
-msgstr ""
+msgstr "Muro"
 
 #: kolf.cpp:65
 #, kde-format
 msgid "Cup"
-msgstr ""
+msgstr "Ujo"
 
 #: kolf.cpp:66
 #, kde-format
@@ -198,17 +200,17 @@ msgstr "Sablo"
 #: kolf.cpp:67
 #, kde-format
 msgid "Windmill"
-msgstr ""
+msgstr "Ventmuelejo"
 
 #: kolf.cpp:68
 #, kde-format
 msgid "Black Hole"
-msgstr ""
+msgstr "Nigra Truo"
 
 #: kolf.cpp:69
 #, kde-format
 msgid "Floater"
-msgstr ""
+msgstr "Flosanto"
 
 #: kolf.cpp:70
 #, kde-format
@@ -223,27 +225,27 @@ msgstr "Subskribi"
 #: kolf.cpp:72
 #, kde-format
 msgid "Bumper"
-msgstr ""
+msgstr "Bumpero"
 
 #: kolf.cpp:95
 #, kde-format
 msgid "Save &Course"
-msgstr ""
+msgstr "Konservi &Golfejon"
 
 #: kolf.cpp:97
 #, kde-format
 msgid "Save &Course As..."
-msgstr ""
+msgstr "Konservi Golfejon &Kiel..."
 
 #: kolf.cpp:100
 #, kde-format
 msgid "&Save Game"
-msgstr ""
+msgstr "Kon&servi Ludon"
 
 #: kolf.cpp:103
 #, kde-format
 msgid "&Save Game As..."
-msgstr ""
+msgstr "Kon&servi Ludon Kiel..."
 
 #: kolf.cpp:110
 #, kde-format
@@ -263,79 +265,79 @@ msgstr "&Reagordu"
 #: kolf.cpp:130
 #, kde-format
 msgid "&Undo Shot"
-msgstr ""
+msgstr "&Malfari Baton"
 
 #. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 #. Go
 #: kolf.cpp:134
 #, kde-format
 msgid "Switch to Hole"
-msgstr ""
+msgstr "Ŝalti al Truo"
 
 #: kolf.cpp:139
 #, kde-format
 msgid "&Next Hole"
-msgstr ""
+msgstr "&Sekva Truo"
 
 #: kolf.cpp:144
 #, kde-format
 msgid "&Previous Hole"
-msgstr ""
+msgstr "&Antaŭa Truo"
 
 #: kolf.cpp:149
 #, kde-format
 msgid "&First Hole"
-msgstr ""
+msgstr "&Unua Truo"
 
 #: kolf.cpp:153
 #, kde-format
 msgid "&Last Hole"
-msgstr ""
+msgstr "&Lasta Truo"
 
 #: kolf.cpp:158
 #, kde-format
 msgid "&Random Hole"
-msgstr ""
+msgstr "Haza&rda Truo"
 
 #: kolf.cpp:162
 #, kde-format
 msgid "Enable &Mouse for Moving Putter"
-msgstr ""
+msgstr "Ebligi &Muson por Movi Ludanton"
 
 #: kolf.cpp:169
 #, kde-format
 msgid "Enable &Advanced Putting"
-msgstr ""
+msgstr "Ebligi Progresintan Lud&adon"
 
 #: kolf.cpp:175
 #, kde-format
 msgid "Show &Info"
-msgstr ""
+msgstr "Montri &Informon"
 
 #: kolf.cpp:182
 #, kde-format
 msgid "Show Putter &Guideline"
-msgstr ""
+msgstr "Montri &Gvidlinion por ludantoj"
 
 #: kolf.cpp:188
 #, kde-format
 msgid "Enable All Dialog Boxes"
-msgstr ""
+msgstr "Ebligi Ĉiujn Dialog"
 
 #: kolf.cpp:192
 #, kde-format
 msgid "Play &Sounds"
-msgstr ""
+msgstr "Aŭdigi &Sonojn"
 
 #: kolf.cpp:199
 #, kde-format
 msgid "&About Course..."
-msgstr ""
+msgstr "Pri l&a Golfejo..."
 
 #: kolf.cpp:202
 #, kde-format
 msgid "&Tutorial"
-msgstr ""
+msgstr "&Lernilo"
 
 #: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
 #, kde-format
@@ -603,11 +605,10 @@ msgid "Course %1 does not exist."
 msgstr ""
 
 #: newgame.cpp:38
-#, fuzzy, kde-format
-#| msgid "New Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "New Game"
-msgstr "Nova ludo"
+msgstr "Nova Ludo"
 
 #: newgame.cpp:54
 #, kde-format
@@ -737,9 +738,8 @@ msgid "&Right"
 msgstr "Dekst&re"
 
 #: obstacles.cpp:412
-#, fuzzy
 msgid "&Bottom"
-msgstr "&Maldekstre"
+msgstr "&Malsupre"
 
 #: obstacles.cpp:421
 #, kde-format
@@ -770,6 +770,3 @@ msgstr ""
 #, kde-format
 msgid "Total"
 msgstr "Sumo"
-
-#~ msgid "Plugins"
-#~ msgstr "Kromaĵoj"
