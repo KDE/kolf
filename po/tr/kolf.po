@@ -8,13 +8,13 @@
 # obsoleteman <tulliana@gmail.com>, 2008-2009.
 # Volkan Gezer <volkangezer@gmail.com>, 2013, 2015.
 # Yıldız Kardeşler <turkishprogram@xposta.com>, 2004.
-# Emir SARI <emir_sari@icloud.com>, 2022.
+# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-17 00:43+0000\n"
-"PO-Revision-Date: 2022-11-22 16:47+0300\n"
+"PO-Revision-Date: 2023-01-31 22:04+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -150,7 +150,7 @@ msgstr "Saha Bilgisi"
 #: game.cpp:1890
 #, kde-format
 msgid "This hole uses the following plugins, which you do not have installed:"
-msgstr "Bu delik yüklü olmayan şu eklentilere gereksinim duyuyor:"
+msgstr "Bu delik, kurulu olmayan şu eklentilere gereksinim duyuyor:"
 
 #: game.cpp:2007
 #, kde-format
