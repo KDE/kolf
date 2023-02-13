@@ -283,7 +283,7 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	par->setSingleStep( 1 );
 	par->setValue(holeInfo->par());
 	hlayout->addWidget(par);
-        connect(par, qOverload<int>(&QSpinBox::valueChanged), this,
+        connect(par, &QSpinBox::valueChanged, this,
                 &HoleConfig::parChanged);
         hlayout->addStretch();
 
@@ -296,7 +296,7 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 	maxstrokes->setSpecialValueText(i18n("Unlimited"));
 	maxstrokes->setValue(holeInfo->maxStrokes());
 	hlayout->addWidget(maxstrokes);
-        connect(maxstrokes, qOverload<int>(&QSpinBox::valueChanged), this,
+        connect(maxstrokes, &QSpinBox::valueChanged, this,
                 &HoleConfig::maxStrokesChanged);
 
         QCheckBox *check = new QCheckBox(i18n("Show border walls"), this);

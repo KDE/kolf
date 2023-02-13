@@ -564,7 +564,7 @@ Kolf::SlopeConfig::SlopeConfig(Kolf::Slope* slope, QWidget* parent)
 	KComboBox* typeBox = new KComboBox(this);
 	typeBox->addItems(g_slopeData->translatedGradientKeys);
 	typeBox->setCurrentIndex(slope->slopeType());
-        connect(typeBox, qOverload<int>(&KComboBox::currentIndexChanged), slope,
+        connect(typeBox, &KComboBox::currentIndexChanged, slope,
                 &Kolf::Slope::setSlopeType);
         layout->addWidget(typeBox, 0, 0, 1, 2);
 
@@ -585,7 +585,7 @@ Kolf::SlopeConfig::SlopeConfig(Kolf::Slope* slope, QWidget* parent)
 	grade->setRange(0, 8);
 	grade->setSingleStep(1);
 	grade->setValue(slope->grade());
-        connect(grade, qOverload<double>(&QDoubleSpinBox::valueChanged), slope,
+        connect(grade, &QDoubleSpinBox::valueChanged, slope,
                 &Kolf::Slope::setGrade);
         layout->addWidget(grade, 2, 1);
 

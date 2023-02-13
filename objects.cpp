@@ -245,7 +245,7 @@ Kolf::BlackHoleConfig::BlackHoleConfig(BlackHole* blackHole, QWidget* parent)
 	deg->setValue(m_blackHole->curExitDeg());
 	deg->setWrapping(true);
 	layout->addRow(i18n("Exiting ball angle:"), deg);
-        connect(deg, qOverload<int>(&KPluralHandlingSpinBox::valueChanged),
+        connect(deg, &KPluralHandlingSpinBox::valueChanged,
                 this, &Kolf::BlackHoleConfig::degChanged);
 
         QSlider* minSlider = new QSlider(Qt::Horizontal, this);
@@ -257,7 +257,7 @@ Kolf::BlackHoleConfig::BlackHoleConfig(BlackHole* blackHole, QWidget* parent)
 	minSpinBox->setRange(0, 8);
 	minSpinBox->setSingleStep(0.01);
 	connect(minSlider, &QSlider::valueChanged, [minSlider, minSpinBox] {minSpinBox->setValue(minSlider->value()/100.0);});
-        connect(minSpinBox, qOverload<double>(&QDoubleSpinBox::valueChanged),
+        connect(minSpinBox, &QDoubleSpinBox::valueChanged,
                 [minSlider, minSpinBox] {
                   minSlider->setValue(qRound(minSpinBox->value() * 100));
                 });
@@ -266,7 +266,7 @@ Kolf::BlackHoleConfig::BlackHoleConfig(BlackHole* blackHole, QWidget* parent)
 	min->addWidget(minSpinBox);
 	layout->addRow(i18n("Minimum exit speed:"), min);
 	minSpinBox->setValue(m_blackHole->minSpeed());
-        connect(minSpinBox, qOverload<double>(&QDoubleSpinBox::valueChanged),
+        connect(minSpinBox, &QDoubleSpinBox::valueChanged,
                 this, &Kolf::BlackHoleConfig::minChanged);
 
         QSlider* maxSlider = new QSlider(Qt::Horizontal, this);
@@ -278,7 +278,7 @@ Kolf::BlackHoleConfig::BlackHoleConfig(BlackHole* blackHole, QWidget* parent)
 	maxSpinBox->setRange(0, 8);
 	maxSpinBox->setSingleStep(0.01);
 	connect(maxSlider, &QSlider::valueChanged, [maxSlider, maxSpinBox] {maxSpinBox->setValue(maxSlider->value()/100.0);});
-        connect(maxSpinBox, qOverload<double>(&QDoubleSpinBox::valueChanged),
+        connect(maxSpinBox, &QDoubleSpinBox::valueChanged,
                 [maxSlider, maxSpinBox] {
                   maxSlider->setValue(qRound(maxSpinBox->value() * 100));
                 });
@@ -287,7 +287,7 @@ Kolf::BlackHoleConfig::BlackHoleConfig(BlackHole* blackHole, QWidget* parent)
 	max->addWidget(maxSpinBox);
 	layout->addRow(i18n("Maximum exit speed:"), max);
 	maxSpinBox->setValue(m_blackHole->maxSpeed());
-        connect(maxSpinBox, qOverload<double>(&QDoubleSpinBox::valueChanged),
+        connect(maxSpinBox, &QDoubleSpinBox::valueChanged,
                 this, &Kolf::BlackHoleConfig::maxChanged);
 }
 
