@@ -54,7 +54,7 @@ ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KOLF VERSION_HEADER
 
 ecm_set_disabled_deprecation_versions(
     QT 5.15.2
-    KF 5.101
+    KF 5.103
     KDEGAMES 7.3
 )
 
