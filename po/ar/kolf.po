@@ -473,7 +473,7 @@ msgstr "غولف"
 #: main.cpp:51
 #, kde-format
 msgid "KDE Minigolf Game"
-msgstr "لعبة غولف مصغرة للكدي"
+msgstr "لعبة غولف مصغرة للكِيدِي"
 
 #: main.cpp:53
 #, kde-format
