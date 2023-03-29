@@ -1,0 +1,38 @@
+{
+    "id": "org.kde.kolf",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.15-22.08",
+    "sdk": "org.kde.Sdk",
+    "command": "kolf",
+    "rename-icon": "kolf",
+    "finish-args": [
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--device=dri",
+        "--socket=pulseaudio"
+    ],
+    "modules": [
+        {
+            "name": "libkdegames",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://invent.kde.org/games/libkdegames",
+                    "branch": "master"
+                }
+            ]
+        },
+        {
+            "name": "kolf",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "."
+                }
+            ]
+        }
+    ]
+}
