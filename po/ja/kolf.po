@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.1\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
@@ -141,7 +141,6 @@ msgstr "作者: %1"
 msgid "%1 hole"
 msgid_plural "%1 holes"
 msgstr[0] "%1 ホール"
-msgstr[1] "%1 ホール"
 
 #: game.cpp:1759
 #, fuzzy, kde-format
@@ -730,7 +729,6 @@ msgstr "プレイヤー %1"
 msgid " degree"
 msgid_plural " degrees"
 msgstr[0] " 度"
-msgstr[1] " 度"
 
 #: objects.cpp:247
 #, kde-format
