@@ -81,7 +81,7 @@ msgstr "Sen límite"
 #: game.cpp:302
 #, kde-format
 msgid "Show border walls"
-msgstr "Mostrar as paredes dos bordos"
+msgstr "Amosar as paredes dos bordos"
 
 #: game.cpp:500 game.cpp:2460
 #, kde-format
@@ -317,12 +317,12 @@ msgstr "Activar os golpes &avanzados"
 #: kolf.cpp:175
 #, kde-format
 msgid "Show &Info"
-msgstr "Mostrar &información"
+msgstr "Amosar &información"
 
 #: kolf.cpp:182
 #, kde-format
 msgid "Show Putter &Guideline"
-msgstr "Mostrar a liña de &guía do pau"
+msgstr "Amosar a liña de &guía do pau"
 
 #: kolf.cpp:188
 #, kde-format
@@ -407,7 +407,7 @@ msgstr "&Ir"
 #: landscape.cpp:146
 #, kde-format
 msgid "Enable show/hide"
-msgstr "Activar mostrar/agochar"
+msgstr "Activar amosar/agochar"
 
 #: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
 #, kde-format
@@ -588,7 +588,7 @@ msgstr "Ficheiro"
 #: main.cpp:72
 #, kde-format
 msgid "Print course information and exit"
-msgstr "Mostrar a información do campo e saír"
+msgstr "Amosar a información do campo e saír"
 
 #: main.cpp:89 newgame.cpp:240
 #, kde-format
