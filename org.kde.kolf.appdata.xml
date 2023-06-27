@@ -56,7 +56,7 @@
   <summary xml:lang="eu">Minigolf</summary>
   <summary xml:lang="fi">Pienoisgolf</summary>
   <summary xml:lang="fr">Golf miniature</summary>
-  <summary xml:lang="gl">Golf en miniatura</summary>
+  <summary xml:lang="gl">Golf en miniatura.</summary>
   <summary xml:lang="id">Golf Miniatur</summary>
   <summary xml:lang="it">Golf in miniatura</summary>
   <summary xml:lang="ka">მინიატურული გოლფი</summary>
@@ -88,8 +88,11 @@
     <p xml:lang="ca">El Kolf és un joc de golf en miniatura. El joc es juga amb una vista des de dalt, amb una barra curta que representa el club de golf. El Kolf disposa de diferents tipus d'objectes, com paranys d'aigua, desnivells, trampes de sorra, forats negres, entre altres.</p>
     <p xml:lang="de">Kolf ist ein Minigolf-Spiel. Das Spiel wird aus der Vogelperspektive gespielt, mit einem Balken, der den Golfschläger darstellt. Kolf verfügt über viele verschiedene Arten von Objekten, wie Wasserlöcher, Hänge, Sandbunker und Schwarze Löcher (Verwerfungen), und noch mehr.</p>
     <p xml:lang="eo">Kolf estas miniatura golfludo. La ludo estas ludita de supra vido, kun mallonga streko reprezentanta la golfklubon. Kolf havas multajn variajn specojn de objektoj, kiel akvodanĝerojn, deklivojn, sablokaptilojn, kaj nigrajn truojn (varpoj), inter aliaj.</p>
+    <p xml:lang="es">Kolf es un juego de minigolf desde una perspectiva aérea y con una corta barra que representa el palo de golf. Kolf contiene diversos tipos de objetos, como obstáculos de agua, pendientes, bancos de arena y agujeros negros (deformados), entre otros.</p>
+    <p xml:lang="gl">Kolf é un xogo de golf en miniatura. Xógase cunha vista aérea, cunha barra curta que representa o pau de golf. Kolf goza de moitos tipos distintos de obxectos, como obstáculos de auga, ramplas, trampas de area, e buratos negros (teleportación), entre outros.</p>
     <p xml:lang="nl">Kolf is een miniatuur spel golf. Het spel wordt gespeeld vanuit een bovenaanzicht, met een trekstang die de golfclub representeert. Kolf heeft veel verschillende typen objecten, zoals o.a. waterplassen, hellingen, zandbakken en zwarte gaten (warps).</p>
     <p xml:lang="pt">O Kolf é um jogo de golfe em miniatura. O jogo é executado numa perspectiva de cima, com uma barra que representa o taco de golfe. O Kolf oferece diversos tipos de objectos, como poças de água, rampas, armadilhas de areia e buracos negros (portais), entre outros.</p>
+    <p xml:lang="pt-BR">Kolf é um jogo de mini-golfe. É jogado de uma vista aérea com uma barra curta representando o clube de golfe. Kolf possui muitos tipos diferentes de objetos, como riscos de água, encostas, armadilhas de areia, buracos negros (empenamento), entre outros.</p>
     <p xml:lang="sl">Kolf je igra miniaturnega golfa. Igrate iz ptičje perspektive, palico pa predstavlja deščica. V Kolfu boste našli številne predmete, kot so med drugimi vodne nevarnosti, klance, peščene pasti in črne luknje.</p>
     <p xml:lang="tr">Kolf minyatür bir golf oyunudur. Oyun, golf sopasını temsil eden kısa bir çubukla yukarıdan oynanır. Kolf, diğerlerinin yanı sıra su tehlikeleri, eğimler, kum tuzakları ve kara delikler (bükümler) gibi birçok farklı nesne türüne sahiptir.</p>
     <p xml:lang="uk">Kolf — мініатюрна гра у гольф. Під час гри гравець дивиться на майданчик згори. У Kolf передбачено різні типи об’єктів-перешкод, зокрема водяні пастки, схили, піскові пастки і чорні діри (тунелі).</p>
@@ -333,7 +336,7 @@
       <caption xml:lang="eu">Kolfen hasierako pantaila</caption>
       <caption xml:lang="fi">Kolfin alkunäkymä</caption>
       <caption xml:lang="fr">Écran d'ouverture de Kolf</caption>
-      <caption xml:lang="gl">Pantalla inicial de Kolf</caption>
+      <caption xml:lang="gl">Pantalla inicial de Kolf.</caption>
       <caption xml:lang="id">Layar awal Kolf</caption>
       <caption xml:lang="it">Schermata iniziale di Kolf</caption>
       <caption xml:lang="ka">Kolf-ის პირველი ეკრანი</caption>
