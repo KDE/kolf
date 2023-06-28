@@ -54,7 +54,7 @@
   <summary xml:lang="eu">Minigolf</summary>
   <summary xml:lang="fi">Pienoisgolf</summary>
   <summary xml:lang="fr">Golf miniature</summary>
-  <summary xml:lang="gl">Golf en miniatura</summary>
+  <summary xml:lang="gl">Golf en miniatura.</summary>
   <summary xml:lang="id">Golf Miniatur</summary>
   <summary xml:lang="it">Golf in miniatura</summary>
   <summary xml:lang="ka">მინიატურული გოლფი</summary>
@@ -347,7 +347,7 @@
       <caption xml:lang="eu">Kolfen hasierako pantaila</caption>
       <caption xml:lang="fi">Kolfin alkunäkymä</caption>
       <caption xml:lang="fr">Écran d'ouverture de Kolf</caption>
-      <caption xml:lang="gl">Pantalla inicial de Kolf</caption>
+      <caption xml:lang="gl">Pantalla inicial de Kolf.</caption>
       <caption xml:lang="id">Layar awal Kolf</caption>
       <caption xml:lang="it">Schermata iniziale di Kolf</caption>
       <caption xml:lang="ka">Kolf-ის პირველი ეკრანი</caption>
