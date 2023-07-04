@@ -52,4 +52,4 @@ DefaultConfig::DefaultConfig(QWidget *parent)
 {
 }
 
-
+#include "moc_config.cpp"

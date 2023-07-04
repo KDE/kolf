@@ -873,4 +873,4 @@ void Kolf::Windmill::save(KConfigGroup* group)
 
 //END Kolf::Windmill
 
-
+#include "moc_obstacles.cpp"

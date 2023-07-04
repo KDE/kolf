@@ -110,4 +110,4 @@ void ScoreBoard::doUpdateHeight()
 	setFixedHeight(height);
 }
 
-
+#include "moc_scoreboard.cpp"

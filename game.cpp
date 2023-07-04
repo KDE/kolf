@@ -2461,4 +2461,4 @@ CourseInfo::CourseInfo()
 {
 }
 
-
+#include "moc_game.cpp"

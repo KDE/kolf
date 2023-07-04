@@ -69,4 +69,4 @@ void Editor::setItem(CanvasItem *item)
 	connect(config, &Config::modified, this, &Editor::changed);
 }
 
-
+#include "moc_editor.cpp"

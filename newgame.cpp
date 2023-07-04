@@ -370,4 +370,4 @@ void PlayerEditor::removeMe()
 	Q_EMIT deleteEditor(this);
 }
 
-
+#include "moc_newgame.cpp"

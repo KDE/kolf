@@ -319,4 +319,4 @@ void Kolf::Overlay::paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)
 
 //END Kolf::Overlay
 
-
+#include "moc_overlay.cpp"

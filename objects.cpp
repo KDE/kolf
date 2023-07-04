@@ -386,4 +386,4 @@ bool Kolf::Cup::collision(Ball* ball)
 
 //END Kolf::Cup
 
-
+#include "moc_objects.cpp"

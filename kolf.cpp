@@ -822,4 +822,4 @@ void KolfWindow::setCurrentHole(int hole)
 	holeAction->setCurrentItem(hole - 1);
 }
 
-
+#include "moc_kolf.cpp"

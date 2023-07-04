@@ -169,3 +169,5 @@ QString KComboBoxDialog::getText(const QString &_caption, const QString &_text, 
 	delete dlg;
 	return text;
 }
+
+#include "moc_kcomboboxdialog.cpp"

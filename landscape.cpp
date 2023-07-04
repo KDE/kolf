@@ -640,4 +640,4 @@ void Kolf::SlopeOverlay::moveHandle(const QPointF& handleScenePos)
 
 //END Kolf::SlopeOverlay
 
-
+#include "moc_landscape.cpp"
