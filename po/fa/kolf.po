@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -135,6 +135,7 @@ msgstr "ایجادشده توسط %1"
 msgid "%1 hole"
 msgid_plural "%1 holes"
 msgstr[0] " %1 گودال"
+msgstr[1] ""
 
 #: game.cpp:1759
 #, fuzzy, kde-format
@@ -723,6 +724,7 @@ msgstr "بازیکن %1"
 msgid " degree"
 msgid_plural " degrees"
 msgstr[0] "درجه‌ها"
+msgstr[1] ""
 
 #: objects.cpp:247
 #, kde-format
