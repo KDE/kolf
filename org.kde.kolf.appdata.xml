@@ -12,6 +12,7 @@
   <name xml:lang="de">Kolf</name>
   <name xml:lang="el">Kolf</name>
   <name xml:lang="en-GB">Kolf</name>
+  <name xml:lang="eo">Kolf</name>
   <name xml:lang="es">Kolf</name>
   <name xml:lang="et">Kolf</name>
   <name xml:lang="eu">Kolf</name>
@@ -49,6 +50,7 @@
   <summary xml:lang="de">Minigolf</summary>
   <summary xml:lang="el">Γκολφ μινιατούρα</summary>
   <summary xml:lang="en-GB">Miniature Golf</summary>
+  <summary xml:lang="eo">Miniatura Golfo</summary>
   <summary xml:lang="es">Minigolf</summary>
   <summary xml:lang="et">Miniatuurne golf</summary>
   <summary xml:lang="eu">Minigolf</summary>
@@ -83,6 +85,21 @@
       short bar representing the golf club. Kolf features many different types of objects,
       such water hazards, slopes, sand traps, and black holes (warps), among others.
     </p>
+    <p xml:lang="ar">غولف هي لعبة غولف مصغرة. تُلعب اللعبة من منظور علوي، مع شريط هورت يمثل نادي الغولف. يتميز غولف بالعديد من الأنواع المختلفة من الأشياء، مثل مخاطر المياه، والمنحدرات، والفخاخ الرملية، والثقوب السوداء (الاعوجاج)، وغيرها.</p>
+    <p xml:lang="ca">El Kolf és un joc de golf en miniatura. El joc es juga amb una vista des de dalt, amb una barra curta que representa el club de golf. El Kolf disposa de diferents tipus d'objectes, com paranys d'aigua, desnivells, trampes de sorra, forats negres, entre altres.</p>
+    <p xml:lang="ca-valencia">Kolf és un joc de golf en miniatura. El joc es juga amb una vista des de dalt, amb una barra curta que representa el club de golf. Kolf disposa de diferents tipus d'objectes, com paranys d'aigua, desnivells, trampes d'arena, forats negres, entre altres.</p>
+    <p xml:lang="de">Kolf ist ein Minigolf-Spiel. Das Spiel wird aus der Vogelperspektive gespielt, mit einem Balken, der den Golfschläger darstellt. Kolf verfügt über viele verschiedene Arten von Objekten, wie Wasserlöcher, Hänge, Sandbunker und Schwarze Löcher (Verwerfungen), und noch mehr.</p>
+    <p xml:lang="eo">Kolf estas miniatura golfludo. La ludo estas ludita de supra vido, kun mallonga streko reprezentanta la golfklubon. Kolf havas multajn variajn specojn de objektoj, kiel akvodanĝerojn, deklivojn, sablokaptilojn, kaj nigrajn truojn (varpoj), inter aliaj.</p>
+    <p xml:lang="es">Kolf es un juego de minigolf desde una perspectiva aérea y con una corta barra que representa el palo de golf. Kolf contiene diversos tipos de objetos, como obstáculos de agua, pendientes, bancos de arena y agujeros negros (deformados), entre otros.</p>
+    <p xml:lang="gl">Kolf é un xogo de golf en miniatura. Xógase cunha vista aérea, cunha barra curta que representa o pau de golf. Kolf goza de moitos tipos distintos de obxectos, como obstáculos de auga, ramplas, trampas de area, e buratos negros (teleportación), entre outros.</p>
+    <p xml:lang="it">Kolf è un gioco di di golf in miniatura. Il gioco si gioca da un punto di vista sopraelevato, con una barra che rappresenta la mazza da golf. Kolf contiene molti tipi di oggetti diversi, tra cui ostacoli d'acqua, pendenze, trappole di sabbia e buchi neri (deformazioni).</p>
+    <p xml:lang="nl">Kolf is een miniatuur spel golf. Het spel wordt gespeeld vanuit een bovenaanzicht, met een trekstang die de golfclub representeert. Kolf heeft veel verschillende typen objecten, zoals o.a. waterplassen, hellingen, zandbakken en zwarte gaten (warps).</p>
+    <p xml:lang="pt">O Kolf é um jogo de golfe em miniatura. O jogo é executado numa perspectiva de cima, com uma barra que representa o taco de golfe. O Kolf oferece diversos tipos de objectos, como poças de água, rampas, armadilhas de areia e buracos negros (portais), entre outros.</p>
+    <p xml:lang="pt-BR">Kolf é um jogo de mini-golfe. É jogado de uma vista aérea com uma barra curta representando o clube de golfe. Kolf possui muitos tipos diferentes de objetos, como riscos de água, encostas, armadilhas de areia, buracos negros (empenamento), entre outros.</p>
+    <p xml:lang="sl">Kolf je igra miniaturnega golfa. Igrate iz ptičje perspektive, palico pa predstavlja deščica. V Kolfu boste našli številne predmete, kot so med drugimi vodne nevarnosti, klance, peščene pasti in črne luknje.</p>
+    <p xml:lang="tr">Kolf minyatür bir golf oyunudur. Oyun, golf sopasını temsil eden kısa bir çubukla yukarıdan oynanır. Kolf, diğerlerinin yanı sıra su tehlikeleri, eğimler, kum tuzakları ve kara delikler (bükümler) gibi birçok farklı nesne türüne sahiptir.</p>
+    <p xml:lang="uk">Kolf — мініатюрна гра у гольф. Під час гри гравець дивиться на майданчик згори. У Kolf передбачено різні типи об’єктів-перешкод, зокрема водяні пастки, схили, піскові пастки і чорні діри (тунелі).</p>
+    <p xml:lang="x-test">xxKolf is a miniature golf game. The game is played from an overhead view, with a short bar representing the golf club. Kolf features many different types of objects, such water hazards, slopes, sand traps, and black holes (warps), among others.xx</p>
     <p>Features:</p>
     <p xml:lang="ar">الميزات:</p>
     <p xml:lang="ca">Característiques:</p>
@@ -91,6 +108,7 @@
     <p xml:lang="de">Funktionen:</p>
     <p xml:lang="el">Χαρακτηριστικά:</p>
     <p xml:lang="en-GB">Features:</p>
+    <p xml:lang="eo">Trajtoj:</p>
     <p xml:lang="es">Funciones:</p>
     <p xml:lang="et">Omadused:</p>
     <p xml:lang="eu">Ezaugarriak:</p>
@@ -128,6 +146,7 @@
       <li xml:lang="de">Einzel- und Mehrspielermodi, bis zu 10 Spielern</li>
       <li xml:lang="el">Απλή και με πολλούς (έως 10) παίκτες λειτουργία</li>
       <li xml:lang="en-GB">Single and Multi-player (up to ten players) modes</li>
+      <li xml:lang="eo">Sol- kaj plur-ludanta reĝimo (ĝis dek ludantoj)</li>
       <li xml:lang="es">Modos de uno o más jugadores (hasta diez)</li>
       <li xml:lang="et">Ühe ja mitme (kuni kümme) mängijaga režiimid</li>
       <li xml:lang="eu">Bakarra edo jokalari askotakoa (hamar jokalari gehienez) moduak.</li>
@@ -136,7 +155,6 @@
       <li xml:lang="gl">Modos de un e varios xogadores (ata 10).</li>
       <li xml:lang="id">Mode Pemain Tunggal dan Multi (hingga sepuluh pemain)</li>
       <li xml:lang="it">Modalità a uno o più giocatori (fino a dieci)</li>
-      <li xml:lang="ka">ერთი და მრავალმოთამაშიანი (10 მოთამაშემდე) რეჟიმები</li>
       <li xml:lang="ko">단일 및 최대 10명까지 다중 플레이어 모드</li>
       <li xml:lang="nl">Modi met enkele en meerdere spelers (tot tien spelers)</li>
       <li xml:lang="nn">Kan vera frå éin til ti spelarar</li>
@@ -163,6 +181,7 @@
       <li xml:lang="de">Bestenliste</li>
       <li xml:lang="el">Πίνακας αποτελεσμάτων</li>
       <li xml:lang="en-GB">High scores table</li>
+      <li xml:lang="eo">Pintpoentara tabelo</li>
       <li xml:lang="es">Tabla de mejores puntuaciones</li>
       <li xml:lang="et">Edetabel</li>
       <li xml:lang="eu">Puntuazio maximoen taula</li>
@@ -198,6 +217,7 @@
       <li xml:lang="de">Dynamische Golfplätze</li>
       <li xml:lang="el">Δυναμικές πίστες</li>
       <li xml:lang="en-GB">Dynamic courses</li>
+      <li xml:lang="eo">Dinamikaj golfejoj</li>
       <li xml:lang="es">Campos de golf dinámicos</li>
       <li xml:lang="et">Dünaamilised rajad</li>
       <li xml:lang="eu">Golf-zelaia dinamikoak</li>
@@ -233,6 +253,7 @@
       <li xml:lang="de">Golfplätze anderer Anbieter</li>
       <li xml:lang="el">Πίστες από τρίτους</li>
       <li xml:lang="en-GB">Third-party courses</li>
+      <li xml:lang="eo">Triapartaj golfejoj</li>
       <li xml:lang="es">Campos de golf de terceras partes</li>
       <li xml:lang="et">Kolmanda poole loodud rajad</li>
       <li xml:lang="eu">Norberak egindako golf-zelaiak</li>
@@ -268,6 +289,7 @@
       <li xml:lang="de">Golfplatz-Editor</li>
       <li xml:lang="el">Επεξεργαστής πίστας</li>
       <li xml:lang="en-GB">Course editor</li>
+      <li xml:lang="eo">Golfeja redaktilo</li>
       <li xml:lang="es">Editor de campos de golf</li>
       <li xml:lang="et">Radade redaktor</li>
       <li xml:lang="eu">golf-zelai editorea</li>
@@ -311,6 +333,7 @@
       <caption xml:lang="de">Start eines Spiels in Kolf</caption>
       <caption xml:lang="el">Αρχική οθόνη του Kolf</caption>
       <caption xml:lang="en-GB">Initial screen of Kolf</caption>
+      <caption xml:lang="eo">Komenca ekrano de Kolf</caption>
       <caption xml:lang="es">Pantalla inicial de Kolf</caption>
       <caption xml:lang="et">Kolfi avaekraan</caption>
       <caption xml:lang="eu">Kolfen hasierako pantaila</caption>
