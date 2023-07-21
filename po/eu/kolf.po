@@ -1,6 +1,5 @@
 # Translation for kolf.po to Euskara/Basque (eu).
-# Copyright (C) 2003, 2005, 2006, 2009 Free Software Foundation, Inc.
-# Copyright (C) 2010-2022, This file is copyright:
+# Copyright (C) 2003-2023 This file is copyright:
 # This file is distributed under the same license as de kolf package.
 # KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
 #
