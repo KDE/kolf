@@ -229,7 +229,7 @@ target_link_libraries(kolfprivate
 ########### next target ###############
 
 add_executable(kolf)
-target_sources(kolf PRIVATE main.cpp)
+target_sources(kolf PRIVATE main.cpp kolf.qrc)
 
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/*-apps-kolf.png")
 ecm_add_app_icon(kolf ICONS ${ICONS_SRCS})
@@ -240,7 +240,6 @@ install(TARGETS kolf  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 ########### install files ###############
 
 install(PROGRAMS org.kde.kolf.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
-install(FILES kolfui.rc DESTINATION ${KDE_INSTALL_KXMLGUIDIR}/kolf)
 install(FILES intro tutorial.kolf tutorial.kolfgame  DESTINATION  ${KDE_INSTALL_DATADIR}/kolf)
 #install(FILES ball.h game.h statedb.h config.h canvasitem.h object.h rtti.h vector.h floater.h slope.h  DESTINATION  ${KDE_INSTALL_INCLUDEDIR}/kolf COMPONENT Devel)
 install(FILES org.kde.kolf.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
