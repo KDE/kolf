@@ -789,7 +789,11 @@ void KolfGame::mouseReleaseEvent(QMouseEvent * e)
 	if (e->isAccepted())
 		return;
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+	QMouseEvent fixedEvent (QEvent::MouseButtonRelease, viewportToViewport(e->position().toPoint()), e->globalPosition(), e->button(), e->buttons(), e->modifiers(), e->pointingDevice());
+#else
 	QMouseEvent fixedEvent (QEvent::MouseButtonRelease, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
+#endif
 	handleMouseReleaseEvent(&fixedEvent);
 	e->accept();
 }
@@ -801,7 +805,11 @@ void KolfGame::mousePressEvent(QMouseEvent * e)
 	if (e->isAccepted())
 		return;
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+	QMouseEvent fixedEvent (QEvent::MouseButtonPress, viewportToViewport(e->position().toPoint()), e->globalPosition(), e->button(), e->buttons(), e->modifiers(), e->pointingDevice());
+#else
 	QMouseEvent fixedEvent (QEvent::MouseButtonPress, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
+#endif
 	handleMousePressEvent(&fixedEvent);
 	e->accept();
 }
@@ -813,7 +821,11 @@ void KolfGame::mouseDoubleClickEvent(QMouseEvent * e)
 	if (e->isAccepted())
 		return;
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+	QMouseEvent fixedEvent (QEvent::MouseButtonDblClick, viewportToViewport(e->position().toPoint()), e->globalPosition(), e->button(), e->buttons(), e->modifiers(), e->pointingDevice());
+#else
 	QMouseEvent fixedEvent (QEvent::MouseButtonDblClick, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
+#endif
 	handleMouseDoubleClickEvent(&fixedEvent);
 	e->accept();
 }
@@ -825,7 +837,11 @@ void KolfGame::mouseMoveEvent(QMouseEvent * e)
 	if (e->isAccepted())
 		return;
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+	QMouseEvent fixedEvent (QEvent::MouseMove, viewportToViewport(e->position().toPoint()), e->globalPosition(), e->button(), e->buttons(), e->modifiers(), e->pointingDevice());
+#else
 	QMouseEvent fixedEvent (QEvent::MouseMove, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
+#endif
 	handleMouseMoveEvent(&fixedEvent);
 	e->accept();
 }
