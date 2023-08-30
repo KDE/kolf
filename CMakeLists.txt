@@ -24,7 +24,7 @@ include(ECMSetupVersion)
 include(FeatureSummary)
 include(ECMDeprecationSettings)
 if (QT_MAJOR_VERSION STREQUAL "6")
-    set(QT_REQUIRED_VERSION "6.4.0")
+    set(QT_REQUIRED_VERSION "6.5.0")
     set(KF_MIN_VERSION "5.240.0")
     set(KF_MAJOR_VERSION "6")
 else()
@@ -56,12 +56,19 @@ endif()
 
 ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KOLF VERSION_HEADER kolf_version.h)
 
-ecm_set_disabled_deprecation_versions(
-    QT 5.15.2
-    KF 5.103
-    KDEGAMES 7.3
-)
-
+if (QT_MAJOR_VERSION STREQUAL "6")
+    ecm_set_disabled_deprecation_versions(
+        QT 6.5
+        KF 5.239
+        KDEGAMES 7.5
+    )
+else()
+    ecm_set_disabled_deprecation_versions(
+        QT 5.15.2
+        KF 5.103
+        KDEGAMES 7.3
+    )
+endif()
 
 add_subdirectory(sounds)
 add_subdirectory(courses)
