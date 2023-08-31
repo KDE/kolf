@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:43+0000\n"
+"POT-Creation-Date: 2023-08-31 00:43+0000\n"
 "PO-Revision-Date: 2021-10-09 14:01+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -83,91 +83,91 @@ msgstr "Il·limitats"
 msgid "Show border walls"
 msgstr "Mostra els murs de la vora"
 
-#: game.cpp:500 game.cpp:2460
+#: game.cpp:500 game.cpp:2476
 #, kde-format
 msgid "Course Author"
 msgstr "Autor del camp"
 
-#: game.cpp:501 game.cpp:502 game.cpp:2460
+#: game.cpp:501 game.cpp:502 game.cpp:2476
 #, kde-format
 msgid "Course Name"
 msgstr "Nom del camp"
 
-#: game.cpp:1424
+#: game.cpp:1440
 #, kde-format
 msgid "Drop Outside of Hazard"
 msgstr "Tira fora de l'obstacle"
 
-#: game.cpp:1425
+#: game.cpp:1441
 #, kde-format
 msgid "Rehit From Last Location"
 msgstr "Torna a tirar des del darrer punt"
 
-#: game.cpp:1427
+#: game.cpp:1443
 #, kde-format
 msgid "What would you like to do for your next shot?"
 msgstr "Que us agradaria fer a la propera tirada?"
 
-#: game.cpp:1427
+#: game.cpp:1443
 #, kde-format
 msgid "%1 is in a Hazard"
 msgstr "El %1 està en un obstacle"
 
-#: game.cpp:1595
+#: game.cpp:1611
 #, kde-format
 msgid "%1 will start off."
 msgstr "%1 començarà."
 
-#: game.cpp:1595
+#: game.cpp:1611
 #, kde-format
 msgid "New Hole"
 msgstr "Forat nou"
 
-#: game.cpp:1756
+#: game.cpp:1772
 #, kde-format
 msgid "Course name: %1"
 msgstr "Nom del camp: %1"
 
-#: game.cpp:1757
+#: game.cpp:1773
 #, kde-format
 msgid "Created by %1"
 msgstr "Creat per %1"
 
-#: game.cpp:1758
+#: game.cpp:1774
 #, kde-format
 msgid "%1 hole"
 msgid_plural "%1 holes"
 msgstr[0] "%1 forat"
 msgstr[1] "%1 forats"
 
-#: game.cpp:1759
+#: game.cpp:1775
 #, kde-format
 msgctxt "@title:window"
 msgid "Course Information"
 msgstr "Informació del camp"
 
-#: game.cpp:1890
+#: game.cpp:1906
 #, kde-format
 msgid "This hole uses the following plugins, which you do not have installed:"
 msgstr ""
 "Aquest forat usa els següents connectors, els quals no estan instal·lats:"
 
-#: game.cpp:2007
+#: game.cpp:2023
 #, kde-format
 msgid "There are unsaved changes to current hole. Save them?"
 msgstr "Hi ha canvis per a desar al forat actual. Els deso?"
 
-#: game.cpp:2008
+#: game.cpp:2024
 #, kde-format
 msgid "Unsaved Changes"
 msgstr "Canvis sense desar"
 
-#: game.cpp:2010
+#: game.cpp:2026
 #, kde-format
 msgid "Save &Later"
 msgstr "Desa més &tard"
 
-#: game.cpp:2191 kolf.cpp:550
+#: game.cpp:2207 kolf.cpp:550
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"

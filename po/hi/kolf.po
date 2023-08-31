@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:43+0000\n"
+"POT-Creation-Date: 2023-08-31 00:43+0000\n"
 "PO-Revision-Date: 2007-12-24 12:22+0530\n"
 "Last-Translator: Ravishankar Shrivastava <aviratlami@aol.in>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
@@ -80,57 +80,57 @@ msgstr "असीमित"
 msgid "Show border walls"
 msgstr "किनारा दीवार दिखाएँ"
 
-#: game.cpp:500 game.cpp:2460
+#: game.cpp:500 game.cpp:2476
 #, kde-format
 msgid "Course Author"
 msgstr "कोर्स लेखक"
 
-#: game.cpp:501 game.cpp:502 game.cpp:2460
+#: game.cpp:501 game.cpp:502 game.cpp:2476
 #, kde-format
 msgid "Course Name"
 msgstr "कोर्स नाम"
 
-#: game.cpp:1424
+#: game.cpp:1440
 #, kde-format
 msgid "Drop Outside of Hazard"
 msgstr "हजार्ड के बाहर छोड़ें"
 
-#: game.cpp:1425
+#: game.cpp:1441
 #, kde-format
 msgid "Rehit From Last Location"
 msgstr "पिछले स्थान से फिर से हिट करें"
 
-#: game.cpp:1427
+#: game.cpp:1443
 #, kde-format
 msgid "What would you like to do for your next shot?"
 msgstr "आप अपने अगले शॉट के लिए क्या करना चाहेंगे?"
 
-#: game.cpp:1427
+#: game.cpp:1443
 #, kde-format
 msgid "%1 is in a Hazard"
 msgstr "%1 एक हजार्ड में है"
 
-#: game.cpp:1595
+#: game.cpp:1611
 #, kde-format
 msgid "%1 will start off."
 msgstr "%1 प्रारंभ करेगा."
 
-#: game.cpp:1595
+#: game.cpp:1611
 #, kde-format
 msgid "New Hole"
 msgstr "नया होल"
 
-#: game.cpp:1756
+#: game.cpp:1772
 #, kde-format
 msgid "Course name: %1"
 msgstr "कोर्स नामः %1"
 
-#: game.cpp:1757
+#: game.cpp:1773
 #, kde-format
 msgid "Created by %1"
 msgstr " %1 के द्वारा बनाया गया"
 
-#: game.cpp:1758
+#: game.cpp:1774
 #, fuzzy, kde-format
 #| msgid "%1 holes"
 msgid "%1 hole"
@@ -138,34 +138,34 @@ msgid_plural "%1 holes"
 msgstr[0] "%1 होल्स"
 msgstr[1] "%1 होल्स"
 
-#: game.cpp:1759
+#: game.cpp:1775
 #, fuzzy, kde-format
 #| msgid "Course Information"
 msgctxt "@title:window"
 msgid "Course Information"
 msgstr "कोर्स जानकारी"
 
-#: game.cpp:1890
+#: game.cpp:1906
 #, kde-format
 msgid "This hole uses the following plugins, which you do not have installed:"
 msgstr "यह होल निम्न प्लगइन उपयोग करता है, जो आपने संस्थापित नहीं किए हैं:"
 
-#: game.cpp:2007
+#: game.cpp:2023
 #, kde-format
 msgid "There are unsaved changes to current hole. Save them?"
 msgstr "मौज़ूदा होल में सहेजे नहीं गए परिवर्तन हैं. उन्हें सहेजें?"
 
-#: game.cpp:2008
+#: game.cpp:2024
 #, kde-format
 msgid "Unsaved Changes"
 msgstr "सहेजा नहीं गया परिवर्तन"
 
-#: game.cpp:2010
+#: game.cpp:2026
 #, kde-format
 msgid "Save &Later"
 msgstr "बाद में सहेजें (&L)"
 
-#: game.cpp:2191 kolf.cpp:550
+#: game.cpp:2207 kolf.cpp:550
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Course to Save To"
 msgctxt "@title:window"

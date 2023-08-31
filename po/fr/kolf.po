@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:43+0000\n"
+"POT-Creation-Date: 2023-08-31 00:43+0000\n"
 "PO-Revision-Date: 2023-01-09 16:41+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
@@ -89,92 +89,92 @@ msgstr "Illimité"
 msgid "Show border walls"
 msgstr "Afficher les murs de bordure"
 
-#: game.cpp:500 game.cpp:2460
+#: game.cpp:500 game.cpp:2476
 #, kde-format
 msgid "Course Author"
 msgstr "Auteur du parcours"
 
-#: game.cpp:501 game.cpp:502 game.cpp:2460
+#: game.cpp:501 game.cpp:502 game.cpp:2476
 #, kde-format
 msgid "Course Name"
 msgstr "Nom du parcours"
 
-#: game.cpp:1424
+#: game.cpp:1440
 #, kde-format
 msgid "Drop Outside of Hazard"
 msgstr "Lancer au hasard"
 
-#: game.cpp:1425
+#: game.cpp:1441
 #, kde-format
 msgid "Rehit From Last Location"
 msgstr "Refrapper du dernier emplacement"
 
-#: game.cpp:1427
+#: game.cpp:1443
 #, kde-format
 msgid "What would you like to do for your next shot?"
 msgstr "Que voulez-vous faire pour votre prochain tir ?"
 
-#: game.cpp:1427
+#: game.cpp:1443
 #, kde-format
 msgid "%1 is in a Hazard"
 msgstr "%1 est tiré au sort"
 
-#: game.cpp:1595
+#: game.cpp:1611
 #, kde-format
 msgid "%1 will start off."
 msgstr "%1 commencera."
 
-#: game.cpp:1595
+#: game.cpp:1611
 #, kde-format
 msgid "New Hole"
 msgstr "Nouveau trou"
 
-#: game.cpp:1756
+#: game.cpp:1772
 #, kde-format
 msgid "Course name: %1"
 msgstr "Nom du parcours : %1"
 
-#: game.cpp:1757
+#: game.cpp:1773
 #, kde-format
 msgid "Created by %1"
 msgstr "Créé par %1"
 
-#: game.cpp:1758
+#: game.cpp:1774
 #, kde-format
 msgid "%1 hole"
 msgid_plural "%1 holes"
 msgstr[0] "%1 trou"
 msgstr[1] "%1 trous"
 
-#: game.cpp:1759
+#: game.cpp:1775
 #, kde-format
 msgctxt "@title:window"
 msgid "Course Information"
 msgstr "Informations sur le parcours"
 
-#: game.cpp:1890
+#: game.cpp:1906
 #, kde-format
 msgid "This hole uses the following plugins, which you do not have installed:"
 msgstr ""
 "Ce trou utilise les modules externes suivants, que vous n'avez pas "
 "installés :"
 
-#: game.cpp:2007
+#: game.cpp:2023
 #, kde-format
 msgid "There are unsaved changes to current hole. Save them?"
 msgstr "Il y a des changements non enregistrés. Les enregistrer ?"
 
-#: game.cpp:2008
+#: game.cpp:2024
 #, kde-format
 msgid "Unsaved Changes"
 msgstr "Changements non enregistrés"
 
-#: game.cpp:2010
+#: game.cpp:2026
 #, kde-format
 msgid "Save &Later"
 msgstr "E&nregistrer plus tard"
 
-#: game.cpp:2191 kolf.cpp:550
+#: game.cpp:2207 kolf.cpp:550
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"
