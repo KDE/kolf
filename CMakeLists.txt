@@ -8,8 +8,8 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 
 project(kolf VERSION ${RELEASE_SERVICE_VERSION})
 
-set (QT_MIN_VERSION "5.15.0")
-set (KF_MIN_VERSION "5.92.0")
+set(QT_MIN_VERSION "6.5.0")
+set(KF_MIN_VERSION "5.240.0")
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
@@ -23,17 +23,13 @@ include(ECMInstallIcons)
 include(ECMSetupVersion)
 include(FeatureSummary)
 include(ECMDeprecationSettings)
-if (QT_MAJOR_VERSION STREQUAL "6")
-    set(QT_REQUIRED_VERSION "6.5.0")
-    set(KF_MIN_VERSION "5.240.0")
-    set(KF_MAJOR_VERSION "6")
-else()
-    set(KF_MAJOR_VERSION "5")
-endif()
 
-find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Gui Widgets)
+find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS
+    Gui
+    Widgets
+)
 
-find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
+find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     Completion
     Config
     ConfigWidgets
@@ -48,27 +44,15 @@ find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
     XmlGui
 )
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    find_package(KDEGames6 7.5.0 REQUIRED)
-else()
-    find_package(KF5KDEGames 7.3.0 REQUIRED)
-endif()
+find_package(KDEGames6 7.5.0 REQUIRED)
 
 ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KOLF VERSION_HEADER kolf_version.h)
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    ecm_set_disabled_deprecation_versions(
-        QT 6.5
-        KF 5.239
-        KDEGAMES 7.5
-    )
-else()
-    ecm_set_disabled_deprecation_versions(
-        QT 5.15.2
-        KF 5.103
-        KDEGAMES 7.3
-    )
-endif()
+ecm_set_disabled_deprecation_versions(
+    QT 6.5
+    KF 5.239
+    KDEGAMES 7.5
+)
 
 add_subdirectory(sounds)
 add_subdirectory(courses)
@@ -213,24 +197,19 @@ target_sources(kolfprivate PRIVATE
 
 )
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(kolfprivate KDEGames6)
-else()
-    target_link_libraries(kolfprivate KF5KDEGames)
-endif()
-
 target_link_libraries(kolfprivate
-    KF${KF_MAJOR_VERSION}::Crash
-    KF${KF_MAJOR_VERSION}::Completion
-    KF${KF_MAJOR_VERSION}::ConfigCore
-    KF${KF_MAJOR_VERSION}::DBusAddons
-    KF${KF_MAJOR_VERSION}::I18n
-    KF${KF_MAJOR_VERSION}::JobWidgets
-    KF${KF_MAJOR_VERSION}::KIOCore
-    KF${KF_MAJOR_VERSION}::TextWidgets
-    KF${KF_MAJOR_VERSION}::XmlGui
-    Qt${QT_MAJOR_VERSION}::Gui
-    Qt${QT_MAJOR_VERSION}::Widgets
+    KDEGames6
+    KF6::Crash
+    KF6::Completion
+    KF6::ConfigCore
+    KF6::DBusAddons
+    KF6::I18n
+    KF6::JobWidgets
+    KF6::KIOCore
+    KF6::TextWidgets
+    KF6::XmlGui
+    Qt6::Gui
+    Qt6::Widgets
 )
 
 ########### next target ###############

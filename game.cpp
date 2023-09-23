@@ -38,7 +38,6 @@
 #include <QRandomGenerator>
 #include <KGameRenderer>
 
-#include <kwidgetsaddons_version.h>
 #include <KLineEdit>
 #include <KLocalizedString>
 #include <KMessageBox>
@@ -789,11 +788,7 @@ void KolfGame::mouseReleaseEvent(QMouseEvent * e)
 	if (e->isAccepted())
 		return;
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 	QMouseEvent fixedEvent (QEvent::MouseButtonRelease, viewportToViewport(e->position().toPoint()), e->globalPosition(), e->button(), e->buttons(), e->modifiers(), e->pointingDevice());
-#else
-	QMouseEvent fixedEvent (QEvent::MouseButtonRelease, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
-#endif
 	handleMouseReleaseEvent(&fixedEvent);
 	e->accept();
 }
@@ -805,11 +800,7 @@ void KolfGame::mousePressEvent(QMouseEvent * e)
 	if (e->isAccepted())
 		return;
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 	QMouseEvent fixedEvent (QEvent::MouseButtonPress, viewportToViewport(e->position().toPoint()), e->globalPosition(), e->button(), e->buttons(), e->modifiers(), e->pointingDevice());
-#else
-	QMouseEvent fixedEvent (QEvent::MouseButtonPress, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
-#endif
 	handleMousePressEvent(&fixedEvent);
 	e->accept();
 }
@@ -821,11 +812,7 @@ void KolfGame::mouseDoubleClickEvent(QMouseEvent * e)
 	if (e->isAccepted())
 		return;
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 	QMouseEvent fixedEvent (QEvent::MouseButtonDblClick, viewportToViewport(e->position().toPoint()), e->globalPosition(), e->button(), e->buttons(), e->modifiers(), e->pointingDevice());
-#else
-	QMouseEvent fixedEvent (QEvent::MouseButtonDblClick, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
-#endif
 	handleMouseDoubleClickEvent(&fixedEvent);
 	e->accept();
 }
@@ -837,11 +824,7 @@ void KolfGame::mouseMoveEvent(QMouseEvent * e)
 	if (e->isAccepted())
 		return;
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 	QMouseEvent fixedEvent (QEvent::MouseMove, viewportToViewport(e->position().toPoint()), e->globalPosition(), e->button(), e->buttons(), e->modifiers(), e->pointingDevice());
-#else
-	QMouseEvent fixedEvent (QEvent::MouseMove, viewportToViewport(e->pos()), e->button(), e->buttons(), e->modifiers());
-#endif
 	handleMouseMoveEvent(&fixedEvent);
 	e->accept();
 }
@@ -1829,11 +1812,7 @@ void KolfGame::openFile()
 
 		const int len = (*it).length();
 		const int dashIndex = (*it).indexOf(QLatin1Char('-'));
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-		const int holeNum = (*it).leftRef(dashIndex).toInt();
-#else
-        const int holeNum = QStringView(*it).left(dashIndex).toInt();
-#endif
+		const int holeNum = QStringView(*it).left(dashIndex).toInt();
 		if (holeNum > _highestHole)
 			_highestHole = holeNum;
 
@@ -1853,13 +1832,8 @@ void KolfGame::openFile()
 
 		const int commaIndex = (*it).indexOf(QLatin1Char(','));
 		const int pipeIndex = (*it).indexOf(QLatin1Char('|'));
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-		const int x = (*it).midRef(atIndex + 1, commaIndex - (atIndex + 1)).toInt();
-		const int y = (*it).midRef(commaIndex + 1, pipeIndex - (commaIndex + 1)).toInt();
-#else
-        const int x = QStringView(*it).mid(atIndex + 1, commaIndex - (atIndex + 1)).toInt();
-        const int y = QStringView(*it).mid(commaIndex + 1, pipeIndex - (commaIndex + 1)).toInt();
-#endif
+		const int x = QStringView(*it).mid(atIndex + 1, commaIndex - (atIndex + 1)).toInt();
+		const int y = QStringView(*it).mid(commaIndex + 1, pipeIndex - (commaIndex + 1)).toInt();
 		// will tell where ball is
 		if (name == QLatin1String("ball"))
 		{
@@ -1868,11 +1842,7 @@ void KolfGame::openFile()
 			whiteBall->setPos(x, y);
 			continue;
 		}
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-		const int id = (*it).rightRef(len - (pipeIndex + 1)).toInt();
-#else
-        const int id = QStringView(*it).right(len - (pipeIndex + 1)).toInt();
-#endif
+		const int id = QStringView(*it).right(len - (pipeIndex + 1)).toInt();
 		QGraphicsItem* newItem = m_factory.createInstance(name, courseBoard, g_world);
 		if (newItem)
 		{
@@ -2015,11 +1985,7 @@ bool KolfGame::askSave(bool noMoreChances)
 		// not cancel, don't save
 		return false;
 
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
 	int result = KMessageBox::warningTwoActionsCancel(this,
-#else
-	int result = KMessageBox::warningYesNoCancel(this,
-#endif
 						     i18n("There are unsaved changes to current hole. Save them?"),
 						     i18n("Unsaved Changes"),
 						     KStandardGuiItem::save(),
@@ -2028,19 +1994,11 @@ bool KolfGame::askSave(bool noMoreChances)
 						     noMoreChances? QStringLiteral("DiscardAsk") : QStringLiteral("SaveAsk"));
 	switch (result)
 	{
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
 		case KMessageBox::PrimaryAction:
-#else
-		case KMessageBox::Yes:
-#endif
 			save();
 			// fallthrough
 
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
 		case KMessageBox::SecondaryAction:
-#else
-		case KMessageBox::No:
-#endif
 			return false;
 			break;
 
@@ -2227,11 +2185,7 @@ void KolfGame::save()
 	// wipe out all groups from this hole
 	for (QStringList::const_iterator it = groups.begin(); it != groups.end(); ++it)
 	{
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-		int holeNum = (*it).leftRef((*it).indexOf(QLatin1Char('-'))).toInt();
-#else
-        int holeNum = QStringView(*it).left((*it).indexOf(QLatin1Char('-'))).toInt();
-#endif
+		int holeNum = QStringView(*it).left((*it).indexOf(QLatin1Char('-'))).toInt();
 		if (holeNum == curHole)
 			cfg->deleteGroup(*it);
 	}
