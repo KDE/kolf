@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-31 00:43+0000\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2021-08-05 09:57+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -46,133 +46,133 @@ msgstr "Geen configuratieopties"
 msgid "Add object:"
 msgstr "Object toevoegen:"
 
-#: game.cpp:264
+#: game.cpp:263
 #, kde-format
 msgid "Course name: "
 msgstr "Baannaam: "
 
-#: game.cpp:271
+#: game.cpp:270
 #, kde-format
 msgid "Course author: "
 msgstr "Baanauteur: "
 
-#: game.cpp:280
+#: game.cpp:279
 #, kde-format
 msgid "Par:"
 msgstr "Par:"
 
-#: game.cpp:290
+#: game.cpp:289
 #, kde-format
 msgid "Maximum:"
 msgstr "Maximum:"
 
-#: game.cpp:294
+#: game.cpp:293
 #, kde-format
 msgid "Maximum number of strokes player can take on this hole."
 msgstr "Het maximum aantal slagen die een speler krijgt bij deze hole."
 
-#: game.cpp:295
+#: game.cpp:294
 #, kde-format
 msgid "Maximum number of strokes"
 msgstr "Maximum aantal slagen"
 
-#: game.cpp:296
+#: game.cpp:295
 #, kde-format
 msgid "Unlimited"
 msgstr "Onbeperkt"
 
-#: game.cpp:302
+#: game.cpp:301
 #, kde-format
 msgid "Show border walls"
 msgstr "Grensmuren tonen"
 
-#: game.cpp:500 game.cpp:2476
+#: game.cpp:499 game.cpp:2430
 #, kde-format
 msgid "Course Author"
 msgstr "Baanauteur"
 
-#: game.cpp:501 game.cpp:502 game.cpp:2476
+#: game.cpp:500 game.cpp:501 game.cpp:2430
 #, kde-format
 msgid "Course Name"
 msgstr "Baannaam"
 
-#: game.cpp:1440
+#: game.cpp:1423
 #, kde-format
 msgid "Drop Outside of Hazard"
 msgstr "Buiten gevarenzone plaatsen"
 
-#: game.cpp:1441
+#: game.cpp:1424
 #, kde-format
 msgid "Rehit From Last Location"
 msgstr "Opnieuw slaan vanaf de laatste locatie"
 
-#: game.cpp:1443
+#: game.cpp:1426
 #, kde-format
 msgid "What would you like to do for your next shot?"
 msgstr "Wat wilt u doen voor uw volgende slag?"
 
-#: game.cpp:1443
+#: game.cpp:1426
 #, kde-format
 msgid "%1 is in a Hazard"
 msgstr "%1 bevindt zich in een gevarenzone"
 
-#: game.cpp:1611
+#: game.cpp:1594
 #, kde-format
 msgid "%1 will start off."
 msgstr "%1 begint."
 
-#: game.cpp:1611
+#: game.cpp:1594
 #, kde-format
 msgid "New Hole"
 msgstr "Nieuwe hole"
 
-#: game.cpp:1772
+#: game.cpp:1755
 #, kde-format
 msgid "Course name: %1"
 msgstr "Baannaam: %1"
 
-#: game.cpp:1773
+#: game.cpp:1756
 #, kde-format
 msgid "Created by %1"
 msgstr "Gemaakt door %1"
 
-#: game.cpp:1774
+#: game.cpp:1757
 #, kde-format
 msgid "%1 hole"
 msgid_plural "%1 holes"
 msgstr[0] "%1 hole"
 msgstr[1] "%1 holes"
 
-#: game.cpp:1775
+#: game.cpp:1758
 #, kde-format
 msgctxt "@title:window"
 msgid "Course Information"
 msgstr "Baaninformatie"
 
-#: game.cpp:1906
+#: game.cpp:1876
 #, kde-format
 msgid "This hole uses the following plugins, which you do not have installed:"
 msgstr ""
 "Deze hole gebruikt de volgende plugins, welke u niet hebt geïnstalleerd:"
 
-#: game.cpp:2023
+#: game.cpp:1989
 #, kde-format
 msgid "There are unsaved changes to current hole. Save them?"
 msgstr ""
 "Er zijn nog onopgeslagen wijzigingen voor de huidige hole. Wilt u deze "
 "opslaan?"
 
-#: game.cpp:2024
+#: game.cpp:1990
 #, kde-format
 msgid "Unsaved Changes"
 msgstr "Niet opgeslagen wijzigingen"
 
-#: game.cpp:2026
+#: game.cpp:1992
 #, kde-format
 msgid "Save &Later"
 msgstr "&Later opslaan"
 
-#: game.cpp:2207 kolf.cpp:550
+#: game.cpp:2165 kolf.cpp:550
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"
@@ -472,147 +472,147 @@ msgstr ""
 msgid "Grade:"
 msgstr "Graad:"
 
-#: main.cpp:49
+#: main.cpp:45
 #, kde-format
 msgid "Kolf"
 msgstr "Kolf"
 
-#: main.cpp:51
+#: main.cpp:47
 #, kde-format
 msgid "KDE Minigolf Game"
 msgstr "KDE Minigolfspel"
 
-#: main.cpp:53
+#: main.cpp:49
 #, kde-format
 msgid "(c) 2002-2010, Kolf developers"
 msgstr "(c) 2002-2010, Kolf-ontwikkelaars"
 
-#: main.cpp:56
+#: main.cpp:52
 #, kde-format
 msgid "Stefan Majewsky"
 msgstr "Stefan Majewsky"
 
-#: main.cpp:56
+#: main.cpp:52
 #, kde-format
 msgid "Current maintainer"
 msgstr "Huidige onderhouder"
 
-#: main.cpp:57
+#: main.cpp:53
 #, kde-format
 msgid "Jason Katz-Brown"
 msgstr "Jason Katz-Brown"
 
-#: main.cpp:57
+#: main.cpp:53
 #, kde-format
 msgid "Former main author"
 msgstr "Voormalig hoofdauteur"
 
-#: main.cpp:58
+#: main.cpp:54
 #, kde-format
 msgid "Niklas Knutsson"
 msgstr "Niklas Knutsson"
 
-#: main.cpp:58
+#: main.cpp:54
 #, kde-format
 msgid "Advanced putting mode"
 msgstr "Geavanceerde slagmodus"
 
-#: main.cpp:59
+#: main.cpp:55
 #, kde-format
 msgid "Rik Hemsley"
 msgstr "Rik Hemsley"
 
-#: main.cpp:59
+#: main.cpp:55
 #, kde-format
 msgid "Border around course"
 msgstr "Rand rond de baan"
 
-#: main.cpp:60
+#: main.cpp:56
 #, kde-format
 msgid "Timo A. Hummel"
 msgstr "Timo A. Hummel"
 
-#: main.cpp:60
+#: main.cpp:56
 #, kde-format
 msgid "Some good sound effects"
 msgstr "Enkele goede geluidseffecten"
 
-#: main.cpp:62
+#: main.cpp:58
 #, kde-format
 msgid "Rob Renaud"
 msgstr "Rob Renaud"
 
-#: main.cpp:62
+#: main.cpp:58
 #, kde-format
 msgid "Wall-bouncing help"
 msgstr "Afrolhelp"
 
-#: main.cpp:63
+#: main.cpp:59
 #, kde-format
 msgid "Aaron Seigo"
 msgstr "Aaron Seigo"
 
-#: main.cpp:63
+#: main.cpp:59
 #, kde-format
 msgid "Suggestions, bug reports"
 msgstr "Suggesties, bugrapporten"
 
-#: main.cpp:64
+#: main.cpp:60
 #, kde-format
 msgid "Erin Catto"
 msgstr "Erin Catto"
 
-#: main.cpp:64
+#: main.cpp:60
 #, kde-format
 msgid "Developer of Box2D physics engine"
 msgstr "Ontwikkelaar van Box2D fysica-engine"
 
-#: main.cpp:65
+#: main.cpp:61
 #, kde-format
 msgid "Ryan Cumming"
 msgstr "Ryan Cumming"
 
-#: main.cpp:65
+#: main.cpp:61
 #, kde-format
 msgid "Vector class (Kolf 1)"
 msgstr "Vectorklasse (Kolf 1)"
 
-#: main.cpp:66
+#: main.cpp:62
 #, kde-format
 msgid "Daniel Matza-Brown"
 msgstr "Daniel Matza-Brown"
 
-#: main.cpp:66
+#: main.cpp:62
 #, kde-format
 msgid "Working wall-bouncing algorithm (Kolf 1)"
 msgstr "Werkend algoritme voor stuiteren tegen een muur (Kolf 1)"
 
-#: main.cpp:71
+#: main.cpp:67
 #, kde-format
 msgid "File"
 msgstr "Bestand"
 
-#: main.cpp:72
+#: main.cpp:68
 #, kde-format
 msgid "Print course information and exit"
 msgstr "Print baaninformatie en sluit af"
 
-#: main.cpp:89 newgame.cpp:240
+#: main.cpp:85 newgame.cpp:240
 #, kde-format
 msgid "By %1"
 msgstr "Door %1"
 
-#: main.cpp:90
+#: main.cpp:86
 #, kde-format
 msgid "%1 holes"
 msgstr "%1 holes"
 
-#: main.cpp:91
+#: main.cpp:87
 #, kde-format
 msgid "par %1"
 msgstr "Par %1"
 
-#: main.cpp:98
+#: main.cpp:94
 #, kde-format
 msgid "Course %1 does not exist."
 msgstr "Baan %1 bestaat niet."

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-31 00:43+0000\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2007-08-20 12:20+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -37,97 +37,97 @@ msgstr "कन्फिगरेसन विकल्प छैन"
 msgid "Add object:"
 msgstr "वस्तु थप्नुहोस्:"
 
-#: game.cpp:264
+#: game.cpp:263
 #, kde-format
 msgid "Course name: "
 msgstr "पाठ्यक्रम नाम: "
 
-#: game.cpp:271
+#: game.cpp:270
 #, kde-format
 msgid "Course author: "
 msgstr "पाठ्यक्रम लेखक: "
 
-#: game.cpp:280
+#: game.cpp:279
 #, kde-format
 msgid "Par:"
 msgstr "औसत:"
 
-#: game.cpp:290
+#: game.cpp:289
 #, kde-format
 msgid "Maximum:"
 msgstr "अधिकतम:"
 
-#: game.cpp:294
+#: game.cpp:293
 #, kde-format
 msgid "Maximum number of strokes player can take on this hole."
 msgstr "यो प्वालमा खेलाडीले लिन सक्ने अधिकतम स्ट्रोक सङ्ख्या ।"
 
-#: game.cpp:295
+#: game.cpp:294
 #, kde-format
 msgid "Maximum number of strokes"
 msgstr "स्ट्रोकको अधिकतम सङ्ख्या"
 
-#: game.cpp:296
+#: game.cpp:295
 #, kde-format
 msgid "Unlimited"
 msgstr "असिमीत"
 
-#: game.cpp:302
+#: game.cpp:301
 #, kde-format
 msgid "Show border walls"
 msgstr "किनाराको पर्खाल देखाउनुहोस्"
 
-#: game.cpp:500 game.cpp:2476
+#: game.cpp:499 game.cpp:2430
 #, kde-format
 msgid "Course Author"
 msgstr "पाठ्यक्रम लेखक"
 
-#: game.cpp:501 game.cpp:502 game.cpp:2476
+#: game.cpp:500 game.cpp:501 game.cpp:2430
 #, kde-format
 msgid "Course Name"
 msgstr "पाठ्यक्रम नाम"
 
-#: game.cpp:1440
+#: game.cpp:1423
 #, kde-format
 msgid "Drop Outside of Hazard"
 msgstr "खतरा भन्दा बाहिरपट्टी झार्नुहोस्"
 
-#: game.cpp:1441
+#: game.cpp:1424
 #, kde-format
 msgid "Rehit From Last Location"
 msgstr "अन्तिम स्थानबाट हिर्काउनुहोस्"
 
-#: game.cpp:1443
+#: game.cpp:1426
 #, kde-format
 msgid "What would you like to do for your next shot?"
 msgstr "पछिल्लो शटका लागि तपाईँले के गर्न चाहनुहुन्छ?"
 
-#: game.cpp:1443
+#: game.cpp:1426
 #, kde-format
 msgid "%1 is in a Hazard"
 msgstr "%1 जोखिममा छ ।"
 
-#: game.cpp:1611
+#: game.cpp:1594
 #, kde-format
 msgid "%1 will start off."
 msgstr "%1 सुरु हुन्छ ।"
 
-#: game.cpp:1611
+#: game.cpp:1594
 #, kde-format
 msgid "New Hole"
 msgstr "नयाँ प्वाल"
 
-#: game.cpp:1772
+#: game.cpp:1755
 #, kde-format
 msgid "Course name: %1"
 msgstr "पाठ्यक्रम नाम: %1"
 
-#: game.cpp:1773
+#: game.cpp:1756
 #, kde-format
 msgid "Created by %1"
 msgstr "%1 द्वारा सिर्जना गरिएको"
 
-#: game.cpp:1774
+#: game.cpp:1757
 #, fuzzy, kde-format
 #| msgid "%1 holes"
 msgid "%1 hole"
@@ -135,34 +135,34 @@ msgid_plural "%1 holes"
 msgstr[0] "%1 प्वाल"
 msgstr[1] "%1 प्वाल"
 
-#: game.cpp:1775
+#: game.cpp:1758
 #, fuzzy, kde-format
 #| msgid "Course Information"
 msgctxt "@title:window"
 msgid "Course Information"
 msgstr "पाठ्यक्रम जानकारी"
 
-#: game.cpp:1906
+#: game.cpp:1876
 #, kde-format
 msgid "This hole uses the following plugins, which you do not have installed:"
 msgstr "यो प्वालले तपाईँले स्थापना नगरेका निम्न प्लगइन प्रयोग गर्दछ:"
 
-#: game.cpp:2023
+#: game.cpp:1989
 #, kde-format
 msgid "There are unsaved changes to current hole. Save them?"
 msgstr "हालको प्वालमा बचत नगरिएका परिवर्तन छन् । तिनीहरूलाई बचत गर्नुहुन्छ?"
 
-#: game.cpp:2024
+#: game.cpp:1990
 #, kde-format
 msgid "Unsaved Changes"
 msgstr "बचत नगरिएका परिवर्तन"
 
-#: game.cpp:2026
+#: game.cpp:1992
 #, kde-format
 msgid "Save &Later"
 msgstr "पछि बचत गर्नुहोस्"
 
-#: game.cpp:2207 kolf.cpp:550
+#: game.cpp:2165 kolf.cpp:550
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Course to Save To"
 msgctxt "@title:window"
@@ -464,150 +464,150 @@ msgstr "अन्य कुनै उत्प्लावक जस्तै �
 msgid "Grade:"
 msgstr "श्रेणी:"
 
-#: main.cpp:49
+#: main.cpp:45
 #, kde-format
 msgid "Kolf"
 msgstr "कोल्फ"
 
-#: main.cpp:51
+#: main.cpp:47
 #, kde-format
 msgid "KDE Minigolf Game"
 msgstr "केडीई सानो गल्फ खेल"
 
-#: main.cpp:53
+#: main.cpp:49
 #, kde-format
 msgid "(c) 2002-2010, Kolf developers"
 msgstr ""
 
-#: main.cpp:56
+#: main.cpp:52
 #, kde-format
 msgid "Stefan Majewsky"
 msgstr ""
 
-#: main.cpp:56
+#: main.cpp:52
 #, kde-format
 msgid "Current maintainer"
 msgstr ""
 
-#: main.cpp:57
+#: main.cpp:53
 #, kde-format
 msgid "Jason Katz-Brown"
 msgstr "जासोन काट्ज-ब्राउन"
 
-#: main.cpp:57
+#: main.cpp:53
 #, fuzzy, kde-format
 #| msgid "Main author"
 msgid "Former main author"
 msgstr "मुख्य लेखक"
 
-#: main.cpp:58
+#: main.cpp:54
 #, kde-format
 msgid "Niklas Knutsson"
 msgstr "निक्लस क्नुट्सन"
 
-#: main.cpp:58
+#: main.cpp:54
 #, kde-format
 msgid "Advanced putting mode"
 msgstr "राख्ने उन्नत मोड"
 
-#: main.cpp:59
+#: main.cpp:55
 #, kde-format
 msgid "Rik Hemsley"
 msgstr "रिक हेम्सले"
 
-#: main.cpp:59
+#: main.cpp:55
 #, kde-format
 msgid "Border around course"
 msgstr "पाठ्यक्रमको दायरा"
 
-#: main.cpp:60
+#: main.cpp:56
 #, kde-format
 msgid "Timo A. Hummel"
 msgstr "टिमो A. ह्युमेल"
 
-#: main.cpp:60
+#: main.cpp:56
 #, kde-format
 msgid "Some good sound effects"
 msgstr "केही राम्रो ध्वनि प्रभाव"
 
-#: main.cpp:62
+#: main.cpp:58
 #, kde-format
 msgid "Rob Renaud"
 msgstr "रब रेनाउड"
 
-#: main.cpp:62
+#: main.cpp:58
 #, kde-format
 msgid "Wall-bouncing help"
 msgstr "पर्खाल-उफ्रने मद्दत"
 
-#: main.cpp:63
+#: main.cpp:59
 #, kde-format
 msgid "Aaron Seigo"
 msgstr "आरोन सिगो"
 
-#: main.cpp:63
+#: main.cpp:59
 #, kde-format
 msgid "Suggestions, bug reports"
 msgstr "सुझाव, बग प्रतिवेदन"
 
-#: main.cpp:64
+#: main.cpp:60
 #, kde-format
 msgid "Erin Catto"
 msgstr ""
 
-#: main.cpp:64
+#: main.cpp:60
 #, kde-format
 msgid "Developer of Box2D physics engine"
 msgstr ""
 
-#: main.cpp:65
+#: main.cpp:61
 #, kde-format
 msgid "Ryan Cumming"
 msgstr "रायन कुमिङ"
 
-#: main.cpp:65
+#: main.cpp:61
 #, fuzzy, kde-format
 #| msgid "Vector class"
 msgid "Vector class (Kolf 1)"
 msgstr "भेक्टर वर्ग"
 
-#: main.cpp:66
+#: main.cpp:62
 #, kde-format
 msgid "Daniel Matza-Brown"
 msgstr "डानिएल माट्जा-ब्राउन"
 
-#: main.cpp:66
+#: main.cpp:62
 #, fuzzy, kde-format
 #| msgid "Working wall-bouncing algorithm"
 msgid "Working wall-bouncing algorithm (Kolf 1)"
 msgstr "कार्यगत बाल-उफ्रने अलगोरिदम"
 
-#: main.cpp:71
+#: main.cpp:67
 #, kde-format
 msgid "File"
 msgstr "फाइल"
 
-#: main.cpp:72
+#: main.cpp:68
 #, kde-format
 msgid "Print course information and exit"
 msgstr "पाठ्यक्रम जानकारी मुद्रण गर्नुहोस् र निस्कनुहोस्"
 
-#: main.cpp:89 newgame.cpp:240
+#: main.cpp:85 newgame.cpp:240
 #, kde-format
 msgid "By %1"
 msgstr "%1 द्वारा"
 
-#: main.cpp:90
+#: main.cpp:86
 #, kde-format
 msgid "%1 holes"
 msgstr "%1 प्वाल"
 
-#: main.cpp:91
+#: main.cpp:87
 #, kde-format
 msgid "par %1"
 msgstr "औसत %1"
 
-#: main.cpp:98
+#: main.cpp:94
 #, kde-format
 msgid "Course %1 does not exist."
 msgstr "%1 पाठ्यक्रम अवस्थित छैन ।"

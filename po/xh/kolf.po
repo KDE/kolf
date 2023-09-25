@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-31 00:43+0000\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2002-10-18 15:41SAST\n"
 "Last-Translator: Lwandle Mgidlana <lwandle@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -46,97 +46,97 @@ msgstr "Azikho iinketho zokuhlanganisela"
 msgid "Add object:"
 msgstr "Yongeza injongo ethile:"
 
-#: game.cpp:264
+#: game.cpp:263
 #, kde-format
 msgid "Course name: "
 msgstr "Igama lesifundo:"
 
-#: game.cpp:271
+#: game.cpp:270
 #, kde-format
 msgid "Course author: "
 msgstr "Umbali wesifundo:"
 
-#: game.cpp:280
+#: game.cpp:279
 #, kde-format
 msgid "Par:"
 msgstr "Par:"
 
-#: game.cpp:290
+#: game.cpp:289
 #, kde-format
 msgid "Maximum:"
 msgstr "Ubuninzi:"
 
-#: game.cpp:294
+#: game.cpp:293
 #, kde-format
 msgid "Maximum number of strokes player can take on this hole."
 msgstr "Ubukhulu beneni labadlali ababethayo bangathatha lo mngxuma."
 
-#: game.cpp:295
+#: game.cpp:294
 #, kde-format
 msgid "Maximum number of strokes"
 msgstr "Ubukhulu benani lababethi"
 
-#: game.cpp:296
+#: game.cpp:295
 #, kde-format
 msgid "Unlimited"
 msgstr "Ayinasiphelo"
 
-#: game.cpp:302
+#: game.cpp:301
 #, kde-format
 msgid "Show border walls"
 msgstr "Bonisa umda wamadonga"
 
-#: game.cpp:500 game.cpp:2476
+#: game.cpp:499 game.cpp:2430
 #, kde-format
 msgid "Course Author"
 msgstr "Umbali wesifundo"
 
-#: game.cpp:501 game.cpp:502 game.cpp:2476
+#: game.cpp:500 game.cpp:501 game.cpp:2430
 #, kde-format
 msgid "Course Name"
 msgstr "Igama lesifundo"
 
-#: game.cpp:1440
+#: game.cpp:1423
 #, kde-format
 msgid "Drop Outside of Hazard"
 msgstr "Wisa Ngaphandle Kwendawo enobungozi"
 
-#: game.cpp:1441
+#: game.cpp:1424
 #, kde-format
 msgid "Rehit From Last Location"
 msgstr "Phinda ubethe Ukusuka Kwindawo yokugqibela"
 
-#: game.cpp:1443
+#: game.cpp:1426
 #, kde-format
 msgid "What would you like to do for your next shot?"
 msgstr "Ungathanda ukwenza ntoni ekubetheni okulandelayo?"
 
-#: game.cpp:1443
+#: game.cpp:1426
 #, kde-format
 msgid "%1 is in a Hazard"
 msgstr "%1 ikwindawo enobungozi"
 
-#: game.cpp:1611
+#: game.cpp:1594
 #, kde-format
 msgid "%1 will start off."
 msgstr "%1 izakuqala ukuyeka."
 
-#: game.cpp:1611
+#: game.cpp:1594
 #, kde-format
 msgid "New Hole"
 msgstr "Umngxunya Omtsha"
 
-#: game.cpp:1772
+#: game.cpp:1755
 #, kde-format
 msgid "Course name: %1"
 msgstr "Igama lesifundo: %1"
 
-#: game.cpp:1773
+#: game.cpp:1756
 #, kde-format
 msgid "Created by %1"
 msgstr "Idalwe ngu %1"
 
-#: game.cpp:1774
+#: game.cpp:1757
 #, fuzzy, kde-format
 #| msgid "%1 holes"
 msgid "%1 hole"
@@ -144,37 +144,37 @@ msgid_plural "%1 holes"
 msgstr[0] "%1 imingxuma"
 msgstr[1] "%1 imingxuma"
 
-#: game.cpp:1775
+#: game.cpp:1758
 #, fuzzy, kde-format
 #| msgid "Course Information"
 msgctxt "@title:window"
 msgid "Course Information"
 msgstr "Isifundo solwazi"
 
-#: game.cpp:1906
+#: game.cpp:1876
 #, kde-format
 msgid "This hole uses the following plugins, which you do not have installed:"
 msgstr ""
 "Lomngxunya usebenzisa leiplagi efakiweyo elandelayo, ekungafuneki uuba "
 "uyifakele:"
 
-#: game.cpp:2023
+#: game.cpp:1989
 #, kde-format
 msgid "There are unsaved changes to current hole. Save them?"
 msgstr ""
 "Kukho iitshintsho ezingagcinekanga kumngxunya okhoyo ngoku. Ungazigcina?"
 
-#: game.cpp:2024
+#: game.cpp:1990
 #, kde-format
 msgid "Unsaved Changes"
 msgstr "Iintshintsho ezingagcinekanga"
 
-#: game.cpp:2026
+#: game.cpp:1992
 #, kde-format
 msgid "Save &Later"
 msgstr "Gcina &Kamva"
 
-#: game.cpp:2207 kolf.cpp:550
+#: game.cpp:2165 kolf.cpp:550
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Course to Save To"
 msgctxt "@title:window"
@@ -479,150 +479,150 @@ msgstr ""
 msgid "Grade:"
 msgstr "Izinga:"
 
-#: main.cpp:49
+#: main.cpp:45
 #, kde-format
 msgid "Kolf"
 msgstr "Kolf"
 
-#: main.cpp:51
+#: main.cpp:47
 #, kde-format
 msgid "KDE Minigolf Game"
 msgstr "Umdlalo wegolufa encinane weKDE"
 
-#: main.cpp:53
+#: main.cpp:49
 #, kde-format
 msgid "(c) 2002-2010, Kolf developers"
 msgstr ""
 
-#: main.cpp:56
+#: main.cpp:52
 #, kde-format
 msgid "Stefan Majewsky"
 msgstr ""
 
-#: main.cpp:56
+#: main.cpp:52
 #, kde-format
 msgid "Current maintainer"
 msgstr ""
 
-#: main.cpp:57
+#: main.cpp:53
 #, kde-format
 msgid "Jason Katz-Brown"
 msgstr ""
 
-#: main.cpp:57
+#: main.cpp:53
 #, fuzzy, kde-format
 #| msgid "Main author"
 msgid "Former main author"
 msgstr "Oyena mbhali"
 
-#: main.cpp:58
+#: main.cpp:54
 #, kde-format
 msgid "Niklas Knutsson"
 msgstr ""
 
-#: main.cpp:58
+#: main.cpp:54
 #, kde-format
 msgid "Advanced putting mode"
 msgstr "Indlela yokwenza ubethe ubhekise ngaphambili"
 
-#: main.cpp:59
+#: main.cpp:55
 #, kde-format
 msgid "Rik Hemsley"
 msgstr ""
 
-#: main.cpp:59
+#: main.cpp:55
 #, kde-format
 msgid "Border around course"
 msgstr "Umda macala onke kwindawo ekudlalelwa kuyo"
 
-#: main.cpp:60
+#: main.cpp:56
 #, kde-format
 msgid "Timo A. Hummel"
 msgstr ""
 
-#: main.cpp:60
+#: main.cpp:56
 #, kde-format
 msgid "Some good sound effects"
 msgstr "Iziqhano ezinhle eziluncedo"
 
-#: main.cpp:62
+#: main.cpp:58
 #, kde-format
 msgid "Rob Renaud"
 msgstr ""
 
-#: main.cpp:62
+#: main.cpp:58
 #, kde-format
 msgid "Wall-bouncing help"
 msgstr "Udonga olubhampayo loncedo"
 
-#: main.cpp:63
+#: main.cpp:59
 #, kde-format
 msgid "Aaron Seigo"
 msgstr ""
 
-#: main.cpp:63
+#: main.cpp:59
 #, kde-format
 msgid "Suggestions, bug reports"
 msgstr "Amacebiso, isinambuzane sezichazo"
 
-#: main.cpp:64
+#: main.cpp:60
 #, kde-format
 msgid "Erin Catto"
 msgstr ""
 
-#: main.cpp:64
+#: main.cpp:60
 #, kde-format
 msgid "Developer of Box2D physics engine"
 msgstr ""
 
-#: main.cpp:65
+#: main.cpp:61
 #, kde-format
 msgid "Ryan Cumming"
 msgstr ""
 
-#: main.cpp:65
+#: main.cpp:61
 #, fuzzy, kde-format
 #| msgid "Vector class"
 msgid "Vector class (Kolf 1)"
 msgstr "Iklasi elinomgca ongahlukaniseka kabini"
 
-#: main.cpp:66
+#: main.cpp:62
 #, kde-format
 msgid "Daniel Matza-Brown"
 msgstr ""
 
-#: main.cpp:66
+#: main.cpp:62
 #, fuzzy, kde-format
 #| msgid "Working wall-bouncing algorithm"
 msgid "Working wall-bouncing algorithm (Kolf 1)"
 msgstr "Ukusebenzisa ubalo ngalithoba lo bhampiso eludongeni"
 
-#: main.cpp:71
+#: main.cpp:67
 #, kde-format
 msgid "File"
 msgstr ""
 
-#: main.cpp:72
+#: main.cpp:68
 #, fuzzy, kde-format
 msgid "Print course information and exit"
 msgstr "Shicilela ulwazi lwesifundo uze uphume."
 
-#: main.cpp:89 newgame.cpp:240
+#: main.cpp:85 newgame.cpp:240
 #, kde-format
 msgid "By %1"
 msgstr "ngo %1"
 
-#: main.cpp:90
+#: main.cpp:86
 #, kde-format
 msgid "%1 holes"
 msgstr "%1 imingxuma"
 
-#: main.cpp:91
+#: main.cpp:87
 #, kde-format
 msgid "par %1"
 msgstr "par %1"
 
-#: main.cpp:98
+#: main.cpp:94
 #, kde-format
 msgid "Course %1 does not exist."
 msgstr "Indawo ekudlalelwa kuyo %1 ayikho."

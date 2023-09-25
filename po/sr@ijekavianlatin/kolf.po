@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2020-05-12 03:23+0200\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2017-10-30 23:08+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -36,108 +36,108 @@ msgstr "caslav.ilic@gmx.net,bole89@infosky.net,slsimic@gmail.com"
 msgid "No configuration options"
 msgstr "Nema opcija za podešavanje"
 
-#: editor.cpp:38
+#: editor.cpp:37
 #, kde-format
 msgid "Add object:"
 msgstr "Dodaj objekat:"
 
-#: game.cpp:262
+#: game.cpp:263
 #, kde-format
 msgid "Course name: "
 msgstr "Ime terena: "
 
-#: game.cpp:269
+#: game.cpp:270
 #, kde-format
 msgid "Course author: "
 msgstr "Autor terena: "
 
-#: game.cpp:278
+#: game.cpp:279
 #, kde-format
 msgid "Par:"
 msgstr "Par:"
 
 # >! Contexts.
-#: game.cpp:287
+#: game.cpp:289
 #, kde-format
 msgid "Maximum:"
 msgstr "Najviše:"
 
-#: game.cpp:291
+#: game.cpp:293
 #, kde-format
 msgid "Maximum number of strokes player can take on this hole."
 msgstr "Najveći broj udaraca koje igrač može izvesti na ovoj rupi."
 
-#: game.cpp:292
+#: game.cpp:294
 #, kde-format
 msgid "Maximum number of strokes"
 msgstr "Najveći broj udaraca"
 
 # >> @item:inrange
-#: game.cpp:293
+#: game.cpp:295
 #, kde-format
 msgid "Unlimited"
 msgstr "neograničeno"
 
-#: game.cpp:298
+#: game.cpp:301
 #, kde-format
 msgid "Show border walls"
 msgstr "Ivični zidovi"
 
-#: game.cpp:496 game.cpp:2430
+#: game.cpp:499 game.cpp:2430
 #, kde-format
 msgid "Course Author"
 msgstr "Autor terena"
 
-#: game.cpp:497 game.cpp:498 game.cpp:2430
+#: game.cpp:500 game.cpp:501 game.cpp:2430
 #, kde-format
 msgid "Course Name"
 msgstr "Ime terena"
 
 # >> @item:inlisbox
-#: game.cpp:1424
+#: game.cpp:1423
 #, kde-format
 msgid "Drop Outside of Hazard"
 msgstr "Spusti van prepreke"
 
 # >> @item:inlisbox
-#: game.cpp:1425
+#: game.cpp:1424
 #, kde-format
 msgid "Rehit From Last Location"
 msgstr "Novi udarac s posljednje lokacije"
 
-#: game.cpp:1427
+#: game.cpp:1426
 #, kde-format
 msgid "What would you like to do for your next shot?"
 msgstr "Šta želite da vam bude sljedeći udarac?"
 
 # >> %1 is player name
-#: game.cpp:1427
+#: game.cpp:1426
 #, kde-format
 msgid "%1 is in a Hazard"
 msgstr "%1 je u prepreci"
 
 # >> %1 is player name
-#: game.cpp:1596
+#: game.cpp:1594
 #, kde-format
 msgid "%1 will start off."
 msgstr "%1 započinje."
 
-#: game.cpp:1596
+#: game.cpp:1594
 #, kde-format
 msgid "New Hole"
 msgstr "Nova rupa"
 
-#: game.cpp:1757
+#: game.cpp:1755
 #, kde-format
 msgid "Course name: %1"
 msgstr "Ime terena: %1"
 
-#: game.cpp:1758
+#: game.cpp:1756
 #, kde-format
 msgid "Created by %1"
 msgstr "Autor: %1"
 
-#: game.cpp:1759
+#: game.cpp:1757
 #, kde-format
 msgid "%1 hole"
 msgid_plural "%1 holes"
@@ -146,33 +146,35 @@ msgstr[1] "%1 rupe"
 msgstr[2] "%1 rupa"
 msgstr[3] "%1 rupa"
 
-#: game.cpp:1760
-#, kde-format
+#: game.cpp:1758
+#, fuzzy, kde-format
+#| msgid "Course Information"
+msgctxt "@title:window"
 msgid "Course Information"
 msgstr "Podaci o terenu"
 
-#: game.cpp:1881
+#: game.cpp:1876
 #, kde-format
 msgid "This hole uses the following plugins, which you do not have installed:"
 msgstr "Ova rupa zahtijeva sledeće priključke koji nisu instalirani:"
 
-#: game.cpp:1993
+#: game.cpp:1989
 #, kde-format
 msgid "There are unsaved changes to current hole. Save them?"
 msgstr "Nesačuvane izmjene na tekućoj rupi. Sačuvati ih?"
 
-#: game.cpp:1993
+#: game.cpp:1990
 #, kde-format
 msgid "Unsaved Changes"
 msgstr "Nesačuvane izmjene"
 
-#: game.cpp:1993
+#: game.cpp:1992
 #, kde-format
 msgid "Save &Later"
 msgstr "Sačuvaj &kasnije"
 
 # >> @title:windo
-#: game.cpp:2162 kolf.cpp:549
+#: game.cpp:2165 kolf.cpp:550
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Course to Save To"
 msgctxt "@title:window"
@@ -184,216 +186,217 @@ msgstr "Teren Kolfa za upisivanje"
 msgid "&Do not ask again"
 msgstr "&Ne pitaj više"
 
-#: kolf.cpp:63
+#: kolf.cpp:62
 #, kde-format
 msgid "Slope"
 msgstr "Padina"
 
 # >> @item
-#: kolf.cpp:64
+#: kolf.cpp:63
 #, kde-format
 msgid "Puddle"
 msgstr "bara"
 
 # >> @item
-#: kolf.cpp:65
+#: kolf.cpp:64
 #, kde-format
 msgid "Wall"
 msgstr "zid"
 
 # >> @item
-#: kolf.cpp:66
+#: kolf.cpp:65
 #, kde-format
 msgid "Cup"
 msgstr "šolja"
 
 # >> @item
-#: kolf.cpp:67
+#: kolf.cpp:66
 #, kde-format
 msgid "Sand"
 msgstr "pesak"
 
 # >> @item
-#: kolf.cpp:68
+#: kolf.cpp:67
 #, kde-format
 msgid "Windmill"
 msgstr "vjetrenjača"
 
 # >> @item
-#: kolf.cpp:69
+#: kolf.cpp:68
 #, kde-format
 msgid "Black Hole"
 msgstr "crna rupa"
 
 # >> @item
-#: kolf.cpp:70
+#: kolf.cpp:69
 #, kde-format
 msgid "Floater"
 msgstr "plutač"
 
 # >> @item
-#: kolf.cpp:71
+#: kolf.cpp:70
 #, kde-format
 msgid "Bridge"
 msgstr "most"
 
 # >> @item
-#: kolf.cpp:72
+#: kolf.cpp:71
 #, kde-format
 msgid "Sign"
 msgstr "znak"
 
 # >> @item
-#: kolf.cpp:73
+#: kolf.cpp:72
 #, kde-format
 msgid "Bumper"
 msgstr "branik"
 
-#: kolf.cpp:96
+#: kolf.cpp:95
 #, kde-format
 msgid "Save &Course"
 msgstr "Sačuvaj &teren"
 
-#: kolf.cpp:98
+#: kolf.cpp:97
 #, kde-format
 msgid "Save &Course As..."
 msgstr "Sačuvaj teren &kao..."
 
-#: kolf.cpp:101
+#: kolf.cpp:100
 #, kde-format
 msgid "&Save Game"
 msgstr "&Sačuvaj poziciju"
 
-#: kolf.cpp:104
+#: kolf.cpp:103
 #, kde-format
 msgid "&Save Game As..."
 msgstr "Sačuvaj &poziciju kao..."
 
-#: kolf.cpp:111
+#: kolf.cpp:110
 #, kde-format
 msgid "&Edit"
 msgstr "&Uredi"
 
-#: kolf.cpp:117
+#: kolf.cpp:116
 #, kde-format
 msgid "&New"
 msgstr "&Novo"
 
-#: kolf.cpp:126
+#: kolf.cpp:125
 #, kde-format
 msgid "&Reset"
 msgstr "&Resetuj"
 
-#: kolf.cpp:131
+#: kolf.cpp:130
 #, kde-format
 msgid "&Undo Shot"
 msgstr "&Opozovi udarac"
 
 #. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 #. Go
-#: kolf.cpp:135
+#: kolf.cpp:134
 #, kde-format
 msgid "Switch to Hole"
 msgstr "Prebaci na rupu"
 
-#: kolf.cpp:140
+#: kolf.cpp:139
 #, kde-format
 msgid "&Next Hole"
 msgstr "&Sljedeća rupa"
 
-#: kolf.cpp:145
+#: kolf.cpp:144
 #, kde-format
 msgid "&Previous Hole"
 msgstr "&Prethodna rupa"
 
-#: kolf.cpp:150
+#: kolf.cpp:149
 #, kde-format
 msgid "&First Hole"
 msgstr "&Prva rupa"
 
-#: kolf.cpp:154
+#: kolf.cpp:153
 #, kde-format
 msgid "&Last Hole"
 msgstr "&Posljednja rupa"
 
-#: kolf.cpp:159
+#: kolf.cpp:158
 #, kde-format
 msgid "&Random Hole"
 msgstr "&Nasumična rupa"
 
-#: kolf.cpp:163
+#: kolf.cpp:162
 #, kde-format
 msgid "Enable &Mouse for Moving Putter"
 msgstr "Pomijeranje kotrljača &mišem"
 
-#: kolf.cpp:170
+#: kolf.cpp:169
 #, kde-format
 msgid "Enable &Advanced Putting"
 msgstr "&Napredno kotrljanje"
 
-#: kolf.cpp:176
+#: kolf.cpp:175
 #, kde-format
 msgid "Show &Info"
 msgstr "&Podaci"
 
-#: kolf.cpp:183
+#: kolf.cpp:182
 #, kde-format
 msgid "Show Putter &Guideline"
 msgstr "&Vodilja kotrljača"
 
-#: kolf.cpp:189
+#: kolf.cpp:188
 #, kde-format
 msgid "Enable All Dialog Boxes"
 msgstr "Uključi sve opcije u dijalogu"
 
-#: kolf.cpp:193
+#: kolf.cpp:192
 #, kde-format
 msgid "Play &Sounds"
 msgstr "Puštaj &zvukove"
 
-#: kolf.cpp:200
-#, kde-format
-msgid "&About Course"
+#: kolf.cpp:199
+#, fuzzy, kde-format
+#| msgid "&About Course"
+msgid "&About Course..."
 msgstr "&O terenu"
 
-#: kolf.cpp:203
+#: kolf.cpp:202
 #, kde-format
 msgid "&Tutorial"
 msgstr "&Tutorijal"
 
 # >> @item
 # >> @title:column
-#: kolf.cpp:451 kolf.cpp:495 kolf.cpp:522 newgame.cpp:248 scoreboard.cpp:27
+#: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
 #, kde-format
 msgid "Par"
 msgstr "par"
 
-#: kolf.cpp:482
+#: kolf.cpp:483
 #, kde-format
 msgid " and "
 msgstr " i "
 
 # >> %1 is player name
-#: kolf.cpp:483
+#: kolf.cpp:484
 #, kde-format
 msgid "%1 tied"
 msgstr "%1: neriješeno"
 
 # >> %1 is player name
-#: kolf.cpp:486
+#: kolf.cpp:487
 #, kde-format
 msgid "%1 won!"
 msgstr "%1: pobjeda!"
 
 # >> %1 is course name
-#: kolf.cpp:500 kolf.cpp:512 kolf.cpp:527 kolf.cpp:528 newgame.cpp:249
+#: kolf.cpp:501 kolf.cpp:513 kolf.cpp:528 kolf.cpp:529 newgame.cpp:249
 #: newgame.cpp:250
 #, kde-format
 msgid "High Scores for %1"
 msgstr "Najrezultati za %1"
 
 # >> @title:window
-#: kolf.cpp:567
+#: kolf.cpp:568
 #, fuzzy, kde-format
 #| msgid "Pick Saved Game to Save To"
 msgctxt "@title:window"
@@ -401,7 +404,7 @@ msgid "Pick Saved Game to Save To"
 msgstr "Sačuvana igra u koju se upisuje"
 
 # >> @title:window
-#: kolf.cpp:605
+#: kolf.cpp:606
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Saved Game"
 msgctxt "@title:window"
@@ -409,13 +412,13 @@ msgid "Pick Kolf Saved Game"
 msgstr "Izbor Kolfove sačuvane igre"
 
 # >> %1 is player name
-#: kolf.cpp:653
+#: kolf.cpp:654
 #, kde-format
 msgid "%1's turn"
 msgstr "%1 na potezu"
 
 # >> %1 is player name
-#: kolf.cpp:725
+#: kolf.cpp:726
 #, kde-format
 msgid "%1's score has reached the maximum for this hole."
 msgstr "%1 dostiže maksimalni rezultat za ovu rupu."
@@ -438,13 +441,13 @@ msgid "Enable show/hide"
 msgstr "Prikazivanje/skrivanje"
 
 # >> @item:inrange
-#: landscape.cpp:151 obstacles.cpp:442 obstacles.cpp:460
+#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
 #, kde-format
 msgid "Slow"
 msgstr "sporo"
 
 # >> @item:inrange
-#: landscape.cpp:155 obstacles.cpp:446 obstacles.cpp:464
+#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
 #, kde-format
 msgid "Fast"
 msgstr "brzo"
@@ -480,177 +483,179 @@ msgid "Elliptic"
 msgstr "eliptička"
 
 # >> @option:check Reverse gradient direction
-#: landscape.cpp:570
+#: landscape.cpp:571
 #, kde-format
 msgid "Reverse direction"
 msgstr "Suprotan smjer"
 
 # >> @option:check Unmovable slope
-#: landscape.cpp:575
+#: landscape.cpp:576
 #, kde-format
 msgid "Unmovable"
 msgstr "Nepomična"
 
-#: landscape.cpp:577
+#: landscape.cpp:578
 #, kde-format
 msgid "Whether or not this slope can be moved by other objects, like floaters."
 msgstr "Mogu li ovu padinu pomijerati drugi objekti, poput plutača."
 
 # >> @label:range Gradient steepness
-#: landscape.cpp:581
+#: landscape.cpp:582
 #, kde-format
 msgid "Grade:"
 msgstr "Strmina:"
 
+#: main.cpp:45
+#, kde-format
+msgid "Kolf"
+msgstr "Kolf"
+
 # rewrite-msgid: /Game//
-#: main.cpp:39
+#: main.cpp:47
 #, kde-format
 msgid "KDE Minigolf Game"
 msgstr "Minigolf za KDE"
 
 #: main.cpp:49
 #, kde-format
-msgid "Kolf"
-msgstr "Kolf"
-
-#: main.cpp:49
-#, kde-format
 msgid "(c) 2002-2010, Kolf developers"
 msgstr "© 2002—2010, programeri Kolfa"
 
-#: main.cpp:51
+#: main.cpp:52
 #, kde-format
 msgid "Stefan Majewsky"
 msgstr "Štefan Majevski"
 
-#: main.cpp:51
+#: main.cpp:52
 #, kde-format
 msgid "Current maintainer"
 msgstr "Trenutni održavalac"
 
-#: main.cpp:52
+#: main.cpp:53
 #, kde-format
 msgid "Jason Katz-Brown"
 msgstr "Džejson Kac‑Braun"
 
-#: main.cpp:52
+#: main.cpp:53
 #, kde-format
 msgid "Former main author"
 msgstr "Bivši glavni autor"
 
-#: main.cpp:53
+#: main.cpp:54
 #, kde-format
 msgid "Niklas Knutsson"
 msgstr "Niklas Knutson"
 
-#: main.cpp:53
+#: main.cpp:54
 #, kde-format
 msgid "Advanced putting mode"
 msgstr "Režim naprednog kotrljanja"
 
-#: main.cpp:54
+#: main.cpp:55
 #, kde-format
 msgid "Rik Hemsley"
 msgstr "Rik Hemsli"
 
-#: main.cpp:54
+#: main.cpp:55
 #, kde-format
 msgid "Border around course"
 msgstr "Ivice terena"
 
-#: main.cpp:55
+#: main.cpp:56
 #, kde-format
 msgid "Timo A. Hummel"
 msgstr "Timo A. Humel"
 
-#: main.cpp:55
+#: main.cpp:56
 #, kde-format
 msgid "Some good sound effects"
 msgstr "Neki dobri zvučni efekti"
 
-#: main.cpp:57
+#: main.cpp:58
 #, kde-format
 msgid "Rob Renaud"
 msgstr "Rob Rinod"
 
-#: main.cpp:57
+#: main.cpp:58
 #, kde-format
 msgid "Wall-bouncing help"
 msgstr "Pomoć za odbijanje o zid"
 
-#: main.cpp:58
+#: main.cpp:59
 #, kde-format
 msgid "Aaron Seigo"
 msgstr "Aron Dž. Sajgo"
 
-#: main.cpp:58
+#: main.cpp:59
 #, kde-format
 msgid "Suggestions, bug reports"
 msgstr "Prijedlozi, izvještaji o greškama"
 
-#: main.cpp:59
+#: main.cpp:60
 #, kde-format
 msgid "Erin Catto"
 msgstr "Erin Kato"
 
-#: main.cpp:59
+#: main.cpp:60
 #, kde-format
 msgid "Developer of Box2D physics engine"
 msgstr "Programer fizičkog motora Box2D"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Ryan Cumming"
 msgstr "Rajan Kaming"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Vector class (Kolf 1)"
 msgstr "Klasa vektora (Kolf 1)"
 
-#: main.cpp:61
+#: main.cpp:62
 #, kde-format
 msgid "Daniel Matza-Brown"
 msgstr "Danijel Maca‑Braun"
 
-#: main.cpp:61
+#: main.cpp:62
 #, kde-format
 msgid "Working wall-bouncing algorithm (Kolf 1)"
 msgstr "Radni algoritam za odbijanje o zid (Kolf 1)"
 
-#: main.cpp:66
+#: main.cpp:67
 #, kde-format
 msgid "File"
 msgstr "Fajl"
 
-#: main.cpp:67
+#: main.cpp:68
 #, kde-format
 msgid "Print course information and exit"
 msgstr "Ispiši podatke o terenu i izađi"
 
-#: main.cpp:84 newgame.cpp:240
+#: main.cpp:85 newgame.cpp:240
 #, kde-format
 msgid "By %1"
 msgstr "Autor: %1"
 
 # >! Plurals.
-#: main.cpp:85
+#: main.cpp:86
 #, kde-format
 msgid "%1 holes"
 msgstr "%1 rupa"
 
-#: main.cpp:86
+#: main.cpp:87
 #, kde-format
 msgid "par %1"
 msgstr "par %1"
 
-#: main.cpp:93
+#: main.cpp:94
 #, kde-format
 msgid "Course %1 does not exist."
 msgstr ""
 
 #: newgame.cpp:38
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Game"
+msgctxt "@title:window"
 msgid "New Game"
 msgstr "Nova partija"
 
@@ -664,16 +669,16 @@ msgstr "Igrači"
 msgid "&New Player"
 msgstr "&Novi igrač"
 
-# >> @title:window
 #: newgame.cpp:93
-#, kde-format
-msgid "Choose Course to Play"
-msgstr "Izbor terena za igranje"
-
-#: newgame.cpp:94
 #, kde-format
 msgid "Course"
 msgstr "Teren"
+
+# >> @title:window
+#: newgame.cpp:94
+#, kde-format
+msgid "Choose Course to Play"
+msgstr "Izbor terena za igranje"
 
 #: newgame.cpp:133
 #, kde-format
@@ -702,13 +707,13 @@ msgstr "Ukloni"
 
 #: newgame.cpp:184
 #, kde-format
-msgid "Game Options"
-msgstr "Opcije igre"
+msgid "Options"
+msgstr "Opcije"
 
 #: newgame.cpp:185
 #, kde-format
-msgid "Options"
-msgstr "Opcije"
+msgid "Game Options"
+msgstr "Opcije igre"
 
 #: newgame.cpp:190
 #, kde-format
@@ -751,7 +756,7 @@ msgstr "Izabrani teren je već na spisku terena."
 msgid "Player %1"
 msgstr "Igrač %1"
 
-#: objects.cpp:245
+#: objects.cpp:244
 #, kde-format
 msgid " degree"
 msgid_plural " degrees"
@@ -760,66 +765,62 @@ msgstr[1] " stepena"
 msgstr[2] " stepeni"
 msgstr[3] " stepen"
 
-#: objects.cpp:248
+#: objects.cpp:247
 #, kde-format
 msgid "Exiting ball angle:"
 msgstr "Izlazni ugao loptice:"
 
-#: objects.cpp:264
+#: objects.cpp:267
 #, kde-format
 msgid "Minimum exit speed:"
 msgstr "Najmanja izlazna brzina:"
 
-#: objects.cpp:281
+#: objects.cpp:288
 #, kde-format
 msgid "Maximum exit speed:"
 msgstr "Najveća izlazna brzina:"
 
 # >> @option:check Walls on:
-#: obstacles.cpp:408
-#, kde-format
+#: obstacles.cpp:412
 msgid "&Top"
 msgstr "&vrh"
 
 # >> @option:check Walls on:
-#: obstacles.cpp:408
-#, kde-format
+#: obstacles.cpp:412
 msgid "&Left"
 msgstr "&lijevo"
 
 # >> @option:check Walls on:
-#: obstacles.cpp:408
-#, kde-format
+#: obstacles.cpp:412
 msgid "&Right"
 msgstr "&desno"
 
 # >> @option:check Walls on:
-#: obstacles.cpp:408
-#, kde-format
+#: obstacles.cpp:412
 msgid "&Bottom"
 msgstr "&dno"
 
-#: obstacles.cpp:417
+#: obstacles.cpp:421
 #, kde-format
 msgid "Walls on:"
 msgstr "Zidovi:"
 
-#: obstacles.cpp:427
+#: obstacles.cpp:431
 #, kde-format
 msgid "Sign HTML:"
 msgstr "Potpiši HTML:"
 
-#: obstacles.cpp:436
+#: obstacles.cpp:440
 #, kde-format
 msgid "Windmill on top"
 msgstr "Vjetrenjača na vrhu"
 
-#: obstacles.cpp:457
+#: obstacles.cpp:461
 #, kde-format
 msgid "Moving speed"
 msgstr "Brzina kretanja"
 
-#: obstacles.cpp:677
+#: obstacles.cpp:681
 #, kde-format
 msgid "New Text"
 msgstr "Novi tekst"
