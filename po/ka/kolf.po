@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-25 01:40+0000\n"
-"PO-Revision-Date: 2023-09-25 10:17+0200\n"
+"PO-Revision-Date: 2023-09-26 06:20+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -302,7 +302,7 @@ msgstr "&შემთხვევითი ნახვრეტი"
 #: kolf.cpp:162
 #, kde-format
 msgid "Enable &Mouse for Moving Putter"
-msgstr ""
+msgstr "თაგუნას ჩართვა &ფუთერის გადასაადგილებლად"
 
 #: kolf.cpp:169
 #, kde-format
@@ -317,7 +317,7 @@ msgstr "ინფორმაციის &ჩვენება"
 #: kolf.cpp:182
 #, kde-format
 msgid "Show Putter &Guideline"
-msgstr ""
+msgstr "ფუთერების &მიმართულების ხაზის ჩვენება"
 
 #: kolf.cpp:188
 #, kde-format
@@ -385,7 +385,7 @@ msgstr "%1-ის სვლაა"
 #: kolf.cpp:726
 #, kde-format
 msgid "%1's score has reached the maximum for this hole."
-msgstr ""
+msgstr "%1-ის ქულებმა ამ ნახვრეტისთვის მაქსიმუმს მიაღწია.."
 
 #. i18n: ectx: Menu (hole)
 #: kolfui.rc:17
@@ -453,6 +453,8 @@ msgstr "გაუნძრეველი"
 #, kde-format
 msgid "Whether or not this slope can be moved by other objects, like floaters."
 msgstr ""
+"მიუთითებს, შეიძლება თუ არა ეს დაქანება სხვა ობიექტების, მაგალითად პლატფორმის "
+"მიერ იქნა გადატანილი."
 
 #: landscape.cpp:582
 #, kde-format
@@ -572,7 +574,7 @@ msgstr "Daniel Matza-Brown"
 #: main.cpp:62
 #, kde-format
 msgid "Working wall-bouncing algorithm (Kolf 1)"
-msgstr ""
+msgstr "კედლიდან არეკვლის ალგორითმი (Kolf 1)"
 
 #: main.cpp:67
 #, kde-format
@@ -676,6 +678,8 @@ msgid ""
 "In strict mode, undo, editing, and switching holes is not allowed. This is "
 "generally for competition. Only in strict mode are highscores kept."
 msgstr ""
+"მკაცრ რეჟიმში გაუქმება, ჩასწორება და ნახვრეტების გადაცვლა დაშვებული არაა. ეს "
+"ძირითადად შეჯიბრებებისთვისაა. ქულების შენახვა კი მხოლოდ მკაცრ რეჟიმში ხდება."
 
 #: newgame.cpp:241
 #, kde-format
