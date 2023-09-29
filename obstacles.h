@@ -119,8 +119,8 @@ namespace Kolf
 			virtual void updateWallPosition();
 		private:
 			QPen m_wallPen;
-			QVector<bool> m_wallAllowed;
-			QVector<Kolf::Wall*> m_walls;
+			QList<bool> m_wallAllowed;
+			QList<Kolf::Wall*> m_walls;
 			Kolf::RectShape* m_shape;
 	};
 
@@ -147,7 +147,7 @@ namespace Kolf
 			void wallChanged(Kolf::WallIndex index, bool hasWall, bool wallAllowed);
 		protected:
 			QGridLayout* m_layout;
-			QVector<QCheckBox*> m_wallCheckBoxes;
+			QList<QCheckBox*> m_wallCheckBoxes;
 			Kolf::RectangleItem* const m_item;
 	};
 
