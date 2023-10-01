@@ -91,9 +91,9 @@ void KolfWindow::setupActions()
 	endAction = KStandardGameAction::end(this, &KolfWindow::closeGame, actionCollection());
 	KStandardGameAction::quit(this, &KolfWindow::close, actionCollection());
 
-	saveAction = actionCollection()->addAction(KStandardAction::Save, QStringLiteral("game_save"), this, SLOT(save()));
+	saveAction = actionCollection()->addAction(KStandardAction::Save, QStringLiteral("game_save"), this, &KolfWindow::save);
 	saveAction->setText(i18n("Save &Course"));
-	saveAsAction = actionCollection()->addAction(KStandardAction::SaveAs, QStringLiteral("game_save_as"), this, SLOT(saveAs()));
+	saveAsAction = actionCollection()->addAction(KStandardAction::SaveAs, QStringLiteral("game_save_as"), this, &KolfWindow::saveAs);
 	saveAsAction->setText(i18n("Save &Course As..."));
 
 	saveGameAction = actionCollection()->addAction(QStringLiteral("savegame"));
