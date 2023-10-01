@@ -2323,10 +2323,12 @@ void KolfGame::setUseAdvancedPutting(bool yes)
 	m_useAdvancedPutting = yes;
 
 	// increase maxStrength in advanced putting mode
-	if (yes)
+	if (yes) {
 		maxStrength = 65;
-	else
+	} else {
 		maxStrength = 55;
+		strokeCircle->setVisible(false);
+	}
 }
 
 void KolfGame::setShowGuideLine(bool yes)
