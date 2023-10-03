@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:40+0000\n"
+"POT-Creation-Date: 2023-10-03 01:38+0000\n"
 "PO-Revision-Date: 2007-11-29 22:00+0900\n"
 "Last-Translator: Yukiko Bando <ybando@k6.dion.ne.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -85,12 +85,12 @@ msgstr "無制限"
 msgid "Show border walls"
 msgstr "ボーダーの壁を表示する"
 
-#: game.cpp:499 game.cpp:2430
+#: game.cpp:499 game.cpp:2432
 #, kde-format
 msgid "Course Author"
 msgstr "コースの作者"
 
-#: game.cpp:500 game.cpp:501 game.cpp:2430
+#: game.cpp:500 game.cpp:501 game.cpp:2432
 #, kde-format
 msgid "Course Name"
 msgstr "コース名"

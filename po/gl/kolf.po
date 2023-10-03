@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:40+0000\n"
+"POT-Creation-Date: 2023-10-03 01:38+0000\n"
 "PO-Revision-Date: 2023-04-24 07:42+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -83,12 +83,12 @@ msgstr "Sen límite"
 msgid "Show border walls"
 msgstr "Amosar as paredes dos bordos"
 
-#: game.cpp:499 game.cpp:2430
+#: game.cpp:499 game.cpp:2432
 #, kde-format
 msgid "Course Author"
 msgstr "Autor do campo"
 
-#: game.cpp:500 game.cpp:501 game.cpp:2430
+#: game.cpp:500 game.cpp:501 game.cpp:2432
 #, kde-format
 msgid "Course Name"
 msgstr "Nome do campo"

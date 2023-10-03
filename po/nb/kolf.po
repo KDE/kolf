@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:40+0000\n"
+"POT-Creation-Date: 2023-10-03 01:38+0000\n"
 "PO-Revision-Date: 2010-11-15 14:03+0100\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -81,12 +81,12 @@ msgstr "Ubegrenset"
 msgid "Show border walls"
 msgstr "Vis kantvegger"
 
-#: game.cpp:499 game.cpp:2430
+#: game.cpp:499 game.cpp:2432
 #, kde-format
 msgid "Course Author"
 msgstr "Rundeforfatter"
 
-#: game.cpp:500 game.cpp:501 game.cpp:2430
+#: game.cpp:500 game.cpp:501 game.cpp:2432
 #, kde-format
 msgid "Course Name"
 msgstr "Rundenavn"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:40+0000\n"
+"POT-Creation-Date: 2023-10-03 01:38+0000\n"
 "PO-Revision-Date: 2021-08-06 06:58+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -86,12 +86,12 @@ msgstr "Neomejeno"
 msgid "Show border walls"
 msgstr "Prikaži zid na robu"
 
-#: game.cpp:499 game.cpp:2430
+#: game.cpp:499 game.cpp:2432
 #, kde-format
 msgid "Course Author"
 msgstr "Avtor igrišča"
 
-#: game.cpp:500 game.cpp:501 game.cpp:2430
+#: game.cpp:500 game.cpp:501 game.cpp:2432
 #, kde-format
 msgid "Course Name"
 msgstr "Ime igrišča"
