@@ -42,7 +42,7 @@
 #include <KLocalizedString>
 #include <KMessageBox>
 
-#include <KgTheme>
+#include <KGameTheme>
 #include <Box2D/Dynamics/b2Body.h>
 #include <Box2D/Dynamics/Contacts/b2Contact.h>
 #include <Box2D/Dynamics/b2Fixture.h>
@@ -84,10 +84,10 @@ class KolfWorld : public b2World
 		KolfContactListener m_listener;
 };
 
-class KolfTheme : public KgTheme
+class KolfTheme : public KGameTheme
 {
 	public:
-		KolfTheme() : KgTheme("pics/default_theme.desktop")
+		KolfTheme() : KGameTheme("pics/default_theme.desktop")
 		{
 			setGraphicsPath(QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("pics/default_theme.svgz")));
 		}
