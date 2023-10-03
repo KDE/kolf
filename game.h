@@ -26,7 +26,7 @@
 
 #include <QGraphicsView>
 #include <KConfigGroup>
-#include <KgSound>
+#include <KGameSound>
 
 class KolfGame;
 class KGameRenderer;
@@ -414,16 +414,16 @@ private:
 	//For intro banner
 	Tagaro::SpriteObjectItem *banner;
 
-	KgSound m_soundBlackHole;
-	KgSound m_soundBlackHoleEject;
-	KgSound m_soundBlackHolePutIn;
-	KgSound m_soundBumper;
-	KgSound m_soundHit;
-	KgSound m_soundHoled;
-	KgSound m_soundHoleINone;
-	KgSound m_soundPuddle;
-	KgSound m_soundWall;
-	KgSound m_soundWooHoo;
+	KGameSound m_soundBlackHole;
+	KGameSound m_soundBlackHoleEject;
+	KGameSound m_soundBlackHolePutIn;
+	KGameSound m_soundBumper;
+	KGameSound m_soundHit;
+	KGameSound m_soundHoled;
+	KGameSound m_soundHoleINone;
+	KGameSound m_soundPuddle;
+	KGameSound m_soundWall;
+	KGameSound m_soundWooHoo;
 	bool m_sound;
 
 	bool m_ignoreEvents;
