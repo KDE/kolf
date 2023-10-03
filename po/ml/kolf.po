@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:43+0000\n"
+"POT-Creation-Date: 2023-10-03 02:26+0000\n"
 "PO-Revision-Date: 2019-12-12 21:41+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: SMC <smc.org.in>\n"
@@ -77,12 +77,12 @@ msgstr "അളവറ്റ"
 msgid "Show border walls"
 msgstr ""
 
-#: game.cpp:500 game.cpp:2460
+#: game.cpp:500 game.cpp:2462
 #, kde-format
 msgid "Course Author"
 msgstr ""
 
-#: game.cpp:501 game.cpp:502 game.cpp:2460
+#: game.cpp:501 game.cpp:502 game.cpp:2462
 #, kde-format
 msgid "Course Name"
 msgstr ""

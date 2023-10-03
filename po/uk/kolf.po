@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:43+0000\n"
+"POT-Creation-Date: 2023-10-03 02:26+0000\n"
 "PO-Revision-Date: 2021-08-05 09:43+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -81,12 +81,12 @@ msgstr "Без обмеження"
 msgid "Show border walls"
 msgstr "Показувати стіни меж"
 
-#: game.cpp:500 game.cpp:2460
+#: game.cpp:500 game.cpp:2462
 #, kde-format
 msgid "Course Author"
 msgstr "Автора майданчика"
 
-#: game.cpp:501 game.cpp:502 game.cpp:2460
+#: game.cpp:501 game.cpp:502 game.cpp:2462
 #, kde-format
 msgid "Course Name"
 msgstr "Назва майданчика"

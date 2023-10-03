@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:43+0000\n"
+"POT-Creation-Date: 2023-10-03 02:26+0000\n"
 "PO-Revision-Date: 2021-11-20 21:39+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -79,12 +79,12 @@ msgstr "Bez obmedzenia"
 msgid "Show border walls"
 msgstr "Zobraziť okrajové steny"
 
-#: game.cpp:500 game.cpp:2460
+#: game.cpp:500 game.cpp:2462
 #, kde-format
 msgid "Course Author"
 msgstr "Autor ihriska"
 
-#: game.cpp:501 game.cpp:502 game.cpp:2460
+#: game.cpp:501 game.cpp:502 game.cpp:2462
 #, kde-format
 msgid "Course Name"
 msgstr "Meno ihriska"

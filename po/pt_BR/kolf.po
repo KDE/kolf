@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:43+0000\n"
+"POT-Creation-Date: 2023-10-03 02:26+0000\n"
 "PO-Revision-Date: 2021-08-18 09:53-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -86,12 +86,12 @@ msgstr "Ilimitado"
 msgid "Show border walls"
 msgstr "Exibir as paredes de contorno"
 
-#: game.cpp:500 game.cpp:2460
+#: game.cpp:500 game.cpp:2462
 #, kde-format
 msgid "Course Author"
 msgstr "Autor do percurso"
 
-#: game.cpp:501 game.cpp:502 game.cpp:2460
+#: game.cpp:501 game.cpp:502 game.cpp:2462
 #, kde-format
 msgid "Course Name"
 msgstr "Nome do percurso"

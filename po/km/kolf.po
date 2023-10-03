@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:43+0000\n"
+"POT-Creation-Date: 2023-10-03 02:26+0000\n"
 "PO-Revision-Date: 2009-10-24 15:17+0700\n"
 "Last-Translator: Morn Met\n"
 "Language-Team: Khmer <kde-i18n-doc@kde.org>\n"
@@ -79,12 +79,12 @@ msgstr "មិនកំណត់"
 msgid "Show border walls"
 msgstr "បង្ហាញ​ជញ្ជាំង​ព្រំដែន"
 
-#: game.cpp:500 game.cpp:2460
+#: game.cpp:500 game.cpp:2462
 #, kde-format
 msgid "Course Author"
 msgstr "អ្នកនិពន្ធ​ទីលាន​ប្រកួត"
 
-#: game.cpp:501 game.cpp:502 game.cpp:2460
+#: game.cpp:501 game.cpp:502 game.cpp:2462
 #, kde-format
 msgid "Course Name"
 msgstr "ឈ្មោះ​ទីលាន​ប្រកួត"
