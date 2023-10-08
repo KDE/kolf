@@ -62,15 +62,18 @@ int main(int argc, char **argv)
 	aboutData.addCredit(i18n("Ryan Cumming"), i18n("Vector class (Kolf 1)"));
 	aboutData.addCredit(i18n("Daniel Matza-Brown"), i18n("Working wall-bouncing algorithm (Kolf 1)"));
 
-    QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
+
     KCrash::initialize();
+
+    QCommandLineParser parser;
         parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("+file"), i18n("File")));
         parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("course-info"), i18n("Print course information and exit")));
 
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
+
     KDBusService service;
 
 	// I've actually added this for my web site uploaded courses display
