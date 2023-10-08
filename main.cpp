@@ -51,6 +51,7 @@ int main(int argc, char **argv)
 			  i18n("KDE Minigolf Game"),
 			  KAboutLicense::GPL,
 			  i18n("(c) 2002-2010, Kolf developers"),
+			  QString(),
 			  QStringLiteral("https://apps.kde.org/kolf"));
 
 	aboutData.addAuthor(i18n("Stefan Majewsky"), i18n("Current maintainer"), QStringLiteral("majewsky@gmx.net"));
