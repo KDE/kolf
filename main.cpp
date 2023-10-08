@@ -63,6 +63,7 @@ int main(int argc, char **argv)
 	aboutData.addCredit(i18n("Daniel Matza-Brown"), i18n("Working wall-bouncing algorithm (Kolf 1)"));
 
     KAboutData::setApplicationData(aboutData);
+    QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("kolf")));
 
     KCrash::initialize();
 
@@ -111,8 +112,6 @@ int main(int argc, char **argv)
 		top->closeGame();
 
 	top->show();
-
-	app.setWindowIcon(QIcon::fromTheme(QStringLiteral("kolf")));
 
 	return app.exec();
 }
