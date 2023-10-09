@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-03 01:38+0000\n"
+"POT-Creation-Date: 2023-10-09 01:45+0000\n"
 "PO-Revision-Date: 2009-06-15 11:28+0000\n"
 "Last-Translator: Sveinn í Felli\n"
 "Language-Team:  <is@li.org>\n"
@@ -483,135 +483,135 @@ msgstr "KDE Minigolf-leikur"
 msgid "(c) 2002-2010, Kolf developers"
 msgstr ""
 
-#: main.cpp:52
+#: main.cpp:53
 #, kde-format
 msgid "Stefan Majewsky"
 msgstr ""
 
-#: main.cpp:52
+#: main.cpp:53
 #, kde-format
 msgid "Current maintainer"
 msgstr ""
 
-#: main.cpp:53
+#: main.cpp:54
 #, kde-format
 msgid "Jason Katz-Brown"
 msgstr "Jason Katz-Brown"
 
-#: main.cpp:53
+#: main.cpp:54
 #, fuzzy, kde-format
 #| msgid "Main author"
 msgid "Former main author"
 msgstr "Aðalhöfundur"
 
-#: main.cpp:54
+#: main.cpp:55
 #, kde-format
 msgid "Niklas Knutsson"
 msgstr "Niklas Knutsson"
 
-#: main.cpp:54
+#: main.cpp:55
 #, kde-format
 msgid "Advanced putting mode"
 msgstr "Ítarlegri pútt hamur"
 
-#: main.cpp:55
+#: main.cpp:56
 #, kde-format
 msgid "Rik Hemsley"
 msgstr "Rik Hemsley"
 
-#: main.cpp:55
+#: main.cpp:56
 #, kde-format
 msgid "Border around course"
 msgstr "Rammi utan um brautir"
 
-#: main.cpp:56
+#: main.cpp:57
 #, kde-format
 msgid "Timo A. Hummel"
 msgstr "Timo A. Hummel"
 
-#: main.cpp:56
+#: main.cpp:57
 #, kde-format
 msgid "Some good sound effects"
 msgstr "Nokkur góð hljóð"
 
-#: main.cpp:58
+#: main.cpp:59
 #, kde-format
 msgid "Rob Renaud"
 msgstr "Rob Renaud"
 
-#: main.cpp:58
+#: main.cpp:59
 #, kde-format
 msgid "Wall-bouncing help"
 msgstr "Vegg-skopp hjálp"
 
-#: main.cpp:59
+#: main.cpp:60
 #, kde-format
 msgid "Aaron Seigo"
 msgstr "Aaron Seigo"
 
-#: main.cpp:59
+#: main.cpp:60
 #, kde-format
 msgid "Suggestions, bug reports"
 msgstr "Tillögur, yfirferð"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Erin Catto"
 msgstr ""
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Developer of Box2D physics engine"
 msgstr ""
 
-#: main.cpp:61
+#: main.cpp:62
 #, kde-format
 msgid "Ryan Cumming"
 msgstr "Ryan Cumming"
 
-#: main.cpp:61
+#: main.cpp:62
 #, fuzzy, kde-format
 #| msgid "Vector class"
 msgid "Vector class (Kolf 1)"
 msgstr "Vektor klasi"
 
-#: main.cpp:62
+#: main.cpp:63
 #, kde-format
 msgid "Daniel Matza-Brown"
 msgstr "Daniel Matza-Brown"
 
-#: main.cpp:62
+#: main.cpp:63
 #, fuzzy, kde-format
 #| msgid "Working wall-bouncing algorithm"
 msgid "Working wall-bouncing algorithm (Kolf 1)"
 msgstr "Vegg-skopp algrím"
 
-#: main.cpp:67
+#: main.cpp:71
 #, kde-format
 msgid "File"
 msgstr "File"
 
-#: main.cpp:68
+#: main.cpp:72
 #, kde-format
 msgid "Print course information and exit"
 msgstr "Prenta brautarupplýsingar og hætta"
 
-#: main.cpp:85 newgame.cpp:240
+#: main.cpp:90 newgame.cpp:240
 #, kde-format
 msgid "By %1"
 msgstr "Með %1"
 
-#: main.cpp:86
+#: main.cpp:91
 #, kde-format
 msgid "%1 holes"
 msgstr "%1 holur"
 
-#: main.cpp:87
+#: main.cpp:92
 #, kde-format
 msgid "par %1"
 msgstr "par %1"
 
-#: main.cpp:94
+#: main.cpp:99
 #, kde-format
 msgid "Course %1 does not exist."
 msgstr "Braut %1 er ekki til."

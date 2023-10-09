@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-03 01:38+0000\n"
+"POT-Creation-Date: 2023-10-09 01:45+0000\n"
 "PO-Revision-Date: 2019-01-28 23:13+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -480,132 +480,132 @@ msgstr "KDE 迷你高爾夫遊戲"
 msgid "(c) 2002-2010, Kolf developers"
 msgstr "(c) 2002-2010, Kolf 開發團隊"
 
-#: main.cpp:52
+#: main.cpp:53
 #, kde-format
 msgid "Stefan Majewsky"
 msgstr "Stefan Majewsky"
 
-#: main.cpp:52
+#: main.cpp:53
 #, kde-format
 msgid "Current maintainer"
 msgstr "目前維護者"
 
-#: main.cpp:53
+#: main.cpp:54
 #, kde-format
 msgid "Jason Katz-Brown"
 msgstr "Jason Katz-Brown"
 
-#: main.cpp:53
+#: main.cpp:54
 #, kde-format
 msgid "Former main author"
 msgstr "前任主要作者"
 
-#: main.cpp:54
+#: main.cpp:55
 #, kde-format
 msgid "Niklas Knutsson"
 msgstr "Niklas Knutsson"
 
-#: main.cpp:54
+#: main.cpp:55
 #, kde-format
 msgid "Advanced putting mode"
 msgstr "進階推桿模式"
 
-#: main.cpp:55
+#: main.cpp:56
 #, kde-format
 msgid "Rik Hemsley"
 msgstr "Rik Hemsley"
 
-#: main.cpp:55
+#: main.cpp:56
 #, kde-format
 msgid "Border around course"
 msgstr "路線四周的邊界"
 
-#: main.cpp:56
+#: main.cpp:57
 #, kde-format
 msgid "Timo A. Hummel"
 msgstr "Timo A. Hummel"
 
-#: main.cpp:56
+#: main.cpp:57
 #, kde-format
 msgid "Some good sound effects"
 msgstr "一些不錯的音效"
 
-#: main.cpp:58
+#: main.cpp:59
 #, kde-format
 msgid "Rob Renaud"
 msgstr "Rob Renaud"
 
-#: main.cpp:58
+#: main.cpp:59
 #, kde-format
 msgid "Wall-bouncing help"
 msgstr "wall-bouncing 說明"
 
-#: main.cpp:59
+#: main.cpp:60
 #, kde-format
 msgid "Aaron Seigo"
 msgstr "Aaron Seigo"
 
-#: main.cpp:59
+#: main.cpp:60
 #, kde-format
 msgid "Suggestions, bug reports"
 msgstr "建議、錯誤報告"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Erin Catto"
 msgstr "Erin Catto"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Developer of Box2D physics engine"
 msgstr "Box2D 物理引擎的開發者"
 
-#: main.cpp:61
+#: main.cpp:62
 #, kde-format
 msgid "Ryan Cumming"
 msgstr "Ryan Cumming"
 
-#: main.cpp:61
+#: main.cpp:62
 #, kde-format
 msgid "Vector class (Kolf 1)"
 msgstr "Vector class (Kolf1)"
 
-#: main.cpp:62
+#: main.cpp:63
 #, kde-format
 msgid "Daniel Matza-Brown"
 msgstr "Daniel Matza-Brown"
 
-#: main.cpp:62
+#: main.cpp:63
 #, kde-format
 msgid "Working wall-bouncing algorithm (Kolf 1)"
 msgstr "使用 wall-bouncing 演算法 (Kolf1)"
 
-#: main.cpp:67
+#: main.cpp:71
 #, kde-format
 msgid "File"
 msgstr "檔案"
 
-#: main.cpp:68
+#: main.cpp:72
 #, kde-format
 msgid "Print course information and exit"
 msgstr "列印路線資訊並離開"
 
-#: main.cpp:85 newgame.cpp:240
+#: main.cpp:90 newgame.cpp:240
 #, kde-format
 msgid "By %1"
 msgstr "由 %1"
 
-#: main.cpp:86
+#: main.cpp:91
 #, kde-format
 msgid "%1 holes"
 msgstr "%1 洞口"
 
-#: main.cpp:87
+#: main.cpp:92
 #, kde-format
 msgid "par %1"
 msgstr "標準杆 %1"
 
-#: main.cpp:94
+#: main.cpp:99
 #, kde-format
 msgid "Course %1 does not exist."
 msgstr "進度 %1 不存在。"

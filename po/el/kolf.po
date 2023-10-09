@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf-new\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-03 01:38+0000\n"
+"POT-Creation-Date: 2023-10-09 01:45+0000\n"
 "PO-Revision-Date: 2021-09-03 10:43+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -483,132 +483,132 @@ msgstr "Παιχνίδι μίνι γκολφ για το KDE"
 msgid "(c) 2002-2010, Kolf developers"
 msgstr "(c) 2002-2010, οι προγραμματιστές του Kolf"
 
-#: main.cpp:52
+#: main.cpp:53
 #, kde-format
 msgid "Stefan Majewsky"
 msgstr "Stefan Majewsky"
 
-#: main.cpp:52
+#: main.cpp:53
 #, kde-format
 msgid "Current maintainer"
 msgstr "Τρέχων συντηρητής"
 
-#: main.cpp:53
+#: main.cpp:54
 #, kde-format
 msgid "Jason Katz-Brown"
 msgstr "Jason Katz-Brown"
 
-#: main.cpp:53
+#: main.cpp:54
 #, kde-format
 msgid "Former main author"
 msgstr "Πρώην κύριος συγγραφέας"
 
-#: main.cpp:54
+#: main.cpp:55
 #, kde-format
 msgid "Niklas Knutsson"
 msgstr "Niklas Knutsson"
 
-#: main.cpp:54
+#: main.cpp:55
 #, kde-format
 msgid "Advanced putting mode"
 msgstr "Λειτουργία βελτιωμένου μπαστουνιού"
 
-#: main.cpp:55
+#: main.cpp:56
 #, kde-format
 msgid "Rik Hemsley"
 msgstr "Rik Hemsley"
 
-#: main.cpp:55
+#: main.cpp:56
 #, kde-format
 msgid "Border around course"
 msgstr "Φράχτης γύρω από την πίστα"
 
-#: main.cpp:56
+#: main.cpp:57
 #, kde-format
 msgid "Timo A. Hummel"
 msgstr "Timo A. Hummel"
 
-#: main.cpp:56
+#: main.cpp:57
 #, kde-format
 msgid "Some good sound effects"
 msgstr "Μερικά καλά ηχητικά εφέ"
 
-#: main.cpp:58
+#: main.cpp:59
 #, kde-format
 msgid "Rob Renaud"
 msgstr "Rob Renaud"
 
-#: main.cpp:58
+#: main.cpp:59
 #, kde-format
 msgid "Wall-bouncing help"
 msgstr "Βοήθεια στην αναπήδηση τοίχου"
 
-#: main.cpp:59
+#: main.cpp:60
 #, kde-format
 msgid "Aaron Seigo"
 msgstr "Aaron Seigo"
 
-#: main.cpp:59
+#: main.cpp:60
 #, kde-format
 msgid "Suggestions, bug reports"
 msgstr "Προτάσεις, αναφορές σφαλμάτων"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Erin Catto"
 msgstr "Erin Catto"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Developer of Box2D physics engine"
 msgstr "Προγραμματιστής της μηχανής φυσικής Box2D"
 
-#: main.cpp:61
+#: main.cpp:62
 #, kde-format
 msgid "Ryan Cumming"
 msgstr "Ryan Cumming"
 
-#: main.cpp:61
+#: main.cpp:62
 #, kde-format
 msgid "Vector class (Kolf 1)"
 msgstr "Κλάση διανύσματος (Kolf 1)"
 
-#: main.cpp:62
+#: main.cpp:63
 #, kde-format
 msgid "Daniel Matza-Brown"
 msgstr "Daniel Matza-Brown"
 
-#: main.cpp:62
+#: main.cpp:63
 #, kde-format
 msgid "Working wall-bouncing algorithm (Kolf 1)"
 msgstr "Αλγόριθμος αναπήδησης τοίχου (Kolf 1)"
 
-#: main.cpp:67
+#: main.cpp:71
 #, kde-format
 msgid "File"
 msgstr "Αρχείο"
 
-#: main.cpp:68
+#: main.cpp:72
 #, kde-format
 msgid "Print course information and exit"
 msgstr "Εκτύπωση πληροφοριών πίστας και έξοδος"
 
-#: main.cpp:85 newgame.cpp:240
+#: main.cpp:90 newgame.cpp:240
 #, kde-format
 msgid "By %1"
 msgstr "Από %1"
 
-#: main.cpp:86
+#: main.cpp:91
 #, kde-format
 msgid "%1 holes"
 msgstr "%1 τρύπες"
 
-#: main.cpp:87
+#: main.cpp:92
 #, kde-format
 msgid "par %1"
 msgstr "αξία %1"
 
-#: main.cpp:94
+#: main.cpp:99
 #, kde-format
 msgid "Course %1 does not exist."
 msgstr "Η πίστα %1 δεν υπάρχει."

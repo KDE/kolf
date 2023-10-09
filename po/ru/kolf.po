@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-03 01:38+0000\n"
+"POT-Creation-Date: 2023-10-09 01:45+0000\n"
 "PO-Revision-Date: 2022-01-10 12:23+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -489,132 +489,132 @@ msgstr "Мини-гольф — игра для KDE"
 msgid "(c) 2002-2010, Kolf developers"
 msgstr "© Разработчики Kolf, 2002-2010"
 
-#: main.cpp:52
+#: main.cpp:53
 #, kde-format
 msgid "Stefan Majewsky"
 msgstr "Stefan Majewsky"
 
-#: main.cpp:52
+#: main.cpp:53
 #, kde-format
 msgid "Current maintainer"
 msgstr "Сопровождающий"
 
-#: main.cpp:53
+#: main.cpp:54
 #, kde-format
 msgid "Jason Katz-Brown"
 msgstr "Jason Katz-Brown"
 
-#: main.cpp:53
+#: main.cpp:54
 #, kde-format
 msgid "Former main author"
 msgstr "Автор программы"
 
-#: main.cpp:54
+#: main.cpp:55
 #, kde-format
 msgid "Niklas Knutsson"
 msgstr "Niklas Knutsson"
 
-#: main.cpp:54
+#: main.cpp:55
 #, kde-format
 msgid "Advanced putting mode"
 msgstr "Режим сложного удара"
 
-#: main.cpp:55
+#: main.cpp:56
 #, kde-format
 msgid "Rik Hemsley"
 msgstr "Rik Hemsley"
 
-#: main.cpp:55
+#: main.cpp:56
 #, kde-format
 msgid "Border around course"
 msgstr "Рамка вокруг площадки"
 
-#: main.cpp:56
+#: main.cpp:57
 #, kde-format
 msgid "Timo A. Hummel"
 msgstr "Timo A. Hummel"
 
-#: main.cpp:56
+#: main.cpp:57
 #, kde-format
 msgid "Some good sound effects"
 msgstr "Хорошие звуковые эффекты"
 
-#: main.cpp:58
+#: main.cpp:59
 #, kde-format
 msgid "Rob Renaud"
 msgstr "Rob Renaud"
 
-#: main.cpp:58
+#: main.cpp:59
 #, kde-format
 msgid "Wall-bouncing help"
 msgstr "Помощь с отражением от стен"
 
-#: main.cpp:59
+#: main.cpp:60
 #, kde-format
 msgid "Aaron Seigo"
 msgstr "Aaron Seigo"
 
-#: main.cpp:59
+#: main.cpp:60
 #, kde-format
 msgid "Suggestions, bug reports"
 msgstr "Пожелания, сообщения об ошибках"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Erin Catto"
 msgstr "Erin Catto"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Developer of Box2D physics engine"
 msgstr "Разработчик физического движка Box2D"
 
-#: main.cpp:61
+#: main.cpp:62
 #, kde-format
 msgid "Ryan Cumming"
 msgstr "Ryan Cumming"
 
-#: main.cpp:61
+#: main.cpp:62
 #, kde-format
 msgid "Vector class (Kolf 1)"
 msgstr "Класс Vector (Kolf 1)"
 
-#: main.cpp:62
+#: main.cpp:63
 #, kde-format
 msgid "Daniel Matza-Brown"
 msgstr "Daniel Matza-Brown"
 
-#: main.cpp:62
+#: main.cpp:63
 #, kde-format
 msgid "Working wall-bouncing algorithm (Kolf 1)"
 msgstr "Алгоритм отражения от стенок (Kolf 1)"
 
-#: main.cpp:67
+#: main.cpp:71
 #, kde-format
 msgid "File"
 msgstr "Файл"
 
-#: main.cpp:68
+#: main.cpp:72
 #, kde-format
 msgid "Print course information and exit"
 msgstr "Вывести информацию о площадке и выйти"
 
-#: main.cpp:85 newgame.cpp:240
+#: main.cpp:90 newgame.cpp:240
 #, kde-format
 msgid "By %1"
 msgstr "Автор: %1"
 
-#: main.cpp:86
+#: main.cpp:91
 #, kde-format
 msgid "%1 holes"
 msgstr "Лунок: %1"
 
-#: main.cpp:87
+#: main.cpp:92
 #, kde-format
 msgid "par %1"
 msgstr "очки: %1"
 
-#: main.cpp:94
+#: main.cpp:99
 #, kde-format
 msgid "Course %1 does not exist."
 msgstr "Площадка %1 не существует."
