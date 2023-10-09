@@ -1996,7 +1996,7 @@ bool KolfGame::askSave(bool noMoreChances)
 	{
 		case KMessageBox::PrimaryAction:
 			save();
-			// fallthrough
+			[[fallthrough]];
 
 		case KMessageBox::SecondaryAction:
 			return false;
