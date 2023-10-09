@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-03 02:26+0000\n"
+"POT-Creation-Date: 2023-10-09 02:38+0000\n"
 "PO-Revision-Date: 2005-10-22 16:37+0500\n"
 "Last-Translator: Victor Ibragimov <youth_opportunities@tajikngo.org>\n"
 "Language-Team: Tajik\n"
@@ -489,135 +489,135 @@ msgstr "KDE Бозии Мини-Голф"
 msgid "(c) 2002-2010, Kolf developers"
 msgstr ""
 
-#: main.cpp:56
+#: main.cpp:57
 #, kde-format
 msgid "Stefan Majewsky"
 msgstr ""
 
-#: main.cpp:56
+#: main.cpp:57
 #, kde-format
 msgid "Current maintainer"
 msgstr ""
 
-#: main.cpp:57
+#: main.cpp:58
 #, kde-format
 msgid "Jason Katz-Brown"
 msgstr ""
 
-#: main.cpp:57
+#: main.cpp:58
 #, fuzzy, kde-format
 #| msgid "Main author"
 msgid "Former main author"
 msgstr "Муаллифи ибтидоӣ"
 
-#: main.cpp:58
+#: main.cpp:59
 #, kde-format
 msgid "Niklas Knutsson"
 msgstr ""
 
-#: main.cpp:58
+#: main.cpp:59
 #, kde-format
 msgid "Advanced putting mode"
 msgstr "Усули заниши беҳтаршуда"
 
-#: main.cpp:59
+#: main.cpp:60
 #, kde-format
 msgid "Rik Hemsley"
 msgstr ""
 
-#: main.cpp:59
+#: main.cpp:60
 #, kde-format
 msgid "Border around course"
 msgstr "Ҳошия дар гирди майдонча"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Timo A. Hummel"
 msgstr ""
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Some good sound effects"
 msgstr "Баъзе натиҷаҳои овозии хуб"
 
-#: main.cpp:62
+#: main.cpp:63
 #, kde-format
 msgid "Rob Renaud"
 msgstr ""
 
-#: main.cpp:62
+#: main.cpp:63
 #, kde-format
 msgid "Wall-bouncing help"
 msgstr "Ёри бо инъикос аз деворҳо"
 
-#: main.cpp:63
+#: main.cpp:64
 #, kde-format
 msgid "Aaron Seigo"
 msgstr ""
 
-#: main.cpp:63
+#: main.cpp:64
 #, kde-format
 msgid "Suggestions, bug reports"
 msgstr "Хоҳишҳо, маърӯзаҳо оиди хатогӣ"
 
-#: main.cpp:64
+#: main.cpp:65
 #, kde-format
 msgid "Erin Catto"
 msgstr ""
 
-#: main.cpp:64
+#: main.cpp:65
 #, kde-format
 msgid "Developer of Box2D physics engine"
 msgstr ""
 
-#: main.cpp:65
+#: main.cpp:66
 #, kde-format
 msgid "Ryan Cumming"
 msgstr ""
 
-#: main.cpp:65
+#: main.cpp:66
 #, fuzzy, kde-format
 #| msgid "Vector class"
 msgid "Vector class (Kolf 1)"
 msgstr "Синфи Vector"
 
-#: main.cpp:66
+#: main.cpp:67
 #, kde-format
 msgid "Daniel Matza-Brown"
 msgstr ""
 
-#: main.cpp:66
+#: main.cpp:67
 #, fuzzy, kde-format
 #| msgid "Working wall-bouncing algorithm"
 msgid "Working wall-bouncing algorithm (Kolf 1)"
 msgstr "Алгоритми иъикос аз деворҳо"
 
-#: main.cpp:71
+#: main.cpp:72
 #, kde-format
 msgid "File"
 msgstr ""
 
-#: main.cpp:72
+#: main.cpp:73
 #, kde-format
 msgid "Print course information and exit"
 msgstr "Маълумотро оиди майдонча чоп кунед ва бароед"
 
-#: main.cpp:89 newgame.cpp:240
+#: main.cpp:90 newgame.cpp:240
 #, kde-format
 msgid "By %1"
 msgstr "Муаллиф %1"
 
-#: main.cpp:90
+#: main.cpp:91
 #, kde-format
 msgid "%1 holes"
 msgstr "%1 сӯрохиҳо"
 
-#: main.cpp:91
+#: main.cpp:92
 #, kde-format
 msgid "par %1"
 msgstr "хол %1"
 
-#: main.cpp:98
+#: main.cpp:99
 #, kde-format
 msgid "Course %1 does not exist."
 msgstr "Майдони %1 мавҷуд нест."

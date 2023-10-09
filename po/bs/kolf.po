@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-03 02:26+0000\n"
+"POT-Creation-Date: 2023-10-09 02:38+0000\n"
 "PO-Revision-Date: 2013-10-18 20:07+0000\n"
 "Last-Translator: Samir Ribić <Unknown>\n"
 "Language-Team: Bosnian <lokal@lugbih.org>\n"
@@ -485,132 +485,132 @@ msgstr "KDE Minigolf igra"
 msgid "(c) 2002-2010, Kolf developers"
 msgstr "(c) 2002-2010, Kolf programeri"
 
-#: main.cpp:56
+#: main.cpp:57
 #, kde-format
 msgid "Stefan Majewsky"
 msgstr "Stefan Majewsky"
 
-#: main.cpp:56
+#: main.cpp:57
 #, kde-format
 msgid "Current maintainer"
 msgstr "Trenutno održava"
 
-#: main.cpp:57
+#: main.cpp:58
 #, kde-format
 msgid "Jason Katz-Brown"
 msgstr "Jason Katz-Brown"
 
-#: main.cpp:57
+#: main.cpp:58
 #, kde-format
 msgid "Former main author"
 msgstr "Buvši glavni autor"
 
-#: main.cpp:58
+#: main.cpp:59
 #, kde-format
 msgid "Niklas Knutsson"
 msgstr "Niklas Knutsson"
 
-#: main.cpp:58
+#: main.cpp:59
 #, kde-format
 msgid "Advanced putting mode"
 msgstr "Režim naprednog udaranja"
 
-#: main.cpp:59
+#: main.cpp:60
 #, kde-format
 msgid "Rik Hemsley"
 msgstr "Rik Hemsley"
 
-#: main.cpp:59
+#: main.cpp:60
 #, kde-format
 msgid "Border around course"
 msgstr "Rub oko terena"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Timo A. Hummel"
 msgstr "Timo A. Hummel"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Some good sound effects"
 msgstr "Neki dobri zvučni efekti"
 
-#: main.cpp:62
+#: main.cpp:63
 #, kde-format
 msgid "Rob Renaud"
 msgstr "Rob Renaud"
 
-#: main.cpp:62
+#: main.cpp:63
 #, kde-format
 msgid "Wall-bouncing help"
 msgstr "Pomoć za odbijanje od zidove"
 
-#: main.cpp:63
+#: main.cpp:64
 #, kde-format
 msgid "Aaron Seigo"
 msgstr "Aaron Seigo"
 
-#: main.cpp:63
+#: main.cpp:64
 #, kde-format
 msgid "Suggestions, bug reports"
 msgstr "Prijedlozi, prijave grešaka"
 
-#: main.cpp:64
+#: main.cpp:65
 #, kde-format
 msgid "Erin Catto"
 msgstr "Erin Catto"
 
-#: main.cpp:64
+#: main.cpp:65
 #, kde-format
 msgid "Developer of Box2D physics engine"
 msgstr "Razvoj Box2D fizičkog pogona"
 
-#: main.cpp:65
+#: main.cpp:66
 #, kde-format
 msgid "Ryan Cumming"
 msgstr "Ryan Cumming"
 
-#: main.cpp:65
+#: main.cpp:66
 #, kde-format
 msgid "Vector class (Kolf 1)"
 msgstr "Vektorska klasa (Kolf 1)"
 
-#: main.cpp:66
+#: main.cpp:67
 #, kde-format
 msgid "Daniel Matza-Brown"
 msgstr "Daniel Matza-Brown"
 
-#: main.cpp:66
+#: main.cpp:67
 #, kde-format
 msgid "Working wall-bouncing algorithm (Kolf 1)"
 msgstr "Aktuelni algoritam odbijanja o zid (Kolf 1)"
 
-#: main.cpp:71
+#: main.cpp:72
 #, kde-format
 msgid "File"
 msgstr "Datoteka"
 
-#: main.cpp:72
+#: main.cpp:73
 #, kde-format
 msgid "Print course information and exit"
 msgstr "Odštampaj informacije o terenu i izađi"
 
-#: main.cpp:89 newgame.cpp:240
+#: main.cpp:90 newgame.cpp:240
 #, kde-format
 msgid "By %1"
 msgstr "Napravio: %1"
 
-#: main.cpp:90
+#: main.cpp:91
 #, kde-format
 msgid "%1 holes"
 msgstr "%1 rupa"
 
-#: main.cpp:91
+#: main.cpp:92
 #, kde-format
 msgid "par %1"
 msgstr "par %1"
 
-#: main.cpp:98
+#: main.cpp:99
 #, kde-format
 msgid "Course %1 does not exist."
 msgstr "Teren %1 ne postoji."
