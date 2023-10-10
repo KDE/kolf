@@ -667,6 +667,9 @@ bool b2ContactSolver::SolvePositionConstraints(qreal baumgarte)
 // Sequential position solver for position constraints.
 bool b2ContactSolver::SolveTOIPositionConstraints(qreal baumgarte, const b2Body* toiBodyA, const b2Body* toiBodyB)
 {
+	Q_UNUSED(toiBodyA);
+	Q_UNUSED(toiBodyB);
+
 	qreal minSeparation = 0.0f;
 
 	for (int32 i = 0; i < m_count; ++i)
