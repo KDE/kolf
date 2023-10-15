@@ -110,21 +110,21 @@ void KolfWindow::setupActions()
 	editingAction = new KToggleAction(QIcon::fromTheme( QStringLiteral( "document-properties") ), i18n("&Edit"), this);
 	actionCollection()->addAction(QStringLiteral("editing"), editingAction);
 	connect(editingAction, &QAction::triggered, this, &KolfWindow::emptySlot);
-    actionCollection()->setDefaultShortcut(editingAction, Qt::CTRL|Qt::Key_E);
+	KActionCollection::setDefaultShortcut(editingAction, Qt::CTRL|Qt::Key_E);
 	newHoleAction = actionCollection()->addAction(QStringLiteral("newhole"));
 	newHoleAction->setIcon(QIcon::fromTheme( QStringLiteral( "document-new" )));
 	newHoleAction->setText(i18n("&New"));
 	connect(newHoleAction, &QAction::triggered, this, &KolfWindow::emptySlot);
-    actionCollection()->setDefaultShortcut(newHoleAction, Qt::CTRL|Qt::SHIFT|Qt::Key_N);
+	KActionCollection::setDefaultShortcut(newHoleAction, Qt::CTRL|Qt::SHIFT|Qt::Key_N);
 	clearHoleAction = actionCollection()->addAction(QStringLiteral("clearhole"));
 	clearHoleAction->setIcon(QIcon::fromTheme( QStringLiteral( "edit-clear-locationbar-ltr" )));
 	clearHoleAction->setText(KStandardGuiItem::clear().text());
 	connect(clearHoleAction, &QAction::triggered, this, &KolfWindow::emptySlot);
-    actionCollection()->setDefaultShortcut(clearHoleAction, Qt::CTRL|Qt::Key_Delete);
+	KActionCollection::setDefaultShortcut(clearHoleAction, Qt::CTRL|Qt::Key_Delete);
 	resetHoleAction = actionCollection()->addAction(QStringLiteral("resethole"));
 	resetHoleAction->setText(i18n("&Reset"));
 	connect(resetHoleAction, &QAction::triggered, this, &KolfWindow::emptySlot);
-    actionCollection()->setDefaultShortcut(resetHoleAction, Qt::CTRL|Qt::Key_R);
+	KActionCollection::setDefaultShortcut(resetHoleAction, Qt::CTRL|Qt::Key_R);
 	undoShotAction = KStandardAction::undo(this, &KolfWindow::emptySlot, this);
 	actionCollection()->addAction(QStringLiteral("undoshot"), undoShotAction);
 	undoShotAction->setText(i18n("&Undo Shot"));
@@ -138,21 +138,21 @@ void KolfWindow::setupActions()
 	nextAction->setIcon(QIcon::fromTheme( QStringLiteral( "go-next" )));
 	nextAction->setText(i18n("&Next Hole"));
 	connect(nextAction, &QAction::triggered, this, &KolfWindow::emptySlot);
-	actionCollection()->setDefaultShortcuts(nextAction, KStandardShortcut::forward());
+	KActionCollection::setDefaultShortcuts(nextAction, KStandardShortcut::forward());
 	prevAction = actionCollection()->addAction(QStringLiteral("prevhole"));
 	prevAction->setIcon(QIcon::fromTheme( QStringLiteral( "go-previous" )));
 	prevAction->setText(i18n("&Previous Hole"));
 	connect(prevAction, &QAction::triggered, this, &KolfWindow::emptySlot);
-	actionCollection()->setDefaultShortcuts(prevAction, KStandardShortcut::back());
+	KActionCollection::setDefaultShortcuts(prevAction, KStandardShortcut::back());
 	firstAction = actionCollection()->addAction(QStringLiteral("firsthole"));
 	firstAction->setIcon(QIcon::fromTheme( QStringLiteral( "go-home" )));
 	firstAction->setText(i18n("&First Hole"));
 	connect(firstAction, &QAction::triggered, this, &KolfWindow::emptySlot);
-	actionCollection()->setDefaultShortcuts(firstAction, KStandardShortcut::begin());
+	KActionCollection::setDefaultShortcuts(firstAction, KStandardShortcut::begin());
 	lastAction = actionCollection()->addAction(QStringLiteral("lasthole"));
 	lastAction->setText(i18n("&Last Hole"));
 	connect(lastAction, &QAction::triggered, this, &KolfWindow::emptySlot);
-    actionCollection()->setDefaultShortcut(lastAction, Qt::CTRL|Qt::SHIFT|Qt::Key_End); // why not KStandardShortcut::End (Ctrl+End)?
+	KActionCollection::setDefaultShortcut(lastAction, Qt::CTRL|Qt::SHIFT|Qt::Key_End); // why not KStandardShortcut::End (Ctrl+End)?
 	randAction = actionCollection()->addAction(QStringLiteral("randhole"));
 	randAction->setIcon(QIcon::fromTheme( QStringLiteral( "go-jump" )));
 	randAction->setText(i18n("&Random Hole"));
@@ -175,7 +175,7 @@ void KolfWindow::setupActions()
 	showInfoAction = new KToggleAction(QIcon::fromTheme( QStringLiteral( "help-about")), i18n("Show &Info"), this);
 	actionCollection()->addAction(QStringLiteral("showinfo"), showInfoAction);
 	connect(showInfoAction, &QAction::triggered, this, &KolfWindow::emptySlot);
-    actionCollection()->setDefaultShortcut(showInfoAction, Qt::CTRL|Qt::Key_I);
+	KActionCollection::setDefaultShortcut(showInfoAction, Qt::CTRL|Qt::Key_I);
 	connect(showInfoAction, &QAction::toggled, this, &KolfWindow::showInfoChanged);
 	showInfoAction->setChecked(configGroup.readEntry("showInfo", true));
 
