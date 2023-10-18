@@ -35,7 +35,7 @@
 #include <KSelectAction>
 #include <KSharedConfig>
 #include <KStandardAction>
-#include <KStandardGameAction>
+#include <KGameStandardAction>
 #include <KStandardGuiItem>
 #include <KToggleAction>
 #include <QFileDialog>
@@ -87,9 +87,9 @@ KolfWindow::~KolfWindow()
 void KolfWindow::setupActions()
 {
 	// Game
-	newAction = KStandardGameAction::gameNew(this, &KolfWindow::newGame, actionCollection());
-	endAction = KStandardGameAction::end(this, &KolfWindow::closeGame, actionCollection());
-	KStandardGameAction::quit(this, &KolfWindow::close, actionCollection());
+	newAction = KGameStandardAction::gameNew(this, &KolfWindow::newGame, actionCollection());
+	endAction = KGameStandardAction::end(this, &KolfWindow::closeGame, actionCollection());
+	KGameStandardAction::quit(this, &KolfWindow::close, actionCollection());
 
 	saveAction = actionCollection()->addAction(KStandardAction::Save, QStringLiteral("game_save"), this, &KolfWindow::save);
 	saveAction->setText(i18n("Save &Course"));
@@ -103,8 +103,8 @@ void KolfWindow::setupActions()
 	saveGameAsAction->setText(i18n("&Save Game As..."));
 	connect(saveGameAsAction, &QAction::triggered, this, &KolfWindow::saveGameAs);
 
-	loadGameAction = KStandardGameAction::load(this, &KolfWindow::loadGame, actionCollection());
-	highScoreAction = KStandardGameAction::highscores(this, &KolfWindow::showHighScores, actionCollection());
+	loadGameAction = KGameStandardAction::load(this, &KolfWindow::loadGame, actionCollection());
+	highScoreAction = KGameStandardAction::highscores(this, &KolfWindow::showHighScores, actionCollection());
 
 	// Hole
 	editingAction = new KToggleAction(QIcon::fromTheme( QStringLiteral( "document-properties") ), i18n("&Edit"), this);
