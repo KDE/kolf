@@ -44,12 +44,12 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     XmlGui
 )
 
-find_package(KDEGames6 7.5.0 REQUIRED)
+find_package(KDEGames6 6.0.0 REQUIRED)
 
 ecm_set_disabled_deprecation_versions(
     QT 6.5
     KF 5.239
-    KDEGAMES 7.5
+    KDEGAMES 6.0
 )
 
 add_subdirectory(src)
