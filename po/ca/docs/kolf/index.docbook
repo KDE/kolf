@@ -1217,9 +1217,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 > <title
 >Conceptes bàsics de l'edició</title>
 <para
->El bloc de construcció bàsic dels camps del &kolf; és l'<quote
->objecte</quote
->. Els forats estan formats per un munt d'objectes. Els objectes es poden moure a qualsevol ubicació, i els diferents tipus d'objectes tenen propietats diferents que podreu establir.</para>
+>El bloc de construcció bàsic dels camps del &kolf; és l'«objecte». Els forats estan formats per un munt d'objectes. Els objectes es poden moure a qualsevol ubicació, i els diferents tipus d'objectes tenen propietats diferents que podreu establir.</para>
 <para
 >Per a començar a editar un forat, alterneu l'element de menú <menuchoice
 ><guimenu
@@ -1506,11 +1504,9 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <para
 >Aquí podeu introduir qualsevol &HTML; vàlid. Per exemple, introduir <userinput
 >Hit it &lt;i&gt;softly&lt;/i&gt; towards the slope!</userinput
-> crearà el text <quote
->Hit it <emphasis
+> crearà el text «Hit it <emphasis
 >softly</emphasis
-> towards the slope!</quote
->.</para>
+> towards the slope!».</para>
 </listitem>
 </varlistentry>
 </variablelist>
