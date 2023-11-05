@@ -5,6 +5,7 @@
   <project_license>GPL-2.0+</project_license>
   <name>Kolf</name>
   <name xml:lang="ar">غولف</name>
+  <name xml:lang="ast">Kolf</name>
   <name xml:lang="ca">Kolf</name>
   <name xml:lang="ca-valencia">Kolf</name>
   <name xml:lang="cs">Kolf</name>
@@ -110,6 +111,7 @@
     <p xml:lang="x-test">xxKolf is a miniature golf game. The game is played from an overhead view, with a short bar representing the golf club. Kolf features many different types of objects, such water hazards, slopes, sand traps, and black holes (warps), among others.xx</p>
     <p>Features:</p>
     <p xml:lang="ar">الميزات:</p>
+    <p xml:lang="ast">Funciones:</p>
     <p xml:lang="ca">Característiques:</p>
     <p xml:lang="ca-valencia">Característiques:</p>
     <p xml:lang="cs">Vlastnosti:</p>
