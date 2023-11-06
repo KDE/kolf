@@ -214,7 +214,7 @@ void NewGameDialog::slotOk()
 		configGroup.writeEntry("extra", externCourses);
 	}
 
-	config->deleteGroup("New Game Dialog");
+	config->deleteGroup(QStringLiteral("New Game Dialog"));
 
 	PlayerEditor *curEditor = nullptr;
 	int i = 0;

@@ -163,7 +163,7 @@ void KolfWindow::setupActions()
 	actionCollection()->addAction(QStringLiteral("usemouse"), useMouseAction);
 	connect(useMouseAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	connect(useMouseAction, &QAction::toggled, this, &KolfWindow::useMouseChanged);
-	KConfigGroup configGroup(KSharedConfig::openConfig(), "Settings");
+	KConfigGroup configGroup(KSharedConfig::openConfig(), QStringLiteral("Settings"));
 	useMouseAction->setChecked(configGroup.readEntry("useMouse", true));
 
 	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Putting"), this);
@@ -249,7 +249,7 @@ void KolfWindow::startNewGame()
 	else
 	{
 		KConfig config(loadedGame);
-		KConfigGroup configGroup(config.group("0 Saved Game"));
+		KConfigGroup configGroup(config.group(QStringLiteral("0 Saved Game")));
 
 		if (isTutorial)
 			filename = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("tutorial.kolf"));
@@ -590,7 +590,7 @@ void KolfWindow::saveGame()
 	}
 
 	KConfig config(loadedGame);
-	KConfigGroup configGroup(config.group("0 Saved Game"));
+	KConfigGroup configGroup(config.group(QStringLiteral("0 Saved Game")));
 
 	configGroup.writeEntry("Competition", competition);
 	configGroup.writeEntry("Course", filename);
@@ -786,27 +786,27 @@ void KolfWindow::titleChanged(const QString &newTitle)
 
 void KolfWindow::useMouseChanged(bool yes)
 {
-	KConfigGroup configGroup(KSharedConfig::openConfig(), "Settings"); configGroup.writeEntry("useMouse", yes); configGroup.sync();
+	KConfigGroup configGroup(KSharedConfig::openConfig(), QStringLiteral("Settings")); configGroup.writeEntry("useMouse", yes); configGroup.sync();
 }
 
 void KolfWindow::useAdvancedPuttingChanged(bool yes)
 {
-	KConfigGroup configGroup(KSharedConfig::openConfig(), "Settings"); configGroup.writeEntry("useAdvancedPutting", yes); configGroup.sync();
+	KConfigGroup configGroup(KSharedConfig::openConfig(), QStringLiteral("Settings")); configGroup.writeEntry("useAdvancedPutting", yes); configGroup.sync();
 }
 
 void KolfWindow::showInfoChanged(bool yes)
 {
-	KConfigGroup configGroup(KSharedConfig::openConfig(), "Settings"); configGroup.writeEntry("showInfo", yes); configGroup.sync();
+	KConfigGroup configGroup(KSharedConfig::openConfig(), QStringLiteral("Settings")); configGroup.writeEntry("showInfo", yes); configGroup.sync();
 }
 
 void KolfWindow::showGuideLineChanged(bool yes)
 {
-	KConfigGroup configGroup(KSharedConfig::openConfig(), "Settings"); configGroup.writeEntry("showGuideLine", yes); configGroup.sync();
+	KConfigGroup configGroup(KSharedConfig::openConfig(), QStringLiteral("Settings")); configGroup.writeEntry("showGuideLine", yes); configGroup.sync();
 }
 
 void KolfWindow::soundChanged(bool yes)
 {
-	KConfigGroup configGroup(KSharedConfig::openConfig(), "Settings"); configGroup.writeEntry("sound", yes); configGroup.sync();
+	KConfigGroup configGroup(KSharedConfig::openConfig(), QStringLiteral("Settings")); configGroup.writeEntry("sound", yes); configGroup.sync();
 }
 
 void KolfWindow::enableAllMessages()
