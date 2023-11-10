@@ -25,19 +25,21 @@
 #include "obstacles.h"
 #include "scoreboard.h"
 
+#include <KGameHighScoreDialog>
+#include <KGameStandardAction>
+
 #include <KActionCollection>
 #include <KIO/CopyJob>
 #include <KIO/Job>
 #include <KJobWidgets>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KScoreDialog>
 #include <KSelectAction>
 #include <KSharedConfig>
 #include <KStandardAction>
-#include <KGameStandardAction>
 #include <KStandardGuiItem>
 #include <KToggleAction>
+
 #include <QFileDialog>
 #include <QGridLayout>
 #include <QMimeDatabase>
@@ -490,10 +492,10 @@ void KolfWindow::gameOver()
 	if (competition)
 	{
 		// deal with highscores
-		// KScoreDialog makes it very easy :-))
+		// KGameHighScoreDialog makes it very easy :-))
 
-		KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Custom1 | KScoreDialog::Score, this);
-		scoreDialog->addField(KScoreDialog::Custom1, i18n("Par"), QStringLiteral("Par"));
+		KGameHighScoreDialog *scoreDialog = new KGameHighScoreDialog(KGameHighScoreDialog::Name | KGameHighScoreDialog::Custom1 | KGameHighScoreDialog::Score, this);
+		scoreDialog->addField(KGameHighScoreDialog::Custom1, i18n("Par"), QStringLiteral("Par"));
 
 		CourseInfo courseInfo;
 		game->courseInfo(courseInfo, game->curFilename());
@@ -502,12 +504,12 @@ void KolfWindow::gameOver()
 
 		for (HighScoreList::Iterator it = highScores.begin(); it != highScores.end(); ++it)
 		{
-			KScoreDialog::FieldInfo info;
-                        info[KScoreDialog::Name] = (*it).name;
-                        info[KScoreDialog::Score].setNum((*it).score);
-			info[KScoreDialog::Custom1] = QString::number(curPar);
+			KGameHighScoreDialog::FieldInfo info;
+                        info[KGameHighScoreDialog::Name] = (*it).name;
+                        info[KGameHighScoreDialog::Score].setNum((*it).score);
+			info[KGameHighScoreDialog::Custom1] = QString::number(curPar);
 
-                        scoreDialog->addScore(info, KScoreDialog::LessIsMore);
+                        scoreDialog->addScore(info, KGameHighScoreDialog::LessIsMore);
 		}
 
 		scoreDialog->setComment(i18n("High Scores for %1", courseInfo.name));
@@ -519,8 +521,8 @@ void KolfWindow::gameOver()
 
 void KolfWindow::showHighScores()
 {
-	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Custom1 | KScoreDialog::Score, this);
-	scoreDialog->addField(KScoreDialog::Custom1, i18n("Par"), QStringLiteral("Par"));
+	KGameHighScoreDialog *scoreDialog = new KGameHighScoreDialog(KGameHighScoreDialog::Name | KGameHighScoreDialog::Custom1 | KGameHighScoreDialog::Score, this);
+	scoreDialog->addField(KGameHighScoreDialog::Custom1, i18n("Par"), QStringLiteral("Par"));
 
 	CourseInfo courseInfo;
 	game->courseInfo(courseInfo, game->curFilename());

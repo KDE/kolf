@@ -26,11 +26,13 @@
 #include <QPushButton>
 #include <QStandardPaths>
 #include <QVBoxLayout>
+
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KScoreDialog>
 #include <KSeparator>
 #include <KSharedConfig>
+
+#include <KGameHighScoreDialog>
 
 NewGameDialog::NewGameDialog(bool enableCourses)
 	: KPageDialog()
@@ -244,8 +246,8 @@ void NewGameDialog::courseSelected(int index)
 
 void NewGameDialog::showHighscores()
 {
-	KScoreDialog *scoreDialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Custom1 | KScoreDialog::Score, this);
-	scoreDialog->addField(KScoreDialog::Custom1, i18n("Par"), QStringLiteral("Par"));
+	KGameHighScoreDialog *scoreDialog = new KGameHighScoreDialog(KGameHighScoreDialog::Name | KGameHighScoreDialog::Custom1 | KGameHighScoreDialog::Score, this);
+	scoreDialog->addField(KGameHighScoreDialog::Custom1, i18n("Par"), QStringLiteral("Par"));
 	scoreDialog->setConfigGroup(qMakePair(QByteArray(info[currentCourse].untranslatedName.toUtf8() + " Highscores"), i18n("High Scores for %1", info[currentCourse].name)));
 	scoreDialog->setComment(i18n("High Scores for %1", info[currentCourse].name));
 	scoreDialog->show();
