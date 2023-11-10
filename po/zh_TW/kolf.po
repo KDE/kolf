@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:45+0000\n"
+"POT-Creation-Date: 2023-11-10 01:46+0000\n"
 "PO-Revision-Date: 2019-01-28 23:13+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -166,7 +166,7 @@ msgstr "未儲存的改變"
 msgid "Save &Later"
 msgstr "之後儲存(&L)"
 
-#: game.cpp:2165 kolf.cpp:550
+#: game.cpp:2165 kolf.cpp:552
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"
@@ -177,218 +177,218 @@ msgstr "選擇 Kolf 路線來儲存"
 msgid "&Do not ask again"
 msgstr "不要再問了(&D)"
 
-#: kolf.cpp:62
+#: kolf.cpp:64
 #, kde-format
 msgid "Slope"
 msgstr "斜率"
 
-#: kolf.cpp:63
+#: kolf.cpp:65
 #, kde-format
 msgid "Puddle"
 msgstr "水坑"
 
-#: kolf.cpp:64
+#: kolf.cpp:66
 #, kde-format
 msgid "Wall"
 msgstr "牆"
 
-#: kolf.cpp:65
+#: kolf.cpp:67
 #, kde-format
 msgid "Cup"
 msgstr "球洞"
 
-#: kolf.cpp:66
+#: kolf.cpp:68
 #, kde-format
 msgid "Sand"
 msgstr "沙地"
 
-#: kolf.cpp:67
+#: kolf.cpp:69
 #, kde-format
 msgid "Windmill"
 msgstr "移動式閘門"
 
-#: kolf.cpp:68
+#: kolf.cpp:70
 #, kde-format
 msgid "Black Hole"
 msgstr "蟲洞"
 
-#: kolf.cpp:69
+#: kolf.cpp:71
 #, kde-format
 msgid "Floater"
 msgstr "浮球"
 
-#: kolf.cpp:70
+#: kolf.cpp:72
 #, kde-format
 msgid "Bridge"
 msgstr "浮橋"
 
-#: kolf.cpp:71
+#: kolf.cpp:73
 #, kde-format
 msgid "Sign"
 msgstr "標籤"
 
-#: kolf.cpp:72
+#: kolf.cpp:74
 #, kde-format
 msgid "Bumper"
 msgstr "緩衝器"
 
-#: kolf.cpp:95
+#: kolf.cpp:97
 #, kde-format
 msgid "Save &Course"
 msgstr "儲存路線(&C)"
 
-#: kolf.cpp:97
+#: kolf.cpp:99
 #, kde-format
 msgid "Save &Course As..."
 msgstr "將路線存為...(&C)"
 
-#: kolf.cpp:100
+#: kolf.cpp:102
 #, kde-format
 msgid "&Save Game"
 msgstr "儲存遊戲(&S)"
 
-#: kolf.cpp:103
+#: kolf.cpp:105
 #, kde-format
 msgid "&Save Game As..."
 msgstr "將遊戲存為...(&S)"
 
-#: kolf.cpp:110
+#: kolf.cpp:112
 #, kde-format
 msgid "&Edit"
 msgstr "編輯(&E)"
 
-#: kolf.cpp:116
+#: kolf.cpp:118
 #, kde-format
 msgid "&New"
 msgstr "新的(&N)"
 
-#: kolf.cpp:125
+#: kolf.cpp:127
 #, kde-format
 msgid "&Reset"
 msgstr "重置(&R)"
 
-#: kolf.cpp:130
+#: kolf.cpp:132
 #, kde-format
 msgid "&Undo Shot"
 msgstr "還原(&U)"
 
 #. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 #. Go
-#: kolf.cpp:134
+#: kolf.cpp:136
 #, kde-format
 msgid "Switch to Hole"
 msgstr "轉換至洞口"
 
-#: kolf.cpp:139
+#: kolf.cpp:141
 #, kde-format
 msgid "&Next Hole"
 msgstr "下一洞口(&N)"
 
-#: kolf.cpp:144
+#: kolf.cpp:146
 #, kde-format
 msgid "&Previous Hole"
 msgstr "前一個洞口(&P)"
 
-#: kolf.cpp:149
+#: kolf.cpp:151
 #, kde-format
 msgid "&First Hole"
 msgstr "最先的洞口(&F)"
 
-#: kolf.cpp:153
+#: kolf.cpp:155
 #, kde-format
 msgid "&Last Hole"
 msgstr "最後的洞口(&L)"
 
-#: kolf.cpp:158
+#: kolf.cpp:160
 #, kde-format
 msgid "&Random Hole"
 msgstr "隨機洞口(&R)"
 
-#: kolf.cpp:162
+#: kolf.cpp:164
 #, kde-format
 msgid "Enable &Mouse for Moving Putter"
 msgstr "能夠使用滑鼠來推桿(&M)"
 
-#: kolf.cpp:169
+#: kolf.cpp:171
 #, kde-format
 msgid "Enable &Advanced Putting"
 msgstr "啟用進階推桿(&A)"
 
-#: kolf.cpp:175
+#: kolf.cpp:177
 #, kde-format
 msgid "Show &Info"
 msgstr "顯示資訊(&I)"
 
-#: kolf.cpp:182
+#: kolf.cpp:184
 #, kde-format
 msgid "Show Putter &Guideline"
 msgstr "顯示推杆指南(&G)"
 
-#: kolf.cpp:188
+#: kolf.cpp:190
 #, kde-format
 msgid "Enable All Dialog Boxes"
 msgstr "啟動所有對話方框"
 
-#: kolf.cpp:192
+#: kolf.cpp:194
 #, kde-format
 msgid "Play &Sounds"
 msgstr "播放聲音(&S)"
 
-#: kolf.cpp:199
+#: kolf.cpp:201
 #, fuzzy, kde-format
 #| msgid "&About Course"
 msgid "&About Course..."
 msgstr "關於路線(&A)"
 
-#: kolf.cpp:202
+#: kolf.cpp:204
 #, kde-format
 msgid "&Tutorial"
 msgstr "體驗教學...(&T)"
 
-#: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
+#: kolf.cpp:454 kolf.cpp:498 kolf.cpp:525 newgame.cpp:250 scoreboard.cpp:27
 #, kde-format
 msgid "Par"
 msgstr "標準杆"
 
-#: kolf.cpp:483
+#: kolf.cpp:485
 #, kde-format
 msgid " and "
 msgstr " 和 "
 
-#: kolf.cpp:484
+#: kolf.cpp:486
 #, kde-format
 msgid "%1 tied"
 msgstr "%1 打平"
 
-#: kolf.cpp:487
+#: kolf.cpp:489
 #, kde-format
 msgid "%1 won!"
 msgstr "%1 勝利！"
 
-#: kolf.cpp:501 kolf.cpp:513 kolf.cpp:528 kolf.cpp:529 newgame.cpp:249
-#: newgame.cpp:250
+#: kolf.cpp:503 kolf.cpp:515 kolf.cpp:530 kolf.cpp:531 newgame.cpp:251
+#: newgame.cpp:252
 #, kde-format
 msgid "High Scores for %1"
 msgstr "%1 的高分"
 
-#: kolf.cpp:568
+#: kolf.cpp:570
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Saved Game to Save To"
 msgstr "選擇要儲存到的遊戲檔"
 
-#: kolf.cpp:606
+#: kolf.cpp:608
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Saved Game"
 msgstr "選擇已儲存的 Kolf 遊戲檔"
 
-#: kolf.cpp:654
+#: kolf.cpp:656
 #, kde-format
 msgid "%1's turn"
 msgstr "該%1了"
 
-#: kolf.cpp:726
+#: kolf.cpp:728
 #, kde-format
 msgid "%1's score has reached the maximum for this hole."
 msgstr "%1的分數已經到達本洞口的最大值"
@@ -590,7 +590,7 @@ msgstr "檔案"
 msgid "Print course information and exit"
 msgstr "列印路線資訊並離開"
 
-#: main.cpp:90 newgame.cpp:240
+#: main.cpp:90 newgame.cpp:242
 #, kde-format
 msgid "By %1"
 msgstr "由 %1"
@@ -610,102 +610,102 @@ msgstr "標準杆 %1"
 msgid "Course %1 does not exist."
 msgstr "進度 %1 不存在。"
 
-#: newgame.cpp:38
+#: newgame.cpp:40
 #, fuzzy, kde-format
 #| msgid "New Game"
 msgctxt "@title:window"
 msgid "New Game"
 msgstr "開始新遊戲"
 
-#: newgame.cpp:54
+#: newgame.cpp:56
 #, kde-format
 msgid "Players"
 msgstr "玩家"
 
-#: newgame.cpp:58
+#: newgame.cpp:60
 #, kde-format
 msgid "&New Player"
 msgstr "新玩家(&N)"
 
-#: newgame.cpp:93
+#: newgame.cpp:95
 #, kde-format
 msgid "Course"
 msgstr "路線"
 
-#: newgame.cpp:94
+#: newgame.cpp:96
 #, kde-format
 msgid "Choose Course to Play"
 msgstr "選擇路線來玩"
 
-#: newgame.cpp:133
+#: newgame.cpp:135
 #, kde-format
 msgid "Create New"
 msgstr "新增"
 
-#: newgame.cpp:134
+#: newgame.cpp:136
 #, kde-format
 msgid "You"
 msgstr "您"
 
-#: newgame.cpp:160
+#: newgame.cpp:162
 #, kde-format
 msgid "Highscores"
 msgstr "高分榜"
 
-#: newgame.cpp:170
+#: newgame.cpp:172
 #, kde-format
 msgid "Add..."
 msgstr "增加..."
 
-#: newgame.cpp:174 newgame.cpp:363
+#: newgame.cpp:176 newgame.cpp:365
 #, kde-format
 msgid "Remove"
 msgstr "移除"
 
-#: newgame.cpp:184
+#: newgame.cpp:186
 #, kde-format
 msgid "Options"
 msgstr "選項"
 
-#: newgame.cpp:185
+#: newgame.cpp:187
 #, kde-format
 msgid "Game Options"
 msgstr "遊戲選項"
 
-#: newgame.cpp:190
+#: newgame.cpp:192
 #, kde-format
 msgid "&Strict mode"
 msgstr "精確模式(&S)"
 
-#: newgame.cpp:194
+#: newgame.cpp:196
 #, kde-format
 msgid ""
 "In strict mode, undo, editing, and switching holes is not allowed. This is "
 "generally for competition. Only in strict mode are highscores kept."
 msgstr "在精確模式中，無論是編輯或是轉換洞口都是不允許的。這是一般比賽的情況。"
 
-#: newgame.cpp:241
+#: newgame.cpp:243
 #, kde-format
 msgid "Par %1"
 msgstr "標準杆 %1"
 
-#: newgame.cpp:242
+#: newgame.cpp:244
 #, kde-format
 msgid "%1 Holes"
 msgstr "%1 洞口"
 
-#: newgame.cpp:280
+#: newgame.cpp:282
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course"
 msgstr "選擇 Kolf 路線"
 
-#: newgame.cpp:308
+#: newgame.cpp:310
 #, kde-format
 msgid "Chosen course is already on course list."
 msgstr "在路線列表中選擇路線"
 
-#: newgame.cpp:321
+#: newgame.cpp:323
 #, kde-format
 msgid "Player %1"
 msgstr "玩家 %1"

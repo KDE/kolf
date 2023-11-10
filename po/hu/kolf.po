@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:45+0000\n"
+"POT-Creation-Date: 2023-11-10 01:46+0000\n"
 "PO-Revision-Date: 2012-01-22 15:47+0100\n"
 "Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -163,7 +163,7 @@ msgstr "Nem mentett változtatások"
 msgid "Save &Later"
 msgstr "Mentés ké&sőbb"
 
-#: game.cpp:2165 kolf.cpp:550
+#: game.cpp:2165 kolf.cpp:552
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Course to Save To"
 msgctxt "@title:window"
@@ -175,220 +175,220 @@ msgstr "Válassza ki azt a Kolf pályát, amelybe menteni szeretne"
 msgid "&Do not ask again"
 msgstr "Ez a &kérdés ne jelenjen meg többé"
 
-#: kolf.cpp:62
+#: kolf.cpp:64
 #, kde-format
 msgid "Slope"
 msgstr "Lejtő"
 
-#: kolf.cpp:63
+#: kolf.cpp:65
 #, kde-format
 msgid "Puddle"
 msgstr "Pocsolya"
 
-#: kolf.cpp:64
+#: kolf.cpp:66
 #, kde-format
 msgid "Wall"
 msgstr "Fal"
 
-#: kolf.cpp:65
+#: kolf.cpp:67
 #, kde-format
 msgid "Cup"
 msgstr "Csésze"
 
-#: kolf.cpp:66
+#: kolf.cpp:68
 #, kde-format
 msgid "Sand"
 msgstr "Homok"
 
-#: kolf.cpp:67
+#: kolf.cpp:69
 #, kde-format
 msgid "Windmill"
 msgstr "Szélmalom"
 
-#: kolf.cpp:68
+#: kolf.cpp:70
 #, kde-format
 msgid "Black Hole"
 msgstr "Fekete lyuk"
 
-#: kolf.cpp:69
+#: kolf.cpp:71
 #, kde-format
 msgid "Floater"
 msgstr "Tutaj"
 
-#: kolf.cpp:70
+#: kolf.cpp:72
 #, kde-format
 msgid "Bridge"
 msgstr "Híd"
 
-#: kolf.cpp:71
+#: kolf.cpp:73
 #, kde-format
 msgid "Sign"
 msgstr "Jel"
 
-#: kolf.cpp:72
+#: kolf.cpp:74
 #, kde-format
 msgid "Bumper"
 msgstr "Ütköző"
 
-#: kolf.cpp:95
+#: kolf.cpp:97
 #, kde-format
 msgid "Save &Course"
 msgstr "&Mentés"
 
-#: kolf.cpp:97
+#: kolf.cpp:99
 #, kde-format
 msgid "Save &Course As..."
 msgstr "A pálya mentése m&int..."
 
-#: kolf.cpp:100
+#: kolf.cpp:102
 #, kde-format
 msgid "&Save Game"
 msgstr "Me&ntés"
 
-#: kolf.cpp:103
+#: kolf.cpp:105
 #, kde-format
 msgid "&Save Game As..."
 msgstr "Mentés m&int..."
 
-#: kolf.cpp:110
+#: kolf.cpp:112
 #, kde-format
 msgid "&Edit"
 msgstr "S&zerkesztés"
 
-#: kolf.cpp:116
+#: kolf.cpp:118
 #, kde-format
 msgid "&New"
 msgstr "Ú&j"
 
-#: kolf.cpp:125
+#: kolf.cpp:127
 #, kde-format
 msgid "&Reset"
 msgstr "&Alapállapot"
 
-#: kolf.cpp:130
+#: kolf.cpp:132
 #, kde-format
 msgid "&Undo Shot"
 msgstr "Ü&tés visszavonása"
 
 #. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 #. Go
-#: kolf.cpp:134
+#: kolf.cpp:136
 #, kde-format
 msgid "Switch to Hole"
 msgstr "Ugrás egy lyukra"
 
-#: kolf.cpp:139
+#: kolf.cpp:141
 #, kde-format
 msgid "&Next Hole"
 msgstr "&Következő lyuk"
 
-#: kolf.cpp:144
+#: kolf.cpp:146
 #, kde-format
 msgid "&Previous Hole"
 msgstr "&Előző lyuk"
 
-#: kolf.cpp:149
+#: kolf.cpp:151
 #, kde-format
 msgid "&First Hole"
 msgstr "El&ső lyuk"
 
-#: kolf.cpp:153
+#: kolf.cpp:155
 #, kde-format
 msgid "&Last Hole"
 msgstr "Ut&olsó lyuk"
 
-#: kolf.cpp:158
+#: kolf.cpp:160
 #, kde-format
 msgid "&Random Hole"
 msgstr "&Véletlenszerű lyuk"
 
-#: kolf.cpp:162
+#: kolf.cpp:164
 #, kde-format
 msgid "Enable &Mouse for Moving Putter"
 msgstr "Az ütő az &egérrel is mozgatható"
 
-#: kolf.cpp:169
+#: kolf.cpp:171
 #, kde-format
 msgid "Enable &Advanced Putting"
 msgstr "Kibővített ütésmó&d"
 
-#: kolf.cpp:175
+#: kolf.cpp:177
 #, kde-format
 msgid "Show &Info"
 msgstr "A jellem&zők megjelenítése"
 
-#: kolf.cpp:182
+#: kolf.cpp:184
 #, kde-format
 msgid "Show Putter &Guideline"
 msgstr "Ütési se&gédvonal megjelenítése"
 
-#: kolf.cpp:188
+#: kolf.cpp:190
 #, kde-format
 msgid "Enable All Dialog Boxes"
 msgstr "Az összes párbeszédablak engedélyezése"
 
-#: kolf.cpp:192
+#: kolf.cpp:194
 #, kde-format
 msgid "Play &Sounds"
 msgstr "&Hanghatások"
 
-#: kolf.cpp:199
+#: kolf.cpp:201
 #, fuzzy, kde-format
 #| msgid "&About Course"
 msgid "&About Course..."
 msgstr "A pálya &névjegye"
 
-#: kolf.cpp:202
+#: kolf.cpp:204
 #, kde-format
 msgid "&Tutorial"
 msgstr "O&ktatópálya"
 
-#: kolf.cpp:452 kolf.cpp:496 kolf.cpp:523 newgame.cpp:248 scoreboard.cpp:27
+#: kolf.cpp:454 kolf.cpp:498 kolf.cpp:525 newgame.cpp:250 scoreboard.cpp:27
 #, kde-format
 msgid "Par"
 msgstr "Par"
 
-#: kolf.cpp:483
+#: kolf.cpp:485
 #, kde-format
 msgid " and "
 msgstr " és "
 
-#: kolf.cpp:484
+#: kolf.cpp:486
 #, kde-format
 msgid "%1 tied"
 msgstr "%1 döntetlent ért el"
 
-#: kolf.cpp:487
+#: kolf.cpp:489
 #, kde-format
 msgid "%1 won!"
 msgstr "%1 győzött!"
 
-#: kolf.cpp:501 kolf.cpp:513 kolf.cpp:528 kolf.cpp:529 newgame.cpp:249
-#: newgame.cpp:250
+#: kolf.cpp:503 kolf.cpp:515 kolf.cpp:530 kolf.cpp:531 newgame.cpp:251
+#: newgame.cpp:252
 #, kde-format
 msgid "High Scores for %1"
 msgstr "Legjobb eredmények a(z) %1 pályán"
 
-#: kolf.cpp:568
+#: kolf.cpp:570
 #, fuzzy, kde-format
 #| msgid "Pick Saved Game to Save To"
 msgctxt "@title:window"
 msgid "Pick Saved Game to Save To"
 msgstr "Válassza ki azt a korábban elmentett állást, amelybe menteni szeretne"
 
-#: kolf.cpp:606
+#: kolf.cpp:608
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Saved Game"
 msgctxt "@title:window"
 msgid "Pick Kolf Saved Game"
 msgstr "Válasszon egy elmentett Kolf állást"
 
-#: kolf.cpp:654
+#: kolf.cpp:656
 #, kde-format
 msgid "%1's turn"
 msgstr "%1 következik"
 
-#: kolf.cpp:726
+#: kolf.cpp:728
 #, kde-format
 msgid "%1's score has reached the maximum for this hole."
 msgstr "%1 pontszáma elérte a lyuk teljesítéséhez engedélyezett maximumot."
@@ -592,7 +592,7 @@ msgstr "Fájl"
 msgid "Print course information and exit"
 msgstr "A pálya jellemzőinek kiírása, majd kilépés"
 
-#: main.cpp:90 newgame.cpp:240
+#: main.cpp:90 newgame.cpp:242
 #, kde-format
 msgid "By %1"
 msgstr "%1"
@@ -612,74 +612,74 @@ msgstr "par %1"
 msgid "Course %1 does not exist."
 msgstr "A(z) %1 pálya nem létezik."
 
-#: newgame.cpp:38
+#: newgame.cpp:40
 #, fuzzy, kde-format
 #| msgid "New Game"
 msgctxt "@title:window"
 msgid "New Game"
 msgstr "Új játék"
 
-#: newgame.cpp:54
+#: newgame.cpp:56
 #, kde-format
 msgid "Players"
 msgstr "Játékosok"
 
-#: newgame.cpp:58
+#: newgame.cpp:60
 #, kde-format
 msgid "&New Player"
 msgstr "Új já&tékos"
 
-#: newgame.cpp:93
+#: newgame.cpp:95
 #, kde-format
 msgid "Course"
 msgstr "Pálya"
 
-#: newgame.cpp:94
+#: newgame.cpp:96
 #, kde-format
 msgid "Choose Course to Play"
 msgstr "Válassza ki a pályát"
 
-#: newgame.cpp:133
+#: newgame.cpp:135
 #, kde-format
 msgid "Create New"
 msgstr "Új létrehozása"
 
-#: newgame.cpp:134
+#: newgame.cpp:136
 #, kde-format
 msgid "You"
 msgstr "Ön"
 
-#: newgame.cpp:160
+#: newgame.cpp:162
 #, kde-format
 msgid "Highscores"
 msgstr "Dicsőségtábla"
 
-#: newgame.cpp:170
+#: newgame.cpp:172
 #, kde-format
 msgid "Add..."
 msgstr "Hozzáadás..."
 
-#: newgame.cpp:174 newgame.cpp:363
+#: newgame.cpp:176 newgame.cpp:365
 #, kde-format
 msgid "Remove"
 msgstr "Eltávolítás"
 
-#: newgame.cpp:184
+#: newgame.cpp:186
 #, kde-format
 msgid "Options"
 msgstr "Beállítások"
 
-#: newgame.cpp:185
+#: newgame.cpp:187
 #, kde-format
 msgid "Game Options"
 msgstr "A játék beállításai"
 
-#: newgame.cpp:190
+#: newgame.cpp:192
 #, kde-format
 msgid "&Strict mode"
 msgstr "Szi&gorított mód"
 
-#: newgame.cpp:194
+#: newgame.cpp:196
 #, kde-format
 msgid ""
 "In strict mode, undo, editing, and switching holes is not allowed. This is "
@@ -689,29 +689,29 @@ msgstr ""
 "Elsősorban tényleges versenynél érdemes használni. Az eredménytáblára csak "
 "ebben a módban lehet felkerülni."
 
-#: newgame.cpp:241
+#: newgame.cpp:243
 #, kde-format
 msgid "Par %1"
 msgstr "%1. par."
 
-#: newgame.cpp:242
+#: newgame.cpp:244
 #, kde-format
 msgid "%1 Holes"
 msgstr "%1 lyuk"
 
-#: newgame.cpp:280
+#: newgame.cpp:282
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Course"
 msgctxt "@title:window"
 msgid "Pick Kolf Course"
 msgstr "Válasszon egy pályát"
 
-#: newgame.cpp:308
+#: newgame.cpp:310
 #, kde-format
 msgid "Chosen course is already on course list."
 msgstr "A kiválasztott pálya már szerepel a pályalistában."
 
-#: newgame.cpp:321
+#: newgame.cpp:323
 #, kde-format
 msgid "Player %1"
 msgstr "%1. játékos"
