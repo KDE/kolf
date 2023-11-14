@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-10 01:46+0000\n"
-"PO-Revision-Date: 2023-01-06 22:00+0100\n"
+"PO-Revision-Date: 2023-11-13 07:18+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: translate-po (https://github.com/zcribe/translate-po)\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: pology\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -61,7 +61,7 @@ msgstr "Maksimumo:"
 #: game.cpp:293
 #, kde-format
 msgid "Maximum number of strokes player can take on this hole."
-msgstr ""
+msgstr "Maksimuma nombro da batoj ludanto povas preni ĉi tiun truon."
 
 #: game.cpp:294
 #, kde-format
@@ -144,12 +144,12 @@ msgstr "Informoj pri Golfejo"
 #: game.cpp:1876
 #, kde-format
 msgid "This hole uses the following plugins, which you do not have installed:"
-msgstr ""
+msgstr "Ĉi tiu truo uzas la jenajn kromaĵojn, kiujn vi ne instalis:"
 
 #: game.cpp:1989
 #, kde-format
 msgid "There are unsaved changes to current hole. Save them?"
-msgstr ""
+msgstr "Estas nekonservitaj ŝanĝoj al nuna truo. Ĉu konservi ilin?"
 
 #: game.cpp:1990
 #, kde-format
@@ -352,46 +352,46 @@ msgstr " kaj "
 #: kolf.cpp:486
 #, kde-format
 msgid "%1 tied"
-msgstr ""
+msgstr "%1 nedecidita"
 
 #: kolf.cpp:489
 #, kde-format
 msgid "%1 won!"
-msgstr ""
+msgstr "%1 venkis!"
 
 #: kolf.cpp:503 kolf.cpp:515 kolf.cpp:530 kolf.cpp:531 newgame.cpp:251
 #: newgame.cpp:252
 #, kde-format
 msgid "High Scores for %1"
-msgstr ""
+msgstr "Altaj Poentoj por %1"
 
 #: kolf.cpp:570
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Saved Game to Save To"
-msgstr ""
+msgstr "Elekti Konservitan Ludon por Konservi Al"
 
 #: kolf.cpp:608
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Saved Game"
-msgstr ""
+msgstr "Elekti Kolf Konservitan Ludo"
 
 #: kolf.cpp:656
 #, kde-format
 msgid "%1's turn"
-msgstr ""
+msgstr "La vico de %1"
 
 #: kolf.cpp:728
 #, kde-format
 msgid "%1's score has reached the maximum for this hole."
-msgstr ""
+msgstr "La poentaro de %1 atingis la maksimumon por ĉi tiu truo."
 
 #. i18n: ectx: Menu (hole)
 #: kolfui.rc:17
 #, kde-format
 msgid "Ho&le"
-msgstr ""
+msgstr "Tr&uo"
 
 #. i18n: ectx: Menu (go_course)
 #: kolfui.rc:31
@@ -402,7 +402,7 @@ msgstr "Navi&gi"
 #: landscape.cpp:146
 #, kde-format
 msgid "Enable show/hide"
-msgstr ""
+msgstr "Ebligi montri/kaŝi"
 
 #: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
 #, kde-format
@@ -432,32 +432,33 @@ msgstr "Diagonal"
 #: landscape.cpp:241
 #, kde-format
 msgid "Opposite Diagonal"
-msgstr ""
+msgstr "Kontraŭa Diagonalo"
 
 #: landscape.cpp:242
 #, kde-format
 msgid "Elliptic"
-msgstr ""
+msgstr "Elipsa"
 
 #: landscape.cpp:571
 #, kde-format
 msgid "Reverse direction"
-msgstr ""
+msgstr "Inversa direkto"
 
 #: landscape.cpp:576
 #, kde-format
 msgid "Unmovable"
-msgstr ""
+msgstr "Nemovebla"
 
 #: landscape.cpp:578
 #, kde-format
 msgid "Whether or not this slope can be moved by other objects, like floaters."
 msgstr ""
+"Ĉu aŭ ne ĉi tiu deklivo povas esti movita per aliaj objektoj, kiel flosiloj."
 
 #: landscape.cpp:582
 #, kde-format
 msgid "Grade:"
-msgstr ""
+msgstr "Grado:"
 
 #: main.cpp:45
 #, kde-format
@@ -467,17 +468,17 @@ msgstr "Kolf"
 #: main.cpp:47
 #, kde-format
 msgid "KDE Minigolf Game"
-msgstr ""
+msgstr "KDE-Minigolfludo"
 
 #: main.cpp:49
 #, kde-format
 msgid "(c) 2002-2010, Kolf developers"
-msgstr ""
+msgstr "(c) 2002-2010, Kolf-programistoj"
 
 #: main.cpp:53
 #, kde-format
 msgid "Stefan Majewsky"
-msgstr ""
+msgstr "Stefan Majewsky"
 
 #: main.cpp:53
 #, kde-format
@@ -492,7 +493,7 @@ msgstr "Jason Katz-Brown"
 #: main.cpp:54
 #, kde-format
 msgid "Former main author"
-msgstr ""
+msgstr "Iama ĉefa aŭtoro"
 
 #: main.cpp:55
 #, kde-format
@@ -502,7 +503,7 @@ msgstr "Niklas Knutsson"
 #: main.cpp:55
 #, kde-format
 msgid "Advanced putting mode"
-msgstr ""
+msgstr "Altnivela metareĝimo"
 
 #: main.cpp:56
 #, kde-format
@@ -512,7 +513,7 @@ msgstr "Rik Hemsley"
 #: main.cpp:56
 #, kde-format
 msgid "Border around course"
-msgstr ""
+msgstr "Limo ĉirkaŭ kurso"
 
 #: main.cpp:57
 #, kde-format
@@ -522,7 +523,7 @@ msgstr "Timo A. Hummel"
 #: main.cpp:57
 #, kde-format
 msgid "Some good sound effects"
-msgstr ""
+msgstr "Kelkaj bonaj sonefektoj"
 
 #: main.cpp:59
 #, kde-format
@@ -532,7 +533,7 @@ msgstr "Rob Renaud"
 #: main.cpp:59
 #, kde-format
 msgid "Wall-bouncing help"
-msgstr ""
+msgstr "Mur-salta helpo"
 
 #: main.cpp:60
 #, kde-format
@@ -542,17 +543,17 @@ msgstr "Aaron Seigo"
 #: main.cpp:60
 #, kde-format
 msgid "Suggestions, bug reports"
-msgstr ""
+msgstr "Sugestoj, cimraportoj"
 
 #: main.cpp:61
 #, kde-format
 msgid "Erin Catto"
-msgstr ""
+msgstr "Erin Catto"
 
 #: main.cpp:61
 #, kde-format
 msgid "Developer of Box2D physics engine"
-msgstr ""
+msgstr "Ellaboranto de Box2D-fizika motoro"
 
 #: main.cpp:62
 #, kde-format
@@ -562,7 +563,7 @@ msgstr "Ryan Cumming"
 #: main.cpp:62
 #, kde-format
 msgid "Vector class (Kolf 1)"
-msgstr ""
+msgstr "Vektora klaso (Kolf 1)"
 
 #: main.cpp:63
 #, kde-format
@@ -572,7 +573,7 @@ msgstr "Daniel Matza-Brown"
 #: main.cpp:63
 #, kde-format
 msgid "Working wall-bouncing algorithm (Kolf 1)"
-msgstr ""
+msgstr "Funkcianta muro-salta algoritmo (Kolf 1)"
 
 #: main.cpp:71
 #, kde-format
@@ -582,17 +583,17 @@ msgstr "Dosiero"
 #: main.cpp:72
 #, kde-format
 msgid "Print course information and exit"
-msgstr ""
+msgstr "Presi kursajn informojn kaj eliri"
 
 #: main.cpp:90 newgame.cpp:242
 #, kde-format
 msgid "By %1"
-msgstr ""
+msgstr "De %1"
 
 #: main.cpp:91
 #, kde-format
 msgid "%1 holes"
-msgstr ""
+msgstr "%1 truoj"
 
 #: main.cpp:92
 #, kde-format
@@ -602,7 +603,7 @@ msgstr "par %1"
 #: main.cpp:99
 #, kde-format
 msgid "Course %1 does not exist."
-msgstr ""
+msgstr "Kurso %1 ne ekzistas."
 
 #: newgame.cpp:40
 #, kde-format
@@ -618,7 +619,7 @@ msgstr "Ludantoj"
 #: newgame.cpp:60
 #, kde-format
 msgid "&New Player"
-msgstr ""
+msgstr "&Nova Ludanto"
 
 #: newgame.cpp:95
 #, kde-format
@@ -628,7 +629,7 @@ msgstr "Kurso"
 #: newgame.cpp:96
 #, kde-format
 msgid "Choose Course to Play"
-msgstr ""
+msgstr "Elekti Kurson por Ludi"
 
 #: newgame.cpp:135
 #, kde-format
@@ -663,12 +664,12 @@ msgstr "Opcioj"
 #: newgame.cpp:187
 #, kde-format
 msgid "Game Options"
-msgstr ""
+msgstr "Ludaj Opcioj"
 
 #: newgame.cpp:192
 #, kde-format
 msgid "&Strict mode"
-msgstr ""
+msgstr "&Strika reĝimo"
 
 #: newgame.cpp:196
 #, kde-format
@@ -676,6 +677,9 @@ msgid ""
 "In strict mode, undo, editing, and switching holes is not allowed. This is "
 "generally for competition. Only in strict mode are highscores kept."
 msgstr ""
+"En strikta reĝimo, malfari, redakti kaj ŝanĝi truojn ne estas permesitaj. Ĉi "
+"tio estas ĝenerale por konkurado. Nur en strikta reĝimo altpoentaroj estas "
+"konservitaj."
 
 #: newgame.cpp:243
 #, kde-format
@@ -685,18 +689,18 @@ msgstr "Par %1"
 #: newgame.cpp:244
 #, kde-format
 msgid "%1 Holes"
-msgstr ""
+msgstr "%1 Truoj"
 
 #: newgame.cpp:282
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course"
-msgstr ""
+msgstr "Elekti Kolf-Kurson"
 
 #: newgame.cpp:310
 #, kde-format
 msgid "Chosen course is already on course list."
-msgstr ""
+msgstr "Elektita kurso jam estas en kurslisto."
 
 #: newgame.cpp:323
 #, kde-format
@@ -707,23 +711,23 @@ msgstr "Ludanto %1"
 #, kde-format
 msgid " degree"
 msgid_plural " degrees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] " grado"
+msgstr[1] " gradoj"
 
 #: objects.cpp:247
 #, kde-format
 msgid "Exiting ball angle:"
-msgstr ""
+msgstr "Eliranta pilka angulo:"
 
 #: objects.cpp:267
 #, kde-format
 msgid "Minimum exit speed:"
-msgstr ""
+msgstr "Minimuma elirrapideco:"
 
 #: objects.cpp:288
 #, kde-format
 msgid "Maximum exit speed:"
-msgstr ""
+msgstr "Maksimuma elirrapideco:"
 
 #: obstacles.cpp:412
 msgid "&Top"
@@ -744,27 +748,27 @@ msgstr "&Malsupre"
 #: obstacles.cpp:421
 #, kde-format
 msgid "Walls on:"
-msgstr ""
+msgstr "Muroj sur:"
 
 #: obstacles.cpp:431
 #, kde-format
 msgid "Sign HTML:"
-msgstr ""
+msgstr "Signo HTML:"
 
 #: obstacles.cpp:440
 #, kde-format
 msgid "Windmill on top"
-msgstr ""
+msgstr "Ventmuelejo supre"
 
 #: obstacles.cpp:461
 #, kde-format
 msgid "Moving speed"
-msgstr ""
+msgstr "Movanta rapideco"
 
 #: obstacles.cpp:681
 #, kde-format
 msgid "New Text"
-msgstr ""
+msgstr "Nova Teksto"
 
 #: scoreboard.cpp:28
 #, kde-format
