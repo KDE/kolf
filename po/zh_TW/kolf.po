@@ -8,19 +8,20 @@
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2009.
 # Franklin Weng <franklin@mail.everfocus.com.tw>, 2010.
 # pan93412 <pan93412@gmail.com>, 2018, 2019.
+# SPDX-FileCopyrightText: 2023 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-10 01:46+0000\n"
-"PO-Revision-Date: 2019-01-28 23:13+0800\n"
-"Last-Translator: pan93412 <pan93412@gmail.com>\n"
-"Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
+"PO-Revision-Date: 2023-12-12 18:59+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 18.12.1\n"
+"X-Generator: Lokalize 23.08.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #, kde-format
@@ -140,8 +141,7 @@ msgid_plural "%1 holes"
 msgstr[0] "%1 洞口"
 
 #: game.cpp:1758
-#, fuzzy, kde-format
-#| msgid "Course Information"
+#, kde-format
 msgctxt "@title:window"
 msgid "Course Information"
 msgstr "路線資訊"
@@ -335,10 +335,9 @@ msgid "Play &Sounds"
 msgstr "播放聲音(&S)"
 
 #: kolf.cpp:201
-#, fuzzy, kde-format
-#| msgid "&About Course"
+#, kde-format
 msgid "&About Course..."
-msgstr "關於路線(&A)"
+msgstr "關於路線(&A)..."
 
 #: kolf.cpp:204
 #, kde-format
@@ -611,8 +610,7 @@ msgid "Course %1 does not exist."
 msgstr "進度 %1 不存在。"
 
 #: newgame.cpp:40
-#, fuzzy, kde-format
-#| msgid "New Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "New Game"
 msgstr "開始新遊戲"
