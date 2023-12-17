@@ -593,7 +593,7 @@ msgstr "De %1"
 #: main.cpp:91
 #, kde-format
 msgid "%1 holes"
-msgstr ""
+msgstr "%1 truoj"
 
 #: main.cpp:92
 #, kde-format
