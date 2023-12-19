@@ -20,6 +20,7 @@
   <name xml:lang="fi">Kolf</name>
   <name xml:lang="fr">Kolf</name>
   <name xml:lang="gl">Kolf</name>
+  <name xml:lang="ia">Kolf </name>
   <name xml:lang="id">Kolf</name>
   <name xml:lang="it">Kolf</name>
   <name xml:lang="ka">Kolf</name>
@@ -126,6 +127,7 @@
     <p xml:lang="fi">Ominaisuudet:</p>
     <p xml:lang="fr">Fonctionnalités :</p>
     <p xml:lang="gl">Funcionalidades:</p>
+    <p xml:lang="ia">Characteristicas:</p>
     <p xml:lang="id">Fitur:</p>
     <p xml:lang="it">Caratteristiche:</p>
     <p xml:lang="ka">თვისებები:</p>
