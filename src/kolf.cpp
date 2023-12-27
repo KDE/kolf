@@ -29,8 +29,7 @@
 #include <KGameStandardAction>
 
 #include <KActionCollection>
-#include <KIO/CopyJob>
-#include <KIO/Job>
+#include <KIO/FileCopyJob>
 #include <KJobWidgets>
 #include <KLocalizedString>
 #include <KMessageBox>
