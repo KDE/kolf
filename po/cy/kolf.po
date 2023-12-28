@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-10 01:46+0000\n"
+"POT-Creation-Date: 2023-12-28 01:32+0000\n"
 "PO-Revision-Date: 2005-09-21 09:20+0100\n"
 "Last-Translator: Kevin Donnelly <kevin@dotmon.com>\n"
 "Language-Team: Cymraeg <cy@li.org>\n"
@@ -166,7 +166,7 @@ msgstr "Newidiadau Heb eu Cadw"
 msgid "Save &Later"
 msgstr "&Cadw Wedyn"
 
-#: game.cpp:2165 kolf.cpp:552
+#: game.cpp:2165 kolf.cpp:551
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Course to Save To"
 msgctxt "@title:window"
@@ -178,221 +178,221 @@ msgstr "Dewis Pa Gwrs Kolf i Gadw Iddo"
 msgid "&Do not ask again"
 msgstr "&Paid â gofyn eto"
 
-#: kolf.cpp:64
+#: kolf.cpp:63
 #, fuzzy, kde-format
 #| msgid "Slow"
 msgid "Slope"
 msgstr "Araf"
 
-#: kolf.cpp:65
+#: kolf.cpp:64
 #, kde-format
 msgid "Puddle"
 msgstr "Pwll"
 
-#: kolf.cpp:66
+#: kolf.cpp:65
 #, kde-format
 msgid "Wall"
 msgstr "Wal"
 
-#: kolf.cpp:67
+#: kolf.cpp:66
 #, kde-format
 msgid "Cup"
 msgstr "Cwpan"
 
-#: kolf.cpp:68
+#: kolf.cpp:67
 #, kde-format
 msgid "Sand"
 msgstr "Tywod"
 
-#: kolf.cpp:69
+#: kolf.cpp:68
 #, kde-format
 msgid "Windmill"
 msgstr "Melin wynt"
 
-#: kolf.cpp:70
+#: kolf.cpp:69
 #, kde-format
 msgid "Black Hole"
 msgstr "Twll Du"
 
-#: kolf.cpp:71
+#: kolf.cpp:70
 #, kde-format
 msgid "Floater"
 msgstr ""
 
-#: kolf.cpp:72
+#: kolf.cpp:71
 #, kde-format
 msgid "Bridge"
 msgstr "Pont"
 
-#: kolf.cpp:73
+#: kolf.cpp:72
 #, kde-format
 msgid "Sign"
 msgstr "Llofnodi"
 
-#: kolf.cpp:74
+#: kolf.cpp:73
 #, kde-format
 msgid "Bumper"
 msgstr "Bympar"
 
-#: kolf.cpp:97
+#: kolf.cpp:96
 #, kde-format
 msgid "Save &Course"
 msgstr "Cadw C&wrs"
 
-#: kolf.cpp:99
+#: kolf.cpp:98
 #, kde-format
 msgid "Save &Course As..."
 msgstr "Cadw Cw&rs Fel..."
 
-#: kolf.cpp:102
+#: kolf.cpp:101
 #, kde-format
 msgid "&Save Game"
 msgstr "Cadw &Gêm"
 
-#: kolf.cpp:105
+#: kolf.cpp:104
 #, kde-format
 msgid "&Save Game As..."
 msgstr "Cadw Gê&m Fel..."
 
-#: kolf.cpp:112
+#: kolf.cpp:111
 #, kde-format
 msgid "&Edit"
 msgstr ""
 
-#: kolf.cpp:118
+#: kolf.cpp:117
 #, kde-format
 msgid "&New"
 msgstr "&Newydd"
 
-#: kolf.cpp:127
+#: kolf.cpp:126
 #, kde-format
 msgid "&Reset"
 msgstr "&Ailosod"
 
-#: kolf.cpp:132
+#: kolf.cpp:131
 #, kde-format
 msgid "&Undo Shot"
 msgstr "&Dadwneud Ergyd"
 
 #. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 #. Go
-#: kolf.cpp:136
+#: kolf.cpp:135
 #, kde-format
 msgid "Switch to Hole"
 msgstr "Newid i Dwll"
 
-#: kolf.cpp:141
+#: kolf.cpp:140
 #, kde-format
 msgid "&Next Hole"
 msgstr "Twll N&esaf"
 
-#: kolf.cpp:146
+#: kolf.cpp:145
 #, kde-format
 msgid "&Previous Hole"
 msgstr "Twll B&laenorol"
 
-#: kolf.cpp:151
+#: kolf.cpp:150
 #, kde-format
 msgid "&First Hole"
 msgstr "Twll C&yntaf"
 
-#: kolf.cpp:155
+#: kolf.cpp:154
 #, kde-format
 msgid "&Last Hole"
 msgstr "Twll &Olaf"
 
-#: kolf.cpp:160
+#: kolf.cpp:159
 #, kde-format
 msgid "&Random Hole"
 msgstr "Twll ar &Hap"
 
-#: kolf.cpp:164
+#: kolf.cpp:163
 #, kde-format
 msgid "Enable &Mouse for Moving Putter"
 msgstr "Galluogi Lly&goden i Symud Pytiwr"
 
-#: kolf.cpp:171
+#: kolf.cpp:170
 #, kde-format
 msgid "Enable &Advanced Putting"
 msgstr "Galluogi &Pytio Uwch"
 
-#: kolf.cpp:177
+#: kolf.cpp:176
 #, kde-format
 msgid "Show &Info"
 msgstr "&Dangos Gwybodaeth"
 
-#: kolf.cpp:184
+#: kolf.cpp:183
 #, kde-format
 msgid "Show Putter &Guideline"
 msgstr "Dangos T&ywyslinell Bytiwr"
 
-#: kolf.cpp:190
+#: kolf.cpp:189
 #, kde-format
 msgid "Enable All Dialog Boxes"
 msgstr "Galluogi Pob Blwch Ymgom"
 
-#: kolf.cpp:194
+#: kolf.cpp:193
 #, kde-format
 msgid "Play &Sounds"
 msgstr "Chwarae &Sain"
 
-#: kolf.cpp:201
+#: kolf.cpp:200
 #, fuzzy, kde-format
 #| msgid "&About Course"
 msgid "&About Course..."
 msgstr "Yn&glyn â'r Cwrs"
 
-#: kolf.cpp:204
+#: kolf.cpp:203
 #, kde-format
 msgid "&Tutorial"
 msgstr "&Hyfforddiad"
 
-#: kolf.cpp:454 kolf.cpp:498 kolf.cpp:525 newgame.cpp:250 scoreboard.cpp:27
+#: kolf.cpp:453 kolf.cpp:497 kolf.cpp:524 newgame.cpp:250 scoreboard.cpp:27
 #, kde-format
 msgid "Par"
 msgstr "Par"
 
-#: kolf.cpp:485
+#: kolf.cpp:484
 #, kde-format
 msgid " and "
 msgstr "a"
 
-#: kolf.cpp:486
+#: kolf.cpp:485
 #, kde-format
 msgid "%1 tied"
 msgstr "Mae %1 wedi dod yn gydradd"
 
-#: kolf.cpp:489
+#: kolf.cpp:488
 #, kde-format
 msgid "%1 won!"
 msgstr "Mae %1 wedi enill!"
 
-#: kolf.cpp:503 kolf.cpp:515 kolf.cpp:530 kolf.cpp:531 newgame.cpp:251
+#: kolf.cpp:502 kolf.cpp:514 kolf.cpp:529 kolf.cpp:530 newgame.cpp:251
 #: newgame.cpp:252
 #, kde-format
 msgid "High Scores for %1"
 msgstr "Sgorau Gorau %1"
 
-#: kolf.cpp:570
+#: kolf.cpp:569
 #, fuzzy, kde-format
 #| msgid "Pick Saved Game to Save To"
 msgctxt "@title:window"
 msgid "Pick Saved Game to Save To"
 msgstr "Dewis Gêm wedi'i Chadw i Gadw Iddi"
 
-#: kolf.cpp:608
+#: kolf.cpp:607
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Saved Game"
 msgctxt "@title:window"
 msgid "Pick Kolf Saved Game"
 msgstr "Dewis Gêm Kolf wedi'i Chadw"
 
-#: kolf.cpp:656
+#: kolf.cpp:655
 #, kde-format
 msgid "%1's turn"
 msgstr "Tro %1"
 
-#: kolf.cpp:728
+#: kolf.cpp:727
 #, kde-format
 msgid "%1's score has reached the maximum for this hole."
 msgstr "Mae sgôr %1 wedi cyrraedd yr uchafswm ar gyfer y twll yma."

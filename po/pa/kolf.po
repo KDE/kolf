@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-10 01:46+0000\n"
+"POT-Creation-Date: 2023-12-28 01:32+0000\n"
 "PO-Revision-Date: 2011-01-01 19:04+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -162,7 +162,7 @@ msgstr "ਨਾ-ਸੰਭਾਲੀਆਂ ਤਬਦੀਲੀਆਂ"
 msgid "Save &Later"
 msgstr "ਬਾਅਦ 'ਚ ਸੰਭਾਲੋ(&L)"
 
-#: game.cpp:2165 kolf.cpp:552
+#: game.cpp:2165 kolf.cpp:551
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Course"
 msgctxt "@title:window"
@@ -174,221 +174,221 @@ msgstr "ਕੋਲਫ਼ ਸਰੋਤ ਚੁਣੋ"
 msgid "&Do not ask again"
 msgstr "ਮੈਨੂੰ ਮੁੜ ਨਾ ਪੁੱਛੋ(&D)"
 
-#: kolf.cpp:64
+#: kolf.cpp:63
 #, fuzzy, kde-format
 #| msgid "Slow"
 msgid "Slope"
 msgstr "ਹੌਲੀ"
 
-#: kolf.cpp:65
+#: kolf.cpp:64
 #, kde-format
 msgid "Puddle"
 msgstr ""
 
-#: kolf.cpp:66
+#: kolf.cpp:65
 #, kde-format
 msgid "Wall"
 msgstr "ਕੰਧ"
 
-#: kolf.cpp:67
+#: kolf.cpp:66
 #, kde-format
 msgid "Cup"
 msgstr "ਕੱਪ"
 
-#: kolf.cpp:68
+#: kolf.cpp:67
 #, kde-format
 msgid "Sand"
 msgstr "ਮਿੱਟੀ"
 
-#: kolf.cpp:69
+#: kolf.cpp:68
 #, kde-format
 msgid "Windmill"
 msgstr "ਪੌਣਚੱਕੀ"
 
-#: kolf.cpp:70
+#: kolf.cpp:69
 #, kde-format
 msgid "Black Hole"
 msgstr "ਬਲੈਕ ਹੋਲ"
 
-#: kolf.cpp:71
+#: kolf.cpp:70
 #, kde-format
 msgid "Floater"
 msgstr ""
 
-#: kolf.cpp:72
+#: kolf.cpp:71
 #, kde-format
 msgid "Bridge"
 msgstr "ਬਰਿੱਜ"
 
-#: kolf.cpp:73
+#: kolf.cpp:72
 #, kde-format
 msgid "Sign"
 msgstr "ਦਸਤਖਤ"
 
-#: kolf.cpp:74
+#: kolf.cpp:73
 #, kde-format
 msgid "Bumper"
 msgstr "ਬੰਪਰ"
 
-#: kolf.cpp:97
+#: kolf.cpp:96
 #, kde-format
 msgid "Save &Course"
 msgstr "ਕੋਰਸ ਸੰਭਾਲੋ(&C)"
 
-#: kolf.cpp:99
+#: kolf.cpp:98
 #, kde-format
 msgid "Save &Course As..."
 msgstr "ਕੋਰਸ ਇੰਞ ਸੰਭਾਲੋ(&C)..."
 
-#: kolf.cpp:102
+#: kolf.cpp:101
 #, kde-format
 msgid "&Save Game"
 msgstr "ਖੇਡ ਸੰਭਾਲੋ(&S)"
 
-#: kolf.cpp:105
+#: kolf.cpp:104
 #, kde-format
 msgid "&Save Game As..."
 msgstr "ਖੇਡ ਇੰਞ ਸੰਭਾਲੋ(&S)..."
 
-#: kolf.cpp:112
+#: kolf.cpp:111
 #, kde-format
 msgid "&Edit"
 msgstr "ਸੋਧ(&E)"
 
-#: kolf.cpp:118
+#: kolf.cpp:117
 #, kde-format
 msgid "&New"
 msgstr "ਨਵਾਂ(&N)"
 
-#: kolf.cpp:127
+#: kolf.cpp:126
 #, kde-format
 msgid "&Reset"
 msgstr "ਮੁੜ ਪਹਿਲਾਂ(&R)"
 
-#: kolf.cpp:132
+#: kolf.cpp:131
 #, kde-format
 msgid "&Undo Shot"
 msgstr "ਸ਼ਾਟ ਵਾਪਸ ਲਵੋ(&U)"
 
 #. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 #. Go
-#: kolf.cpp:136
+#: kolf.cpp:135
 #, kde-format
 msgid "Switch to Hole"
 msgstr "ਮੋਰੀ ਲਈ ਤਬਦੀਲ"
 
-#: kolf.cpp:141
+#: kolf.cpp:140
 #, kde-format
 msgid "&Next Hole"
 msgstr "ਅੱਗੇ ਮੋਰੀ(&N)"
 
-#: kolf.cpp:146
+#: kolf.cpp:145
 #, kde-format
 msgid "&Previous Hole"
 msgstr "ਪਿਛਲੀ ਮੋਰੀ(&P)"
 
-#: kolf.cpp:151
+#: kolf.cpp:150
 #, kde-format
 msgid "&First Hole"
 msgstr "ਪਹਿਲੀਂ ਮੋਰੀ(&F)"
 
-#: kolf.cpp:155
+#: kolf.cpp:154
 #, kde-format
 msgid "&Last Hole"
 msgstr "ਆਖਰੀ ਮੋਰੀ(&L)"
 
-#: kolf.cpp:160
+#: kolf.cpp:159
 #, kde-format
 msgid "&Random Hole"
 msgstr "ਰਲਵੀ ਮੋਰੀ(&R)"
 
-#: kolf.cpp:164
+#: kolf.cpp:163
 #, kde-format
 msgid "Enable &Mouse for Moving Putter"
 msgstr ""
 
-#: kolf.cpp:171
+#: kolf.cpp:170
 #, kde-format
 msgid "Enable &Advanced Putting"
 msgstr ""
 
-#: kolf.cpp:177
+#: kolf.cpp:176
 #, kde-format
 msgid "Show &Info"
 msgstr "ਜਾਣਕਾਰੀ ਵੇਖਾਓ(&I)"
 
-#: kolf.cpp:184
+#: kolf.cpp:183
 #, kde-format
 msgid "Show Putter &Guideline"
 msgstr ""
 
-#: kolf.cpp:190
+#: kolf.cpp:189
 #, kde-format
 msgid "Enable All Dialog Boxes"
 msgstr "ਸਭ ਵਾਰਤਾਲਾਪ ਬਕਸੇ ਯੋਗ"
 
-#: kolf.cpp:194
+#: kolf.cpp:193
 #, kde-format
 msgid "Play &Sounds"
 msgstr "ਧੁਨੀ ਚਲਾਓ(&S)"
 
-#: kolf.cpp:201
+#: kolf.cpp:200
 #, fuzzy, kde-format
 #| msgid "&About Course"
 msgid "&About Course..."
 msgstr "ਕੋਰਸ ਬਾਰੇ(&A)"
 
-#: kolf.cpp:204
+#: kolf.cpp:203
 #, kde-format
 msgid "&Tutorial"
 msgstr "ਸਿੱਖਿਆ ਪਾਠ(&T)"
 
-#: kolf.cpp:454 kolf.cpp:498 kolf.cpp:525 newgame.cpp:250 scoreboard.cpp:27
+#: kolf.cpp:453 kolf.cpp:497 kolf.cpp:524 newgame.cpp:250 scoreboard.cpp:27
 #, kde-format
 msgid "Par"
 msgstr "ਪਾਰ "
 
-#: kolf.cpp:485
+#: kolf.cpp:484
 #, kde-format
 msgid " and "
 msgstr " ਅਤੇ "
 
-#: kolf.cpp:486
+#: kolf.cpp:485
 #, kde-format
 msgid "%1 tied"
 msgstr "%1 ਨਾਲ ਬਰਾਬਰ"
 
-#: kolf.cpp:489
+#: kolf.cpp:488
 #, kde-format
 msgid "%1 won!"
 msgstr "%1 ਜਿੱਤ ਗਿਆ!"
 
-#: kolf.cpp:503 kolf.cpp:515 kolf.cpp:530 kolf.cpp:531 newgame.cpp:251
+#: kolf.cpp:502 kolf.cpp:514 kolf.cpp:529 kolf.cpp:530 newgame.cpp:251
 #: newgame.cpp:252
 #, kde-format
 msgid "High Scores for %1"
 msgstr "%1 ਲਈ ਉੱਚ ਸਕੋਰ"
 
-#: kolf.cpp:570
+#: kolf.cpp:569
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Saved Game"
 msgctxt "@title:window"
 msgid "Pick Saved Game to Save To"
 msgstr "ਕੋਲਫ ਸੰਭਾਲੀ ਖੇਡ ਚੁਣੋ"
 
-#: kolf.cpp:608
+#: kolf.cpp:607
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Saved Game"
 msgctxt "@title:window"
 msgid "Pick Kolf Saved Game"
 msgstr "ਕੋਲਫ ਸੰਭਾਲੀ ਖੇਡ ਚੁਣੋ"
 
-#: kolf.cpp:656
+#: kolf.cpp:655
 #, kde-format
 msgid "%1's turn"
 msgstr "%1 ਦੀ ਵਾਰੀ"
 
-#: kolf.cpp:728
+#: kolf.cpp:727
 #, kde-format
 msgid "%1's score has reached the maximum for this hole."
 msgstr "%1 ਦਾ ਸਕੋਰ ਇਸ ਮੋਰੀ ਲਈ ਵੱਧ ਤੋਂ ਵੱਧ ਸਕੋਰ ਦੇ ਨੇੜੇ ਅੱਪੜ ਗਿਆ ਹੈ।"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-10 01:46+0000\n"
+"POT-Creation-Date: 2023-12-28 01:32+0000\n"
 "PO-Revision-Date: 2007-07-08 10:29+0330\n"
 "Last-Translator: Nazanin Kazemi <kazemi@itland.ir>\n"
 "Language-Team: Persian <kde-i18n-fa@kde.org>\n"
@@ -164,7 +164,7 @@ msgstr "تغییرات ذخیره‌نشده"
 msgid "Save &Later"
 msgstr " &بعداً ذخیره شود‌"
 
-#: game.cpp:2165 kolf.cpp:552
+#: game.cpp:2165 kolf.cpp:551
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Course to Save To"
 msgctxt "@title:window"
@@ -176,220 +176,220 @@ msgstr "دوره Pick Kolf برای ذخیره در"
 msgid "&Do not ask again"
 msgstr "دوباره سؤال &نشود‌"
 
-#: kolf.cpp:64
+#: kolf.cpp:63
 #, kde-format
 msgid "Slope"
 msgstr "شیب"
 
-#: kolf.cpp:65
+#: kolf.cpp:64
 #, kde-format
 msgid "Puddle"
 msgstr "گودال"
 
-#: kolf.cpp:66
+#: kolf.cpp:65
 #, kde-format
 msgid "Wall"
 msgstr "دیوار"
 
-#: kolf.cpp:67
+#: kolf.cpp:66
 #, kde-format
 msgid "Cup"
 msgstr "جام"
 
-#: kolf.cpp:68
+#: kolf.cpp:67
 #, kde-format
 msgid "Sand"
 msgstr "شن و ماسه"
 
-#: kolf.cpp:69
+#: kolf.cpp:68
 #, kde-format
 msgid "Windmill"
 msgstr "اشیای بادی"
 
-#: kolf.cpp:70
+#: kolf.cpp:69
 #, kde-format
 msgid "Black Hole"
 msgstr "سیاه‌چال"
 
-#: kolf.cpp:71
+#: kolf.cpp:70
 #, kde-format
 msgid "Floater"
 msgstr "شناور"
 
-#: kolf.cpp:72
+#: kolf.cpp:71
 #, kde-format
 msgid "Bridge"
 msgstr "پل"
 
-#: kolf.cpp:73
+#: kolf.cpp:72
 #, kde-format
 msgid "Sign"
 msgstr "علامت"
 
-#: kolf.cpp:74
+#: kolf.cpp:73
 #, kde-format
 msgid "Bumper"
 msgstr "ضرب‌خور"
 
-#: kolf.cpp:97
+#: kolf.cpp:96
 #, kde-format
 msgid "Save &Course"
 msgstr "ذخیره &دوره‌"
 
-#: kolf.cpp:99
+#: kolf.cpp:98
 #, kde-format
 msgid "Save &Course As..."
 msgstr "ذخیره &دوره به عنوان...‌"
 
-#: kolf.cpp:102
+#: kolf.cpp:101
 #, kde-format
 msgid "&Save Game"
 msgstr "&ذخیره بازی‌"
 
-#: kolf.cpp:105
+#: kolf.cpp:104
 #, kde-format
 msgid "&Save Game As..."
 msgstr "&ذخیره بازی به عنوان...‌"
 
-#: kolf.cpp:112
+#: kolf.cpp:111
 #, kde-format
 msgid "&Edit"
 msgstr "&ویرایش‌"
 
-#: kolf.cpp:118
+#: kolf.cpp:117
 #, kde-format
 msgid "&New"
 msgstr "&جدید‌"
 
-#: kolf.cpp:127
+#: kolf.cpp:126
 #, kde-format
 msgid "&Reset"
 msgstr "&بازنشانی‌"
 
-#: kolf.cpp:132
+#: kolf.cpp:131
 #, kde-format
 msgid "&Undo Shot"
 msgstr "&واگرد گلوله‌"
 
 #. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 #. Go
-#: kolf.cpp:136
+#: kolf.cpp:135
 #, kde-format
 msgid "Switch to Hole"
 msgstr "سودهی به گودال"
 
-#: kolf.cpp:141
+#: kolf.cpp:140
 #, kde-format
 msgid "&Next Hole"
 msgstr "گودال &بعدی‌"
 
-#: kolf.cpp:146
+#: kolf.cpp:145
 #, kde-format
 msgid "&Previous Hole"
 msgstr "گودال &قبلی‌"
 
-#: kolf.cpp:151
+#: kolf.cpp:150
 #, kde-format
 msgid "&First Hole"
 msgstr "&اولین گودال‌"
 
-#: kolf.cpp:155
+#: kolf.cpp:154
 #, kde-format
 msgid "&Last Hole"
 msgstr "&آخرین گودال‌"
 
-#: kolf.cpp:160
+#: kolf.cpp:159
 #, kde-format
 msgid "&Random Hole"
 msgstr "گودال &تصادفی‌"
 
-#: kolf.cpp:164
+#: kolf.cpp:163
 #, kde-format
 msgid "Enable &Mouse for Moving Putter"
 msgstr "فعال‌سازی &موشی برای حرکت چوگان‌"
 
-#: kolf.cpp:171
+#: kolf.cpp:170
 #, kde-format
 msgid "Enable &Advanced Putting"
 msgstr "فعال‌سازی گلف  &پیشرفته‌"
 
-#: kolf.cpp:177
+#: kolf.cpp:176
 #, kde-format
 msgid "Show &Info"
 msgstr "نمایش  &اطلاعات‌"
 
-#: kolf.cpp:184
+#: kolf.cpp:183
 #, kde-format
 msgid "Show Putter &Guideline"
 msgstr "نمایش  &رهنمون گلف‌"
 
-#: kolf.cpp:190
+#: kolf.cpp:189
 #, kde-format
 msgid "Enable All Dialog Boxes"
 msgstr "فعال‌سازی تمام جعبه‌های محاوره"
 
-#: kolf.cpp:194
+#: kolf.cpp:193
 #, kde-format
 msgid "Play &Sounds"
 msgstr "پخش &صداها‌"
 
-#: kolf.cpp:201
+#: kolf.cpp:200
 #, fuzzy, kde-format
 #| msgid "&About Course"
 msgid "&About Course..."
 msgstr "&در مورد دوره‌"
 
-#: kolf.cpp:204
+#: kolf.cpp:203
 #, kde-format
 msgid "&Tutorial"
 msgstr "&آموختار‌"
 
-#: kolf.cpp:454 kolf.cpp:498 kolf.cpp:525 newgame.cpp:250 scoreboard.cpp:27
+#: kolf.cpp:453 kolf.cpp:497 kolf.cpp:524 newgame.cpp:250 scoreboard.cpp:27
 #, kde-format
 msgid "Par"
 msgstr "تعادل"
 
-#: kolf.cpp:485
+#: kolf.cpp:484
 #, kde-format
 msgid " and "
 msgstr " و "
 
-#: kolf.cpp:486
+#: kolf.cpp:485
 #, kde-format
 msgid "%1 tied"
 msgstr " %1 مساوی با"
 
-#: kolf.cpp:489
+#: kolf.cpp:488
 #, kde-format
 msgid "%1 won!"
 msgstr " %1 برد!"
 
-#: kolf.cpp:503 kolf.cpp:515 kolf.cpp:530 kolf.cpp:531 newgame.cpp:251
+#: kolf.cpp:502 kolf.cpp:514 kolf.cpp:529 kolf.cpp:530 newgame.cpp:251
 #: newgame.cpp:252
 #, kde-format
 msgid "High Scores for %1"
 msgstr "امتیازهای بالا برای %1"
 
-#: kolf.cpp:570
+#: kolf.cpp:569
 #, fuzzy, kde-format
 #| msgid "Pick Saved Game to Save To"
 msgctxt "@title:window"
 msgid "Pick Saved Game to Save To"
 msgstr "برداشتن بازی ذخیره‌شده برای ذخیره در"
 
-#: kolf.cpp:608
+#: kolf.cpp:607
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Saved Game"
 msgctxt "@title:window"
 msgid "Pick Kolf Saved Game"
 msgstr "برداشتن بازی ذخیره‌شده Kolf"
 
-#: kolf.cpp:656
+#: kolf.cpp:655
 #, kde-format
 msgid "%1's turn"
 msgstr "نوبت %1"
 
-#: kolf.cpp:728
+#: kolf.cpp:727
 #, kde-format
 msgid "%1's score has reached the maximum for this hole."
 msgstr "برای این گودال، امتیاز %1 به بیشینه رسیده است."

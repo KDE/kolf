@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-10 01:46+0000\n"
+"POT-Creation-Date: 2023-12-28 01:32+0000\n"
 "PO-Revision-Date: 2023-12-23 08:00\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -159,7 +159,7 @@ msgstr "未保存的更改"
 msgid "Save &Later"
 msgstr "稍后保存(&L)"
 
-#: game.cpp:2165 kolf.cpp:552
+#: game.cpp:2165 kolf.cpp:551
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"
@@ -170,217 +170,217 @@ msgstr "选择要保存的Kolf 路线"
 msgid "&Do not ask again"
 msgstr "&不再询问"
 
-#: kolf.cpp:64
+#: kolf.cpp:63
 #, kde-format
 msgid "Slope"
 msgstr "斜率"
 
-#: kolf.cpp:65
+#: kolf.cpp:64
 #, kde-format
 msgid "Puddle"
 msgstr "水坑"
 
-#: kolf.cpp:66
+#: kolf.cpp:65
 #, kde-format
 msgid "Wall"
 msgstr "墙壁"
 
-#: kolf.cpp:67
+#: kolf.cpp:66
 #, kde-format
 msgid "Cup"
 msgstr "杯子"
 
-#: kolf.cpp:68
+#: kolf.cpp:67
 #, kde-format
 msgid "Sand"
 msgstr "沙尘"
 
-#: kolf.cpp:69
+#: kolf.cpp:68
 #, kde-format
 msgid "Windmill"
 msgstr "风车"
 
-#: kolf.cpp:70
+#: kolf.cpp:69
 #, kde-format
 msgid "Black Hole"
 msgstr "黑洞"
 
-#: kolf.cpp:71
+#: kolf.cpp:70
 #, kde-format
 msgid "Floater"
 msgstr "漂浮者"
 
-#: kolf.cpp:72
+#: kolf.cpp:71
 #, kde-format
 msgid "Bridge"
 msgstr "桥"
 
-#: kolf.cpp:73
+#: kolf.cpp:72
 #, kde-format
 msgid "Sign"
 msgstr "签名"
 
-#: kolf.cpp:74
+#: kolf.cpp:73
 #, kde-format
 msgid "Bumper"
 msgstr "反弹柱"
 
-#: kolf.cpp:97
+#: kolf.cpp:96
 #, kde-format
 msgid "Save &Course"
 msgstr "保存路线(&C)"
 
-#: kolf.cpp:99
+#: kolf.cpp:98
 #, kde-format
 msgid "Save &Course As..."
 msgstr "路线另存为(&C)..."
 
-#: kolf.cpp:102
+#: kolf.cpp:101
 #, kde-format
 msgid "&Save Game"
 msgstr "&保存游戏"
 
-#: kolf.cpp:105
+#: kolf.cpp:104
 #, kde-format
 msgid "&Save Game As..."
 msgstr "游戏另存为(&S)..."
 
-#: kolf.cpp:112
+#: kolf.cpp:111
 #, kde-format
 msgid "&Edit"
 msgstr "编辑(&E)"
 
-#: kolf.cpp:118
+#: kolf.cpp:117
 #, kde-format
 msgid "&New"
 msgstr "新游戏(&N)"
 
-#: kolf.cpp:127
+#: kolf.cpp:126
 #, kde-format
 msgid "&Reset"
 msgstr "重置(&R)"
 
-#: kolf.cpp:132
+#: kolf.cpp:131
 #, kde-format
 msgid "&Undo Shot"
 msgstr "撤销击球(&U)"
 
 #. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 #. Go
-#: kolf.cpp:136
+#: kolf.cpp:135
 #, kde-format
 msgid "Switch to Hole"
 msgstr "切换球洞"
 
-#: kolf.cpp:141
+#: kolf.cpp:140
 #, kde-format
 msgid "&Next Hole"
 msgstr "下一个球洞(&N)"
 
-#: kolf.cpp:146
+#: kolf.cpp:145
 #, kde-format
 msgid "&Previous Hole"
 msgstr "上一个球洞(&P)"
 
-#: kolf.cpp:151
+#: kolf.cpp:150
 #, kde-format
 msgid "&First Hole"
 msgstr "第一个球洞(&F)"
 
-#: kolf.cpp:155
+#: kolf.cpp:154
 #, kde-format
 msgid "&Last Hole"
 msgstr "最后的球洞(&L)"
 
-#: kolf.cpp:160
+#: kolf.cpp:159
 #, kde-format
 msgid "&Random Hole"
 msgstr "随机球洞(&R)"
 
-#: kolf.cpp:164
+#: kolf.cpp:163
 #, kde-format
 msgid "Enable &Mouse for Moving Putter"
 msgstr "启用鼠标来移动球推(&M)"
 
-#: kolf.cpp:171
+#: kolf.cpp:170
 #, kde-format
 msgid "Enable &Advanced Putting"
 msgstr "启用高级推球方式(&A)"
 
-#: kolf.cpp:177
+#: kolf.cpp:176
 #, kde-format
 msgid "Show &Info"
 msgstr "显示信息(&I)"
 
-#: kolf.cpp:184
+#: kolf.cpp:183
 #, kde-format
 msgid "Show Putter &Guideline"
 msgstr "显示球推指向线(&G)"
 
-#: kolf.cpp:190
+#: kolf.cpp:189
 #, kde-format
 msgid "Enable All Dialog Boxes"
 msgstr "启用所有对话框"
 
-#: kolf.cpp:194
+#: kolf.cpp:193
 #, kde-format
 msgid "Play &Sounds"
 msgstr "播放声音(&S)"
 
-#: kolf.cpp:201
+#: kolf.cpp:200
 #, kde-format
 msgid "&About Course..."
 msgstr "关于课程(&A)..."
 
-#: kolf.cpp:204
+#: kolf.cpp:203
 #, kde-format
 msgid "&Tutorial"
 msgstr "&教程"
 
-#: kolf.cpp:454 kolf.cpp:498 kolf.cpp:525 newgame.cpp:250 scoreboard.cpp:27
+#: kolf.cpp:453 kolf.cpp:497 kolf.cpp:524 newgame.cpp:250 scoreboard.cpp:27
 #, kde-format
 msgid "Par"
 msgstr "Par"
 
-#: kolf.cpp:485
+#: kolf.cpp:484
 #, kde-format
 msgid " and "
 msgstr "和"
 
-#: kolf.cpp:486
+#: kolf.cpp:485
 #, kde-format
 msgid "%1 tied"
 msgstr "%1 打平"
 
-#: kolf.cpp:489
+#: kolf.cpp:488
 #, kde-format
 msgid "%1 won!"
 msgstr "%1 韩元!"
 
-#: kolf.cpp:503 kolf.cpp:515 kolf.cpp:530 kolf.cpp:531 newgame.cpp:251
+#: kolf.cpp:502 kolf.cpp:514 kolf.cpp:529 kolf.cpp:530 newgame.cpp:251
 #: newgame.cpp:252
 #, kde-format
 msgid "High Scores for %1"
 msgstr "%1 的高分"
 
-#: kolf.cpp:570
+#: kolf.cpp:569
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Saved Game to Save To"
 msgstr "选择用于保存游戏的文件"
 
-#: kolf.cpp:608
+#: kolf.cpp:607
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Saved Game"
 msgstr "选择 Kolf 保存的游戏"
 
-#: kolf.cpp:656
+#: kolf.cpp:655
 #, kde-format
 msgid "%1's turn"
 msgstr "轮到 %1"
 
-#: kolf.cpp:728
+#: kolf.cpp:727
 #, kde-format
 msgid "%1's score has reached the maximum for this hole."
 msgstr "%1 的分数已经达到这个球洞的最高分。"

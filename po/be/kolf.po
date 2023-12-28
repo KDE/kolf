@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-10 01:46+0000\n"
+"POT-Creation-Date: 2023-12-28 01:32+0000\n"
 "PO-Revision-Date: 2007-10-28 14:34+0200\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@licei2.com>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -164,7 +164,7 @@ msgstr "Незахаваныя змены"
 msgid "Save &Later"
 msgstr "Захаваць пазней"
 
-#: game.cpp:2165 kolf.cpp:552
+#: game.cpp:2165 kolf.cpp:551
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"
@@ -175,219 +175,219 @@ msgstr "Вылучыць пляцоўку Kolf для захавання"
 msgid "&Do not ask again"
 msgstr "&Больш не пытацца"
 
-#: kolf.cpp:64
+#: kolf.cpp:63
 #, fuzzy, kde-format
 #| msgid "Slow"
 msgid "Slope"
 msgstr "Павольна"
 
-#: kolf.cpp:65
+#: kolf.cpp:64
 #, fuzzy, kde-format
 msgid "Puddle"
 msgstr "Лужына"
 
-#: kolf.cpp:66
+#: kolf.cpp:65
 #, fuzzy, kde-format
 msgid "Wall"
 msgstr "Сцяна"
 
-#: kolf.cpp:67
+#: kolf.cpp:66
 #, kde-format
 msgid "Cup"
 msgstr "Кубак"
 
-#: kolf.cpp:68
+#: kolf.cpp:67
 #, fuzzy, kde-format
 msgid "Sand"
 msgstr "Пясок"
 
-#: kolf.cpp:69
+#: kolf.cpp:68
 #, kde-format
 msgid "Windmill"
 msgstr "Млын"
 
-#: kolf.cpp:70
+#: kolf.cpp:69
 #, fuzzy, kde-format
 msgid "Black Hole"
 msgstr "Чорная дзюра"
 
-#: kolf.cpp:71
+#: kolf.cpp:70
 #, kde-format
 msgid "Floater"
 msgstr ""
 
-#: kolf.cpp:72
+#: kolf.cpp:71
 #, fuzzy, kde-format
 msgid "Bridge"
 msgstr "Мост"
 
-#: kolf.cpp:73
+#: kolf.cpp:72
 #, fuzzy, kde-format
 msgid "Sign"
 msgstr "Падпісаць"
 
-#: kolf.cpp:74
+#: kolf.cpp:73
 #, fuzzy, kde-format
 msgid "Bumper"
 msgstr "Адбівальнік"
 
-#: kolf.cpp:97
+#: kolf.cpp:96
 #, fuzzy, kde-format
 msgid "Save &Course"
 msgstr "Захаваць пляцоўку"
 
-#: kolf.cpp:99
+#: kolf.cpp:98
 #, fuzzy, kde-format
 msgid "Save &Course As..."
 msgstr "Захаваць пляцоўку як"
 
-#: kolf.cpp:102
+#: kolf.cpp:101
 #, fuzzy, kde-format
 msgid "&Save Game"
 msgstr "Захаваць гульню"
 
-#: kolf.cpp:105
+#: kolf.cpp:104
 #, fuzzy, kde-format
 msgid "&Save Game As..."
 msgstr "Захаваць гульню як"
 
-#: kolf.cpp:112
+#: kolf.cpp:111
 #, fuzzy, kde-format
 msgid "&Edit"
 msgstr "&Змяніць"
 
-#: kolf.cpp:118
+#: kolf.cpp:117
 #, fuzzy, kde-format
 msgid "&New"
 msgstr "&Новы"
 
-#: kolf.cpp:127
+#: kolf.cpp:126
 #, fuzzy, kde-format
 msgid "&Reset"
 msgstr "С&кінуць"
 
-#: kolf.cpp:132
+#: kolf.cpp:131
 #, fuzzy, kde-format
 msgid "&Undo Shot"
 msgstr "Адмяніць удар"
 
 #. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 #. Go
-#: kolf.cpp:136
+#: kolf.cpp:135
 #, fuzzy, kde-format
 msgid "Switch to Hole"
 msgstr "Пераключыцца на..."
 
-#: kolf.cpp:141
+#: kolf.cpp:140
 #, fuzzy, kde-format
 msgid "&Next Hole"
 msgstr "Наступная лунка"
 
-#: kolf.cpp:146
+#: kolf.cpp:145
 #, fuzzy, kde-format
 msgid "&Previous Hole"
 msgstr "Папярэдняя лунка"
 
-#: kolf.cpp:151
+#: kolf.cpp:150
 #, fuzzy, kde-format
 msgid "&First Hole"
 msgstr "Першая лунка"
 
-#: kolf.cpp:155
+#: kolf.cpp:154
 #, fuzzy, kde-format
 msgid "&Last Hole"
 msgstr "Апошняя лунка"
 
-#: kolf.cpp:160
+#: kolf.cpp:159
 #, fuzzy, kde-format
 msgid "&Random Hole"
 msgstr "Выпадковая лунка"
 
-#: kolf.cpp:164
+#: kolf.cpp:163
 #, fuzzy, kde-format
 msgid "Enable &Mouse for Moving Putter"
 msgstr "Уключыць кіраванне мышшу"
 
-#: kolf.cpp:171
+#: kolf.cpp:170
 #, fuzzy, kde-format
 msgid "Enable &Advanced Putting"
 msgstr "Уключыць складаны ўдар"
 
-#: kolf.cpp:177
+#: kolf.cpp:176
 #, fuzzy, kde-format
 msgid "Show &Info"
 msgstr "Паказаць &інфармацыю"
 
-#: kolf.cpp:184
+#: kolf.cpp:183
 #, fuzzy, kde-format
 msgid "Show Putter &Guideline"
 msgstr "Паказаць накіравальную клюшкі"
 
-#: kolf.cpp:190
+#: kolf.cpp:189
 #, fuzzy, kde-format
 msgid "Enable All Dialog Boxes"
 msgstr "Уключыць усе дыялогі"
 
-#: kolf.cpp:194
+#: kolf.cpp:193
 #, fuzzy, kde-format
 msgid "Play &Sounds"
 msgstr "Гукі"
 
-#: kolf.cpp:201
+#: kolf.cpp:200
 #, fuzzy, kde-format
 #| msgid "&About Course"
 msgid "&About Course..."
 msgstr "Пра пляцоўку"
 
-#: kolf.cpp:204
+#: kolf.cpp:203
 #, fuzzy, kde-format
 msgid "&Tutorial"
 msgstr "Навучанне"
 
-#: kolf.cpp:454 kolf.cpp:498 kolf.cpp:525 newgame.cpp:250 scoreboard.cpp:27
+#: kolf.cpp:453 kolf.cpp:497 kolf.cpp:524 newgame.cpp:250 scoreboard.cpp:27
 #, fuzzy, kde-format
 msgid "Par"
 msgstr "Ачкі"
 
-#: kolf.cpp:485
+#: kolf.cpp:484
 #, fuzzy, kde-format
 msgid " and "
 msgstr " і "
 
-#: kolf.cpp:486
+#: kolf.cpp:485
 #, fuzzy, kde-format
 msgid "%1 tied"
 msgstr "%1 прайграў"
 
-#: kolf.cpp:489
+#: kolf.cpp:488
 #, fuzzy, kde-format
 msgid "%1 won!"
 msgstr "%1 выйграў!"
 
-#: kolf.cpp:503 kolf.cpp:515 kolf.cpp:530 kolf.cpp:531 newgame.cpp:251
+#: kolf.cpp:502 kolf.cpp:514 kolf.cpp:529 kolf.cpp:530 newgame.cpp:251
 #: newgame.cpp:252
 #, fuzzy, kde-format
 msgid "High Scores for %1"
 msgstr "Рэкорды для %1"
 
-#: kolf.cpp:570
+#: kolf.cpp:569
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Pick Saved Game to Save To"
 msgstr "Вылучыць гульню для захавання"
 
-#: kolf.cpp:608
+#: kolf.cpp:607
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Saved Game"
 msgstr "Вылучыць захаваную гульню"
 
-#: kolf.cpp:656
+#: kolf.cpp:655
 #, fuzzy, kde-format
 msgid "%1's turn"
 msgstr "Удар %1"
 
-#: kolf.cpp:728
+#: kolf.cpp:727
 #, fuzzy, kde-format
 msgid "%1's score has reached the maximum for this hole."
 msgstr "Рахунак %1 дасягнуў максімальна магчымага значэння для гэтай лункі."

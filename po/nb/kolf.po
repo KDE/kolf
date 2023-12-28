@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-10 01:46+0000\n"
+"POT-Creation-Date: 2023-12-28 01:32+0000\n"
 "PO-Revision-Date: 2010-11-15 14:03+0100\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -164,7 +164,7 @@ msgstr "Endringer som ikke er lagret"
 msgid "Save &Later"
 msgstr "&Lagre senere"
 
-#: game.cpp:2165 kolf.cpp:552
+#: game.cpp:2165 kolf.cpp:551
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"
@@ -175,217 +175,217 @@ msgstr ""
 msgid "&Do not ask again"
 msgstr "&Ikke spør igjen"
 
-#: kolf.cpp:64
+#: kolf.cpp:63
 #, kde-format
 msgid "Slope"
 msgstr "Helling"
 
-#: kolf.cpp:65
+#: kolf.cpp:64
 #, kde-format
 msgid "Puddle"
 msgstr "Pytt"
 
-#: kolf.cpp:66
+#: kolf.cpp:65
 #, kde-format
 msgid "Wall"
 msgstr "Vegg"
 
-#: kolf.cpp:67
+#: kolf.cpp:66
 #, kde-format
 msgid "Cup"
 msgstr "Kopp"
 
-#: kolf.cpp:68
+#: kolf.cpp:67
 #, kde-format
 msgid "Sand"
 msgstr "Sand"
 
-#: kolf.cpp:69
+#: kolf.cpp:68
 #, kde-format
 msgid "Windmill"
 msgstr "Vindmølle"
 
-#: kolf.cpp:70
+#: kolf.cpp:69
 #, kde-format
 msgid "Black Hole"
 msgstr "Svart hull"
 
-#: kolf.cpp:71
+#: kolf.cpp:70
 #, kde-format
 msgid "Floater"
 msgstr "Flyter"
 
-#: kolf.cpp:72
+#: kolf.cpp:71
 #, kde-format
 msgid "Bridge"
 msgstr "Bro"
 
-#: kolf.cpp:73
+#: kolf.cpp:72
 #, kde-format
 msgid "Sign"
 msgstr "Skilt"
 
-#: kolf.cpp:74
+#: kolf.cpp:73
 #, kde-format
 msgid "Bumper"
 msgstr "Sprettkant"
 
-#: kolf.cpp:97
+#: kolf.cpp:96
 #, kde-format
 msgid "Save &Course"
 msgstr "Lagre &runde"
 
-#: kolf.cpp:99
+#: kolf.cpp:98
 #, kde-format
 msgid "Save &Course As..."
 msgstr "Lagre runde &som …"
 
-#: kolf.cpp:102
+#: kolf.cpp:101
 #, kde-format
 msgid "&Save Game"
 msgstr "&Lagre spill"
 
-#: kolf.cpp:105
+#: kolf.cpp:104
 #, kde-format
 msgid "&Save Game As..."
 msgstr "Lagre spill &som …"
 
-#: kolf.cpp:112
+#: kolf.cpp:111
 #, kde-format
 msgid "&Edit"
 msgstr "&Rediger"
 
-#: kolf.cpp:118
+#: kolf.cpp:117
 #, kde-format
 msgid "&New"
 msgstr "&Ny"
 
-#: kolf.cpp:127
+#: kolf.cpp:126
 #, kde-format
 msgid "&Reset"
 msgstr "Til&bakestill"
 
-#: kolf.cpp:132
+#: kolf.cpp:131
 #, kde-format
 msgid "&Undo Shot"
 msgstr "&Angre slag"
 
 #. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 #. Go
-#: kolf.cpp:136
+#: kolf.cpp:135
 #, kde-format
 msgid "Switch to Hole"
 msgstr "Hopp til hull"
 
-#: kolf.cpp:141
+#: kolf.cpp:140
 #, kde-format
 msgid "&Next Hole"
 msgstr "N&este hull"
 
-#: kolf.cpp:146
+#: kolf.cpp:145
 #, kde-format
 msgid "&Previous Hole"
 msgstr "F&orrige hull"
 
-#: kolf.cpp:151
+#: kolf.cpp:150
 #, kde-format
 msgid "&First Hole"
 msgstr "&Første hull"
 
-#: kolf.cpp:155
+#: kolf.cpp:154
 #, kde-format
 msgid "&Last Hole"
 msgstr "&Siste hull"
 
-#: kolf.cpp:160
+#: kolf.cpp:159
 #, kde-format
 msgid "&Random Hole"
 msgstr "&Vilkårlig hull"
 
-#: kolf.cpp:164
+#: kolf.cpp:163
 #, kde-format
 msgid "Enable &Mouse for Moving Putter"
 msgstr "Slå på styring av slaget med &musa"
 
-#: kolf.cpp:171
+#: kolf.cpp:170
 #, kde-format
 msgid "Enable &Advanced Putting"
 msgstr "Slå på &avansert putting"
 
-#: kolf.cpp:177
+#: kolf.cpp:176
 #, kde-format
 msgid "Show &Info"
 msgstr "V&is info"
 
-#: kolf.cpp:184
+#: kolf.cpp:183
 #, kde-format
 msgid "Show Putter &Guideline"
 msgstr "Vis &hjelpelinjer for putting"
 
-#: kolf.cpp:190
+#: kolf.cpp:189
 #, kde-format
 msgid "Enable All Dialog Boxes"
 msgstr "Slå på alle meldingsvinduer"
 
-#: kolf.cpp:194
+#: kolf.cpp:193
 #, kde-format
 msgid "Play &Sounds"
 msgstr "Spill &lyder"
 
-#: kolf.cpp:201
+#: kolf.cpp:200
 #, kde-format
 msgid "&About Course..."
 msgstr ""
 
-#: kolf.cpp:204
+#: kolf.cpp:203
 #, kde-format
 msgid "&Tutorial"
 msgstr "&Øvelse"
 
-#: kolf.cpp:454 kolf.cpp:498 kolf.cpp:525 newgame.cpp:250 scoreboard.cpp:27
+#: kolf.cpp:453 kolf.cpp:497 kolf.cpp:524 newgame.cpp:250 scoreboard.cpp:27
 #, kde-format
 msgid "Par"
 msgstr "Par"
 
-#: kolf.cpp:485
+#: kolf.cpp:484
 #, kde-format
 msgid " and "
 msgstr " og"
 
-#: kolf.cpp:486
+#: kolf.cpp:485
 #, kde-format
 msgid "%1 tied"
 msgstr "%1 uavgjort"
 
-#: kolf.cpp:489
+#: kolf.cpp:488
 #, kde-format
 msgid "%1 won!"
 msgstr "%1 vunnet!"
 
-#: kolf.cpp:503 kolf.cpp:515 kolf.cpp:530 kolf.cpp:531 newgame.cpp:251
+#: kolf.cpp:502 kolf.cpp:514 kolf.cpp:529 kolf.cpp:530 newgame.cpp:251
 #: newgame.cpp:252
 #, kde-format
 msgid "High Scores for %1"
 msgstr "Resultater for %1"
 
-#: kolf.cpp:570
+#: kolf.cpp:569
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Saved Game to Save To"
 msgstr ""
 
-#: kolf.cpp:608
+#: kolf.cpp:607
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Saved Game"
 msgstr ""
 
-#: kolf.cpp:656
+#: kolf.cpp:655
 #, kde-format
 msgid "%1's turn"
 msgstr "%1 sin tur"
 
-#: kolf.cpp:728
+#: kolf.cpp:727
 #, kde-format
 msgid "%1's score has reached the maximum for this hole."
 msgstr "%1 har nådd maksimum for dette hullet."
