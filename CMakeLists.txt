@@ -56,7 +56,7 @@ add_subdirectory(src)
 add_subdirectory(sounds)
 add_subdirectory(courses)
 add_subdirectory(pics)
-add_subdirectory(graphics)
+add_subdirectory(themes)
 add_subdirectory(doc)
 
 install(FILES intro tutorial.kolf tutorial.kolfgame  DESTINATION  ${KDE_INSTALL_DATADIR}/kolf)

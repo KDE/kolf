@@ -87,9 +87,9 @@ class KolfWorld : public b2World
 class KolfTheme : public KGameTheme
 {
 	public:
-		KolfTheme() : KGameTheme("pics/default_theme.desktop")
+		KolfTheme() : KGameTheme("themes/default.desktop")
 		{
-			setGraphicsPath(QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("pics/default_theme.svgz")));
+			setGraphicsPath(QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("themes/default.svgz")));
 		}
 };
 
