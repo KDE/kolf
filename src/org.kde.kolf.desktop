@@ -145,4 +145,3 @@ GenericName[x-test]=xxMiniature Golfxx
 GenericName[zh_CN]=迷你高尔夫
 GenericName[zh_TW]=迷你高爾夫
 Categories=Qt;KDE;Game;ArcadeGame;
-X-DBUS-ServiceName=org.kde.kolf
