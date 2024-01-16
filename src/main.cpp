@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
 
-    KLocalizedString::setApplicationDomain("kolf");
+    KLocalizedString::setApplicationDomain(QByteArrayLiteral("kolf"));
 
     KAboutData aboutData( QStringLiteral("kolf"),
 			  i18n("Kolf"),
