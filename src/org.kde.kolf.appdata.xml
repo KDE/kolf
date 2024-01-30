@@ -81,6 +81,7 @@
   <summary xml:lang="uk">Мініатюрний гольф</summary>
   <summary xml:lang="x-test">xxMiniature Golfxx</summary>
   <summary xml:lang="zh-CN">迷你高尔夫</summary>
+  <summary xml:lang="zh-TW">迷你高爾夫</summary>
   <description>
     <p>
       Kolf is a miniature golf game. The game is played from an overhead view, with a
@@ -112,6 +113,7 @@
     <p xml:lang="tr">Kolf minyatür bir golf oyunudur. Oyun, golf sopasını temsil eden kısa bir çubukla yukarıdan oynanır. Kolf, diğerlerinin yanı sıra su tehlikeleri, eğimler, kum tuzakları ve kara delikler (bükümler) gibi birçok farklı nesne türüne sahiptir.</p>
     <p xml:lang="uk">Kolf — мініатюрна гра у гольф. Під час гри гравець дивиться на майданчик згори. У Kolf передбачено різні типи об’єктів-перешкод, зокрема водяні пастки, схили, піскові пастки і чорні діри (тунелі).</p>
     <p xml:lang="x-test">xxKolf is a miniature golf game. The game is played from an overhead view, with a short bar representing the golf club. Kolf features many different types of objects, such water hazards, slopes, sand traps, and black holes (warps), among others.xx</p>
+    <p xml:lang="zh-TW">Kolf 是迷你高爾夫球的遊戲。遊戲以俯瞰視角進行，用一個短桿代表高爾夫球桿。Kolf 中有各種不同的障礙物，像是水障礙、斜坡、沙子陷阱、黑洞（傳送門）等等。</p>
     <p>Features:</p>
     <p xml:lang="ar">الميزات:</p>
     <p xml:lang="ast">Funciones:</p>
@@ -188,6 +190,7 @@
       <li xml:lang="uk">Режими одного та декількох гравців (до десяти учасників змагань)</li>
       <li xml:lang="x-test">xxSingle and Multi-player (up to ten players) modesxx</li>
       <li xml:lang="zh-CN">单人模式及多人 (最高十位玩家) 模式</li>
+      <li xml:lang="zh-TW">單人與多人模式（最多 10 名玩家）</li>
       <li>High scores table</li>
       <li xml:lang="ar">جدول أعلى النتائج</li>
       <li xml:lang="ca">Taula de puntuacions màximes</li>
@@ -224,6 +227,7 @@
       <li xml:lang="uk">Таблиця найкращих результатів</li>
       <li xml:lang="x-test">xxHigh scores tablexx</li>
       <li xml:lang="zh-CN">高分表</li>
+      <li xml:lang="zh-TW">高分表</li>
       <li>Dynamic courses</li>
       <li xml:lang="ar">ميادين متفاعلة</li>
       <li xml:lang="ca">Camps dinàmics</li>
@@ -260,6 +264,7 @@
       <li xml:lang="uk">Динамічні майданчики</li>
       <li xml:lang="x-test">xxDynamic coursesxx</li>
       <li xml:lang="zh-CN">动态高尔夫球场</li>
+      <li xml:lang="zh-TW">動態關卡</li>
       <li>Third-party courses</li>
       <li xml:lang="ar">ميادين أطراف ثالثة</li>
       <li xml:lang="ca">Camps de tercers</li>
@@ -296,6 +301,7 @@
       <li xml:lang="uk">Можливість використання сторонніх майданчиків</li>
       <li xml:lang="x-test">xxThird-party coursesxx</li>
       <li xml:lang="zh-CN">第三方高尔夫球场</li>
+      <li xml:lang="zh-TW">自訂關卡</li>
       <li>Course editor</li>
       <li xml:lang="ar">محرر الميدان</li>
       <li xml:lang="ca">Editor de camps</li>
@@ -332,6 +338,7 @@
       <li xml:lang="uk">Редактор майданчиків</li>
       <li xml:lang="x-test">xxCourse editorxx</li>
       <li xml:lang="zh-CN">高尔夫球场编辑器</li>
+      <li xml:lang="zh-TW">關卡編輯器</li>
     </ul>
   </description>
   <url type="homepage">https://apps.kde.org/kolf</url>
