@@ -779,15 +779,3 @@ msgstr "Text nou"
 #, kde-format
 msgid "Total"
 msgstr "Total"
-
-#~ msgid "Kolf saved course (*.kolf)"
-#~ msgstr "Camp desat del Kolf (*kolf)"
-
-#~ msgid "Kolf course (*.kolf)"
-#~ msgstr "Camp del Kolf (*kolf)"
-
-#~ msgid "Kolf saved game (*.kolfgame)"
-#~ msgstr "Joc desat del Kolf (*.kolfgame)"
-
-#~ msgid "Saved Kolf game (*.kolfgame);;All files (*.*)"
-#~ msgstr "Joc desat del Kolf (*.kolfgame);;Tots els fitxers (*.*)"
