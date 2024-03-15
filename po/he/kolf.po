@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-28 01:32+0000\n"
-"PO-Revision-Date: 2024-02-20 10:58+0200\n"
+"PO-Revision-Date: 2024-03-14 08:28+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -101,17 +101,17 @@ msgstr "שם המסלול"
 #: game.cpp:1423
 #, kde-format
 msgid "Drop Outside of Hazard"
-msgstr "הוצא מהמלכודת"
+msgstr "הוצאה מהמלכודת"
 
 #: game.cpp:1424
 #, kde-format
 msgid "Rehit From Last Location"
-msgstr "חבוט שוב מהמיקום האחרון"
+msgstr "חבטה חוזרת מהנקודה האחרון"
 
 #: game.cpp:1426
 #, kde-format
 msgid "What would you like to do for your next shot?"
-msgstr "מה ברצונך לעשות עם החבטה הבאה שלך?"
+msgstr "מה לעשות עם החבטה הבאה שלך?"
 
 #: game.cpp:1426
 #, kde-format
@@ -139,31 +139,29 @@ msgid "Created by %1"
 msgstr "נוצר על ידי %1"
 
 #: game.cpp:1757
-#, fuzzy, kde-format
-#| msgid "%1 holes"
+#, kde-format
 msgid "%1 hole"
 msgid_plural "%1 holes"
-msgstr[0] "%1 גומות"
-msgstr[1] "%1 גומות"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "גומה"
+msgstr[1] "שתי גומות"
+msgstr[2] "%1 גומות"
+msgstr[3] "%1 גומות"
 
 #: game.cpp:1758
-#, fuzzy, kde-format
-#| msgid "Course Information"
+#, kde-format
 msgctxt "@title:window"
 msgid "Course Information"
-msgstr "מידע מסלול"
+msgstr "פרטי מסלול"
 
 #: game.cpp:1876
 #, kde-format
 msgid "This hole uses the following plugins, which you do not have installed:"
-msgstr "גומה זו עושה שימוש בתוספים הבאים, שאינם מותקנים אצלך:"
+msgstr "גומה זו משתמשת בתוספים הבאים, שאינם מותקנים אצלך:"
 
 #: game.cpp:1989
 #, kde-format
 msgid "There are unsaved changes to current hole. Save them?"
-msgstr "הגומה הנוכחית מכילה שינויים שלא נשמרו. האם לשמור אותם?"
+msgstr "הגומה הנוכחית מכילה שינויים שלא נשמרו. לשמור אותם?"
 
 #: game.cpp:1990
 #, kde-format
@@ -173,25 +171,23 @@ msgstr "שינויים שלא נשמרו"
 #: game.cpp:1992
 #, kde-format
 msgid "Save &Later"
-msgstr "&שמור אחר כך"
+msgstr "ל&שמור אחר כך"
 
 #: game.cpp:2165 kolf.cpp:551
-#, fuzzy, kde-format
-#| msgid "Pick Kolf Course to Save To"
+#, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"
-msgstr "בחירת מסלול Kolf לשמירה"
+msgstr "נא לבחור מסלול Kolf לשמור אליו"
 
 #: kcomboboxdialog.cpp:60
 #, kde-format
 msgid "&Do not ask again"
-msgstr "אל &תשאל שוב"
+msgstr "לא ל&שאול שוב"
 
 #: kolf.cpp:63
-#, fuzzy, kde-format
-#| msgid "Slow"
+#, kde-format
 msgid "Slope"
-msgstr "איטי"
+msgstr "שיפוע"
 
 #: kolf.cpp:64
 #, kde-format
@@ -206,7 +202,7 @@ msgstr "קיר"
 #: kolf.cpp:66
 #, kde-format
 msgid "Cup"
-msgstr "גומה"
+msgstr "כוס"
 
 #: kolf.cpp:67
 #, kde-format
@@ -226,7 +222,7 @@ msgstr "חור שחור"
 #: kolf.cpp:70
 #, kde-format
 msgid "Floater"
-msgstr ""
+msgstr "מצוף"
 
 #: kolf.cpp:71
 #, kde-format
@@ -246,27 +242,27 @@ msgstr "פגוש"
 #: kolf.cpp:96
 #, kde-format
 msgid "Save &Course"
-msgstr "שמור &מסלול"
+msgstr "שמירת מ&סלול"
 
 #: kolf.cpp:98
 #, kde-format
 msgid "Save &Course As..."
-msgstr "שמירת מסלול &בשם..."
+msgstr "שמירת מסלול &בשם…"
 
 #: kolf.cpp:101
 #, kde-format
 msgid "&Save Game"
-msgstr "&שמור משחק"
+msgstr "&שמירת משחק"
 
 #: kolf.cpp:104
 #, kde-format
 msgid "&Save Game As..."
-msgstr "שמי&רת משחק בשם..."
+msgstr "שמי&רת משחק בשם…"
 
 #: kolf.cpp:111
 #, kde-format
 msgid "&Edit"
-msgstr ""
+msgstr "&עריכה"
 
 #: kolf.cpp:117
 #, kde-format
@@ -276,19 +272,19 @@ msgstr "&חדש"
 #: kolf.cpp:126
 #, kde-format
 msgid "&Reset"
-msgstr "&אפס"
+msgstr "&איפוס"
 
 #: kolf.cpp:131
 #, kde-format
 msgid "&Undo Shot"
-msgstr "&בטל חבטה"
+msgstr "ה&סגת חבטה"
 
 #. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 #. Go
 #: kolf.cpp:135
 #, kde-format
 msgid "Switch to Hole"
-msgstr "עבור לגומה"
+msgstr "מעבר לגומה"
 
 #: kolf.cpp:140
 #, kde-format
@@ -313,43 +309,42 @@ msgstr "הגומה ה&אחרונה"
 #: kolf.cpp:159
 #, kde-format
 msgid "&Random Hole"
-msgstr "גו&מה אקראית"
+msgstr "גומה א&קראית"
 
 #: kolf.cpp:163
 #, kde-format
 msgid "Enable &Mouse for Moving Putter"
-msgstr "&אפשר שימוש בעכבר להזזת המחבט"
+msgstr "ל&אפשר שימוש בעכבר להזזת המחבט"
 
 #: kolf.cpp:170
 #, kde-format
 msgid "Enable &Advanced Putting"
-msgstr "אפשר &חבטות מתקדמות"
+msgstr "לאפשר &חבטות מתקדמות"
 
 #: kolf.cpp:176
 #, kde-format
 msgid "Show &Info"
-msgstr "הצג &מידע"
+msgstr "הצגת &פרטים"
 
 #: kolf.cpp:183
 #, kde-format
 msgid "Show Putter &Guideline"
-msgstr "הצג קו &עזר לחבטה"
+msgstr "הצגת קו &עזר לחבטה"
 
 #: kolf.cpp:189
 #, kde-format
 msgid "Enable All Dialog Boxes"
-msgstr "אפשר את כל תיבות הדו־שיח"
+msgstr "לאפשר את כל החלוניות"
 
 #: kolf.cpp:193
 #, kde-format
 msgid "Play &Sounds"
-msgstr "&נגן צלילים"
+msgstr "&ניגון צלילים"
 
 #: kolf.cpp:200
-#, fuzzy, kde-format
-#| msgid "&About Course"
+#, kde-format
 msgid "&About Course..."
-msgstr "&אודות המסלול"
+msgstr "&על המסלול…"
 
 #: kolf.cpp:203
 #, kde-format
@@ -364,7 +359,7 @@ msgstr "תקן"
 #: kolf.cpp:484
 #, kde-format
 msgid " and "
-msgstr " ו־"
+msgstr " וגם"
 
 #: kolf.cpp:485
 #, kde-format
@@ -374,24 +369,22 @@ msgstr "%1 סיימו בתיקו"
 #: kolf.cpp:488
 #, kde-format
 msgid "%1 won!"
-msgstr "%1 ניצח!"
+msgstr "הניצחון לטובת %1!"
 
 #: kolf.cpp:502 kolf.cpp:514 kolf.cpp:529 kolf.cpp:530 newgame.cpp:251
 #: newgame.cpp:252
 #, kde-format
 msgid "High Scores for %1"
-msgstr "תוצאות שיא במסלול %1"
+msgstr "טבלת השיאים במסלול %1"
 
 #: kolf.cpp:569
-#, fuzzy, kde-format
-#| msgid "Pick Saved Game to Save To"
+#, kde-format
 msgctxt "@title:window"
 msgid "Pick Saved Game to Save To"
-msgstr "בחירת משחק שמור לשמירה"
+msgstr "בחירת משחק שמור לשמור אליו"
 
 #: kolf.cpp:607
-#, fuzzy, kde-format
-#| msgid "Pick Kolf Saved Game"
+#, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Saved Game"
 msgstr "בחירת משחק שמור של Kolf"
@@ -404,7 +397,7 @@ msgstr "התור של %1"
 #: kolf.cpp:727
 #, kde-format
 msgid "%1's score has reached the maximum for this hole."
-msgstr "הניקוד של %1 הגיע למקסימום האפשרי בגומה זו."
+msgstr "הניקוד של %1 הגיע לתקורה המרבית לגומה זו."
 
 #. i18n: ectx: Menu (hole)
 #: kolfui.rc:17
@@ -421,7 +414,7 @@ msgstr "מ&עבר"
 #: landscape.cpp:146
 #, kde-format
 msgid "Enable show/hide"
-msgstr "אפשר הופעה\\היעלמות"
+msgstr "לאפשר הצגה/הסתרה"
 
 #: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
 #, kde-format
@@ -436,12 +429,12 @@ msgstr "מהיר"
 #: landscape.cpp:238
 #, kde-format
 msgid "Vertical"
-msgstr ""
+msgstr "אנכי"
 
 #: landscape.cpp:239
 #, kde-format
 msgid "Horizontal"
-msgstr ""
+msgstr "אופקי"
 
 #: landscape.cpp:240
 #, kde-format
@@ -456,7 +449,7 @@ msgstr "אלכסוני הפוך"
 #: landscape.cpp:242
 #, kde-format
 msgid "Elliptic"
-msgstr ""
+msgstr "אליפטי"
 
 #: landscape.cpp:571
 #, kde-format
@@ -466,17 +459,17 @@ msgstr "כיוון הפוך"
 #: landscape.cpp:576
 #, kde-format
 msgid "Unmovable"
-msgstr "בלתי ניתן להזזה"
+msgstr "מקובע"
 
 #: landscape.cpp:578
 #, kde-format
 msgid "Whether or not this slope can be moved by other objects, like floaters."
-msgstr "האם מדרון זה ניתן להזזה על ידי עצמים אחרים, כמו משטחים צפים."
+msgstr "האם עצמים אחרים כמו מצופים יכולים להזיז את השיפוע הזה."
 
 #: landscape.cpp:582
 #, kde-format
 msgid "Grade:"
-msgstr "שיפוע:"
+msgstr "דרגה:"
 
 #: main.cpp:45
 #, kde-format
@@ -491,33 +484,32 @@ msgstr "משחק מיני־גולף עבור KDE"
 #: main.cpp:49
 #, kde-format
 msgid "(c) 2002-2010, Kolf developers"
-msgstr ""
+msgstr "(C) 2002‏-2010, מפתחי Kolf"
 
 #: main.cpp:53
 #, kde-format
 msgid "Stefan Majewsky"
-msgstr ""
+msgstr "סטפן מייבסקי"
 
 #: main.cpp:53
 #, kde-format
 msgid "Current maintainer"
-msgstr ""
+msgstr "מתחזק נוכחי"
 
 #: main.cpp:54
 #, kde-format
 msgid "Jason Katz-Brown"
-msgstr ""
+msgstr "ג׳ייסון כץ-בראון"
 
 #: main.cpp:54
-#, fuzzy, kde-format
-#| msgid "Main author"
+#, kde-format
 msgid "Former main author"
-msgstr "כותב ראשי"
+msgstr "יוצר ראשי לשעבר"
 
 #: main.cpp:55
 #, kde-format
 msgid "Niklas Knutsson"
-msgstr ""
+msgstr "ניקלאס קונטסן"
 
 #: main.cpp:55
 #, kde-format
@@ -527,7 +519,7 @@ msgstr "מצב חבטות מתקדמות"
 #: main.cpp:56
 #, kde-format
 msgid "Rik Hemsley"
-msgstr ""
+msgstr "ריק המזלי"
 
 #: main.cpp:56
 #, kde-format
@@ -537,17 +529,17 @@ msgstr "מסגרת מסביב למסלול"
 #: main.cpp:57
 #, kde-format
 msgid "Timo A. Hummel"
-msgstr ""
+msgstr "טימו א. האמל"
 
 #: main.cpp:57
 #, kde-format
 msgid "Some good sound effects"
-msgstr "אפקטי צליל טובים"
+msgstr "כמה אפקטי צליל טובים"
 
 #: main.cpp:59
 #, kde-format
 msgid "Rob Renaud"
-msgstr ""
+msgstr "רוב רינוד"
 
 #: main.cpp:59
 #, kde-format
@@ -557,54 +549,52 @@ msgstr "עזרה עם קפיצה מקירות"
 #: main.cpp:60
 #, kde-format
 msgid "Aaron Seigo"
-msgstr ""
+msgstr "אהרון סייגו"
 
 #: main.cpp:60
 #, kde-format
 msgid "Suggestions, bug reports"
-msgstr "הצעות, דיווחים על באגים"
+msgstr "הצעות, דיווחים על תקלות"
 
 #: main.cpp:61
 #, kde-format
 msgid "Erin Catto"
-msgstr ""
+msgstr "ארין קאטו"
 
 #: main.cpp:61
 #, kde-format
 msgid "Developer of Box2D physics engine"
-msgstr ""
+msgstr "מפתח מנוע הפיזיקה Box2D"
 
 #: main.cpp:62
 #, kde-format
 msgid "Ryan Cumming"
-msgstr ""
+msgstr "ראיין קאמינג"
 
 #: main.cpp:62
-#, fuzzy, kde-format
-#| msgid "Vector class"
+#, kde-format
 msgid "Vector class (Kolf 1)"
-msgstr "מחלקת וקטורים"
+msgstr "מחלקת וקטורים (Kolf 1)"
 
 #: main.cpp:63
 #, kde-format
 msgid "Daniel Matza-Brown"
-msgstr ""
+msgstr "דניאל מאצה-בראון"
 
 #: main.cpp:63
-#, fuzzy, kde-format
-#| msgid "Working wall-bouncing algorithm"
+#, kde-format
 msgid "Working wall-bouncing algorithm (Kolf 1)"
-msgstr "אלגוריתם קפיצה מקירות שפועל"
+msgstr "אלגוריתם עובד לחזרה בקפיצה מקירות (Kolf 1)"
 
 #: main.cpp:71
 #, kde-format
 msgid "File"
-msgstr ""
+msgstr "קובץ"
 
 #: main.cpp:72
 #, kde-format
 msgid "Print course information and exit"
-msgstr "הצג מידע לגבי מסלול וצא"
+msgstr "הצגת מידע לגבי מסלול ולצאת"
 
 #: main.cpp:90 newgame.cpp:242
 #, kde-format
@@ -627,10 +617,10 @@ msgid "Course %1 does not exist."
 msgstr "המסלול %1 לא קיים."
 
 #: newgame.cpp:40
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "New Game"
-msgstr "&שמור משחק"
+msgstr "משחק חדש"
 
 #: newgame.cpp:56
 #, kde-format
@@ -655,12 +645,12 @@ msgstr "בחירת מסלול למשחק"
 #: newgame.cpp:135
 #, kde-format
 msgid "Create New"
-msgstr "צור מסלול חדש"
+msgstr "יצירת מסלול חדש"
 
 #: newgame.cpp:136
 #, kde-format
 msgid "You"
-msgstr "אתה"
+msgstr "אני"
 
 #: newgame.cpp:162
 #, kde-format
@@ -670,17 +660,17 @@ msgstr "תוצאות שיא"
 #: newgame.cpp:172
 #, kde-format
 msgid "Add..."
-msgstr "הוספה..."
+msgstr "הוספה…"
 
 #: newgame.cpp:176 newgame.cpp:365
 #, kde-format
 msgid "Remove"
-msgstr ""
+msgstr "הסרה"
 
 #: newgame.cpp:186
-#, fuzzy, kde-format
+#, kde-format
 msgid "Options"
-msgstr "אפשרויות משחק"
+msgstr "אפשרויות"
 
 #: newgame.cpp:187
 #, kde-format
@@ -690,7 +680,7 @@ msgstr "אפשרויות משחק"
 #: newgame.cpp:192
 #, kde-format
 msgid "&Strict mode"
-msgstr "&מצב מחמיר"
+msgstr "מצב &נוקשה"
 
 #: newgame.cpp:196
 #, kde-format
@@ -698,8 +688,8 @@ msgid ""
 "In strict mode, undo, editing, and switching holes is not allowed. This is "
 "generally for competition. Only in strict mode are highscores kept."
 msgstr ""
-"במצב מחמיר חל איסור על ביטולים, עריכה, ומעבר בין גומות. מצב זה מיועד בעיקר "
-"לתחרויות. רק במצב זה נשמרות תוצאות השיא."
+"במצב נוקשה אסור לבטל, לערוך או לעבור בין גומות. מצב זה מיועד בעיקר לתחרויות. "
+"רק במצב הזה התוצאות נשמרות לטבלת השיאים."
 
 #: newgame.cpp:243
 #, kde-format
@@ -712,8 +702,7 @@ msgid "%1 Holes"
 msgstr "%1 גומות"
 
 #: newgame.cpp:282
-#, fuzzy, kde-format
-#| msgid "Pick Kolf Course"
+#, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course"
 msgstr "בחירת מסלול Kolf"
@@ -726,17 +715,16 @@ msgstr "המסלול הנבחר כבר נמצא ברשימת המסלולים."
 #: newgame.cpp:323
 #, kde-format
 msgid "Player %1"
-msgstr "שחקן %1"
+msgstr "שחקן/נית %1"
 
 #: objects.cpp:244
-#, fuzzy, kde-format
-#| msgid "degrees"
+#, kde-format
 msgid " degree"
 msgid_plural " degrees"
-msgstr[0] "מעלות"
-msgstr[1] "מעלות"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] " מעלה"
+msgstr[1] " מעלות"
+msgstr[2] " מעלות"
+msgstr[3] " מעלות"
 
 #: objects.cpp:247
 #, kde-format
@@ -746,7 +734,7 @@ msgstr "זווית יציאת הכדור:"
 #: objects.cpp:267
 #, kde-format
 msgid "Minimum exit speed:"
-msgstr "מהירות יציאה מינימלית:"
+msgstr "מהירות יציאה מזערית:"
 
 #: objects.cpp:288
 #, kde-format
@@ -755,7 +743,7 @@ msgstr "מהירות יציאה מרבית:"
 
 #: obstacles.cpp:412
 msgid "&Top"
-msgstr "&למעלה"
+msgstr "למ&עלה"
 
 #: obstacles.cpp:412
 msgid "&Left"
@@ -767,7 +755,7 @@ msgstr "מ&ימין"
 
 #: obstacles.cpp:412
 msgid "&Bottom"
-msgstr ""
+msgstr "&תחתון"
 
 #: obstacles.cpp:421
 #, kde-format
@@ -797,7 +785,7 @@ msgstr "טקסט חדש"
 #: scoreboard.cpp:28
 #, kde-format
 msgid "Total"
-msgstr "סך הכל"
+msgstr "סך הכול"
 
 #~ msgid "Circular"
 #~ msgstr "מעגלי"
