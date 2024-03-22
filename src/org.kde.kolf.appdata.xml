@@ -20,6 +20,7 @@
   <name xml:lang="fi">Kolf</name>
   <name xml:lang="fr">Kolf</name>
   <name xml:lang="gl">Kolf</name>
+  <name xml:lang="hu">Kolf</name>
   <name xml:lang="ia">Kolf </name>
   <name xml:lang="id">Kolf</name>
   <name xml:lang="it">Kolf</name>
@@ -59,6 +60,7 @@
   <summary xml:lang="fi">Pienoisgolf</summary>
   <summary xml:lang="fr">Golf miniature</summary>
   <summary xml:lang="gl">Golf en miniatura.</summary>
+  <summary xml:lang="hu">Minigolf</summary>
   <summary xml:lang="id">Golf Miniatur</summary>
   <summary xml:lang="it">Golf in miniatura</summary>
   <summary xml:lang="ka">მინიატურული გოლფი</summary>
@@ -98,6 +100,7 @@
     <p xml:lang="fi">Kolf on pienoisgolfpeli. Peliä pelataan yläilmanäkymästä, missä golfmailaa esittää lyhyt palkki. Kolfissa on monenlaisia kohteita kuten rinteitä, vesi- ja hiekkaesteitä sekä mustia aukkoja (”poimuja”) yms.</p>
     <p xml:lang="fr">Kolf est un jeu de golf miniature. Le jeu se joue depuis une vue en hauteur, avec une barre simple représentant le club de golf. Kolf propose de nombreux types d'obstacles différents, notamment des pièces d'eau, des pentes, des bunkers et des trous noirs (trous en aveugle).</p>
     <p xml:lang="gl">Kolf é un xogo de golf en miniatura. Xógase cunha vista aérea, cunha barra curta que representa o pau de golf. Kolf goza de moitos tipos distintos de obxectos, como obstáculos de auga, ramplas, trampas de area, e buratos negros (teleportación), entre outros.</p>
+    <p xml:lang="hu">A Kolf egy minigolf játék. A játékot felülnézetből játsszák, a golfütőt egy rövid sáv jelképezi. A Kolf számos különböző típusú objektumot tartalmaz, többek között vízakadályokat, lejtőket, homokcsapdákat és fekete lyukakat.</p>
     <p xml:lang="it">Kolf è un gioco di di golf in miniatura. Il gioco si gioca da un punto di vista sopraelevato, con una barra che rappresenta la mazza da golf. Kolf contiene molti tipi di oggetti diversi, tra cui ostacoli d'acqua, pendenze, trappole di sabbia e buchi neri (deformazioni).</p>
     <p xml:lang="ka">Kolf მინიატურული გოლფის თამაშია. თამაში ზემოდან ხდება, სადაც მოკლე ზოლი გოლფის ყვანჯია. Kolf-ს მრავალი სხვადასხვანაირი ობიექტი გააჩნია, მაგ: წყლის საშიშროებები, დაღმართები, ქვიშის ხაფანგები, შავი ხვრელები და სხვ.</p>
     <p xml:lang="ko">Kolf는 모형 골프 게임입니다. 게임은 오버헤드 뷰로 진행되며 골프 클럽은 막대기로 표시됩니다. Kolf는 물 해저드, 슬로프, 모래 트랩, 블랙홀 등 특수 객체를 지원합니다.</p>
@@ -130,6 +133,7 @@
     <p xml:lang="fi">Ominaisuudet:</p>
     <p xml:lang="fr">Fonctionnalités :</p>
     <p xml:lang="gl">Funcionalidades:</p>
+    <p xml:lang="hu">Funkciók:</p>
     <p xml:lang="ia">Characteristicas:</p>
     <p xml:lang="id">Fitur:</p>
     <p xml:lang="it">Caratteristiche:</p>
@@ -169,6 +173,7 @@
       <li xml:lang="fi">Yksin- ja moninpeli (aina kymmeneen pelaajaan asti)</li>
       <li xml:lang="fr">Modes solo et multi-joueurs (jusqu'à 10 joueurs)</li>
       <li xml:lang="gl">Modos de un e varios xogadores (ata 10).</li>
+      <li xml:lang="hu">Egy- és többjátékos módok, akár tíz játékosig</li>
       <li xml:lang="id">Mode Pemain Tunggal dan Multi (hingga sepuluh pemain)</li>
       <li xml:lang="it">Modalità a uno o più giocatori (fino a dieci)</li>
       <li xml:lang="ka">ერთი და მრავალმოთამაშიანი (10 მოთამაშემდე) რეჟიმები</li>
@@ -206,6 +211,7 @@
       <li xml:lang="fi">Ennätystaulukko</li>
       <li xml:lang="fr">Meilleurs scores</li>
       <li xml:lang="gl">Táboa de mellores puntuacións.</li>
+      <li xml:lang="hu">Dicsőségtábla</li>
       <li xml:lang="id">Tabel tingkat skor</li>
       <li xml:lang="it">Tabellone dei migliori punteggi</li>
       <li xml:lang="ka">უმაღლესი ქულების ცხრილი</li>
@@ -243,6 +249,7 @@
       <li xml:lang="fi">Dynaamiset kentät</li>
       <li xml:lang="fr">Parcours dynamiques</li>
       <li xml:lang="gl">Campos dinámicos</li>
+      <li xml:lang="hu">Dinamikus pályák</li>
       <li xml:lang="id">Haluan dinamis</li>
       <li xml:lang="it">Percorsi dinamici</li>
       <li xml:lang="ka">დინამიკური კურსები</li>
@@ -280,6 +287,7 @@
       <li xml:lang="fi">Kolmannen osapuolen kentät</li>
       <li xml:lang="fr">Parcours téléchargeables</li>
       <li xml:lang="gl">Campos de terceiros</li>
+      <li xml:lang="hu">Harmadik féltől származó pályák</li>
       <li xml:lang="id">Haluan pihak ketiga</li>
       <li xml:lang="it">Percorsi di terze parti</li>
       <li xml:lang="ka">მესამე პირის კურსები</li>
@@ -317,6 +325,7 @@
       <li xml:lang="fi">Kenttien muokkaus</li>
       <li xml:lang="fr">Éditeur de parcours</li>
       <li xml:lang="gl">Editor de campos</li>
+      <li xml:lang="hu">Pályaszerkesztő</li>
       <li xml:lang="id">Pengedit Haluan</li>
       <li xml:lang="it">Editor dei percorsi</li>
       <li xml:lang="ka">კურსის რედაქტორი</li>
@@ -362,6 +371,7 @@
       <caption xml:lang="fi">Kolfin alkunäkymä</caption>
       <caption xml:lang="fr">Écran d'ouverture de Kolf</caption>
       <caption xml:lang="gl">Pantalla inicial de Kolf.</caption>
+      <caption xml:lang="hu">A Kolf nyitóképernyője</caption>
       <caption xml:lang="id">Layar awal Kolf</caption>
       <caption xml:lang="it">Schermata iniziale di Kolf</caption>
       <caption xml:lang="ka">Kolf-ის პირველი ეკრანი</caption>
