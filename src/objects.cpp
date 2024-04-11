@@ -256,8 +256,8 @@ Kolf::BlackHoleConfig::BlackHoleConfig(BlackHole* blackHole, QWidget* parent)
 	QDoubleSpinBox* minSpinBox = new QDoubleSpinBox(this);
 	minSpinBox->setRange(0, 8);
 	minSpinBox->setSingleStep(0.01);
-	connect(minSlider, &QSlider::valueChanged, [minSlider, minSpinBox] {minSpinBox->setValue(minSlider->value()/100.0);});
-        connect(minSpinBox, &QDoubleSpinBox::valueChanged,
+	connect(minSlider, &QSlider::valueChanged, minSpinBox, [minSlider, minSpinBox] {minSpinBox->setValue(minSlider->value()/100.0);});
+        connect(minSpinBox, &QDoubleSpinBox::valueChanged, minSpinBox,
                 [minSlider, minSpinBox] {
                   minSlider->setValue(qRound(minSpinBox->value() * 100));
                 });
@@ -277,8 +277,8 @@ Kolf::BlackHoleConfig::BlackHoleConfig(BlackHole* blackHole, QWidget* parent)
 	QDoubleSpinBox* maxSpinBox = new QDoubleSpinBox(this);
 	maxSpinBox->setRange(0, 8);
 	maxSpinBox->setSingleStep(0.01);
-	connect(maxSlider, &QSlider::valueChanged, [maxSlider, maxSpinBox] {maxSpinBox->setValue(maxSlider->value()/100.0);});
-        connect(maxSpinBox, &QDoubleSpinBox::valueChanged,
+	connect(maxSlider, &QSlider::valueChanged, maxSpinBox, [maxSlider, maxSpinBox] {maxSpinBox->setValue(maxSlider->value()/100.0);});
+        connect(maxSpinBox, &QDoubleSpinBox::valueChanged, maxSpinBox,
                 [maxSlider, maxSpinBox] {
                   maxSlider->setValue(qRound(maxSpinBox->value() * 100));
                 });
