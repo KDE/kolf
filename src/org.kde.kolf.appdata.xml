@@ -27,6 +27,7 @@
   <name xml:lang="hu">Kolf</name>
   <name xml:lang="ia">Kolf </name>
   <name xml:lang="id">Kolf</name>
+  <name xml:lang="is">Kolf</name>
   <name xml:lang="it">Kolf</name>
   <name xml:lang="ka">Kolf</name>
   <name xml:lang="ko">Kolf</name>
@@ -67,6 +68,7 @@
   <summary xml:lang="he">מיני־גולף</summary>
   <summary xml:lang="hu">Minigolf</summary>
   <summary xml:lang="id">Golf Miniatur</summary>
+  <summary xml:lang="is">Mínígolf</summary>
   <summary xml:lang="it">Golf in miniatura</summary>
   <summary xml:lang="ka">მინიატურული გოლფი</summary>
   <summary xml:lang="ko">모형 골프</summary>
@@ -144,6 +146,7 @@
     <p xml:lang="hu">Funkciók:</p>
     <p xml:lang="ia">Characteristicas:</p>
     <p xml:lang="id">Fitur:</p>
+    <p xml:lang="is">Eiginleikar:</p>
     <p xml:lang="it">Caratteristiche:</p>
     <p xml:lang="ka">თვისებები:</p>
     <p xml:lang="ko">기능:</p>
@@ -184,6 +187,7 @@
       <li xml:lang="he">מצבים לשחקן יחיד ולכמה שחקנים (עד עשרה)</li>
       <li xml:lang="hu">Egy- és többjátékos módok, akár tíz játékosig</li>
       <li xml:lang="id">Mode Pemain Tunggal dan Multi (hingga sepuluh pemain)</li>
+      <li xml:lang="is">Einn spilari eða fleiri (allt að tíu spilarar)</li>
       <li xml:lang="it">Modalità a uno o più giocatori (fino a dieci)</li>
       <li xml:lang="ka">ერთი და მრავალმოთამაშიანი (10 მოთამაშემდე) რეჟიმები</li>
       <li xml:lang="ko">단일 및 최대 10명까지 다중 플레이어 모드</li>
@@ -223,6 +227,7 @@
       <li xml:lang="he">טבלת שיאים</li>
       <li xml:lang="hu">Dicsőségtábla</li>
       <li xml:lang="id">Tabel tingkat skor</li>
+      <li xml:lang="is">Stigatafla yfir hæstu skor</li>
       <li xml:lang="it">Tabellone dei migliori punteggi</li>
       <li xml:lang="ka">უმაღლესი ქულების ცხრილი</li>
       <li xml:lang="ko">최고 점수표</li>
@@ -262,6 +267,7 @@
       <li xml:lang="he">מסלולים דינמיים</li>
       <li xml:lang="hu">Dinamikus pályák</li>
       <li xml:lang="id">Haluan dinamis</li>
+      <li xml:lang="is">Breytilegar brautir</li>
       <li xml:lang="it">Percorsi dinamici</li>
       <li xml:lang="ka">დინამიკური კურსები</li>
       <li xml:lang="ko">동적 코스</li>
@@ -301,6 +307,7 @@
       <li xml:lang="he">מסלולי צד־שלישי</li>
       <li xml:lang="hu">Harmadik féltől származó pályák</li>
       <li xml:lang="id">Haluan pihak ketiga</li>
+      <li xml:lang="is">Brautir frá utanaðkomandi aðilum</li>
       <li xml:lang="it">Percorsi di terze parti</li>
       <li xml:lang="ka">მესამე პირის კურსები</li>
       <li xml:lang="ko">제 3자 개발 코스</li>
@@ -340,6 +347,7 @@
       <li xml:lang="he">עורך מסלולים</li>
       <li xml:lang="hu">Pályaszerkesztő</li>
       <li xml:lang="id">Pengedit Haluan</li>
+      <li xml:lang="is">Brautaritill</li>
       <li xml:lang="it">Editor dei percorsi</li>
       <li xml:lang="ka">კურსის რედაქტორი</li>
       <li xml:lang="ko">코스 편집기</li>
@@ -387,6 +395,7 @@
       <caption xml:lang="he">מסך הפתיחה של Kolf</caption>
       <caption xml:lang="hu">A Kolf nyitóképernyője</caption>
       <caption xml:lang="id">Layar awal Kolf</caption>
+      <caption xml:lang="is">Upphafsskjár Kolf</caption>
       <caption xml:lang="it">Schermata iniziale di Kolf</caption>
       <caption xml:lang="ka">Kolf-ის პირველი ეკრანი</caption>
       <caption xml:lang="ko">Kolf 초기 화면</caption>
