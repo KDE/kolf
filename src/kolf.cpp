@@ -93,28 +93,28 @@ void KolfWindow::setupActions()
 	KGameStandardAction::quit(this, &KolfWindow::close, actionCollection());
 
 	saveAction = actionCollection()->addAction(KStandardAction::Save, QStringLiteral("game_save"), this, &KolfWindow::save);
-	saveAction->setText(i18n("Save &Course"));
+	saveAction->setText(i18nc("@action", "Save &Course"));
 	saveAsAction = actionCollection()->addAction(KStandardAction::SaveAs, QStringLiteral("game_save_as"), this, &KolfWindow::saveAs);
-	saveAsAction->setText(i18n("Save &Course As..."));
+	saveAsAction->setText(i18nc("@action", "Save &Course As…"));
 
 	saveGameAction = actionCollection()->addAction(QStringLiteral("savegame"));
-	saveGameAction->setText(i18n("&Save Game"));
+	saveGameAction->setText(i18nc("@action", "&Save Game"));
 	connect(saveGameAction, &QAction::triggered, this, &KolfWindow::saveGame);
 	saveGameAsAction = actionCollection()->addAction(QStringLiteral("savegameas"));
-	saveGameAsAction->setText(i18n("&Save Game As..."));
+	saveGameAsAction->setText(i18nc("@action", "&Save Game As…"));
 	connect(saveGameAsAction, &QAction::triggered, this, &KolfWindow::saveGameAs);
 
 	loadGameAction = KGameStandardAction::load(this, &KolfWindow::loadGame, actionCollection());
 	highScoreAction = KGameStandardAction::highscores(this, &KolfWindow::showHighScores, actionCollection());
 
 	// Hole
-	editingAction = new KToggleAction(QIcon::fromTheme( QStringLiteral( "document-properties") ), i18n("&Edit"), this);
+	editingAction = new KToggleAction(QIcon::fromTheme( QStringLiteral( "document-properties") ), i18nc("@option:check", "&Edit"), this);
 	actionCollection()->addAction(QStringLiteral("editing"), editingAction);
 	connect(editingAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	KActionCollection::setDefaultShortcut(editingAction, Qt::CTRL|Qt::Key_E);
 	newHoleAction = actionCollection()->addAction(QStringLiteral("newhole"));
 	newHoleAction->setIcon(QIcon::fromTheme( QStringLiteral( "document-new" )));
-	newHoleAction->setText(i18n("&New"));
+	newHoleAction->setText(i18nc("@action", "&New"));
 	connect(newHoleAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	KActionCollection::setDefaultShortcut(newHoleAction, Qt::CTRL|Qt::SHIFT|Qt::Key_N);
 	clearHoleAction = actionCollection()->addAction(QStringLiteral("clearhole"));
@@ -123,84 +123,84 @@ void KolfWindow::setupActions()
 	connect(clearHoleAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	KActionCollection::setDefaultShortcut(clearHoleAction, Qt::CTRL|Qt::Key_Delete);
 	resetHoleAction = actionCollection()->addAction(QStringLiteral("resethole"));
-	resetHoleAction->setText(i18n("&Reset"));
+	resetHoleAction->setText(i18nc("@action", "&Reset"));
 	connect(resetHoleAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	KActionCollection::setDefaultShortcut(resetHoleAction, Qt::CTRL|Qt::Key_R);
 	undoShotAction = KStandardAction::undo(this, &KolfWindow::emptySlot, this);
 	actionCollection()->addAction(QStringLiteral("undoshot"), undoShotAction);
-	undoShotAction->setText(i18n("&Undo Shot"));
-	//replayShotAction = new QAction(i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+	undoShotAction->setText(i18nc("@action", "&Undo Shot"));
+	//replayShotAction = new QAction(i18nc("@action", "&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 
 	// Go
-	holeAction = new KSelectAction(i18n("Switch to Hole"), this);
+	holeAction = new KSelectAction(i18nc("@title:menu", "Switch to Hole"), this);
 	actionCollection()->addAction(QStringLiteral("switchhole"), holeAction);
 	connect(holeAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	nextAction = actionCollection()->addAction(QStringLiteral("nexthole"));
 	nextAction->setIcon(QIcon::fromTheme( QStringLiteral( "go-next" )));
-	nextAction->setText(i18n("&Next Hole"));
+	nextAction->setText(i18nc("@action", "&Next Hole"));
 	connect(nextAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	KActionCollection::setDefaultShortcuts(nextAction, KStandardShortcut::forward());
 	prevAction = actionCollection()->addAction(QStringLiteral("prevhole"));
 	prevAction->setIcon(QIcon::fromTheme( QStringLiteral( "go-previous" )));
-	prevAction->setText(i18n("&Previous Hole"));
+	prevAction->setText(i18nc("@action", "&Previous Hole"));
 	connect(prevAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	KActionCollection::setDefaultShortcuts(prevAction, KStandardShortcut::back());
 	firstAction = actionCollection()->addAction(QStringLiteral("firsthole"));
 	firstAction->setIcon(QIcon::fromTheme( QStringLiteral( "go-home" )));
-	firstAction->setText(i18n("&First Hole"));
+	firstAction->setText(i18nc("@action", "&First Hole"));
 	connect(firstAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	KActionCollection::setDefaultShortcuts(firstAction, KStandardShortcut::begin());
 	lastAction = actionCollection()->addAction(QStringLiteral("lasthole"));
-	lastAction->setText(i18n("&Last Hole"));
+	lastAction->setText(i18nc("@action", "&Last Hole"));
 	connect(lastAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	KActionCollection::setDefaultShortcut(lastAction, Qt::CTRL|Qt::SHIFT|Qt::Key_End); // why not KStandardShortcut::End (Ctrl+End)?
 	randAction = actionCollection()->addAction(QStringLiteral("randhole"));
 	randAction->setIcon(QIcon::fromTheme( QStringLiteral( "go-jump" )));
-	randAction->setText(i18n("&Random Hole"));
+	randAction->setText(i18nc("@action", "&Random Hole"));
 	connect(randAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 
 	// Settings
-	useMouseAction = new KToggleAction(i18n("Enable &Mouse for Moving Putter"), this);
+	useMouseAction = new KToggleAction(i18nc("@option:check", "Enable &Mouse for Moving Putter"), this);
 	actionCollection()->addAction(QStringLiteral("usemouse"), useMouseAction);
 	connect(useMouseAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	connect(useMouseAction, &QAction::toggled, this, &KolfWindow::useMouseChanged);
 	KConfigGroup configGroup(KSharedConfig::openConfig(), QStringLiteral("Settings"));
 	useMouseAction->setChecked(configGroup.readEntry("useMouse", true));
 
-	useAdvancedPuttingAction = new KToggleAction(i18n("Enable &Advanced Putting"), this);
+	useAdvancedPuttingAction = new KToggleAction(i18nc("@option:check", "Enable &Advanced Putting"), this);
 	actionCollection()->addAction(QStringLiteral("useadvancedputting"), useAdvancedPuttingAction);
 	connect(useAdvancedPuttingAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	connect(useAdvancedPuttingAction, &QAction::toggled, this, &KolfWindow::useAdvancedPuttingChanged);
 	useAdvancedPuttingAction->setChecked(configGroup.readEntry("useAdvancedPutting", false));
 
-	showInfoAction = new KToggleAction(QIcon::fromTheme( QStringLiteral( "help-about")), i18n("Show &Info"), this);
+	showInfoAction = new KToggleAction(QIcon::fromTheme( QStringLiteral( "help-about")), i18nc("@option:check", "Show &Info"), this);
 	actionCollection()->addAction(QStringLiteral("showinfo"), showInfoAction);
 	connect(showInfoAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	KActionCollection::setDefaultShortcut(showInfoAction, Qt::CTRL|Qt::Key_I);
 	connect(showInfoAction, &QAction::toggled, this, &KolfWindow::showInfoChanged);
 	showInfoAction->setChecked(configGroup.readEntry("showInfo", true));
 
-	showGuideLineAction = new KToggleAction(i18n("Show Putter &Guideline"), this);
+	showGuideLineAction = new KToggleAction(i18nc("@option:check", "Show Putter &Guideline"), this);
 	actionCollection()->addAction(QStringLiteral("showguideline"), showGuideLineAction);
 	connect(showGuideLineAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	connect(showGuideLineAction, &QAction::toggled, this, &KolfWindow::showGuideLineChanged);
 	showGuideLineAction->setChecked(configGroup.readEntry("showGuideLine", true));
 
-	KToggleAction *act = new KToggleAction(i18n("Enable All Dialog Boxes"), this);
+	auto *act = new KToggleAction(i18nc("@option:check", "Enable All Dialog Boxes"), this);
 	actionCollection()->addAction(QStringLiteral("enableAll"), act);
 	connect(act, &QAction::triggered, this, &KolfWindow::enableAllMessages);
 
-	soundAction = new KToggleAction(i18n("Play &Sounds"), this);
+	soundAction = new KToggleAction(i18nc("@option:check", "Play Sounds"), this);
 	actionCollection()->addAction(QStringLiteral("sound"), soundAction);
 	connect(soundAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	connect(soundAction, &QAction::toggled, this, &KolfWindow::soundChanged);
 	soundAction->setChecked(configGroup.readEntry("sound", true));
 
 	aboutAction = actionCollection()->addAction(QStringLiteral("aboutcourse"));
-	aboutAction->setText(i18n("&About Course..."));
+	aboutAction->setText(i18nc("@action", "&About Course"));
 	connect(aboutAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	tutorialAction = actionCollection()->addAction(QStringLiteral("tutorial"));
-	tutorialAction->setText(i18n("&Tutorial"));
+	tutorialAction->setText(i18nc("@action", "&Tutorial"));
 	connect(tutorialAction, &QAction::triggered, this, &KolfWindow::tutorial);
 
 	setupGUI();
@@ -481,7 +481,7 @@ void KolfWindow::gameOver()
 	{
 		if (names.count() > 1)
 		{
-			QString winners = names.join( i18n(" and " ));
+			QString winners = names.join( i18nc("@item:intext winners", " and " ));
 			KMessageBox::information(this, i18n("%1 tied", winners));
 		}
 		else

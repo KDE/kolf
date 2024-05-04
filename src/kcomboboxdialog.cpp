@@ -57,7 +57,7 @@ KComboBoxDialog::KComboBoxDialog( const QString &_text, const QStringList &_item
 
 	if (showDontAskAgain)
 	{
-		dontAskAgainCheckBox = new QCheckBox( i18n("&Do not ask again"), frame );
+		dontAskAgainCheckBox = new QCheckBox( i18nc("@option:check", "&Do not ask again"), frame );
 		topLayout->addWidget( dontAskAgainCheckBox, 1 );
 	}
 	else

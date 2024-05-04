@@ -260,14 +260,14 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 
 	QHBoxLayout *hlayout = new QHBoxLayout;
 	layout->addLayout( hlayout );
-	hlayout->addWidget(new QLabel(i18n("Course name: "), this));
+	hlayout->addWidget(new QLabel(i18nc("@label:textbox", "Course name:"), this));
 	KLineEdit *nameEdit = new KLineEdit(holeInfo->untranslatedName(), this);
 	hlayout->addWidget(nameEdit);
 	connect(nameEdit, &KLineEdit::textChanged, this, &HoleConfig::nameChanged);
 
 	hlayout = new QHBoxLayout;
 	layout->addLayout( hlayout );
-	hlayout->addWidget(new QLabel(i18n("Course author: "), this));
+	hlayout->addWidget(new QLabel(i18nc("@label:textbox", "Course author: "), this));
 	KLineEdit *authorEdit = new KLineEdit(holeInfo->author(), this);
 	hlayout->addWidget(authorEdit);
 	connect(authorEdit, &KLineEdit::textChanged, this, &HoleConfig::authorChanged);
@@ -276,7 +276,7 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
 
 	hlayout = new QHBoxLayout;
 	layout->addLayout( hlayout );
-	hlayout->addWidget(new QLabel(i18n("Par:"), this));
+	hlayout->addWidget(new QLabel(i18nc("@label:spinbox", "Par:"), this));
 	QSpinBox *par = new QSpinBox(this);
 	par->setRange( 1, 15 );
 	par->setSingleStep( 1 );
@@ -286,19 +286,19 @@ HoleConfig::HoleConfig(HoleInfo *holeInfo, QWidget *parent)
                 &HoleConfig::parChanged);
         hlayout->addStretch();
 
-	hlayout->addWidget(new QLabel(i18n("Maximum:"), this));
+	hlayout->addWidget(new QLabel(i18nc("@label:spinbox", "Maximum:"), this));
 	QSpinBox *maxstrokes = new QSpinBox(this);
 	maxstrokes->setRange( holeInfo->lowestMaxStrokes(), 30 );
 	maxstrokes->setSingleStep( 1 );
-	maxstrokes->setWhatsThis( i18n("Maximum number of strokes player can take on this hole."));
-	maxstrokes->setToolTip( i18n("Maximum number of strokes"));
-	maxstrokes->setSpecialValueText(i18n("Unlimited"));
+	maxstrokes->setWhatsThis(i18nc("@info:whatsthis", "Maximum number of strokes player can take on this hole."));
+	maxstrokes->setToolTip(i18nc("@info:tooltip", "Maximum number of strokes"));
+	maxstrokes->setSpecialValueText(i18nc("@item number of strokes", "Unlimited"));
 	maxstrokes->setValue(holeInfo->maxStrokes());
 	hlayout->addWidget(maxstrokes);
         connect(maxstrokes, &QSpinBox::valueChanged, this,
                 &HoleConfig::maxStrokesChanged);
 
-        QCheckBox *check = new QCheckBox(i18n("Show border walls"), this);
+        auto *check = new QCheckBox(i18nc("@option:check", "Show border walls"), this);
 	check->setChecked(holeInfo->borderWalls());
 	layout->addWidget(check);
 	connect(check, &QCheckBox::toggled, this, &HoleConfig::borderWallsChanged);
@@ -1420,10 +1420,10 @@ void KolfGame::shotDone()
 			ball->setPlaceOnGround(false);
 
 			QStringList options;
-			const QString placeOutside = i18n("Drop Outside of Hazard");
-			const QString rehit = i18n("Rehit From Last Location");
+			const QString placeOutside = i18nc("@item harzard action", "Drop Outside of Hazard");
+			const QString rehit = i18nc("@item harzard action", "Rehit From Last Location");
 			options << placeOutside << rehit;
-			const QString choice = KComboBoxDialog::getItem(i18n("What would you like to do for your next shot?"), i18n("%1 is in a Hazard", (*it).name()), options, placeOutside, QStringLiteral("hazardOptions"));
+			const QString choice = KComboBoxDialog::getItem(i18n("What would you like to do for your next shot?"), i18nc("@title:window", "%1 in a Hazard", (*it).name()), options, placeOutside, QStringLiteral("hazardOptions"));
 
 			if (choice == placeOutside)
 			{
@@ -1591,7 +1591,7 @@ void KolfGame::sayWhosGoing()
 {
 	if (players->count() >= 2)
 	{
-		KMessageBox::information(this, i18n("%1 will start off.", (*curPlayer).name()), i18n("New Hole"), QStringLiteral("newHole"));
+		KMessageBox::information(this, i18n("%1 will start off.", (*curPlayer).name()), i18nc("@title:window", "New Hole"), QStringLiteral("newHole"));
 	}
 }
 
@@ -1987,9 +1987,9 @@ bool KolfGame::askSave(bool noMoreChances)
 
 	int result = KMessageBox::warningTwoActionsCancel(this,
 						     i18n("There are unsaved changes to current hole. Save them?"),
-						     i18n("Unsaved Changes"),
+						     i18nc("@title:window", "Unsaved Changes"),
 						     KStandardGuiItem::save(),
-						     noMoreChances? KStandardGuiItem::discard() : KGuiItem(i18n("Save &Later")),
+						     noMoreChances? KStandardGuiItem::discard() : KGuiItem(i18nc("@action:button", "Save &Later")),
 						     KStandardGuiItem::cancel(),
 						     noMoreChances? QStringLiteral("DiscardAsk") : QStringLiteral("SaveAsk"));
 	switch (result)

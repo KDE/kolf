@@ -241,10 +241,10 @@ Kolf::BlackHoleConfig::BlackHoleConfig(BlackHole* blackHole, QWidget* parent)
 	KPluralHandlingSpinBox* deg = new KPluralHandlingSpinBox(this);
 	deg->setRange(0, 359);
 	deg->setSingleStep(10);
-	deg->setSuffix(ki18np(" degree", " degrees"));
+	deg->setSuffix(ki18ncp("@item:valuesuffix", " degree", " degrees"));
 	deg->setValue(m_blackHole->curExitDeg());
 	deg->setWrapping(true);
-	layout->addRow(i18n("Exiting ball angle:"), deg);
+	layout->addRow(i18nc("@label:spinbox", "Exiting ball angle:"), deg);
         connect(deg, &KPluralHandlingSpinBox::valueChanged,
                 this, &Kolf::BlackHoleConfig::degChanged);
 
@@ -264,7 +264,7 @@ Kolf::BlackHoleConfig::BlackHoleConfig(BlackHole* blackHole, QWidget* parent)
         QHBoxLayout *min = new QHBoxLayout;
 	min->addWidget(minSlider);
 	min->addWidget(minSpinBox);
-	layout->addRow(i18n("Minimum exit speed:"), min);
+	layout->addRow(i18nc("@label:spinbox", "Minimum exit speed:"), min);
 	minSpinBox->setValue(m_blackHole->minSpeed());
         connect(minSpinBox, &QDoubleSpinBox::valueChanged,
                 this, &Kolf::BlackHoleConfig::minChanged);
@@ -285,7 +285,7 @@ Kolf::BlackHoleConfig::BlackHoleConfig(BlackHole* blackHole, QWidget* parent)
         QHBoxLayout *max = new QHBoxLayout;
 	max->addWidget(maxSlider);
 	max->addWidget(maxSpinBox);
-	layout->addRow(i18n("Maximum exit speed:"), max);
+	layout->addRow(i18nc("@label:spinbox", "Maximum exit speed:"), max);
 	maxSpinBox->setValue(m_blackHole->maxSpeed());
         connect(maxSpinBox, &QDoubleSpinBox::valueChanged,
                 this, &Kolf::BlackHoleConfig::maxChanged);

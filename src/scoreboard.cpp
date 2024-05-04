@@ -24,8 +24,8 @@
 ScoreBoard::ScoreBoard(QWidget *parent)
 	: QTableWidget(1, 1, parent) 
 {
-	setVerticalHeaderItem(rowCount() -1,  new QTableWidgetItem(i18n("Par")));
-	setHorizontalHeaderItem(columnCount() -1, new QTableWidgetItem(i18n("Total")));
+	setVerticalHeaderItem(rowCount() -1,  new QTableWidgetItem(i18nc("@title:row", "Par")));
+	setHorizontalHeaderItem(columnCount() -1, new QTableWidgetItem(i18nc("@title:column", "Total")));
 
 	setFocusPolicy(Qt::NoFocus);
 	setEditTriggers(QAbstractItemView::NoEditTriggers);

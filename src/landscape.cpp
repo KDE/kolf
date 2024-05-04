@@ -143,16 +143,16 @@ Kolf::LandscapeConfig::LandscapeConfig(Kolf::LandscapeItem* item, QWidget* paren
 	: Config(parent)
 {
 	QVBoxLayout* vlayout = new QVBoxLayout(this);
-	QCheckBox* checkBox = new QCheckBox(i18n("Enable show/hide"), this);
+	auto *checkBox = new QCheckBox(i18nc("@option:check", "Enable show/hide"), this);
 	vlayout->addWidget(checkBox);
 
 	QHBoxLayout* hlayout = new QHBoxLayout;
 	vlayout->addLayout(hlayout);
-	QLabel* label1 = new QLabel(i18n("Slow"), this);
+	auto *label1 = new QLabel(i18nc("@item:inrange", "Slow"), this);
 	hlayout->addWidget(label1);
 	QSlider* slider = new QSlider(Qt::Horizontal, this);
 	hlayout->addWidget(slider);
-	QLabel* label2 = new QLabel(i18n("Fast"), this);
+	auto *label2 = new QLabel(i18nc("@item:inrange", "Fast"), this);
 	hlayout->addWidget(label2);
 
 	vlayout->addStretch();
@@ -568,18 +568,18 @@ Kolf::SlopeConfig::SlopeConfig(Kolf::Slope* slope, QWidget* parent)
                 &Kolf::Slope::setSlopeType);
         layout->addWidget(typeBox, 0, 0, 1, 2);
 
-	QCheckBox* reversed = new QCheckBox(i18n("Reverse direction"), this);
+	auto *reversed = new QCheckBox(i18nc("@option:check", "Reverse direction"), this);
 	reversed->setChecked(slope->isReversed());
 	connect(reversed, &QCheckBox::toggled, slope, &Kolf::Slope::setReversed);
 	layout->addWidget(reversed, 1, 0);
 
-	QCheckBox* stuck = new QCheckBox(i18n("Unmovable"), this);
+	auto *stuck = new QCheckBox(i18nc("@option:check", "Unmovable"), this);
 	stuck->setChecked(slope->isStuckOnGround());
-	stuck->setWhatsThis(i18n("Whether or not this slope can be moved by other objects, like floaters."));
+	stuck->setWhatsThis(i18nc("@info:whatsthis", "Whether or not this slope can be moved by other objects, like floaters."));
 	connect(stuck, &QCheckBox::toggled, slope, &Kolf::Slope::setStuckOnGround);
 	layout->addWidget(stuck, 1, 1);
 
-	layout->addWidget(new QLabel(i18n("Grade:"), this), 2, 0);
+	layout->addWidget(new QLabel(i18nc("@lable:spinbox", "Grade:"), this), 2, 0);
 
 	QDoubleSpinBox* grade = new QDoubleSpinBox(this);
 	grade->setRange(0, 8);

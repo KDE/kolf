@@ -408,8 +408,12 @@ Kolf::RectangleConfig::RectangleConfig(Kolf::RectangleItem* item, QWidget* paren
 	, m_wallCheckBoxes(Kolf::RectangleWallCount, nullptr)
 	, m_item(item)
 {
-    static const KLazyLocalizedString captions[] =
-        { kli18n("&Top"), kli18n("&Left"), kli18n("&Right"), kli18n("&Bottom") };
+    static const KLazyLocalizedString captions[Kolf::RectangleWallCount] = {
+	kli18nc("@option:check wall on", "&Top"),
+	kli18nc("@option:check wall on", "&Left"),
+	kli18nc("@option:check wall on", "&Right"),
+	kli18nc("@option:check wall on", "&Bottom"),
+    };
 	for (int i = 0; i < Kolf::RectangleWallCount; ++i)
 	{
         QCheckBox* checkBox = m_wallCheckBoxes[i] = new QCheckBox(captions[i].toString(), this);
@@ -418,7 +422,7 @@ Kolf::RectangleConfig::RectangleConfig(Kolf::RectangleItem* item, QWidget* paren
 		connect(checkBox, &QCheckBox::toggled, this, &Kolf::RectangleConfig::setWall);
 	}
 	connect(item, &Kolf::RectangleItem::wallChanged, this, &Kolf::RectangleConfig::wallChanged);
-	m_layout->addWidget(new QLabel(i18n("Walls on:")), 0, 0);
+	m_layout->addWidget(new QLabel(i18nc("@label:chooser", "Walls on:")), 0, 0);
 	m_layout->addWidget(m_wallCheckBoxes[0], 0, 1);
 	m_layout->addWidget(m_wallCheckBoxes[1], 1, 0);
 	m_layout->addWidget(m_wallCheckBoxes[2], 1, 2);
@@ -428,7 +432,7 @@ Kolf::RectangleConfig::RectangleConfig(Kolf::RectangleItem* item, QWidget* paren
 	Kolf::Sign* sign = qobject_cast<Kolf::Sign*>(item);
 	if (sign)
 	{
-		m_layout->addWidget(new QLabel(i18n("Sign HTML:")), 3, 0, 1, 3);
+		m_layout->addWidget(new QLabel(i18nc("@label:textbox", "Sign HTML:")), 3, 0, 1, 3);
 		KLineEdit* edit = new KLineEdit(sign->text(), this);
 		m_layout->addWidget(edit, 4, 0, 1, 3);
 		connect(edit, &KLineEdit::textChanged, sign, &Kolf::Sign::setText);
@@ -437,17 +441,17 @@ Kolf::RectangleConfig::RectangleConfig(Kolf::RectangleItem* item, QWidget* paren
 	Kolf::Windmill* windmill = qobject_cast<Kolf::Windmill*>(item);
 	if (windmill)
 	{
-		QCheckBox* checkBox = new QCheckBox(i18n("Windmill on top"), this);
+		QCheckBox* checkBox = new QCheckBox(i18nc("@option:check", "Windmill on top"), this);
 		m_layout->addWidget(checkBox, 4, 0, 1, 3);
 		checkBox->setChecked(windmill->guardAtTop());
 		connect(checkBox, &QCheckBox::toggled, windmill, &Kolf::Windmill::setGuardAtTop);
 		QHBoxLayout* hlayout = new QHBoxLayout;
 		m_layout->addLayout(hlayout, 5, 0, 1, 3);
-		QLabel* label1 = new QLabel(i18n("Slow"), this);
+		QLabel* label1 = new QLabel(i18nc("@item:inrange", "Slow"), this);
 		hlayout->addWidget(label1);
 		QSlider* slider = new QSlider(Qt::Horizontal, this);
 		hlayout->addWidget(slider);
-		QLabel* label2 = new QLabel(i18n("Fast"), this);
+		QLabel* label2 = new QLabel(i18nc("@item:inrange", "Fast"), this);
 		hlayout->addWidget(label2);
 		slider->setRange(1, 10);
 		slider->setPageStep(1);
@@ -458,14 +462,14 @@ Kolf::RectangleConfig::RectangleConfig(Kolf::RectangleItem* item, QWidget* paren
 	Kolf::Floater* floater = qobject_cast<Kolf::Floater*>(item);
 	if (floater)
 	{
-		m_layout->addWidget(new QLabel(i18n("Moving speed"), this), 4, 0, 1, 3);
+		m_layout->addWidget(new QLabel(i18nc("@label:slider", "Moving speed"), this), 4, 0, 1, 3);
 		QHBoxLayout* hlayout = new QHBoxLayout;
 		m_layout->addLayout(hlayout, 5, 0, 1, 3);
-		QLabel* label1 = new QLabel(i18n("Slow"), this);
+		QLabel* label1 = new QLabel(i18nc("@item:inrange", "Slow"), this);
 		hlayout->addWidget(label1);
 		QSlider* slider = new QSlider(Qt::Horizontal, this);
 		hlayout->addWidget(slider);
-		QLabel* label2 = new QLabel(i18n("Fast"), this);
+		QLabel* label2 = new QLabel(i18nc("@item:inrange", "Fast"), this);
 		hlayout->addWidget(label2);
 		slider->setRange(0, 20);
 		slider->setPageStep(2);

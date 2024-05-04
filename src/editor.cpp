@@ -34,7 +34,7 @@ Editor::Editor(const Kolf::ItemFactory& factory, QWidget *parent)
 
 	QVBoxLayout *vlayout = new QVBoxLayout;
 	hlayout->addLayout( vlayout );
-	vlayout->addWidget(new QLabel(i18n("Add object:"), this));
+	vlayout->addWidget(new QLabel(i18nc("@label:listbox", "Add object:"), this));
 	m_typeList = new QListWidget(this);
 	vlayout->addWidget(m_typeList);
 	hlayout->setStretchFactor(vlayout, 2);

@@ -53,11 +53,11 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 	startColors << Qt::blue << Qt::red << Qt::yellow << Qt::lightGray << Qt::cyan << Qt::darkBlue << Qt::magenta << Qt::darkGray << Qt::darkMagenta << Qt::darkYellow;
 
 	playerPage = new QFrame();
-    	addPage(playerPage, i18n("Players"));
+	addPage(playerPage, i18nc("@title:tab", "Players"));
 
 	QVBoxLayout *bigLayout = new QVBoxLayout(playerPage);
 
-	addButton = new QPushButton(i18n("&New Player"), playerPage);
+	addButton = new QPushButton(i18nc("@action:button", "&New Player"), playerPage);
 	bigLayout->addWidget(addButton);
 
 	connect(addButton, &QPushButton::clicked, this, &NewGameDialog::addPlayer);
@@ -92,8 +92,8 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 	if (enableCourses)
 	{
 		coursePage = new QFrame();
-		pageItem = new KPageWidgetItem( coursePage, i18n("Course") );
-		pageItem->setHeader(i18n("Choose Course to Play"));
+		pageItem = new KPageWidgetItem( coursePage, i18nc("@title:tab", "Course") );
+		pageItem->setHeader(i18nc("@title", "Choose Course to Play"));
 		addPage(pageItem);
 		QVBoxLayout *coursePageLayout = new QVBoxLayout(coursePage);
 
@@ -132,7 +132,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 				curItem = i;
 		}
 
-		const QString newName(i18n("Create New"));
+		const QString newName(i18nc("@item", "<Create New>"));
 		info[QString()] = CourseInfo(newName, newName, i18n("You"), 0, 0);
 		names.append(QString());
 		nameList.append(newName);
@@ -159,7 +159,7 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		minorLayout->addWidget(holes);
 
 		detailLayout->addStretch();
-		QPushButton *scores = new QPushButton(i18n("Highscores"), coursePage);
+		auto *scores = new QPushButton(i18nc("@action:button", "Highscores"), coursePage);
 		connect(scores, &QPushButton::clicked, this, &NewGameDialog::showHighscores);
 		detailLayout->addWidget(scores);
 
@@ -169,11 +169,11 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 		minorLayout = new QHBoxLayout;
                 detailLayout->addLayout( minorLayout );
 
-		QPushButton *addCourseButton = new QPushButton(i18n("Add..."), coursePage);
+		auto *addCourseButton = new QPushButton(i18nc("@action:button", "Add…"), coursePage);
 		minorLayout->addWidget(addCourseButton);
 		connect(addCourseButton, &QPushButton::clicked, this, &NewGameDialog::addCourse);
 
-		remove = new QPushButton(i18n("Remove"), coursePage);
+		remove = new QPushButton(i18nc("@action:button", "Remove"), coursePage);
 		minorLayout->addWidget(remove);
 		connect(remove, &QPushButton::clicked, this, &NewGameDialog::removeCourse);
 
@@ -183,13 +183,13 @@ NewGameDialog::NewGameDialog(bool enableCourses)
 
 	// options page
     optionsPage = new QFrame();
-    pageItem = new KPageWidgetItem( optionsPage, i18n("Options") );
-    pageItem->setHeader(i18n("Game Options"));
+    pageItem = new KPageWidgetItem( optionsPage, i18nc("@title:tab", "Options") );
+    pageItem->setHeader(i18nc("@title", "Game Options"));
     addPage(pageItem);
 
 	QVBoxLayout *vlayout = new QVBoxLayout(optionsPage);
 
-	mode = new QCheckBox(i18n("&Strict mode"), optionsPage);
+	mode = new QCheckBox(i18nc("@option:check", "&Strict mode"), optionsPage);
 	vlayout->addWidget(mode);
 	mode->setChecked(configGroup.readEntry("competition", false));
 
@@ -239,9 +239,9 @@ void NewGameDialog::courseSelected(int index)
 
 	name->setText(QStringLiteral("<strong>%1</strong>").arg(curinfo.name));
 
-	author->setText(i18n("By %1", curinfo.author));
-	par->setText(i18n("Par %1", curinfo.par));
-	holes->setText(i18n("%1 Holes", curinfo.holes));
+	author->setText(i18nc("@info author attribution", "By %1", curinfo.author));
+	par->setText(i18nc("@info", "Par %1", curinfo.par));
+	holes->setText(i18ncp("@info", "1 Hole", "%1 Holes", curinfo.holes));
 }
 
 void NewGameDialog::showHighscores()
@@ -362,7 +362,7 @@ PlayerEditor::PlayerEditor(const QString &startName, QColor startColor, QWidget 
 	layout->addStretch();
 	layout->addWidget(colorButton = new KColorButton(startColor, this));
 	colorButton->hide();
-	QPushButton *remove = new QPushButton(i18n("Remove"), this);
+	auto *remove = new QPushButton(i18nc("@action:button", "Remove"), this);
 	layout->addWidget(remove);
 	connect(remove, &QPushButton::clicked, this, &PlayerEditor::removeMe);
 }
