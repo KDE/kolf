@@ -190,7 +190,8 @@ void KolfWindow::setupActions()
 	actionCollection()->addAction(QStringLiteral("enableAll"), act);
 	connect(act, &QAction::triggered, this, &KolfWindow::enableAllMessages);
 
-	soundAction = new KToggleAction(i18nc("@option:check", "Play Sounds"), this);
+	soundAction = new KToggleAction(QIcon::fromTheme(QStringLiteral("speaker")),
+	                                i18nc("@option:check", "Play Sounds"), this);
 	actionCollection()->addAction(QStringLiteral("sound"), soundAction);
 	connect(soundAction, &QAction::triggered, this, &KolfWindow::emptySlot);
 	connect(soundAction, &QAction::toggled, this, &KolfWindow::soundChanged);
