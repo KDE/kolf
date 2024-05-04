@@ -166,7 +166,7 @@ button next to the player's name.</para>
 
 <sect2> <title>Course Page</title>
 <para>To choose the course that you want to play, click its entry in the list box on the left of this page. &kolf; comes with many built-in courses that you can play.</para>
-<para>To add a course that you have downloaded or made, click on the <guibutton>Add...</guibutton> button on the bottom of this page, and choose the course file in the file dialog.</para>
+<para>To add a course that you have downloaded or made, click on the <guibutton>Add…</guibutton> button on the bottom of this page, and choose the course file in the file dialog.</para>
 </sect2>
 <sect2> <title>Options Page</title>
 <para>On this page you can choose whether or not this game will be played in <guilabel>Strict mode</guilabel>. In strict mode, there is no undo, moving holes, or editing of the course. This mode is generally for competition. Only in strict mode are high scores kept.</para>
@@ -179,7 +179,7 @@ button next to the player's name.</para>
 <para>To save your game while still playing, choose the <menuchoice><guimenu>Game</guimenu> <guimenuitem>Save Game</guimenuitem></menuchoice> menu item. If you have not saved a game on this game before, you will be prompted for the file to save to.</para>
 </sect2>
 <sect2> <title>Loading Your Game</title>
-<para>To load the game that you saved, choose the <menuchoice><guimenu>Game</guimenu> <guimenuitem>Load...</guimenuitem>
+<para>To load the game that you saved, choose the <menuchoice><guimenu>Game</guimenu> <guimenuitem>Load…</guimenuitem>
 </menuchoice> menu item. You can then choose the saved game to open.</para>
 </sect2>
 </sect1>
@@ -243,7 +243,7 @@ button next to the player's name.</para>
 <keycombo action="simul">&Ctrl;<keycap>O</keycap></keycombo>
 </shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Load...</guimenuitem>
+<guimenuitem>Load…</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para><action>Load a previously saved game.</action></para>
@@ -265,7 +265,7 @@ name.</action></para>
 
 <varlistentry>
 <term><menuchoice>
-<guimenu>Game</guimenu><guimenuitem>Save Course As...</guimenuitem>
+<guimenu>Game</guimenu><guimenuitem>Save Course As…</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>Open a file dialog allowing you to <action>save the current
@@ -285,7 +285,7 @@ course using a new file name.</action></para>
 <varlistentry>
 <term><menuchoice>
 <guimenu>Game</guimenu>
-<guimenuitem>Save Game As...</guimenuitem>
+<guimenuitem>Save Game As…</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>Open a file dialog allowing you to <action>save the current
@@ -319,7 +319,7 @@ game with a filename of your choice.</action></para>
 
 <varlistentry>
 <term><menuchoice>
-<guimenu>Game</guimenu><guimenuitem>About Course...</guimenuitem>
+<guimenu>Game</guimenu><guimenuitem>About Course…</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para><action>Show name, author, and number of holes of the course.</action></para>
@@ -606,7 +606,7 @@ which hole you wish to go to.</para>
 <para>To create a new course, choose the <menuchoice><guimenu>Game</guimenu> <guimenuitem>New</guimenuitem></menuchoice> menu item. Go to the <guilabel>Course</guilabel> page of the dialog, and choose the <guilabel>Create New</guilabel> course. Make sure that, under the <guilabel>Options</guilabel> page of the dialog, <guilabel>Strict mode</guilabel> is unchecked.</para>
 
 <note>
-<para>To play this new course later, click the <guibutton>Add...</guibutton> button to add the course to your list of courses.</para>
+<para>To play this new course later, click the <guibutton>Add…</guibutton> button to add the course to your list of courses.</para>
 </note>
 </sect1>
 
