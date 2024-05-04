@@ -430,7 +430,7 @@ void StrokeCircle::paint (QPainter *p, const QStyleOptionGraphicsItem *, QWidget
 	if(dvalue>=0)
 		p->setPen(QPen(QColor((int)((0xff * dvalue) / dmax), 0, (int)(0xff - (0xff * dvalue) / dmax)), ithickness));
 	else
-		p->setPen(QPen(QColor("black"), ithickness));
+		p->setPen(QPen(QColor(Qt::black), ithickness));
 
 	p->drawArc(QRectF(x() + ithickness / 2, y() + ithickness / 2, iwidth - ithickness, iheight - ithickness), deg, length);
 
