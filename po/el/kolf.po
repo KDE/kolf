@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf-new\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-28 01:32+0000\n"
+"POT-Creation-Date: 2024-05-05 00:37+0000\n"
 "PO-Revision-Date: 2021-09-03 10:43+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -38,48 +38,66 @@ msgid "No configuration options"
 msgstr "Όχι επιλογές ρύθμισης"
 
 #: editor.cpp:37
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Add object:"
+msgctxt "@label:listbox"
 msgid "Add object:"
 msgstr "Προσθήκη αντικειμένου:"
 
 #: game.cpp:263
-#, kde-format
-msgid "Course name: "
+#, fuzzy, kde-format
+#| msgid "Course name: "
+msgctxt "@label:textbox"
+msgid "Course name:"
 msgstr "Όνομα πίστας: "
 
 #: game.cpp:270
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Course author: "
+msgctxt "@label:textbox"
 msgid "Course author: "
 msgstr "Συγγραφέας πίστας: "
 
 #: game.cpp:279
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Par:"
+msgctxt "@label:spinbox"
 msgid "Par:"
 msgstr "Αξία:"
 
 #: game.cpp:289
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Maximum:"
+msgctxt "@label:spinbox"
 msgid "Maximum:"
 msgstr "Μέγιστο:"
 
 #: game.cpp:293
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Maximum number of strokes player can take on this hole."
+msgctxt "@info:whatsthis"
 msgid "Maximum number of strokes player can take on this hole."
 msgstr ""
 "Μέγιστος αριθμός χτυπημάτων που μπορεί να κάνει ο παίκτης σε αυτή την τρύπα."
 
 #: game.cpp:294
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Maximum number of strokes"
+msgctxt "@info:tooltip"
 msgid "Maximum number of strokes"
 msgstr "Μέγιστος αριθμός χτυπημάτων"
 
 #: game.cpp:295
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Unlimited"
+msgctxt "@item number of strokes"
 msgid "Unlimited"
 msgstr "Απεριόριστος"
 
 #: game.cpp:301
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show border walls"
+msgctxt "@option:check"
 msgid "Show border walls"
 msgstr "Προβολή τοίχων συνόρων"
 
@@ -94,12 +112,16 @@ msgid "Course Name"
 msgstr "Όνομα πίστας"
 
 #: game.cpp:1423
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Drop Outside of Hazard"
+msgctxt "@item harzard action"
 msgid "Drop Outside of Hazard"
 msgstr "Ρίψη έξω από κίνδυνο"
 
 #: game.cpp:1424
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Rehit From Last Location"
+msgctxt "@item harzard action"
 msgid "Rehit From Last Location"
 msgstr "Χτύπημα από την τελευταία θέση"
 
@@ -109,8 +131,10 @@ msgid "What would you like to do for your next shot?"
 msgstr "Τί θα ήθελες να κάνεις για την επόμενή σου βολή;"
 
 #: game.cpp:1426
-#, kde-format
-msgid "%1 is in a Hazard"
+#, fuzzy, kde-format
+#| msgid "%1 is in a Hazard"
+msgctxt "@title:window"
+msgid "%1 in a Hazard"
 msgstr "%1 βρίσκεται σε κίνδυνο"
 
 #: game.cpp:1594
@@ -119,7 +143,9 @@ msgid "%1 will start off."
 msgstr "%1 θα ξεκινήσει."
 
 #: game.cpp:1594
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Hole"
+msgctxt "@title:window"
 msgid "New Hole"
 msgstr "Νέα τρύπα"
 
@@ -161,23 +187,29 @@ msgstr ""
 "αποθηκεύσετε;"
 
 #: game.cpp:1990
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Unsaved Changes"
+msgctxt "@title:window"
 msgid "Unsaved Changes"
 msgstr "Μη αποθηκευμένες αλλαγές"
 
 #: game.cpp:1992
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Save &Later"
+msgctxt "@action:button"
 msgid "Save &Later"
 msgstr "Αποθήκευση &αργότερα"
 
-#: game.cpp:2165 kolf.cpp:551
+#: game.cpp:2165 kolf.cpp:552
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"
 msgstr "Επιλογή πίστας Kolf για αποθήκευση σε αυτήν"
 
 #: kcomboboxdialog.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Do not ask again"
+msgctxt "@option:check"
 msgid "&Do not ask again"
 msgstr "Να μη &ξαναγίνει ερώτηση"
 
@@ -237,161 +269,207 @@ msgid "Bumper"
 msgstr "Εμπόδιο"
 
 #: kolf.cpp:96
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Save &Course"
+msgctxt "@action"
 msgid "Save &Course"
 msgstr "Αποθήκευση &πίστας"
 
 #: kolf.cpp:98
-#, kde-format
-msgid "Save &Course As..."
+#, fuzzy, kde-format
+#| msgid "Save &Course As..."
+msgctxt "@action"
+msgid "Save &Course As…"
 msgstr "Αποθήκευση &πίστας ως..."
 
 #: kolf.cpp:101
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Save Game"
+msgctxt "@action"
 msgid "&Save Game"
 msgstr "&Αποθήκευση παιχνιδιού"
 
 #: kolf.cpp:104
-#, kde-format
-msgid "&Save Game As..."
+#, fuzzy, kde-format
+#| msgid "&Save Game As..."
+msgctxt "@action"
+msgid "&Save Game As…"
 msgstr "&Αποθήκευση παιχνιδιού ως..."
 
 #: kolf.cpp:111
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgctxt "@option:check"
 msgid "&Edit"
 msgstr "&Επεξεργασία"
 
 #: kolf.cpp:117
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&New"
+msgctxt "@action"
 msgid "&New"
 msgstr "&Νέο"
 
 #: kolf.cpp:126
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Reset"
+msgctxt "@action"
 msgid "&Reset"
 msgstr "&Μηδενισμός"
 
 #: kolf.cpp:131
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Undo Shot"
+msgctxt "@action"
 msgid "&Undo Shot"
 msgstr "&Αναίρεση βολής"
 
-#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. i18nc("@action", "&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 #. Go
 #: kolf.cpp:135
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Switch to Hole"
+msgctxt "@title:menu"
 msgid "Switch to Hole"
 msgstr "Μεταφορά στην τρύπα"
 
 #: kolf.cpp:140
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Next Hole"
+msgctxt "@action"
 msgid "&Next Hole"
 msgstr "&Επόμενη τρύπα"
 
 #: kolf.cpp:145
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Previous Hole"
+msgctxt "@action"
 msgid "&Previous Hole"
 msgstr "&Προηγούμενη τρύπα"
 
 #: kolf.cpp:150
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&First Hole"
+msgctxt "@action"
 msgid "&First Hole"
 msgstr "&Πρώτη τρύπα"
 
 #: kolf.cpp:154
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Last Hole"
+msgctxt "@action"
 msgid "&Last Hole"
 msgstr "&Τελευταία τρύπα"
 
 #: kolf.cpp:159
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Random Hole"
+msgctxt "@action"
 msgid "&Random Hole"
 msgstr "&Τυχαία τρύπα"
 
 #: kolf.cpp:163
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Enable &Mouse for Moving Putter"
+msgctxt "@option:check"
 msgid "Enable &Mouse for Moving Putter"
 msgstr "Ενεργοποίηση &ποντικιού για μετακίνηση του μπαστουνιού"
 
 #: kolf.cpp:170
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Enable &Advanced Putting"
+msgctxt "@option:check"
 msgid "Enable &Advanced Putting"
 msgstr "Ενεργοποίηση &βελτιωμένου μπαστουνιού"
 
 #: kolf.cpp:176
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show &Info"
+msgctxt "@option:check"
 msgid "Show &Info"
 msgstr "Εμφάνιση &πληροφοριών"
 
 #: kolf.cpp:183
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show Putter &Guideline"
+msgctxt "@option:check"
 msgid "Show Putter &Guideline"
 msgstr "Εμφάνιση ο&δηγού μπαστουνιού"
 
 #: kolf.cpp:189
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Enable All Dialog Boxes"
+msgctxt "@option:check"
 msgid "Enable All Dialog Boxes"
 msgstr "Ενεργοποίηση όλων των παραθύρων διαλόγου"
 
-#: kolf.cpp:193
-#, kde-format
-msgid "Play &Sounds"
+#: kolf.cpp:194
+#, fuzzy, kde-format
+#| msgid "Play &Sounds"
+msgctxt "@option:check"
+msgid "Play Sounds"
 msgstr "Αναπαραγωγή ή&χων"
 
-#: kolf.cpp:200
-#, kde-format
-msgid "&About Course..."
+#: kolf.cpp:201
+#, fuzzy, kde-format
+#| msgid "&About Course..."
+msgctxt "@action"
+msgid "&About Course"
 msgstr "&Σχετικά με την πίστα..."
 
-#: kolf.cpp:203
-#, kde-format
+#: kolf.cpp:204
+#, fuzzy, kde-format
+#| msgid "&Tutorial"
+msgctxt "@action"
 msgid "&Tutorial"
 msgstr "&Εκμάθηση"
 
-#: kolf.cpp:453 kolf.cpp:497 kolf.cpp:524 newgame.cpp:250 scoreboard.cpp:27
+#: kolf.cpp:454 kolf.cpp:498 kolf.cpp:525 newgame.cpp:250
 #, kde-format
 msgid "Par"
 msgstr "Αξία"
 
-#: kolf.cpp:484
-#, kde-format
+#: kolf.cpp:485
+#, fuzzy, kde-format
+#| msgid " and "
+msgctxt "@item:intext winners"
 msgid " and "
 msgstr " και "
 
-#: kolf.cpp:485
+#: kolf.cpp:486
 #, kde-format
 msgid "%1 tied"
 msgstr "%1 έφερε ισοπαλία"
 
-#: kolf.cpp:488
+#: kolf.cpp:489
 #, kde-format
 msgid "%1 won!"
 msgstr "%1 νίκησε!"
 
-#: kolf.cpp:502 kolf.cpp:514 kolf.cpp:529 kolf.cpp:530 newgame.cpp:251
+#: kolf.cpp:503 kolf.cpp:515 kolf.cpp:530 kolf.cpp:531 newgame.cpp:251
 #: newgame.cpp:252
 #, kde-format
 msgid "High Scores for %1"
 msgstr "Υψηλές βαθμολογίες για %1"
 
-#: kolf.cpp:569
+#: kolf.cpp:570
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Saved Game to Save To"
 msgstr "Επιλογή αποθηκευμένου παιχνιδιού για αποθήκευση σε αυτό"
 
-#: kolf.cpp:607
+#: kolf.cpp:608
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Saved Game"
 msgstr "Επιλογή αποθηκευμένου παιχνιδιού του Kolf"
 
-#: kolf.cpp:655
+#: kolf.cpp:656
 #, kde-format
 msgid "%1's turn"
 msgstr "Σειρά του %1"
 
-#: kolf.cpp:727
+#: kolf.cpp:728
 #, kde-format
 msgid "%1's score has reached the maximum for this hole."
 msgstr "Η βαθμολογία του παίκτη %1 έφτασε στο μέγιστο για αυτή την τρύπα."
@@ -409,17 +487,23 @@ msgid "&Go"
 msgstr "&Μετάβαση"
 
 #: landscape.cpp:146
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Enable show/hide"
+msgctxt "@option:check"
 msgid "Enable show/hide"
 msgstr "Ενεργοποίηση εμφάνισης/απόκρυψης"
 
-#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
-#, kde-format
+#: landscape.cpp:151 obstacles.cpp:450 obstacles.cpp:468
+#, fuzzy, kde-format
+#| msgid "Slow"
+msgctxt "@item:inrange"
 msgid "Slow"
 msgstr "Αργό"
 
-#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
-#, kde-format
+#: landscape.cpp:155 obstacles.cpp:454 obstacles.cpp:472
+#, fuzzy, kde-format
+#| msgid "Fast"
+msgctxt "@item:inrange"
 msgid "Fast"
 msgstr "Γρήγορο"
 
@@ -449,22 +533,31 @@ msgid "Elliptic"
 msgstr "Ελλειπτικώς"
 
 #: landscape.cpp:571
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Reverse direction"
+msgctxt "@option:check"
 msgid "Reverse direction"
 msgstr "Αντίστροφη κατεύθυνση"
 
 #: landscape.cpp:576
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Unmovable"
+msgctxt "@option:check"
 msgid "Unmovable"
 msgstr "Αμετακίνητο"
 
 #: landscape.cpp:578
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Whether or not this slope can be moved by other objects, like floaters."
+msgctxt "@info:whatsthis"
 msgid "Whether or not this slope can be moved by other objects, like floaters."
 msgstr "Αν θα μπορεί ή όχι να μετακινείται αυτή η κλίση από άλλα αντικείμενα."
 
 #: landscape.cpp:582
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Grade:"
+msgctxt "@lable:spinbox"
 msgid "Grade:"
 msgstr "Βαθμός:"
 
@@ -593,7 +686,7 @@ msgstr "Αρχείο"
 msgid "Print course information and exit"
 msgstr "Εκτύπωση πληροφοριών πίστας και έξοδος"
 
-#: main.cpp:90 newgame.cpp:242
+#: main.cpp:90
 #, kde-format
 msgid "By %1"
 msgstr "Από %1"
@@ -620,28 +713,38 @@ msgid "New Game"
 msgstr "Νέο παιχνίδι"
 
 #: newgame.cpp:56
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Players"
+msgctxt "@title:tab"
 msgid "Players"
 msgstr "Παίκτες"
 
 #: newgame.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&New Player"
+msgctxt "@action:button"
 msgid "&New Player"
 msgstr "&Νέος παίκτης"
 
 #: newgame.cpp:95
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Course"
+msgctxt "@title:tab"
 msgid "Course"
 msgstr "Πίστα"
 
 #: newgame.cpp:96
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Choose Course to Play"
+msgctxt "@title"
 msgid "Choose Course to Play"
 msgstr "Επιλέξτε πίστα για να παίξετε"
 
 #: newgame.cpp:135
-#, kde-format
-msgid "Create New"
+#, fuzzy, kde-format
+#| msgid "Create New"
+msgctxt "@item"
+msgid "<Create New>"
 msgstr "Δημιουργία νέου"
 
 #: newgame.cpp:136
@@ -650,32 +753,43 @@ msgid "You"
 msgstr "Εσείς"
 
 #: newgame.cpp:162
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Highscores"
+msgctxt "@action:button"
 msgid "Highscores"
 msgstr "Υψηλές βαθμολογίες"
 
 #: newgame.cpp:172
 #, kde-format
-msgid "Add..."
-msgstr "Προσθήκη..."
+msgctxt "@action:button"
+msgid "Add…"
+msgstr ""
 
 #: newgame.cpp:176 newgame.cpp:365
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove"
+msgctxt "@action:button"
 msgid "Remove"
 msgstr "Αφαίρεση"
 
 #: newgame.cpp:186
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Options"
+msgctxt "@title:tab"
 msgid "Options"
 msgstr "Επιλογές"
 
 #: newgame.cpp:187
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Game Options"
+msgctxt "@title"
 msgid "Game Options"
 msgstr "Επιλογές παιχνιδιού"
 
 #: newgame.cpp:192
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Strict mode"
+msgctxt "@option:check"
 msgid "&Strict mode"
 msgstr "Αυ&στηρή λειτουργία"
 
@@ -689,15 +803,28 @@ msgstr ""
 "εναλλαγή των τρυπών. Μόνο στην αυστηρή λειτουργία διατηρούνται υψηλές "
 "βαθμολογίες."
 
+#: newgame.cpp:242
+#, fuzzy, kde-format
+#| msgid "By %1"
+msgctxt "@info author attribution"
+msgid "By %1"
+msgstr "Από %1"
+
 #: newgame.cpp:243
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Par %1"
+msgctxt "@info"
 msgid "Par %1"
 msgstr "Αξία %1"
 
 #: newgame.cpp:244
-#, kde-format
-msgid "%1 Holes"
-msgstr "%1 τρύπες"
+#, fuzzy, kde-format
+#| msgid "%1 Holes"
+msgctxt "@info"
+msgid "1 Hole"
+msgid_plural "%1 Holes"
+msgstr[0] "%1 τρύπες"
+msgstr[1] "%1 τρύπες"
 
 #: newgame.cpp:282
 #, kde-format
@@ -716,72 +843,113 @@ msgid "Player %1"
 msgstr "Παίκτης %1"
 
 #: objects.cpp:244
-#, kde-format
+#, fuzzy, kde-format
+#| msgid " degree"
+#| msgid_plural " degrees"
+msgctxt "@item:valuesuffix"
 msgid " degree"
 msgid_plural " degrees"
 msgstr[0] " μοίρα"
 msgstr[1] " μοίρες"
 
 #: objects.cpp:247
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Exiting ball angle:"
+msgctxt "@label:spinbox"
 msgid "Exiting ball angle:"
 msgstr "Γωνία εξόδου της μπάλας:"
 
 #: objects.cpp:267
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Minimum exit speed:"
+msgctxt "@label:spinbox"
 msgid "Minimum exit speed:"
 msgstr "Ελάχιστη ταχύτητα εξόδου:"
 
 #: objects.cpp:288
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Maximum exit speed:"
+msgctxt "@label:spinbox"
 msgid "Maximum exit speed:"
 msgstr "Μέγιστη ταχύτητα εξόδου:"
 
 #: obstacles.cpp:412
+#, fuzzy
+#| msgid "&Top"
+msgctxt "@option:check wall on"
 msgid "&Top"
 msgstr "&Κορυφή"
 
-#: obstacles.cpp:412
+#: obstacles.cpp:413
+#, fuzzy
+#| msgid "&Left"
+msgctxt "@option:check wall on"
 msgid "&Left"
 msgstr "&Αριστερά"
 
-#: obstacles.cpp:412
+#: obstacles.cpp:414
+#, fuzzy
+#| msgid "&Right"
+msgctxt "@option:check wall on"
 msgid "&Right"
 msgstr "&Δεξιά"
 
-#: obstacles.cpp:412
+#: obstacles.cpp:415
+#, fuzzy
+#| msgid "&Bottom"
+msgctxt "@option:check wall on"
 msgid "&Bottom"
 msgstr "&Κάτω"
 
-#: obstacles.cpp:421
-#, kde-format
+#: obstacles.cpp:425
+#, fuzzy, kde-format
+#| msgid "Walls on:"
+msgctxt "@label:chooser"
 msgid "Walls on:"
 msgstr "Τοίχοι ενεργοί:"
 
-#: obstacles.cpp:431
-#, kde-format
+#: obstacles.cpp:435
+#, fuzzy, kde-format
+#| msgid "Sign HTML:"
+msgctxt "@label:textbox"
 msgid "Sign HTML:"
 msgstr "Υπογραφή HTML:"
 
-#: obstacles.cpp:440
-#, kde-format
+#: obstacles.cpp:444
+#, fuzzy, kde-format
+#| msgid "Windmill on top"
+msgctxt "@option:check"
 msgid "Windmill on top"
 msgstr "Ανεμόμυλος στην κορυφή"
 
-#: obstacles.cpp:461
-#, kde-format
+#: obstacles.cpp:465
+#, fuzzy, kde-format
+#| msgid "Moving speed"
+msgctxt "@label:slider"
 msgid "Moving speed"
 msgstr "Ταχύτητα μετακίνησης"
 
-#: obstacles.cpp:681
+#: obstacles.cpp:685
 #, kde-format
 msgid "New Text"
 msgstr "Νέο κείμενο"
 
+#: scoreboard.cpp:27
+#, fuzzy, kde-format
+#| msgid "Par"
+msgctxt "@title:row"
+msgid "Par"
+msgstr "Αξία"
+
 #: scoreboard.cpp:28
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Total"
+msgctxt "@title:column"
 msgid "Total"
 msgstr "Σύνολο"
+
+#~ msgid "Add..."
+#~ msgstr "Προσθήκη..."
 
 #~ msgid "(c) 2002-2005, Jason Katz-Brown"
 #~ msgstr "(c) 2002-2005, Jason Katz-Brown"

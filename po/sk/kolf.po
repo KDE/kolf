@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-28 01:32+0000\n"
+"POT-Creation-Date: 2024-05-05 00:37+0000\n"
 "PO-Revision-Date: 2021-11-20 21:39+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -35,47 +35,65 @@ msgid "No configuration options"
 msgstr "Žiadne možnosti nastavenia"
 
 #: editor.cpp:37
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Add object:"
+msgctxt "@label:listbox"
 msgid "Add object:"
 msgstr "Pridať objekt:"
 
 #: game.cpp:263
-#, kde-format
-msgid "Course name: "
+#, fuzzy, kde-format
+#| msgid "Course name: "
+msgctxt "@label:textbox"
+msgid "Course name:"
 msgstr "Meno ihriska:"
 
 #: game.cpp:270
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Course author: "
+msgctxt "@label:textbox"
 msgid "Course author: "
 msgstr "Autor ihriska:"
 
 #: game.cpp:279
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Par:"
+msgctxt "@label:spinbox"
 msgid "Par:"
 msgstr "Par:"
 
 #: game.cpp:289
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Maximum:"
+msgctxt "@label:spinbox"
 msgid "Maximum:"
 msgstr "Maximum:"
 
 #: game.cpp:293
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Maximum number of strokes player can take on this hole."
+msgctxt "@info:whatsthis"
 msgid "Maximum number of strokes player can take on this hole."
 msgstr "Maximálny počet úderov, ktoré má hráč na túto jamku."
 
 #: game.cpp:294
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Maximum number of strokes"
+msgctxt "@info:tooltip"
 msgid "Maximum number of strokes"
 msgstr "Maximálny počet úderov"
 
 #: game.cpp:295
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Unlimited"
+msgctxt "@item number of strokes"
 msgid "Unlimited"
 msgstr "Bez obmedzenia"
 
 #: game.cpp:301
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show border walls"
+msgctxt "@option:check"
 msgid "Show border walls"
 msgstr "Zobraziť okrajové steny"
 
@@ -90,12 +108,16 @@ msgid "Course Name"
 msgstr "Meno ihriska"
 
 #: game.cpp:1423
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Drop Outside of Hazard"
+msgctxt "@item harzard action"
 msgid "Drop Outside of Hazard"
 msgstr "Presunúť sa z hazardu"
 
 #: game.cpp:1424
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Rehit From Last Location"
+msgctxt "@item harzard action"
 msgid "Rehit From Last Location"
 msgstr "Znovu z posledného miesta"
 
@@ -105,8 +127,10 @@ msgid "What would you like to do for your next shot?"
 msgstr "Čo chcete urobiť nasledujúcim úderom?"
 
 #: game.cpp:1426
-#, kde-format
-msgid "%1 is in a Hazard"
+#, fuzzy, kde-format
+#| msgid "%1 is in a Hazard"
+msgctxt "@title:window"
+msgid "%1 in a Hazard"
 msgstr "%1 je v nebezpečí"
 
 #: game.cpp:1594
@@ -115,7 +139,9 @@ msgid "%1 will start off."
 msgstr "%1 začne."
 
 #: game.cpp:1594
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Hole"
+msgctxt "@title:window"
 msgid "New Hole"
 msgstr "Nová jamka"
 
@@ -154,23 +180,29 @@ msgid "There are unsaved changes to current hole. Save them?"
 msgstr "Pre aktuálnu jamku sú niektoré zmeny neuložené. Chcete ich uložiť?"
 
 #: game.cpp:1990
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Unsaved Changes"
+msgctxt "@title:window"
 msgid "Unsaved Changes"
 msgstr "Neuložené zmeny"
 
 #: game.cpp:1992
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Save &Later"
+msgctxt "@action:button"
 msgid "Save &Later"
 msgstr "Uložiť &neskôr"
 
-#: game.cpp:2165 kolf.cpp:551
+#: game.cpp:2165 kolf.cpp:552
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"
 msgstr "Vyberte ihrisko Kolf, kam chcete ukladať"
 
 #: kcomboboxdialog.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Do not ask again"
+msgctxt "@option:check"
 msgid "&Do not ask again"
 msgstr "Nabudúce sa už ne&pýtať"
 
@@ -230,161 +262,207 @@ msgid "Bumper"
 msgstr "Nerovnosť"
 
 #: kolf.cpp:96
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Save &Course"
+msgctxt "@action"
 msgid "Save &Course"
 msgstr "Uložiť &ihrisko"
 
 #: kolf.cpp:98
-#, kde-format
-msgid "Save &Course As..."
+#, fuzzy, kde-format
+#| msgid "Save &Course As..."
+msgctxt "@action"
+msgid "Save &Course As…"
 msgstr "Uložiť &ihrisko ako..."
 
 #: kolf.cpp:101
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Save Game"
+msgctxt "@action"
 msgid "&Save Game"
 msgstr "&Uložiť hru"
 
 #: kolf.cpp:104
-#, kde-format
-msgid "&Save Game As..."
+#, fuzzy, kde-format
+#| msgid "&Save Game As..."
+msgctxt "@action"
+msgid "&Save Game As…"
 msgstr "Uložiť hru &ako..."
 
 #: kolf.cpp:111
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgctxt "@option:check"
 msgid "&Edit"
 msgstr "&Upraviť"
 
 #: kolf.cpp:117
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&New"
+msgctxt "@action"
 msgid "&New"
 msgstr "&Nový"
 
 #: kolf.cpp:126
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Reset"
+msgctxt "@action"
 msgid "&Reset"
 msgstr "Vrátiť &pôvodné"
 
 #: kolf.cpp:131
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Undo Shot"
+msgctxt "@action"
 msgid "&Undo Shot"
 msgstr "&Vrátiť späť úder"
 
-#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. i18nc("@action", "&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 #. Go
 #: kolf.cpp:135
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Switch to Hole"
+msgctxt "@title:menu"
 msgid "Switch to Hole"
 msgstr "Prejsť na jamku"
 
 #: kolf.cpp:140
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Next Hole"
+msgctxt "@action"
 msgid "&Next Hole"
 msgstr "&Nasledujúca jamka"
 
 #: kolf.cpp:145
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Previous Hole"
+msgctxt "@action"
 msgid "&Previous Hole"
 msgstr "Pr&edchádzajúca jamka"
 
 #: kolf.cpp:150
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&First Hole"
+msgctxt "@action"
 msgid "&First Hole"
 msgstr "P&rvá jamka"
 
 #: kolf.cpp:154
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Last Hole"
+msgctxt "@action"
 msgid "&Last Hole"
 msgstr "&Posledná jamka"
 
 #: kolf.cpp:159
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Random Hole"
+msgctxt "@action"
 msgid "&Random Hole"
 msgstr "&Náhodná jamka"
 
 #: kolf.cpp:163
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Enable &Mouse for Moving Putter"
+msgctxt "@option:check"
 msgid "Enable &Mouse for Moving Putter"
 msgstr "Povoliť &myš pri presune putteru"
 
 #: kolf.cpp:170
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Enable &Advanced Putting"
+msgctxt "@option:check"
 msgid "Enable &Advanced Putting"
 msgstr "Povoliť &pokročilý putter"
 
 #: kolf.cpp:176
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show &Info"
+msgctxt "@option:check"
 msgid "Show &Info"
 msgstr "Zobraziť &informácie"
 
 #: kolf.cpp:183
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show Putter &Guideline"
+msgctxt "@option:check"
 msgid "Show Putter &Guideline"
 msgstr "Zobraziť &radu pre putter"
 
 #: kolf.cpp:189
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Enable All Dialog Boxes"
+msgctxt "@option:check"
 msgid "Enable All Dialog Boxes"
 msgstr "Povoliť všetky dialógy"
 
-#: kolf.cpp:193
-#, kde-format
-msgid "Play &Sounds"
+#: kolf.cpp:194
+#, fuzzy, kde-format
+#| msgid "Play &Sounds"
+msgctxt "@option:check"
+msgid "Play Sounds"
 msgstr "Zahrať &zvuky"
 
-#: kolf.cpp:200
-#, kde-format
-msgid "&About Course..."
+#: kolf.cpp:201
+#, fuzzy, kde-format
+#| msgid "&About Course..."
+msgctxt "@action"
+msgid "&About Course"
 msgstr "&O ihrisku..."
 
-#: kolf.cpp:203
-#, kde-format
+#: kolf.cpp:204
+#, fuzzy, kde-format
+#| msgid "&Tutorial"
+msgctxt "@action"
 msgid "&Tutorial"
 msgstr "&Návod"
 
-#: kolf.cpp:453 kolf.cpp:497 kolf.cpp:524 newgame.cpp:250 scoreboard.cpp:27
+#: kolf.cpp:454 kolf.cpp:498 kolf.cpp:525 newgame.cpp:250
 #, kde-format
 msgid "Par"
 msgstr "Par"
 
-#: kolf.cpp:484
-#, kde-format
+#: kolf.cpp:485
+#, fuzzy, kde-format
+#| msgid " and "
+msgctxt "@item:intext winners"
 msgid " and "
 msgstr " a "
 
-#: kolf.cpp:485
+#: kolf.cpp:486
 #, kde-format
 msgid "%1 tied"
 msgstr "%1 remíza"
 
-#: kolf.cpp:488
+#: kolf.cpp:489
 #, kde-format
 msgid "%1 won!"
 msgstr "%1 vyhral!"
 
-#: kolf.cpp:502 kolf.cpp:514 kolf.cpp:529 kolf.cpp:530 newgame.cpp:251
+#: kolf.cpp:503 kolf.cpp:515 kolf.cpp:530 kolf.cpp:531 newgame.cpp:251
 #: newgame.cpp:252
 #, kde-format
 msgid "High Scores for %1"
 msgstr "Najvyššie skóre pre %1"
 
-#: kolf.cpp:569
+#: kolf.cpp:570
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Saved Game to Save To"
 msgstr "Vyberte hru, do ktorej chcete uložiť"
 
-#: kolf.cpp:607
+#: kolf.cpp:608
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Saved Game"
 msgstr "Vyberte uloženú hru Kolf"
 
-#: kolf.cpp:655
+#: kolf.cpp:656
 #, kde-format
 msgid "%1's turn"
 msgstr "Ťah %1"
 
-#: kolf.cpp:727
+#: kolf.cpp:728
 #, kde-format
 msgid "%1's score has reached the maximum for this hole."
 msgstr "%1 skóre dosiahlo maximum pre túto jamku."
@@ -402,17 +480,23 @@ msgid "&Go"
 msgstr "Pre&jsť"
 
 #: landscape.cpp:146
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Enable show/hide"
+msgctxt "@option:check"
 msgid "Enable show/hide"
 msgstr "Povoliť skrývanie/zobrazenie"
 
-#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
-#, kde-format
+#: landscape.cpp:151 obstacles.cpp:450 obstacles.cpp:468
+#, fuzzy, kde-format
+#| msgid "Slow"
+msgctxt "@item:inrange"
 msgid "Slow"
 msgstr "Pomaly"
 
-#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
-#, kde-format
+#: landscape.cpp:155 obstacles.cpp:454 obstacles.cpp:472
+#, fuzzy, kde-format
+#| msgid "Fast"
+msgctxt "@item:inrange"
 msgid "Fast"
 msgstr "Rýchlo"
 
@@ -442,23 +526,32 @@ msgid "Elliptic"
 msgstr "Elipsa"
 
 #: landscape.cpp:571
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Reverse direction"
+msgctxt "@option:check"
 msgid "Reverse direction"
 msgstr "Opačný smer"
 
 #: landscape.cpp:576
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Unmovable"
+msgctxt "@option:check"
 msgid "Unmovable"
 msgstr "Nepresunuteľné"
 
 #: landscape.cpp:578
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Whether or not this slope can be moved by other objects, like floaters."
+msgctxt "@info:whatsthis"
 msgid "Whether or not this slope can be moved by other objects, like floaters."
 msgstr ""
 "Či je možné tento svah presunúť inými objektami, napríklad pomocou floaters."
 
 #: landscape.cpp:582
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Grade:"
+msgctxt "@lable:spinbox"
 msgid "Grade:"
 msgstr "Úroveň:"
 
@@ -587,7 +680,7 @@ msgstr "Súbor"
 msgid "Print course information and exit"
 msgstr "Vytlačí informácie o ihrisku a skončí"
 
-#: main.cpp:90 newgame.cpp:242
+#: main.cpp:90
 #, kde-format
 msgid "By %1"
 msgstr "Od %1"
@@ -614,28 +707,38 @@ msgid "New Game"
 msgstr "Nová hra"
 
 #: newgame.cpp:56
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Players"
+msgctxt "@title:tab"
 msgid "Players"
 msgstr "Hráči"
 
 #: newgame.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&New Player"
+msgctxt "@action:button"
 msgid "&New Player"
 msgstr "&Nový hráč"
 
 #: newgame.cpp:95
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Course"
+msgctxt "@title:tab"
 msgid "Course"
 msgstr "Ihrisko"
 
 #: newgame.cpp:96
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Choose Course to Play"
+msgctxt "@title"
 msgid "Choose Course to Play"
 msgstr "Vyberte ihrisko, ktoré chcete hrať"
 
 #: newgame.cpp:135
-#, kde-format
-msgid "Create New"
+#, fuzzy, kde-format
+#| msgid "Create New"
+msgctxt "@item"
+msgid "<Create New>"
 msgstr "Vytvoriť nový"
 
 #: newgame.cpp:136
@@ -644,32 +747,43 @@ msgid "You"
 msgstr "Vy"
 
 #: newgame.cpp:162
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Highscores"
+msgctxt "@action:button"
 msgid "Highscores"
 msgstr "Najvyššie skóre"
 
 #: newgame.cpp:172
 #, kde-format
-msgid "Add..."
-msgstr "Pridať..."
+msgctxt "@action:button"
+msgid "Add…"
+msgstr ""
 
 #: newgame.cpp:176 newgame.cpp:365
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove"
+msgctxt "@action:button"
 msgid "Remove"
 msgstr "Odstrániť"
 
 #: newgame.cpp:186
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Options"
+msgctxt "@title:tab"
 msgid "Options"
 msgstr "Možnosti"
 
 #: newgame.cpp:187
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Game Options"
+msgctxt "@title"
 msgid "Game Options"
 msgstr "Možnosti hry"
 
 #: newgame.cpp:192
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Strict mode"
+msgctxt "@option:check"
 msgid "&Strict mode"
 msgstr "&Striktný režim"
 
@@ -683,15 +797,29 @@ msgstr ""
 "medzi jamkami. Je určený hlavne pre súťaže. Iba v tomto režime sa uchovávajú "
 "najvyššie skóre."
 
+#: newgame.cpp:242
+#, fuzzy, kde-format
+#| msgid "By %1"
+msgctxt "@info author attribution"
+msgid "By %1"
+msgstr "Od %1"
+
 #: newgame.cpp:243
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Par %1"
+msgctxt "@info"
 msgid "Par %1"
 msgstr "Par %1"
 
 #: newgame.cpp:244
-#, kde-format
-msgid "%1 Holes"
-msgstr "%1 jamiek"
+#, fuzzy, kde-format
+#| msgid "%1 Holes"
+msgctxt "@info"
+msgid "1 Hole"
+msgid_plural "%1 Holes"
+msgstr[0] "%1 jamiek"
+msgstr[1] "%1 jamiek"
+msgstr[2] "%1 jamiek"
 
 #: newgame.cpp:282
 #, kde-format
@@ -710,7 +838,10 @@ msgid "Player %1"
 msgstr "Hráč %1"
 
 #: objects.cpp:244
-#, kde-format
+#, fuzzy, kde-format
+#| msgid " degree"
+#| msgid_plural " degrees"
+msgctxt "@item:valuesuffix"
 msgid " degree"
 msgid_plural " degrees"
 msgstr[0] " stupeň"
@@ -718,62 +849,100 @@ msgstr[1] " stupne"
 msgstr[2] " stupňov"
 
 #: objects.cpp:247
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Exiting ball angle:"
+msgctxt "@label:spinbox"
 msgid "Exiting ball angle:"
 msgstr "Výstupný uhol loptičky:"
 
 #: objects.cpp:267
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Minimum exit speed:"
+msgctxt "@label:spinbox"
 msgid "Minimum exit speed:"
 msgstr "Minimálna rýchlosť na výstupe:"
 
 #: objects.cpp:288
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Maximum exit speed:"
+msgctxt "@label:spinbox"
 msgid "Maximum exit speed:"
 msgstr "Minimálna rýchlosť na výstupe:"
 
 #: obstacles.cpp:412
+#, fuzzy
+#| msgid "&Top"
+msgctxt "@option:check wall on"
 msgid "&Top"
 msgstr "&hore"
 
-#: obstacles.cpp:412
+#: obstacles.cpp:413
+#, fuzzy
+#| msgid "&Left"
+msgctxt "@option:check wall on"
 msgid "&Left"
 msgstr "&vľavo"
 
-#: obstacles.cpp:412
+#: obstacles.cpp:414
+#, fuzzy
+#| msgid "&Right"
+msgctxt "@option:check wall on"
 msgid "&Right"
 msgstr "v&pravo"
 
-#: obstacles.cpp:412
+#: obstacles.cpp:415
+#, fuzzy
+#| msgid "&Bottom"
+msgctxt "@option:check wall on"
 msgid "&Bottom"
 msgstr "Dole"
 
-#: obstacles.cpp:421
-#, kde-format
+#: obstacles.cpp:425
+#, fuzzy, kde-format
+#| msgid "Walls on:"
+msgctxt "@label:chooser"
 msgid "Walls on:"
 msgstr "Steny:"
 
-#: obstacles.cpp:431
-#, kde-format
+#: obstacles.cpp:435
+#, fuzzy, kde-format
+#| msgid "Sign HTML:"
+msgctxt "@label:textbox"
 msgid "Sign HTML:"
 msgstr "Podpísať HTML:"
 
-#: obstacles.cpp:440
-#, kde-format
+#: obstacles.cpp:444
+#, fuzzy, kde-format
+#| msgid "Windmill on top"
+msgctxt "@option:check"
 msgid "Windmill on top"
 msgstr "Veterný mlyn na vrchu"
 
-#: obstacles.cpp:461
-#, kde-format
+#: obstacles.cpp:465
+#, fuzzy, kde-format
+#| msgid "Moving speed"
+msgctxt "@label:slider"
 msgid "Moving speed"
 msgstr "Rýchlosť pohybu"
 
-#: obstacles.cpp:681
+#: obstacles.cpp:685
 #, kde-format
 msgid "New Text"
 msgstr "Nový text"
 
+#: scoreboard.cpp:27
+#, fuzzy, kde-format
+#| msgid "Par"
+msgctxt "@title:row"
+msgid "Par"
+msgstr "Par"
+
 #: scoreboard.cpp:28
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Total"
+msgctxt "@title:column"
 msgid "Total"
 msgstr "Celkovo"
+
+#~ msgid "Add..."
+#~ msgstr "Pridať..."

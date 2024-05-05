@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdegames/kolf.pot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-28 01:32+0000\n"
+"POT-Creation-Date: 2024-05-05 00:37+0000\n"
 "PO-Revision-Date: 2004-09-20 15:44+0200\n"
 "Last-Translator: Thierry Vignaud <tvignaud@mandriva.com>\n"
 "Language-Team: br <LL@li.org>\n"
@@ -30,47 +30,62 @@ msgid "No configuration options"
 msgstr "N'eus ket bet dibab kefluniadur ebet"
 
 #: editor.cpp:37
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Add object:"
+msgctxt "@label:listbox"
 msgid "Add object:"
 msgstr "Ouzhpennañ un dra :"
 
 #: game.cpp:263
-#, kde-format
-msgid "Course name: "
-msgstr ""
+#, fuzzy, kde-format
+#| msgctxt "NAME OF TRANSLATORS"
+#| msgid "Your names"
+msgctxt "@label:textbox"
+msgid "Course name:"
+msgstr "Thierry Vignaud, Jañ-Mai Drapier"
 
 #: game.cpp:270
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Main author"
+msgctxt "@label:textbox"
 msgid "Course author: "
-msgstr ""
+msgstr "Oberour kentañ"
 
 #: game.cpp:279
 #, kde-format
+msgctxt "@label:spinbox"
 msgid "Par:"
 msgstr ""
 
 #: game.cpp:289
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Maximum:"
+msgctxt "@label:spinbox"
 msgid "Maximum:"
 msgstr "Uhelañ :"
 
 #: game.cpp:293
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid "Maximum number of strokes player can take on this hole."
 msgstr ""
 
 #: game.cpp:294
 #, kde-format
+msgctxt "@info:tooltip"
 msgid "Maximum number of strokes"
 msgstr ""
 
 #: game.cpp:295
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Unlimited"
+msgctxt "@item number of strokes"
 msgid "Unlimited"
 msgstr "Hep muzul"
 
 #: game.cpp:301
 #, kde-format
+msgctxt "@option:check"
 msgid "Show border walls"
 msgstr ""
 
@@ -86,11 +101,13 @@ msgstr ""
 
 #: game.cpp:1423
 #, kde-format
+msgctxt "@item harzard action"
 msgid "Drop Outside of Hazard"
 msgstr ""
 
 #: game.cpp:1424
 #, kde-format
+msgctxt "@item harzard action"
 msgid "Rehit From Last Location"
 msgstr ""
 
@@ -101,7 +118,8 @@ msgstr ""
 
 #: game.cpp:1426
 #, kde-format
-msgid "%1 is in a Hazard"
+msgctxt "@title:window"
+msgid "%1 in a Hazard"
 msgstr ""
 
 #: game.cpp:1594
@@ -110,7 +128,9 @@ msgid "%1 will start off."
 msgstr ""
 
 #: game.cpp:1594
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Hole"
+msgctxt "@title:window"
 msgid "New Hole"
 msgstr "Toull nevez"
 
@@ -149,16 +169,20 @@ msgid "There are unsaved changes to current hole. Save them?"
 msgstr ""
 
 #: game.cpp:1990
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Unsaved Changes"
+msgctxt "@title:window"
 msgid "Unsaved Changes"
 msgstr "N'eo ket enrollet ar c'hemmoù"
 
 #: game.cpp:1992
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Save &Later"
+msgctxt "@action:button"
 msgid "Save &Later"
 msgstr "Enrollañ &diwezhatoc'h"
 
-#: game.cpp:2165 kolf.cpp:551
+#: game.cpp:2165 kolf.cpp:552
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Saved Game"
 msgctxt "@title:window"
@@ -166,7 +190,9 @@ msgid "Pick Kolf Course to Save To"
 msgstr "Dibabit ur c'hoari enrollet"
 
 #: kcomboboxdialog.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Do not ask again"
+msgctxt "@option:check"
 msgid "&Do not ask again"
 msgstr "Ne c'houlennit &ket adarre"
 
@@ -227,164 +253,202 @@ msgid "Bumper"
 msgstr ""
 
 #: kolf.cpp:96
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Save &Later"
+msgctxt "@action"
 msgid "Save &Course"
-msgstr ""
+msgstr "Enrollañ &diwezhatoc'h"
 
 #: kolf.cpp:98
 #, kde-format
-msgid "Save &Course As..."
+msgctxt "@action"
+msgid "Save &Course As…"
 msgstr ""
 
 #: kolf.cpp:101
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Save Game"
+msgctxt "@action"
 msgid "&Save Game"
 msgstr "&Enrollañ ar c'hoari"
 
 #: kolf.cpp:104
-#, kde-format
-msgid "&Save Game As..."
+#, fuzzy, kde-format
+#| msgid "&Save Game As..."
+msgctxt "@action"
+msgid "&Save Game As…"
 msgstr "&Enrollañ ar c'hoari e ..."
 
 #: kolf.cpp:111
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgctxt "@option:check"
 msgid "&Edit"
 msgstr "&Aozañ"
 
 #: kolf.cpp:117
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&New"
+msgctxt "@action"
 msgid "&New"
 msgstr "&Nevez"
 
 #: kolf.cpp:126
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Reset"
+msgctxt "@action"
 msgid "&Reset"
 msgstr "&Adkorañ"
 
 #: kolf.cpp:131
 #, kde-format
+msgctxt "@action"
 msgid "&Undo Shot"
 msgstr ""
 
-#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. i18nc("@action", "&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 #. Go
 #: kolf.cpp:135
 #, kde-format
+msgctxt "@title:menu"
 msgid "Switch to Hole"
 msgstr ""
 
 #: kolf.cpp:140
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Next Hole"
+msgctxt "@action"
 msgid "&Next Hole"
 msgstr "Toull &a heul"
 
 #: kolf.cpp:145
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Previous Hole"
+msgctxt "@action"
 msgid "&Previous Hole"
 msgstr "Toull &diaraok"
 
 #: kolf.cpp:150
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&First Hole"
+msgctxt "@action"
 msgid "&First Hole"
 msgstr "Toull &kentañ"
 
 #: kolf.cpp:154
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Last Hole"
+msgctxt "@action"
 msgid "&Last Hole"
 msgstr "Toull &diwezhañ"
 
 #: kolf.cpp:159
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Last Hole"
+msgctxt "@action"
 msgid "&Random Hole"
-msgstr ""
+msgstr "Toull &diwezhañ"
 
 #: kolf.cpp:163
 #, kde-format
+msgctxt "@option:check"
 msgid "Enable &Mouse for Moving Putter"
 msgstr ""
 
 #: kolf.cpp:170
 #, kde-format
+msgctxt "@option:check"
 msgid "Enable &Advanced Putting"
 msgstr ""
 
 #: kolf.cpp:176
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Show &Info"
+msgctxt "@option:check"
 msgid "Show &Info"
 msgstr "Diskouez an &titouroù"
 
 #: kolf.cpp:183
 #, kde-format
+msgctxt "@option:check"
 msgid "Show Putter &Guideline"
 msgstr ""
 
 #: kolf.cpp:189
 #, kde-format
+msgctxt "@option:check"
 msgid "Enable All Dialog Boxes"
 msgstr ""
 
-#: kolf.cpp:193
-#, kde-format
-msgid "Play &Sounds"
+#: kolf.cpp:194
+#, fuzzy, kde-format
+#| msgid "Play &Sounds"
+msgctxt "@option:check"
+msgid "Play Sounds"
 msgstr "Seniñ ur &sonioù"
 
-#: kolf.cpp:200
+#: kolf.cpp:201
 #, fuzzy, kde-format
 #| msgid "&About Course"
-msgid "&About Course..."
+msgctxt "@action"
+msgid "&About Course"
 msgstr "&Diwar-benn Course"
 
-#: kolf.cpp:203
-#, kde-format
+#: kolf.cpp:204
+#, fuzzy, kde-format
+#| msgid "&Tutorial"
+msgctxt "@action"
 msgid "&Tutorial"
 msgstr "&Deskiñ"
 
-#: kolf.cpp:453 kolf.cpp:497 kolf.cpp:524 newgame.cpp:250 scoreboard.cpp:27
+#: kolf.cpp:454 kolf.cpp:498 kolf.cpp:525 newgame.cpp:250
 #, kde-format
 msgid "Par"
 msgstr ""
 
-#: kolf.cpp:484
-#, kde-format
+#: kolf.cpp:485
+#, fuzzy, kde-format
+#| msgid " and "
+msgctxt "@item:intext winners"
 msgid " and "
 msgstr " ha "
 
-#: kolf.cpp:485
+#: kolf.cpp:486
 #, kde-format
 msgid "%1 tied"
 msgstr ""
 
-#: kolf.cpp:488
+#: kolf.cpp:489
 #, kde-format
 msgid "%1 won!"
 msgstr "Aet eo %1 ar maout gantañ !"
 
-#: kolf.cpp:502 kolf.cpp:514 kolf.cpp:529 kolf.cpp:530 newgame.cpp:251
+#: kolf.cpp:503 kolf.cpp:515 kolf.cpp:530 kolf.cpp:531 newgame.cpp:251
 #: newgame.cpp:252
 #, kde-format
 msgid "High Scores for %1"
 msgstr "Merkoù uhelañ evit %1"
 
-#: kolf.cpp:569
+#: kolf.cpp:570
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Saved Game"
 msgctxt "@title:window"
 msgid "Pick Saved Game to Save To"
 msgstr "Dibabit ur c'hoari enrollet"
 
-#: kolf.cpp:607
+#: kolf.cpp:608
 #, fuzzy, kde-format
 #| msgid "Pick Kolf Saved Game"
 msgctxt "@title:window"
 msgid "Pick Kolf Saved Game"
 msgstr "Dibabit ur c'hoari enrollet"
 
-#: kolf.cpp:655
+#: kolf.cpp:656
 #, kde-format
 msgid "%1's turn"
 msgstr "Da %1 eo."
 
-#: kolf.cpp:727
+#: kolf.cpp:728
 #, kde-format
 msgid "%1's score has reached the maximum for this hole."
 msgstr ""
@@ -403,16 +467,21 @@ msgstr "&Mont"
 
 #: landscape.cpp:146
 #, kde-format
+msgctxt "@option:check"
 msgid "Enable show/hide"
 msgstr ""
 
-#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
-#, kde-format
+#: landscape.cpp:151 obstacles.cpp:450 obstacles.cpp:468
+#, fuzzy, kde-format
+#| msgid "Slow"
+msgctxt "@item:inrange"
 msgid "Slow"
 msgstr "Gorrek"
 
-#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
-#, kde-format
+#: landscape.cpp:155 obstacles.cpp:454 obstacles.cpp:472
+#, fuzzy, kde-format
+#| msgid "Fast"
+msgctxt "@item:inrange"
 msgid "Fast"
 msgstr "Buan"
 
@@ -443,21 +512,25 @@ msgstr ""
 
 #: landscape.cpp:571
 #, kde-format
+msgctxt "@option:check"
 msgid "Reverse direction"
 msgstr ""
 
 #: landscape.cpp:576
 #, kde-format
+msgctxt "@option:check"
 msgid "Unmovable"
 msgstr ""
 
 #: landscape.cpp:578
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid "Whether or not this slope can be moved by other objects, like floaters."
 msgstr ""
 
 #: landscape.cpp:582
 #, kde-format
+msgctxt "@lable:spinbox"
 msgid "Grade:"
 msgstr ""
 
@@ -588,7 +661,7 @@ msgstr "Restr"
 msgid "Print course information and exit"
 msgstr ""
 
-#: main.cpp:90 newgame.cpp:242
+#: main.cpp:90
 #, kde-format
 msgid "By %1"
 msgstr "Gant %1"
@@ -616,28 +689,36 @@ msgid "New Game"
 msgstr "C'hoari nevez"
 
 #: newgame.cpp:56
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Players"
+msgctxt "@title:tab"
 msgid "Players"
 msgstr "C'hoarierien"
 
 #: newgame.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&New Player"
+msgctxt "@action:button"
 msgid "&New Player"
 msgstr "C'hoarier &nevez"
 
 #: newgame.cpp:95
 #, kde-format
+msgctxt "@title:tab"
 msgid "Course"
 msgstr ""
 
 #: newgame.cpp:96
 #, kde-format
+msgctxt "@title"
 msgid "Choose Course to Play"
 msgstr ""
 
 #: newgame.cpp:135
-#, kde-format
-msgid "Create New"
+#, fuzzy, kde-format
+#| msgid "Create New"
+msgctxt "@item"
+msgid "<Create New>"
 msgstr "Krouiñ un hini nevez"
 
 #: newgame.cpp:136
@@ -646,32 +727,42 @@ msgid "You"
 msgstr "C'hwi"
 
 #: newgame.cpp:162
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Highscores"
+msgctxt "@action:button"
 msgid "Highscores"
 msgstr "Merkoù uhelañ"
 
 #: newgame.cpp:172
 #, kde-format
-msgid "Add..."
-msgstr "Ouzhpennañ ..."
+msgctxt "@action:button"
+msgid "Add…"
+msgstr ""
 
 #: newgame.cpp:176 newgame.cpp:365
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove"
+msgctxt "@action:button"
 msgid "Remove"
 msgstr "Lemel"
 
 #: newgame.cpp:186
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Options"
+msgctxt "@title:tab"
 msgid "Options"
 msgstr "Dibarzhoù"
 
 #: newgame.cpp:187
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Game Options"
+msgctxt "@title"
 msgid "Game Options"
 msgstr "Dibarzhoù ar c'hoari"
 
 #: newgame.cpp:192
 #, kde-format
+msgctxt "@option:check"
 msgid "&Strict mode"
 msgstr ""
 
@@ -682,15 +773,28 @@ msgid ""
 "generally for competition. Only in strict mode are highscores kept."
 msgstr ""
 
+#: newgame.cpp:242
+#, fuzzy, kde-format
+#| msgid "By %1"
+msgctxt "@info author attribution"
+msgid "By %1"
+msgstr "Gant %1"
+
 #: newgame.cpp:243
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Player %1"
+msgctxt "@info"
 msgid "Par %1"
-msgstr ""
+msgstr "C'hoarier(ez) %1"
 
 #: newgame.cpp:244
-#, kde-format
-msgid "%1 Holes"
-msgstr "%1 toull"
+#, fuzzy, kde-format
+#| msgid "%1 Holes"
+msgctxt "@info"
+msgid "1 Hole"
+msgid_plural "%1 Holes"
+msgstr[0] "%1 toull"
+msgstr[1] "%1 toull"
 
 #: newgame.cpp:282
 #, fuzzy, kde-format
@@ -712,6 +816,7 @@ msgstr "C'hoarier(ez) %1"
 #: objects.cpp:244
 #, fuzzy, kde-format
 #| msgid "degrees"
+msgctxt "@item:valuesuffix"
 msgid " degree"
 msgid_plural " degrees"
 msgstr[0] "diri"
@@ -719,64 +824,98 @@ msgstr[1] ""
 
 #: objects.cpp:247
 #, kde-format
+msgctxt "@label:spinbox"
 msgid "Exiting ball angle:"
 msgstr ""
 
 #: objects.cpp:267
 #, kde-format
+msgctxt "@label:spinbox"
 msgid "Minimum exit speed:"
 msgstr ""
 
 #: objects.cpp:288
 #, kde-format
+msgctxt "@label:spinbox"
 msgid "Maximum exit speed:"
 msgstr ""
 
 #: obstacles.cpp:412
+#, fuzzy
+#| msgid "&Top"
+msgctxt "@option:check wall on"
 msgid "&Top"
 msgstr "&Uhel"
 
-#: obstacles.cpp:412
+#: obstacles.cpp:413
+#, fuzzy
+#| msgid "&Left"
+msgctxt "@option:check wall on"
 msgid "&Left"
 msgstr "A-&gleiz"
 
-#: obstacles.cpp:412
+#: obstacles.cpp:414
+#, fuzzy
+#| msgid "&Right"
+msgctxt "@option:check wall on"
 msgid "&Right"
 msgstr "&Dehoù"
 
-#: obstacles.cpp:412
+#: obstacles.cpp:415
+#, fuzzy
+#| msgid "&Bottom"
+msgctxt "@option:check wall on"
 msgid "&Bottom"
 msgstr "&Traoñ"
 
-#: obstacles.cpp:421
-#, kde-format
+#: obstacles.cpp:425
+#, fuzzy, kde-format
+#| msgid "Wall"
+msgctxt "@label:chooser"
 msgid "Walls on:"
-msgstr ""
+msgstr "Moger"
 
-#: obstacles.cpp:431
-#, kde-format
+#: obstacles.cpp:435
+#, fuzzy, kde-format
+#| msgid "Sign HTML:"
+msgctxt "@label:textbox"
 msgid "Sign HTML:"
 msgstr "Sinañ HTML :"
 
-#: obstacles.cpp:440
+#: obstacles.cpp:444
 #, kde-format
+msgctxt "@option:check"
 msgid "Windmill on top"
 msgstr ""
 
-#: obstacles.cpp:461
-#, kde-format
+#: obstacles.cpp:465
+#, fuzzy, kde-format
+#| msgid "Moving speed"
+msgctxt "@label:slider"
 msgid "Moving speed"
 msgstr "Tizh dilec'hiañ"
 
-#: obstacles.cpp:681
+#: obstacles.cpp:685
 #, kde-format
 msgid "New Text"
 msgstr "Skrid nevez"
 
+#: scoreboard.cpp:27
+#, fuzzy, kde-format
+#| msgid "Players"
+msgctxt "@title:row"
+msgid "Par"
+msgstr "C'hoarierien"
+
 #: scoreboard.cpp:28
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Total"
+msgctxt "@title:column"
 msgid "Total"
 msgstr "Hollek"
+
+#~ msgid "Add..."
+#~ msgstr "Ouzhpennañ ..."
 
 #~ msgid "Kolf Options"
 #~ msgstr "Dibarzhoù Kolf"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-28 01:32+0000\n"
+"POT-Creation-Date: 2024-05-05 00:37+0000\n"
 "PO-Revision-Date: 2013-03-05 15:32+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -34,46 +34,59 @@ msgstr ""
 
 #: editor.cpp:37
 #, kde-format
+msgctxt "@label:listbox"
 msgid "Add object:"
 msgstr ""
 
 #: game.cpp:263
-#, kde-format
-msgid "Course name: "
-msgstr ""
+#, fuzzy, kde-format
+#| msgctxt "NAME OF TRANSLATORS"
+#| msgid "Your names"
+msgctxt "@label:textbox"
+msgid "Course name:"
+msgstr "चेतन खोना"
 
 #: game.cpp:270
 #, kde-format
+msgctxt "@label:textbox"
 msgid "Course author: "
 msgstr ""
 
 #: game.cpp:279
 #, kde-format
+msgctxt "@label:spinbox"
 msgid "Par:"
 msgstr ""
 
 #: game.cpp:289
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Maximum:"
+msgctxt "@label:spinbox"
 msgid "Maximum:"
 msgstr "कमाल :"
 
 #: game.cpp:293
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid "Maximum number of strokes player can take on this hole."
 msgstr ""
 
 #: game.cpp:294
 #, kde-format
+msgctxt "@info:tooltip"
 msgid "Maximum number of strokes"
 msgstr ""
 
 #: game.cpp:295
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Unlimited"
+msgctxt "@item number of strokes"
 msgid "Unlimited"
 msgstr "अमर्यादीत"
 
 #: game.cpp:301
 #, kde-format
+msgctxt "@option:check"
 msgid "Show border walls"
 msgstr ""
 
@@ -89,11 +102,13 @@ msgstr ""
 
 #: game.cpp:1423
 #, kde-format
+msgctxt "@item harzard action"
 msgid "Drop Outside of Hazard"
 msgstr ""
 
 #: game.cpp:1424
 #, kde-format
+msgctxt "@item harzard action"
 msgid "Rehit From Last Location"
 msgstr ""
 
@@ -104,7 +119,8 @@ msgstr ""
 
 #: game.cpp:1426
 #, kde-format
-msgid "%1 is in a Hazard"
+msgctxt "@title:window"
+msgid "%1 in a Hazard"
 msgstr ""
 
 #: game.cpp:1594
@@ -114,6 +130,7 @@ msgstr ""
 
 #: game.cpp:1594
 #, kde-format
+msgctxt "@title:window"
 msgid "New Hole"
 msgstr ""
 
@@ -152,22 +169,26 @@ msgstr ""
 
 #: game.cpp:1990
 #, kde-format
+msgctxt "@title:window"
 msgid "Unsaved Changes"
 msgstr ""
 
 #: game.cpp:1992
 #, kde-format
+msgctxt "@action:button"
 msgid "Save &Later"
 msgstr ""
 
-#: game.cpp:2165 kolf.cpp:551
+#: game.cpp:2165 kolf.cpp:552
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"
 msgstr ""
 
 #: kcomboboxdialog.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Do not ask again"
+msgctxt "@option:check"
 msgid "&Do not ask again"
 msgstr "पुन्हा विचारु नका (&D)"
 
@@ -228,160 +249,187 @@ msgstr ""
 
 #: kolf.cpp:96
 #, kde-format
+msgctxt "@action"
 msgid "Save &Course"
 msgstr ""
 
 #: kolf.cpp:98
 #, kde-format
-msgid "Save &Course As..."
+msgctxt "@action"
+msgid "Save &Course As…"
 msgstr ""
 
 #: kolf.cpp:101
 #, kde-format
+msgctxt "@action"
 msgid "&Save Game"
 msgstr ""
 
 #: kolf.cpp:104
 #, kde-format
-msgid "&Save Game As..."
+msgctxt "@action"
+msgid "&Save Game As…"
 msgstr ""
 
 #: kolf.cpp:111
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Edit"
+msgctxt "@option:check"
 msgid "&Edit"
 msgstr "संपादन (&E)"
 
 #: kolf.cpp:117
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&New"
+msgctxt "@action"
 msgid "&New"
 msgstr "नवीन (&N)"
 
 #: kolf.cpp:126
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Reset"
+msgctxt "@action"
 msgid "&Reset"
 msgstr "पुन्हस्थापित करा (&R)"
 
 #: kolf.cpp:131
 #, kde-format
+msgctxt "@action"
 msgid "&Undo Shot"
 msgstr ""
 
-#. i18n("&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. i18nc("@action", "&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 #. Go
 #: kolf.cpp:135
 #, kde-format
+msgctxt "@title:menu"
 msgid "Switch to Hole"
 msgstr ""
 
 #: kolf.cpp:140
 #, kde-format
+msgctxt "@action"
 msgid "&Next Hole"
 msgstr ""
 
 #: kolf.cpp:145
 #, kde-format
+msgctxt "@action"
 msgid "&Previous Hole"
 msgstr ""
 
 #: kolf.cpp:150
 #, kde-format
+msgctxt "@action"
 msgid "&First Hole"
 msgstr ""
 
 #: kolf.cpp:154
 #, kde-format
+msgctxt "@action"
 msgid "&Last Hole"
 msgstr ""
 
 #: kolf.cpp:159
 #, kde-format
+msgctxt "@action"
 msgid "&Random Hole"
 msgstr ""
 
 #: kolf.cpp:163
 #, kde-format
+msgctxt "@option:check"
 msgid "Enable &Mouse for Moving Putter"
 msgstr ""
 
 #: kolf.cpp:170
 #, kde-format
+msgctxt "@option:check"
 msgid "Enable &Advanced Putting"
 msgstr ""
 
 #: kolf.cpp:176
 #, kde-format
+msgctxt "@option:check"
 msgid "Show &Info"
 msgstr ""
 
 #: kolf.cpp:183
 #, kde-format
+msgctxt "@option:check"
 msgid "Show Putter &Guideline"
 msgstr ""
 
 #: kolf.cpp:189
 #, kde-format
+msgctxt "@option:check"
 msgid "Enable All Dialog Boxes"
 msgstr ""
 
-#: kolf.cpp:193
+#: kolf.cpp:194
 #, kde-format
-msgid "Play &Sounds"
+msgctxt "@option:check"
+msgid "Play Sounds"
 msgstr ""
 
-#: kolf.cpp:200
+#: kolf.cpp:201
 #, kde-format
-msgid "&About Course..."
+msgctxt "@action"
+msgid "&About Course"
 msgstr ""
 
-#: kolf.cpp:203
+#: kolf.cpp:204
 #, kde-format
+msgctxt "@action"
 msgid "&Tutorial"
 msgstr ""
 
-#: kolf.cpp:453 kolf.cpp:497 kolf.cpp:524 newgame.cpp:250 scoreboard.cpp:27
+#: kolf.cpp:454 kolf.cpp:498 kolf.cpp:525 newgame.cpp:250
 #, kde-format
 msgid "Par"
 msgstr "Par"
 
-#: kolf.cpp:484
-#, kde-format
+#: kolf.cpp:485
+#, fuzzy, kde-format
+#| msgid " and "
+msgctxt "@item:intext winners"
 msgid " and "
 msgstr " व "
 
-#: kolf.cpp:485
+#: kolf.cpp:486
 #, kde-format
 msgid "%1 tied"
 msgstr ""
 
-#: kolf.cpp:488
+#: kolf.cpp:489
 #, kde-format
 msgid "%1 won!"
 msgstr ""
 
-#: kolf.cpp:502 kolf.cpp:514 kolf.cpp:529 kolf.cpp:530 newgame.cpp:251
+#: kolf.cpp:503 kolf.cpp:515 kolf.cpp:530 kolf.cpp:531 newgame.cpp:251
 #: newgame.cpp:252
 #, kde-format
 msgid "High Scores for %1"
 msgstr ""
 
-#: kolf.cpp:569
+#: kolf.cpp:570
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Saved Game to Save To"
 msgstr ""
 
-#: kolf.cpp:607
+#: kolf.cpp:608
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Saved Game"
 msgstr ""
 
-#: kolf.cpp:655
+#: kolf.cpp:656
 #, kde-format
 msgid "%1's turn"
 msgstr ""
 
-#: kolf.cpp:727
+#: kolf.cpp:728
 #, kde-format
 msgid "%1's score has reached the maximum for this hole."
 msgstr ""
@@ -400,16 +448,21 @@ msgstr "जा (&G)"
 
 #: landscape.cpp:146
 #, kde-format
+msgctxt "@option:check"
 msgid "Enable show/hide"
 msgstr ""
 
-#: landscape.cpp:151 obstacles.cpp:446 obstacles.cpp:464
-#, kde-format
+#: landscape.cpp:151 obstacles.cpp:450 obstacles.cpp:468
+#, fuzzy, kde-format
+#| msgid "Slow"
+msgctxt "@item:inrange"
 msgid "Slow"
 msgstr "हळु"
 
-#: landscape.cpp:155 obstacles.cpp:450 obstacles.cpp:468
-#, kde-format
+#: landscape.cpp:155 obstacles.cpp:454 obstacles.cpp:472
+#, fuzzy, kde-format
+#| msgid "Fast"
+msgctxt "@item:inrange"
 msgid "Fast"
 msgstr "गतीशील"
 
@@ -440,21 +493,25 @@ msgstr "एलिप्टिक"
 
 #: landscape.cpp:571
 #, kde-format
+msgctxt "@option:check"
 msgid "Reverse direction"
 msgstr ""
 
 #: landscape.cpp:576
 #, kde-format
+msgctxt "@option:check"
 msgid "Unmovable"
 msgstr ""
 
 #: landscape.cpp:578
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid "Whether or not this slope can be moved by other objects, like floaters."
 msgstr ""
 
 #: landscape.cpp:582
 #, kde-format
+msgctxt "@lable:spinbox"
 msgid "Grade:"
 msgstr ""
 
@@ -583,7 +640,7 @@ msgstr "फाईल"
 msgid "Print course information and exit"
 msgstr ""
 
-#: main.cpp:90 newgame.cpp:242
+#: main.cpp:90
 #, kde-format
 msgid "By %1"
 msgstr ""
@@ -610,28 +667,36 @@ msgid "New Game"
 msgstr ""
 
 #: newgame.cpp:56
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Player %1"
+msgctxt "@title:tab"
 msgid "Players"
-msgstr ""
+msgstr "खेळाडू %1"
 
 #: newgame.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Player %1"
+msgctxt "@action:button"
 msgid "&New Player"
-msgstr ""
+msgstr "खेळाडू %1"
 
 #: newgame.cpp:95
 #, kde-format
+msgctxt "@title:tab"
 msgid "Course"
 msgstr ""
 
 #: newgame.cpp:96
 #, kde-format
+msgctxt "@title"
 msgid "Choose Course to Play"
 msgstr ""
 
 #: newgame.cpp:135
-#, kde-format
-msgid "Create New"
+#, fuzzy, kde-format
+#| msgid "Create New"
+msgctxt "@item"
+msgid "<Create New>"
 msgstr "नवीन बनवा"
 
 #: newgame.cpp:136
@@ -641,31 +706,40 @@ msgstr ""
 
 #: newgame.cpp:162
 #, kde-format
+msgctxt "@action:button"
 msgid "Highscores"
 msgstr ""
 
 #: newgame.cpp:172
 #, kde-format
-msgid "Add..."
-msgstr "जोडा..."
+msgctxt "@action:button"
+msgid "Add…"
+msgstr ""
 
 #: newgame.cpp:176 newgame.cpp:365
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove"
+msgctxt "@action:button"
 msgid "Remove"
 msgstr "काढून टाका"
 
 #: newgame.cpp:186
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Options"
+msgctxt "@title:tab"
 msgid "Options"
 msgstr "पर्याय"
 
 #: newgame.cpp:187
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Options"
+msgctxt "@title"
 msgid "Game Options"
-msgstr ""
+msgstr "पर्याय"
 
 #: newgame.cpp:192
 #, kde-format
+msgctxt "@option:check"
 msgid "&Strict mode"
 msgstr ""
 
@@ -676,15 +750,26 @@ msgid ""
 "generally for competition. Only in strict mode are highscores kept."
 msgstr ""
 
-#: newgame.cpp:243
+#: newgame.cpp:242
 #, kde-format
-msgid "Par %1"
+msgctxt "@info author attribution"
+msgid "By %1"
 msgstr ""
+
+#: newgame.cpp:243
+#, fuzzy, kde-format
+#| msgid "Player %1"
+msgctxt "@info"
+msgid "Par %1"
+msgstr "खेळाडू %1"
 
 #: newgame.cpp:244
 #, kde-format
-msgid "%1 Holes"
-msgstr ""
+msgctxt "@info"
+msgid "1 Hole"
+msgid_plural "%1 Holes"
+msgstr[0] ""
+msgstr[1] ""
 
 #: newgame.cpp:282
 #, kde-format
@@ -703,7 +788,10 @@ msgid "Player %1"
 msgstr "खेळाडू %1"
 
 #: objects.cpp:244
-#, kde-format
+#, fuzzy, kde-format
+#| msgid " degree"
+#| msgid_plural " degrees"
+msgctxt "@item:valuesuffix"
 msgid " degree"
 msgid_plural " degrees"
 msgstr[0] " अंश"
@@ -711,61 +799,92 @@ msgstr[1] " अंश"
 
 #: objects.cpp:247
 #, kde-format
+msgctxt "@label:spinbox"
 msgid "Exiting ball angle:"
 msgstr ""
 
 #: objects.cpp:267
 #, kde-format
+msgctxt "@label:spinbox"
 msgid "Minimum exit speed:"
 msgstr ""
 
 #: objects.cpp:288
 #, kde-format
+msgctxt "@label:spinbox"
 msgid "Maximum exit speed:"
 msgstr ""
 
 #: obstacles.cpp:412
+#, fuzzy
+#| msgid "&Top"
+msgctxt "@option:check wall on"
 msgid "&Top"
 msgstr "वर (&T)"
 
-#: obstacles.cpp:412
+#: obstacles.cpp:413
+#, fuzzy
+#| msgid "&Left"
+msgctxt "@option:check wall on"
 msgid "&Left"
 msgstr "डावे (&L)"
 
-#: obstacles.cpp:412
+#: obstacles.cpp:414
+#, fuzzy
+#| msgid "&Right"
+msgctxt "@option:check wall on"
 msgid "&Right"
 msgstr "उजवे (&R)"
 
-#: obstacles.cpp:412
+#: obstacles.cpp:415
+#, fuzzy
+#| msgid "&Bottom"
+msgctxt "@option:check wall on"
 msgid "&Bottom"
 msgstr "खाली (&B)"
 
-#: obstacles.cpp:421
+#: obstacles.cpp:425
 #, kde-format
+msgctxt "@label:chooser"
 msgid "Walls on:"
 msgstr ""
 
-#: obstacles.cpp:431
+#: obstacles.cpp:435
 #, kde-format
+msgctxt "@label:textbox"
 msgid "Sign HTML:"
 msgstr ""
 
-#: obstacles.cpp:440
+#: obstacles.cpp:444
 #, kde-format
+msgctxt "@option:check"
 msgid "Windmill on top"
 msgstr ""
 
-#: obstacles.cpp:461
+#: obstacles.cpp:465
 #, kde-format
+msgctxt "@label:slider"
 msgid "Moving speed"
 msgstr ""
 
-#: obstacles.cpp:681
+#: obstacles.cpp:685
 #, kde-format
 msgid "New Text"
 msgstr ""
 
+#: scoreboard.cpp:27
+#, fuzzy, kde-format
+#| msgid "Par"
+msgctxt "@title:row"
+msgid "Par"
+msgstr "Par"
+
 #: scoreboard.cpp:28
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Total"
+msgctxt "@title:column"
 msgid "Total"
 msgstr "एकूण"
+
+#~ msgid "Add..."
+#~ msgstr "जोडा..."
