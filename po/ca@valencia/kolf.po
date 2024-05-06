@@ -1,7 +1,7 @@
 # Translation of kolf.po to Catalan (Valencian)
-# Copyright (C) 2002-2023 This_file_is_part_of_KDE
+# Copyright (C) 2002-2024 This_file_is_part_of_KDE
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2002, 2003, 2007, 2010, 2011, 2012, 2015, 2017, 2018, 2019, 2021, 2023.
+# Josep M. Ferrer <txemaq@gmail.com>, 2002, 2003, 2007, 2010, 2011, 2012, 2015, 2017, 2018, 2019, 2021, 2023, 2024.
 # Albert Astals Cid <aacid@kde.org>, 2004, 2005.
 # Miquel Oliete <ktalanet@yahoo.es>, 2007.
 # Manuel Tortosa <manutortosa@gmail.com>, 2009.
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-28 01:32+0000\n"
-"PO-Revision-Date: 2023-09-30 18:15+0200\n"
+"PO-Revision-Date: 2024-05-05 12:06+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -241,7 +241,7 @@ msgstr "Guarda el &camp"
 #: kolf.cpp:98
 #, kde-format
 msgid "Save &Course As..."
-msgstr "Guarda el &camp com a..."
+msgstr "Anomena i guarda el &camp…"
 
 #: kolf.cpp:101
 #, kde-format
@@ -251,7 +251,7 @@ msgstr "Guar&da la partida"
 #: kolf.cpp:104
 #, kde-format
 msgid "&Save Game As..."
-msgstr "Guar&da la partida com a..."
+msgstr "&Anomena i guarda la partida…"
 
 #: kolf.cpp:111
 #, kde-format
@@ -338,7 +338,7 @@ msgstr "Reproduïx els &sons"
 #: kolf.cpp:200
 #, kde-format
 msgid "&About Course..."
-msgstr "Quant a c&amp..."
+msgstr "Quant a c&amp…"
 
 #: kolf.cpp:203
 #, kde-format
@@ -654,7 +654,7 @@ msgstr "Puntuacions màximes"
 #: newgame.cpp:172
 #, kde-format
 msgid "Add..."
-msgstr "Afig..."
+msgstr "Afig…"
 
 #: newgame.cpp:176 newgame.cpp:365
 #, kde-format
