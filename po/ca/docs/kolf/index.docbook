@@ -304,7 +304,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 >Per a triar el camp que voleu jugar, feu clic a la seva entrada en el quadre de llista que hi ha a l'esquerra d'aquesta pàgina. El &kolf; ve amb molts camps integrats en què podreu jugar.</para>
 <para
 >Per a afegir un camp que hàgiu descarregat o creat, feu clic al botó <guibutton
->Afegeix...</guibutton
+>Afegeix…</guibutton
 > que es troba a la part inferior d'aquesta pàgina i trieu el fitxer del camp des del diàleg de fitxers.</para>
 </sect2>
 <sect2
@@ -342,7 +342,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Joc</guimenu
 > <guimenuitem
->Carrega...</guimenuitem
+>Carrega…</guimenuitem
 ></menuchoice
 >. Podreu triar la partida desada que s'obrirà.</para>
 </sect2>
@@ -481,7 +481,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 > <guimenu
 >Joc</guimenu
 > <guimenuitem
->Carrega...</guimenuitem
+>Carrega…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -521,7 +521,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Joc</guimenu
 ><guimenuitem
->Desa el camp com a...</guimenuitem
+>Desa el camp com a…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -553,7 +553,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Joc</guimenu
 > <guimenuitem
->Desa la partida com a...</guimenuitem
+>Desa la partida com a…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -614,7 +614,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Joc</guimenu
 ><guimenuitem
->Quant al camp...</guimenuitem
+>Quant al camp…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -1177,7 +1177,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <note>
 <para
 >Per a jugar amb aquest camp nou més tard, feu clic al botó <guibutton
->Afegeix...</guibutton
+>Afegeix…</guibutton
 > per a afegir-lo a la vostra llista de camps.</para>
 </note>
 </sect1>

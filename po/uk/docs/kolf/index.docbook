@@ -324,7 +324,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 >Щоб обрати майданчик, на якому ви маєте намір зіграти, натисніть відповідний запис у полі списку, розташованому у лівій частині цієї сторінки. У пакунку &kolf; ви знайдете багато вбудованих майданчиків, на яких можна грати у гольф.</para>
 <para
 >Щоб додати майданчик, який ви отримали або створили власноруч, натисніть кнопку <guibutton
->Додати...</guibutton
+>Додати…</guibutton
 >, розташовану у нижній частині сторінки, а потім оберіть файл майданчика за допомогою діалогового вікна вибору файла.</para>
 </sect2>
 <sect2
@@ -362,7 +362,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Гра</guimenu
 ><guimenuitem
->Завантажити...</guimenuitem
+>Завантажити…</guimenuitem
 > </menuchoice
 >. Потім ви можете обрати збережену гру, яку слід відкрити.</para>
 </sect2>
@@ -507,7 +507,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 > <guimenu
 >Гра</guimenu
 > <guimenuitem
->Завантажити...</guimenuitem
+>Завантажити…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -547,7 +547,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Гра</guimenu
 ><guimenuitem
->Зберегти майданчик як...</guimenuitem
+>Зберегти майданчик як…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -581,7 +581,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Гра</guimenu
 > <guimenuitem
->Зберегти гру як...</guimenuitem
+>Зберегти гру як…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -1209,7 +1209,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <note>
 <para
 >Щоб мати змогу зіграти на новому майданчику пізніше, натисніть кнопку <guibutton
->Додати...</guibutton
+>Додати…</guibutton
 >, щоб додати майданчик до вашого списку майданчиків.</para>
 </note>
 </sect1>

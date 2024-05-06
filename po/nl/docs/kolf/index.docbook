@@ -304,7 +304,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 >Om de baan te kiezen die u wilt spelen, klikt u op het item in de keuzelijst aan de linkerkant van deze pagina. &kolf; biedt vele ingebouwde banen die u kunt spelen.</para>
 <para
 >Om een baan toe te voegen die u gedownload hebt of zelf hebt gemaakt, klikt u op de knop <guibutton
->Toevoegen...</guibutton
+>Toevoegen…</guibutton
 > onderaan deze pagina, en kiest u het bestand dat de baan bevat in het bestandsdialoogvenster.</para>
 </sect2>
 <sect2
@@ -342,7 +342,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Spel</guimenu
 > <guimenuitem
->Laden...</guimenuitem
+>Laden…</guimenuitem
 ></menuchoice
 >. U kunt dan het opgeslagen spel kiezen dat u wilt openen.</para>
 </sect2>
@@ -481,7 +481,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 > <guimenu
 >Spel</guimenu
 > <guimenuitem
->Laden...</guimenuitem
+>Laden…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -521,7 +521,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Spel</guimenu
 > <guimenuitem
->Baan opslaan als...</guimenuitem
+>Baan opslaan als…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -555,7 +555,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Spel</guimenu
 > <guimenuitem
->Spel opslaan als...</guimenuitem
+>Spel opslaan als…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -616,7 +616,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Spel</guimenu
 ><guimenuitem
->Over de baan...</guimenuitem
+>Over de baan…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -1179,7 +1179,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <note>
 <para
 >Om deze nieuwe baan later te spelen, klikt u op de knop <guibutton
->Toevoegen...</guibutton
+>Toevoegen…</guibutton
 > om deze aan uw banenlijst toe te voegen.</para>
 </note>
 </sect1>
