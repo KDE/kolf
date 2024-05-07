@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the kolf package.
 #
-# giovanni <g.sora@tiscali.it>, 2023.
+# giovanni <g.sora@tiscali.it>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-05 00:37+0000\n"
-"PO-Revision-Date: 2023-12-18 12:17+0100\n"
+"PO-Revision-Date: 2024-05-06 12:43+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -33,19 +33,16 @@ msgid "No configuration options"
 msgstr ""
 
 #: editor.cpp:37
-#, fuzzy, kde-format
-#| msgid "Add object:"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Add object:"
 msgstr "Adde Objecto:"
 
 #: game.cpp:263
-#, fuzzy, kde-format
-#| msgctxt "NAME OF TRANSLATORS"
-#| msgid "Your names"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Course name:"
-msgstr "Giovanni Sora"
+msgstr "Nomine de curso:"
 
 #: game.cpp:270
 #, kde-format
@@ -54,15 +51,13 @@ msgid "Course author: "
 msgstr ""
 
 #: game.cpp:279
-#, fuzzy, kde-format
-#| msgid "Par:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Par:"
 msgstr "Par:"
 
 #: game.cpp:289
-#, fuzzy, kde-format
-#| msgid "Maximum:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Maximum:"
 msgstr "Maxime"
@@ -80,11 +75,10 @@ msgid "Maximum number of strokes"
 msgstr ""
 
 #: game.cpp:295
-#, fuzzy, kde-format
-#| msgid "Unlimited"
+#, kde-format
 msgctxt "@item number of strokes"
 msgid "Unlimited"
-msgstr "sin limite"
+msgstr "Sin limite"
 
 #: game.cpp:301
 #, kde-format
@@ -131,11 +125,10 @@ msgid "%1 will start off."
 msgstr ""
 
 #: game.cpp:1594
-#, fuzzy, kde-format
-#| msgid "&New Player"
+#, kde-format
 msgctxt "@title:window"
 msgid "New Hole"
-msgstr "&Nove Jocator"
+msgstr "Nove foramine"
 
 #: game.cpp:1755
 #, kde-format
@@ -171,8 +164,7 @@ msgid "There are unsaved changes to current hole. Save them?"
 msgstr ""
 
 #: game.cpp:1990
-#, fuzzy, kde-format
-#| msgid "Unsaved Changes"
+#, kde-format
 msgctxt "@title:window"
 msgid "Unsaved Changes"
 msgstr "Modificationes non salveguardate"
@@ -190,8 +182,7 @@ msgid "Pick Kolf Course to Save To"
 msgstr ""
 
 #: kcomboboxdialog.cpp:60
-#, fuzzy, kde-format
-#| msgid "&Do not ask again"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Do not ask again"
 msgstr "Tu non &Demanda de nove"
@@ -252,11 +243,10 @@ msgid "Bumper"
 msgstr ""
 
 #: kolf.cpp:96
-#, fuzzy, kde-format
-#| msgid "Course"
+#, kde-format
 msgctxt "@action"
 msgid "Save &Course"
-msgstr "Curso"
+msgstr "Salveguarda &Curso"
 
 #: kolf.cpp:98
 #, kde-format
@@ -265,12 +255,10 @@ msgid "Save &Course As…"
 msgstr ""
 
 #: kolf.cpp:101
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "New Game"
+#, kde-format
 msgctxt "@action"
 msgid "&Save Game"
-msgstr "Nove Joco"
+msgstr "&Salveguarda  Joco..."
 
 #: kolf.cpp:104
 #, kde-format
@@ -279,25 +267,22 @@ msgid "&Save Game As…"
 msgstr ""
 
 #: kolf.cpp:111
-#, fuzzy, kde-format
-#| msgid "&Edit"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Edit"
 msgstr "&Edita"
 
 #: kolf.cpp:117
-#, fuzzy, kde-format
-#| msgid "&New"
+#, kde-format
 msgctxt "@action"
 msgid "&New"
 msgstr "&Nove "
 
 #: kolf.cpp:126
-#, fuzzy, kde-format
-#| msgid "&Reset"
+#, kde-format
 msgctxt "@action"
 msgid "&Reset"
-msgstr "&Re-fixa"
+msgstr "&Re-Assigna"
 
 #: kolf.cpp:131
 #, kde-format
@@ -356,8 +341,7 @@ msgid "Enable &Advanced Putting"
 msgstr ""
 
 #: kolf.cpp:176
-#, fuzzy, kde-format
-#| msgid "Show &Info"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show &Info"
 msgstr "Monstra &Info"
@@ -375,22 +359,19 @@ msgid "Enable All Dialog Boxes"
 msgstr ""
 
 #: kolf.cpp:194
-#, fuzzy, kde-format
-#| msgid "Play &Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "Re&produce sonos"
+msgstr "Reproduce sonos"
 
 #: kolf.cpp:201
-#, fuzzy, kde-format
-#| msgid "Course"
+#, kde-format
 msgctxt "@action"
 msgid "&About Course"
-msgstr "Curso"
+msgstr "&A proposito de Curso"
 
 #: kolf.cpp:204
-#, fuzzy, kde-format
-#| msgid "&Tutorial"
+#, kde-format
 msgctxt "@action"
 msgid "&Tutorial"
 msgstr "&Classe special (Tutorial)"
@@ -401,11 +382,10 @@ msgid "Par"
 msgstr "Par"
 
 #: kolf.cpp:485
-#, fuzzy, kde-format
-#| msgid " and "
+#, kde-format
 msgctxt "@item:intext winners"
 msgid " and "
-msgstr "e"
+msgstr " e "
 
 #: kolf.cpp:486
 #, kde-format
@@ -464,15 +444,13 @@ msgid "Enable show/hide"
 msgstr ""
 
 #: landscape.cpp:151 obstacles.cpp:450 obstacles.cpp:468
-#, fuzzy, kde-format
-#| msgid "Slow"
+#, kde-format
 msgctxt "@item:inrange"
 msgid "Slow"
 msgstr "Lente"
 
 #: landscape.cpp:155 obstacles.cpp:454 obstacles.cpp:472
-#, fuzzy, kde-format
-#| msgid "Fast"
+#, kde-format
 msgctxt "@item:inrange"
 msgid "Fast"
 msgstr "Rapide"
@@ -503,8 +481,7 @@ msgid "Elliptic"
 msgstr "Elliptic"
 
 #: landscape.cpp:571
-#, fuzzy, kde-format
-#| msgid "Reverse direction"
+#, kde-format
 msgctxt "@option:check"
 msgid "Reverse direction"
 msgstr "Direction invertite"
@@ -522,8 +499,7 @@ msgid "Whether or not this slope can be moved by other objects, like floaters."
 msgstr ""
 
 #: landscape.cpp:582
-#, fuzzy, kde-format
-#| msgid "Grade:"
+#, kde-format
 msgctxt "@lable:spinbox"
 msgid "Grade:"
 msgstr "Grado:"
@@ -531,7 +507,7 @@ msgstr "Grado:"
 #: main.cpp:45
 #, kde-format
 msgid "Kolf"
-msgstr ""
+msgstr "Kolf "
 
 #: main.cpp:47
 #, kde-format
@@ -680,22 +656,19 @@ msgid "New Game"
 msgstr "Nove Joco"
 
 #: newgame.cpp:56
-#, fuzzy, kde-format
-#| msgid "Players"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Players"
 msgstr "Jocatores"
 
 #: newgame.cpp:60
-#, fuzzy, kde-format
-#| msgid "&New Player"
+#, kde-format
 msgctxt "@action:button"
 msgid "&New Player"
 msgstr "&Nove Jocator"
 
 #: newgame.cpp:95
-#, fuzzy, kde-format
-#| msgid "Course"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Course"
 msgstr "Curso"
@@ -707,11 +680,10 @@ msgid "Choose Course to Play"
 msgstr ""
 
 #: newgame.cpp:135
-#, fuzzy, kde-format
-#| msgid "Create New"
+#, kde-format
 msgctxt "@item"
 msgid "<Create New>"
-msgstr "Crea nove"
+msgstr "<Create New>"
 
 #: newgame.cpp:136
 #, kde-format
@@ -719,8 +691,7 @@ msgid "You"
 msgstr "Tu"
 
 #: newgame.cpp:162
-#, fuzzy, kde-format
-#| msgid "Highscores"
+#, kde-format
 msgctxt "@action:button"
 msgid "Highscores"
 msgstr "Punctos alte"
@@ -729,25 +700,22 @@ msgstr "Punctos alte"
 #, kde-format
 msgctxt "@action:button"
 msgid "Add…"
-msgstr ""
+msgstr "Adde…"
 
 #: newgame.cpp:176 newgame.cpp:365
-#, fuzzy, kde-format
-#| msgid "Remove"
+#, kde-format
 msgctxt "@action:button"
 msgid "Remove"
 msgstr "Remove"
 
 #: newgame.cpp:186
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Options"
 msgstr "Optiones"
 
 #: newgame.cpp:187
-#, fuzzy, kde-format
-#| msgid "Game Options"
+#, kde-format
 msgctxt "@title"
 msgid "Game Options"
 msgstr "Optiones de Joco"
@@ -766,15 +734,13 @@ msgid ""
 msgstr ""
 
 #: newgame.cpp:242
-#, fuzzy, kde-format
-#| msgid "By %1"
+#, kde-format
 msgctxt "@info author attribution"
 msgid "By %1"
 msgstr "Per %1"
 
 #: newgame.cpp:243
-#, fuzzy, kde-format
-#| msgid "Par %1"
+#, kde-format
 msgctxt "@info"
 msgid "Par %1"
 msgstr "Par %1"
@@ -804,9 +770,7 @@ msgid "Player %1"
 msgstr "Jocator %1"
 
 #: objects.cpp:244
-#, fuzzy, kde-format
-#| msgid " degree"
-#| msgid_plural " degrees"
+#, kde-format
 msgctxt "@item:valuesuffix"
 msgid " degree"
 msgid_plural " degrees"
@@ -832,29 +796,21 @@ msgid "Maximum exit speed:"
 msgstr ""
 
 #: obstacles.cpp:412
-#, fuzzy
-#| msgid "&Top"
 msgctxt "@option:check wall on"
 msgid "&Top"
 msgstr "C&ulmine"
 
 #: obstacles.cpp:413
-#, fuzzy
-#| msgid "&Left"
 msgctxt "@option:check wall on"
 msgid "&Left"
 msgstr "&Sinistra"
 
 #: obstacles.cpp:414
-#, fuzzy
-#| msgid "&Right"
 msgctxt "@option:check wall on"
 msgid "&Right"
 msgstr "&Dextera"
 
 #: obstacles.cpp:415
-#, fuzzy
-#| msgid "&Bottom"
 msgctxt "@option:check wall on"
 msgid "&Bottom"
 msgstr "&Basso"
@@ -889,15 +845,13 @@ msgid "New Text"
 msgstr "Nove texto"
 
 #: scoreboard.cpp:27
-#, fuzzy, kde-format
-#| msgid "Par"
+#, kde-format
 msgctxt "@title:row"
 msgid "Par"
 msgstr "Par"
 
 #: scoreboard.cpp:28
-#, fuzzy, kde-format
-#| msgid "Total"
+#, kde-format
 msgctxt "@title:column"
 msgid "Total"
 msgstr "Total"
