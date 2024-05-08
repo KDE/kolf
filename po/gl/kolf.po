@@ -1,30 +1,30 @@
 # translation of kolf.po to galician
 # translation of kolf.po to
+# SPDX-FileCopyrightText: 2024 Adrián Chaves (Gallaecio)
 # Leandro Regueiro <unho@gulo.org>, 2004.
 # Xabi G. Feal <xabigf@gmx.net>, 2006.
 # mvillarino <mvillarino@users.sourceforge.net>, 2007, 2009.
 # Xosé <xosecalvo@gmail.com>, 2009, 2012.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009, 2017.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-28 01:32+0000\n"
-"PO-Revision-Date: 2023-04-24 07:42+0200\n"
+"PO-Revision-Date: 2024-05-07 08:41+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
-"Language-Team: Galician <proxecto@trasno.gal>\n"
+"Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Leandro Regueiro, mvillarino, Xosé Calvo, Adrián Chaves Fernández"
+msgstr "Leandro Regueiro, mvillarino, Xosé Calvo, Adrián Chaves (Gallaecio)"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -51,7 +51,7 @@ msgstr "Nome do campo: "
 #: game.cpp:270
 #, kde-format
 msgid "Course author: "
-msgstr "Autor do campo: "
+msgstr "Autoría do campo: "
 
 #: game.cpp:279
 #, kde-format
