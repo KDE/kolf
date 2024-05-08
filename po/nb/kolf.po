@@ -942,6 +942,3 @@ msgstr "Par"
 msgctxt "@title:column"
 msgid "Total"
 msgstr "Totalt"
-
-#~ msgid "Add..."
-#~ msgstr "Legg til …"
