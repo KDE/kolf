@@ -357,7 +357,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <para
 >Per aggiungere un percorso che tu hai scaricato o costruito, premi il pulsante <guibutton
 >Aggiungi...</guibutton
-> nella parte alta della scheda e seleziona dal file manager il file che descrive il percorso.</para>
+> nella parte bassa di questa pagina e scegli il file di percorso nella finestra di selezione dei file.</para>
 </sect2>
 <sect2
 > <title
@@ -390,13 +390,13 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 > <title
 >Come riprendere una partita</title>
 <para
->Per caricare una partita precedentemente salvata, scegli <menuchoice
+>Per caricare una partita precedentemente salvata, scegli la voce di menu <menuchoice
 ><guimenu
 >Partita</guimenu
-><guimenuitem
+> <guimenuitem
 >Carica...</guimenuitem
-></menuchoice
->. Potrai scegliere una partita da caricare tra quelle salvate.</para>
+> </menuchoice
+>. Potrai scegliere la partita salvata da aprire.</para>
 </sect2>
 </sect1>
 
@@ -606,7 +606,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ><menuchoice
 ><guimenu
 >Partita</guimenu
-><guimenuitem
+> <guimenuitem
 >Salva partita come</guimenuitem
 > </menuchoice
 ></term>
@@ -1230,9 +1230,9 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 
 <note>
 <para
->Per giocare successivamente ad un nuovo percorso, fai clic con il mouse sul pulsante <guibutton
+>Per giocare successivamente questo nuovo percorso, fai clic sul pulsante <guibutton
 >Aggiungi...</guibutton
-> per aggiungere il percorso alla tua lista percorsi.</para>
+> per aggiungere il percorso al tuo elenco di percorsi.</para>
 </note>
 </sect1>
 
