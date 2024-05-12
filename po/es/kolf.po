@@ -7,7 +7,7 @@
 # Rafael Osuna <rosuna@wol.es>, 2004.
 # Santiago Fernandez Sancho <santi@kde-es.org>, 2004, 2005.
 # Santiago Fernández Sancho <santi@kde-es.org>, 2007.
-# SPDX-FileCopyrightText: 2009, 2017, 2018, 2019, 2021, 2023 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2009, 2017, 2018, 2019, 2021, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
 # Huever, 2009.
 # Kira J. Fernandez <kirajfdez@gmail.com>, 2010.
 # Sofía Priego <spriego@darksylvania.net>, %Y.
@@ -16,14 +16,14 @@ msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-28 01:32+0000\n"
-"PO-Revision-Date: 2023-10-02 21:14+0100\n"
+"PO-Revision-Date: 2024-05-11 00:21+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -113,7 +113,7 @@ msgstr "Volver a golpear desde la última ubicación"
 #: game.cpp:1426
 #, kde-format
 msgid "What would you like to do for your next shot?"
-msgstr "¿Qué desea hacer en su siguiente golpe?"
+msgstr "¿Qué quieres hacer en el siguiente golpe?"
 
 #: game.cpp:1426
 #, kde-format
@@ -123,7 +123,7 @@ msgstr "%1 está en peligro"
 #: game.cpp:1594
 #, kde-format
 msgid "%1 will start off."
-msgstr "%1 comenzará."
+msgstr "%1 empezará."
 
 #: game.cpp:1594
 #, kde-format
@@ -156,13 +156,12 @@ msgstr "Información del campo"
 #: game.cpp:1876
 #, kde-format
 msgid "This hole uses the following plugins, which you do not have installed:"
-msgstr ""
-"Este hoyo utiliza los siguientes complementos, que no están instalados:"
+msgstr "Este hoyo usa los siguientes complementos, que no están instalados:"
 
 #: game.cpp:1989
 #, kde-format
 msgid "There are unsaved changes to current hole. Save them?"
-msgstr "Hay cambios sin guardar en el hoyo actual. ¿Desea guardarlos?"
+msgstr "Hay cambios sin guardar en el hoyo actual. ¿Quieres guardarlos?"
 
 #: game.cpp:1990
 #, kde-format
@@ -178,7 +177,7 @@ msgstr "Guardar &después"
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"
-msgstr "Elija campo de Kolf a guardar"
+msgstr "Elige el campo de Kolf donde se guardará"
 
 #: kcomboboxdialog.cpp:60
 #, kde-format
@@ -370,19 +369,19 @@ msgstr "%1 ligado"
 #: kolf.cpp:488
 #, kde-format
 msgid "%1 won!"
-msgstr "¡%1 ganado!"
+msgstr "¡%1 ha ganado!"
 
 #: kolf.cpp:502 kolf.cpp:514 kolf.cpp:529 kolf.cpp:530 newgame.cpp:251
 #: newgame.cpp:252
 #, kde-format
 msgid "High Scores for %1"
-msgstr "Máximas puntuaciones de %1"
+msgstr "Mejores puntuaciones de %1"
 
 #: kolf.cpp:569
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Saved Game to Save To"
-msgstr "Elegir partida para guardar"
+msgstr "Elegir partida donde guardar"
 
 #: kolf.cpp:607
 #, kde-format
@@ -466,7 +465,7 @@ msgstr "Inmóvil"
 #, kde-format
 msgid "Whether or not this slope can be moved by other objects, like floaters."
 msgstr ""
-"Si este desnivel puede o no ser movido por otros objetos, como flotadores."
+"Indica si otros objetos pueden mover esta pendiente, como los flotadores."
 
 #: landscape.cpp:582
 #, kde-format
@@ -496,7 +495,7 @@ msgstr "Stefan Majewsky"
 #: main.cpp:53
 #, kde-format
 msgid "Current maintainer"
-msgstr "Responsable actual"
+msgstr "Responsable actual."
 
 #: main.cpp:54
 #, kde-format
@@ -506,7 +505,7 @@ msgstr "Jason Katz-Brown"
 #: main.cpp:54
 #, kde-format
 msgid "Former main author"
-msgstr "Autor principal anterior"
+msgstr "Autor principal anterior."
 
 #: main.cpp:55
 #, kde-format
@@ -516,7 +515,7 @@ msgstr "Niklas Knutsson"
 #: main.cpp:55
 #, kde-format
 msgid "Advanced putting mode"
-msgstr "Modo de golpes avanzado"
+msgstr "Modo de golpes avanzado."
 
 #: main.cpp:56
 #, kde-format
@@ -526,7 +525,7 @@ msgstr "Rik Hemsley"
 #: main.cpp:56
 #, kde-format
 msgid "Border around course"
-msgstr "Borde alrededor del campo"
+msgstr "Borde que rodea el campo."
 
 #: main.cpp:57
 #, kde-format
@@ -536,7 +535,7 @@ msgstr "Timo A. Hummel"
 #: main.cpp:57
 #, kde-format
 msgid "Some good sound effects"
-msgstr "Algunos buenos efectos de sonido"
+msgstr "Algunos buenos efectos de sonido."
 
 #: main.cpp:59
 #, kde-format
@@ -546,7 +545,7 @@ msgstr "Rob Renaud"
 #: main.cpp:59
 #, kde-format
 msgid "Wall-bouncing help"
-msgstr "Ayuda en el rebote de los muros"
+msgstr "Ayuda en el rebote de los muros."
 
 #: main.cpp:60
 #, kde-format
@@ -556,7 +555,7 @@ msgstr "Aaron Seigo"
 #: main.cpp:60
 #, kde-format
 msgid "Suggestions, bug reports"
-msgstr "Sugerencias, informes de fallos"
+msgstr "Sugerencias, informes de fallos."
 
 #: main.cpp:61
 #, kde-format
@@ -566,7 +565,7 @@ msgstr "Erin Catto"
 #: main.cpp:61
 #, kde-format
 msgid "Developer of Box2D physics engine"
-msgstr "Desarrollador del motor físico Box2D"
+msgstr "Desarrollador del motor físico Box2D."
 
 #: main.cpp:62
 #, kde-format
@@ -576,7 +575,7 @@ msgstr "Ryan Cumming"
 #: main.cpp:62
 #, kde-format
 msgid "Vector class (Kolf 1)"
-msgstr "Clase de vector (Kolf 1)"
+msgstr "Clase de vector (Kolf 1)."
 
 #: main.cpp:63
 #, kde-format
@@ -586,7 +585,7 @@ msgstr "Daniel Matza-Brown"
 #: main.cpp:63
 #, kde-format
 msgid "Working wall-bouncing algorithm (Kolf 1)"
-msgstr "Algoritmo funcional de rebote en los muros (Kolf 1)"
+msgstr "Algoritmo funcional de rebote en los muros (Kolf 1)."
 
 #: main.cpp:71
 #, kde-format
@@ -642,7 +641,7 @@ msgstr "Campo"
 #: newgame.cpp:96
 #, kde-format
 msgid "Choose Course to Play"
-msgstr "Elegir campo para jugar"
+msgstr "Elige campo para jugar"
 
 #: newgame.cpp:135
 #, kde-format
@@ -652,12 +651,12 @@ msgstr "Crear nuevo"
 #: newgame.cpp:136
 #, kde-format
 msgid "You"
-msgstr "Usted"
+msgstr "Tú"
 
 #: newgame.cpp:162
 #, kde-format
 msgid "Highscores"
-msgstr "Puntuaciones máximas"
+msgstr "Mejores puntuaciones"
 
 #: newgame.cpp:172
 #, kde-format
@@ -690,9 +689,9 @@ msgid ""
 "In strict mode, undo, editing, and switching holes is not allowed. This is "
 "generally for competition. Only in strict mode are highscores kept."
 msgstr ""
-"En el modo estricto no se permite deshacer, editar y cambiar hoyos. Este "
-"modo es generalmente para competición. Las puntuaciones máximas únicamente "
-"se guardan si se juega en el modo estricto."
+"En el modo estricto no se permite deshacer, editar ni cambiar hoyos. Este "
+"modo suele ser para competiciones. Las mejores puntuaciones solo se guardan "
+"si se juega en el modo estricto."
 
 #: newgame.cpp:243
 #, kde-format
@@ -708,12 +707,12 @@ msgstr "%1 Hoyos"
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course"
-msgstr "Elegir campo de Kolf"
+msgstr "Elige campo de Kolf"
 
 #: newgame.cpp:310
 #, kde-format
 msgid "Chosen course is already on course list."
-msgstr "El campo elegido ya está en la lista."
+msgstr "El campo que has elegido ya está en la lista."
 
 #: newgame.cpp:323
 #, kde-format
