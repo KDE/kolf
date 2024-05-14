@@ -2,19 +2,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Zlatko Popov <zlatkopopov@fsa-bg.org>, 2006, 2007.
+# SPDX-FileCopyrightText: 2024 Mincho Kondarev <mkondarev@yahoo.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-05 00:37+0000\n"
-"PO-Revision-Date: 2007-04-15 09:41+0000\n"
-"Last-Translator: Zlatko Popov <zlatkopopov@fsa-bg.org>\n"
-"Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
+"PO-Revision-Date: 2024-05-13 22:48+0200\n"
+"Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
+"Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, fuzzy, kde-format
@@ -270,7 +271,7 @@ msgstr "&Запис на игрище"
 #| msgid "Save &Course As..."
 msgctxt "@action"
 msgid "Save &Course As…"
-msgstr "Запис на игрище &като..."
+msgstr "Запис на игрище &като…"
 
 #: kolf.cpp:101
 #, fuzzy, kde-format
@@ -284,7 +285,7 @@ msgstr "З&апис на игра"
 #| msgid "&Save Game As..."
 msgctxt "@action"
 msgid "&Save Game As…"
-msgstr "Запи&с на игра като..."
+msgstr "Запи&с на игра като…"
 
 #: kolf.cpp:111
 #, kde-format
