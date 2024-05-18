@@ -1,15 +1,15 @@
 # Translation of kolf into esperanto.
 # Copyright (C) 2009 Free Software Foundation, Inc.
 # Axel Rousseau <axel@esperanto-jeunes.org>, 2009.
-# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
+# Oliver Kellogg <olivermkellogg@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-28 01:32+0000\n"
-"PO-Revision-Date: 2023-11-13 07:18+0100\n"
-"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
+"PO-Revision-Date: 2024-05-05 18:09+0100\n"
+"Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Axel Rousseau, Oliver Kellogg"
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "axel@esperanto-jeunes.org, okellogg@users.sourceforge.net"
+msgstr "axel@esperanto-jeunes.org, olivermkellogg@gmail.com"
 
 #: config.cpp:51
 #, kde-format
@@ -61,7 +61,7 @@ msgstr "Maksimumo:"
 #: game.cpp:293
 #, kde-format
 msgid "Maximum number of strokes player can take on this hole."
-msgstr "Maksimuma nombro da batoj ludanto povas preni ĉi tiun truon."
+msgstr "Maksimuma nombro da batoj kiun ludanto rajtas uzi por ĉi tiu truo."
 
 #: game.cpp:294
 #, kde-format
@@ -763,7 +763,7 @@ msgstr "Ventmuelejo supre"
 #: obstacles.cpp:461
 #, kde-format
 msgid "Moving speed"
-msgstr "Movanta rapideco"
+msgstr "Rapideco de moviĝo"
 
 #: obstacles.cpp:681
 #, kde-format
