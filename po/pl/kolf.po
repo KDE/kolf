@@ -1,26 +1,26 @@
-# Version: $Revision: 1668312 $
+# Version: $Revision: 1680897 $
 # translation of kolf.po to Polish
 # Copyright (C) 2002,2003, 2004, 2005, 2007, 2008, 2009 Free Software Foundation, Inc.
 #
 # Michał Rudolf <mrudolf@kdewebdev.org>, 2002.
 # Michal Rudolf <mrudolf@kdewebdev.org>, 2002,2003, 2004, 2005, 2007, 2008, 2009.
 # Marta Rybczynska <kde-i18n@rybczynska.net>, 2009.
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2011, 2017, 2019, 2021, 2022.
+# SPDX-FileCopyrightText: 2011, 2017, 2019, 2021, 2022, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-28 01:32+0000\n"
-"PO-Revision-Date: 2022-01-08 09:09+0100\n"
+"PO-Revision-Date: 2024-05-26 12:32+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.03.70\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.08.5\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10"
+" || n%100>=20) ? 1 : 2);\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -50,7 +50,7 @@ msgstr "Nazwa toru: "
 #: game.cpp:270
 #, kde-format
 msgid "Course author: "
-msgstr "Autor toru: "
+msgstr "Autor pola: "
 
 #: game.cpp:279
 #, kde-format
@@ -85,17 +85,17 @@ msgstr "Pokaż ścianki ograniczające"
 #: game.cpp:499 game.cpp:2432
 #, kde-format
 msgid "Course Author"
-msgstr "Autor toru"
+msgstr "Autor pola"
 
 #: game.cpp:500 game.cpp:501 game.cpp:2432
 #, kde-format
 msgid "Course Name"
-msgstr "Nazwa toru"
+msgstr "Nazwa pola"
 
 #: game.cpp:1423
 #, kde-format
 msgid "Drop Outside of Hazard"
-msgstr "Uderzenie z miejsca wypadnięcia z toru"
+msgstr "Uderzenie z miejsca wypadnięcia z pola"
 
 #: game.cpp:1424
 #, kde-format
@@ -125,7 +125,7 @@ msgstr "Nowy dołek"
 #: game.cpp:1755
 #, kde-format
 msgid "Course name: %1"
-msgstr "Nazwa toru: %1"
+msgstr "Nazwa pola: %1"
 
 #: game.cpp:1756
 #, kde-format
@@ -144,7 +144,7 @@ msgstr[2] "%1 dołków"
 #, kde-format
 msgctxt "@title:window"
 msgid "Course Information"
-msgstr "Informacje o torze"
+msgstr "Informacje o polu"
 
 #: game.cpp:1876
 #, kde-format
@@ -170,7 +170,7 @@ msgstr "Zapisz &później"
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"
-msgstr "Wybierz tor Kolf do zapisania dołka"
+msgstr "Wybierz pole Kolf do zapisania dołka"
 
 #: kcomboboxdialog.cpp:60
 #, kde-format
@@ -235,7 +235,7 @@ msgstr "Ścianka"
 #: kolf.cpp:96
 #, kde-format
 msgid "Save &Course"
-msgstr "\tZapisz &tor"
+msgstr "Zapisz &pole"
 
 #: kolf.cpp:98
 #, kde-format
@@ -517,7 +517,7 @@ msgstr "Rik Hemsley"
 #: main.cpp:56
 #, kde-format
 msgid "Border around course"
-msgstr "Brzeg wokół toru"
+msgstr "Brzeg wokół pola"
 
 #: main.cpp:57
 #, kde-format
@@ -587,7 +587,7 @@ msgstr "Plik"
 #: main.cpp:72
 #, kde-format
 msgid "Print course information and exit"
-msgstr "Wypisz informacje o torze i zakończ"
+msgstr "Wypisz informacje o polu i zakończ"
 
 #: main.cpp:90 newgame.cpp:242
 #, kde-format
@@ -607,7 +607,7 @@ msgstr "norma: %1"
 #: main.cpp:99
 #, kde-format
 msgid "Course %1 does not exist."
-msgstr "Tor %1 nie istnieje."
+msgstr "Pole %1 nie istnieje."
 
 #: newgame.cpp:40
 #, kde-format
@@ -628,12 +628,12 @@ msgstr "&Nowy gracz"
 #: newgame.cpp:95
 #, kde-format
 msgid "Course"
-msgstr "Tor"
+msgstr "Pole"
 
 #: newgame.cpp:96
 #, kde-format
 msgid "Choose Course to Play"
-msgstr "Wybierz tor"
+msgstr "Wybierz pole"
 
 #: newgame.cpp:135
 #, kde-format
@@ -668,12 +668,12 @@ msgstr "Ustawienia"
 #: newgame.cpp:187
 #, kde-format
 msgid "Game Options"
-msgstr "Opcje gry"
+msgstr "Ustawienia gry"
 
 #: newgame.cpp:192
 #, kde-format
 msgid "&Strict mode"
-msgstr "&Zawody"
+msgstr "Tryb ści&sły"
 
 #: newgame.cpp:196
 #, kde-format
@@ -698,12 +698,12 @@ msgstr "%1 dołków"
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course"
-msgstr "Wybierz tor Kolf"
+msgstr "Wybierz pole Kolf"
 
 #: newgame.cpp:310
 #, kde-format
 msgid "Chosen course is already on course list."
-msgstr "Wybrany tor jest już na liście torów."
+msgstr "Wybrany pole jest już na liście pól."
 
 #: newgame.cpp:323
 #, kde-format
@@ -805,3 +805,4 @@ msgstr "Razem"
 
 #~ msgid "Plugins"
 #~ msgstr "Wtyczki"
+
