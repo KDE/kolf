@@ -1,4 +1,4 @@
-# Version: $Revision: 1680898 $
+# Version: $Revision: 1681083 $
 # translation of kolf.po to Polish
 # Copyright (C) 2002,2003, 2004, 2005, 2007, 2008, 2009 Free Software Foundation, Inc.
 #
@@ -18,9 +18,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.5\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10"
-" || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -39,63 +38,54 @@ msgstr "Brak konfigurowalnych opcji"
 
 #: editor.cpp:37
 #, kde-format
-#| msgid "Add object:"
 msgctxt "@label:listbox"
 msgid "Add object:"
 msgstr "Dodaj obiekt:"
 
 #: game.cpp:263
 #, kde-format
-#| msgid "Course name: "
 msgctxt "@label:textbox"
 msgid "Course name:"
 msgstr "Nazwa pola:"
 
 #: game.cpp:270
 #, kde-format
-#| msgid "Course author: "
 msgctxt "@label:textbox"
 msgid "Course author: "
 msgstr "Autor pola: "
 
 #: game.cpp:279
 #, kde-format
-#| msgid "Par:"
 msgctxt "@label:spinbox"
 msgid "Par:"
 msgstr "Norma:"
 
 #: game.cpp:289
 #, kde-format
-#| msgid "Maximum:"
 msgctxt "@label:spinbox"
 msgid "Maximum:"
 msgstr "Maksimum:"
 
 #: game.cpp:293
 #, kde-format
-#| msgid "Maximum number of strokes player can take on this hole."
 msgctxt "@info:whatsthis"
 msgid "Maximum number of strokes player can take on this hole."
 msgstr "Przekroczono maksymalną liczbę uderzeń dla tego dołka."
 
 #: game.cpp:294
 #, kde-format
-#| msgid "Maximum number of strokes"
 msgctxt "@info:tooltip"
 msgid "Maximum number of strokes"
 msgstr "Maksymalna liczba prób"
 
 #: game.cpp:295
 #, kde-format
-#| msgid "Unlimited"
 msgctxt "@item number of strokes"
 msgid "Unlimited"
 msgstr "Bez ograniczeń"
 
 #: game.cpp:301
 #, kde-format
-#| msgid "Show border walls"
 msgctxt "@option:check"
 msgid "Show border walls"
 msgstr "Pokaż ścianki ograniczające"
@@ -112,14 +102,12 @@ msgstr "Nazwa pola"
 
 #: game.cpp:1423
 #, kde-format
-#| msgid "Drop Outside of Hazard"
 msgctxt "@item harzard action"
 msgid "Drop Outside of Hazard"
 msgstr "Uderzenie z miejsca wypadnięcia z pola"
 
 #: game.cpp:1424
 #, kde-format
-#| msgid "Rehit From Last Location"
 msgctxt "@item harzard action"
 msgid "Rehit From Last Location"
 msgstr "Uderzenie z poprzedniego miejsca"
@@ -131,7 +119,6 @@ msgstr "Co zrobić z następnym uderzeniem?"
 
 #: game.cpp:1426
 #, kde-format
-#| msgid "%1 is in a Hazard"
 msgctxt "@title:window"
 msgid "%1 in a Hazard"
 msgstr "%1 jest poza polem"
@@ -143,7 +130,6 @@ msgstr "%1 rozpoczyna grę."
 
 #: game.cpp:1594
 #, kde-format
-#| msgid "New Hole"
 msgctxt "@title:window"
 msgid "New Hole"
 msgstr "Nowy dołek"
@@ -184,14 +170,12 @@ msgstr "Nie zapisano zmiany w aktualnym dołku. Zapisać je?"
 
 #: game.cpp:1990
 #, kde-format
-#| msgid "Unsaved Changes"
 msgctxt "@title:window"
 msgid "Unsaved Changes"
 msgstr "Niezapisane zmiany"
 
 #: game.cpp:1992
 #, kde-format
-#| msgid "Save &Later"
 msgctxt "@action:button"
 msgid "Save &Later"
 msgstr "Zapisz &później"
@@ -204,7 +188,6 @@ msgstr "Wybierz pole Kolf do zapisania dołka"
 
 #: kcomboboxdialog.cpp:60
 #, kde-format
-#| msgid "&Do not ask again"
 msgctxt "@option:check"
 msgid "&Do not ask again"
 msgstr "&Nie pytaj więcej"
@@ -266,56 +249,48 @@ msgstr "Ścianka"
 
 #: kolf.cpp:96
 #, kde-format
-#| msgid "Save &Course"
 msgctxt "@action"
 msgid "Save &Course"
 msgstr "Zapisz &pole"
 
 #: kolf.cpp:98
 #, kde-format
-#| msgid "Save &Course As..."
 msgctxt "@action"
 msgid "Save &Course As…"
 msgstr "Zapisz po&le jako…"
 
 #: kolf.cpp:101
 #, kde-format
-#| msgid "&Save Game"
 msgctxt "@action"
 msgid "&Save Game"
 msgstr "Zapisz &grę"
 
 #: kolf.cpp:104
 #, kde-format
-#| msgid "&Save Game As..."
 msgctxt "@action"
 msgid "&Save Game As…"
 msgstr "Zapi&sz grę jako…"
 
 #: kolf.cpp:111
 #, kde-format
-#| msgid "&Edit"
 msgctxt "@option:check"
 msgid "&Edit"
 msgstr "&Edycja"
 
 #: kolf.cpp:117
 #, kde-format
-#| msgid "&New"
 msgctxt "@action"
 msgid "&New"
 msgstr "&Nowy"
 
 #: kolf.cpp:126
 #, kde-format
-#| msgid "&Reset"
 msgctxt "@action"
 msgid "&Reset"
 msgstr "&Przywróć"
 
 #: kolf.cpp:131
 #, kde-format
-#| msgid "&Undo Shot"
 msgctxt "@action"
 msgid "&Undo Shot"
 msgstr "&Cofnij uderzenie"
@@ -324,98 +299,84 @@ msgstr "&Cofnij uderzenie"
 #. Go
 #: kolf.cpp:135
 #, kde-format
-#| msgid "Switch to Hole"
 msgctxt "@title:menu"
 msgid "Switch to Hole"
 msgstr "Przełącz do dołka"
 
 #: kolf.cpp:140
 #, kde-format
-#| msgid "&Next Hole"
 msgctxt "@action"
 msgid "&Next Hole"
 msgstr "&Następny dołek"
 
 #: kolf.cpp:145
 #, kde-format
-#| msgid "&Previous Hole"
 msgctxt "@action"
 msgid "&Previous Hole"
 msgstr "&Poprzedni dołek"
 
 #: kolf.cpp:150
 #, kde-format
-#| msgid "&First Hole"
 msgctxt "@action"
 msgid "&First Hole"
 msgstr "P&ierwszy dołek"
 
 #: kolf.cpp:154
 #, kde-format
-#| msgid "&Last Hole"
 msgctxt "@action"
 msgid "&Last Hole"
 msgstr "&Ostatni dołek"
 
 #: kolf.cpp:159
 #, kde-format
-#| msgid "&Random Hole"
 msgctxt "@action"
 msgid "&Random Hole"
 msgstr "&Losowy dołek"
 
 #: kolf.cpp:163
 #, kde-format
-#| msgid "Enable &Mouse for Moving Putter"
 msgctxt "@option:check"
 msgid "Enable &Mouse for Moving Putter"
 msgstr "Włącz przesuwanie kija &myszką"
 
 #: kolf.cpp:170
 #, kde-format
-#| msgid "Enable &Advanced Putting"
 msgctxt "@option:check"
 msgid "Enable &Advanced Putting"
 msgstr "Włącz &zaawansowane uderzenia"
 
 #: kolf.cpp:176
 #, kde-format
-#| msgid "Show &Info"
 msgctxt "@option:check"
 msgid "Show &Info"
 msgstr "Pokaż &informacje"
 
 #: kolf.cpp:183
 #, kde-format
-#| msgid "Show Putter &Guideline"
 msgctxt "@option:check"
 msgid "Show Putter &Guideline"
 msgstr "Pokaż &linie pomocnicze"
 
 #: kolf.cpp:189
 #, kde-format
-#| msgid "Enable All Dialog Boxes"
 msgctxt "@option:check"
 msgid "Enable All Dialog Boxes"
 msgstr "Włącz wszystkie okna dialogowe"
 
 #: kolf.cpp:194
 #, kde-format
-#| msgid "Play &Sounds"
 msgctxt "@option:check"
 msgid "Play Sounds"
 msgstr "Odtwarzaj dźwięki"
 
 #: kolf.cpp:201
 #, kde-format
-#| msgid "&About Course..."
 msgctxt "@action"
 msgid "&About Course"
 msgstr "&O polu"
 
 #: kolf.cpp:204
 #, kde-format
-#| msgid "&Tutorial"
 msgctxt "@action"
 msgid "&Tutorial"
 msgstr "&Podręcznik"
@@ -427,7 +388,6 @@ msgstr "Norma"
 
 #: kolf.cpp:485
 #, kde-format
-#| msgid " and "
 msgctxt "@item:intext winners"
 msgid " and "
 msgstr " i "
@@ -484,21 +444,18 @@ msgstr "&Start"
 
 #: landscape.cpp:146
 #, kde-format
-#| msgid "Enable show/hide"
 msgctxt "@option:check"
 msgid "Enable show/hide"
 msgstr "Włącz pokazywanie/ukrywanie"
 
 #: landscape.cpp:151 obstacles.cpp:450 obstacles.cpp:468
 #, kde-format
-#| msgid "Slow"
 msgctxt "@item:inrange"
 msgid "Slow"
 msgstr "Powoli"
 
 #: landscape.cpp:155 obstacles.cpp:454 obstacles.cpp:472
 #, kde-format
-#| msgid "Fast"
 msgctxt "@item:inrange"
 msgid "Fast"
 msgstr "Szybko"
@@ -530,29 +487,24 @@ msgstr "Eliptyczna"
 
 #: landscape.cpp:571
 #, kde-format
-#| msgid "Reverse direction"
 msgctxt "@option:check"
 msgid "Reverse direction"
 msgstr "Przeciwny kierunek"
 
 #: landscape.cpp:576
 #, kde-format
-#| msgid "Unmovable"
 msgctxt "@option:check"
 msgid "Unmovable"
 msgstr "Nieruchomy"
 
 #: landscape.cpp:578
 #, kde-format
-#| msgid ""
-#| "Whether or not this slope can be moved by other objects, like floaters."
 msgctxt "@info:whatsthis"
 msgid "Whether or not this slope can be moved by other objects, like floaters."
 msgstr "Czy ten element może być przesunięty przez inne obiekty."
 
 #: landscape.cpp:582
 #, kde-format
-#| msgid "Grade:"
 msgctxt "@lable:spinbox"
 msgid "Grade:"
 msgstr "Nachylenie:"
@@ -710,35 +662,30 @@ msgstr "Nowa gra"
 
 #: newgame.cpp:56
 #, kde-format
-#| msgid "Players"
 msgctxt "@title:tab"
 msgid "Players"
 msgstr "Gracze"
 
 #: newgame.cpp:60
 #, kde-format
-#| msgid "&New Player"
 msgctxt "@action:button"
 msgid "&New Player"
 msgstr "&Nowy gracz"
 
 #: newgame.cpp:95
 #, kde-format
-#| msgid "Course"
 msgctxt "@title:tab"
 msgid "Course"
 msgstr "Pole"
 
 #: newgame.cpp:96
 #, kde-format
-#| msgid "Choose Course to Play"
 msgctxt "@title"
 msgid "Choose Course to Play"
 msgstr "Wybierz pole"
 
 #: newgame.cpp:135
 #, kde-format
-#| msgid "Create New"
 msgctxt "@item"
 msgid "<Create New>"
 msgstr "<Utwórz nowy>"
@@ -750,7 +697,6 @@ msgstr "Ty"
 
 #: newgame.cpp:162
 #, kde-format
-#| msgid "Highscores"
 msgctxt "@action:button"
 msgid "Highscores"
 msgstr "Najlepsze wyniki"
@@ -763,28 +709,24 @@ msgstr "Dodaj…"
 
 #: newgame.cpp:176 newgame.cpp:365
 #, kde-format
-#| msgid "Remove"
 msgctxt "@action:button"
 msgid "Remove"
 msgstr "Usuń"
 
 #: newgame.cpp:186
 #, kde-format
-#| msgid "Options"
 msgctxt "@title:tab"
 msgid "Options"
 msgstr "Ustawienia"
 
 #: newgame.cpp:187
 #, kde-format
-#| msgid "Game Options"
 msgctxt "@title"
 msgid "Game Options"
 msgstr "Ustawienia gry"
 
 #: newgame.cpp:192
 #, kde-format
-#| msgid "&Strict mode"
 msgctxt "@option:check"
 msgid "&Strict mode"
 msgstr "Tryb ści&sły"
@@ -800,21 +742,18 @@ msgstr ""
 
 #: newgame.cpp:242
 #, kde-format
-#| msgid "By %1"
 msgctxt "@info author attribution"
 msgid "By %1"
 msgstr "Autorstwa %1"
 
 #: newgame.cpp:243
 #, kde-format
-#| msgid "Par %1"
 msgctxt "@info"
 msgid "Par %1"
 msgstr "Norma: %1"
 
 #: newgame.cpp:244
 #, kde-format
-#| msgid "%1 Holes"
 msgctxt "@info"
 msgid "1 Hole"
 msgid_plural "%1 Holes"
@@ -840,8 +779,6 @@ msgstr "Gracz %1"
 
 #: objects.cpp:244
 #, kde-format
-#| msgid " degree"
-#| msgid_plural " degrees"
 msgctxt "@item:valuesuffix"
 msgid " degree"
 msgid_plural " degrees"
@@ -851,73 +788,62 @@ msgstr[2] " stopni"
 
 #: objects.cpp:247
 #, kde-format
-#| msgid "Exiting ball angle:"
 msgctxt "@label:spinbox"
 msgid "Exiting ball angle:"
 msgstr "Kąt wychodzącej piłki:"
 
 #: objects.cpp:267
 #, kde-format
-#| msgid "Minimum exit speed:"
 msgctxt "@label:spinbox"
 msgid "Minimum exit speed:"
 msgstr "Minimalna prędkość wyjścia:"
 
 #: objects.cpp:288
 #, kde-format
-#| msgid "Maximum exit speed:"
 msgctxt "@label:spinbox"
 msgid "Maximum exit speed:"
 msgstr "Minimalna prędkość wyjścia:"
 
 #: obstacles.cpp:412
-#| msgid "&Top"
 msgctxt "@option:check wall on"
 msgid "&Top"
 msgstr "U &góry"
 
 #: obstacles.cpp:413
-#| msgid "&Left"
 msgctxt "@option:check wall on"
 msgid "&Left"
 msgstr "Z &lewej"
 
 #: obstacles.cpp:414
-#| msgid "&Right"
 msgctxt "@option:check wall on"
 msgid "&Right"
 msgstr "Z &prawej"
 
 #: obstacles.cpp:415
-#| msgid "&Bottom"
 msgctxt "@option:check wall on"
 msgid "&Bottom"
 msgstr "Na &dole"
 
 #: obstacles.cpp:425
 #, kde-format
-#| msgid "Walls on:"
 msgctxt "@label:chooser"
 msgid "Walls on:"
 msgstr "Ściany:"
 
 #: obstacles.cpp:435
 #, kde-format
-#| msgid "Sign HTML:"
 msgctxt "@label:textbox"
 msgid "Sign HTML:"
 msgstr "Oznaczenie HTML:"
 
 #: obstacles.cpp:444
 #, kde-format
-#| msgid "Windmill on top"
 msgctxt "@option:check"
 msgid "Windmill on top"
 msgstr "Wiatrak na górze"
 
 #: obstacles.cpp:465
 #, kde-format
-#| msgid "Moving speed"
 msgctxt "@label:slider"
 msgid "Moving speed"
 msgstr "Prędkość przemieszczania"
@@ -929,14 +855,12 @@ msgstr "Nowy tekst"
 
 #: scoreboard.cpp:27
 #, kde-format
-#| msgid "Par"
 msgctxt "@title:row"
 msgid "Par"
 msgstr "Norma"
 
 #: scoreboard.cpp:28
 #, kde-format
-#| msgid "Total"
 msgctxt "@title:column"
 msgid "Total"
 msgstr "Razem"
@@ -970,4 +894,3 @@ msgstr "Razem"
 
 #~ msgid "Plugins"
 #~ msgstr "Wtyczki"
-
