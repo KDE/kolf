@@ -85,6 +85,20 @@
 > <contrib
 >Traductora</contrib
 > </othercredit
+> <othercredit role="translator"
+><firstname
+>Eloy</firstname
+> <surname
+>Cuadra</surname
+> <affiliation
+><address
+><email
+>ecuadra@eloihr.net</email
+></address
+></affiliation
+> <contrib
+>Corrección de la traducción</contrib
+></othercredit
 > 
 </authorgroup>
 
@@ -122,7 +136,7 @@
 	<keyword
 >miniatura</keyword>
 	<keyword
->arcade</keyword>
+>recreativo</keyword>
 	<keyword
 >deporte</keyword>
 	<keyword
@@ -138,7 +152,7 @@
 ><title
 >Tipo de juego:</title
 ><para
->Arcade, Deporte</para
+>Recreativo, Deporte</para
 ></note>
 	<note
 ><title
@@ -148,11 +162,11 @@
 ></note>
 <!--Short game description starts here. 3-4 sentences (paragraphs)-->
 	<para
->&kolf; es un juego de minigolf con vista 2D desde arriba. Las pistas son dinámicas, y pueden jugar hasta diez personas a la vez en una competición.</para>
+>&kolf; es un juego de minigolf con vista 2D aérea. Las pistas son dinámicas y pueden jugar hasta diez personas a la vez en una competición.</para>
 <para
->&kolf; está provisto de una pista de tutorial. <link linkend="howto"
->Jugar esta pista</link
-> es la forma más sencilla de comenzar.</para>
+>&kolf; dispone de un campo que sirve de tutorial. <link linkend="howto"
+>Jugar este campo</link
+> es la forma más sencilla de empezar.</para>
 </chapter>
 
 <chapter id="howto"
@@ -164,12 +178,12 @@
 ><title
 >Objetivo:</title
 ><para
->Enviar la bola dentro al hoyo con el mínimo número de golpes posible.</para
+>Enviar la bola dentro del hoyo con el mínimo número de golpes posible.</para
 ></note
 ><!--Describe the objective of the game.-->
 <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
 	<para
->Jugar a &kolf; es sencillo. La forma más rápida de aprender es practicando, por lo que se incluye un campo de tutorial para guiarle por los aspectos básicos. Este capítulo es una guía de ese tutorial. Para iniciar el tutorial, seleccione la opción de menú <menuchoice
+>Jugar a &kolf; es sencillo. La forma más rápida de aprender es practicando, por lo que se incluye un campo de tutorial para guiarte por los aspectos básicos. Este capítulo es una guía de ese tutorial. Para empezar el tutorial, selecciona la opción del menú <menuchoice
 ><guimenu
 >Ayuda</guimenu
 > <guimenuitem
@@ -181,27 +195,27 @@
 <title
 >Golpear la bola</title>
 <para
->Para golpear la bola, alinee el ratón detrás de la bola de forma que el palo apunte en la dirección en la que desea golpear o bien pulse las teclas de dirección &Left; (en contra de las agujas del reloj) o &Right; (a favor de las agujas del reloj) para girar el palo.</para>
+>Para golpear la bola, alinea el ratón detrás de la bola de forma que el palo apunte en la dirección en la que deseas golpear, o bien pulsa las teclas de dirección &Left; (en contra de las agujas del reloj) o &Right; (a favor de las agujas del reloj) para girar el palo.</para>
 <tip>
 <para
->Para girar el palo más rápidamente utilizando el teclado, mantenga pulsada la tecla &Shift; al tiempo que pulsa las teclas de dirección. Para girar más lentamente, mantenga pulsada la tecla &Ctrl;.</para>
+>Para girar el palo más rápidamente con el teclado, mantén pulsada la tecla &Shift; al tiempo que pulsas las teclas de dirección. Para girar más lentamente, mantén pulsada la tecla &Ctrl;.</para>
 </tip>
 <para
->Para golpear la bola, pulse y mantenga pulsado el &LMB; o la tecla de dirección &Down;. Cuanto más tiempo mantenga pulsada la tecla o el botón, más fuerza tendrá el tiro. Conseguir un buen control de la fuerza y la velocidad requiere algo de práctica.</para>
+>Para golpear la bola, pulsa y mantén pulsado el &LMB; o la tecla de dirección &Down;. Cuanto más tiempo mantengas pulsada la tecla o el botón, más fuerza tendrá el tiro. Conseguir un buen control de la fuerza y la velocidad requiere algo de práctica.</para>
 <tip>
 <para
->Para no efectuar el golpe mientras aún mantiene el palo en movimiento y listo para golpear, pulse &Esc;.</para>
+>Para no efectuar el golpe mientras aún mantienes el palo en movimiento y listo para golpear, pulsa &Esc;.</para>
 </tip>
 
 <para
->Envíe la bola dentro del hoyo para ir al siguiente.</para>
+>Envía la bola dentro del hoyo para avanzar al siguiente.</para>
 </sect1>
 
 <sect1 id="slopes">
 <title
 >Pendientes</title>
 <para
->Las pendientes son zonas inclinadas en las que la pelota de golf se desvía de la manera esperada. El campo de golf está iluminado desde arriba a la izquierda, así que las pendientes brillantes empujarán la bola hacia la parte superior izquierda del hoyo. Seleccione la opción del menú <menuchoice
+>Las pendientes son zonas inclinadas en las que la pelota de golf se desvía de la manera esperada. El campo de golf está iluminado desde arriba a la izquierda, así que las pendientes brillantes empujarán la bola hacia la parte superior izquierda del hoyo. Selecciona la opción del menú <menuchoice
 ><guimenu
 >Hoyo</guimenu
 > <guimenuitem
@@ -209,25 +223,25 @@
 ></menuchoice
 > para ver una flecha que apunta en la dirección en la que se desviará la bola en la pendiente.</para>
 <para
->En este hoyo de tutorial, golpee la bola hacia la pendiente superior y deje que entre en el agujero para pasar al siguiente hoyo.</para>
+>En este hoyo del tutorial, golpea la bola hacia la pendiente superior y deja que entre en el agujero para avanzar al siguiente hoyo.</para>
 
 <sect2
 > <title
 >Direcciones</title>
 <para
->En el siguiente hoyo, experimente con otros tipos de pendientes. En &kolf; hay pendientes elípticas, verticales, horizontales y diagonales. Golpee la bola dentro del hoyo.</para>
+>En el siguiente hoyo, experimenta con otros tipos de pendientes. En &kolf; hay pendientes elípticas, verticales, horizontales y diagonales. Golpea la bola dentro del hoyo.</para>
 </sect2>
 <sect2
 > <title
 >Inclinaciones</title>
 <para
->El siguiente hoyo del tutorial tiene dos tipos de pendientes diferentes. Si selecciona la opción del menú <menuchoice
+>El siguiente hoyo del tutorial tiene dos tipos de pendientes diferentes. Si seleccionas la opción del menú <menuchoice
 ><guimenu
 >Hoyo</guimenu
 > <guimenuitem
 >Mostrar información</guimenuitem
 ></menuchoice
->, la inclinación de la pendiente aparecerá como un número del 1 al 8, dónde el 8 es la máxima pendiente y el 1 la mínima. Introduzca la bola en el hoyo y continúe al siguiente.</para>
+>, la inclinación de la pendiente aparecerá como un número del 1 al 8, donde el 8 es la máxima pendiente y el 1 la mínima. Introduce la bola en el hoyo y continúa con el siguiente.</para>
 </sect2>
 </sect1>
 
@@ -235,7 +249,7 @@
 > <title
 >Muros</title>
 <para
->Las bolas rebotan en los muros tal y como cabría esperar, con un poco de efecto. Desvíe la bola fuera de los muros y hacia el agujero para avanzar al siguiente hoyo.</para>
+>Las bolas rebotan en los muros tal y como cabría esperar: con un poco de efecto. Desvía la bola fuera de los muros y hacia el agujero para avanzar al siguiente hoyo.</para>
 </sect1>
 
 <sect1 id="puddles-sand"
@@ -245,15 +259,15 @@
 > <title
 >Charcas</title>
 	<para
->Las charcas son azules. Cuando una bola cae en un charca, se añade un golpe de penalización a su puntuación y debe elegir dónde quiere dar el siguiente golpe: al lado de la charca o en la misma posición desde la que dio el anterior golpe.</para>
+>Las charcas son azules. Cuando una bola cae en una charca, se añade un golpe de penalización a tu puntuación y debes elegir dónde quieres dar el siguiente golpe: al lado de la charca o en la misma posición desde la que diste el anterior golpe.</para>
 </sect2>
 <sect2
 > <title
 >Arena</title>
 <para
->La arena es amarilla. Las bolas ruedan en la arena muy despacio.</para>
+>La arena es amarilla. Las bolas ruedan muy despacio en la arena.</para>
 <para
->Golpee la bola rodeando las charcas y pasando sobre la arena hacia el hoyo para continuar al siguiente hoyo del tutorial.</para>
+>Golpea la bola rodeando las charcas y pasando sobre la arena hacia el hoyo para continuar con el siguiente hoyo del tutorial.</para>
 </sect2>
 </sect1>
 
@@ -261,34 +275,34 @@
 > <title
 >Molinos de viento</title>
 <para
->Los molinos de viento son objetos compuestos con el borde de los muros y los brazos marrones que se mueven hacia la parte superior o inferior del objeto. La abertura del molino de viento está formada por dos medias paredes y un brazo negro que se balancea. Lleva su tiempo el ser capaz de golpear la bola de forma que se pase a través de la abertura. Golpee la bola a través del molino de viento hacia el hoyo para continuar.</para>
+>Los molinos de viento son objetos compuestos con el borde de los muros y los brazos marrones que se mueven hacia la parte superior o inferior del objeto. La abertura del molino de viento está formada por dos medias paredes y un brazo negro que se balancea. Lleva su tiempo ser capaz de golpear la bola de forma que pase a través de la abertura. Golpea la bola a través del molino de viento hacia el hoyo para continuar.</para>
 </sect1>
 
 <sect1 id="black-holes"
 > <title
 >Agujeros negros</title>
 <para
->Cuando golpea la bola hacia un agujero negro, esta se transporta a la salida y se expulsa con el ángulo de partida y a una velocidad directamente proporcional a la velocidad que llevaba la bola. Seleccione la opción del menú <menuchoice
+>Cuando la bola cae en un agujero negro, se transporta a la salida y se expulsa con el ángulo de partida y a una velocidad directamente proporcional a la velocidad que llevaba al entrar. Selecciona la opción del menú <menuchoice
 ><guimenu
 >Hoyo</guimenu
 > <guimenuitem
 >Mostrar información</guimenuitem
 ></menuchoice
-> para ver la salida de los agujeros negros y la dirección en que expulsarán la bola. Golpee la bola e introdúzcala en el agujero negro, que la expulsará dentro del vaso de forma que pueda seguir al siguiente hoyo.</para>
+> para ver la salida de los agujeros negros y la dirección en que expulsarán la bola. Golpea la bola e introdúcela en el agujero negro, que la expulsará al green de forma que pueda seguir con el siguiente hoyo.</para>
 </sect1>
 
 <sect1 id="floaters"
 > <title
 >Flotadores</title>
 <para
->Los flotadores son plataformas móviles que llevan la bola a otro terreno. La velocidad de un flotador es variable. Este es un bonito flotador lento, pero necesitará más tiempo para atravesar el muro e introducir la bola en el agujero.</para>
+>Los flotadores son plataformas móviles que llevan la bola a otro terreno. La velocidad de un flotador es variable. Este es un bonito flotador lento, pero necesitarás más tiempo para atravesar el muro e introducir la bola en el agujero.</para>
 </sect1>
 
 <sect1 id="bridges"
 > <title
 >Puentes</title>
 <para
->Los puentes son sencillos - elevan la bola sobre las cosas que hay debajo de ellos, como pendientes, arena y charcas. Tiene muros marrones en su perímetro.</para>
+>Los puentes son sencillos: elevan la bola sobre las cosas que hay debajo de ellos, como pendientes, arena y charcas. Pueden tener muros marrones en su perímetro.</para>
 </sect1>
 </chapter>
 
@@ -302,16 +316,16 @@
 
 <sect1 id="starting">
 <title
->Iniciando un juego</title>
+>Inicio de una partida</title>
 
 <para
->Para iniciar un juego seleccione la opción del menú <menuchoice
+>Para empezar una partida, selecciona la opción del menú <menuchoice
 ><guimenu
 >Juego</guimenu
 > <guimenuitem
 >Nuevo</guimenuitem
 ></menuchoice
->. Esto abre un diálogo en el que configurar un juego nuevo.</para>
+>. Esto abre un diálogo donde se puede configurar un juego nuevo.</para>
 <!--
 <tip>
 <para
@@ -325,15 +339,15 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <title
 >Página de jugadores</title>
 <para
->Para añadir un jugador a su juego, pinche en el botón <guibutton
+>Para añadir un jugador a la partida, pulsa el botón <guibutton
 >Nuevo jugador</guibutton
 >.</para>
 
 <para
->Para cambiar el nombre de los jugadores, cambie el texto en los cuadros de texto.</para>
+>Para cambiar el nombre de los jugadores, cambia el texto de los cuadros de texto.</para>
 
 <para
->Para eliminar un jugador, pulse en el botón <guibutton
+>Para eliminar un jugador, pulsa el botón <guibutton
 >Eliminar</guibutton
 > que está al lado del nombre del jugador.</para>
 
@@ -343,7 +357,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 > <title
 >Página del campo</title>
 <para
->Para elegir el campo en el que quiera jugar, pulse en la entrada de la lista de la izquierda de esta página. &kolf; incluye algunos campos en los que podrá jugar.</para>
+>Para elegir el campo en el que vas a jugar, pulsa en la entrada de la lista de la izquierda de esta página. &kolf; incluye algunos campos en los que podrás jugar.</para>
 <para
 >Para añadir un campo descargado o creado, pinche en el botón <guibutton
 >Añadir</guibutton
@@ -353,9 +367,9 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 > <title
 >Página de opciones</title>
 <para
->En esta página podrá decidir si juega o no en el modo estricto. En el <guilabel
+>En esta página podrás decidir si juegas o no en modo estricto. En el <guilabel
 >modo estricto</guilabel
-> no se podrá deshacer, mover los hoyos o editar la partida. Generalmente ese modo se utiliza en competición. Las máximas puntuaciones solo se guardan en el modo estricto.</para>
+> no se podrá deshacer, cambiar de hoyo ni editar la partida. Generalmente, este modo se usa en competiciones. Las máximas puntuaciones solo se guardan en el modo estricto.</para>
 </sect2>
 </sect1>
 
@@ -363,22 +377,22 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 > <title
 >Juegos guardados</title>
 <para
->&kolf; puede guardar la historia de las partidas en progreso, de forma que puedan cargarse más tarde. Las partidas guardadas incluyen el hoyo actual, los nombres y colores de todos los jugadores de la partida y las máximas puntuaciones de los mismos.</para>
+>&kolf; puede guardar la historia de las partidas en curso, de forma que se puedan cargar más tarde. Las partidas guardadas incluyen el hoyo actual, los nombres y colores de todos los jugadores de la partida y las máximas puntuaciones de los mismos.</para>
 <sect2
 > <title
->Guardando su partida</title>
+>Guardar la partida</title>
 <para
->Para guardar su partida mientras está jugando, seleccione la opción del menú <menuchoice
+>Para guardar la partida mientras estás jugando, selecciona la opción del menú <menuchoice
 ><guimenu
 >Juego</guimenu
 > <guimenuitem
 >Guardar partida</guimenuitem
 ></menuchoice
->. Si no ha guardado anteriormente ninguna partida se le preguntará por el nombre del misma.</para>
+>. Si no has guardado anteriormente ninguna partida se preguntará por el nombre del misma.</para>
 </sect2>
 <sect2
 > <title
->Cargando su partida</title>
+>Cargar una partida</title>
 <para
 >Para cargar la partida grabada, seleccione la opción del menú <menuchoice
 ><guimenu
@@ -392,14 +406,14 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 
 <sect1 id="practicing"
 > <title
->Practicando</title>
+>Práctica</title>
 <para
->Hay algunas características que permite practicar el golf más fácilmente. Estas características no están disponibles en el modo estricto.</para>
+>Hay algunas funciones que permiten practicar el golf más fácilmente. Estas funciones no están disponibles en el modo estricto.</para>
 <sect2
 > <title
 >Deshacer</title>
 <para
->Para deshacer un mal golpe, seleccione la opción del menú <menuchoice
+>Para deshacer un mal golpe, selecciona la opción del menú <menuchoice
 ><guimenu
 >Hoyo</guimenu
 > <guimenuitem
@@ -413,7 +427,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <para
 >El menú <guimenu
 >Ir</guimenu
-> contiene algunas opciones que le permitirán cambiar de hoyo y que son autoexplicativas. Ver la <link linkend="go-menu"
+> contiene algunas opciones que te permitirán cambiar de hoyo y que son autoexplicativas. Consulta la <link linkend="go-menu"
 >referencia del menú <guimenu
 >Ir</guimenu
 ></link
@@ -429,9 +443,9 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 >describen más adelante</link
 >.</para>
 <para
->Por defecto el ratón estará disponible. Esto significa que siempre que mueva el ratón, el palo se alineará con la línea entre el ratón y la bola.</para>
+>El ratón se puede usar de forma predeterminada. Esto significa que siempre que muevas el ratón, el palo se alineará con la línea que va del ratón a la bola.</para>
 <para
->Si prefiere usar únicamente el teclado y los cursores, puede desactivar los golpes con el ratón desmarcando la opción del menú <menuchoice
+>Si prefieres usar únicamente el teclado y los cursores, puedes desactivar los golpes con el ratón desmarcando la opción del menú <menuchoice
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
@@ -449,24 +463,24 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 > <guimenuitem
 >Activar golpes avanzados</guimenuitem
 ></menuchoice
->. Esto modo de golpear es ligeramente más difícil que el modo normal de pulsar y golpear, y se puede usar con el ratón o con el teclado.</para>
+>. Este modo de golpear es ligeramente más difícil que el modo normal de pulsar y golpear, y se puede usar con el ratón o con el teclado.</para>
 
 <para
 >Para golpear en este modo:</para>
 <procedure>
 <step>
 <para
->Haga clic o pulse la tecla de flecha &Down; para comenzar el movimiento. Aparecerá un indicador de golpe, que muestra la fuerza rellenándose de color, que cambiará al irse llenando el indicador.</para>
+>Haz clic o pulsa la tecla de flecha &Down; para comenzar el movimiento. Aparecerá un indicador de golpe, que muestra la fuerza mientras se rellena de color, que cambiará al irse llenando el indicador.</para>
 </step>
 <step>
 <para
->Haga clic o pulse la tecla de flecha &Down; mientras el indicador de fuerza se llena hasta dónde desee. Mientras más se llene el indicador de fuerza más fuerte será el golpe. Necesitará práctica para dar la fuerza correcta a los golpes.</para>
+>Haz clic o pulsa la tecla de flecha &Down; mientras el indicador de fuerza se llena hasta dónde desees. Cuanto más se llene el indicador de fuerza, más fuerte será el golpe. Necesitarás práctica para dar los golpes con la fuerza correcta.</para>
 <para
 >Después de esto, el color del indicador de golpe volverá al punto de partida.</para>
 </step>
 <step>
 <para
->Haga clic o pulse la tecla de flecha &Down; nuevamente cuando el indicador de fuerza esté lo más cerca posible del centro de la línea del indicador de golpe.</para>
+>Haz clic o pulsa la tecla de flecha &Down; de nuevo cuando el indicador de fuerza esté lo más cerca posible del centro de la línea del indicador de golpe.</para>
 </step>
 </procedure>
 <para
@@ -477,7 +491,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 
 <chapter id="interface"
 ><title
->Visión general de la interfaz</title
+>Vista general de la interfaz</title
 > <!-- do not change this! -->
 <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
 > and <varlistentry
@@ -568,9 +582,9 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ></term>
 <listitem>
 <para
->Abre un cuadro de diálogo que le permitirá <action
+>Abre un diálogo que te permitirá <action
 >guardar el campo actual usando un nuevo nombre de archivo</action
-></para>
+>.</para>
 </listitem>
 </varlistentry>
 
@@ -587,7 +601,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <para
 ><action
 >Guardar el juego actual</action
-> con el último nombre de archivo del juego guardado, o bajo un nombre que usted especifique si no había grabado uno con anterioridad.</para>
+> con el último nombre de archivo de juego guardado, o con el nombre que indiques si no habías guardado uno con anterioridad.</para>
 </listitem>
 </varlistentry>
 
@@ -602,8 +616,8 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ></term>
 <listitem>
 <para
->Abre un diálogo que le permitirá <action
->guardar el juego con el nombre de archivo que elija</action
+>Abre un diálogo que te permitirá <action
+>guardar el juego con el nombre de archivo que elijas</action
 >.</para>
 </listitem>
 </varlistentry>
@@ -742,7 +756,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <para
 ><action
 >Crea un nuevo hoyo</action
-> (solo mientras esté editando).</para>
+> (solo mientras lo estés editando).</para>
 </listitem>
 </varlistentry>
 
@@ -762,8 +776,8 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <listitem>
 <para
 ><action
-> Elimina todos los objetos del hoyo actual</action
-> (solo mientras se esté editando).</para>
+>Elimina todos los objetos del hoyo actual</action
+> (solo mientras lo estés editando).</para>
 </listitem>
 </varlistentry>
 
@@ -786,7 +800,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <para
 ><action
 >Reinicia el hoyo actual a la posición de partida</action
->, por tanto puede volver a empezar desde cero.</para>
+>, de modo que puedes volver a empezar desde cero.</para>
 </listitem>
 </varlistentry>
 
@@ -825,13 +839,13 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Hoyo</guimenu
 ><guimenuitem
->Deshacer tiro</guimenuitem
+>Deshacer golpe</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
 <para
 ><action
->Deshace el último tiro efectuado.</action
+>Deshace el último golpe efectuado.</action
 ></para>
 </listitem>
 </varlistentry>
@@ -857,7 +871,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <para
 ><action
 >Va directamente a otro hoyo del campo.</action
-> Una lista con el número de los hoyos le permitirá seleccionar el hoyo al que desee ir.</para>
+> Una lista con el número de los hoyos te permitirá seleccionar el hoyo al que quieras ir.</para>
 </listitem>
 </varlistentry>
 
@@ -898,7 +912,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <listitem>
 <para
 ><action
->Va al hoyo anterior.</action
+>Ir al hoyo anterior.</action
 ></para>
 </listitem>
 </varlistentry>
@@ -919,7 +933,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <listitem>
 <para
 ><action
->Va al primer hoyo del campo.</action
+>Ir al primer hoyo del campo.</action
 ></para>
 </listitem>
 </varlistentry>
@@ -940,7 +954,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <listitem>
 <para
 ><action
->Va al último hoyo del campo.</action
+>Ir al último hoyo del campo.</action
 ></para>
 </listitem>
 </varlistentry>
@@ -957,7 +971,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <listitem>
 <para
 ><action
->Va a un hoyo aleatorio del campo actual.</action
+>Ir a un hoyo aleatorio del campo actual.</action
 ></para>
 </listitem>
 </varlistentry>
@@ -969,11 +983,11 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 >Los menús Preferencias y Ayuda</title>
 
 <para
->&kolf; posee los elementos de menú <guimenu
+>&kolf; posee los elementos de los menús <guimenu
 >Preferencias</guimenu
 > y <guimenu
 >Ayuda</guimenu
-> típicos de &kde;. Para más información, consulte las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
+> típicos de &kde;. Para más información, consulta las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
 >menú Preferencias</ulink
 > y el <ulink url="help:/fundamentals/menus.html#menus-help"
 >menú Ayuda</ulink
@@ -1056,13 +1070,13 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Activar todos los cuadros de diálogo</guimenuitem
+>Activar todos los diálogos</guimenuitem
 > </menuchoice
 ></term>
     <listitem
 ><para
 ><action
->Reactiva todos los cuadros de diálogo que se habían desactivado pulsando sobre <guilabel
+>Reactiva todos los diálogos que se habían desactivado marcando la opción <guilabel
 >No mostrar este mensaje de nuevo </guilabel
 > o similar.</action
 ></para
@@ -1134,7 +1148,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <qandaentry>
  <question
 ><para
->Deseo cambiar el aspecto del juego ¿Puedo? </para
+>Quiero cambiar el aspecto del juego. ¿Puedo? </para
 ></question>
  <answer
 ><para
@@ -1144,17 +1158,17 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <qandaentry>
  <question
 ><para
->¿Puedo utilizar el teclado para jugar a este juego? </para
+>¿Puedo usar el teclado para jugar? </para
 ></question>
  <answer
 ><para
->Sí. Utilice las teclas de dirección para controlar el palo.</para
+>Sí. Usa las teclas de dirección para controlar el palo.</para
 ></answer>
 </qandaentry>
 <qandaentry>
  <question
 ><para
->No se que hacer ahora ¿Hay pistas? </para
+>¡No sé qué puedo hacer! ¿Hay pistas? </para
 ></question>
  <answer
 ><para
@@ -1164,11 +1178,11 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <qandaentry>
  <question
 ><para
->Deseo diseñar mi propio campo de golf ¿Puedo? </para
+>Quiero diseñar mi propio campo de golf. ¿Puedo hacerlo? </para
 ></question>
  <answer
 ><para
->Sí, puede. Para entrar en el modo de edición use la opción del menú <menuchoice
+>Sí, puedes. Para entrar en el modo de edición, usa la opción del menú <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl;<keycap
@@ -1180,9 +1194,9 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 > <guimenuitem
 >Editar</guimenuitem
 ></menuchoice
->. Pulse <link linkend="creating"
+>. Pulsa <link linkend="creating"
 >aquí</link
-> para obtener más detalles.</para
+> para más detalles.</para
 ></answer
 ><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
 </qandaentry>
@@ -1200,19 +1214,19 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 
 <sect1 id="creating"
 > <title
->Creando un nuevo campo</title>
+>Creación de un nuevo campo</title>
 <para
->Para crear un nuevo campo, seleccione la opción del menú <menuchoice
+>Para crear un nuevo campo, selecciona la opción del menú <menuchoice
 ><guimenu
 >Juego</guimenu
 > <guimenuitem
 >Nuevo</guimenuitem
 ></menuchoice
->. Vaya a la página del <guilabel
+>. Ve a la página del <guilabel
 >Campo</guilabel
-> en el diálogo y seleccione <guilabel
+> en el diálogo y selecciona <guilabel
 >Crear nuevo</guilabel
->. Tenga en cuenta que en la página de <guilabel
+>. Ten en cuenta que en la página de <guilabel
 >Opciones</guilabel
 > del diálogo estará desmarcado el <guilabel
 >Modo estricto</guilabel
@@ -1230,13 +1244,13 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 > <title
 >Añadir hoyos</title>
 <para
->Cambie al modo de edición usando la opción del menú <menuchoice
+>Cambia al modo de edición usando la opción del menú <menuchoice
 ><guimenu
 >Hoyo</guimenu
 > <guimenuitem
 >Editar</guimenuitem
 ></menuchoice
->. Use la opción del menú <menuchoice
+>. Usa la opción del menú <menuchoice
 ><guimenu
 >Hoyo</guimenu
 > <guimenuitem
@@ -1245,7 +1259,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 > para añadir un nuevo hoyo al final del campo.</para>
 <tip>
 <para
->Puede reiniciar un hoyo de forma similar a como se creó usando la opción del menú <menuchoice
+>Puedes reiniciar un hoyo de forma similar a como estaba cuando se creó usando la opción del menú <menuchoice
 ><guimenu
 >Hoyo</guimenu
 > <guimenuitem
@@ -1259,28 +1273,28 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 
 <sect1 id="editing-basics"
 > <title
->Ediciones básicas</title>
+>Edición básica</title>
 <para
->El bloque básico de construcción de los campos en &kolf; es el «objeto». Los hoyos son un grupo de objetos. Los objetos se pueden mover a cualquier lugar, y los diferentes tipos de objeto tienen diferentes propiedades, que se pueden cambiar.</para>
+>El bloque básico de construcción de los campos de &kolf; es el «objeto». Los hoyos son un grupo de objetos. Los objetos se pueden mover a cualquier lugar y los diferentes tipos de objetos tienen diferentes propiedades, que se pueden cambiar.</para>
 <para
->Para empezar a editar un hoyo, seleccione la opción del menú <menuchoice
+>Para empezar a editar un hoyo, selecciona la opción del menú <menuchoice
 ><guimenu
 >Hoyo</guimenu
 > <guimenuitem
 >Editar</guimenuitem
 ></menuchoice
-> o pulse el icono del lápiz en la barra de herramientas. Para dejar el modo de edición, desmarque este elemento del menú (o el icono de la barra de herramientas).</para>
+> o pulsa el icono del lápiz en la barra de herramientas. Para dejar el modo de edición, desmarca este elemento del menú (o el icono de la barra de herramientas).</para>
 
 <sect2
 > <title
 >Añadir objetos</title>
 <para
->Para añadir un nuevo objeto al campo, seleccione su nombre en la lista <guilabel
+>Para añadir un nuevo objeto al campo, selecciona su nombre en la lista <guilabel
 >Añadir objeto</guilabel
 >. El objeto aparecerá en el centro del campo.</para>
 <caution>
 <para
->Los puentes y símbolos pueden cubrir los nuevos objetos si están en el centro del hoyo.</para>
+>Los puentes y las indicaciones pueden cubrir los nuevos objetos si están en el centro del hoyo.</para>
 </caution>
 <!--
 <tip>
@@ -1298,15 +1312,15 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 
 <sect2
 > <title
->Mover y redimensionar objetos</title>
+>Mover y cambiar el tamaño de los objetos</title>
 <para
->Sitúe el puntero del ratón sobre el objeto que quiera mover para que cambie a una mano. Haga clic sobre el objeto y arrástrelo hasta el lugar en que quiera situarlo.</para>
+>Sitúa el puntero del ratón sobre el objeto que quieras mover para que cambie a una mano. Haz clic sobre el objeto y arrástralo hasta el lugar en el que quieras situarlo.</para>
 <para
->Las charcas, arena, flotadores, puentes y símbolos se pueden redimensionar arrastrando el circulito de la esquina inferior derecha.</para>
+>Puedes cambiar el tamaño de charcas, arena, flotadores, puentes e indicaciones arrastrando el circulito de la esquina inferior derecha.</para>
 
 <note>
 <para
->Los muros se pueden mover haciendo clic sobre sus puntos de terminación para arrastrarlos, o puede mover el muro entero pulsando y arrastrando su punto central.</para>
+>Los muros se pueden mover haciendo clic sobre sus puntos de terminación para arrastrarlos, o puedes mover el muro entero pulsando y arrastrando su punto central.</para>
 </note>
 </sect2>
 
@@ -1314,24 +1328,24 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 > <title
 >Configuración de los objetos</title>
 <para
->Las propiedades de los objetos se pueden cambiar en el área de la esquina inferior derecha de la ventana de &kolf;. Para editar un objeto mueva el puntero del ratón sobre él hasta que cambie a una mano. A continuación púlselo. Aparecerán varios controles para este objeto en la esquina inferior derecha de la ventana de &kolf;.</para>
+>Las propiedades de los objetos se pueden cambiar en el área de la esquina inferior derecha de la ventana de &kolf;. Para editar un objeto, mueve el puntero del ratón sobre él hasta que cambie a una mano. A continuación, púlsalo. Aparecerán varios controles para este objeto en la esquina inferior derecha de la ventana de &kolf;.</para>
 <sect3
 > <title
->Configuraciones generales del hoyo</title>
+>Ajustes generales del hoyo</title>
 <para
->Para editar las configuraciones generales del hoyo pulse en un área del hoyo que no contenga objetos. Cuando esto sea posible el puntero del ratón tendrá su forma habitual.</para>
+>Para editar la configuración general del hoyo, pulse en un área del hoyo que no contenga objetos. Cuando esto sea posible, el puntero del ratón tendrá su forma habitual.</para>
 
 <variablelist>
 <varlistentry
 > <term
 ><guilabel
->Nombre del campo</guilabel
+>Nombre del campo:</guilabel
 ></term>
 <listitem>
 <para
 >Este es el nombre que se mostrará en los diálogos <guilabel
 >Nueva partida</guilabel
-> y <guimenuitem
+> e <guimenuitem
 >Información sobre el campo</guimenuitem
 >.</para>
 </listitem>
@@ -1339,7 +1353,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <varlistentry
 > <term
 ><guilabel
->Autor del campo</guilabel
+>Autor del campo:</guilabel
 ></term>
 <listitem>
 <para
@@ -1361,7 +1375,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <varlistentry
 > <term
 ><guilabel
->Máximo</guilabel
+>Máximo:</guilabel
 ></term>
 <listitem>
 <para
@@ -1401,7 +1415,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 > diagonal opuesta</guilabel
 >, <guilabel
 >elíptica</guilabel
->)). Las pendientes diagonal y diagonal opuesta son triángulos mientras que las pendientes elípticas son círculos. Las pendientes vertical y horizontal son rectángulos, por supuesto.</para>
+>)). Las pendientes diagonal y diagonal opuesta son triángulos, mientras que las pendientes elípticas son círculos. Las pendientes vertical y horizontal son rectángulos, por supuesto.</para>
 </listitem>
 </varlistentry>
 <varlistentry
@@ -1411,7 +1425,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ></term>
 <listitem>
 <para
->Indica si se invierte o no la dirección de la pendiente. Por ejemplo, considere una pendiente elíptica (pendiente circular). Cuando no está invertida empuja las bolas hacia el exterior como un monte. Cuando está invertida las empuja hacia dentro como un embudo.</para>
+>Indica si se invierte o no la dirección de la pendiente. Por ejemplo, considera una pendiente elíptica (pendiente circular). Cuando no está invertida, empuja las bolas hacia el exterior como un monte. Cuando está invertida, las empuja hacia dentro como un embudo.</para>
 </listitem>
 </varlistentry>
 <varlistentry
@@ -1424,9 +1438,9 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 >Indica si se puede mover por otros objetos, tales como flotadores.</para>
 <caution>
 <para
->Si un flotador se solapa con este objeto en cualquier punto de su ruta, y la pendiente es grande no se podrá mover el flotador, <emphasis
->deberá</emphasis
-> hacer la pendiente <guilabel
+>Si un flotador se solapa con este objeto en cualquier punto de su ruta y la pendiente es grande, no se podrá mover el flotador. <emphasis
+>Deberás</emphasis
+> hacer que la pendiente sea <guilabel
 >inmóvil</guilabel
 >, o &kolf; tendrá un funcionamiento pobre.</para>
 </caution>
@@ -1435,11 +1449,11 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <varlistentry
 > <term
 ><guilabel
->Grado</guilabel
+>Grado:</guilabel
 ></term>
 <listitem>
 <para
->Permite elegir el grado de inclinación de la pendiente moviendo el botón deslizante hacia un valor entre 0 y 8, donde 8 es la máxima inclinación y 0 es el suelo. A mayor inclinación mayor empuje.</para>
+>Permite elegir el grado de inclinación de la pendiente moviendo el botón deslizante a un valor entre 0 y 8, donde 8 es la máxima inclinación y 0 es el suelo. A mayor inclinación, mayor empuje de la bola.</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -1459,7 +1473,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ></term>
 <listitem>
 <para
->Si está marcado se activará un parpadeo para la charca o la arena.</para>
+>Si está marcada, se activará un parpadeo para la charca o la arena.</para>
 <!--
 </listitem>
 </varlistentry>
@@ -1469,7 +1483,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <listitem>
   -->
 <para
->Mientras más cerca esté el botón deslizante de <guilabel
+>Cuanto más cerca esté el deslizador de <guilabel
 >rápido</guilabel
 >, más rápidos serán los parpadeos.</para>
 </listitem>
@@ -1479,11 +1493,11 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 </sect3>
 <sect3
 > <title
->Puentes, molinos de viento, flotadores y señales</title>
+>Puentes, molinos de viento, flotadores e indicaciones</title>
 <para
->Los puentes, molinos de viento, flotadores y señales tienen opciones similares para configurar cuales de sus caras están bordeadas por muros. Para mostrar un muro en una cara, active la casilla de verificación para esta cara.</para>
+>Los puentes, molinos de viento, flotadores e indicaciones tienen opciones similares para configurar cuáles de sus caras están bordeadas por muros. Para mostrar un muro en una cara, activa la casilla de verificación para dicha cara.</para>
 <para
->Existen algunas opciones específicas para molinos de viento, flotadores y señales.</para>
+>Existen algunas opciones específicas para molinos de viento, flotadores e indicaciones.</para>
 
 <sect4
 > <title
@@ -1496,7 +1510,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ></term>
 <listitem>
 <para
->Indica si el brazo negro del molino de viento estará abajo o arriba (de forma predeterminada estará arriba). Los dos medios muros estarán siempre en el lado del brazo. Tenga en cuenta que no podrá colocar un muro en el borde en que esté situado el brazo.</para>
+>Indica si el brazo negro del molino de viento estará abajo o arriba (de forma predeterminada estará arriba). Los dos medios muros estarán siempre en el lado del brazo. Ten en cuenta que no podrás colocar un muro en el borde en el que esté situado el brazo.</para>
 </listitem>
 </varlistentry>
 <varlistentry
@@ -1504,9 +1518,9 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 >Velocidad</term>
 <listitem>
 <para
->Mientras más cerca esté el botón deslizante de <guilabel
+>Cuanto más cerca esté el deslizador de <guilabel
 >rápido</guilabel
-> más rápido se moverán.</para>
+>, más rápido se moverán los brazos del molino.</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -1525,11 +1539,11 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ></term>
 <listitem>
 <para
->Mientras más cerca esté el botón deslizante de <guilabel
+>Cuanto más cerca esté el deslizador de <guilabel
 >rápido</guilabel
-> más rápido se moverá. Si el botón deslizante está pegado a <guilabel
+>, más rápido se moverá el flotador. Si el deslizador está situado en <guilabel
 >lento</guilabel
-> se parará.</para>
+>, se detendrá.</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -1537,19 +1551,19 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 
 <sect4
 > <title
->Señales</title>
+>Indicaciones</title>
 <variablelist>
 <varlistentry
 > <term
 ><guilabel
->Señales HTML:</guilabel
+>Indicaciones HTML:</guilabel
 ></term>
 <listitem>
 <para
->Puede introducir cualquier código &HTML; válido aquí. Por ejemplo, escribir <userinput
->¡golpee &lt;i&gt;suavemente&lt;/i&gt; en esta pendiente!</userinput
-> creará el texto <quote
->¡golpee <emphasis
+>Puedes introducir cualquier código &HTML; válido aquí. Por ejemplo, si escribes <userinput
+>¡Golpea &lt;i&gt;suavemente&lt;/i&gt; en esta pendiente!</userinput
+>, se creará el texto <quote
+>¡Golpea <emphasis
 >suavemente</emphasis
 > en esta pendiente!</quote
 >.</para>
@@ -1586,7 +1600,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 </listitem>
 <listitem>
 <para
->Niklas Knutsson.</para>
+>Niklas Knutsson</para>
 </listitem>
 <listitem>
 <para
@@ -1594,7 +1608,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 </listitem>
 <listitem>
 <para
->Daniel Matza-Brown.</para>
+>Daniel Matza-Brown</para>
 </listitem>
 <listitem>
 <para
@@ -1603,15 +1617,19 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 </itemizedlist>
 
 <para
->Derechos de autor de la documentación. 2002. &Jason.Katz-Brown;.</para>
+>Copyright de la documentación 2002 &Jason.Katz-Brown;.</para>
 
 <para
->Rafael Osuna<email
+>Documentación traducida por Rafael Osuna <email
 >rosuna@wol.es</email
->, Santiago Fernández<email
+>, Santiago Fernández <email
 >santi@kde-es.org</email
 > y Kira J. Fernández <email
 >kirajfdez@gmail.com</email
+>.</para
+><para
+>Corregida por Eloy Cuadra <email
+>ecuadra@eloihr.net</email
 >.</para
 > &underFDL; &underGPL; </chapter>
 
