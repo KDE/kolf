@@ -929,6 +929,3 @@ msgstr "Средно"
 msgctxt "@title:column"
 msgid "Total"
 msgstr "Общо"
-
-#~ msgid "Add..."
-#~ msgstr "Добавяне..."

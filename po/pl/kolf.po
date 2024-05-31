@@ -1,11 +1,11 @@
-# Version: $Revision: 1681083 $
+# Version: $Revision: 1681191 $
 # translation of kolf.po to Polish
 # Copyright (C) 2002,2003, 2004, 2005, 2007, 2008, 2009 Free Software Foundation, Inc.
-#
 # Michał Rudolf <mrudolf@kdewebdev.org>, 2002.
 # Michal Rudolf <mrudolf@kdewebdev.org>, 2002,2003, 2004, 2005, 2007, 2008, 2009.
 # Marta Rybczynska <kde-i18n@rybczynska.net>, 2009.
 # SPDX-FileCopyrightText: 2011, 2017, 2019, 2021, 2022, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
