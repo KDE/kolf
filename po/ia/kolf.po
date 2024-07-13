@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kolf package.
 #
-# giovanni <g.sora@tiscali.it>, 2023, 2024.
+# SPDX-FileCopyrightText: 2023, 2024 giovanni <g.sora@tiscali.it>
 msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-05 00:37+0000\n"
-"PO-Revision-Date: 2024-05-06 12:43+0200\n"
+"PO-Revision-Date: 2024-07-12 15:54+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -89,12 +89,12 @@ msgstr ""
 #: game.cpp:499 game.cpp:2432
 #, kde-format
 msgid "Course Author"
-msgstr ""
+msgstr "Autor de Curso"
 
 #: game.cpp:500 game.cpp:501 game.cpp:2432
 #, kde-format
 msgid "Course Name"
-msgstr ""
+msgstr "Nomine de curso"
 
 #: game.cpp:1423
 #, kde-format
@@ -133,7 +133,7 @@ msgstr "Nove foramine"
 #: game.cpp:1755
 #, kde-format
 msgid "Course name: %1"
-msgstr ""
+msgstr "Nomine de curso: %1"
 
 #: game.cpp:1756
 #, kde-format
@@ -144,14 +144,14 @@ msgstr "Create per %1"
 #, kde-format
 msgid "%1 hole"
 msgid_plural "%1 holes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 foramine"
+msgstr[1] "%1 foramines"
 
 #: game.cpp:1758
 #, kde-format
 msgctxt "@title:window"
 msgid "Course Information"
-msgstr ""
+msgstr "Information de curso"
 
 #: game.cpp:1876
 #, kde-format
@@ -173,7 +173,7 @@ msgstr "Modificationes non salveguardate"
 #, kde-format
 msgctxt "@action:button"
 msgid "Save &Later"
-msgstr ""
+msgstr "Salveguarda p&lus tarde"
 
 #: game.cpp:2165 kolf.cpp:552
 #, kde-format
@@ -200,7 +200,7 @@ msgstr ""
 #: kolf.cpp:65
 #, kde-format
 msgid "Wall"
-msgstr ""
+msgstr "Muro"
 
 #: kolf.cpp:66
 #, kde-format
@@ -215,12 +215,12 @@ msgstr "Arena"
 #: kolf.cpp:68
 #, kde-format
 msgid "Windmill"
-msgstr ""
+msgstr "Molino"
 
 #: kolf.cpp:69
 #, kde-format
 msgid "Black Hole"
-msgstr ""
+msgstr "Foramine Nigre"
 
 #: kolf.cpp:70
 #, kde-format
@@ -252,7 +252,7 @@ msgstr "Salveguarda &Curso"
 #, kde-format
 msgctxt "@action"
 msgid "Save &Course As…"
-msgstr ""
+msgstr "Salveguarda &Curso Como…"
 
 #: kolf.cpp:101
 #, kde-format
@@ -264,7 +264,7 @@ msgstr "&Salveguarda  Joco..."
 #, kde-format
 msgctxt "@action"
 msgid "&Save Game As…"
-msgstr ""
+msgstr "&Salveguarda  Joco Como ..."
 
 #: kolf.cpp:111
 #, kde-format
@@ -288,7 +288,7 @@ msgstr "&Re-Assigna"
 #, kde-format
 msgctxt "@action"
 msgid "&Undo Shot"
-msgstr ""
+msgstr "&Annulla colpo"
 
 #. i18nc("@action", "&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
 #. Go
@@ -296,37 +296,37 @@ msgstr ""
 #, kde-format
 msgctxt "@title:menu"
 msgid "Switch to Hole"
-msgstr ""
+msgstr "Passa a Foramine"
 
 #: kolf.cpp:140
 #, kde-format
 msgctxt "@action"
 msgid "&Next Hole"
-msgstr ""
+msgstr "Proxime Forami&ne"
 
 #: kolf.cpp:145
 #, kde-format
 msgctxt "@action"
 msgid "&Previous Hole"
-msgstr ""
+msgstr "&Previe Foramine"
 
 #: kolf.cpp:150
 #, kde-format
 msgctxt "@action"
 msgid "&First Hole"
-msgstr ""
+msgstr "Prime &Foramine"
 
 #: kolf.cpp:154
 #, kde-format
 msgctxt "@action"
 msgid "&Last Hole"
-msgstr ""
+msgstr "U&ltime foramine"
 
 #: kolf.cpp:159
 #, kde-format
 msgctxt "@action"
 msgid "&Random Hole"
-msgstr ""
+msgstr "Foramine Aleato&ri"
 
 #: kolf.cpp:163
 #, kde-format
@@ -390,7 +390,7 @@ msgstr " e "
 #: kolf.cpp:486
 #, kde-format
 msgid "%1 tied"
-msgstr ""
+msgstr "%1 ligate"
 
 #: kolf.cpp:489
 #, kde-format
@@ -407,18 +407,18 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Saved Game to Save To"
-msgstr ""
+msgstr "Selige Joco Salveguardate e Salveguarda A"
 
 #: kolf.cpp:608
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Saved Game"
-msgstr ""
+msgstr "Selige Joco de Kolf salveguardate"
 
 #: kolf.cpp:656
 #, kde-format
 msgid "%1's turn"
-msgstr ""
+msgstr "torno de %1"
 
 #: kolf.cpp:728
 #, kde-format
@@ -429,7 +429,7 @@ msgstr ""
 #: kolfui.rc:17
 #, kde-format
 msgid "Ho&le"
-msgstr ""
+msgstr "Fora&mine"
 
 #. i18n: ectx: Menu (go_course)
 #: kolfui.rc:31
@@ -441,7 +441,7 @@ msgstr "&Vade"
 #, kde-format
 msgctxt "@option:check"
 msgid "Enable show/hide"
-msgstr ""
+msgstr "Habilita monstra/cela"
 
 #: landscape.cpp:151 obstacles.cpp:450 obstacles.cpp:468
 #, kde-format
@@ -473,7 +473,7 @@ msgstr "Diagonal"
 #: landscape.cpp:241
 #, kde-format
 msgid "Opposite Diagonal"
-msgstr ""
+msgstr "Diagonal opposite"
 
 #: landscape.cpp:242
 #, kde-format
@@ -512,12 +512,12 @@ msgstr "Kolf "
 #: main.cpp:47
 #, kde-format
 msgid "KDE Minigolf Game"
-msgstr ""
+msgstr "Joco de Minigolf de KDE"
 
 #: main.cpp:49
 #, kde-format
 msgid "(c) 2002-2010, Kolf developers"
-msgstr ""
+msgstr "(c) 2002-2010, disveloppatores de  Kolf"
 
 #: main.cpp:53
 #, kde-format
@@ -537,12 +537,12 @@ msgstr "Jason Katz-Brown"
 #: main.cpp:54
 #, kde-format
 msgid "Former main author"
-msgstr ""
+msgstr "Disveloppator principal anterior"
 
 #: main.cpp:55
 #, kde-format
 msgid "Niklas Knutsson"
-msgstr ""
+msgstr "Niklas Knutsson"
 
 #: main.cpp:55
 #, kde-format
@@ -562,17 +562,17 @@ msgstr ""
 #: main.cpp:57
 #, kde-format
 msgid "Timo A. Hummel"
-msgstr ""
+msgstr "Timo A. Hummel"
 
 #: main.cpp:57
 #, kde-format
 msgid "Some good sound effects"
-msgstr ""
+msgstr "Alcun bon effectos de sono"
 
 #: main.cpp:59
 #, kde-format
 msgid "Rob Renaud"
-msgstr ""
+msgstr "Rob Renaud"
 
 #: main.cpp:59
 #, kde-format
@@ -587,12 +587,12 @@ msgstr "Aaron Seigo"
 #: main.cpp:60
 #, kde-format
 msgid "Suggestions, bug reports"
-msgstr ""
+msgstr "uggestiones, reportos de bugs o faltas"
 
 #: main.cpp:61
 #, kde-format
 msgid "Erin Catto"
-msgstr ""
+msgstr "Erin Catto"
 
 #: main.cpp:61
 #, kde-format
@@ -612,7 +612,7 @@ msgstr ""
 #: main.cpp:63
 #, kde-format
 msgid "Daniel Matza-Brown"
-msgstr ""
+msgstr "Daniel Matza-Brown"
 
 #: main.cpp:63
 #, kde-format
@@ -627,7 +627,7 @@ msgstr "File"
 #: main.cpp:72
 #, kde-format
 msgid "Print course information and exit"
-msgstr ""
+msgstr "Imprime information de curso e exi"
 
 #: main.cpp:90
 #, kde-format
@@ -637,7 +637,7 @@ msgstr "Per %1"
 #: main.cpp:91
 #, kde-format
 msgid "%1 holes"
-msgstr ""
+msgstr "%1 foramines"
 
 #: main.cpp:92
 #, kde-format
@@ -647,7 +647,7 @@ msgstr "par %1"
 #: main.cpp:99
 #, kde-format
 msgid "Course %1 does not exist."
-msgstr ""
+msgstr "Curso %1 non existe."
 
 #: newgame.cpp:40
 #, kde-format
@@ -677,7 +677,7 @@ msgstr "Curso"
 #, kde-format
 msgctxt "@title"
 msgid "Choose Course to Play"
-msgstr ""
+msgstr "Selige Curso per Jocar"
 
 #: newgame.cpp:135
 #, kde-format
@@ -724,7 +724,7 @@ msgstr "Optiones de Joco"
 #, kde-format
 msgctxt "@option:check"
 msgid "&Strict mode"
-msgstr ""
+msgstr "Modo &Stricte"
 
 #: newgame.cpp:196
 #, kde-format
@@ -750,19 +750,19 @@ msgstr "Par %1"
 msgctxt "@info"
 msgid "1 Hole"
 msgid_plural "%1 Holes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 Foramine"
+msgstr[1] "%1 Foramines"
 
 #: newgame.cpp:282
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course"
-msgstr ""
+msgstr "Selige tu curso de Kolf"
 
 #: newgame.cpp:310
 #, kde-format
 msgid "Chosen course is already on course list."
-msgstr ""
+msgstr "Curso seligite ja es sur le lista de curso."
 
 #: newgame.cpp:323
 #, kde-format
@@ -781,19 +781,19 @@ msgstr[1] " grados"
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Exiting ball angle:"
-msgstr ""
+msgstr "Angulo de exir de ballon:"
 
 #: objects.cpp:267
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Minimum exit speed:"
-msgstr ""
+msgstr "Minime velocitate de exito:"
 
 #: objects.cpp:288
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Maximum exit speed:"
-msgstr ""
+msgstr "Maxime velocitate de exito:"
 
 #: obstacles.cpp:412
 msgctxt "@option:check wall on"
@@ -819,25 +819,25 @@ msgstr "&Basso"
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Walls on:"
-msgstr ""
+msgstr "Muros sur:"
 
 #: obstacles.cpp:435
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Sign HTML:"
-msgstr ""
+msgstr "Signa HTML:"
 
 #: obstacles.cpp:444
 #, kde-format
 msgctxt "@option:check"
 msgid "Windmill on top"
-msgstr ""
+msgstr "Molino in alto"
 
 #: obstacles.cpp:465
 #, kde-format
 msgctxt "@label:slider"
 msgid "Moving speed"
-msgstr ""
+msgstr "Velocitate de mover"
 
 #: obstacles.cpp:685
 #, kde-format
