@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-05 00:37+0000\n"
-"PO-Revision-Date: 2024-08-01 11:39+0200\n"
+"PO-Revision-Date: 2024-08-02 21:25+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -114,9 +114,9 @@ msgstr "Nytt slag frå siste plassering"
 msgid "What would you like to do for your next shot?"
 msgstr "Kva vil du gjera i neste slag?"
 
+# Eks. «Spelar 1 er i ei hindring».
 #: game.cpp:1426
-#, fuzzy, kde-format
-#| msgid "%1 is in a Hazard"
+#, kde-format
 msgctxt "@title:window"
 msgid "%1 in a Hazard"
 msgstr "%1 er i ei hindring"
