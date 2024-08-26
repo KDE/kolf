@@ -38,63 +38,54 @@ msgstr "Ingen innstillinger"
 
 #: editor.cpp:37
 #, fuzzy, kde-format
-#| msgid "Add object:"
 msgctxt "@label:listbox"
 msgid "Add object:"
 msgstr "Legg til objekt:"
 
 #: game.cpp:263
 #, fuzzy, kde-format
-#| msgid "Course name: "
 msgctxt "@label:textbox"
 msgid "Course name:"
 msgstr "Rundenavn:"
 
 #: game.cpp:270
 #, fuzzy, kde-format
-#| msgid "Course author: "
 msgctxt "@label:textbox"
 msgid "Course author: "
 msgstr "Rundeforfatter:"
 
 #: game.cpp:279
 #, fuzzy, kde-format
-#| msgid "Par:"
 msgctxt "@label:spinbox"
 msgid "Par:"
 msgstr "Par:"
 
 #: game.cpp:289
 #, fuzzy, kde-format
-#| msgid "Maximum:"
 msgctxt "@label:spinbox"
 msgid "Maximum:"
 msgstr "Maksimum:"
 
 #: game.cpp:293
 #, fuzzy, kde-format
-#| msgid "Maximum number of strokes player can take on this hole."
 msgctxt "@info:whatsthis"
 msgid "Maximum number of strokes player can take on this hole."
 msgstr "Største antall salg en spiller kan slå på dette hullet."
 
 #: game.cpp:294
 #, fuzzy, kde-format
-#| msgid "Maximum number of strokes"
 msgctxt "@info:tooltip"
 msgid "Maximum number of strokes"
 msgstr "Største antall slag"
 
 #: game.cpp:295
 #, fuzzy, kde-format
-#| msgid "Unlimited"
 msgctxt "@item number of strokes"
 msgid "Unlimited"
 msgstr "Ubegrenset"
 
 #: game.cpp:301
 #, fuzzy, kde-format
-#| msgid "Show border walls"
 msgctxt "@option:check"
 msgid "Show border walls"
 msgstr "Vis kantvegger"
@@ -111,14 +102,12 @@ msgstr "Rundenavn"
 
 #: game.cpp:1423
 #, fuzzy, kde-format
-#| msgid "Drop Outside of Hazard"
 msgctxt "@item harzard action"
 msgid "Drop Outside of Hazard"
 msgstr "Slipp utenfor hindringer"
 
 #: game.cpp:1424
 #, fuzzy, kde-format
-#| msgid "Rehit From Last Location"
 msgctxt "@item harzard action"
 msgid "Rehit From Last Location"
 msgstr "Nytt slag fra siste plassering"
@@ -130,7 +119,6 @@ msgstr "Hva vil du gjøre på ditt neste slag?"
 
 #: game.cpp:1426
 #, fuzzy, kde-format
-#| msgid "%1 is in a Hazard"
 msgctxt "@title:window"
 msgid "%1 in a Hazard"
 msgstr "%1 er i en hindring"
@@ -142,7 +130,6 @@ msgstr "%1 starter."
 
 #: game.cpp:1594
 #, fuzzy, kde-format
-#| msgid "New Hole"
 msgctxt "@title:window"
 msgid "New Hole"
 msgstr "Nytt hull"
@@ -182,14 +169,12 @@ msgstr "Endringene på dette hullet er ikke lagret. Vil du lagre?"
 
 #: game.cpp:1990
 #, fuzzy, kde-format
-#| msgid "Unsaved Changes"
 msgctxt "@title:window"
 msgid "Unsaved Changes"
 msgstr "Endringer som ikke er lagret"
 
 #: game.cpp:1992
 #, fuzzy, kde-format
-#| msgid "Save &Later"
 msgctxt "@action:button"
 msgid "Save &Later"
 msgstr "&Lagre senere"
@@ -202,7 +187,6 @@ msgstr ""
 
 #: kcomboboxdialog.cpp:60
 #, fuzzy, kde-format
-#| msgid "&Do not ask again"
 msgctxt "@option:check"
 msgid "&Do not ask again"
 msgstr "&Ikke spør igjen"
@@ -264,56 +248,48 @@ msgstr "Sprettkant"
 
 #: kolf.cpp:96
 #, fuzzy, kde-format
-#| msgid "Save &Course"
 msgctxt "@action"
 msgid "Save &Course"
 msgstr "Lagre &runde"
 
 #: kolf.cpp:98
 #, fuzzy, kde-format
-#| msgid "Save &Course As..."
 msgctxt "@action"
 msgid "Save &Course As…"
 msgstr "Lagre runde &som …"
 
 #: kolf.cpp:101
 #, fuzzy, kde-format
-#| msgid "&Save Game"
 msgctxt "@action"
 msgid "&Save Game"
 msgstr "&Lagre spill"
 
 #: kolf.cpp:104
 #, fuzzy, kde-format
-#| msgid "&Save Game As..."
 msgctxt "@action"
 msgid "&Save Game As…"
 msgstr "Lagre spill &som …"
 
 #: kolf.cpp:111
 #, fuzzy, kde-format
-#| msgid "&Edit"
 msgctxt "@option:check"
 msgid "&Edit"
 msgstr "&Rediger"
 
 #: kolf.cpp:117
 #, fuzzy, kde-format
-#| msgid "&New"
 msgctxt "@action"
 msgid "&New"
 msgstr "&Ny"
 
 #: kolf.cpp:126
 #, fuzzy, kde-format
-#| msgid "&Reset"
 msgctxt "@action"
 msgid "&Reset"
 msgstr "Til&bakestill"
 
 #: kolf.cpp:131
 #, fuzzy, kde-format
-#| msgid "&Undo Shot"
 msgctxt "@action"
 msgid "&Undo Shot"
 msgstr "&Angre slag"
@@ -322,98 +298,84 @@ msgstr "&Angre slag"
 #. Go
 #: kolf.cpp:135
 #, fuzzy, kde-format
-#| msgid "Switch to Hole"
 msgctxt "@title:menu"
 msgid "Switch to Hole"
 msgstr "Hopp til hull"
 
 #: kolf.cpp:140
 #, fuzzy, kde-format
-#| msgid "&Next Hole"
 msgctxt "@action"
 msgid "&Next Hole"
 msgstr "N&este hull"
 
 #: kolf.cpp:145
 #, fuzzy, kde-format
-#| msgid "&Previous Hole"
 msgctxt "@action"
 msgid "&Previous Hole"
 msgstr "F&orrige hull"
 
 #: kolf.cpp:150
 #, fuzzy, kde-format
-#| msgid "&First Hole"
 msgctxt "@action"
 msgid "&First Hole"
 msgstr "&Første hull"
 
 #: kolf.cpp:154
 #, fuzzy, kde-format
-#| msgid "&Last Hole"
 msgctxt "@action"
 msgid "&Last Hole"
 msgstr "&Siste hull"
 
 #: kolf.cpp:159
 #, fuzzy, kde-format
-#| msgid "&Random Hole"
 msgctxt "@action"
 msgid "&Random Hole"
 msgstr "&Vilkårlig hull"
 
 #: kolf.cpp:163
 #, fuzzy, kde-format
-#| msgid "Enable &Mouse for Moving Putter"
 msgctxt "@option:check"
 msgid "Enable &Mouse for Moving Putter"
 msgstr "Slå på styring av slaget med &musa"
 
 #: kolf.cpp:170
 #, fuzzy, kde-format
-#| msgid "Enable &Advanced Putting"
 msgctxt "@option:check"
 msgid "Enable &Advanced Putting"
 msgstr "Slå på &avansert putting"
 
 #: kolf.cpp:176
 #, fuzzy, kde-format
-#| msgid "Show &Info"
 msgctxt "@option:check"
 msgid "Show &Info"
 msgstr "V&is info"
 
 #: kolf.cpp:183
 #, fuzzy, kde-format
-#| msgid "Show Putter &Guideline"
 msgctxt "@option:check"
 msgid "Show Putter &Guideline"
 msgstr "Vis &hjelpelinjer for putting"
 
 #: kolf.cpp:189
 #, fuzzy, kde-format
-#| msgid "Enable All Dialog Boxes"
 msgctxt "@option:check"
 msgid "Enable All Dialog Boxes"
 msgstr "Slå på alle meldingsvinduer"
 
 #: kolf.cpp:194
 #, fuzzy, kde-format
-#| msgid "Play &Sounds"
 msgctxt "@option:check"
 msgid "Play Sounds"
 msgstr "Spill &lyder"
 
 #: kolf.cpp:201
 #, fuzzy, kde-format
-#| msgid "Course"
 msgctxt "@action"
 msgid "&About Course"
 msgstr "Runde"
 
 #: kolf.cpp:204
 #, fuzzy, kde-format
-#| msgid "&Tutorial"
 msgctxt "@action"
 msgid "&Tutorial"
 msgstr "&Øvelse"
@@ -425,7 +387,6 @@ msgstr "Par"
 
 #: kolf.cpp:485
 #, fuzzy, kde-format
-#| msgid " and "
 msgctxt "@item:intext winners"
 msgid " and "
 msgstr " og"
@@ -482,21 +443,18 @@ msgstr "&Gå"
 
 #: landscape.cpp:146
 #, fuzzy, kde-format
-#| msgid "Enable show/hide"
 msgctxt "@option:check"
 msgid "Enable show/hide"
 msgstr "Slå på vis/skjul"
 
 #: landscape.cpp:151 obstacles.cpp:450 obstacles.cpp:468
 #, fuzzy, kde-format
-#| msgid "Slow"
 msgctxt "@item:inrange"
 msgid "Slow"
 msgstr "Langsom"
 
 #: landscape.cpp:155 obstacles.cpp:454 obstacles.cpp:472
 #, fuzzy, kde-format
-#| msgid "Fast"
 msgctxt "@item:inrange"
 msgid "Fast"
 msgstr "Rask"
@@ -528,22 +486,18 @@ msgstr "Elliptisk"
 
 #: landscape.cpp:571
 #, fuzzy, kde-format
-#| msgid "Reverse direction"
 msgctxt "@option:check"
 msgid "Reverse direction"
 msgstr "Omvendt retning"
 
 #: landscape.cpp:576
 #, fuzzy, kde-format
-#| msgid "Unmovable"
 msgctxt "@option:check"
 msgid "Unmovable"
 msgstr "Kan ikke flyttes"
 
 #: landscape.cpp:578
 #, fuzzy, kde-format
-#| msgid ""
-#| "Whether or not this slope can be moved by other objects, like floaters."
 msgctxt "@info:whatsthis"
 msgid "Whether or not this slope can be moved by other objects, like floaters."
 msgstr ""
@@ -552,7 +506,6 @@ msgstr ""
 
 #: landscape.cpp:582
 #, fuzzy, kde-format
-#| msgid "Grade:"
 msgctxt "@lable:spinbox"
 msgid "Grade:"
 msgstr "Nivå:"
@@ -710,35 +663,30 @@ msgstr ""
 
 #: newgame.cpp:56
 #, fuzzy, kde-format
-#| msgid "Players"
 msgctxt "@title:tab"
 msgid "Players"
 msgstr "Spillere"
 
 #: newgame.cpp:60
 #, fuzzy, kde-format
-#| msgid "&New Player"
 msgctxt "@action:button"
 msgid "&New Player"
 msgstr "&Ny spiller"
 
 #: newgame.cpp:95
 #, fuzzy, kde-format
-#| msgid "Course"
 msgctxt "@title:tab"
 msgid "Course"
 msgstr "Runde"
 
 #: newgame.cpp:96
 #, fuzzy, kde-format
-#| msgid "Choose Course to Play"
 msgctxt "@title"
 msgid "Choose Course to Play"
 msgstr "Velg runde å spille"
 
 #: newgame.cpp:135
 #, fuzzy, kde-format
-#| msgid "Create New"
 msgctxt "@item"
 msgid "<Create New>"
 msgstr "Lag ny"
@@ -750,7 +698,6 @@ msgstr "Du"
 
 #: newgame.cpp:162
 #, fuzzy, kde-format
-#| msgid "Highscores"
 msgctxt "@action:button"
 msgid "Highscores"
 msgstr "Resultatliste"
@@ -763,28 +710,24 @@ msgstr ""
 
 #: newgame.cpp:176 newgame.cpp:365
 #, fuzzy, kde-format
-#| msgid "Remove"
 msgctxt "@action:button"
 msgid "Remove"
 msgstr "Fjern"
 
 #: newgame.cpp:186
 #, fuzzy, kde-format
-#| msgid "Options"
 msgctxt "@title:tab"
 msgid "Options"
 msgstr "Valg"
 
 #: newgame.cpp:187
 #, fuzzy, kde-format
-#| msgid "Game Options"
 msgctxt "@title"
 msgid "Game Options"
 msgstr "Spillinnstillinger"
 
 #: newgame.cpp:192
 #, fuzzy, kde-format
-#| msgid "&Strict mode"
 msgctxt "@option:check"
 msgid "&Strict mode"
 msgstr "&Streng modus"
@@ -800,21 +743,18 @@ msgstr ""
 
 #: newgame.cpp:242
 #, fuzzy, kde-format
-#| msgid "By %1"
 msgctxt "@info author attribution"
 msgid "By %1"
 msgstr "Av %1"
 
 #: newgame.cpp:243
 #, fuzzy, kde-format
-#| msgid "Par %1"
 msgctxt "@info"
 msgid "Par %1"
 msgstr "Par %1"
 
 #: newgame.cpp:244
 #, fuzzy, kde-format
-#| msgid "%1 Holes"
 msgctxt "@info"
 msgid "1 Hole"
 msgid_plural "%1 Holes"
@@ -839,8 +779,6 @@ msgstr "Spiller %1"
 
 #: objects.cpp:244
 #, fuzzy, kde-format
-#| msgid " degree"
-#| msgid_plural " degrees"
 msgctxt "@item:valuesuffix"
 msgid " degree"
 msgid_plural " degrees"
@@ -849,77 +787,66 @@ msgstr[1] " grader"
 
 #: objects.cpp:247
 #, fuzzy, kde-format
-#| msgid "Exiting ball angle:"
 msgctxt "@label:spinbox"
 msgid "Exiting ball angle:"
 msgstr "Utgangsvinkel på ballen:"
 
 #: objects.cpp:267
 #, fuzzy, kde-format
-#| msgid "Minimum exit speed:"
 msgctxt "@label:spinbox"
 msgid "Minimum exit speed:"
 msgstr "Minimum utgangshastighet:"
 
 #: objects.cpp:288
 #, fuzzy, kde-format
-#| msgid "Maximum exit speed:"
 msgctxt "@label:spinbox"
 msgid "Maximum exit speed:"
 msgstr "Største utgangshastighet:"
 
 #: obstacles.cpp:412
 #, fuzzy
-#| msgid "&Top"
 msgctxt "@option:check wall on"
 msgid "&Top"
 msgstr "&Øverst"
 
 #: obstacles.cpp:413
 #, fuzzy
-#| msgid "&Left"
 msgctxt "@option:check wall on"
 msgid "&Left"
 msgstr "&Venstre"
 
 #: obstacles.cpp:414
 #, fuzzy
-#| msgid "&Right"
 msgctxt "@option:check wall on"
 msgid "&Right"
 msgstr "&Høyre"
 
 #: obstacles.cpp:415
 #, fuzzy
-#| msgid "&Bottom"
 msgctxt "@option:check wall on"
 msgid "&Bottom"
 msgstr "&Nederst"
 
 #: obstacles.cpp:425
 #, fuzzy, kde-format
-#| msgid "Walls on:"
 msgctxt "@label:chooser"
 msgid "Walls on:"
 msgstr "Vegger på:"
 
 #: obstacles.cpp:435
 #, fuzzy, kde-format
-#| msgid "Sign HTML:"
 msgctxt "@label:textbox"
 msgid "Sign HTML:"
 msgstr "Skilt-HTML:"
 
 #: obstacles.cpp:444
 #, fuzzy, kde-format
-#| msgid "Windmill on top"
 msgctxt "@option:check"
 msgid "Windmill on top"
 msgstr "Vindmølle øversttttt"
 
 #: obstacles.cpp:465
 #, fuzzy, kde-format
-#| msgid "Moving speed"
 msgctxt "@label:slider"
 msgid "Moving speed"
 msgstr "Flyttehastighet"
@@ -931,14 +858,12 @@ msgstr "Ny tekst"
 
 #: scoreboard.cpp:27
 #, fuzzy, kde-format
-#| msgid "Par"
 msgctxt "@title:row"
 msgid "Par"
 msgstr "Par"
 
 #: scoreboard.cpp:28
 #, fuzzy, kde-format
-#| msgid "Total"
 msgctxt "@title:column"
 msgid "Total"
 msgstr "Totalt"
