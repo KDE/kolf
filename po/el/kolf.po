@@ -691,11 +691,10 @@ msgid "Choose Course to Play"
 msgstr "Επιλέξτε πίστα για να παίξετε"
 
 #: newgame.cpp:135
-#, fuzzy, kde-format
-#| msgid "Create New"
+#, kde-format
 msgctxt "@item"
 msgid "<Create New>"
-msgstr "Δημιουργία νέου"
+msgstr "<Δημιουργία νέου>"
 
 #: newgame.cpp:136
 #, kde-format
