@@ -1,0 +1,1606 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Slovenian "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="kolf" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>&kolf; Priročnik</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<authorgroup>
+<author
+><firstname
+>Jason</firstname
+> <surname
+>Katz-Brown</surname
+> <affiliation
+> <address
+><email
+>jasonkb@mit.edu</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+><firstname
+>Paul</firstname
+> <surname
+>Broadbent</surname
+> <affiliation
+> <address
+><email
+>dbd@myrealbox.com</email
+></address>
+</affiliation>
+<!-- <contrib
+>Reviewer</contrib
+> -->
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>Matjaž</firstname
+><surname
+>Jeran</surname
+><affiliation
+><address
+><email
+>matjaz.jeran@amis.net</email
+></address
+></affiliation
+><contrib
+>Prevod</contrib
+></othercredit
+> 
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>06.08.2021</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>KDE Gear 21.08</releaseinfo>
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Ta dokumentacija opisuje igro &kolf; različica 21.08</para>
+</abstract>
+
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>igra</keyword
+> <!-- do not change this! -->
+	<keyword
+>Kolf</keyword
+><!--Application name goes here-->
+	<keyword
+>golf</keyword>
+	<keyword
+>miniaturni</keyword>
+	<keyword
+>arkadna</keyword>
+	<keyword
+>šport</keyword>
+	<keyword
+>deset igralcev</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Uvod</title
+> <!-- do not change this! -->
+	<note
+><title
+>Vrsta igre:</title
+><para
+>Arkadna, Šport</para
+></note>
+	<note
+><title
+>Število možnih igralcev:</title
+><para
+>Deset</para
+></note>
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&kolf; je igra mini golfa z 2D pogledom od zgoraj navzdol. Igrišča so dinamična, na tekmovanju pa lahko hkrati igra do 10 ljudi.</para>
+<para
+>&kolf; prihaja z učnim tečajem. <link linkend="howto"
+>Igranje tega tečaja</link
+> je najlažji način za začetek.</para>
+</chapter>
+
+<chapter id="howto"
+><title
+>Kako igrati</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Cilj:</title
+><para
+>Postavite žogo v luknjo z najmanj možnimi udarci.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para
+>Igra &kolf; je preprosta. Najlažje se je naučiti igrati neposredno, zato je vključen tečaj, ki vas vodi skozi osnove. To poglavje vas bo vodilo skozi ta tečaj. Za začetek vadnice izberite menijsko postavko <menuchoice
+><guimenu
+>Pomoč</guimenu
+> <guimenuitem
+>Vadnica</guimenuitem
+></menuchoice
+>.</para>
+
+<sect1 id="hitting">
+<title
+>Udarjanje žogice</title>
+<para
+>Če želite nameriti žogico, bodisi poravnajte miško za žogico, tako da igralec udari žogico v smer, kamor jo želite udariti, ali pa pritisnite eno od &Left; puščica (v nasprotni smeri urinega kazalca) ali &Right; tipke s puščicami (v smeri urinega kazalca) za vrtenje palice za golf.</para>
+<tip>
+<para
+>Za hitrejše vrtenje palice za golf s tipkovnico pridržite &Shift; medtem ko pritiskate ali držite tipke s puščicami. Za počasnejše vrtenje pridržite &Ctrl;.</para>
+</tip>
+<para
+>Če želite udariti žogico, pritisnite in držite bodisi &LMB; ali &Down; tipko puščice. Dlje ko držite tipko ali gumb, močnejši bo udarec palice. Za dober občutek za hitrost bo potrebna praksa.</para>
+<tip>
+<para
+>Če želite ustaviti palico, medtem ko še vedno premikate palico nazaj v zamahu, pritisnite &Esc;.</para>
+</tip>
+
+<para
+>Udarite žogo v luknjo, da nadaljujete na naslednjo.</para>
+</sect1>
+
+<sect1 id="slopes">
+<title
+>Pobočja</title>
+<para
+>Pobočja so poševna območja igrišča, po katerih se žogica za golf kotali navzdol na pričakovan način. Svetloba igrišča za golf je od zgoraj-levo, tako da bodo najsvetlejši pobočji potisnili žogico proti zgornjemu levemu kotu luknje. Izberite menijsko postavko <menuchoice
+><guimenu
+>Luknja</guimenu
+> <guimenuitem
+>Pokaži informacije</guimenuitem
+></menuchoice
+>, da vidite puščico, ki kaže v smeri, v katero bo pobočje kotalilo žogico.</para>
+<para
+>Na tej luknji za vadnico udarite žogico na navzgor usmerjeno pobočje in pustite, da se skotali v skodelico, da se pomakne na naslednjo luknjo.</para>
+
+<sect2
+> <title
+>Navodila</title>
+<para
+>Na naslednji luknji eksperimentirajte z drugimi vrstami pobočij. V &kolf; obstajajo eliptična, navpična, vodoravna in diagonalna pobočja. Udarite žogico v luknjo.</para>
+</sect2>
+<sect2
+> <title
+>Strmina</title>
+<para
+>Naslednja učna luknja ima dve pobočji različnih strmin. Če izberete menijski element <menuchoice
+><guimenu
+>Luknja</guimenu
+> <guimenuitem
+>Pokaži informacije</guimenuitem
+></menuchoice
+>, bo strmina pobočja prikazana kot številka od 1 do 8, kjer je 8 najbolj strma in 1 je najpoložnejša. Udarite žogico v luknjo in nadaljujte do naslednje luknje.</para>
+</sect2>
+</sect1>
+
+<sect1 id="walls"
+> <title
+>Stene</title>
+<para
+>Žoge se odbijajo od sten, kot bi pričakovali, z malo dušenja. Žogico odvrnite od sten v skodelico, da napredujete do naslednje luknje.</para>
+</sect1>
+
+<sect1 id="puddles-sand"
+> <title
+>Luže in pesek</title>
+<sect2
+> <title
+>Luže</title>
+	<para
+>Luže so modre. Ko se vaša žoga zakotali v lužo, se vašemu rezultatu prišteje kazenski udarec in nato morate izbrati, od kod želite izvesti naslednji udarec: ali zraven luže ali z istega mesta, od koder ste zadnjič pravkar udarili.</para>
+</sect2>
+<sect2
+> <title
+>Pesek</title>
+<para
+>Pesek je rumen. Žoge se kotalijo po pesku zelo počasi.</para>
+<para
+>Z žogo udarite mimo luž in skozi pesek v luknjo, da nadaljujete do naslednje luknje za vadnico.</para>
+</sect2>
+</sect1>
+
+<sect1 id="windmills"
+> <title
+>Mlini na veter</title>
+<para
+>Mlini na veter so sestavljeni predmeti z rjavimi obrobami in premikajočo se roko na eni strani. Polstene ustvarjajo odprtino v mlin na veter, čez katerega niha črna roka. Potrebna je praksa, da lahko merite udarec žoge skozi odprtino. Za nadaljevanje udarite žogo skozi mlin na veter v luknjo.</para>
+</sect1>
+
+<sect1 id="black-holes"
+> <title
+>Črne luknje</title>
+<para
+>Ko svojo žogico udarite v črno luknjo, se ta premakne do izhoda in izvrže pod kotom izhoda s hitrostjo, ki je neposredno sorazmerna s hitrostjo, s katero se je gibala vaša žogica. Izberite element menija <menuchoice
+><guimenu
+>Luknja</guimenu
+> <guimenuitem
+>Pokaži informacije</guimenuitem
+></menuchoice
+>, da vidite, katera črna luknja gre do katerega izhoda in v katero smer bo žoga prišla iz izhoda. Rob okoli črnih lukenj je enake barve kot njihovi ustrezni izhodi. Zadenite žogico v črno luknjo, ki jo bo nato vrgla v skodelico, tako da lahko greste do naslednje luknje.</para>
+</sect1>
+
+<sect1 id="floaters"
+> <title
+>Plovci</title>
+<para
+>Plovci so premikajoče se platforme, ki nosijo žogico, ki pristane na njih. Hitrosti plovcev so različne. Ta je precej počasen plovec, vendar morate še vedno meriti čas strela, da lahko greste čez steno in v skodelico.</para>
+</sect1>
+
+<sect1 id="bridges"
+> <title
+>Mostovi</title>
+<para
+>Mostovi so preprosti - samo dvignejo žogo nad stvari pod njimi, kot so pobočja, pesek in luže. Na obodu imajo lahko rjave stene.</para>
+</sect1>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Pravila igre, strategije in nasveti</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+<para
+>Tukaj je poglobljen opis osnovnih funkcij &kolf;.</para>
+
+<sect1 id="starting">
+<title
+>Začetek igre</title>
+
+<para
+>Če želite začeti igro, izberite menijsko postavko <menuchoice
+><guimenu
+>Igra</guimenu
+> <guimenuitem
+>Novo</guimenuitem
+></menuchoice
+>. To odpre pogovorno okno, kjer lahko konfigurirate svojo novo igro.</para>
+<!--
+<tip>
+<para
+>More third-party &kolf; courses are available at the &kolf; website. See <ulink
+url="https://web.mit.edu/jasonkb/www/kolf/"
+>the &kolf; user-uploaded courses page</ulink
+>.</para>
+</tip>
+-->
+<sect2>
+<title
+>Stran igralcev</title>
+<para
+>Če želite svoji igri dodati igralca, kliknite gumb <guibutton
+>Nov igralec</guibutton
+>.</para>
+
+<para
+>Če želite spremeniti imena igralcev, spremenite besedilo v besedilnih poljih.</para>
+
+<para
+>Če želite odstraniti igralca, kliknite gumb <guibutton
+>Odstrani</guibutton
+> poleg igralčevega imena.</para>
+
+</sect2>
+
+<sect2
+> <title
+>Stran igrišča</title>
+<para
+>Če želite izbrati igrišče, kjer želite igrati, kliknite njegov vnos v seznamskem polju na levi strani te strani. &kolf; prihaja s številnimi vgrajenimi igrišči, kjer lahko igrate.</para>
+<para
+>Če želite dodati igrišče, ki ste ga prenesli ali naredili, kliknite gumb <guibutton
+>Dodaj…</guibutton
+> na dnu te strani in v pogovornem oknu izberite datoteko igrišča.</para>
+</sect2>
+<sect2
+> <title
+>Stran z možnostmi</title>
+<para
+>Na tej strani lahko izberete, ali se bo ta igra igrala v <guilabel
+>Strogem načinu</guilabel
+> ali ne. V strogem načinu ni razveljavitev, premikanja lukenj ali urejanja igrišča. Ta način je na splošno namenjen tekmovanju. Samo v strogem načinu se ohranjajo visoke ocene.</para>
+</sect2>
+</sect1>
+
+<sect1 id="saved-games"
+> <title
+>Shranjene igre</title>
+<para
+>&kolf; lahko vodi zgodovino vaših rund, ki še potekajo, in jih shrani na disk, da jih lahko naložite in predvajate pozneje. Shranjene igre vključujejo trenutno luknjo, imena in barve vseh igralcev v igri ter rezultate igralcev.</para>
+<sect2
+> <title
+>Shranjevanje vaše igre</title>
+<para
+>Če želite igro shraniti med igranjem, izberite menijsko postavko <menuchoice
+><guimenu
+>Igra</guimenu
+> <guimenuitem
+>Shrani igro</guimenuitem
+></menuchoice
+>. Če v tej igri še niste shranili igre, boste pozvani, da vnesete datoteko, v katero želite shraniti.</para>
+</sect2>
+<sect2
+> <title
+>Nalaganje vaše igre</title>
+<para
+>Če želite naložiti igro, ki ste jo shranili, izberite menijsko postavko <menuchoice
+><guimenu
+>Igra</guimenu
+> <guimenuitem
+>Naloži…</guimenuitem
+> </menuchoice
+>. Nato lahko izberete shranjeno igro, ki jo želite odpreti.</para>
+</sect2>
+</sect1>
+
+<sect1 id="practicing"
+> <title
+>Vadba</title>
+<para
+>Obstaja nekaj funkcij, ki olajšajo vadbo golfa. Te funkcije niso omogočene v strogem načinu.</para>
+<sect2
+> <title
+>Razveljavi</title>
+<para
+>Če želite razveljaviti slab strel, izberite menijsko postavko <menuchoice
+><guimenu
+>Luknja</guimenu
+> <guimenuitem
+>Razveljavi strel</guimenuitem
+></menuchoice
+>.</para>
+</sect2>
+<sect2
+> <title
+>Preklopne luknje</title>
+<para
+>Meni <guimenu
+>Pojdi</guimenu
+> vsebuje veliko postavk menija za preklapljanje med različnimi luknjami, ki so povsem razumljive. Oglejte si <link linkend="go-menu"
+><guimenu
+>Pojdi</guimenu
+> referenco menija</link
+>.</para>
+</sect2>
+</sect1>
+
+<sect1 id="putting-options"
+> <title
+>Možnosti udarjanja s palico</title>
+<para
+>&kolf; ima nekaj načinov udarjanja žogic. Osnovna metoda udarjanja s palico je <link linkend="hitting"
+>opisana zgoraj</link
+>.</para>
+<para
+>Miška je privzeto omogočena. To pomeni, da se vsakič, ko premaknete miško, se palica za golf poravna s črto med miško in žogico.</para>
+<para
+>Če raje uporabljate samo tipkovnico in puščične tipke, lahko onemogočite udarjanja z miško tako, da počistite menijsko postavko <menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guimenuitem
+>Omogoči miško za premikanje palice za golf</guimenuitem
+></menuchoice
+>.</para>
+
+<sect2 id="advanced-putting"
+> <title
+>Napredno udarjanje s palico</title>
+<para
+>Napredno udarjanje s palico lahko omogočite tako, da označite menijsko postavko <menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guimenuitem
+>Omogoči napredno udarjanje</guimenuitem
+></menuchoice
+>. Ta način udarjanja je nekoliko zahtevnejši od običajnega načina klikni in drži in ga je mogoče uporabljati z miško ali tipkovnico.</para>
+
+<para
+>Če želite udariti s palico v tem načinu:</para>
+<procedure>
+<step>
+<para
+>Kliknite ali pritisnite gumb &Down; tipko s puščico enkrat za začetek zamaha. Prikaže se indikator udarjanja in merilnik moči se bo začel polniti z barvo, ki se spreminja, ko se merilnik polni.</para>
+</step>
+<step>
+<para
+>Kliknite ali pritisnite gumb &Down; tipko s puščico, ko merilnik moči napolni želeno količino. Dlje kot se merilec moči napolni okoli kroga, močnejši bo udarec s palico. Potrebna je praksa, da lahko dosežete pravo moč pri udarcih.</para>
+<para
+>Po tem se bo barva v indikatorju udarcev začela zmanjševati do tam, kjer se je začela.</para>
+</step>
+<step>
+<para
+>Kliknite ali pritisnite gumb &Down; znova pritisnite tipko s puščico, ko je indikator moči čim bližje srednji črti indikatorja udarca.</para>
+</step>
+</procedure>
+<para
+>Bližje kot je končni klik (ali pritisk na tipko), bolj je udarec podoben prvotni liniji.</para>
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Pregled vmesnika</title
+> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+ <sect1 id="game-menu">
+<title
+>Meni igre</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Igra</guimenu
+> <guimenuitem
+>Nova</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Začni novo igro.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Igra</guimenu
+> <guimenuitem
+>Naloži…</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Naloži prej shranjeno igro.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Igra</guimenu
+> <guimenuitem
+>Shrani igrišče</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Shrani trenutno igrišče z njegovim trenutnim imenom datoteke.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Igra</guimenu
+><guimenuitem
+>Shrani igrišče kot…</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Odprite pogovorno okno datoteke, v katerem lahko <action
+>shranite trenutno igrišče z novim imenom datoteke.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Igra</guimenu
+><guimenuitem
+>Shrani igro</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Shrani trenutno igro</action
+> z zadnjim shranjenim imenom datoteke igre ali pod imenom datoteke, ki ga določite, če igre še niste shranili.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Igra</guimenu
+> <guimenuitem
+>Shrani igro kot…</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Odpre pogovorno okno datoteke, v katerem lahko <action
+>shranite trenutno igro z imenom datoteke po svoji izbiri.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&End;</keycombo
+> </shortcut
+> <guimenu
+>Igra</guimenu
+> <guimenuitem
+>Končaj igro</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Končaj trenutno igro brez zapiranja</action
+> &kolf;.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Igra</guimenu
+> <guimenuitem
+>Pokaži najboljše rezultate</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Prikaži tabelo z najboljšimi rezultati.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Igra</guimenu
+><guimenuitem
+>O igrišču…</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Pokaži ime, avtorja in število lukenj igrišča.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Igra</guimenu
+><guimenuitem
+>Zapusti</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Zapusti</action
+> &kolf;.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="hole-menu">
+<title
+>Meni Luknje</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Luknja</guimenu
+> <guimenuitem
+>Uredi</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Preklopite v način urejanja</action
+>, da uredite trenutno luknjo.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Luknja</guimenu
+> <guimenuitem
+>Nova</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Ustvari novo luknjo.</action
+> (Samo med urejanjem.)</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Del;</keycombo
+> </shortcut
+> <guimenu
+>Luknja</guimenu
+> <guimenuitem
+>Počisti</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Odstrani vse predmete iz trenutne luknje.</action
+> (Samo med urejanjem.)</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>R</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Luknja</guimenu
+> <guimenuitem
+>Ponastavi</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Ponastavi trenutno luknjo na začetni položaj</action
+>, da lahko začnete znova.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Luknja</guimenu
+> <guimenuitem
+>Pokaži informacije</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Prikaži informacije o predmetih na trenutni luknji.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Luknja</guimenu
+> <guimenuitem
+>Razveljavi strel</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Razveljavi zadnji strel.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="go-menu">
+<title
+>Meni Pojdi</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Pojdi</guimenu
+> <guisubmenu
+>Preklopi na luknjo</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Pojdite neposredno na drugo luknjo znotraj igrišča.</action
+> Seznam številk lukenj vam omogoča, da izberete, na katero luknjo želite iti.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Alt;&Right;</keycombo
+> </shortcut
+> <guimenu
+>Pojdi</guimenu
+> <guimenuitem
+>Naslednja luknja</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Pojdi do naslednje luknje.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Alt;&Left;</keycombo
+> </shortcut
+> <guimenu
+>Pojdi</guimenu
+> <guimenuitem
+>Prejšnja luknja</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Pojdi na prejšnjo luknjo.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Home;</keycombo
+> </shortcut
+> <guimenu
+>Pojdi</guimenu
+> <guimenuitem
+>Prva luknja</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Pojdi do prve luknje na igrišču.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;&End;</keycombo
+> </shortcut
+> <guimenu
+>Pojdi</guimenu
+> <guimenuitem
+>Zadnja luknja</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Pojdi do zadnje luknje na igrišču.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Pojdi</guimenu
+> <guimenuitem
+>Naključna luknja</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Pojdi na naključno luknjo s trenutnega igrišča.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="settings-help-menu">
+<title
+>Meni Nastavitve in pomoč</title>
+
+<para
+>&kolf; ima skupno &kde; Elementi menija <guimenu
+>Nastavitve</guimenu
+> in <guimenu
+>Pomoč</guimenu
+>, za več informacij preberite razdelke o <ulink url="help:/fundamentals/menus.html#menus-settings"
+>meniju z nastavitvami</ulink
+> in <ulink url="help:/fundamentals/menus.html#menus-help"
+>meni Pomoč</ulink
+> v &kde; Osnove s temi dodatnimi vnosi:</para>
+
+<variablelist>
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guimenuitem
+>Omogoči miško za premikanje palice za golf</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Dovolite uporabo miške za premikanje palice za golf.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guimenuitem
+>Omogoči napredno udarjanje s palico</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Omogočite napredni način udarjanja s palico</action
+>, kot je opisano v <link linkend="advanced-putting"
+>lastnem razdelku</link
+>.</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guimenuitem
+>Pokaži vodilo za palico za golf</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Vklapljanje in izklapljanje vodila za palico za golf.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guimenuitem
+>Predvajaj zvoke</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Vklop in izklop zvočnih učinkov.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guimenuitem
+>Omogoči vsa pogovorna okna</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Ponovno omogočite vsa pogovorna okna, ki ste jih onemogočili s klikom na <guilabel
+>Ne prikaži več tega sporočila</guilabel
+> ali podobno.</action
+></para
+></listitem>
+  </varlistentry>
+<!--
+  <varlistentry>
+    <term
+><menuchoice>
+    <guimenu
+>Settings</guimenu>
+    <guimenuitem
+>Reload Plugins</guimenuitem>
+    </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Reload plugins.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice>
+    <guimenu
+>Settings</guimenu>
+    <guimenuitem
+>Show Plugins</guimenuitem>
+    </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Display the currently loaded plugins.</action
+></para
+></listitem>
+  </varlistentry>
+-->
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>Pomoč</guimenu
+> <guimenuitem
+>Vadnica</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+>Začnite vadnico tečaja &kolf;.</para
+></listitem>
+  </varlistentry>
+</variablelist>
+
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Pogosto zastavljena vprašanja</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Želim spremeniti videz te igre. Ali lahko? </para
+></question>
+ <answer
+><para
+>Ne. V tem trenutku ima &kolf; samo eno temo.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Ali lahko uporabljam tipkovnico za igranje igre? </para
+></question>
+ <answer
+><para
+>Da. Uporabite smerne tipke, da upravljate s palico za golf.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Ne morem ugotoviti, kaj naj naredim tukaj! Ali obstajajo namigi? </para
+></question>
+ <answer
+><para
+>Ne. &kolf; nima funkcije namiga.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Želim oblikovati lastno igrišče za golf. Ali lahko? </para
+></question>
+ <answer
+><para
+>Da lahko. Za vstop v način urejanja uporabite <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Luknja</guimenu
+> <guimenuitem
+> Uredi</guimenuitem
+></menuchoice
+> element menija. Kliknite <link linkend="creating"
+>tukaj</link
+> za več podrobnosti.</para
+></answer
+><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Urednik igrišča</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+<para
+>&kolf; prihaja z vsestranskim urejevalnikom za svoj format datoteke igrišča. Igrišča imajo lahko poljubno število lukenj in ustvarjalnost oblikovalca igrišča ni omejena.</para>
+
+<sect1 id="creating"
+> <title
+>Ustvarjanje novega igrišča</title>
+<para
+>Če želite ustvariti novo igrišče, izberite menijsko postavko <menuchoice
+><guimenu
+>Igra</guimenu
+> <guimenuitem
+>Novo</guimenuitem
+></menuchoice
+>. Pojdite na stran <guilabel
+>Igrišče</guilabel
+> v pogovornem oknu in izberite <guilabel
+>Ustvari novo</guilabel
+> igrišče. Prepričajte se, da pod stranjo <guilabel
+>Možnosti</guilabel
+> pogovornega okna <guilabel
+>Strogi način</guilabel
+> ni označen.</para>
+
+<note>
+<para
+>Če želite igrati na tem novem igrišču pozneje, kliknite gumb <guibutton
+>Dodaj…</guibutton
+>, da dodate igrišče na svoj seznam igrišč.</para>
+</note>
+</sect1>
+
+<sect1 id="adding-holes"
+> <title
+>Dodajanje lukenj</title>
+<para
+>Preklopite v način urejanja z menijsko postavko <menuchoice
+><guimenu
+>Luknja</guimenu
+> <guimenuitem
+>Uredi</guimenuitem
+></menuchoice
+>. Izberite menijski element <menuchoice
+><guimenu
+>Luknja</guimenu
+> <guimenuitem
+>Nova</guimenuitem
+></menuchoice
+>, da dodate novo luknjo na koncu igrišča.</para>
+<tip>
+<para
+>Luknjo lahko povrnete v prazno stanje, podobno tistemu, ko je bila prvič ustvarjena, tako da izberete menijsko postavko <menuchoice
+><guimenu
+>Luknja</guimenu
+> <guimenuitem
+>Počisti</guimenuitem
+></menuchoice
+>.</para>
+</tip>
+<para
+>Na novih luknjah se bosta pojavila dva predmeta: skodelica in bela krogla. Bela krogla označuje, kje žogice igralcev začnejo luknjo.</para>
+</sect1>
+
+<sect1 id="editing-basics"
+> <title
+>Osnove urejanja</title>
+<para
+>Osnovni gradnik &kolf; igrišča je <quote
+>predmet</quote
+>. Luknje so sestavljene iz množice predmetov. Predmete je mogoče premakniti na katero koli lokacijo, različne vrste predmetov pa imajo različne lastnosti, ki jih lahko nastavite.</para>
+<para
+>Če želite začeti urejati luknjo, preklopite menijski element <menuchoice
+><guimenu
+>Luknja</guimenu
+> <guimenuitem
+>Uredi</guimenuitem
+></menuchoice
+> ali pritisnite ikono svinčnika v orodni vrstici. Če želite zapustiti način urejanja, počistite to menijsko postavko (ali ikono v orodni vrstici).</para>
+
+<sect2
+> <title
+>Dodajanje predmetov</title>
+<para
+>Če želite igrišču dodati nov predmet, izberite njegovo ime v seznamskem polju z oznako <guilabel
+>Dodaj predmet:</guilabel
+>. Predmet se bo pojavil v središču igrišča.</para>
+<caution>
+<para
+>Mostovi in znaki bodo prekrili nove predmete, če so bili že v središču luknje.</para>
+</caution>
+<!--
+<tip>
+<para
+>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
+</tip>
+<para
+>Some &kolf; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
+<para
+>Third-party &kolf; plugins are available at the &kolf; website. See <ulink url="https://web.mit.edu/jasonkb/www/kolf/"
+>the &kolf; plugins download page</ulink
+>.</para>
+-->
+</sect2>
+
+<sect2
+> <title
+>Premikanje in spreminjanje velikosti predmetov</title>
+<para
+>Premaknite kazalec miške nad predmet, ki ga želite premakniti, in kazalec miške se bo spremenil v kazalec roke. Nato kliknite in povlecite predmet na želeno mesto.</para>
+<para
+>Luže, pesek, plovci, mostovi in znaki lahko spremenijo velikost tako, da povlečete majhen krog v njihovem spodnjem desnem kotu.</para>
+
+<note>
+<para
+>Stene lahko premikate tako, da kliknete in povlečete njihove končne točke, ali pa premaknete celotno steno tako, da kliknete in povlečete srednji del stene kot običajno.</para>
+</note>
+</sect2>
+
+<sect2
+> <title
+>Nastavitve predmetov</title>
+<para
+>Lastnosti predmetov lahko spremenite v območju v spodnjem desnem kotu &kolf; okno. Če želite urediti predmet, premikajte kazalec miške nad njim, dokler se kazalec ne spremeni v kazalec roke. Nato kliknite. Različni kontrolniki za ta predmet se bodo pojavili v spodnjem desnem kotu &kolf; okna.</para>
+<sect3
+> <title
+>Splošne nastavitve lukenj</title>
+<para
+>Če želite urediti splošne nastavitve luknje, kliknite območje luknje, ki ga ne pokriva noben predmet. Če je to mogoče, bo kazalec kar običajni kazalec.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Ime igrišča:</guilabel
+></term>
+<listitem>
+<para
+>To je ime, ki je prikazano v pogovornem oknu <guilabel
+>Nova igra</guilabel
+> in pogovornem oknu <guilabel
+>Informacije o igrišču</guilabel
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Avtor igrišča:</guilabel
+></term>
+<listitem>
+<para
+>To je ime avtorja, ki je prikazano v pogovornem oknu <guilabel
+>Informacije o igrišču</guilabel
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Par:</guilabel
+></term>
+<listitem>
+<para
+>Par luknje.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Največ:</guilabel
+></term>
+<listitem>
+<para
+>Največje število udarcev, ki jih igralec lahko odigra na tej luknji.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Prikaži mejne stene</guilabel
+></term>
+<listitem>
+<para
+>Ali želite prikazati stene okoli roba luknje ali ne.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Pobočja</title>
+
+<variablelist>
+<varlistentry
+> <term
+>Vrsta</term>
+<listitem>
+<para
+>Izberite vrsto naklona pobočja - <guilabel
+>Navpično</guilabel
+>, <guilabel
+>Vodoravno</guilabel
+>, <guilabel
+>Diagonalno</guilabel
+>, <guilabel
+>Nasprotno diagonalno</guilabel
+>, <guilabel
+>Krožno</guilabel
+>. Diagonalna in nasprotna diagonalna pobočja so trikotniki, krožna pobočja pa krogi. Navpična in vodoravna pobočja sta seveda pravokotnika.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Obratna smer</guilabel
+></term>
+<listitem>
+<para
+>Ne glede na to, ali obrniti naklon pobočja. Na primer, upoštevajte eliptično pobočje (krožno pobočje). Ko ni obrnjeno, potisne kroglice navzven kot krtina. Ko je obrnjena, posrka kroglice navznoter kot luknja.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Nepremično</guilabel
+></term>
+<listitem>
+<para
+>Ne glede na to, ali je to mogoče premakniti z drugimi predmeti, kot so plovci.</para>
+<caution>
+<para
+>Če se plovec prekriva s tem predmetom na kateri koli točki te poti in je naklon velik in zato ne premakne plovca, <emphasis
+>morate</emphasis
+> narediti naklon <guilabel
+>Nepremakljiv</guilabel
+> ali bo &kolf; deloval počasi!</para>
+</caution>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Ocena:</guilabel
+></term>
+<listitem>
+<para
+>Izberite naklon (strmino) pobočja tako, da premaknete drsnik, tako da se naklon premakne proti 0 ali 8, kjer je 8 najbolj strm in 0 ravninski. Strmejši klanci bolj potiskajo žogo.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Luže in pesek</title>
+<para
+>Luže in pesek imata enake konfiguracijske možnosti.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Omogoči prikaz/skrij</guilabel
+></term>
+<listitem>
+<para
+>Če to preverite, omogočite utripanje te luže ali peska.</para>
+<!--
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Show/Hide speed</term>
+<listitem>
+  -->
+<para
+>Bolj kot je drsnik proti <guilabel
+>Hitro</guilabel
+>, hitreje utripa luža ali pesek.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>Mostovi, mlini na veter, plovci in znaki</title>
+<para
+>Mostovi, mlini na veter, plovci in znaki imajo podobne nastavitve za konfiguracijo, na katerih straneh so mejni zidovi. Če želite steno prikazati ob strani, potrdite polje za to stran.</para>
+<para
+>Obstajajo tudi nekatere bolj specifične možnosti za vetrnice, plovce in znake.</para>
+
+<sect4
+> <title
+>Mlini na veter</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Mlin na veter na vrhu</guilabel
+></term>
+<listitem>
+<para
+>Ne glede na to, ali je črna roka vetrnice na dnu ali na vrhu - privzeto je, da je na vrhu. Dve polsteni bosta vedno z roko. Upoštevajte, da ne morete omogočiti obrobne stene na strani, kjer je roka.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Hitrost</term>
+<listitem>
+<para
+>Bolj kot je drsnik proti <guilabel
+>Hitro</guilabel
+>, hitreje se premika črna roka vetrnice.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Plovci</title>
+<para
+>Pot, po kateri se premika plovec, je prikazana s steno, s katero je povezan.</para>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Hitrost premikanja</guilabel
+></term>
+<listitem>
+<para
+>Bolj kot je drsnik proti <guilabel
+>Hitro</guilabel
+>, hitreje se premika plovec. Če je drsnik povsem na koncu <guilabel
+>Počasi</guilabel
+>, se bo plovec ustavil.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>Znaki</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>Podpišite HTML:</guilabel
+></term>
+<listitem>
+<para
+>Vnesete lahko poljuben veljaven &HTML; tukaj Na primer, če vnesete <userinput
+>Hit it &lt;i&gt;nežno&lt;/i&gt; proti pobočju!</userinput
+> bo ustvarilo besedilo <quote
+>Udari <emphasis
+>nežno</emphasis
+> proti pobočju!</quote
+>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+</sect3>
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="credits"
+><title
+>Zasluge in licenca</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&kolf;</para>
+
+<para
+>&kolf; avtorske pravice 2001, 2002 &Jason.Katz-Brown;</para>
+
+<itemizedlist>
+<title
+>Razvijalci</title>
+<listitem>
+<para
+>&Jason.Katz-Brown; <email
+>jasonkb@mit.edu</email
+></para>
+</listitem>
+<listitem>
+<para
+>Niklas Knutsson</para>
+</listitem>
+<listitem>
+<para
+>Ryan Cumming</para>
+</listitem>
+<listitem>
+<para
+>Daniel Matza-Brown</para>
+</listitem>
+<listitem>
+<para
+>Paul Broadbent</para>
+</listitem>
+</itemizedlist>
+
+<para
+>Avtorske pravice za dokumentacijo 2002, &Jason.Katz-Brown;</para>
+
+<para
+>Prevod: Matjaž Jeran<email
+>matjaz.jeran@amis.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
