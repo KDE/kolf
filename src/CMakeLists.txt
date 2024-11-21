@@ -151,6 +151,7 @@ target_link_libraries(kolfprivate
     KF6::KIOCore
     KF6::TextWidgets
     KF6::XmlGui
+    KF6::IconThemes
     Qt6::Gui
     Qt6::Widgets
 )
