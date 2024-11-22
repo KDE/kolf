@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-05 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2024-05-05 10:02+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -517,147 +517,147 @@ msgctxt "@lable:spinbox"
 msgid "Grade:"
 msgstr "דרגה:"
 
-#: main.cpp:45
+#: main.cpp:62
 #, kde-format
 msgid "Kolf"
 msgstr "Kolf"
 
-#: main.cpp:47
+#: main.cpp:64
 #, kde-format
 msgid "KDE Minigolf Game"
 msgstr "משחק מיני־גולף עבור KDE"
 
-#: main.cpp:49
+#: main.cpp:66
 #, kde-format
 msgid "(c) 2002-2010, Kolf developers"
 msgstr "(C) 2002‏-2010, מפתחי Kolf"
 
-#: main.cpp:53
+#: main.cpp:70
 #, kde-format
 msgid "Stefan Majewsky"
 msgstr "סטפן מייבסקי"
 
-#: main.cpp:53
+#: main.cpp:70
 #, kde-format
 msgid "Current maintainer"
 msgstr "מתחזק נוכחי"
 
-#: main.cpp:54
+#: main.cpp:71
 #, kde-format
 msgid "Jason Katz-Brown"
 msgstr "ג׳ייסון כץ-בראון"
 
-#: main.cpp:54
+#: main.cpp:71
 #, kde-format
 msgid "Former main author"
 msgstr "יוצר ראשי לשעבר"
 
-#: main.cpp:55
+#: main.cpp:72
 #, kde-format
 msgid "Niklas Knutsson"
 msgstr "ניקלאס קונטסן"
 
-#: main.cpp:55
+#: main.cpp:72
 #, kde-format
 msgid "Advanced putting mode"
 msgstr "מצב חבטות מתקדמות"
 
-#: main.cpp:56
+#: main.cpp:73
 #, kde-format
 msgid "Rik Hemsley"
 msgstr "ריק המזלי"
 
-#: main.cpp:56
+#: main.cpp:73
 #, kde-format
 msgid "Border around course"
 msgstr "מסגרת מסביב למסלול"
 
-#: main.cpp:57
+#: main.cpp:74
 #, kde-format
 msgid "Timo A. Hummel"
 msgstr "טימו א. האמל"
 
-#: main.cpp:57
+#: main.cpp:74
 #, kde-format
 msgid "Some good sound effects"
 msgstr "כמה אפקטי צליל טובים"
 
-#: main.cpp:59
+#: main.cpp:76
 #, kde-format
 msgid "Rob Renaud"
 msgstr "רוב רינוד"
 
-#: main.cpp:59
+#: main.cpp:76
 #, kde-format
 msgid "Wall-bouncing help"
 msgstr "עזרה עם קפיצה מקירות"
 
-#: main.cpp:60
+#: main.cpp:77
 #, kde-format
 msgid "Aaron Seigo"
 msgstr "אהרון סייגו"
 
-#: main.cpp:60
+#: main.cpp:77
 #, kde-format
 msgid "Suggestions, bug reports"
 msgstr "הצעות, דיווחים על תקלות"
 
-#: main.cpp:61
+#: main.cpp:78
 #, kde-format
 msgid "Erin Catto"
 msgstr "ארין קאטו"
 
-#: main.cpp:61
+#: main.cpp:78
 #, kde-format
 msgid "Developer of Box2D physics engine"
 msgstr "מפתח מנוע הפיזיקה Box2D"
 
-#: main.cpp:62
+#: main.cpp:79
 #, kde-format
 msgid "Ryan Cumming"
 msgstr "ראיין קאמינג"
 
-#: main.cpp:62
+#: main.cpp:79
 #, kde-format
 msgid "Vector class (Kolf 1)"
 msgstr "מחלקת וקטורים (Kolf 1)"
 
-#: main.cpp:63
+#: main.cpp:80
 #, kde-format
 msgid "Daniel Matza-Brown"
 msgstr "דניאל מאצה-בראון"
 
-#: main.cpp:63
+#: main.cpp:80
 #, kde-format
 msgid "Working wall-bouncing algorithm (Kolf 1)"
 msgstr "אלגוריתם עובד לחזרה בקפיצה מקירות (Kolf 1)"
 
-#: main.cpp:71
+#: main.cpp:88
 #, kde-format
 msgid "File"
 msgstr "קובץ"
 
-#: main.cpp:72
+#: main.cpp:89
 #, kde-format
 msgid "Print course information and exit"
 msgstr "הצגת מידע לגבי מסלול ולצאת"
 
-#: main.cpp:90
+#: main.cpp:107
 #, kde-format
 msgid "By %1"
 msgstr "מאת %1"
 
-#: main.cpp:91
+#: main.cpp:108
 #, kde-format
 msgid "%1 holes"
 msgstr "%1 גומות"
 
-#: main.cpp:92
+#: main.cpp:109
 #, kde-format
 msgid "par %1"
 msgstr "תקן %1"
 
-#: main.cpp:99
+#: main.cpp:116
 #, kde-format
 msgid "Course %1 does not exist."
 msgstr "המסלול %1 לא קיים."

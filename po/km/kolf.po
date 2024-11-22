@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-05 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2009-10-24 15:17+0700\n"
 "Last-Translator: Morn Met\n"
 "Language-Team: Khmer <kde-i18n-doc@kde.org>\n"
@@ -557,147 +557,147 @@ msgctxt "@lable:spinbox"
 msgid "Grade:"
 msgstr "កម្រិត"
 
-#: main.cpp:45
+#: main.cpp:62
 #, kde-format
 msgid "Kolf"
 msgstr "Kolf"
 
-#: main.cpp:47
+#: main.cpp:64
 #, kde-format
 msgid "KDE Minigolf Game"
 msgstr "ល្បែង​ហ្គោល​ខ្នាត​តូច​របស់​ KDE "
 
-#: main.cpp:49
+#: main.cpp:66
 #, kde-format
 msgid "(c) 2002-2010, Kolf developers"
 msgstr "រក្សា​សិទ្ធិ​ឆ្នាំ​ ២​០​០​២-២​០​១​០​ ដោយ​អ្នក​អភិវឌ្ឍន៍​ Kolf"
 
-#: main.cpp:53
+#: main.cpp:70
 #, kde-format
 msgid "Stefan Majewsky"
 msgstr "Stefan Majewsky"
 
-#: main.cpp:53
+#: main.cpp:70
 #, kde-format
 msgid "Current maintainer"
 msgstr "អ្នក​ថែ​ទាំ​បច្ចុប្បន្ន"
 
-#: main.cpp:54
+#: main.cpp:71
 #, kde-format
 msgid "Jason Katz-Brown"
 msgstr "Jason Katz-Brown"
 
-#: main.cpp:54
+#: main.cpp:71
 #, kde-format
 msgid "Former main author"
 msgstr "អ្នក​និពន្ធ​​​សំខាន់​មុន​"
 
-#: main.cpp:55
+#: main.cpp:72
 #, kde-format
 msgid "Niklas Knutsson"
 msgstr "Niklas Knutsson"
 
-#: main.cpp:55
+#: main.cpp:72
 #, kde-format
 msgid "Advanced putting mode"
 msgstr "របៀប​វាយ​បញ្ចូល​រន្ធ​កម្រិត​ខ្ពស់"
 
-#: main.cpp:56
+#: main.cpp:73
 #, kde-format
 msgid "Rik Hemsley"
 msgstr "Rik Hemsley"
 
-#: main.cpp:56
+#: main.cpp:73
 #, kde-format
 msgid "Border around course"
 msgstr "ស៊ុម​ជុំវិញ​ទីលាន​ប្រកួត"
 
-#: main.cpp:57
+#: main.cpp:74
 #, kde-format
 msgid "Timo A. Hummel"
 msgstr "Timo A. Hummel"
 
-#: main.cpp:57
+#: main.cpp:74
 #, kde-format
 msgid "Some good sound effects"
 msgstr "បែបផែន​សំឡេង​​ល្អ​ខ្លះ"
 
-#: main.cpp:59
+#: main.cpp:76
 #, kde-format
 msgid "Rob Renaud"
 msgstr "Rob Renaud"
 
-#: main.cpp:59
+#: main.cpp:76
 #, kde-format
 msgid "Wall-bouncing help"
 msgstr "ជំនួយ​ជញ្ជាំង​លោត"
 
-#: main.cpp:60
+#: main.cpp:77
 #, kde-format
 msgid "Aaron Seigo"
 msgstr "Aaron Seigo"
 
-#: main.cpp:60
+#: main.cpp:77
 #, kde-format
 msgid "Suggestions, bug reports"
 msgstr "ការ​ផ្ដល់​យោបល់​ និង​​របាយ​ការណ៍​កំហុស"
 
-#: main.cpp:61
+#: main.cpp:78
 #, kde-format
 msgid "Erin Catto"
 msgstr "Erin Catto"
 
-#: main.cpp:61
+#: main.cpp:78
 #, kde-format
 msgid "Developer of Box2D physics engine"
 msgstr "អ្នក​អភិវឌ្ឍន៍​ម៉ាស៊ីន​រូប​វិទ្យា​ Box2D"
 
-#: main.cpp:62
+#: main.cpp:79
 #, kde-format
 msgid "Ryan Cumming"
 msgstr "Ryan Cumming"
 
-#: main.cpp:62
+#: main.cpp:79
 #, kde-format
 msgid "Vector class (Kolf 1)"
 msgstr "ថ្នាក់​វ៉ិចទ័រ​ (Kolf ១)"
 
-#: main.cpp:63
+#: main.cpp:80
 #, kde-format
 msgid "Daniel Matza-Brown"
 msgstr "Daniel Matza-Brown"
 
-#: main.cpp:63
+#: main.cpp:80
 #, kde-format
 msgid "Working wall-bouncing algorithm (Kolf 1)"
 msgstr "ក្បួន​ដោះ​ស្រាយ​ជញ្ជាំង​លោត​ដែល​សកម្ម​ (Kolf ១)"
 
-#: main.cpp:71
+#: main.cpp:88
 #, kde-format
 msgid "File"
 msgstr "ឯកសារ"
 
-#: main.cpp:72
+#: main.cpp:89
 #, kde-format
 msgid "Print course information and exit"
 msgstr "បោះពុម្ព​ព័ត៌មាន​ទីលាន​ប្រកួត ហើយ​ចាក​ចេញ"
 
-#: main.cpp:90
+#: main.cpp:107
 #, kde-format
 msgid "By %1"
 msgstr "ត្រឹម​ %1"
 
-#: main.cpp:91
+#: main.cpp:108
 #, kde-format
 msgid "%1 holes"
 msgstr "%1 រន្ធ"
 
-#: main.cpp:92
+#: main.cpp:109
 #, kde-format
 msgid "par %1"
 msgstr "កម្រិត​ចំនួន​វាយ​ចូល​រន្ធ​នីមួយ​ៗ​ %1"
 
-#: main.cpp:99
+#: main.cpp:116
 #, kde-format
 msgid "Course %1 does not exist."
 msgstr "មិន​មាន​ទី​លាន​ប្រកួត​ %1 ទេ ។"

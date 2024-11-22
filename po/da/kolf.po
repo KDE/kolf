@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-05 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2017-11-11 10:18+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -557,147 +557,147 @@ msgctxt "@lable:spinbox"
 msgid "Grade:"
 msgstr "Niveau:"
 
-#: main.cpp:45
+#: main.cpp:62
 #, kde-format
 msgid "Kolf"
 msgstr "Kolf"
 
-#: main.cpp:47
+#: main.cpp:64
 #, kde-format
 msgid "KDE Minigolf Game"
 msgstr "KDE Minigolf-spil"
 
-#: main.cpp:49
+#: main.cpp:66
 #, kde-format
 msgid "(c) 2002-2010, Kolf developers"
 msgstr "(c) 2002-2010, Kolf-udviklerne"
 
-#: main.cpp:53
+#: main.cpp:70
 #, kde-format
 msgid "Stefan Majewsky"
 msgstr "Stefan Majewsky"
 
-#: main.cpp:53
+#: main.cpp:70
 #, kde-format
 msgid "Current maintainer"
 msgstr "Nuværende vedligeholder"
 
-#: main.cpp:54
+#: main.cpp:71
 #, kde-format
 msgid "Jason Katz-Brown"
 msgstr "Jason Katz-Brown"
 
-#: main.cpp:54
+#: main.cpp:71
 #, kde-format
 msgid "Former main author"
 msgstr "Tidligere hovedudvikler"
 
-#: main.cpp:55
+#: main.cpp:72
 #, kde-format
 msgid "Niklas Knutsson"
 msgstr "Niklas Knutsson"
 
-#: main.cpp:55
+#: main.cpp:72
 #, kde-format
 msgid "Advanced putting mode"
 msgstr "Avanceret putte-tilstand"
 
-#: main.cpp:56
+#: main.cpp:73
 #, kde-format
 msgid "Rik Hemsley"
 msgstr "Rik Hemsley"
 
-#: main.cpp:56
+#: main.cpp:73
 #, kde-format
 msgid "Border around course"
 msgstr "Grænse omkring bane"
 
-#: main.cpp:57
+#: main.cpp:74
 #, kde-format
 msgid "Timo A. Hummel"
 msgstr "Timo A. Hummel"
 
-#: main.cpp:57
+#: main.cpp:74
 #, kde-format
 msgid "Some good sound effects"
 msgstr "Nogle gode lydeffekter"
 
-#: main.cpp:59
+#: main.cpp:76
 #, kde-format
 msgid "Rob Renaud"
 msgstr "Rob Renaud"
 
-#: main.cpp:59
+#: main.cpp:76
 #, kde-format
 msgid "Wall-bouncing help"
 msgstr "Hjælp til at ramme væg"
 
-#: main.cpp:60
+#: main.cpp:77
 #, kde-format
 msgid "Aaron Seigo"
 msgstr "Aaron Seigo"
 
-#: main.cpp:60
+#: main.cpp:77
 #, kde-format
 msgid "Suggestions, bug reports"
 msgstr "Forslag, fejlrapporter"
 
-#: main.cpp:61
+#: main.cpp:78
 #, kde-format
 msgid "Erin Catto"
 msgstr "Erin Catto"
 
-#: main.cpp:61
+#: main.cpp:78
 #, kde-format
 msgid "Developer of Box2D physics engine"
 msgstr "Udvikler af Box2D fysikmotor"
 
-#: main.cpp:62
+#: main.cpp:79
 #, kde-format
 msgid "Ryan Cumming"
 msgstr "Ryan Cumming"
 
-#: main.cpp:62
+#: main.cpp:79
 #, kde-format
 msgid "Vector class (Kolf 1)"
 msgstr "Vektorklasse (Kolf 1)"
 
-#: main.cpp:63
+#: main.cpp:80
 #, kde-format
 msgid "Daniel Matza-Brown"
 msgstr "Daniel Matza-Brown"
 
-#: main.cpp:63
+#: main.cpp:80
 #, kde-format
 msgid "Working wall-bouncing algorithm (Kolf 1)"
 msgstr "Fungerende algoritme for at ramme væg (Kolf 1)"
 
-#: main.cpp:71
+#: main.cpp:88
 #, kde-format
 msgid "File"
 msgstr "Fil"
 
-#: main.cpp:72
+#: main.cpp:89
 #, kde-format
 msgid "Print course information and exit"
 msgstr "Udskriv baneinformation og afslut"
 
-#: main.cpp:90
+#: main.cpp:107
 #, kde-format
 msgid "By %1"
 msgstr "Ved %1"
 
-#: main.cpp:91
+#: main.cpp:108
 #, kde-format
 msgid "%1 holes"
 msgstr "%1 huller"
 
-#: main.cpp:92
+#: main.cpp:109
 #, kde-format
 msgid "par %1"
 msgstr "par %1"
 
-#: main.cpp:99
+#: main.cpp:116
 #, kde-format
 msgid "Course %1 does not exist."
 msgstr "Banen %1 eksistere ikke."
