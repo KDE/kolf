@@ -39,6 +39,7 @@
   <name xml:lang="pt-BR">Kolf</name>
   <name xml:lang="ro">Kolf</name>
   <name xml:lang="ru">Kolf</name>
+  <name xml:lang="sa">बट्</name>
   <name xml:lang="sk">Kolf</name>
   <name xml:lang="sl">Kolf</name>
   <name xml:lang="sr">Колф</name>
@@ -81,6 +82,7 @@
   <summary xml:lang="pt-BR">Mini-Golf</summary>
   <summary xml:lang="ro">Golf în miniatură</summary>
   <summary xml:lang="ru">Гольф в миниатюре</summary>
+  <summary xml:lang="sa">लघु गोल्फ</summary>
   <summary xml:lang="sk">Miniatúrny golf</summary>
   <summary xml:lang="sl">Miniaturni golf</summary>
   <summary xml:lang="sr">Минијатурни голф</summary>
@@ -123,6 +125,7 @@
     <p xml:lang="pt">O Kolf é um jogo de golfe em miniatura. O jogo é executado numa perspectiva de cima, com uma barra que representa o taco de golfe. O Kolf oferece diversos tipos de objectos, como poças de água, rampas, armadilhas de areia e buracos negros (portais), entre outros.</p>
     <p xml:lang="pt-BR">Kolf é um jogo de mini-golfe. É jogado de uma vista aérea com uma barra curta representando o clube de golfe. Kolf possui muitos tipos diferentes de objetos, como riscos de água, encostas, armadilhas de areia, buracos negros (empenamento), entre outros.</p>
     <p xml:lang="ru">Kolf — игра в гольф в миниатюре. Во время игры игрок смотрит на площадку сверху. В Kolf предусмотрены различные типы объектов, в том числе водные преграды, склоны, песчаные ловушки и чёрные дыры (тоннели).</p>
+    <p xml:lang="sa">कोल्फ् इति लघुगोल्फक्रीडा । क्रीडा उपरि दृश्यात् क्रीड्यते, यत्र गोल्फक्लबस्य प्रतिनिधित्वं कृत्वा लघुः बारः भवति । कोल्फ् इत्यत्र जलस्य खतराणि, सानुः, वालुकाजालानि, कृष्णरन्ध्राणि (वार्प्स्) इत्यादीनि अनेकानि विविधानि वस्तूनि सन्ति ।</p>
     <p xml:lang="sk">Kolf je miniatúrna golfová hra. Hra sa hrá pohľadom zhora. Obsahuje mnoho rôznych typov objektov, ako vodné prekážky, stĺpy, pieskové pasce, čierne diery a iné.</p>
     <p xml:lang="sl">Kolf je igra miniaturnega golfa. Igrate iz ptičje perspektive, palico pa predstavlja deščica. V Kolfu boste našli številne predmete, kot so med drugimi vodne nevarnosti, klance, peščene pasti in črne luknje.</p>
     <p xml:lang="sv">Kolf är ett minigolfspel. Spelet visas ovanifrån, med ett kort streck som representerar golfklubban. Kolf har många olika hinder, bland annat vattenhinder, sluttningar, bunkrar och svarta hål.</p>
@@ -162,6 +165,7 @@
     <p xml:lang="pt-BR">Recursos:</p>
     <p xml:lang="ro">Caracteristici:</p>
     <p xml:lang="ru">Возможности:</p>
+    <p xml:lang="sa">गुणाः:</p>
     <p xml:lang="sk">Funkcie:</p>
     <p xml:lang="sl">Zmožnosti:</p>
     <p xml:lang="sr">Могућности:</p>
@@ -203,6 +207,7 @@
       <li xml:lang="pt">Modos para um ou vários jogadores (até dez jogadores)</li>
       <li xml:lang="pt-BR">Modos único jogador e multijogadores (até 10 jogadores)</li>
       <li xml:lang="ru">Однопользовательский и многопользовательский (не более десяти игроков) режимы игры</li>
+      <li xml:lang="sa">एकल-बहु-क्रीडक (दश-क्रीडकपर्यन्तं) मोड्</li>
       <li xml:lang="sk">Režimy jedného a viacerých hráčov (do 10 hráčov)</li>
       <li xml:lang="sl">Načina za enega in več igralcev (do deset)</li>
       <li xml:lang="sr">Режим за једног и више играча (до десет).</li>
@@ -244,6 +249,7 @@
       <li xml:lang="pt">Tabela de recordes</li>
       <li xml:lang="pt-BR">Tabela de recordes</li>
       <li xml:lang="ru">Таблица рекордов</li>
+      <li xml:lang="sa">उच्चाङ्कसारणी</li>
       <li xml:lang="sk">Tabuľka najvyššieho skóre</li>
       <li xml:lang="sl">Razpredelnica najboljših rezultatov</li>
       <li xml:lang="sr">Табела најрезултата.</li>
@@ -285,6 +291,7 @@
       <li xml:lang="pt">Campos dinâmicos</li>
       <li xml:lang="pt-BR">Cursos dinâmicos</li>
       <li xml:lang="ru">Динамические площадки</li>
+      <li xml:lang="sa">गतिशील पाठ्यक्रम</li>
       <li xml:lang="sk">Dynamické kurzy</li>
       <li xml:lang="sl">Dinamična igrišča</li>
       <li xml:lang="sr">Динамички терени.</li>
@@ -326,6 +333,7 @@
       <li xml:lang="pt">Campos criados por terceiros</li>
       <li xml:lang="pt-BR">Cursos de terceiros</li>
       <li xml:lang="ru">Сторонние площадки</li>
+      <li xml:lang="sa">तृतीयपक्षीयपाठ्यक्रमाः</li>
       <li xml:lang="sk">Kurzy tretích strán</li>
       <li xml:lang="sl">Igrišča tretjih oseb</li>
       <li xml:lang="sr">Терени са стране.</li>
@@ -367,6 +375,7 @@
       <li xml:lang="pt">Editor de campos</li>
       <li xml:lang="pt-BR">Editor de curso</li>
       <li xml:lang="ru">Редактор площадок</li>
+      <li xml:lang="sa">पाठ्यक्रम सम्पादक</li>
       <li xml:lang="sk">Editor kurzov</li>
       <li xml:lang="sl">Urejevalnik igrišč</li>
       <li xml:lang="sr">Уређивач терена.</li>
@@ -416,6 +425,7 @@
       <caption xml:lang="pt">Ecrã inicial do Kolf</caption>
       <caption xml:lang="pt-BR">Tela inicial do Kolf</caption>
       <caption xml:lang="ru">Начальное окно Kolf</caption>
+      <caption xml:lang="sa">कोल्फस्य प्रारम्भिकपर्दे</caption>
       <caption xml:lang="sk">Úvodná obrazovka v Kolf</caption>
       <caption xml:lang="sl">Začetni zaslon Kolfa</caption>
       <caption xml:lang="sv">Inledande skärm i Kolf</caption>
