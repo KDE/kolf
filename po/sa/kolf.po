@@ -1,0 +1,861 @@
+# Sanskrit translations for kolf package.
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the kolf package.
+# Kali <EMAIL@ADDRESS>, 2024.
+#
+# SPDX-FileCopyrightText: 2024 kali <skkalwar999@gmail.com>
+msgid ""
+msgstr ""
+"Project-Id-Version: kolf\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
+"PO-Revision-Date: 2024-12-13 20:20+0530\n"
+"Last-Translator: kali <skkalwar999@gmail.com>\n"
+"Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
+"Language: sa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n>2);\n"
+"X-Generator: Lokalize 24.08.2\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+
+#: config.cpp:51
+#, kde-format
+msgid "No configuration options"
+msgstr "विन्यासविकल्पाः नास्ति"
+
+#: editor.cpp:37
+#, kde-format
+msgctxt "@label:listbox"
+msgid "Add object:"
+msgstr ""
+
+#: game.cpp:263
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Course name:"
+msgstr ""
+
+#: game.cpp:270
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Course author: "
+msgstr ""
+
+#: game.cpp:279
+#, kde-format
+msgctxt "@label:spinbox"
+msgid "Par:"
+msgstr ""
+
+#: game.cpp:289
+#, kde-format
+msgctxt "@label:spinbox"
+msgid "Maximum:"
+msgstr ""
+
+#: game.cpp:293
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Maximum number of strokes player can take on this hole."
+msgstr ""
+
+#: game.cpp:294
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Maximum number of strokes"
+msgstr ""
+
+#: game.cpp:295
+#, kde-format
+msgctxt "@item number of strokes"
+msgid "Unlimited"
+msgstr ""
+
+#: game.cpp:301
+#, kde-format
+msgctxt "@option:check"
+msgid "Show border walls"
+msgstr ""
+
+#: game.cpp:499 game.cpp:2432
+#, kde-format
+msgid "Course Author"
+msgstr "पाठ्यक्रम लेखक"
+
+#: game.cpp:500 game.cpp:501 game.cpp:2432
+#, kde-format
+msgid "Course Name"
+msgstr "पाठ्यक्रमस्य नाम"
+
+#: game.cpp:1423
+#, kde-format
+msgctxt "@item harzard action"
+msgid "Drop Outside of Hazard"
+msgstr ""
+
+#: game.cpp:1424
+#, kde-format
+msgctxt "@item harzard action"
+msgid "Rehit From Last Location"
+msgstr ""
+
+#: game.cpp:1426
+#, kde-format
+msgid "What would you like to do for your next shot?"
+msgstr "भवतः अग्रिम-शॉट्-कृते किं कर्तुम् इच्छसि ?"
+
+#: game.cpp:1426
+#, kde-format
+msgctxt "@title:window"
+msgid "%1 in a Hazard"
+msgstr ""
+
+#: game.cpp:1594
+#, kde-format
+msgid "%1 will start off."
+msgstr "%1 आरभ्यते ।"
+
+#: game.cpp:1594
+#, kde-format
+msgctxt "@title:window"
+msgid "New Hole"
+msgstr ""
+
+#: game.cpp:1755
+#, kde-format
+msgid "Course name: %1"
+msgstr "पाठ्यक्रमस्य नाम: %1"
+
+#: game.cpp:1756
+#, kde-format
+msgid "Created by %1"
+msgstr "%1 द्वारा निर्मितम्"
+
+#: game.cpp:1757
+#, kde-format
+msgid "%1 hole"
+msgid_plural "%1 holes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: game.cpp:1758
+#, kde-format
+msgctxt "@title:window"
+msgid "Course Information"
+msgstr ""
+
+#: game.cpp:1876
+#, kde-format
+msgid "This hole uses the following plugins, which you do not have installed:"
+msgstr "एतत् छिद्रं निम्नलिखितप्लगिन्स् उपयुज्यते, यत् भवता संस्थापितम् नास्ति:"
+
+#: game.cpp:1989
+#, kde-format
+msgid "There are unsaved changes to current hole. Save them?"
+msgstr "वर्तमान छिद्रे अरक्षिताः परिवर्तनाः सन्ति । तान् रक्षतु ?"
+
+#: game.cpp:1990
+#, kde-format
+msgctxt "@title:window"
+msgid "Unsaved Changes"
+msgstr ""
+
+#: game.cpp:1992
+#, kde-format
+msgctxt "@action:button"
+msgid "Save &Later"
+msgstr ""
+
+#: game.cpp:2165 kolf.cpp:552
+#, kde-format
+msgctxt "@title:window"
+msgid "Pick Kolf Course to Save To"
+msgstr ""
+
+#: kcomboboxdialog.cpp:60
+#, kde-format
+msgctxt "@option:check"
+msgid "&Do not ask again"
+msgstr ""
+
+#: kolf.cpp:63
+#, kde-format
+msgid "Slope"
+msgstr "प्रवत्"
+
+#: kolf.cpp:64
+#, kde-format
+msgid "Puddle"
+msgstr "पोखरः"
+
+#: kolf.cpp:65
+#, kde-format
+msgid "Wall"
+msgstr "भित्ति"
+
+#: kolf.cpp:66
+#, kde-format
+msgid "Cup"
+msgstr "चषक"
+
+#: kolf.cpp:67
+#, kde-format
+msgid "Sand"
+msgstr "वालुका"
+
+#: kolf.cpp:68
+#, kde-format
+msgid "Windmill"
+msgstr "पवनचक्की"
+
+#: kolf.cpp:69
+#, kde-format
+msgid "Black Hole"
+msgstr "कृष्णरन्ध्रम्"
+
+#: kolf.cpp:70
+#, kde-format
+msgid "Floater"
+msgstr "प्लवकः"
+
+#: kolf.cpp:71
+#, kde-format
+msgid "Bridge"
+msgstr "सेतु"
+
+#: kolf.cpp:72
+#, kde-format
+msgid "Sign"
+msgstr "चिह्नम्‌"
+
+#: kolf.cpp:73
+#, kde-format
+msgid "Bumper"
+msgstr "बम्पर"
+
+#: kolf.cpp:96
+#, kde-format
+msgctxt "@action"
+msgid "Save &Course"
+msgstr ""
+
+#: kolf.cpp:98
+#, kde-format
+msgctxt "@action"
+msgid "Save &Course As…"
+msgstr ""
+
+#: kolf.cpp:101
+#, kde-format
+msgctxt "@action"
+msgid "&Save Game"
+msgstr ""
+
+#: kolf.cpp:104
+#, kde-format
+msgctxt "@action"
+msgid "&Save Game As…"
+msgstr ""
+
+#: kolf.cpp:111
+#, kde-format
+msgctxt "@option:check"
+msgid "&Edit"
+msgstr ""
+
+#: kolf.cpp:117
+#, kde-format
+msgctxt "@action"
+msgid "&New"
+msgstr ""
+
+#: kolf.cpp:126
+#, kde-format
+msgctxt "@action"
+msgid "&Reset"
+msgstr ""
+
+#: kolf.cpp:131
+#, kde-format
+msgctxt "@action"
+msgid "&Undo Shot"
+msgstr ""
+
+#. i18nc("@action", "&Replay Shot"), 0, this, SLOT(emptySlot()), actionCollection(), "replay");
+#. Go
+#: kolf.cpp:135
+#, kde-format
+msgctxt "@title:menu"
+msgid "Switch to Hole"
+msgstr ""
+
+#: kolf.cpp:140
+#, kde-format
+msgctxt "@action"
+msgid "&Next Hole"
+msgstr ""
+
+#: kolf.cpp:145
+#, kde-format
+msgctxt "@action"
+msgid "&Previous Hole"
+msgstr ""
+
+#: kolf.cpp:150
+#, kde-format
+msgctxt "@action"
+msgid "&First Hole"
+msgstr ""
+
+#: kolf.cpp:154
+#, kde-format
+msgctxt "@action"
+msgid "&Last Hole"
+msgstr ""
+
+#: kolf.cpp:159
+#, kde-format
+msgctxt "@action"
+msgid "&Random Hole"
+msgstr ""
+
+#: kolf.cpp:163
+#, kde-format
+msgctxt "@option:check"
+msgid "Enable &Mouse for Moving Putter"
+msgstr ""
+
+#: kolf.cpp:170
+#, kde-format
+msgctxt "@option:check"
+msgid "Enable &Advanced Putting"
+msgstr ""
+
+#: kolf.cpp:176
+#, kde-format
+msgctxt "@option:check"
+msgid "Show &Info"
+msgstr ""
+
+#: kolf.cpp:183
+#, kde-format
+msgctxt "@option:check"
+msgid "Show Putter &Guideline"
+msgstr ""
+
+#: kolf.cpp:189
+#, kde-format
+msgctxt "@option:check"
+msgid "Enable All Dialog Boxes"
+msgstr ""
+
+#: kolf.cpp:194
+#, kde-format
+msgctxt "@option:check"
+msgid "Play Sounds"
+msgstr ""
+
+#: kolf.cpp:201
+#, kde-format
+msgctxt "@action"
+msgid "&About Course"
+msgstr ""
+
+#: kolf.cpp:204
+#, kde-format
+msgctxt "@action"
+msgid "&Tutorial"
+msgstr ""
+
+#: kolf.cpp:454 kolf.cpp:498 kolf.cpp:525 newgame.cpp:250
+#, kde-format
+msgid "Par"
+msgstr "कृते"
+
+#: kolf.cpp:485
+#, kde-format
+msgctxt "@item:intext winners"
+msgid " and "
+msgstr ""
+
+#: kolf.cpp:486
+#, kde-format
+msgid "%1 tied"
+msgstr "%1 बद्धः"
+
+#: kolf.cpp:489
+#, kde-format
+msgid "%1 won!"
+msgstr "%1 विजयी अभवत्!"
+
+#: kolf.cpp:503 kolf.cpp:515 kolf.cpp:530 kolf.cpp:531 newgame.cpp:251
+#: newgame.cpp:252
+#, kde-format
+msgid "High Scores for %1"
+msgstr "%1 कृते उच्चाङ्काः"
+
+#: kolf.cpp:570
+#, kde-format
+msgctxt "@title:window"
+msgid "Pick Saved Game to Save To"
+msgstr ""
+
+#: kolf.cpp:608
+#, kde-format
+msgctxt "@title:window"
+msgid "Pick Kolf Saved Game"
+msgstr ""
+
+#: kolf.cpp:656
+#, kde-format
+msgid "%1's turn"
+msgstr "%1 इत्यस्य वारः"
+
+#: kolf.cpp:728
+#, kde-format
+msgid "%1's score has reached the maximum for this hole."
+msgstr "%1 इत्यस्य स्कोरः अस्य छिद्रस्य अधिकतमं प्राप्तवान् ।"
+
+#. i18n: ectx: Menu (hole)
+#: kolfui.rc:17
+#, kde-format
+msgid "Ho&le"
+msgstr "छिद्र"
+
+#. i18n: ectx: Menu (go_course)
+#: kolfui.rc:31
+#, kde-format
+msgid "&Go"
+msgstr "&गच्छ"
+
+#: landscape.cpp:146
+#, kde-format
+msgctxt "@option:check"
+msgid "Enable show/hide"
+msgstr ""
+
+#: landscape.cpp:151 obstacles.cpp:450 obstacles.cpp:468
+#, kde-format
+msgctxt "@item:inrange"
+msgid "Slow"
+msgstr ""
+
+#: landscape.cpp:155 obstacles.cpp:454 obstacles.cpp:472
+#, kde-format
+msgctxt "@item:inrange"
+msgid "Fast"
+msgstr ""
+
+#: landscape.cpp:238
+#, kde-format
+msgid "Vertical"
+msgstr "ऊर्ध्वाधर"
+
+#: landscape.cpp:239
+#, kde-format
+msgid "Horizontal"
+msgstr "क्षैतिज"
+
+#: landscape.cpp:240
+#, kde-format
+msgid "Diagonal"
+msgstr "तिर्यक्"
+
+#: landscape.cpp:241
+#, kde-format
+msgid "Opposite Diagonal"
+msgstr "विपरीत तिर्यक्"
+
+#: landscape.cpp:242
+#, kde-format
+msgid "Elliptic"
+msgstr "अण्डाकारः"
+
+#: landscape.cpp:571
+#, kde-format
+msgctxt "@option:check"
+msgid "Reverse direction"
+msgstr ""
+
+#: landscape.cpp:576
+#, kde-format
+msgctxt "@option:check"
+msgid "Unmovable"
+msgstr ""
+
+#: landscape.cpp:578
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Whether or not this slope can be moved by other objects, like floaters."
+msgstr ""
+
+#: landscape.cpp:582
+#, kde-format
+msgctxt "@lable:spinbox"
+msgid "Grade:"
+msgstr ""
+
+#: main.cpp:62
+#, kde-format
+msgid "Kolf"
+msgstr "बट्"
+
+#: main.cpp:64
+#, kde-format
+msgid "KDE Minigolf Game"
+msgstr "केडीई मिनीगोल्फ गेम"
+
+#: main.cpp:66
+#, kde-format
+msgid "(c) 2002-2010, Kolf developers"
+msgstr "(ग) २००२-२०१०, कोल्फ विकासकाः"
+
+#: main.cpp:70
+#, kde-format
+msgid "Stefan Majewsky"
+msgstr "स्टीफन मजेव्स्की"
+
+#: main.cpp:70
+#, kde-format
+msgid "Current maintainer"
+msgstr "वर्तमान परिपालकः"
+
+#: main.cpp:71
+#, kde-format
+msgid "Jason Katz-Brown"
+msgstr "जेसन कात्ज-ब्राउन"
+
+#: main.cpp:71
+#, kde-format
+msgid "Former main author"
+msgstr "पूर्व मुख्य लेखक"
+
+#: main.cpp:72
+#, kde-format
+msgid "Niklas Knutsson"
+msgstr "निक्लास क्नुट्सन"
+
+#: main.cpp:72
+#, kde-format
+msgid "Advanced putting mode"
+msgstr "उन्नत स्थापनविधिः"
+
+#: main.cpp:73
+#, kde-format
+msgid "Rik Hemsley"
+msgstr "रिक हेम्स्ले"
+
+#: main.cpp:73
+#, kde-format
+msgid "Border around course"
+msgstr "पाठ्यक्रमस्य परितः सीमा"
+
+#: main.cpp:74
+#, kde-format
+msgid "Timo A. Hummel"
+msgstr "टिमो ए हुम्मेल"
+
+#: main.cpp:74
+#, kde-format
+msgid "Some good sound effects"
+msgstr "केचन उत्तमाः ध्वनिप्रभावाः"
+
+#: main.cpp:76
+#, kde-format
+msgid "Rob Renaud"
+msgstr "रोब रेनॉड"
+
+#: main.cpp:76
+#, kde-format
+msgid "Wall-bouncing help"
+msgstr "भित्ति-उछलने सहायता"
+
+#: main.cpp:77
+#, kde-format
+msgid "Aaron Seigo"
+msgstr "एरोन् सेइगो"
+
+#: main.cpp:77
+#, kde-format
+msgid "Suggestions, bug reports"
+msgstr "सुझावः, दोषप्रतिवेदनानि"
+
+#: main.cpp:78
+#, kde-format
+msgid "Erin Catto"
+msgstr "एरिन् कैटो"
+
+#: main.cpp:78
+#, kde-format
+msgid "Developer of Box2D physics engine"
+msgstr "Box2D भौतिकशास्त्रस्य इञ्जिनस्य विकासकः"
+
+#: main.cpp:79
+#, kde-format
+msgid "Ryan Cumming"
+msgstr "रायन कमिंग"
+
+#: main.cpp:79
+#, kde-format
+msgid "Vector class (Kolf 1)"
+msgstr "सदिश वर्ग (कोल्फ १) २."
+
+#: main.cpp:80
+#, kde-format
+msgid "Daniel Matza-Brown"
+msgstr "डैनियल मात्जा-ब्राउन्"
+
+#: main.cpp:80
+#, kde-format
+msgid "Working wall-bouncing algorithm (Kolf 1)"
+msgstr "कार्यरत भित्ति-उछलने एल्गोरिदम् (Kolf 1) ."
+
+#: main.cpp:88
+#, kde-format
+msgid "File"
+msgstr "संचिका"
+
+#: main.cpp:89
+#, kde-format
+msgid "Print course information and exit"
+msgstr "पाठ्यक्रमस्य सूचनां मुद्रयित्वा निर्गमनं कुर्वन्तु"
+
+#: main.cpp:107
+#, kde-format
+msgid "By %1"
+msgstr "%1 द्वारा"
+
+#: main.cpp:108
+#, kde-format
+msgid "%1 holes"
+msgstr "%1 छिद्राणि"
+
+#: main.cpp:109
+#, kde-format
+msgid "par %1"
+msgstr "%1 कृते"
+
+#: main.cpp:116
+#, kde-format
+msgid "Course %1 does not exist."
+msgstr "पाठ्यक्रमः %1 नास्ति ।"
+
+#: newgame.cpp:40
+#, kde-format
+msgctxt "@title:window"
+msgid "New Game"
+msgstr ""
+
+#: newgame.cpp:56
+#, kde-format
+msgctxt "@title:tab"
+msgid "Players"
+msgstr ""
+
+#: newgame.cpp:60
+#, kde-format
+msgctxt "@action:button"
+msgid "&New Player"
+msgstr ""
+
+#: newgame.cpp:95
+#, kde-format
+msgctxt "@title:tab"
+msgid "Course"
+msgstr ""
+
+#: newgame.cpp:96
+#, kde-format
+msgctxt "@title"
+msgid "Choose Course to Play"
+msgstr ""
+
+#: newgame.cpp:135
+#, kde-format
+msgctxt "@item"
+msgid "<Create New>"
+msgstr ""
+
+#: newgame.cpp:136
+#, kde-format
+msgid "You"
+msgstr "त्वम्‌"
+
+#: newgame.cpp:162
+#, kde-format
+msgctxt "@action:button"
+msgid "Highscores"
+msgstr ""
+
+#: newgame.cpp:172
+#, kde-format
+msgctxt "@action:button"
+msgid "Add…"
+msgstr ""
+
+#: newgame.cpp:176 newgame.cpp:365
+#, kde-format
+msgctxt "@action:button"
+msgid "Remove"
+msgstr ""
+
+#: newgame.cpp:186
+#, kde-format
+msgctxt "@title:tab"
+msgid "Options"
+msgstr ""
+
+#: newgame.cpp:187
+#, kde-format
+msgctxt "@title"
+msgid "Game Options"
+msgstr ""
+
+#: newgame.cpp:192
+#, kde-format
+msgctxt "@option:check"
+msgid "&Strict mode"
+msgstr ""
+
+#: newgame.cpp:196
+#, kde-format
+msgid ""
+"In strict mode, undo, editing, and switching holes is not allowed. This is "
+"generally for competition. Only in strict mode are highscores kept."
+msgstr ""
+"कठोरविधाने पूर्ववतीकरणं, सम्पादनं, छिद्रं स्विचिंग् च अनुमतं नास्ति । एतत् सामान्यतया "
+"स्पर्धायाः कृते भवति । केवलं कठोरविधाने एव उच्चाङ्काः स्थापिताः भवन्ति ।"
+
+#: newgame.cpp:242
+#, kde-format
+msgctxt "@info author attribution"
+msgid "By %1"
+msgstr "%1 द्वारा"
+
+#: newgame.cpp:243
+#, kde-format
+msgctxt "@info"
+msgid "Par %1"
+msgstr ""
+
+#: newgame.cpp:244
+#, kde-format
+msgctxt "@info"
+msgid "1 Hole"
+msgid_plural "%1 Holes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: newgame.cpp:282
+#, kde-format
+msgctxt "@title:window"
+msgid "Pick Kolf Course"
+msgstr ""
+
+#: newgame.cpp:310
+#, kde-format
+msgid "Chosen course is already on course list."
+msgstr "चयनितः पाठ्यक्रमः पाठ्यक्रमसूचौ पूर्वमेव अस्ति।"
+
+#: newgame.cpp:323
+#, kde-format
+msgid "Player %1"
+msgstr "खिलाडी %1"
+
+#: objects.cpp:244
+#, kde-format
+msgctxt "@item:valuesuffix"
+msgid " degree"
+msgid_plural " degrees"
+msgstr[0] ""
+msgstr[1] ""
+
+#: objects.cpp:247
+#, kde-format
+msgctxt "@label:spinbox"
+msgid "Exiting ball angle:"
+msgstr ""
+
+#: objects.cpp:267
+#, kde-format
+msgctxt "@label:spinbox"
+msgid "Minimum exit speed:"
+msgstr ""
+
+#: objects.cpp:288
+#, kde-format
+msgctxt "@label:spinbox"
+msgid "Maximum exit speed:"
+msgstr ""
+
+#: obstacles.cpp:412
+msgctxt "@option:check wall on"
+msgid "&Top"
+msgstr ""
+
+#: obstacles.cpp:413
+msgctxt "@option:check wall on"
+msgid "&Left"
+msgstr ""
+
+#: obstacles.cpp:414
+msgctxt "@option:check wall on"
+msgid "&Right"
+msgstr ""
+
+#: obstacles.cpp:415
+msgctxt "@option:check wall on"
+msgid "&Bottom"
+msgstr ""
+
+#: obstacles.cpp:425
+#, kde-format
+msgctxt "@label:chooser"
+msgid "Walls on:"
+msgstr ""
+
+#: obstacles.cpp:435
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Sign HTML:"
+msgstr ""
+
+#: obstacles.cpp:444
+#, kde-format
+msgctxt "@option:check"
+msgid "Windmill on top"
+msgstr ""
+
+#: obstacles.cpp:465
+#, kde-format
+msgctxt "@label:slider"
+msgid "Moving speed"
+msgstr ""
+
+#: obstacles.cpp:685
+#, kde-format
+msgid "New Text"
+msgstr "नवीन पाठ"
+
+#: scoreboard.cpp:27
+#, kde-format
+msgctxt "@title:row"
+msgid "Par"
+msgstr "कृते"
+
+#: scoreboard.cpp:28
+#, kde-format
+msgctxt "@title:column"
+msgid "Total"
+msgstr ""
