@@ -25,12 +25,12 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Maren Pakura,Stefan Winter"
+msgstr "Deutsches KDE-Übersetzungsteam"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "maren@kde.org,swinter@kde.org"
+msgstr "kde-i18n-de@kde.org"
 
 #: config.cpp:51
 #, kde-format
