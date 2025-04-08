@@ -1,22 +1,19 @@
-# translation of kolf.po to Spanish
-# Copyright (C) 2002,2003, 2004, 2005, 2007 Free Software Foundation, Inc.
+# Spanish translations for kolf.po package.
+# Copyright (C) 2002-2025 Free Software Foundation, Inc.
 #
-# Sofia Priego <spriego@darksylvania.net>, %Y.
-# Miguel Revilla Rodríguez <yo@miguelrevilla.com>, 2002, 2003.
-# Lucas Garcia <tanke@escomposlinux.org>, 2003.
-# Rafael Osuna <rosuna@wol.es>, 2004.
-# Santiago Fernandez Sancho <santi@kde-es.org>, 2004, 2005.
-# Santiago Fernández Sancho <santi@kde-es.org>, 2007.
+# SPDX-FileCopyrightText: 2002, 2003 Miguel Revilla Rodríguez <yo@miguelrevilla.com>
+# SPDX-FileCopyrightText: 2003 Lucas Garcia <tanke@escomposlinux.org>
+# SPDX-FileCopyrightText: 2004 Rafael Osuna <rosuna@wol.es>
+# SPDX-FileCopyrightText: 2004, 2005, 2007 Santiago Fernández Sancho <santi@kde-es.org>
 # SPDX-FileCopyrightText: 2009, 2017, 2018, 2019, 2021, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
-# Huever, 2009.
-# Kira J. Fernandez <kirajfdez@gmail.com>, 2010.
-# Sofía Priego <spriego@darksylvania.net>, %Y.
+# SPDX-FileCopyrightText: 2010 Kira J. Fernandez <kirajfdez@gmail.com>
+# SPDX-FileCopyrightText: 2024, 2025 Sofía Priego <spriego@darksylvania.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-22 00:38+0000\n"
-"PO-Revision-Date: 2024-05-11 00:21+0100\n"
+"PO-Revision-Date: 2025-04-07 21:41+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -265,7 +262,7 @@ msgstr "Guardar re&corrido"
 #, kde-format
 msgctxt "@action"
 msgid "Save &Course As…"
-msgstr "Guardar re&corrido como..."
+msgstr "Guardar re&corrido como…"
 
 #: kolf.cpp:101
 #, kde-format
@@ -277,7 +274,7 @@ msgstr "&Guardar partida"
 #, kde-format
 msgctxt "@action"
 msgid "&Save Game As…"
-msgstr "&Guardar partida como..."
+msgstr "&Guardar partida como…"
 
 #: kolf.cpp:111
 #, kde-format
@@ -714,7 +711,7 @@ msgstr "Mejores puntuaciones"
 #, kde-format
 msgctxt "@action:button"
 msgid "Add…"
-msgstr "Añadir..."
+msgstr "Añadir…"
 
 #: newgame.cpp:176 newgame.cpp:365
 #, kde-format
@@ -872,18 +869,3 @@ msgstr "Par"
 msgctxt "@title:column"
 msgid "Total"
 msgstr "Total"
-
-#~ msgid "Add..."
-#~ msgstr "Añadir..."
-
-#~ msgid "Kolf saved course (*.kolf)"
-#~ msgstr "Campo de Kolf guardado (*.kolf)"
-
-#~ msgid "Kolf course (*.kolf)"
-#~ msgstr "Campo de Kolf (*.kolf)"
-
-#~ msgid "Kolf saved game (*.kolfgame)"
-#~ msgstr "Juego de Kolf guardado (*.kolfgame)"
-
-#~ msgid "Saved Kolf game (*.kolfgame);;All files (*.*)"
-#~ msgstr "Juego de Kolf guardado (*.kolfgame);;Todos los archivos (*.*)"
