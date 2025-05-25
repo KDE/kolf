@@ -72,13 +72,13 @@ msgstr "Màxim:"
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Maximum number of strokes player can take on this hole."
-msgstr "Nombre màxim de colps que el jugador pot donar en este forat."
+msgstr "Nombre màxim de vegades que el jugador pot donar en este forat."
 
 #: game.cpp:294
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Maximum number of strokes"
-msgstr "Nombre màxim de colps"
+msgstr "Nombre màxim de vegades"
 
 #: game.cpp:295
 #, kde-format
@@ -186,7 +186,7 @@ msgstr "Guarda més &tard"
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"
-msgstr "Trieu un camp de Kolf per a guardar a"
+msgstr "Tria un camp de Kolf per a guardar a"
 
 #: kcomboboxdialog.cpp:60
 #, kde-format
@@ -414,13 +414,13 @@ msgstr "Puntuacions màximes per a %1"
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Saved Game to Save To"
-msgstr "Trieu una partida guardada per a guardar a"
+msgstr "Tria una partida guardada per a guardar a"
 
 #: kolf.cpp:608
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Saved Game"
-msgstr "Trieu una partida guardada de Kolf"
+msgstr "Tria una partida guardada de Kolf"
 
 #: kolf.cpp:656
 #, kde-format
@@ -684,7 +684,7 @@ msgstr "Camp"
 #, kde-format
 msgctxt "@title"
 msgid "Choose Course to Play"
-msgstr "Trieu un camp per a jugar"
+msgstr "Tria un camp per a jugar"
 
 #: newgame.cpp:135
 #, kde-format
@@ -767,7 +767,7 @@ msgstr[1] "%1 forats"
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course"
-msgstr "Trieu un camp de Kolf"
+msgstr "Tria un camp de Kolf"
 
 #: newgame.cpp:310
 #, kde-format
