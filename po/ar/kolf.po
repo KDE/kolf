@@ -533,7 +533,7 @@ msgstr "Stefan Majewsky"
 #: main.cpp:70
 #, kde-format
 msgid "Current maintainer"
-msgstr "المصين الحاليّ"
+msgstr "الصائن الحاليّ"
 
 #: main.cpp:71
 #, kde-format
