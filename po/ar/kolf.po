@@ -2,13 +2,13 @@
 # Copyright (C) 2002, 2007 Free Software Foundation, Inc.
 # Isam Bayazidi <bayazidi@arabeyes.org>, 2002.
 # Youssef Chahibi <chahibi@gmail.com>, 2007.
-# SPDX-FileCopyrightText: 2021, 2022, 2024 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2021, 2022, 2024, 2025 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-22 00:38+0000\n"
-"PO-Revision-Date: 2024-05-07 17:01+0400\n"
+"PO-Revision-Date: 2025-08-09 18:45+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -139,7 +140,7 @@ msgstr "اسم المضمار: %1"
 #: game.cpp:1756
 #, kde-format
 msgid "Created by %1"
-msgstr "انشئ بواسطة %1"
+msgstr "أنشئ بواسطة %1"
 
 #: game.cpp:1757
 #, kde-format
@@ -161,12 +162,12 @@ msgstr "معلومات المضمار"
 #: game.cpp:1876
 #, kde-format
 msgid "This hole uses the following plugins, which you do not have installed:"
-msgstr "هذه الحفرة تتطلب الاضافات التالية، التي لم تقم بتثبيتها:"
+msgstr "هذه الحفرة تتطلب الإضافات التالية، التي لم تقم بتثبيتها:"
 
 #: game.cpp:1989
 #, kde-format
 msgid "There are unsaved changes to current hole. Save them?"
-msgstr "يوجد تغييرات لم يتم حفظها. هل تريد الحفظ؟"
+msgstr "يوجد تغييرات غير محفوظة. هل تريد حفظها؟"
 
 #: game.cpp:1990
 #, kde-format
@@ -184,7 +185,7 @@ msgstr "احفظ لا&حقاً"
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Kolf Course to Save To"
-msgstr "حدد مضمار غولف ليتم الحفظ إليه"
+msgstr "حدد مضمار غولف  ليُحفظ فيه"
 
 #: kcomboboxdialog.cpp:60
 #, kde-format
@@ -355,7 +356,7 @@ msgstr "عرض ال&معلومات"
 #, kde-format
 msgctxt "@option:check"
 msgid "Show Putter &Guideline"
-msgstr "أ&ظهر الخط الإرشادية للمضرب"
+msgstr "أ&ظهر الخط الإرشادي للمضرب"
 
 #: kolf.cpp:189
 #, kde-format
@@ -412,7 +413,7 @@ msgstr "أعلى نقاط لـ %1"
 #, kde-format
 msgctxt "@title:window"
 msgid "Pick Saved Game to Save To"
-msgstr "حدد لعبة محفوظة ليتم الحفظ إليها"
+msgstr "حدد لعبة محفوظة ليُحفظ فيها"
 
 #: kolf.cpp:608
 #, kde-format
@@ -558,7 +559,7 @@ msgstr "نمط متقدم للوضع"
 #: main.cpp:73
 #, kde-format
 msgid "Rik Hemsley"
-msgstr "Rik Hemsley"
+msgstr "ريك هيمسلي"
 
 #: main.cpp:73
 #, kde-format
@@ -588,12 +589,12 @@ msgstr "مساعدة الجدار الضخم"
 #: main.cpp:77
 #, kde-format
 msgid "Aaron Seigo"
-msgstr "Aaron Seigo"
+msgstr "آرون سيغو"
 
 #: main.cpp:77
 #, kde-format
 msgid "Suggestions, bug reports"
-msgstr "الاقتراحات، و الابلاغ عن المشاكل الفنية"
+msgstr "الاقتراحات، و الإبلاغ عن المشاكل الفنية"
 
 #: main.cpp:78
 #, kde-format
