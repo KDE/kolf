@@ -503,7 +503,7 @@ msgstr "غير قابل للتحريك"
 msgctxt "@info:whatsthis"
 msgid "Whether or not this slope can be moved by other objects, like floaters."
 msgstr ""
-"ما إذا كان يمكن تحريك هذا المنحدر بواسطة كائنات أخرى ، مثل العوائم أم لا."
+"ما إذا كان يمكن تحريك هذا المنحدر بواسطة كائنات أخرى، مثل العوائم أم لا."
 
 #: landscape.cpp:582
 #, kde-format
@@ -739,7 +739,7 @@ msgid ""
 "In strict mode, undo, editing, and switching holes is not allowed. This is "
 "generally for competition. Only in strict mode are highscores kept."
 msgstr ""
-"في الوضع الصارم ، لا يُسمح بالتراجع عن الحفر وتحريرها وتبديلها. هذا بشكل عام "
+"في الوضع الصارم، لا يُسمح بالتراجع عن الحفر وتحريرها وتبديلها. هذا بشكل عام "
 "للمنافسة. يحتفظ بأعلى الدرجات فقط في الوضع الصارم."
 
 #: newgame.cpp:242
