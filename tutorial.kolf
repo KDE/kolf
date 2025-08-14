@@ -124,7 +124,7 @@ width=319
 
 [1-sign@73,81|4]
 Comment=To hit the ball, press and hold the Down Arrow or left mouse button. How long you hold down the mouse button or key determines strength of the shot.
-Comment[ar]=لضرب الكرة ، اضغط مع الاستمرار على زر السهم لأسفل أو زر الفأرة الأيسر. تحدد المدة التي تضغط فيها باستمرار على زر الفأرة أو المفتاح قوة الضربة.
+Comment[ar]=لضرب الكرة، اضغط مع الاستمرار على زر السهم لأسفل أو زر الفأرة الأيسر. تحدد المدة التي تضغط فيها باستمرار على زر الفأرة أو المفتاح قوة الضربة.
 Comment[bs]=Za udariti loptu, pritisnite i držite strelicu dolje ili lijevu tipku miša. Koliko dugo držite pritisnutu tipku miša ili tipku dolje odredjuje snagu pucanja.
 Comment[ca]=Per a colpejar la bola, manteniu premuda «Fletxa avall» o el botó esquerre del ratolí. Com més temps mantinguis premut el botó del ratolí o la tecla, això determinarà la força del cop.
 Comment[ca@valencia]=Per a colpejar la bola, manteniu premuda «Fletxa avall» o el botó esquerre del ratolí. Com més temps mantinges premut el botó del ratolí o la tecla, açò determinarà la força del colp.
@@ -181,7 +181,7 @@ width=319
 
 [1-sign@74,251|7]
 Comment=To aim the putter, press the Left (rotate counterclockwise) and Right (rotate clockwise) Arrow keys or use the mouse.
-Comment[ar]=لتوجيه المضرب ، اضغط على مفاتيح الأسهم لليسار (تدوير عكس اتجاه عقارب الساعة) واليمين (تدوير في اتجاه عقارب الساعة) أو استخدم الفأرة.
+Comment[ar]=لتوجيه المضرب، اضغط على مفاتيح الأسهم لليسار (تدوير عكس اتجاه عقارب الساعة) واليمين (تدوير في اتجاه عقارب الساعة) أو استخدم الفأرة.
 Comment[bs]=Za ciljanje, pritisnite lijevu (rotirati ulijevo) i desnu (rotirati udesno) tipku sa strelicama ili koristite miša.
 Comment[ca]=Per a apuntar el llançador, prem les tecles de fletxa esquerra (gira en sentit antihorari) i dreta (gira en sentit horari) o usa el ratolí.
 Comment[ca@valencia]=Per a apuntar l'iniciador, prem les tecles de fletxa esquerra (gira en sentit antihorari) i dreta (gira en sentit horari) o utilitza el ratolí.
@@ -1046,7 +1046,7 @@ width=138
 
 [6-sign@3,5|4]
 Comment=<h3>Puddles (Water)</h3>Hitting into a puddle (blue) adds a penalty stroke to your score, and your ball is placed outside the puddle.
-Comment[ar]=<h3> البرك (الماء) </h3> يضيف الضرب في بركة مياه (زرقاء) ضربة جزاء إلى رصيدك ، وتُوضع كرتك خارج البركة.
+Comment[ar]=<h3> البرك (الماء) </h3> يضيف الضرب في بركة مياه (زرقاء) ضربة جزاء إلى رصيدك، وتُوضع كرتك خارج البركة.
 Comment[bs]=<h3>Lokve (Voda)</h3>Udaranje u lokve (plavo) dodaje kazneni udarac na vaš rezultat, a loptica se nalazi izvan lokve.
 Comment[ca]=<h3>Bassals (aigua)</h3>Si colpeges la bola dins d'un bassal (blau) s'afegirà un cop de penalització a la teva puntuació i la bola se situarà fora del bassal.
 Comment[ca@valencia]=<h3>Bassals (aigua)</h3>Si colpeges la bola dins d'un bassal (blau) s'afegirà un colp de penalització a la teua puntuació i la bola se situarà fora del bassal.
@@ -1201,7 +1201,7 @@ par=2
 
 [8-sign@5,5|3]
 Comment=<h3>Black Holes</h3>Black Holes transport the ball to their exit, and eject it at a speed in direct relation to the speed your ball was traveling. Choose <u>Hole->Show Info</u> to see which Black Hole goes to which exit and the direction the ball will come out.
-Comment[ar]=<h3> الثقوب السوداء </h3> تنقل الثقوب السوداء الكرة إلى مخرجها ، وتخرجها بسرعة في علاقة مباشرة بالسرعة التي تتحرك بها الكرة.اختر <u> الحفرة-> اعرض المعلومات </u> لمعرفة أي الثقب الأسود يذهب إلى أي مخرج واتجاه خروج الكرة.
+Comment[ar]=<h3> الثقوب السوداء </h3> تنقل الثقوب السوداء الكرة إلى مخرجها، وتخرجها بسرعة في علاقة مباشرة بالسرعة التي تتحرك بها الكرة.اختر <u> الحفرة-> اعرض المعلومات </u> لمعرفة أي الثقب الأسود يذهب إلى أي مخرج واتجاه خروج الكرة.
 Comment[bs]=<h3>Crne rupe</h3>Crne rupe prenose loptu na svoje izlaze, i to brzinom u direktnom odnosu na brzinu vaše lopte koja je putovala. Odaberi <u>Hole->Show Info</u> da vidiš koja crna rupa ide u koji izlaz i smjer lopte koja izlazi.
 Comment[ca]=<h3>Forats negres</h3>Els forats negres transporten la bola a la seva sortida i l'expulsen a una velocitat directament relacionada amb la que tenia la bola. Tria <u>Forat -> Mostra la informació</u> per a veure quin forat negre va a quina sortida i la direcció amb la qual sortirà la bola.
 Comment[ca@valencia]=<h3>Forats negres</h3>Els forats negres transporten la bola a la seua eixida i l'expulsen a una velocitat directament relacionada amb la que tenia la bola. Tria <u>Forat -> Mostra la informació</u> per a veure quin forat negre va cap a quina eixida i la direcció amb la qual eixirà la bola.
