@@ -162,7 +162,7 @@ msgstr "معلومات المضمار"
 #: game.cpp:1876
 #, kde-format
 msgid "This hole uses the following plugins, which you do not have installed:"
-msgstr "هذه الحفرة تتطلب الإضافات التالية، التي لم تقم بتثبيتها:"
+msgstr "هذه الحفرة تتطلب الإضافات التالية، التي لم تثبّتها:"
 
 #: game.cpp:1989
 #, kde-format
