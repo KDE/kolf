@@ -360,7 +360,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 >Para elegir el campo en el que vas a jugar, pulsa en la entrada de la lista de la izquierda de esta página. &kolf; incluye algunos campos en los que podrás jugar.</para>
 <para
 >Para añadir un campo descargado o creado, pulsa el botón <guibutton
->Añadir...</guibutton
+>Añadir…</guibutton
 > que hay en la parte inferior de esta página y seleccione el archivo del campo en el diálogo.</para>
 </sect2>
 <sect2
@@ -398,7 +398,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Juego</guimenu
 > <guimenuitem
->Cargar...</guimenuitem
+>Cargar…</guimenuitem
 ></menuchoice
 >. A continuación puedes seleccionar la partida que quieras abrir.</para>
 </sect2>
@@ -537,7 +537,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 > <guimenu
 >Juego</guimenu
 > <guimenuitem
->Cargar...</guimenuitem
+>Cargar…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -577,7 +577,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Juego</guimenu
 ><guimenuitem
->Guardar partida como...</guimenuitem
+>Guardar partida como…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -611,7 +611,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Juego</guimenu
 ><guimenuitem
->Guardar partida como...</guimenuitem
+>Guardar partida como…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -655,7 +655,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 > <guimenu
 >Juego</guimenu
 > <guimenuitem
->Mostrar mejores puntuaciones...</guimenuitem
+>Mostrar mejores puntuaciones…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -672,7 +672,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Juego</guimenu
 ><guimenuitem
->Acerca del campo...</guimenuitem
+>Acerca del campo…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -1235,7 +1235,7 @@ url="https://web.mit.edu/jasonkb/www/kolf/"
 <note>
 <para
 >Para poder jugar después con este nuevo campo, pulsa el botón <guibutton
->Añadir...</guibutton
+>Añadir…</guibutton
 > para añadirlo a la lista de campos.</para>
 </note>
 </sect1>
