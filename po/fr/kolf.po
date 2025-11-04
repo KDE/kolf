@@ -370,7 +370,7 @@ msgstr "Afficher la li&gne de visée du putter"
 #, kde-format
 msgctxt "@option:check"
 msgid "Enable All Dialog Boxes"
-msgstr "Activer toutes les boîtes de dialogue"
+msgstr "Activer toutes les boites de dialogue"
 
 #: kolf.cpp:194
 #, kde-format
