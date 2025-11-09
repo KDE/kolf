@@ -42,7 +42,7 @@ msgstr "添加物体："
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Course name:"
-msgstr ""
+msgstr "路线名称："
 
 #: game.cpp:270
 #, kde-format
@@ -117,7 +117,7 @@ msgstr "您希望下次击球如何进行？"
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 in a Hazard"
-msgstr ""
+msgstr "%1 在危险区中"
 
 #: game.cpp:1594
 #, kde-format
@@ -251,7 +251,7 @@ msgstr "保存路线(&C)"
 #, kde-format
 msgctxt "@action"
 msgid "Save &Course As…"
-msgstr ""
+msgstr "路线另存为(&C)..."
 
 #: kolf.cpp:101
 #, kde-format
@@ -263,7 +263,7 @@ msgstr "&保存游戏"
 #, kde-format
 msgctxt "@action"
 msgid "&Save Game As…"
-msgstr ""
+msgstr "游戏另存为(&S)..."
 
 #: kolf.cpp:111
 #, kde-format
@@ -361,13 +361,13 @@ msgstr "启用所有对话框"
 #, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr ""
+msgstr "播放声音"
 
 #: kolf.cpp:201
 #, kde-format
 msgctxt "@action"
 msgid "&About Course"
-msgstr ""
+msgstr "关于路线(&A)"
 
 #: kolf.cpp:204
 #, kde-format
@@ -682,7 +682,7 @@ msgstr "选择要玩的路线"
 #, kde-format
 msgctxt "@item"
 msgid "<Create New>"
-msgstr ""
+msgstr "<Create New>"
 
 #: newgame.cpp:136
 #, kde-format
@@ -699,7 +699,7 @@ msgstr "高分"
 #, kde-format
 msgctxt "@action:button"
 msgid "Add…"
-msgstr ""
+msgstr "添加..."
 
 #: newgame.cpp:176 newgame.cpp:365
 #, kde-format
@@ -751,7 +751,7 @@ msgstr "标准杆 %1"
 msgctxt "@info"
 msgid "1 Hole"
 msgid_plural "%1 Holes"
-msgstr[0] ""
+msgstr[0] "%1 球洞"
 
 #: newgame.cpp:282
 #, kde-format
