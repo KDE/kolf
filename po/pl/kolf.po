@@ -1,4 +1,4 @@
-# Version: $Revision: 1695692 $
+# Version: $Revision: 1723076 $
 # translation of kolf.po to Polish
 # Copyright (C) 2002,2003, 2004, 2005, 2007, 2008, 2009 Free Software Foundation, Inc.
 # Michał Rudolf <mrudolf@kdewebdev.org>, 2002.
@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kolf\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-22 00:38+0000\n"
+"POT-Creation-Date: 2025-11-17 11:50+0000\n"
 "PO-Revision-Date: 2024-05-26 12:32+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
