@@ -1,17 +1,12 @@
 <?xml version="1.0" ?>
 <!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY kappname "&kolf;">
-  <!ENTITY kappversion "1.9"
-><!--Application version. Use this variable everywhere it's needed.-->
-  <!ENTITY package "kdegames"
->  <!-- do not change this! -->
   <!ENTITY % Brazilian-Portuguese "INCLUDE"
 > <!-- change language only here -->
   <!ENTITY % addindex "IGNORE"
 > <!-- do not change this! -->
 ]>
- 
+
 <book id="kolf" lang="&language;"
 > <!-- do not change this! -->
 <bookinfo>
@@ -67,20 +62,19 @@
 
 <legalnotice
 >&FDLNotice;</legalnotice>
- 
+
 <date
->01/10/2010</date
+>06/08/2021</date
 ><!-- Date of (re)writing, or update.-->
 <releaseinfo
->&kappversion; (&kde; 4.5)</releaseinfo
-><!-- Application version number. Use the variable definitions within header to change this value.-->
- 
+>KDE Gear 21.08</releaseinfo>
+
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
 	<para
->Esta documentação descreve o jogo &kappname; na versão &kappversion;</para>
+>Esta documentação descreve o jogo &kolf; na versão 21.08</para>
 </abstract>
- 
+
 <!--List of relevan keywords-->
 <keywordset>
 	<keyword
@@ -123,17 +117,16 @@
 >Número de possíveis jogadores:</title
 ><para
 >Dez</para
-></note
-> 
+></note>
 <!--Short game description starts here. 3-4 sentences (paragraphs)-->
 	<para
->O &kappname; é um jogo de golfe em miniatura com gráficos com uma visão 2D de cima para baixo. Os níveis são dinâmicos e até 10 pessoas poderão jogar de uma vez ao mesmo tempo.</para>
+>O &kolf; é um jogo de golfe em miniatura com gráficos com uma visão 2D de cima para baixo. Os níveis são dinâmicos e até 10 pessoas poderão jogar de uma vez ao mesmo tempo.</para>
 <para
->O &kappname; vem com um curso de tutorial. <link linkend="howto"
+>O &kolf; vem com um curso de tutorial. <link linkend="howto"
 >Jogar este curso</link
 > será a melhor forma de se preparar.</para>
 </chapter>
- 
+
 <chapter id="howto"
 ><title
 >Como jogar</title
@@ -148,7 +141,7 @@
 ><!--Describe the objective of the game.-->
 <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
 	<para
->O modo de jogo do &kappname; é simples. É mais fácil aprender como jogar com a mão na massa e, por isso, vem incluído um campo de tutorial para guiá-lo pelas noções básicas. Este capítulo o conduzirá através deste tutorial. Para dar início a este tutorial, escolha a opção <menuchoice
+>O modo de jogo do &kolf; é simples. É mais fácil aprender como jogar com a mão na massa e, por isso, vem incluído um campo de tutorial para guiá-lo pelas noções básicas. Este capítulo o conduzirá através deste tutorial. Para dar início a este tutorial, escolha o menu <menuchoice
 ><guimenu
 >Ajuda</guimenu
 ><guimenuitem
@@ -156,24 +149,17 @@
 ></menuchoice
 >.</para>
 
-<sect1 id="hitting"
-> 
+<sect1 id="hitting">
 <title
 >Acertando na bola</title>
 <para
->Para apontar a bola, você poderá tanto alinhar o mouse por trás da bola para que o taco aponte na direção que deseja acertar na bola ou pressione uma das teclas: <keycap
->Seta a esquerda</keycap
-> (no sentido anti-horário) ou <keycap
->Seta a direita</keycap
-> (no sentido horário), para rodar o taco.</para>
+>Para apontar a bola, você poderá tanto alinhar o mouse por trás da bola para que o taco aponte na direção que deseja acertar na bola ou pressione uma das teclas: &Left; (no sentido anti-horário) ou &Right; (no sentido horário), para rodar o taco.</para>
 <tip>
 <para
 >Para rodar o taco mais depressa com o teclado, mantenha pressionada a tecla &Shift; enquanto pressiona ou mantém pressionadas as teclas dos cursores. Para rodar mais devagar, mantenha pressionada a tecla &Ctrl;.</para>
 </tip>
 <para
->Para acertar na bola, pressione e mantenha pressionado o &LMB; ou a tecla de cursor <keycap
->Seta para baixo</keycap
->. Quanto mais tempo mantiver pressionada a tecla ou o botão, mais força terá a tacada. Irá exigir alguma prática para que tenha uma boa noção da velocidade.</para>
+>Para acertar na bola, pressione e mantenha pressionado o &LMB; ou a tecla de cursor &Down;. Quanto mais tempo mantiver pressionada a tecla ou o botão, mais força terá a tacada. Irá exigir alguma prática para que tenha uma boa noção da velocidade.</para>
 <tip>
 <para
 >Para interromper a tacada enquanto ainda mantém o taco sobre tensão, clique em &Esc;.</para>
@@ -183,16 +169,15 @@
 >Acerte a bola no buraco para passar para o próximo passo.</para>
 </sect1>
 
-<sect1 id="slopes"
-> 
+<sect1 id="slopes">
 <title
 >Rampas</title>
 <para
->As rampas são áreas inclinadas onde a bola rola de uma forma esperada. A luz do campo de golfe vem do canto superior esquerdo, de modo a que as rampas mais brilhantes irão empurrar a bola para o canto superior esquerdo do buraco. Escolha a opção <menuchoice
+>As rampas são áreas inclinadas onde a bola rola de uma forma esperada. A luz do campo de golfe vem do canto superior esquerdo, de modo a que as rampas mais brilhantes irão empurrar a bola para o canto superior esquerdo do buraco. Selecione o menu <menuchoice
 ><guimenu
 >Buraco</guimenu
 ><guimenuitem
->Mostrar Informações</guimenuitem
+>Mostrar informações</guimenuitem
 ></menuchoice
 > para ver uma seta que aponta na direção em que a rampa fará rolar a bola.</para>
 <para
@@ -202,13 +187,13 @@
 > <title
 >Direções</title>
 <para
->No próximo buraco, experimente com os outros tipos de rampas. Existem rampas elípticas, verticais, horizontais e diagonais no &kappname;. Acerte a bola no buraco.</para>
+>No próximo buraco, experimente com os outros tipos de rampas. Existem rampas elípticas, verticais, horizontais e diagonais no &kolf;. Acerte a bola no buraco.</para>
 </sect2>
 <sect2
 > <title
 >Inclinação</title>
 <para
->O próximo buraco do tutorial possui duas rampas com inclinações diferentes. Se você escolher o <menuchoice
+>O próximo buraco do tutorial possui duas rampas com inclinações diferentes. Se você selecionar o menu <menuchoice
 ><guimenu
 >Buraco</guimenu
 ><guimenuitem
@@ -255,7 +240,7 @@
 > <title
 >Buracos negros</title>
 <para
->Quando você acertar a sua bola num buraco negro, ela é transportada para a saída e ejetada com o ângulo da saída a uma velocidade diretamente proporcional à velocidade com que a bola estava indo. Escolha a opção <menuchoice
+>Quando você acertar a sua bola num buraco negro, ela é transportada para a saída e ejetada com o ângulo da saída a uma velocidade diretamente proporcional à velocidade com que a bola estava indo. Selecione o menu <menuchoice
 ><guimenu
 >Buraco</guimenu
 ><guimenuitem
@@ -278,22 +263,21 @@
 >As pontes são simples - estas simplesmente elevam a bola por cima das coisas que estejam abaixo delas, como as rampas, a areia e as poças. Estas poderão ter paredes castanhas no seu perímetro.</para>
 </sect1>
 </chapter>
- 
+
 <chapter id="rules_and_tips"
 ><title
 >Regras do jogo, estratégias e dicas</title
 > <!-- do not change this! -->
 	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
 <para
->Aqui está um descrição detalhada dos recursos básicos do &kappname;.</para>
+>Aqui está um descrição detalhada dos recursos básicos do &kolf;.</para>
 
-<sect1 id="starting"
-> 
+<sect1 id="starting">
 <title
 >Começando um jogo</title>
 
 <para
->Para começar um jogo, escolha a opção <menuchoice
+>Para começar um jogo, selecione o menu <menuchoice
 ><guimenu
 >Jogo</guimenu
 ><guimenuitem
@@ -303,18 +287,15 @@
 <!--
 <tip>
 <para
->More third-party &kappname; courses are available at the &kappname; website. See <ulink 
-url="http://web.mit.edu/jasonkb/www/kolf/"
->the &kappname; user-uploaded courses page</ulink
+>More third-party &kolf; courses are available at the &kolf; website. See <ulink
+url="https://web.mit.edu/jasonkb/www/kolf/"
+>the &kolf; user-uploaded courses page</ulink
 >.</para>
 </tip>
 -->
-<sect2
-> 
+<sect2>
 <title
->A página <guilabel
->Jogadores</guilabel
-></title>
+>Página dos jogadores</title>
 <para
 >Para adicionar um jogador ao seu jogo, clique no botão <guibutton
 >Novo jogador</guibutton
@@ -332,21 +313,17 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 
 <sect2
 > <title
->A página <guilabel
->Campo</guilabel
-></title>
+>Página do percurso</title>
 <para
->Para escolher o campo onde deseja jogar, clique no seu item da lista à esquerda desta página. O &kappname; vem com vários campos incorporados nos quais poderá jogar.</para>
+>Para escolher o campo onde deseja jogar, clique no seu item da lista à esquerda desta página. O &kolf; vem com vários campos incorporados nos quais poderá jogar.</para>
 <para
 >Para adicionar um campo que tenha obtido da Internet ou criado, clique no botão <guibutton
->Adicionar...</guibutton
+>Adicionar…</guibutton
 > no fundo desta página e escolha o arquivo do campo no diálogo de seleção de arquivos.</para>
 </sect2>
 <sect2
 > <title
->A página <guilabel
->Opções</guilabel
-></title>
+>Página de opções</title>
 <para
 >Nesta página você poderá escolher se este jogo será ou não jogado no <guilabel
 >Modo restrito</guilabel
@@ -358,12 +335,12 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 > <title
 >Jogos salvos</title>
 <para
->O &kappname; poderá manter um histórico das suas rodadas ainda em progresso e salvá-lo no disco para que possa carregar essas rodadas e jogá-las mais tarde. Os jogos gravados incluem o buraco atual, os nomes e as cores dos jogadores em jogo, bem como as suas pontuações.</para>
+>O &kolf; poderá manter um histórico das suas rodadas ainda em progresso e salvá-lo no disco para que possa carregar essas rodadas e jogá-las mais tarde. Os jogos gravados incluem o buraco atual, os nomes e as cores dos jogadores em jogo, bem como as suas pontuações.</para>
 <sect2
 > <title
 >Salvando seu jogo</title>
 <para
->Para salvar o seu jogo enquanto ainda está jogando, escolha a opção <menuchoice
+>Para salvar o seu jogo enquanto ainda está jogando, selecione o menu <menuchoice
 ><guimenu
 >Jogo</guimenu
 ><guimenuitem
@@ -375,11 +352,11 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 > <title
 >Carregando seu jogo</title>
 <para
->Para carregar o jogo que você gravou, escolha a opção <menuchoice
+>Para carregar o jogo que você gravou, selecione o menu <menuchoice
 ><guimenu
 >Jogo</guimenu
 ><guimenuitem
->Carregar...</guimenuitem
+>Carregar…</guimenuitem
 > </menuchoice
 >. Você poderá então escolher o jogo salvo para abrir.</para>
 </sect2>
@@ -394,7 +371,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 > <title
 >Desfazer</title>
 <para
->Para anular uma jogada mal feita, escolha a opção <menuchoice
+>Para anular uma jogada mal feita, selecione o menu <menuchoice
 ><guimenu
 >Buraco</guimenu
 ><guimenuitem
@@ -420,13 +397,13 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 > <title
 >Opções das tacadas</title>
 <para
->O &kappname; tem algumas formas de dar a tacada. O método básico das tacadas está <link linkend="hitting"
+>O &kolf; tem algumas formas de dar a tacada. O método básico das tacadas está <link linkend="hitting"
 >descrito acima</link
 >.</para>
 <para
 >O mouse está ativo por padrão. Isto significa que, sempre que o mouse é mexido, o taco se alinhará com a linha entre o mouse e a bola.</para>
 <para
->Se preferir usar apenas o teclado e as teclas dos cursores, você poderá desativar as tacadas com o mouse desligando a opção <menuchoice
+>Se preferir usar apenas o teclado e as teclas dos cursores, você poderá desativar as tacadas com o mouse desmarcando o menu <menuchoice
 ><guimenu
 >Configurações</guimenu
 ><guimenuitem
@@ -438,7 +415,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 > <title
 >Tacadas avançadas</title>
 <para
->As tacadas avançadas poderão se ativadas se assinalar a opção <menuchoice
+>As tacadas avançadas poderão se ativadas selecionando o menu <menuchoice
 ><guimenu
 >Configurações</guimenu
 ><guimenuitem
@@ -451,23 +428,17 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 <procedure>
 <step>
 <para
->Clique ou pressione a tecla de cursor <keycap
->Seta para baixo</keycap
-> uma vez para começar a tacada. O indicador de tacada irá aparecer e o medidor da força irá começar a ser preenchido com uma determinada cor, que vai mudando à medida que esse medidor vai enchendo.</para>
+>Clique ou pressione a tecla de cursor &Down; uma vez para começar a tacada. O indicador de tacada irá aparecer e o medidor da força irá começar a ser preenchido com uma determinada cor, que vai mudando à medida que esse medidor vai enchendo.</para>
 </step>
 <step>
 <para
->Clique ou pressione outra vez na tecla de cursor <keycap
->Seta para baixo</keycap
-> quando o medidor de força tenha sido preenchido com a quantidade que você deseja. Quanto mais cheio estiver esse círculo do medidor, mais forte será a tacada. Exige alguma prática para conseguir dar a força correta nas tacadas.</para>
+>Clique ou pressione outra vez na tecla de cursor &Down; quando o medidor de força tenha sido preenchido com a quantidade que você deseja. Quanto mais cheio estiver esse círculo do medidor, mais forte será a tacada. Exige alguma prática para conseguir dar a força correta nas tacadas.</para>
 <para
 >Depois disto, a cor do indicador da tacada irá começar a descer até o início.</para>
 </step>
 <step>
 <para
->Clique ou pressione mais uma vez na tecla <keycap
->Seta para baixo</keycap
-> quando o indicador de força estiver tão perto quanto possível da linha central do indicador da tacada.</para>
+>Clique ou pressione mais uma vez na tecla &Down; quando o indicador de força estiver tão perto quanto possível da linha central do indicador da tacada.</para>
 </step>
 </procedure>
 <para
@@ -475,7 +446,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 </sect2>
 </sect1>
 </chapter>
- 
+
 <chapter id="interface"
 ><title
 >Resumo da interface</title
@@ -507,7 +478,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 <listitem>
 <para
 ><action
->Inicia um novo jogo</action
+>Inicia um novo jogo.</action
 ></para>
 </listitem>
 </varlistentry>
@@ -524,7 +495,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 > <guimenu
 >Jogo</guimenu
 > <guimenuitem
->Carregar...</guimenuitem
+>Carregar…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -564,7 +535,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Jogo</guimenu
 > <guimenuitem
->Salvar campo como...</guimenuitem
+>Salvar campo como…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -598,7 +569,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Jogo</guimenu
 > <guimenuitem
->Salvar jogo como...</guimenuitem
+>Salvar jogo como…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -628,7 +599,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 <para
 ><action
 >Termina o jogo atual, sem sair do</action
-> &kappname;</para>
+> &kolf;.</para>
 </listitem>
 </varlistentry>
 
@@ -661,7 +632,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 ><guimenu
 >Jogo</guimenu
 ><guimenuitem
->Sobre o campo</guimenuitem
+>Sobre o campo…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -691,7 +662,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 ><para
 ><action
 >Sai</action
-> do &kappname;</para
+> do &kolf;.</para
 ></listitem>
 </varlistentry>
 </variablelist>
@@ -754,9 +725,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 ><menuchoice
 ><shortcut
 > <keycombo action="simul"
->&Ctrl;<keycap
->Del</keycap
-> </keycombo
+>&Ctrl;&Del; </keycombo
 ></shortcut
 > <guimenu
 >Buraco</guimenu
@@ -871,9 +840,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 ><menuchoice
 ><shortcut
 ><keycombo action="simul"
-> &Alt;<keycap
->Direita</keycap
-></keycombo
+> &Alt;&Right;</keycombo
 ></shortcut
 > <guimenu
 >Ir</guimenu
@@ -894,9 +861,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 ><menuchoice
 ><shortcut
 ><keycombo action="simul"
-> &Alt;<keycap
->Esquerda</keycap
-></keycombo
+> &Alt;&Left;</keycombo
 ></shortcut
 > <guimenu
 >Ir</guimenu
@@ -977,47 +942,24 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 </variablelist>
 </sect1>
 
-<sect1 id="settings-menu">
+<sect1 id="settings-help-menu">
 <title
->O menu Configurações</title>
+>O menu Configurações e Ajuda</title>
+
+<para
+>O &kolf; possui os itens dos menus <guimenu
+>Configurações</guimenu
+> e <guimenu
+>Ajuda</guimenu
+> comuns do &kde;. Para mais informações, consulte as seções sobre o <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu Configurações</ulink
+> e o <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu Ajuda</ulink
+> dos Fundamentos do &kde; com estas entradas adicionais:</para>
 
 <variablelist>
-<varlistentry>
-<term
-><menuchoice
-><guimenu
->Configurações</guimenu
-> <guimenuitem
->Exibir barra de ferramentas</guimenuitem
-> </menuchoice
-></term>
-<listitem>
-<para
-><action
->Ativa ou desativa a barra de ferramentas principal.</action
-></para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><menuchoice
-><guimenu
->Configurações</guimenu
-> <guimenuitem
->Exibir barra de status</guimenuitem
-> </menuchoice
-></term>
-<listitem>
-<para
-><action
->Ativa ou desativa a barra de estado.</action
-></para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term
+  <varlistentry>
+    <term
 ><menuchoice
 ><guimenu
 >Configurações</guimenu
@@ -1025,17 +967,16 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 >Usar o mouse para mover o taco</guimenuitem
 > </menuchoice
 ></term>
-<listitem>
-<para
+    <listitem
+><para
 ><action
 >Permite a utilização do mouse para mover o taco.</action
 ></para
-> 
-</listitem>
-</varlistentry>
+></listitem>
+  </varlistentry>
 
-<varlistentry>
-<term
+  <varlistentry>
+    <term
 ><menuchoice
 ><guimenu
 >Configurações</guimenu
@@ -1043,18 +984,18 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 >Ativar modo avançado</guimenuitem
 > </menuchoice
 ></term>
-<listitem
+    <listitem
 ><para
 ><action
 >Ativa o modo avançado para aplicar tacadas</action
 >, tal como está descrito na sua <link linkend="advanced-putting"
 >própria seção</link
->.</para>
-</listitem>
-</varlistentry>
+>.</para
+></listitem>
+  </varlistentry>
 
-<varlistentry>
-<term
+  <varlistentry>
+    <term
 ><menuchoice
 ><guimenu
 >Configurações</guimenu
@@ -1062,16 +1003,16 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 >Exibir guia dos tacos</guimenuitem
 > </menuchoice
 ></term>
-<listitem>
-<para
+    <listitem
+><para
 ><action
 >Ativa ou desativa a linha de guia do taco.</action
-></para>
-</listitem>
-</varlistentry>
+></para
+></listitem>
+  </varlistentry>
 
-<varlistentry>
-<term
+  <varlistentry>
+    <term
 ><menuchoice
 ><guimenu
 >Configurações</guimenu
@@ -1079,16 +1020,16 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 >Reproduzir sons</guimenuitem
 > </menuchoice
 ></term>
-<listitem>
-<para
+    <listitem
+><para
 ><action
 >Ativa ou desativa os efeitos sonoros.</action
-></para>
-</listitem>
-</varlistentry>
+></para
+></listitem>
+  </varlistentry>
 
-<varlistentry>
-<term
+  <varlistentry>
+    <term
 ><menuchoice
 ><guimenu
 >Configurações</guimenu
@@ -1096,98 +1037,52 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 >Ativar Todas as Janelas</guimenuitem
 > </menuchoice
 ></term>
-<listitem>
-<para
+    <listitem
+><para
 ><action
 >Reativa todas as janelas que você tenha desativado clicando numa opção <guilabel
 >Não mostrar esta mensagem de novo</guilabel
-> ou semelhante</action
->.</para>
-</listitem>
-</varlistentry>
+> ou semelhante.</action
+></para
+></listitem>
+  </varlistentry>
 <!--
-<varlistentry>
-<term
+  <varlistentry>
+    <term
 ><menuchoice>
-<guimenu
+    <guimenu
 >Settings</guimenu>
-<guimenuitem
+    <guimenuitem
 >Reload Plugins</guimenuitem>
-</menuchoice
+    </menuchoice
 ></term>
-<listitem>
-<para
+    <listitem
+><para
 ><action
 >Reload plugins.</action
-></para>
-</listitem>
-</varlistentry>
+></para
+></listitem>
+  </varlistentry>
 
-<varlistentry>
-<term
+  <varlistentry>
+    <term
 ><menuchoice>
-<guimenu
+    <guimenu
 >Settings</guimenu>
-<guimenuitem
+    <guimenuitem
 >Show Plugins</guimenuitem>
-</menuchoice
+    </menuchoice
 ></term>
-<listitem>
-<para
+    <listitem
+><para
 ><action
 >Display the currently loaded plugins.</action
-></para>
-</listitem>
-</varlistentry>
+></para
+></listitem>
+  </varlistentry>
 -->
-<varlistentry>
-<term
-><menuchoice
-><guimenu
->Configurações</guimenu
-> <guimenuitem
->Configurar atalhos...</guimenuitem
-> </menuchoice
-></term>
-<listitem>
-<para
-><action
->Personaliza os atalhos do teclado.</action
-></para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><menuchoice
-><guimenu
->Configurações</guimenu
-> <guimenuitem
->Configurar barras de ferramentas...</guimenuitem
-> </menuchoice
-></term>
-<listitem>
-<para
-><action
->Abre uma janela que lhe permite configurar as barras de ferramentas</action
-> no &kappname;.</para>
-</listitem>
-</varlistentry>
-
-</variablelist>
-</sect1>
-<sect1 id="help"
-><!--This is a standard Help menubar entry. Only change if needed.-->
-<title
->O menu Ajuda</title>
-<para
->O &kappname; tem um menu de <guimenu
->Ajuda</guimenu
-> padrão do &kde;, como se encontra descrito abaixo, com uma adição:</para>
-
-<variablelist>
-<varlistentry>
-<term
+  <varlistentry>
+    <term
 ><menuchoice
 ><guimenu
 >Ajuda</guimenu
@@ -1195,20 +1090,16 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 >Tutorial</guimenuitem
 > </menuchoice
 ></term>
-<listitem>
-<para
->Inicia o campo de tutorial do &kappname;.</para>
-</listitem>
-</varlistentry>
+    <listitem
+><para
+>Inicia o campo de tutorial do &kolf;.</para
+></listitem>
+  </varlistentry>
 </variablelist>
 
-<para
->As entradas padrão do &kde; no menu <guimenu
->Ajuda</guimenu
-> são:</para
->&help.menu.documentation; </sect1>
+</sect1>
 </chapter>
-  
+
 <chapter id="faq"
 ><title
 >Perguntas frequentes</title
@@ -1225,7 +1116,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 ></question>
  <answer
 ><para
->Não. Atualmente, o &kappname; só oferece um tema.</para
+>Não. Atualmente, o &kolf; só oferece um tema.</para
 ></answer>
 </qandaentry>
 <qandaentry>
@@ -1245,7 +1136,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 ></question>
  <answer
 ><para
->Não. O &kappname; não possui uma funcionalidade de sugestão.</para
+>Não. O &kolf; não possui uma funcionalidade de sugestão.</para
 ></answer>
 </qandaentry>
 <qandaentry>
@@ -1255,7 +1146,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 ></question>
  <answer
 ><para
->Sim, você pode. Para entrar no modo de edição, use a opção <menuchoice
+>Sim, você pode. Para entrar no modo de edição, use o menu <menuchoice
 ><shortcut
 > <keycombo action="simul"
 >&Ctrl;<keycap
@@ -1273,23 +1164,23 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 ></answer
 ><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
 </qandaentry>
- 
+
 </qandaset>
 </chapter>
- 
+
 <chapter id="configuration"
 ><title
 >Editor de Campos</title
 > <!-- do not change this! -->
 <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
 <para
->O &kappname; vem com um editor versátil para o seu formato de arquivos dos campos. Os campos poderão conter qualquer número de buracos e não existe nenhum limite à criatividade do desenhador do campo.</para>
+>O &kolf; vem com um editor versátil para o seu formato de arquivos dos campos. Os campos poderão conter qualquer número de buracos e não existe nenhum limite à criatividade do desenhador do campo.</para>
 
 <sect1 id="creating"
 > <title
 >Criando um novo campo</title>
 <para
->Para criar um novo campo, escolha a opção <menuchoice
+>Para criar um novo campo, selecione o menu <menuchoice
 ><guimenu
 >Jogo</guimenu
 ><guimenuitem
@@ -1308,7 +1199,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 <note>
 <para
 >Para jogar este campo novo mais tarde, clique no botão <guibutton
->Adicionar...</guibutton
+>Adicionar…</guibutton
 > para adicionar o seu campo à lista de campos.</para>
 </note>
 </sect1>
@@ -1317,13 +1208,13 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 > <title
 >Adicionando buracos</title>
 <para
->Alterne para o modo edição usando o <menuchoice
+>Alterne para o modo edição usando o menu <menuchoice
 ><guimenu
 >Buraco</guimenu
 > <guimenuitem
 >Editar</guimenuitem
 ></menuchoice
->. Escolha a opção <menuchoice
+>. Selecione o menu <menuchoice
 ><guimenu
 >Buraco</guimenu
 ><guimenuitem
@@ -1332,7 +1223,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 > para adicionar um novo buraco ao fim do campo.</para>
 <tip>
 <para
->Você poderá restaurar um buraco para um campo em branco, de forma semelhante à de quando foi criado da primeira vez, se escolher a opção <menuchoice
+>Você poderá restaurar um buraco para um campo em branco, de forma semelhante à de quando foi criado da primeira vez, selecionando o menu <menuchoice
 ><guimenu
 >Buraco</guimenu
 ><guimenuitem
@@ -1348,7 +1239,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 > <title
 >Conceitos básicos da edição</title>
 <para
->O bloco básico de construção dos campos do &kappname; é o <quote
+>O bloco básico de construção dos campos do &kolf; é o <quote
 >objeto</quote
 >. Cada nível de um buraco é composto a partir de um conjunto de objetos. Os objetos poderão ser movidos para qualquer local e os diferentes tipos de objetos terão propriedades diferentes que você poderá definir.</para>
 <para
@@ -1377,10 +1268,10 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 >You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
 </tip>
 <para
->Some &kappname; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
+>Some &kolf; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
 <para
->Third-party &kappname; plugins are available at the &kappname; website. See <ulink url="http://web.mit.edu/jasonkb/www/kolf/"
->the &kappname; plugins download page</ulink
+>Third-party &kolf; plugins are available at the &kolf; website. See <ulink url="https://web.mit.edu/jasonkb/www/kolf/"
+>the &kolf; plugins download page</ulink
 >.</para>
 -->
 </sect2>
@@ -1403,7 +1294,7 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 > <title
 >Configurações dos objetos</title>
 <para
->As propriedades dos objetos podem ser alteradas na área do canto inferior direito da janela do &kappname;. Para editar um objeto, mova o cursor do seu mouse para cima dele até que o cursor mude para a mão. Em seguida clique nele. Os vários controles para esse objeto irão aparecer no canto inferior direito da janela do &kappname;.</para>
+>As propriedades dos objetos podem ser alteradas na área do canto inferior direito da janela do &kolf;. Para editar um objeto, mova o cursor do seu mouse para cima dele até que o cursor mude para a mão. Em seguida clique nele. Os vários controles para esse objeto irão aparecer no canto inferior direito da janela do &kolf;.</para>
 <sect3
 > <title
 >Configurações gerais do buraco</title>
@@ -1418,8 +1309,10 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 ></term>
 <listitem>
 <para
->Este é o nome que é mostrado no diálogo de novo jogo e no diálogo <guimenuitem
->Sobre o campo</guimenuitem
+>Este é o nome que é exibido na caixa de diálogo <guilabel
+>Novo jogo</guilabel
+> e na caixa de diálogo <guilabel
+>Informações do campo</guilabel
 >.</para>
 </listitem>
 </varlistentry>
@@ -1430,8 +1323,8 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 ></term>
 <listitem>
 <para
->Este é o nome do autor que é mostrado no diálogo <guimenuitem
->Sobre o campo</guimenuitem
+>Este é o nome do autor que é mostrado no diálogo <guilabel
+>Informações do campo</guilabel
 >.</para>
 </listitem>
 </varlistentry>
@@ -1504,16 +1397,6 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 <varlistentry
 > <term
 ><guilabel
->Grau:</guilabel
-></term>
-<listitem>
-<para
->Escolha o grau (inclinação) da rampa, movendo a barra deslizante para que o grau vá de 0 a 8, em que o 8 é o mais inclinado e o 0 é o plano. As rampas mais íngremes empurram mais a bola.</para>
-</listitem>
-</varlistentry>
-<varlistentry
-> <term
-><guilabel
 >Imóvel</guilabel
 ></term>
 <listitem>
@@ -1525,8 +1408,18 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 >precisa</emphasis
 > tornar a rampa <guilabel
 >Imóvel</guilabel
->, ou então o &kappname; terá uma crise de performance!</para>
+>, ou então o &kolf; terá uma crise de performance!</para>
 </caution>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>Grau:</guilabel
+></term>
+<listitem>
+<para
+>Escolha o grau (inclinação) da rampa, movendo a barra deslizante para que o grau vá de 0 a 8, em que o 8 é o mais inclinado e o 0 é o plano. As rampas mais íngremes empurram mais a bola.</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -1579,11 +1472,11 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 <varlistentry
 > <term
 ><guilabel
->Moinho ao fundo</guilabel
+>Moinho no topo</guilabel
 ></term>
 <listitem>
 <para
->Se o braço do moinho a preto está em cima ou em baixo - por padrão, ele está em baixo. As duas meias-paredes irão estar sempre com o braço. Repare que você não poderá ativar a parede do contorno do lado em que o braço se encontra.</para>
+>Se o braço do moinho a preto está em cima ou em baixo - por padrão, ele está no topo. As duas meias-paredes irão estar sempre com o braço. Repare que você não poderá ativar a parede do contorno do lado em que o braço se encontra.</para>
 </listitem>
 </varlistentry>
 <varlistentry
@@ -1649,18 +1542,18 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 </sect2>
 </sect1>
 </chapter>
- 
+
 <chapter id="credits"
 ><title
 >Créditos e licença</title
 > <!-- do not change this! -->
 <!--This chapter is for credits and licenses.-->
- 
-<para
->&kappname;</para>
 
 <para
->Direitos autorais do &kappname; 2001, 2002 &Jason.Katz-Brown;</para>
+>&kolf;</para>
+
+<para
+>Direitos autorais do &kolf; 2001, 2002 &Jason.Katz-Brown;</para>
 
 <itemizedlist>
 <title
@@ -1697,21 +1590,8 @@ url="http://web.mit.edu/jasonkb/www/kolf/"
 >marcus.gama@gmail.com</email
 ></para
 > &underFDL; &underGPL; </chapter>
-  
-<appendix id="installation">
-<title
->Instalação</title>
- 
-&install.intro.documentation;
- 
- 
-<sect1 id="Compilation">
-<title
->Compilação e instalação</title
->&install.compile.documentation; </sect1>
-</appendix>
- 
-&documentation.index; 
+
+&documentation.index;
 </book>
 <!--
 Local Variables:
