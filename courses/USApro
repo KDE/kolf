@@ -1345,10 +1345,10 @@ rightWallVisible=true
 topWallVisible=false
 width=21
 
-[6-bumper@182,182|15]
+[6-bumper@190,182|15]
 dummykey=true
 
-[6-bumper@182,182|16]
+[6-bumper@190,182|16]
 dummykey=true
 
 [6-cup@107,376|1]
