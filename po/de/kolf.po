@@ -506,7 +506,7 @@ msgstr "Unbeweglich"
 msgctxt "@info:whatsthis"
 msgid "Whether or not this slope can be moved by other objects, like floaters."
 msgstr ""
-"Ist diese Einstellung aktiviert, werden keine beweglichen Objekte (z. B. "
+"Ist diese Einstellung aktiviert, werden keine beweglichen Objekte (z. B. "
 "Schweber) unterstützt."
 
 #: landscape.cpp:582
