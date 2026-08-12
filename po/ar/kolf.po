@@ -179,7 +179,7 @@ msgstr "تغييرات غير محفوظة"
 #, kde-format
 msgctxt "@action:button"
 msgid "Save &Later"
-msgstr "احفظ لا&حقاً"
+msgstr "احفظ لا&حقًا"
 
 #: game.cpp:2165 kolf.cpp:552
 #, kde-format
@@ -775,7 +775,7 @@ msgstr "اختر مضمار الغولف"
 #: newgame.cpp:310
 #, kde-format
 msgid "Chosen course is already on course list."
-msgstr "المضمار المحدد موجود مسبقاً في القوائم."
+msgstr "المضمار المحدد موجود مسبقًا في القوائم."
 
 #: newgame.cpp:323
 #, kde-format
