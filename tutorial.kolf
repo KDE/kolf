@@ -799,7 +799,7 @@ par=3
 
 [4-sign@6,3|3]
 Comment=The steepness of a slope is shown when you choose <u>Hole->Show Info</u>. Steepness goes from 8 (steepest) to 1 (shallowest).
-Comment[ar]=يظهر انحدار المنحدر عند اختيار <u> الحفرة-> اعرض المعلومات </u>.يبدأ الانحدار من 8 (أشد انحدارًا) إلى 1 (أقل انحداراً).
+Comment[ar]=يظهر انحدار المنحدر عند اختيار <u> الحفرة-> اعرض المعلومات </u>.يبدأ الانحدار من 8 (أشد انحدارًا) إلى 1 (أقل انحدارًا).
 Comment[bs]=Strmost padine se prikazuje kada odaberete <u>Hole->Show Info</u>. Strmost ide od 8 (najbrže) do 1 (najpliće).
 Comment[ca]=La inclinació d'un desnivell, es mostra en triar <u>Forat -> Mostra la informació</u>. La inclinació va des de 8 (més) fins a 1 (menys).
 Comment[ca@valencia]=La inclinació d'un desnivell, es mostra en triar <u>Forat → Mostra la informació</u>. La inclinació va des de 8 (més) fins a 1 (menys).
