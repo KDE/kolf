@@ -129,6 +129,10 @@
     <p xml:lang="sa">कोल्फ् इति लघुगोल्फक्रीडा । क्रीडा उपरि दृश्यात् क्रीड्यते, यत्र गोल्फक्लबस्य प्रतिनिधित्वं कृत्वा लघुः बारः भवति । कोल्फ् इत्यत्र जलस्य खतराणि, सानुः, वालुकाजालानि, कृष्णरन्ध्राणि (वार्प्स्) इत्यादीनि अनेकानि विविधानि वस्तूनि सन्ति ।</p>
     <p xml:lang="sk">Kolf je miniatúrna golfová hra. Hra sa hrá pohľadom zhora. Obsahuje mnoho rôznych typov objektov, ako vodné prekážky, stĺpy, pieskové pasce, čierne diery a iné.</p>
     <p xml:lang="sl">Kolf je igra miniaturnega golfa. Igrate iz ptičje perspektive, palico pa predstavlja deščica. V Kolfu boste našli številne predmete, kot so med drugimi vodne nevarnosti, klance, peščene pasti in črne luknje.</p>
+    <p xml:lang="sr">Колф је игра минијатурног голфа. Игра се преко погледа одозго, и са пречком која представља палицу за голф. Колф садржи многе врсте објеката, попут водених препрека, косина, пешчаних замки и црних рупа (црвоточина).</p>
+    <p xml:lang="sr-Latn">Kolf je igra minijaturnog golfa. Igra se preko pogleda odozgo, i sa prečkom koja predstavlja palicu za golf. Kolf sadrži mnoge vrste objekata, poput vodenih prepreka, kosina, peščanih zamki i crnih rupa (crvotočina).</p>
+    <p xml:lang="sr-ijekavian">Колф је игра минијатурног голфа. Игра се преко погледа одозго, и са пречком која представља палицу за голф. Колф садржи многе врсте објеката, попут водених препрека, косина, пјешчаних замки и црних рупа (црвоточина).</p>
+    <p xml:lang="sr-ijekavianlatin">Kolf je igra minijaturnog golfa. Igra se preko pogleda odozgo, i sa prečkom koja predstavlja palicu za golf. Kolf sadrži mnoge vrste objekata, poput vodenih prepreka, kosina, pješčanih zamki i crnih rupa (crvotočina).</p>
     <p xml:lang="sv">Kolf är ett minigolfspel. Spelet visas ovanifrån, med ett kort streck som representerar golfklubban. Kolf har många olika hinder, bland annat vattenhinder, sluttningar, bunkrar och svarta hål.</p>
     <p xml:lang="tr">Kolf minyatür bir golf oyunudur. Oyun, golf sopasını temsil eden kısa bir çubukla yukarıdan oynanır. Kolf, diğerlerinin yanı sıra su tehlikeleri, eğimler, kum tuzakları ve kara delikler (bükümler) gibi birçok farklı nesne türüne sahiptir.</p>
     <p xml:lang="uk">Kolf — мініатюрна гра у гольф. Під час гри гравець дивиться на майданчик згори. У Kolf передбачено різні типи об’єктів-перешкод, зокрема водяні пастки, схили, піскові пастки і чорні діри (тунелі).</p>
@@ -424,6 +428,10 @@
       <caption xml:lang="sa">कोल्फस्य प्रारम्भिकपर्दे</caption>
       <caption xml:lang="sk">Úvodná obrazovka v Kolf</caption>
       <caption xml:lang="sl">Začetni zaslon Kolfa</caption>
+      <caption xml:lang="sr">Почетни екран Колфа</caption>
+      <caption xml:lang="sr-Latn">Početni ekran Kolfa</caption>
+      <caption xml:lang="sr-ijekavian">Почетни екран Колфа</caption>
+      <caption xml:lang="sr-ijekavianlatin">Početni ekran Kolfa</caption>
       <caption xml:lang="sv">Inledande skärm i Kolf</caption>
       <caption xml:lang="tr">Kolf başlangıç ekranı</caption>
       <caption xml:lang="uk">Початкове вікно Kolf</caption>
