@@ -1,0 +1,1604 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Arabic "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="kolf" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>دليل غولف</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<authorgroup>
+<author
+><firstname
+>Jason</firstname
+> <surname
+>Katz-Brown</surname
+> <affiliation
+> <address
+><email
+>jasonkb@mit.edu</email
+></address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+><firstname
+>Paul</firstname
+> <surname
+>Broadbent</surname
+> <affiliation
+> <address
+><email
+>dbd@myrealbox.com</email
+></address>
+</affiliation>
+<!-- <contrib
+>Reviewer</contrib
+> -->
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>زايد</firstname
+><surname
+>السعيدي</surname
+><affiliation
+><address
+><email
+>zayed.alsaidi@gmail.com</email
+></address
+></affiliation
+><contrib
+>التّرجمة العربيّة</contrib
+></othercredit
+> 
+</authorgroup>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-08-06</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>KDE Gear 21.08</releaseinfo>
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>تصف هذه الوثائق لعبة غولف (Kolf) الإصدار 21.08</para>
+</abstract>
+
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>كيدي</keyword
+> <!-- do not change this! -->
+	<keyword
+>ألعاب كيدي</keyword
+> <!-- do not change this! -->
+	<keyword
+>لعبة</keyword
+> <!-- do not change this! -->
+	<keyword
+>غولف</keyword
+><!--Application name goes here-->
+	<keyword
+>غولف</keyword>
+	<keyword
+>منمنمة</keyword>
+	<keyword
+>أركيد</keyword>
+	<keyword
+>رياضة</keyword>
+	<keyword
+>عشرة لاعبين</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>مقدمة</title
+> <!-- do not change this! -->
+	<note
+><title
+>نوع اللعبة:</title
+><para
+>أركيد، رياضة</para
+></note>
+	<note
+><title
+>عدد اللاعبين الممكنين:</title
+><para
+>عشرة</para
+></note>
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>غولف (Kolf) هي لعبة غولف مصغرة ذات عرض ثنائي الأبعاد من الأعلى إلى الأسفل. الملاعب ديناميكية، ويمكن لما يصل إلى 10 أشخاص اللعب في نفس الوقت في منافسة.</para>
+<para
+>تأتي غولف مع ملعب تعليمي. <link linkend="howto"
+>لعب هذا الملعب</link
+> هو أسهل طريقة للبدء.</para>
+</chapter>
+
+<chapter id="howto"
+><title
+>كيف تلعب</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>الهدف:</title
+><para
+>ضع الكرة في الحفرة بأقل عدد ممكن من الضربات.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para
+>طريقة لعب غولف بسيطة. من الأسهل تعلم كيفية اللعب عمليًا، ولذلك تم تضمين ملعب تعليمي لإرشادك خلال الأساسيات. سيوجهك هذا الفصل خلال هذا البرنامج التعليمي. لبدء البرنامج التعليمي، اختر عنصر القائمة <menuchoice
+><guimenu
+>مساعدة</guimenu
+> <guimenuitem
+>برنامج تعليمي</guimenuitem
+></menuchoice
+>.</para>
+
+<sect1 id="hitting">
+<title
+>ضرب الكرة</title>
+<para
+>لتصويب الكرة، إما أن تضع الفأرة خلف الكرة بحيث يتجه المضرب في الاتجاه الذي تريد ضربها إليه، أو اضغط على أحد مفاتيح السهم &Left; (عكس عقارب الساعة) أو السهم &Right; (باتجاه عقارب الساعة) لتدوير المضرب.</para>
+<tip>
+<para
+>لتدوير المضرب بسرعة أكبر باستخدام لوحة المفاتيح، استمر في الضغط على &Shift; أثناء الضغط أو الاستمرار على مفاتيح الأسهم. للتدوير ببطء أكثر، استمر في الضغط على &Ctrl;.</para>
+</tip>
+<para
+>لضرب الكرة، اضغط مع الاستمرار على زر الفأرة الأيسر أو مفتاح السهم &Down;. كلما طالت مدة ضغطك على المفتاح أو الزر، زادت قوة الضربة. سيتطلب الأمر تدريبًا للحصول على شعور جيد بالسرعة.</para>
+<tip>
+<para
+>لإيقاف الضربة بينما لا تزال تسحب المضرب للخلف، اضغط على &Esc;.</para>
+</tip>
+
+<para
+>اضرب الكرة في الحفرة للانتقال إلى الحفرة التالية.</para>
+</sect1>
+
+<sect1 id="slopes">
+<title
+>المنحدرات</title>
+<para
+>المنحدرات هي مناطق مائلة في الملعب تتدحرج فيها كرة الغولف بطريقة متوقعة. ضوء ملعب الغولف يأتي من الجزء العلوي الأيسر، لذا فإن أسطع المنحدرات ستدفع الكرة نحو الزاوية العلوية اليسرى من الحفرة. اختر عنصر القائمة <menuchoice
+><guimenu
+>حفرة</guimenu
+> <guimenuitem
+>أظهر المعلومات</guimenuitem
+></menuchoice
+> لرؤية سهم يشير إلى الاتجاه الذي سيدحرج فيه المنحدر الكرة.</para>
+<para
+>في حفرة التدريب هذه، اضرب الكرة نحو المنحدر الذي يشير للأعلى واتركها تتدحرج إلى الكأس للانتقال إلى الحفرة التالية.</para>
+
+<sect2
+> <title
+>الاتجاهات</title>
+<para
+>في الحفرة التالية، جرب الأنواع الأخرى من المنحدرات. توجد منحدرات بيضاوية، وعمودية، وأفقية، وقطرية في غولف. اضرب الكرة في الحفرة.</para>
+</sect2>
+<sect2
+> <title
+>الانحدار</title>
+<para
+>تحتوي حفرة التدريب التالية على منحدرين بدرجات انحدار مختلفة. إذا اخترت عنصر القائمة <menuchoice
+><guimenu
+>حفرة</guimenu
+> <guimenuitem
+>أظهر المعلومات</guimenuitem
+></menuchoice
+>، سيظهر انحدار المنحدر كرقم من 1 إلى 8، حيث 8 هو الأكثر انحدارًا و1 هو الأقل. اضرب الكرة في الحفرة وتابع إلى الحفرة التالية.</para>
+</sect2>
+</sect1>
+
+<sect1 id="walls"
+> <title
+>جدران</title>
+<para
+>ترتد الكرات عن الجدران كما هو متوقع، مع القليل من التخميد. اجعل الكرة ترتد عن الجدران وإلى الكأس للتقدم إلى الحفرة التالية.</para>
+</sect1>
+
+<sect1 id="puddles-sand"
+> <title
+>البرك والرمل</title>
+<sect2
+> <title
+>برك</title>
+	<para
+>البرك زرقاء اللون. عندما تتدحرج كرتك في بركة، تُضاف ضربة جزاء إلى رصيدك ويجب عليك حينها اختيار المكان الذي تريد أخذ ضربتك التالية منه: إما بجوار البركة أو من نفس المكان الذي أخذت منه الضربة الأخيرة.</para>
+</sect2>
+<sect2
+> <title
+>رمل</title>
+<para
+>الرمل أصفر اللون. تتدحرج الكرات عبر الرمل ببطء شديد.</para>
+<para
+>اضرب الكرة حول البرك وعبر الرمل إلى الحفرة للمتابعة إلى حفرة التدريب التالية.</para>
+</sect2>
+</sect1>
+
+<sect1 id="windmills"
+> <title
+>الطواحين الهوائية</title>
+<para
+>الطواحين الهوائية هي كائنات مركبة ذات جدران حدودية بنية وذراع متحركة على أحد الجوانب. تنشئ الجدران النصفية فتحة الطاحونة، والتي تتأرجح الذراع السوداء عبرها. يتطلب الأمر تدريبًا لتتمكن من توقيت ضربة الكرة لتمر عبر الفتحة. اضرب الكرة عبر الطاحونة وإلى الحفرة للمتابعة.</para>
+</sect1>
+
+<sect1 id="black-holes"
+> <title
+>الثقوب السوداء</title>
+<para
+>عندما تضرب كرتك في ثقب أسود، يتم نقلها إلى المخرج وقذفها بزاوية المخرج وبسرعة ترتبط مباشرة بالسرعة التي كانت تسير بها كرتك. اختر عنصر القائمة <menuchoice
+><guimenu
+>حفرة</guimenu
+> <guimenuitem
+>أظهر المعلومات</guimenuitem
+></menuchoice
+> لمعرفة أي ثقب أسود يذهب إلى أي مخرج والاتجاه الذي ستخرج منه الكرة. الحافة حول الثقوب السوداء لها نفس لون المخارج المقابلة لها. اضرب الكرة في الثقب الأسود، والذي سيقذف الكرة بعد ذلك إلى الكأس حتى تتمكن من الذهاب إلى الحفرة التالية.</para>
+</sect1>
+
+<sect1 id="floaters"
+> <title
+>العوامات</title>
+<para
+>العوامات هي منصات متحركة تحمل الكرة التي تهبط عليها. تختلف سرعات العوامات. هذه العوامة بطيئة نوعًا ما، ولكن لا يزال يتعين عليك توقيت ضربتك بحيث يمكنك المرور فوق الجدار وإلى الكأس.</para>
+</sect1>
+
+<sect1 id="bridges"
+> <title
+>الجسور</title>
+<para
+>الجسور بسيطة - فهي ترفع الكرة فوق الأشياء الموجودة أسفلها، مثل المنحدرات والرمل والبرك. يمكن أن يكون لها جدران بنية على محيطها.</para>
+</sect1>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>قواعد اللعبة واستراتيجياتها وتلميحاتها</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+<para
+>إليك وصف متعمق لميزات غولف الأساسية.</para>
+
+<sect1 id="starting">
+<title
+>بدء لعبة</title>
+
+<para
+>لبدء لعبة، اختر عنصر القائمة <menuchoice
+><guimenu
+>لعبة</guimenu
+> <guimenuitem
+>جديد</guimenuitem
+></menuchoice
+>. يفتح هذا مربع حوار حيث يمكنك تهيئة لعبتك الجديدة.</para>
+<!--
+<tip>
+<para
+>More third-party &kolf; courses are available at the &kolf; website. See <ulink
+url="https://web.mit.edu/jasonkb/www/kolf/"
+>the &kolf; user-uploaded courses page</ulink
+>.</para>
+</tip>
+-->
+<sect2>
+<title
+>صفحة اللاعبين</title>
+<para
+>لإضافة لاعب إلى لعبتك، انقر فوق زر <guibutton
+>لاعب جديد</guibutton
+>.</para>
+
+<para
+>لتغيير اسم اللاعبين، قم بتغيير النص في مربعات النص.</para>
+
+<para
+>لإزالة لاعب، انقر فوق زر <guibutton
+>إزالة</guibutton
+> بجانب اسم اللاعب.</para>
+
+</sect2>
+
+<sect2
+> <title
+>صفحة الملعب</title>
+<para
+>لاختيار الملعب الذي تريد لعبه، انقر فوق مدخله في صندوق القائمة على يسار هذه الصفحة. تأتي غولف مع العديد من الملاعب المدمجة التي يمكنك لعبها.</para>
+<para
+>لإضافة ملعب قمت بتنزيله أو إنشائه، انقر فوق زر <guibutton
+>إضافة…</guibutton
+> في أسفل هذه الصفحة، واختر ملف الملعب في مربع حوار الملفات.</para>
+</sect2>
+<sect2
+> <title
+>صفحة الخيارات</title>
+<para
+>في هذه الصفحة يمكنك اختيار ما إذا كانت هذه اللعبة ستُلعب في <guilabel
+>الوضع الصارم</guilabel
+> أم لا. في الوضع الصارم، لا يوجد تراجع أو تحريك للحفر أو تحرير للملعب. هذا الوضع مخصص للمنافسة بشكل عام. فقط في الوضع الصارم يتم الاحتفاظ بأعلى النتائج.</para>
+</sect2>
+</sect1>
+
+<sect1 id="saved-games"
+> <title
+>الألعاب المحفوظة</title>
+<para
+>يمكن لغولف الاحتفاظ بسجل لجولاتك التي لا تزال قيد التنفيذ وحفظها على القرص حتى تتمكن من تحميلها ولعبها لاحقًا. تتضمن الألعاب المحفوظة الحفرة الحالية وأسماء وألوان جميع اللاعبين في اللعبة ونتائج اللاعبين.</para>
+<sect2
+> <title
+>حفظ لعبتك</title>
+<para
+>لحفظ لعبتك أثناء اللعب، اختر عنصر القائمة <menuchoice
+><guimenu
+>لعبة</guimenu
+> <guimenuitem
+>احفظ اللعبة</guimenuitem
+></menuchoice
+>. إذا لم تكن قد حفظت لعبة من قبل، فسيُطلب منك اختيار الملف الذي تريد الحفظ فيه.</para>
+</sect2>
+<sect2
+> <title
+>تحميل لعبتك</title>
+<para
+>لتحميل اللعبة التي قمت بحفظها، اختر عنصر القائمة <menuchoice
+><guimenu
+>لعبة</guimenu
+> <guimenuitem
+>حمّل…</guimenuitem
+></menuchoice
+>. يمكنك بعد ذلك اختيار اللعبة المحفوظة لفتحها.</para>
+</sect2>
+</sect1>
+
+<sect1 id="practicing"
+> <title
+>التدريب</title>
+<para
+>هناك بعض الميزات التي تجعل ممارسة الغولف أسهل. هذه الميزات لا يتم تفعيلها أثناء الوضع الصارم.</para>
+<sect2
+> <title
+>تراجع</title>
+<para
+>للتراجع عن ضربة سيئة، اختر عنصر القائمة <menuchoice
+><guimenu
+>حفرة</guimenu
+> <guimenuitem
+>تراجع عن الضربة</guimenuitem
+></menuchoice
+>.</para>
+</sect2>
+<sect2
+> <title
+>تبديل الحفر</title>
+<para
+>تحتوي قائمة <guimenu
+>اذهب</guimenu
+> على العديد من عناصر القائمة للتبديل إلى حفر مختلفة وهي واضحة جدًا. انظر <link linkend="go-menu"
+>مرجع قائمة اذهب</link
+>.</para>
+</sect2>
+</sect1>
+
+<sect1 id="putting-options"
+> <title
+>خيارات الضّرب</title>
+<para
+>تمتلك غولف عدة طرق للضرب. طريقة الضرب الأساسية هي <link linkend="hitting"
+>الموضحة أعلاه</link
+>.</para>
+<para
+>يتم تفعيل الفأرة افتراضيًا. وهذا يعني أنه كلما تم تحريك الفأرة، يتم محاذاة المضرب مع الخط الواصل بين الفأرة والكرة.</para>
+<para
+>إذا كنت تفضل استخدام لوحة المفاتيح ومفاتيح الأسهم فقط، يمكنك تعطيل الضرب بالفأرة عن طريق إلغاء تحديد عنصر القائمة <menuchoice
+><guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>تفعيل الفأرة لتحريك المضرب</guimenuitem
+></menuchoice
+>.</para>
+
+<sect2 id="advanced-putting"
+> <title
+>الضرب المتقدم</title>
+<para
+>يمكن تفعيل الضرب المتقدم عن طريق تحديد عنصر القائمة <menuchoice
+><guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>تفعيل الضرب المتقدم</guimenuitem
+></menuchoice
+>. وضع الضرب هذا أكثر تحديًا قليلًا من وضع الضغط والاستمرار العادي، ويمكن استخدامه مع الفأرة أو لوحة المفاتيح.</para>
+
+<para
+>للضرب في هذا الوضع:</para>
+<procedure>
+<step>
+<para
+>انقر أو اضغط على مفتاح السهم &Down; مرة واحدة لبدء الأرجحة. سيظهر مؤشر الضرب، وسيبدأ مقياس القوة في الامتلاء بلون يتغير مع امتلاء المقياس.</para>
+</step>
+<step>
+<para
+>انقر أو اضغط على مفتاح السهم &Down; عندما يمتلئ مقياس القوة بالقدر الذي تريده. كلما زاد امتلاء مقياس القوة حول الدائرة، زادت قوة الضربة. يتطلب الأمر تدريبًا لتتمكن من الحصول على القوة الصحيحة في الضربات.</para>
+<para
+>بعد ذلك، سيبدأ اللون في مؤشر الضرب في التراجع إلى حيث بدأ.</para>
+</step>
+<step>
+<para
+>انقر أو اضغط على مفتاح السهم &Down; مرة أخرى عندما يكون مؤشر القوة أقرب ما يمكن من خط المنتصف لمؤشر الضرب.</para>
+</step>
+</procedure>
+<para
+>كلما كانت النقرة الأخيرة (أو ضغطة المفتاح) أقرب، كانت الضربة أدق للخط الأصلي.</para>
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>نظرة عامة على الواجهة</title
+> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+ <sect1 id="game-menu">
+<title
+>قائمة اللعبة</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>جديد</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>ابدأ لعبة جديدة.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>حمّل…</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>تحميل لعبة حُفظت مسبقًا.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>احفظ الملعب</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>حفظ الملعب الحالي باستخدام اسم ملفه الحالي.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>لعبة</guimenu
+><guimenuitem
+>احفظ الملعب باسم…</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>فتح مربع حوار ملف يسمح لك بـ <action
+>حفظ الملعب الحالي باستخدام اسم ملف جديد.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>لعبة</guimenu
+><guimenuitem
+>احفظ اللعبة</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>حفظ اللعبة الحالية</action
+> باسم ملف آخر لعبة محفوظة، أو تحت اسم ملف تحدده إذا لم تكن قد حفظت اللعبة بعد.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>لعبة</guimenu
+> <guimenuitem
+>احفظ اللعبة باسم…</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>فتح مربع حوار ملف يسمح لك بـ <action
+>حفظ اللعبة الحالية باسم ملف من اختيارك.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&End;</keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>أنهِ اللعبة</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>إنهاء اللعبة الحالية دون إغلاق</action
+> غولف.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>أظهر أعلى النتائج</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>عرض جدول أعلى النتائج.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>لعبة</guimenu
+><guimenuitem
+>حول الملعب…</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>إظهار الاسم والمؤلف وعدد الحفر في الملعب.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>أنهِ</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>الخروج</action
+> من غولف.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="hole-menu">
+<title
+>قائمة الحفرة</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>حفرة</guimenu
+> <guimenuitem
+>تحرير</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>التبديل إلى وضع التحرير</action
+> لتحرير الحفرة الحالية.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>حفرة</guimenu
+> <guimenuitem
+>جديدة</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>إنشاء حفرة جديدة.</action
+> (فقط أثناء التحرير.)</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Del;</keycombo
+> </shortcut
+> <guimenu
+>حفرة</guimenu
+> <guimenuitem
+>مسح</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>إزالة جميع الكائنات من الحفرة الحالية.</action
+> (فقط أثناء التحرير.)</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>R</keycap
+></keycombo
+></shortcut
+> <guimenu
+>حفرة</guimenu
+> <guimenuitem
+>إعادة ضبط</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>إعادة ضبط الحفرة الحالية إلى موضع بدايتها</action
+>، حتى تتمكن من البدء من جديد.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>حفرة</guimenu
+> <guimenuitem
+>أظهر المعلومات</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>إظهار معلومات حول الكائنات الموجودة في الحفرة الحالية.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>حفرة</guimenu
+> <guimenuitem
+>تراجع عن الضربة</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>التراجع عن آخر ضربة قمت بها.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="go-menu">
+<title
+>قائمة اذهب</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>اذهب</guimenu
+> <guisubmenu
+>تبديل إلى الحفرة</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>الذهاب مباشرة إلى حفرة أخرى داخل الملعب.</action
+> تتيح لك قائمة بأرقام الحفر اختيار الحفرة التي ترغب في الذهاب إليها.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Alt;&Right;</keycombo
+> </shortcut
+> <guimenu
+>اذهب</guimenu
+> <guimenuitem
+>الحفرة التالية</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>الذهاب إلى الحفرة التالية.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Alt;&Left;</keycombo
+> </shortcut
+> <guimenu
+>اذهب</guimenu
+> <guimenuitem
+>الحفرة السابقة</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>الذهاب إلى الحفرة السابقة.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Home;</keycombo
+> </shortcut
+> <guimenu
+>اذهب</guimenu
+> <guimenuitem
+>الحفرة الأولى</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>الذهاب إلى الحفرة الأولى في الملعب.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;&End;</keycombo
+> </shortcut
+> <guimenu
+>اذهب</guimenu
+> <guimenuitem
+>الحفرة الأخيرة</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>الذهاب إلى الحفرة الأخيرة في الملعب.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>اذهب</guimenu
+> <guimenuitem
+>حفرة عشوائية</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>الذهاب إلى حفرة عشوائية من الملعب الحالي.</action
+></para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="settings-help-menu">
+<title
+>قائمة الإعدادات والمساعدة</title>
+
+<para
+>تمتلك غولف عناصر قائمتي <guimenu
+>إعدادات</guimenu
+> و <guimenu
+>مساعدة</guimenu
+> المشتركة في كيدي (KDE)، لمزيد من المعلومات اقرأ الأقسام حول <ulink url="help:/fundamentals/menus.html#menus-settings"
+>قائمة الإعدادات</ulink
+> و <ulink url="help:/fundamentals/menus.html#menus-help"
+>قائمة المساعدة</ulink
+> لأساسيات كيدي مع هذه المدخلات الإضافية:</para>
+
+<variablelist>
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>تفعيل الفأرة لتحريك المضرب</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>السماح باستخدام الفأرة لتحريك المضرب.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>تفعيل الضرب المتقدم</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>تفعيل وضع الضرب المتقدم</action
+>، كما هو موضح في <link linkend="advanced-putting"
+>القسم الخاص به</link
+>.</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>أظهر خط إرشاد المضرب</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>تبديل تشغيل وإيقاف خط إرشاد المضرب.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>شغل الأصوات</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>تبديل تشغيل وإيقاف التأثيرات الصوتية.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>تفعيل كافة مربعات الحوار</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+><action
+>إعادة تفعيل أي مربعات حوار قمت بتعطيلها من خلال النقر على <guilabel
+>لا تظهر هذه الرسالة مرة أخرى</guilabel
+> أو ما شابه.</action
+></para
+></listitem>
+  </varlistentry>
+<!--
+  <varlistentry>
+    <term
+><menuchoice>
+    <guimenu
+>Settings</guimenu>
+    <guimenuitem
+>Reload Plugins</guimenuitem>
+    </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Reload plugins.</action
+></para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><menuchoice>
+    <guimenu
+>Settings</guimenu>
+    <guimenuitem
+>Show Plugins</guimenuitem>
+    </menuchoice
+></term>
+    <listitem
+><para
+><action
+>Display the currently loaded plugins.</action
+></para
+></listitem>
+  </varlistentry>
+-->
+  <varlistentry>
+    <term
+><menuchoice
+><guimenu
+>مساعدة</guimenu
+> <guimenuitem
+>برنامج تعليمي</guimenuitem
+> </menuchoice
+></term>
+    <listitem
+><para
+>بدء الملعب التعليمي لغولف.</para
+></listitem>
+  </varlistentry>
+</variablelist>
+
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>الأسئلة الشائعة</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>أريد تغيير شكل اللعبة. هل يمكنني ذلك؟ </para
+></question>
+ <answer
+><para
+>لا. في الوقت الحالي، تدعم غولف سمة واحدة فقط.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>هل يمكنني استخدام لوحة المفاتيح للعب؟ </para
+></question>
+ <answer
+><para
+>نعم. استخدم مفاتيح الاتجاهات للتحكم في المضرب.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>لا أعرف ماذا أفعل هنا! هل هناك تلميحات؟ </para
+></question>
+ <answer
+><para
+>لا. غولف لا تحتوي على ميزة التلميحات.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>أريد تصميم ملعب الغولف الخاص بي. هل يمكنني ذلك؟ </para
+></question>
+ <answer
+><para
+>نعم، يمكنك ذلك. للدخول إلى وضع التحرير، استخدم عنصر القائمة <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+></shortcut
+> <guimenu
+>حفرة</guimenu
+> <guimenuitem
+>تحرير</guimenuitem
+></menuchoice
+>. انقر <link linkend="creating"
+>هنا</link
+> لمزيد من التفاصيل.</para
+></answer
+><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>محرر الميدان</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+<para
+>تأتي غولف مع محرر متعدد الاستخدامات لتنسيق ملفات الملاعب الخاص بها. يمكن أن تحتوي الملاعب على أي عدد من الحفر، ولا توجد حدود لإبداع مصمم الملعب.</para>
+
+<sect1 id="creating"
+> <title
+>إنشاء ملعب جديد</title>
+<para
+>لإنشاء ملعب جديد، اختر عنصر القائمة <menuchoice
+><guimenu
+>لعبة</guimenu
+> <guimenuitem
+>جديد</guimenuitem
+></menuchoice
+>. انتقل إلى صفحة <guilabel
+>الملعب</guilabel
+> في مربع الحوار، واختر <guilabel
+>إنشاء جديد</guilabel
+>. تأكد من عدم تحديد <guilabel
+>الوضع الصارم</guilabel
+> في صفحة <guilabel
+>خيارات</guilabel
+>.</para>
+
+<note>
+<para
+>للعب هذا الملعب الجديد لاحقًا، انقر فوق زر <guibutton
+>إضافة…</guibutton
+> لإضافة الملعب إلى قائمة الملاعب الخاصة بك.</para>
+</note>
+</sect1>
+
+<sect1 id="adding-holes"
+> <title
+>إضافة حفر</title>
+<para
+>انتقل إلى وضع التحرير باستخدام عنصر القائمة <menuchoice
+><guimenu
+>حفرة</guimenu
+> <guimenuitem
+>تحرير</guimenuitem
+></menuchoice
+>. اختر عنصر القائمة <menuchoice
+><guimenu
+>حفرة</guimenu
+> <guimenuitem
+>جديدة</guimenuitem
+></menuchoice
+> لإضافة حفرة جديدة في نهاية الملعب.</para>
+<tip>
+<para
+>يمكنك استعادة حفرة إلى حالتها الفارغة، على غرار وقت إنشائها لأول مرة، عن طريق اختيار عنصر القائمة <menuchoice
+><guimenu
+>حفرة</guimenu
+> <guimenuitem
+>مسح</guimenuitem
+></menuchoice
+>.</para>
+</tip>
+<para
+>سيظهر عنصران في الحفر الجديدة: كأس، وكرة بيضاء. تمثل الكرة البيضاء المكان الذي تبدأ فيه كرات اللاعبين الحفرة.</para>
+</sect1>
+
+<sect1 id="editing-basics"
+> <title
+>أساسيات التحرير</title>
+<para
+>اللبنة الأساسية لملاعب غولف هي <quote
+>الكائن</quote
+>. تتكون الحفر من مجموعة من الكائنات. يمكن نقل الكائنات إلى أي مكان، ولكل نوع من الكائنات خصائص مختلفة يمكنك تعيينها.</para>
+<para
+>لبدء تحرير حفرة، قم بتبديل عنصر القائمة <menuchoice
+><guimenu
+>حفرة</guimenu
+> <guimenuitem
+>تحرير</guimenuitem
+></menuchoice
+>، أو اضغط على أيقونة القلم في شريط الأدوات. لمغادرة وضع التحرير، قم بإلغاء تحديد عنصر القائمة هذا (أو أيقونة شريط الأدوات).</para>
+
+<sect2
+> <title
+>أضف كائنات</title>
+<para
+>لإضافة كائن جديد إلى الملعب، اختر اسمه في صندوق القائمة المسمى <guilabel
+>أضف كائنًا:</guilabel
+>. سيظهر الكائن في منتصف الملعب.</para>
+<caution>
+<para
+>ستقوم الجسور واللافتات بتغطية الكائنات الجديدة إذا كانت موجودة بالفعل في مركز الحفرة.</para>
+</caution>
+<!--
+<tip>
+<para
+>You can add more than one cup to a hole! Doing so can create interesting hole designs.</para>
+</tip>
+<para
+>Some &kolf; objects are available as plugins. If you add these objects to your course, course players will need to download the plugin.</para>
+<para
+>Third-party &kolf; plugins are available at the &kolf; website. See <ulink url="https://web.mit.edu/jasonkb/www/kolf/"
+>the &kolf; plugins download page</ulink
+>.</para>
+-->
+</sect2>
+
+<sect2
+> <title
+>نقل وتغيير حجم الكائنات</title>
+<para
+>حرك مؤشر الفأرة فوق الكائن الذي تريد نقله، وسيتغير مؤشر الفأرة إلى مؤشر يد. ثم انقر واسحب الكائن إلى المكان الذي تريده.</para>
+<para
+>يمكن تغيير حجم البرك والرمل والعوامات والجسور واللافتات عن طريق سحب الدائرة الصغيرة الموجودة في الركن السفلي الأيمن لها.</para>
+
+<note>
+<para
+>يمكن نقل الجدران عن طريق النقر وسحب نقاط النهاية الخاصة بها، أو يمكنك نقل الجدار بالكامل عن طريق النقر والسحب على الجزء الأوسط من الجدار بشكل طبيعي.</para>
+</note>
+</sect2>
+
+<sect2
+> <title
+>إعدادات الكائنات</title>
+<para
+>يمكن تغيير خصائص الكائنات في المنطقة الموجودة في الركن السفلي الأيمن من نافذة غولف. لتحرير كائن، حرك مؤشر الفأرة فوقه حتى يتغير المؤشر إلى مؤشر اليد. ثم انقر. ستظهر عناصر تحكم متنوعة لهذا الكائن في الزاوية السفلية اليمنى من نافذة غولف.</para>
+<sect3
+> <title
+>إعدادات الحفرة العامة</title>
+<para
+>لتحرير إعدادات الحفرة العامة، انقر فوق منطقة من الحفرة غير مغطاة بكائن. عندما يكون ذلك ممكنًا، سيكون المؤشر هو مؤشر السهم العادي.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>اسم المضمار:</guilabel
+></term>
+<listitem>
+<para
+>هذا هو الاسم الذي يظهر في مربع حوار <guilabel
+>لعبة جديدة</guilabel
+> وفي مربع حوار <guilabel
+>معلومات الملعب</guilabel
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>مطور الميدان:</guilabel
+></term>
+<listitem>
+<para
+>هذا هو اسم المؤلف الذي يظهر في مربع حوار <guilabel
+>معلومات الملعب</guilabel
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>المعدل الأساسي:</guilabel
+></term>
+<listitem>
+<para
+>المعدل الأساسي (Par) للحفرة.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>الأقصى:</guilabel
+></term>
+<listitem>
+<para
+>أقصى عدد من الضربات يمكن للاعب القيام بها في الحفرة.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>أظهر إطارات الحوائط</guilabel
+></term>
+<listitem>
+<para
+>ما إذا كان سيتم إظهار جدران حول حدود الحفرة أم لا.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>المنحدرات</title>
+
+<variablelist>
+<varlistentry
+> <term
+>النوع</term>
+<listitem>
+<para
+>اختر نوع المنحدر - <guilabel
+>عمودي</guilabel
+>، <guilabel
+>أفقي</guilabel
+>، <guilabel
+>قطري</guilabel
+>، <guilabel
+>قطري معاكس</guilabel
+>، <guilabel
+>دائري</guilabel
+>. المنحدرات القطرية والقطرية المعاكسة هي مثلثات، في حين أن المنحدرات الدائرية هي دوائر. المنحدرات العمودية والأفقية هي مستطيلات بالطبع.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>اعكس الاتّجاه</guilabel
+></term>
+<listitem>
+<para
+>ما إذا كان سيتم عكس ميل المنحدر أم لا. على سبيل المثال، فكر في منحدر بيضاوي (منحدر دائري). عندما لا يكون معكوسًا، فإنه يدفع الكرات إلى الخارج مثل التل. وعندما ينعكس، فإنه يسحب الكرات إلى الداخل مثل الحفرة.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>غير قابل للتحريك</guilabel
+></term>
+<listitem>
+<para
+>ما إذا كان يمكن تحريك هذا بواسطة كائنات أخرى، مثل العوامات.</para>
+<caution>
+<para
+>إذا تداخلت عوامة مع هذا الكائن في أي نقطة من هذا المسار، وكان المنحدر كبيرًا وبالتالي لن يحرك العوامة، <emphasis
+>يجب</emphasis
+> عليك جعل المنحدر <guilabel
+>غير قابل للتحريك</guilabel
+>، وإلا ستعاني غولف من ضعف في الأداء!</para>
+</caution>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+><guilabel
+>الدرجة:</guilabel
+></term>
+<listitem>
+<para
+>اختر درجة (انحدار) المنحدر عن طريق تحريك المنزلق بحيث تتحرك الدرجة نحو 0 أو 8، حيث 8 هو الأكثر انحدارًا و 0 هو مسطح. المنحدرات الأكثر انحدارًا تدفع الكرة أكثر.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>البرك والرمل</title>
+<para
+>البرك والرمل لهما نفس خيارات التهيئة.</para>
+
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>تفعيل الإظهار / الإخفاء</guilabel
+></term>
+<listitem>
+<para
+>تحديد هذا الخيار يفعل وميض هذه البركة أو الرمل.</para>
+<!--
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>Show/Hide speed</term>
+<listitem>
+  -->
+<para
+>كلما تحرك المنزلق نحو <guilabel
+>سريع</guilabel
+>، زادت سرعة وميض البركة أو الرمل.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+<sect3
+> <title
+>الجسور، الطواحين، العوامات، واللافتات</title>
+<para
+>الجسور والطواحين والعوامات واللافتات كلها لها إعدادات مماثلة لتهيئة الجوانب التي توجد بها جدران حدودية. لإظهار الجدار في جانب ما، حدد خانة الاختيار لهذا الجانب.</para>
+<para
+>هناك أيضًا بعض الخيارات الأكثر تحديدًا للطواحين والعوامات واللافتات.</para>
+
+<sect4
+> <title
+>الطواحين الهوائية</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>الطاحونة في الأعلى</guilabel
+></term>
+<listitem>
+<para
+>ما إذا كانت ذراع الطاحونة السوداء في الأسفل أو في الأعلى - الوضع الافتراضي هو أنها في الأعلى. سيكون الجداران النصفيان دائمًا مع الذراع. لاحظ أنه لا يمكنك تفعيل جدار حدودي في الجانب الذي توجد فيه الذراع.</para>
+</listitem>
+</varlistentry>
+<varlistentry
+> <term
+>السرعة</term>
+<listitem>
+<para
+>كلما تحرك المنزلق نحو <guilabel
+>سريع</guilabel
+>، زادت سرعة حركة ذراع الطاحونة السوداء.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>العوامات</title>
+<para
+>يظهر المسار الذي تتحرك فيه العوامة من خلال الجدار المتصلة به.</para>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>سرعة التحرك</guilabel
+></term>
+<listitem>
+<para
+>كلما تحرك المنزلق نحو <guilabel
+>سريع</guilabel
+>، زادت سرعة حركة العوامة. إذا كان المنزلق في نهاية <guilabel
+>بطيء</guilabel
+> تمامًا، فستتوقف العوامة.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+<sect4
+> <title
+>الإشارات</title>
+<variablelist>
+<varlistentry
+> <term
+><guilabel
+>توقيع HTML:</guilabel
+></term>
+<listitem>
+<para
+>يمكنك إدخال أي كود &HTML; صالح هنا. على سبيل المثال، إدخال <userinput
+>Hit it &lt;i&gt;softly&lt;/i&gt; towards the slope!</userinput
+> سينشئ النص <quote
+>اضربها <emphasis
+>بلطف</emphasis
+> نحو المنحدر!</quote
+>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect4>
+
+</sect3>
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="credits"
+><title
+>الحقوق والترخيص</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>غولف</para>
+
+<para
+>حقوق طبع غولف 2001، 2002 لـ &Jason.Katz-Brown;</para>
+
+<itemizedlist>
+<title
+>المطورون</title>
+<listitem>
+<para
+>&Jason.Katz-Brown; <email
+>jasonkb@mit.edu</email
+></para>
+</listitem>
+<listitem>
+<para
+>Niklas Knutsson</para>
+</listitem>
+<listitem>
+<para
+>Ryan Cumming</para>
+</listitem>
+<listitem>
+<para
+>Daniel Matza-Brown</para>
+</listitem>
+<listitem>
+<para
+>باول برودبنت</para>
+</listitem>
+</itemizedlist>
+
+<para
+>حقوق طبع الوثائق 2002 لـ &Jason.Katz-Brown;</para>
+
+<para
+>الترجمة: زايد السعيدي <email
+>zayed.alsaidi@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
