@@ -20,6 +20,9 @@
 #define KOLF_ITEMFACTORY_H
 
 #include <QGraphicsItem>
+
+#include <utility>
+
 class b2World;
 
 namespace Kolf
@@ -50,7 +53,7 @@ namespace Kolf
 				return new T(parent, world);
 			}
 		private:
-			typedef QPair<Kolf::ItemMetadata, ItemCreator> Entry;
+			typedef std::pair<Kolf::ItemMetadata, ItemCreator> Entry;
 			QList<Entry> m_entries;
 	};
 }
