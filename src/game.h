@@ -25,6 +25,7 @@
 #include "tagaro/scene.h"
 
 #include <QGraphicsView>
+#include <QMap>
 #include <KConfigGroup>
 #include <KGameSound>
 
